@@ -4,6 +4,9 @@
 package v3beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,4 +44,86 @@ type LookupTestCaseResult struct {
 	TestCaseConversationTurns []GoogleCloudDialogflowCxV3beta1ConversationTurnResponse `pulumi:"testCaseConversationTurns"`
 	// Config for the test case.
 	TestConfig GoogleCloudDialogflowCxV3beta1TestConfigResponse `pulumi:"testConfig"`
+}
+
+func LookupTestCaseOutput(ctx *pulumi.Context, args LookupTestCaseOutputArgs, opts ...pulumi.InvokeOption) LookupTestCaseResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTestCaseResult, error) {
+			args := v.(LookupTestCaseArgs)
+			r, err := LookupTestCase(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTestCaseResultOutput)
+}
+
+type LookupTestCaseOutputArgs struct {
+	AgentId    pulumi.StringInput    `pulumi:"agentId"`
+	Location   pulumi.StringInput    `pulumi:"location"`
+	Project    pulumi.StringPtrInput `pulumi:"project"`
+	TestCaseId pulumi.StringInput    `pulumi:"testCaseId"`
+}
+
+func (LookupTestCaseOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTestCaseArgs)(nil)).Elem()
+}
+
+type LookupTestCaseResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTestCaseResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTestCaseResult)(nil)).Elem()
+}
+
+func (o LookupTestCaseResultOutput) ToLookupTestCaseResultOutput() LookupTestCaseResultOutput {
+	return o
+}
+
+func (o LookupTestCaseResultOutput) ToLookupTestCaseResultOutputWithContext(ctx context.Context) LookupTestCaseResultOutput {
+	return o
+}
+
+// When the test was created.
+func (o LookupTestCaseResultOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTestCaseResult) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+func (o LookupTestCaseResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTestCaseResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The latest test result.
+func (o LookupTestCaseResultOutput) LastTestResult() GoogleCloudDialogflowCxV3beta1TestCaseResultResponseOutput {
+	return o.ApplyT(func(v LookupTestCaseResult) GoogleCloudDialogflowCxV3beta1TestCaseResultResponse {
+		return v.LastTestResult
+	}).(GoogleCloudDialogflowCxV3beta1TestCaseResultResponseOutput)
+}
+
+// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
+func (o LookupTestCaseResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTestCaseResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Additional freeform notes about the test case. Limit of 400 characters.
+func (o LookupTestCaseResultOutput) Notes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTestCaseResult) string { return v.Notes }).(pulumi.StringOutput)
+}
+
+// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
+func (o LookupTestCaseResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTestCaseResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+func (o LookupTestCaseResultOutput) TestCaseConversationTurns() GoogleCloudDialogflowCxV3beta1ConversationTurnResponseArrayOutput {
+	return o.ApplyT(func(v LookupTestCaseResult) []GoogleCloudDialogflowCxV3beta1ConversationTurnResponse {
+		return v.TestCaseConversationTurns
+	}).(GoogleCloudDialogflowCxV3beta1ConversationTurnResponseArrayOutput)
+}
+
+// Config for the test case.
+func (o LookupTestCaseResultOutput) TestConfig() GoogleCloudDialogflowCxV3beta1TestConfigResponseOutput {
+	return o.ApplyT(func(v LookupTestCaseResult) GoogleCloudDialogflowCxV3beta1TestConfigResponse { return v.TestConfig }).(GoogleCloudDialogflowCxV3beta1TestConfigResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTestCaseResultOutput{})
 }

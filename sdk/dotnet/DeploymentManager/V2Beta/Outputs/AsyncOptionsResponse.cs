@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Outputs
 {
 
+    /// <summary>
+    /// Async options that determine when a resource should finish.
+    /// </summary>
     [OutputType]
     public sealed class AsyncOptionsResponse
     {

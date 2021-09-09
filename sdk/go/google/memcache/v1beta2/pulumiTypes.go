@@ -318,7 +318,7 @@ func (o MemcacheParametersOutput) ToMemcacheParametersPtrOutput() MemcacheParame
 }
 
 func (o MemcacheParametersOutput) ToMemcacheParametersPtrOutputWithContext(ctx context.Context) MemcacheParametersPtrOutput {
-	return o.ApplyT(func(v MemcacheParameters) *MemcacheParameters {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MemcacheParameters) *MemcacheParameters {
 		return &v
 	}).(MemcacheParametersPtrOutput)
 }
@@ -343,7 +343,13 @@ func (o MemcacheParametersPtrOutput) ToMemcacheParametersPtrOutputWithContext(ct
 }
 
 func (o MemcacheParametersPtrOutput) Elem() MemcacheParametersOutput {
-	return o.ApplyT(func(v *MemcacheParameters) MemcacheParameters { return *v }).(MemcacheParametersOutput)
+	return o.ApplyT(func(v *MemcacheParameters) MemcacheParameters {
+		if v != nil {
+			return *v
+		}
+		var ret MemcacheParameters
+		return ret
+	}).(MemcacheParametersOutput)
 }
 
 // User defined set of parameters to use in the memcached process.
@@ -452,7 +458,7 @@ func (o MemcacheParametersResponseOutput) ToMemcacheParametersResponsePtrOutput(
 }
 
 func (o MemcacheParametersResponseOutput) ToMemcacheParametersResponsePtrOutputWithContext(ctx context.Context) MemcacheParametersResponsePtrOutput {
-	return o.ApplyT(func(v MemcacheParametersResponse) *MemcacheParametersResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MemcacheParametersResponse) *MemcacheParametersResponse {
 		return &v
 	}).(MemcacheParametersResponsePtrOutput)
 }
@@ -477,7 +483,13 @@ func (o MemcacheParametersResponsePtrOutput) ToMemcacheParametersResponsePtrOutp
 }
 
 func (o MemcacheParametersResponsePtrOutput) Elem() MemcacheParametersResponseOutput {
-	return o.ApplyT(func(v *MemcacheParametersResponse) MemcacheParametersResponse { return *v }).(MemcacheParametersResponseOutput)
+	return o.ApplyT(func(v *MemcacheParametersResponse) MemcacheParametersResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MemcacheParametersResponse
+		return ret
+	}).(MemcacheParametersResponseOutput)
 }
 
 // User defined set of parameters to use in the memcached process.
@@ -590,7 +602,7 @@ func (o NodeConfigOutput) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
 }
 
 func (o NodeConfigOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
-	return o.ApplyT(func(v NodeConfig) *NodeConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfig) *NodeConfig {
 		return &v
 	}).(NodeConfigPtrOutput)
 }
@@ -620,7 +632,13 @@ func (o NodeConfigPtrOutput) ToNodeConfigPtrOutputWithContext(ctx context.Contex
 }
 
 func (o NodeConfigPtrOutput) Elem() NodeConfigOutput {
-	return o.ApplyT(func(v *NodeConfig) NodeConfig { return *v }).(NodeConfigOutput)
+	return o.ApplyT(func(v *NodeConfig) NodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodeConfig
+		return ret
+	}).(NodeConfigOutput)
 }
 
 // Number of cpus per Memcached node.
@@ -743,7 +761,7 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutput() NodeConfigResp
 }
 
 func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutputWithContext(ctx context.Context) NodeConfigResponsePtrOutput {
-	return o.ApplyT(func(v NodeConfigResponse) *NodeConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfigResponse) *NodeConfigResponse {
 		return &v
 	}).(NodeConfigResponsePtrOutput)
 }
@@ -773,7 +791,13 @@ func (o NodeConfigResponsePtrOutput) ToNodeConfigResponsePtrOutputWithContext(ct
 }
 
 func (o NodeConfigResponsePtrOutput) Elem() NodeConfigResponseOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) NodeConfigResponse { return *v }).(NodeConfigResponseOutput)
+	return o.ApplyT(func(v *NodeConfigResponse) NodeConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NodeConfigResponse
+		return ret
+	}).(NodeConfigResponseOutput)
 }
 
 // Number of cpus per Memcached node.

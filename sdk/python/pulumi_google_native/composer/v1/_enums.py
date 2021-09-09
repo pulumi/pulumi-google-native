@@ -14,14 +14,26 @@ class EnvironmentState(str, Enum):
     The current state of the environment.
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    """The state of the environment is unknown."""
+    """
+    The state of the environment is unknown.
+    """
     CREATING = "CREATING"
-    """The environment is in the process of being created."""
+    """
+    The environment is in the process of being created.
+    """
     RUNNING = "RUNNING"
-    """The environment is currently running and healthy. It is ready for use."""
+    """
+    The environment is currently running and healthy. It is ready for use.
+    """
     UPDATING = "UPDATING"
-    """The environment is being updated. It remains usable but cannot receive additional update requests or be deleted at this time."""
+    """
+    The environment is being updated. It remains usable but cannot receive additional update requests or be deleted at this time.
+    """
     DELETING = "DELETING"
-    """The environment is undergoing deletion. It cannot be used."""
+    """
+    The environment is undergoing deletion. It cannot be used.
+    """
     ERROR = "ERROR"
-    """The environment has encountered an error and cannot be used."""
+    """
+    The environment has encountered an error and cannot be used.
+    """

@@ -110,7 +110,7 @@ func (o EntryTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulum
 type EntryTypePtrOutput struct{ *pulumi.OutputState }
 
 func (EntryTypePtrOutput) ElementType() reflect.Type {
-	return entryTypePtrType
+	return reflect.TypeOf((**EntryType)(nil)).Elem()
 }
 
 func (o EntryTypePtrOutput) ToEntryTypePtrOutput() EntryTypePtrOutput {
@@ -119,6 +119,16 @@ func (o EntryTypePtrOutput) ToEntryTypePtrOutput() EntryTypePtrOutput {
 
 func (o EntryTypePtrOutput) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
 	return o
+}
+
+func (o EntryTypePtrOutput) Elem() EntryTypeOutput {
+	return o.ApplyT(func(v *EntryType) EntryType {
+		if v != nil {
+			return *v
+		}
+		var ret EntryType
+		return ret
+	}).(EntryTypeOutput)
 }
 
 func (o EntryTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -133,16 +143,6 @@ func (o EntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EntryTypePtrOutput) Elem() EntryTypeOutput {
-	return o.ApplyT(func(v *EntryType) EntryType {
-		var ret EntryType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EntryTypeOutput)
 }
 
 // EntryTypeInput is an input type that accepts EntryTypeArgs and EntryTypeOutput values.
@@ -276,7 +276,7 @@ func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringPtrOutputWithContext(ctx
 type TaxonomyActivatedPolicyTypesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyActivatedPolicyTypesItemPtrOutput) ElementType() reflect.Type {
-	return taxonomyActivatedPolicyTypesItemPtrType
+	return reflect.TypeOf((**TaxonomyActivatedPolicyTypesItem)(nil)).Elem()
 }
 
 func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput {
@@ -285,6 +285,16 @@ func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyType
 
 func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
 	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) Elem() TaxonomyActivatedPolicyTypesItemOutput {
+	return o.ApplyT(func(v *TaxonomyActivatedPolicyTypesItem) TaxonomyActivatedPolicyTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret TaxonomyActivatedPolicyTypesItem
+		return ret
+	}).(TaxonomyActivatedPolicyTypesItemOutput)
 }
 
 func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -299,16 +309,6 @@ func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TaxonomyActivatedPolicyTypesItemPtrOutput) Elem() TaxonomyActivatedPolicyTypesItemOutput {
-	return o.ApplyT(func(v *TaxonomyActivatedPolicyTypesItem) TaxonomyActivatedPolicyTypesItem {
-		var ret TaxonomyActivatedPolicyTypesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TaxonomyActivatedPolicyTypesItemOutput)
 }
 
 // TaxonomyActivatedPolicyTypesItemInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArgs and TaxonomyActivatedPolicyTypesItemOutput values.
@@ -389,8 +389,8 @@ func (o TaxonomyActivatedPolicyTypesItemArrayOutput) ToTaxonomyActivatedPolicyTy
 }
 
 func (o TaxonomyActivatedPolicyTypesItemArrayOutput) Index(i pulumi.IntInput) TaxonomyActivatedPolicyTypesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaxonomyActivatedPolicyTypesItemOutput {
-		return vs[0].([]TaxonomyActivatedPolicyTypesItem)[vs[1].(int)].ToTaxonomyActivatedPolicyTypesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaxonomyActivatedPolicyTypesItem {
+		return vs[0].([]TaxonomyActivatedPolicyTypesItem)[vs[1].(int)]
 	}).(TaxonomyActivatedPolicyTypesItemOutput)
 }
 

@@ -13,6 +13,7 @@ __all__ = [
     'GetFlowResult',
     'AwaitableGetFlowResult',
     'get_flow',
+    'get_flow_output',
 ]
 
 @pulumi.output_type
@@ -141,3 +142,16 @@ def get_flow(agent_id: Optional[str] = None,
         nlu_settings=__ret__.nlu_settings,
         transition_route_groups=__ret__.transition_route_groups,
         transition_routes=__ret__.transition_routes)
+
+
+@_utilities.lift_output_func(get_flow)
+def get_flow_output(agent_id: Optional[pulumi.Input[str]] = None,
+                    flow_id: Optional[pulumi.Input[str]] = None,
+                    language_code: Optional[pulumi.Input[Optional[str]]] = None,
+                    location: Optional[pulumi.Input[str]] = None,
+                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlowResult]:
+    """
+    Retrieves the specified flow.
+    """
+    ...

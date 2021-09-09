@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIoT.V1.Outputs
 {
 
+    /// <summary>
+    /// Gateway-related configuration and state.
+    /// </summary>
     [OutputType]
     public sealed class GatewayConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Describes values that are relevant in a CA certificate.
+    /// </summary>
     [OutputType]
     public sealed class CaOptionsResponse
     {

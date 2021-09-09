@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+    /// </summary>
     [OutputType]
     public sealed class BucketObjectCustomerEncryptionResponse
     {

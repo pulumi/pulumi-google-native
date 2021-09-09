@@ -114,9 +114,7 @@ func (i *Index) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IndexOutput)
 }
 
-type IndexOutput struct {
-	*pulumi.OutputState
-}
+type IndexOutput struct{ *pulumi.OutputState }
 
 func (IndexOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Index)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// The button object that appears at the bottom of a card.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse
     {

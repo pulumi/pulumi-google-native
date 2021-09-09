@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// VM inventory details.
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyAssignmentInstanceFilterInventoryResponse
     {

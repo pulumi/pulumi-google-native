@@ -7,9 +7,12 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.compute.alpha as alpha
-    import pulumi_google_native.compute.beta as beta
-    import pulumi_google_native.compute.v1 as v1
+    import pulumi_google_native.compute.alpha as __alpha
+    alpha = __alpha
+    import pulumi_google_native.compute.beta as __beta
+    beta = __beta
+    import pulumi_google_native.compute.v1 as __v1
+    v1 = __v1
 else:
     alpha = _utilities.lazy_import('pulumi_google_native.compute.alpha')
     beta = _utilities.lazy_import('pulumi_google_native.compute.beta')

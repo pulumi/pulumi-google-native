@@ -778,7 +778,7 @@ func (o DataCatalogConfigOutput) ToDataCatalogConfigPtrOutput() DataCatalogConfi
 }
 
 func (o DataCatalogConfigOutput) ToDataCatalogConfigPtrOutputWithContext(ctx context.Context) DataCatalogConfigPtrOutput {
-	return o.ApplyT(func(v DataCatalogConfig) *DataCatalogConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataCatalogConfig) *DataCatalogConfig {
 		return &v
 	}).(DataCatalogConfigPtrOutput)
 }
@@ -803,7 +803,13 @@ func (o DataCatalogConfigPtrOutput) ToDataCatalogConfigPtrOutputWithContext(ctx 
 }
 
 func (o DataCatalogConfigPtrOutput) Elem() DataCatalogConfigOutput {
-	return o.ApplyT(func(v *DataCatalogConfig) DataCatalogConfig { return *v }).(DataCatalogConfigOutput)
+	return o.ApplyT(func(v *DataCatalogConfig) DataCatalogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataCatalogConfig
+		return ret
+	}).(DataCatalogConfigOutput)
 }
 
 // Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
@@ -912,7 +918,7 @@ func (o DataCatalogConfigResponseOutput) ToDataCatalogConfigResponsePtrOutput() 
 }
 
 func (o DataCatalogConfigResponseOutput) ToDataCatalogConfigResponsePtrOutputWithContext(ctx context.Context) DataCatalogConfigResponsePtrOutput {
-	return o.ApplyT(func(v DataCatalogConfigResponse) *DataCatalogConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataCatalogConfigResponse) *DataCatalogConfigResponse {
 		return &v
 	}).(DataCatalogConfigResponsePtrOutput)
 }
@@ -937,7 +943,13 @@ func (o DataCatalogConfigResponsePtrOutput) ToDataCatalogConfigResponsePtrOutput
 }
 
 func (o DataCatalogConfigResponsePtrOutput) Elem() DataCatalogConfigResponseOutput {
-	return o.ApplyT(func(v *DataCatalogConfigResponse) DataCatalogConfigResponse { return *v }).(DataCatalogConfigResponseOutput)
+	return o.ApplyT(func(v *DataCatalogConfigResponse) DataCatalogConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataCatalogConfigResponse
+		return ret
+	}).(DataCatalogConfigResponseOutput)
 }
 
 // Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
@@ -1058,7 +1070,7 @@ func (o DatabaseDumpOutput) ToDatabaseDumpPtrOutput() DatabaseDumpPtrOutput {
 }
 
 func (o DatabaseDumpOutput) ToDatabaseDumpPtrOutputWithContext(ctx context.Context) DatabaseDumpPtrOutput {
-	return o.ApplyT(func(v DatabaseDump) *DatabaseDump {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseDump) *DatabaseDump {
 		return &v
 	}).(DatabaseDumpPtrOutput)
 }
@@ -1098,7 +1110,13 @@ func (o DatabaseDumpPtrOutput) ToDatabaseDumpPtrOutputWithContext(ctx context.Co
 }
 
 func (o DatabaseDumpPtrOutput) Elem() DatabaseDumpOutput {
-	return o.ApplyT(func(v *DatabaseDump) DatabaseDump { return *v }).(DatabaseDumpOutput)
+	return o.ApplyT(func(v *DatabaseDump) DatabaseDump {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseDump
+		return ret
+	}).(DatabaseDumpOutput)
 }
 
 // The type of the database.
@@ -1249,7 +1267,7 @@ func (o DatabaseDumpResponseOutput) ToDatabaseDumpResponsePtrOutput() DatabaseDu
 }
 
 func (o DatabaseDumpResponseOutput) ToDatabaseDumpResponsePtrOutputWithContext(ctx context.Context) DatabaseDumpResponsePtrOutput {
-	return o.ApplyT(func(v DatabaseDumpResponse) *DatabaseDumpResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseDumpResponse) *DatabaseDumpResponse {
 		return &v
 	}).(DatabaseDumpResponsePtrOutput)
 }
@@ -1289,7 +1307,13 @@ func (o DatabaseDumpResponsePtrOutput) ToDatabaseDumpResponsePtrOutputWithContex
 }
 
 func (o DatabaseDumpResponsePtrOutput) Elem() DatabaseDumpResponseOutput {
-	return o.ApplyT(func(v *DatabaseDumpResponse) DatabaseDumpResponse { return *v }).(DatabaseDumpResponseOutput)
+	return o.ApplyT(func(v *DatabaseDumpResponse) DatabaseDumpResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseDumpResponse
+		return ret
+	}).(DatabaseDumpResponseOutput)
 }
 
 // The type of the database.
@@ -1428,7 +1452,7 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPt
 }
 
 func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
-	return o.ApplyT(func(v EncryptionConfig) *EncryptionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfig) *EncryptionConfig {
 		return &v
 	}).(EncryptionConfigPtrOutput)
 }
@@ -1453,7 +1477,13 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx co
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
-	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig { return *v }).(EncryptionConfigOutput)
+	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfig
+		return ret
+	}).(EncryptionConfigOutput)
 }
 
 // The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
@@ -1562,7 +1592,7 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() En
 }
 
 func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o.ApplyT(func(v EncryptionConfigResponse) *EncryptionConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfigResponse) *EncryptionConfigResponse {
 		return &v
 	}).(EncryptionConfigResponsePtrOutput)
 }
@@ -1587,7 +1617,13 @@ func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWi
 }
 
 func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse { return *v }).(EncryptionConfigResponseOutput)
+	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfigResponse
+		return ret
+	}).(EncryptionConfigResponseOutput)
 }
 
 // The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
@@ -1708,7 +1744,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1748,7 +1784,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1977,7 +2019,7 @@ func (o HiveMetastoreConfigOutput) ToHiveMetastoreConfigPtrOutput() HiveMetastor
 }
 
 func (o HiveMetastoreConfigOutput) ToHiveMetastoreConfigPtrOutputWithContext(ctx context.Context) HiveMetastoreConfigPtrOutput {
-	return o.ApplyT(func(v HiveMetastoreConfig) *HiveMetastoreConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveMetastoreConfig) *HiveMetastoreConfig {
 		return &v
 	}).(HiveMetastoreConfigPtrOutput)
 }
@@ -2012,7 +2054,13 @@ func (o HiveMetastoreConfigPtrOutput) ToHiveMetastoreConfigPtrOutputWithContext(
 }
 
 func (o HiveMetastoreConfigPtrOutput) Elem() HiveMetastoreConfigOutput {
-	return o.ApplyT(func(v *HiveMetastoreConfig) HiveMetastoreConfig { return *v }).(HiveMetastoreConfigOutput)
+	return o.ApplyT(func(v *HiveMetastoreConfig) HiveMetastoreConfig {
+		if v != nil {
+			return *v
+		}
+		var ret HiveMetastoreConfig
+		return ret
+	}).(HiveMetastoreConfigOutput)
 }
 
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
@@ -2149,7 +2197,7 @@ func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponsePtrOutpu
 }
 
 func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponsePtrOutputWithContext(ctx context.Context) HiveMetastoreConfigResponsePtrOutput {
-	return o.ApplyT(func(v HiveMetastoreConfigResponse) *HiveMetastoreConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveMetastoreConfigResponse) *HiveMetastoreConfigResponse {
 		return &v
 	}).(HiveMetastoreConfigResponsePtrOutput)
 }
@@ -2184,7 +2232,13 @@ func (o HiveMetastoreConfigResponsePtrOutput) ToHiveMetastoreConfigResponsePtrOu
 }
 
 func (o HiveMetastoreConfigResponsePtrOutput) Elem() HiveMetastoreConfigResponseOutput {
-	return o.ApplyT(func(v *HiveMetastoreConfigResponse) HiveMetastoreConfigResponse { return *v }).(HiveMetastoreConfigResponseOutput)
+	return o.ApplyT(func(v *HiveMetastoreConfigResponse) HiveMetastoreConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HiveMetastoreConfigResponse
+		return ret
+	}).(HiveMetastoreConfigResponseOutput)
 }
 
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
@@ -2321,7 +2375,7 @@ func (o KerberosConfigOutput) ToKerberosConfigPtrOutput() KerberosConfigPtrOutpu
 }
 
 func (o KerberosConfigOutput) ToKerberosConfigPtrOutputWithContext(ctx context.Context) KerberosConfigPtrOutput {
-	return o.ApplyT(func(v KerberosConfig) *KerberosConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KerberosConfig) *KerberosConfig {
 		return &v
 	}).(KerberosConfigPtrOutput)
 }
@@ -2356,7 +2410,13 @@ func (o KerberosConfigPtrOutput) ToKerberosConfigPtrOutputWithContext(ctx contex
 }
 
 func (o KerberosConfigPtrOutput) Elem() KerberosConfigOutput {
-	return o.ApplyT(func(v *KerberosConfig) KerberosConfig { return *v }).(KerberosConfigOutput)
+	return o.ApplyT(func(v *KerberosConfig) KerberosConfig {
+		if v != nil {
+			return *v
+		}
+		var ret KerberosConfig
+		return ret
+	}).(KerberosConfigOutput)
 }
 
 // A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
@@ -2493,7 +2553,7 @@ func (o KerberosConfigResponseOutput) ToKerberosConfigResponsePtrOutput() Kerber
 }
 
 func (o KerberosConfigResponseOutput) ToKerberosConfigResponsePtrOutputWithContext(ctx context.Context) KerberosConfigResponsePtrOutput {
-	return o.ApplyT(func(v KerberosConfigResponse) *KerberosConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KerberosConfigResponse) *KerberosConfigResponse {
 		return &v
 	}).(KerberosConfigResponsePtrOutput)
 }
@@ -2528,7 +2588,13 @@ func (o KerberosConfigResponsePtrOutput) ToKerberosConfigResponsePtrOutputWithCo
 }
 
 func (o KerberosConfigResponsePtrOutput) Elem() KerberosConfigResponseOutput {
-	return o.ApplyT(func(v *KerberosConfigResponse) KerberosConfigResponse { return *v }).(KerberosConfigResponseOutput)
+	return o.ApplyT(func(v *KerberosConfigResponse) KerberosConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KerberosConfigResponse
+		return ret
+	}).(KerberosConfigResponseOutput)
 }
 
 // A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
@@ -2661,7 +2727,7 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutput() MaintenanceWindo
 }
 
 func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindow) *MaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindow) *MaintenanceWindow {
 		return &v
 	}).(MaintenanceWindowPtrOutput)
 }
@@ -2691,7 +2757,13 @@ func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx 
 }
 
 func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) MaintenanceWindow { return *v }).(MaintenanceWindowOutput)
+	return o.ApplyT(func(v *MaintenanceWindow) MaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceWindow
+		return ret
+	}).(MaintenanceWindowOutput)
 }
 
 // The day of week, when the window starts.
@@ -2814,7 +2886,7 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutput() 
 }
 
 func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) *MaintenanceWindowResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindowResponse) *MaintenanceWindowResponse {
 		return &v
 	}).(MaintenanceWindowResponsePtrOutput)
 }
@@ -2844,7 +2916,13 @@ func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutput
 }
 
 func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse { return *v }).(MaintenanceWindowResponseOutput)
+	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceWindowResponse
+		return ret
+	}).(MaintenanceWindowResponseOutput)
 }
 
 // The day of week, when the window starts.
@@ -3099,7 +3177,7 @@ func (o MetadataIntegrationOutput) ToMetadataIntegrationPtrOutput() MetadataInte
 }
 
 func (o MetadataIntegrationOutput) ToMetadataIntegrationPtrOutputWithContext(ctx context.Context) MetadataIntegrationPtrOutput {
-	return o.ApplyT(func(v MetadataIntegration) *MetadataIntegration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataIntegration) *MetadataIntegration {
 		return &v
 	}).(MetadataIntegrationPtrOutput)
 }
@@ -3124,7 +3202,13 @@ func (o MetadataIntegrationPtrOutput) ToMetadataIntegrationPtrOutputWithContext(
 }
 
 func (o MetadataIntegrationPtrOutput) Elem() MetadataIntegrationOutput {
-	return o.ApplyT(func(v *MetadataIntegration) MetadataIntegration { return *v }).(MetadataIntegrationOutput)
+	return o.ApplyT(func(v *MetadataIntegration) MetadataIntegration {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataIntegration
+		return ret
+	}).(MetadataIntegrationOutput)
 }
 
 // The integration config for the Data Catalog service.
@@ -3233,7 +3317,7 @@ func (o MetadataIntegrationResponseOutput) ToMetadataIntegrationResponsePtrOutpu
 }
 
 func (o MetadataIntegrationResponseOutput) ToMetadataIntegrationResponsePtrOutputWithContext(ctx context.Context) MetadataIntegrationResponsePtrOutput {
-	return o.ApplyT(func(v MetadataIntegrationResponse) *MetadataIntegrationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataIntegrationResponse) *MetadataIntegrationResponse {
 		return &v
 	}).(MetadataIntegrationResponsePtrOutput)
 }
@@ -3258,7 +3342,13 @@ func (o MetadataIntegrationResponsePtrOutput) ToMetadataIntegrationResponsePtrOu
 }
 
 func (o MetadataIntegrationResponsePtrOutput) Elem() MetadataIntegrationResponseOutput {
-	return o.ApplyT(func(v *MetadataIntegrationResponse) MetadataIntegrationResponse { return *v }).(MetadataIntegrationResponseOutput)
+	return o.ApplyT(func(v *MetadataIntegrationResponse) MetadataIntegrationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataIntegrationResponse
+		return ret
+	}).(MetadataIntegrationResponseOutput)
 }
 
 // The integration config for the Data Catalog service.
@@ -3371,7 +3461,7 @@ func (o MetadataManagementActivityResponseOutput) ToMetadataManagementActivityRe
 }
 
 func (o MetadataManagementActivityResponseOutput) ToMetadataManagementActivityResponsePtrOutputWithContext(ctx context.Context) MetadataManagementActivityResponsePtrOutput {
-	return o.ApplyT(func(v MetadataManagementActivityResponse) *MetadataManagementActivityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataManagementActivityResponse) *MetadataManagementActivityResponse {
 		return &v
 	}).(MetadataManagementActivityResponsePtrOutput)
 }
@@ -3401,7 +3491,13 @@ func (o MetadataManagementActivityResponsePtrOutput) ToMetadataManagementActivit
 }
 
 func (o MetadataManagementActivityResponsePtrOutput) Elem() MetadataManagementActivityResponseOutput {
-	return o.ApplyT(func(v *MetadataManagementActivityResponse) MetadataManagementActivityResponse { return *v }).(MetadataManagementActivityResponseOutput)
+	return o.ApplyT(func(v *MetadataManagementActivityResponse) MetadataManagementActivityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataManagementActivityResponse
+		return ret
+	}).(MetadataManagementActivityResponseOutput)
 }
 
 // The latest metadata exports of the metastore service.
@@ -3665,7 +3761,7 @@ func (o SecretOutput) ToSecretPtrOutput() SecretPtrOutput {
 }
 
 func (o SecretOutput) ToSecretPtrOutputWithContext(ctx context.Context) SecretPtrOutput {
-	return o.ApplyT(func(v Secret) *Secret {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Secret) *Secret {
 		return &v
 	}).(SecretPtrOutput)
 }
@@ -3690,7 +3786,13 @@ func (o SecretPtrOutput) ToSecretPtrOutputWithContext(ctx context.Context) Secre
 }
 
 func (o SecretPtrOutput) Elem() SecretOutput {
-	return o.ApplyT(func(v *Secret) Secret { return *v }).(SecretOutput)
+	return o.ApplyT(func(v *Secret) Secret {
+		if v != nil {
+			return *v
+		}
+		var ret Secret
+		return ret
+	}).(SecretOutput)
 }
 
 // The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
@@ -3799,7 +3901,7 @@ func (o SecretResponseOutput) ToSecretResponsePtrOutput() SecretResponsePtrOutpu
 }
 
 func (o SecretResponseOutput) ToSecretResponsePtrOutputWithContext(ctx context.Context) SecretResponsePtrOutput {
-	return o.ApplyT(func(v SecretResponse) *SecretResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretResponse) *SecretResponse {
 		return &v
 	}).(SecretResponsePtrOutput)
 }
@@ -3824,7 +3926,13 @@ func (o SecretResponsePtrOutput) ToSecretResponsePtrOutputWithContext(ctx contex
 }
 
 func (o SecretResponsePtrOutput) Elem() SecretResponseOutput {
-	return o.ApplyT(func(v *SecretResponse) SecretResponse { return *v }).(SecretResponseOutput)
+	return o.ApplyT(func(v *SecretResponse) SecretResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecretResponse
+		return ret
+	}).(SecretResponseOutput)
 }
 
 // The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
@@ -4001,7 +4109,7 @@ func (o ServiceResponseOutput) ToServiceResponsePtrOutput() ServiceResponsePtrOu
 }
 
 func (o ServiceResponseOutput) ToServiceResponsePtrOutputWithContext(ctx context.Context) ServiceResponsePtrOutput {
-	return o.ApplyT(func(v ServiceResponse) *ServiceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceResponse) *ServiceResponse {
 		return &v
 	}).(ServiceResponsePtrOutput)
 }
@@ -4111,7 +4219,13 @@ func (o ServiceResponsePtrOutput) ToServiceResponsePtrOutputWithContext(ctx cont
 }
 
 func (o ServiceResponsePtrOutput) Elem() ServiceResponseOutput {
-	return o.ApplyT(func(v *ServiceResponse) ServiceResponse { return *v }).(ServiceResponseOutput)
+	return o.ApplyT(func(v *ServiceResponse) ServiceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceResponse
+		return ret
+	}).(ServiceResponseOutput)
 }
 
 // A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.

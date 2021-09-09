@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A TextAnnotation specifies a text range that includes sensitive information.
+    /// </summary>
     [OutputType]
     public sealed class SensitiveTextAnnotationResponse
     {

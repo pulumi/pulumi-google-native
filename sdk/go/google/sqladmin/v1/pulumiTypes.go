@@ -392,7 +392,7 @@ func (o BackupConfigurationOutput) ToBackupConfigurationPtrOutput() BackupConfig
 }
 
 func (o BackupConfigurationOutput) ToBackupConfigurationPtrOutputWithContext(ctx context.Context) BackupConfigurationPtrOutput {
-	return o.ApplyT(func(v BackupConfiguration) *BackupConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupConfiguration) *BackupConfiguration {
 		return &v
 	}).(BackupConfigurationPtrOutput)
 }
@@ -457,7 +457,13 @@ func (o BackupConfigurationPtrOutput) ToBackupConfigurationPtrOutputWithContext(
 }
 
 func (o BackupConfigurationPtrOutput) Elem() BackupConfigurationOutput {
-	return o.ApplyT(func(v *BackupConfiguration) BackupConfiguration { return *v }).(BackupConfigurationOutput)
+	return o.ApplyT(func(v *BackupConfiguration) BackupConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret BackupConfiguration
+		return ret
+	}).(BackupConfigurationOutput)
 }
 
 // Backup retention settings.
@@ -678,7 +684,7 @@ func (o BackupConfigurationResponseOutput) ToBackupConfigurationResponsePtrOutpu
 }
 
 func (o BackupConfigurationResponseOutput) ToBackupConfigurationResponsePtrOutputWithContext(ctx context.Context) BackupConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v BackupConfigurationResponse) *BackupConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupConfigurationResponse) *BackupConfigurationResponse {
 		return &v
 	}).(BackupConfigurationResponsePtrOutput)
 }
@@ -743,7 +749,13 @@ func (o BackupConfigurationResponsePtrOutput) ToBackupConfigurationResponsePtrOu
 }
 
 func (o BackupConfigurationResponsePtrOutput) Elem() BackupConfigurationResponseOutput {
-	return o.ApplyT(func(v *BackupConfigurationResponse) BackupConfigurationResponse { return *v }).(BackupConfigurationResponseOutput)
+	return o.ApplyT(func(v *BackupConfigurationResponse) BackupConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackupConfigurationResponse
+		return ret
+	}).(BackupConfigurationResponseOutput)
 }
 
 // Backup retention settings.
@@ -936,7 +948,7 @@ func (o BackupRetentionSettingsOutput) ToBackupRetentionSettingsPtrOutput() Back
 }
 
 func (o BackupRetentionSettingsOutput) ToBackupRetentionSettingsPtrOutputWithContext(ctx context.Context) BackupRetentionSettingsPtrOutput {
-	return o.ApplyT(func(v BackupRetentionSettings) *BackupRetentionSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupRetentionSettings) *BackupRetentionSettings {
 		return &v
 	}).(BackupRetentionSettingsPtrOutput)
 }
@@ -966,7 +978,13 @@ func (o BackupRetentionSettingsPtrOutput) ToBackupRetentionSettingsPtrOutputWith
 }
 
 func (o BackupRetentionSettingsPtrOutput) Elem() BackupRetentionSettingsOutput {
-	return o.ApplyT(func(v *BackupRetentionSettings) BackupRetentionSettings { return *v }).(BackupRetentionSettingsOutput)
+	return o.ApplyT(func(v *BackupRetentionSettings) BackupRetentionSettings {
+		if v != nil {
+			return *v
+		}
+		var ret BackupRetentionSettings
+		return ret
+	}).(BackupRetentionSettingsOutput)
 }
 
 // Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
@@ -1089,7 +1107,7 @@ func (o BackupRetentionSettingsResponseOutput) ToBackupRetentionSettingsResponse
 }
 
 func (o BackupRetentionSettingsResponseOutput) ToBackupRetentionSettingsResponsePtrOutputWithContext(ctx context.Context) BackupRetentionSettingsResponsePtrOutput {
-	return o.ApplyT(func(v BackupRetentionSettingsResponse) *BackupRetentionSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupRetentionSettingsResponse) *BackupRetentionSettingsResponse {
 		return &v
 	}).(BackupRetentionSettingsResponsePtrOutput)
 }
@@ -1119,7 +1137,13 @@ func (o BackupRetentionSettingsResponsePtrOutput) ToBackupRetentionSettingsRespo
 }
 
 func (o BackupRetentionSettingsResponsePtrOutput) Elem() BackupRetentionSettingsResponseOutput {
-	return o.ApplyT(func(v *BackupRetentionSettingsResponse) BackupRetentionSettingsResponse { return *v }).(BackupRetentionSettingsResponseOutput)
+	return o.ApplyT(func(v *BackupRetentionSettingsResponse) BackupRetentionSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackupRetentionSettingsResponse
+		return ret
+	}).(BackupRetentionSettingsResponseOutput)
 }
 
 // Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
@@ -1696,7 +1720,7 @@ func (o DiskEncryptionConfigurationOutput) ToDiskEncryptionConfigurationPtrOutpu
 }
 
 func (o DiskEncryptionConfigurationOutput) ToDiskEncryptionConfigurationPtrOutputWithContext(ctx context.Context) DiskEncryptionConfigurationPtrOutput {
-	return o.ApplyT(func(v DiskEncryptionConfiguration) *DiskEncryptionConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskEncryptionConfiguration) *DiskEncryptionConfiguration {
 		return &v
 	}).(DiskEncryptionConfigurationPtrOutput)
 }
@@ -1726,7 +1750,13 @@ func (o DiskEncryptionConfigurationPtrOutput) ToDiskEncryptionConfigurationPtrOu
 }
 
 func (o DiskEncryptionConfigurationPtrOutput) Elem() DiskEncryptionConfigurationOutput {
-	return o.ApplyT(func(v *DiskEncryptionConfiguration) DiskEncryptionConfiguration { return *v }).(DiskEncryptionConfigurationOutput)
+	return o.ApplyT(func(v *DiskEncryptionConfiguration) DiskEncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DiskEncryptionConfiguration
+		return ret
+	}).(DiskEncryptionConfigurationOutput)
 }
 
 // This is always **sql#diskEncryptionConfiguration**.
@@ -1849,7 +1879,7 @@ func (o DiskEncryptionConfigurationResponseOutput) ToDiskEncryptionConfiguration
 }
 
 func (o DiskEncryptionConfigurationResponseOutput) ToDiskEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v DiskEncryptionConfigurationResponse) *DiskEncryptionConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskEncryptionConfigurationResponse) *DiskEncryptionConfigurationResponse {
 		return &v
 	}).(DiskEncryptionConfigurationResponsePtrOutput)
 }
@@ -1879,7 +1909,13 @@ func (o DiskEncryptionConfigurationResponsePtrOutput) ToDiskEncryptionConfigurat
 }
 
 func (o DiskEncryptionConfigurationResponsePtrOutput) Elem() DiskEncryptionConfigurationResponseOutput {
-	return o.ApplyT(func(v *DiskEncryptionConfigurationResponse) DiskEncryptionConfigurationResponse { return *v }).(DiskEncryptionConfigurationResponseOutput)
+	return o.ApplyT(func(v *DiskEncryptionConfigurationResponse) DiskEncryptionConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiskEncryptionConfigurationResponse
+		return ret
+	}).(DiskEncryptionConfigurationResponseOutput)
 }
 
 // This is always **sql#diskEncryptionConfiguration**.
@@ -2002,7 +2038,7 @@ func (o DiskEncryptionStatusOutput) ToDiskEncryptionStatusPtrOutput() DiskEncryp
 }
 
 func (o DiskEncryptionStatusOutput) ToDiskEncryptionStatusPtrOutputWithContext(ctx context.Context) DiskEncryptionStatusPtrOutput {
-	return o.ApplyT(func(v DiskEncryptionStatus) *DiskEncryptionStatus {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskEncryptionStatus) *DiskEncryptionStatus {
 		return &v
 	}).(DiskEncryptionStatusPtrOutput)
 }
@@ -2032,7 +2068,13 @@ func (o DiskEncryptionStatusPtrOutput) ToDiskEncryptionStatusPtrOutputWithContex
 }
 
 func (o DiskEncryptionStatusPtrOutput) Elem() DiskEncryptionStatusOutput {
-	return o.ApplyT(func(v *DiskEncryptionStatus) DiskEncryptionStatus { return *v }).(DiskEncryptionStatusOutput)
+	return o.ApplyT(func(v *DiskEncryptionStatus) DiskEncryptionStatus {
+		if v != nil {
+			return *v
+		}
+		var ret DiskEncryptionStatus
+		return ret
+	}).(DiskEncryptionStatusOutput)
 }
 
 // This is always **sql#diskEncryptionStatus**.
@@ -2155,7 +2197,7 @@ func (o DiskEncryptionStatusResponseOutput) ToDiskEncryptionStatusResponsePtrOut
 }
 
 func (o DiskEncryptionStatusResponseOutput) ToDiskEncryptionStatusResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionStatusResponsePtrOutput {
-	return o.ApplyT(func(v DiskEncryptionStatusResponse) *DiskEncryptionStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskEncryptionStatusResponse) *DiskEncryptionStatusResponse {
 		return &v
 	}).(DiskEncryptionStatusResponsePtrOutput)
 }
@@ -2185,7 +2227,13 @@ func (o DiskEncryptionStatusResponsePtrOutput) ToDiskEncryptionStatusResponsePtr
 }
 
 func (o DiskEncryptionStatusResponsePtrOutput) Elem() DiskEncryptionStatusResponseOutput {
-	return o.ApplyT(func(v *DiskEncryptionStatusResponse) DiskEncryptionStatusResponse { return *v }).(DiskEncryptionStatusResponseOutput)
+	return o.ApplyT(func(v *DiskEncryptionStatusResponse) DiskEncryptionStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiskEncryptionStatusResponse
+		return ret
+	}).(DiskEncryptionStatusResponseOutput)
 }
 
 // This is always **sql#diskEncryptionStatus**.
@@ -2320,7 +2368,7 @@ func (o InsightsConfigOutput) ToInsightsConfigPtrOutput() InsightsConfigPtrOutpu
 }
 
 func (o InsightsConfigOutput) ToInsightsConfigPtrOutputWithContext(ctx context.Context) InsightsConfigPtrOutput {
-	return o.ApplyT(func(v InsightsConfig) *InsightsConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsConfig) *InsightsConfig {
 		return &v
 	}).(InsightsConfigPtrOutput)
 }
@@ -2365,7 +2413,13 @@ func (o InsightsConfigPtrOutput) ToInsightsConfigPtrOutputWithContext(ctx contex
 }
 
 func (o InsightsConfigPtrOutput) Elem() InsightsConfigOutput {
-	return o.ApplyT(func(v *InsightsConfig) InsightsConfig { return *v }).(InsightsConfigOutput)
+	return o.ApplyT(func(v *InsightsConfig) InsightsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsConfig
+		return ret
+	}).(InsightsConfigOutput)
 }
 
 // Whether Query Insights feature is enabled.
@@ -2530,7 +2584,7 @@ func (o InsightsConfigResponseOutput) ToInsightsConfigResponsePtrOutput() Insigh
 }
 
 func (o InsightsConfigResponseOutput) ToInsightsConfigResponsePtrOutputWithContext(ctx context.Context) InsightsConfigResponsePtrOutput {
-	return o.ApplyT(func(v InsightsConfigResponse) *InsightsConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsConfigResponse) *InsightsConfigResponse {
 		return &v
 	}).(InsightsConfigResponsePtrOutput)
 }
@@ -2575,7 +2629,13 @@ func (o InsightsConfigResponsePtrOutput) ToInsightsConfigResponsePtrOutputWithCo
 }
 
 func (o InsightsConfigResponsePtrOutput) Elem() InsightsConfigResponseOutput {
-	return o.ApplyT(func(v *InsightsConfigResponse) InsightsConfigResponse { return *v }).(InsightsConfigResponseOutput)
+	return o.ApplyT(func(v *InsightsConfigResponse) InsightsConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsConfigResponse
+		return ret
+	}).(InsightsConfigResponseOutput)
 }
 
 // Whether Query Insights feature is enabled.
@@ -2728,7 +2788,7 @@ func (o InstanceFailoverReplicaOutput) ToInstanceFailoverReplicaPtrOutput() Inst
 }
 
 func (o InstanceFailoverReplicaOutput) ToInstanceFailoverReplicaPtrOutputWithContext(ctx context.Context) InstanceFailoverReplicaPtrOutput {
-	return o.ApplyT(func(v InstanceFailoverReplica) *InstanceFailoverReplica {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceFailoverReplica) *InstanceFailoverReplica {
 		return &v
 	}).(InstanceFailoverReplicaPtrOutput)
 }
@@ -2758,7 +2818,13 @@ func (o InstanceFailoverReplicaPtrOutput) ToInstanceFailoverReplicaPtrOutputWith
 }
 
 func (o InstanceFailoverReplicaPtrOutput) Elem() InstanceFailoverReplicaOutput {
-	return o.ApplyT(func(v *InstanceFailoverReplica) InstanceFailoverReplica { return *v }).(InstanceFailoverReplicaOutput)
+	return o.ApplyT(func(v *InstanceFailoverReplica) InstanceFailoverReplica {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceFailoverReplica
+		return ret
+	}).(InstanceFailoverReplicaOutput)
 }
 
 // The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
@@ -2881,7 +2947,7 @@ func (o InstanceFailoverReplicaResponseOutput) ToInstanceFailoverReplicaResponse
 }
 
 func (o InstanceFailoverReplicaResponseOutput) ToInstanceFailoverReplicaResponsePtrOutputWithContext(ctx context.Context) InstanceFailoverReplicaResponsePtrOutput {
-	return o.ApplyT(func(v InstanceFailoverReplicaResponse) *InstanceFailoverReplicaResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceFailoverReplicaResponse) *InstanceFailoverReplicaResponse {
 		return &v
 	}).(InstanceFailoverReplicaResponsePtrOutput)
 }
@@ -2911,7 +2977,13 @@ func (o InstanceFailoverReplicaResponsePtrOutput) ToInstanceFailoverReplicaRespo
 }
 
 func (o InstanceFailoverReplicaResponsePtrOutput) Elem() InstanceFailoverReplicaResponseOutput {
-	return o.ApplyT(func(v *InstanceFailoverReplicaResponse) InstanceFailoverReplicaResponse { return *v }).(InstanceFailoverReplicaResponseOutput)
+	return o.ApplyT(func(v *InstanceFailoverReplicaResponse) InstanceFailoverReplicaResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceFailoverReplicaResponse
+		return ret
+	}).(InstanceFailoverReplicaResponseOutput)
 }
 
 // The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
@@ -3038,7 +3110,7 @@ func (o InstanceReferenceOutput) ToInstanceReferencePtrOutput() InstanceReferenc
 }
 
 func (o InstanceReferenceOutput) ToInstanceReferencePtrOutputWithContext(ctx context.Context) InstanceReferencePtrOutput {
-	return o.ApplyT(func(v InstanceReference) *InstanceReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceReference) *InstanceReference {
 		return &v
 	}).(InstanceReferencePtrOutput)
 }
@@ -3073,7 +3145,13 @@ func (o InstanceReferencePtrOutput) ToInstanceReferencePtrOutputWithContext(ctx 
 }
 
 func (o InstanceReferencePtrOutput) Elem() InstanceReferenceOutput {
-	return o.ApplyT(func(v *InstanceReference) InstanceReference { return *v }).(InstanceReferenceOutput)
+	return o.ApplyT(func(v *InstanceReference) InstanceReference {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceReference
+		return ret
+	}).(InstanceReferenceOutput)
 }
 
 // The name of the Cloud SQL instance being referenced. This does not include the project ID.
@@ -3210,7 +3288,7 @@ func (o InstanceReferenceResponseOutput) ToInstanceReferenceResponsePtrOutput() 
 }
 
 func (o InstanceReferenceResponseOutput) ToInstanceReferenceResponsePtrOutputWithContext(ctx context.Context) InstanceReferenceResponsePtrOutput {
-	return o.ApplyT(func(v InstanceReferenceResponse) *InstanceReferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceReferenceResponse) *InstanceReferenceResponse {
 		return &v
 	}).(InstanceReferenceResponsePtrOutput)
 }
@@ -3245,7 +3323,13 @@ func (o InstanceReferenceResponsePtrOutput) ToInstanceReferenceResponsePtrOutput
 }
 
 func (o InstanceReferenceResponsePtrOutput) Elem() InstanceReferenceResponseOutput {
-	return o.ApplyT(func(v *InstanceReferenceResponse) InstanceReferenceResponse { return *v }).(InstanceReferenceResponseOutput)
+	return o.ApplyT(func(v *InstanceReferenceResponse) InstanceReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceReferenceResponse
+		return ret
+	}).(InstanceReferenceResponseOutput)
 }
 
 // The name of the Cloud SQL instance being referenced. This does not include the project ID.
@@ -3390,7 +3474,7 @@ func (o IpConfigurationOutput) ToIpConfigurationPtrOutput() IpConfigurationPtrOu
 }
 
 func (o IpConfigurationOutput) ToIpConfigurationPtrOutputWithContext(ctx context.Context) IpConfigurationPtrOutput {
-	return o.ApplyT(func(v IpConfiguration) *IpConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpConfiguration) *IpConfiguration {
 		return &v
 	}).(IpConfigurationPtrOutput)
 }
@@ -3435,7 +3519,13 @@ func (o IpConfigurationPtrOutput) ToIpConfigurationPtrOutputWithContext(ctx cont
 }
 
 func (o IpConfigurationPtrOutput) Elem() IpConfigurationOutput {
-	return o.ApplyT(func(v *IpConfiguration) IpConfiguration { return *v }).(IpConfigurationOutput)
+	return o.ApplyT(func(v *IpConfiguration) IpConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret IpConfiguration
+		return ret
+	}).(IpConfigurationOutput)
 }
 
 // The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
@@ -3600,7 +3690,7 @@ func (o IpConfigurationResponseOutput) ToIpConfigurationResponsePtrOutput() IpCo
 }
 
 func (o IpConfigurationResponseOutput) ToIpConfigurationResponsePtrOutputWithContext(ctx context.Context) IpConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v IpConfigurationResponse) *IpConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpConfigurationResponse) *IpConfigurationResponse {
 		return &v
 	}).(IpConfigurationResponsePtrOutput)
 }
@@ -3645,7 +3735,13 @@ func (o IpConfigurationResponsePtrOutput) ToIpConfigurationResponsePtrOutputWith
 }
 
 func (o IpConfigurationResponsePtrOutput) Elem() IpConfigurationResponseOutput {
-	return o.ApplyT(func(v *IpConfigurationResponse) IpConfigurationResponse { return *v }).(IpConfigurationResponseOutput)
+	return o.ApplyT(func(v *IpConfigurationResponse) IpConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IpConfigurationResponse
+		return ret
+	}).(IpConfigurationResponseOutput)
 }
 
 // The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
@@ -4042,7 +4138,7 @@ func (o LocationPreferenceOutput) ToLocationPreferencePtrOutput() LocationPrefer
 }
 
 func (o LocationPreferenceOutput) ToLocationPreferencePtrOutputWithContext(ctx context.Context) LocationPreferencePtrOutput {
-	return o.ApplyT(func(v LocationPreference) *LocationPreference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationPreference) *LocationPreference {
 		return &v
 	}).(LocationPreferencePtrOutput)
 }
@@ -4082,7 +4178,13 @@ func (o LocationPreferencePtrOutput) ToLocationPreferencePtrOutputWithContext(ct
 }
 
 func (o LocationPreferencePtrOutput) Elem() LocationPreferenceOutput {
-	return o.ApplyT(func(v *LocationPreference) LocationPreference { return *v }).(LocationPreferenceOutput)
+	return o.ApplyT(func(v *LocationPreference) LocationPreference {
+		if v != nil {
+			return *v
+		}
+		var ret LocationPreference
+		return ret
+	}).(LocationPreferenceOutput)
 }
 
 // The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
@@ -4233,7 +4335,7 @@ func (o LocationPreferenceResponseOutput) ToLocationPreferenceResponsePtrOutput(
 }
 
 func (o LocationPreferenceResponseOutput) ToLocationPreferenceResponsePtrOutputWithContext(ctx context.Context) LocationPreferenceResponsePtrOutput {
-	return o.ApplyT(func(v LocationPreferenceResponse) *LocationPreferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationPreferenceResponse) *LocationPreferenceResponse {
 		return &v
 	}).(LocationPreferenceResponsePtrOutput)
 }
@@ -4273,7 +4375,13 @@ func (o LocationPreferenceResponsePtrOutput) ToLocationPreferenceResponsePtrOutp
 }
 
 func (o LocationPreferenceResponsePtrOutput) Elem() LocationPreferenceResponseOutput {
-	return o.ApplyT(func(v *LocationPreferenceResponse) LocationPreferenceResponse { return *v }).(LocationPreferenceResponseOutput)
+	return o.ApplyT(func(v *LocationPreferenceResponse) LocationPreferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LocationPreferenceResponse
+		return ret
+	}).(LocationPreferenceResponseOutput)
 }
 
 // The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
@@ -4424,7 +4532,7 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutput() MaintenanceWindo
 }
 
 func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindow) *MaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindow) *MaintenanceWindow {
 		return &v
 	}).(MaintenanceWindowPtrOutput)
 }
@@ -4464,7 +4572,13 @@ func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx 
 }
 
 func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) MaintenanceWindow { return *v }).(MaintenanceWindowOutput)
+	return o.ApplyT(func(v *MaintenanceWindow) MaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceWindow
+		return ret
+	}).(MaintenanceWindowOutput)
 }
 
 // day of week (1-7), starting on Monday.
@@ -4615,7 +4729,7 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutput() 
 }
 
 func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) *MaintenanceWindowResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindowResponse) *MaintenanceWindowResponse {
 		return &v
 	}).(MaintenanceWindowResponsePtrOutput)
 }
@@ -4655,7 +4769,13 @@ func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutput
 }
 
 func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse { return *v }).(MaintenanceWindowResponseOutput)
+	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceWindowResponse
+		return ret
+	}).(MaintenanceWindowResponseOutput)
 }
 
 // day of week (1-7), starting on Monday.
@@ -4834,7 +4954,7 @@ func (o MySqlReplicaConfigurationOutput) ToMySqlReplicaConfigurationPtrOutput() 
 }
 
 func (o MySqlReplicaConfigurationOutput) ToMySqlReplicaConfigurationPtrOutputWithContext(ctx context.Context) MySqlReplicaConfigurationPtrOutput {
-	return o.ApplyT(func(v MySqlReplicaConfiguration) *MySqlReplicaConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MySqlReplicaConfiguration) *MySqlReplicaConfiguration {
 		return &v
 	}).(MySqlReplicaConfigurationPtrOutput)
 }
@@ -4909,7 +5029,13 @@ func (o MySqlReplicaConfigurationPtrOutput) ToMySqlReplicaConfigurationPtrOutput
 }
 
 func (o MySqlReplicaConfigurationPtrOutput) Elem() MySqlReplicaConfigurationOutput {
-	return o.ApplyT(func(v *MySqlReplicaConfiguration) MySqlReplicaConfiguration { return *v }).(MySqlReplicaConfigurationOutput)
+	return o.ApplyT(func(v *MySqlReplicaConfiguration) MySqlReplicaConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret MySqlReplicaConfiguration
+		return ret
+	}).(MySqlReplicaConfigurationOutput)
 }
 
 // PEM representation of the trusted CA's x509 certificate.
@@ -5158,7 +5284,7 @@ func (o MySqlReplicaConfigurationResponseOutput) ToMySqlReplicaConfigurationResp
 }
 
 func (o MySqlReplicaConfigurationResponseOutput) ToMySqlReplicaConfigurationResponsePtrOutputWithContext(ctx context.Context) MySqlReplicaConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) *MySqlReplicaConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MySqlReplicaConfigurationResponse) *MySqlReplicaConfigurationResponse {
 		return &v
 	}).(MySqlReplicaConfigurationResponsePtrOutput)
 }
@@ -5233,7 +5359,13 @@ func (o MySqlReplicaConfigurationResponsePtrOutput) ToMySqlReplicaConfigurationR
 }
 
 func (o MySqlReplicaConfigurationResponsePtrOutput) Elem() MySqlReplicaConfigurationResponseOutput {
-	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) MySqlReplicaConfigurationResponse { return *v }).(MySqlReplicaConfigurationResponseOutput)
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) MySqlReplicaConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MySqlReplicaConfigurationResponse
+		return ret
+	}).(MySqlReplicaConfigurationResponseOutput)
 }
 
 // PEM representation of the trusted CA's x509 certificate.
@@ -5474,7 +5606,7 @@ func (o OnPremisesConfigurationOutput) ToOnPremisesConfigurationPtrOutput() OnPr
 }
 
 func (o OnPremisesConfigurationOutput) ToOnPremisesConfigurationPtrOutputWithContext(ctx context.Context) OnPremisesConfigurationPtrOutput {
-	return o.ApplyT(func(v OnPremisesConfiguration) *OnPremisesConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnPremisesConfiguration) *OnPremisesConfiguration {
 		return &v
 	}).(OnPremisesConfigurationPtrOutput)
 }
@@ -5539,7 +5671,13 @@ func (o OnPremisesConfigurationPtrOutput) ToOnPremisesConfigurationPtrOutputWith
 }
 
 func (o OnPremisesConfigurationPtrOutput) Elem() OnPremisesConfigurationOutput {
-	return o.ApplyT(func(v *OnPremisesConfiguration) OnPremisesConfiguration { return *v }).(OnPremisesConfigurationOutput)
+	return o.ApplyT(func(v *OnPremisesConfiguration) OnPremisesConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret OnPremisesConfiguration
+		return ret
+	}).(OnPremisesConfigurationOutput)
 }
 
 // PEM representation of the trusted CA's x509 certificate.
@@ -5760,7 +5898,7 @@ func (o OnPremisesConfigurationResponseOutput) ToOnPremisesConfigurationResponse
 }
 
 func (o OnPremisesConfigurationResponseOutput) ToOnPremisesConfigurationResponsePtrOutputWithContext(ctx context.Context) OnPremisesConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v OnPremisesConfigurationResponse) *OnPremisesConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnPremisesConfigurationResponse) *OnPremisesConfigurationResponse {
 		return &v
 	}).(OnPremisesConfigurationResponsePtrOutput)
 }
@@ -5825,7 +5963,13 @@ func (o OnPremisesConfigurationResponsePtrOutput) ToOnPremisesConfigurationRespo
 }
 
 func (o OnPremisesConfigurationResponsePtrOutput) Elem() OnPremisesConfigurationResponseOutput {
-	return o.ApplyT(func(v *OnPremisesConfigurationResponse) OnPremisesConfigurationResponse { return *v }).(OnPremisesConfigurationResponseOutput)
+	return o.ApplyT(func(v *OnPremisesConfigurationResponse) OnPremisesConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OnPremisesConfigurationResponse
+		return ret
+	}).(OnPremisesConfigurationResponseOutput)
 }
 
 // PEM representation of the trusted CA's x509 certificate.
@@ -6022,7 +6166,7 @@ func (o OperationErrorOutput) ToOperationErrorPtrOutput() OperationErrorPtrOutpu
 }
 
 func (o OperationErrorOutput) ToOperationErrorPtrOutputWithContext(ctx context.Context) OperationErrorPtrOutput {
-	return o.ApplyT(func(v OperationError) *OperationError {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OperationError) *OperationError {
 		return &v
 	}).(OperationErrorPtrOutput)
 }
@@ -6057,7 +6201,13 @@ func (o OperationErrorPtrOutput) ToOperationErrorPtrOutputWithContext(ctx contex
 }
 
 func (o OperationErrorPtrOutput) Elem() OperationErrorOutput {
-	return o.ApplyT(func(v *OperationError) OperationError { return *v }).(OperationErrorOutput)
+	return o.ApplyT(func(v *OperationError) OperationError {
+		if v != nil {
+			return *v
+		}
+		var ret OperationError
+		return ret
+	}).(OperationErrorOutput)
 }
 
 // Identifies the specific error that occurred.
@@ -6194,7 +6344,7 @@ func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutput() Operat
 }
 
 func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
-	return o.ApplyT(func(v OperationErrorResponse) *OperationErrorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OperationErrorResponse) *OperationErrorResponse {
 		return &v
 	}).(OperationErrorResponsePtrOutput)
 }
@@ -6229,7 +6379,13 @@ func (o OperationErrorResponsePtrOutput) ToOperationErrorResponsePtrOutputWithCo
 }
 
 func (o OperationErrorResponsePtrOutput) Elem() OperationErrorResponseOutput {
-	return o.ApplyT(func(v *OperationErrorResponse) OperationErrorResponse { return *v }).(OperationErrorResponseOutput)
+	return o.ApplyT(func(v *OperationErrorResponse) OperationErrorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OperationErrorResponse
+		return ret
+	}).(OperationErrorResponseOutput)
 }
 
 // Identifies the specific error that occurred.
@@ -6366,7 +6522,7 @@ func (o ReplicaConfigurationOutput) ToReplicaConfigurationPtrOutput() ReplicaCon
 }
 
 func (o ReplicaConfigurationOutput) ToReplicaConfigurationPtrOutputWithContext(ctx context.Context) ReplicaConfigurationPtrOutput {
-	return o.ApplyT(func(v ReplicaConfiguration) *ReplicaConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicaConfiguration) *ReplicaConfiguration {
 		return &v
 	}).(ReplicaConfigurationPtrOutput)
 }
@@ -6401,7 +6557,13 @@ func (o ReplicaConfigurationPtrOutput) ToReplicaConfigurationPtrOutputWithContex
 }
 
 func (o ReplicaConfigurationPtrOutput) Elem() ReplicaConfigurationOutput {
-	return o.ApplyT(func(v *ReplicaConfiguration) ReplicaConfiguration { return *v }).(ReplicaConfigurationOutput)
+	return o.ApplyT(func(v *ReplicaConfiguration) ReplicaConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ReplicaConfiguration
+		return ret
+	}).(ReplicaConfigurationOutput)
 }
 
 // Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
@@ -6538,7 +6700,7 @@ func (o ReplicaConfigurationResponseOutput) ToReplicaConfigurationResponsePtrOut
 }
 
 func (o ReplicaConfigurationResponseOutput) ToReplicaConfigurationResponsePtrOutputWithContext(ctx context.Context) ReplicaConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v ReplicaConfigurationResponse) *ReplicaConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicaConfigurationResponse) *ReplicaConfigurationResponse {
 		return &v
 	}).(ReplicaConfigurationResponsePtrOutput)
 }
@@ -6575,7 +6737,13 @@ func (o ReplicaConfigurationResponsePtrOutput) ToReplicaConfigurationResponsePtr
 }
 
 func (o ReplicaConfigurationResponsePtrOutput) Elem() ReplicaConfigurationResponseOutput {
-	return o.ApplyT(func(v *ReplicaConfigurationResponse) ReplicaConfigurationResponse { return *v }).(ReplicaConfigurationResponseOutput)
+	return o.ApplyT(func(v *ReplicaConfigurationResponse) ReplicaConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReplicaConfigurationResponse
+		return ret
+	}).(ReplicaConfigurationResponseOutput)
 }
 
 // Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
@@ -6788,7 +6956,7 @@ func (o SettingsOutput) ToSettingsPtrOutput() SettingsPtrOutput {
 }
 
 func (o SettingsOutput) ToSettingsPtrOutputWithContext(ctx context.Context) SettingsPtrOutput {
-	return o.ApplyT(func(v Settings) *Settings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Settings) *Settings {
 		return &v
 	}).(SettingsPtrOutput)
 }
@@ -6918,7 +7086,13 @@ func (o SettingsPtrOutput) ToSettingsPtrOutputWithContext(ctx context.Context) S
 }
 
 func (o SettingsPtrOutput) Elem() SettingsOutput {
-	return o.ApplyT(func(v *Settings) Settings { return *v }).(SettingsOutput)
+	return o.ApplyT(func(v *Settings) Settings {
+		if v != nil {
+			return *v
+		}
+		var ret Settings
+		return ret
+	}).(SettingsOutput)
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
@@ -7321,7 +7495,7 @@ func (o SettingsResponseOutput) ToSettingsResponsePtrOutput() SettingsResponsePt
 }
 
 func (o SettingsResponseOutput) ToSettingsResponsePtrOutputWithContext(ctx context.Context) SettingsResponsePtrOutput {
-	return o.ApplyT(func(v SettingsResponse) *SettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsResponse) *SettingsResponse {
 		return &v
 	}).(SettingsResponsePtrOutput)
 }
@@ -7451,7 +7625,13 @@ func (o SettingsResponsePtrOutput) ToSettingsResponsePtrOutputWithContext(ctx co
 }
 
 func (o SettingsResponsePtrOutput) Elem() SettingsResponseOutput {
-	return o.ApplyT(func(v *SettingsResponse) SettingsResponse { return *v }).(SettingsResponseOutput)
+	return o.ApplyT(func(v *SettingsResponse) SettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsResponse
+		return ret
+	}).(SettingsResponseOutput)
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
@@ -7774,7 +7954,7 @@ func (o SqlActiveDirectoryConfigOutput) ToSqlActiveDirectoryConfigPtrOutput() Sq
 }
 
 func (o SqlActiveDirectoryConfigOutput) ToSqlActiveDirectoryConfigPtrOutputWithContext(ctx context.Context) SqlActiveDirectoryConfigPtrOutput {
-	return o.ApplyT(func(v SqlActiveDirectoryConfig) *SqlActiveDirectoryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlActiveDirectoryConfig) *SqlActiveDirectoryConfig {
 		return &v
 	}).(SqlActiveDirectoryConfigPtrOutput)
 }
@@ -7804,7 +7984,13 @@ func (o SqlActiveDirectoryConfigPtrOutput) ToSqlActiveDirectoryConfigPtrOutputWi
 }
 
 func (o SqlActiveDirectoryConfigPtrOutput) Elem() SqlActiveDirectoryConfigOutput {
-	return o.ApplyT(func(v *SqlActiveDirectoryConfig) SqlActiveDirectoryConfig { return *v }).(SqlActiveDirectoryConfigOutput)
+	return o.ApplyT(func(v *SqlActiveDirectoryConfig) SqlActiveDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SqlActiveDirectoryConfig
+		return ret
+	}).(SqlActiveDirectoryConfigOutput)
 }
 
 // The name of the domain (e.g., mydomain.com).
@@ -7927,7 +8113,7 @@ func (o SqlActiveDirectoryConfigResponseOutput) ToSqlActiveDirectoryConfigRespon
 }
 
 func (o SqlActiveDirectoryConfigResponseOutput) ToSqlActiveDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) SqlActiveDirectoryConfigResponsePtrOutput {
-	return o.ApplyT(func(v SqlActiveDirectoryConfigResponse) *SqlActiveDirectoryConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlActiveDirectoryConfigResponse) *SqlActiveDirectoryConfigResponse {
 		return &v
 	}).(SqlActiveDirectoryConfigResponsePtrOutput)
 }
@@ -7957,7 +8143,13 @@ func (o SqlActiveDirectoryConfigResponsePtrOutput) ToSqlActiveDirectoryConfigRes
 }
 
 func (o SqlActiveDirectoryConfigResponsePtrOutput) Elem() SqlActiveDirectoryConfigResponseOutput {
-	return o.ApplyT(func(v *SqlActiveDirectoryConfigResponse) SqlActiveDirectoryConfigResponse { return *v }).(SqlActiveDirectoryConfigResponseOutput)
+	return o.ApplyT(func(v *SqlActiveDirectoryConfigResponse) SqlActiveDirectoryConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlActiveDirectoryConfigResponse
+		return ret
+	}).(SqlActiveDirectoryConfigResponseOutput)
 }
 
 // The name of the domain (e.g., mydomain.com).
@@ -8080,7 +8272,7 @@ func (o SqlOutOfDiskReportOutput) ToSqlOutOfDiskReportPtrOutput() SqlOutOfDiskRe
 }
 
 func (o SqlOutOfDiskReportOutput) ToSqlOutOfDiskReportPtrOutputWithContext(ctx context.Context) SqlOutOfDiskReportPtrOutput {
-	return o.ApplyT(func(v SqlOutOfDiskReport) *SqlOutOfDiskReport {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlOutOfDiskReport) *SqlOutOfDiskReport {
 		return &v
 	}).(SqlOutOfDiskReportPtrOutput)
 }
@@ -8110,7 +8302,13 @@ func (o SqlOutOfDiskReportPtrOutput) ToSqlOutOfDiskReportPtrOutputWithContext(ct
 }
 
 func (o SqlOutOfDiskReportPtrOutput) Elem() SqlOutOfDiskReportOutput {
-	return o.ApplyT(func(v *SqlOutOfDiskReport) SqlOutOfDiskReport { return *v }).(SqlOutOfDiskReportOutput)
+	return o.ApplyT(func(v *SqlOutOfDiskReport) SqlOutOfDiskReport {
+		if v != nil {
+			return *v
+		}
+		var ret SqlOutOfDiskReport
+		return ret
+	}).(SqlOutOfDiskReportOutput)
 }
 
 // The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
@@ -8233,7 +8431,7 @@ func (o SqlOutOfDiskReportResponseOutput) ToSqlOutOfDiskReportResponsePtrOutput(
 }
 
 func (o SqlOutOfDiskReportResponseOutput) ToSqlOutOfDiskReportResponsePtrOutputWithContext(ctx context.Context) SqlOutOfDiskReportResponsePtrOutput {
-	return o.ApplyT(func(v SqlOutOfDiskReportResponse) *SqlOutOfDiskReportResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlOutOfDiskReportResponse) *SqlOutOfDiskReportResponse {
 		return &v
 	}).(SqlOutOfDiskReportResponsePtrOutput)
 }
@@ -8263,7 +8461,13 @@ func (o SqlOutOfDiskReportResponsePtrOutput) ToSqlOutOfDiskReportResponsePtrOutp
 }
 
 func (o SqlOutOfDiskReportResponsePtrOutput) Elem() SqlOutOfDiskReportResponseOutput {
-	return o.ApplyT(func(v *SqlOutOfDiskReportResponse) SqlOutOfDiskReportResponse { return *v }).(SqlOutOfDiskReportResponseOutput)
+	return o.ApplyT(func(v *SqlOutOfDiskReportResponse) SqlOutOfDiskReportResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlOutOfDiskReportResponse
+		return ret
+	}).(SqlOutOfDiskReportResponseOutput)
 }
 
 // The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
@@ -8392,10 +8596,11 @@ func (o SqlScheduledMaintenanceOutput) ToSqlScheduledMaintenancePtrOutput() SqlS
 }
 
 func (o SqlScheduledMaintenanceOutput) ToSqlScheduledMaintenancePtrOutputWithContext(ctx context.Context) SqlScheduledMaintenancePtrOutput {
-	return o.ApplyT(func(v SqlScheduledMaintenance) *SqlScheduledMaintenance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlScheduledMaintenance) *SqlScheduledMaintenance {
 		return &v
 	}).(SqlScheduledMaintenancePtrOutput)
 }
+
 func (o SqlScheduledMaintenanceOutput) CanDefer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlScheduledMaintenance) *bool { return v.CanDefer }).(pulumi.BoolPtrOutput)
 }
@@ -8430,7 +8635,13 @@ func (o SqlScheduledMaintenancePtrOutput) ToSqlScheduledMaintenancePtrOutputWith
 }
 
 func (o SqlScheduledMaintenancePtrOutput) Elem() SqlScheduledMaintenanceOutput {
-	return o.ApplyT(func(v *SqlScheduledMaintenance) SqlScheduledMaintenance { return *v }).(SqlScheduledMaintenanceOutput)
+	return o.ApplyT(func(v *SqlScheduledMaintenance) SqlScheduledMaintenance {
+		if v != nil {
+			return *v
+		}
+		var ret SqlScheduledMaintenance
+		return ret
+	}).(SqlScheduledMaintenanceOutput)
 }
 
 func (o SqlScheduledMaintenancePtrOutput) CanDefer() pulumi.BoolPtrOutput {
@@ -8578,10 +8789,11 @@ func (o SqlScheduledMaintenanceResponseOutput) ToSqlScheduledMaintenanceResponse
 }
 
 func (o SqlScheduledMaintenanceResponseOutput) ToSqlScheduledMaintenanceResponsePtrOutputWithContext(ctx context.Context) SqlScheduledMaintenanceResponsePtrOutput {
-	return o.ApplyT(func(v SqlScheduledMaintenanceResponse) *SqlScheduledMaintenanceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlScheduledMaintenanceResponse) *SqlScheduledMaintenanceResponse {
 		return &v
 	}).(SqlScheduledMaintenanceResponsePtrOutput)
 }
+
 func (o SqlScheduledMaintenanceResponseOutput) CanDefer() pulumi.BoolOutput {
 	return o.ApplyT(func(v SqlScheduledMaintenanceResponse) bool { return v.CanDefer }).(pulumi.BoolOutput)
 }
@@ -8616,7 +8828,13 @@ func (o SqlScheduledMaintenanceResponsePtrOutput) ToSqlScheduledMaintenanceRespo
 }
 
 func (o SqlScheduledMaintenanceResponsePtrOutput) Elem() SqlScheduledMaintenanceResponseOutput {
-	return o.ApplyT(func(v *SqlScheduledMaintenanceResponse) SqlScheduledMaintenanceResponse { return *v }).(SqlScheduledMaintenanceResponseOutput)
+	return o.ApplyT(func(v *SqlScheduledMaintenanceResponse) SqlScheduledMaintenanceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlScheduledMaintenanceResponse
+		return ret
+	}).(SqlScheduledMaintenanceResponseOutput)
 }
 
 func (o SqlScheduledMaintenanceResponsePtrOutput) CanDefer() pulumi.BoolPtrOutput {
@@ -8758,7 +8976,7 @@ func (o SqlServerDatabaseDetailsOutput) ToSqlServerDatabaseDetailsPtrOutput() Sq
 }
 
 func (o SqlServerDatabaseDetailsOutput) ToSqlServerDatabaseDetailsPtrOutputWithContext(ctx context.Context) SqlServerDatabaseDetailsPtrOutput {
-	return o.ApplyT(func(v SqlServerDatabaseDetails) *SqlServerDatabaseDetails {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerDatabaseDetails) *SqlServerDatabaseDetails {
 		return &v
 	}).(SqlServerDatabaseDetailsPtrOutput)
 }
@@ -8788,7 +9006,13 @@ func (o SqlServerDatabaseDetailsPtrOutput) ToSqlServerDatabaseDetailsPtrOutputWi
 }
 
 func (o SqlServerDatabaseDetailsPtrOutput) Elem() SqlServerDatabaseDetailsOutput {
-	return o.ApplyT(func(v *SqlServerDatabaseDetails) SqlServerDatabaseDetails { return *v }).(SqlServerDatabaseDetailsOutput)
+	return o.ApplyT(func(v *SqlServerDatabaseDetails) SqlServerDatabaseDetails {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerDatabaseDetails
+		return ret
+	}).(SqlServerDatabaseDetailsOutput)
 }
 
 // The version of SQL Server with which the database is to be made compatible
@@ -8911,7 +9135,7 @@ func (o SqlServerDatabaseDetailsResponseOutput) ToSqlServerDatabaseDetailsRespon
 }
 
 func (o SqlServerDatabaseDetailsResponseOutput) ToSqlServerDatabaseDetailsResponsePtrOutputWithContext(ctx context.Context) SqlServerDatabaseDetailsResponsePtrOutput {
-	return o.ApplyT(func(v SqlServerDatabaseDetailsResponse) *SqlServerDatabaseDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerDatabaseDetailsResponse) *SqlServerDatabaseDetailsResponse {
 		return &v
 	}).(SqlServerDatabaseDetailsResponsePtrOutput)
 }
@@ -8941,7 +9165,13 @@ func (o SqlServerDatabaseDetailsResponsePtrOutput) ToSqlServerDatabaseDetailsRes
 }
 
 func (o SqlServerDatabaseDetailsResponsePtrOutput) Elem() SqlServerDatabaseDetailsResponseOutput {
-	return o.ApplyT(func(v *SqlServerDatabaseDetailsResponse) SqlServerDatabaseDetailsResponse { return *v }).(SqlServerDatabaseDetailsResponseOutput)
+	return o.ApplyT(func(v *SqlServerDatabaseDetailsResponse) SqlServerDatabaseDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerDatabaseDetailsResponse
+		return ret
+	}).(SqlServerDatabaseDetailsResponseOutput)
 }
 
 // The version of SQL Server with which the database is to be made compatible
@@ -9092,7 +9322,7 @@ func (o SslCertTypeOutput) ToSslCertTypePtrOutput() SslCertTypePtrOutput {
 }
 
 func (o SslCertTypeOutput) ToSslCertTypePtrOutputWithContext(ctx context.Context) SslCertTypePtrOutput {
-	return o.ApplyT(func(v SslCertType) *SslCertType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslCertType) *SslCertType {
 		return &v
 	}).(SslCertTypePtrOutput)
 }
@@ -9157,7 +9387,13 @@ func (o SslCertTypePtrOutput) ToSslCertTypePtrOutputWithContext(ctx context.Cont
 }
 
 func (o SslCertTypePtrOutput) Elem() SslCertTypeOutput {
-	return o.ApplyT(func(v *SslCertType) SslCertType { return *v }).(SslCertTypeOutput)
+	return o.ApplyT(func(v *SslCertType) SslCertType {
+		if v != nil {
+			return *v
+		}
+		var ret SslCertType
+		return ret
+	}).(SslCertTypeOutput)
 }
 
 // PEM representation.
@@ -9378,7 +9614,7 @@ func (o SslCertResponseOutput) ToSslCertResponsePtrOutput() SslCertResponsePtrOu
 }
 
 func (o SslCertResponseOutput) ToSslCertResponsePtrOutputWithContext(ctx context.Context) SslCertResponsePtrOutput {
-	return o.ApplyT(func(v SslCertResponse) *SslCertResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslCertResponse) *SslCertResponse {
 		return &v
 	}).(SslCertResponsePtrOutput)
 }
@@ -9443,7 +9679,13 @@ func (o SslCertResponsePtrOutput) ToSslCertResponsePtrOutputWithContext(ctx cont
 }
 
 func (o SslCertResponsePtrOutput) Elem() SslCertResponseOutput {
-	return o.ApplyT(func(v *SslCertResponse) SslCertResponse { return *v }).(SslCertResponseOutput)
+	return o.ApplyT(func(v *SslCertResponse) SslCertResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SslCertResponse
+		return ret
+	}).(SslCertResponseOutput)
 }
 
 // PEM representation.

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
+    /// </summary>
     [OutputType]
     public sealed class AptRepositoryResponse
     {

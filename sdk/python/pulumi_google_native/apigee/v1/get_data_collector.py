@@ -12,6 +12,7 @@ __all__ = [
     'GetDataCollectorResult',
     'AwaitableGetDataCollectorResult',
     'get_data_collector',
+    'get_data_collector_output',
 ]
 
 @pulumi.output_type
@@ -108,3 +109,13 @@ def get_data_collector(datacollector_id: Optional[str] = None,
         last_modified_at=__ret__.last_modified_at,
         name=__ret__.name,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_data_collector)
+def get_data_collector_output(datacollector_id: Optional[pulumi.Input[str]] = None,
+                              organization_id: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataCollectorResult]:
+    """
+    Gets a data collector.
+    """
+    ...

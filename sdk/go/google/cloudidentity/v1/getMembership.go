@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,70 @@ type LookupMembershipResult struct {
 	Type string `pulumi:"type"`
 	// The time when the `Membership` was last updated.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupMembershipOutput(ctx *pulumi.Context, args LookupMembershipOutputArgs, opts ...pulumi.InvokeOption) LookupMembershipResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupMembershipResult, error) {
+			args := v.(LookupMembershipArgs)
+			r, err := LookupMembership(ctx, &args, opts...)
+			return *r, err
+		}).(LookupMembershipResultOutput)
+}
+
+type LookupMembershipOutputArgs struct {
+	GroupId      pulumi.StringInput `pulumi:"groupId"`
+	MembershipId pulumi.StringInput `pulumi:"membershipId"`
+}
+
+func (LookupMembershipOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMembershipArgs)(nil)).Elem()
+}
+
+type LookupMembershipResultOutput struct{ *pulumi.OutputState }
+
+func (LookupMembershipResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMembershipResult)(nil)).Elem()
+}
+
+func (o LookupMembershipResultOutput) ToLookupMembershipResultOutput() LookupMembershipResultOutput {
+	return o
+}
+
+func (o LookupMembershipResultOutput) ToLookupMembershipResultOutputWithContext(ctx context.Context) LookupMembershipResultOutput {
+	return o
+}
+
+// The time when the `Membership` was created.
+func (o LookupMembershipResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMembershipResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+func (o LookupMembershipResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMembershipResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The `EntityKey` of the member.
+func (o LookupMembershipResultOutput) PreferredMemberKey() EntityKeyResponseOutput {
+	return o.ApplyT(func(v LookupMembershipResult) EntityKeyResponse { return v.PreferredMemberKey }).(EntityKeyResponseOutput)
+}
+
+// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
+func (o LookupMembershipResultOutput) Roles() MembershipRoleResponseArrayOutput {
+	return o.ApplyT(func(v LookupMembershipResult) []MembershipRoleResponse { return v.Roles }).(MembershipRoleResponseArrayOutput)
+}
+
+// The type of the membership.
+func (o LookupMembershipResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMembershipResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time when the `Membership` was last updated.
+func (o LookupMembershipResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMembershipResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupMembershipResultOutput{})
 }

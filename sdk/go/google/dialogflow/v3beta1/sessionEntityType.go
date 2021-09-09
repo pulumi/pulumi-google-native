@@ -128,9 +128,7 @@ func (i *SessionEntityType) ToSessionEntityTypeOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SessionEntityTypeOutput)
 }
 
-type SessionEntityTypeOutput struct {
-	*pulumi.OutputState
-}
+type SessionEntityTypeOutput struct{ *pulumi.OutputState }
 
 func (SessionEntityTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SessionEntityType)(nil))

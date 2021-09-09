@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,4 +34,57 @@ type LookupAliasResult struct {
 	CertsInfo GoogleCloudApigeeV1CertificateResponse `pulumi:"certsInfo"`
 	// Type of alias.
 	Type string `pulumi:"type"`
+}
+
+func LookupAliasOutput(ctx *pulumi.Context, args LookupAliasOutputArgs, opts ...pulumi.InvokeOption) LookupAliasResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAliasResult, error) {
+			args := v.(LookupAliasArgs)
+			r, err := LookupAlias(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAliasResultOutput)
+}
+
+type LookupAliasOutputArgs struct {
+	AliasId        pulumi.StringInput `pulumi:"aliasId"`
+	EnvironmentId  pulumi.StringInput `pulumi:"environmentId"`
+	KeystoreId     pulumi.StringInput `pulumi:"keystoreId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupAliasOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAliasArgs)(nil)).Elem()
+}
+
+type LookupAliasResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAliasResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAliasResult)(nil)).Elem()
+}
+
+func (o LookupAliasResultOutput) ToLookupAliasResultOutput() LookupAliasResultOutput {
+	return o
+}
+
+func (o LookupAliasResultOutput) ToLookupAliasResultOutputWithContext(ctx context.Context) LookupAliasResultOutput {
+	return o
+}
+
+// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+func (o LookupAliasResultOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAliasResult) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// Chain of certificates under this alias.
+func (o LookupAliasResultOutput) CertsInfo() GoogleCloudApigeeV1CertificateResponseOutput {
+	return o.ApplyT(func(v LookupAliasResult) GoogleCloudApigeeV1CertificateResponse { return v.CertsInfo }).(GoogleCloudApigeeV1CertificateResponseOutput)
+}
+
+// Type of alias.
+func (o LookupAliasResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAliasResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAliasResultOutput{})
 }

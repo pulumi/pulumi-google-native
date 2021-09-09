@@ -110,7 +110,7 @@ func (o MaintenancePolicyOutput) ToMaintenancePolicyPtrOutput() MaintenancePolic
 }
 
 func (o MaintenancePolicyOutput) ToMaintenancePolicyPtrOutputWithContext(ctx context.Context) MaintenancePolicyPtrOutput {
-	return o.ApplyT(func(v MaintenancePolicy) *MaintenancePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenancePolicy) *MaintenancePolicy {
 		return &v
 	}).(MaintenancePolicyPtrOutput)
 }
@@ -140,7 +140,13 @@ func (o MaintenancePolicyPtrOutput) ToMaintenancePolicyPtrOutputWithContext(ctx 
 }
 
 func (o MaintenancePolicyPtrOutput) Elem() MaintenancePolicyOutput {
-	return o.ApplyT(func(v *MaintenancePolicy) MaintenancePolicy { return *v }).(MaintenancePolicyOutput)
+	return o.ApplyT(func(v *MaintenancePolicy) MaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenancePolicy
+		return ret
+	}).(MaintenancePolicyOutput)
 }
 
 // Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
@@ -271,7 +277,7 @@ func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponsePtrOutput() 
 }
 
 func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponsePtrOutputWithContext(ctx context.Context) MaintenancePolicyResponsePtrOutput {
-	return o.ApplyT(func(v MaintenancePolicyResponse) *MaintenancePolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenancePolicyResponse) *MaintenancePolicyResponse {
 		return &v
 	}).(MaintenancePolicyResponsePtrOutput)
 }
@@ -311,7 +317,13 @@ func (o MaintenancePolicyResponsePtrOutput) ToMaintenancePolicyResponsePtrOutput
 }
 
 func (o MaintenancePolicyResponsePtrOutput) Elem() MaintenancePolicyResponseOutput {
-	return o.ApplyT(func(v *MaintenancePolicyResponse) MaintenancePolicyResponse { return *v }).(MaintenancePolicyResponseOutput)
+	return o.ApplyT(func(v *MaintenancePolicyResponse) MaintenancePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenancePolicyResponse
+		return ret
+	}).(MaintenancePolicyResponseOutput)
 }
 
 // The time when the policy was created.
@@ -462,7 +474,7 @@ func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponsePtrOutpu
 }
 
 func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponsePtrOutputWithContext(ctx context.Context) MaintenanceScheduleResponsePtrOutput {
-	return o.ApplyT(func(v MaintenanceScheduleResponse) *MaintenanceScheduleResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceScheduleResponse) *MaintenanceScheduleResponse {
 		return &v
 	}).(MaintenanceScheduleResponsePtrOutput)
 }
@@ -502,7 +514,13 @@ func (o MaintenanceScheduleResponsePtrOutput) ToMaintenanceScheduleResponsePtrOu
 }
 
 func (o MaintenanceScheduleResponsePtrOutput) Elem() MaintenanceScheduleResponseOutput {
-	return o.ApplyT(func(v *MaintenanceScheduleResponse) MaintenanceScheduleResponse { return *v }).(MaintenanceScheduleResponseOutput)
+	return o.ApplyT(func(v *MaintenanceScheduleResponse) MaintenanceScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceScheduleResponse
+		return ret
+	}).(MaintenanceScheduleResponseOutput)
 }
 
 // If the scheduled maintenance can be rescheduled, default is true.

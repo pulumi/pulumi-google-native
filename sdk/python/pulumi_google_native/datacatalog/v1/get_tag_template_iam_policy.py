@@ -13,6 +13,7 @@ __all__ = [
     'GetTagTemplateIamPolicyResult',
     'AwaitableGetTagTemplateIamPolicyResult',
     'get_tag_template_iam_policy',
+    'get_tag_template_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -85,3 +86,14 @@ def get_tag_template_iam_policy(location: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_tag_template_iam_policy)
+def get_tag_template_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
+                                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                                       tag_template_id: Optional[pulumi.Input[str]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagTemplateIamPolicyResult]:
+    """
+    Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Tag templates - Entry groups Note: This method doesn't get policies from Google Cloud Platform resources ingested into Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// A selector that chooses target cluster for jobs based on metadata.
+    /// </summary>
     [OutputType]
     public sealed class ClusterSelectorResponse
     {

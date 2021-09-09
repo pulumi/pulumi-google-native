@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudFunctions.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+    /// </summary>
     [OutputType]
     public sealed class SecretEnvVarResponse
     {

@@ -4,6 +4,9 @@
 package v1b3
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,4 +36,62 @@ type LookupTemplateResult struct {
 	Status StatusResponse `pulumi:"status"`
 	// Template Type.
 	TemplateType string `pulumi:"templateType"`
+}
+
+func LookupTemplateOutput(ctx *pulumi.Context, args LookupTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupTemplateResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTemplateResult, error) {
+			args := v.(LookupTemplateArgs)
+			r, err := LookupTemplate(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTemplateResultOutput)
+}
+
+type LookupTemplateOutputArgs struct {
+	GcsPath  pulumi.StringInput    `pulumi:"gcsPath"`
+	Location pulumi.StringInput    `pulumi:"location"`
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+	View     pulumi.StringPtrInput `pulumi:"view"`
+}
+
+func (LookupTemplateOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTemplateArgs)(nil)).Elem()
+}
+
+type LookupTemplateResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTemplateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTemplateResult)(nil)).Elem()
+}
+
+func (o LookupTemplateResultOutput) ToLookupTemplateResultOutput() LookupTemplateResultOutput {
+	return o
+}
+
+func (o LookupTemplateResultOutput) ToLookupTemplateResultOutputWithContext(ctx context.Context) LookupTemplateResultOutput {
+	return o
+}
+
+// The template metadata describing the template name, available parameters, etc.
+func (o LookupTemplateResultOutput) Metadata() TemplateMetadataResponseOutput {
+	return o.ApplyT(func(v LookupTemplateResult) TemplateMetadataResponse { return v.Metadata }).(TemplateMetadataResponseOutput)
+}
+
+// Describes the runtime metadata with SDKInfo and available parameters.
+func (o LookupTemplateResultOutput) RuntimeMetadata() RuntimeMetadataResponseOutput {
+	return o.ApplyT(func(v LookupTemplateResult) RuntimeMetadataResponse { return v.RuntimeMetadata }).(RuntimeMetadataResponseOutput)
+}
+
+// The status of the get template request. Any problems with the request will be indicated in the error_details.
+func (o LookupTemplateResultOutput) Status() StatusResponseOutput {
+	return o.ApplyT(func(v LookupTemplateResult) StatusResponse { return v.Status }).(StatusResponseOutput)
+}
+
+// Template Type.
+func (o LookupTemplateResultOutput) TemplateType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTemplateResult) string { return v.TemplateType }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTemplateResultOutput{})
 }

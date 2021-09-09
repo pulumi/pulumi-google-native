@@ -154,9 +154,7 @@ func (i *HttpsHealthCheck) ToHttpsHealthCheckOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(HttpsHealthCheckOutput)
 }
 
-type HttpsHealthCheckOutput struct {
-	*pulumi.OutputState
-}
+type HttpsHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (HttpsHealthCheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HttpsHealthCheck)(nil))

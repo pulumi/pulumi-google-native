@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// A specification of the location of and metadata about a database dump from a relational database management system.
+    /// </summary>
     [OutputType]
     public sealed class DatabaseDumpResponse
     {

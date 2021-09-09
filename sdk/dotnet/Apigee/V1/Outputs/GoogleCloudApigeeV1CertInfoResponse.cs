@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// X.509 certificate as defined in RFC 5280.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1CertInfoResponse
     {

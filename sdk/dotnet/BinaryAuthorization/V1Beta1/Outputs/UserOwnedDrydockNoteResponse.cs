@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user.
+    /// </summary>
     [OutputType]
     public sealed class UserOwnedDrydockNoteResponse
     {

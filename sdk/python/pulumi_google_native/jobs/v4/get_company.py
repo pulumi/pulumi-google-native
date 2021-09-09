@@ -13,6 +13,7 @@ __all__ = [
     'GetCompanyResult',
     'AwaitableGetCompanyResult',
     'get_company',
+    'get_company_output',
 ]
 
 @pulumi.output_type
@@ -215,3 +216,14 @@ def get_company(company_id: Optional[str] = None,
         size=__ret__.size,
         suspended=__ret__.suspended,
         website_uri=__ret__.website_uri)
+
+
+@_utilities.lift_output_func(get_company)
+def get_company_output(company_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       tenant_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCompanyResult]:
+    """
+    Retrieves specified company.
+    """
+    ...

@@ -124,9 +124,7 @@ func (i *CertificateTemplateIamPolicy) ToCertificateTemplateIamPolicyOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIamPolicyOutput)
 }
 
-type CertificateTemplateIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type CertificateTemplateIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (CertificateTemplateIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CertificateTemplateIamPolicy)(nil))

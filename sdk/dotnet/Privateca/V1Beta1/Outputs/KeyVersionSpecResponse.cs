@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A Cloud KMS key configuration that a CertificateAuthority will use.
+    /// </summary>
     [OutputType]
     public sealed class KeyVersionSpecResponse
     {

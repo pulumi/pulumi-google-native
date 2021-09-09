@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
+    /// </summary>
     [OutputType]
     public sealed class RRSetRoutingPolicyResponse
     {

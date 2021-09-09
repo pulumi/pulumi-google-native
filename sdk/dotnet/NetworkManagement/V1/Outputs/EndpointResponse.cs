@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Source or destination of the Connectivity Test.
+    /// </summary>
     [OutputType]
     public sealed class EndpointResponse
     {

@@ -13,6 +13,7 @@ __all__ = [
     'GetConnectorResult',
     'AwaitableGetConnectorResult',
     'get_connector',
+    'get_connector_output',
 ]
 
 @pulumi.output_type
@@ -189,3 +190,14 @@ def get_connector(connector_id: Optional[str] = None,
         network=__ret__.network,
         state=__ret__.state,
         subnet=__ret__.subnet)
+
+
+@_utilities.lift_output_func(get_connector)
+def get_connector_output(connector_id: Optional[pulumi.Input[str]] = None,
+                         location: Optional[pulumi.Input[str]] = None,
+                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorResult]:
+    """
+    Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
+    """
+    ...

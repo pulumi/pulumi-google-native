@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,4 +37,66 @@ type LookupAccessLevelResult struct {
 	Name string `pulumi:"name"`
 	// Human readable title. Must be unique within the Policy.
 	Title string `pulumi:"title"`
+}
+
+func LookupAccessLevelOutput(ctx *pulumi.Context, args LookupAccessLevelOutputArgs, opts ...pulumi.InvokeOption) LookupAccessLevelResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAccessLevelResult, error) {
+			args := v.(LookupAccessLevelArgs)
+			r, err := LookupAccessLevel(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAccessLevelResultOutput)
+}
+
+type LookupAccessLevelOutputArgs struct {
+	AccessLevelFormat pulumi.StringPtrInput `pulumi:"accessLevelFormat"`
+	AccessLevelId     pulumi.StringInput    `pulumi:"accessLevelId"`
+	AccessPolicyId    pulumi.StringInput    `pulumi:"accessPolicyId"`
+}
+
+func (LookupAccessLevelOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccessLevelArgs)(nil)).Elem()
+}
+
+type LookupAccessLevelResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAccessLevelResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccessLevelResult)(nil)).Elem()
+}
+
+func (o LookupAccessLevelResultOutput) ToLookupAccessLevelResultOutput() LookupAccessLevelResultOutput {
+	return o
+}
+
+func (o LookupAccessLevelResultOutput) ToLookupAccessLevelResultOutputWithContext(ctx context.Context) LookupAccessLevelResultOutput {
+	return o
+}
+
+// A `BasicLevel` composed of `Conditions`.
+func (o LookupAccessLevelResultOutput) Basic() BasicLevelResponseOutput {
+	return o.ApplyT(func(v LookupAccessLevelResult) BasicLevelResponse { return v.Basic }).(BasicLevelResponseOutput)
+}
+
+// A `CustomLevel` written in the Common Expression Language.
+func (o LookupAccessLevelResultOutput) Custom() CustomLevelResponseOutput {
+	return o.ApplyT(func(v LookupAccessLevelResult) CustomLevelResponse { return v.Custom }).(CustomLevelResponseOutput)
+}
+
+// Description of the `AccessLevel` and its use. Does not affect behavior.
+func (o LookupAccessLevelResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessLevelResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the `access_level` component is 50 characters.
+func (o LookupAccessLevelResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessLevelResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Human readable title. Must be unique within the Policy.
+func (o LookupAccessLevelResultOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessLevelResult) string { return v.Title }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAccessLevelResultOutput{})
 }

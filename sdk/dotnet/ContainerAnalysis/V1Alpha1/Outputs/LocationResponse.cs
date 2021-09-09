@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// An occurrence of a particular package installation found within a system's filesystem. e.g. glibc was found in /var/lib/dpkg/status
+    /// </summary>
     [OutputType]
     public sealed class LocationResponse
     {

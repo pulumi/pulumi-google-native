@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// Call-specific metadata created during analysis.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse
     {

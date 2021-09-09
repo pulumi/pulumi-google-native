@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// Agent Assist frequently-asked-question answer data.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse
     {

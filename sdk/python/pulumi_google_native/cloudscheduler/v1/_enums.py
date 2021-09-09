@@ -15,21 +15,37 @@ class AppEngineHttpTargetHttpMethod(str, Enum):
     The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
     """
     HTTP_METHOD_UNSPECIFIED = "HTTP_METHOD_UNSPECIFIED"
-    """HTTP method unspecified. Defaults to POST."""
+    """
+    HTTP method unspecified. Defaults to POST.
+    """
     POST = "POST"
-    """HTTP POST"""
+    """
+    HTTP POST
+    """
     GET = "GET"
-    """HTTP GET"""
+    """
+    HTTP GET
+    """
     HEAD = "HEAD"
-    """HTTP HEAD"""
+    """
+    HTTP HEAD
+    """
     PUT = "PUT"
-    """HTTP PUT"""
+    """
+    HTTP PUT
+    """
     DELETE = "DELETE"
-    """HTTP DELETE"""
+    """
+    HTTP DELETE
+    """
     PATCH = "PATCH"
-    """HTTP PATCH"""
+    """
+    HTTP PATCH
+    """
     OPTIONS = "OPTIONS"
-    """HTTP OPTIONS"""
+    """
+    HTTP OPTIONS
+    """
 
 
 class HttpTargetHttpMethod(str, Enum):
@@ -37,18 +53,34 @@ class HttpTargetHttpMethod(str, Enum):
     Which HTTP method to use for the request.
     """
     HTTP_METHOD_UNSPECIFIED = "HTTP_METHOD_UNSPECIFIED"
-    """HTTP method unspecified. Defaults to POST."""
+    """
+    HTTP method unspecified. Defaults to POST.
+    """
     POST = "POST"
-    """HTTP POST"""
+    """
+    HTTP POST
+    """
     GET = "GET"
-    """HTTP GET"""
+    """
+    HTTP GET
+    """
     HEAD = "HEAD"
-    """HTTP HEAD"""
+    """
+    HTTP HEAD
+    """
     PUT = "PUT"
-    """HTTP PUT"""
+    """
+    HTTP PUT
+    """
     DELETE = "DELETE"
-    """HTTP DELETE"""
+    """
+    HTTP DELETE
+    """
     PATCH = "PATCH"
-    """HTTP PATCH"""
+    """
+    HTTP PATCH
+    """
     OPTIONS = "OPTIONS"
-    """HTTP OPTIONS"""
+    """
+    HTTP OPTIONS
+    """

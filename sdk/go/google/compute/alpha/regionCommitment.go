@@ -168,9 +168,7 @@ func (i *RegionCommitment) ToRegionCommitmentOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionCommitmentOutput)
 }
 
-type RegionCommitmentOutput struct {
-	*pulumi.OutputState
-}
+type RegionCommitmentOutput struct{ *pulumi.OutputState }
 
 func (RegionCommitmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionCommitment)(nil))

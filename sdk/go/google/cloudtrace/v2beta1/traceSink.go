@@ -104,9 +104,7 @@ func (i *TraceSink) ToTraceSinkOutputWithContext(ctx context.Context) TraceSinkO
 	return pulumi.ToOutputWithContext(ctx, i).(TraceSinkOutput)
 }
 
-type TraceSinkOutput struct {
-	*pulumi.OutputState
-}
+type TraceSinkOutput struct{ *pulumi.OutputState }
 
 func (TraceSinkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TraceSink)(nil))

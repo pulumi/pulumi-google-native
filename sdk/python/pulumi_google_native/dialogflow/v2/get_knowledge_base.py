@@ -12,6 +12,7 @@ __all__ = [
     'GetKnowledgeBaseResult',
     'AwaitableGetKnowledgeBaseResult',
     'get_knowledge_base',
+    'get_knowledge_base_output',
 ]
 
 @pulumi.output_type
@@ -84,3 +85,14 @@ def get_knowledge_base(knowledge_base_id: Optional[str] = None,
         display_name=__ret__.display_name,
         language_code=__ret__.language_code,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_knowledge_base)
+def get_knowledge_base_output(knowledge_base_id: Optional[pulumi.Input[str]] = None,
+                              location: Optional[pulumi.Input[str]] = None,
+                              project: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKnowledgeBaseResult]:
+    """
+    Retrieves the specified knowledge base.
+    """
+    ...

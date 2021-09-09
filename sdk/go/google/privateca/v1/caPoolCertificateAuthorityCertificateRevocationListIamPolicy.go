@@ -134,9 +134,7 @@ func (i *CaPoolCertificateAuthorityCertificateRevocationListIamPolicy) ToCaPoolC
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput)
 }
 
-type CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CaPoolCertificateAuthorityCertificateRevocationListIamPolicy)(nil))

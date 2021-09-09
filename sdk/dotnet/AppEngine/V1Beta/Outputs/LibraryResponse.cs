@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Third-party Python runtime library that is required by the application.
+    /// </summary>
     [OutputType]
     public sealed class LibraryResponse
     {

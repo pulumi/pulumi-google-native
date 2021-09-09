@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// Definition of a container image for starting a notebook instance with the environment installed in a container.
+    /// </summary>
     [OutputType]
     public sealed class ContainerImageResponse
     {

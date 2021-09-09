@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GameServices.V1.Outputs
 {
 
+    /// <summary>
+    /// Authorization-related information used by Cloud Audit Logging.
+    /// </summary>
     [OutputType]
     public sealed class AuthorizationLoggingOptionsResponse
     {

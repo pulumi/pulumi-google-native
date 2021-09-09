@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Replace each matching finding with the name of the info_type.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse
     {

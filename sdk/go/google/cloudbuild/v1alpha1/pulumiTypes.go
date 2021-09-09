@@ -114,7 +114,7 @@ func (o NetworkOutput) ToNetworkPtrOutput() NetworkPtrOutput {
 }
 
 func (o NetworkOutput) ToNetworkPtrOutputWithContext(ctx context.Context) NetworkPtrOutput {
-	return o.ApplyT(func(v Network) *Network {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Network) *Network {
 		return &v
 	}).(NetworkPtrOutput)
 }
@@ -149,7 +149,13 @@ func (o NetworkPtrOutput) ToNetworkPtrOutputWithContext(ctx context.Context) Net
 }
 
 func (o NetworkPtrOutput) Elem() NetworkOutput {
-	return o.ApplyT(func(v *Network) Network { return *v }).(NetworkOutput)
+	return o.ApplyT(func(v *Network) Network {
+		if v != nil {
+			return *v
+		}
+		var ret Network
+		return ret
+	}).(NetworkOutput)
 }
 
 // Network on which the workers are created. "default" network is used if empty.
@@ -286,7 +292,7 @@ func (o NetworkResponseOutput) ToNetworkResponsePtrOutput() NetworkResponsePtrOu
 }
 
 func (o NetworkResponseOutput) ToNetworkResponsePtrOutputWithContext(ctx context.Context) NetworkResponsePtrOutput {
-	return o.ApplyT(func(v NetworkResponse) *NetworkResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkResponse) *NetworkResponse {
 		return &v
 	}).(NetworkResponsePtrOutput)
 }
@@ -321,7 +327,13 @@ func (o NetworkResponsePtrOutput) ToNetworkResponsePtrOutputWithContext(ctx cont
 }
 
 func (o NetworkResponsePtrOutput) Elem() NetworkResponseOutput {
-	return o.ApplyT(func(v *NetworkResponse) NetworkResponse { return *v }).(NetworkResponseOutput)
+	return o.ApplyT(func(v *NetworkResponse) NetworkResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkResponse
+		return ret
+	}).(NetworkResponseOutput)
 }
 
 // Network on which the workers are created. "default" network is used if empty.
@@ -462,7 +474,7 @@ func (o WorkerConfigOutput) ToWorkerConfigPtrOutput() WorkerConfigPtrOutput {
 }
 
 func (o WorkerConfigOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerConfigPtrOutput {
-	return o.ApplyT(func(v WorkerConfig) *WorkerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerConfig) *WorkerConfig {
 		return &v
 	}).(WorkerConfigPtrOutput)
 }
@@ -502,7 +514,13 @@ func (o WorkerConfigPtrOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Co
 }
 
 func (o WorkerConfigPtrOutput) Elem() WorkerConfigOutput {
-	return o.ApplyT(func(v *WorkerConfig) WorkerConfig { return *v }).(WorkerConfigOutput)
+	return o.ApplyT(func(v *WorkerConfig) WorkerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerConfig
+		return ret
+	}).(WorkerConfigOutput)
 }
 
 // Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size. `disk_size` is overridden if you specify a different disk size in `build_options`. In this case, a VM with a disk size specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions
@@ -653,7 +671,7 @@ func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutput() WorkerConf
 }
 
 func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
-	return o.ApplyT(func(v WorkerConfigResponse) *WorkerConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerConfigResponse) *WorkerConfigResponse {
 		return &v
 	}).(WorkerConfigResponsePtrOutput)
 }
@@ -693,7 +711,13 @@ func (o WorkerConfigResponsePtrOutput) ToWorkerConfigResponsePtrOutputWithContex
 }
 
 func (o WorkerConfigResponsePtrOutput) Elem() WorkerConfigResponseOutput {
-	return o.ApplyT(func(v *WorkerConfigResponse) WorkerConfigResponse { return *v }).(WorkerConfigResponseOutput)
+	return o.ApplyT(func(v *WorkerConfigResponse) WorkerConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerConfigResponse
+		return ret
+	}).(WorkerConfigResponseOutput)
 }
 
 // Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size. `disk_size` is overridden if you specify a different disk size in `build_options`. In this case, a VM with a disk size specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions

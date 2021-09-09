@@ -106,7 +106,7 @@ func (o ApprovalConfigOutput) ToApprovalConfigPtrOutput() ApprovalConfigPtrOutpu
 }
 
 func (o ApprovalConfigOutput) ToApprovalConfigPtrOutputWithContext(ctx context.Context) ApprovalConfigPtrOutput {
-	return o.ApplyT(func(v ApprovalConfig) *ApprovalConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApprovalConfig) *ApprovalConfig {
 		return &v
 	}).(ApprovalConfigPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o ApprovalConfigPtrOutput) ToApprovalConfigPtrOutputWithContext(ctx contex
 }
 
 func (o ApprovalConfigPtrOutput) Elem() ApprovalConfigOutput {
-	return o.ApplyT(func(v *ApprovalConfig) ApprovalConfig { return *v }).(ApprovalConfigOutput)
+	return o.ApplyT(func(v *ApprovalConfig) ApprovalConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApprovalConfig
+		return ret
+	}).(ApprovalConfigOutput)
 }
 
 // Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
@@ -240,7 +246,7 @@ func (o ApprovalConfigResponseOutput) ToApprovalConfigResponsePtrOutput() Approv
 }
 
 func (o ApprovalConfigResponseOutput) ToApprovalConfigResponsePtrOutputWithContext(ctx context.Context) ApprovalConfigResponsePtrOutput {
-	return o.ApplyT(func(v ApprovalConfigResponse) *ApprovalConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApprovalConfigResponse) *ApprovalConfigResponse {
 		return &v
 	}).(ApprovalConfigResponsePtrOutput)
 }
@@ -265,7 +271,13 @@ func (o ApprovalConfigResponsePtrOutput) ToApprovalConfigResponsePtrOutputWithCo
 }
 
 func (o ApprovalConfigResponsePtrOutput) Elem() ApprovalConfigResponseOutput {
-	return o.ApplyT(func(v *ApprovalConfigResponse) ApprovalConfigResponse { return *v }).(ApprovalConfigResponseOutput)
+	return o.ApplyT(func(v *ApprovalConfigResponse) ApprovalConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApprovalConfigResponse
+		return ret
+	}).(ApprovalConfigResponseOutput)
 }
 
 // Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
@@ -390,7 +402,7 @@ func (o ApprovalResultResponseOutput) ToApprovalResultResponsePtrOutput() Approv
 }
 
 func (o ApprovalResultResponseOutput) ToApprovalResultResponsePtrOutputWithContext(ctx context.Context) ApprovalResultResponsePtrOutput {
-	return o.ApplyT(func(v ApprovalResultResponse) *ApprovalResultResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApprovalResultResponse) *ApprovalResultResponse {
 		return &v
 	}).(ApprovalResultResponsePtrOutput)
 }
@@ -435,7 +447,13 @@ func (o ApprovalResultResponsePtrOutput) ToApprovalResultResponsePtrOutputWithCo
 }
 
 func (o ApprovalResultResponsePtrOutput) Elem() ApprovalResultResponseOutput {
-	return o.ApplyT(func(v *ApprovalResultResponse) ApprovalResultResponse { return *v }).(ApprovalResultResponseOutput)
+	return o.ApplyT(func(v *ApprovalResultResponse) ApprovalResultResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApprovalResultResponse
+		return ret
+	}).(ApprovalResultResponseOutput)
 }
 
 // The time when the approval decision was made.
@@ -588,7 +606,7 @@ func (o ArtifactObjectsOutput) ToArtifactObjectsPtrOutput() ArtifactObjectsPtrOu
 }
 
 func (o ArtifactObjectsOutput) ToArtifactObjectsPtrOutputWithContext(ctx context.Context) ArtifactObjectsPtrOutput {
-	return o.ApplyT(func(v ArtifactObjects) *ArtifactObjects {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArtifactObjects) *ArtifactObjects {
 		return &v
 	}).(ArtifactObjectsPtrOutput)
 }
@@ -618,7 +636,13 @@ func (o ArtifactObjectsPtrOutput) ToArtifactObjectsPtrOutputWithContext(ctx cont
 }
 
 func (o ArtifactObjectsPtrOutput) Elem() ArtifactObjectsOutput {
-	return o.ApplyT(func(v *ArtifactObjects) ArtifactObjects { return *v }).(ArtifactObjectsOutput)
+	return o.ApplyT(func(v *ArtifactObjects) ArtifactObjects {
+		if v != nil {
+			return *v
+		}
+		var ret ArtifactObjects
+		return ret
+	}).(ArtifactObjectsOutput)
 }
 
 // Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
@@ -745,7 +769,7 @@ func (o ArtifactObjectsResponseOutput) ToArtifactObjectsResponsePtrOutput() Arti
 }
 
 func (o ArtifactObjectsResponseOutput) ToArtifactObjectsResponsePtrOutputWithContext(ctx context.Context) ArtifactObjectsResponsePtrOutput {
-	return o.ApplyT(func(v ArtifactObjectsResponse) *ArtifactObjectsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArtifactObjectsResponse) *ArtifactObjectsResponse {
 		return &v
 	}).(ArtifactObjectsResponsePtrOutput)
 }
@@ -780,7 +804,13 @@ func (o ArtifactObjectsResponsePtrOutput) ToArtifactObjectsResponsePtrOutputWith
 }
 
 func (o ArtifactObjectsResponsePtrOutput) Elem() ArtifactObjectsResponseOutput {
-	return o.ApplyT(func(v *ArtifactObjectsResponse) ArtifactObjectsResponse { return *v }).(ArtifactObjectsResponseOutput)
+	return o.ApplyT(func(v *ArtifactObjectsResponse) ArtifactObjectsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ArtifactObjectsResponse
+		return ret
+	}).(ArtifactObjectsResponseOutput)
 }
 
 // Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
@@ -913,7 +943,7 @@ func (o ArtifactsOutput) ToArtifactsPtrOutput() ArtifactsPtrOutput {
 }
 
 func (o ArtifactsOutput) ToArtifactsPtrOutputWithContext(ctx context.Context) ArtifactsPtrOutput {
-	return o.ApplyT(func(v Artifacts) *Artifacts {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Artifacts) *Artifacts {
 		return &v
 	}).(ArtifactsPtrOutput)
 }
@@ -943,7 +973,13 @@ func (o ArtifactsPtrOutput) ToArtifactsPtrOutputWithContext(ctx context.Context)
 }
 
 func (o ArtifactsPtrOutput) Elem() ArtifactsOutput {
-	return o.ApplyT(func(v *Artifacts) Artifacts { return *v }).(ArtifactsOutput)
+	return o.ApplyT(func(v *Artifacts) Artifacts {
+		if v != nil {
+			return *v
+		}
+		var ret Artifacts
+		return ret
+	}).(ArtifactsOutput)
 }
 
 // A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
@@ -1066,7 +1102,7 @@ func (o ArtifactsResponseOutput) ToArtifactsResponsePtrOutput() ArtifactsRespons
 }
 
 func (o ArtifactsResponseOutput) ToArtifactsResponsePtrOutputWithContext(ctx context.Context) ArtifactsResponsePtrOutput {
-	return o.ApplyT(func(v ArtifactsResponse) *ArtifactsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArtifactsResponse) *ArtifactsResponse {
 		return &v
 	}).(ArtifactsResponsePtrOutput)
 }
@@ -1096,7 +1132,13 @@ func (o ArtifactsResponsePtrOutput) ToArtifactsResponsePtrOutputWithContext(ctx 
 }
 
 func (o ArtifactsResponsePtrOutput) Elem() ArtifactsResponseOutput {
-	return o.ApplyT(func(v *ArtifactsResponse) ArtifactsResponse { return *v }).(ArtifactsResponseOutput)
+	return o.ApplyT(func(v *ArtifactsResponse) ArtifactsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ArtifactsResponse
+		return ret
+	}).(ArtifactsResponseOutput)
 }
 
 // A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
@@ -1263,7 +1305,7 @@ func (o BuildTypeOutput) ToBuildTypePtrOutput() BuildTypePtrOutput {
 }
 
 func (o BuildTypeOutput) ToBuildTypePtrOutputWithContext(ctx context.Context) BuildTypePtrOutput {
-	return o.ApplyT(func(v BuildType) *BuildType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildType) *BuildType {
 		return &v
 	}).(BuildTypePtrOutput)
 }
@@ -1348,7 +1390,13 @@ func (o BuildTypePtrOutput) ToBuildTypePtrOutputWithContext(ctx context.Context)
 }
 
 func (o BuildTypePtrOutput) Elem() BuildTypeOutput {
-	return o.ApplyT(func(v *BuildType) BuildType { return *v }).(BuildTypeOutput)
+	return o.ApplyT(func(v *BuildType) BuildType {
+		if v != nil {
+			return *v
+		}
+		var ret BuildType
+		return ret
+	}).(BuildTypeOutput)
 }
 
 // Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
@@ -1585,7 +1633,7 @@ func (o BuildApprovalResponseOutput) ToBuildApprovalResponsePtrOutput() BuildApp
 }
 
 func (o BuildApprovalResponseOutput) ToBuildApprovalResponsePtrOutputWithContext(ctx context.Context) BuildApprovalResponsePtrOutput {
-	return o.ApplyT(func(v BuildApprovalResponse) *BuildApprovalResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildApprovalResponse) *BuildApprovalResponse {
 		return &v
 	}).(BuildApprovalResponsePtrOutput)
 }
@@ -1620,7 +1668,13 @@ func (o BuildApprovalResponsePtrOutput) ToBuildApprovalResponsePtrOutputWithCont
 }
 
 func (o BuildApprovalResponsePtrOutput) Elem() BuildApprovalResponseOutput {
-	return o.ApplyT(func(v *BuildApprovalResponse) BuildApprovalResponse { return *v }).(BuildApprovalResponseOutput)
+	return o.ApplyT(func(v *BuildApprovalResponse) BuildApprovalResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildApprovalResponse
+		return ret
+	}).(BuildApprovalResponseOutput)
 }
 
 // Configuration for manual approval of this build.
@@ -1797,7 +1851,7 @@ func (o BuildOptionsOutput) ToBuildOptionsPtrOutput() BuildOptionsPtrOutput {
 }
 
 func (o BuildOptionsOutput) ToBuildOptionsPtrOutputWithContext(ctx context.Context) BuildOptionsPtrOutput {
-	return o.ApplyT(func(v BuildOptions) *BuildOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOptions) *BuildOptions {
 		return &v
 	}).(BuildOptionsPtrOutput)
 }
@@ -1882,7 +1936,13 @@ func (o BuildOptionsPtrOutput) ToBuildOptionsPtrOutputWithContext(ctx context.Co
 }
 
 func (o BuildOptionsPtrOutput) Elem() BuildOptionsOutput {
-	return o.ApplyT(func(v *BuildOptions) BuildOptions { return *v }).(BuildOptionsOutput)
+	return o.ApplyT(func(v *BuildOptions) BuildOptions {
+		if v != nil {
+			return *v
+		}
+		var ret BuildOptions
+		return ret
+	}).(BuildOptionsOutput)
 }
 
 // Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
@@ -2159,7 +2219,7 @@ func (o BuildOptionsResponseOutput) ToBuildOptionsResponsePtrOutput() BuildOptio
 }
 
 func (o BuildOptionsResponseOutput) ToBuildOptionsResponsePtrOutputWithContext(ctx context.Context) BuildOptionsResponsePtrOutput {
-	return o.ApplyT(func(v BuildOptionsResponse) *BuildOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOptionsResponse) *BuildOptionsResponse {
 		return &v
 	}).(BuildOptionsResponsePtrOutput)
 }
@@ -2244,7 +2304,13 @@ func (o BuildOptionsResponsePtrOutput) ToBuildOptionsResponsePtrOutputWithContex
 }
 
 func (o BuildOptionsResponsePtrOutput) Elem() BuildOptionsResponseOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) BuildOptionsResponse { return *v }).(BuildOptionsResponseOutput)
+	return o.ApplyT(func(v *BuildOptionsResponse) BuildOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildOptionsResponse
+		return ret
+	}).(BuildOptionsResponseOutput)
 }
 
 // Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
@@ -2581,7 +2647,7 @@ func (o BuildResponseOutput) ToBuildResponsePtrOutput() BuildResponsePtrOutput {
 }
 
 func (o BuildResponseOutput) ToBuildResponsePtrOutputWithContext(ctx context.Context) BuildResponsePtrOutput {
-	return o.ApplyT(func(v BuildResponse) *BuildResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildResponse) *BuildResponse {
 		return &v
 	}).(BuildResponsePtrOutput)
 }
@@ -2741,7 +2807,13 @@ func (o BuildResponsePtrOutput) ToBuildResponsePtrOutputWithContext(ctx context.
 }
 
 func (o BuildResponsePtrOutput) Elem() BuildResponseOutput {
-	return o.ApplyT(func(v *BuildResponse) BuildResponse { return *v }).(BuildResponseOutput)
+	return o.ApplyT(func(v *BuildResponse) BuildResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildResponse
+		return ret
+	}).(BuildResponseOutput)
 }
 
 // Describes this build's approval configuration, status, and result.
@@ -3640,7 +3712,7 @@ func (o FailureInfoResponseOutput) ToFailureInfoResponsePtrOutput() FailureInfoR
 }
 
 func (o FailureInfoResponseOutput) ToFailureInfoResponsePtrOutputWithContext(ctx context.Context) FailureInfoResponsePtrOutput {
-	return o.ApplyT(func(v FailureInfoResponse) *FailureInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FailureInfoResponse) *FailureInfoResponse {
 		return &v
 	}).(FailureInfoResponsePtrOutput)
 }
@@ -3670,7 +3742,13 @@ func (o FailureInfoResponsePtrOutput) ToFailureInfoResponsePtrOutputWithContext(
 }
 
 func (o FailureInfoResponsePtrOutput) Elem() FailureInfoResponseOutput {
-	return o.ApplyT(func(v *FailureInfoResponse) FailureInfoResponse { return *v }).(FailureInfoResponseOutput)
+	return o.ApplyT(func(v *FailureInfoResponse) FailureInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FailureInfoResponse
+		return ret
+	}).(FailureInfoResponseOutput)
 }
 
 // Explains the failure issue in more detail using hard-coded text.
@@ -3801,7 +3879,7 @@ func (o GitFileSourceOutput) ToGitFileSourcePtrOutput() GitFileSourcePtrOutput {
 }
 
 func (o GitFileSourceOutput) ToGitFileSourcePtrOutputWithContext(ctx context.Context) GitFileSourcePtrOutput {
-	return o.ApplyT(func(v GitFileSource) *GitFileSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitFileSource) *GitFileSource {
 		return &v
 	}).(GitFileSourcePtrOutput)
 }
@@ -3841,7 +3919,13 @@ func (o GitFileSourcePtrOutput) ToGitFileSourcePtrOutputWithContext(ctx context.
 }
 
 func (o GitFileSourcePtrOutput) Elem() GitFileSourceOutput {
-	return o.ApplyT(func(v *GitFileSource) GitFileSource { return *v }).(GitFileSourceOutput)
+	return o.ApplyT(func(v *GitFileSource) GitFileSource {
+		if v != nil {
+			return *v
+		}
+		var ret GitFileSource
+		return ret
+	}).(GitFileSourceOutput)
 }
 
 // The path of the file, with the repo root as the root of the path.
@@ -3992,7 +4076,7 @@ func (o GitFileSourceResponseOutput) ToGitFileSourceResponsePtrOutput() GitFileS
 }
 
 func (o GitFileSourceResponseOutput) ToGitFileSourceResponsePtrOutputWithContext(ctx context.Context) GitFileSourceResponsePtrOutput {
-	return o.ApplyT(func(v GitFileSourceResponse) *GitFileSourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitFileSourceResponse) *GitFileSourceResponse {
 		return &v
 	}).(GitFileSourceResponsePtrOutput)
 }
@@ -4032,7 +4116,13 @@ func (o GitFileSourceResponsePtrOutput) ToGitFileSourceResponsePtrOutputWithCont
 }
 
 func (o GitFileSourceResponsePtrOutput) Elem() GitFileSourceResponseOutput {
-	return o.ApplyT(func(v *GitFileSourceResponse) GitFileSourceResponse { return *v }).(GitFileSourceResponseOutput)
+	return o.ApplyT(func(v *GitFileSourceResponse) GitFileSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GitFileSourceResponse
+		return ret
+	}).(GitFileSourceResponseOutput)
 }
 
 // The path of the file, with the repo root as the root of the path.
@@ -4199,7 +4289,7 @@ func (o GitHubEnterpriseSecretsOutput) ToGitHubEnterpriseSecretsPtrOutput() GitH
 }
 
 func (o GitHubEnterpriseSecretsOutput) ToGitHubEnterpriseSecretsPtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsPtrOutput {
-	return o.ApplyT(func(v GitHubEnterpriseSecrets) *GitHubEnterpriseSecrets {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitHubEnterpriseSecrets) *GitHubEnterpriseSecrets {
 		return &v
 	}).(GitHubEnterpriseSecretsPtrOutput)
 }
@@ -4259,7 +4349,13 @@ func (o GitHubEnterpriseSecretsPtrOutput) ToGitHubEnterpriseSecretsPtrOutputWith
 }
 
 func (o GitHubEnterpriseSecretsPtrOutput) Elem() GitHubEnterpriseSecretsOutput {
-	return o.ApplyT(func(v *GitHubEnterpriseSecrets) GitHubEnterpriseSecrets { return *v }).(GitHubEnterpriseSecretsOutput)
+	return o.ApplyT(func(v *GitHubEnterpriseSecrets) GitHubEnterpriseSecrets {
+		if v != nil {
+			return *v
+		}
+		var ret GitHubEnterpriseSecrets
+		return ret
+	}).(GitHubEnterpriseSecretsOutput)
 }
 
 // The resource name for the OAuth client ID secret in Secret Manager.
@@ -4466,7 +4562,7 @@ func (o GitHubEnterpriseSecretsResponseOutput) ToGitHubEnterpriseSecretsResponse
 }
 
 func (o GitHubEnterpriseSecretsResponseOutput) ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponsePtrOutput {
-	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) *GitHubEnterpriseSecretsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitHubEnterpriseSecretsResponse) *GitHubEnterpriseSecretsResponse {
 		return &v
 	}).(GitHubEnterpriseSecretsResponsePtrOutput)
 }
@@ -4526,7 +4622,13 @@ func (o GitHubEnterpriseSecretsResponsePtrOutput) ToGitHubEnterpriseSecretsRespo
 }
 
 func (o GitHubEnterpriseSecretsResponsePtrOutput) Elem() GitHubEnterpriseSecretsResponseOutput {
-	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) GitHubEnterpriseSecretsResponse { return *v }).(GitHubEnterpriseSecretsResponseOutput)
+	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) GitHubEnterpriseSecretsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GitHubEnterpriseSecretsResponse
+		return ret
+	}).(GitHubEnterpriseSecretsResponseOutput)
 }
 
 // The resource name for the OAuth client ID secret in Secret Manager.
@@ -4725,7 +4827,7 @@ func (o GitHubEventsConfigOutput) ToGitHubEventsConfigPtrOutput() GitHubEventsCo
 }
 
 func (o GitHubEventsConfigOutput) ToGitHubEventsConfigPtrOutputWithContext(ctx context.Context) GitHubEventsConfigPtrOutput {
-	return o.ApplyT(func(v GitHubEventsConfig) *GitHubEventsConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitHubEventsConfig) *GitHubEventsConfig {
 		return &v
 	}).(GitHubEventsConfigPtrOutput)
 }
@@ -4775,7 +4877,13 @@ func (o GitHubEventsConfigPtrOutput) ToGitHubEventsConfigPtrOutputWithContext(ct
 }
 
 func (o GitHubEventsConfigPtrOutput) Elem() GitHubEventsConfigOutput {
-	return o.ApplyT(func(v *GitHubEventsConfig) GitHubEventsConfig { return *v }).(GitHubEventsConfigOutput)
+	return o.ApplyT(func(v *GitHubEventsConfig) GitHubEventsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GitHubEventsConfig
+		return ret
+	}).(GitHubEventsConfigOutput)
 }
 
 // Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
@@ -4954,7 +5062,7 @@ func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponsePtrOutput(
 }
 
 func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponsePtrOutputWithContext(ctx context.Context) GitHubEventsConfigResponsePtrOutput {
-	return o.ApplyT(func(v GitHubEventsConfigResponse) *GitHubEventsConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitHubEventsConfigResponse) *GitHubEventsConfigResponse {
 		return &v
 	}).(GitHubEventsConfigResponsePtrOutput)
 }
@@ -5004,7 +5112,13 @@ func (o GitHubEventsConfigResponsePtrOutput) ToGitHubEventsConfigResponsePtrOutp
 }
 
 func (o GitHubEventsConfigResponsePtrOutput) Elem() GitHubEventsConfigResponseOutput {
-	return o.ApplyT(func(v *GitHubEventsConfigResponse) GitHubEventsConfigResponse { return *v }).(GitHubEventsConfigResponseOutput)
+	return o.ApplyT(func(v *GitHubEventsConfigResponse) GitHubEventsConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GitHubEventsConfigResponse
+		return ret
+	}).(GitHubEventsConfigResponseOutput)
 }
 
 // Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
@@ -5171,7 +5285,7 @@ func (o GitRepoSourceOutput) ToGitRepoSourcePtrOutput() GitRepoSourcePtrOutput {
 }
 
 func (o GitRepoSourceOutput) ToGitRepoSourcePtrOutputWithContext(ctx context.Context) GitRepoSourcePtrOutput {
-	return o.ApplyT(func(v GitRepoSource) *GitRepoSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitRepoSource) *GitRepoSource {
 		return &v
 	}).(GitRepoSourcePtrOutput)
 }
@@ -5206,7 +5320,13 @@ func (o GitRepoSourcePtrOutput) ToGitRepoSourcePtrOutputWithContext(ctx context.
 }
 
 func (o GitRepoSourcePtrOutput) Elem() GitRepoSourceOutput {
-	return o.ApplyT(func(v *GitRepoSource) GitRepoSource { return *v }).(GitRepoSourceOutput)
+	return o.ApplyT(func(v *GitRepoSource) GitRepoSource {
+		if v != nil {
+			return *v
+		}
+		var ret GitRepoSource
+		return ret
+	}).(GitRepoSourceOutput)
 }
 
 // The branch or tag to use. Must start with "refs/" (required).
@@ -5343,7 +5463,7 @@ func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponsePtrOutput() GitRepoS
 }
 
 func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponsePtrOutputWithContext(ctx context.Context) GitRepoSourceResponsePtrOutput {
-	return o.ApplyT(func(v GitRepoSourceResponse) *GitRepoSourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitRepoSourceResponse) *GitRepoSourceResponse {
 		return &v
 	}).(GitRepoSourceResponsePtrOutput)
 }
@@ -5378,7 +5498,13 @@ func (o GitRepoSourceResponsePtrOutput) ToGitRepoSourceResponsePtrOutputWithCont
 }
 
 func (o GitRepoSourceResponsePtrOutput) Elem() GitRepoSourceResponseOutput {
-	return o.ApplyT(func(v *GitRepoSourceResponse) GitRepoSourceResponse { return *v }).(GitRepoSourceResponseOutput)
+	return o.ApplyT(func(v *GitRepoSourceResponse) GitRepoSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GitRepoSourceResponse
+		return ret
+	}).(GitRepoSourceResponseOutput)
 }
 
 // The branch or tag to use. Must start with "refs/" (required).
@@ -5729,7 +5855,7 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
 }
 
 func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
-	return o.ApplyT(func(v NetworkConfig) *NetworkConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfig) *NetworkConfig {
 		return &v
 	}).(NetworkConfigPtrOutput)
 }
@@ -5759,7 +5885,13 @@ func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutputWithContext(ctx context.
 }
 
 func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
-	return o.ApplyT(func(v *NetworkConfig) NetworkConfig { return *v }).(NetworkConfigOutput)
+	return o.ApplyT(func(v *NetworkConfig) NetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfig
+		return ret
+	}).(NetworkConfigOutput)
 }
 
 // Option to configure network egress for the workers.
@@ -5882,7 +6014,7 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutput() NetworkC
 }
 
 func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return o.ApplyT(func(v NetworkConfigResponse) *NetworkConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigResponse) *NetworkConfigResponse {
 		return &v
 	}).(NetworkConfigResponsePtrOutput)
 }
@@ -5912,7 +6044,13 @@ func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutputWithCont
 }
 
 func (o NetworkConfigResponsePtrOutput) Elem() NetworkConfigResponseOutput {
-	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse { return *v }).(NetworkConfigResponseOutput)
+	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfigResponse
+		return ret
+	}).(NetworkConfigResponseOutput)
 }
 
 // Option to configure network egress for the workers.
@@ -6031,7 +6169,7 @@ func (o PoolOptionOutput) ToPoolOptionPtrOutput() PoolOptionPtrOutput {
 }
 
 func (o PoolOptionOutput) ToPoolOptionPtrOutputWithContext(ctx context.Context) PoolOptionPtrOutput {
-	return o.ApplyT(func(v PoolOption) *PoolOption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PoolOption) *PoolOption {
 		return &v
 	}).(PoolOptionPtrOutput)
 }
@@ -6056,7 +6194,13 @@ func (o PoolOptionPtrOutput) ToPoolOptionPtrOutputWithContext(ctx context.Contex
 }
 
 func (o PoolOptionPtrOutput) Elem() PoolOptionOutput {
-	return o.ApplyT(func(v *PoolOption) PoolOption { return *v }).(PoolOptionOutput)
+	return o.ApplyT(func(v *PoolOption) PoolOption {
+		if v != nil {
+			return *v
+		}
+		var ret PoolOption
+		return ret
+	}).(PoolOptionOutput)
 }
 
 // The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
@@ -6165,7 +6309,7 @@ func (o PoolOptionResponseOutput) ToPoolOptionResponsePtrOutput() PoolOptionResp
 }
 
 func (o PoolOptionResponseOutput) ToPoolOptionResponsePtrOutputWithContext(ctx context.Context) PoolOptionResponsePtrOutput {
-	return o.ApplyT(func(v PoolOptionResponse) *PoolOptionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PoolOptionResponse) *PoolOptionResponse {
 		return &v
 	}).(PoolOptionResponsePtrOutput)
 }
@@ -6190,7 +6334,13 @@ func (o PoolOptionResponsePtrOutput) ToPoolOptionResponsePtrOutputWithContext(ct
 }
 
 func (o PoolOptionResponsePtrOutput) Elem() PoolOptionResponseOutput {
-	return o.ApplyT(func(v *PoolOptionResponse) PoolOptionResponse { return *v }).(PoolOptionResponseOutput)
+	return o.ApplyT(func(v *PoolOptionResponse) PoolOptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PoolOptionResponse
+		return ret
+	}).(PoolOptionResponseOutput)
 }
 
 // The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
@@ -6303,7 +6453,7 @@ func (o PrivatePoolV1ConfigOutput) ToPrivatePoolV1ConfigPtrOutput() PrivatePoolV
 }
 
 func (o PrivatePoolV1ConfigOutput) ToPrivatePoolV1ConfigPtrOutputWithContext(ctx context.Context) PrivatePoolV1ConfigPtrOutput {
-	return o.ApplyT(func(v PrivatePoolV1Config) *PrivatePoolV1Config {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivatePoolV1Config) *PrivatePoolV1Config {
 		return &v
 	}).(PrivatePoolV1ConfigPtrOutput)
 }
@@ -6333,7 +6483,13 @@ func (o PrivatePoolV1ConfigPtrOutput) ToPrivatePoolV1ConfigPtrOutputWithContext(
 }
 
 func (o PrivatePoolV1ConfigPtrOutput) Elem() PrivatePoolV1ConfigOutput {
-	return o.ApplyT(func(v *PrivatePoolV1Config) PrivatePoolV1Config { return *v }).(PrivatePoolV1ConfigOutput)
+	return o.ApplyT(func(v *PrivatePoolV1Config) PrivatePoolV1Config {
+		if v != nil {
+			return *v
+		}
+		var ret PrivatePoolV1Config
+		return ret
+	}).(PrivatePoolV1ConfigOutput)
 }
 
 // Network configuration for the pool.
@@ -6456,7 +6612,7 @@ func (o PrivatePoolV1ConfigResponseOutput) ToPrivatePoolV1ConfigResponsePtrOutpu
 }
 
 func (o PrivatePoolV1ConfigResponseOutput) ToPrivatePoolV1ConfigResponsePtrOutputWithContext(ctx context.Context) PrivatePoolV1ConfigResponsePtrOutput {
-	return o.ApplyT(func(v PrivatePoolV1ConfigResponse) *PrivatePoolV1ConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivatePoolV1ConfigResponse) *PrivatePoolV1ConfigResponse {
 		return &v
 	}).(PrivatePoolV1ConfigResponsePtrOutput)
 }
@@ -6486,7 +6642,13 @@ func (o PrivatePoolV1ConfigResponsePtrOutput) ToPrivatePoolV1ConfigResponsePtrOu
 }
 
 func (o PrivatePoolV1ConfigResponsePtrOutput) Elem() PrivatePoolV1ConfigResponseOutput {
-	return o.ApplyT(func(v *PrivatePoolV1ConfigResponse) PrivatePoolV1ConfigResponse { return *v }).(PrivatePoolV1ConfigResponseOutput)
+	return o.ApplyT(func(v *PrivatePoolV1ConfigResponse) PrivatePoolV1ConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivatePoolV1ConfigResponse
+		return ret
+	}).(PrivatePoolV1ConfigResponseOutput)
 }
 
 // Network configuration for the pool.
@@ -6613,7 +6775,7 @@ func (o PubsubConfigOutput) ToPubsubConfigPtrOutput() PubsubConfigPtrOutput {
 }
 
 func (o PubsubConfigOutput) ToPubsubConfigPtrOutputWithContext(ctx context.Context) PubsubConfigPtrOutput {
-	return o.ApplyT(func(v PubsubConfig) *PubsubConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubConfig) *PubsubConfig {
 		return &v
 	}).(PubsubConfigPtrOutput)
 }
@@ -6648,7 +6810,13 @@ func (o PubsubConfigPtrOutput) ToPubsubConfigPtrOutputWithContext(ctx context.Co
 }
 
 func (o PubsubConfigPtrOutput) Elem() PubsubConfigOutput {
-	return o.ApplyT(func(v *PubsubConfig) PubsubConfig { return *v }).(PubsubConfigOutput)
+	return o.ApplyT(func(v *PubsubConfig) PubsubConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PubsubConfig
+		return ret
+	}).(PubsubConfigOutput)
 }
 
 // Service account that will make the push request.
@@ -6789,7 +6957,7 @@ func (o PubsubConfigResponseOutput) ToPubsubConfigResponsePtrOutput() PubsubConf
 }
 
 func (o PubsubConfigResponseOutput) ToPubsubConfigResponsePtrOutputWithContext(ctx context.Context) PubsubConfigResponsePtrOutput {
-	return o.ApplyT(func(v PubsubConfigResponse) *PubsubConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubConfigResponse) *PubsubConfigResponse {
 		return &v
 	}).(PubsubConfigResponsePtrOutput)
 }
@@ -6829,7 +6997,13 @@ func (o PubsubConfigResponsePtrOutput) ToPubsubConfigResponsePtrOutputWithContex
 }
 
 func (o PubsubConfigResponsePtrOutput) Elem() PubsubConfigResponseOutput {
-	return o.ApplyT(func(v *PubsubConfigResponse) PubsubConfigResponse { return *v }).(PubsubConfigResponseOutput)
+	return o.ApplyT(func(v *PubsubConfigResponse) PubsubConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PubsubConfigResponse
+		return ret
+	}).(PubsubConfigResponseOutput)
 }
 
 // Service account that will make the push request.
@@ -6976,7 +7150,7 @@ func (o PullRequestFilterOutput) ToPullRequestFilterPtrOutput() PullRequestFilte
 }
 
 func (o PullRequestFilterOutput) ToPullRequestFilterPtrOutputWithContext(ctx context.Context) PullRequestFilterPtrOutput {
-	return o.ApplyT(func(v PullRequestFilter) *PullRequestFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PullRequestFilter) *PullRequestFilter {
 		return &v
 	}).(PullRequestFilterPtrOutput)
 }
@@ -7011,7 +7185,13 @@ func (o PullRequestFilterPtrOutput) ToPullRequestFilterPtrOutputWithContext(ctx 
 }
 
 func (o PullRequestFilterPtrOutput) Elem() PullRequestFilterOutput {
-	return o.ApplyT(func(v *PullRequestFilter) PullRequestFilter { return *v }).(PullRequestFilterOutput)
+	return o.ApplyT(func(v *PullRequestFilter) PullRequestFilter {
+		if v != nil {
+			return *v
+		}
+		var ret PullRequestFilter
+		return ret
+	}).(PullRequestFilterOutput)
 }
 
 // Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -7148,7 +7328,7 @@ func (o PullRequestFilterResponseOutput) ToPullRequestFilterResponsePtrOutput() 
 }
 
 func (o PullRequestFilterResponseOutput) ToPullRequestFilterResponsePtrOutputWithContext(ctx context.Context) PullRequestFilterResponsePtrOutput {
-	return o.ApplyT(func(v PullRequestFilterResponse) *PullRequestFilterResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PullRequestFilterResponse) *PullRequestFilterResponse {
 		return &v
 	}).(PullRequestFilterResponsePtrOutput)
 }
@@ -7183,7 +7363,13 @@ func (o PullRequestFilterResponsePtrOutput) ToPullRequestFilterResponsePtrOutput
 }
 
 func (o PullRequestFilterResponsePtrOutput) Elem() PullRequestFilterResponseOutput {
-	return o.ApplyT(func(v *PullRequestFilterResponse) PullRequestFilterResponse { return *v }).(PullRequestFilterResponseOutput)
+	return o.ApplyT(func(v *PullRequestFilterResponse) PullRequestFilterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PullRequestFilterResponse
+		return ret
+	}).(PullRequestFilterResponseOutput)
 }
 
 // Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -7320,7 +7506,7 @@ func (o PushFilterOutput) ToPushFilterPtrOutput() PushFilterPtrOutput {
 }
 
 func (o PushFilterOutput) ToPushFilterPtrOutputWithContext(ctx context.Context) PushFilterPtrOutput {
-	return o.ApplyT(func(v PushFilter) *PushFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushFilter) *PushFilter {
 		return &v
 	}).(PushFilterPtrOutput)
 }
@@ -7355,7 +7541,13 @@ func (o PushFilterPtrOutput) ToPushFilterPtrOutputWithContext(ctx context.Contex
 }
 
 func (o PushFilterPtrOutput) Elem() PushFilterOutput {
-	return o.ApplyT(func(v *PushFilter) PushFilter { return *v }).(PushFilterOutput)
+	return o.ApplyT(func(v *PushFilter) PushFilter {
+		if v != nil {
+			return *v
+		}
+		var ret PushFilter
+		return ret
+	}).(PushFilterOutput)
 }
 
 // Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -7492,7 +7684,7 @@ func (o PushFilterResponseOutput) ToPushFilterResponsePtrOutput() PushFilterResp
 }
 
 func (o PushFilterResponseOutput) ToPushFilterResponsePtrOutputWithContext(ctx context.Context) PushFilterResponsePtrOutput {
-	return o.ApplyT(func(v PushFilterResponse) *PushFilterResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushFilterResponse) *PushFilterResponse {
 		return &v
 	}).(PushFilterResponsePtrOutput)
 }
@@ -7527,7 +7719,13 @@ func (o PushFilterResponsePtrOutput) ToPushFilterResponsePtrOutputWithContext(ct
 }
 
 func (o PushFilterResponsePtrOutput) Elem() PushFilterResponseOutput {
-	return o.ApplyT(func(v *PushFilterResponse) PushFilterResponse { return *v }).(PushFilterResponseOutput)
+	return o.ApplyT(func(v *PushFilterResponse) PushFilterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PushFilterResponse
+		return ret
+	}).(PushFilterResponseOutput)
 }
 
 // Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -7684,7 +7882,7 @@ func (o RepoSourceOutput) ToRepoSourcePtrOutput() RepoSourcePtrOutput {
 }
 
 func (o RepoSourceOutput) ToRepoSourcePtrOutputWithContext(ctx context.Context) RepoSourcePtrOutput {
-	return o.ApplyT(func(v RepoSource) *RepoSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoSource) *RepoSource {
 		return &v
 	}).(RepoSourcePtrOutput)
 }
@@ -7744,7 +7942,13 @@ func (o RepoSourcePtrOutput) ToRepoSourcePtrOutputWithContext(ctx context.Contex
 }
 
 func (o RepoSourcePtrOutput) Elem() RepoSourceOutput {
-	return o.ApplyT(func(v *RepoSource) RepoSource { return *v }).(RepoSourceOutput)
+	return o.ApplyT(func(v *RepoSource) RepoSource {
+		if v != nil {
+			return *v
+		}
+		var ret RepoSource
+		return ret
+	}).(RepoSourceOutput)
 }
 
 // Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -7951,7 +8155,7 @@ func (o RepoSourceResponseOutput) ToRepoSourceResponsePtrOutput() RepoSourceResp
 }
 
 func (o RepoSourceResponseOutput) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
-	return o.ApplyT(func(v RepoSourceResponse) *RepoSourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoSourceResponse) *RepoSourceResponse {
 		return &v
 	}).(RepoSourceResponsePtrOutput)
 }
@@ -8011,7 +8215,13 @@ func (o RepoSourceResponsePtrOutput) ToRepoSourceResponsePtrOutputWithContext(ct
 }
 
 func (o RepoSourceResponsePtrOutput) Elem() RepoSourceResponseOutput {
-	return o.ApplyT(func(v *RepoSourceResponse) RepoSourceResponse { return *v }).(RepoSourceResponseOutput)
+	return o.ApplyT(func(v *RepoSourceResponse) RepoSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RepoSourceResponse
+		return ret
+	}).(RepoSourceResponseOutput)
 }
 
 // Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -8210,7 +8420,7 @@ func (o ResultsResponseOutput) ToResultsResponsePtrOutput() ResultsResponsePtrOu
 }
 
 func (o ResultsResponseOutput) ToResultsResponsePtrOutputWithContext(ctx context.Context) ResultsResponsePtrOutput {
-	return o.ApplyT(func(v ResultsResponse) *ResultsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResultsResponse) *ResultsResponse {
 		return &v
 	}).(ResultsResponsePtrOutput)
 }
@@ -8260,7 +8470,13 @@ func (o ResultsResponsePtrOutput) ToResultsResponsePtrOutputWithContext(ctx cont
 }
 
 func (o ResultsResponsePtrOutput) Elem() ResultsResponseOutput {
-	return o.ApplyT(func(v *ResultsResponse) ResultsResponse { return *v }).(ResultsResponseOutput)
+	return o.ApplyT(func(v *ResultsResponse) ResultsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResultsResponse
+		return ret
+	}).(ResultsResponseOutput)
 }
 
 // Path to the artifact manifest. Only populated when artifacts are uploaded.
@@ -8859,7 +9075,7 @@ func (o SecretsOutput) ToSecretsPtrOutput() SecretsPtrOutput {
 }
 
 func (o SecretsOutput) ToSecretsPtrOutputWithContext(ctx context.Context) SecretsPtrOutput {
-	return o.ApplyT(func(v Secrets) *Secrets {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Secrets) *Secrets {
 		return &v
 	}).(SecretsPtrOutput)
 }
@@ -8889,7 +9105,13 @@ func (o SecretsPtrOutput) ToSecretsPtrOutputWithContext(ctx context.Context) Sec
 }
 
 func (o SecretsPtrOutput) Elem() SecretsOutput {
-	return o.ApplyT(func(v *Secrets) Secrets { return *v }).(SecretsOutput)
+	return o.ApplyT(func(v *Secrets) Secrets {
+		if v != nil {
+			return *v
+		}
+		var ret Secrets
+		return ret
+	}).(SecretsOutput)
 }
 
 // Secrets encrypted with KMS key and the associated secret environment variable.
@@ -9012,7 +9234,7 @@ func (o SecretsResponseOutput) ToSecretsResponsePtrOutput() SecretsResponsePtrOu
 }
 
 func (o SecretsResponseOutput) ToSecretsResponsePtrOutputWithContext(ctx context.Context) SecretsResponsePtrOutput {
-	return o.ApplyT(func(v SecretsResponse) *SecretsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretsResponse) *SecretsResponse {
 		return &v
 	}).(SecretsResponsePtrOutput)
 }
@@ -9042,7 +9264,13 @@ func (o SecretsResponsePtrOutput) ToSecretsResponsePtrOutputWithContext(ctx cont
 }
 
 func (o SecretsResponsePtrOutput) Elem() SecretsResponseOutput {
-	return o.ApplyT(func(v *SecretsResponse) SecretsResponse { return *v }).(SecretsResponseOutput)
+	return o.ApplyT(func(v *SecretsResponse) SecretsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecretsResponse
+		return ret
+	}).(SecretsResponseOutput)
 }
 
 // Secrets encrypted with KMS key and the associated secret environment variable.
@@ -9169,7 +9397,7 @@ func (o SourceOutput) ToSourcePtrOutput() SourcePtrOutput {
 }
 
 func (o SourceOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return o.ApplyT(func(v Source) *Source {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Source) *Source {
 		return &v
 	}).(SourcePtrOutput)
 }
@@ -9204,7 +9432,13 @@ func (o SourcePtrOutput) ToSourcePtrOutputWithContext(ctx context.Context) Sourc
 }
 
 func (o SourcePtrOutput) Elem() SourceOutput {
-	return o.ApplyT(func(v *Source) Source { return *v }).(SourceOutput)
+	return o.ApplyT(func(v *Source) Source {
+		if v != nil {
+			return *v
+		}
+		var ret Source
+		return ret
+	}).(SourceOutput)
 }
 
 // If provided, get the source from this location in a Cloud Source Repository.
@@ -9345,7 +9579,7 @@ func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponsePtrOutput() So
 }
 
 func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponsePtrOutputWithContext(ctx context.Context) SourceProvenanceResponsePtrOutput {
-	return o.ApplyT(func(v SourceProvenanceResponse) *SourceProvenanceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceProvenanceResponse) *SourceProvenanceResponse {
 		return &v
 	}).(SourceProvenanceResponsePtrOutput)
 }
@@ -9385,7 +9619,13 @@ func (o SourceProvenanceResponsePtrOutput) ToSourceProvenanceResponsePtrOutputWi
 }
 
 func (o SourceProvenanceResponsePtrOutput) Elem() SourceProvenanceResponseOutput {
-	return o.ApplyT(func(v *SourceProvenanceResponse) SourceProvenanceResponse { return *v }).(SourceProvenanceResponseOutput)
+	return o.ApplyT(func(v *SourceProvenanceResponse) SourceProvenanceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceProvenanceResponse
+		return ret
+	}).(SourceProvenanceResponseOutput)
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
@@ -9532,7 +9772,7 @@ func (o SourceResponseOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutpu
 }
 
 func (o SourceResponseOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return o.ApplyT(func(v SourceResponse) *SourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceResponse) *SourceResponse {
 		return &v
 	}).(SourceResponsePtrOutput)
 }
@@ -9567,7 +9807,13 @@ func (o SourceResponsePtrOutput) ToSourceResponsePtrOutputWithContext(ctx contex
 }
 
 func (o SourceResponsePtrOutput) Elem() SourceResponseOutput {
-	return o.ApplyT(func(v *SourceResponse) SourceResponse { return *v }).(SourceResponseOutput)
+	return o.ApplyT(func(v *SourceResponse) SourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceResponse
+		return ret
+	}).(SourceResponseOutput)
 }
 
 // If provided, get the source from this location in a Cloud Source Repository.
@@ -9704,7 +9950,7 @@ func (o StorageSourceOutput) ToStorageSourcePtrOutput() StorageSourcePtrOutput {
 }
 
 func (o StorageSourceOutput) ToStorageSourcePtrOutputWithContext(ctx context.Context) StorageSourcePtrOutput {
-	return o.ApplyT(func(v StorageSource) *StorageSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSource) *StorageSource {
 		return &v
 	}).(StorageSourcePtrOutput)
 }
@@ -9739,7 +9985,13 @@ func (o StorageSourcePtrOutput) ToStorageSourcePtrOutputWithContext(ctx context.
 }
 
 func (o StorageSourcePtrOutput) Elem() StorageSourceOutput {
-	return o.ApplyT(func(v *StorageSource) StorageSource { return *v }).(StorageSourceOutput)
+	return o.ApplyT(func(v *StorageSource) StorageSource {
+		if v != nil {
+			return *v
+		}
+		var ret StorageSource
+		return ret
+	}).(StorageSourceOutput)
 }
 
 // Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -9876,7 +10128,7 @@ func (o StorageSourceManifestOutput) ToStorageSourceManifestPtrOutput() StorageS
 }
 
 func (o StorageSourceManifestOutput) ToStorageSourceManifestPtrOutputWithContext(ctx context.Context) StorageSourceManifestPtrOutput {
-	return o.ApplyT(func(v StorageSourceManifest) *StorageSourceManifest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSourceManifest) *StorageSourceManifest {
 		return &v
 	}).(StorageSourceManifestPtrOutput)
 }
@@ -9911,7 +10163,13 @@ func (o StorageSourceManifestPtrOutput) ToStorageSourceManifestPtrOutputWithCont
 }
 
 func (o StorageSourceManifestPtrOutput) Elem() StorageSourceManifestOutput {
-	return o.ApplyT(func(v *StorageSourceManifest) StorageSourceManifest { return *v }).(StorageSourceManifestOutput)
+	return o.ApplyT(func(v *StorageSourceManifest) StorageSourceManifest {
+		if v != nil {
+			return *v
+		}
+		var ret StorageSourceManifest
+		return ret
+	}).(StorageSourceManifestOutput)
 }
 
 // Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -10048,7 +10306,7 @@ func (o StorageSourceManifestResponseOutput) ToStorageSourceManifestResponsePtrO
 }
 
 func (o StorageSourceManifestResponseOutput) ToStorageSourceManifestResponsePtrOutputWithContext(ctx context.Context) StorageSourceManifestResponsePtrOutput {
-	return o.ApplyT(func(v StorageSourceManifestResponse) *StorageSourceManifestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSourceManifestResponse) *StorageSourceManifestResponse {
 		return &v
 	}).(StorageSourceManifestResponsePtrOutput)
 }
@@ -10083,7 +10341,13 @@ func (o StorageSourceManifestResponsePtrOutput) ToStorageSourceManifestResponseP
 }
 
 func (o StorageSourceManifestResponsePtrOutput) Elem() StorageSourceManifestResponseOutput {
-	return o.ApplyT(func(v *StorageSourceManifestResponse) StorageSourceManifestResponse { return *v }).(StorageSourceManifestResponseOutput)
+	return o.ApplyT(func(v *StorageSourceManifestResponse) StorageSourceManifestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StorageSourceManifestResponse
+		return ret
+	}).(StorageSourceManifestResponseOutput)
 }
 
 // Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -10220,7 +10484,7 @@ func (o StorageSourceResponseOutput) ToStorageSourceResponsePtrOutput() StorageS
 }
 
 func (o StorageSourceResponseOutput) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
-	return o.ApplyT(func(v StorageSourceResponse) *StorageSourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSourceResponse) *StorageSourceResponse {
 		return &v
 	}).(StorageSourceResponsePtrOutput)
 }
@@ -10255,7 +10519,13 @@ func (o StorageSourceResponsePtrOutput) ToStorageSourceResponsePtrOutputWithCont
 }
 
 func (o StorageSourceResponsePtrOutput) Elem() StorageSourceResponseOutput {
-	return o.ApplyT(func(v *StorageSourceResponse) StorageSourceResponse { return *v }).(StorageSourceResponseOutput)
+	return o.ApplyT(func(v *StorageSourceResponse) StorageSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StorageSourceResponse
+		return ret
+	}).(StorageSourceResponseOutput)
 }
 
 // Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -10388,7 +10658,7 @@ func (o TimeSpanResponseOutput) ToTimeSpanResponsePtrOutput() TimeSpanResponsePt
 }
 
 func (o TimeSpanResponseOutput) ToTimeSpanResponsePtrOutputWithContext(ctx context.Context) TimeSpanResponsePtrOutput {
-	return o.ApplyT(func(v TimeSpanResponse) *TimeSpanResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSpanResponse) *TimeSpanResponse {
 		return &v
 	}).(TimeSpanResponsePtrOutput)
 }
@@ -10418,7 +10688,13 @@ func (o TimeSpanResponsePtrOutput) ToTimeSpanResponsePtrOutputWithContext(ctx co
 }
 
 func (o TimeSpanResponsePtrOutput) Elem() TimeSpanResponseOutput {
-	return o.ApplyT(func(v *TimeSpanResponse) TimeSpanResponse { return *v }).(TimeSpanResponseOutput)
+	return o.ApplyT(func(v *TimeSpanResponse) TimeSpanResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TimeSpanResponse
+		return ret
+	}).(TimeSpanResponseOutput)
 }
 
 // End of time span.
@@ -10868,7 +11144,7 @@ func (o WebhookConfigOutput) ToWebhookConfigPtrOutput() WebhookConfigPtrOutput {
 }
 
 func (o WebhookConfigOutput) ToWebhookConfigPtrOutputWithContext(ctx context.Context) WebhookConfigPtrOutput {
-	return o.ApplyT(func(v WebhookConfig) *WebhookConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebhookConfig) *WebhookConfig {
 		return &v
 	}).(WebhookConfigPtrOutput)
 }
@@ -10898,7 +11174,13 @@ func (o WebhookConfigPtrOutput) ToWebhookConfigPtrOutputWithContext(ctx context.
 }
 
 func (o WebhookConfigPtrOutput) Elem() WebhookConfigOutput {
-	return o.ApplyT(func(v *WebhookConfig) WebhookConfig { return *v }).(WebhookConfigOutput)
+	return o.ApplyT(func(v *WebhookConfig) WebhookConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WebhookConfig
+		return ret
+	}).(WebhookConfigOutput)
 }
 
 // Resource name for the secret required as a URL parameter.
@@ -11021,7 +11303,7 @@ func (o WebhookConfigResponseOutput) ToWebhookConfigResponsePtrOutput() WebhookC
 }
 
 func (o WebhookConfigResponseOutput) ToWebhookConfigResponsePtrOutputWithContext(ctx context.Context) WebhookConfigResponsePtrOutput {
-	return o.ApplyT(func(v WebhookConfigResponse) *WebhookConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebhookConfigResponse) *WebhookConfigResponse {
 		return &v
 	}).(WebhookConfigResponsePtrOutput)
 }
@@ -11051,7 +11333,13 @@ func (o WebhookConfigResponsePtrOutput) ToWebhookConfigResponsePtrOutputWithCont
 }
 
 func (o WebhookConfigResponsePtrOutput) Elem() WebhookConfigResponseOutput {
-	return o.ApplyT(func(v *WebhookConfigResponse) WebhookConfigResponse { return *v }).(WebhookConfigResponseOutput)
+	return o.ApplyT(func(v *WebhookConfigResponse) WebhookConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WebhookConfigResponse
+		return ret
+	}).(WebhookConfigResponseOutput)
 }
 
 // Resource name for the secret required as a URL parameter.
@@ -11174,7 +11462,7 @@ func (o WorkerConfigOutput) ToWorkerConfigPtrOutput() WorkerConfigPtrOutput {
 }
 
 func (o WorkerConfigOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerConfigPtrOutput {
-	return o.ApplyT(func(v WorkerConfig) *WorkerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerConfig) *WorkerConfig {
 		return &v
 	}).(WorkerConfigPtrOutput)
 }
@@ -11204,7 +11492,13 @@ func (o WorkerConfigPtrOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Co
 }
 
 func (o WorkerConfigPtrOutput) Elem() WorkerConfigOutput {
-	return o.ApplyT(func(v *WorkerConfig) WorkerConfig { return *v }).(WorkerConfigOutput)
+	return o.ApplyT(func(v *WorkerConfig) WorkerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerConfig
+		return ret
+	}).(WorkerConfigOutput)
 }
 
 // Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
@@ -11327,7 +11621,7 @@ func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutput() WorkerConf
 }
 
 func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
-	return o.ApplyT(func(v WorkerConfigResponse) *WorkerConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerConfigResponse) *WorkerConfigResponse {
 		return &v
 	}).(WorkerConfigResponsePtrOutput)
 }
@@ -11357,7 +11651,13 @@ func (o WorkerConfigResponsePtrOutput) ToWorkerConfigResponsePtrOutputWithContex
 }
 
 func (o WorkerConfigResponsePtrOutput) Elem() WorkerConfigResponseOutput {
-	return o.ApplyT(func(v *WorkerConfigResponse) WorkerConfigResponse { return *v }).(WorkerConfigResponseOutput)
+	return o.ApplyT(func(v *WorkerConfigResponse) WorkerConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerConfigResponse
+		return ret
+	}).(WorkerConfigResponseOutput)
 }
 
 // Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.

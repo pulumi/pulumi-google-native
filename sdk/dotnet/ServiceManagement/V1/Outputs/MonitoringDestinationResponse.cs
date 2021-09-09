@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration of a specific monitoring destination (the producer project or the consumer project).
+    /// </summary>
     [OutputType]
     public sealed class MonitoringDestinationResponse
     {

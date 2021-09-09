@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// [Output only] Represents status related to the future reservation.
+    /// </summary>
     [OutputType]
     public sealed class FutureReservationStatusResponse
     {

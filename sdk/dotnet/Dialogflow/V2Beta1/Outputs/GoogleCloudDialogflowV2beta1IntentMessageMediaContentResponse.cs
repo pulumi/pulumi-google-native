@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 {
 
+    /// <summary>
+    /// The media content card for Actions on Google.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse
     {

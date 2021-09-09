@@ -4,6 +4,9 @@
 package v2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,4 +37,66 @@ type LookupAppProfileResult struct {
 	Name string `pulumi:"name"`
 	// Use a single-cluster routing policy.
 	SingleClusterRouting SingleClusterRoutingResponse `pulumi:"singleClusterRouting"`
+}
+
+func LookupAppProfileOutput(ctx *pulumi.Context, args LookupAppProfileOutputArgs, opts ...pulumi.InvokeOption) LookupAppProfileResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAppProfileResult, error) {
+			args := v.(LookupAppProfileArgs)
+			r, err := LookupAppProfile(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAppProfileResultOutput)
+}
+
+type LookupAppProfileOutputArgs struct {
+	AppProfileId pulumi.StringInput    `pulumi:"appProfileId"`
+	InstanceId   pulumi.StringInput    `pulumi:"instanceId"`
+	Project      pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupAppProfileOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAppProfileArgs)(nil)).Elem()
+}
+
+type LookupAppProfileResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAppProfileResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAppProfileResult)(nil)).Elem()
+}
+
+func (o LookupAppProfileResultOutput) ToLookupAppProfileResultOutput() LookupAppProfileResultOutput {
+	return o
+}
+
+func (o LookupAppProfileResultOutput) ToLookupAppProfileResultOutputWithContext(ctx context.Context) LookupAppProfileResultOutput {
+	return o
+}
+
+// Long form description of the use case for this AppProfile.
+func (o LookupAppProfileResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppProfileResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
+func (o LookupAppProfileResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppProfileResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Use a multi-cluster routing policy.
+func (o LookupAppProfileResultOutput) MultiClusterRoutingUseAny() MultiClusterRoutingUseAnyResponseOutput {
+	return o.ApplyT(func(v LookupAppProfileResult) MultiClusterRoutingUseAnyResponse { return v.MultiClusterRoutingUseAny }).(MultiClusterRoutingUseAnyResponseOutput)
+}
+
+// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
+func (o LookupAppProfileResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppProfileResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Use a single-cluster routing policy.
+func (o LookupAppProfileResultOutput) SingleClusterRouting() SingleClusterRoutingResponseOutput {
+	return o.ApplyT(func(v LookupAppProfileResult) SingleClusterRoutingResponse { return v.SingleClusterRouting }).(SingleClusterRoutingResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAppProfileResultOutput{})
 }

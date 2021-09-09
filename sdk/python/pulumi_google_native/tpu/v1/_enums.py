@@ -14,14 +14,26 @@ class NodeHealth(str, Enum):
     The health status of the TPU node.
     """
     HEALTH_UNSPECIFIED = "HEALTH_UNSPECIFIED"
-    """Health status is unknown: not initialized or failed to retrieve."""
+    """
+    Health status is unknown: not initialized or failed to retrieve.
+    """
     HEALTHY = "HEALTHY"
-    """The resource is healthy."""
+    """
+    The resource is healthy.
+    """
     DEPRECATED_UNHEALTHY = "DEPRECATED_UNHEALTHY"
-    """The resource is unhealthy."""
+    """
+    The resource is unhealthy.
+    """
     TIMEOUT = "TIMEOUT"
-    """The resource is unresponsive."""
+    """
+    The resource is unresponsive.
+    """
     UNHEALTHY_TENSORFLOW = "UNHEALTHY_TENSORFLOW"
-    """The in-guest ML stack is unhealthy."""
+    """
+    The in-guest ML stack is unhealthy.
+    """
     UNHEALTHY_MAINTENANCE = "UNHEALTHY_MAINTENANCE"
-    """The node is under maintenance/priority boost caused rescheduling and will resume running once rescheduled."""
+    """
+    The node is under maintenance/priority boost caused rescheduling and will resume running once rescheduled.
+    """

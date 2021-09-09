@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// An instance-attached disk resource.
+    /// </summary>
     [OutputType]
     public sealed class SavedAttachedDiskResponse
     {

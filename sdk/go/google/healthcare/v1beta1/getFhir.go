@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,4 +36,59 @@ type GetFhirResult struct {
 	Data string `pulumi:"data"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions []map[string]string `pulumi:"extensions"`
+}
+
+func GetFhirOutput(ctx *pulumi.Context, args GetFhirOutputArgs, opts ...pulumi.InvokeOption) GetFhirResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetFhirResult, error) {
+			args := v.(GetFhirArgs)
+			r, err := GetFhir(ctx, &args, opts...)
+			return *r, err
+		}).(GetFhirResultOutput)
+}
+
+type GetFhirOutputArgs struct {
+	DatasetId   pulumi.StringInput    `pulumi:"datasetId"`
+	FhirId      pulumi.StringInput    `pulumi:"fhirId"`
+	FhirId1     pulumi.StringInput    `pulumi:"fhirId1"`
+	FhirStoreId pulumi.StringInput    `pulumi:"fhirStoreId"`
+	Location    pulumi.StringInput    `pulumi:"location"`
+	Project     pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (GetFhirOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFhirArgs)(nil)).Elem()
+}
+
+type GetFhirResultOutput struct{ *pulumi.OutputState }
+
+func (GetFhirResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFhirResult)(nil)).Elem()
+}
+
+func (o GetFhirResultOutput) ToGetFhirResultOutput() GetFhirResultOutput {
+	return o
+}
+
+func (o GetFhirResultOutput) ToGetFhirResultOutputWithContext(ctx context.Context) GetFhirResultOutput {
+	return o
+}
+
+// The HTTP Content-Type header value specifying the content type of the body.
+func (o GetFhirResultOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFhirResult) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The HTTP request/response body as raw binary.
+func (o GetFhirResultOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFhirResult) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// Application specific response metadata. Must be set in the first response for streaming APIs.
+func (o GetFhirResultOutput) Extensions() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v GetFhirResult) []map[string]string { return v.Extensions }).(pulumi.StringMapArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetFhirResultOutput{})
 }

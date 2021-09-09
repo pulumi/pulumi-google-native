@@ -546,7 +546,7 @@ func (o AuthorityOutput) ToAuthorityPtrOutput() AuthorityPtrOutput {
 }
 
 func (o AuthorityOutput) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
-	return o.ApplyT(func(v Authority) *Authority {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Authority) *Authority {
 		return &v
 	}).(AuthorityPtrOutput)
 }
@@ -576,7 +576,13 @@ func (o AuthorityPtrOutput) ToAuthorityPtrOutputWithContext(ctx context.Context)
 }
 
 func (o AuthorityPtrOutput) Elem() AuthorityOutput {
-	return o.ApplyT(func(v *Authority) Authority { return *v }).(AuthorityOutput)
+	return o.ApplyT(func(v *Authority) Authority {
+		if v != nil {
+			return *v
+		}
+		var ret Authority
+		return ret
+	}).(AuthorityOutput)
 }
 
 // Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer, unless `oidc_jwks` is set. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
@@ -707,7 +713,7 @@ func (o AuthorityResponseOutput) ToAuthorityResponsePtrOutput() AuthorityRespons
 }
 
 func (o AuthorityResponseOutput) ToAuthorityResponsePtrOutputWithContext(ctx context.Context) AuthorityResponsePtrOutput {
-	return o.ApplyT(func(v AuthorityResponse) *AuthorityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityResponse) *AuthorityResponse {
 		return &v
 	}).(AuthorityResponsePtrOutput)
 }
@@ -747,7 +753,13 @@ func (o AuthorityResponsePtrOutput) ToAuthorityResponsePtrOutputWithContext(ctx 
 }
 
 func (o AuthorityResponsePtrOutput) Elem() AuthorityResponseOutput {
-	return o.ApplyT(func(v *AuthorityResponse) AuthorityResponse { return *v }).(AuthorityResponseOutput)
+	return o.ApplyT(func(v *AuthorityResponse) AuthorityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityResponse
+		return ret
+	}).(AuthorityResponseOutput)
 }
 
 // An identity provider that reflects the `issuer` in the workload identity pool.
@@ -1134,7 +1146,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1174,7 +1186,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1395,7 +1413,7 @@ func (o GkeClusterOutput) ToGkeClusterPtrOutput() GkeClusterPtrOutput {
 }
 
 func (o GkeClusterOutput) ToGkeClusterPtrOutputWithContext(ctx context.Context) GkeClusterPtrOutput {
-	return o.ApplyT(func(v GkeCluster) *GkeCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeCluster) *GkeCluster {
 		return &v
 	}).(GkeClusterPtrOutput)
 }
@@ -1420,7 +1438,13 @@ func (o GkeClusterPtrOutput) ToGkeClusterPtrOutputWithContext(ctx context.Contex
 }
 
 func (o GkeClusterPtrOutput) Elem() GkeClusterOutput {
-	return o.ApplyT(func(v *GkeCluster) GkeCluster { return *v }).(GkeClusterOutput)
+	return o.ApplyT(func(v *GkeCluster) GkeCluster {
+		if v != nil {
+			return *v
+		}
+		var ret GkeCluster
+		return ret
+	}).(GkeClusterOutput)
 }
 
 // Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
@@ -1533,7 +1557,7 @@ func (o GkeClusterResponseOutput) ToGkeClusterResponsePtrOutput() GkeClusterResp
 }
 
 func (o GkeClusterResponseOutput) ToGkeClusterResponsePtrOutputWithContext(ctx context.Context) GkeClusterResponsePtrOutput {
-	return o.ApplyT(func(v GkeClusterResponse) *GkeClusterResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeClusterResponse) *GkeClusterResponse {
 		return &v
 	}).(GkeClusterResponsePtrOutput)
 }
@@ -1563,7 +1587,13 @@ func (o GkeClusterResponsePtrOutput) ToGkeClusterResponsePtrOutputWithContext(ct
 }
 
 func (o GkeClusterResponsePtrOutput) Elem() GkeClusterResponseOutput {
-	return o.ApplyT(func(v *GkeClusterResponse) GkeClusterResponse { return *v }).(GkeClusterResponseOutput)
+	return o.ApplyT(func(v *GkeClusterResponse) GkeClusterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GkeClusterResponse
+		return ret
+	}).(GkeClusterResponseOutput)
 }
 
 // If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
@@ -1702,7 +1732,7 @@ func (o KubernetesMetadataResponseOutput) ToKubernetesMetadataResponsePtrOutput(
 }
 
 func (o KubernetesMetadataResponseOutput) ToKubernetesMetadataResponsePtrOutputWithContext(ctx context.Context) KubernetesMetadataResponsePtrOutput {
-	return o.ApplyT(func(v KubernetesMetadataResponse) *KubernetesMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesMetadataResponse) *KubernetesMetadataResponse {
 		return &v
 	}).(KubernetesMetadataResponsePtrOutput)
 }
@@ -1752,7 +1782,13 @@ func (o KubernetesMetadataResponsePtrOutput) ToKubernetesMetadataResponsePtrOutp
 }
 
 func (o KubernetesMetadataResponsePtrOutput) Elem() KubernetesMetadataResponseOutput {
-	return o.ApplyT(func(v *KubernetesMetadataResponse) KubernetesMetadataResponse { return *v }).(KubernetesMetadataResponseOutput)
+	return o.ApplyT(func(v *KubernetesMetadataResponse) KubernetesMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesMetadataResponse
+		return ret
+	}).(KubernetesMetadataResponseOutput)
 }
 
 // Kubernetes API server version string as reported by '/version'.
@@ -1915,7 +1951,7 @@ func (o KubernetesResourceOutput) ToKubernetesResourcePtrOutput() KubernetesReso
 }
 
 func (o KubernetesResourceOutput) ToKubernetesResourcePtrOutputWithContext(ctx context.Context) KubernetesResourcePtrOutput {
-	return o.ApplyT(func(v KubernetesResource) *KubernetesResource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesResource) *KubernetesResource {
 		return &v
 	}).(KubernetesResourcePtrOutput)
 }
@@ -1945,7 +1981,13 @@ func (o KubernetesResourcePtrOutput) ToKubernetesResourcePtrOutputWithContext(ct
 }
 
 func (o KubernetesResourcePtrOutput) Elem() KubernetesResourceOutput {
-	return o.ApplyT(func(v *KubernetesResource) KubernetesResource { return *v }).(KubernetesResourceOutput)
+	return o.ApplyT(func(v *KubernetesResource) KubernetesResource {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesResource
+		return ret
+	}).(KubernetesResourceOutput)
 }
 
 // Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during Create or Update, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
@@ -2076,7 +2118,7 @@ func (o KubernetesResourceResponseOutput) ToKubernetesResourceResponsePtrOutput(
 }
 
 func (o KubernetesResourceResponseOutput) ToKubernetesResourceResponsePtrOutputWithContext(ctx context.Context) KubernetesResourceResponsePtrOutput {
-	return o.ApplyT(func(v KubernetesResourceResponse) *KubernetesResourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesResourceResponse) *KubernetesResourceResponse {
 		return &v
 	}).(KubernetesResourceResponsePtrOutput)
 }
@@ -2116,7 +2158,13 @@ func (o KubernetesResourceResponsePtrOutput) ToKubernetesResourceResponsePtrOutp
 }
 
 func (o KubernetesResourceResponsePtrOutput) Elem() KubernetesResourceResponseOutput {
-	return o.ApplyT(func(v *KubernetesResourceResponse) KubernetesResourceResponse { return *v }).(KubernetesResourceResponseOutput)
+	return o.ApplyT(func(v *KubernetesResourceResponse) KubernetesResourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesResourceResponse
+		return ret
+	}).(KubernetesResourceResponseOutput)
 }
 
 // The Kubernetes resources for installing the GKE Connect agent. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
@@ -2259,7 +2307,7 @@ func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutput() MembershipEndp
 }
 
 func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutputWithContext(ctx context.Context) MembershipEndpointPtrOutput {
-	return o.ApplyT(func(v MembershipEndpoint) *MembershipEndpoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipEndpoint) *MembershipEndpoint {
 		return &v
 	}).(MembershipEndpointPtrOutput)
 }
@@ -2289,7 +2337,13 @@ func (o MembershipEndpointPtrOutput) ToMembershipEndpointPtrOutputWithContext(ct
 }
 
 func (o MembershipEndpointPtrOutput) Elem() MembershipEndpointOutput {
-	return o.ApplyT(func(v *MembershipEndpoint) MembershipEndpoint { return *v }).(MembershipEndpointOutput)
+	return o.ApplyT(func(v *MembershipEndpoint) MembershipEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipEndpoint
+		return ret
+	}).(MembershipEndpointOutput)
 }
 
 // Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
@@ -2416,7 +2470,7 @@ func (o MembershipEndpointResponseOutput) ToMembershipEndpointResponsePtrOutput(
 }
 
 func (o MembershipEndpointResponseOutput) ToMembershipEndpointResponsePtrOutputWithContext(ctx context.Context) MembershipEndpointResponsePtrOutput {
-	return o.ApplyT(func(v MembershipEndpointResponse) *MembershipEndpointResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipEndpointResponse) *MembershipEndpointResponse {
 		return &v
 	}).(MembershipEndpointResponsePtrOutput)
 }
@@ -2451,7 +2505,13 @@ func (o MembershipEndpointResponsePtrOutput) ToMembershipEndpointResponsePtrOutp
 }
 
 func (o MembershipEndpointResponsePtrOutput) Elem() MembershipEndpointResponseOutput {
-	return o.ApplyT(func(v *MembershipEndpointResponse) MembershipEndpointResponse { return *v }).(MembershipEndpointResponseOutput)
+	return o.ApplyT(func(v *MembershipEndpointResponse) MembershipEndpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipEndpointResponse
+		return ret
+	}).(MembershipEndpointResponseOutput)
 }
 
 // Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
@@ -2580,7 +2640,7 @@ func (o MembershipStateResponseOutput) ToMembershipStateResponsePtrOutput() Memb
 }
 
 func (o MembershipStateResponseOutput) ToMembershipStateResponsePtrOutputWithContext(ctx context.Context) MembershipStateResponsePtrOutput {
-	return o.ApplyT(func(v MembershipStateResponse) *MembershipStateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipStateResponse) *MembershipStateResponse {
 		return &v
 	}).(MembershipStateResponsePtrOutput)
 }
@@ -2605,7 +2665,13 @@ func (o MembershipStateResponsePtrOutput) ToMembershipStateResponsePtrOutputWith
 }
 
 func (o MembershipStateResponsePtrOutput) Elem() MembershipStateResponseOutput {
-	return o.ApplyT(func(v *MembershipStateResponse) MembershipStateResponse { return *v }).(MembershipStateResponseOutput)
+	return o.ApplyT(func(v *MembershipStateResponse) MembershipStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipStateResponse
+		return ret
+	}).(MembershipStateResponseOutput)
 }
 
 // The current state of the Membership resource.
@@ -2827,7 +2893,7 @@ func (o ResourceOptionsOutput) ToResourceOptionsPtrOutput() ResourceOptionsPtrOu
 }
 
 func (o ResourceOptionsOutput) ToResourceOptionsPtrOutputWithContext(ctx context.Context) ResourceOptionsPtrOutput {
-	return o.ApplyT(func(v ResourceOptions) *ResourceOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceOptions) *ResourceOptions {
 		return &v
 	}).(ResourceOptionsPtrOutput)
 }
@@ -2857,7 +2923,13 @@ func (o ResourceOptionsPtrOutput) ToResourceOptionsPtrOutputWithContext(ctx cont
 }
 
 func (o ResourceOptionsPtrOutput) Elem() ResourceOptionsOutput {
-	return o.ApplyT(func(v *ResourceOptions) ResourceOptions { return *v }).(ResourceOptionsOutput)
+	return o.ApplyT(func(v *ResourceOptions) ResourceOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceOptions
+		return ret
+	}).(ResourceOptionsOutput)
 }
 
 // Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
@@ -2980,7 +3052,7 @@ func (o ResourceOptionsResponseOutput) ToResourceOptionsResponsePtrOutput() Reso
 }
 
 func (o ResourceOptionsResponseOutput) ToResourceOptionsResponsePtrOutputWithContext(ctx context.Context) ResourceOptionsResponsePtrOutput {
-	return o.ApplyT(func(v ResourceOptionsResponse) *ResourceOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceOptionsResponse) *ResourceOptionsResponse {
 		return &v
 	}).(ResourceOptionsResponsePtrOutput)
 }
@@ -3010,7 +3082,13 @@ func (o ResourceOptionsResponsePtrOutput) ToResourceOptionsResponsePtrOutputWith
 }
 
 func (o ResourceOptionsResponsePtrOutput) Elem() ResourceOptionsResponseOutput {
-	return o.ApplyT(func(v *ResourceOptionsResponse) ResourceOptionsResponse { return *v }).(ResourceOptionsResponseOutput)
+	return o.ApplyT(func(v *ResourceOptionsResponse) ResourceOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceOptionsResponse
+		return ret
+	}).(ResourceOptionsResponseOutput)
 }
 
 // Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.

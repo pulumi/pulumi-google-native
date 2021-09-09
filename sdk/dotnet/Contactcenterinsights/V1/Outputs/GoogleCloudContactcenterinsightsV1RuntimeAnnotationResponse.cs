@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// An annotation that was generated during the customer and agent interaction.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse
     {

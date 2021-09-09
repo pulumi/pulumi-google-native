@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a secondary IP range of a subnetwork.
+    /// </summary>
     [OutputType]
     public sealed class SubnetworkSecondaryRangeResponse
     {

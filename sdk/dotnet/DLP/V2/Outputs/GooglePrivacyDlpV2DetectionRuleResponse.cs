@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Deprecated; use `InspectionRuleSet` instead. Rule for modifying a `CustomInfoType` to alter behavior under certain circumstances, depending on the specific details of the rule. Not supported for the `surrogate_type` custom infoType.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2DetectionRuleResponse
     {

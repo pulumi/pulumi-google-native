@@ -114,7 +114,7 @@ func (o InstanceTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type InstanceTierPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceTierPtrOutput) ElementType() reflect.Type {
-	return instanceTierPtrType
+	return reflect.TypeOf((**InstanceTier)(nil)).Elem()
 }
 
 func (o InstanceTierPtrOutput) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
@@ -123,6 +123,16 @@ func (o InstanceTierPtrOutput) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
 
 func (o InstanceTierPtrOutput) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
 	return o
+}
+
+func (o InstanceTierPtrOutput) Elem() InstanceTierOutput {
+	return o.ApplyT(func(v *InstanceTier) InstanceTier {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceTier
+		return ret
+	}).(InstanceTierOutput)
 }
 
 func (o InstanceTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -137,16 +147,6 @@ func (o InstanceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceTierPtrOutput) Elem() InstanceTierOutput {
-	return o.ApplyT(func(v *InstanceTier) InstanceTier {
-		var ret InstanceTier
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceTierOutput)
 }
 
 // InstanceTierInput is an input type that accepts InstanceTierArgs and InstanceTierOutput values.
@@ -283,7 +283,7 @@ func (o NetworkConfigConnectModeOutput) ToStringPtrOutputWithContext(ctx context
 type NetworkConfigConnectModePtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkConfigConnectModePtrOutput) ElementType() reflect.Type {
-	return networkConfigConnectModePtrType
+	return reflect.TypeOf((**NetworkConfigConnectMode)(nil)).Elem()
 }
 
 func (o NetworkConfigConnectModePtrOutput) ToNetworkConfigConnectModePtrOutput() NetworkConfigConnectModePtrOutput {
@@ -292,6 +292,16 @@ func (o NetworkConfigConnectModePtrOutput) ToNetworkConfigConnectModePtrOutput()
 
 func (o NetworkConfigConnectModePtrOutput) ToNetworkConfigConnectModePtrOutputWithContext(ctx context.Context) NetworkConfigConnectModePtrOutput {
 	return o
+}
+
+func (o NetworkConfigConnectModePtrOutput) Elem() NetworkConfigConnectModeOutput {
+	return o.ApplyT(func(v *NetworkConfigConnectMode) NetworkConfigConnectMode {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfigConnectMode
+		return ret
+	}).(NetworkConfigConnectModeOutput)
 }
 
 func (o NetworkConfigConnectModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -306,16 +316,6 @@ func (o NetworkConfigConnectModePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NetworkConfigConnectModePtrOutput) Elem() NetworkConfigConnectModeOutput {
-	return o.ApplyT(func(v *NetworkConfigConnectMode) NetworkConfigConnectMode {
-		var ret NetworkConfigConnectMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NetworkConfigConnectModeOutput)
 }
 
 // NetworkConfigConnectModeInput is an input type that accepts NetworkConfigConnectModeArgs and NetworkConfigConnectModeOutput values.
@@ -449,7 +449,7 @@ func (o NetworkConfigModesItemOutput) ToStringPtrOutputWithContext(ctx context.C
 type NetworkConfigModesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkConfigModesItemPtrOutput) ElementType() reflect.Type {
-	return networkConfigModesItemPtrType
+	return reflect.TypeOf((**NetworkConfigModesItem)(nil)).Elem()
 }
 
 func (o NetworkConfigModesItemPtrOutput) ToNetworkConfigModesItemPtrOutput() NetworkConfigModesItemPtrOutput {
@@ -458,6 +458,16 @@ func (o NetworkConfigModesItemPtrOutput) ToNetworkConfigModesItemPtrOutput() Net
 
 func (o NetworkConfigModesItemPtrOutput) ToNetworkConfigModesItemPtrOutputWithContext(ctx context.Context) NetworkConfigModesItemPtrOutput {
 	return o
+}
+
+func (o NetworkConfigModesItemPtrOutput) Elem() NetworkConfigModesItemOutput {
+	return o.ApplyT(func(v *NetworkConfigModesItem) NetworkConfigModesItem {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfigModesItem
+		return ret
+	}).(NetworkConfigModesItemOutput)
 }
 
 func (o NetworkConfigModesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -472,16 +482,6 @@ func (o NetworkConfigModesItemPtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NetworkConfigModesItemPtrOutput) Elem() NetworkConfigModesItemOutput {
-	return o.ApplyT(func(v *NetworkConfigModesItem) NetworkConfigModesItem {
-		var ret NetworkConfigModesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NetworkConfigModesItemOutput)
 }
 
 // NetworkConfigModesItemInput is an input type that accepts NetworkConfigModesItemArgs and NetworkConfigModesItemOutput values.
@@ -562,8 +562,8 @@ func (o NetworkConfigModesItemArrayOutput) ToNetworkConfigModesItemArrayOutputWi
 }
 
 func (o NetworkConfigModesItemArrayOutput) Index(i pulumi.IntInput) NetworkConfigModesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkConfigModesItemOutput {
-		return vs[0].([]NetworkConfigModesItem)[vs[1].(int)].ToNetworkConfigModesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkConfigModesItem {
+		return vs[0].([]NetworkConfigModesItem)[vs[1].(int)]
 	}).(NetworkConfigModesItemOutput)
 }
 
@@ -663,7 +663,7 @@ func (o NfsExportOptionsAccessModeOutput) ToStringPtrOutputWithContext(ctx conte
 type NfsExportOptionsAccessModePtrOutput struct{ *pulumi.OutputState }
 
 func (NfsExportOptionsAccessModePtrOutput) ElementType() reflect.Type {
-	return nfsExportOptionsAccessModePtrType
+	return reflect.TypeOf((**NfsExportOptionsAccessMode)(nil)).Elem()
 }
 
 func (o NfsExportOptionsAccessModePtrOutput) ToNfsExportOptionsAccessModePtrOutput() NfsExportOptionsAccessModePtrOutput {
@@ -672,6 +672,16 @@ func (o NfsExportOptionsAccessModePtrOutput) ToNfsExportOptionsAccessModePtrOutp
 
 func (o NfsExportOptionsAccessModePtrOutput) ToNfsExportOptionsAccessModePtrOutputWithContext(ctx context.Context) NfsExportOptionsAccessModePtrOutput {
 	return o
+}
+
+func (o NfsExportOptionsAccessModePtrOutput) Elem() NfsExportOptionsAccessModeOutput {
+	return o.ApplyT(func(v *NfsExportOptionsAccessMode) NfsExportOptionsAccessMode {
+		if v != nil {
+			return *v
+		}
+		var ret NfsExportOptionsAccessMode
+		return ret
+	}).(NfsExportOptionsAccessModeOutput)
 }
 
 func (o NfsExportOptionsAccessModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -686,16 +696,6 @@ func (o NfsExportOptionsAccessModePtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NfsExportOptionsAccessModePtrOutput) Elem() NfsExportOptionsAccessModeOutput {
-	return o.ApplyT(func(v *NfsExportOptionsAccessMode) NfsExportOptionsAccessMode {
-		var ret NfsExportOptionsAccessMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NfsExportOptionsAccessModeOutput)
 }
 
 // NfsExportOptionsAccessModeInput is an input type that accepts NfsExportOptionsAccessModeArgs and NfsExportOptionsAccessModeOutput values.
@@ -832,7 +832,7 @@ func (o NfsExportOptionsSquashModeOutput) ToStringPtrOutputWithContext(ctx conte
 type NfsExportOptionsSquashModePtrOutput struct{ *pulumi.OutputState }
 
 func (NfsExportOptionsSquashModePtrOutput) ElementType() reflect.Type {
-	return nfsExportOptionsSquashModePtrType
+	return reflect.TypeOf((**NfsExportOptionsSquashMode)(nil)).Elem()
 }
 
 func (o NfsExportOptionsSquashModePtrOutput) ToNfsExportOptionsSquashModePtrOutput() NfsExportOptionsSquashModePtrOutput {
@@ -841,6 +841,16 @@ func (o NfsExportOptionsSquashModePtrOutput) ToNfsExportOptionsSquashModePtrOutp
 
 func (o NfsExportOptionsSquashModePtrOutput) ToNfsExportOptionsSquashModePtrOutputWithContext(ctx context.Context) NfsExportOptionsSquashModePtrOutput {
 	return o
+}
+
+func (o NfsExportOptionsSquashModePtrOutput) Elem() NfsExportOptionsSquashModeOutput {
+	return o.ApplyT(func(v *NfsExportOptionsSquashMode) NfsExportOptionsSquashMode {
+		if v != nil {
+			return *v
+		}
+		var ret NfsExportOptionsSquashMode
+		return ret
+	}).(NfsExportOptionsSquashModeOutput)
 }
 
 func (o NfsExportOptionsSquashModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -855,16 +865,6 @@ func (o NfsExportOptionsSquashModePtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NfsExportOptionsSquashModePtrOutput) Elem() NfsExportOptionsSquashModeOutput {
-	return o.ApplyT(func(v *NfsExportOptionsSquashMode) NfsExportOptionsSquashMode {
-		var ret NfsExportOptionsSquashMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NfsExportOptionsSquashModeOutput)
 }
 
 // NfsExportOptionsSquashModeInput is an input type that accepts NfsExportOptionsSquashModeArgs and NfsExportOptionsSquashModeOutput values.

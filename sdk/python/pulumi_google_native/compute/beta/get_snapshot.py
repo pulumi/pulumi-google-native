@@ -13,6 +13,7 @@ __all__ = [
     'GetSnapshotResult',
     'AwaitableGetSnapshotResult',
     'get_snapshot',
+    'get_snapshot_output',
 ]
 
 @pulumi.output_type
@@ -369,3 +370,13 @@ def get_snapshot(project: Optional[str] = None,
         storage_bytes_status=__ret__.storage_bytes_status,
         storage_locations=__ret__.storage_locations,
         user_licenses=__ret__.user_licenses)
+
+
+@_utilities.lift_output_func(get_snapshot)
+def get_snapshot_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                        snapshot: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
+    """
+    Returns the specified Snapshot resource. Gets a list of available snapshots by making a list() request.
+    """
+    ...

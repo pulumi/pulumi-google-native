@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
+    /// </summary>
     [OutputType]
     public sealed class StatusConditionResponse
     {

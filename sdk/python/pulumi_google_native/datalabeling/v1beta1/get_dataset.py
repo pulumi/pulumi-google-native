@@ -13,6 +13,7 @@ __all__ = [
     'GetDatasetResult',
     'AwaitableGetDatasetResult',
     'get_dataset',
+    'get_dataset_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,13 @@ def get_dataset(dataset_id: Optional[str] = None,
         input_configs=__ret__.input_configs,
         last_migrate_time=__ret__.last_migrate_time,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_dataset)
+def get_dataset_output(dataset_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetResult]:
+    """
+    Gets dataset by resource name.
+    """
+    ...

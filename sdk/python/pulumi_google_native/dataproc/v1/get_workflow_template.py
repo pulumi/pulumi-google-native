@@ -13,6 +13,7 @@ __all__ = [
     'GetWorkflowTemplateResult',
     'AwaitableGetWorkflowTemplateResult',
     'get_workflow_template',
+    'get_workflow_template_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,15 @@ def get_workflow_template(location: Optional[str] = None,
         placement=__ret__.placement,
         update_time=__ret__.update_time,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_workflow_template)
+def get_workflow_template_output(location: Optional[pulumi.Input[str]] = None,
+                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 version: Optional[pulumi.Input[Optional[str]]] = None,
+                                 workflow_template_id: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkflowTemplateResult]:
+    """
+    Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter.
+    """
+    ...

@@ -114,9 +114,7 @@ func (i *Participant) ToParticipantOutputWithContext(ctx context.Context) Partic
 	return pulumi.ToOutputWithContext(ctx, i).(ParticipantOutput)
 }
 
-type ParticipantOutput struct {
-	*pulumi.OutputState
-}
+type ParticipantOutput struct{ *pulumi.OutputState }
 
 func (ParticipantOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Participant)(nil))

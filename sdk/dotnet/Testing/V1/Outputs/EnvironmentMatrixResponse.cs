@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// The matrix of environments in which the test is to be executed.
+    /// </summary>
     [OutputType]
     public sealed class EnvironmentMatrixResponse
     {

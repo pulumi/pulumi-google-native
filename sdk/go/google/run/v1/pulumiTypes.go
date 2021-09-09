@@ -104,10 +104,11 @@ func (o AddressableOutput) ToAddressablePtrOutput() AddressablePtrOutput {
 }
 
 func (o AddressableOutput) ToAddressablePtrOutputWithContext(ctx context.Context) AddressablePtrOutput {
-	return o.ApplyT(func(v Addressable) *Addressable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Addressable) *Addressable {
 		return &v
 	}).(AddressablePtrOutput)
 }
+
 func (o AddressableOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Addressable) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -127,7 +128,13 @@ func (o AddressablePtrOutput) ToAddressablePtrOutputWithContext(ctx context.Cont
 }
 
 func (o AddressablePtrOutput) Elem() AddressableOutput {
-	return o.ApplyT(func(v *Addressable) Addressable { return *v }).(AddressableOutput)
+	return o.ApplyT(func(v *Addressable) Addressable {
+		if v != nil {
+			return *v
+		}
+		var ret Addressable
+		return ret
+	}).(AddressableOutput)
 }
 
 func (o AddressablePtrOutput) Url() pulumi.StringPtrOutput {
@@ -233,10 +240,11 @@ func (o AddressableResponseOutput) ToAddressableResponsePtrOutput() AddressableR
 }
 
 func (o AddressableResponseOutput) ToAddressableResponsePtrOutputWithContext(ctx context.Context) AddressableResponsePtrOutput {
-	return o.ApplyT(func(v AddressableResponse) *AddressableResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddressableResponse) *AddressableResponse {
 		return &v
 	}).(AddressableResponsePtrOutput)
 }
+
 func (o AddressableResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v AddressableResponse) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -256,7 +264,13 @@ func (o AddressableResponsePtrOutput) ToAddressableResponsePtrOutputWithContext(
 }
 
 func (o AddressableResponsePtrOutput) Elem() AddressableResponseOutput {
-	return o.ApplyT(func(v *AddressableResponse) AddressableResponse { return *v }).(AddressableResponseOutput)
+	return o.ApplyT(func(v *AddressableResponse) AddressableResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AddressableResponse
+		return ret
+	}).(AddressableResponseOutput)
 }
 
 func (o AddressableResponsePtrOutput) Url() pulumi.StringPtrOutput {
@@ -1044,7 +1058,7 @@ func (o ConfigMapEnvSourceOutput) ToConfigMapEnvSourcePtrOutput() ConfigMapEnvSo
 }
 
 func (o ConfigMapEnvSourceOutput) ToConfigMapEnvSourcePtrOutputWithContext(ctx context.Context) ConfigMapEnvSourcePtrOutput {
-	return o.ApplyT(func(v ConfigMapEnvSource) *ConfigMapEnvSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMapEnvSource) *ConfigMapEnvSource {
 		return &v
 	}).(ConfigMapEnvSourcePtrOutput)
 }
@@ -1079,7 +1093,13 @@ func (o ConfigMapEnvSourcePtrOutput) ToConfigMapEnvSourcePtrOutputWithContext(ct
 }
 
 func (o ConfigMapEnvSourcePtrOutput) Elem() ConfigMapEnvSourceOutput {
-	return o.ApplyT(func(v *ConfigMapEnvSource) ConfigMapEnvSource { return *v }).(ConfigMapEnvSourceOutput)
+	return o.ApplyT(func(v *ConfigMapEnvSource) ConfigMapEnvSource {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigMapEnvSource
+		return ret
+	}).(ConfigMapEnvSourceOutput)
 }
 
 // This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
@@ -1293,7 +1313,7 @@ func (o ConfigMapKeySelectorOutput) ToConfigMapKeySelectorPtrOutput() ConfigMapK
 }
 
 func (o ConfigMapKeySelectorOutput) ToConfigMapKeySelectorPtrOutputWithContext(ctx context.Context) ConfigMapKeySelectorPtrOutput {
-	return o.ApplyT(func(v ConfigMapKeySelector) *ConfigMapKeySelector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMapKeySelector) *ConfigMapKeySelector {
 		return &v
 	}).(ConfigMapKeySelectorPtrOutput)
 }
@@ -1333,7 +1353,13 @@ func (o ConfigMapKeySelectorPtrOutput) ToConfigMapKeySelectorPtrOutputWithContex
 }
 
 func (o ConfigMapKeySelectorPtrOutput) Elem() ConfigMapKeySelectorOutput {
-	return o.ApplyT(func(v *ConfigMapKeySelector) ConfigMapKeySelector { return *v }).(ConfigMapKeySelectorOutput)
+	return o.ApplyT(func(v *ConfigMapKeySelector) ConfigMapKeySelector {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigMapKeySelector
+		return ret
+	}).(ConfigMapKeySelectorOutput)
 }
 
 // The key to select.
@@ -1566,7 +1592,7 @@ func (o ConfigMapVolumeSourceOutput) ToConfigMapVolumeSourcePtrOutput() ConfigMa
 }
 
 func (o ConfigMapVolumeSourceOutput) ToConfigMapVolumeSourcePtrOutputWithContext(ctx context.Context) ConfigMapVolumeSourcePtrOutput {
-	return o.ApplyT(func(v ConfigMapVolumeSource) *ConfigMapVolumeSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMapVolumeSource) *ConfigMapVolumeSource {
 		return &v
 	}).(ConfigMapVolumeSourcePtrOutput)
 }
@@ -1606,7 +1632,13 @@ func (o ConfigMapVolumeSourcePtrOutput) ToConfigMapVolumeSourcePtrOutputWithCont
 }
 
 func (o ConfigMapVolumeSourcePtrOutput) Elem() ConfigMapVolumeSourceOutput {
-	return o.ApplyT(func(v *ConfigMapVolumeSource) ConfigMapVolumeSource { return *v }).(ConfigMapVolumeSourceOutput)
+	return o.ApplyT(func(v *ConfigMapVolumeSource) ConfigMapVolumeSource {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigMapVolumeSource
+		return ret
+	}).(ConfigMapVolumeSourceOutput)
 }
 
 // (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
@@ -2553,7 +2585,7 @@ func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutput() DomainMappingSpe
 }
 
 func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutputWithContext(ctx context.Context) DomainMappingSpecPtrOutput {
-	return o.ApplyT(func(v DomainMappingSpec) *DomainMappingSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingSpec) *DomainMappingSpec {
 		return &v
 	}).(DomainMappingSpecPtrOutput)
 }
@@ -2588,7 +2620,13 @@ func (o DomainMappingSpecPtrOutput) ToDomainMappingSpecPtrOutputWithContext(ctx 
 }
 
 func (o DomainMappingSpecPtrOutput) Elem() DomainMappingSpecOutput {
-	return o.ApplyT(func(v *DomainMappingSpec) DomainMappingSpec { return *v }).(DomainMappingSpecOutput)
+	return o.ApplyT(func(v *DomainMappingSpec) DomainMappingSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DomainMappingSpec
+		return ret
+	}).(DomainMappingSpecOutput)
 }
 
 // The mode of the certificate.
@@ -2725,7 +2763,7 @@ func (o DomainMappingSpecResponseOutput) ToDomainMappingSpecResponsePtrOutput() 
 }
 
 func (o DomainMappingSpecResponseOutput) ToDomainMappingSpecResponsePtrOutputWithContext(ctx context.Context) DomainMappingSpecResponsePtrOutput {
-	return o.ApplyT(func(v DomainMappingSpecResponse) *DomainMappingSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingSpecResponse) *DomainMappingSpecResponse {
 		return &v
 	}).(DomainMappingSpecResponsePtrOutput)
 }
@@ -2760,7 +2798,13 @@ func (o DomainMappingSpecResponsePtrOutput) ToDomainMappingSpecResponsePtrOutput
 }
 
 func (o DomainMappingSpecResponsePtrOutput) Elem() DomainMappingSpecResponseOutput {
-	return o.ApplyT(func(v *DomainMappingSpecResponse) DomainMappingSpecResponse { return *v }).(DomainMappingSpecResponseOutput)
+	return o.ApplyT(func(v *DomainMappingSpecResponse) DomainMappingSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DomainMappingSpecResponse
+		return ret
+	}).(DomainMappingSpecResponseOutput)
 }
 
 // The mode of the certificate.
@@ -2905,7 +2949,7 @@ func (o DomainMappingStatusOutput) ToDomainMappingStatusPtrOutput() DomainMappin
 }
 
 func (o DomainMappingStatusOutput) ToDomainMappingStatusPtrOutputWithContext(ctx context.Context) DomainMappingStatusPtrOutput {
-	return o.ApplyT(func(v DomainMappingStatus) *DomainMappingStatus {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingStatus) *DomainMappingStatus {
 		return &v
 	}).(DomainMappingStatusPtrOutput)
 }
@@ -2950,7 +2994,13 @@ func (o DomainMappingStatusPtrOutput) ToDomainMappingStatusPtrOutputWithContext(
 }
 
 func (o DomainMappingStatusPtrOutput) Elem() DomainMappingStatusOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) DomainMappingStatus { return *v }).(DomainMappingStatusOutput)
+	return o.ApplyT(func(v *DomainMappingStatus) DomainMappingStatus {
+		if v != nil {
+			return *v
+		}
+		var ret DomainMappingStatus
+		return ret
+	}).(DomainMappingStatusOutput)
 }
 
 // Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
@@ -3115,7 +3165,7 @@ func (o DomainMappingStatusResponseOutput) ToDomainMappingStatusResponsePtrOutpu
 }
 
 func (o DomainMappingStatusResponseOutput) ToDomainMappingStatusResponsePtrOutputWithContext(ctx context.Context) DomainMappingStatusResponsePtrOutput {
-	return o.ApplyT(func(v DomainMappingStatusResponse) *DomainMappingStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingStatusResponse) *DomainMappingStatusResponse {
 		return &v
 	}).(DomainMappingStatusResponsePtrOutput)
 }
@@ -3160,7 +3210,13 @@ func (o DomainMappingStatusResponsePtrOutput) ToDomainMappingStatusResponsePtrOu
 }
 
 func (o DomainMappingStatusResponsePtrOutput) Elem() DomainMappingStatusResponseOutput {
-	return o.ApplyT(func(v *DomainMappingStatusResponse) DomainMappingStatusResponse { return *v }).(DomainMappingStatusResponseOutput)
+	return o.ApplyT(func(v *DomainMappingStatusResponse) DomainMappingStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DomainMappingStatusResponse
+		return ret
+	}).(DomainMappingStatusResponseOutput)
 }
 
 // Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
@@ -3785,7 +3841,7 @@ func (o EnvVarSourceOutput) ToEnvVarSourcePtrOutput() EnvVarSourcePtrOutput {
 }
 
 func (o EnvVarSourceOutput) ToEnvVarSourcePtrOutputWithContext(ctx context.Context) EnvVarSourcePtrOutput {
-	return o.ApplyT(func(v EnvVarSource) *EnvVarSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvVarSource) *EnvVarSource {
 		return &v
 	}).(EnvVarSourcePtrOutput)
 }
@@ -3815,7 +3871,13 @@ func (o EnvVarSourcePtrOutput) ToEnvVarSourcePtrOutputWithContext(ctx context.Co
 }
 
 func (o EnvVarSourcePtrOutput) Elem() EnvVarSourceOutput {
-	return o.ApplyT(func(v *EnvVarSource) EnvVarSource { return *v }).(EnvVarSourceOutput)
+	return o.ApplyT(func(v *EnvVarSource) EnvVarSource {
+		if v != nil {
+			return *v
+		}
+		var ret EnvVarSource
+		return ret
+	}).(EnvVarSourceOutput)
 }
 
 // (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
@@ -3998,7 +4060,7 @@ func (o ExecActionOutput) ToExecActionPtrOutput() ExecActionPtrOutput {
 }
 
 func (o ExecActionOutput) ToExecActionPtrOutputWithContext(ctx context.Context) ExecActionPtrOutput {
-	return o.ApplyT(func(v ExecAction) *ExecAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecAction) *ExecAction {
 		return &v
 	}).(ExecActionPtrOutput)
 }
@@ -4023,7 +4085,13 @@ func (o ExecActionPtrOutput) ToExecActionPtrOutputWithContext(ctx context.Contex
 }
 
 func (o ExecActionPtrOutput) Elem() ExecActionOutput {
-	return o.ApplyT(func(v *ExecAction) ExecAction { return *v }).(ExecActionOutput)
+	return o.ApplyT(func(v *ExecAction) ExecAction {
+		if v != nil {
+			return *v
+		}
+		var ret ExecAction
+		return ret
+	}).(ExecActionOutput)
 }
 
 // (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
@@ -4199,7 +4267,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -4239,7 +4307,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -4762,7 +4836,7 @@ func (o HTTPGetActionOutput) ToHTTPGetActionPtrOutput() HTTPGetActionPtrOutput {
 }
 
 func (o HTTPGetActionOutput) ToHTTPGetActionPtrOutputWithContext(ctx context.Context) HTTPGetActionPtrOutput {
-	return o.ApplyT(func(v HTTPGetAction) *HTTPGetAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HTTPGetAction) *HTTPGetAction {
 		return &v
 	}).(HTTPGetActionPtrOutput)
 }
@@ -4802,7 +4876,13 @@ func (o HTTPGetActionPtrOutput) ToHTTPGetActionPtrOutputWithContext(ctx context.
 }
 
 func (o HTTPGetActionPtrOutput) Elem() HTTPGetActionOutput {
-	return o.ApplyT(func(v *HTTPGetAction) HTTPGetAction { return *v }).(HTTPGetActionOutput)
+	return o.ApplyT(func(v *HTTPGetAction) HTTPGetAction {
+		if v != nil {
+			return *v
+		}
+		var ret HTTPGetAction
+		return ret
+	}).(HTTPGetActionOutput)
 }
 
 // (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
@@ -5477,7 +5557,7 @@ func (o LocalObjectReferenceOutput) ToLocalObjectReferencePtrOutput() LocalObjec
 }
 
 func (o LocalObjectReferenceOutput) ToLocalObjectReferencePtrOutputWithContext(ctx context.Context) LocalObjectReferencePtrOutput {
-	return o.ApplyT(func(v LocalObjectReference) *LocalObjectReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocalObjectReference) *LocalObjectReference {
 		return &v
 	}).(LocalObjectReferencePtrOutput)
 }
@@ -5502,7 +5582,13 @@ func (o LocalObjectReferencePtrOutput) ToLocalObjectReferencePtrOutputWithContex
 }
 
 func (o LocalObjectReferencePtrOutput) Elem() LocalObjectReferenceOutput {
-	return o.ApplyT(func(v *LocalObjectReference) LocalObjectReference { return *v }).(LocalObjectReferenceOutput)
+	return o.ApplyT(func(v *LocalObjectReference) LocalObjectReference {
+		if v != nil {
+			return *v
+		}
+		var ret LocalObjectReference
+		return ret
+	}).(LocalObjectReferenceOutput)
 }
 
 // (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
@@ -5722,7 +5808,7 @@ func (o ObjectMetaOutput) ToObjectMetaPtrOutput() ObjectMetaPtrOutput {
 }
 
 func (o ObjectMetaOutput) ToObjectMetaPtrOutputWithContext(ctx context.Context) ObjectMetaPtrOutput {
-	return o.ApplyT(func(v ObjectMeta) *ObjectMeta {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectMeta) *ObjectMeta {
 		return &v
 	}).(ObjectMetaPtrOutput)
 }
@@ -5817,7 +5903,13 @@ func (o ObjectMetaPtrOutput) ToObjectMetaPtrOutputWithContext(ctx context.Contex
 }
 
 func (o ObjectMetaPtrOutput) Elem() ObjectMetaOutput {
-	return o.ApplyT(func(v *ObjectMeta) ObjectMeta { return *v }).(ObjectMetaOutput)
+	return o.ApplyT(func(v *ObjectMeta) ObjectMeta {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectMeta
+		return ret
+	}).(ObjectMetaOutput)
 }
 
 // (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
@@ -6122,7 +6214,7 @@ func (o ObjectMetaResponseOutput) ToObjectMetaResponsePtrOutput() ObjectMetaResp
 }
 
 func (o ObjectMetaResponseOutput) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
-	return o.ApplyT(func(v ObjectMetaResponse) *ObjectMetaResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectMetaResponse) *ObjectMetaResponse {
 		return &v
 	}).(ObjectMetaResponsePtrOutput)
 }
@@ -6217,7 +6309,13 @@ func (o ObjectMetaResponsePtrOutput) ToObjectMetaResponsePtrOutputWithContext(ct
 }
 
 func (o ObjectMetaResponsePtrOutput) Elem() ObjectMetaResponseOutput {
-	return o.ApplyT(func(v *ObjectMetaResponse) ObjectMetaResponse { return *v }).(ObjectMetaResponseOutput)
+	return o.ApplyT(func(v *ObjectMetaResponse) ObjectMetaResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectMetaResponse
+		return ret
+	}).(ObjectMetaResponseOutput)
 }
 
 // (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
@@ -6784,7 +6882,7 @@ func (o ProbeOutput) ToProbePtrOutput() ProbePtrOutput {
 }
 
 func (o ProbeOutput) ToProbePtrOutputWithContext(ctx context.Context) ProbePtrOutput {
-	return o.ApplyT(func(v Probe) *Probe {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Probe) *Probe {
 		return &v
 	}).(ProbePtrOutput)
 }
@@ -6844,7 +6942,13 @@ func (o ProbePtrOutput) ToProbePtrOutputWithContext(ctx context.Context) ProbePt
 }
 
 func (o ProbePtrOutput) Elem() ProbeOutput {
-	return o.ApplyT(func(v *Probe) Probe { return *v }).(ProbeOutput)
+	return o.ApplyT(func(v *Probe) Probe {
+		if v != nil {
+			return *v
+		}
+		var ret Probe
+		return ret
+	}).(ProbeOutput)
 }
 
 // (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
@@ -7381,7 +7485,7 @@ func (o ResourceRequirementsOutput) ToResourceRequirementsPtrOutput() ResourceRe
 }
 
 func (o ResourceRequirementsOutput) ToResourceRequirementsPtrOutputWithContext(ctx context.Context) ResourceRequirementsPtrOutput {
-	return o.ApplyT(func(v ResourceRequirements) *ResourceRequirements {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRequirements) *ResourceRequirements {
 		return &v
 	}).(ResourceRequirementsPtrOutput)
 }
@@ -7411,7 +7515,13 @@ func (o ResourceRequirementsPtrOutput) ToResourceRequirementsPtrOutputWithContex
 }
 
 func (o ResourceRequirementsPtrOutput) Elem() ResourceRequirementsOutput {
-	return o.ApplyT(func(v *ResourceRequirements) ResourceRequirements { return *v }).(ResourceRequirementsOutput)
+	return o.ApplyT(func(v *ResourceRequirements) ResourceRequirements {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceRequirements
+		return ret
+	}).(ResourceRequirementsOutput)
 }
 
 // (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
@@ -7608,7 +7718,7 @@ func (o RevisionSpecOutput) ToRevisionSpecPtrOutput() RevisionSpecPtrOutput {
 }
 
 func (o RevisionSpecOutput) ToRevisionSpecPtrOutputWithContext(ctx context.Context) RevisionSpecPtrOutput {
-	return o.ApplyT(func(v RevisionSpec) *RevisionSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RevisionSpec) *RevisionSpec {
 		return &v
 	}).(RevisionSpecPtrOutput)
 }
@@ -7652,7 +7762,13 @@ func (o RevisionSpecPtrOutput) ToRevisionSpecPtrOutputWithContext(ctx context.Co
 }
 
 func (o RevisionSpecPtrOutput) Elem() RevisionSpecOutput {
-	return o.ApplyT(func(v *RevisionSpec) RevisionSpec { return *v }).(RevisionSpecOutput)
+	return o.ApplyT(func(v *RevisionSpec) RevisionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret RevisionSpec
+		return ret
+	}).(RevisionSpecOutput)
 }
 
 // Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
@@ -7814,7 +7930,7 @@ func (o RevisionSpecResponseOutput) ToRevisionSpecResponsePtrOutput() RevisionSp
 }
 
 func (o RevisionSpecResponseOutput) ToRevisionSpecResponsePtrOutputWithContext(ctx context.Context) RevisionSpecResponsePtrOutput {
-	return o.ApplyT(func(v RevisionSpecResponse) *RevisionSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RevisionSpecResponse) *RevisionSpecResponse {
 		return &v
 	}).(RevisionSpecResponsePtrOutput)
 }
@@ -7858,7 +7974,13 @@ func (o RevisionSpecResponsePtrOutput) ToRevisionSpecResponsePtrOutputWithContex
 }
 
 func (o RevisionSpecResponsePtrOutput) Elem() RevisionSpecResponseOutput {
-	return o.ApplyT(func(v *RevisionSpecResponse) RevisionSpecResponse { return *v }).(RevisionSpecResponseOutput)
+	return o.ApplyT(func(v *RevisionSpecResponse) RevisionSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RevisionSpecResponse
+		return ret
+	}).(RevisionSpecResponseOutput)
 }
 
 // Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
@@ -8010,7 +8132,7 @@ func (o RevisionTemplateOutput) ToRevisionTemplatePtrOutput() RevisionTemplatePt
 }
 
 func (o RevisionTemplateOutput) ToRevisionTemplatePtrOutputWithContext(ctx context.Context) RevisionTemplatePtrOutput {
-	return o.ApplyT(func(v RevisionTemplate) *RevisionTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RevisionTemplate) *RevisionTemplate {
 		return &v
 	}).(RevisionTemplatePtrOutput)
 }
@@ -8040,7 +8162,13 @@ func (o RevisionTemplatePtrOutput) ToRevisionTemplatePtrOutputWithContext(ctx co
 }
 
 func (o RevisionTemplatePtrOutput) Elem() RevisionTemplateOutput {
-	return o.ApplyT(func(v *RevisionTemplate) RevisionTemplate { return *v }).(RevisionTemplateOutput)
+	return o.ApplyT(func(v *RevisionTemplate) RevisionTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret RevisionTemplate
+		return ret
+	}).(RevisionTemplateOutput)
 }
 
 // Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
@@ -8163,7 +8291,7 @@ func (o RevisionTemplateResponseOutput) ToRevisionTemplateResponsePtrOutput() Re
 }
 
 func (o RevisionTemplateResponseOutput) ToRevisionTemplateResponsePtrOutputWithContext(ctx context.Context) RevisionTemplateResponsePtrOutput {
-	return o.ApplyT(func(v RevisionTemplateResponse) *RevisionTemplateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RevisionTemplateResponse) *RevisionTemplateResponse {
 		return &v
 	}).(RevisionTemplateResponsePtrOutput)
 }
@@ -8193,7 +8321,13 @@ func (o RevisionTemplateResponsePtrOutput) ToRevisionTemplateResponsePtrOutputWi
 }
 
 func (o RevisionTemplateResponsePtrOutput) Elem() RevisionTemplateResponseOutput {
-	return o.ApplyT(func(v *RevisionTemplateResponse) RevisionTemplateResponse { return *v }).(RevisionTemplateResponseOutput)
+	return o.ApplyT(func(v *RevisionTemplateResponse) RevisionTemplateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RevisionTemplateResponse
+		return ret
+	}).(RevisionTemplateResponseOutput)
 }
 
 // Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
@@ -8320,7 +8454,7 @@ func (o SecretEnvSourceOutput) ToSecretEnvSourcePtrOutput() SecretEnvSourcePtrOu
 }
 
 func (o SecretEnvSourceOutput) ToSecretEnvSourcePtrOutputWithContext(ctx context.Context) SecretEnvSourcePtrOutput {
-	return o.ApplyT(func(v SecretEnvSource) *SecretEnvSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretEnvSource) *SecretEnvSource {
 		return &v
 	}).(SecretEnvSourcePtrOutput)
 }
@@ -8355,7 +8489,13 @@ func (o SecretEnvSourcePtrOutput) ToSecretEnvSourcePtrOutputWithContext(ctx cont
 }
 
 func (o SecretEnvSourcePtrOutput) Elem() SecretEnvSourceOutput {
-	return o.ApplyT(func(v *SecretEnvSource) SecretEnvSource { return *v }).(SecretEnvSourceOutput)
+	return o.ApplyT(func(v *SecretEnvSource) SecretEnvSource {
+		if v != nil {
+			return *v
+		}
+		var ret SecretEnvSource
+		return ret
+	}).(SecretEnvSourceOutput)
 }
 
 // This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
@@ -8569,7 +8709,7 @@ func (o SecretKeySelectorOutput) ToSecretKeySelectorPtrOutput() SecretKeySelecto
 }
 
 func (o SecretKeySelectorOutput) ToSecretKeySelectorPtrOutputWithContext(ctx context.Context) SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v SecretKeySelector) *SecretKeySelector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretKeySelector) *SecretKeySelector {
 		return &v
 	}).(SecretKeySelectorPtrOutput)
 }
@@ -8609,7 +8749,13 @@ func (o SecretKeySelectorPtrOutput) ToSecretKeySelectorPtrOutputWithContext(ctx 
 }
 
 func (o SecretKeySelectorPtrOutput) Elem() SecretKeySelectorOutput {
-	return o.ApplyT(func(v *SecretKeySelector) SecretKeySelector { return *v }).(SecretKeySelectorOutput)
+	return o.ApplyT(func(v *SecretKeySelector) SecretKeySelector {
+		if v != nil {
+			return *v
+		}
+		var ret SecretKeySelector
+		return ret
+	}).(SecretKeySelectorOutput)
 }
 
 // A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
@@ -8842,7 +8988,7 @@ func (o SecretVolumeSourceOutput) ToSecretVolumeSourcePtrOutput() SecretVolumeSo
 }
 
 func (o SecretVolumeSourceOutput) ToSecretVolumeSourcePtrOutputWithContext(ctx context.Context) SecretVolumeSourcePtrOutput {
-	return o.ApplyT(func(v SecretVolumeSource) *SecretVolumeSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretVolumeSource) *SecretVolumeSource {
 		return &v
 	}).(SecretVolumeSourcePtrOutput)
 }
@@ -8882,7 +9028,13 @@ func (o SecretVolumeSourcePtrOutput) ToSecretVolumeSourcePtrOutputWithContext(ct
 }
 
 func (o SecretVolumeSourcePtrOutput) Elem() SecretVolumeSourceOutput {
-	return o.ApplyT(func(v *SecretVolumeSource) SecretVolumeSource { return *v }).(SecretVolumeSourceOutput)
+	return o.ApplyT(func(v *SecretVolumeSource) SecretVolumeSource {
+		if v != nil {
+			return *v
+		}
+		var ret SecretVolumeSource
+		return ret
+	}).(SecretVolumeSourceOutput)
 }
 
 // (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
@@ -9103,7 +9255,7 @@ func (o SecurityContextOutput) ToSecurityContextPtrOutput() SecurityContextPtrOu
 }
 
 func (o SecurityContextOutput) ToSecurityContextPtrOutputWithContext(ctx context.Context) SecurityContextPtrOutput {
-	return o.ApplyT(func(v SecurityContext) *SecurityContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityContext) *SecurityContext {
 		return &v
 	}).(SecurityContextPtrOutput)
 }
@@ -9128,7 +9280,13 @@ func (o SecurityContextPtrOutput) ToSecurityContextPtrOutputWithContext(ctx cont
 }
 
 func (o SecurityContextPtrOutput) Elem() SecurityContextOutput {
-	return o.ApplyT(func(v *SecurityContext) SecurityContext { return *v }).(SecurityContextOutput)
+	return o.ApplyT(func(v *SecurityContext) SecurityContext {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityContext
+		return ret
+	}).(SecurityContextOutput)
 }
 
 // (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
@@ -9296,7 +9454,7 @@ func (o ServiceSpecOutput) ToServiceSpecPtrOutput() ServiceSpecPtrOutput {
 }
 
 func (o ServiceSpecOutput) ToServiceSpecPtrOutputWithContext(ctx context.Context) ServiceSpecPtrOutput {
-	return o.ApplyT(func(v ServiceSpec) *ServiceSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceSpec) *ServiceSpec {
 		return &v
 	}).(ServiceSpecPtrOutput)
 }
@@ -9326,7 +9484,13 @@ func (o ServiceSpecPtrOutput) ToServiceSpecPtrOutputWithContext(ctx context.Cont
 }
 
 func (o ServiceSpecPtrOutput) Elem() ServiceSpecOutput {
-	return o.ApplyT(func(v *ServiceSpec) ServiceSpec { return *v }).(ServiceSpecOutput)
+	return o.ApplyT(func(v *ServiceSpec) ServiceSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceSpec
+		return ret
+	}).(ServiceSpecOutput)
 }
 
 // Template holds the latest specification for the Revision to be stamped out.
@@ -9449,7 +9613,7 @@ func (o ServiceSpecResponseOutput) ToServiceSpecResponsePtrOutput() ServiceSpecR
 }
 
 func (o ServiceSpecResponseOutput) ToServiceSpecResponsePtrOutputWithContext(ctx context.Context) ServiceSpecResponsePtrOutput {
-	return o.ApplyT(func(v ServiceSpecResponse) *ServiceSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceSpecResponse) *ServiceSpecResponse {
 		return &v
 	}).(ServiceSpecResponsePtrOutput)
 }
@@ -9479,7 +9643,13 @@ func (o ServiceSpecResponsePtrOutput) ToServiceSpecResponsePtrOutputWithContext(
 }
 
 func (o ServiceSpecResponsePtrOutput) Elem() ServiceSpecResponseOutput {
-	return o.ApplyT(func(v *ServiceSpecResponse) ServiceSpecResponse { return *v }).(ServiceSpecResponseOutput)
+	return o.ApplyT(func(v *ServiceSpecResponse) ServiceSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceSpecResponse
+		return ret
+	}).(ServiceSpecResponseOutput)
 }
 
 // Template holds the latest specification for the Revision to be stamped out.
@@ -9622,7 +9792,7 @@ func (o ServiceStatusOutput) ToServiceStatusPtrOutput() ServiceStatusPtrOutput {
 }
 
 func (o ServiceStatusOutput) ToServiceStatusPtrOutputWithContext(ctx context.Context) ServiceStatusPtrOutput {
-	return o.ApplyT(func(v ServiceStatus) *ServiceStatus {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceStatus) *ServiceStatus {
 		return &v
 	}).(ServiceStatusPtrOutput)
 }
@@ -9677,7 +9847,13 @@ func (o ServiceStatusPtrOutput) ToServiceStatusPtrOutputWithContext(ctx context.
 }
 
 func (o ServiceStatusPtrOutput) Elem() ServiceStatusOutput {
-	return o.ApplyT(func(v *ServiceStatus) ServiceStatus { return *v }).(ServiceStatusOutput)
+	return o.ApplyT(func(v *ServiceStatus) ServiceStatus {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceStatus
+		return ret
+	}).(ServiceStatusOutput)
 }
 
 // From RouteStatus. Similar to url, information on where the service is available on HTTP.
@@ -9870,7 +10046,7 @@ func (o ServiceStatusResponseOutput) ToServiceStatusResponsePtrOutput() ServiceS
 }
 
 func (o ServiceStatusResponseOutput) ToServiceStatusResponsePtrOutputWithContext(ctx context.Context) ServiceStatusResponsePtrOutput {
-	return o.ApplyT(func(v ServiceStatusResponse) *ServiceStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceStatusResponse) *ServiceStatusResponse {
 		return &v
 	}).(ServiceStatusResponsePtrOutput)
 }
@@ -9925,7 +10101,13 @@ func (o ServiceStatusResponsePtrOutput) ToServiceStatusResponsePtrOutputWithCont
 }
 
 func (o ServiceStatusResponsePtrOutput) Elem() ServiceStatusResponseOutput {
-	return o.ApplyT(func(v *ServiceStatusResponse) ServiceStatusResponse { return *v }).(ServiceStatusResponseOutput)
+	return o.ApplyT(func(v *ServiceStatusResponse) ServiceStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceStatusResponse
+		return ret
+	}).(ServiceStatusResponseOutput)
 }
 
 // From RouteStatus. Similar to url, information on where the service is available on HTTP.
@@ -10098,7 +10280,7 @@ func (o TCPSocketActionOutput) ToTCPSocketActionPtrOutput() TCPSocketActionPtrOu
 }
 
 func (o TCPSocketActionOutput) ToTCPSocketActionPtrOutputWithContext(ctx context.Context) TCPSocketActionPtrOutput {
-	return o.ApplyT(func(v TCPSocketAction) *TCPSocketAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TCPSocketAction) *TCPSocketAction {
 		return &v
 	}).(TCPSocketActionPtrOutput)
 }
@@ -10128,7 +10310,13 @@ func (o TCPSocketActionPtrOutput) ToTCPSocketActionPtrOutputWithContext(ctx cont
 }
 
 func (o TCPSocketActionPtrOutput) Elem() TCPSocketActionOutput {
-	return o.ApplyT(func(v *TCPSocketAction) TCPSocketAction { return *v }).(TCPSocketActionOutput)
+	return o.ApplyT(func(v *TCPSocketAction) TCPSocketAction {
+		if v != nil {
+			return *v
+		}
+		var ret TCPSocketAction
+		return ret
+	}).(TCPSocketActionOutput)
 }
 
 // (Optional) Optional: Host name to connect to, defaults to the pod IP.

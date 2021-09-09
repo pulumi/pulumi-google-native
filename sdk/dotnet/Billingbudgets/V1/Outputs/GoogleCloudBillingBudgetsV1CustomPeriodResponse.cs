@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Billingbudgets.V1.Outputs
 {
 
+    /// <summary>
+    /// All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudBillingBudgetsV1CustomPeriodResponse
     {

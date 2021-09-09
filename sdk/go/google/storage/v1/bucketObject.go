@@ -296,9 +296,7 @@ func (i *BucketObject) ToBucketObjectOutputWithContext(ctx context.Context) Buck
 	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOutput)
 }
 
-type BucketObjectOutput struct {
-	*pulumi.OutputState
-}
+type BucketObjectOutput struct{ *pulumi.OutputState }
 
 func (BucketObjectOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketObject)(nil))

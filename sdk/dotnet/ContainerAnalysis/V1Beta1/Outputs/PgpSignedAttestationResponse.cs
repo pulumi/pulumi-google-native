@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
+    /// </summary>
     [OutputType]
     public sealed class PgpSignedAttestationResponse
     {

@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,4 +31,51 @@ type LookupJobTemplateResult struct {
 	Config JobConfigResponse `pulumi:"config"`
 	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
 	Name string `pulumi:"name"`
+}
+
+func LookupJobTemplateOutput(ctx *pulumi.Context, args LookupJobTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupJobTemplateResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupJobTemplateResult, error) {
+			args := v.(LookupJobTemplateArgs)
+			r, err := LookupJobTemplate(ctx, &args, opts...)
+			return *r, err
+		}).(LookupJobTemplateResultOutput)
+}
+
+type LookupJobTemplateOutputArgs struct {
+	JobTemplateId pulumi.StringInput    `pulumi:"jobTemplateId"`
+	Location      pulumi.StringInput    `pulumi:"location"`
+	Project       pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupJobTemplateOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupJobTemplateArgs)(nil)).Elem()
+}
+
+type LookupJobTemplateResultOutput struct{ *pulumi.OutputState }
+
+func (LookupJobTemplateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupJobTemplateResult)(nil)).Elem()
+}
+
+func (o LookupJobTemplateResultOutput) ToLookupJobTemplateResultOutput() LookupJobTemplateResultOutput {
+	return o
+}
+
+func (o LookupJobTemplateResultOutput) ToLookupJobTemplateResultOutputWithContext(ctx context.Context) LookupJobTemplateResultOutput {
+	return o
+}
+
+// The configuration for this template.
+func (o LookupJobTemplateResultOutput) Config() JobConfigResponseOutput {
+	return o.ApplyT(func(v LookupJobTemplateResult) JobConfigResponse { return v.Config }).(JobConfigResponseOutput)
+}
+
+// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
+func (o LookupJobTemplateResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobTemplateResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupJobTemplateResultOutput{})
 }

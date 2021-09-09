@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
 {
 
+    /// <summary>
+    /// An allowed method or permission of a service specified in ApiOperation.
+    /// </summary>
     [OutputType]
     public sealed class MethodSelectorResponse
     {

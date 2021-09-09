@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,56 @@ type LookupNatAddressResult struct {
 	Name string `pulumi:"name"`
 	// State of the nat address.
 	State string `pulumi:"state"`
+}
+
+func LookupNatAddressOutput(ctx *pulumi.Context, args LookupNatAddressOutputArgs, opts ...pulumi.InvokeOption) LookupNatAddressResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupNatAddressResult, error) {
+			args := v.(LookupNatAddressArgs)
+			r, err := LookupNatAddress(ctx, &args, opts...)
+			return *r, err
+		}).(LookupNatAddressResultOutput)
+}
+
+type LookupNatAddressOutputArgs struct {
+	InstanceId     pulumi.StringInput `pulumi:"instanceId"`
+	NatAddressId   pulumi.StringInput `pulumi:"natAddressId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupNatAddressOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNatAddressArgs)(nil)).Elem()
+}
+
+type LookupNatAddressResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNatAddressResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNatAddressResult)(nil)).Elem()
+}
+
+func (o LookupNatAddressResultOutput) ToLookupNatAddressResultOutput() LookupNatAddressResultOutput {
+	return o
+}
+
+func (o LookupNatAddressResultOutput) ToLookupNatAddressResultOutputWithContext(ctx context.Context) LookupNatAddressResultOutput {
+	return o
+}
+
+// The static IPV4 address.
+func (o LookupNatAddressResultOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNatAddressResult) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Resource ID of the NAT address.
+func (o LookupNatAddressResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNatAddressResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the nat address.
+func (o LookupNatAddressResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNatAddressResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNatAddressResultOutput{})
 }

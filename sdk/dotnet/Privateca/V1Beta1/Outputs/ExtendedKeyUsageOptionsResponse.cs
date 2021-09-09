@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// KeyUsage.ExtendedKeyUsageOptions has fields that correspond to certain common OIDs that could be specified as an extended key usage value.
+    /// </summary>
     [OutputType]
     public sealed class ExtendedKeyUsageOptionsResponse
     {

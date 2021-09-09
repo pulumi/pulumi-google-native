@@ -13,6 +13,7 @@ __all__ = [
     'GetTypeProviderResult',
     'AwaitableGetTypeProviderResult',
     'get_type_provider',
+    'get_type_provider_output',
 ]
 
 @pulumi.output_type
@@ -187,3 +188,13 @@ def get_type_provider(project: Optional[str] = None,
         operation=__ret__.operation,
         options=__ret__.options,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_type_provider)
+def get_type_provider_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                             type_provider: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTypeProviderResult]:
+    """
+    Gets information about a specific type provider.
+    """
+    ...

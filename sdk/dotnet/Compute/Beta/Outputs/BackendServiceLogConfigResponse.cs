@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// The available logging options for the load balancer traffic served by this backend service.
+    /// </summary>
     [OutputType]
     public sealed class BackendServiceLogConfigResponse
     {

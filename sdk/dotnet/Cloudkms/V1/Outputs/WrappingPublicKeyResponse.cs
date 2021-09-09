@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Cloudkms.V1.Outputs
 {
 
+    /// <summary>
+    /// The public key component of the wrapping key. For details of the type of key this public key corresponds to, see the ImportMethod.
+    /// </summary>
     [OutputType]
     public sealed class WrappingPublicKeyResponse
     {

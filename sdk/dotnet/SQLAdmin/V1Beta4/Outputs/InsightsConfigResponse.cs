@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 {
 
+    /// <summary>
+    /// Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
+    /// </summary>
     [OutputType]
     public sealed class InsightsConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.APIGateway.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Configuration for all backends.
+    /// </summary>
     [OutputType]
     public sealed class ApigatewayBackendConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a custom encryption key configuration that can be applied to a resource. This will encrypt all disks in Virtual Machine.
+    /// </summary>
     [OutputType]
     public sealed class EncryptionConfigResponse
     {

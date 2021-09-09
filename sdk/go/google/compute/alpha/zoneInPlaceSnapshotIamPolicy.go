@@ -132,9 +132,7 @@ func (i *ZoneInPlaceSnapshotIamPolicy) ToZoneInPlaceSnapshotIamPolicyOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneInPlaceSnapshotIamPolicyOutput)
 }
 
-type ZoneInPlaceSnapshotIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type ZoneInPlaceSnapshotIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ZoneInPlaceSnapshotIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ZoneInPlaceSnapshotIamPolicy)(nil))

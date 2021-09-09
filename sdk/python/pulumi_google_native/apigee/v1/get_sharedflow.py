@@ -13,6 +13,7 @@ __all__ = [
     'GetSharedflowResult',
     'AwaitableGetSharedflowResult',
     'get_sharedflow',
+    'get_sharedflow_output',
 ]
 
 @pulumi.output_type
@@ -96,3 +97,13 @@ def get_sharedflow(organization_id: Optional[str] = None,
         meta_data=__ret__.meta_data,
         name=__ret__.name,
         revision=__ret__.revision)
+
+
+@_utilities.lift_output_func(get_sharedflow)
+def get_sharedflow_output(organization_id: Optional[pulumi.Input[str]] = None,
+                          sharedflow_id: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSharedflowResult]:
+    """
+    Gets a shared flow by name, including a list of its revisions.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIoT.V1.Outputs
 {
 
+    /// <summary>
+    /// A server-stored registry credential used to validate device credentials.
+    /// </summary>
     [OutputType]
     public sealed class RegistryCredentialResponse
     {

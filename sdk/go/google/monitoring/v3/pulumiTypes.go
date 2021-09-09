@@ -360,7 +360,7 @@ func (o AlertStrategyOutput) ToAlertStrategyPtrOutput() AlertStrategyPtrOutput {
 }
 
 func (o AlertStrategyOutput) ToAlertStrategyPtrOutputWithContext(ctx context.Context) AlertStrategyPtrOutput {
-	return o.ApplyT(func(v AlertStrategy) *AlertStrategy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertStrategy) *AlertStrategy {
 		return &v
 	}).(AlertStrategyPtrOutput)
 }
@@ -385,7 +385,13 @@ func (o AlertStrategyPtrOutput) ToAlertStrategyPtrOutputWithContext(ctx context.
 }
 
 func (o AlertStrategyPtrOutput) Elem() AlertStrategyOutput {
-	return o.ApplyT(func(v *AlertStrategy) AlertStrategy { return *v }).(AlertStrategyOutput)
+	return o.ApplyT(func(v *AlertStrategy) AlertStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret AlertStrategy
+		return ret
+	}).(AlertStrategyOutput)
 }
 
 // Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
@@ -494,7 +500,7 @@ func (o AlertStrategyResponseOutput) ToAlertStrategyResponsePtrOutput() AlertStr
 }
 
 func (o AlertStrategyResponseOutput) ToAlertStrategyResponsePtrOutputWithContext(ctx context.Context) AlertStrategyResponsePtrOutput {
-	return o.ApplyT(func(v AlertStrategyResponse) *AlertStrategyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertStrategyResponse) *AlertStrategyResponse {
 		return &v
 	}).(AlertStrategyResponsePtrOutput)
 }
@@ -519,7 +525,13 @@ func (o AlertStrategyResponsePtrOutput) ToAlertStrategyResponsePtrOutputWithCont
 }
 
 func (o AlertStrategyResponsePtrOutput) Elem() AlertStrategyResponseOutput {
-	return o.ApplyT(func(v *AlertStrategyResponse) AlertStrategyResponse { return *v }).(AlertStrategyResponseOutput)
+	return o.ApplyT(func(v *AlertStrategyResponse) AlertStrategyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AlertStrategyResponse
+		return ret
+	}).(AlertStrategyResponseOutput)
 }
 
 // Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
@@ -628,7 +640,7 @@ func (o AppEngineOutput) ToAppEnginePtrOutput() AppEnginePtrOutput {
 }
 
 func (o AppEngineOutput) ToAppEnginePtrOutputWithContext(ctx context.Context) AppEnginePtrOutput {
-	return o.ApplyT(func(v AppEngine) *AppEngine {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngine) *AppEngine {
 		return &v
 	}).(AppEnginePtrOutput)
 }
@@ -653,7 +665,13 @@ func (o AppEnginePtrOutput) ToAppEnginePtrOutputWithContext(ctx context.Context)
 }
 
 func (o AppEnginePtrOutput) Elem() AppEngineOutput {
-	return o.ApplyT(func(v *AppEngine) AppEngine { return *v }).(AppEngineOutput)
+	return o.ApplyT(func(v *AppEngine) AppEngine {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngine
+		return ret
+	}).(AppEngineOutput)
 }
 
 // The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
@@ -762,7 +780,7 @@ func (o AppEngineResponseOutput) ToAppEngineResponsePtrOutput() AppEngineRespons
 }
 
 func (o AppEngineResponseOutput) ToAppEngineResponsePtrOutputWithContext(ctx context.Context) AppEngineResponsePtrOutput {
-	return o.ApplyT(func(v AppEngineResponse) *AppEngineResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineResponse) *AppEngineResponse {
 		return &v
 	}).(AppEngineResponsePtrOutput)
 }
@@ -787,7 +805,13 @@ func (o AppEngineResponsePtrOutput) ToAppEngineResponsePtrOutputWithContext(ctx 
 }
 
 func (o AppEngineResponsePtrOutput) Elem() AppEngineResponseOutput {
-	return o.ApplyT(func(v *AppEngineResponse) AppEngineResponse { return *v }).(AppEngineResponseOutput)
+	return o.ApplyT(func(v *AppEngineResponse) AppEngineResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineResponse
+		return ret
+	}).(AppEngineResponseOutput)
 }
 
 // The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
@@ -892,7 +916,7 @@ func (o AvailabilityCriteriaOutput) ToAvailabilityCriteriaPtrOutput() Availabili
 }
 
 func (o AvailabilityCriteriaOutput) ToAvailabilityCriteriaPtrOutputWithContext(ctx context.Context) AvailabilityCriteriaPtrOutput {
-	return o.ApplyT(func(v AvailabilityCriteria) *AvailabilityCriteria {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvailabilityCriteria) *AvailabilityCriteria {
 		return &v
 	}).(AvailabilityCriteriaPtrOutput)
 }
@@ -912,7 +936,13 @@ func (o AvailabilityCriteriaPtrOutput) ToAvailabilityCriteriaPtrOutputWithContex
 }
 
 func (o AvailabilityCriteriaPtrOutput) Elem() AvailabilityCriteriaOutput {
-	return o.ApplyT(func(v *AvailabilityCriteria) AvailabilityCriteria { return *v }).(AvailabilityCriteriaOutput)
+	return o.ApplyT(func(v *AvailabilityCriteria) AvailabilityCriteria {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilityCriteria
+		return ret
+	}).(AvailabilityCriteriaOutput)
 }
 
 // Future parameters for the availability SLI.
@@ -1007,7 +1037,7 @@ func (o AvailabilityCriteriaResponseOutput) ToAvailabilityCriteriaResponsePtrOut
 }
 
 func (o AvailabilityCriteriaResponseOutput) ToAvailabilityCriteriaResponsePtrOutputWithContext(ctx context.Context) AvailabilityCriteriaResponsePtrOutput {
-	return o.ApplyT(func(v AvailabilityCriteriaResponse) *AvailabilityCriteriaResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvailabilityCriteriaResponse) *AvailabilityCriteriaResponse {
 		return &v
 	}).(AvailabilityCriteriaResponsePtrOutput)
 }
@@ -1027,7 +1057,13 @@ func (o AvailabilityCriteriaResponsePtrOutput) ToAvailabilityCriteriaResponsePtr
 }
 
 func (o AvailabilityCriteriaResponsePtrOutput) Elem() AvailabilityCriteriaResponseOutput {
-	return o.ApplyT(func(v *AvailabilityCriteriaResponse) AvailabilityCriteriaResponse { return *v }).(AvailabilityCriteriaResponseOutput)
+	return o.ApplyT(func(v *AvailabilityCriteriaResponse) AvailabilityCriteriaResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilityCriteriaResponse
+		return ret
+	}).(AvailabilityCriteriaResponseOutput)
 }
 
 // The authentication parameters to provide to the specified resource or URL that requires a username and password. Currently, only Basic HTTP authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
@@ -1130,7 +1166,7 @@ func (o BasicAuthenticationOutput) ToBasicAuthenticationPtrOutput() BasicAuthent
 }
 
 func (o BasicAuthenticationOutput) ToBasicAuthenticationPtrOutputWithContext(ctx context.Context) BasicAuthenticationPtrOutput {
-	return o.ApplyT(func(v BasicAuthentication) *BasicAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicAuthentication) *BasicAuthentication {
 		return &v
 	}).(BasicAuthenticationPtrOutput)
 }
@@ -1160,7 +1196,13 @@ func (o BasicAuthenticationPtrOutput) ToBasicAuthenticationPtrOutputWithContext(
 }
 
 func (o BasicAuthenticationPtrOutput) Elem() BasicAuthenticationOutput {
-	return o.ApplyT(func(v *BasicAuthentication) BasicAuthentication { return *v }).(BasicAuthenticationOutput)
+	return o.ApplyT(func(v *BasicAuthentication) BasicAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret BasicAuthentication
+		return ret
+	}).(BasicAuthenticationOutput)
 }
 
 // The password to use when authenticating with the HTTP server.
@@ -1283,7 +1325,7 @@ func (o BasicAuthenticationResponseOutput) ToBasicAuthenticationResponsePtrOutpu
 }
 
 func (o BasicAuthenticationResponseOutput) ToBasicAuthenticationResponsePtrOutputWithContext(ctx context.Context) BasicAuthenticationResponsePtrOutput {
-	return o.ApplyT(func(v BasicAuthenticationResponse) *BasicAuthenticationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicAuthenticationResponse) *BasicAuthenticationResponse {
 		return &v
 	}).(BasicAuthenticationResponsePtrOutput)
 }
@@ -1313,7 +1355,13 @@ func (o BasicAuthenticationResponsePtrOutput) ToBasicAuthenticationResponsePtrOu
 }
 
 func (o BasicAuthenticationResponsePtrOutput) Elem() BasicAuthenticationResponseOutput {
-	return o.ApplyT(func(v *BasicAuthenticationResponse) BasicAuthenticationResponse { return *v }).(BasicAuthenticationResponseOutput)
+	return o.ApplyT(func(v *BasicAuthenticationResponse) BasicAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BasicAuthenticationResponse
+		return ret
+	}).(BasicAuthenticationResponseOutput)
 }
 
 // The password to use when authenticating with the HTTP server.
@@ -1448,7 +1496,7 @@ func (o BasicSliOutput) ToBasicSliPtrOutput() BasicSliPtrOutput {
 }
 
 func (o BasicSliOutput) ToBasicSliPtrOutputWithContext(ctx context.Context) BasicSliPtrOutput {
-	return o.ApplyT(func(v BasicSli) *BasicSli {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicSli) *BasicSli {
 		return &v
 	}).(BasicSliPtrOutput)
 }
@@ -1493,7 +1541,13 @@ func (o BasicSliPtrOutput) ToBasicSliPtrOutputWithContext(ctx context.Context) B
 }
 
 func (o BasicSliPtrOutput) Elem() BasicSliOutput {
-	return o.ApplyT(func(v *BasicSli) BasicSli { return *v }).(BasicSliOutput)
+	return o.ApplyT(func(v *BasicSli) BasicSli {
+		if v != nil {
+			return *v
+		}
+		var ret BasicSli
+		return ret
+	}).(BasicSliOutput)
 }
 
 // Good service is defined to be the count of requests made to this service that return successfully.
@@ -1658,7 +1712,7 @@ func (o BasicSliResponseOutput) ToBasicSliResponsePtrOutput() BasicSliResponsePt
 }
 
 func (o BasicSliResponseOutput) ToBasicSliResponsePtrOutputWithContext(ctx context.Context) BasicSliResponsePtrOutput {
-	return o.ApplyT(func(v BasicSliResponse) *BasicSliResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicSliResponse) *BasicSliResponse {
 		return &v
 	}).(BasicSliResponsePtrOutput)
 }
@@ -1703,7 +1757,13 @@ func (o BasicSliResponsePtrOutput) ToBasicSliResponsePtrOutputWithContext(ctx co
 }
 
 func (o BasicSliResponsePtrOutput) Elem() BasicSliResponseOutput {
-	return o.ApplyT(func(v *BasicSliResponse) BasicSliResponse { return *v }).(BasicSliResponseOutput)
+	return o.ApplyT(func(v *BasicSliResponse) BasicSliResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BasicSliResponse
+		return ret
+	}).(BasicSliResponseOutput)
 }
 
 // Good service is defined to be the count of requests made to this service that return successfully.
@@ -1852,7 +1912,7 @@ func (o CloudEndpointsOutput) ToCloudEndpointsPtrOutput() CloudEndpointsPtrOutpu
 }
 
 func (o CloudEndpointsOutput) ToCloudEndpointsPtrOutputWithContext(ctx context.Context) CloudEndpointsPtrOutput {
-	return o.ApplyT(func(v CloudEndpoints) *CloudEndpoints {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudEndpoints) *CloudEndpoints {
 		return &v
 	}).(CloudEndpointsPtrOutput)
 }
@@ -1877,7 +1937,13 @@ func (o CloudEndpointsPtrOutput) ToCloudEndpointsPtrOutputWithContext(ctx contex
 }
 
 func (o CloudEndpointsPtrOutput) Elem() CloudEndpointsOutput {
-	return o.ApplyT(func(v *CloudEndpoints) CloudEndpoints { return *v }).(CloudEndpointsOutput)
+	return o.ApplyT(func(v *CloudEndpoints) CloudEndpoints {
+		if v != nil {
+			return *v
+		}
+		var ret CloudEndpoints
+		return ret
+	}).(CloudEndpointsOutput)
 }
 
 // The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
@@ -1986,7 +2052,7 @@ func (o CloudEndpointsResponseOutput) ToCloudEndpointsResponsePtrOutput() CloudE
 }
 
 func (o CloudEndpointsResponseOutput) ToCloudEndpointsResponsePtrOutputWithContext(ctx context.Context) CloudEndpointsResponsePtrOutput {
-	return o.ApplyT(func(v CloudEndpointsResponse) *CloudEndpointsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudEndpointsResponse) *CloudEndpointsResponse {
 		return &v
 	}).(CloudEndpointsResponsePtrOutput)
 }
@@ -2011,7 +2077,13 @@ func (o CloudEndpointsResponsePtrOutput) ToCloudEndpointsResponsePtrOutputWithCo
 }
 
 func (o CloudEndpointsResponsePtrOutput) Elem() CloudEndpointsResponseOutput {
-	return o.ApplyT(func(v *CloudEndpointsResponse) CloudEndpointsResponse { return *v }).(CloudEndpointsResponseOutput)
+	return o.ApplyT(func(v *CloudEndpointsResponse) CloudEndpointsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CloudEndpointsResponse
+		return ret
+	}).(CloudEndpointsResponseOutput)
 }
 
 // The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
@@ -2132,7 +2204,7 @@ func (o ClusterIstioOutput) ToClusterIstioPtrOutput() ClusterIstioPtrOutput {
 }
 
 func (o ClusterIstioOutput) ToClusterIstioPtrOutputWithContext(ctx context.Context) ClusterIstioPtrOutput {
-	return o.ApplyT(func(v ClusterIstio) *ClusterIstio {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIstio) *ClusterIstio {
 		return &v
 	}).(ClusterIstioPtrOutput)
 }
@@ -2172,7 +2244,13 @@ func (o ClusterIstioPtrOutput) ToClusterIstioPtrOutputWithContext(ctx context.Co
 }
 
 func (o ClusterIstioPtrOutput) Elem() ClusterIstioOutput {
-	return o.ApplyT(func(v *ClusterIstio) ClusterIstio { return *v }).(ClusterIstioOutput)
+	return o.ApplyT(func(v *ClusterIstio) ClusterIstio {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterIstio
+		return ret
+	}).(ClusterIstioOutput)
 }
 
 // The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
@@ -2323,7 +2401,7 @@ func (o ClusterIstioResponseOutput) ToClusterIstioResponsePtrOutput() ClusterIst
 }
 
 func (o ClusterIstioResponseOutput) ToClusterIstioResponsePtrOutputWithContext(ctx context.Context) ClusterIstioResponsePtrOutput {
-	return o.ApplyT(func(v ClusterIstioResponse) *ClusterIstioResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIstioResponse) *ClusterIstioResponse {
 		return &v
 	}).(ClusterIstioResponsePtrOutput)
 }
@@ -2363,7 +2441,13 @@ func (o ClusterIstioResponsePtrOutput) ToClusterIstioResponsePtrOutputWithContex
 }
 
 func (o ClusterIstioResponsePtrOutput) Elem() ClusterIstioResponseOutput {
-	return o.ApplyT(func(v *ClusterIstioResponse) ClusterIstioResponse { return *v }).(ClusterIstioResponseOutput)
+	return o.ApplyT(func(v *ClusterIstioResponse) ClusterIstioResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterIstioResponse
+		return ret
+	}).(ClusterIstioResponseOutput)
 }
 
 // The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
@@ -3008,7 +3092,7 @@ func (o CustomOutput) ToCustomPtrOutput() CustomPtrOutput {
 }
 
 func (o CustomOutput) ToCustomPtrOutputWithContext(ctx context.Context) CustomPtrOutput {
-	return o.ApplyT(func(v Custom) *Custom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Custom) *Custom {
 		return &v
 	}).(CustomPtrOutput)
 }
@@ -3028,7 +3112,13 @@ func (o CustomPtrOutput) ToCustomPtrOutputWithContext(ctx context.Context) Custo
 }
 
 func (o CustomPtrOutput) Elem() CustomOutput {
-	return o.ApplyT(func(v *Custom) Custom { return *v }).(CustomOutput)
+	return o.ApplyT(func(v *Custom) Custom {
+		if v != nil {
+			return *v
+		}
+		var ret Custom
+		return ret
+	}).(CustomOutput)
 }
 
 // Custom view of service telemetry. Currently a place-holder pending final design.
@@ -3123,7 +3213,7 @@ func (o CustomResponseOutput) ToCustomResponsePtrOutput() CustomResponsePtrOutpu
 }
 
 func (o CustomResponseOutput) ToCustomResponsePtrOutputWithContext(ctx context.Context) CustomResponsePtrOutput {
-	return o.ApplyT(func(v CustomResponse) *CustomResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomResponse) *CustomResponse {
 		return &v
 	}).(CustomResponsePtrOutput)
 }
@@ -3143,7 +3233,13 @@ func (o CustomResponsePtrOutput) ToCustomResponsePtrOutputWithContext(ctx contex
 }
 
 func (o CustomResponsePtrOutput) Elem() CustomResponseOutput {
-	return o.ApplyT(func(v *CustomResponse) CustomResponse { return *v }).(CustomResponseOutput)
+	return o.ApplyT(func(v *CustomResponse) CustomResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomResponse
+		return ret
+	}).(CustomResponseOutput)
 }
 
 // A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
@@ -3246,7 +3342,7 @@ func (o DistributionCutOutput) ToDistributionCutPtrOutput() DistributionCutPtrOu
 }
 
 func (o DistributionCutOutput) ToDistributionCutPtrOutputWithContext(ctx context.Context) DistributionCutPtrOutput {
-	return o.ApplyT(func(v DistributionCut) *DistributionCut {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DistributionCut) *DistributionCut {
 		return &v
 	}).(DistributionCutPtrOutput)
 }
@@ -3276,7 +3372,13 @@ func (o DistributionCutPtrOutput) ToDistributionCutPtrOutputWithContext(ctx cont
 }
 
 func (o DistributionCutPtrOutput) Elem() DistributionCutOutput {
-	return o.ApplyT(func(v *DistributionCut) DistributionCut { return *v }).(DistributionCutOutput)
+	return o.ApplyT(func(v *DistributionCut) DistributionCut {
+		if v != nil {
+			return *v
+		}
+		var ret DistributionCut
+		return ret
+	}).(DistributionCutOutput)
 }
 
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
@@ -3399,7 +3501,7 @@ func (o DistributionCutResponseOutput) ToDistributionCutResponsePtrOutput() Dist
 }
 
 func (o DistributionCutResponseOutput) ToDistributionCutResponsePtrOutputWithContext(ctx context.Context) DistributionCutResponsePtrOutput {
-	return o.ApplyT(func(v DistributionCutResponse) *DistributionCutResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DistributionCutResponse) *DistributionCutResponse {
 		return &v
 	}).(DistributionCutResponsePtrOutput)
 }
@@ -3429,7 +3531,13 @@ func (o DistributionCutResponsePtrOutput) ToDistributionCutResponsePtrOutputWith
 }
 
 func (o DistributionCutResponsePtrOutput) Elem() DistributionCutResponseOutput {
-	return o.ApplyT(func(v *DistributionCutResponse) DistributionCutResponse { return *v }).(DistributionCutResponseOutput)
+	return o.ApplyT(func(v *DistributionCutResponse) DistributionCutResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DistributionCutResponse
+		return ret
+	}).(DistributionCutResponseOutput)
 }
 
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
@@ -3552,7 +3660,7 @@ func (o DocumentationOutput) ToDocumentationPtrOutput() DocumentationPtrOutput {
 }
 
 func (o DocumentationOutput) ToDocumentationPtrOutputWithContext(ctx context.Context) DocumentationPtrOutput {
-	return o.ApplyT(func(v Documentation) *Documentation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Documentation) *Documentation {
 		return &v
 	}).(DocumentationPtrOutput)
 }
@@ -3582,7 +3690,13 @@ func (o DocumentationPtrOutput) ToDocumentationPtrOutputWithContext(ctx context.
 }
 
 func (o DocumentationPtrOutput) Elem() DocumentationOutput {
-	return o.ApplyT(func(v *Documentation) Documentation { return *v }).(DocumentationOutput)
+	return o.ApplyT(func(v *Documentation) Documentation {
+		if v != nil {
+			return *v
+		}
+		var ret Documentation
+		return ret
+	}).(DocumentationOutput)
 }
 
 // The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
@@ -3705,7 +3819,7 @@ func (o DocumentationResponseOutput) ToDocumentationResponsePtrOutput() Document
 }
 
 func (o DocumentationResponseOutput) ToDocumentationResponsePtrOutputWithContext(ctx context.Context) DocumentationResponsePtrOutput {
-	return o.ApplyT(func(v DocumentationResponse) *DocumentationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentationResponse) *DocumentationResponse {
 		return &v
 	}).(DocumentationResponsePtrOutput)
 }
@@ -3735,7 +3849,13 @@ func (o DocumentationResponsePtrOutput) ToDocumentationResponsePtrOutputWithCont
 }
 
 func (o DocumentationResponsePtrOutput) Elem() DocumentationResponseOutput {
-	return o.ApplyT(func(v *DocumentationResponse) DocumentationResponse { return *v }).(DocumentationResponseOutput)
+	return o.ApplyT(func(v *DocumentationResponse) DocumentationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentationResponse
+		return ret
+	}).(DocumentationResponseOutput)
 }
 
 // The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
@@ -3858,7 +3978,7 @@ func (o GoogleMonitoringV3RangeOutput) ToGoogleMonitoringV3RangePtrOutput() Goog
 }
 
 func (o GoogleMonitoringV3RangeOutput) ToGoogleMonitoringV3RangePtrOutputWithContext(ctx context.Context) GoogleMonitoringV3RangePtrOutput {
-	return o.ApplyT(func(v GoogleMonitoringV3Range) *GoogleMonitoringV3Range {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleMonitoringV3Range) *GoogleMonitoringV3Range {
 		return &v
 	}).(GoogleMonitoringV3RangePtrOutput)
 }
@@ -3888,7 +4008,13 @@ func (o GoogleMonitoringV3RangePtrOutput) ToGoogleMonitoringV3RangePtrOutputWith
 }
 
 func (o GoogleMonitoringV3RangePtrOutput) Elem() GoogleMonitoringV3RangeOutput {
-	return o.ApplyT(func(v *GoogleMonitoringV3Range) GoogleMonitoringV3Range { return *v }).(GoogleMonitoringV3RangeOutput)
+	return o.ApplyT(func(v *GoogleMonitoringV3Range) GoogleMonitoringV3Range {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleMonitoringV3Range
+		return ret
+	}).(GoogleMonitoringV3RangeOutput)
 }
 
 // Range maximum.
@@ -4011,7 +4137,7 @@ func (o GoogleMonitoringV3RangeResponseOutput) ToGoogleMonitoringV3RangeResponse
 }
 
 func (o GoogleMonitoringV3RangeResponseOutput) ToGoogleMonitoringV3RangeResponsePtrOutputWithContext(ctx context.Context) GoogleMonitoringV3RangeResponsePtrOutput {
-	return o.ApplyT(func(v GoogleMonitoringV3RangeResponse) *GoogleMonitoringV3RangeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleMonitoringV3RangeResponse) *GoogleMonitoringV3RangeResponse {
 		return &v
 	}).(GoogleMonitoringV3RangeResponsePtrOutput)
 }
@@ -4041,7 +4167,13 @@ func (o GoogleMonitoringV3RangeResponsePtrOutput) ToGoogleMonitoringV3RangeRespo
 }
 
 func (o GoogleMonitoringV3RangeResponsePtrOutput) Elem() GoogleMonitoringV3RangeResponseOutput {
-	return o.ApplyT(func(v *GoogleMonitoringV3RangeResponse) GoogleMonitoringV3RangeResponse { return *v }).(GoogleMonitoringV3RangeResponseOutput)
+	return o.ApplyT(func(v *GoogleMonitoringV3RangeResponse) GoogleMonitoringV3RangeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleMonitoringV3RangeResponse
+		return ret
+	}).(GoogleMonitoringV3RangeResponseOutput)
 }
 
 // Range maximum.
@@ -4196,7 +4328,7 @@ func (o HttpCheckOutput) ToHttpCheckPtrOutput() HttpCheckPtrOutput {
 }
 
 func (o HttpCheckOutput) ToHttpCheckPtrOutputWithContext(ctx context.Context) HttpCheckPtrOutput {
-	return o.ApplyT(func(v HttpCheck) *HttpCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpCheck) *HttpCheck {
 		return &v
 	}).(HttpCheckPtrOutput)
 }
@@ -4266,7 +4398,13 @@ func (o HttpCheckPtrOutput) ToHttpCheckPtrOutputWithContext(ctx context.Context)
 }
 
 func (o HttpCheckPtrOutput) Elem() HttpCheckOutput {
-	return o.ApplyT(func(v *HttpCheck) HttpCheck { return *v }).(HttpCheckOutput)
+	return o.ApplyT(func(v *HttpCheck) HttpCheck {
+		if v != nil {
+			return *v
+		}
+		var ret HttpCheck
+		return ret
+	}).(HttpCheckOutput)
 }
 
 // The authentication information. Optional when creating an HTTP check; defaults to empty.
@@ -4501,7 +4639,7 @@ func (o HttpCheckResponseOutput) ToHttpCheckResponsePtrOutput() HttpCheckRespons
 }
 
 func (o HttpCheckResponseOutput) ToHttpCheckResponsePtrOutputWithContext(ctx context.Context) HttpCheckResponsePtrOutput {
-	return o.ApplyT(func(v HttpCheckResponse) *HttpCheckResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpCheckResponse) *HttpCheckResponse {
 		return &v
 	}).(HttpCheckResponsePtrOutput)
 }
@@ -4571,7 +4709,13 @@ func (o HttpCheckResponsePtrOutput) ToHttpCheckResponsePtrOutputWithContext(ctx 
 }
 
 func (o HttpCheckResponsePtrOutput) Elem() HttpCheckResponseOutput {
-	return o.ApplyT(func(v *HttpCheckResponse) HttpCheckResponse { return *v }).(HttpCheckResponseOutput)
+	return o.ApplyT(func(v *HttpCheckResponse) HttpCheckResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpCheckResponse
+		return ret
+	}).(HttpCheckResponseOutput)
 }
 
 // The authentication information. Optional when creating an HTTP check; defaults to empty.
@@ -5068,7 +5212,7 @@ func (o IstioCanonicalServiceOutput) ToIstioCanonicalServicePtrOutput() IstioCan
 }
 
 func (o IstioCanonicalServiceOutput) ToIstioCanonicalServicePtrOutputWithContext(ctx context.Context) IstioCanonicalServicePtrOutput {
-	return o.ApplyT(func(v IstioCanonicalService) *IstioCanonicalService {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IstioCanonicalService) *IstioCanonicalService {
 		return &v
 	}).(IstioCanonicalServicePtrOutput)
 }
@@ -5103,7 +5247,13 @@ func (o IstioCanonicalServicePtrOutput) ToIstioCanonicalServicePtrOutputWithCont
 }
 
 func (o IstioCanonicalServicePtrOutput) Elem() IstioCanonicalServiceOutput {
-	return o.ApplyT(func(v *IstioCanonicalService) IstioCanonicalService { return *v }).(IstioCanonicalServiceOutput)
+	return o.ApplyT(func(v *IstioCanonicalService) IstioCanonicalService {
+		if v != nil {
+			return *v
+		}
+		var ret IstioCanonicalService
+		return ret
+	}).(IstioCanonicalServiceOutput)
 }
 
 // The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
@@ -5240,7 +5390,7 @@ func (o IstioCanonicalServiceResponseOutput) ToIstioCanonicalServiceResponsePtrO
 }
 
 func (o IstioCanonicalServiceResponseOutput) ToIstioCanonicalServiceResponsePtrOutputWithContext(ctx context.Context) IstioCanonicalServiceResponsePtrOutput {
-	return o.ApplyT(func(v IstioCanonicalServiceResponse) *IstioCanonicalServiceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IstioCanonicalServiceResponse) *IstioCanonicalServiceResponse {
 		return &v
 	}).(IstioCanonicalServiceResponsePtrOutput)
 }
@@ -5275,7 +5425,13 @@ func (o IstioCanonicalServiceResponsePtrOutput) ToIstioCanonicalServiceResponseP
 }
 
 func (o IstioCanonicalServiceResponsePtrOutput) Elem() IstioCanonicalServiceResponseOutput {
-	return o.ApplyT(func(v *IstioCanonicalServiceResponse) IstioCanonicalServiceResponse { return *v }).(IstioCanonicalServiceResponseOutput)
+	return o.ApplyT(func(v *IstioCanonicalServiceResponse) IstioCanonicalServiceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IstioCanonicalServiceResponse
+		return ret
+	}).(IstioCanonicalServiceResponseOutput)
 }
 
 // The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
@@ -5640,7 +5796,7 @@ func (o LatencyCriteriaOutput) ToLatencyCriteriaPtrOutput() LatencyCriteriaPtrOu
 }
 
 func (o LatencyCriteriaOutput) ToLatencyCriteriaPtrOutputWithContext(ctx context.Context) LatencyCriteriaPtrOutput {
-	return o.ApplyT(func(v LatencyCriteria) *LatencyCriteria {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LatencyCriteria) *LatencyCriteria {
 		return &v
 	}).(LatencyCriteriaPtrOutput)
 }
@@ -5665,7 +5821,13 @@ func (o LatencyCriteriaPtrOutput) ToLatencyCriteriaPtrOutputWithContext(ctx cont
 }
 
 func (o LatencyCriteriaPtrOutput) Elem() LatencyCriteriaOutput {
-	return o.ApplyT(func(v *LatencyCriteria) LatencyCriteria { return *v }).(LatencyCriteriaOutput)
+	return o.ApplyT(func(v *LatencyCriteria) LatencyCriteria {
+		if v != nil {
+			return *v
+		}
+		var ret LatencyCriteria
+		return ret
+	}).(LatencyCriteriaOutput)
 }
 
 // Good service is defined to be the count of requests made to this service that return in no more than threshold.
@@ -5774,7 +5936,7 @@ func (o LatencyCriteriaResponseOutput) ToLatencyCriteriaResponsePtrOutput() Late
 }
 
 func (o LatencyCriteriaResponseOutput) ToLatencyCriteriaResponsePtrOutputWithContext(ctx context.Context) LatencyCriteriaResponsePtrOutput {
-	return o.ApplyT(func(v LatencyCriteriaResponse) *LatencyCriteriaResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LatencyCriteriaResponse) *LatencyCriteriaResponse {
 		return &v
 	}).(LatencyCriteriaResponsePtrOutput)
 }
@@ -5799,7 +5961,13 @@ func (o LatencyCriteriaResponsePtrOutput) ToLatencyCriteriaResponsePtrOutputWith
 }
 
 func (o LatencyCriteriaResponsePtrOutput) Elem() LatencyCriteriaResponseOutput {
-	return o.ApplyT(func(v *LatencyCriteriaResponse) LatencyCriteriaResponse { return *v }).(LatencyCriteriaResponseOutput)
+	return o.ApplyT(func(v *LatencyCriteriaResponse) LatencyCriteriaResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LatencyCriteriaResponse
+		return ret
+	}).(LatencyCriteriaResponseOutput)
 }
 
 // Good service is defined to be the count of requests made to this service that return in no more than threshold.
@@ -5912,7 +6080,7 @@ func (o LogMatchOutput) ToLogMatchPtrOutput() LogMatchPtrOutput {
 }
 
 func (o LogMatchOutput) ToLogMatchPtrOutputWithContext(ctx context.Context) LogMatchPtrOutput {
-	return o.ApplyT(func(v LogMatch) *LogMatch {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogMatch) *LogMatch {
 		return &v
 	}).(LogMatchPtrOutput)
 }
@@ -5942,7 +6110,13 @@ func (o LogMatchPtrOutput) ToLogMatchPtrOutputWithContext(ctx context.Context) L
 }
 
 func (o LogMatchPtrOutput) Elem() LogMatchOutput {
-	return o.ApplyT(func(v *LogMatch) LogMatch { return *v }).(LogMatchOutput)
+	return o.ApplyT(func(v *LogMatch) LogMatch {
+		if v != nil {
+			return *v
+		}
+		var ret LogMatch
+		return ret
+	}).(LogMatchOutput)
 }
 
 // A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
@@ -6133,7 +6307,7 @@ func (o MeshIstioOutput) ToMeshIstioPtrOutput() MeshIstioPtrOutput {
 }
 
 func (o MeshIstioOutput) ToMeshIstioPtrOutputWithContext(ctx context.Context) MeshIstioPtrOutput {
-	return o.ApplyT(func(v MeshIstio) *MeshIstio {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MeshIstio) *MeshIstio {
 		return &v
 	}).(MeshIstioPtrOutput)
 }
@@ -6168,7 +6342,13 @@ func (o MeshIstioPtrOutput) ToMeshIstioPtrOutputWithContext(ctx context.Context)
 }
 
 func (o MeshIstioPtrOutput) Elem() MeshIstioOutput {
-	return o.ApplyT(func(v *MeshIstio) MeshIstio { return *v }).(MeshIstioOutput)
+	return o.ApplyT(func(v *MeshIstio) MeshIstio {
+		if v != nil {
+			return *v
+		}
+		var ret MeshIstio
+		return ret
+	}).(MeshIstioOutput)
 }
 
 // Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
@@ -6305,7 +6485,7 @@ func (o MeshIstioResponseOutput) ToMeshIstioResponsePtrOutput() MeshIstioRespons
 }
 
 func (o MeshIstioResponseOutput) ToMeshIstioResponsePtrOutputWithContext(ctx context.Context) MeshIstioResponsePtrOutput {
-	return o.ApplyT(func(v MeshIstioResponse) *MeshIstioResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MeshIstioResponse) *MeshIstioResponse {
 		return &v
 	}).(MeshIstioResponsePtrOutput)
 }
@@ -6340,7 +6520,13 @@ func (o MeshIstioResponsePtrOutput) ToMeshIstioResponsePtrOutputWithContext(ctx 
 }
 
 func (o MeshIstioResponsePtrOutput) Elem() MeshIstioResponseOutput {
-	return o.ApplyT(func(v *MeshIstioResponse) MeshIstioResponse { return *v }).(MeshIstioResponseOutput)
+	return o.ApplyT(func(v *MeshIstioResponse) MeshIstioResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MeshIstioResponse
+		return ret
+	}).(MeshIstioResponseOutput)
 }
 
 // Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
@@ -6481,7 +6667,7 @@ func (o MetricAbsenceOutput) ToMetricAbsencePtrOutput() MetricAbsencePtrOutput {
 }
 
 func (o MetricAbsenceOutput) ToMetricAbsencePtrOutputWithContext(ctx context.Context) MetricAbsencePtrOutput {
-	return o.ApplyT(func(v MetricAbsence) *MetricAbsence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricAbsence) *MetricAbsence {
 		return &v
 	}).(MetricAbsencePtrOutput)
 }
@@ -6521,7 +6707,13 @@ func (o MetricAbsencePtrOutput) ToMetricAbsencePtrOutputWithContext(ctx context.
 }
 
 func (o MetricAbsencePtrOutput) Elem() MetricAbsenceOutput {
-	return o.ApplyT(func(v *MetricAbsence) MetricAbsence { return *v }).(MetricAbsenceOutput)
+	return o.ApplyT(func(v *MetricAbsence) MetricAbsence {
+		if v != nil {
+			return *v
+		}
+		var ret MetricAbsence
+		return ret
+	}).(MetricAbsenceOutput)
 }
 
 // Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
@@ -6746,7 +6938,7 @@ func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataPtrOutput() Me
 }
 
 func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataPtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataPtrOutput {
-	return o.ApplyT(func(v MetricDescriptorMetadata) *MetricDescriptorMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptorMetadata) *MetricDescriptorMetadata {
 		return &v
 	}).(MetricDescriptorMetadataPtrOutput)
 }
@@ -6776,7 +6968,13 @@ func (o MetricDescriptorMetadataPtrOutput) ToMetricDescriptorMetadataPtrOutputWi
 }
 
 func (o MetricDescriptorMetadataPtrOutput) Elem() MetricDescriptorMetadataOutput {
-	return o.ApplyT(func(v *MetricDescriptorMetadata) MetricDescriptorMetadata { return *v }).(MetricDescriptorMetadataOutput)
+	return o.ApplyT(func(v *MetricDescriptorMetadata) MetricDescriptorMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptorMetadata
+		return ret
+	}).(MetricDescriptorMetadataOutput)
 }
 
 // The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
@@ -6899,7 +7097,7 @@ func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataRespon
 }
 
 func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponsePtrOutput {
-	return o.ApplyT(func(v MetricDescriptorMetadataResponse) *MetricDescriptorMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptorMetadataResponse) *MetricDescriptorMetadataResponse {
 		return &v
 	}).(MetricDescriptorMetadataResponsePtrOutput)
 }
@@ -6929,7 +7127,13 @@ func (o MetricDescriptorMetadataResponsePtrOutput) ToMetricDescriptorMetadataRes
 }
 
 func (o MetricDescriptorMetadataResponsePtrOutput) Elem() MetricDescriptorMetadataResponseOutput {
-	return o.ApplyT(func(v *MetricDescriptorMetadataResponse) MetricDescriptorMetadataResponse { return *v }).(MetricDescriptorMetadataResponseOutput)
+	return o.ApplyT(func(v *MetricDescriptorMetadataResponse) MetricDescriptorMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptorMetadataResponse
+		return ret
+	}).(MetricDescriptorMetadataResponseOutput)
 }
 
 // The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
@@ -7052,7 +7256,7 @@ func (o MetricRangeOutput) ToMetricRangePtrOutput() MetricRangePtrOutput {
 }
 
 func (o MetricRangeOutput) ToMetricRangePtrOutputWithContext(ctx context.Context) MetricRangePtrOutput {
-	return o.ApplyT(func(v MetricRange) *MetricRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRange) *MetricRange {
 		return &v
 	}).(MetricRangePtrOutput)
 }
@@ -7082,7 +7286,13 @@ func (o MetricRangePtrOutput) ToMetricRangePtrOutputWithContext(ctx context.Cont
 }
 
 func (o MetricRangePtrOutput) Elem() MetricRangeOutput {
-	return o.ApplyT(func(v *MetricRange) MetricRange { return *v }).(MetricRangeOutput)
+	return o.ApplyT(func(v *MetricRange) MetricRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricRange
+		return ret
+	}).(MetricRangeOutput)
 }
 
 // Range of values considered "good." For a one-sided range, set one bound to an infinite value.
@@ -7205,7 +7415,7 @@ func (o MetricRangeResponseOutput) ToMetricRangeResponsePtrOutput() MetricRangeR
 }
 
 func (o MetricRangeResponseOutput) ToMetricRangeResponsePtrOutputWithContext(ctx context.Context) MetricRangeResponsePtrOutput {
-	return o.ApplyT(func(v MetricRangeResponse) *MetricRangeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRangeResponse) *MetricRangeResponse {
 		return &v
 	}).(MetricRangeResponsePtrOutput)
 }
@@ -7235,7 +7445,13 @@ func (o MetricRangeResponsePtrOutput) ToMetricRangeResponsePtrOutputWithContext(
 }
 
 func (o MetricRangeResponsePtrOutput) Elem() MetricRangeResponseOutput {
-	return o.ApplyT(func(v *MetricRangeResponse) MetricRangeResponse { return *v }).(MetricRangeResponseOutput)
+	return o.ApplyT(func(v *MetricRangeResponse) MetricRangeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MetricRangeResponse
+		return ret
+	}).(MetricRangeResponseOutput)
 }
 
 // Range of values considered "good." For a one-sided range, set one bound to an infinite value.
@@ -7382,7 +7598,7 @@ func (o MetricThresholdOutput) ToMetricThresholdPtrOutput() MetricThresholdPtrOu
 }
 
 func (o MetricThresholdOutput) ToMetricThresholdPtrOutputWithContext(ctx context.Context) MetricThresholdPtrOutput {
-	return o.ApplyT(func(v MetricThreshold) *MetricThreshold {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricThreshold) *MetricThreshold {
 		return &v
 	}).(MetricThresholdPtrOutput)
 }
@@ -7442,7 +7658,13 @@ func (o MetricThresholdPtrOutput) ToMetricThresholdPtrOutputWithContext(ctx cont
 }
 
 func (o MetricThresholdPtrOutput) Elem() MetricThresholdOutput {
-	return o.ApplyT(func(v *MetricThreshold) MetricThreshold { return *v }).(MetricThresholdOutput)
+	return o.ApplyT(func(v *MetricThreshold) MetricThreshold {
+		if v != nil {
+			return *v
+		}
+		var ret MetricThreshold
+		return ret
+	}).(MetricThresholdOutput)
 }
 
 // Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
@@ -7743,7 +7965,7 @@ func (o MonitoredResourceOutput) ToMonitoredResourcePtrOutput() MonitoredResourc
 }
 
 func (o MonitoredResourceOutput) ToMonitoredResourcePtrOutputWithContext(ctx context.Context) MonitoredResourcePtrOutput {
-	return o.ApplyT(func(v MonitoredResource) *MonitoredResource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoredResource) *MonitoredResource {
 		return &v
 	}).(MonitoredResourcePtrOutput)
 }
@@ -7773,7 +7995,13 @@ func (o MonitoredResourcePtrOutput) ToMonitoredResourcePtrOutputWithContext(ctx 
 }
 
 func (o MonitoredResourcePtrOutput) Elem() MonitoredResourceOutput {
-	return o.ApplyT(func(v *MonitoredResource) MonitoredResource { return *v }).(MonitoredResourceOutput)
+	return o.ApplyT(func(v *MonitoredResource) MonitoredResource {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoredResource
+		return ret
+	}).(MonitoredResourceOutput)
 }
 
 // Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
@@ -7896,7 +8124,7 @@ func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponsePtrOutput() 
 }
 
 func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponsePtrOutputWithContext(ctx context.Context) MonitoredResourceResponsePtrOutput {
-	return o.ApplyT(func(v MonitoredResourceResponse) *MonitoredResourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoredResourceResponse) *MonitoredResourceResponse {
 		return &v
 	}).(MonitoredResourceResponsePtrOutput)
 }
@@ -7926,7 +8154,13 @@ func (o MonitoredResourceResponsePtrOutput) ToMonitoredResourceResponsePtrOutput
 }
 
 func (o MonitoredResourceResponsePtrOutput) Elem() MonitoredResourceResponseOutput {
-	return o.ApplyT(func(v *MonitoredResourceResponse) MonitoredResourceResponse { return *v }).(MonitoredResourceResponseOutput)
+	return o.ApplyT(func(v *MonitoredResourceResponse) MonitoredResourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoredResourceResponse
+		return ret
+	}).(MonitoredResourceResponseOutput)
 }
 
 // Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
@@ -8053,7 +8287,7 @@ func (o MonitoringQueryLanguageConditionOutput) ToMonitoringQueryLanguageConditi
 }
 
 func (o MonitoringQueryLanguageConditionOutput) ToMonitoringQueryLanguageConditionPtrOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionPtrOutput {
-	return o.ApplyT(func(v MonitoringQueryLanguageCondition) *MonitoringQueryLanguageCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringQueryLanguageCondition) *MonitoringQueryLanguageCondition {
 		return &v
 	}).(MonitoringQueryLanguageConditionPtrOutput)
 }
@@ -8088,7 +8322,13 @@ func (o MonitoringQueryLanguageConditionPtrOutput) ToMonitoringQueryLanguageCond
 }
 
 func (o MonitoringQueryLanguageConditionPtrOutput) Elem() MonitoringQueryLanguageConditionOutput {
-	return o.ApplyT(func(v *MonitoringQueryLanguageCondition) MonitoringQueryLanguageCondition { return *v }).(MonitoringQueryLanguageConditionOutput)
+	return o.ApplyT(func(v *MonitoringQueryLanguageCondition) MonitoringQueryLanguageCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringQueryLanguageCondition
+		return ret
+	}).(MonitoringQueryLanguageConditionOutput)
 }
 
 // The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
@@ -8319,7 +8559,7 @@ func (o MutationRecordOutput) ToMutationRecordPtrOutput() MutationRecordPtrOutpu
 }
 
 func (o MutationRecordOutput) ToMutationRecordPtrOutputWithContext(ctx context.Context) MutationRecordPtrOutput {
-	return o.ApplyT(func(v MutationRecord) *MutationRecord {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MutationRecord) *MutationRecord {
 		return &v
 	}).(MutationRecordPtrOutput)
 }
@@ -8349,7 +8589,13 @@ func (o MutationRecordPtrOutput) ToMutationRecordPtrOutputWithContext(ctx contex
 }
 
 func (o MutationRecordPtrOutput) Elem() MutationRecordOutput {
-	return o.ApplyT(func(v *MutationRecord) MutationRecord { return *v }).(MutationRecordOutput)
+	return o.ApplyT(func(v *MutationRecord) MutationRecord {
+		if v != nil {
+			return *v
+		}
+		var ret MutationRecord
+		return ret
+	}).(MutationRecordOutput)
 }
 
 // When the change occurred.
@@ -8517,7 +8763,7 @@ func (o MutationRecordResponseOutput) ToMutationRecordResponsePtrOutput() Mutati
 }
 
 func (o MutationRecordResponseOutput) ToMutationRecordResponsePtrOutputWithContext(ctx context.Context) MutationRecordResponsePtrOutput {
-	return o.ApplyT(func(v MutationRecordResponse) *MutationRecordResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MutationRecordResponse) *MutationRecordResponse {
 		return &v
 	}).(MutationRecordResponsePtrOutput)
 }
@@ -8547,7 +8793,13 @@ func (o MutationRecordResponsePtrOutput) ToMutationRecordResponsePtrOutputWithCo
 }
 
 func (o MutationRecordResponsePtrOutput) Elem() MutationRecordResponseOutput {
-	return o.ApplyT(func(v *MutationRecordResponse) MutationRecordResponse { return *v }).(MutationRecordResponseOutput)
+	return o.ApplyT(func(v *MutationRecordResponse) MutationRecordResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MutationRecordResponse
+		return ret
+	}).(MutationRecordResponseOutput)
 }
 
 // When the change occurred.
@@ -8686,7 +8938,7 @@ func (o NotificationRateLimitOutput) ToNotificationRateLimitPtrOutput() Notifica
 }
 
 func (o NotificationRateLimitOutput) ToNotificationRateLimitPtrOutputWithContext(ctx context.Context) NotificationRateLimitPtrOutput {
-	return o.ApplyT(func(v NotificationRateLimit) *NotificationRateLimit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationRateLimit) *NotificationRateLimit {
 		return &v
 	}).(NotificationRateLimitPtrOutput)
 }
@@ -8711,7 +8963,13 @@ func (o NotificationRateLimitPtrOutput) ToNotificationRateLimitPtrOutputWithCont
 }
 
 func (o NotificationRateLimitPtrOutput) Elem() NotificationRateLimitOutput {
-	return o.ApplyT(func(v *NotificationRateLimit) NotificationRateLimit { return *v }).(NotificationRateLimitOutput)
+	return o.ApplyT(func(v *NotificationRateLimit) NotificationRateLimit {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationRateLimit
+		return ret
+	}).(NotificationRateLimitOutput)
 }
 
 // Not more than one notification per period.
@@ -8820,7 +9078,7 @@ func (o NotificationRateLimitResponseOutput) ToNotificationRateLimitResponsePtrO
 }
 
 func (o NotificationRateLimitResponseOutput) ToNotificationRateLimitResponsePtrOutputWithContext(ctx context.Context) NotificationRateLimitResponsePtrOutput {
-	return o.ApplyT(func(v NotificationRateLimitResponse) *NotificationRateLimitResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationRateLimitResponse) *NotificationRateLimitResponse {
 		return &v
 	}).(NotificationRateLimitResponsePtrOutput)
 }
@@ -8845,7 +9103,13 @@ func (o NotificationRateLimitResponsePtrOutput) ToNotificationRateLimitResponseP
 }
 
 func (o NotificationRateLimitResponsePtrOutput) Elem() NotificationRateLimitResponseOutput {
-	return o.ApplyT(func(v *NotificationRateLimitResponse) NotificationRateLimitResponse { return *v }).(NotificationRateLimitResponseOutput)
+	return o.ApplyT(func(v *NotificationRateLimitResponse) NotificationRateLimitResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationRateLimitResponse
+		return ret
+	}).(NotificationRateLimitResponseOutput)
 }
 
 // Not more than one notification per period.
@@ -8962,7 +9226,7 @@ func (o PerformanceThresholdOutput) ToPerformanceThresholdPtrOutput() Performanc
 }
 
 func (o PerformanceThresholdOutput) ToPerformanceThresholdPtrOutputWithContext(ctx context.Context) PerformanceThresholdPtrOutput {
-	return o.ApplyT(func(v PerformanceThreshold) *PerformanceThreshold {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PerformanceThreshold) *PerformanceThreshold {
 		return &v
 	}).(PerformanceThresholdPtrOutput)
 }
@@ -8997,7 +9261,13 @@ func (o PerformanceThresholdPtrOutput) ToPerformanceThresholdPtrOutputWithContex
 }
 
 func (o PerformanceThresholdPtrOutput) Elem() PerformanceThresholdOutput {
-	return o.ApplyT(func(v *PerformanceThreshold) PerformanceThreshold { return *v }).(PerformanceThresholdOutput)
+	return o.ApplyT(func(v *PerformanceThreshold) PerformanceThreshold {
+		if v != nil {
+			return *v
+		}
+		var ret PerformanceThreshold
+		return ret
+	}).(PerformanceThresholdOutput)
 }
 
 // BasicSli to evaluate to judge window quality.
@@ -9134,7 +9404,7 @@ func (o PerformanceThresholdResponseOutput) ToPerformanceThresholdResponsePtrOut
 }
 
 func (o PerformanceThresholdResponseOutput) ToPerformanceThresholdResponsePtrOutputWithContext(ctx context.Context) PerformanceThresholdResponsePtrOutput {
-	return o.ApplyT(func(v PerformanceThresholdResponse) *PerformanceThresholdResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PerformanceThresholdResponse) *PerformanceThresholdResponse {
 		return &v
 	}).(PerformanceThresholdResponsePtrOutput)
 }
@@ -9169,7 +9439,13 @@ func (o PerformanceThresholdResponsePtrOutput) ToPerformanceThresholdResponsePtr
 }
 
 func (o PerformanceThresholdResponsePtrOutput) Elem() PerformanceThresholdResponseOutput {
-	return o.ApplyT(func(v *PerformanceThresholdResponse) PerformanceThresholdResponse { return *v }).(PerformanceThresholdResponseOutput)
+	return o.ApplyT(func(v *PerformanceThresholdResponse) PerformanceThresholdResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PerformanceThresholdResponse
+		return ret
+	}).(PerformanceThresholdResponseOutput)
 }
 
 // BasicSli to evaluate to judge window quality.
@@ -9302,7 +9578,7 @@ func (o RequestBasedSliOutput) ToRequestBasedSliPtrOutput() RequestBasedSliPtrOu
 }
 
 func (o RequestBasedSliOutput) ToRequestBasedSliPtrOutputWithContext(ctx context.Context) RequestBasedSliPtrOutput {
-	return o.ApplyT(func(v RequestBasedSli) *RequestBasedSli {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RequestBasedSli) *RequestBasedSli {
 		return &v
 	}).(RequestBasedSliPtrOutput)
 }
@@ -9332,7 +9608,13 @@ func (o RequestBasedSliPtrOutput) ToRequestBasedSliPtrOutputWithContext(ctx cont
 }
 
 func (o RequestBasedSliPtrOutput) Elem() RequestBasedSliOutput {
-	return o.ApplyT(func(v *RequestBasedSli) RequestBasedSli { return *v }).(RequestBasedSliOutput)
+	return o.ApplyT(func(v *RequestBasedSli) RequestBasedSli {
+		if v != nil {
+			return *v
+		}
+		var ret RequestBasedSli
+		return ret
+	}).(RequestBasedSliOutput)
 }
 
 // distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
@@ -9455,7 +9737,7 @@ func (o RequestBasedSliResponseOutput) ToRequestBasedSliResponsePtrOutput() Requ
 }
 
 func (o RequestBasedSliResponseOutput) ToRequestBasedSliResponsePtrOutputWithContext(ctx context.Context) RequestBasedSliResponsePtrOutput {
-	return o.ApplyT(func(v RequestBasedSliResponse) *RequestBasedSliResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RequestBasedSliResponse) *RequestBasedSliResponse {
 		return &v
 	}).(RequestBasedSliResponsePtrOutput)
 }
@@ -9485,7 +9767,13 @@ func (o RequestBasedSliResponsePtrOutput) ToRequestBasedSliResponsePtrOutputWith
 }
 
 func (o RequestBasedSliResponsePtrOutput) Elem() RequestBasedSliResponseOutput {
-	return o.ApplyT(func(v *RequestBasedSliResponse) RequestBasedSliResponse { return *v }).(RequestBasedSliResponseOutput)
+	return o.ApplyT(func(v *RequestBasedSliResponse) RequestBasedSliResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RequestBasedSliResponse
+		return ret
+	}).(RequestBasedSliResponseOutput)
 }
 
 // distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
@@ -9608,7 +9896,7 @@ func (o ResourceGroupOutput) ToResourceGroupPtrOutput() ResourceGroupPtrOutput {
 }
 
 func (o ResourceGroupOutput) ToResourceGroupPtrOutputWithContext(ctx context.Context) ResourceGroupPtrOutput {
-	return o.ApplyT(func(v ResourceGroup) *ResourceGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGroup) *ResourceGroup {
 		return &v
 	}).(ResourceGroupPtrOutput)
 }
@@ -9638,7 +9926,13 @@ func (o ResourceGroupPtrOutput) ToResourceGroupPtrOutputWithContext(ctx context.
 }
 
 func (o ResourceGroupPtrOutput) Elem() ResourceGroupOutput {
-	return o.ApplyT(func(v *ResourceGroup) ResourceGroup { return *v }).(ResourceGroupOutput)
+	return o.ApplyT(func(v *ResourceGroup) ResourceGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceGroup
+		return ret
+	}).(ResourceGroupOutput)
 }
 
 // The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
@@ -9761,7 +10055,7 @@ func (o ResourceGroupResponseOutput) ToResourceGroupResponsePtrOutput() Resource
 }
 
 func (o ResourceGroupResponseOutput) ToResourceGroupResponsePtrOutputWithContext(ctx context.Context) ResourceGroupResponsePtrOutput {
-	return o.ApplyT(func(v ResourceGroupResponse) *ResourceGroupResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGroupResponse) *ResourceGroupResponse {
 		return &v
 	}).(ResourceGroupResponsePtrOutput)
 }
@@ -9791,7 +10085,13 @@ func (o ResourceGroupResponsePtrOutput) ToResourceGroupResponsePtrOutputWithCont
 }
 
 func (o ResourceGroupResponsePtrOutput) Elem() ResourceGroupResponseOutput {
-	return o.ApplyT(func(v *ResourceGroupResponse) ResourceGroupResponse { return *v }).(ResourceGroupResponseOutput)
+	return o.ApplyT(func(v *ResourceGroupResponse) ResourceGroupResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceGroupResponse
+		return ret
+	}).(ResourceGroupResponseOutput)
 }
 
 // The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
@@ -9918,7 +10218,7 @@ func (o ServiceLevelIndicatorOutput) ToServiceLevelIndicatorPtrOutput() ServiceL
 }
 
 func (o ServiceLevelIndicatorOutput) ToServiceLevelIndicatorPtrOutputWithContext(ctx context.Context) ServiceLevelIndicatorPtrOutput {
-	return o.ApplyT(func(v ServiceLevelIndicator) *ServiceLevelIndicator {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceLevelIndicator) *ServiceLevelIndicator {
 		return &v
 	}).(ServiceLevelIndicatorPtrOutput)
 }
@@ -9953,7 +10253,13 @@ func (o ServiceLevelIndicatorPtrOutput) ToServiceLevelIndicatorPtrOutputWithCont
 }
 
 func (o ServiceLevelIndicatorPtrOutput) Elem() ServiceLevelIndicatorOutput {
-	return o.ApplyT(func(v *ServiceLevelIndicator) ServiceLevelIndicator { return *v }).(ServiceLevelIndicatorOutput)
+	return o.ApplyT(func(v *ServiceLevelIndicator) ServiceLevelIndicator {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceLevelIndicator
+		return ret
+	}).(ServiceLevelIndicatorOutput)
 }
 
 // Basic SLI on a well-known service type.
@@ -10090,7 +10396,7 @@ func (o ServiceLevelIndicatorResponseOutput) ToServiceLevelIndicatorResponsePtrO
 }
 
 func (o ServiceLevelIndicatorResponseOutput) ToServiceLevelIndicatorResponsePtrOutputWithContext(ctx context.Context) ServiceLevelIndicatorResponsePtrOutput {
-	return o.ApplyT(func(v ServiceLevelIndicatorResponse) *ServiceLevelIndicatorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceLevelIndicatorResponse) *ServiceLevelIndicatorResponse {
 		return &v
 	}).(ServiceLevelIndicatorResponsePtrOutput)
 }
@@ -10125,7 +10431,13 @@ func (o ServiceLevelIndicatorResponsePtrOutput) ToServiceLevelIndicatorResponseP
 }
 
 func (o ServiceLevelIndicatorResponsePtrOutput) Elem() ServiceLevelIndicatorResponseOutput {
-	return o.ApplyT(func(v *ServiceLevelIndicatorResponse) ServiceLevelIndicatorResponse { return *v }).(ServiceLevelIndicatorResponseOutput)
+	return o.ApplyT(func(v *ServiceLevelIndicatorResponse) ServiceLevelIndicatorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceLevelIndicatorResponse
+		return ret
+	}).(ServiceLevelIndicatorResponseOutput)
 }
 
 // Basic SLI on a well-known service type.
@@ -10262,7 +10574,7 @@ func (o StatusOutput) ToStatusPtrOutput() StatusPtrOutput {
 }
 
 func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return o.ApplyT(func(v Status) *Status {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Status) *Status {
 		return &v
 	}).(StatusPtrOutput)
 }
@@ -10297,7 +10609,13 @@ func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) Statu
 }
 
 func (o StatusPtrOutput) Elem() StatusOutput {
-	return o.ApplyT(func(v *Status) Status { return *v }).(StatusOutput)
+	return o.ApplyT(func(v *Status) Status {
+		if v != nil {
+			return *v
+		}
+		var ret Status
+		return ret
+	}).(StatusOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -10434,7 +10752,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -10469,7 +10787,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -10598,7 +10922,7 @@ func (o TcpCheckOutput) ToTcpCheckPtrOutput() TcpCheckPtrOutput {
 }
 
 func (o TcpCheckOutput) ToTcpCheckPtrOutputWithContext(ctx context.Context) TcpCheckPtrOutput {
-	return o.ApplyT(func(v TcpCheck) *TcpCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TcpCheck) *TcpCheck {
 		return &v
 	}).(TcpCheckPtrOutput)
 }
@@ -10623,7 +10947,13 @@ func (o TcpCheckPtrOutput) ToTcpCheckPtrOutputWithContext(ctx context.Context) T
 }
 
 func (o TcpCheckPtrOutput) Elem() TcpCheckOutput {
-	return o.ApplyT(func(v *TcpCheck) TcpCheck { return *v }).(TcpCheckOutput)
+	return o.ApplyT(func(v *TcpCheck) TcpCheck {
+		if v != nil {
+			return *v
+		}
+		var ret TcpCheck
+		return ret
+	}).(TcpCheckOutput)
 }
 
 // The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
@@ -10732,7 +11062,7 @@ func (o TcpCheckResponseOutput) ToTcpCheckResponsePtrOutput() TcpCheckResponsePt
 }
 
 func (o TcpCheckResponseOutput) ToTcpCheckResponsePtrOutputWithContext(ctx context.Context) TcpCheckResponsePtrOutput {
-	return o.ApplyT(func(v TcpCheckResponse) *TcpCheckResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TcpCheckResponse) *TcpCheckResponse {
 		return &v
 	}).(TcpCheckResponsePtrOutput)
 }
@@ -10757,7 +11087,13 @@ func (o TcpCheckResponsePtrOutput) ToTcpCheckResponsePtrOutputWithContext(ctx co
 }
 
 func (o TcpCheckResponsePtrOutput) Elem() TcpCheckResponseOutput {
-	return o.ApplyT(func(v *TcpCheckResponse) TcpCheckResponse { return *v }).(TcpCheckResponseOutput)
+	return o.ApplyT(func(v *TcpCheckResponse) TcpCheckResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TcpCheckResponse
+		return ret
+	}).(TcpCheckResponseOutput)
 }
 
 // The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
@@ -10866,7 +11202,7 @@ func (o TelemetryOutput) ToTelemetryPtrOutput() TelemetryPtrOutput {
 }
 
 func (o TelemetryOutput) ToTelemetryPtrOutputWithContext(ctx context.Context) TelemetryPtrOutput {
-	return o.ApplyT(func(v Telemetry) *Telemetry {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Telemetry) *Telemetry {
 		return &v
 	}).(TelemetryPtrOutput)
 }
@@ -10891,7 +11227,13 @@ func (o TelemetryPtrOutput) ToTelemetryPtrOutputWithContext(ctx context.Context)
 }
 
 func (o TelemetryPtrOutput) Elem() TelemetryOutput {
-	return o.ApplyT(func(v *Telemetry) Telemetry { return *v }).(TelemetryOutput)
+	return o.ApplyT(func(v *Telemetry) Telemetry {
+		if v != nil {
+			return *v
+		}
+		var ret Telemetry
+		return ret
+	}).(TelemetryOutput)
 }
 
 // The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
@@ -11000,7 +11342,7 @@ func (o TelemetryResponseOutput) ToTelemetryResponsePtrOutput() TelemetryRespons
 }
 
 func (o TelemetryResponseOutput) ToTelemetryResponsePtrOutputWithContext(ctx context.Context) TelemetryResponsePtrOutput {
-	return o.ApplyT(func(v TelemetryResponse) *TelemetryResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryResponse) *TelemetryResponse {
 		return &v
 	}).(TelemetryResponsePtrOutput)
 }
@@ -11025,7 +11367,13 @@ func (o TelemetryResponsePtrOutput) ToTelemetryResponsePtrOutputWithContext(ctx 
 }
 
 func (o TelemetryResponsePtrOutput) Elem() TelemetryResponseOutput {
-	return o.ApplyT(func(v *TelemetryResponse) TelemetryResponse { return *v }).(TelemetryResponseOutput)
+	return o.ApplyT(func(v *TelemetryResponse) TelemetryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryResponse
+		return ret
+	}).(TelemetryResponseOutput)
 }
 
 // The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
@@ -11142,7 +11490,7 @@ func (o TimeSeriesRatioOutput) ToTimeSeriesRatioPtrOutput() TimeSeriesRatioPtrOu
 }
 
 func (o TimeSeriesRatioOutput) ToTimeSeriesRatioPtrOutputWithContext(ctx context.Context) TimeSeriesRatioPtrOutput {
-	return o.ApplyT(func(v TimeSeriesRatio) *TimeSeriesRatio {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesRatio) *TimeSeriesRatio {
 		return &v
 	}).(TimeSeriesRatioPtrOutput)
 }
@@ -11177,7 +11525,13 @@ func (o TimeSeriesRatioPtrOutput) ToTimeSeriesRatioPtrOutputWithContext(ctx cont
 }
 
 func (o TimeSeriesRatioPtrOutput) Elem() TimeSeriesRatioOutput {
-	return o.ApplyT(func(v *TimeSeriesRatio) TimeSeriesRatio { return *v }).(TimeSeriesRatioOutput)
+	return o.ApplyT(func(v *TimeSeriesRatio) TimeSeriesRatio {
+		if v != nil {
+			return *v
+		}
+		var ret TimeSeriesRatio
+		return ret
+	}).(TimeSeriesRatioOutput)
 }
 
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying bad service, either demanded service that was not provided or demanded service that was of inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
@@ -11314,7 +11668,7 @@ func (o TimeSeriesRatioResponseOutput) ToTimeSeriesRatioResponsePtrOutput() Time
 }
 
 func (o TimeSeriesRatioResponseOutput) ToTimeSeriesRatioResponsePtrOutputWithContext(ctx context.Context) TimeSeriesRatioResponsePtrOutput {
-	return o.ApplyT(func(v TimeSeriesRatioResponse) *TimeSeriesRatioResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesRatioResponse) *TimeSeriesRatioResponse {
 		return &v
 	}).(TimeSeriesRatioResponsePtrOutput)
 }
@@ -11349,7 +11703,13 @@ func (o TimeSeriesRatioResponsePtrOutput) ToTimeSeriesRatioResponsePtrOutputWith
 }
 
 func (o TimeSeriesRatioResponsePtrOutput) Elem() TimeSeriesRatioResponseOutput {
-	return o.ApplyT(func(v *TimeSeriesRatioResponse) TimeSeriesRatioResponse { return *v }).(TimeSeriesRatioResponseOutput)
+	return o.ApplyT(func(v *TimeSeriesRatioResponse) TimeSeriesRatioResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TimeSeriesRatioResponse
+		return ret
+	}).(TimeSeriesRatioResponseOutput)
 }
 
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying bad service, either demanded service that was not provided or demanded service that was of inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
@@ -11482,7 +11842,7 @@ func (o TriggerOutput) ToTriggerPtrOutput() TriggerPtrOutput {
 }
 
 func (o TriggerOutput) ToTriggerPtrOutputWithContext(ctx context.Context) TriggerPtrOutput {
-	return o.ApplyT(func(v Trigger) *Trigger {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Trigger) *Trigger {
 		return &v
 	}).(TriggerPtrOutput)
 }
@@ -11512,7 +11872,13 @@ func (o TriggerPtrOutput) ToTriggerPtrOutputWithContext(ctx context.Context) Tri
 }
 
 func (o TriggerPtrOutput) Elem() TriggerOutput {
-	return o.ApplyT(func(v *Trigger) Trigger { return *v }).(TriggerOutput)
+	return o.ApplyT(func(v *Trigger) Trigger {
+		if v != nil {
+			return *v
+		}
+		var ret Trigger
+		return ret
+	}).(TriggerOutput)
 }
 
 // The absolute number of time series that must fail the predicate for the condition to be triggered.
@@ -11711,7 +12077,7 @@ func (o WindowsBasedSliOutput) ToWindowsBasedSliPtrOutput() WindowsBasedSliPtrOu
 }
 
 func (o WindowsBasedSliOutput) ToWindowsBasedSliPtrOutputWithContext(ctx context.Context) WindowsBasedSliPtrOutput {
-	return o.ApplyT(func(v WindowsBasedSli) *WindowsBasedSli {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsBasedSli) *WindowsBasedSli {
 		return &v
 	}).(WindowsBasedSliPtrOutput)
 }
@@ -11756,7 +12122,13 @@ func (o WindowsBasedSliPtrOutput) ToWindowsBasedSliPtrOutputWithContext(ctx cont
 }
 
 func (o WindowsBasedSliPtrOutput) Elem() WindowsBasedSliOutput {
-	return o.ApplyT(func(v *WindowsBasedSli) WindowsBasedSli { return *v }).(WindowsBasedSliOutput)
+	return o.ApplyT(func(v *WindowsBasedSli) WindowsBasedSli {
+		if v != nil {
+			return *v
+		}
+		var ret WindowsBasedSli
+		return ret
+	}).(WindowsBasedSliOutput)
 }
 
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
@@ -11921,7 +12293,7 @@ func (o WindowsBasedSliResponseOutput) ToWindowsBasedSliResponsePtrOutput() Wind
 }
 
 func (o WindowsBasedSliResponseOutput) ToWindowsBasedSliResponsePtrOutputWithContext(ctx context.Context) WindowsBasedSliResponsePtrOutput {
-	return o.ApplyT(func(v WindowsBasedSliResponse) *WindowsBasedSliResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsBasedSliResponse) *WindowsBasedSliResponse {
 		return &v
 	}).(WindowsBasedSliResponsePtrOutput)
 }
@@ -11966,7 +12338,13 @@ func (o WindowsBasedSliResponsePtrOutput) ToWindowsBasedSliResponsePtrOutputWith
 }
 
 func (o WindowsBasedSliResponsePtrOutput) Elem() WindowsBasedSliResponseOutput {
-	return o.ApplyT(func(v *WindowsBasedSliResponse) WindowsBasedSliResponse { return *v }).(WindowsBasedSliResponseOutput)
+	return o.ApplyT(func(v *WindowsBasedSliResponse) WindowsBasedSliResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WindowsBasedSliResponse
+		return ret
+	}).(WindowsBasedSliResponseOutput)
 }
 
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.

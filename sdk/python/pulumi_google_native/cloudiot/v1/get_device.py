@@ -13,6 +13,7 @@ __all__ = [
     'GetDeviceResult',
     'AwaitableGetDeviceResult',
     'get_device',
+    'get_device_output',
 ]
 
 @pulumi.output_type
@@ -258,3 +259,16 @@ def get_device(device_id: Optional[str] = None,
         name=__ret__.name,
         num_id=__ret__.num_id,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_device)
+def get_device_output(device_id: Optional[pulumi.Input[str]] = None,
+                      field_mask: Optional[pulumi.Input[Optional[str]]] = None,
+                      location: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      registry_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceResult]:
+    """
+    Gets details about a device.
+    """
+    ...

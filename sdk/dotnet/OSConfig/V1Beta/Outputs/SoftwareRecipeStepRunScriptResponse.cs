@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Runs a script through an interpreter.
+    /// </summary>
     [OutputType]
     public sealed class SoftwareRecipeStepRunScriptResponse
     {

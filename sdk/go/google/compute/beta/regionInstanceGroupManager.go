@@ -196,9 +196,7 @@ func (i *RegionInstanceGroupManager) ToRegionInstanceGroupManagerOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerOutput)
 }
 
-type RegionInstanceGroupManagerOutput struct {
-	*pulumi.OutputState
-}
+type RegionInstanceGroupManagerOutput struct{ *pulumi.OutputState }
 
 func (RegionInstanceGroupManagerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionInstanceGroupManager)(nil))

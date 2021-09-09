@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The encryption options for the Cloud Composer environment and its dependencies. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    /// </summary>
     [OutputType]
     public sealed class EncryptionConfigResponse
     {

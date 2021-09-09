@@ -13,6 +13,7 @@ __all__ = [
     'GetModelResult',
     'AwaitableGetModelResult',
     'get_model',
+    'get_model_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,13 @@ def get_model(model_id: Optional[str] = None,
         online_prediction_console_logging=__ret__.online_prediction_console_logging,
         online_prediction_logging=__ret__.online_prediction_logging,
         regions=__ret__.regions)
+
+
+@_utilities.lift_output_func(get_model)
+def get_model_output(model_id: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetModelResult]:
+    """
+    Gets information about a model, including its name, the description (if set), and the default version (if at least one version of the model has been deployed).
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.
+    /// </summary>
     [OutputType]
     public sealed class VolumeResponse
     {

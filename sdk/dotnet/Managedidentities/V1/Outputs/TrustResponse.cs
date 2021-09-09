@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Managedidentities.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a relationship between two domains. This allows a controller in one domain to authenticate a user in another domain. If the trust is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state.
+    /// </summary>
     [OutputType]
     public sealed class TrustResponse
     {

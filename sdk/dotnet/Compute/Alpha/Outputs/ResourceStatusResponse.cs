@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
+    /// </summary>
     [OutputType]
     public sealed class ResourceStatusResponse
     {

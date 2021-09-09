@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Max findings configuration per infoType, per content item or long running DlpJob.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2InfoTypeLimitResponse
     {

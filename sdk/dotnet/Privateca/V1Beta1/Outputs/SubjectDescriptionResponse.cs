@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// These values describe fields in an issued X.509 certificate such as the distinguished name, subject alternative names, serial number, and lifetime.
+    /// </summary>
     [OutputType]
     public sealed class SubjectDescriptionResponse
     {

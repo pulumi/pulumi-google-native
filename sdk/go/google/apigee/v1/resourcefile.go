@@ -120,9 +120,7 @@ func (i *Resourcefile) ToResourcefileOutputWithContext(ctx context.Context) Reso
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcefileOutput)
 }
 
-type ResourcefileOutput struct {
-	*pulumi.OutputState
-}
+type ResourcefileOutput struct{ *pulumi.OutputState }
 
 func (ResourcefileOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Resourcefile)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+    /// </summary>
     [OutputType]
     public sealed class SchedulerAcceleratorConfigResponse
     {

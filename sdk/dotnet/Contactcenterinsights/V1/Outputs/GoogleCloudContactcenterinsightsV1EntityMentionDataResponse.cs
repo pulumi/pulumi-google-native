@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// The data for an entity mention annotation. This represents a mention of an `Entity` in the conversation.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1EntityMentionDataResponse
     {

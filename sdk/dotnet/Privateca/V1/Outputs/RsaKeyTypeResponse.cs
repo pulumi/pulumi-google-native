@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes an RSA key that may be used in a Certificate issued from a CaPool.
+    /// </summary>
     [OutputType]
     public sealed class RsaKeyTypeResponse
     {

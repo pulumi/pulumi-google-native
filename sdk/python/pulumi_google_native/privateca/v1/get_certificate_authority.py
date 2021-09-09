@@ -13,6 +13,7 @@ __all__ = [
     'GetCertificateAuthorityResult',
     'AwaitableGetCertificateAuthorityResult',
     'get_certificate_authority',
+    'get_certificate_authority_output',
 ]
 
 @pulumi.output_type
@@ -269,3 +270,15 @@ def get_certificate_authority(ca_pool_id: Optional[str] = None,
         tier=__ret__.tier,
         type=__ret__.type,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_certificate_authority)
+def get_certificate_authority_output(ca_pool_id: Optional[pulumi.Input[str]] = None,
+                                     certificate_authority_id: Optional[pulumi.Input[str]] = None,
+                                     location: Optional[pulumi.Input[str]] = None,
+                                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateAuthorityResult]:
+    """
+    Returns a CertificateAuthority.
+    """
+    ...

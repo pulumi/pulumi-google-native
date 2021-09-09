@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
 {
 
+    /// <summary>
+    /// Filter options to be applied on query.
+    /// </summary>
     [OutputType]
     public sealed class FilterOptionsResponse
     {

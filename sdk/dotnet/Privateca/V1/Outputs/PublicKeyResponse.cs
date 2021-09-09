@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 {
 
+    /// <summary>
+    /// A PublicKey describes a public key.
+    /// </summary>
     [OutputType]
     public sealed class PublicKeyResponse
     {

@@ -135,9 +135,7 @@ func (i *SubnetworkIamPolicy) ToSubnetworkIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIamPolicyOutput)
 }
 
-type SubnetworkIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type SubnetworkIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubnetworkIamPolicy)(nil))

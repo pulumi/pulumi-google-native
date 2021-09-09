@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,4 +48,92 @@ type LookupCryptoKeyResult struct {
 	RotationPeriod string `pulumi:"rotationPeriod"`
 	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
 	VersionTemplate CryptoKeyVersionTemplateResponse `pulumi:"versionTemplate"`
+}
+
+func LookupCryptoKeyOutput(ctx *pulumi.Context, args LookupCryptoKeyOutputArgs, opts ...pulumi.InvokeOption) LookupCryptoKeyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupCryptoKeyResult, error) {
+			args := v.(LookupCryptoKeyArgs)
+			r, err := LookupCryptoKey(ctx, &args, opts...)
+			return *r, err
+		}).(LookupCryptoKeyResultOutput)
+}
+
+type LookupCryptoKeyOutputArgs struct {
+	CryptoKeyId pulumi.StringInput    `pulumi:"cryptoKeyId"`
+	KeyRingId   pulumi.StringInput    `pulumi:"keyRingId"`
+	Location    pulumi.StringInput    `pulumi:"location"`
+	Project     pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupCryptoKeyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCryptoKeyArgs)(nil)).Elem()
+}
+
+type LookupCryptoKeyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCryptoKeyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCryptoKeyResult)(nil)).Elem()
+}
+
+func (o LookupCryptoKeyResultOutput) ToLookupCryptoKeyResultOutput() LookupCryptoKeyResultOutput {
+	return o
+}
+
+func (o LookupCryptoKeyResultOutput) ToLookupCryptoKeyResultOutputWithContext(ctx context.Context) LookupCryptoKeyResultOutput {
+	return o
+}
+
+// The time at which this CryptoKey was created.
+func (o LookupCryptoKeyResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+func (o LookupCryptoKeyResultOutput) DestroyScheduledDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyResult) string { return v.DestroyScheduledDuration }).(pulumi.StringOutput)
+}
+
+// Immutable. Whether this key may contain imported versions only.
+func (o LookupCryptoKeyResultOutput) ImportOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupCryptoKeyResult) bool { return v.ImportOnly }).(pulumi.BoolOutput)
+}
+
+// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
+func (o LookupCryptoKeyResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCryptoKeyResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+func (o LookupCryptoKeyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+func (o LookupCryptoKeyResultOutput) NextRotationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyResult) string { return v.NextRotationTime }).(pulumi.StringOutput)
+}
+
+// A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.
+func (o LookupCryptoKeyResultOutput) Primary() CryptoKeyVersionResponseOutput {
+	return o.ApplyT(func(v LookupCryptoKeyResult) CryptoKeyVersionResponse { return v.Primary }).(CryptoKeyVersionResponseOutput)
+}
+
+// Immutable. The immutable purpose of this CryptoKey.
+func (o LookupCryptoKeyResultOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyResult) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+func (o LookupCryptoKeyResultOutput) RotationPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyResult) string { return v.RotationPeriod }).(pulumi.StringOutput)
+}
+
+// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
+func (o LookupCryptoKeyResultOutput) VersionTemplate() CryptoKeyVersionTemplateResponseOutput {
+	return o.ApplyT(func(v LookupCryptoKeyResult) CryptoKeyVersionTemplateResponse { return v.VersionTemplate }).(CryptoKeyVersionTemplateResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCryptoKeyResultOutput{})
 }

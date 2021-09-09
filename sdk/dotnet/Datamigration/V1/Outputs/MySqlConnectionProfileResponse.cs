@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies connection parameters required specifically for MySQL databases.
+    /// </summary>
     [OutputType]
     public sealed class MySqlConnectionProfileResponse
     {

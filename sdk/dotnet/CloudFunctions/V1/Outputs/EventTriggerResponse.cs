@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudFunctions.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes EventTrigger, used to request events be sent from another service.
+    /// </summary>
     [OutputType]
     public sealed class EventTriggerResponse
     {

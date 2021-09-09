@@ -131,9 +131,7 @@ func (i *Realm) ToRealmOutputWithContext(ctx context.Context) RealmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RealmOutput)
 }
 
-type RealmOutput struct {
-	*pulumi.OutputState
-}
+type RealmOutput struct{ *pulumi.OutputState }
 
 func (RealmOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Realm)(nil))

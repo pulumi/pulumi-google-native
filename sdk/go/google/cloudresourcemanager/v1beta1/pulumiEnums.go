@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -279,7 +279,7 @@ func (o ProjectLifecycleStateOutput) ToStringPtrOutputWithContext(ctx context.Co
 type ProjectLifecycleStatePtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectLifecycleStatePtrOutput) ElementType() reflect.Type {
-	return projectLifecycleStatePtrType
+	return reflect.TypeOf((**ProjectLifecycleState)(nil)).Elem()
 }
 
 func (o ProjectLifecycleStatePtrOutput) ToProjectLifecycleStatePtrOutput() ProjectLifecycleStatePtrOutput {
@@ -288,6 +288,16 @@ func (o ProjectLifecycleStatePtrOutput) ToProjectLifecycleStatePtrOutput() Proje
 
 func (o ProjectLifecycleStatePtrOutput) ToProjectLifecycleStatePtrOutputWithContext(ctx context.Context) ProjectLifecycleStatePtrOutput {
 	return o
+}
+
+func (o ProjectLifecycleStatePtrOutput) Elem() ProjectLifecycleStateOutput {
+	return o.ApplyT(func(v *ProjectLifecycleState) ProjectLifecycleState {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectLifecycleState
+		return ret
+	}).(ProjectLifecycleStateOutput)
 }
 
 func (o ProjectLifecycleStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -302,16 +312,6 @@ func (o ProjectLifecycleStatePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ProjectLifecycleStatePtrOutput) Elem() ProjectLifecycleStateOutput {
-	return o.ApplyT(func(v *ProjectLifecycleState) ProjectLifecycleState {
-		var ret ProjectLifecycleState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ProjectLifecycleStateOutput)
 }
 
 // ProjectLifecycleStateInput is an input type that accepts ProjectLifecycleStateArgs and ProjectLifecycleStateOutput values.

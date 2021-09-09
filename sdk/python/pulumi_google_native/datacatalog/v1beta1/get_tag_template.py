@@ -12,6 +12,7 @@ __all__ = [
     'GetTagTemplateResult',
     'AwaitableGetTagTemplateResult',
     'get_tag_template',
+    'get_tag_template_output',
 ]
 
 @pulumi.output_type
@@ -84,3 +85,14 @@ def get_tag_template(location: Optional[str] = None,
         display_name=__ret__.display_name,
         fields=__ret__.fields,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_tag_template)
+def get_tag_template_output(location: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            tag_template_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagTemplateResult]:
+    """
+    Gets a tag template.
+    """
+    ...

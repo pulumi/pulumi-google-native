@@ -13,6 +13,7 @@ __all__ = [
     'GetStudyResult',
     'AwaitableGetStudyResult',
     'get_study',
+    'get_study_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,14 @@ def get_study(location: Optional[str] = None,
         name=__ret__.name,
         state=__ret__.state,
         study_config=__ret__.study_config)
+
+
+@_utilities.lift_output_func(get_study)
+def get_study_output(location: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     study_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStudyResult]:
+    """
+    Gets a study.
+    """
+    ...

@@ -133,9 +133,7 @@ func (i *Config) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigOutput)
 }
 
-type ConfigOutput struct {
-	*pulumi.OutputState
-}
+type ConfigOutput struct{ *pulumi.OutputState }
 
 func (ConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Config)(nil))

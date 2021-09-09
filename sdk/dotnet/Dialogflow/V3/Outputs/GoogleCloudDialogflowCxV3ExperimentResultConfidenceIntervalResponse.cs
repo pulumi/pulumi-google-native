@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// A confidence interval is a range of possible values for the experiment objective you are trying to measure.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse
     {

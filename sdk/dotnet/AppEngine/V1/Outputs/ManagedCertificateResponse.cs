@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// A certificate managed by App Engine.
+    /// </summary>
     [OutputType]
     public sealed class ManagedCertificateResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
+    /// <summary>
+    /// A (sub) field of a type.
+    /// </summary>
     [OutputType]
     public sealed class FieldResponse
     {

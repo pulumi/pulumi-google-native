@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Options defining BigQuery table and row identifiers.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2BigQueryOptionsResponse
     {

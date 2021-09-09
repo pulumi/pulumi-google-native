@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
+    /// </summary>
     [OutputType]
     public sealed class VmImageResponse
     {

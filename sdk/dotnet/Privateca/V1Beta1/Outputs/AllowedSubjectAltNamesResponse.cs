@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// AllowedSubjectAltNames specifies the allowed values for SubjectAltNames by the CertificateAuthority when issuing Certificates.
+    /// </summary>
     [OutputType]
     public sealed class AllowedSubjectAltNamesResponse
     {

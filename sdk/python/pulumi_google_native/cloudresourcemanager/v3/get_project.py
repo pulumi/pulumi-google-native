@@ -12,6 +12,7 @@ __all__ = [
     'GetProjectResult',
     'AwaitableGetProjectResult',
     'get_project',
+    'get_project_output',
 ]
 
 @pulumi.output_type
@@ -171,3 +172,12 @@ def get_project(project: Optional[str] = None,
         project=__ret__.project,
         state=__ret__.state,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_project)
+def get_project_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+    """
+    Retrieves the project identified by the specified `name` (for example, `projects/415104041262`). The caller must have `resourcemanager.projects.get` permission for this project.
+    """
+    ...

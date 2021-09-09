@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// A set of Display Device options
+    /// </summary>
     [OutputType]
     public sealed class DisplayDeviceResponse
     {

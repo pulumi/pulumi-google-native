@@ -4,6 +4,9 @@
 package v1beta
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,131 @@ type LookupServiceResult struct {
 	Uid string `pulumi:"uid"`
 	// The time when the metastore service was last updated.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupServiceResult, error) {
+			args := v.(LookupServiceArgs)
+			r, err := LookupService(ctx, &args, opts...)
+			return *r, err
+		}).(LookupServiceResultOutput)
+}
+
+type LookupServiceOutputArgs struct {
+	Location  pulumi.StringInput    `pulumi:"location"`
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+	ServiceId pulumi.StringInput    `pulumi:"serviceId"`
+}
+
+func (LookupServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceArgs)(nil)).Elem()
+}
+
+type LookupServiceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceResult)(nil)).Elem()
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceResultOutput {
+	return o
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
+	return o
+}
+
+// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+func (o LookupServiceResultOutput) ArtifactGcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ArtifactGcsUri }).(pulumi.StringOutput)
+}
+
+// The time when the metastore service was created.
+func (o LookupServiceResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+func (o LookupServiceResultOutput) EncryptionConfig() EncryptionConfigResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) EncryptionConfigResponse { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
+}
+
+// The URI of the endpoint used to access the metastore service.
+func (o LookupServiceResultOutput) EndpointUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.EndpointUri }).(pulumi.StringOutput)
+}
+
+// Configuration information specific to running Hive metastore software as the metastore service.
+func (o LookupServiceResultOutput) HiveMetastoreConfig() HiveMetastoreConfigResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) HiveMetastoreConfigResponse { return v.HiveMetastoreConfig }).(HiveMetastoreConfigResponseOutput)
+}
+
+// User-defined labels for the metastore service.
+func (o LookupServiceResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupServiceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+func (o LookupServiceResultOutput) MaintenanceWindow() MaintenanceWindowResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
+}
+
+// The setting that defines how metastore metadata should be integrated with external services and systems.
+func (o LookupServiceResultOutput) MetadataIntegration() MetadataIntegrationResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) MetadataIntegrationResponse { return v.MetadataIntegration }).(MetadataIntegrationResponseOutput)
+}
+
+// The metadata management activities of the metastore service.
+func (o LookupServiceResultOutput) MetadataManagementActivity() MetadataManagementActivityResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) MetadataManagementActivityResponse { return v.MetadataManagementActivity }).(MetadataManagementActivityResponseOutput)
+}
+
+// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+func (o LookupServiceResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The TCP port at which the metastore service is reached. Default: 9083.
+func (o LookupServiceResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServiceResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+func (o LookupServiceResultOutput) ReleaseChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ReleaseChannel }).(pulumi.StringOutput)
+}
+
+// The current state of the metastore service.
+func (o LookupServiceResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Additional information about the current state of the metastore service, if available.
+func (o LookupServiceResultOutput) StateMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+// The tier of the service.
+func (o LookupServiceResultOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+// The globally unique resource identifier of the metastore service.
+func (o LookupServiceResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The time when the metastore service was last updated.
+func (o LookupServiceResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServiceResultOutput{})
 }

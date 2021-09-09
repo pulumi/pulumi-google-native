@@ -13,6 +13,7 @@ __all__ = [
     'GetTransitionRouteGroupResult',
     'AwaitableGetTransitionRouteGroupResult',
     'get_transition_route_group',
+    'get_transition_route_group_output',
 ]
 
 @pulumi.output_type
@@ -91,3 +92,17 @@ def get_transition_route_group(agent_id: Optional[str] = None,
         display_name=__ret__.display_name,
         name=__ret__.name,
         transition_routes=__ret__.transition_routes)
+
+
+@_utilities.lift_output_func(get_transition_route_group)
+def get_transition_route_group_output(agent_id: Optional[pulumi.Input[str]] = None,
+                                      flow_id: Optional[pulumi.Input[str]] = None,
+                                      language_code: Optional[pulumi.Input[Optional[str]]] = None,
+                                      location: Optional[pulumi.Input[str]] = None,
+                                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      transition_route_group_id: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitionRouteGroupResult]:
+    """
+    Retrieves the specified TransitionRouteGroup.
+    """
+    ...

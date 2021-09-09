@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// An OS policy defines the desired state configuration for a VM.
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyResponse
     {

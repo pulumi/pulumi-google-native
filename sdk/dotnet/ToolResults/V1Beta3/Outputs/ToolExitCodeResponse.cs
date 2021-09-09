@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// Exit code from a tool execution.
+    /// </summary>
     [OutputType]
     public sealed class ToolExitCodeResponse
     {

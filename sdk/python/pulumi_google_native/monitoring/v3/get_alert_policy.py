@@ -13,6 +13,7 @@ __all__ = [
     'GetAlertPolicyResult',
     'AwaitableGetAlertPolicyResult',
     'get_alert_policy',
+    'get_alert_policy_output',
 ]
 
 @pulumi.output_type
@@ -200,3 +201,13 @@ def get_alert_policy(alert_policy_id: Optional[str] = None,
         notification_channels=__ret__.notification_channels,
         user_labels=__ret__.user_labels,
         validity=__ret__.validity)
+
+
+@_utilities.lift_output_func(get_alert_policy)
+def get_alert_policy_output(alert_policy_id: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlertPolicyResult]:
+    """
+    Gets a single alerting policy.
+    """
+    ...

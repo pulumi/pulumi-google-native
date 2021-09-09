@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
+    /// <summary>
+    /// A list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Resource representing the Android specific attributes of a Device.
+    /// </summary>
     [OutputType]
     public sealed class AndroidAttributesResponse
     {

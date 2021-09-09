@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
 {
 
+    /// <summary>
+    /// Settings for trial offers.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudChannelV1TrialSettingsResponse
     {

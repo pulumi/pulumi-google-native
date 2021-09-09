@@ -158,9 +158,7 @@ func (i *UptimeCheckConfig) ToUptimeCheckConfigOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigOutput)
 }
 
-type UptimeCheckConfigOutput struct {
-	*pulumi.OutputState
-}
+type UptimeCheckConfigOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UptimeCheckConfig)(nil))

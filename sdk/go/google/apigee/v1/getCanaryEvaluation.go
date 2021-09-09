@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,4 +45,88 @@ type LookupCanaryEvaluationResult struct {
 	Treatment string `pulumi:"treatment"`
 	// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
 	Verdict string `pulumi:"verdict"`
+}
+
+func LookupCanaryEvaluationOutput(ctx *pulumi.Context, args LookupCanaryEvaluationOutputArgs, opts ...pulumi.InvokeOption) LookupCanaryEvaluationResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupCanaryEvaluationResult, error) {
+			args := v.(LookupCanaryEvaluationArgs)
+			r, err := LookupCanaryEvaluation(ctx, &args, opts...)
+			return *r, err
+		}).(LookupCanaryEvaluationResultOutput)
+}
+
+type LookupCanaryEvaluationOutputArgs struct {
+	CanaryevaluationId pulumi.StringInput `pulumi:"canaryevaluationId"`
+	InstanceId         pulumi.StringInput `pulumi:"instanceId"`
+	OrganizationId     pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupCanaryEvaluationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCanaryEvaluationArgs)(nil)).Elem()
+}
+
+type LookupCanaryEvaluationResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCanaryEvaluationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCanaryEvaluationResult)(nil)).Elem()
+}
+
+func (o LookupCanaryEvaluationResultOutput) ToLookupCanaryEvaluationResultOutput() LookupCanaryEvaluationResultOutput {
+	return o
+}
+
+func (o LookupCanaryEvaluationResultOutput) ToLookupCanaryEvaluationResultOutputWithContext(ctx context.Context) LookupCanaryEvaluationResultOutput {
+	return o
+}
+
+// The stable version that is serving requests.
+func (o LookupCanaryEvaluationResultOutput) Control() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCanaryEvaluationResult) string { return v.Control }).(pulumi.StringOutput)
+}
+
+// Create time of the canary evaluation.
+func (o LookupCanaryEvaluationResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCanaryEvaluationResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// End time for the evaluation's analysis.
+func (o LookupCanaryEvaluationResultOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCanaryEvaluationResult) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Labels used to filter the metrics used for a canary evaluation.
+func (o LookupCanaryEvaluationResultOutput) MetricLabels() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
+	return o.ApplyT(func(v LookupCanaryEvaluationResult) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse {
+		return v.MetricLabels
+	}).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput)
+}
+
+// Name of the canary evalution.
+func (o LookupCanaryEvaluationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCanaryEvaluationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Start time for the canary evaluation's analysis.
+func (o LookupCanaryEvaluationResultOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCanaryEvaluationResult) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The current state of the canary evaluation.
+func (o LookupCanaryEvaluationResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCanaryEvaluationResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The newer version that is serving requests.
+func (o LookupCanaryEvaluationResultOutput) Treatment() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCanaryEvaluationResult) string { return v.Treatment }).(pulumi.StringOutput)
+}
+
+// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
+func (o LookupCanaryEvaluationResultOutput) Verdict() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCanaryEvaluationResult) string { return v.Verdict }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCanaryEvaluationResultOutput{})
 }

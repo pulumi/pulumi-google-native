@@ -130,9 +130,7 @@ func (i *ImageIamPolicy) ToImageIamPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamPolicyOutput)
 }
 
-type ImageIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type ImageIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ImageIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ImageIamPolicy)(nil))

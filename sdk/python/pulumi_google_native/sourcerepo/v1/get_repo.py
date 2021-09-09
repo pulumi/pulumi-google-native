@@ -13,6 +13,7 @@ __all__ = [
     'GetRepoResult',
     'AwaitableGetRepoResult',
     'get_repo',
+    'get_repo_output',
 ]
 
 @pulumi.output_type
@@ -109,3 +110,13 @@ def get_repo(project: Optional[str] = None,
         pubsub_configs=__ret__.pubsub_configs,
         size=__ret__.size,
         url=__ret__.url)
+
+
+@_utilities.lift_output_func(get_repo)
+def get_repo_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                    repo_id: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepoResult]:
+    """
+    Returns information about a repo.
+    """
+    ...

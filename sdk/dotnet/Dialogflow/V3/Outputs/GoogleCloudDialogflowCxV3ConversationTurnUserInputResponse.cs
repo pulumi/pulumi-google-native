@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// The input from the human user.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3ConversationTurnUserInputResponse
     {

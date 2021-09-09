@@ -152,9 +152,7 @@ func (i *CryptoKey) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyO
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyOutput)
 }
 
-type CryptoKeyOutput struct {
-	*pulumi.OutputState
-}
+type CryptoKeyOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CryptoKey)(nil))

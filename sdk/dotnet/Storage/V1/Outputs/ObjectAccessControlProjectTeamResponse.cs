@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// The project team associated with the entity, if any.
+    /// </summary>
     [OutputType]
     public sealed class ObjectAccessControlProjectTeamResponse
     {

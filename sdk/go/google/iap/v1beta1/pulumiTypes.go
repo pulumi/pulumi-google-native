@@ -354,7 +354,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -394,7 +394,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

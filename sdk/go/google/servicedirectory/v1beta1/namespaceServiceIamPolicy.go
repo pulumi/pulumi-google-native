@@ -119,9 +119,7 @@ func (i *NamespaceServiceIamPolicy) ToNamespaceServiceIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceServiceIamPolicyOutput)
 }
 
-type NamespaceServiceIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type NamespaceServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (NamespaceServiceIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NamespaceServiceIamPolicy)(nil))

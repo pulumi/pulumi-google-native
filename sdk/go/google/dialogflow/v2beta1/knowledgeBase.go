@@ -110,9 +110,7 @@ func (i *KnowledgeBase) ToKnowledgeBaseOutputWithContext(ctx context.Context) Kn
 	return pulumi.ToOutputWithContext(ctx, i).(KnowledgeBaseOutput)
 }
 
-type KnowledgeBaseOutput struct {
-	*pulumi.OutputState
-}
+type KnowledgeBaseOutput struct{ *pulumi.OutputState }
 
 func (KnowledgeBaseOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KnowledgeBase)(nil))

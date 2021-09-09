@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// A column with a semantic tag attached.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2TaggedFieldResponse
     {

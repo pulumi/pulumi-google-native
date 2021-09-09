@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// A maintenance window for VMs. When set, we restrict our maintenance operations to this window.
+    /// </summary>
     [OutputType]
     public sealed class ResourcePolicyVmMaintenancePolicyMaintenanceWindowResponse
     {

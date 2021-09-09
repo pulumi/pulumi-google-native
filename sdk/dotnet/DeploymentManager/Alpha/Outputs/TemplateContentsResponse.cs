@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Files that make up the template contents of a template type.
+    /// </summary>
     [OutputType]
     public sealed class TemplateContentsResponse
     {

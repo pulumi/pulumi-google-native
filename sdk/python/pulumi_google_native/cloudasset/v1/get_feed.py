@@ -13,6 +13,7 @@ __all__ = [
     'GetFeedResult',
     'AwaitableGetFeedResult',
     'get_feed',
+    'get_feed_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_feed(feed_id: Optional[str] = None,
         feed_output_config=__ret__.feed_output_config,
         name=__ret__.name,
         relationship_types=__ret__.relationship_types)
+
+
+@_utilities.lift_output_func(get_feed)
+def get_feed_output(feed_id: Optional[pulumi.Input[str]] = None,
+                    v1_id: Optional[pulumi.Input[str]] = None,
+                    v1_id1: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFeedResult]:
+    """
+    Gets details about an asset feed.
+    """
+    ...

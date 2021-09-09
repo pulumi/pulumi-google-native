@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents a Cloud Run service destination.
+    /// </summary>
     [OutputType]
     public sealed class CloudRunServiceResponse
     {

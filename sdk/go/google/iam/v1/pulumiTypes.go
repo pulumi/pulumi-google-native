@@ -542,7 +542,7 @@ func (o AwsOutput) ToAwsPtrOutput() AwsPtrOutput {
 }
 
 func (o AwsOutput) ToAwsPtrOutputWithContext(ctx context.Context) AwsPtrOutput {
-	return o.ApplyT(func(v Aws) *Aws {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Aws) *Aws {
 		return &v
 	}).(AwsPtrOutput)
 }
@@ -567,7 +567,13 @@ func (o AwsPtrOutput) ToAwsPtrOutputWithContext(ctx context.Context) AwsPtrOutpu
 }
 
 func (o AwsPtrOutput) Elem() AwsOutput {
-	return o.ApplyT(func(v *Aws) Aws { return *v }).(AwsOutput)
+	return o.ApplyT(func(v *Aws) Aws {
+		if v != nil {
+			return *v
+		}
+		var ret Aws
+		return ret
+	}).(AwsOutput)
 }
 
 // The AWS account ID.
@@ -676,7 +682,7 @@ func (o AwsResponseOutput) ToAwsResponsePtrOutput() AwsResponsePtrOutput {
 }
 
 func (o AwsResponseOutput) ToAwsResponsePtrOutputWithContext(ctx context.Context) AwsResponsePtrOutput {
-	return o.ApplyT(func(v AwsResponse) *AwsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsResponse) *AwsResponse {
 		return &v
 	}).(AwsResponsePtrOutput)
 }
@@ -701,7 +707,13 @@ func (o AwsResponsePtrOutput) ToAwsResponsePtrOutputWithContext(ctx context.Cont
 }
 
 func (o AwsResponsePtrOutput) Elem() AwsResponseOutput {
-	return o.ApplyT(func(v *AwsResponse) AwsResponse { return *v }).(AwsResponseOutput)
+	return o.ApplyT(func(v *AwsResponse) AwsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AwsResponse
+		return ret
+	}).(AwsResponseOutput)
 }
 
 // The AWS account ID.
@@ -1058,7 +1070,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1098,7 +1110,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1323,7 +1341,7 @@ func (o OidcOutput) ToOidcPtrOutput() OidcPtrOutput {
 }
 
 func (o OidcOutput) ToOidcPtrOutputWithContext(ctx context.Context) OidcPtrOutput {
-	return o.ApplyT(func(v Oidc) *Oidc {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Oidc) *Oidc {
 		return &v
 	}).(OidcPtrOutput)
 }
@@ -1353,7 +1371,13 @@ func (o OidcPtrOutput) ToOidcPtrOutputWithContext(ctx context.Context) OidcPtrOu
 }
 
 func (o OidcPtrOutput) Elem() OidcOutput {
-	return o.ApplyT(func(v *Oidc) Oidc { return *v }).(OidcOutput)
+	return o.ApplyT(func(v *Oidc) Oidc {
+		if v != nil {
+			return *v
+		}
+		var ret Oidc
+		return ret
+	}).(OidcOutput)
 }
 
 // Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
@@ -1476,7 +1500,7 @@ func (o OidcResponseOutput) ToOidcResponsePtrOutput() OidcResponsePtrOutput {
 }
 
 func (o OidcResponseOutput) ToOidcResponsePtrOutputWithContext(ctx context.Context) OidcResponsePtrOutput {
-	return o.ApplyT(func(v OidcResponse) *OidcResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcResponse) *OidcResponse {
 		return &v
 	}).(OidcResponsePtrOutput)
 }
@@ -1506,7 +1530,13 @@ func (o OidcResponsePtrOutput) ToOidcResponsePtrOutputWithContext(ctx context.Co
 }
 
 func (o OidcResponsePtrOutput) Elem() OidcResponseOutput {
-	return o.ApplyT(func(v *OidcResponse) OidcResponse { return *v }).(OidcResponseOutput)
+	return o.ApplyT(func(v *OidcResponse) OidcResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OidcResponse
+		return ret
+	}).(OidcResponseOutput)
 }
 
 // Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```

@@ -13,6 +13,7 @@ __all__ = [
     'GetExperimentResult',
     'AwaitableGetExperimentResult',
     'get_experiment',
+    'get_experiment_output',
 ]
 
 @pulumi.output_type
@@ -245,3 +246,16 @@ def get_experiment(agent_id: Optional[str] = None,
         start_time=__ret__.start_time,
         state=__ret__.state,
         variants_history=__ret__.variants_history)
+
+
+@_utilities.lift_output_func(get_experiment)
+def get_experiment_output(agent_id: Optional[pulumi.Input[str]] = None,
+                          environment_id: Optional[pulumi.Input[str]] = None,
+                          experiment_id: Optional[pulumi.Input[str]] = None,
+                          location: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExperimentResult]:
+    """
+    Retrieves the specified Experiment.
+    """
+    ...

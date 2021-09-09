@@ -775,7 +775,7 @@ func (o ConfigFileOutput) ToConfigFilePtrOutput() ConfigFilePtrOutput {
 }
 
 func (o ConfigFileOutput) ToConfigFilePtrOutputWithContext(ctx context.Context) ConfigFilePtrOutput {
-	return o.ApplyT(func(v ConfigFile) *ConfigFile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigFile) *ConfigFile {
 		return &v
 	}).(ConfigFilePtrOutput)
 }
@@ -800,7 +800,13 @@ func (o ConfigFilePtrOutput) ToConfigFilePtrOutputWithContext(ctx context.Contex
 }
 
 func (o ConfigFilePtrOutput) Elem() ConfigFileOutput {
-	return o.ApplyT(func(v *ConfigFile) ConfigFile { return *v }).(ConfigFileOutput)
+	return o.ApplyT(func(v *ConfigFile) ConfigFile {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigFile
+		return ret
+	}).(ConfigFileOutput)
 }
 
 // The contents of the file.
@@ -906,7 +912,7 @@ func (o ConfigFileResponseOutput) ToConfigFileResponsePtrOutput() ConfigFileResp
 }
 
 func (o ConfigFileResponseOutput) ToConfigFileResponsePtrOutputWithContext(ctx context.Context) ConfigFileResponsePtrOutput {
-	return o.ApplyT(func(v ConfigFileResponse) *ConfigFileResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigFileResponse) *ConfigFileResponse {
 		return &v
 	}).(ConfigFileResponsePtrOutput)
 }
@@ -931,7 +937,13 @@ func (o ConfigFileResponsePtrOutput) ToConfigFileResponsePtrOutputWithContext(ct
 }
 
 func (o ConfigFileResponsePtrOutput) Elem() ConfigFileResponseOutput {
-	return o.ApplyT(func(v *ConfigFileResponse) ConfigFileResponse { return *v }).(ConfigFileResponseOutput)
+	return o.ApplyT(func(v *ConfigFileResponse) ConfigFileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigFileResponse
+		return ret
+	}).(ConfigFileResponseOutput)
 }
 
 // The contents of the file.
@@ -1372,7 +1384,7 @@ func (o DeploymentUpdateResponseOutput) ToDeploymentUpdateResponsePtrOutput() De
 }
 
 func (o DeploymentUpdateResponseOutput) ToDeploymentUpdateResponsePtrOutputWithContext(ctx context.Context) DeploymentUpdateResponsePtrOutput {
-	return o.ApplyT(func(v DeploymentUpdateResponse) *DeploymentUpdateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentUpdateResponse) *DeploymentUpdateResponse {
 		return &v
 	}).(DeploymentUpdateResponsePtrOutput)
 }
@@ -1407,7 +1419,13 @@ func (o DeploymentUpdateResponsePtrOutput) ToDeploymentUpdateResponsePtrOutputWi
 }
 
 func (o DeploymentUpdateResponsePtrOutput) Elem() DeploymentUpdateResponseOutput {
-	return o.ApplyT(func(v *DeploymentUpdateResponse) DeploymentUpdateResponse { return *v }).(DeploymentUpdateResponseOutput)
+	return o.ApplyT(func(v *DeploymentUpdateResponse) DeploymentUpdateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentUpdateResponse
+		return ret
+	}).(DeploymentUpdateResponseOutput)
 }
 
 // An optional user-provided description of the deployment after the current update has been applied.
@@ -1548,7 +1566,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1588,7 +1606,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2136,7 +2160,7 @@ func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutput() Operat
 }
 
 func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
-	return o.ApplyT(func(v OperationErrorResponse) *OperationErrorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OperationErrorResponse) *OperationErrorResponse {
 		return &v
 	}).(OperationErrorResponsePtrOutput)
 }
@@ -2161,7 +2185,13 @@ func (o OperationErrorResponsePtrOutput) ToOperationErrorResponsePtrOutputWithCo
 }
 
 func (o OperationErrorResponsePtrOutput) Elem() OperationErrorResponseOutput {
-	return o.ApplyT(func(v *OperationErrorResponse) OperationErrorResponse { return *v }).(OperationErrorResponseOutput)
+	return o.ApplyT(func(v *OperationErrorResponse) OperationErrorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OperationErrorResponse
+		return ret
+	}).(OperationErrorResponseOutput)
 }
 
 // The array of errors encountered while processing this operation.
@@ -2354,7 +2384,7 @@ func (o OperationResponseOutput) ToOperationResponsePtrOutput() OperationRespons
 }
 
 func (o OperationResponseOutput) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
-	return o.ApplyT(func(v OperationResponse) *OperationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OperationResponse) *OperationResponse {
 		return &v
 	}).(OperationResponsePtrOutput)
 }
@@ -2484,7 +2514,13 @@ func (o OperationResponsePtrOutput) ToOperationResponsePtrOutputWithContext(ctx 
 }
 
 func (o OperationResponsePtrOutput) Elem() OperationResponseOutput {
-	return o.ApplyT(func(v *OperationResponse) OperationResponse { return *v }).(OperationResponseOutput)
+	return o.ApplyT(func(v *OperationResponse) OperationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OperationResponse
+		return ret
+	}).(OperationResponseOutput)
 }
 
 // The value of `requestId` if you provided it in the request. Not present otherwise.
@@ -3025,7 +3061,7 @@ func (o TargetConfigurationOutput) ToTargetConfigurationPtrOutput() TargetConfig
 }
 
 func (o TargetConfigurationOutput) ToTargetConfigurationPtrOutputWithContext(ctx context.Context) TargetConfigurationPtrOutput {
-	return o.ApplyT(func(v TargetConfiguration) *TargetConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetConfiguration) *TargetConfiguration {
 		return &v
 	}).(TargetConfigurationPtrOutput)
 }
@@ -3055,7 +3091,13 @@ func (o TargetConfigurationPtrOutput) ToTargetConfigurationPtrOutputWithContext(
 }
 
 func (o TargetConfigurationPtrOutput) Elem() TargetConfigurationOutput {
-	return o.ApplyT(func(v *TargetConfiguration) TargetConfiguration { return *v }).(TargetConfigurationOutput)
+	return o.ApplyT(func(v *TargetConfiguration) TargetConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret TargetConfiguration
+		return ret
+	}).(TargetConfigurationOutput)
 }
 
 // The configuration to use for this deployment.
@@ -3175,7 +3217,7 @@ func (o TargetConfigurationResponseOutput) ToTargetConfigurationResponsePtrOutpu
 }
 
 func (o TargetConfigurationResponseOutput) ToTargetConfigurationResponsePtrOutputWithContext(ctx context.Context) TargetConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v TargetConfigurationResponse) *TargetConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetConfigurationResponse) *TargetConfigurationResponse {
 		return &v
 	}).(TargetConfigurationResponsePtrOutput)
 }
@@ -3205,7 +3247,13 @@ func (o TargetConfigurationResponsePtrOutput) ToTargetConfigurationResponsePtrOu
 }
 
 func (o TargetConfigurationResponsePtrOutput) Elem() TargetConfigurationResponseOutput {
-	return o.ApplyT(func(v *TargetConfigurationResponse) TargetConfigurationResponse { return *v }).(TargetConfigurationResponseOutput)
+	return o.ApplyT(func(v *TargetConfigurationResponse) TargetConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TargetConfigurationResponse
+		return ret
+	}).(TargetConfigurationResponseOutput)
 }
 
 // The configuration to use for this deployment.

@@ -110,7 +110,7 @@ func (o ChannelPartnerLinkLinkStateOutput) ToStringPtrOutputWithContext(ctx cont
 type ChannelPartnerLinkLinkStatePtrOutput struct{ *pulumi.OutputState }
 
 func (ChannelPartnerLinkLinkStatePtrOutput) ElementType() reflect.Type {
-	return channelPartnerLinkLinkStatePtrType
+	return reflect.TypeOf((**ChannelPartnerLinkLinkState)(nil)).Elem()
 }
 
 func (o ChannelPartnerLinkLinkStatePtrOutput) ToChannelPartnerLinkLinkStatePtrOutput() ChannelPartnerLinkLinkStatePtrOutput {
@@ -119,6 +119,16 @@ func (o ChannelPartnerLinkLinkStatePtrOutput) ToChannelPartnerLinkLinkStatePtrOu
 
 func (o ChannelPartnerLinkLinkStatePtrOutput) ToChannelPartnerLinkLinkStatePtrOutputWithContext(ctx context.Context) ChannelPartnerLinkLinkStatePtrOutput {
 	return o
+}
+
+func (o ChannelPartnerLinkLinkStatePtrOutput) Elem() ChannelPartnerLinkLinkStateOutput {
+	return o.ApplyT(func(v *ChannelPartnerLinkLinkState) ChannelPartnerLinkLinkState {
+		if v != nil {
+			return *v
+		}
+		var ret ChannelPartnerLinkLinkState
+		return ret
+	}).(ChannelPartnerLinkLinkStateOutput)
 }
 
 func (o ChannelPartnerLinkLinkStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -133,16 +143,6 @@ func (o ChannelPartnerLinkLinkStatePtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ChannelPartnerLinkLinkStatePtrOutput) Elem() ChannelPartnerLinkLinkStateOutput {
-	return o.ApplyT(func(v *ChannelPartnerLinkLinkState) ChannelPartnerLinkLinkState {
-		var ret ChannelPartnerLinkLinkState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ChannelPartnerLinkLinkStateOutput)
 }
 
 // ChannelPartnerLinkLinkStateInput is an input type that accepts ChannelPartnerLinkLinkStateArgs and ChannelPartnerLinkLinkStateOutput values.
@@ -281,7 +281,7 @@ func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToStringPtrOutputWithContext
 type GoogleCloudChannelV1PeriodPeriodTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudChannelV1PeriodPeriodTypePtrType
+	return reflect.TypeOf((**GoogleCloudChannelV1PeriodPeriodType)(nil)).Elem()
 }
 
 func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutput() GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
@@ -290,6 +290,16 @@ func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToGoogleCloudChannelV1Per
 
 func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) Elem() GoogleCloudChannelV1PeriodPeriodTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1PeriodPeriodType) GoogleCloudChannelV1PeriodPeriodType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1PeriodPeriodType
+		return ret
+	}).(GoogleCloudChannelV1PeriodPeriodTypeOutput)
 }
 
 func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -304,16 +314,6 @@ func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToStringPtrOutputWithCont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) Elem() GoogleCloudChannelV1PeriodPeriodTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1PeriodPeriodType) GoogleCloudChannelV1PeriodPeriodType {
-		var ret GoogleCloudChannelV1PeriodPeriodType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudChannelV1PeriodPeriodTypeOutput)
 }
 
 // GoogleCloudChannelV1PeriodPeriodTypeInput is an input type that accepts GoogleCloudChannelV1PeriodPeriodTypeArgs and GoogleCloudChannelV1PeriodPeriodTypeOutput values.
@@ -456,7 +456,7 @@ func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToStringPtrOutputW
 type GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ElementType() reflect.Type {
-	return googleCloudChannelV1RenewalSettingsPaymentPlanPtrType
+	return reflect.TypeOf((**GoogleCloudChannelV1RenewalSettingsPaymentPlan)(nil)).Elem()
 }
 
 func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput() GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
@@ -465,6 +465,16 @@ func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToGoogleCloudCh
 
 func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) Elem() GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettingsPaymentPlan) GoogleCloudChannelV1RenewalSettingsPaymentPlan {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1RenewalSettingsPaymentPlan
+		return ret
+	}).(GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput)
 }
 
 func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -479,16 +489,6 @@ func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToStringPtrOutp
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) Elem() GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettingsPaymentPlan) GoogleCloudChannelV1RenewalSettingsPaymentPlan {
-		var ret GoogleCloudChannelV1RenewalSettingsPaymentPlan
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput)
 }
 
 // GoogleCloudChannelV1RenewalSettingsPaymentPlanInput is an input type that accepts GoogleCloudChannelV1RenewalSettingsPaymentPlanArgs and GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput values.

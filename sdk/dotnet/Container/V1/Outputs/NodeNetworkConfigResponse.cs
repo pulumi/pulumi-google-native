@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Parameters for node pool-level network config.
+    /// </summary>
     [OutputType]
     public sealed class NodeNetworkConfigResponse
     {

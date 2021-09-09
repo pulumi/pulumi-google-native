@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// PullRequestFilter contains filter properties for matching GitHub Pull Requests.
+    /// </summary>
     [OutputType]
     public sealed class PullRequestFilterResponse
     {

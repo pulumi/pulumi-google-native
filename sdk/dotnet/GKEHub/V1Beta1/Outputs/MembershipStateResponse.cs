@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// State of the Membership resource.
+    /// </summary>
     [OutputType]
     public sealed class MembershipStateResponse
     {

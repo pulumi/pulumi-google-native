@@ -13,6 +13,7 @@ __all__ = [
     'GetConfigResult',
     'AwaitableGetConfigResult',
     'get_config',
+    'get_config_output',
 ]
 
 @pulumi.output_type
@@ -384,3 +385,14 @@ def get_config(config_id: Optional[str] = None,
         title=__ret__.title,
         types=__ret__.types,
         usage=__ret__.usage)
+
+
+@_utilities.lift_output_func(get_config)
+def get_config_output(config_id: Optional[pulumi.Input[str]] = None,
+                      service_name: Optional[pulumi.Input[str]] = None,
+                      view: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigResult]:
+    """
+    Gets a service configuration (version) for a managed service.
+    """
+    ...

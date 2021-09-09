@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Cluster that is managed by the workflow.
+    /// </summary>
     [OutputType]
     public sealed class ManagedClusterResponse
     {

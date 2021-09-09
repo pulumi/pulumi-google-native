@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Outputs
 {
 
+    /// <summary>
+    /// The pull message contains data that can be used by the caller of LeaseTasks to process the task. This proto can only be used for tasks in a queue which has pull_target set.
+    /// </summary>
     [OutputType]
     public sealed class PullMessageResponse
     {

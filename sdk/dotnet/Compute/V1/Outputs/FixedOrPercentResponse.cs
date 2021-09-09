@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Encapsulates numeric value that can be either absolute or relative.
+    /// </summary>
     [OutputType]
     public sealed class FixedOrPercentResponse
     {

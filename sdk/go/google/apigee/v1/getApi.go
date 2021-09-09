@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,4 +36,65 @@ type LookupApiResult struct {
 	Name string `pulumi:"name"`
 	// List of revisons defined for the API proxy.
 	Revision []string `pulumi:"revision"`
+}
+
+func LookupApiOutput(ctx *pulumi.Context, args LookupApiOutputArgs, opts ...pulumi.InvokeOption) LookupApiResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupApiResult, error) {
+			args := v.(LookupApiArgs)
+			r, err := LookupApi(ctx, &args, opts...)
+			return *r, err
+		}).(LookupApiResultOutput)
+}
+
+type LookupApiOutputArgs struct {
+	ApiId          pulumi.StringInput `pulumi:"apiId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupApiOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApiArgs)(nil)).Elem()
+}
+
+type LookupApiResultOutput struct{ *pulumi.OutputState }
+
+func (LookupApiResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApiResult)(nil)).Elem()
+}
+
+func (o LookupApiResultOutput) ToLookupApiResultOutput() LookupApiResultOutput {
+	return o
+}
+
+func (o LookupApiResultOutput) ToLookupApiResultOutputWithContext(ctx context.Context) LookupApiResultOutput {
+	return o
+}
+
+// User labels applied to this API Proxy.
+func (o LookupApiResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupApiResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The id of the most recently created revision for this api proxy.
+func (o LookupApiResultOutput) LatestRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.LatestRevisionId }).(pulumi.StringOutput)
+}
+
+// Metadata describing the API proxy.
+func (o LookupApiResultOutput) MetaData() GoogleCloudApigeeV1EntityMetadataResponseOutput {
+	return o.ApplyT(func(v LookupApiResult) GoogleCloudApigeeV1EntityMetadataResponse { return v.MetaData }).(GoogleCloudApigeeV1EntityMetadataResponseOutput)
+}
+
+// Name of the API proxy.
+func (o LookupApiResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of revisons defined for the API proxy.
+func (o LookupApiResultOutput) Revision() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupApiResult) []string { return v.Revision }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupApiResultOutput{})
 }

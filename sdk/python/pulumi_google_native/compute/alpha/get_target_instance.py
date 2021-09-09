@@ -12,6 +12,7 @@ __all__ = [
     'GetTargetInstanceResult',
     'AwaitableGetTargetInstanceResult',
     'get_target_instance',
+    'get_target_instance_output',
 ]
 
 @pulumi.output_type
@@ -175,3 +176,14 @@ def get_target_instance(project: Optional[str] = None,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_target_instance)
+def get_target_instance_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                               target_instance: Optional[pulumi.Input[str]] = None,
+                               zone: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetInstanceResult]:
+    """
+    Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
+    """
+    ...

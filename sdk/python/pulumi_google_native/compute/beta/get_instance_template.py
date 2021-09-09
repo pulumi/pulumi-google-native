@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceTemplateResult',
     'AwaitableGetInstanceTemplateResult',
     'get_instance_template',
+    'get_instance_template_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,13 @@ def get_instance_template(instance_template: Optional[str] = None,
         self_link=__ret__.self_link,
         source_instance=__ret__.source_instance,
         source_instance_params=__ret__.source_instance_params)
+
+
+@_utilities.lift_output_func(get_instance_template)
+def get_instance_template_output(instance_template: Optional[pulumi.Input[str]] = None,
+                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTemplateResult]:
+    """
+    Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+    """
+    ...

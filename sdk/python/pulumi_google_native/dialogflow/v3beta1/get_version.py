@@ -13,6 +13,7 @@ __all__ = [
     'GetVersionResult',
     'AwaitableGetVersionResult',
     'get_version',
+    'get_version_output',
 ]
 
 @pulumi.output_type
@@ -128,3 +129,16 @@ def get_version(agent_id: Optional[str] = None,
         name=__ret__.name,
         nlu_settings=__ret__.nlu_settings,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_version)
+def get_version_output(agent_id: Optional[pulumi.Input[str]] = None,
+                       flow_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       version_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVersionResult]:
+    """
+    Retrieves the specified Version.
+    """
+    ...

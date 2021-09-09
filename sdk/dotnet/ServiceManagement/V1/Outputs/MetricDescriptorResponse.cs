@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. 
+    /// </summary>
     [OutputType]
     public sealed class MetricDescriptorResponse
     {

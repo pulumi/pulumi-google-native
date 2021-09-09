@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
 {
 
+    /// <summary>
+    /// Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
+    /// </summary>
     [OutputType]
     public sealed class PatchRolloutResponse
     {

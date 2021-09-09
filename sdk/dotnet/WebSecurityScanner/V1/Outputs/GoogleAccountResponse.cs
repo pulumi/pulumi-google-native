@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.WebSecurityScanner.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes authentication configuration that uses a Google account.
+    /// </summary>
     [OutputType]
     public sealed class GoogleAccountResponse
     {

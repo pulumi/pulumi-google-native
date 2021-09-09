@@ -195,9 +195,7 @@ func (i *MigrationJob) ToMigrationJobOutputWithContext(ctx context.Context) Migr
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobOutput)
 }
 
-type MigrationJobOutput struct {
-	*pulumi.OutputState
-}
+type MigrationJobOutput struct{ *pulumi.OutputState }
 
 func (MigrationJobOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MigrationJob)(nil))

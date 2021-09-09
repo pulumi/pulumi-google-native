@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1OperationConfigResponse
     {

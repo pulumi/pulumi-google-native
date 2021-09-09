@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 {
 
+    /// <summary>
+    /// The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse
     {

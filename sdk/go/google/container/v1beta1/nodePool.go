@@ -172,9 +172,7 @@ func (i *NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutp
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolOutput)
 }
 
-type NodePoolOutput struct {
-	*pulumi.OutputState
-}
+type NodePoolOutput struct{ *pulumi.OutputState }
 
 func (NodePoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodePool)(nil))

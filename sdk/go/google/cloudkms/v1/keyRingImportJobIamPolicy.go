@@ -129,9 +129,7 @@ func (i *KeyRingImportJobIamPolicy) ToKeyRingImportJobIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobIamPolicyOutput)
 }
 
-type KeyRingImportJobIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type KeyRingImportJobIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (KeyRingImportJobIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyRingImportJobIamPolicy)(nil))

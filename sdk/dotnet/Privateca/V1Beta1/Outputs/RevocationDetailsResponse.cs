@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Describes fields that are relavent to the revocation of a Certificate.
+    /// </summary>
     [OutputType]
     public sealed class RevocationDetailsResponse
     {

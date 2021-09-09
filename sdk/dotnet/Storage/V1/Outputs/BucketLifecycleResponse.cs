@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// The bucket's lifecycle configuration. See lifecycle management for more information.
+    /// </summary>
     [OutputType]
     public sealed class BucketLifecycleResponse
     {

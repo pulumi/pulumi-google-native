@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 {
 
+    /// <summary>
+    /// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1DatabaseTableSpecResponse
     {

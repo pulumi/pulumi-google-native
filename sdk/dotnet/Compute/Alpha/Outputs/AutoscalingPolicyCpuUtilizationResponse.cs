@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// CPU utilization policy.
+    /// </summary>
     [OutputType]
     public sealed class AutoscalingPolicyCpuUtilizationResponse
     {

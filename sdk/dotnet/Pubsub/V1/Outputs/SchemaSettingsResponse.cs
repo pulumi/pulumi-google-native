@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
 {
 
+    /// <summary>
+    /// Settings for validating messages published against a schema.
+    /// </summary>
     [OutputType]
     public sealed class SchemaSettingsResponse
     {

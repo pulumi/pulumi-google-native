@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,4 +43,83 @@ type LookupChannelPartnerLinkResult struct {
 	ResellerCloudIdentityId string `pulumi:"resellerCloudIdentityId"`
 	// Timestamp of when the channel partner link is updated.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupChannelPartnerLinkOutput(ctx *pulumi.Context, args LookupChannelPartnerLinkOutputArgs, opts ...pulumi.InvokeOption) LookupChannelPartnerLinkResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupChannelPartnerLinkResult, error) {
+			args := v.(LookupChannelPartnerLinkArgs)
+			r, err := LookupChannelPartnerLink(ctx, &args, opts...)
+			return *r, err
+		}).(LookupChannelPartnerLinkResultOutput)
+}
+
+type LookupChannelPartnerLinkOutputArgs struct {
+	AccountId            pulumi.StringInput    `pulumi:"accountId"`
+	ChannelPartnerLinkId pulumi.StringInput    `pulumi:"channelPartnerLinkId"`
+	View                 pulumi.StringPtrInput `pulumi:"view"`
+}
+
+func (LookupChannelPartnerLinkOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupChannelPartnerLinkArgs)(nil)).Elem()
+}
+
+type LookupChannelPartnerLinkResultOutput struct{ *pulumi.OutputState }
+
+func (LookupChannelPartnerLinkResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupChannelPartnerLinkResult)(nil)).Elem()
+}
+
+func (o LookupChannelPartnerLinkResultOutput) ToLookupChannelPartnerLinkResultOutput() LookupChannelPartnerLinkResultOutput {
+	return o
+}
+
+func (o LookupChannelPartnerLinkResultOutput) ToLookupChannelPartnerLinkResultOutputWithContext(ctx context.Context) LookupChannelPartnerLinkResultOutput {
+	return o
+}
+
+// Cloud Identity info of the channel partner (IR).
+func (o LookupChannelPartnerLinkResultOutput) ChannelPartnerCloudIdentityInfo() GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
+	return o.ApplyT(func(v LookupChannelPartnerLinkResult) GoogleCloudChannelV1CloudIdentityInfoResponse {
+		return v.ChannelPartnerCloudIdentityInfo
+	}).(GoogleCloudChannelV1CloudIdentityInfoResponseOutput)
+}
+
+// Timestamp of when the channel partner link is created.
+func (o LookupChannelPartnerLinkResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupChannelPartnerLinkResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// URI of the web page where partner accepts the link invitation.
+func (o LookupChannelPartnerLinkResultOutput) InviteLinkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupChannelPartnerLinkResult) string { return v.InviteLinkUri }).(pulumi.StringOutput)
+}
+
+// State of the channel partner link.
+func (o LookupChannelPartnerLinkResultOutput) LinkState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupChannelPartnerLinkResult) string { return v.LinkState }).(pulumi.StringOutput)
+}
+
+// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
+func (o LookupChannelPartnerLinkResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupChannelPartnerLinkResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
+func (o LookupChannelPartnerLinkResultOutput) PublicId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupChannelPartnerLinkResult) string { return v.PublicId }).(pulumi.StringOutput)
+}
+
+// Cloud Identity ID of the linked reseller.
+func (o LookupChannelPartnerLinkResultOutput) ResellerCloudIdentityId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupChannelPartnerLinkResult) string { return v.ResellerCloudIdentityId }).(pulumi.StringOutput)
+}
+
+// Timestamp of when the channel partner link is updated.
+func (o LookupChannelPartnerLinkResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupChannelPartnerLinkResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupChannelPartnerLinkResultOutput{})
 }

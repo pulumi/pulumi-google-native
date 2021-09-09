@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Defines the IP ranges that want to use NAT for a subnetwork.
+    /// </summary>
     [OutputType]
     public sealed class RouterNatSubnetworkToNatResponse
     {

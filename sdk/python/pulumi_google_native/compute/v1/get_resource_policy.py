@@ -13,6 +13,7 @@ __all__ = [
     'GetResourcePolicyResult',
     'AwaitableGetResourcePolicyResult',
     'get_resource_policy',
+    'get_resource_policy_output',
 ]
 
 @pulumi.output_type
@@ -183,3 +184,14 @@ def get_resource_policy(project: Optional[str] = None,
         self_link=__ret__.self_link,
         snapshot_schedule_policy=__ret__.snapshot_schedule_policy,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_resource_policy)
+def get_resource_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                               region: Optional[pulumi.Input[str]] = None,
+                               resource_policy: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcePolicyResult]:
+    """
+    Retrieves all information of the specified resource policy.
+    """
+    ...

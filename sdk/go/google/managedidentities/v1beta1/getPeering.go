@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,4 +42,80 @@ type LookupPeeringResult struct {
 	StatusMessage string `pulumi:"statusMessage"`
 	// Last update time.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupPeeringOutput(ctx *pulumi.Context, args LookupPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupPeeringResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupPeeringResult, error) {
+			args := v.(LookupPeeringArgs)
+			r, err := LookupPeering(ctx, &args, opts...)
+			return *r, err
+		}).(LookupPeeringResultOutput)
+}
+
+type LookupPeeringOutputArgs struct {
+	PeeringId pulumi.StringInput    `pulumi:"peeringId"`
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupPeeringOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPeeringArgs)(nil)).Elem()
+}
+
+type LookupPeeringResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPeeringResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPeeringResult)(nil)).Elem()
+}
+
+func (o LookupPeeringResultOutput) ToLookupPeeringResultOutput() LookupPeeringResultOutput {
+	return o
+}
+
+func (o LookupPeeringResultOutput) ToLookupPeeringResultOutputWithContext(ctx context.Context) LookupPeeringResultOutput {
+	return o
+}
+
+// The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
+func (o LookupPeeringResultOutput) AuthorizedNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringResult) string { return v.AuthorizedNetwork }).(pulumi.StringOutput)
+}
+
+// The time the instance was created.
+func (o LookupPeeringResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form: `projects/{project_id}/locations/global/domains/{domain_name}`
+func (o LookupPeeringResultOutput) DomainResource() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringResult) string { return v.DomainResource }).(pulumi.StringOutput)
+}
+
+// Optional. Resource labels to represent user provided metadata.
+func (o LookupPeeringResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPeeringResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`.
+func (o LookupPeeringResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current state of this Peering.
+func (o LookupPeeringResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Additional information about the current status of this peering, if available.
+func (o LookupPeeringResultOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringResult) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Last update time.
+func (o LookupPeeringResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPeeringResultOutput{})
 }

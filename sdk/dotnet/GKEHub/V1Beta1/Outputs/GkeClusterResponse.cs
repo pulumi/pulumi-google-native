@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// GkeCluster contains information specific to GKE clusters.
+    /// </summary>
     [OutputType]
     public sealed class GkeClusterResponse
     {

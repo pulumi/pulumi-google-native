@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Defines a SDK harness container for executing Dataflow pipelines.
+    /// </summary>
     [OutputType]
     public sealed class SdkHarnessContainerImageResponse
     {

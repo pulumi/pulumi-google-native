@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// An occurrence describing an attestation on a resource
+    /// </summary>
     [OutputType]
     public sealed class DSSEAttestationOccurrenceResponse
     {

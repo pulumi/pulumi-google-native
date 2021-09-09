@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceResult',
     'AwaitableGetInstanceResult',
     'get_instance',
+    'get_instance_output',
 ]
 
 @pulumi.output_type
@@ -488,3 +489,14 @@ def get_instance(instance_id: Optional[str] = None,
         update_time=__ret__.update_time,
         upgrade_history=__ret__.upgrade_history,
         vm_image=__ret__.vm_image)
+
+
+@_utilities.lift_output_func(get_instance)
+def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
+                        location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+    """
+    Gets details of a single Instance.
+    """
+    ...

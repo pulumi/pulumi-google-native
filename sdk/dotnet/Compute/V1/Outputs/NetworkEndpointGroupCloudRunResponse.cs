@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for a Cloud Run network endpoint group (NEG). The service must be provided explicitly or in the URL mask. The tag is optional, may be provided explicitly or in the URL mask. Note: Cloud Run service must be in the same project and located in the same region as the Serverless NEG.
+    /// </summary>
     [OutputType]
     public sealed class NetworkEndpointGroupCloudRunResponse
     {

@@ -113,9 +113,7 @@ func (i *Override) ToOverrideOutputWithContext(ctx context.Context) OverrideOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OverrideOutput)
 }
 
-type OverrideOutput struct {
-	*pulumi.OutputState
-}
+type OverrideOutput struct{ *pulumi.OutputState }
 
 func (OverrideOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Override)(nil))

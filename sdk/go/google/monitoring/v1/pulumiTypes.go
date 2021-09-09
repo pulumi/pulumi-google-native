@@ -118,7 +118,7 @@ func (o AggregationOutput) ToAggregationPtrOutput() AggregationPtrOutput {
 }
 
 func (o AggregationOutput) ToAggregationPtrOutputWithContext(ctx context.Context) AggregationPtrOutput {
-	return o.ApplyT(func(v Aggregation) *Aggregation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Aggregation) *Aggregation {
 		return &v
 	}).(AggregationPtrOutput)
 }
@@ -158,7 +158,13 @@ func (o AggregationPtrOutput) ToAggregationPtrOutputWithContext(ctx context.Cont
 }
 
 func (o AggregationPtrOutput) Elem() AggregationOutput {
-	return o.ApplyT(func(v *Aggregation) Aggregation { return *v }).(AggregationOutput)
+	return o.ApplyT(func(v *Aggregation) Aggregation {
+		if v != nil {
+			return *v
+		}
+		var ret Aggregation
+		return ret
+	}).(AggregationOutput)
 }
 
 // The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks.
@@ -379,7 +385,7 @@ func (o AlertChartOutput) ToAlertChartPtrOutput() AlertChartPtrOutput {
 }
 
 func (o AlertChartOutput) ToAlertChartPtrOutputWithContext(ctx context.Context) AlertChartPtrOutput {
-	return o.ApplyT(func(v AlertChart) *AlertChart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertChart) *AlertChart {
 		return &v
 	}).(AlertChartPtrOutput)
 }
@@ -404,7 +410,13 @@ func (o AlertChartPtrOutput) ToAlertChartPtrOutputWithContext(ctx context.Contex
 }
 
 func (o AlertChartPtrOutput) Elem() AlertChartOutput {
-	return o.ApplyT(func(v *AlertChart) AlertChart { return *v }).(AlertChartOutput)
+	return o.ApplyT(func(v *AlertChart) AlertChart {
+		if v != nil {
+			return *v
+		}
+		var ret AlertChart
+		return ret
+	}).(AlertChartOutput)
 }
 
 // The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
@@ -572,7 +584,7 @@ func (o AxisOutput) ToAxisPtrOutput() AxisPtrOutput {
 }
 
 func (o AxisOutput) ToAxisPtrOutputWithContext(ctx context.Context) AxisPtrOutput {
-	return o.ApplyT(func(v Axis) *Axis {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Axis) *Axis {
 		return &v
 	}).(AxisPtrOutput)
 }
@@ -602,7 +614,13 @@ func (o AxisPtrOutput) ToAxisPtrOutputWithContext(ctx context.Context) AxisPtrOu
 }
 
 func (o AxisPtrOutput) Elem() AxisOutput {
-	return o.ApplyT(func(v *Axis) Axis { return *v }).(AxisOutput)
+	return o.ApplyT(func(v *Axis) Axis {
+		if v != nil {
+			return *v
+		}
+		var ret Axis
+		return ret
+	}).(AxisOutput)
 }
 
 // The label of the axis.
@@ -785,7 +803,7 @@ func (o ChartOptionsOutput) ToChartOptionsPtrOutput() ChartOptionsPtrOutput {
 }
 
 func (o ChartOptionsOutput) ToChartOptionsPtrOutputWithContext(ctx context.Context) ChartOptionsPtrOutput {
-	return o.ApplyT(func(v ChartOptions) *ChartOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChartOptions) *ChartOptions {
 		return &v
 	}).(ChartOptionsPtrOutput)
 }
@@ -810,7 +828,13 @@ func (o ChartOptionsPtrOutput) ToChartOptionsPtrOutputWithContext(ctx context.Co
 }
 
 func (o ChartOptionsPtrOutput) Elem() ChartOptionsOutput {
-	return o.ApplyT(func(v *ChartOptions) ChartOptions { return *v }).(ChartOptionsOutput)
+	return o.ApplyT(func(v *ChartOptions) ChartOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ChartOptions
+		return ret
+	}).(ChartOptionsOutput)
 }
 
 // The chart mode.
@@ -1083,7 +1107,7 @@ func (o ColumnLayoutOutput) ToColumnLayoutPtrOutput() ColumnLayoutPtrOutput {
 }
 
 func (o ColumnLayoutOutput) ToColumnLayoutPtrOutputWithContext(ctx context.Context) ColumnLayoutPtrOutput {
-	return o.ApplyT(func(v ColumnLayout) *ColumnLayout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ColumnLayout) *ColumnLayout {
 		return &v
 	}).(ColumnLayoutPtrOutput)
 }
@@ -1108,7 +1132,13 @@ func (o ColumnLayoutPtrOutput) ToColumnLayoutPtrOutputWithContext(ctx context.Co
 }
 
 func (o ColumnLayoutPtrOutput) Elem() ColumnLayoutOutput {
-	return o.ApplyT(func(v *ColumnLayout) ColumnLayout { return *v }).(ColumnLayoutOutput)
+	return o.ApplyT(func(v *ColumnLayout) ColumnLayout {
+		if v != nil {
+			return *v
+		}
+		var ret ColumnLayout
+		return ret
+	}).(ColumnLayoutOutput)
 }
 
 // The columns of content to display.
@@ -1217,7 +1247,7 @@ func (o ColumnLayoutResponseOutput) ToColumnLayoutResponsePtrOutput() ColumnLayo
 }
 
 func (o ColumnLayoutResponseOutput) ToColumnLayoutResponsePtrOutputWithContext(ctx context.Context) ColumnLayoutResponsePtrOutput {
-	return o.ApplyT(func(v ColumnLayoutResponse) *ColumnLayoutResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ColumnLayoutResponse) *ColumnLayoutResponse {
 		return &v
 	}).(ColumnLayoutResponsePtrOutput)
 }
@@ -1242,7 +1272,13 @@ func (o ColumnLayoutResponsePtrOutput) ToColumnLayoutResponsePtrOutputWithContex
 }
 
 func (o ColumnLayoutResponsePtrOutput) Elem() ColumnLayoutResponseOutput {
-	return o.ApplyT(func(v *ColumnLayoutResponse) ColumnLayoutResponse { return *v }).(ColumnLayoutResponseOutput)
+	return o.ApplyT(func(v *ColumnLayoutResponse) ColumnLayoutResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ColumnLayoutResponse
+		return ret
+	}).(ColumnLayoutResponseOutput)
 }
 
 // The columns of content to display.
@@ -1728,7 +1764,7 @@ func (o EmptyOutput) ToEmptyPtrOutput() EmptyPtrOutput {
 }
 
 func (o EmptyOutput) ToEmptyPtrOutputWithContext(ctx context.Context) EmptyPtrOutput {
-	return o.ApplyT(func(v Empty) *Empty {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Empty) *Empty {
 		return &v
 	}).(EmptyPtrOutput)
 }
@@ -1748,7 +1784,13 @@ func (o EmptyPtrOutput) ToEmptyPtrOutputWithContext(ctx context.Context) EmptyPt
 }
 
 func (o EmptyPtrOutput) Elem() EmptyOutput {
-	return o.ApplyT(func(v *Empty) Empty { return *v }).(EmptyOutput)
+	return o.ApplyT(func(v *Empty) Empty {
+		if v != nil {
+			return *v
+		}
+		var ret Empty
+		return ret
+	}).(EmptyOutput)
 }
 
 // A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON object {}.
@@ -1897,7 +1939,7 @@ func (o GaugeViewOutput) ToGaugeViewPtrOutput() GaugeViewPtrOutput {
 }
 
 func (o GaugeViewOutput) ToGaugeViewPtrOutputWithContext(ctx context.Context) GaugeViewPtrOutput {
-	return o.ApplyT(func(v GaugeView) *GaugeView {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GaugeView) *GaugeView {
 		return &v
 	}).(GaugeViewPtrOutput)
 }
@@ -1927,7 +1969,13 @@ func (o GaugeViewPtrOutput) ToGaugeViewPtrOutputWithContext(ctx context.Context)
 }
 
 func (o GaugeViewPtrOutput) Elem() GaugeViewOutput {
-	return o.ApplyT(func(v *GaugeView) GaugeView { return *v }).(GaugeViewOutput)
+	return o.ApplyT(func(v *GaugeView) GaugeView {
+		if v != nil {
+			return *v
+		}
+		var ret GaugeView
+		return ret
+	}).(GaugeViewOutput)
 }
 
 // The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
@@ -2114,7 +2162,7 @@ func (o GridLayoutOutput) ToGridLayoutPtrOutput() GridLayoutPtrOutput {
 }
 
 func (o GridLayoutOutput) ToGridLayoutPtrOutputWithContext(ctx context.Context) GridLayoutPtrOutput {
-	return o.ApplyT(func(v GridLayout) *GridLayout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GridLayout) *GridLayout {
 		return &v
 	}).(GridLayoutPtrOutput)
 }
@@ -2144,7 +2192,13 @@ func (o GridLayoutPtrOutput) ToGridLayoutPtrOutputWithContext(ctx context.Contex
 }
 
 func (o GridLayoutPtrOutput) Elem() GridLayoutOutput {
-	return o.ApplyT(func(v *GridLayout) GridLayout { return *v }).(GridLayoutOutput)
+	return o.ApplyT(func(v *GridLayout) GridLayout {
+		if v != nil {
+			return *v
+		}
+		var ret GridLayout
+		return ret
+	}).(GridLayoutOutput)
 }
 
 // The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
@@ -2267,7 +2321,7 @@ func (o GridLayoutResponseOutput) ToGridLayoutResponsePtrOutput() GridLayoutResp
 }
 
 func (o GridLayoutResponseOutput) ToGridLayoutResponsePtrOutputWithContext(ctx context.Context) GridLayoutResponsePtrOutput {
-	return o.ApplyT(func(v GridLayoutResponse) *GridLayoutResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GridLayoutResponse) *GridLayoutResponse {
 		return &v
 	}).(GridLayoutResponsePtrOutput)
 }
@@ -2297,7 +2351,13 @@ func (o GridLayoutResponsePtrOutput) ToGridLayoutResponsePtrOutputWithContext(ct
 }
 
 func (o GridLayoutResponsePtrOutput) Elem() GridLayoutResponseOutput {
-	return o.ApplyT(func(v *GridLayoutResponse) GridLayoutResponse { return *v }).(GridLayoutResponseOutput)
+	return o.ApplyT(func(v *GridLayoutResponse) GridLayoutResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GridLayoutResponse
+		return ret
+	}).(GridLayoutResponseOutput)
 }
 
 // The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
@@ -2420,7 +2480,7 @@ func (o MosaicLayoutOutput) ToMosaicLayoutPtrOutput() MosaicLayoutPtrOutput {
 }
 
 func (o MosaicLayoutOutput) ToMosaicLayoutPtrOutputWithContext(ctx context.Context) MosaicLayoutPtrOutput {
-	return o.ApplyT(func(v MosaicLayout) *MosaicLayout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MosaicLayout) *MosaicLayout {
 		return &v
 	}).(MosaicLayoutPtrOutput)
 }
@@ -2450,7 +2510,13 @@ func (o MosaicLayoutPtrOutput) ToMosaicLayoutPtrOutputWithContext(ctx context.Co
 }
 
 func (o MosaicLayoutPtrOutput) Elem() MosaicLayoutOutput {
-	return o.ApplyT(func(v *MosaicLayout) MosaicLayout { return *v }).(MosaicLayoutOutput)
+	return o.ApplyT(func(v *MosaicLayout) MosaicLayout {
+		if v != nil {
+			return *v
+		}
+		var ret MosaicLayout
+		return ret
+	}).(MosaicLayoutOutput)
 }
 
 // The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
@@ -2573,7 +2639,7 @@ func (o MosaicLayoutResponseOutput) ToMosaicLayoutResponsePtrOutput() MosaicLayo
 }
 
 func (o MosaicLayoutResponseOutput) ToMosaicLayoutResponsePtrOutputWithContext(ctx context.Context) MosaicLayoutResponsePtrOutput {
-	return o.ApplyT(func(v MosaicLayoutResponse) *MosaicLayoutResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MosaicLayoutResponse) *MosaicLayoutResponse {
 		return &v
 	}).(MosaicLayoutResponsePtrOutput)
 }
@@ -2603,7 +2669,13 @@ func (o MosaicLayoutResponsePtrOutput) ToMosaicLayoutResponsePtrOutputWithContex
 }
 
 func (o MosaicLayoutResponsePtrOutput) Elem() MosaicLayoutResponseOutput {
-	return o.ApplyT(func(v *MosaicLayoutResponse) MosaicLayoutResponse { return *v }).(MosaicLayoutResponseOutput)
+	return o.ApplyT(func(v *MosaicLayoutResponse) MosaicLayoutResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MosaicLayoutResponse
+		return ret
+	}).(MosaicLayoutResponseOutput)
 }
 
 // The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
@@ -2730,7 +2802,7 @@ func (o PickTimeSeriesFilterOutput) ToPickTimeSeriesFilterPtrOutput() PickTimeSe
 }
 
 func (o PickTimeSeriesFilterOutput) ToPickTimeSeriesFilterPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterPtrOutput {
-	return o.ApplyT(func(v PickTimeSeriesFilter) *PickTimeSeriesFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PickTimeSeriesFilter) *PickTimeSeriesFilter {
 		return &v
 	}).(PickTimeSeriesFilterPtrOutput)
 }
@@ -2765,7 +2837,13 @@ func (o PickTimeSeriesFilterPtrOutput) ToPickTimeSeriesFilterPtrOutputWithContex
 }
 
 func (o PickTimeSeriesFilterPtrOutput) Elem() PickTimeSeriesFilterOutput {
-	return o.ApplyT(func(v *PickTimeSeriesFilter) PickTimeSeriesFilter { return *v }).(PickTimeSeriesFilterOutput)
+	return o.ApplyT(func(v *PickTimeSeriesFilter) PickTimeSeriesFilter {
+		if v != nil {
+			return *v
+		}
+		var ret PickTimeSeriesFilter
+		return ret
+	}).(PickTimeSeriesFilterOutput)
 }
 
 // How to use the ranking to select time series that pass through the filter.
@@ -2971,7 +3049,7 @@ func (o RatioPartOutput) ToRatioPartPtrOutput() RatioPartPtrOutput {
 }
 
 func (o RatioPartOutput) ToRatioPartPtrOutputWithContext(ctx context.Context) RatioPartPtrOutput {
-	return o.ApplyT(func(v RatioPart) *RatioPart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RatioPart) *RatioPart {
 		return &v
 	}).(RatioPartPtrOutput)
 }
@@ -3001,7 +3079,13 @@ func (o RatioPartPtrOutput) ToRatioPartPtrOutputWithContext(ctx context.Context)
 }
 
 func (o RatioPartPtrOutput) Elem() RatioPartOutput {
-	return o.ApplyT(func(v *RatioPart) RatioPart { return *v }).(RatioPartOutput)
+	return o.ApplyT(func(v *RatioPart) RatioPart {
+		if v != nil {
+			return *v
+		}
+		var ret RatioPart
+		return ret
+	}).(RatioPartOutput)
 }
 
 // By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
@@ -3293,7 +3377,7 @@ func (o RowLayoutOutput) ToRowLayoutPtrOutput() RowLayoutPtrOutput {
 }
 
 func (o RowLayoutOutput) ToRowLayoutPtrOutputWithContext(ctx context.Context) RowLayoutPtrOutput {
-	return o.ApplyT(func(v RowLayout) *RowLayout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RowLayout) *RowLayout {
 		return &v
 	}).(RowLayoutPtrOutput)
 }
@@ -3318,7 +3402,13 @@ func (o RowLayoutPtrOutput) ToRowLayoutPtrOutputWithContext(ctx context.Context)
 }
 
 func (o RowLayoutPtrOutput) Elem() RowLayoutOutput {
-	return o.ApplyT(func(v *RowLayout) RowLayout { return *v }).(RowLayoutOutput)
+	return o.ApplyT(func(v *RowLayout) RowLayout {
+		if v != nil {
+			return *v
+		}
+		var ret RowLayout
+		return ret
+	}).(RowLayoutOutput)
 }
 
 // The rows of content to display.
@@ -3427,7 +3517,7 @@ func (o RowLayoutResponseOutput) ToRowLayoutResponsePtrOutput() RowLayoutRespons
 }
 
 func (o RowLayoutResponseOutput) ToRowLayoutResponsePtrOutputWithContext(ctx context.Context) RowLayoutResponsePtrOutput {
-	return o.ApplyT(func(v RowLayoutResponse) *RowLayoutResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RowLayoutResponse) *RowLayoutResponse {
 		return &v
 	}).(RowLayoutResponsePtrOutput)
 }
@@ -3452,7 +3542,13 @@ func (o RowLayoutResponsePtrOutput) ToRowLayoutResponsePtrOutputWithContext(ctx 
 }
 
 func (o RowLayoutResponsePtrOutput) Elem() RowLayoutResponseOutput {
-	return o.ApplyT(func(v *RowLayoutResponse) RowLayoutResponse { return *v }).(RowLayoutResponseOutput)
+	return o.ApplyT(func(v *RowLayoutResponse) RowLayoutResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RowLayoutResponse
+		return ret
+	}).(RowLayoutResponseOutput)
 }
 
 // The rows of content to display.
@@ -3682,7 +3778,7 @@ func (o ScorecardOutput) ToScorecardPtrOutput() ScorecardPtrOutput {
 }
 
 func (o ScorecardOutput) ToScorecardPtrOutputWithContext(ctx context.Context) ScorecardPtrOutput {
-	return o.ApplyT(func(v Scorecard) *Scorecard {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Scorecard) *Scorecard {
 		return &v
 	}).(ScorecardPtrOutput)
 }
@@ -3722,7 +3818,13 @@ func (o ScorecardPtrOutput) ToScorecardPtrOutputWithContext(ctx context.Context)
 }
 
 func (o ScorecardPtrOutput) Elem() ScorecardOutput {
-	return o.ApplyT(func(v *Scorecard) Scorecard { return *v }).(ScorecardOutput)
+	return o.ApplyT(func(v *Scorecard) Scorecard {
+		if v != nil {
+			return *v
+		}
+		var ret Scorecard
+		return ret
+	}).(ScorecardOutput)
 }
 
 // Will cause the scorecard to show a gauge chart.
@@ -3947,7 +4049,7 @@ func (o SparkChartViewOutput) ToSparkChartViewPtrOutput() SparkChartViewPtrOutpu
 }
 
 func (o SparkChartViewOutput) ToSparkChartViewPtrOutputWithContext(ctx context.Context) SparkChartViewPtrOutput {
-	return o.ApplyT(func(v SparkChartView) *SparkChartView {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkChartView) *SparkChartView {
 		return &v
 	}).(SparkChartViewPtrOutput)
 }
@@ -3977,7 +4079,13 @@ func (o SparkChartViewPtrOutput) ToSparkChartViewPtrOutputWithContext(ctx contex
 }
 
 func (o SparkChartViewPtrOutput) Elem() SparkChartViewOutput {
-	return o.ApplyT(func(v *SparkChartView) SparkChartView { return *v }).(SparkChartViewOutput)
+	return o.ApplyT(func(v *SparkChartView) SparkChartView {
+		if v != nil {
+			return *v
+		}
+		var ret SparkChartView
+		return ret
+	}).(SparkChartViewOutput)
 }
 
 // The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
@@ -4164,7 +4272,7 @@ func (o TextOutput) ToTextPtrOutput() TextPtrOutput {
 }
 
 func (o TextOutput) ToTextPtrOutputWithContext(ctx context.Context) TextPtrOutput {
-	return o.ApplyT(func(v Text) *Text {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Text) *Text {
 		return &v
 	}).(TextPtrOutput)
 }
@@ -4194,7 +4302,13 @@ func (o TextPtrOutput) ToTextPtrOutputWithContext(ctx context.Context) TextPtrOu
 }
 
 func (o TextPtrOutput) Elem() TextOutput {
-	return o.ApplyT(func(v *Text) Text { return *v }).(TextOutput)
+	return o.ApplyT(func(v *Text) Text {
+		if v != nil {
+			return *v
+		}
+		var ret Text
+		return ret
+	}).(TextOutput)
 }
 
 // The text content to be displayed.
@@ -4933,7 +5047,7 @@ func (o TimeSeriesFilterOutput) ToTimeSeriesFilterPtrOutput() TimeSeriesFilterPt
 }
 
 func (o TimeSeriesFilterOutput) ToTimeSeriesFilterPtrOutputWithContext(ctx context.Context) TimeSeriesFilterPtrOutput {
-	return o.ApplyT(func(v TimeSeriesFilter) *TimeSeriesFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesFilter) *TimeSeriesFilter {
 		return &v
 	}).(TimeSeriesFilterPtrOutput)
 }
@@ -4973,7 +5087,13 @@ func (o TimeSeriesFilterPtrOutput) ToTimeSeriesFilterPtrOutputWithContext(ctx co
 }
 
 func (o TimeSeriesFilterPtrOutput) Elem() TimeSeriesFilterOutput {
-	return o.ApplyT(func(v *TimeSeriesFilter) TimeSeriesFilter { return *v }).(TimeSeriesFilterOutput)
+	return o.ApplyT(func(v *TimeSeriesFilter) TimeSeriesFilter {
+		if v != nil {
+			return *v
+		}
+		var ret TimeSeriesFilter
+		return ret
+	}).(TimeSeriesFilterOutput)
 }
 
 // By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
@@ -5124,7 +5244,7 @@ func (o TimeSeriesFilterRatioOutput) ToTimeSeriesFilterRatioPtrOutput() TimeSeri
 }
 
 func (o TimeSeriesFilterRatioOutput) ToTimeSeriesFilterRatioPtrOutputWithContext(ctx context.Context) TimeSeriesFilterRatioPtrOutput {
-	return o.ApplyT(func(v TimeSeriesFilterRatio) *TimeSeriesFilterRatio {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesFilterRatio) *TimeSeriesFilterRatio {
 		return &v
 	}).(TimeSeriesFilterRatioPtrOutput)
 }
@@ -5164,7 +5284,13 @@ func (o TimeSeriesFilterRatioPtrOutput) ToTimeSeriesFilterRatioPtrOutputWithCont
 }
 
 func (o TimeSeriesFilterRatioPtrOutput) Elem() TimeSeriesFilterRatioOutput {
-	return o.ApplyT(func(v *TimeSeriesFilterRatio) TimeSeriesFilterRatio { return *v }).(TimeSeriesFilterRatioOutput)
+	return o.ApplyT(func(v *TimeSeriesFilterRatio) TimeSeriesFilterRatio {
+		if v != nil {
+			return *v
+		}
+		var ret TimeSeriesFilterRatio
+		return ret
+	}).(TimeSeriesFilterRatioOutput)
 }
 
 // The denominator of the ratio.
@@ -5479,7 +5605,7 @@ func (o TimeSeriesQueryOutput) ToTimeSeriesQueryPtrOutput() TimeSeriesQueryPtrOu
 }
 
 func (o TimeSeriesQueryOutput) ToTimeSeriesQueryPtrOutputWithContext(ctx context.Context) TimeSeriesQueryPtrOutput {
-	return o.ApplyT(func(v TimeSeriesQuery) *TimeSeriesQuery {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesQuery) *TimeSeriesQuery {
 		return &v
 	}).(TimeSeriesQueryPtrOutput)
 }
@@ -5519,7 +5645,13 @@ func (o TimeSeriesQueryPtrOutput) ToTimeSeriesQueryPtrOutputWithContext(ctx cont
 }
 
 func (o TimeSeriesQueryPtrOutput) Elem() TimeSeriesQueryOutput {
-	return o.ApplyT(func(v *TimeSeriesQuery) TimeSeriesQuery { return *v }).(TimeSeriesQueryOutput)
+	return o.ApplyT(func(v *TimeSeriesQuery) TimeSeriesQuery {
+		if v != nil {
+			return *v
+		}
+		var ret TimeSeriesQuery
+		return ret
+	}).(TimeSeriesQueryOutput)
 }
 
 // Filter parameters to fetch time series.
@@ -5785,7 +5917,7 @@ func (o WidgetOutput) ToWidgetPtrOutput() WidgetPtrOutput {
 }
 
 func (o WidgetOutput) ToWidgetPtrOutputWithContext(ctx context.Context) WidgetPtrOutput {
-	return o.ApplyT(func(v Widget) *Widget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Widget) *Widget {
 		return &v
 	}).(WidgetPtrOutput)
 }
@@ -5835,7 +5967,13 @@ func (o WidgetPtrOutput) ToWidgetPtrOutputWithContext(ctx context.Context) Widge
 }
 
 func (o WidgetPtrOutput) Elem() WidgetOutput {
-	return o.ApplyT(func(v *Widget) Widget { return *v }).(WidgetOutput)
+	return o.ApplyT(func(v *Widget) Widget {
+		if v != nil {
+			return *v
+		}
+		var ret Widget
+		return ret
+	}).(WidgetOutput)
 }
 
 // A chart of alert policy data.
@@ -6183,7 +6321,7 @@ func (o XyChartOutput) ToXyChartPtrOutput() XyChartPtrOutput {
 }
 
 func (o XyChartOutput) ToXyChartPtrOutputWithContext(ctx context.Context) XyChartPtrOutput {
-	return o.ApplyT(func(v XyChart) *XyChart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v XyChart) *XyChart {
 		return &v
 	}).(XyChartPtrOutput)
 }
@@ -6238,7 +6376,13 @@ func (o XyChartPtrOutput) ToXyChartPtrOutputWithContext(ctx context.Context) XyC
 }
 
 func (o XyChartPtrOutput) Elem() XyChartOutput {
-	return o.ApplyT(func(v *XyChart) XyChart { return *v }).(XyChartOutput)
+	return o.ApplyT(func(v *XyChart) XyChart {
+		if v != nil {
+			return *v
+		}
+		var ret XyChart
+		return ret
+	}).(XyChartOutput)
 }
 
 // Display options for the chart.

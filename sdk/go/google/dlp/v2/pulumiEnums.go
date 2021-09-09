@@ -104,7 +104,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput) ToStringPtrOutputWi
 type GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2BigQueryOptionsSampleMethodPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryOptionsSampleMethod)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) ToGooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput() GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput {
@@ -113,6 +113,16 @@ func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) ToGooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) Elem() GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptionsSampleMethod) GooglePrivacyDlpV2BigQueryOptionsSampleMethod {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryOptionsSampleMethod
+		return ret
+	}).(GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput)
 }
 
 func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -127,16 +137,6 @@ func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) Elem() GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptionsSampleMethod) GooglePrivacyDlpV2BigQueryOptionsSampleMethod {
-		var ret GooglePrivacyDlpV2BigQueryOptionsSampleMethod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput)
 }
 
 // GooglePrivacyDlpV2BigQueryOptionsSampleMethodInput is an input type that accepts GooglePrivacyDlpV2BigQueryOptionsSampleMethodArgs and GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput values.
@@ -279,7 +279,7 @@ func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput) ToStringP
 type GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) ToGooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput() GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput {
@@ -288,6 +288,16 @@ func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) ToGoog
 
 func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) ToGooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) Elem() GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore) GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore
+		return ret
+	}).(GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput)
 }
 
 func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -302,16 +312,6 @@ func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) ToStri
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) Elem() GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore) GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore {
-		var ret GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput)
 }
 
 // GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreInput is an input type that accepts GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreArgs and GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput values.
@@ -459,7 +459,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput) ToStringPtrOut
 type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) ToGooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput() GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput {
@@ -468,6 +468,16 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) ToGooglePri
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) ToGooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) Elem() GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem) GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem
+		return ret
+	}).(GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput)
 }
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -482,16 +492,6 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) ToStringPtr
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) Elem() GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem) GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem {
-		var ret GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput)
 }
 
 // GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemInput is an input type that accepts GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArgs and GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput values.
@@ -572,8 +572,8 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput) ToGoogleP
 }
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput {
-		return vs[0].([]GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem)[vs[1].(int)].ToGooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem {
+		return vs[0].([]GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem)[vs[1].(int)]
 	}).(GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput)
 }
 
@@ -671,7 +671,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodOutput) ToStringPtrOutp
 type GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2CloudStorageOptionsSampleMethodPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2CloudStorageOptionsSampleMethod)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) ToGooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput() GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput {
@@ -680,6 +680,16 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) ToGooglePriv
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) ToGooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) Elem() GooglePrivacyDlpV2CloudStorageOptionsSampleMethodOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsSampleMethod) GooglePrivacyDlpV2CloudStorageOptionsSampleMethod {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CloudStorageOptionsSampleMethod
+		return ret
+	}).(GooglePrivacyDlpV2CloudStorageOptionsSampleMethodOutput)
 }
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -694,16 +704,6 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) ToStringPtrO
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) Elem() GooglePrivacyDlpV2CloudStorageOptionsSampleMethodOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsSampleMethod) GooglePrivacyDlpV2CloudStorageOptionsSampleMethod {
-		var ret GooglePrivacyDlpV2CloudStorageOptionsSampleMethod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2CloudStorageOptionsSampleMethodOutput)
 }
 
 // GooglePrivacyDlpV2CloudStorageOptionsSampleMethodInput is an input type that accepts GooglePrivacyDlpV2CloudStorageOptionsSampleMethodArgs and GooglePrivacyDlpV2CloudStorageOptionsSampleMethodOutput values.
@@ -850,7 +850,7 @@ func (o GooglePrivacyDlpV2ConditionOperatorOutput) ToStringPtrOutputWithContext(
 type GooglePrivacyDlpV2ConditionOperatorPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2ConditionOperatorPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2ConditionOperatorPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2ConditionOperator)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) ToGooglePrivacyDlpV2ConditionOperatorPtrOutput() GooglePrivacyDlpV2ConditionOperatorPtrOutput {
@@ -859,6 +859,16 @@ func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) ToGooglePrivacyDlpV2Condit
 
 func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) ToGooglePrivacyDlpV2ConditionOperatorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ConditionOperatorPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) Elem() GooglePrivacyDlpV2ConditionOperatorOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ConditionOperator) GooglePrivacyDlpV2ConditionOperator {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ConditionOperator
+		return ret
+	}).(GooglePrivacyDlpV2ConditionOperatorOutput)
 }
 
 func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -873,16 +883,6 @@ func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) Elem() GooglePrivacyDlpV2ConditionOperatorOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ConditionOperator) GooglePrivacyDlpV2ConditionOperator {
-		var ret GooglePrivacyDlpV2ConditionOperator
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2ConditionOperatorOutput)
 }
 
 // GooglePrivacyDlpV2ConditionOperatorInput is an input type that accepts GooglePrivacyDlpV2ConditionOperatorArgs and GooglePrivacyDlpV2ConditionOperatorOutput values.
@@ -1023,7 +1023,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetOutput) ToStrin
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) ToGooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput() GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput {
@@ -1032,6 +1032,16 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) ToGo
 
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) ToGooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) Elem() GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet) GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet
+		return ret
+	}).(GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetOutput)
 }
 
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1046,16 +1056,6 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) ToSt
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) Elem() GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet) GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet {
-		var ret GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetOutput)
 }
 
 // GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetInput is an input type that accepts GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetArgs and GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetOutput values.
@@ -1190,7 +1190,7 @@ func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypeOutput) ToStringPtrOutputWi
 type GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2CustomInfoTypeExclusionTypePtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2CustomInfoTypeExclusionType)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) ToGooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput() GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput {
@@ -1199,6 +1199,16 @@ func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) ToGooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) Elem() GooglePrivacyDlpV2CustomInfoTypeExclusionTypeOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CustomInfoTypeExclusionType) GooglePrivacyDlpV2CustomInfoTypeExclusionType {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CustomInfoTypeExclusionType
+		return ret
+	}).(GooglePrivacyDlpV2CustomInfoTypeExclusionTypeOutput)
 }
 
 func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1213,16 +1223,6 @@ func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) Elem() GooglePrivacyDlpV2CustomInfoTypeExclusionTypeOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CustomInfoTypeExclusionType) GooglePrivacyDlpV2CustomInfoTypeExclusionType {
-		var ret GooglePrivacyDlpV2CustomInfoTypeExclusionType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2CustomInfoTypeExclusionTypeOutput)
 }
 
 // GooglePrivacyDlpV2CustomInfoTypeExclusionTypeInput is an input type that accepts GooglePrivacyDlpV2CustomInfoTypeExclusionTypeArgs and GooglePrivacyDlpV2CustomInfoTypeExclusionTypeOutput values.
@@ -1363,7 +1363,7 @@ func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput) ToStringPtrOutputWithC
 type GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2CustomInfoTypeLikelihoodPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2CustomInfoTypeLikelihood)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) ToGooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput() GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput {
@@ -1372,6 +1372,16 @@ func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) ToGooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) Elem() GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CustomInfoTypeLikelihood) GooglePrivacyDlpV2CustomInfoTypeLikelihood {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CustomInfoTypeLikelihood
+		return ret
+	}).(GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput)
 }
 
 func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1386,16 +1396,6 @@ func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) ToStringPtrOutputWi
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) Elem() GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CustomInfoTypeLikelihood) GooglePrivacyDlpV2CustomInfoTypeLikelihood {
-		var ret GooglePrivacyDlpV2CustomInfoTypeLikelihood
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput)
 }
 
 // GooglePrivacyDlpV2CustomInfoTypeLikelihoodInput is an input type that accepts GooglePrivacyDlpV2CustomInfoTypeLikelihoodArgs and GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput values.
@@ -1534,7 +1534,7 @@ func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput) ToStringPtrOutputWith
 type GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2ExclusionRuleMatchingTypePtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2ExclusionRuleMatchingType)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) ToGooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput() GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput {
@@ -1543,6 +1543,16 @@ func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) ToGooglePrivacyDlp
 
 func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) ToGooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) Elem() GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ExclusionRuleMatchingType) GooglePrivacyDlpV2ExclusionRuleMatchingType {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ExclusionRuleMatchingType
+		return ret
+	}).(GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput)
 }
 
 func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1557,16 +1567,6 @@ func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) ToStringPtrOutputW
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) Elem() GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ExclusionRuleMatchingType) GooglePrivacyDlpV2ExclusionRuleMatchingType {
-		var ret GooglePrivacyDlpV2ExclusionRuleMatchingType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput)
 }
 
 // GooglePrivacyDlpV2ExclusionRuleMatchingTypeInput is an input type that accepts GooglePrivacyDlpV2ExclusionRuleMatchingTypeArgs and GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput values.
@@ -1701,7 +1701,7 @@ func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput) ToStringPtrOutputWit
 type GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2ExpressionsLogicalOperatorPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2ExpressionsLogicalOperator)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) ToGooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput() GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput {
@@ -1710,6 +1710,16 @@ func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) ToGooglePrivacyDl
 
 func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) ToGooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) Elem() GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ExpressionsLogicalOperator) GooglePrivacyDlpV2ExpressionsLogicalOperator {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ExpressionsLogicalOperator
+		return ret
+	}).(GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput)
 }
 
 func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1724,16 +1734,6 @@ func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) ToStringPtrOutput
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) Elem() GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ExpressionsLogicalOperator) GooglePrivacyDlpV2ExpressionsLogicalOperator {
-		var ret GooglePrivacyDlpV2ExpressionsLogicalOperator
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput)
 }
 
 // GooglePrivacyDlpV2ExpressionsLogicalOperatorInput is an input type that accepts GooglePrivacyDlpV2ExpressionsLogicalOperatorArgs and GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput values.
@@ -1869,7 +1869,7 @@ func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput) ToStringPtrOutp
 type GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2InspectConfigContentOptionsItemPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2InspectConfigContentOptionsItem)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) ToGooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput() GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput {
@@ -1878,6 +1878,16 @@ func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) ToGooglePriv
 
 func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) ToGooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) Elem() GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigContentOptionsItem) GooglePrivacyDlpV2InspectConfigContentOptionsItem {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InspectConfigContentOptionsItem
+		return ret
+	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput)
 }
 
 func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1892,16 +1902,6 @@ func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) ToStringPtrO
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) Elem() GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigContentOptionsItem) GooglePrivacyDlpV2InspectConfigContentOptionsItem {
-		var ret GooglePrivacyDlpV2InspectConfigContentOptionsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput)
 }
 
 // GooglePrivacyDlpV2InspectConfigContentOptionsItemInput is an input type that accepts GooglePrivacyDlpV2InspectConfigContentOptionsItemArgs and GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput values.
@@ -1982,8 +1982,8 @@ func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput) ToGooglePr
 }
 
 func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput {
-		return vs[0].([]GooglePrivacyDlpV2InspectConfigContentOptionsItem)[vs[1].(int)].ToGooglePrivacyDlpV2InspectConfigContentOptionsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2InspectConfigContentOptionsItem {
+		return vs[0].([]GooglePrivacyDlpV2InspectConfigContentOptionsItem)[vs[1].(int)]
 	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput)
 }
 
@@ -2087,7 +2087,7 @@ func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodOutput) ToStringPtrOutputWit
 type GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2InspectConfigMinLikelihoodPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2InspectConfigMinLikelihood)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) ToGooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput() GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput {
@@ -2096,6 +2096,16 @@ func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) ToGooglePrivacyDl
 
 func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) ToGooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) Elem() GooglePrivacyDlpV2InspectConfigMinLikelihoodOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigMinLikelihood) GooglePrivacyDlpV2InspectConfigMinLikelihood {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InspectConfigMinLikelihood
+		return ret
+	}).(GooglePrivacyDlpV2InspectConfigMinLikelihoodOutput)
 }
 
 func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2110,16 +2120,6 @@ func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) ToStringPtrOutput
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) Elem() GooglePrivacyDlpV2InspectConfigMinLikelihoodOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigMinLikelihood) GooglePrivacyDlpV2InspectConfigMinLikelihood {
-		var ret GooglePrivacyDlpV2InspectConfigMinLikelihood
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2InspectConfigMinLikelihoodOutput)
 }
 
 // GooglePrivacyDlpV2InspectConfigMinLikelihoodInput is an input type that accepts GooglePrivacyDlpV2InspectConfigMinLikelihoodArgs and GooglePrivacyDlpV2InspectConfigMinLikelihoodOutput values.
@@ -2260,7 +2260,7 @@ func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodOutput) ToStringPtr
 type GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) ToGooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput() GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput {
@@ -2269,6 +2269,16 @@ func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) ToGoogle
 
 func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) ToGooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) Elem() GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood) GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood
+		return ret
+	}).(GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodOutput)
 }
 
 func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2283,16 +2293,6 @@ func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) ToString
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) Elem() GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood) GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood {
-		var ret GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodOutput)
 }
 
 // GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodInput is an input type that accepts GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodArgs and GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodOutput values.
@@ -2435,7 +2435,7 @@ func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput) ToStringPtrOutp
 type GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2OutputStorageConfigOutputSchemaPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2OutputStorageConfigOutputSchema)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) ToGooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput() GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput {
@@ -2444,6 +2444,16 @@ func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) ToGooglePriv
 
 func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) ToGooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) Elem() GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2OutputStorageConfigOutputSchema) GooglePrivacyDlpV2OutputStorageConfigOutputSchema {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2OutputStorageConfigOutputSchema
+		return ret
+	}).(GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput)
 }
 
 func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2458,16 +2468,6 @@ func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) ToStringPtrO
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) Elem() GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2OutputStorageConfigOutputSchema) GooglePrivacyDlpV2OutputStorageConfigOutputSchema {
-		var ret GooglePrivacyDlpV2OutputStorageConfigOutputSchema
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput)
 }
 
 // GooglePrivacyDlpV2OutputStorageConfigOutputSchemaInput is an input type that accepts GooglePrivacyDlpV2OutputStorageConfigOutputSchemaArgs and GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput values.
@@ -2612,7 +2612,7 @@ func (o GooglePrivacyDlpV2TimePartConfigPartToExtractOutput) ToStringPtrOutputWi
 type GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2TimePartConfigPartToExtractPtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2TimePartConfigPartToExtract)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) ToGooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput() GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput {
@@ -2621,6 +2621,16 @@ func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) ToGooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) Elem() GooglePrivacyDlpV2TimePartConfigPartToExtractOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TimePartConfigPartToExtract) GooglePrivacyDlpV2TimePartConfigPartToExtract {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2TimePartConfigPartToExtract
+		return ret
+	}).(GooglePrivacyDlpV2TimePartConfigPartToExtractOutput)
 }
 
 func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2635,16 +2645,6 @@ func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) Elem() GooglePrivacyDlpV2TimePartConfigPartToExtractOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TimePartConfigPartToExtract) GooglePrivacyDlpV2TimePartConfigPartToExtract {
-		var ret GooglePrivacyDlpV2TimePartConfigPartToExtract
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2TimePartConfigPartToExtractOutput)
 }
 
 // GooglePrivacyDlpV2TimePartConfigPartToExtractInput is an input type that accepts GooglePrivacyDlpV2TimePartConfigPartToExtractArgs and GooglePrivacyDlpV2TimePartConfigPartToExtractOutput values.
@@ -2791,7 +2791,7 @@ func (o GooglePrivacyDlpV2ValueDayOfWeekValueOutput) ToStringPtrOutputWithContex
 type GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) ElementType() reflect.Type {
-	return googlePrivacyDlpV2ValueDayOfWeekValuePtrType
+	return reflect.TypeOf((**GooglePrivacyDlpV2ValueDayOfWeekValue)(nil)).Elem()
 }
 
 func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) ToGooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput() GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput {
@@ -2800,6 +2800,16 @@ func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) ToGooglePrivacyDlpV2Valu
 
 func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) ToGooglePrivacyDlpV2ValueDayOfWeekValuePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput {
 	return o
+}
+
+func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) Elem() GooglePrivacyDlpV2ValueDayOfWeekValueOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueDayOfWeekValue) GooglePrivacyDlpV2ValueDayOfWeekValue {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ValueDayOfWeekValue
+		return ret
+	}).(GooglePrivacyDlpV2ValueDayOfWeekValueOutput)
 }
 
 func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2814,16 +2824,6 @@ func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) ToStringPtrOutputWithCon
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) Elem() GooglePrivacyDlpV2ValueDayOfWeekValueOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueDayOfWeekValue) GooglePrivacyDlpV2ValueDayOfWeekValue {
-		var ret GooglePrivacyDlpV2ValueDayOfWeekValue
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GooglePrivacyDlpV2ValueDayOfWeekValueOutput)
 }
 
 // GooglePrivacyDlpV2ValueDayOfWeekValueInput is an input type that accepts GooglePrivacyDlpV2ValueDayOfWeekValueArgs and GooglePrivacyDlpV2ValueDayOfWeekValueOutput values.
@@ -2962,7 +2962,7 @@ func (o JobTriggerStatusOutput) ToStringPtrOutputWithContext(ctx context.Context
 type JobTriggerStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (JobTriggerStatusPtrOutput) ElementType() reflect.Type {
-	return jobTriggerStatusPtrType
+	return reflect.TypeOf((**JobTriggerStatus)(nil)).Elem()
 }
 
 func (o JobTriggerStatusPtrOutput) ToJobTriggerStatusPtrOutput() JobTriggerStatusPtrOutput {
@@ -2971,6 +2971,16 @@ func (o JobTriggerStatusPtrOutput) ToJobTriggerStatusPtrOutput() JobTriggerStatu
 
 func (o JobTriggerStatusPtrOutput) ToJobTriggerStatusPtrOutputWithContext(ctx context.Context) JobTriggerStatusPtrOutput {
 	return o
+}
+
+func (o JobTriggerStatusPtrOutput) Elem() JobTriggerStatusOutput {
+	return o.ApplyT(func(v *JobTriggerStatus) JobTriggerStatus {
+		if v != nil {
+			return *v
+		}
+		var ret JobTriggerStatus
+		return ret
+	}).(JobTriggerStatusOutput)
 }
 
 func (o JobTriggerStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2985,16 +2995,6 @@ func (o JobTriggerStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobTriggerStatusPtrOutput) Elem() JobTriggerStatusOutput {
-	return o.ApplyT(func(v *JobTriggerStatus) JobTriggerStatus {
-		var ret JobTriggerStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(JobTriggerStatusOutput)
 }
 
 // JobTriggerStatusInput is an input type that accepts JobTriggerStatusArgs and JobTriggerStatusOutput values.

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
 {
 
+    /// <summary>
+    /// A restriction on the OS type and version of devices making requests.
+    /// </summary>
     [OutputType]
     public sealed class OsConstraintResponse
     {

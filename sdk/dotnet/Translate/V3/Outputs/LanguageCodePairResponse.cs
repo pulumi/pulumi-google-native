@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Translate.V3.Outputs
 {
 
+    /// <summary>
+    /// Used with unidirectional glossaries.
+    /// </summary>
     [OutputType]
     public sealed class LanguageCodePairResponse
     {

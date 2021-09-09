@@ -140,9 +140,7 @@ func (i *SearchApplication) ToSearchApplicationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SearchApplicationOutput)
 }
 
-type SearchApplicationOutput struct {
-	*pulumi.OutputState
-}
+type SearchApplicationOutput struct{ *pulumi.OutputState }
 
 func (SearchApplicationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SearchApplication)(nil))

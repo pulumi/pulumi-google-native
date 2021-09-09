@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
+    /// </summary>
     [OutputType]
     public sealed class ResourcePolicyResourceStatusResponse
     {

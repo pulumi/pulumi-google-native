@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// An expression, consisting or an operator and conditions.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ExpressionsResponse
     {

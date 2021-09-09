@@ -12,6 +12,7 @@ __all__ = [
     'GetSiteResult',
     'AwaitableGetSiteResult',
     'get_site',
+    'get_site_output',
 ]
 
 @pulumi.output_type
@@ -108,3 +109,13 @@ def get_site(project: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_site)
+def get_site_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                    site_id: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSiteResult]:
+    """
+    Gets the specified Hosting Site.
+    """
+    ...

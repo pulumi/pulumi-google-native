@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// An execution of an arbitrary tool. It could be a test runner or a tool copying artifacts or deploying code.
+    /// </summary>
     [OutputType]
     public sealed class ToolExecutionResponse
     {

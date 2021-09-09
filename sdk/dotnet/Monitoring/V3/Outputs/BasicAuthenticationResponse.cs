@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// The authentication parameters to provide to the specified resource or URL that requires a username and password. Currently, only Basic HTTP authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
+    /// </summary>
     [OutputType]
     public sealed class BasicAuthenticationResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// A reference to a test case. Test case references are canonically ordered lexicographically by these three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name.
+    /// </summary>
     [OutputType]
     public sealed class TestCaseReferenceResponse
     {

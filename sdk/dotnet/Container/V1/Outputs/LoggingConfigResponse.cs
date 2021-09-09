@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// LoggingConfig is cluster logging configuration.
+    /// </summary>
     [OutputType]
     public sealed class LoggingConfigResponse
     {

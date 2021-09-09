@@ -13,6 +13,7 @@ __all__ = [
     'GetGlobalForwardingRuleResult',
     'AwaitableGetGlobalForwardingRuleResult',
     'get_global_forwarding_rule',
+    'get_global_forwarding_rule_output',
 ]
 
 @pulumi.output_type
@@ -415,3 +416,13 @@ def get_global_forwarding_rule(forwarding_rule: Optional[str] = None,
         service_name=__ret__.service_name,
         subnetwork=__ret__.subnetwork,
         target=__ret__.target)
+
+
+@_utilities.lift_output_func(get_global_forwarding_rule)
+def get_global_forwarding_rule_output(forwarding_rule: Optional[pulumi.Input[str]] = None,
+                                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalForwardingRuleResult]:
+    """
+    Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request.
+    """
+    ...

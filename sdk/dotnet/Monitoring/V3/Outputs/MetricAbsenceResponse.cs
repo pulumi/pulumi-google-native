@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// A condition type that checks that monitored resources are reporting data. The configuration defines a metric and a set of monitored resources. The predicate is considered in violation when a time series for the specified metric of a monitored resource does not include any data in the specified duration.
+    /// </summary>
     [OutputType]
     public sealed class MetricAbsenceResponse
     {

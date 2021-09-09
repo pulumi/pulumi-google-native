@@ -113,9 +113,7 @@ func (i *HmacKey) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyOutput)
 }
 
-type HmacKeyOutput struct {
-	*pulumi.OutputState
-}
+type HmacKeyOutput struct{ *pulumi.OutputState }
 
 func (HmacKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HmacKey)(nil))

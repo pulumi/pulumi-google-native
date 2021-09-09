@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Type of information detected by the API.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2InfoTypeResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Compute numerical stats over an individual column, including number of distinct values and value count distribution.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2CategoricalStatsConfigResponse
     {

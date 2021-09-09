@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Commitment for a particular resource (a Commitment is composed of one or more of these).
+    /// </summary>
     [OutputType]
     public sealed class ResourceCommitmentResponse
     {

@@ -12,6 +12,7 @@ __all__ = [
     'GetRealmResult',
     'AwaitableGetRealmResult',
     'get_realm',
+    'get_realm_output',
 ]
 
 @pulumi.output_type
@@ -136,3 +137,14 @@ def get_realm(location: Optional[str] = None,
         name=__ret__.name,
         time_zone=__ret__.time_zone,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_realm)
+def get_realm_output(location: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     realm_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRealmResult]:
+    """
+    Gets details of a single realm.
+    """
+    ...

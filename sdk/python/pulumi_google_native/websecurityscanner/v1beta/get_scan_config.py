@@ -13,6 +13,7 @@ __all__ = [
     'GetScanConfigResult',
     'AwaitableGetScanConfigResult',
     'get_scan_config',
+    'get_scan_config_output',
 ]
 
 @pulumi.output_type
@@ -239,3 +240,13 @@ def get_scan_config(project: Optional[str] = None,
         static_ip_scan=__ret__.static_ip_scan,
         target_platforms=__ret__.target_platforms,
         user_agent=__ret__.user_agent)
+
+
+@_utilities.lift_output_func(get_scan_config)
+def get_scan_config_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                           scan_config_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScanConfigResult]:
+    """
+    Gets a ScanConfig.
+    """
+    ...

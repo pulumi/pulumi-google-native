@@ -184,7 +184,7 @@ func (o ScanConfigErrorCodeOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type ScanConfigErrorCodePtrOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigErrorCodePtrOutput) ElementType() reflect.Type {
-	return scanConfigErrorCodePtrType
+	return reflect.TypeOf((**ScanConfigErrorCode)(nil)).Elem()
 }
 
 func (o ScanConfigErrorCodePtrOutput) ToScanConfigErrorCodePtrOutput() ScanConfigErrorCodePtrOutput {
@@ -193,6 +193,16 @@ func (o ScanConfigErrorCodePtrOutput) ToScanConfigErrorCodePtrOutput() ScanConfi
 
 func (o ScanConfigErrorCodePtrOutput) ToScanConfigErrorCodePtrOutputWithContext(ctx context.Context) ScanConfigErrorCodePtrOutput {
 	return o
+}
+
+func (o ScanConfigErrorCodePtrOutput) Elem() ScanConfigErrorCodeOutput {
+	return o.ApplyT(func(v *ScanConfigErrorCode) ScanConfigErrorCode {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigErrorCode
+		return ret
+	}).(ScanConfigErrorCodeOutput)
 }
 
 func (o ScanConfigErrorCodePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -207,16 +217,6 @@ func (o ScanConfigErrorCodePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanConfigErrorCodePtrOutput) Elem() ScanConfigErrorCodeOutput {
-	return o.ApplyT(func(v *ScanConfigErrorCode) ScanConfigErrorCode {
-		var ret ScanConfigErrorCode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanConfigErrorCodeOutput)
 }
 
 // ScanConfigErrorCodeInput is an input type that accepts ScanConfigErrorCodeArgs and ScanConfigErrorCodeOutput values.
@@ -353,7 +353,7 @@ func (o ScanConfigExportToSecurityCommandCenterOutput) ToStringPtrOutputWithCont
 type ScanConfigExportToSecurityCommandCenterPtrOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigExportToSecurityCommandCenterPtrOutput) ElementType() reflect.Type {
-	return scanConfigExportToSecurityCommandCenterPtrType
+	return reflect.TypeOf((**ScanConfigExportToSecurityCommandCenter)(nil)).Elem()
 }
 
 func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToScanConfigExportToSecurityCommandCenterPtrOutput() ScanConfigExportToSecurityCommandCenterPtrOutput {
@@ -362,6 +362,16 @@ func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToScanConfigExportToSe
 
 func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToScanConfigExportToSecurityCommandCenterPtrOutputWithContext(ctx context.Context) ScanConfigExportToSecurityCommandCenterPtrOutput {
 	return o
+}
+
+func (o ScanConfigExportToSecurityCommandCenterPtrOutput) Elem() ScanConfigExportToSecurityCommandCenterOutput {
+	return o.ApplyT(func(v *ScanConfigExportToSecurityCommandCenter) ScanConfigExportToSecurityCommandCenter {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigExportToSecurityCommandCenter
+		return ret
+	}).(ScanConfigExportToSecurityCommandCenterOutput)
 }
 
 func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -376,16 +386,6 @@ func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToStringPtrOutputWithC
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanConfigExportToSecurityCommandCenterPtrOutput) Elem() ScanConfigExportToSecurityCommandCenterOutput {
-	return o.ApplyT(func(v *ScanConfigExportToSecurityCommandCenter) ScanConfigExportToSecurityCommandCenter {
-		var ret ScanConfigExportToSecurityCommandCenter
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanConfigExportToSecurityCommandCenterOutput)
 }
 
 // ScanConfigExportToSecurityCommandCenterInput is an input type that accepts ScanConfigExportToSecurityCommandCenterArgs and ScanConfigExportToSecurityCommandCenterOutput values.
@@ -522,7 +522,7 @@ func (o ScanConfigRiskLevelOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type ScanConfigRiskLevelPtrOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigRiskLevelPtrOutput) ElementType() reflect.Type {
-	return scanConfigRiskLevelPtrType
+	return reflect.TypeOf((**ScanConfigRiskLevel)(nil)).Elem()
 }
 
 func (o ScanConfigRiskLevelPtrOutput) ToScanConfigRiskLevelPtrOutput() ScanConfigRiskLevelPtrOutput {
@@ -531,6 +531,16 @@ func (o ScanConfigRiskLevelPtrOutput) ToScanConfigRiskLevelPtrOutput() ScanConfi
 
 func (o ScanConfigRiskLevelPtrOutput) ToScanConfigRiskLevelPtrOutputWithContext(ctx context.Context) ScanConfigRiskLevelPtrOutput {
 	return o
+}
+
+func (o ScanConfigRiskLevelPtrOutput) Elem() ScanConfigRiskLevelOutput {
+	return o.ApplyT(func(v *ScanConfigRiskLevel) ScanConfigRiskLevel {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigRiskLevel
+		return ret
+	}).(ScanConfigRiskLevelOutput)
 }
 
 func (o ScanConfigRiskLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -545,16 +555,6 @@ func (o ScanConfigRiskLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanConfigRiskLevelPtrOutput) Elem() ScanConfigRiskLevelOutput {
-	return o.ApplyT(func(v *ScanConfigRiskLevel) ScanConfigRiskLevel {
-		var ret ScanConfigRiskLevel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanConfigRiskLevelOutput)
 }
 
 // ScanConfigRiskLevelInput is an input type that accepts ScanConfigRiskLevelArgs and ScanConfigRiskLevelOutput values.
@@ -690,7 +690,7 @@ func (o ScanConfigTargetPlatformsItemOutput) ToStringPtrOutputWithContext(ctx co
 type ScanConfigTargetPlatformsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigTargetPlatformsItemPtrOutput) ElementType() reflect.Type {
-	return scanConfigTargetPlatformsItemPtrType
+	return reflect.TypeOf((**ScanConfigTargetPlatformsItem)(nil)).Elem()
 }
 
 func (o ScanConfigTargetPlatformsItemPtrOutput) ToScanConfigTargetPlatformsItemPtrOutput() ScanConfigTargetPlatformsItemPtrOutput {
@@ -699,6 +699,16 @@ func (o ScanConfigTargetPlatformsItemPtrOutput) ToScanConfigTargetPlatformsItemP
 
 func (o ScanConfigTargetPlatformsItemPtrOutput) ToScanConfigTargetPlatformsItemPtrOutputWithContext(ctx context.Context) ScanConfigTargetPlatformsItemPtrOutput {
 	return o
+}
+
+func (o ScanConfigTargetPlatformsItemPtrOutput) Elem() ScanConfigTargetPlatformsItemOutput {
+	return o.ApplyT(func(v *ScanConfigTargetPlatformsItem) ScanConfigTargetPlatformsItem {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigTargetPlatformsItem
+		return ret
+	}).(ScanConfigTargetPlatformsItemOutput)
 }
 
 func (o ScanConfigTargetPlatformsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -713,16 +723,6 @@ func (o ScanConfigTargetPlatformsItemPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanConfigTargetPlatformsItemPtrOutput) Elem() ScanConfigTargetPlatformsItemOutput {
-	return o.ApplyT(func(v *ScanConfigTargetPlatformsItem) ScanConfigTargetPlatformsItem {
-		var ret ScanConfigTargetPlatformsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanConfigTargetPlatformsItemOutput)
 }
 
 // ScanConfigTargetPlatformsItemInput is an input type that accepts ScanConfigTargetPlatformsItemArgs and ScanConfigTargetPlatformsItemOutput values.
@@ -803,8 +803,8 @@ func (o ScanConfigTargetPlatformsItemArrayOutput) ToScanConfigTargetPlatformsIte
 }
 
 func (o ScanConfigTargetPlatformsItemArrayOutput) Index(i pulumi.IntInput) ScanConfigTargetPlatformsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScanConfigTargetPlatformsItemOutput {
-		return vs[0].([]ScanConfigTargetPlatformsItem)[vs[1].(int)].ToScanConfigTargetPlatformsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScanConfigTargetPlatformsItem {
+		return vs[0].([]ScanConfigTargetPlatformsItem)[vs[1].(int)]
 	}).(ScanConfigTargetPlatformsItemOutput)
 }
 
@@ -906,7 +906,7 @@ func (o ScanConfigUserAgentOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type ScanConfigUserAgentPtrOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigUserAgentPtrOutput) ElementType() reflect.Type {
-	return scanConfigUserAgentPtrType
+	return reflect.TypeOf((**ScanConfigUserAgent)(nil)).Elem()
 }
 
 func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutput() ScanConfigUserAgentPtrOutput {
@@ -915,6 +915,16 @@ func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutput() ScanConfi
 
 func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutputWithContext(ctx context.Context) ScanConfigUserAgentPtrOutput {
 	return o
+}
+
+func (o ScanConfigUserAgentPtrOutput) Elem() ScanConfigUserAgentOutput {
+	return o.ApplyT(func(v *ScanConfigUserAgent) ScanConfigUserAgent {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigUserAgent
+		return ret
+	}).(ScanConfigUserAgentOutput)
 }
 
 func (o ScanConfigUserAgentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -929,16 +939,6 @@ func (o ScanConfigUserAgentPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanConfigUserAgentPtrOutput) Elem() ScanConfigUserAgentOutput {
-	return o.ApplyT(func(v *ScanConfigUserAgent) ScanConfigUserAgent {
-		var ret ScanConfigUserAgent
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanConfigUserAgentOutput)
 }
 
 // ScanConfigUserAgentInput is an input type that accepts ScanConfigUserAgentArgs and ScanConfigUserAgentOutput values.
@@ -1083,7 +1083,7 @@ func (o ScanRunErrorTraceCodeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type ScanRunErrorTraceCodePtrOutput struct{ *pulumi.OutputState }
 
 func (ScanRunErrorTraceCodePtrOutput) ElementType() reflect.Type {
-	return scanRunErrorTraceCodePtrType
+	return reflect.TypeOf((**ScanRunErrorTraceCode)(nil)).Elem()
 }
 
 func (o ScanRunErrorTraceCodePtrOutput) ToScanRunErrorTraceCodePtrOutput() ScanRunErrorTraceCodePtrOutput {
@@ -1092,6 +1092,16 @@ func (o ScanRunErrorTraceCodePtrOutput) ToScanRunErrorTraceCodePtrOutput() ScanR
 
 func (o ScanRunErrorTraceCodePtrOutput) ToScanRunErrorTraceCodePtrOutputWithContext(ctx context.Context) ScanRunErrorTraceCodePtrOutput {
 	return o
+}
+
+func (o ScanRunErrorTraceCodePtrOutput) Elem() ScanRunErrorTraceCodeOutput {
+	return o.ApplyT(func(v *ScanRunErrorTraceCode) ScanRunErrorTraceCode {
+		if v != nil {
+			return *v
+		}
+		var ret ScanRunErrorTraceCode
+		return ret
+	}).(ScanRunErrorTraceCodeOutput)
 }
 
 func (o ScanRunErrorTraceCodePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1106,16 +1116,6 @@ func (o ScanRunErrorTraceCodePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanRunErrorTraceCodePtrOutput) Elem() ScanRunErrorTraceCodeOutput {
-	return o.ApplyT(func(v *ScanRunErrorTraceCode) ScanRunErrorTraceCode {
-		var ret ScanRunErrorTraceCode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanRunErrorTraceCodeOutput)
 }
 
 // ScanRunErrorTraceCodeInput is an input type that accepts ScanRunErrorTraceCodeArgs and ScanRunErrorTraceCodeOutput values.
@@ -1254,7 +1254,7 @@ func (o ScanRunExecutionStateOutput) ToStringPtrOutputWithContext(ctx context.Co
 type ScanRunExecutionStatePtrOutput struct{ *pulumi.OutputState }
 
 func (ScanRunExecutionStatePtrOutput) ElementType() reflect.Type {
-	return scanRunExecutionStatePtrType
+	return reflect.TypeOf((**ScanRunExecutionState)(nil)).Elem()
 }
 
 func (o ScanRunExecutionStatePtrOutput) ToScanRunExecutionStatePtrOutput() ScanRunExecutionStatePtrOutput {
@@ -1263,6 +1263,16 @@ func (o ScanRunExecutionStatePtrOutput) ToScanRunExecutionStatePtrOutput() ScanR
 
 func (o ScanRunExecutionStatePtrOutput) ToScanRunExecutionStatePtrOutputWithContext(ctx context.Context) ScanRunExecutionStatePtrOutput {
 	return o
+}
+
+func (o ScanRunExecutionStatePtrOutput) Elem() ScanRunExecutionStateOutput {
+	return o.ApplyT(func(v *ScanRunExecutionState) ScanRunExecutionState {
+		if v != nil {
+			return *v
+		}
+		var ret ScanRunExecutionState
+		return ret
+	}).(ScanRunExecutionStateOutput)
 }
 
 func (o ScanRunExecutionStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1277,16 +1287,6 @@ func (o ScanRunExecutionStatePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanRunExecutionStatePtrOutput) Elem() ScanRunExecutionStateOutput {
-	return o.ApplyT(func(v *ScanRunExecutionState) ScanRunExecutionState {
-		var ret ScanRunExecutionState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanRunExecutionStateOutput)
 }
 
 // ScanRunExecutionStateInput is an input type that accepts ScanRunExecutionStateArgs and ScanRunExecutionStateOutput values.
@@ -1425,7 +1425,7 @@ func (o ScanRunResultStateOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type ScanRunResultStatePtrOutput struct{ *pulumi.OutputState }
 
 func (ScanRunResultStatePtrOutput) ElementType() reflect.Type {
-	return scanRunResultStatePtrType
+	return reflect.TypeOf((**ScanRunResultState)(nil)).Elem()
 }
 
 func (o ScanRunResultStatePtrOutput) ToScanRunResultStatePtrOutput() ScanRunResultStatePtrOutput {
@@ -1434,6 +1434,16 @@ func (o ScanRunResultStatePtrOutput) ToScanRunResultStatePtrOutput() ScanRunResu
 
 func (o ScanRunResultStatePtrOutput) ToScanRunResultStatePtrOutputWithContext(ctx context.Context) ScanRunResultStatePtrOutput {
 	return o
+}
+
+func (o ScanRunResultStatePtrOutput) Elem() ScanRunResultStateOutput {
+	return o.ApplyT(func(v *ScanRunResultState) ScanRunResultState {
+		if v != nil {
+			return *v
+		}
+		var ret ScanRunResultState
+		return ret
+	}).(ScanRunResultStateOutput)
 }
 
 func (o ScanRunResultStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1448,16 +1458,6 @@ func (o ScanRunResultStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanRunResultStatePtrOutput) Elem() ScanRunResultStateOutput {
-	return o.ApplyT(func(v *ScanRunResultState) ScanRunResultState {
-		var ret ScanRunResultState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanRunResultStateOutput)
 }
 
 // ScanRunResultStateInput is an input type that accepts ScanRunResultStateArgs and ScanRunResultStateOutput values.
@@ -1600,7 +1600,7 @@ func (o ScanRunWarningTraceCodeOutput) ToStringPtrOutputWithContext(ctx context.
 type ScanRunWarningTraceCodePtrOutput struct{ *pulumi.OutputState }
 
 func (ScanRunWarningTraceCodePtrOutput) ElementType() reflect.Type {
-	return scanRunWarningTraceCodePtrType
+	return reflect.TypeOf((**ScanRunWarningTraceCode)(nil)).Elem()
 }
 
 func (o ScanRunWarningTraceCodePtrOutput) ToScanRunWarningTraceCodePtrOutput() ScanRunWarningTraceCodePtrOutput {
@@ -1609,6 +1609,16 @@ func (o ScanRunWarningTraceCodePtrOutput) ToScanRunWarningTraceCodePtrOutput() S
 
 func (o ScanRunWarningTraceCodePtrOutput) ToScanRunWarningTraceCodePtrOutputWithContext(ctx context.Context) ScanRunWarningTraceCodePtrOutput {
 	return o
+}
+
+func (o ScanRunWarningTraceCodePtrOutput) Elem() ScanRunWarningTraceCodeOutput {
+	return o.ApplyT(func(v *ScanRunWarningTraceCode) ScanRunWarningTraceCode {
+		if v != nil {
+			return *v
+		}
+		var ret ScanRunWarningTraceCode
+		return ret
+	}).(ScanRunWarningTraceCodeOutput)
 }
 
 func (o ScanRunWarningTraceCodePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1623,16 +1633,6 @@ func (o ScanRunWarningTraceCodePtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanRunWarningTraceCodePtrOutput) Elem() ScanRunWarningTraceCodeOutput {
-	return o.ApplyT(func(v *ScanRunWarningTraceCode) ScanRunWarningTraceCode {
-		var ret ScanRunWarningTraceCode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanRunWarningTraceCodeOutput)
 }
 
 // ScanRunWarningTraceCodeInput is an input type that accepts ScanRunWarningTraceCodeArgs and ScanRunWarningTraceCodeOutput values.

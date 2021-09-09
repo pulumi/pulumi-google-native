@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 {
 
+    /// <summary>
+    /// The simple response message containing speech or text.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse
     {

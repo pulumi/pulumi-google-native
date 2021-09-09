@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// Configuration specific to LivePerson (https://www.liveperson.com).
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse
     {

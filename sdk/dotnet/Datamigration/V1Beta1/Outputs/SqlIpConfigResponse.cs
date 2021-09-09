@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// IP Management configuration.
+    /// </summary>
     [OutputType]
     public sealed class SqlIpConfigResponse
     {

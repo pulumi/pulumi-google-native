@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2HybridOptionsResponse
     {

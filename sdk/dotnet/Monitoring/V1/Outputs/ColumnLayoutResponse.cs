@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.
+    /// </summary>
     [OutputType]
     public sealed class ColumnLayoutResponse
     {

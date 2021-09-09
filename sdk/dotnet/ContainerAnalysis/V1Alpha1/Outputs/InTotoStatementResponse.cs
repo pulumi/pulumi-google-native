@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
+    /// </summary>
     [OutputType]
     public sealed class InTotoStatementResponse
     {

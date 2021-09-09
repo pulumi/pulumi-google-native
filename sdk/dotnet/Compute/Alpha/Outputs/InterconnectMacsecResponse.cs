@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Configuration information for enabling Media Access Control security (Macsec) on this Interconnect between Google and your on-premises router.
+    /// </summary>
     [OutputType]
     public sealed class InterconnectMacsecResponse
     {

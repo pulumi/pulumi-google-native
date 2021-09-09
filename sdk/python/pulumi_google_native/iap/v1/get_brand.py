@@ -12,6 +12,7 @@ __all__ = [
     'GetBrandResult',
     'AwaitableGetBrandResult',
     'get_brand',
+    'get_brand_output',
 ]
 
 @pulumi.output_type
@@ -95,3 +96,13 @@ def get_brand(brand_id: Optional[str] = None,
         name=__ret__.name,
         org_internal_only=__ret__.org_internal_only,
         support_email=__ret__.support_email)
+
+
+@_utilities.lift_output_func(get_brand)
+def get_brand_output(brand_id: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBrandResult]:
+    """
+    Retrieves the OAuth brand of the project.
+    """
+    ...

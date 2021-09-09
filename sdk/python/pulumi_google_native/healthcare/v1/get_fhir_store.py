@@ -13,6 +13,7 @@ __all__ = [
     'GetFhirStoreResult',
     'AwaitableGetFhirStoreResult',
     'get_fhir_store',
+    'get_fhir_store_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,15 @@ def get_fhir_store(dataset_id: Optional[str] = None,
         notification_config=__ret__.notification_config,
         stream_configs=__ret__.stream_configs,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_fhir_store)
+def get_fhir_store_output(dataset_id: Optional[pulumi.Input[str]] = None,
+                          fhir_store_id: Optional[pulumi.Input[str]] = None,
+                          location: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFhirStoreResult]:
+    """
+    Gets the configuration of the specified FHIR store.
+    """
+    ...

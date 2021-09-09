@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// The suggestion chip message that the user can tap to quickly post a reply to the conversation.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2IntentMessageSuggestionResponse
     {

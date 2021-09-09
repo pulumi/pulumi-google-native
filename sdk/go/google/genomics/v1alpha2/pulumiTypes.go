@@ -400,7 +400,7 @@ func (o DockerExecutorOutput) ToDockerExecutorPtrOutput() DockerExecutorPtrOutpu
 }
 
 func (o DockerExecutorOutput) ToDockerExecutorPtrOutputWithContext(ctx context.Context) DockerExecutorPtrOutput {
-	return o.ApplyT(func(v DockerExecutor) *DockerExecutor {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DockerExecutor) *DockerExecutor {
 		return &v
 	}).(DockerExecutorPtrOutput)
 }
@@ -430,7 +430,13 @@ func (o DockerExecutorPtrOutput) ToDockerExecutorPtrOutputWithContext(ctx contex
 }
 
 func (o DockerExecutorPtrOutput) Elem() DockerExecutorOutput {
-	return o.ApplyT(func(v *DockerExecutor) DockerExecutor { return *v }).(DockerExecutorOutput)
+	return o.ApplyT(func(v *DockerExecutor) DockerExecutor {
+		if v != nil {
+			return *v
+		}
+		var ret DockerExecutor
+		return ret
+	}).(DockerExecutorOutput)
 }
 
 // The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
@@ -553,7 +559,7 @@ func (o DockerExecutorResponseOutput) ToDockerExecutorResponsePtrOutput() Docker
 }
 
 func (o DockerExecutorResponseOutput) ToDockerExecutorResponsePtrOutputWithContext(ctx context.Context) DockerExecutorResponsePtrOutput {
-	return o.ApplyT(func(v DockerExecutorResponse) *DockerExecutorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DockerExecutorResponse) *DockerExecutorResponse {
 		return &v
 	}).(DockerExecutorResponsePtrOutput)
 }
@@ -583,7 +589,13 @@ func (o DockerExecutorResponsePtrOutput) ToDockerExecutorResponsePtrOutputWithCo
 }
 
 func (o DockerExecutorResponsePtrOutput) Elem() DockerExecutorResponseOutput {
-	return o.ApplyT(func(v *DockerExecutorResponse) DockerExecutorResponse { return *v }).(DockerExecutorResponseOutput)
+	return o.ApplyT(func(v *DockerExecutorResponse) DockerExecutorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DockerExecutorResponse
+		return ret
+	}).(DockerExecutorResponseOutput)
 }
 
 // The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
@@ -706,7 +718,7 @@ func (o LocalCopyOutput) ToLocalCopyPtrOutput() LocalCopyPtrOutput {
 }
 
 func (o LocalCopyOutput) ToLocalCopyPtrOutputWithContext(ctx context.Context) LocalCopyPtrOutput {
-	return o.ApplyT(func(v LocalCopy) *LocalCopy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocalCopy) *LocalCopy {
 		return &v
 	}).(LocalCopyPtrOutput)
 }
@@ -736,7 +748,13 @@ func (o LocalCopyPtrOutput) ToLocalCopyPtrOutputWithContext(ctx context.Context)
 }
 
 func (o LocalCopyPtrOutput) Elem() LocalCopyOutput {
-	return o.ApplyT(func(v *LocalCopy) LocalCopy { return *v }).(LocalCopyOutput)
+	return o.ApplyT(func(v *LocalCopy) LocalCopy {
+		if v != nil {
+			return *v
+		}
+		var ret LocalCopy
+		return ret
+	}).(LocalCopyOutput)
 }
 
 // The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
@@ -1205,7 +1223,7 @@ func (o PipelineResourcesOutput) ToPipelineResourcesPtrOutput() PipelineResource
 }
 
 func (o PipelineResourcesOutput) ToPipelineResourcesPtrOutputWithContext(ctx context.Context) PipelineResourcesPtrOutput {
-	return o.ApplyT(func(v PipelineResources) *PipelineResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineResources) *PipelineResources {
 		return &v
 	}).(PipelineResourcesPtrOutput)
 }
@@ -1270,7 +1288,13 @@ func (o PipelineResourcesPtrOutput) ToPipelineResourcesPtrOutputWithContext(ctx 
 }
 
 func (o PipelineResourcesPtrOutput) Elem() PipelineResourcesOutput {
-	return o.ApplyT(func(v *PipelineResources) PipelineResources { return *v }).(PipelineResourcesOutput)
+	return o.ApplyT(func(v *PipelineResources) PipelineResources {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineResources
+		return ret
+	}).(PipelineResourcesOutput)
 }
 
 // Optional. The number of accelerators of the specified type to attach. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.
@@ -1491,7 +1515,7 @@ func (o PipelineResourcesResponseOutput) ToPipelineResourcesResponsePtrOutput() 
 }
 
 func (o PipelineResourcesResponseOutput) ToPipelineResourcesResponsePtrOutputWithContext(ctx context.Context) PipelineResourcesResponsePtrOutput {
-	return o.ApplyT(func(v PipelineResourcesResponse) *PipelineResourcesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineResourcesResponse) *PipelineResourcesResponse {
 		return &v
 	}).(PipelineResourcesResponsePtrOutput)
 }
@@ -1556,7 +1580,13 @@ func (o PipelineResourcesResponsePtrOutput) ToPipelineResourcesResponsePtrOutput
 }
 
 func (o PipelineResourcesResponsePtrOutput) Elem() PipelineResourcesResponseOutput {
-	return o.ApplyT(func(v *PipelineResourcesResponse) PipelineResourcesResponse { return *v }).(PipelineResourcesResponseOutput)
+	return o.ApplyT(func(v *PipelineResourcesResponse) PipelineResourcesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineResourcesResponse
+		return ret
+	}).(PipelineResourcesResponseOutput)
 }
 
 // Optional. The number of accelerators of the specified type to attach. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.

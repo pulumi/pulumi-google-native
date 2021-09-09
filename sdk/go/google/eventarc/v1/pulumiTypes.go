@@ -786,7 +786,7 @@ func (o CloudRunOutput) ToCloudRunPtrOutput() CloudRunPtrOutput {
 }
 
 func (o CloudRunOutput) ToCloudRunPtrOutputWithContext(ctx context.Context) CloudRunPtrOutput {
-	return o.ApplyT(func(v CloudRun) *CloudRun {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRun) *CloudRun {
 		return &v
 	}).(CloudRunPtrOutput)
 }
@@ -821,7 +821,13 @@ func (o CloudRunPtrOutput) ToCloudRunPtrOutputWithContext(ctx context.Context) C
 }
 
 func (o CloudRunPtrOutput) Elem() CloudRunOutput {
-	return o.ApplyT(func(v *CloudRun) CloudRun { return *v }).(CloudRunOutput)
+	return o.ApplyT(func(v *CloudRun) CloudRun {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRun
+		return ret
+	}).(CloudRunOutput)
 }
 
 // Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
@@ -958,7 +964,7 @@ func (o CloudRunResponseOutput) ToCloudRunResponsePtrOutput() CloudRunResponsePt
 }
 
 func (o CloudRunResponseOutput) ToCloudRunResponsePtrOutputWithContext(ctx context.Context) CloudRunResponsePtrOutput {
-	return o.ApplyT(func(v CloudRunResponse) *CloudRunResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRunResponse) *CloudRunResponse {
 		return &v
 	}).(CloudRunResponsePtrOutput)
 }
@@ -993,7 +999,13 @@ func (o CloudRunResponsePtrOutput) ToCloudRunResponsePtrOutputWithContext(ctx co
 }
 
 func (o CloudRunResponsePtrOutput) Elem() CloudRunResponseOutput {
-	return o.ApplyT(func(v *CloudRunResponse) CloudRunResponse { return *v }).(CloudRunResponseOutput)
+	return o.ApplyT(func(v *CloudRunResponse) CloudRunResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRunResponse
+		return ret
+	}).(CloudRunResponseOutput)
 }
 
 // Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
@@ -1122,7 +1134,7 @@ func (o DestinationOutput) ToDestinationPtrOutput() DestinationPtrOutput {
 }
 
 func (o DestinationOutput) ToDestinationPtrOutputWithContext(ctx context.Context) DestinationPtrOutput {
-	return o.ApplyT(func(v Destination) *Destination {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Destination) *Destination {
 		return &v
 	}).(DestinationPtrOutput)
 }
@@ -1147,7 +1159,13 @@ func (o DestinationPtrOutput) ToDestinationPtrOutputWithContext(ctx context.Cont
 }
 
 func (o DestinationPtrOutput) Elem() DestinationOutput {
-	return o.ApplyT(func(v *Destination) Destination { return *v }).(DestinationOutput)
+	return o.ApplyT(func(v *Destination) Destination {
+		if v != nil {
+			return *v
+		}
+		var ret Destination
+		return ret
+	}).(DestinationOutput)
 }
 
 // Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
@@ -1256,7 +1274,7 @@ func (o DestinationResponseOutput) ToDestinationResponsePtrOutput() DestinationR
 }
 
 func (o DestinationResponseOutput) ToDestinationResponsePtrOutputWithContext(ctx context.Context) DestinationResponsePtrOutput {
-	return o.ApplyT(func(v DestinationResponse) *DestinationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DestinationResponse) *DestinationResponse {
 		return &v
 	}).(DestinationResponsePtrOutput)
 }
@@ -1281,7 +1299,13 @@ func (o DestinationResponsePtrOutput) ToDestinationResponsePtrOutputWithContext(
 }
 
 func (o DestinationResponsePtrOutput) Elem() DestinationResponseOutput {
-	return o.ApplyT(func(v *DestinationResponse) DestinationResponse { return *v }).(DestinationResponseOutput)
+	return o.ApplyT(func(v *DestinationResponse) DestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DestinationResponse
+		return ret
+	}).(DestinationResponseOutput)
 }
 
 // Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
@@ -1620,7 +1644,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1660,7 +1684,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1881,7 +1911,7 @@ func (o PubsubOutput) ToPubsubPtrOutput() PubsubPtrOutput {
 }
 
 func (o PubsubOutput) ToPubsubPtrOutputWithContext(ctx context.Context) PubsubPtrOutput {
-	return o.ApplyT(func(v Pubsub) *Pubsub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Pubsub) *Pubsub {
 		return &v
 	}).(PubsubPtrOutput)
 }
@@ -1906,7 +1936,13 @@ func (o PubsubPtrOutput) ToPubsubPtrOutputWithContext(ctx context.Context) Pubsu
 }
 
 func (o PubsubPtrOutput) Elem() PubsubOutput {
-	return o.ApplyT(func(v *Pubsub) Pubsub { return *v }).(PubsubOutput)
+	return o.ApplyT(func(v *Pubsub) Pubsub {
+		if v != nil {
+			return *v
+		}
+		var ret Pubsub
+		return ret
+	}).(PubsubOutput)
 }
 
 // Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
@@ -2019,7 +2055,7 @@ func (o PubsubResponseOutput) ToPubsubResponsePtrOutput() PubsubResponsePtrOutpu
 }
 
 func (o PubsubResponseOutput) ToPubsubResponsePtrOutputWithContext(ctx context.Context) PubsubResponsePtrOutput {
-	return o.ApplyT(func(v PubsubResponse) *PubsubResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubResponse) *PubsubResponse {
 		return &v
 	}).(PubsubResponsePtrOutput)
 }
@@ -2049,7 +2085,13 @@ func (o PubsubResponsePtrOutput) ToPubsubResponsePtrOutputWithContext(ctx contex
 }
 
 func (o PubsubResponsePtrOutput) Elem() PubsubResponseOutput {
-	return o.ApplyT(func(v *PubsubResponse) PubsubResponse { return *v }).(PubsubResponseOutput)
+	return o.ApplyT(func(v *PubsubResponse) PubsubResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PubsubResponse
+		return ret
+	}).(PubsubResponseOutput)
 }
 
 // The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
@@ -2168,7 +2210,7 @@ func (o TransportOutput) ToTransportPtrOutput() TransportPtrOutput {
 }
 
 func (o TransportOutput) ToTransportPtrOutputWithContext(ctx context.Context) TransportPtrOutput {
-	return o.ApplyT(func(v Transport) *Transport {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Transport) *Transport {
 		return &v
 	}).(TransportPtrOutput)
 }
@@ -2193,7 +2235,13 @@ func (o TransportPtrOutput) ToTransportPtrOutputWithContext(ctx context.Context)
 }
 
 func (o TransportPtrOutput) Elem() TransportOutput {
-	return o.ApplyT(func(v *Transport) Transport { return *v }).(TransportOutput)
+	return o.ApplyT(func(v *Transport) Transport {
+		if v != nil {
+			return *v
+		}
+		var ret Transport
+		return ret
+	}).(TransportOutput)
 }
 
 // The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
@@ -2302,7 +2350,7 @@ func (o TransportResponseOutput) ToTransportResponsePtrOutput() TransportRespons
 }
 
 func (o TransportResponseOutput) ToTransportResponsePtrOutputWithContext(ctx context.Context) TransportResponsePtrOutput {
-	return o.ApplyT(func(v TransportResponse) *TransportResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransportResponse) *TransportResponse {
 		return &v
 	}).(TransportResponsePtrOutput)
 }
@@ -2327,7 +2375,13 @@ func (o TransportResponsePtrOutput) ToTransportResponsePtrOutputWithContext(ctx 
 }
 
 func (o TransportResponsePtrOutput) Elem() TransportResponseOutput {
-	return o.ApplyT(func(v *TransportResponse) TransportResponse { return *v }).(TransportResponseOutput)
+	return o.ApplyT(func(v *TransportResponse) TransportResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TransportResponse
+		return ret
+	}).(TransportResponseOutput)
 }
 
 // The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.

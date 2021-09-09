@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// The entrypoint for the application.
+    /// </summary>
     [OutputType]
     public sealed class EntrypointResponse
     {

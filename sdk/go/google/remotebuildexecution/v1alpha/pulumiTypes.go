@@ -110,7 +110,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutput) T
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput)
 }
@@ -145,7 +145,11 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig
+		return ret
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutput)
 }
 
@@ -269,7 +273,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseO
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput)
 }
@@ -304,7 +308,11 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseP
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse
+		return ret
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput)
 }
 
@@ -428,7 +436,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput) ToGoogleD
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput)
 }
@@ -459,7 +467,11 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput) ToGoog
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale
+		return ret
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput)
 }
 
@@ -583,7 +595,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput) T
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput)
 }
@@ -614,7 +626,11 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse
+		return ret
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput)
 }
 
@@ -766,7 +782,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput) ToGoo
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput)
 }
@@ -850,7 +866,11 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput) To
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy
+		return ret
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput)
 }
 
@@ -1044,7 +1064,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput)
 }
@@ -1079,7 +1099,11 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOut
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+		return ret
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput)
 }
 
@@ -1203,7 +1227,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureRespon
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput)
 }
@@ -1238,7 +1262,11 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureRespon
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponsePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse
+		return ret
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput)
 }
 
@@ -1390,7 +1418,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutpu
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput)
 }
@@ -1474,7 +1502,11 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOu
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse
+		return ret
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput)
 }
 
@@ -1704,7 +1736,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) ToGoog
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput)
 }
@@ -1786,7 +1818,11 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) ToG
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig
+		return ret
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput)
 }
 
@@ -2036,7 +2072,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput)
 }
@@ -2126,7 +2162,11 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOut
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse
+		return ret
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput)
 }
 

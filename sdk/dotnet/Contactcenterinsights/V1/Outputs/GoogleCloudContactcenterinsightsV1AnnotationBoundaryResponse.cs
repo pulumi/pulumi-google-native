@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// A point in a conversation that marks the start or the end of an annotation.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse
     {

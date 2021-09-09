@@ -12,6 +12,7 @@ __all__ = [
     'GetAddressResult',
     'AwaitableGetAddressResult',
     'get_address',
+    'get_address_output',
 ]
 
 @pulumi.output_type
@@ -253,3 +254,14 @@ def get_address(address: Optional[str] = None,
         status=__ret__.status,
         subnetwork=__ret__.subnetwork,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_address)
+def get_address_output(address: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       region: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAddressResult]:
+    """
+    Returns the specified address resource.
+    """
+    ...

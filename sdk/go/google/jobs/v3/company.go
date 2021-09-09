@@ -163,9 +163,7 @@ func (i *Company) ToCompanyOutputWithContext(ctx context.Context) CompanyOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(CompanyOutput)
 }
 
-type CompanyOutput struct {
-	*pulumi.OutputState
-}
+type CompanyOutput struct{ *pulumi.OutputState }
 
 func (CompanyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Company)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// Opens the given URI.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse
     {

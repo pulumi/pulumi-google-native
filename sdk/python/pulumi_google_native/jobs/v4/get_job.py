@@ -13,6 +13,7 @@ __all__ = [
     'GetJobResult',
     'AwaitableGetJobResult',
     'get_job',
+    'get_job_output',
 ]
 
 @pulumi.output_type
@@ -423,3 +424,14 @@ def get_job(job_id: Optional[str] = None,
         requisition_id=__ret__.requisition_id,
         responsibilities=__ret__.responsibilities,
         title=__ret__.title)
+
+
+@_utilities.lift_output_func(get_job)
+def get_job_output(job_id: Optional[pulumi.Input[str]] = None,
+                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                   tenant_id: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobResult]:
+    """
+    Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
+    """
+    ...

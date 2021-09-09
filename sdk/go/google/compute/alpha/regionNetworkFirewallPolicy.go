@@ -137,9 +137,7 @@ func (i *RegionNetworkFirewallPolicy) ToRegionNetworkFirewallPolicyOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkFirewallPolicyOutput)
 }
 
-type RegionNetworkFirewallPolicyOutput struct {
-	*pulumi.OutputState
-}
+type RegionNetworkFirewallPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionNetworkFirewallPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionNetworkFirewallPolicy)(nil))

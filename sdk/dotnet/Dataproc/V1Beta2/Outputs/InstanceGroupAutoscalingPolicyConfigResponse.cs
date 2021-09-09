@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Configuration for the size bounds of an instance group, including its proportional size to other groups.
+    /// </summary>
     [OutputType]
     public sealed class InstanceGroupAutoscalingPolicyConfigResponse
     {

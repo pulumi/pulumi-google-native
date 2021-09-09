@@ -114,9 +114,7 @@ func (i *GcpUserAccessBinding) ToGcpUserAccessBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingOutput)
 }
 
-type GcpUserAccessBindingOutput struct {
-	*pulumi.OutputState
-}
+type GcpUserAccessBindingOutput struct{ *pulumi.OutputState }
 
 func (GcpUserAccessBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GcpUserAccessBinding)(nil))

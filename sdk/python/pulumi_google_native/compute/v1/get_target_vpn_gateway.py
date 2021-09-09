@@ -12,6 +12,7 @@ __all__ = [
     'GetTargetVpnGatewayResult',
     'AwaitableGetTargetVpnGatewayResult',
     'get_target_vpn_gateway',
+    'get_target_vpn_gateway_output',
 ]
 
 @pulumi.output_type
@@ -175,3 +176,14 @@ def get_target_vpn_gateway(project: Optional[str] = None,
         self_link=__ret__.self_link,
         status=__ret__.status,
         tunnels=__ret__.tunnels)
+
+
+@_utilities.lift_output_func(get_target_vpn_gateway)
+def get_target_vpn_gateway_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  region: Optional[pulumi.Input[str]] = None,
+                                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetVpnGatewayResult]:
+    """
+    Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a list() request.
+    """
+    ...

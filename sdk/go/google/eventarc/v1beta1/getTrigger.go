@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,4 +45,86 @@ type LookupTriggerResult struct {
 	Transport TransportResponse `pulumi:"transport"`
 	// The last-modified time.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupTriggerOutput(ctx *pulumi.Context, args LookupTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupTriggerResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTriggerResult, error) {
+			args := v.(LookupTriggerArgs)
+			r, err := LookupTrigger(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTriggerResultOutput)
+}
+
+type LookupTriggerOutputArgs struct {
+	Location  pulumi.StringInput    `pulumi:"location"`
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+	TriggerId pulumi.StringInput    `pulumi:"triggerId"`
+}
+
+func (LookupTriggerOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTriggerArgs)(nil)).Elem()
+}
+
+type LookupTriggerResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTriggerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTriggerResult)(nil)).Elem()
+}
+
+func (o LookupTriggerResultOutput) ToLookupTriggerResultOutput() LookupTriggerResultOutput {
+	return o
+}
+
+func (o LookupTriggerResultOutput) ToLookupTriggerResultOutputWithContext(ctx context.Context) LookupTriggerResultOutput {
+	return o
+}
+
+// The creation time.
+func (o LookupTriggerResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTriggerResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Destination specifies where the events should be sent to.
+func (o LookupTriggerResultOutput) Destination() DestinationResponseOutput {
+	return o.ApplyT(func(v LookupTriggerResult) DestinationResponse { return v.Destination }).(DestinationResponseOutput)
+}
+
+// This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
+func (o LookupTriggerResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTriggerResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Optional. User labels attached to the triggers that can be used to group resources.
+func (o LookupTriggerResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTriggerResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+func (o LookupTriggerResultOutput) MatchingCriteria() MatchingCriteriaResponseArrayOutput {
+	return o.ApplyT(func(v LookupTriggerResult) []MatchingCriteriaResponse { return v.MatchingCriteria }).(MatchingCriteriaResponseArrayOutput)
+}
+
+// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+func (o LookupTriggerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTriggerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
+func (o LookupTriggerResultOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTriggerResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+func (o LookupTriggerResultOutput) Transport() TransportResponseOutput {
+	return o.ApplyT(func(v LookupTriggerResult) TransportResponse { return v.Transport }).(TransportResponseOutput)
+}
+
+// The last-modified time.
+func (o LookupTriggerResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTriggerResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTriggerResultOutput{})
 }

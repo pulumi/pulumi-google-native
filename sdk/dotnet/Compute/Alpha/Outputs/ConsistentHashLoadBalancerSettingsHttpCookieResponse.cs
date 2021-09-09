@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// The information about the HTTP Cookie on which the hash function is based for load balancing policies that use a consistent hash.
+    /// </summary>
     [OutputType]
     public sealed class ConsistentHashLoadBalancerSettingsHttpCookieResponse
     {

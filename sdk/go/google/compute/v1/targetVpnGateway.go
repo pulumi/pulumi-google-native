@@ -126,9 +126,7 @@ func (i *TargetVpnGateway) ToTargetVpnGatewayOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TargetVpnGatewayOutput)
 }
 
-type TargetVpnGatewayOutput struct {
-	*pulumi.OutputState
-}
+type TargetVpnGatewayOutput struct{ *pulumi.OutputState }
 
 func (TargetVpnGatewayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetVpnGateway)(nil))

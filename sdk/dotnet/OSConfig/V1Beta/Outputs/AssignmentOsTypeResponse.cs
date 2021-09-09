@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Defines the criteria for selecting VM Instances by OS type.
+    /// </summary>
     [OutputType]
     public sealed class AssignmentOsTypeResponse
     {

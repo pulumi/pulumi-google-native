@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Subset of Nodepool message that has defaults.
+    /// </summary>
     [OutputType]
     public sealed class NodePoolDefaultsResponse
     {

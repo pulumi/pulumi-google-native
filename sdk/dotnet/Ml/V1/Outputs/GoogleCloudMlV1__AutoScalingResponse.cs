@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// Options for automatically scaling a model.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1__AutoScalingResponse
     {

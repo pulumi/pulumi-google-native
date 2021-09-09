@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Latency percentile rank and value.
+    /// </summary>
     [OutputType]
     public sealed class LatencyPercentileResponse
     {

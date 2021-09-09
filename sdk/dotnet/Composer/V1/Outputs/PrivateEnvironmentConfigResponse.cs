@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1.Outputs
 {
 
+    /// <summary>
+    /// The configuration information for configuring a Private IP Cloud Composer environment.
+    /// </summary>
     [OutputType]
     public sealed class PrivateEnvironmentConfigResponse
     {

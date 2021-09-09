@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// A package managed by GooGet. - install: `googet -noconfirm install package` - remove: `googet -noconfirm remove package`
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyResourcePackageResourceGooGetResponse
     {

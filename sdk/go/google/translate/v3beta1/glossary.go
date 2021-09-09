@@ -122,9 +122,7 @@ func (i *Glossary) ToGlossaryOutputWithContext(ctx context.Context) GlossaryOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryOutput)
 }
 
-type GlossaryOutput struct {
-	*pulumi.OutputState
-}
+type GlossaryOutput struct{ *pulumi.OutputState }
 
 func (GlossaryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Glossary)(nil))

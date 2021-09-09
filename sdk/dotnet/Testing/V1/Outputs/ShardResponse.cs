@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Output only. Details about the shard.
+    /// </summary>
     [OutputType]
     public sealed class ShardResponse
     {

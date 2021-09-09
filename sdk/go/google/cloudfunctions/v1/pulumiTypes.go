@@ -790,7 +790,7 @@ func (o EventTriggerOutput) ToEventTriggerPtrOutput() EventTriggerPtrOutput {
 }
 
 func (o EventTriggerOutput) ToEventTriggerPtrOutputWithContext(ctx context.Context) EventTriggerPtrOutput {
-	return o.ApplyT(func(v EventTrigger) *EventTrigger {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventTrigger) *EventTrigger {
 		return &v
 	}).(EventTriggerPtrOutput)
 }
@@ -830,7 +830,13 @@ func (o EventTriggerPtrOutput) ToEventTriggerPtrOutputWithContext(ctx context.Co
 }
 
 func (o EventTriggerPtrOutput) Elem() EventTriggerOutput {
-	return o.ApplyT(func(v *EventTrigger) EventTrigger { return *v }).(EventTriggerOutput)
+	return o.ApplyT(func(v *EventTrigger) EventTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret EventTrigger
+		return ret
+	}).(EventTriggerOutput)
 }
 
 // The type of event to observe. For example: `providers/cloud.storage/eventTypes/object.change` and `providers/cloud.pubsub/eventTypes/topic.publish`. Event types match pattern `providers/*/eventTypes/*.*`. The pattern contains: 1. namespace: For example, `cloud.storage` and `google.firebase.analytics`. 2. resource type: The type of resource on which event occurs. For example, the Google Cloud Storage API includes the type `object`. 3. action: The action that generates the event. For example, action for a Google Cloud Storage Object is 'change'. These parts are lower case.
@@ -981,7 +987,7 @@ func (o EventTriggerResponseOutput) ToEventTriggerResponsePtrOutput() EventTrigg
 }
 
 func (o EventTriggerResponseOutput) ToEventTriggerResponsePtrOutputWithContext(ctx context.Context) EventTriggerResponsePtrOutput {
-	return o.ApplyT(func(v EventTriggerResponse) *EventTriggerResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventTriggerResponse) *EventTriggerResponse {
 		return &v
 	}).(EventTriggerResponsePtrOutput)
 }
@@ -1021,7 +1027,13 @@ func (o EventTriggerResponsePtrOutput) ToEventTriggerResponsePtrOutputWithContex
 }
 
 func (o EventTriggerResponsePtrOutput) Elem() EventTriggerResponseOutput {
-	return o.ApplyT(func(v *EventTriggerResponse) EventTriggerResponse { return *v }).(EventTriggerResponseOutput)
+	return o.ApplyT(func(v *EventTriggerResponse) EventTriggerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EventTriggerResponse
+		return ret
+	}).(EventTriggerResponseOutput)
 }
 
 // The type of event to observe. For example: `providers/cloud.storage/eventTypes/object.change` and `providers/cloud.pubsub/eventTypes/topic.publish`. Event types match pattern `providers/*/eventTypes/*.*`. The pattern contains: 1. namespace: For example, `cloud.storage` and `google.firebase.analytics`. 2. resource type: The type of resource on which event occurs. For example, the Google Cloud Storage API includes the type `object`. 3. action: The action that generates the event. For example, action for a Google Cloud Storage Object is 'change'. These parts are lower case.
@@ -1172,7 +1184,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1212,7 +1224,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1433,7 +1451,7 @@ func (o FailurePolicyOutput) ToFailurePolicyPtrOutput() FailurePolicyPtrOutput {
 }
 
 func (o FailurePolicyOutput) ToFailurePolicyPtrOutputWithContext(ctx context.Context) FailurePolicyPtrOutput {
-	return o.ApplyT(func(v FailurePolicy) *FailurePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FailurePolicy) *FailurePolicy {
 		return &v
 	}).(FailurePolicyPtrOutput)
 }
@@ -1458,7 +1476,13 @@ func (o FailurePolicyPtrOutput) ToFailurePolicyPtrOutputWithContext(ctx context.
 }
 
 func (o FailurePolicyPtrOutput) Elem() FailurePolicyOutput {
-	return o.ApplyT(func(v *FailurePolicy) FailurePolicy { return *v }).(FailurePolicyOutput)
+	return o.ApplyT(func(v *FailurePolicy) FailurePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret FailurePolicy
+		return ret
+	}).(FailurePolicyOutput)
 }
 
 // If specified, then the function will be retried in case of a failure.
@@ -1567,7 +1591,7 @@ func (o FailurePolicyResponseOutput) ToFailurePolicyResponsePtrOutput() FailureP
 }
 
 func (o FailurePolicyResponseOutput) ToFailurePolicyResponsePtrOutputWithContext(ctx context.Context) FailurePolicyResponsePtrOutput {
-	return o.ApplyT(func(v FailurePolicyResponse) *FailurePolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FailurePolicyResponse) *FailurePolicyResponse {
 		return &v
 	}).(FailurePolicyResponsePtrOutput)
 }
@@ -1592,7 +1616,13 @@ func (o FailurePolicyResponsePtrOutput) ToFailurePolicyResponsePtrOutputWithCont
 }
 
 func (o FailurePolicyResponsePtrOutput) Elem() FailurePolicyResponseOutput {
-	return o.ApplyT(func(v *FailurePolicyResponse) FailurePolicyResponse { return *v }).(FailurePolicyResponseOutput)
+	return o.ApplyT(func(v *FailurePolicyResponse) FailurePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FailurePolicyResponse
+		return ret
+	}).(FailurePolicyResponseOutput)
 }
 
 // If specified, then the function will be retried in case of a failure.
@@ -1701,7 +1731,7 @@ func (o HttpsTriggerOutput) ToHttpsTriggerPtrOutput() HttpsTriggerPtrOutput {
 }
 
 func (o HttpsTriggerOutput) ToHttpsTriggerPtrOutputWithContext(ctx context.Context) HttpsTriggerPtrOutput {
-	return o.ApplyT(func(v HttpsTrigger) *HttpsTrigger {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpsTrigger) *HttpsTrigger {
 		return &v
 	}).(HttpsTriggerPtrOutput)
 }
@@ -1726,7 +1756,13 @@ func (o HttpsTriggerPtrOutput) ToHttpsTriggerPtrOutputWithContext(ctx context.Co
 }
 
 func (o HttpsTriggerPtrOutput) Elem() HttpsTriggerOutput {
-	return o.ApplyT(func(v *HttpsTrigger) HttpsTrigger { return *v }).(HttpsTriggerOutput)
+	return o.ApplyT(func(v *HttpsTrigger) HttpsTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret HttpsTrigger
+		return ret
+	}).(HttpsTriggerOutput)
 }
 
 // The security level for the function.
@@ -1839,7 +1875,7 @@ func (o HttpsTriggerResponseOutput) ToHttpsTriggerResponsePtrOutput() HttpsTrigg
 }
 
 func (o HttpsTriggerResponseOutput) ToHttpsTriggerResponsePtrOutputWithContext(ctx context.Context) HttpsTriggerResponsePtrOutput {
-	return o.ApplyT(func(v HttpsTriggerResponse) *HttpsTriggerResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpsTriggerResponse) *HttpsTriggerResponse {
 		return &v
 	}).(HttpsTriggerResponsePtrOutput)
 }
@@ -1869,7 +1905,13 @@ func (o HttpsTriggerResponsePtrOutput) ToHttpsTriggerResponsePtrOutputWithContex
 }
 
 func (o HttpsTriggerResponsePtrOutput) Elem() HttpsTriggerResponseOutput {
-	return o.ApplyT(func(v *HttpsTriggerResponse) HttpsTriggerResponse { return *v }).(HttpsTriggerResponseOutput)
+	return o.ApplyT(func(v *HttpsTriggerResponse) HttpsTriggerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpsTriggerResponse
+		return ret
+	}).(HttpsTriggerResponseOutput)
 }
 
 // The security level for the function.
@@ -1984,7 +2026,7 @@ func (o RetryOutput) ToRetryPtrOutput() RetryPtrOutput {
 }
 
 func (o RetryOutput) ToRetryPtrOutputWithContext(ctx context.Context) RetryPtrOutput {
-	return o.ApplyT(func(v Retry) *Retry {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Retry) *Retry {
 		return &v
 	}).(RetryPtrOutput)
 }
@@ -2004,7 +2046,13 @@ func (o RetryPtrOutput) ToRetryPtrOutputWithContext(ctx context.Context) RetryPt
 }
 
 func (o RetryPtrOutput) Elem() RetryOutput {
-	return o.ApplyT(func(v *Retry) Retry { return *v }).(RetryOutput)
+	return o.ApplyT(func(v *Retry) Retry {
+		if v != nil {
+			return *v
+		}
+		var ret Retry
+		return ret
+	}).(RetryOutput)
 }
 
 // Describes the retry policy in case of function's execution failure. A function execution will be retried on any failure. A failed execution will be retried up to 7 days with an exponential backoff (capped at 10 seconds). Retried execution is charged as any other execution.
@@ -2099,7 +2147,7 @@ func (o RetryResponseOutput) ToRetryResponsePtrOutput() RetryResponsePtrOutput {
 }
 
 func (o RetryResponseOutput) ToRetryResponsePtrOutputWithContext(ctx context.Context) RetryResponsePtrOutput {
-	return o.ApplyT(func(v RetryResponse) *RetryResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryResponse) *RetryResponse {
 		return &v
 	}).(RetryResponsePtrOutput)
 }
@@ -2119,7 +2167,13 @@ func (o RetryResponsePtrOutput) ToRetryResponsePtrOutputWithContext(ctx context.
 }
 
 func (o RetryResponsePtrOutput) Elem() RetryResponseOutput {
-	return o.ApplyT(func(v *RetryResponse) RetryResponse { return *v }).(RetryResponseOutput)
+	return o.ApplyT(func(v *RetryResponse) RetryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RetryResponse
+		return ret
+	}).(RetryResponseOutput)
 }
 
 // Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
@@ -2944,7 +2998,7 @@ func (o SourceRepositoryOutput) ToSourceRepositoryPtrOutput() SourceRepositoryPt
 }
 
 func (o SourceRepositoryOutput) ToSourceRepositoryPtrOutputWithContext(ctx context.Context) SourceRepositoryPtrOutput {
-	return o.ApplyT(func(v SourceRepository) *SourceRepository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceRepository) *SourceRepository {
 		return &v
 	}).(SourceRepositoryPtrOutput)
 }
@@ -2969,7 +3023,13 @@ func (o SourceRepositoryPtrOutput) ToSourceRepositoryPtrOutputWithContext(ctx co
 }
 
 func (o SourceRepositoryPtrOutput) Elem() SourceRepositoryOutput {
-	return o.ApplyT(func(v *SourceRepository) SourceRepository { return *v }).(SourceRepositoryOutput)
+	return o.ApplyT(func(v *SourceRepository) SourceRepository {
+		if v != nil {
+			return *v
+		}
+		var ret SourceRepository
+		return ret
+	}).(SourceRepositoryOutput)
 }
 
 // The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats: To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*` To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*` In particular, to refer to HEAD use `master` moveable alias. To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*` You may omit `paths/*` if you want to use the main directory.
@@ -3082,7 +3142,7 @@ func (o SourceRepositoryResponseOutput) ToSourceRepositoryResponsePtrOutput() So
 }
 
 func (o SourceRepositoryResponseOutput) ToSourceRepositoryResponsePtrOutputWithContext(ctx context.Context) SourceRepositoryResponsePtrOutput {
-	return o.ApplyT(func(v SourceRepositoryResponse) *SourceRepositoryResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceRepositoryResponse) *SourceRepositoryResponse {
 		return &v
 	}).(SourceRepositoryResponsePtrOutput)
 }
@@ -3112,7 +3172,13 @@ func (o SourceRepositoryResponsePtrOutput) ToSourceRepositoryResponsePtrOutputWi
 }
 
 func (o SourceRepositoryResponsePtrOutput) Elem() SourceRepositoryResponseOutput {
-	return o.ApplyT(func(v *SourceRepositoryResponse) SourceRepositoryResponse { return *v }).(SourceRepositoryResponseOutput)
+	return o.ApplyT(func(v *SourceRepositoryResponse) SourceRepositoryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceRepositoryResponse
+		return ret
+	}).(SourceRepositoryResponseOutput)
 }
 
 // The URL pointing to the hosted repository where the function were defined at the time of deployment. It always points to a specific commit in the format described above.

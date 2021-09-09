@@ -13,6 +13,7 @@ __all__ = [
     'GetRegionCommitmentResult',
     'AwaitableGetRegionCommitmentResult',
     'get_region_commitment',
+    'get_region_commitment_output',
 ]
 
 @pulumi.output_type
@@ -254,3 +255,14 @@ def get_region_commitment(commitment: Optional[str] = None,
         status=__ret__.status,
         status_message=__ret__.status_message,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_region_commitment)
+def get_region_commitment_output(commitment: Optional[pulumi.Input[str]] = None,
+                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 region: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionCommitmentResult]:
+    """
+    Returns the specified commitment resource. Gets a list of available commitments by making a list() request.
+    """
+    ...

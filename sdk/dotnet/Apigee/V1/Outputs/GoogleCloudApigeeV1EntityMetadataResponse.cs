@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// Metadata common to many entities in this API.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1EntityMetadataResponse
     {

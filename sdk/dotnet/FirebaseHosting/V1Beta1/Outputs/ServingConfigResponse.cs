@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order).
+    /// </summary>
     [OutputType]
     public sealed class ServingConfigResponse
     {

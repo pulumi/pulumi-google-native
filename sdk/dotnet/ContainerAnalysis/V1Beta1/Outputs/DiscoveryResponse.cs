@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
+    /// </summary>
     [OutputType]
     public sealed class DiscoveryResponse
     {

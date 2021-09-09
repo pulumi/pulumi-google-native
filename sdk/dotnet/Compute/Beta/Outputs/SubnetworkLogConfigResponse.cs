@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// The available logging options for this subnetwork.
+    /// </summary>
     [OutputType]
     public sealed class SubnetworkLogConfigResponse
     {

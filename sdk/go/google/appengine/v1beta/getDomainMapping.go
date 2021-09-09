@@ -4,6 +4,9 @@
 package v1beta
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,4 +32,55 @@ type LookupDomainMappingResult struct {
 	ResourceRecords []ResourceRecordResponse `pulumi:"resourceRecords"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	SslSettings SslSettingsResponse `pulumi:"sslSettings"`
+}
+
+func LookupDomainMappingOutput(ctx *pulumi.Context, args LookupDomainMappingOutputArgs, opts ...pulumi.InvokeOption) LookupDomainMappingResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDomainMappingResult, error) {
+			args := v.(LookupDomainMappingArgs)
+			r, err := LookupDomainMapping(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDomainMappingResultOutput)
+}
+
+type LookupDomainMappingOutputArgs struct {
+	AppId           pulumi.StringInput `pulumi:"appId"`
+	DomainMappingId pulumi.StringInput `pulumi:"domainMappingId"`
+}
+
+func (LookupDomainMappingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainMappingArgs)(nil)).Elem()
+}
+
+type LookupDomainMappingResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDomainMappingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainMappingResult)(nil)).Elem()
+}
+
+func (o LookupDomainMappingResultOutput) ToLookupDomainMappingResultOutput() LookupDomainMappingResultOutput {
+	return o
+}
+
+func (o LookupDomainMappingResultOutput) ToLookupDomainMappingResultOutputWithContext(ctx context.Context) LookupDomainMappingResultOutput {
+	return o
+}
+
+// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+func (o LookupDomainMappingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainMappingResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
+func (o LookupDomainMappingResultOutput) ResourceRecords() ResourceRecordResponseArrayOutput {
+	return o.ApplyT(func(v LookupDomainMappingResult) []ResourceRecordResponse { return v.ResourceRecords }).(ResourceRecordResponseArrayOutput)
+}
+
+// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+func (o LookupDomainMappingResultOutput) SslSettings() SslSettingsResponseOutput {
+	return o.ApplyT(func(v LookupDomainMappingResult) SslSettingsResponse { return v.SslSettings }).(SslSettingsResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDomainMappingResultOutput{})
 }

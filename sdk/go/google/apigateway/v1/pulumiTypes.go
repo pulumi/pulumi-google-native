@@ -135,7 +135,7 @@ func (o ApigatewayApiConfigFileOutput) ToApigatewayApiConfigFilePtrOutput() Apig
 }
 
 func (o ApigatewayApiConfigFileOutput) ToApigatewayApiConfigFilePtrOutputWithContext(ctx context.Context) ApigatewayApiConfigFilePtrOutput {
-	return o.ApplyT(func(v ApigatewayApiConfigFile) *ApigatewayApiConfigFile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApigatewayApiConfigFile) *ApigatewayApiConfigFile {
 		return &v
 	}).(ApigatewayApiConfigFilePtrOutput)
 }
@@ -165,7 +165,13 @@ func (o ApigatewayApiConfigFilePtrOutput) ToApigatewayApiConfigFilePtrOutputWith
 }
 
 func (o ApigatewayApiConfigFilePtrOutput) Elem() ApigatewayApiConfigFileOutput {
-	return o.ApplyT(func(v *ApigatewayApiConfigFile) ApigatewayApiConfigFile { return *v }).(ApigatewayApiConfigFileOutput)
+	return o.ApplyT(func(v *ApigatewayApiConfigFile) ApigatewayApiConfigFile {
+		if v != nil {
+			return *v
+		}
+		var ret ApigatewayApiConfigFile
+		return ret
+	}).(ApigatewayApiConfigFileOutput)
 }
 
 // The bytes that constitute the file.
@@ -1519,7 +1525,7 @@ func (o ApigatewayExprOutput) ToApigatewayExprPtrOutput() ApigatewayExprPtrOutpu
 }
 
 func (o ApigatewayExprOutput) ToApigatewayExprPtrOutputWithContext(ctx context.Context) ApigatewayExprPtrOutput {
-	return o.ApplyT(func(v ApigatewayExpr) *ApigatewayExpr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApigatewayExpr) *ApigatewayExpr {
 		return &v
 	}).(ApigatewayExprPtrOutput)
 }
@@ -1559,7 +1565,13 @@ func (o ApigatewayExprPtrOutput) ToApigatewayExprPtrOutputWithContext(ctx contex
 }
 
 func (o ApigatewayExprPtrOutput) Elem() ApigatewayExprOutput {
-	return o.ApplyT(func(v *ApigatewayExpr) ApigatewayExpr { return *v }).(ApigatewayExprOutput)
+	return o.ApplyT(func(v *ApigatewayExpr) ApigatewayExpr {
+		if v != nil {
+			return *v
+		}
+		var ret ApigatewayExpr
+		return ret
+	}).(ApigatewayExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

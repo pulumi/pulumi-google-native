@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// A test of an iOS application that uses the XCTest framework.
+    /// </summary>
     [OutputType]
     public sealed class IosXcTestResponse
     {

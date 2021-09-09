@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies the type and number of accelerator cards attached to the instances of an instance. See GPUs on Compute Engine (https://cloud.google.com/compute/docs/gpus/).
+    /// </summary>
     [OutputType]
     public sealed class AcceleratorConfigResponse
     {

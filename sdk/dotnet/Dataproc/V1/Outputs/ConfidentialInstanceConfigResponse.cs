@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+    /// </summary>
     [OutputType]
     public sealed class ConfidentialInstanceConfigResponse
     {

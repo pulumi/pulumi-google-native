@@ -13,6 +13,7 @@ __all__ = [
     'GetAuthorizedCertificateResult',
     'AwaitableGetAuthorizedCertificateResult',
     'get_authorized_certificate',
+    'get_authorized_certificate_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,14 @@ def get_authorized_certificate(app_id: Optional[str] = None,
         managed_certificate=__ret__.managed_certificate,
         name=__ret__.name,
         visible_domain_mappings=__ret__.visible_domain_mappings)
+
+
+@_utilities.lift_output_func(get_authorized_certificate)
+def get_authorized_certificate_output(app_id: Optional[pulumi.Input[str]] = None,
+                                      authorized_certificate_id: Optional[pulumi.Input[str]] = None,
+                                      view: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthorizedCertificateResult]:
+    """
+    Gets the specified SSL certificate.
+    """
+    ...

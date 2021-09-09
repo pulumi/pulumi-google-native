@@ -124,9 +124,7 @@ func (i *ReusableConfigIamPolicy) ToReusableConfigIamPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ReusableConfigIamPolicyOutput)
 }
 
-type ReusableConfigIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type ReusableConfigIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ReusableConfigIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReusableConfigIamPolicy)(nil))

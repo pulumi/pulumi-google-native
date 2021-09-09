@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Details of a deployment occurrence.
+    /// </summary>
     [OutputType]
     public sealed class GrafeasV1beta1DeploymentDetailsResponse
     {

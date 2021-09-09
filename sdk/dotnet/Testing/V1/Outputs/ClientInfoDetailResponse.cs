@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
+    /// </summary>
     [OutputType]
     public sealed class ClientInfoDetailResponse
     {

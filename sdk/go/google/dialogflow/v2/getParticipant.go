@@ -4,6 +4,9 @@
 package v2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,4 +34,57 @@ type LookupParticipantResult struct {
 	Role string `pulumi:"role"`
 	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
 	SipRecordingMediaLabel string `pulumi:"sipRecordingMediaLabel"`
+}
+
+func LookupParticipantOutput(ctx *pulumi.Context, args LookupParticipantOutputArgs, opts ...pulumi.InvokeOption) LookupParticipantResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupParticipantResult, error) {
+			args := v.(LookupParticipantArgs)
+			r, err := LookupParticipant(ctx, &args, opts...)
+			return *r, err
+		}).(LookupParticipantResultOutput)
+}
+
+type LookupParticipantOutputArgs struct {
+	ConversationId pulumi.StringInput    `pulumi:"conversationId"`
+	Location       pulumi.StringInput    `pulumi:"location"`
+	ParticipantId  pulumi.StringInput    `pulumi:"participantId"`
+	Project        pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupParticipantOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupParticipantArgs)(nil)).Elem()
+}
+
+type LookupParticipantResultOutput struct{ *pulumi.OutputState }
+
+func (LookupParticipantResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupParticipantResult)(nil)).Elem()
+}
+
+func (o LookupParticipantResultOutput) ToLookupParticipantResultOutput() LookupParticipantResultOutput {
+	return o
+}
+
+func (o LookupParticipantResultOutput) ToLookupParticipantResultOutputWithContext(ctx context.Context) LookupParticipantResultOutput {
+	return o
+}
+
+// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
+func (o LookupParticipantResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupParticipantResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+func (o LookupParticipantResultOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupParticipantResult) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
+func (o LookupParticipantResultOutput) SipRecordingMediaLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupParticipantResult) string { return v.SipRecordingMediaLabel }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupParticipantResultOutput{})
 }

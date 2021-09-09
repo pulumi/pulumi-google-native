@@ -190,9 +190,7 @@ func (i *Interconnect) ToInterconnectOutputWithContext(ctx context.Context) Inte
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectOutput)
 }
 
-type InterconnectOutput struct {
-	*pulumi.OutputState
-}
+type InterconnectOutput struct{ *pulumi.OutputState }
 
 func (InterconnectOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Interconnect)(nil))

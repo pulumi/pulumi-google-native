@@ -168,9 +168,7 @@ func (i *RegionSecurityPolicy) ToRegionSecurityPolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSecurityPolicyOutput)
 }
 
-type RegionSecurityPolicyOutput struct {
-	*pulumi.OutputState
-}
+type RegionSecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionSecurityPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionSecurityPolicy)(nil))

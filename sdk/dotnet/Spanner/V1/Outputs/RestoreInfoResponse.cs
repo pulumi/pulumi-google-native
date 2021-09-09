@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Spanner.V1.Outputs
 {
 
+    /// <summary>
+    /// Information about the database restore.
+    /// </summary>
     [OutputType]
     public sealed class RestoreInfoResponse
     {

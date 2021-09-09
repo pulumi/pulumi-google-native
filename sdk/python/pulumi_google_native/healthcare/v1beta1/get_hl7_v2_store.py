@@ -13,6 +13,7 @@ __all__ = [
     'GetHl7V2StoreResult',
     'AwaitableGetHl7V2StoreResult',
     'get_hl7_v2_store',
+    'get_hl7_v2_store_output',
 ]
 
 @pulumi.output_type
@@ -126,3 +127,15 @@ def get_hl7_v2_store(dataset_id: Optional[str] = None,
         notification_configs=__ret__.notification_configs,
         parser_config=__ret__.parser_config,
         reject_duplicate_message=__ret__.reject_duplicate_message)
+
+
+@_utilities.lift_output_func(get_hl7_v2_store)
+def get_hl7_v2_store_output(dataset_id: Optional[pulumi.Input[str]] = None,
+                            hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
+                            location: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHl7V2StoreResult]:
+    """
+    Gets the specified HL7v2 store.
+    """
+    ...

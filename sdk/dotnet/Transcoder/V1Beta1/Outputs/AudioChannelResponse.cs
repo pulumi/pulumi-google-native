@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The audio channel.
+    /// </summary>
     [OutputType]
     public sealed class AudioChannelResponse
     {

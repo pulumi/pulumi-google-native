@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The `MembershipRole` expiry details.
+    /// </summary>
     [OutputType]
     public sealed class ExpiryDetailResponse
     {

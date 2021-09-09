@@ -1353,7 +1353,7 @@ func (o AuthenticationOutput) ToAuthenticationPtrOutput() AuthenticationPtrOutpu
 }
 
 func (o AuthenticationOutput) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
-	return o.ApplyT(func(v Authentication) *Authentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Authentication) *Authentication {
 		return &v
 	}).(AuthenticationPtrOutput)
 }
@@ -1383,7 +1383,13 @@ func (o AuthenticationPtrOutput) ToAuthenticationPtrOutputWithContext(ctx contex
 }
 
 func (o AuthenticationPtrOutput) Elem() AuthenticationOutput {
-	return o.ApplyT(func(v *Authentication) Authentication { return *v }).(AuthenticationOutput)
+	return o.ApplyT(func(v *Authentication) Authentication {
+		if v != nil {
+			return *v
+		}
+		var ret Authentication
+		return ret
+	}).(AuthenticationOutput)
 }
 
 // Defines a set of authentication providers that a service supports.
@@ -1506,7 +1512,7 @@ func (o AuthenticationResponseOutput) ToAuthenticationResponsePtrOutput() Authen
 }
 
 func (o AuthenticationResponseOutput) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
-	return o.ApplyT(func(v AuthenticationResponse) *AuthenticationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthenticationResponse) *AuthenticationResponse {
 		return &v
 	}).(AuthenticationResponsePtrOutput)
 }
@@ -1536,7 +1542,13 @@ func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutputWithCo
 }
 
 func (o AuthenticationResponsePtrOutput) Elem() AuthenticationResponseOutput {
-	return o.ApplyT(func(v *AuthenticationResponse) AuthenticationResponse { return *v }).(AuthenticationResponseOutput)
+	return o.ApplyT(func(v *AuthenticationResponse) AuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AuthenticationResponse
+		return ret
+	}).(AuthenticationResponseOutput)
 }
 
 // Defines a set of authentication providers that a service supports.
@@ -1909,7 +1921,7 @@ func (o BackendOutput) ToBackendPtrOutput() BackendPtrOutput {
 }
 
 func (o BackendOutput) ToBackendPtrOutputWithContext(ctx context.Context) BackendPtrOutput {
-	return o.ApplyT(func(v Backend) *Backend {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Backend) *Backend {
 		return &v
 	}).(BackendPtrOutput)
 }
@@ -1934,7 +1946,13 @@ func (o BackendPtrOutput) ToBackendPtrOutputWithContext(ctx context.Context) Bac
 }
 
 func (o BackendPtrOutput) Elem() BackendOutput {
-	return o.ApplyT(func(v *Backend) Backend { return *v }).(BackendOutput)
+	return o.ApplyT(func(v *Backend) Backend {
+		if v != nil {
+			return *v
+		}
+		var ret Backend
+		return ret
+	}).(BackendOutput)
 }
 
 // A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
@@ -2043,7 +2061,7 @@ func (o BackendResponseOutput) ToBackendResponsePtrOutput() BackendResponsePtrOu
 }
 
 func (o BackendResponseOutput) ToBackendResponsePtrOutputWithContext(ctx context.Context) BackendResponsePtrOutput {
-	return o.ApplyT(func(v BackendResponse) *BackendResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendResponse) *BackendResponse {
 		return &v
 	}).(BackendResponsePtrOutput)
 }
@@ -2068,7 +2086,13 @@ func (o BackendResponsePtrOutput) ToBackendResponsePtrOutputWithContext(ctx cont
 }
 
 func (o BackendResponsePtrOutput) Elem() BackendResponseOutput {
-	return o.ApplyT(func(v *BackendResponse) BackendResponse { return *v }).(BackendResponseOutput)
+	return o.ApplyT(func(v *BackendResponse) BackendResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackendResponse
+		return ret
+	}).(BackendResponseOutput)
 }
 
 // A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
@@ -2497,7 +2521,7 @@ func (o BillingOutput) ToBillingPtrOutput() BillingPtrOutput {
 }
 
 func (o BillingOutput) ToBillingPtrOutputWithContext(ctx context.Context) BillingPtrOutput {
-	return o.ApplyT(func(v Billing) *Billing {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Billing) *Billing {
 		return &v
 	}).(BillingPtrOutput)
 }
@@ -2522,7 +2546,13 @@ func (o BillingPtrOutput) ToBillingPtrOutputWithContext(ctx context.Context) Bil
 }
 
 func (o BillingPtrOutput) Elem() BillingOutput {
-	return o.ApplyT(func(v *Billing) Billing { return *v }).(BillingOutput)
+	return o.ApplyT(func(v *Billing) Billing {
+		if v != nil {
+			return *v
+		}
+		var ret Billing
+		return ret
+	}).(BillingOutput)
 }
 
 // Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination.
@@ -2849,7 +2879,7 @@ func (o BillingResponseOutput) ToBillingResponsePtrOutput() BillingResponsePtrOu
 }
 
 func (o BillingResponseOutput) ToBillingResponsePtrOutputWithContext(ctx context.Context) BillingResponsePtrOutput {
-	return o.ApplyT(func(v BillingResponse) *BillingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingResponse) *BillingResponse {
 		return &v
 	}).(BillingResponsePtrOutput)
 }
@@ -2874,7 +2904,13 @@ func (o BillingResponsePtrOutput) ToBillingResponsePtrOutputWithContext(ctx cont
 }
 
 func (o BillingResponsePtrOutput) Elem() BillingResponseOutput {
-	return o.ApplyT(func(v *BillingResponse) BillingResponse { return *v }).(BillingResponseOutput)
+	return o.ApplyT(func(v *BillingResponse) BillingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BillingResponse
+		return ret
+	}).(BillingResponseOutput)
 }
 
 // Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination.
@@ -3219,7 +3255,7 @@ func (o ContextOutput) ToContextPtrOutput() ContextPtrOutput {
 }
 
 func (o ContextOutput) ToContextPtrOutputWithContext(ctx context.Context) ContextPtrOutput {
-	return o.ApplyT(func(v Context) *Context {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Context) *Context {
 		return &v
 	}).(ContextPtrOutput)
 }
@@ -3244,7 +3280,13 @@ func (o ContextPtrOutput) ToContextPtrOutputWithContext(ctx context.Context) Con
 }
 
 func (o ContextPtrOutput) Elem() ContextOutput {
-	return o.ApplyT(func(v *Context) Context { return *v }).(ContextOutput)
+	return o.ApplyT(func(v *Context) Context {
+		if v != nil {
+			return *v
+		}
+		var ret Context
+		return ret
+	}).(ContextOutput)
 }
 
 // A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
@@ -3353,7 +3395,7 @@ func (o ContextResponseOutput) ToContextResponsePtrOutput() ContextResponsePtrOu
 }
 
 func (o ContextResponseOutput) ToContextResponsePtrOutputWithContext(ctx context.Context) ContextResponsePtrOutput {
-	return o.ApplyT(func(v ContextResponse) *ContextResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContextResponse) *ContextResponse {
 		return &v
 	}).(ContextResponsePtrOutput)
 }
@@ -3378,7 +3420,13 @@ func (o ContextResponsePtrOutput) ToContextResponsePtrOutputWithContext(ctx cont
 }
 
 func (o ContextResponsePtrOutput) Elem() ContextResponseOutput {
-	return o.ApplyT(func(v *ContextResponse) ContextResponse { return *v }).(ContextResponseOutput)
+	return o.ApplyT(func(v *ContextResponse) ContextResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ContextResponse
+		return ret
+	}).(ContextResponseOutput)
 }
 
 // A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
@@ -3759,7 +3807,7 @@ func (o ControlOutput) ToControlPtrOutput() ControlPtrOutput {
 }
 
 func (o ControlOutput) ToControlPtrOutputWithContext(ctx context.Context) ControlPtrOutput {
-	return o.ApplyT(func(v Control) *Control {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Control) *Control {
 		return &v
 	}).(ControlPtrOutput)
 }
@@ -3784,7 +3832,13 @@ func (o ControlPtrOutput) ToControlPtrOutputWithContext(ctx context.Context) Con
 }
 
 func (o ControlPtrOutput) Elem() ControlOutput {
-	return o.ApplyT(func(v *Control) Control { return *v }).(ControlOutput)
+	return o.ApplyT(func(v *Control) Control {
+		if v != nil {
+			return *v
+		}
+		var ret Control
+		return ret
+	}).(ControlOutput)
 }
 
 // The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
@@ -3893,7 +3947,7 @@ func (o ControlResponseOutput) ToControlResponsePtrOutput() ControlResponsePtrOu
 }
 
 func (o ControlResponseOutput) ToControlResponsePtrOutputWithContext(ctx context.Context) ControlResponsePtrOutput {
-	return o.ApplyT(func(v ControlResponse) *ControlResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlResponse) *ControlResponse {
 		return &v
 	}).(ControlResponsePtrOutput)
 }
@@ -3918,7 +3972,13 @@ func (o ControlResponsePtrOutput) ToControlResponsePtrOutputWithContext(ctx cont
 }
 
 func (o ControlResponsePtrOutput) Elem() ControlResponseOutput {
-	return o.ApplyT(func(v *ControlResponse) ControlResponse { return *v }).(ControlResponseOutput)
+	return o.ApplyT(func(v *ControlResponse) ControlResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ControlResponse
+		return ret
+	}).(ControlResponseOutput)
 }
 
 // The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
@@ -4031,7 +4091,7 @@ func (o CustomErrorOutput) ToCustomErrorPtrOutput() CustomErrorPtrOutput {
 }
 
 func (o CustomErrorOutput) ToCustomErrorPtrOutputWithContext(ctx context.Context) CustomErrorPtrOutput {
-	return o.ApplyT(func(v CustomError) *CustomError {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomError) *CustomError {
 		return &v
 	}).(CustomErrorPtrOutput)
 }
@@ -4061,7 +4121,13 @@ func (o CustomErrorPtrOutput) ToCustomErrorPtrOutputWithContext(ctx context.Cont
 }
 
 func (o CustomErrorPtrOutput) Elem() CustomErrorOutput {
-	return o.ApplyT(func(v *CustomError) CustomError { return *v }).(CustomErrorOutput)
+	return o.ApplyT(func(v *CustomError) CustomError {
+		if v != nil {
+			return *v
+		}
+		var ret CustomError
+		return ret
+	}).(CustomErrorOutput)
 }
 
 // The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
@@ -4184,7 +4250,7 @@ func (o CustomErrorResponseOutput) ToCustomErrorResponsePtrOutput() CustomErrorR
 }
 
 func (o CustomErrorResponseOutput) ToCustomErrorResponsePtrOutputWithContext(ctx context.Context) CustomErrorResponsePtrOutput {
-	return o.ApplyT(func(v CustomErrorResponse) *CustomErrorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomErrorResponse) *CustomErrorResponse {
 		return &v
 	}).(CustomErrorResponsePtrOutput)
 }
@@ -4214,7 +4280,13 @@ func (o CustomErrorResponsePtrOutput) ToCustomErrorResponsePtrOutputWithContext(
 }
 
 func (o CustomErrorResponsePtrOutput) Elem() CustomErrorResponseOutput {
-	return o.ApplyT(func(v *CustomErrorResponse) CustomErrorResponse { return *v }).(CustomErrorResponseOutput)
+	return o.ApplyT(func(v *CustomErrorResponse) CustomErrorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomErrorResponse
+		return ret
+	}).(CustomErrorResponseOutput)
 }
 
 // The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
@@ -4555,7 +4627,7 @@ func (o CustomHttpPatternOutput) ToCustomHttpPatternPtrOutput() CustomHttpPatter
 }
 
 func (o CustomHttpPatternOutput) ToCustomHttpPatternPtrOutputWithContext(ctx context.Context) CustomHttpPatternPtrOutput {
-	return o.ApplyT(func(v CustomHttpPattern) *CustomHttpPattern {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomHttpPattern) *CustomHttpPattern {
 		return &v
 	}).(CustomHttpPatternPtrOutput)
 }
@@ -4585,7 +4657,13 @@ func (o CustomHttpPatternPtrOutput) ToCustomHttpPatternPtrOutputWithContext(ctx 
 }
 
 func (o CustomHttpPatternPtrOutput) Elem() CustomHttpPatternOutput {
-	return o.ApplyT(func(v *CustomHttpPattern) CustomHttpPattern { return *v }).(CustomHttpPatternOutput)
+	return o.ApplyT(func(v *CustomHttpPattern) CustomHttpPattern {
+		if v != nil {
+			return *v
+		}
+		var ret CustomHttpPattern
+		return ret
+	}).(CustomHttpPatternOutput)
 }
 
 // The name of this custom HTTP verb.
@@ -4764,7 +4842,7 @@ func (o DeleteServiceStrategyOutput) ToDeleteServiceStrategyPtrOutput() DeleteSe
 }
 
 func (o DeleteServiceStrategyOutput) ToDeleteServiceStrategyPtrOutputWithContext(ctx context.Context) DeleteServiceStrategyPtrOutput {
-	return o.ApplyT(func(v DeleteServiceStrategy) *DeleteServiceStrategy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeleteServiceStrategy) *DeleteServiceStrategy {
 		return &v
 	}).(DeleteServiceStrategyPtrOutput)
 }
@@ -4784,7 +4862,13 @@ func (o DeleteServiceStrategyPtrOutput) ToDeleteServiceStrategyPtrOutputWithCont
 }
 
 func (o DeleteServiceStrategyPtrOutput) Elem() DeleteServiceStrategyOutput {
-	return o.ApplyT(func(v *DeleteServiceStrategy) DeleteServiceStrategy { return *v }).(DeleteServiceStrategyOutput)
+	return o.ApplyT(func(v *DeleteServiceStrategy) DeleteServiceStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret DeleteServiceStrategy
+		return ret
+	}).(DeleteServiceStrategyOutput)
 }
 
 // Strategy used to delete a service. This strategy is a placeholder only used by the system generated rollout to delete a service.
@@ -4879,7 +4963,7 @@ func (o DeleteServiceStrategyResponseOutput) ToDeleteServiceStrategyResponsePtrO
 }
 
 func (o DeleteServiceStrategyResponseOutput) ToDeleteServiceStrategyResponsePtrOutputWithContext(ctx context.Context) DeleteServiceStrategyResponsePtrOutput {
-	return o.ApplyT(func(v DeleteServiceStrategyResponse) *DeleteServiceStrategyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeleteServiceStrategyResponse) *DeleteServiceStrategyResponse {
 		return &v
 	}).(DeleteServiceStrategyResponsePtrOutput)
 }
@@ -4899,7 +4983,13 @@ func (o DeleteServiceStrategyResponsePtrOutput) ToDeleteServiceStrategyResponseP
 }
 
 func (o DeleteServiceStrategyResponsePtrOutput) Elem() DeleteServiceStrategyResponseOutput {
-	return o.ApplyT(func(v *DeleteServiceStrategyResponse) DeleteServiceStrategyResponse { return *v }).(DeleteServiceStrategyResponseOutput)
+	return o.ApplyT(func(v *DeleteServiceStrategyResponse) DeleteServiceStrategyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeleteServiceStrategyResponse
+		return ret
+	}).(DeleteServiceStrategyResponseOutput)
 }
 
 // `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
@@ -5018,7 +5108,7 @@ func (o DocumentationOutput) ToDocumentationPtrOutput() DocumentationPtrOutput {
 }
 
 func (o DocumentationOutput) ToDocumentationPtrOutputWithContext(ctx context.Context) DocumentationPtrOutput {
-	return o.ApplyT(func(v Documentation) *Documentation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Documentation) *Documentation {
 		return &v
 	}).(DocumentationPtrOutput)
 }
@@ -5068,7 +5158,13 @@ func (o DocumentationPtrOutput) ToDocumentationPtrOutputWithContext(ctx context.
 }
 
 func (o DocumentationPtrOutput) Elem() DocumentationOutput {
-	return o.ApplyT(func(v *Documentation) Documentation { return *v }).(DocumentationOutput)
+	return o.ApplyT(func(v *Documentation) Documentation {
+		if v != nil {
+			return *v
+		}
+		var ret Documentation
+		return ret
+	}).(DocumentationOutput)
 }
 
 // The URL to the root of documentation.
@@ -5247,7 +5343,7 @@ func (o DocumentationResponseOutput) ToDocumentationResponsePtrOutput() Document
 }
 
 func (o DocumentationResponseOutput) ToDocumentationResponsePtrOutputWithContext(ctx context.Context) DocumentationResponsePtrOutput {
-	return o.ApplyT(func(v DocumentationResponse) *DocumentationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentationResponse) *DocumentationResponse {
 		return &v
 	}).(DocumentationResponsePtrOutput)
 }
@@ -5297,7 +5393,13 @@ func (o DocumentationResponsePtrOutput) ToDocumentationResponsePtrOutputWithCont
 }
 
 func (o DocumentationResponsePtrOutput) Elem() DocumentationResponseOutput {
-	return o.ApplyT(func(v *DocumentationResponse) DocumentationResponse { return *v }).(DocumentationResponseOutput)
+	return o.ApplyT(func(v *DocumentationResponse) DocumentationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentationResponse
+		return ret
+	}).(DocumentationResponseOutput)
 }
 
 // The URL to the root of documentation.
@@ -6448,7 +6550,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -6488,7 +6590,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -7075,7 +7183,7 @@ func (o HttpOutput) ToHttpPtrOutput() HttpPtrOutput {
 }
 
 func (o HttpOutput) ToHttpPtrOutputWithContext(ctx context.Context) HttpPtrOutput {
-	return o.ApplyT(func(v Http) *Http {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Http) *Http {
 		return &v
 	}).(HttpPtrOutput)
 }
@@ -7105,7 +7213,13 @@ func (o HttpPtrOutput) ToHttpPtrOutputWithContext(ctx context.Context) HttpPtrOu
 }
 
 func (o HttpPtrOutput) Elem() HttpOutput {
-	return o.ApplyT(func(v *Http) Http { return *v }).(HttpOutput)
+	return o.ApplyT(func(v *Http) Http {
+		if v != nil {
+			return *v
+		}
+		var ret Http
+		return ret
+	}).(HttpOutput)
 }
 
 // When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
@@ -7228,7 +7342,7 @@ func (o HttpResponseOutput) ToHttpResponsePtrOutput() HttpResponsePtrOutput {
 }
 
 func (o HttpResponseOutput) ToHttpResponsePtrOutputWithContext(ctx context.Context) HttpResponsePtrOutput {
-	return o.ApplyT(func(v HttpResponse) *HttpResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpResponse) *HttpResponse {
 		return &v
 	}).(HttpResponsePtrOutput)
 }
@@ -7258,7 +7372,13 @@ func (o HttpResponsePtrOutput) ToHttpResponsePtrOutputWithContext(ctx context.Co
 }
 
 func (o HttpResponsePtrOutput) Elem() HttpResponseOutput {
-	return o.ApplyT(func(v *HttpResponse) HttpResponse { return *v }).(HttpResponseOutput)
+	return o.ApplyT(func(v *HttpResponse) HttpResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpResponse
+		return ret
+	}).(HttpResponseOutput)
 }
 
 // When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
@@ -8469,7 +8589,7 @@ func (o LoggingOutput) ToLoggingPtrOutput() LoggingPtrOutput {
 }
 
 func (o LoggingOutput) ToLoggingPtrOutputWithContext(ctx context.Context) LoggingPtrOutput {
-	return o.ApplyT(func(v Logging) *Logging {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Logging) *Logging {
 		return &v
 	}).(LoggingPtrOutput)
 }
@@ -8499,7 +8619,13 @@ func (o LoggingPtrOutput) ToLoggingPtrOutputWithContext(ctx context.Context) Log
 }
 
 func (o LoggingPtrOutput) Elem() LoggingOutput {
-	return o.ApplyT(func(v *Logging) Logging { return *v }).(LoggingOutput)
+	return o.ApplyT(func(v *Logging) Logging {
+		if v != nil {
+			return *v
+		}
+		var ret Logging
+		return ret
+	}).(LoggingOutput)
 }
 
 // Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
@@ -8840,7 +8966,7 @@ func (o LoggingResponseOutput) ToLoggingResponsePtrOutput() LoggingResponsePtrOu
 }
 
 func (o LoggingResponseOutput) ToLoggingResponsePtrOutputWithContext(ctx context.Context) LoggingResponsePtrOutput {
-	return o.ApplyT(func(v LoggingResponse) *LoggingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingResponse) *LoggingResponse {
 		return &v
 	}).(LoggingResponsePtrOutput)
 }
@@ -8870,7 +8996,13 @@ func (o LoggingResponsePtrOutput) ToLoggingResponsePtrOutputWithContext(ctx cont
 }
 
 func (o LoggingResponsePtrOutput) Elem() LoggingResponseOutput {
-	return o.ApplyT(func(v *LoggingResponse) LoggingResponse { return *v }).(LoggingResponseOutput)
+	return o.ApplyT(func(v *LoggingResponse) LoggingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingResponse
+		return ret
+	}).(LoggingResponseOutput)
 }
 
 // Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
@@ -9491,7 +9623,7 @@ func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataPtrOutput() Me
 }
 
 func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataPtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataPtrOutput {
-	return o.ApplyT(func(v MetricDescriptorMetadata) *MetricDescriptorMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptorMetadata) *MetricDescriptorMetadata {
 		return &v
 	}).(MetricDescriptorMetadataPtrOutput)
 }
@@ -9521,7 +9653,13 @@ func (o MetricDescriptorMetadataPtrOutput) ToMetricDescriptorMetadataPtrOutputWi
 }
 
 func (o MetricDescriptorMetadataPtrOutput) Elem() MetricDescriptorMetadataOutput {
-	return o.ApplyT(func(v *MetricDescriptorMetadata) MetricDescriptorMetadata { return *v }).(MetricDescriptorMetadataOutput)
+	return o.ApplyT(func(v *MetricDescriptorMetadata) MetricDescriptorMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptorMetadata
+		return ret
+	}).(MetricDescriptorMetadataOutput)
 }
 
 // The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
@@ -10624,7 +10762,7 @@ func (o MonitoringOutput) ToMonitoringPtrOutput() MonitoringPtrOutput {
 }
 
 func (o MonitoringOutput) ToMonitoringPtrOutputWithContext(ctx context.Context) MonitoringPtrOutput {
-	return o.ApplyT(func(v Monitoring) *Monitoring {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Monitoring) *Monitoring {
 		return &v
 	}).(MonitoringPtrOutput)
 }
@@ -10654,7 +10792,13 @@ func (o MonitoringPtrOutput) ToMonitoringPtrOutputWithContext(ctx context.Contex
 }
 
 func (o MonitoringPtrOutput) Elem() MonitoringOutput {
-	return o.ApplyT(func(v *Monitoring) Monitoring { return *v }).(MonitoringOutput)
+	return o.ApplyT(func(v *Monitoring) Monitoring {
+		if v != nil {
+			return *v
+		}
+		var ret Monitoring
+		return ret
+	}).(MonitoringOutput)
 }
 
 // Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
@@ -10995,7 +11139,7 @@ func (o MonitoringResponseOutput) ToMonitoringResponsePtrOutput() MonitoringResp
 }
 
 func (o MonitoringResponseOutput) ToMonitoringResponsePtrOutputWithContext(ctx context.Context) MonitoringResponsePtrOutput {
-	return o.ApplyT(func(v MonitoringResponse) *MonitoringResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringResponse) *MonitoringResponse {
 		return &v
 	}).(MonitoringResponsePtrOutput)
 }
@@ -11025,7 +11169,13 @@ func (o MonitoringResponsePtrOutput) ToMonitoringResponsePtrOutputWithContext(ct
 }
 
 func (o MonitoringResponsePtrOutput) Elem() MonitoringResponseOutput {
-	return o.ApplyT(func(v *MonitoringResponse) MonitoringResponse { return *v }).(MonitoringResponseOutput)
+	return o.ApplyT(func(v *MonitoringResponse) MonitoringResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringResponse
+		return ret
+	}).(MonitoringResponseOutput)
 }
 
 // Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
@@ -11144,7 +11294,7 @@ func (o OAuthRequirementsOutput) ToOAuthRequirementsPtrOutput() OAuthRequirement
 }
 
 func (o OAuthRequirementsOutput) ToOAuthRequirementsPtrOutputWithContext(ctx context.Context) OAuthRequirementsPtrOutput {
-	return o.ApplyT(func(v OAuthRequirements) *OAuthRequirements {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OAuthRequirements) *OAuthRequirements {
 		return &v
 	}).(OAuthRequirementsPtrOutput)
 }
@@ -11169,7 +11319,13 @@ func (o OAuthRequirementsPtrOutput) ToOAuthRequirementsPtrOutputWithContext(ctx 
 }
 
 func (o OAuthRequirementsPtrOutput) Elem() OAuthRequirementsOutput {
-	return o.ApplyT(func(v *OAuthRequirements) OAuthRequirements { return *v }).(OAuthRequirementsOutput)
+	return o.ApplyT(func(v *OAuthRequirements) OAuthRequirements {
+		if v != nil {
+			return *v
+		}
+		var ret OAuthRequirements
+		return ret
+	}).(OAuthRequirementsOutput)
 }
 
 // The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
@@ -11791,7 +11947,7 @@ func (o QuotaOutput) ToQuotaPtrOutput() QuotaPtrOutput {
 }
 
 func (o QuotaOutput) ToQuotaPtrOutputWithContext(ctx context.Context) QuotaPtrOutput {
-	return o.ApplyT(func(v Quota) *Quota {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Quota) *Quota {
 		return &v
 	}).(QuotaPtrOutput)
 }
@@ -11821,7 +11977,13 @@ func (o QuotaPtrOutput) ToQuotaPtrOutputWithContext(ctx context.Context) QuotaPt
 }
 
 func (o QuotaPtrOutput) Elem() QuotaOutput {
-	return o.ApplyT(func(v *Quota) Quota { return *v }).(QuotaOutput)
+	return o.ApplyT(func(v *Quota) Quota {
+		if v != nil {
+			return *v
+		}
+		var ret Quota
+		return ret
+	}).(QuotaOutput)
 }
 
 // List of `QuotaLimit` definitions for the service.
@@ -12306,7 +12468,7 @@ func (o QuotaResponseOutput) ToQuotaResponsePtrOutput() QuotaResponsePtrOutput {
 }
 
 func (o QuotaResponseOutput) ToQuotaResponsePtrOutputWithContext(ctx context.Context) QuotaResponsePtrOutput {
-	return o.ApplyT(func(v QuotaResponse) *QuotaResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuotaResponse) *QuotaResponse {
 		return &v
 	}).(QuotaResponsePtrOutput)
 }
@@ -12336,7 +12498,13 @@ func (o QuotaResponsePtrOutput) ToQuotaResponsePtrOutputWithContext(ctx context.
 }
 
 func (o QuotaResponsePtrOutput) Elem() QuotaResponseOutput {
-	return o.ApplyT(func(v *QuotaResponse) QuotaResponse { return *v }).(QuotaResponseOutput)
+	return o.ApplyT(func(v *QuotaResponse) QuotaResponse {
+		if v != nil {
+			return *v
+		}
+		var ret QuotaResponse
+		return ret
+	}).(QuotaResponseOutput)
 }
 
 // List of `QuotaLimit` definitions for the service.
@@ -12455,7 +12623,7 @@ func (o SourceContextOutput) ToSourceContextPtrOutput() SourceContextPtrOutput {
 }
 
 func (o SourceContextOutput) ToSourceContextPtrOutputWithContext(ctx context.Context) SourceContextPtrOutput {
-	return o.ApplyT(func(v SourceContext) *SourceContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceContext) *SourceContext {
 		return &v
 	}).(SourceContextPtrOutput)
 }
@@ -12480,7 +12648,13 @@ func (o SourceContextPtrOutput) ToSourceContextPtrOutputWithContext(ctx context.
 }
 
 func (o SourceContextPtrOutput) Elem() SourceContextOutput {
-	return o.ApplyT(func(v *SourceContext) SourceContext { return *v }).(SourceContextOutput)
+	return o.ApplyT(func(v *SourceContext) SourceContext {
+		if v != nil {
+			return *v
+		}
+		var ret SourceContext
+		return ret
+	}).(SourceContextOutput)
 }
 
 // The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
@@ -12644,7 +12818,7 @@ func (o SourceInfoResponseOutput) ToSourceInfoResponsePtrOutput() SourceInfoResp
 }
 
 func (o SourceInfoResponseOutput) ToSourceInfoResponsePtrOutputWithContext(ctx context.Context) SourceInfoResponsePtrOutput {
-	return o.ApplyT(func(v SourceInfoResponse) *SourceInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceInfoResponse) *SourceInfoResponse {
 		return &v
 	}).(SourceInfoResponsePtrOutput)
 }
@@ -12669,7 +12843,13 @@ func (o SourceInfoResponsePtrOutput) ToSourceInfoResponsePtrOutputWithContext(ct
 }
 
 func (o SourceInfoResponsePtrOutput) Elem() SourceInfoResponseOutput {
-	return o.ApplyT(func(v *SourceInfoResponse) SourceInfoResponse { return *v }).(SourceInfoResponseOutput)
+	return o.ApplyT(func(v *SourceInfoResponse) SourceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceInfoResponse
+		return ret
+	}).(SourceInfoResponseOutput)
 }
 
 // All files used during config generation.
@@ -13232,7 +13412,7 @@ func (o SystemParametersOutput) ToSystemParametersPtrOutput() SystemParametersPt
 }
 
 func (o SystemParametersOutput) ToSystemParametersPtrOutputWithContext(ctx context.Context) SystemParametersPtrOutput {
-	return o.ApplyT(func(v SystemParameters) *SystemParameters {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemParameters) *SystemParameters {
 		return &v
 	}).(SystemParametersPtrOutput)
 }
@@ -13257,7 +13437,13 @@ func (o SystemParametersPtrOutput) ToSystemParametersPtrOutputWithContext(ctx co
 }
 
 func (o SystemParametersPtrOutput) Elem() SystemParametersOutput {
-	return o.ApplyT(func(v *SystemParameters) SystemParameters { return *v }).(SystemParametersOutput)
+	return o.ApplyT(func(v *SystemParameters) SystemParameters {
+		if v != nil {
+			return *v
+		}
+		var ret SystemParameters
+		return ret
+	}).(SystemParametersOutput)
 }
 
 // Define system parameters. The parameters defined here will override the default parameters implemented by the system. If this field is missing from the service config, default system parameters will be used. Default system parameters and names is implementation-dependent. Example: define api key for all methods system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key Example: define 2 api key names for a specific method. system_parameters rules: - selector: "/ListShelves" parameters: - name: api_key http_header: Api-Key1 - name: api_key http_header: Api-Key2 **NOTE:** All service configuration rules follow "last one wins" order.
@@ -13366,7 +13552,7 @@ func (o SystemParametersResponseOutput) ToSystemParametersResponsePtrOutput() Sy
 }
 
 func (o SystemParametersResponseOutput) ToSystemParametersResponsePtrOutputWithContext(ctx context.Context) SystemParametersResponsePtrOutput {
-	return o.ApplyT(func(v SystemParametersResponse) *SystemParametersResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemParametersResponse) *SystemParametersResponse {
 		return &v
 	}).(SystemParametersResponsePtrOutput)
 }
@@ -13391,7 +13577,13 @@ func (o SystemParametersResponsePtrOutput) ToSystemParametersResponsePtrOutputWi
 }
 
 func (o SystemParametersResponsePtrOutput) Elem() SystemParametersResponseOutput {
-	return o.ApplyT(func(v *SystemParametersResponse) SystemParametersResponse { return *v }).(SystemParametersResponseOutput)
+	return o.ApplyT(func(v *SystemParametersResponse) SystemParametersResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SystemParametersResponse
+		return ret
+	}).(SystemParametersResponseOutput)
 }
 
 // Define system parameters. The parameters defined here will override the default parameters implemented by the system. If this field is missing from the service config, default system parameters will be used. Default system parameters and names is implementation-dependent. Example: define api key for all methods system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key Example: define 2 api key names for a specific method. system_parameters rules: - selector: "/ListShelves" parameters: - name: api_key http_header: Api-Key1 - name: api_key http_header: Api-Key2 **NOTE:** All service configuration rules follow "last one wins" order.
@@ -13500,7 +13692,7 @@ func (o TrafficPercentStrategyOutput) ToTrafficPercentStrategyPtrOutput() Traffi
 }
 
 func (o TrafficPercentStrategyOutput) ToTrafficPercentStrategyPtrOutputWithContext(ctx context.Context) TrafficPercentStrategyPtrOutput {
-	return o.ApplyT(func(v TrafficPercentStrategy) *TrafficPercentStrategy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrafficPercentStrategy) *TrafficPercentStrategy {
 		return &v
 	}).(TrafficPercentStrategyPtrOutput)
 }
@@ -13525,7 +13717,13 @@ func (o TrafficPercentStrategyPtrOutput) ToTrafficPercentStrategyPtrOutputWithCo
 }
 
 func (o TrafficPercentStrategyPtrOutput) Elem() TrafficPercentStrategyOutput {
-	return o.ApplyT(func(v *TrafficPercentStrategy) TrafficPercentStrategy { return *v }).(TrafficPercentStrategyOutput)
+	return o.ApplyT(func(v *TrafficPercentStrategy) TrafficPercentStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret TrafficPercentStrategy
+		return ret
+	}).(TrafficPercentStrategyOutput)
 }
 
 // Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
@@ -13634,7 +13832,7 @@ func (o TrafficPercentStrategyResponseOutput) ToTrafficPercentStrategyResponsePt
 }
 
 func (o TrafficPercentStrategyResponseOutput) ToTrafficPercentStrategyResponsePtrOutputWithContext(ctx context.Context) TrafficPercentStrategyResponsePtrOutput {
-	return o.ApplyT(func(v TrafficPercentStrategyResponse) *TrafficPercentStrategyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrafficPercentStrategyResponse) *TrafficPercentStrategyResponse {
 		return &v
 	}).(TrafficPercentStrategyResponsePtrOutput)
 }
@@ -13659,7 +13857,13 @@ func (o TrafficPercentStrategyResponsePtrOutput) ToTrafficPercentStrategyRespons
 }
 
 func (o TrafficPercentStrategyResponsePtrOutput) Elem() TrafficPercentStrategyResponseOutput {
-	return o.ApplyT(func(v *TrafficPercentStrategyResponse) TrafficPercentStrategyResponse { return *v }).(TrafficPercentStrategyResponseOutput)
+	return o.ApplyT(func(v *TrafficPercentStrategyResponse) TrafficPercentStrategyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TrafficPercentStrategyResponse
+		return ret
+	}).(TrafficPercentStrategyResponseOutput)
 }
 
 // Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
@@ -14066,7 +14270,7 @@ func (o UsageOutput) ToUsagePtrOutput() UsagePtrOutput {
 }
 
 func (o UsageOutput) ToUsagePtrOutputWithContext(ctx context.Context) UsagePtrOutput {
-	return o.ApplyT(func(v Usage) *Usage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Usage) *Usage {
 		return &v
 	}).(UsagePtrOutput)
 }
@@ -14101,7 +14305,13 @@ func (o UsagePtrOutput) ToUsagePtrOutputWithContext(ctx context.Context) UsagePt
 }
 
 func (o UsagePtrOutput) Elem() UsageOutput {
-	return o.ApplyT(func(v *Usage) Usage { return *v }).(UsageOutput)
+	return o.ApplyT(func(v *Usage) Usage {
+		if v != nil {
+			return *v
+		}
+		var ret Usage
+		return ret
+	}).(UsageOutput)
 }
 
 // The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview.
@@ -14238,7 +14448,7 @@ func (o UsageResponseOutput) ToUsageResponsePtrOutput() UsageResponsePtrOutput {
 }
 
 func (o UsageResponseOutput) ToUsageResponsePtrOutputWithContext(ctx context.Context) UsageResponsePtrOutput {
-	return o.ApplyT(func(v UsageResponse) *UsageResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UsageResponse) *UsageResponse {
 		return &v
 	}).(UsageResponsePtrOutput)
 }
@@ -14273,7 +14483,13 @@ func (o UsageResponsePtrOutput) ToUsageResponsePtrOutputWithContext(ctx context.
 }
 
 func (o UsageResponsePtrOutput) Elem() UsageResponseOutput {
-	return o.ApplyT(func(v *UsageResponse) UsageResponse { return *v }).(UsageResponseOutput)
+	return o.ApplyT(func(v *UsageResponse) UsageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UsageResponse
+		return ret
+	}).(UsageResponseOutput)
 }
 
 // The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview.

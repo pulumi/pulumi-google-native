@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// Readiness checking configuration for VM instances. Unhealthy instances are removed from traffic rotation.
+    /// </summary>
     [OutputType]
     public sealed class ReadinessCheckResponse
     {

@@ -12,6 +12,7 @@ __all__ = [
     'GetConfigResult',
     'AwaitableGetConfigResult',
     'get_config',
+    'get_config_output',
 ]
 
 @pulumi.output_type
@@ -69,3 +70,13 @@ def get_config(config_id: Optional[str] = None,
     return AwaitableGetConfigResult(
         description=__ret__.description,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_config)
+def get_config_output(config_id: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigResult]:
+    """
+    Gets information about a RuntimeConfig resource.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetDeviceResult',
     'AwaitableGetDeviceResult',
     'get_device',
+    'get_device_output',
 ]
 
 @pulumi.output_type
@@ -408,3 +409,13 @@ def get_device(customer: Optional[str] = None,
         security_patch_time=__ret__.security_patch_time,
         serial_number=__ret__.serial_number,
         wifi_mac_addresses=__ret__.wifi_mac_addresses)
+
+
+@_utilities.lift_output_func(get_device)
+def get_device_output(customer: Optional[pulumi.Input[Optional[str]]] = None,
+                      device_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceResult]:
+    """
+    Retrieves the specified device.
+    """
+    ...

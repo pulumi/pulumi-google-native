@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Specification for how requests are aborted as part of fault injection.
+    /// </summary>
     [OutputType]
     public sealed class HttpFaultAbortResponse
     {

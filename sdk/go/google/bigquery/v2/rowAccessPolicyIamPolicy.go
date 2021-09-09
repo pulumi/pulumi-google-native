@@ -132,9 +132,7 @@ func (i *RowAccessPolicyIamPolicy) ToRowAccessPolicyIamPolicyOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RowAccessPolicyIamPolicyOutput)
 }
 
-type RowAccessPolicyIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type RowAccessPolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RowAccessPolicyIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RowAccessPolicyIamPolicy)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIoT.V1.Outputs
 {
 
+    /// <summary>
+    /// The device configuration. Eventually delivered to devices.
+    /// </summary>
     [OutputType]
     public sealed class DeviceConfigResponse
     {

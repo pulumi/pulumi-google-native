@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// Specifies how many time series must fail a predicate to trigger a condition. If not specified, then a {count: 1} trigger is used.
+    /// </summary>
     [OutputType]
     public sealed class TriggerResponse
     {

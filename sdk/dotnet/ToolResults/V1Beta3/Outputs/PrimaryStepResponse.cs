@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.
+    /// </summary>
     [OutputType]
     public sealed class PrimaryStepResponse
     {

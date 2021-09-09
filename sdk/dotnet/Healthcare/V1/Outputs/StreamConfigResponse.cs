@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
+    /// <summary>
+    /// Contains configuration for streaming FHIR export.
+    /// </summary>
     [OutputType]
     public sealed class StreamConfigResponse
     {

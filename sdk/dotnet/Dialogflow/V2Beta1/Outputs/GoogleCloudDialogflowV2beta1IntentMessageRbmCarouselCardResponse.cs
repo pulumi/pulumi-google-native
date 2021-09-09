@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 {
 
+    /// <summary>
+    /// Carousel Rich Business Messaging (RBM) rich card. Rich cards allow you to respond to users with more vivid content, e.g. with media and suggestions. If you want to show a single card with more control over the layout, please use RbmStandaloneCard instead.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse
     {

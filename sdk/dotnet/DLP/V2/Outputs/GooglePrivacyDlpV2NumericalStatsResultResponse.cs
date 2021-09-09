@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Result of the numerical stats computation.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2NumericalStatsResultResponse
     {

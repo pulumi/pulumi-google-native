@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
+    /// </summary>
     [OutputType]
     public sealed class ControlResponse
     {

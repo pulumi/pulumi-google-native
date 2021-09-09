@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Schedule for an instance operation.
+    /// </summary>
     [OutputType]
     public sealed class ResourcePolicyInstanceSchedulePolicyScheduleResponse
     {

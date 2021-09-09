@@ -13,6 +13,7 @@ __all__ = [
     'GetEntryGroupResult',
     'AwaitableGetEntryGroupResult',
     'get_entry_group',
+    'get_entry_group_output',
 ]
 
 @pulumi.output_type
@@ -100,3 +101,15 @@ def get_entry_group(entry_group_id: Optional[str] = None,
         description=__ret__.description,
         display_name=__ret__.display_name,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_entry_group)
+def get_entry_group_output(entry_group_id: Optional[pulumi.Input[str]] = None,
+                           location: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           read_mask: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEntryGroupResult]:
+    """
+    Gets an entry group.
+    """
+    ...

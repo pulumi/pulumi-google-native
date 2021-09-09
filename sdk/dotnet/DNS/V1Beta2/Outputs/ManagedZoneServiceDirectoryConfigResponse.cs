@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Contains information about Service Directory-backed zones.
+    /// </summary>
     [OutputType]
     public sealed class ManagedZoneServiceDirectoryConfigResponse
     {

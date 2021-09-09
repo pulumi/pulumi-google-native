@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
+    /// <summary>
+    /// One interaction between a human and virtual agent. The human provides some input and the virtual agent provides a response.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1ConversationTurnResponse
     {

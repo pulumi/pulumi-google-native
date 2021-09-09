@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// POSIX Group definition to represent a group in a POSIX compliant system.
+    /// </summary>
     [OutputType]
     public sealed class PosixGroupResponse
     {

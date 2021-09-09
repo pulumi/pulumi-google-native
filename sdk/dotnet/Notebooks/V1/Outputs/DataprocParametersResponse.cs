@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// Parameters used in Dataproc JobType executions.
+    /// </summary>
     [OutputType]
     public sealed class DataprocParametersResponse
     {

@@ -112,9 +112,7 @@ func (i *Study) ToStudyOutputWithContext(ctx context.Context) StudyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StudyOutput)
 }
 
-type StudyOutput struct {
-	*pulumi.OutputState
-}
+type StudyOutput struct{ *pulumi.OutputState }
 
 func (StudyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Study)(nil))

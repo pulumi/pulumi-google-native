@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,191 @@ type LookupFunctionResult struct {
 	VpcConnector string `pulumi:"vpcConnector"`
 	// The egress settings for the connector, controlling what traffic is diverted through it.
 	VpcConnectorEgressSettings string `pulumi:"vpcConnectorEgressSettings"`
+}
+
+func LookupFunctionOutput(ctx *pulumi.Context, args LookupFunctionOutputArgs, opts ...pulumi.InvokeOption) LookupFunctionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupFunctionResult, error) {
+			args := v.(LookupFunctionArgs)
+			r, err := LookupFunction(ctx, &args, opts...)
+			return *r, err
+		}).(LookupFunctionResultOutput)
+}
+
+type LookupFunctionOutputArgs struct {
+	FunctionId pulumi.StringInput    `pulumi:"functionId"`
+	Location   pulumi.StringInput    `pulumi:"location"`
+	Project    pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupFunctionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFunctionArgs)(nil)).Elem()
+}
+
+type LookupFunctionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupFunctionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFunctionResult)(nil)).Elem()
+}
+
+func (o LookupFunctionResultOutput) ToLookupFunctionResultOutput() LookupFunctionResultOutput {
+	return o
+}
+
+func (o LookupFunctionResultOutput) ToLookupFunctionResultOutputWithContext(ctx context.Context) LookupFunctionResultOutput {
+	return o
+}
+
+// The amount of memory in MB available for a function. Defaults to 256MB.
+func (o LookupFunctionResultOutput) AvailableMemoryMb() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupFunctionResult) int { return v.AvailableMemoryMb }).(pulumi.IntOutput)
+}
+
+// Build environment variables that shall be available during build time.
+func (o LookupFunctionResultOutput) BuildEnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.BuildEnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// The Cloud Build ID of the latest successful deployment of the function.
+func (o LookupFunctionResultOutput) BuildId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildId }).(pulumi.StringOutput)
+}
+
+// The Cloud Build Name of the function deployment. projects//locations//builds/.
+func (o LookupFunctionResultOutput) BuildName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildName }).(pulumi.StringOutput)
+}
+
+// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+func (o LookupFunctionResultOutput) BuildWorkerPool() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildWorkerPool }).(pulumi.StringOutput)
+}
+
+// User-provided description of a function.
+func (o LookupFunctionResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+func (o LookupFunctionResultOutput) EntryPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.EntryPoint }).(pulumi.StringOutput)
+}
+
+// Environment variables that shall be available during function execution.
+func (o LookupFunctionResultOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// A source that fires events in response to a condition in another service.
+func (o LookupFunctionResultOutput) EventTrigger() EventTriggerResponseOutput {
+	return o.ApplyT(func(v LookupFunctionResult) EventTriggerResponse { return v.EventTrigger }).(EventTriggerResponseOutput)
+}
+
+// An HTTPS endpoint type of source that can be triggered via URL.
+func (o LookupFunctionResultOutput) HttpsTrigger() HttpsTriggerResponseOutput {
+	return o.ApplyT(func(v LookupFunctionResult) HttpsTriggerResponse { return v.HttpsTrigger }).(HttpsTriggerResponseOutput)
+}
+
+// The ingress settings for the function, controlling what traffic can reach it.
+func (o LookupFunctionResultOutput) IngressSettings() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.IngressSettings }).(pulumi.StringOutput)
+}
+
+// Labels associated with this Cloud Function.
+func (o LookupFunctionResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
+func (o LookupFunctionResultOutput) MaxInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupFunctionResult) int { return v.MaxInstances }).(pulumi.IntOutput)
+}
+
+// A lower bound for the number function instances that may coexist at a given time.
+func (o LookupFunctionResultOutput) MinInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupFunctionResult) int { return v.MinInstances }).(pulumi.IntOutput)
+}
+
+// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
+func (o LookupFunctionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+func (o LookupFunctionResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+func (o LookupFunctionResultOutput) Runtime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.Runtime }).(pulumi.StringOutput)
+}
+
+// Secret environment variables configuration.
+func (o LookupFunctionResultOutput) SecretEnvironmentVariables() SecretEnvVarResponseArrayOutput {
+	return o.ApplyT(func(v LookupFunctionResult) []SecretEnvVarResponse { return v.SecretEnvironmentVariables }).(SecretEnvVarResponseArrayOutput)
+}
+
+// Secret volumes configuration.
+func (o LookupFunctionResultOutput) SecretVolumes() SecretVolumeResponseArrayOutput {
+	return o.ApplyT(func(v LookupFunctionResult) []SecretVolumeResponse { return v.SecretVolumes }).(SecretVolumeResponseArrayOutput)
+}
+
+// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
+func (o LookupFunctionResultOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
+func (o LookupFunctionResultOutput) SourceArchiveUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.SourceArchiveUrl }).(pulumi.StringOutput)
+}
+
+// **Beta Feature** The source repository where a function is hosted.
+func (o LookupFunctionResultOutput) SourceRepository() SourceRepositoryResponseOutput {
+	return o.ApplyT(func(v LookupFunctionResult) SourceRepositoryResponse { return v.SourceRepository }).(SourceRepositoryResponseOutput)
+}
+
+// Input only. An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+func (o LookupFunctionResultOutput) SourceToken() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.SourceToken }).(pulumi.StringOutput)
+}
+
+// The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods {Create, Update} The signature is stripped from the Function object on read methods {Get, List}
+func (o LookupFunctionResultOutput) SourceUploadUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.SourceUploadUrl }).(pulumi.StringOutput)
+}
+
+// Status of the function deployment.
+func (o LookupFunctionResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
+func (o LookupFunctionResultOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// The last update timestamp of a Cloud Function.
+func (o LookupFunctionResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
+func (o LookupFunctionResultOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.VersionId }).(pulumi.StringOutput)
+}
+
+// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+func (o LookupFunctionResultOutput) VpcConnector() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.VpcConnector }).(pulumi.StringOutput)
+}
+
+// The egress settings for the connector, controlling what traffic is diverted through it.
+func (o LookupFunctionResultOutput) VpcConnectorEgressSettings() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.VpcConnectorEgressSettings }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupFunctionResultOutput{})
 }

@@ -1008,7 +1008,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1048,7 +1048,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1771,7 +1777,7 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) ToGoogleCloudHealt
 }
 
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) ToGoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput {
-	return o.ApplyT(func(v GoogleCloudHealthcareV1FhirBigQueryDestination) *GoogleCloudHealthcareV1FhirBigQueryDestination {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudHealthcareV1FhirBigQueryDestination) *GoogleCloudHealthcareV1FhirBigQueryDestination {
 		return &v
 	}).(GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput)
 }
@@ -1814,7 +1820,11 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput) ToGoogleCloudHe
 
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput) Elem() GoogleCloudHealthcareV1FhirBigQueryDestinationOutput {
 	return o.ApplyT(func(v *GoogleCloudHealthcareV1FhirBigQueryDestination) GoogleCloudHealthcareV1FhirBigQueryDestination {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudHealthcareV1FhirBigQueryDestination
+		return ret
 	}).(GoogleCloudHealthcareV1FhirBigQueryDestinationOutput)
 }
 
@@ -2721,7 +2731,7 @@ func (o ImageOutput) ToImagePtrOutput() ImagePtrOutput {
 }
 
 func (o ImageOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOutput {
-	return o.ApplyT(func(v Image) *Image {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Image) *Image {
 		return &v
 	}).(ImagePtrOutput)
 }
@@ -2751,7 +2761,13 @@ func (o ImagePtrOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePt
 }
 
 func (o ImagePtrOutput) Elem() ImageOutput {
-	return o.ApplyT(func(v *Image) Image { return *v }).(ImageOutput)
+	return o.ApplyT(func(v *Image) Image {
+		if v != nil {
+			return *v
+		}
+		var ret Image
+		return ret
+	}).(ImageOutput)
 }
 
 // Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
@@ -2919,7 +2935,7 @@ func (o ImageResponseOutput) ToImageResponsePtrOutput() ImageResponsePtrOutput {
 }
 
 func (o ImageResponseOutput) ToImageResponsePtrOutputWithContext(ctx context.Context) ImageResponsePtrOutput {
-	return o.ApplyT(func(v ImageResponse) *ImageResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageResponse) *ImageResponse {
 		return &v
 	}).(ImageResponsePtrOutput)
 }
@@ -2949,7 +2965,13 @@ func (o ImageResponsePtrOutput) ToImageResponsePtrOutputWithContext(ctx context.
 }
 
 func (o ImageResponsePtrOutput) Elem() ImageResponseOutput {
-	return o.ApplyT(func(v *ImageResponse) ImageResponse { return *v }).(ImageResponseOutput)
+	return o.ApplyT(func(v *ImageResponse) ImageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ImageResponse
+		return ret
+	}).(ImageResponseOutput)
 }
 
 // Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
@@ -3088,7 +3110,7 @@ func (o NotificationConfigOutput) ToNotificationConfigPtrOutput() NotificationCo
 }
 
 func (o NotificationConfigOutput) ToNotificationConfigPtrOutputWithContext(ctx context.Context) NotificationConfigPtrOutput {
-	return o.ApplyT(func(v NotificationConfig) *NotificationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfig) *NotificationConfig {
 		return &v
 	}).(NotificationConfigPtrOutput)
 }
@@ -3113,7 +3135,13 @@ func (o NotificationConfigPtrOutput) ToNotificationConfigPtrOutputWithContext(ct
 }
 
 func (o NotificationConfigPtrOutput) Elem() NotificationConfigOutput {
-	return o.ApplyT(func(v *NotificationConfig) NotificationConfig { return *v }).(NotificationConfigOutput)
+	return o.ApplyT(func(v *NotificationConfig) NotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationConfig
+		return ret
+	}).(NotificationConfigOutput)
 }
 
 // The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
@@ -3222,7 +3250,7 @@ func (o NotificationConfigResponseOutput) ToNotificationConfigResponsePtrOutput(
 }
 
 func (o NotificationConfigResponseOutput) ToNotificationConfigResponsePtrOutputWithContext(ctx context.Context) NotificationConfigResponsePtrOutput {
-	return o.ApplyT(func(v NotificationConfigResponse) *NotificationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfigResponse) *NotificationConfigResponse {
 		return &v
 	}).(NotificationConfigResponsePtrOutput)
 }
@@ -3247,7 +3275,13 @@ func (o NotificationConfigResponsePtrOutput) ToNotificationConfigResponsePtrOutp
 }
 
 func (o NotificationConfigResponsePtrOutput) Elem() NotificationConfigResponseOutput {
-	return o.ApplyT(func(v *NotificationConfigResponse) NotificationConfigResponse { return *v }).(NotificationConfigResponseOutput)
+	return o.ApplyT(func(v *NotificationConfigResponse) NotificationConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationConfigResponse
+		return ret
+	}).(NotificationConfigResponseOutput)
 }
 
 // The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
@@ -3354,10 +3388,11 @@ func (o ParsedDataResponseOutput) ToParsedDataResponsePtrOutput() ParsedDataResp
 }
 
 func (o ParsedDataResponseOutput) ToParsedDataResponsePtrOutputWithContext(ctx context.Context) ParsedDataResponsePtrOutput {
-	return o.ApplyT(func(v ParsedDataResponse) *ParsedDataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParsedDataResponse) *ParsedDataResponse {
 		return &v
 	}).(ParsedDataResponsePtrOutput)
 }
+
 func (o ParsedDataResponseOutput) Segments() SegmentResponseArrayOutput {
 	return o.ApplyT(func(v ParsedDataResponse) []SegmentResponse { return v.Segments }).(SegmentResponseArrayOutput)
 }
@@ -3377,7 +3412,13 @@ func (o ParsedDataResponsePtrOutput) ToParsedDataResponsePtrOutputWithContext(ct
 }
 
 func (o ParsedDataResponsePtrOutput) Elem() ParsedDataResponseOutput {
-	return o.ApplyT(func(v *ParsedDataResponse) ParsedDataResponse { return *v }).(ParsedDataResponseOutput)
+	return o.ApplyT(func(v *ParsedDataResponse) ParsedDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ParsedDataResponse
+		return ret
+	}).(ParsedDataResponseOutput)
 }
 
 func (o ParsedDataResponsePtrOutput) Segments() SegmentResponseArrayOutput {
@@ -3493,7 +3534,7 @@ func (o ParserConfigOutput) ToParserConfigPtrOutput() ParserConfigPtrOutput {
 }
 
 func (o ParserConfigOutput) ToParserConfigPtrOutputWithContext(ctx context.Context) ParserConfigPtrOutput {
-	return o.ApplyT(func(v ParserConfig) *ParserConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParserConfig) *ParserConfig {
 		return &v
 	}).(ParserConfigPtrOutput)
 }
@@ -3528,7 +3569,13 @@ func (o ParserConfigPtrOutput) ToParserConfigPtrOutputWithContext(ctx context.Co
 }
 
 func (o ParserConfigPtrOutput) Elem() ParserConfigOutput {
-	return o.ApplyT(func(v *ParserConfig) ParserConfig { return *v }).(ParserConfigOutput)
+	return o.ApplyT(func(v *ParserConfig) ParserConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ParserConfig
+		return ret
+	}).(ParserConfigOutput)
 }
 
 // Determines whether messages with no header are allowed.
@@ -3665,7 +3712,7 @@ func (o ParserConfigResponseOutput) ToParserConfigResponsePtrOutput() ParserConf
 }
 
 func (o ParserConfigResponseOutput) ToParserConfigResponsePtrOutputWithContext(ctx context.Context) ParserConfigResponsePtrOutput {
-	return o.ApplyT(func(v ParserConfigResponse) *ParserConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParserConfigResponse) *ParserConfigResponse {
 		return &v
 	}).(ParserConfigResponsePtrOutput)
 }
@@ -3700,7 +3747,13 @@ func (o ParserConfigResponsePtrOutput) ToParserConfigResponsePtrOutputWithContex
 }
 
 func (o ParserConfigResponsePtrOutput) Elem() ParserConfigResponseOutput {
-	return o.ApplyT(func(v *ParserConfigResponse) ParserConfigResponse { return *v }).(ParserConfigResponseOutput)
+	return o.ApplyT(func(v *ParserConfigResponse) ParserConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ParserConfigResponse
+		return ret
+	}).(ParserConfigResponseOutput)
 }
 
 // Determines whether messages with no header are allowed.
@@ -4051,7 +4104,7 @@ func (o SchemaConfigOutput) ToSchemaConfigPtrOutput() SchemaConfigPtrOutput {
 }
 
 func (o SchemaConfigOutput) ToSchemaConfigPtrOutputWithContext(ctx context.Context) SchemaConfigPtrOutput {
-	return o.ApplyT(func(v SchemaConfig) *SchemaConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaConfig) *SchemaConfig {
 		return &v
 	}).(SchemaConfigPtrOutput)
 }
@@ -4081,7 +4134,13 @@ func (o SchemaConfigPtrOutput) ToSchemaConfigPtrOutputWithContext(ctx context.Co
 }
 
 func (o SchemaConfigPtrOutput) Elem() SchemaConfigOutput {
-	return o.ApplyT(func(v *SchemaConfig) SchemaConfig { return *v }).(SchemaConfigOutput)
+	return o.ApplyT(func(v *SchemaConfig) SchemaConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaConfig
+		return ret
+	}).(SchemaConfigOutput)
 }
 
 // The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
@@ -4276,7 +4335,7 @@ func (o SchemaPackageOutput) ToSchemaPackagePtrOutput() SchemaPackagePtrOutput {
 }
 
 func (o SchemaPackageOutput) ToSchemaPackagePtrOutputWithContext(ctx context.Context) SchemaPackagePtrOutput {
-	return o.ApplyT(func(v SchemaPackage) *SchemaPackage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaPackage) *SchemaPackage {
 		return &v
 	}).(SchemaPackagePtrOutput)
 }
@@ -4316,7 +4375,13 @@ func (o SchemaPackagePtrOutput) ToSchemaPackagePtrOutputWithContext(ctx context.
 }
 
 func (o SchemaPackagePtrOutput) Elem() SchemaPackageOutput {
-	return o.ApplyT(func(v *SchemaPackage) SchemaPackage { return *v }).(SchemaPackageOutput)
+	return o.ApplyT(func(v *SchemaPackage) SchemaPackage {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaPackage
+		return ret
+	}).(SchemaPackageOutput)
 }
 
 // Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
@@ -4467,7 +4532,7 @@ func (o SchemaPackageResponseOutput) ToSchemaPackageResponsePtrOutput() SchemaPa
 }
 
 func (o SchemaPackageResponseOutput) ToSchemaPackageResponsePtrOutputWithContext(ctx context.Context) SchemaPackageResponsePtrOutput {
-	return o.ApplyT(func(v SchemaPackageResponse) *SchemaPackageResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaPackageResponse) *SchemaPackageResponse {
 		return &v
 	}).(SchemaPackageResponsePtrOutput)
 }
@@ -4507,7 +4572,13 @@ func (o SchemaPackageResponsePtrOutput) ToSchemaPackageResponsePtrOutputWithCont
 }
 
 func (o SchemaPackageResponsePtrOutput) Elem() SchemaPackageResponseOutput {
-	return o.ApplyT(func(v *SchemaPackageResponse) SchemaPackageResponse { return *v }).(SchemaPackageResponseOutput)
+	return o.ApplyT(func(v *SchemaPackageResponse) SchemaPackageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaPackageResponse
+		return ret
+	}).(SchemaPackageResponseOutput)
 }
 
 // Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
@@ -4650,7 +4721,7 @@ func (o SchematizedDataOutput) ToSchematizedDataPtrOutput() SchematizedDataPtrOu
 }
 
 func (o SchematizedDataOutput) ToSchematizedDataPtrOutputWithContext(ctx context.Context) SchematizedDataPtrOutput {
-	return o.ApplyT(func(v SchematizedData) *SchematizedData {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchematizedData) *SchematizedData {
 		return &v
 	}).(SchematizedDataPtrOutput)
 }
@@ -4680,7 +4751,13 @@ func (o SchematizedDataPtrOutput) ToSchematizedDataPtrOutputWithContext(ctx cont
 }
 
 func (o SchematizedDataPtrOutput) Elem() SchematizedDataOutput {
-	return o.ApplyT(func(v *SchematizedData) SchematizedData { return *v }).(SchematizedDataOutput)
+	return o.ApplyT(func(v *SchematizedData) SchematizedData {
+		if v != nil {
+			return *v
+		}
+		var ret SchematizedData
+		return ret
+	}).(SchematizedDataOutput)
 }
 
 // JSON output of the parser.
@@ -4803,7 +4880,7 @@ func (o SchematizedDataResponseOutput) ToSchematizedDataResponsePtrOutput() Sche
 }
 
 func (o SchematizedDataResponseOutput) ToSchematizedDataResponsePtrOutputWithContext(ctx context.Context) SchematizedDataResponsePtrOutput {
-	return o.ApplyT(func(v SchematizedDataResponse) *SchematizedDataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchematizedDataResponse) *SchematizedDataResponse {
 		return &v
 	}).(SchematizedDataResponsePtrOutput)
 }
@@ -4833,7 +4910,13 @@ func (o SchematizedDataResponsePtrOutput) ToSchematizedDataResponsePtrOutputWith
 }
 
 func (o SchematizedDataResponsePtrOutput) Elem() SchematizedDataResponseOutput {
-	return o.ApplyT(func(v *SchematizedDataResponse) SchematizedDataResponse { return *v }).(SchematizedDataResponseOutput)
+	return o.ApplyT(func(v *SchematizedDataResponse) SchematizedDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SchematizedDataResponse
+		return ret
+	}).(SchematizedDataResponseOutput)
 }
 
 // JSON output of the parser.
@@ -5082,7 +5165,7 @@ func (o SignatureOutput) ToSignaturePtrOutput() SignaturePtrOutput {
 }
 
 func (o SignatureOutput) ToSignaturePtrOutputWithContext(ctx context.Context) SignaturePtrOutput {
-	return o.ApplyT(func(v Signature) *Signature {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Signature) *Signature {
 		return &v
 	}).(SignaturePtrOutput)
 }
@@ -5122,7 +5205,13 @@ func (o SignaturePtrOutput) ToSignaturePtrOutputWithContext(ctx context.Context)
 }
 
 func (o SignaturePtrOutput) Elem() SignatureOutput {
-	return o.ApplyT(func(v *Signature) Signature { return *v }).(SignatureOutput)
+	return o.ApplyT(func(v *Signature) Signature {
+		if v != nil {
+			return *v
+		}
+		var ret Signature
+		return ret
+	}).(SignatureOutput)
 }
 
 // Optional. An image of the user's signature.
@@ -5273,7 +5362,7 @@ func (o SignatureResponseOutput) ToSignatureResponsePtrOutput() SignatureRespons
 }
 
 func (o SignatureResponseOutput) ToSignatureResponsePtrOutputWithContext(ctx context.Context) SignatureResponsePtrOutput {
-	return o.ApplyT(func(v SignatureResponse) *SignatureResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SignatureResponse) *SignatureResponse {
 		return &v
 	}).(SignatureResponsePtrOutput)
 }
@@ -5313,7 +5402,13 @@ func (o SignatureResponsePtrOutput) ToSignatureResponsePtrOutputWithContext(ctx 
 }
 
 func (o SignatureResponsePtrOutput) Elem() SignatureResponseOutput {
-	return o.ApplyT(func(v *SignatureResponse) SignatureResponse { return *v }).(SignatureResponseOutput)
+	return o.ApplyT(func(v *SignatureResponse) SignatureResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SignatureResponse
+		return ret
+	}).(SignatureResponseOutput)
 }
 
 // Optional. An image of the user's signature.

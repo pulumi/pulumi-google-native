@@ -13,6 +13,7 @@ __all__ = [
     'GetNodeGroupResult',
     'AwaitableGetNodeGroupResult',
     'get_node_group',
+    'get_node_group_output',
 ]
 
 @pulumi.output_type
@@ -219,3 +220,14 @@ def get_node_group(node_group: Optional[str] = None,
         size=__ret__.size,
         status=__ret__.status,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_node_group)
+def get_node_group_output(node_group: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          zone: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeGroupResult]:
+    """
+    Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request. Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead.
+    """
+    ...

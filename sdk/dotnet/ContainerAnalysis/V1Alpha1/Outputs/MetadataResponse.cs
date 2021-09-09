@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Other properties of the build.
+    /// </summary>
     [OutputType]
     public sealed class MetadataResponse
     {

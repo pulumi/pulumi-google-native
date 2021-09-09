@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Installs a deb via dpkg.
+    /// </summary>
     [OutputType]
     public sealed class SoftwareRecipeStepInstallDpkgResponse
     {

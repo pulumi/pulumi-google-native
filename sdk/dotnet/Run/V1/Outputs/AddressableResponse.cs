@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
+    /// <summary>
+    /// Information for connecting over HTTP(s).
+    /// </summary>
     [OutputType]
     public sealed class AddressableResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// Represents the event to trigger.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3EventInputResponse
     {

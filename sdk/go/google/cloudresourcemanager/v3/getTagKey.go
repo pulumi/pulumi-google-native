@@ -4,6 +4,9 @@
 package v3
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,79 @@ type LookupTagKeyResult struct {
 	ShortName string `pulumi:"shortName"`
 	// Update time.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupTagKeyOutput(ctx *pulumi.Context, args LookupTagKeyOutputArgs, opts ...pulumi.InvokeOption) LookupTagKeyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTagKeyResult, error) {
+			args := v.(LookupTagKeyArgs)
+			r, err := LookupTagKey(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTagKeyResultOutput)
+}
+
+type LookupTagKeyOutputArgs struct {
+	TagKeyId pulumi.StringInput `pulumi:"tagKeyId"`
+}
+
+func (LookupTagKeyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTagKeyArgs)(nil)).Elem()
+}
+
+type LookupTagKeyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTagKeyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTagKeyResult)(nil)).Elem()
+}
+
+func (o LookupTagKeyResultOutput) ToLookupTagKeyResultOutput() LookupTagKeyResultOutput {
+	return o
+}
+
+func (o LookupTagKeyResultOutput) ToLookupTagKeyResultOutputWithContext(ctx context.Context) LookupTagKeyResultOutput {
+	return o
+}
+
+// Creation time.
+func (o LookupTagKeyResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagKeyResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
+func (o LookupTagKeyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagKeyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
+func (o LookupTagKeyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagKeyResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
+func (o LookupTagKeyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagKeyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. Namespaced name of the TagKey.
+func (o LookupTagKeyResultOutput) NamespacedName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagKeyResult) string { return v.NamespacedName }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+func (o LookupTagKeyResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagKeyResult) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+func (o LookupTagKeyResultOutput) ShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagKeyResult) string { return v.ShortName }).(pulumi.StringOutput)
+}
+
+// Update time.
+func (o LookupTagKeyResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagKeyResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTagKeyResultOutput{})
 }

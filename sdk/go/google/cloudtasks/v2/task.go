@@ -140,9 +140,7 @@ func (i *Task) ToTaskOutputWithContext(ctx context.Context) TaskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaskOutput)
 }
 
-type TaskOutput struct {
-	*pulumi.OutputState
-}
+type TaskOutput struct{ *pulumi.OutputState }
 
 func (TaskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Task)(nil))

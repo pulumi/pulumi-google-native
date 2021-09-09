@@ -122,9 +122,7 @@ func (i *TargetGrpcProxy) ToTargetGrpcProxyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyOutput)
 }
 
-type TargetGrpcProxyOutput struct {
-	*pulumi.OutputState
-}
+type TargetGrpcProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetGrpcProxyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetGrpcProxy)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Specification of certificate provider. Defines the mechanism to obtain the certificate and private key for peer to peer authentication.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudNetworksecurityV1beta1CertificateProviderResponse
     {

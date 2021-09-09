@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
+    /// </summary>
     [OutputType]
     public sealed class PipelineDescriptionResponse
     {

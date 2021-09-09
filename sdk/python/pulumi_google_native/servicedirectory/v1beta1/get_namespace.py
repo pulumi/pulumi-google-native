@@ -12,6 +12,7 @@ __all__ = [
     'GetNamespaceResult',
     'AwaitableGetNamespaceResult',
     'get_namespace',
+    'get_namespace_output',
 ]
 
 @pulumi.output_type
@@ -97,3 +98,14 @@ def get_namespace(location: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_namespace)
+def get_namespace_output(location: Optional[pulumi.Input[str]] = None,
+                         namespace_id: Optional[pulumi.Input[str]] = None,
+                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNamespaceResult]:
+    """
+    Gets a namespace.
+    """
+    ...

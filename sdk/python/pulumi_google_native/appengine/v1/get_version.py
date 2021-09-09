@@ -13,6 +13,7 @@ __all__ = [
     'GetVersionResult',
     'AwaitableGetVersionResult',
     'get_version',
+    'get_version_output',
 ]
 
 @pulumi.output_type
@@ -529,3 +530,15 @@ def get_version(app_id: Optional[str] = None,
         version_url=__ret__.version_url,
         vm=__ret__.vm,
         vpc_access_connector=__ret__.vpc_access_connector)
+
+
+@_utilities.lift_output_func(get_version)
+def get_version_output(app_id: Optional[pulumi.Input[str]] = None,
+                       service_id: Optional[pulumi.Input[str]] = None,
+                       version_id: Optional[pulumi.Input[str]] = None,
+                       view: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVersionResult]:
+    """
+    Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 {
 
+    /// <summary>
+    /// Deny maintenance Periods. This specifies a date range during when all CSA rollout will be denied.
+    /// </summary>
     [OutputType]
     public sealed class DenyMaintenancePeriodResponse
     {

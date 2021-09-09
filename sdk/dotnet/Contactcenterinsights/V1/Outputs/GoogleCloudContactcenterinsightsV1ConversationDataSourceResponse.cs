@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// The conversation source, which is a combination of transcript and audio.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse
     {

@@ -13,6 +13,7 @@ __all__ = [
     'GetProductResult',
     'AwaitableGetProductResult',
     'get_product',
+    'get_product_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,14 @@ def get_product(location: Optional[str] = None,
         name=__ret__.name,
         product_category=__ret__.product_category,
         product_labels=__ret__.product_labels)
+
+
+@_utilities.lift_output_func(get_product)
+def get_product_output(location: Optional[pulumi.Input[str]] = None,
+                       product_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductResult]:
+    """
+    Gets information associated with a Product. Possible errors: * Returns NOT_FOUND if the Product does not exist.
+    """
+    ...

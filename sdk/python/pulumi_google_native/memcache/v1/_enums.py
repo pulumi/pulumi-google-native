@@ -16,7 +16,9 @@ class InstanceMemcacheVersion(str, Enum):
     """
     MEMCACHE_VERSION_UNSPECIFIED = "MEMCACHE_VERSION_UNSPECIFIED"
     MEMCACHE15 = "MEMCACHE_1_5"
-    """Memcached 1.5 version."""
+    """
+    Memcached 1.5 version.
+    """
 
 
 class InstanceMessageCode(str, Enum):
@@ -24,6 +26,10 @@ class InstanceMessageCode(str, Enum):
     A code that correspond to one type of user-facing message.
     """
     CODE_UNSPECIFIED = "CODE_UNSPECIFIED"
-    """Message Code not set."""
+    """
+    Message Code not set.
+    """
     ZONE_DISTRIBUTION_UNBALANCED = "ZONE_DISTRIBUTION_UNBALANCED"
-    """Memcached nodes are distributed unevenly."""
+    """
+    Memcached nodes are distributed unevenly.
+    """

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 {
 
+    /// <summary>
+    /// The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1UsageSignalResponse
     {

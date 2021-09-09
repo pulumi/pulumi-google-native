@@ -12,6 +12,7 @@ __all__ = [
     'GetReservationResult',
     'AwaitableGetReservationResult',
     'get_reservation',
+    'get_reservation_output',
 ]
 
 @pulumi.output_type
@@ -110,3 +111,14 @@ def get_reservation(location: Optional[str] = None,
         name=__ret__.name,
         slot_capacity=__ret__.slot_capacity,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_reservation)
+def get_reservation_output(location: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           reservation_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReservationResult]:
+    """
+    Returns information about the reservation.
+    """
+    ...

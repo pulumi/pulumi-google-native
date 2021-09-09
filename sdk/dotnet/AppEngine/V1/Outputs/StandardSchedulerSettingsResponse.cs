@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// Scheduler settings for standard environment.
+    /// </summary>
     [OutputType]
     public sealed class StandardSchedulerSettingsResponse
     {

@@ -13,6 +13,7 @@ __all__ = [
     'GetServiceAccountIamPolicyResult',
     'AwaitableGetServiceAccountIamPolicyResult',
     'get_service_account_iam_policy',
+    'get_service_account_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -98,3 +99,14 @@ def get_service_account_iam_policy(options_requested_policy_version: Optional[st
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_service_account_iam_policy)
+def get_service_account_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                                          service_account_id: Optional[pulumi.Input[str]] = None,
+                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceAccountIamPolicyResult]:
+    """
+    Gets the IAM policy that is attached to a ServiceAccount. This IAM policy specifies which members have access to the service account. This method does not tell you whether the service account has been granted any roles on other resources. To check whether a service account has role grants on a resource, use the `getIamPolicy` method for that resource. For example, to view the role grants for a project, call the Resource Manager API's [`projects.getIamPolicy`](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getIamPolicy) method.
+    """
+    ...

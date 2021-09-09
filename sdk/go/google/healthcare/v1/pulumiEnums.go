@@ -106,7 +106,7 @@ func (o AttributeDefinitionCategoryOutput) ToStringPtrOutputWithContext(ctx cont
 type AttributeDefinitionCategoryPtrOutput struct{ *pulumi.OutputState }
 
 func (AttributeDefinitionCategoryPtrOutput) ElementType() reflect.Type {
-	return attributeDefinitionCategoryPtrType
+	return reflect.TypeOf((**AttributeDefinitionCategory)(nil)).Elem()
 }
 
 func (o AttributeDefinitionCategoryPtrOutput) ToAttributeDefinitionCategoryPtrOutput() AttributeDefinitionCategoryPtrOutput {
@@ -115,6 +115,16 @@ func (o AttributeDefinitionCategoryPtrOutput) ToAttributeDefinitionCategoryPtrOu
 
 func (o AttributeDefinitionCategoryPtrOutput) ToAttributeDefinitionCategoryPtrOutputWithContext(ctx context.Context) AttributeDefinitionCategoryPtrOutput {
 	return o
+}
+
+func (o AttributeDefinitionCategoryPtrOutput) Elem() AttributeDefinitionCategoryOutput {
+	return o.ApplyT(func(v *AttributeDefinitionCategory) AttributeDefinitionCategory {
+		if v != nil {
+			return *v
+		}
+		var ret AttributeDefinitionCategory
+		return ret
+	}).(AttributeDefinitionCategoryOutput)
 }
 
 func (o AttributeDefinitionCategoryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o AttributeDefinitionCategoryPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AttributeDefinitionCategoryPtrOutput) Elem() AttributeDefinitionCategoryOutput {
-	return o.ApplyT(func(v *AttributeDefinitionCategory) AttributeDefinitionCategory {
-		var ret AttributeDefinitionCategory
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AttributeDefinitionCategoryOutput)
 }
 
 // AttributeDefinitionCategoryInput is an input type that accepts AttributeDefinitionCategoryArgs and AttributeDefinitionCategoryOutput values.
@@ -277,7 +277,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -286,6 +286,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -452,7 +452,7 @@ func (o ConsentStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context
 type ConsentStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (ConsentStateEnumPtrOutput) ElementType() reflect.Type {
-	return consentStateEnumPtrType
+	return reflect.TypeOf((**ConsentStateEnum)(nil)).Elem()
 }
 
 func (o ConsentStateEnumPtrOutput) ToConsentStateEnumPtrOutput() ConsentStateEnumPtrOutput {
@@ -461,6 +461,16 @@ func (o ConsentStateEnumPtrOutput) ToConsentStateEnumPtrOutput() ConsentStateEnu
 
 func (o ConsentStateEnumPtrOutput) ToConsentStateEnumPtrOutputWithContext(ctx context.Context) ConsentStateEnumPtrOutput {
 	return o
+}
+
+func (o ConsentStateEnumPtrOutput) Elem() ConsentStateEnumOutput {
+	return o.ApplyT(func(v *ConsentStateEnum) ConsentStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret ConsentStateEnum
+		return ret
+	}).(ConsentStateEnumOutput)
 }
 
 func (o ConsentStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -475,16 +485,6 @@ func (o ConsentStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ConsentStateEnumPtrOutput) Elem() ConsentStateEnumOutput {
-	return o.ApplyT(func(v *ConsentStateEnum) ConsentStateEnum {
-		var ret ConsentStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ConsentStateEnumOutput)
 }
 
 // ConsentStateEnumInput is an input type that accepts ConsentStateEnumArgs and ConsentStateEnumOutput values.
@@ -623,7 +623,7 @@ func (o FhirStoreVersionOutput) ToStringPtrOutputWithContext(ctx context.Context
 type FhirStoreVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreVersionPtrOutput) ElementType() reflect.Type {
-	return fhirStoreVersionPtrType
+	return reflect.TypeOf((**FhirStoreVersion)(nil)).Elem()
 }
 
 func (o FhirStoreVersionPtrOutput) ToFhirStoreVersionPtrOutput() FhirStoreVersionPtrOutput {
@@ -632,6 +632,16 @@ func (o FhirStoreVersionPtrOutput) ToFhirStoreVersionPtrOutput() FhirStoreVersio
 
 func (o FhirStoreVersionPtrOutput) ToFhirStoreVersionPtrOutputWithContext(ctx context.Context) FhirStoreVersionPtrOutput {
 	return o
+}
+
+func (o FhirStoreVersionPtrOutput) Elem() FhirStoreVersionOutput {
+	return o.ApplyT(func(v *FhirStoreVersion) FhirStoreVersion {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStoreVersion
+		return ret
+	}).(FhirStoreVersionOutput)
 }
 
 func (o FhirStoreVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -646,16 +656,6 @@ func (o FhirStoreVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FhirStoreVersionPtrOutput) Elem() FhirStoreVersionOutput {
-	return o.ApplyT(func(v *FhirStoreVersion) FhirStoreVersion {
-		var ret FhirStoreVersion
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FhirStoreVersionOutput)
 }
 
 // FhirStoreVersionInput is an input type that accepts FhirStoreVersionArgs and FhirStoreVersionOutput values.
@@ -794,7 +794,7 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) To
 type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ElementType() reflect.Type {
-	return googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrType
+	return reflect.TypeOf((**GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition)(nil)).Elem()
 }
 
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
@@ -803,6 +803,16 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
 
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
 	return o
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) Elem() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition
+		return ret
+	}).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput)
 }
 
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -817,16 +827,6 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) Elem() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput {
-	return o.ApplyT(func(v *GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition {
-		var ret GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput)
 }
 
 // GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionInput is an input type that accepts GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionArgs and GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput values.
@@ -961,7 +961,7 @@ func (o SchemaConfigSchemaTypeOutput) ToStringPtrOutputWithContext(ctx context.C
 type SchemaConfigSchemaTypePtrOutput struct{ *pulumi.OutputState }
 
 func (SchemaConfigSchemaTypePtrOutput) ElementType() reflect.Type {
-	return schemaConfigSchemaTypePtrType
+	return reflect.TypeOf((**SchemaConfigSchemaType)(nil)).Elem()
 }
 
 func (o SchemaConfigSchemaTypePtrOutput) ToSchemaConfigSchemaTypePtrOutput() SchemaConfigSchemaTypePtrOutput {
@@ -970,6 +970,16 @@ func (o SchemaConfigSchemaTypePtrOutput) ToSchemaConfigSchemaTypePtrOutput() Sch
 
 func (o SchemaConfigSchemaTypePtrOutput) ToSchemaConfigSchemaTypePtrOutputWithContext(ctx context.Context) SchemaConfigSchemaTypePtrOutput {
 	return o
+}
+
+func (o SchemaConfigSchemaTypePtrOutput) Elem() SchemaConfigSchemaTypeOutput {
+	return o.ApplyT(func(v *SchemaConfigSchemaType) SchemaConfigSchemaType {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaConfigSchemaType
+		return ret
+	}).(SchemaConfigSchemaTypeOutput)
 }
 
 func (o SchemaConfigSchemaTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -984,16 +994,6 @@ func (o SchemaConfigSchemaTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SchemaConfigSchemaTypePtrOutput) Elem() SchemaConfigSchemaTypeOutput {
-	return o.ApplyT(func(v *SchemaConfigSchemaType) SchemaConfigSchemaType {
-		var ret SchemaConfigSchemaType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SchemaConfigSchemaTypeOutput)
 }
 
 // SchemaConfigSchemaTypeInput is an input type that accepts SchemaConfigSchemaTypeArgs and SchemaConfigSchemaTypeOutput values.
@@ -1130,7 +1130,7 @@ func (o SchemaPackageSchematizedParsingTypeOutput) ToStringPtrOutputWithContext(
 type SchemaPackageSchematizedParsingTypePtrOutput struct{ *pulumi.OutputState }
 
 func (SchemaPackageSchematizedParsingTypePtrOutput) ElementType() reflect.Type {
-	return schemaPackageSchematizedParsingTypePtrType
+	return reflect.TypeOf((**SchemaPackageSchematizedParsingType)(nil)).Elem()
 }
 
 func (o SchemaPackageSchematizedParsingTypePtrOutput) ToSchemaPackageSchematizedParsingTypePtrOutput() SchemaPackageSchematizedParsingTypePtrOutput {
@@ -1139,6 +1139,16 @@ func (o SchemaPackageSchematizedParsingTypePtrOutput) ToSchemaPackageSchematized
 
 func (o SchemaPackageSchematizedParsingTypePtrOutput) ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(ctx context.Context) SchemaPackageSchematizedParsingTypePtrOutput {
 	return o
+}
+
+func (o SchemaPackageSchematizedParsingTypePtrOutput) Elem() SchemaPackageSchematizedParsingTypeOutput {
+	return o.ApplyT(func(v *SchemaPackageSchematizedParsingType) SchemaPackageSchematizedParsingType {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaPackageSchematizedParsingType
+		return ret
+	}).(SchemaPackageSchematizedParsingTypeOutput)
 }
 
 func (o SchemaPackageSchematizedParsingTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1153,16 +1163,6 @@ func (o SchemaPackageSchematizedParsingTypePtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SchemaPackageSchematizedParsingTypePtrOutput) Elem() SchemaPackageSchematizedParsingTypeOutput {
-	return o.ApplyT(func(v *SchemaPackageSchematizedParsingType) SchemaPackageSchematizedParsingType {
-		var ret SchemaPackageSchematizedParsingType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SchemaPackageSchematizedParsingTypeOutput)
 }
 
 // SchemaPackageSchematizedParsingTypeInput is an input type that accepts SchemaPackageSchematizedParsingTypeArgs and SchemaPackageSchematizedParsingTypeOutput values.
@@ -1301,7 +1301,7 @@ func (o TypePrimitiveOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 type TypePrimitivePtrOutput struct{ *pulumi.OutputState }
 
 func (TypePrimitivePtrOutput) ElementType() reflect.Type {
-	return typePrimitivePtrType
+	return reflect.TypeOf((**TypePrimitive)(nil)).Elem()
 }
 
 func (o TypePrimitivePtrOutput) ToTypePrimitivePtrOutput() TypePrimitivePtrOutput {
@@ -1310,6 +1310,16 @@ func (o TypePrimitivePtrOutput) ToTypePrimitivePtrOutput() TypePrimitivePtrOutpu
 
 func (o TypePrimitivePtrOutput) ToTypePrimitivePtrOutputWithContext(ctx context.Context) TypePrimitivePtrOutput {
 	return o
+}
+
+func (o TypePrimitivePtrOutput) Elem() TypePrimitiveOutput {
+	return o.ApplyT(func(v *TypePrimitive) TypePrimitive {
+		if v != nil {
+			return *v
+		}
+		var ret TypePrimitive
+		return ret
+	}).(TypePrimitiveOutput)
 }
 
 func (o TypePrimitivePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1324,16 +1334,6 @@ func (o TypePrimitivePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TypePrimitivePtrOutput) Elem() TypePrimitiveOutput {
-	return o.ApplyT(func(v *TypePrimitive) TypePrimitive {
-		var ret TypePrimitive
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TypePrimitiveOutput)
 }
 
 // TypePrimitiveInput is an input type that accepts TypePrimitiveArgs and TypePrimitiveOutput values.

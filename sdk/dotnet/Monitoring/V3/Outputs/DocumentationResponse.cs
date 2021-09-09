@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// A content string and a MIME type that describes the content string's format.
+    /// </summary>
     [OutputType]
     public sealed class DocumentationResponse
     {

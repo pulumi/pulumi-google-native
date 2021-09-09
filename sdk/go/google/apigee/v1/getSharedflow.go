@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,4 +34,60 @@ type LookupSharedflowResult struct {
 	Name string `pulumi:"name"`
 	// A list of revisions of this shared flow.
 	Revision []string `pulumi:"revision"`
+}
+
+func LookupSharedflowOutput(ctx *pulumi.Context, args LookupSharedflowOutputArgs, opts ...pulumi.InvokeOption) LookupSharedflowResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSharedflowResult, error) {
+			args := v.(LookupSharedflowArgs)
+			r, err := LookupSharedflow(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSharedflowResultOutput)
+}
+
+type LookupSharedflowOutputArgs struct {
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	SharedflowId   pulumi.StringInput `pulumi:"sharedflowId"`
+}
+
+func (LookupSharedflowOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSharedflowArgs)(nil)).Elem()
+}
+
+type LookupSharedflowResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSharedflowResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSharedflowResult)(nil)).Elem()
+}
+
+func (o LookupSharedflowResultOutput) ToLookupSharedflowResultOutput() LookupSharedflowResultOutput {
+	return o
+}
+
+func (o LookupSharedflowResultOutput) ToLookupSharedflowResultOutputWithContext(ctx context.Context) LookupSharedflowResultOutput {
+	return o
+}
+
+// The id of the most recently created revision for this shared flow.
+func (o LookupSharedflowResultOutput) LatestRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedflowResult) string { return v.LatestRevisionId }).(pulumi.StringOutput)
+}
+
+// Metadata describing the shared flow.
+func (o LookupSharedflowResultOutput) MetaData() GoogleCloudApigeeV1EntityMetadataResponseOutput {
+	return o.ApplyT(func(v LookupSharedflowResult) GoogleCloudApigeeV1EntityMetadataResponse { return v.MetaData }).(GoogleCloudApigeeV1EntityMetadataResponseOutput)
+}
+
+// The ID of the shared flow.
+func (o LookupSharedflowResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedflowResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of revisions of this shared flow.
+func (o LookupSharedflowResultOutput) Revision() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSharedflowResult) []string { return v.Revision }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSharedflowResultOutput{})
 }

@@ -110,7 +110,7 @@ func (o GoogleCloudPolicysimulatorV1ReplayConfigOutput) ToGoogleCloudPolicysimul
 }
 
 func (o GoogleCloudPolicysimulatorV1ReplayConfigOutput) ToGoogleCloudPolicysimulatorV1ReplayConfigPtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1ReplayConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1ReplayConfig) *GoogleCloudPolicysimulatorV1ReplayConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudPolicysimulatorV1ReplayConfig) *GoogleCloudPolicysimulatorV1ReplayConfig {
 		return &v
 	}).(GoogleCloudPolicysimulatorV1ReplayConfigPtrOutput)
 }
@@ -142,7 +142,13 @@ func (o GoogleCloudPolicysimulatorV1ReplayConfigPtrOutput) ToGoogleCloudPolicysi
 }
 
 func (o GoogleCloudPolicysimulatorV1ReplayConfigPtrOutput) Elem() GoogleCloudPolicysimulatorV1ReplayConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1ReplayConfig) GoogleCloudPolicysimulatorV1ReplayConfig { return *v }).(GoogleCloudPolicysimulatorV1ReplayConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1ReplayConfig) GoogleCloudPolicysimulatorV1ReplayConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudPolicysimulatorV1ReplayConfig
+		return ret
+	}).(GoogleCloudPolicysimulatorV1ReplayConfigOutput)
 }
 
 // The logs to use as input for the Replay.
@@ -265,7 +271,7 @@ func (o GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput) ToGoogleCloudPol
 }
 
 func (o GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput) ToGoogleCloudPolicysimulatorV1ReplayConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1ReplayConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1ReplayConfigResponse) *GoogleCloudPolicysimulatorV1ReplayConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudPolicysimulatorV1ReplayConfigResponse) *GoogleCloudPolicysimulatorV1ReplayConfigResponse {
 		return &v
 	}).(GoogleCloudPolicysimulatorV1ReplayConfigResponsePtrOutput)
 }
@@ -296,7 +302,11 @@ func (o GoogleCloudPolicysimulatorV1ReplayConfigResponsePtrOutput) ToGoogleCloud
 
 func (o GoogleCloudPolicysimulatorV1ReplayConfigResponsePtrOutput) Elem() GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1ReplayConfigResponse) GoogleCloudPolicysimulatorV1ReplayConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudPolicysimulatorV1ReplayConfigResponse
+		return ret
 	}).(GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput)
 }
 
@@ -436,7 +446,7 @@ func (o GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponseOutput) ToGoogle
 }
 
 func (o GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponseOutput) ToGoogleCloudPolicysimulatorV1ReplayResultsSummaryResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse) *GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse) *GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse {
 		return &v
 	}).(GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponsePtrOutput)
 }
@@ -491,7 +501,11 @@ func (o GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponsePtrOutput) ToGoo
 
 func (o GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponsePtrOutput) Elem() GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse) GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse
+		return ret
 	}).(GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponseOutput)
 }
 
@@ -659,7 +673,7 @@ func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutput() Google
 }
 
 func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
-	return o.ApplyT(func(v GoogleTypeDateResponse) *GoogleTypeDateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeDateResponse) *GoogleTypeDateResponse {
 		return &v
 	}).(GoogleTypeDateResponsePtrOutput)
 }
@@ -694,7 +708,13 @@ func (o GoogleTypeDateResponsePtrOutput) ToGoogleTypeDateResponsePtrOutputWithCo
 }
 
 func (o GoogleTypeDateResponsePtrOutput) Elem() GoogleTypeDateResponseOutput {
-	return o.ApplyT(func(v *GoogleTypeDateResponse) GoogleTypeDateResponse { return *v }).(GoogleTypeDateResponseOutput)
+	return o.ApplyT(func(v *GoogleTypeDateResponse) GoogleTypeDateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeDateResponse
+		return ret
+	}).(GoogleTypeDateResponseOutput)
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.

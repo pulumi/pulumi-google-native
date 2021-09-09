@@ -180,9 +180,7 @@ func (i *InstanceGroupManager) ToInstanceGroupManagerOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerOutput)
 }
 
-type InstanceGroupManagerOutput struct {
-	*pulumi.OutputState
-}
+type InstanceGroupManagerOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceGroupManager)(nil))

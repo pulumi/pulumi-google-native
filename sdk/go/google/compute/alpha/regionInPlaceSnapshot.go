@@ -144,9 +144,7 @@ func (i *RegionInPlaceSnapshot) ToRegionInPlaceSnapshotOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInPlaceSnapshotOutput)
 }
 
-type RegionInPlaceSnapshotOutput struct {
-	*pulumi.OutputState
-}
+type RegionInPlaceSnapshotOutput struct{ *pulumi.OutputState }
 
 func (RegionInPlaceSnapshotOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionInPlaceSnapshot)(nil))

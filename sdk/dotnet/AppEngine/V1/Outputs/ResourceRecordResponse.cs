@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// A DNS resource record.
+    /// </summary>
     [OutputType]
     public sealed class ResourceRecordResponse
     {

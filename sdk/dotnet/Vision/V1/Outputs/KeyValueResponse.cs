@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Vision.V1.Outputs
 {
 
+    /// <summary>
+    /// A product label represented as a key-value pair.
+    /// </summary>
     [OutputType]
     public sealed class KeyValueResponse
     {

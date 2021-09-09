@@ -342,7 +342,7 @@ func (o DeviceConfigOutput) ToDeviceConfigPtrOutput() DeviceConfigPtrOutput {
 }
 
 func (o DeviceConfigOutput) ToDeviceConfigPtrOutputWithContext(ctx context.Context) DeviceConfigPtrOutput {
-	return o.ApplyT(func(v DeviceConfig) *DeviceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceConfig) *DeviceConfig {
 		return &v
 	}).(DeviceConfigPtrOutput)
 }
@@ -367,7 +367,13 @@ func (o DeviceConfigPtrOutput) ToDeviceConfigPtrOutputWithContext(ctx context.Co
 }
 
 func (o DeviceConfigPtrOutput) Elem() DeviceConfigOutput {
-	return o.ApplyT(func(v *DeviceConfig) DeviceConfig { return *v }).(DeviceConfigOutput)
+	return o.ApplyT(func(v *DeviceConfig) DeviceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceConfig
+		return ret
+	}).(DeviceConfigOutput)
 }
 
 // The device configuration data.
@@ -488,7 +494,7 @@ func (o DeviceConfigResponseOutput) ToDeviceConfigResponsePtrOutput() DeviceConf
 }
 
 func (o DeviceConfigResponseOutput) ToDeviceConfigResponsePtrOutputWithContext(ctx context.Context) DeviceConfigResponsePtrOutput {
-	return o.ApplyT(func(v DeviceConfigResponse) *DeviceConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceConfigResponse) *DeviceConfigResponse {
 		return &v
 	}).(DeviceConfigResponsePtrOutput)
 }
@@ -528,7 +534,13 @@ func (o DeviceConfigResponsePtrOutput) ToDeviceConfigResponsePtrOutputWithContex
 }
 
 func (o DeviceConfigResponsePtrOutput) Elem() DeviceConfigResponseOutput {
-	return o.ApplyT(func(v *DeviceConfigResponse) DeviceConfigResponse { return *v }).(DeviceConfigResponseOutput)
+	return o.ApplyT(func(v *DeviceConfigResponse) DeviceConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceConfigResponse
+		return ret
+	}).(DeviceConfigResponseOutput)
 }
 
 // The device configuration data.
@@ -889,7 +901,7 @@ func (o DeviceStateResponseOutput) ToDeviceStateResponsePtrOutput() DeviceStateR
 }
 
 func (o DeviceStateResponseOutput) ToDeviceStateResponsePtrOutputWithContext(ctx context.Context) DeviceStateResponsePtrOutput {
-	return o.ApplyT(func(v DeviceStateResponse) *DeviceStateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceStateResponse) *DeviceStateResponse {
 		return &v
 	}).(DeviceStateResponsePtrOutput)
 }
@@ -919,7 +931,13 @@ func (o DeviceStateResponsePtrOutput) ToDeviceStateResponsePtrOutputWithContext(
 }
 
 func (o DeviceStateResponsePtrOutput) Elem() DeviceStateResponseOutput {
-	return o.ApplyT(func(v *DeviceStateResponse) DeviceStateResponse { return *v }).(DeviceStateResponseOutput)
+	return o.ApplyT(func(v *DeviceStateResponse) DeviceStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceStateResponse
+		return ret
+	}).(DeviceStateResponseOutput)
 }
 
 // The device state data.
@@ -1268,7 +1286,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1308,7 +1326,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1533,7 +1557,7 @@ func (o GatewayConfigOutput) ToGatewayConfigPtrOutput() GatewayConfigPtrOutput {
 }
 
 func (o GatewayConfigOutput) ToGatewayConfigPtrOutputWithContext(ctx context.Context) GatewayConfigPtrOutput {
-	return o.ApplyT(func(v GatewayConfig) *GatewayConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayConfig) *GatewayConfig {
 		return &v
 	}).(GatewayConfigPtrOutput)
 }
@@ -1563,7 +1587,13 @@ func (o GatewayConfigPtrOutput) ToGatewayConfigPtrOutputWithContext(ctx context.
 }
 
 func (o GatewayConfigPtrOutput) Elem() GatewayConfigOutput {
-	return o.ApplyT(func(v *GatewayConfig) GatewayConfig { return *v }).(GatewayConfigOutput)
+	return o.ApplyT(func(v *GatewayConfig) GatewayConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayConfig
+		return ret
+	}).(GatewayConfigOutput)
 }
 
 // Indicates how to authorize and/or authenticate devices to access the gateway.
@@ -1694,7 +1724,7 @@ func (o GatewayConfigResponseOutput) ToGatewayConfigResponsePtrOutput() GatewayC
 }
 
 func (o GatewayConfigResponseOutput) ToGatewayConfigResponsePtrOutputWithContext(ctx context.Context) GatewayConfigResponsePtrOutput {
-	return o.ApplyT(func(v GatewayConfigResponse) *GatewayConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayConfigResponse) *GatewayConfigResponse {
 		return &v
 	}).(GatewayConfigResponsePtrOutput)
 }
@@ -1734,7 +1764,13 @@ func (o GatewayConfigResponsePtrOutput) ToGatewayConfigResponsePtrOutputWithCont
 }
 
 func (o GatewayConfigResponsePtrOutput) Elem() GatewayConfigResponseOutput {
-	return o.ApplyT(func(v *GatewayConfigResponse) GatewayConfigResponse { return *v }).(GatewayConfigResponseOutput)
+	return o.ApplyT(func(v *GatewayConfigResponse) GatewayConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayConfigResponse
+		return ret
+	}).(GatewayConfigResponseOutput)
 }
 
 // Indicates how to authorize and/or authenticate devices to access the gateway.
@@ -1873,7 +1909,7 @@ func (o HttpConfigOutput) ToHttpConfigPtrOutput() HttpConfigPtrOutput {
 }
 
 func (o HttpConfigOutput) ToHttpConfigPtrOutputWithContext(ctx context.Context) HttpConfigPtrOutput {
-	return o.ApplyT(func(v HttpConfig) *HttpConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpConfig) *HttpConfig {
 		return &v
 	}).(HttpConfigPtrOutput)
 }
@@ -1898,7 +1934,13 @@ func (o HttpConfigPtrOutput) ToHttpConfigPtrOutputWithContext(ctx context.Contex
 }
 
 func (o HttpConfigPtrOutput) Elem() HttpConfigOutput {
-	return o.ApplyT(func(v *HttpConfig) HttpConfig { return *v }).(HttpConfigOutput)
+	return o.ApplyT(func(v *HttpConfig) HttpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret HttpConfig
+		return ret
+	}).(HttpConfigOutput)
 }
 
 // If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
@@ -2007,7 +2049,7 @@ func (o HttpConfigResponseOutput) ToHttpConfigResponsePtrOutput() HttpConfigResp
 }
 
 func (o HttpConfigResponseOutput) ToHttpConfigResponsePtrOutputWithContext(ctx context.Context) HttpConfigResponsePtrOutput {
-	return o.ApplyT(func(v HttpConfigResponse) *HttpConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpConfigResponse) *HttpConfigResponse {
 		return &v
 	}).(HttpConfigResponsePtrOutput)
 }
@@ -2032,7 +2074,13 @@ func (o HttpConfigResponsePtrOutput) ToHttpConfigResponsePtrOutputWithContext(ct
 }
 
 func (o HttpConfigResponsePtrOutput) Elem() HttpConfigResponseOutput {
-	return o.ApplyT(func(v *HttpConfigResponse) HttpConfigResponse { return *v }).(HttpConfigResponseOutput)
+	return o.ApplyT(func(v *HttpConfigResponse) HttpConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpConfigResponse
+		return ret
+	}).(HttpConfigResponseOutput)
 }
 
 // If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
@@ -2141,7 +2189,7 @@ func (o MqttConfigOutput) ToMqttConfigPtrOutput() MqttConfigPtrOutput {
 }
 
 func (o MqttConfigOutput) ToMqttConfigPtrOutputWithContext(ctx context.Context) MqttConfigPtrOutput {
-	return o.ApplyT(func(v MqttConfig) *MqttConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MqttConfig) *MqttConfig {
 		return &v
 	}).(MqttConfigPtrOutput)
 }
@@ -2166,7 +2214,13 @@ func (o MqttConfigPtrOutput) ToMqttConfigPtrOutputWithContext(ctx context.Contex
 }
 
 func (o MqttConfigPtrOutput) Elem() MqttConfigOutput {
-	return o.ApplyT(func(v *MqttConfig) MqttConfig { return *v }).(MqttConfigOutput)
+	return o.ApplyT(func(v *MqttConfig) MqttConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MqttConfig
+		return ret
+	}).(MqttConfigOutput)
 }
 
 // If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
@@ -2275,7 +2329,7 @@ func (o MqttConfigResponseOutput) ToMqttConfigResponsePtrOutput() MqttConfigResp
 }
 
 func (o MqttConfigResponseOutput) ToMqttConfigResponsePtrOutputWithContext(ctx context.Context) MqttConfigResponsePtrOutput {
-	return o.ApplyT(func(v MqttConfigResponse) *MqttConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MqttConfigResponse) *MqttConfigResponse {
 		return &v
 	}).(MqttConfigResponsePtrOutput)
 }
@@ -2300,7 +2354,13 @@ func (o MqttConfigResponsePtrOutput) ToMqttConfigResponsePtrOutputWithContext(ct
 }
 
 func (o MqttConfigResponsePtrOutput) Elem() MqttConfigResponseOutput {
-	return o.ApplyT(func(v *MqttConfigResponse) MqttConfigResponse { return *v }).(MqttConfigResponseOutput)
+	return o.ApplyT(func(v *MqttConfigResponse) MqttConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MqttConfigResponse
+		return ret
+	}).(MqttConfigResponseOutput)
 }
 
 // If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
@@ -2413,7 +2473,7 @@ func (o PublicKeyCertificateOutput) ToPublicKeyCertificatePtrOutput() PublicKeyC
 }
 
 func (o PublicKeyCertificateOutput) ToPublicKeyCertificatePtrOutputWithContext(ctx context.Context) PublicKeyCertificatePtrOutput {
-	return o.ApplyT(func(v PublicKeyCertificate) *PublicKeyCertificate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicKeyCertificate) *PublicKeyCertificate {
 		return &v
 	}).(PublicKeyCertificatePtrOutput)
 }
@@ -2443,7 +2503,13 @@ func (o PublicKeyCertificatePtrOutput) ToPublicKeyCertificatePtrOutputWithContex
 }
 
 func (o PublicKeyCertificatePtrOutput) Elem() PublicKeyCertificateOutput {
-	return o.ApplyT(func(v *PublicKeyCertificate) PublicKeyCertificate { return *v }).(PublicKeyCertificateOutput)
+	return o.ApplyT(func(v *PublicKeyCertificate) PublicKeyCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret PublicKeyCertificate
+		return ret
+	}).(PublicKeyCertificateOutput)
 }
 
 // The certificate data.
@@ -2639,7 +2705,7 @@ func (o PublicKeyCredentialOutput) ToPublicKeyCredentialPtrOutput() PublicKeyCre
 }
 
 func (o PublicKeyCredentialOutput) ToPublicKeyCredentialPtrOutputWithContext(ctx context.Context) PublicKeyCredentialPtrOutput {
-	return o.ApplyT(func(v PublicKeyCredential) *PublicKeyCredential {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicKeyCredential) *PublicKeyCredential {
 		return &v
 	}).(PublicKeyCredentialPtrOutput)
 }
@@ -2669,7 +2735,13 @@ func (o PublicKeyCredentialPtrOutput) ToPublicKeyCredentialPtrOutputWithContext(
 }
 
 func (o PublicKeyCredentialPtrOutput) Elem() PublicKeyCredentialOutput {
-	return o.ApplyT(func(v *PublicKeyCredential) PublicKeyCredential { return *v }).(PublicKeyCredentialOutput)
+	return o.ApplyT(func(v *PublicKeyCredential) PublicKeyCredential {
+		if v != nil {
+			return *v
+		}
+		var ret PublicKeyCredential
+		return ret
+	}).(PublicKeyCredentialOutput)
 }
 
 // The format of the key.
@@ -3052,7 +3124,7 @@ func (o StateNotificationConfigOutput) ToStateNotificationConfigPtrOutput() Stat
 }
 
 func (o StateNotificationConfigOutput) ToStateNotificationConfigPtrOutputWithContext(ctx context.Context) StateNotificationConfigPtrOutput {
-	return o.ApplyT(func(v StateNotificationConfig) *StateNotificationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StateNotificationConfig) *StateNotificationConfig {
 		return &v
 	}).(StateNotificationConfigPtrOutput)
 }
@@ -3077,7 +3149,13 @@ func (o StateNotificationConfigPtrOutput) ToStateNotificationConfigPtrOutputWith
 }
 
 func (o StateNotificationConfigPtrOutput) Elem() StateNotificationConfigOutput {
-	return o.ApplyT(func(v *StateNotificationConfig) StateNotificationConfig { return *v }).(StateNotificationConfigOutput)
+	return o.ApplyT(func(v *StateNotificationConfig) StateNotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StateNotificationConfig
+		return ret
+	}).(StateNotificationConfigOutput)
 }
 
 // A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
@@ -3186,7 +3264,7 @@ func (o StateNotificationConfigResponseOutput) ToStateNotificationConfigResponse
 }
 
 func (o StateNotificationConfigResponseOutput) ToStateNotificationConfigResponsePtrOutputWithContext(ctx context.Context) StateNotificationConfigResponsePtrOutput {
-	return o.ApplyT(func(v StateNotificationConfigResponse) *StateNotificationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StateNotificationConfigResponse) *StateNotificationConfigResponse {
 		return &v
 	}).(StateNotificationConfigResponsePtrOutput)
 }
@@ -3211,7 +3289,13 @@ func (o StateNotificationConfigResponsePtrOutput) ToStateNotificationConfigRespo
 }
 
 func (o StateNotificationConfigResponsePtrOutput) Elem() StateNotificationConfigResponseOutput {
-	return o.ApplyT(func(v *StateNotificationConfigResponse) StateNotificationConfigResponse { return *v }).(StateNotificationConfigResponseOutput)
+	return o.ApplyT(func(v *StateNotificationConfigResponse) StateNotificationConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StateNotificationConfigResponse
+		return ret
+	}).(StateNotificationConfigResponseOutput)
 }
 
 // A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
@@ -3328,7 +3412,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -3363,7 +3447,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

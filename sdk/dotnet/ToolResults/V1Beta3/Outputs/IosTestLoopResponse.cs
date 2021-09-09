@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// A game loop test of an iOS application.
+    /// </summary>
     [OutputType]
     public sealed class IosTestLoopResponse
     {

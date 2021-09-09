@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Histogram of value frequencies in the column.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse
     {

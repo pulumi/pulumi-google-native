@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// A key-value pair passed as an environment variable to the test.
+    /// </summary>
     [OutputType]
     public sealed class EnvironmentVariableResponse
     {

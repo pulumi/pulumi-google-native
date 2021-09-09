@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
 {
 
+    /// <summary>
+    /// Service provisioned for an entitlement.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudChannelV1ProvisionedServiceResponse
     {

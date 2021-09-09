@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// AnalysisMessageBase describes some common information that is needed for all messages.
+    /// </summary>
     [OutputType]
     public sealed class ServiceMeshAnalysisMessageBaseResponse
     {

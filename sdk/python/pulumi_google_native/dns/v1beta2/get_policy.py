@@ -13,6 +13,7 @@ __all__ = [
     'GetPolicyResult',
     'AwaitableGetPolicyResult',
     'get_policy',
+    'get_policy_output',
 ]
 
 @pulumi.output_type
@@ -134,3 +135,14 @@ def get_policy(client_operation_id: Optional[str] = None,
         kind=__ret__.kind,
         name=__ret__.name,
         networks=__ret__.networks)
+
+
+@_utilities.lift_output_func(get_policy)
+def get_policy_output(client_operation_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      policy: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
+    """
+    Fetches the representation of an existing Policy.
+    """
+    ...

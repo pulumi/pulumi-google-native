@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2InspectionRuleResponse
     {

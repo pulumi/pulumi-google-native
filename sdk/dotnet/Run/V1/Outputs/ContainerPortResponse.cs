@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
+    /// <summary>
+    /// ContainerPort represents a network port in a single container.
+    /// </summary>
     [OutputType]
     public sealed class ContainerPortResponse
     {

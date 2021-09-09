@@ -114,9 +114,7 @@ func (i *DicomStore) ToDicomStoreOutputWithContext(ctx context.Context) DicomSto
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreOutput)
 }
 
-type DicomStoreOutput struct {
-	*pulumi.OutputState
-}
+type DicomStoreOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DicomStore)(nil))

@@ -13,6 +13,7 @@ __all__ = [
     'GetChannelResult',
     'AwaitableGetChannelResult',
     'get_channel',
+    'get_channel_output',
 ]
 
 @pulumi.output_type
@@ -163,3 +164,14 @@ def get_channel(channel_id: Optional[str] = None,
         ttl=__ret__.ttl,
         update_time=__ret__.update_time,
         url=__ret__.url)
+
+
+@_utilities.lift_output_func(get_channel)
+def get_channel_output(channel_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       site_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChannelResult]:
+    """
+    Retrieves information for the specified channel of the specified site.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
+    /// </summary>
     [OutputType]
     public sealed class GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse
     {

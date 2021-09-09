@@ -108,7 +108,7 @@ func (o DiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 type DiskTypePtrOutput struct{ *pulumi.OutputState }
 
 func (DiskTypePtrOutput) ElementType() reflect.Type {
-	return diskTypePtrType
+	return reflect.TypeOf((**DiskType)(nil)).Elem()
 }
 
 func (o DiskTypePtrOutput) ToDiskTypePtrOutput() DiskTypePtrOutput {
@@ -117,6 +117,16 @@ func (o DiskTypePtrOutput) ToDiskTypePtrOutput() DiskTypePtrOutput {
 
 func (o DiskTypePtrOutput) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskTypePtrOutput {
 	return o
+}
+
+func (o DiskTypePtrOutput) Elem() DiskTypeOutput {
+	return o.ApplyT(func(v *DiskType) DiskType {
+		if v != nil {
+			return *v
+		}
+		var ret DiskType
+		return ret
+	}).(DiskTypeOutput)
 }
 
 func (o DiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o DiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DiskTypePtrOutput) Elem() DiskTypeOutput {
-	return o.ApplyT(func(v *DiskType) DiskType {
-		var ret DiskType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DiskTypeOutput)
 }
 
 // DiskTypeInput is an input type that accepts DiskTypeArgs and DiskTypeOutput values.

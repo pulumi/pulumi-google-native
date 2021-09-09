@@ -354,7 +354,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -394,7 +394,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -619,7 +625,7 @@ func (o OidcTokenOutput) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
 }
 
 func (o OidcTokenOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) OidcTokenPtrOutput {
-	return o.ApplyT(func(v OidcToken) *OidcToken {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcToken) *OidcToken {
 		return &v
 	}).(OidcTokenPtrOutput)
 }
@@ -649,7 +655,13 @@ func (o OidcTokenPtrOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context)
 }
 
 func (o OidcTokenPtrOutput) Elem() OidcTokenOutput {
-	return o.ApplyT(func(v *OidcToken) OidcToken { return *v }).(OidcTokenOutput)
+	return o.ApplyT(func(v *OidcToken) OidcToken {
+		if v != nil {
+			return *v
+		}
+		var ret OidcToken
+		return ret
+	}).(OidcTokenOutput)
 }
 
 // Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
@@ -772,7 +784,7 @@ func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutput() OidcTokenRespons
 }
 
 func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o.ApplyT(func(v OidcTokenResponse) *OidcTokenResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcTokenResponse) *OidcTokenResponse {
 		return &v
 	}).(OidcTokenResponsePtrOutput)
 }
@@ -802,7 +814,13 @@ func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutputWithContext(ctx 
 }
 
 func (o OidcTokenResponsePtrOutput) Elem() OidcTokenResponseOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse { return *v }).(OidcTokenResponseOutput)
+	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OidcTokenResponse
+		return ret
+	}).(OidcTokenResponseOutput)
 }
 
 // Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
@@ -929,7 +947,7 @@ func (o PushConfigOutput) ToPushConfigPtrOutput() PushConfigPtrOutput {
 }
 
 func (o PushConfigOutput) ToPushConfigPtrOutputWithContext(ctx context.Context) PushConfigPtrOutput {
-	return o.ApplyT(func(v PushConfig) *PushConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushConfig) *PushConfig {
 		return &v
 	}).(PushConfigPtrOutput)
 }
@@ -964,7 +982,13 @@ func (o PushConfigPtrOutput) ToPushConfigPtrOutputWithContext(ctx context.Contex
 }
 
 func (o PushConfigPtrOutput) Elem() PushConfigOutput {
-	return o.ApplyT(func(v *PushConfig) PushConfig { return *v }).(PushConfigOutput)
+	return o.ApplyT(func(v *PushConfig) PushConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PushConfig
+		return ret
+	}).(PushConfigOutput)
 }
 
 // Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
@@ -1101,7 +1125,7 @@ func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutput() PushConfigResp
 }
 
 func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
-	return o.ApplyT(func(v PushConfigResponse) *PushConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushConfigResponse) *PushConfigResponse {
 		return &v
 	}).(PushConfigResponsePtrOutput)
 }
@@ -1136,7 +1160,13 @@ func (o PushConfigResponsePtrOutput) ToPushConfigResponsePtrOutputWithContext(ct
 }
 
 func (o PushConfigResponsePtrOutput) Elem() PushConfigResponseOutput {
-	return o.ApplyT(func(v *PushConfigResponse) PushConfigResponse { return *v }).(PushConfigResponseOutput)
+	return o.ApplyT(func(v *PushConfigResponse) PushConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PushConfigResponse
+		return ret
+	}).(PushConfigResponseOutput)
 }
 
 // Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.

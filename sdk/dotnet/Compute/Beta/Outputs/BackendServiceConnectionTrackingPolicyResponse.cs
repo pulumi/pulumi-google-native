@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Connection Tracking configuration for this BackendService.
+    /// </summary>
     [OutputType]
     public sealed class BackendServiceConnectionTrackingPolicyResponse
     {

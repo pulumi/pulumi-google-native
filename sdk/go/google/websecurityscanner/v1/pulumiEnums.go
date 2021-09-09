@@ -106,7 +106,7 @@ func (o ScanConfigExportToSecurityCommandCenterOutput) ToStringPtrOutputWithCont
 type ScanConfigExportToSecurityCommandCenterPtrOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigExportToSecurityCommandCenterPtrOutput) ElementType() reflect.Type {
-	return scanConfigExportToSecurityCommandCenterPtrType
+	return reflect.TypeOf((**ScanConfigExportToSecurityCommandCenter)(nil)).Elem()
 }
 
 func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToScanConfigExportToSecurityCommandCenterPtrOutput() ScanConfigExportToSecurityCommandCenterPtrOutput {
@@ -115,6 +115,16 @@ func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToScanConfigExportToSe
 
 func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToScanConfigExportToSecurityCommandCenterPtrOutputWithContext(ctx context.Context) ScanConfigExportToSecurityCommandCenterPtrOutput {
 	return o
+}
+
+func (o ScanConfigExportToSecurityCommandCenterPtrOutput) Elem() ScanConfigExportToSecurityCommandCenterOutput {
+	return o.ApplyT(func(v *ScanConfigExportToSecurityCommandCenter) ScanConfigExportToSecurityCommandCenter {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigExportToSecurityCommandCenter
+		return ret
+	}).(ScanConfigExportToSecurityCommandCenterOutput)
 }
 
 func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToStringPtrOutputWithC
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanConfigExportToSecurityCommandCenterPtrOutput) Elem() ScanConfigExportToSecurityCommandCenterOutput {
-	return o.ApplyT(func(v *ScanConfigExportToSecurityCommandCenter) ScanConfigExportToSecurityCommandCenter {
-		var ret ScanConfigExportToSecurityCommandCenter
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanConfigExportToSecurityCommandCenterOutput)
 }
 
 // ScanConfigExportToSecurityCommandCenterInput is an input type that accepts ScanConfigExportToSecurityCommandCenterArgs and ScanConfigExportToSecurityCommandCenterOutput values.
@@ -275,7 +275,7 @@ func (o ScanConfigRiskLevelOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type ScanConfigRiskLevelPtrOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigRiskLevelPtrOutput) ElementType() reflect.Type {
-	return scanConfigRiskLevelPtrType
+	return reflect.TypeOf((**ScanConfigRiskLevel)(nil)).Elem()
 }
 
 func (o ScanConfigRiskLevelPtrOutput) ToScanConfigRiskLevelPtrOutput() ScanConfigRiskLevelPtrOutput {
@@ -284,6 +284,16 @@ func (o ScanConfigRiskLevelPtrOutput) ToScanConfigRiskLevelPtrOutput() ScanConfi
 
 func (o ScanConfigRiskLevelPtrOutput) ToScanConfigRiskLevelPtrOutputWithContext(ctx context.Context) ScanConfigRiskLevelPtrOutput {
 	return o
+}
+
+func (o ScanConfigRiskLevelPtrOutput) Elem() ScanConfigRiskLevelOutput {
+	return o.ApplyT(func(v *ScanConfigRiskLevel) ScanConfigRiskLevel {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigRiskLevel
+		return ret
+	}).(ScanConfigRiskLevelOutput)
 }
 
 func (o ScanConfigRiskLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o ScanConfigRiskLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanConfigRiskLevelPtrOutput) Elem() ScanConfigRiskLevelOutput {
-	return o.ApplyT(func(v *ScanConfigRiskLevel) ScanConfigRiskLevel {
-		var ret ScanConfigRiskLevel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanConfigRiskLevelOutput)
 }
 
 // ScanConfigRiskLevelInput is an input type that accepts ScanConfigRiskLevelArgs and ScanConfigRiskLevelOutput values.
@@ -446,7 +446,7 @@ func (o ScanConfigUserAgentOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type ScanConfigUserAgentPtrOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigUserAgentPtrOutput) ElementType() reflect.Type {
-	return scanConfigUserAgentPtrType
+	return reflect.TypeOf((**ScanConfigUserAgent)(nil)).Elem()
 }
 
 func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutput() ScanConfigUserAgentPtrOutput {
@@ -455,6 +455,16 @@ func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutput() ScanConfi
 
 func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutputWithContext(ctx context.Context) ScanConfigUserAgentPtrOutput {
 	return o
+}
+
+func (o ScanConfigUserAgentPtrOutput) Elem() ScanConfigUserAgentOutput {
+	return o.ApplyT(func(v *ScanConfigUserAgent) ScanConfigUserAgent {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigUserAgent
+		return ret
+	}).(ScanConfigUserAgentOutput)
 }
 
 func (o ScanConfigUserAgentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -469,16 +479,6 @@ func (o ScanConfigUserAgentPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanConfigUserAgentPtrOutput) Elem() ScanConfigUserAgentOutput {
-	return o.ApplyT(func(v *ScanConfigUserAgent) ScanConfigUserAgent {
-		var ret ScanConfigUserAgent
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanConfigUserAgentOutput)
 }
 
 // ScanConfigUserAgentInput is an input type that accepts ScanConfigUserAgentArgs and ScanConfigUserAgentOutput values.

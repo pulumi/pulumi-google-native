@@ -13,6 +13,7 @@ __all__ = [
     'GetPageResult',
     'AwaitableGetPageResult',
     'get_page',
+    'get_page_output',
 ]
 
 @pulumi.output_type
@@ -143,3 +144,17 @@ def get_page(agent_id: Optional[str] = None,
         name=__ret__.name,
         transition_route_groups=__ret__.transition_route_groups,
         transition_routes=__ret__.transition_routes)
+
+
+@_utilities.lift_output_func(get_page)
+def get_page_output(agent_id: Optional[pulumi.Input[str]] = None,
+                    flow_id: Optional[pulumi.Input[str]] = None,
+                    language_code: Optional[pulumi.Input[Optional[str]]] = None,
+                    location: Optional[pulumi.Input[str]] = None,
+                    page_id: Optional[pulumi.Input[str]] = None,
+                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPageResult]:
+    """
+    Retrieves the specified page.
+    """
+    ...

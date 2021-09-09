@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Reservation Affinity for consuming Zonal reservation.
+    /// </summary>
     [OutputType]
     public sealed class ReservationAffinityResponse
     {

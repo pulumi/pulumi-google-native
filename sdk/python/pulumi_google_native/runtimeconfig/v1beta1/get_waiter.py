@@ -13,6 +13,7 @@ __all__ = [
     'GetWaiterResult',
     'AwaitableGetWaiterResult',
     'get_waiter',
+    'get_waiter_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_waiter(config_id: Optional[str] = None,
         name=__ret__.name,
         success=__ret__.success,
         timeout=__ret__.timeout)
+
+
+@_utilities.lift_output_func(get_waiter)
+def get_waiter_output(config_id: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      waiter_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWaiterResult]:
+    """
+    Gets information about a single waiter.
+    """
+    ...

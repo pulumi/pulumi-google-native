@@ -144,9 +144,7 @@ func (i *TargetPool) ToTargetPoolOutputWithContext(ctx context.Context) TargetPo
 	return pulumi.ToOutputWithContext(ctx, i).(TargetPoolOutput)
 }
 
-type TargetPoolOutput struct {
-	*pulumi.OutputState
-}
+type TargetPoolOutput struct{ *pulumi.OutputState }
 
 func (TargetPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetPool)(nil))

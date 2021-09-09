@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// NotificationConfig is the configuration of notifications.
+    /// </summary>
     [OutputType]
     public sealed class NotificationConfigResponse
     {

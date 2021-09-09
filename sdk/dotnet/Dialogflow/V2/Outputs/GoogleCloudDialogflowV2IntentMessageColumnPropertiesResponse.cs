@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// Column properties for TableCard.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse
     {

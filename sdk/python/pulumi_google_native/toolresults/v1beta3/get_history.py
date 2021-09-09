@@ -12,6 +12,7 @@ __all__ = [
     'GetHistoryResult',
     'AwaitableGetHistoryResult',
     'get_history',
+    'get_history_output',
 ]
 
 @pulumi.output_type
@@ -95,3 +96,13 @@ def get_history(history_id: Optional[str] = None,
         history_id=__ret__.history_id,
         name=__ret__.name,
         test_platform=__ret__.test_platform)
+
+
+@_utilities.lift_output_func(get_history)
+def get_history_output(history_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHistoryResult]:
+    """
+    Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History does not exist
+    """
+    ...

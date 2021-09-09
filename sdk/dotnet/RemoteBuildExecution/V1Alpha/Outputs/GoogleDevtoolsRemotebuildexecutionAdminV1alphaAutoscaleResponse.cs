@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// Autoscale defines the autoscaling policy of a worker pool.
+    /// </summary>
     [OutputType]
     public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse
     {

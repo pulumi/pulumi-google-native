@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,4 +55,110 @@ type LookupCryptoKeyVersionResult struct {
 	ProtectionLevel string `pulumi:"protectionLevel"`
 	// The current state of the CryptoKeyVersion.
 	State string `pulumi:"state"`
+}
+
+func LookupCryptoKeyVersionOutput(ctx *pulumi.Context, args LookupCryptoKeyVersionOutputArgs, opts ...pulumi.InvokeOption) LookupCryptoKeyVersionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupCryptoKeyVersionResult, error) {
+			args := v.(LookupCryptoKeyVersionArgs)
+			r, err := LookupCryptoKeyVersion(ctx, &args, opts...)
+			return *r, err
+		}).(LookupCryptoKeyVersionResultOutput)
+}
+
+type LookupCryptoKeyVersionOutputArgs struct {
+	CryptoKeyId        pulumi.StringInput    `pulumi:"cryptoKeyId"`
+	CryptoKeyVersionId pulumi.StringInput    `pulumi:"cryptoKeyVersionId"`
+	KeyRingId          pulumi.StringInput    `pulumi:"keyRingId"`
+	Location           pulumi.StringInput    `pulumi:"location"`
+	Project            pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupCryptoKeyVersionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCryptoKeyVersionArgs)(nil)).Elem()
+}
+
+type LookupCryptoKeyVersionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCryptoKeyVersionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCryptoKeyVersionResult)(nil)).Elem()
+}
+
+func (o LookupCryptoKeyVersionResultOutput) ToLookupCryptoKeyVersionResultOutput() LookupCryptoKeyVersionResultOutput {
+	return o
+}
+
+func (o LookupCryptoKeyVersionResultOutput) ToLookupCryptoKeyVersionResultOutputWithContext(ctx context.Context) LookupCryptoKeyVersionResultOutput {
+	return o
+}
+
+// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+func (o LookupCryptoKeyVersionResultOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
+func (o LookupCryptoKeyVersionResultOutput) Attestation() KeyOperationAttestationResponseOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) KeyOperationAttestationResponse { return v.Attestation }).(KeyOperationAttestationResponseOutput)
+}
+
+// The time at which this CryptoKeyVersion was created.
+func (o LookupCryptoKeyVersionResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
+func (o LookupCryptoKeyVersionResultOutput) DestroyEventTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.DestroyEventTime }).(pulumi.StringOutput)
+}
+
+// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
+func (o LookupCryptoKeyVersionResultOutput) DestroyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.DestroyTime }).(pulumi.StringOutput)
+}
+
+// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+func (o LookupCryptoKeyVersionResultOutput) ExternalProtectionLevelOptions() ExternalProtectionLevelOptionsResponseOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) ExternalProtectionLevelOptionsResponse {
+		return v.ExternalProtectionLevelOptions
+	}).(ExternalProtectionLevelOptionsResponseOutput)
+}
+
+// The time this CryptoKeyVersion's key material was generated.
+func (o LookupCryptoKeyVersionResultOutput) GenerateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.GenerateTime }).(pulumi.StringOutput)
+}
+
+// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+func (o LookupCryptoKeyVersionResultOutput) ImportFailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.ImportFailureReason }).(pulumi.StringOutput)
+}
+
+// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+func (o LookupCryptoKeyVersionResultOutput) ImportJob() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.ImportJob }).(pulumi.StringOutput)
+}
+
+// The time at which this CryptoKeyVersion's key material was imported.
+func (o LookupCryptoKeyVersionResultOutput) ImportTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.ImportTime }).(pulumi.StringOutput)
+}
+
+// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
+func (o LookupCryptoKeyVersionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
+func (o LookupCryptoKeyVersionResultOutput) ProtectionLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.ProtectionLevel }).(pulumi.StringOutput)
+}
+
+// The current state of the CryptoKeyVersion.
+func (o LookupCryptoKeyVersionResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCryptoKeyVersionResultOutput{})
 }

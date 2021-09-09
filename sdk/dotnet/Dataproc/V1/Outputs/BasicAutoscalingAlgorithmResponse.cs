@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Basic algorithm for autoscaling.
+    /// </summary>
     [OutputType]
     public sealed class BasicAutoscalingAlgorithmResponse
     {

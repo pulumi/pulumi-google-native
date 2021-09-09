@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AccessContextManager.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
+    /// </summary>
     [OutputType]
     public sealed class BasicLevelResponse
     {

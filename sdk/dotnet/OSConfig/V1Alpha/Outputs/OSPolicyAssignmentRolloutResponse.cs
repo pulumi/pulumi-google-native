@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// Message to configure the rollout at the zonal level for the OS policy assignment.
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyAssignmentRolloutResponse
     {

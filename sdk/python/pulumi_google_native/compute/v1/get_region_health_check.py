@@ -13,6 +13,7 @@ __all__ = [
     'GetRegionHealthCheckResult',
     'AwaitableGetRegionHealthCheckResult',
     'get_region_health_check',
+    'get_region_health_check_output',
 ]
 
 @pulumi.output_type
@@ -262,3 +263,14 @@ def get_region_health_check(health_check: Optional[str] = None,
         timeout_sec=__ret__.timeout_sec,
         type=__ret__.type,
         unhealthy_threshold=__ret__.unhealthy_threshold)
+
+
+@_utilities.lift_output_func(get_region_health_check)
+def get_region_health_check_output(health_check: Optional[pulumi.Input[str]] = None,
+                                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                                   region: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionHealthCheckResult]:
+    """
+    Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
+    """
+    ...

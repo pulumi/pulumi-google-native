@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Machine resources for a version.
+    /// </summary>
     [OutputType]
     public sealed class ResourcesResponse
     {

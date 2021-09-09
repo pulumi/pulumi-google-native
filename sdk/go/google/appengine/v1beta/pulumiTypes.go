@@ -122,7 +122,7 @@ func (o ApiConfigHandlerOutput) ToApiConfigHandlerPtrOutput() ApiConfigHandlerPt
 }
 
 func (o ApiConfigHandlerOutput) ToApiConfigHandlerPtrOutputWithContext(ctx context.Context) ApiConfigHandlerPtrOutput {
-	return o.ApplyT(func(v ApiConfigHandler) *ApiConfigHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfigHandler) *ApiConfigHandler {
 		return &v
 	}).(ApiConfigHandlerPtrOutput)
 }
@@ -167,7 +167,13 @@ func (o ApiConfigHandlerPtrOutput) ToApiConfigHandlerPtrOutputWithContext(ctx co
 }
 
 func (o ApiConfigHandlerPtrOutput) Elem() ApiConfigHandlerOutput {
-	return o.ApplyT(func(v *ApiConfigHandler) ApiConfigHandler { return *v }).(ApiConfigHandlerOutput)
+	return o.ApplyT(func(v *ApiConfigHandler) ApiConfigHandler {
+		if v != nil {
+			return *v
+		}
+		var ret ApiConfigHandler
+		return ret
+	}).(ApiConfigHandlerOutput)
 }
 
 // Action to take when users access resources that require authentication. Defaults to redirect.
@@ -332,7 +338,7 @@ func (o ApiConfigHandlerResponseOutput) ToApiConfigHandlerResponsePtrOutput() Ap
 }
 
 func (o ApiConfigHandlerResponseOutput) ToApiConfigHandlerResponsePtrOutputWithContext(ctx context.Context) ApiConfigHandlerResponsePtrOutput {
-	return o.ApplyT(func(v ApiConfigHandlerResponse) *ApiConfigHandlerResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfigHandlerResponse) *ApiConfigHandlerResponse {
 		return &v
 	}).(ApiConfigHandlerResponsePtrOutput)
 }
@@ -377,7 +383,13 @@ func (o ApiConfigHandlerResponsePtrOutput) ToApiConfigHandlerResponsePtrOutputWi
 }
 
 func (o ApiConfigHandlerResponsePtrOutput) Elem() ApiConfigHandlerResponseOutput {
-	return o.ApplyT(func(v *ApiConfigHandlerResponse) ApiConfigHandlerResponse { return *v }).(ApiConfigHandlerResponseOutput)
+	return o.ApplyT(func(v *ApiConfigHandlerResponse) ApiConfigHandlerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApiConfigHandlerResponse
+		return ret
+	}).(ApiConfigHandlerResponseOutput)
 }
 
 // Action to take when users access resources that require authentication. Defaults to redirect.
@@ -526,7 +538,7 @@ func (o ApiEndpointHandlerOutput) ToApiEndpointHandlerPtrOutput() ApiEndpointHan
 }
 
 func (o ApiEndpointHandlerOutput) ToApiEndpointHandlerPtrOutputWithContext(ctx context.Context) ApiEndpointHandlerPtrOutput {
-	return o.ApplyT(func(v ApiEndpointHandler) *ApiEndpointHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiEndpointHandler) *ApiEndpointHandler {
 		return &v
 	}).(ApiEndpointHandlerPtrOutput)
 }
@@ -551,7 +563,13 @@ func (o ApiEndpointHandlerPtrOutput) ToApiEndpointHandlerPtrOutputWithContext(ct
 }
 
 func (o ApiEndpointHandlerPtrOutput) Elem() ApiEndpointHandlerOutput {
-	return o.ApplyT(func(v *ApiEndpointHandler) ApiEndpointHandler { return *v }).(ApiEndpointHandlerOutput)
+	return o.ApplyT(func(v *ApiEndpointHandler) ApiEndpointHandler {
+		if v != nil {
+			return *v
+		}
+		var ret ApiEndpointHandler
+		return ret
+	}).(ApiEndpointHandlerOutput)
 }
 
 // Path to the script from the application root directory.
@@ -767,7 +785,7 @@ func (o AutomaticScalingOutput) ToAutomaticScalingPtrOutput() AutomaticScalingPt
 }
 
 func (o AutomaticScalingOutput) ToAutomaticScalingPtrOutputWithContext(ctx context.Context) AutomaticScalingPtrOutput {
-	return o.ApplyT(func(v AutomaticScaling) *AutomaticScaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomaticScaling) *AutomaticScaling {
 		return &v
 	}).(AutomaticScalingPtrOutput)
 }
@@ -857,7 +875,13 @@ func (o AutomaticScalingPtrOutput) ToAutomaticScalingPtrOutputWithContext(ctx co
 }
 
 func (o AutomaticScalingPtrOutput) Elem() AutomaticScalingOutput {
-	return o.ApplyT(func(v *AutomaticScaling) AutomaticScaling { return *v }).(AutomaticScalingOutput)
+	return o.ApplyT(func(v *AutomaticScaling) AutomaticScaling {
+		if v != nil {
+			return *v
+		}
+		var ret AutomaticScaling
+		return ret
+	}).(AutomaticScalingOutput)
 }
 
 // The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment.
@@ -1148,7 +1172,7 @@ func (o AutomaticScalingResponseOutput) ToAutomaticScalingResponsePtrOutput() Au
 }
 
 func (o AutomaticScalingResponseOutput) ToAutomaticScalingResponsePtrOutputWithContext(ctx context.Context) AutomaticScalingResponsePtrOutput {
-	return o.ApplyT(func(v AutomaticScalingResponse) *AutomaticScalingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomaticScalingResponse) *AutomaticScalingResponse {
 		return &v
 	}).(AutomaticScalingResponsePtrOutput)
 }
@@ -1238,7 +1262,13 @@ func (o AutomaticScalingResponsePtrOutput) ToAutomaticScalingResponsePtrOutputWi
 }
 
 func (o AutomaticScalingResponsePtrOutput) Elem() AutomaticScalingResponseOutput {
-	return o.ApplyT(func(v *AutomaticScalingResponse) AutomaticScalingResponse { return *v }).(AutomaticScalingResponseOutput)
+	return o.ApplyT(func(v *AutomaticScalingResponse) AutomaticScalingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutomaticScalingResponse
+		return ret
+	}).(AutomaticScalingResponseOutput)
 }
 
 // The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment.
@@ -1481,7 +1511,7 @@ func (o BasicScalingOutput) ToBasicScalingPtrOutput() BasicScalingPtrOutput {
 }
 
 func (o BasicScalingOutput) ToBasicScalingPtrOutputWithContext(ctx context.Context) BasicScalingPtrOutput {
-	return o.ApplyT(func(v BasicScaling) *BasicScaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicScaling) *BasicScaling {
 		return &v
 	}).(BasicScalingPtrOutput)
 }
@@ -1511,7 +1541,13 @@ func (o BasicScalingPtrOutput) ToBasicScalingPtrOutputWithContext(ctx context.Co
 }
 
 func (o BasicScalingPtrOutput) Elem() BasicScalingOutput {
-	return o.ApplyT(func(v *BasicScaling) BasicScaling { return *v }).(BasicScalingOutput)
+	return o.ApplyT(func(v *BasicScaling) BasicScaling {
+		if v != nil {
+			return *v
+		}
+		var ret BasicScaling
+		return ret
+	}).(BasicScalingOutput)
 }
 
 // Duration of time after the last request that an instance must wait before the instance is shut down.
@@ -1634,7 +1670,7 @@ func (o BasicScalingResponseOutput) ToBasicScalingResponsePtrOutput() BasicScali
 }
 
 func (o BasicScalingResponseOutput) ToBasicScalingResponsePtrOutputWithContext(ctx context.Context) BasicScalingResponsePtrOutput {
-	return o.ApplyT(func(v BasicScalingResponse) *BasicScalingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicScalingResponse) *BasicScalingResponse {
 		return &v
 	}).(BasicScalingResponsePtrOutput)
 }
@@ -1664,7 +1700,13 @@ func (o BasicScalingResponsePtrOutput) ToBasicScalingResponsePtrOutputWithContex
 }
 
 func (o BasicScalingResponsePtrOutput) Elem() BasicScalingResponseOutput {
-	return o.ApplyT(func(v *BasicScalingResponse) BasicScalingResponse { return *v }).(BasicScalingResponseOutput)
+	return o.ApplyT(func(v *BasicScalingResponse) BasicScalingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BasicScalingResponse
+		return ret
+	}).(BasicScalingResponseOutput)
 }
 
 // Duration of time after the last request that an instance must wait before the instance is shut down.
@@ -1783,7 +1825,7 @@ func (o BuildInfoOutput) ToBuildInfoPtrOutput() BuildInfoPtrOutput {
 }
 
 func (o BuildInfoOutput) ToBuildInfoPtrOutputWithContext(ctx context.Context) BuildInfoPtrOutput {
-	return o.ApplyT(func(v BuildInfo) *BuildInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildInfo) *BuildInfo {
 		return &v
 	}).(BuildInfoPtrOutput)
 }
@@ -1808,7 +1850,13 @@ func (o BuildInfoPtrOutput) ToBuildInfoPtrOutputWithContext(ctx context.Context)
 }
 
 func (o BuildInfoPtrOutput) Elem() BuildInfoOutput {
-	return o.ApplyT(func(v *BuildInfo) BuildInfo { return *v }).(BuildInfoOutput)
+	return o.ApplyT(func(v *BuildInfo) BuildInfo {
+		if v != nil {
+			return *v
+		}
+		var ret BuildInfo
+		return ret
+	}).(BuildInfoOutput)
 }
 
 // The Google Cloud Build id. Example: "f966068f-08b2-42c8-bdfe-74137dff2bf9"
@@ -1917,7 +1965,7 @@ func (o BuildInfoResponseOutput) ToBuildInfoResponsePtrOutput() BuildInfoRespons
 }
 
 func (o BuildInfoResponseOutput) ToBuildInfoResponsePtrOutputWithContext(ctx context.Context) BuildInfoResponsePtrOutput {
-	return o.ApplyT(func(v BuildInfoResponse) *BuildInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildInfoResponse) *BuildInfoResponse {
 		return &v
 	}).(BuildInfoResponsePtrOutput)
 }
@@ -1942,7 +1990,13 @@ func (o BuildInfoResponsePtrOutput) ToBuildInfoResponsePtrOutputWithContext(ctx 
 }
 
 func (o BuildInfoResponsePtrOutput) Elem() BuildInfoResponseOutput {
-	return o.ApplyT(func(v *BuildInfoResponse) BuildInfoResponse { return *v }).(BuildInfoResponseOutput)
+	return o.ApplyT(func(v *BuildInfoResponse) BuildInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildInfoResponse
+		return ret
+	}).(BuildInfoResponseOutput)
 }
 
 // The Google Cloud Build id. Example: "f966068f-08b2-42c8-bdfe-74137dff2bf9"
@@ -2055,7 +2109,7 @@ func (o CertificateRawDataOutput) ToCertificateRawDataPtrOutput() CertificateRaw
 }
 
 func (o CertificateRawDataOutput) ToCertificateRawDataPtrOutputWithContext(ctx context.Context) CertificateRawDataPtrOutput {
-	return o.ApplyT(func(v CertificateRawData) *CertificateRawData {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateRawData) *CertificateRawData {
 		return &v
 	}).(CertificateRawDataPtrOutput)
 }
@@ -2085,7 +2139,13 @@ func (o CertificateRawDataPtrOutput) ToCertificateRawDataPtrOutputWithContext(ct
 }
 
 func (o CertificateRawDataPtrOutput) Elem() CertificateRawDataOutput {
-	return o.ApplyT(func(v *CertificateRawData) CertificateRawData { return *v }).(CertificateRawDataOutput)
+	return o.ApplyT(func(v *CertificateRawData) CertificateRawData {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateRawData
+		return ret
+	}).(CertificateRawDataOutput)
 }
 
 // Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
@@ -2208,7 +2268,7 @@ func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponsePtrOutput(
 }
 
 func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponsePtrOutputWithContext(ctx context.Context) CertificateRawDataResponsePtrOutput {
-	return o.ApplyT(func(v CertificateRawDataResponse) *CertificateRawDataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateRawDataResponse) *CertificateRawDataResponse {
 		return &v
 	}).(CertificateRawDataResponsePtrOutput)
 }
@@ -2238,7 +2298,13 @@ func (o CertificateRawDataResponsePtrOutput) ToCertificateRawDataResponsePtrOutp
 }
 
 func (o CertificateRawDataResponsePtrOutput) Elem() CertificateRawDataResponseOutput {
-	return o.ApplyT(func(v *CertificateRawDataResponse) CertificateRawDataResponse { return *v }).(CertificateRawDataResponseOutput)
+	return o.ApplyT(func(v *CertificateRawDataResponse) CertificateRawDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateRawDataResponse
+		return ret
+	}).(CertificateRawDataResponseOutput)
 }
 
 // Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
@@ -2361,7 +2427,7 @@ func (o CloudBuildOptionsOutput) ToCloudBuildOptionsPtrOutput() CloudBuildOption
 }
 
 func (o CloudBuildOptionsOutput) ToCloudBuildOptionsPtrOutputWithContext(ctx context.Context) CloudBuildOptionsPtrOutput {
-	return o.ApplyT(func(v CloudBuildOptions) *CloudBuildOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBuildOptions) *CloudBuildOptions {
 		return &v
 	}).(CloudBuildOptionsPtrOutput)
 }
@@ -2391,7 +2457,13 @@ func (o CloudBuildOptionsPtrOutput) ToCloudBuildOptionsPtrOutputWithContext(ctx 
 }
 
 func (o CloudBuildOptionsPtrOutput) Elem() CloudBuildOptionsOutput {
-	return o.ApplyT(func(v *CloudBuildOptions) CloudBuildOptions { return *v }).(CloudBuildOptionsOutput)
+	return o.ApplyT(func(v *CloudBuildOptions) CloudBuildOptions {
+		if v != nil {
+			return *v
+		}
+		var ret CloudBuildOptions
+		return ret
+	}).(CloudBuildOptionsOutput)
 }
 
 // Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
@@ -2514,7 +2586,7 @@ func (o CloudBuildOptionsResponseOutput) ToCloudBuildOptionsResponsePtrOutput() 
 }
 
 func (o CloudBuildOptionsResponseOutput) ToCloudBuildOptionsResponsePtrOutputWithContext(ctx context.Context) CloudBuildOptionsResponsePtrOutput {
-	return o.ApplyT(func(v CloudBuildOptionsResponse) *CloudBuildOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudBuildOptionsResponse) *CloudBuildOptionsResponse {
 		return &v
 	}).(CloudBuildOptionsResponsePtrOutput)
 }
@@ -2544,7 +2616,13 @@ func (o CloudBuildOptionsResponsePtrOutput) ToCloudBuildOptionsResponsePtrOutput
 }
 
 func (o CloudBuildOptionsResponsePtrOutput) Elem() CloudBuildOptionsResponseOutput {
-	return o.ApplyT(func(v *CloudBuildOptionsResponse) CloudBuildOptionsResponse { return *v }).(CloudBuildOptionsResponseOutput)
+	return o.ApplyT(func(v *CloudBuildOptionsResponse) CloudBuildOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CloudBuildOptionsResponse
+		return ret
+	}).(CloudBuildOptionsResponseOutput)
 }
 
 // Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
@@ -2663,7 +2741,7 @@ func (o ContainerInfoOutput) ToContainerInfoPtrOutput() ContainerInfoPtrOutput {
 }
 
 func (o ContainerInfoOutput) ToContainerInfoPtrOutputWithContext(ctx context.Context) ContainerInfoPtrOutput {
-	return o.ApplyT(func(v ContainerInfo) *ContainerInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerInfo) *ContainerInfo {
 		return &v
 	}).(ContainerInfoPtrOutput)
 }
@@ -2688,7 +2766,13 @@ func (o ContainerInfoPtrOutput) ToContainerInfoPtrOutputWithContext(ctx context.
 }
 
 func (o ContainerInfoPtrOutput) Elem() ContainerInfoOutput {
-	return o.ApplyT(func(v *ContainerInfo) ContainerInfo { return *v }).(ContainerInfoOutput)
+	return o.ApplyT(func(v *ContainerInfo) ContainerInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerInfo
+		return ret
+	}).(ContainerInfoOutput)
 }
 
 // URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
@@ -2797,7 +2881,7 @@ func (o ContainerInfoResponseOutput) ToContainerInfoResponsePtrOutput() Containe
 }
 
 func (o ContainerInfoResponseOutput) ToContainerInfoResponsePtrOutputWithContext(ctx context.Context) ContainerInfoResponsePtrOutput {
-	return o.ApplyT(func(v ContainerInfoResponse) *ContainerInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerInfoResponse) *ContainerInfoResponse {
 		return &v
 	}).(ContainerInfoResponsePtrOutput)
 }
@@ -2822,7 +2906,13 @@ func (o ContainerInfoResponsePtrOutput) ToContainerInfoResponsePtrOutputWithCont
 }
 
 func (o ContainerInfoResponsePtrOutput) Elem() ContainerInfoResponseOutput {
-	return o.ApplyT(func(v *ContainerInfoResponse) ContainerInfoResponse { return *v }).(ContainerInfoResponseOutput)
+	return o.ApplyT(func(v *ContainerInfoResponse) ContainerInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerInfoResponse
+		return ret
+	}).(ContainerInfoResponseOutput)
 }
 
 // URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
@@ -2935,7 +3025,7 @@ func (o CpuUtilizationOutput) ToCpuUtilizationPtrOutput() CpuUtilizationPtrOutpu
 }
 
 func (o CpuUtilizationOutput) ToCpuUtilizationPtrOutputWithContext(ctx context.Context) CpuUtilizationPtrOutput {
-	return o.ApplyT(func(v CpuUtilization) *CpuUtilization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CpuUtilization) *CpuUtilization {
 		return &v
 	}).(CpuUtilizationPtrOutput)
 }
@@ -2965,7 +3055,13 @@ func (o CpuUtilizationPtrOutput) ToCpuUtilizationPtrOutputWithContext(ctx contex
 }
 
 func (o CpuUtilizationPtrOutput) Elem() CpuUtilizationOutput {
-	return o.ApplyT(func(v *CpuUtilization) CpuUtilization { return *v }).(CpuUtilizationOutput)
+	return o.ApplyT(func(v *CpuUtilization) CpuUtilization {
+		if v != nil {
+			return *v
+		}
+		var ret CpuUtilization
+		return ret
+	}).(CpuUtilizationOutput)
 }
 
 // Period of time over which CPU utilization is calculated.
@@ -3088,7 +3184,7 @@ func (o CpuUtilizationResponseOutput) ToCpuUtilizationResponsePtrOutput() CpuUti
 }
 
 func (o CpuUtilizationResponseOutput) ToCpuUtilizationResponsePtrOutputWithContext(ctx context.Context) CpuUtilizationResponsePtrOutput {
-	return o.ApplyT(func(v CpuUtilizationResponse) *CpuUtilizationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CpuUtilizationResponse) *CpuUtilizationResponse {
 		return &v
 	}).(CpuUtilizationResponsePtrOutput)
 }
@@ -3118,7 +3214,13 @@ func (o CpuUtilizationResponsePtrOutput) ToCpuUtilizationResponsePtrOutputWithCo
 }
 
 func (o CpuUtilizationResponsePtrOutput) Elem() CpuUtilizationResponseOutput {
-	return o.ApplyT(func(v *CpuUtilizationResponse) CpuUtilizationResponse { return *v }).(CpuUtilizationResponseOutput)
+	return o.ApplyT(func(v *CpuUtilizationResponse) CpuUtilizationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CpuUtilizationResponse
+		return ret
+	}).(CpuUtilizationResponseOutput)
 }
 
 // Period of time over which CPU utilization is calculated.
@@ -3525,7 +3627,7 @@ func (o DeploymentOutput) ToDeploymentPtrOutput() DeploymentPtrOutput {
 }
 
 func (o DeploymentOutput) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
-	return o.ApplyT(func(v Deployment) *Deployment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Deployment) *Deployment {
 		return &v
 	}).(DeploymentPtrOutput)
 }
@@ -3570,7 +3672,13 @@ func (o DeploymentPtrOutput) ToDeploymentPtrOutputWithContext(ctx context.Contex
 }
 
 func (o DeploymentPtrOutput) Elem() DeploymentOutput {
-	return o.ApplyT(func(v *Deployment) Deployment { return *v }).(DeploymentOutput)
+	return o.ApplyT(func(v *Deployment) Deployment {
+		if v != nil {
+			return *v
+		}
+		var ret Deployment
+		return ret
+	}).(DeploymentOutput)
 }
 
 // Google Cloud Build build information. Only applicable for instances running in the App Engine flexible environment.
@@ -3735,7 +3843,7 @@ func (o DeploymentResponseOutput) ToDeploymentResponsePtrOutput() DeploymentResp
 }
 
 func (o DeploymentResponseOutput) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
-	return o.ApplyT(func(v DeploymentResponse) *DeploymentResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentResponse) *DeploymentResponse {
 		return &v
 	}).(DeploymentResponsePtrOutput)
 }
@@ -3780,7 +3888,13 @@ func (o DeploymentResponsePtrOutput) ToDeploymentResponsePtrOutputWithContext(ct
 }
 
 func (o DeploymentResponsePtrOutput) Elem() DeploymentResponseOutput {
-	return o.ApplyT(func(v *DeploymentResponse) DeploymentResponse { return *v }).(DeploymentResponseOutput)
+	return o.ApplyT(func(v *DeploymentResponse) DeploymentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentResponse
+		return ret
+	}).(DeploymentResponseOutput)
 }
 
 // Google Cloud Build build information. Only applicable for instances running in the App Engine flexible environment.
@@ -3941,7 +4055,7 @@ func (o DiskUtilizationOutput) ToDiskUtilizationPtrOutput() DiskUtilizationPtrOu
 }
 
 func (o DiskUtilizationOutput) ToDiskUtilizationPtrOutputWithContext(ctx context.Context) DiskUtilizationPtrOutput {
-	return o.ApplyT(func(v DiskUtilization) *DiskUtilization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskUtilization) *DiskUtilization {
 		return &v
 	}).(DiskUtilizationPtrOutput)
 }
@@ -3981,7 +4095,13 @@ func (o DiskUtilizationPtrOutput) ToDiskUtilizationPtrOutputWithContext(ctx cont
 }
 
 func (o DiskUtilizationPtrOutput) Elem() DiskUtilizationOutput {
-	return o.ApplyT(func(v *DiskUtilization) DiskUtilization { return *v }).(DiskUtilizationOutput)
+	return o.ApplyT(func(v *DiskUtilization) DiskUtilization {
+		if v != nil {
+			return *v
+		}
+		var ret DiskUtilization
+		return ret
+	}).(DiskUtilizationOutput)
 }
 
 // Target bytes read per second.
@@ -4132,7 +4252,7 @@ func (o DiskUtilizationResponseOutput) ToDiskUtilizationResponsePtrOutput() Disk
 }
 
 func (o DiskUtilizationResponseOutput) ToDiskUtilizationResponsePtrOutputWithContext(ctx context.Context) DiskUtilizationResponsePtrOutput {
-	return o.ApplyT(func(v DiskUtilizationResponse) *DiskUtilizationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskUtilizationResponse) *DiskUtilizationResponse {
 		return &v
 	}).(DiskUtilizationResponsePtrOutput)
 }
@@ -4172,7 +4292,13 @@ func (o DiskUtilizationResponsePtrOutput) ToDiskUtilizationResponsePtrOutputWith
 }
 
 func (o DiskUtilizationResponsePtrOutput) Elem() DiskUtilizationResponseOutput {
-	return o.ApplyT(func(v *DiskUtilizationResponse) DiskUtilizationResponse { return *v }).(DiskUtilizationResponseOutput)
+	return o.ApplyT(func(v *DiskUtilizationResponse) DiskUtilizationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiskUtilizationResponse
+		return ret
+	}).(DiskUtilizationResponseOutput)
 }
 
 // Target bytes read per second.
@@ -4323,7 +4449,7 @@ func (o EndpointsApiServiceOutput) ToEndpointsApiServicePtrOutput() EndpointsApi
 }
 
 func (o EndpointsApiServiceOutput) ToEndpointsApiServicePtrOutputWithContext(ctx context.Context) EndpointsApiServicePtrOutput {
-	return o.ApplyT(func(v EndpointsApiService) *EndpointsApiService {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointsApiService) *EndpointsApiService {
 		return &v
 	}).(EndpointsApiServicePtrOutput)
 }
@@ -4363,7 +4489,13 @@ func (o EndpointsApiServicePtrOutput) ToEndpointsApiServicePtrOutputWithContext(
 }
 
 func (o EndpointsApiServicePtrOutput) Elem() EndpointsApiServiceOutput {
-	return o.ApplyT(func(v *EndpointsApiService) EndpointsApiService { return *v }).(EndpointsApiServiceOutput)
+	return o.ApplyT(func(v *EndpointsApiService) EndpointsApiService {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointsApiService
+		return ret
+	}).(EndpointsApiServiceOutput)
 }
 
 // Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
@@ -4514,7 +4646,7 @@ func (o EndpointsApiServiceResponseOutput) ToEndpointsApiServiceResponsePtrOutpu
 }
 
 func (o EndpointsApiServiceResponseOutput) ToEndpointsApiServiceResponsePtrOutputWithContext(ctx context.Context) EndpointsApiServiceResponsePtrOutput {
-	return o.ApplyT(func(v EndpointsApiServiceResponse) *EndpointsApiServiceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointsApiServiceResponse) *EndpointsApiServiceResponse {
 		return &v
 	}).(EndpointsApiServiceResponsePtrOutput)
 }
@@ -4554,7 +4686,13 @@ func (o EndpointsApiServiceResponsePtrOutput) ToEndpointsApiServiceResponsePtrOu
 }
 
 func (o EndpointsApiServiceResponsePtrOutput) Elem() EndpointsApiServiceResponseOutput {
-	return o.ApplyT(func(v *EndpointsApiServiceResponse) EndpointsApiServiceResponse { return *v }).(EndpointsApiServiceResponseOutput)
+	return o.ApplyT(func(v *EndpointsApiServiceResponse) EndpointsApiServiceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointsApiServiceResponse
+		return ret
+	}).(EndpointsApiServiceResponseOutput)
 }
 
 // Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
@@ -4693,7 +4831,7 @@ func (o EntrypointOutput) ToEntrypointPtrOutput() EntrypointPtrOutput {
 }
 
 func (o EntrypointOutput) ToEntrypointPtrOutputWithContext(ctx context.Context) EntrypointPtrOutput {
-	return o.ApplyT(func(v Entrypoint) *Entrypoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Entrypoint) *Entrypoint {
 		return &v
 	}).(EntrypointPtrOutput)
 }
@@ -4718,7 +4856,13 @@ func (o EntrypointPtrOutput) ToEntrypointPtrOutputWithContext(ctx context.Contex
 }
 
 func (o EntrypointPtrOutput) Elem() EntrypointOutput {
-	return o.ApplyT(func(v *Entrypoint) Entrypoint { return *v }).(EntrypointOutput)
+	return o.ApplyT(func(v *Entrypoint) Entrypoint {
+		if v != nil {
+			return *v
+		}
+		var ret Entrypoint
+		return ret
+	}).(EntrypointOutput)
 }
 
 // The format should be a shell command that can be fed to bash -c.
@@ -4827,7 +4971,7 @@ func (o EntrypointResponseOutput) ToEntrypointResponsePtrOutput() EntrypointResp
 }
 
 func (o EntrypointResponseOutput) ToEntrypointResponsePtrOutputWithContext(ctx context.Context) EntrypointResponsePtrOutput {
-	return o.ApplyT(func(v EntrypointResponse) *EntrypointResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntrypointResponse) *EntrypointResponse {
 		return &v
 	}).(EntrypointResponsePtrOutput)
 }
@@ -4852,7 +4996,13 @@ func (o EntrypointResponsePtrOutput) ToEntrypointResponsePtrOutputWithContext(ct
 }
 
 func (o EntrypointResponsePtrOutput) Elem() EntrypointResponseOutput {
-	return o.ApplyT(func(v *EntrypointResponse) EntrypointResponse { return *v }).(EntrypointResponseOutput)
+	return o.ApplyT(func(v *EntrypointResponse) EntrypointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EntrypointResponse
+		return ret
+	}).(EntrypointResponseOutput)
 }
 
 // The format should be a shell command that can be fed to bash -c.
@@ -5201,7 +5351,7 @@ func (o FeatureSettingsOutput) ToFeatureSettingsPtrOutput() FeatureSettingsPtrOu
 }
 
 func (o FeatureSettingsOutput) ToFeatureSettingsPtrOutputWithContext(ctx context.Context) FeatureSettingsPtrOutput {
-	return o.ApplyT(func(v FeatureSettings) *FeatureSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSettings) *FeatureSettings {
 		return &v
 	}).(FeatureSettingsPtrOutput)
 }
@@ -5231,7 +5381,13 @@ func (o FeatureSettingsPtrOutput) ToFeatureSettingsPtrOutputWithContext(ctx cont
 }
 
 func (o FeatureSettingsPtrOutput) Elem() FeatureSettingsOutput {
-	return o.ApplyT(func(v *FeatureSettings) FeatureSettings { return *v }).(FeatureSettingsOutput)
+	return o.ApplyT(func(v *FeatureSettings) FeatureSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSettings
+		return ret
+	}).(FeatureSettingsOutput)
 }
 
 // Boolean value indicating if split health checks should be used instead of the legacy health checks. At an app.yaml level, this means defaulting to 'readiness_check' and 'liveness_check' values instead of 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is always true, this setting can be removed.
@@ -5354,7 +5510,7 @@ func (o FeatureSettingsResponseOutput) ToFeatureSettingsResponsePtrOutput() Feat
 }
 
 func (o FeatureSettingsResponseOutput) ToFeatureSettingsResponsePtrOutputWithContext(ctx context.Context) FeatureSettingsResponsePtrOutput {
-	return o.ApplyT(func(v FeatureSettingsResponse) *FeatureSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSettingsResponse) *FeatureSettingsResponse {
 		return &v
 	}).(FeatureSettingsResponsePtrOutput)
 }
@@ -5384,7 +5540,13 @@ func (o FeatureSettingsResponsePtrOutput) ToFeatureSettingsResponsePtrOutputWith
 }
 
 func (o FeatureSettingsResponsePtrOutput) Elem() FeatureSettingsResponseOutput {
-	return o.ApplyT(func(v *FeatureSettingsResponse) FeatureSettingsResponse { return *v }).(FeatureSettingsResponseOutput)
+	return o.ApplyT(func(v *FeatureSettingsResponse) FeatureSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSettingsResponse
+		return ret
+	}).(FeatureSettingsResponseOutput)
 }
 
 // Boolean value indicating if split health checks should be used instead of the legacy health checks. At an app.yaml level, this means defaulting to 'readiness_check' and 'liveness_check' values instead of 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is always true, this setting can be removed.
@@ -5527,7 +5689,7 @@ func (o HealthCheckOutput) ToHealthCheckPtrOutput() HealthCheckPtrOutput {
 }
 
 func (o HealthCheckOutput) ToHealthCheckPtrOutputWithContext(ctx context.Context) HealthCheckPtrOutput {
-	return o.ApplyT(func(v HealthCheck) *HealthCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HealthCheck) *HealthCheck {
 		return &v
 	}).(HealthCheckPtrOutput)
 }
@@ -5582,7 +5744,13 @@ func (o HealthCheckPtrOutput) ToHealthCheckPtrOutputWithContext(ctx context.Cont
 }
 
 func (o HealthCheckPtrOutput) Elem() HealthCheckOutput {
-	return o.ApplyT(func(v *HealthCheck) HealthCheck { return *v }).(HealthCheckOutput)
+	return o.ApplyT(func(v *HealthCheck) HealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret HealthCheck
+		return ret
+	}).(HealthCheckOutput)
 }
 
 // Interval between health checks.
@@ -5775,7 +5943,7 @@ func (o HealthCheckResponseOutput) ToHealthCheckResponsePtrOutput() HealthCheckR
 }
 
 func (o HealthCheckResponseOutput) ToHealthCheckResponsePtrOutputWithContext(ctx context.Context) HealthCheckResponsePtrOutput {
-	return o.ApplyT(func(v HealthCheckResponse) *HealthCheckResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HealthCheckResponse) *HealthCheckResponse {
 		return &v
 	}).(HealthCheckResponsePtrOutput)
 }
@@ -5830,7 +5998,13 @@ func (o HealthCheckResponsePtrOutput) ToHealthCheckResponsePtrOutputWithContext(
 }
 
 func (o HealthCheckResponsePtrOutput) Elem() HealthCheckResponseOutput {
-	return o.ApplyT(func(v *HealthCheckResponse) HealthCheckResponse { return *v }).(HealthCheckResponseOutput)
+	return o.ApplyT(func(v *HealthCheckResponse) HealthCheckResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HealthCheckResponse
+		return ret
+	}).(HealthCheckResponseOutput)
 }
 
 // Interval between health checks.
@@ -6007,7 +6181,7 @@ func (o IdentityAwareProxyOutput) ToIdentityAwareProxyPtrOutput() IdentityAwareP
 }
 
 func (o IdentityAwareProxyOutput) ToIdentityAwareProxyPtrOutputWithContext(ctx context.Context) IdentityAwareProxyPtrOutput {
-	return o.ApplyT(func(v IdentityAwareProxy) *IdentityAwareProxy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityAwareProxy) *IdentityAwareProxy {
 		return &v
 	}).(IdentityAwareProxyPtrOutput)
 }
@@ -6042,7 +6216,13 @@ func (o IdentityAwareProxyPtrOutput) ToIdentityAwareProxyPtrOutputWithContext(ct
 }
 
 func (o IdentityAwareProxyPtrOutput) Elem() IdentityAwareProxyOutput {
-	return o.ApplyT(func(v *IdentityAwareProxy) IdentityAwareProxy { return *v }).(IdentityAwareProxyOutput)
+	return o.ApplyT(func(v *IdentityAwareProxy) IdentityAwareProxy {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityAwareProxy
+		return ret
+	}).(IdentityAwareProxyOutput)
 }
 
 // Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
@@ -6183,7 +6363,7 @@ func (o IdentityAwareProxyResponseOutput) ToIdentityAwareProxyResponsePtrOutput(
 }
 
 func (o IdentityAwareProxyResponseOutput) ToIdentityAwareProxyResponsePtrOutputWithContext(ctx context.Context) IdentityAwareProxyResponsePtrOutput {
-	return o.ApplyT(func(v IdentityAwareProxyResponse) *IdentityAwareProxyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityAwareProxyResponse) *IdentityAwareProxyResponse {
 		return &v
 	}).(IdentityAwareProxyResponsePtrOutput)
 }
@@ -6223,7 +6403,13 @@ func (o IdentityAwareProxyResponsePtrOutput) ToIdentityAwareProxyResponsePtrOutp
 }
 
 func (o IdentityAwareProxyResponsePtrOutput) Elem() IdentityAwareProxyResponseOutput {
-	return o.ApplyT(func(v *IdentityAwareProxyResponse) IdentityAwareProxyResponse { return *v }).(IdentityAwareProxyResponseOutput)
+	return o.ApplyT(func(v *IdentityAwareProxyResponse) IdentityAwareProxyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityAwareProxyResponse
+		return ret
+	}).(IdentityAwareProxyResponseOutput)
 }
 
 // Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
@@ -6604,7 +6790,7 @@ func (o LivenessCheckOutput) ToLivenessCheckPtrOutput() LivenessCheckPtrOutput {
 }
 
 func (o LivenessCheckOutput) ToLivenessCheckPtrOutputWithContext(ctx context.Context) LivenessCheckPtrOutput {
-	return o.ApplyT(func(v LivenessCheck) *LivenessCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LivenessCheck) *LivenessCheck {
 		return &v
 	}).(LivenessCheckPtrOutput)
 }
@@ -6659,7 +6845,13 @@ func (o LivenessCheckPtrOutput) ToLivenessCheckPtrOutputWithContext(ctx context.
 }
 
 func (o LivenessCheckPtrOutput) Elem() LivenessCheckOutput {
-	return o.ApplyT(func(v *LivenessCheck) LivenessCheck { return *v }).(LivenessCheckOutput)
+	return o.ApplyT(func(v *LivenessCheck) LivenessCheck {
+		if v != nil {
+			return *v
+		}
+		var ret LivenessCheck
+		return ret
+	}).(LivenessCheckOutput)
 }
 
 // Interval between health checks.
@@ -6852,7 +7044,7 @@ func (o LivenessCheckResponseOutput) ToLivenessCheckResponsePtrOutput() Liveness
 }
 
 func (o LivenessCheckResponseOutput) ToLivenessCheckResponsePtrOutputWithContext(ctx context.Context) LivenessCheckResponsePtrOutput {
-	return o.ApplyT(func(v LivenessCheckResponse) *LivenessCheckResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LivenessCheckResponse) *LivenessCheckResponse {
 		return &v
 	}).(LivenessCheckResponsePtrOutput)
 }
@@ -6907,7 +7099,13 @@ func (o LivenessCheckResponsePtrOutput) ToLivenessCheckResponsePtrOutputWithCont
 }
 
 func (o LivenessCheckResponsePtrOutput) Elem() LivenessCheckResponseOutput {
-	return o.ApplyT(func(v *LivenessCheckResponse) LivenessCheckResponse { return *v }).(LivenessCheckResponseOutput)
+	return o.ApplyT(func(v *LivenessCheckResponse) LivenessCheckResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LivenessCheckResponse
+		return ret
+	}).(LivenessCheckResponseOutput)
 }
 
 // Interval between health checks.
@@ -7080,7 +7278,7 @@ func (o ManagedCertificateResponseOutput) ToManagedCertificateResponsePtrOutput(
 }
 
 func (o ManagedCertificateResponseOutput) ToManagedCertificateResponsePtrOutputWithContext(ctx context.Context) ManagedCertificateResponsePtrOutput {
-	return o.ApplyT(func(v ManagedCertificateResponse) *ManagedCertificateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedCertificateResponse) *ManagedCertificateResponse {
 		return &v
 	}).(ManagedCertificateResponsePtrOutput)
 }
@@ -7110,7 +7308,13 @@ func (o ManagedCertificateResponsePtrOutput) ToManagedCertificateResponsePtrOutp
 }
 
 func (o ManagedCertificateResponsePtrOutput) Elem() ManagedCertificateResponseOutput {
-	return o.ApplyT(func(v *ManagedCertificateResponse) ManagedCertificateResponse { return *v }).(ManagedCertificateResponseOutput)
+	return o.ApplyT(func(v *ManagedCertificateResponse) ManagedCertificateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedCertificateResponse
+		return ret
+	}).(ManagedCertificateResponseOutput)
 }
 
 // Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
@@ -7229,7 +7433,7 @@ func (o ManualScalingOutput) ToManualScalingPtrOutput() ManualScalingPtrOutput {
 }
 
 func (o ManualScalingOutput) ToManualScalingPtrOutputWithContext(ctx context.Context) ManualScalingPtrOutput {
-	return o.ApplyT(func(v ManualScaling) *ManualScaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManualScaling) *ManualScaling {
 		return &v
 	}).(ManualScalingPtrOutput)
 }
@@ -7254,7 +7458,13 @@ func (o ManualScalingPtrOutput) ToManualScalingPtrOutputWithContext(ctx context.
 }
 
 func (o ManualScalingPtrOutput) Elem() ManualScalingOutput {
-	return o.ApplyT(func(v *ManualScaling) ManualScaling { return *v }).(ManualScalingOutput)
+	return o.ApplyT(func(v *ManualScaling) ManualScaling {
+		if v != nil {
+			return *v
+		}
+		var ret ManualScaling
+		return ret
+	}).(ManualScalingOutput)
 }
 
 // Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function.
@@ -7363,7 +7573,7 @@ func (o ManualScalingResponseOutput) ToManualScalingResponsePtrOutput() ManualSc
 }
 
 func (o ManualScalingResponseOutput) ToManualScalingResponsePtrOutputWithContext(ctx context.Context) ManualScalingResponsePtrOutput {
-	return o.ApplyT(func(v ManualScalingResponse) *ManualScalingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManualScalingResponse) *ManualScalingResponse {
 		return &v
 	}).(ManualScalingResponsePtrOutput)
 }
@@ -7388,7 +7598,13 @@ func (o ManualScalingResponsePtrOutput) ToManualScalingResponsePtrOutputWithCont
 }
 
 func (o ManualScalingResponsePtrOutput) Elem() ManualScalingResponseOutput {
-	return o.ApplyT(func(v *ManualScalingResponse) ManualScalingResponse { return *v }).(ManualScalingResponseOutput)
+	return o.ApplyT(func(v *ManualScalingResponse) ManualScalingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManualScalingResponse
+		return ret
+	}).(ManualScalingResponseOutput)
 }
 
 // Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function.
@@ -7517,7 +7733,7 @@ func (o NetworkOutput) ToNetworkPtrOutput() NetworkPtrOutput {
 }
 
 func (o NetworkOutput) ToNetworkPtrOutputWithContext(ctx context.Context) NetworkPtrOutput {
-	return o.ApplyT(func(v Network) *Network {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Network) *Network {
 		return &v
 	}).(NetworkPtrOutput)
 }
@@ -7567,7 +7783,13 @@ func (o NetworkPtrOutput) ToNetworkPtrOutputWithContext(ctx context.Context) Net
 }
 
 func (o NetworkPtrOutput) Elem() NetworkOutput {
-	return o.ApplyT(func(v *Network) Network { return *v }).(NetworkOutput)
+	return o.ApplyT(func(v *Network) Network {
+		if v != nil {
+			return *v
+		}
+		var ret Network
+		return ret
+	}).(NetworkOutput)
 }
 
 // List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment.
@@ -7746,7 +7968,7 @@ func (o NetworkResponseOutput) ToNetworkResponsePtrOutput() NetworkResponsePtrOu
 }
 
 func (o NetworkResponseOutput) ToNetworkResponsePtrOutputWithContext(ctx context.Context) NetworkResponsePtrOutput {
-	return o.ApplyT(func(v NetworkResponse) *NetworkResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkResponse) *NetworkResponse {
 		return &v
 	}).(NetworkResponsePtrOutput)
 }
@@ -7796,7 +8018,13 @@ func (o NetworkResponsePtrOutput) ToNetworkResponsePtrOutputWithContext(ctx cont
 }
 
 func (o NetworkResponsePtrOutput) Elem() NetworkResponseOutput {
-	return o.ApplyT(func(v *NetworkResponse) NetworkResponse { return *v }).(NetworkResponseOutput)
+	return o.ApplyT(func(v *NetworkResponse) NetworkResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkResponse
+		return ret
+	}).(NetworkResponseOutput)
 }
 
 // List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment.
@@ -7967,7 +8195,7 @@ func (o NetworkUtilizationOutput) ToNetworkUtilizationPtrOutput() NetworkUtiliza
 }
 
 func (o NetworkUtilizationOutput) ToNetworkUtilizationPtrOutputWithContext(ctx context.Context) NetworkUtilizationPtrOutput {
-	return o.ApplyT(func(v NetworkUtilization) *NetworkUtilization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkUtilization) *NetworkUtilization {
 		return &v
 	}).(NetworkUtilizationPtrOutput)
 }
@@ -8007,7 +8235,13 @@ func (o NetworkUtilizationPtrOutput) ToNetworkUtilizationPtrOutputWithContext(ct
 }
 
 func (o NetworkUtilizationPtrOutput) Elem() NetworkUtilizationOutput {
-	return o.ApplyT(func(v *NetworkUtilization) NetworkUtilization { return *v }).(NetworkUtilizationOutput)
+	return o.ApplyT(func(v *NetworkUtilization) NetworkUtilization {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkUtilization
+		return ret
+	}).(NetworkUtilizationOutput)
 }
 
 // Target bytes received per second.
@@ -8158,7 +8392,7 @@ func (o NetworkUtilizationResponseOutput) ToNetworkUtilizationResponsePtrOutput(
 }
 
 func (o NetworkUtilizationResponseOutput) ToNetworkUtilizationResponsePtrOutputWithContext(ctx context.Context) NetworkUtilizationResponsePtrOutput {
-	return o.ApplyT(func(v NetworkUtilizationResponse) *NetworkUtilizationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkUtilizationResponse) *NetworkUtilizationResponse {
 		return &v
 	}).(NetworkUtilizationResponsePtrOutput)
 }
@@ -8198,7 +8432,13 @@ func (o NetworkUtilizationResponsePtrOutput) ToNetworkUtilizationResponsePtrOutp
 }
 
 func (o NetworkUtilizationResponsePtrOutput) Elem() NetworkUtilizationResponseOutput {
-	return o.ApplyT(func(v *NetworkUtilizationResponse) NetworkUtilizationResponse { return *v }).(NetworkUtilizationResponseOutput)
+	return o.ApplyT(func(v *NetworkUtilizationResponse) NetworkUtilizationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkUtilizationResponse
+		return ret
+	}).(NetworkUtilizationResponseOutput)
 }
 
 // Target bytes received per second.
@@ -8361,7 +8601,7 @@ func (o ReadinessCheckOutput) ToReadinessCheckPtrOutput() ReadinessCheckPtrOutpu
 }
 
 func (o ReadinessCheckOutput) ToReadinessCheckPtrOutputWithContext(ctx context.Context) ReadinessCheckPtrOutput {
-	return o.ApplyT(func(v ReadinessCheck) *ReadinessCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReadinessCheck) *ReadinessCheck {
 		return &v
 	}).(ReadinessCheckPtrOutput)
 }
@@ -8416,7 +8656,13 @@ func (o ReadinessCheckPtrOutput) ToReadinessCheckPtrOutputWithContext(ctx contex
 }
 
 func (o ReadinessCheckPtrOutput) Elem() ReadinessCheckOutput {
-	return o.ApplyT(func(v *ReadinessCheck) ReadinessCheck { return *v }).(ReadinessCheckOutput)
+	return o.ApplyT(func(v *ReadinessCheck) ReadinessCheck {
+		if v != nil {
+			return *v
+		}
+		var ret ReadinessCheck
+		return ret
+	}).(ReadinessCheckOutput)
 }
 
 // A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
@@ -8609,7 +8855,7 @@ func (o ReadinessCheckResponseOutput) ToReadinessCheckResponsePtrOutput() Readin
 }
 
 func (o ReadinessCheckResponseOutput) ToReadinessCheckResponsePtrOutputWithContext(ctx context.Context) ReadinessCheckResponsePtrOutput {
-	return o.ApplyT(func(v ReadinessCheckResponse) *ReadinessCheckResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReadinessCheckResponse) *ReadinessCheckResponse {
 		return &v
 	}).(ReadinessCheckResponsePtrOutput)
 }
@@ -8664,7 +8910,13 @@ func (o ReadinessCheckResponsePtrOutput) ToReadinessCheckResponsePtrOutputWithCo
 }
 
 func (o ReadinessCheckResponsePtrOutput) Elem() ReadinessCheckResponseOutput {
-	return o.ApplyT(func(v *ReadinessCheckResponse) ReadinessCheckResponse { return *v }).(ReadinessCheckResponseOutput)
+	return o.ApplyT(func(v *ReadinessCheckResponse) ReadinessCheckResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReadinessCheckResponse
+		return ret
+	}).(ReadinessCheckResponseOutput)
 }
 
 // A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
@@ -8837,7 +9089,7 @@ func (o RequestUtilizationOutput) ToRequestUtilizationPtrOutput() RequestUtiliza
 }
 
 func (o RequestUtilizationOutput) ToRequestUtilizationPtrOutputWithContext(ctx context.Context) RequestUtilizationPtrOutput {
-	return o.ApplyT(func(v RequestUtilization) *RequestUtilization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RequestUtilization) *RequestUtilization {
 		return &v
 	}).(RequestUtilizationPtrOutput)
 }
@@ -8867,7 +9119,13 @@ func (o RequestUtilizationPtrOutput) ToRequestUtilizationPtrOutputWithContext(ct
 }
 
 func (o RequestUtilizationPtrOutput) Elem() RequestUtilizationOutput {
-	return o.ApplyT(func(v *RequestUtilization) RequestUtilization { return *v }).(RequestUtilizationOutput)
+	return o.ApplyT(func(v *RequestUtilization) RequestUtilization {
+		if v != nil {
+			return *v
+		}
+		var ret RequestUtilization
+		return ret
+	}).(RequestUtilizationOutput)
 }
 
 // Target number of concurrent requests.
@@ -8990,7 +9248,7 @@ func (o RequestUtilizationResponseOutput) ToRequestUtilizationResponsePtrOutput(
 }
 
 func (o RequestUtilizationResponseOutput) ToRequestUtilizationResponsePtrOutputWithContext(ctx context.Context) RequestUtilizationResponsePtrOutput {
-	return o.ApplyT(func(v RequestUtilizationResponse) *RequestUtilizationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RequestUtilizationResponse) *RequestUtilizationResponse {
 		return &v
 	}).(RequestUtilizationResponsePtrOutput)
 }
@@ -9020,7 +9278,13 @@ func (o RequestUtilizationResponsePtrOutput) ToRequestUtilizationResponsePtrOutp
 }
 
 func (o RequestUtilizationResponsePtrOutput) Elem() RequestUtilizationResponseOutput {
-	return o.ApplyT(func(v *RequestUtilizationResponse) RequestUtilizationResponse { return *v }).(RequestUtilizationResponseOutput)
+	return o.ApplyT(func(v *RequestUtilizationResponse) RequestUtilizationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RequestUtilizationResponse
+		return ret
+	}).(RequestUtilizationResponseOutput)
 }
 
 // Target number of concurrent requests.
@@ -9273,7 +9537,7 @@ func (o ResourcesOutput) ToResourcesPtrOutput() ResourcesPtrOutput {
 }
 
 func (o ResourcesOutput) ToResourcesPtrOutputWithContext(ctx context.Context) ResourcesPtrOutput {
-	return o.ApplyT(func(v Resources) *Resources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Resources) *Resources {
 		return &v
 	}).(ResourcesPtrOutput)
 }
@@ -9318,7 +9582,13 @@ func (o ResourcesPtrOutput) ToResourcesPtrOutputWithContext(ctx context.Context)
 }
 
 func (o ResourcesPtrOutput) Elem() ResourcesOutput {
-	return o.ApplyT(func(v *Resources) Resources { return *v }).(ResourcesOutput)
+	return o.ApplyT(func(v *Resources) Resources {
+		if v != nil {
+			return *v
+		}
+		var ret Resources
+		return ret
+	}).(ResourcesOutput)
 }
 
 // Number of CPU cores needed.
@@ -9483,7 +9753,7 @@ func (o ResourcesResponseOutput) ToResourcesResponsePtrOutput() ResourcesRespons
 }
 
 func (o ResourcesResponseOutput) ToResourcesResponsePtrOutputWithContext(ctx context.Context) ResourcesResponsePtrOutput {
-	return o.ApplyT(func(v ResourcesResponse) *ResourcesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcesResponse) *ResourcesResponse {
 		return &v
 	}).(ResourcesResponsePtrOutput)
 }
@@ -9528,7 +9798,13 @@ func (o ResourcesResponsePtrOutput) ToResourcesResponsePtrOutputWithContext(ctx 
 }
 
 func (o ResourcesResponsePtrOutput) Elem() ResourcesResponseOutput {
-	return o.ApplyT(func(v *ResourcesResponse) ResourcesResponse { return *v }).(ResourcesResponseOutput)
+	return o.ApplyT(func(v *ResourcesResponse) ResourcesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcesResponse
+		return ret
+	}).(ResourcesResponseOutput)
 }
 
 // Number of CPU cores needed.
@@ -9677,7 +9953,7 @@ func (o ScriptHandlerOutput) ToScriptHandlerPtrOutput() ScriptHandlerPtrOutput {
 }
 
 func (o ScriptHandlerOutput) ToScriptHandlerPtrOutputWithContext(ctx context.Context) ScriptHandlerPtrOutput {
-	return o.ApplyT(func(v ScriptHandler) *ScriptHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScriptHandler) *ScriptHandler {
 		return &v
 	}).(ScriptHandlerPtrOutput)
 }
@@ -9702,7 +9978,13 @@ func (o ScriptHandlerPtrOutput) ToScriptHandlerPtrOutputWithContext(ctx context.
 }
 
 func (o ScriptHandlerPtrOutput) Elem() ScriptHandlerOutput {
-	return o.ApplyT(func(v *ScriptHandler) ScriptHandler { return *v }).(ScriptHandlerOutput)
+	return o.ApplyT(func(v *ScriptHandler) ScriptHandler {
+		if v != nil {
+			return *v
+		}
+		var ret ScriptHandler
+		return ret
+	}).(ScriptHandlerOutput)
 }
 
 // Path to the script from the application root directory.
@@ -9870,7 +10152,7 @@ func (o SslSettingsOutput) ToSslSettingsPtrOutput() SslSettingsPtrOutput {
 }
 
 func (o SslSettingsOutput) ToSslSettingsPtrOutputWithContext(ctx context.Context) SslSettingsPtrOutput {
-	return o.ApplyT(func(v SslSettings) *SslSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslSettings) *SslSettings {
 		return &v
 	}).(SslSettingsPtrOutput)
 }
@@ -9900,7 +10182,13 @@ func (o SslSettingsPtrOutput) ToSslSettingsPtrOutputWithContext(ctx context.Cont
 }
 
 func (o SslSettingsPtrOutput) Elem() SslSettingsOutput {
-	return o.ApplyT(func(v *SslSettings) SslSettings { return *v }).(SslSettingsOutput)
+	return o.ApplyT(func(v *SslSettings) SslSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SslSettings
+		return ret
+	}).(SslSettingsOutput)
 }
 
 // ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
@@ -10027,7 +10315,7 @@ func (o SslSettingsResponseOutput) ToSslSettingsResponsePtrOutput() SslSettingsR
 }
 
 func (o SslSettingsResponseOutput) ToSslSettingsResponsePtrOutputWithContext(ctx context.Context) SslSettingsResponsePtrOutput {
-	return o.ApplyT(func(v SslSettingsResponse) *SslSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslSettingsResponse) *SslSettingsResponse {
 		return &v
 	}).(SslSettingsResponsePtrOutput)
 }
@@ -10062,7 +10350,13 @@ func (o SslSettingsResponsePtrOutput) ToSslSettingsResponsePtrOutputWithContext(
 }
 
 func (o SslSettingsResponsePtrOutput) Elem() SslSettingsResponseOutput {
-	return o.ApplyT(func(v *SslSettingsResponse) SslSettingsResponse { return *v }).(SslSettingsResponseOutput)
+	return o.ApplyT(func(v *SslSettingsResponse) SslSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SslSettingsResponse
+		return ret
+	}).(SslSettingsResponseOutput)
 }
 
 // ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
@@ -10203,7 +10497,7 @@ func (o StandardSchedulerSettingsOutput) ToStandardSchedulerSettingsPtrOutput() 
 }
 
 func (o StandardSchedulerSettingsOutput) ToStandardSchedulerSettingsPtrOutputWithContext(ctx context.Context) StandardSchedulerSettingsPtrOutput {
-	return o.ApplyT(func(v StandardSchedulerSettings) *StandardSchedulerSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardSchedulerSettings) *StandardSchedulerSettings {
 		return &v
 	}).(StandardSchedulerSettingsPtrOutput)
 }
@@ -10243,7 +10537,13 @@ func (o StandardSchedulerSettingsPtrOutput) ToStandardSchedulerSettingsPtrOutput
 }
 
 func (o StandardSchedulerSettingsPtrOutput) Elem() StandardSchedulerSettingsOutput {
-	return o.ApplyT(func(v *StandardSchedulerSettings) StandardSchedulerSettings { return *v }).(StandardSchedulerSettingsOutput)
+	return o.ApplyT(func(v *StandardSchedulerSettings) StandardSchedulerSettings {
+		if v != nil {
+			return *v
+		}
+		var ret StandardSchedulerSettings
+		return ret
+	}).(StandardSchedulerSettingsOutput)
 }
 
 // Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.
@@ -10394,7 +10694,7 @@ func (o StandardSchedulerSettingsResponseOutput) ToStandardSchedulerSettingsResp
 }
 
 func (o StandardSchedulerSettingsResponseOutput) ToStandardSchedulerSettingsResponsePtrOutputWithContext(ctx context.Context) StandardSchedulerSettingsResponsePtrOutput {
-	return o.ApplyT(func(v StandardSchedulerSettingsResponse) *StandardSchedulerSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardSchedulerSettingsResponse) *StandardSchedulerSettingsResponse {
 		return &v
 	}).(StandardSchedulerSettingsResponsePtrOutput)
 }
@@ -10434,7 +10734,13 @@ func (o StandardSchedulerSettingsResponsePtrOutput) ToStandardSchedulerSettingsR
 }
 
 func (o StandardSchedulerSettingsResponsePtrOutput) Elem() StandardSchedulerSettingsResponseOutput {
-	return o.ApplyT(func(v *StandardSchedulerSettingsResponse) StandardSchedulerSettingsResponse { return *v }).(StandardSchedulerSettingsResponseOutput)
+	return o.ApplyT(func(v *StandardSchedulerSettingsResponse) StandardSchedulerSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StandardSchedulerSettingsResponse
+		return ret
+	}).(StandardSchedulerSettingsResponseOutput)
 }
 
 // Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.
@@ -10597,7 +10903,7 @@ func (o StaticFilesHandlerOutput) ToStaticFilesHandlerPtrOutput() StaticFilesHan
 }
 
 func (o StaticFilesHandlerOutput) ToStaticFilesHandlerPtrOutputWithContext(ctx context.Context) StaticFilesHandlerPtrOutput {
-	return o.ApplyT(func(v StaticFilesHandler) *StaticFilesHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StaticFilesHandler) *StaticFilesHandler {
 		return &v
 	}).(StaticFilesHandlerPtrOutput)
 }
@@ -10652,7 +10958,13 @@ func (o StaticFilesHandlerPtrOutput) ToStaticFilesHandlerPtrOutputWithContext(ct
 }
 
 func (o StaticFilesHandlerPtrOutput) Elem() StaticFilesHandlerOutput {
-	return o.ApplyT(func(v *StaticFilesHandler) StaticFilesHandler { return *v }).(StaticFilesHandlerOutput)
+	return o.ApplyT(func(v *StaticFilesHandler) StaticFilesHandler {
+		if v != nil {
+			return *v
+		}
+		var ret StaticFilesHandler
+		return ret
+	}).(StaticFilesHandlerOutput)
 }
 
 // Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
@@ -11732,7 +12044,7 @@ func (o VpcAccessConnectorOutput) ToVpcAccessConnectorPtrOutput() VpcAccessConne
 }
 
 func (o VpcAccessConnectorOutput) ToVpcAccessConnectorPtrOutputWithContext(ctx context.Context) VpcAccessConnectorPtrOutput {
-	return o.ApplyT(func(v VpcAccessConnector) *VpcAccessConnector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcAccessConnector) *VpcAccessConnector {
 		return &v
 	}).(VpcAccessConnectorPtrOutput)
 }
@@ -11762,7 +12074,13 @@ func (o VpcAccessConnectorPtrOutput) ToVpcAccessConnectorPtrOutputWithContext(ct
 }
 
 func (o VpcAccessConnectorPtrOutput) Elem() VpcAccessConnectorOutput {
-	return o.ApplyT(func(v *VpcAccessConnector) VpcAccessConnector { return *v }).(VpcAccessConnectorOutput)
+	return o.ApplyT(func(v *VpcAccessConnector) VpcAccessConnector {
+		if v != nil {
+			return *v
+		}
+		var ret VpcAccessConnector
+		return ret
+	}).(VpcAccessConnectorOutput)
 }
 
 // The egress setting for the connector, controlling what traffic is diverted through it.
@@ -11885,7 +12203,7 @@ func (o VpcAccessConnectorResponseOutput) ToVpcAccessConnectorResponsePtrOutput(
 }
 
 func (o VpcAccessConnectorResponseOutput) ToVpcAccessConnectorResponsePtrOutputWithContext(ctx context.Context) VpcAccessConnectorResponsePtrOutput {
-	return o.ApplyT(func(v VpcAccessConnectorResponse) *VpcAccessConnectorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcAccessConnectorResponse) *VpcAccessConnectorResponse {
 		return &v
 	}).(VpcAccessConnectorResponsePtrOutput)
 }
@@ -11915,7 +12233,13 @@ func (o VpcAccessConnectorResponsePtrOutput) ToVpcAccessConnectorResponsePtrOutp
 }
 
 func (o VpcAccessConnectorResponsePtrOutput) Elem() VpcAccessConnectorResponseOutput {
-	return o.ApplyT(func(v *VpcAccessConnectorResponse) VpcAccessConnectorResponse { return *v }).(VpcAccessConnectorResponseOutput)
+	return o.ApplyT(func(v *VpcAccessConnectorResponse) VpcAccessConnectorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VpcAccessConnectorResponse
+		return ret
+	}).(VpcAccessConnectorResponseOutput)
 }
 
 // The egress setting for the connector, controlling what traffic is diverted through it.
@@ -12038,7 +12362,7 @@ func (o ZipInfoOutput) ToZipInfoPtrOutput() ZipInfoPtrOutput {
 }
 
 func (o ZipInfoOutput) ToZipInfoPtrOutputWithContext(ctx context.Context) ZipInfoPtrOutput {
-	return o.ApplyT(func(v ZipInfo) *ZipInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZipInfo) *ZipInfo {
 		return &v
 	}).(ZipInfoPtrOutput)
 }
@@ -12068,7 +12392,13 @@ func (o ZipInfoPtrOutput) ToZipInfoPtrOutputWithContext(ctx context.Context) Zip
 }
 
 func (o ZipInfoPtrOutput) Elem() ZipInfoOutput {
-	return o.ApplyT(func(v *ZipInfo) ZipInfo { return *v }).(ZipInfoOutput)
+	return o.ApplyT(func(v *ZipInfo) ZipInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ZipInfo
+		return ret
+	}).(ZipInfoOutput)
 }
 
 // An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow.
@@ -12191,7 +12521,7 @@ func (o ZipInfoResponseOutput) ToZipInfoResponsePtrOutput() ZipInfoResponsePtrOu
 }
 
 func (o ZipInfoResponseOutput) ToZipInfoResponsePtrOutputWithContext(ctx context.Context) ZipInfoResponsePtrOutput {
-	return o.ApplyT(func(v ZipInfoResponse) *ZipInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZipInfoResponse) *ZipInfoResponse {
 		return &v
 	}).(ZipInfoResponsePtrOutput)
 }
@@ -12221,7 +12551,13 @@ func (o ZipInfoResponsePtrOutput) ToZipInfoResponsePtrOutputWithContext(ctx cont
 }
 
 func (o ZipInfoResponsePtrOutput) Elem() ZipInfoResponseOutput {
-	return o.ApplyT(func(v *ZipInfoResponse) ZipInfoResponse { return *v }).(ZipInfoResponseOutput)
+	return o.ApplyT(func(v *ZipInfoResponse) ZipInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ZipInfoResponse
+		return ret
+	}).(ZipInfoResponseOutput)
 }
 
 // An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow.

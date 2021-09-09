@@ -12,6 +12,7 @@ __all__ = [
     'GetTagKeyResult',
     'AwaitableGetTagKeyResult',
     'get_tag_key',
+    'get_tag_key_output',
 ]
 
 @pulumi.output_type
@@ -145,3 +146,12 @@ def get_tag_key(tag_key_id: Optional[str] = None,
         parent=__ret__.parent,
         short_name=__ret__.short_name,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_tag_key)
+def get_tag_key_output(tag_key_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagKeyResult]:
+    """
+    Retrieves a TagKey. This method will return `PERMISSION_DENIED` if the key does not exist or the user does not have permission to view it.
+    """
+    ...

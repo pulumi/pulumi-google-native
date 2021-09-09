@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes a subordinate CA's issuers. This is either a resource name to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
+    /// </summary>
     [OutputType]
     public sealed class SubordinateConfigResponse
     {

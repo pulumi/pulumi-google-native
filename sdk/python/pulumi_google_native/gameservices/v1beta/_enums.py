@@ -22,13 +22,21 @@ class AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
-    """Default case. Should never be this."""
+    """
+    Default case. Should never be this.
+    """
     ADMIN_READ = "ADMIN_READ"
-    """Admin reads. Example: CloudIAM getIamPolicy"""
+    """
+    Admin reads. Example: CloudIAM getIamPolicy
+    """
     DATA_WRITE = "DATA_WRITE"
-    """Data writes. Example: CloudSQL Users create"""
+    """
+    Data writes. Example: CloudSQL Users create
+    """
     DATA_READ = "DATA_READ"
-    """Data reads. Example: CloudSQL Users list"""
+    """
+    Data reads. Example: CloudSQL Users list
+    """
 
 
 class AuthorizationLoggingOptionsPermissionType(str, Enum):
@@ -36,15 +44,25 @@ class AuthorizationLoggingOptionsPermissionType(str, Enum):
     The type of the permission that was checked.
     """
     PERMISSION_TYPE_UNSPECIFIED = "PERMISSION_TYPE_UNSPECIFIED"
-    """Default. Should not be used."""
+    """
+    Default. Should not be used.
+    """
     ADMIN_READ = "ADMIN_READ"
-    """A read of admin (meta) data."""
+    """
+    A read of admin (meta) data.
+    """
     ADMIN_WRITE = "ADMIN_WRITE"
-    """A write of admin (meta) data."""
+    """
+    A write of admin (meta) data.
+    """
     DATA_READ = "DATA_READ"
-    """A read of standard data."""
+    """
+    A read of standard data.
+    """
     DATA_WRITE = "DATA_WRITE"
-    """A write of standard data."""
+    """
+    A write of standard data.
+    """
 
 
 class CloudAuditOptionsLogName(str, Enum):
@@ -52,11 +70,17 @@ class CloudAuditOptionsLogName(str, Enum):
     The log_name to populate in the Cloud Audit Record.
     """
     UNSPECIFIED_LOG_NAME = "UNSPECIFIED_LOG_NAME"
-    """Default. Should not be used."""
+    """
+    Default. Should not be used.
+    """
     ADMIN_ACTIVITY = "ADMIN_ACTIVITY"
-    """Corresponds to "cloudaudit.googleapis.com/activity""""
+    """
+    Corresponds to "cloudaudit.googleapis.com/activity"
+    """
     DATA_ACCESS = "DATA_ACCESS"
-    """Corresponds to "cloudaudit.googleapis.com/data_access""""
+    """
+    Corresponds to "cloudaudit.googleapis.com/data_access"
+    """
 
 
 class ConditionIam(str, Enum):
@@ -64,21 +88,37 @@ class ConditionIam(str, Enum):
     Trusted attributes supplied by the IAM system.
     """
     NO_ATTR = "NO_ATTR"
-    """Default non-attribute."""
+    """
+    Default non-attribute.
+    """
     AUTHORITY = "AUTHORITY"
-    """Either principal or (if present) authority selector."""
+    """
+    Either principal or (if present) authority selector.
+    """
     ATTRIBUTION = "ATTRIBUTION"
-    """The principal (even if an authority selector is present), which must only be used for attribution, not authorization."""
+    """
+    The principal (even if an authority selector is present), which must only be used for attribution, not authorization.
+    """
     SECURITY_REALM = "SECURITY_REALM"
-    """Any of the security realms in the IAMContext (go/security-realms). When used with IN, the condition indicates "any of the request's realms match one of the given values; with NOT_IN, "none of the realms match any of the given values". Note that a value can be: - 'self' (i.e., allow connections from clients that are in the same security realm, which is currently but not guaranteed to be campus-sized) - 'self:metro' (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e., allow connections from clients that are in the same cloud region) - 'guardians' (i.e., allow connections from its guardian realms. See go/security-realms-glossary#guardian for more information.) - a realm (e.g., 'campus-abc') - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by a realm group membership check performed by a RealmAclRep object (go/realm-acl-howto). It is not permitted to grant access based on the *absence* of a realm, so realm conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN)."""
+    """
+    Any of the security realms in the IAMContext (go/security-realms). When used with IN, the condition indicates "any of the request's realms match one of the given values; with NOT_IN, "none of the realms match any of the given values". Note that a value can be: - 'self' (i.e., allow connections from clients that are in the same security realm, which is currently but not guaranteed to be campus-sized) - 'self:metro' (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e., allow connections from clients that are in the same cloud region) - 'guardians' (i.e., allow connections from its guardian realms. See go/security-realms-glossary#guardian for more information.) - a realm (e.g., 'campus-abc') - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by a realm group membership check performed by a RealmAclRep object (go/realm-acl-howto). It is not permitted to grant access based on the *absence* of a realm, so realm conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+    """
     APPROVER = "APPROVER"
-    """An approver (distinct from the requester) that has authorized this request. When used with IN, the condition indicates that one of the approvers associated with the request matches the specified principal, or is a member of the specified group. Approvers can only grant additional access, and are thus only used in a strictly positive context (e.g. ALLOW/IN or DENY/NOT_IN)."""
+    """
+    An approver (distinct from the requester) that has authorized this request. When used with IN, the condition indicates that one of the approvers associated with the request matches the specified principal, or is a member of the specified group. Approvers can only grant additional access, and are thus only used in a strictly positive context (e.g. ALLOW/IN or DENY/NOT_IN).
+    """
     JUSTIFICATION_TYPE = "JUSTIFICATION_TYPE"
-    """What types of justifications have been supplied with this request. String values should match enum names from security.credentials.JustificationType, e.g. "MANUAL_STRING". It is not permitted to grant access based on the *absence* of a justification, so justification conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN). Multiple justifications, e.g., a Buganizer ID and a manually-entered reason, are normal and supported."""
+    """
+    What types of justifications have been supplied with this request. String values should match enum names from security.credentials.JustificationType, e.g. "MANUAL_STRING". It is not permitted to grant access based on the *absence* of a justification, so justification conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN). Multiple justifications, e.g., a Buganizer ID and a manually-entered reason, are normal and supported.
+    """
     CREDENTIALS_TYPE = "CREDENTIALS_TYPE"
-    """What type of credentials have been supplied with this request. String values should match enum names from security_loas_l2.CredentialsType - currently, only CREDS_TYPE_EMERGENCY is supported. It is not permitted to grant access based on the *absence* of a credentials type, so the conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN)."""
+    """
+    What type of credentials have been supplied with this request. String values should match enum names from security_loas_l2.CredentialsType - currently, only CREDS_TYPE_EMERGENCY is supported. It is not permitted to grant access based on the *absence* of a credentials type, so the conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+    """
     CREDS_ASSERTION = "CREDS_ASSERTION"
-    """EXPERIMENTAL -- DO NOT USE. The conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN)."""
+    """
+    EXPERIMENTAL -- DO NOT USE. The conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+    """
 
 
 class ConditionOp(str, Enum):
@@ -86,17 +126,29 @@ class ConditionOp(str, Enum):
     An operator to apply the subject with.
     """
     NO_OP = "NO_OP"
-    """Default no-op."""
+    """
+    Default no-op.
+    """
     EQUALS = "EQUALS"
-    """DEPRECATED. Use IN instead."""
+    """
+    DEPRECATED. Use IN instead.
+    """
     NOT_EQUALS = "NOT_EQUALS"
-    """DEPRECATED. Use NOT_IN instead."""
+    """
+    DEPRECATED. Use NOT_IN instead.
+    """
     IN_ = "IN"
-    """The condition is true if the subject (or any element of it if it is a set) matches any of the supplied values."""
+    """
+    The condition is true if the subject (or any element of it if it is a set) matches any of the supplied values.
+    """
     NOT_IN = "NOT_IN"
-    """The condition is true if the subject (or every element of it if it is a set) matches none of the supplied values."""
+    """
+    The condition is true if the subject (or every element of it if it is a set) matches none of the supplied values.
+    """
     DISCHARGED = "DISCHARGED"
-    """Subject is discharged"""
+    """
+    Subject is discharged
+    """
 
 
 class ConditionSys(str, Enum):
@@ -104,22 +156,36 @@ class ConditionSys(str, Enum):
     Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
     """
     NO_ATTR = "NO_ATTR"
-    """Default non-attribute type"""
+    """
+    Default non-attribute type
+    """
     REGION = "REGION"
-    """Region of the resource"""
+    """
+    Region of the resource
+    """
     SERVICE = "SERVICE"
-    """Service name"""
+    """
+    Service name
+    """
     NAME = "NAME"
-    """Resource name"""
+    """
+    Resource name
+    """
     IP = "IP"
-    """IP address of the caller"""
+    """
+    IP address of the caller
+    """
 
 
 class DataAccessOptionsLogMode(str, Enum):
     LOG_MODE_UNSPECIFIED = "LOG_MODE_UNSPECIFIED"
-    """Client is not required to write a partial Gin log immediately after the authorization check. If client chooses to write one and it fails, client may either fail open (allow the operation to continue) or fail closed (handle as a DENY outcome)."""
+    """
+    Client is not required to write a partial Gin log immediately after the authorization check. If client chooses to write one and it fails, client may either fail open (allow the operation to continue) or fail closed (handle as a DENY outcome).
+    """
     LOG_FAIL_CLOSED = "LOG_FAIL_CLOSED"
-    """The application's operation in the context of which this authorization check is being made may only be performed if it is successfully logged to Gin. For instance, the authorization library may satisfy this obligation by emitting a partial log entry at authorization check time and only returning ALLOW to the application if it succeeds. If a matching Rule has this directive, but the client has not indicated that it will honor such requirements, then the IAM check will result in authorization failure by setting CheckPolicyResponse.success=false."""
+    """
+    The application's operation in the context of which this authorization check is being made may only be performed if it is successfully logged to Gin. For instance, the authorization library may satisfy this obligation by emitting a partial log entry at authorization check time and only returning ALLOW to the application if it succeeds. If a matching Rule has this directive, but the client has not indicated that it will honor such requirements, then the IAM check will result in authorization failure by setting CheckPolicyResponse.success=false.
+    """
 
 
 class GameServerClusterAllocationPriority(str, Enum):
@@ -127,15 +193,25 @@ class GameServerClusterAllocationPriority(str, Enum):
     Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
     """
     PRIORITY_UNSPECIFIED = "PRIORITY_UNSPECIFIED"
-    """The default allocation priority. `PRIORITY_UNSPECIFIED` is the lowest possible priority."""
+    """
+    The default allocation priority. `PRIORITY_UNSPECIFIED` is the lowest possible priority.
+    """
     P1 = "P1"
-    """Priority 1, the highest priority."""
+    """
+    Priority 1, the highest priority.
+    """
     P2 = "P2"
-    """Priority 2."""
+    """
+    Priority 2.
+    """
     P3 = "P3"
-    """Priority 3."""
+    """
+    Priority 3.
+    """
     P4 = "P4"
-    """Priority 4."""
+    """
+    Priority 4.
+    """
 
 
 class RuleAction(str, Enum):
@@ -143,14 +219,26 @@ class RuleAction(str, Enum):
     Required
     """
     NO_ACTION = "NO_ACTION"
-    """Default no action."""
+    """
+    Default no action.
+    """
     ALLOW = "ALLOW"
-    """Matching 'Entries' grant access."""
+    """
+    Matching 'Entries' grant access.
+    """
     ALLOW_WITH_LOG = "ALLOW_WITH_LOG"
-    """Matching 'Entries' grant access and the caller promises to log the request per the returned log_configs."""
+    """
+    Matching 'Entries' grant access and the caller promises to log the request per the returned log_configs.
+    """
     DENY = "DENY"
-    """Matching 'Entries' deny access."""
+    """
+    Matching 'Entries' deny access.
+    """
     DENY_WITH_LOG = "DENY_WITH_LOG"
-    """Matching 'Entries' deny access and the caller promises to log the request per the returned log_configs."""
+    """
+    Matching 'Entries' deny access and the caller promises to log the request per the returned log_configs.
+    """
     LOG = "LOG"
-    """Matching 'Entries' tell IAM.Check callers to generate logs."""
+    """
+    Matching 'Entries' tell IAM.Check callers to generate logs.
+    """

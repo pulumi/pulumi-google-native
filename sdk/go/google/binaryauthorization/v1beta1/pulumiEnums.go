@@ -130,7 +130,7 @@ func (o PkixPublicKeySignatureAlgorithmOutput) ToStringPtrOutputWithContext(ctx 
 type PkixPublicKeySignatureAlgorithmPtrOutput struct{ *pulumi.OutputState }
 
 func (PkixPublicKeySignatureAlgorithmPtrOutput) ElementType() reflect.Type {
-	return pkixPublicKeySignatureAlgorithmPtrType
+	return reflect.TypeOf((**PkixPublicKeySignatureAlgorithm)(nil)).Elem()
 }
 
 func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToPkixPublicKeySignatureAlgorithmPtrOutput() PkixPublicKeySignatureAlgorithmPtrOutput {
@@ -139,6 +139,16 @@ func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToPkixPublicKeySignatureAlgori
 
 func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(ctx context.Context) PkixPublicKeySignatureAlgorithmPtrOutput {
 	return o
+}
+
+func (o PkixPublicKeySignatureAlgorithmPtrOutput) Elem() PkixPublicKeySignatureAlgorithmOutput {
+	return o.ApplyT(func(v *PkixPublicKeySignatureAlgorithm) PkixPublicKeySignatureAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret PkixPublicKeySignatureAlgorithm
+		return ret
+	}).(PkixPublicKeySignatureAlgorithmOutput)
 }
 
 func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -153,16 +163,6 @@ func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PkixPublicKeySignatureAlgorithmPtrOutput) Elem() PkixPublicKeySignatureAlgorithmOutput {
-	return o.ApplyT(func(v *PkixPublicKeySignatureAlgorithm) PkixPublicKeySignatureAlgorithm {
-		var ret PkixPublicKeySignatureAlgorithm
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PkixPublicKeySignatureAlgorithmOutput)
 }
 
 // PkixPublicKeySignatureAlgorithmInput is an input type that accepts PkixPublicKeySignatureAlgorithmArgs and PkixPublicKeySignatureAlgorithmOutput values.

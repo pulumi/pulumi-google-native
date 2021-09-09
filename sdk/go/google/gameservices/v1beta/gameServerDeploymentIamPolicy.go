@@ -133,9 +133,7 @@ func (i *GameServerDeploymentIamPolicy) ToGameServerDeploymentIamPolicyOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentIamPolicyOutput)
 }
 
-type GameServerDeploymentIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type GameServerDeploymentIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerDeploymentIamPolicy)(nil))

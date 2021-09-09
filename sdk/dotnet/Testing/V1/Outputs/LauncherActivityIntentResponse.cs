@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies an intent that starts the main launcher activity.
+    /// </summary>
     [OutputType]
     public sealed class LauncherActivityIntentResponse
     {

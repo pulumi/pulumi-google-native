@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Specifies the reservations that this instance can consume from.
+    /// </summary>
     [OutputType]
     public sealed class ReservationAffinityResponse
     {

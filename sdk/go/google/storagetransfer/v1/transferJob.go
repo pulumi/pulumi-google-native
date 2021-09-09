@@ -146,9 +146,7 @@ func (i *TransferJob) ToTransferJobOutputWithContext(ctx context.Context) Transf
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobOutput)
 }
 
-type TransferJobOutput struct {
-	*pulumi.OutputState
-}
+type TransferJobOutput struct{ *pulumi.OutputState }
 
 func (TransferJobOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJob)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// Extra network settings. Only applicable in the App Engine flexible environment.
+    /// </summary>
     [OutputType]
     public sealed class NetworkResponse
     {

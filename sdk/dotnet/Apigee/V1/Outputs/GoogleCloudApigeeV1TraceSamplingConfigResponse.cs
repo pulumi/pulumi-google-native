@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1TraceSamplingConfigResponse
     {

@@ -13,6 +13,7 @@ __all__ = [
     'GetUserDataMappingResult',
     'AwaitableGetUserDataMappingResult',
     'get_user_data_mapping',
+    'get_user_data_mapping_output',
 ]
 
 @pulumi.output_type
@@ -128,3 +129,16 @@ def get_user_data_mapping(consent_store_id: Optional[str] = None,
         name=__ret__.name,
         resource_attributes=__ret__.resource_attributes,
         user_id=__ret__.user_id)
+
+
+@_utilities.lift_output_func(get_user_data_mapping)
+def get_user_data_mapping_output(consent_store_id: Optional[pulumi.Input[str]] = None,
+                                 dataset_id: Optional[pulumi.Input[str]] = None,
+                                 location: Optional[pulumi.Input[str]] = None,
+                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 user_data_mapping_id: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserDataMappingResult]:
+    """
+    Gets the specified User data mapping.
+    """
+    ...

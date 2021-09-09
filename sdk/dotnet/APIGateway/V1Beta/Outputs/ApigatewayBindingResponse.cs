@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.APIGateway.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Associates `members` with a `role`.
+    /// </summary>
     [OutputType]
     public sealed class ApigatewayBindingResponse
     {

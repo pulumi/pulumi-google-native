@@ -13,6 +13,7 @@ __all__ = [
     'GetNodeTemplateResult',
     'AwaitableGetNodeTemplateResult',
     'get_node_template',
+    'get_node_template_output',
 ]
 
 @pulumi.output_type
@@ -248,3 +249,14 @@ def get_node_template(node_template: Optional[str] = None,
         server_binding=__ret__.server_binding,
         status=__ret__.status,
         status_message=__ret__.status_message)
+
+
+@_utilities.lift_output_func(get_node_template)
+def get_node_template_output(node_template: Optional[pulumi.Input[str]] = None,
+                             project: Optional[pulumi.Input[Optional[str]]] = None,
+                             region: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTemplateResult]:
+    """
+    Returns the specified node template. Gets a list of available node templates by making a list() request.
+    """
+    ...

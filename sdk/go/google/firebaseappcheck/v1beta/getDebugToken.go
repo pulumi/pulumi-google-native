@@ -4,6 +4,9 @@
 package v1beta
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,56 @@ type LookupDebugTokenResult struct {
 	Name string `pulumi:"name"`
 	// Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
 	Token string `pulumi:"token"`
+}
+
+func LookupDebugTokenOutput(ctx *pulumi.Context, args LookupDebugTokenOutputArgs, opts ...pulumi.InvokeOption) LookupDebugTokenResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDebugTokenResult, error) {
+			args := v.(LookupDebugTokenArgs)
+			r, err := LookupDebugToken(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDebugTokenResultOutput)
+}
+
+type LookupDebugTokenOutputArgs struct {
+	AppId        pulumi.StringInput    `pulumi:"appId"`
+	DebugTokenId pulumi.StringInput    `pulumi:"debugTokenId"`
+	Project      pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupDebugTokenOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDebugTokenArgs)(nil)).Elem()
+}
+
+type LookupDebugTokenResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDebugTokenResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDebugTokenResult)(nil)).Elem()
+}
+
+func (o LookupDebugTokenResultOutput) ToLookupDebugTokenResultOutput() LookupDebugTokenResultOutput {
+	return o
+}
+
+func (o LookupDebugTokenResultOutput) ToLookupDebugTokenResultOutputWithContext(ctx context.Context) LookupDebugTokenResultOutput {
+	return o
+}
+
+// A human readable display name used to identify this debug token.
+func (o LookupDebugTokenResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDebugTokenResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The relative resource name of the debug token, in the format: ```projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}```
+func (o LookupDebugTokenResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDebugTokenResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
+func (o LookupDebugTokenResultOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDebugTokenResult) string { return v.Token }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDebugTokenResultOutput{})
 }

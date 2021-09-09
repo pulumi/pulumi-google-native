@@ -13,6 +13,7 @@ __all__ = [
     'GetChangeResult',
     'AwaitableGetChangeResult',
     'get_change',
+    'get_change_output',
 ]
 
 @pulumi.output_type
@@ -123,3 +124,15 @@ def get_change(change_id: Optional[str] = None,
         kind=__ret__.kind,
         start_time=__ret__.start_time,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_change)
+def get_change_output(change_id: Optional[pulumi.Input[str]] = None,
+                      client_operation_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      managed_zone: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChangeResult]:
+    """
+    Fetches the representation of an existing Change.
+    """
+    ...

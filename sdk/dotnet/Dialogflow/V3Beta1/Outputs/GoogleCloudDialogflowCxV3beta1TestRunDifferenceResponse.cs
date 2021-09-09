@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
+    /// <summary>
+    /// The description of differences between original and replayed agent output.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse
     {

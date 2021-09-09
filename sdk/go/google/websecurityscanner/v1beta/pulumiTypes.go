@@ -114,7 +114,7 @@ func (o AuthenticationOutput) ToAuthenticationPtrOutput() AuthenticationPtrOutpu
 }
 
 func (o AuthenticationOutput) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
-	return o.ApplyT(func(v Authentication) *Authentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Authentication) *Authentication {
 		return &v
 	}).(AuthenticationPtrOutput)
 }
@@ -149,7 +149,13 @@ func (o AuthenticationPtrOutput) ToAuthenticationPtrOutputWithContext(ctx contex
 }
 
 func (o AuthenticationPtrOutput) Elem() AuthenticationOutput {
-	return o.ApplyT(func(v *Authentication) Authentication { return *v }).(AuthenticationOutput)
+	return o.ApplyT(func(v *Authentication) Authentication {
+		if v != nil {
+			return *v
+		}
+		var ret Authentication
+		return ret
+	}).(AuthenticationOutput)
 }
 
 // Authentication using a custom account.
@@ -286,7 +292,7 @@ func (o AuthenticationResponseOutput) ToAuthenticationResponsePtrOutput() Authen
 }
 
 func (o AuthenticationResponseOutput) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
-	return o.ApplyT(func(v AuthenticationResponse) *AuthenticationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthenticationResponse) *AuthenticationResponse {
 		return &v
 	}).(AuthenticationResponsePtrOutput)
 }
@@ -321,7 +327,13 @@ func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutputWithCo
 }
 
 func (o AuthenticationResponsePtrOutput) Elem() AuthenticationResponseOutput {
-	return o.ApplyT(func(v *AuthenticationResponse) AuthenticationResponse { return *v }).(AuthenticationResponseOutput)
+	return o.ApplyT(func(v *AuthenticationResponse) AuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AuthenticationResponse
+		return ret
+	}).(AuthenticationResponseOutput)
 }
 
 // Authentication using a custom account.
@@ -458,7 +470,7 @@ func (o CustomAccountOutput) ToCustomAccountPtrOutput() CustomAccountPtrOutput {
 }
 
 func (o CustomAccountOutput) ToCustomAccountPtrOutputWithContext(ctx context.Context) CustomAccountPtrOutput {
-	return o.ApplyT(func(v CustomAccount) *CustomAccount {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomAccount) *CustomAccount {
 		return &v
 	}).(CustomAccountPtrOutput)
 }
@@ -493,7 +505,13 @@ func (o CustomAccountPtrOutput) ToCustomAccountPtrOutputWithContext(ctx context.
 }
 
 func (o CustomAccountPtrOutput) Elem() CustomAccountOutput {
-	return o.ApplyT(func(v *CustomAccount) CustomAccount { return *v }).(CustomAccountOutput)
+	return o.ApplyT(func(v *CustomAccount) CustomAccount {
+		if v != nil {
+			return *v
+		}
+		var ret CustomAccount
+		return ret
+	}).(CustomAccountOutput)
 }
 
 // The login form URL of the website.
@@ -630,7 +648,7 @@ func (o CustomAccountResponseOutput) ToCustomAccountResponsePtrOutput() CustomAc
 }
 
 func (o CustomAccountResponseOutput) ToCustomAccountResponsePtrOutputWithContext(ctx context.Context) CustomAccountResponsePtrOutput {
-	return o.ApplyT(func(v CustomAccountResponse) *CustomAccountResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomAccountResponse) *CustomAccountResponse {
 		return &v
 	}).(CustomAccountResponsePtrOutput)
 }
@@ -665,7 +683,13 @@ func (o CustomAccountResponsePtrOutput) ToCustomAccountResponsePtrOutputWithCont
 }
 
 func (o CustomAccountResponsePtrOutput) Elem() CustomAccountResponseOutput {
-	return o.ApplyT(func(v *CustomAccountResponse) CustomAccountResponse { return *v }).(CustomAccountResponseOutput)
+	return o.ApplyT(func(v *CustomAccountResponse) CustomAccountResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomAccountResponse
+		return ret
+	}).(CustomAccountResponseOutput)
 }
 
 // The login form URL of the website.
@@ -798,7 +822,7 @@ func (o GoogleAccountOutput) ToGoogleAccountPtrOutput() GoogleAccountPtrOutput {
 }
 
 func (o GoogleAccountOutput) ToGoogleAccountPtrOutputWithContext(ctx context.Context) GoogleAccountPtrOutput {
-	return o.ApplyT(func(v GoogleAccount) *GoogleAccount {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleAccount) *GoogleAccount {
 		return &v
 	}).(GoogleAccountPtrOutput)
 }
@@ -828,7 +852,13 @@ func (o GoogleAccountPtrOutput) ToGoogleAccountPtrOutputWithContext(ctx context.
 }
 
 func (o GoogleAccountPtrOutput) Elem() GoogleAccountOutput {
-	return o.ApplyT(func(v *GoogleAccount) GoogleAccount { return *v }).(GoogleAccountOutput)
+	return o.ApplyT(func(v *GoogleAccount) GoogleAccount {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleAccount
+		return ret
+	}).(GoogleAccountOutput)
 }
 
 // Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
@@ -951,7 +981,7 @@ func (o GoogleAccountResponseOutput) ToGoogleAccountResponsePtrOutput() GoogleAc
 }
 
 func (o GoogleAccountResponseOutput) ToGoogleAccountResponsePtrOutputWithContext(ctx context.Context) GoogleAccountResponsePtrOutput {
-	return o.ApplyT(func(v GoogleAccountResponse) *GoogleAccountResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleAccountResponse) *GoogleAccountResponse {
 		return &v
 	}).(GoogleAccountResponsePtrOutput)
 }
@@ -981,7 +1011,13 @@ func (o GoogleAccountResponsePtrOutput) ToGoogleAccountResponsePtrOutputWithCont
 }
 
 func (o GoogleAccountResponsePtrOutput) Elem() GoogleAccountResponseOutput {
-	return o.ApplyT(func(v *GoogleAccountResponse) GoogleAccountResponse { return *v }).(GoogleAccountResponseOutput)
+	return o.ApplyT(func(v *GoogleAccountResponse) GoogleAccountResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleAccountResponse
+		return ret
+	}).(GoogleAccountResponseOutput)
 }
 
 // Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
@@ -1100,7 +1136,7 @@ func (o IapCredentialOutput) ToIapCredentialPtrOutput() IapCredentialPtrOutput {
 }
 
 func (o IapCredentialOutput) ToIapCredentialPtrOutputWithContext(ctx context.Context) IapCredentialPtrOutput {
-	return o.ApplyT(func(v IapCredential) *IapCredential {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IapCredential) *IapCredential {
 		return &v
 	}).(IapCredentialPtrOutput)
 }
@@ -1125,7 +1161,13 @@ func (o IapCredentialPtrOutput) ToIapCredentialPtrOutputWithContext(ctx context.
 }
 
 func (o IapCredentialPtrOutput) Elem() IapCredentialOutput {
-	return o.ApplyT(func(v *IapCredential) IapCredential { return *v }).(IapCredentialOutput)
+	return o.ApplyT(func(v *IapCredential) IapCredential {
+		if v != nil {
+			return *v
+		}
+		var ret IapCredential
+		return ret
+	}).(IapCredentialOutput)
 }
 
 // Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
@@ -1234,7 +1276,7 @@ func (o IapCredentialResponseOutput) ToIapCredentialResponsePtrOutput() IapCrede
 }
 
 func (o IapCredentialResponseOutput) ToIapCredentialResponsePtrOutputWithContext(ctx context.Context) IapCredentialResponsePtrOutput {
-	return o.ApplyT(func(v IapCredentialResponse) *IapCredentialResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IapCredentialResponse) *IapCredentialResponse {
 		return &v
 	}).(IapCredentialResponsePtrOutput)
 }
@@ -1259,7 +1301,13 @@ func (o IapCredentialResponsePtrOutput) ToIapCredentialResponsePtrOutputWithCont
 }
 
 func (o IapCredentialResponsePtrOutput) Elem() IapCredentialResponseOutput {
-	return o.ApplyT(func(v *IapCredentialResponse) IapCredentialResponse { return *v }).(IapCredentialResponseOutput)
+	return o.ApplyT(func(v *IapCredentialResponse) IapCredentialResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IapCredentialResponse
+		return ret
+	}).(IapCredentialResponseOutput)
 }
 
 // Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
@@ -1368,7 +1416,7 @@ func (o IapTestServiceAccountInfoOutput) ToIapTestServiceAccountInfoPtrOutput() 
 }
 
 func (o IapTestServiceAccountInfoOutput) ToIapTestServiceAccountInfoPtrOutputWithContext(ctx context.Context) IapTestServiceAccountInfoPtrOutput {
-	return o.ApplyT(func(v IapTestServiceAccountInfo) *IapTestServiceAccountInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IapTestServiceAccountInfo) *IapTestServiceAccountInfo {
 		return &v
 	}).(IapTestServiceAccountInfoPtrOutput)
 }
@@ -1393,7 +1441,13 @@ func (o IapTestServiceAccountInfoPtrOutput) ToIapTestServiceAccountInfoPtrOutput
 }
 
 func (o IapTestServiceAccountInfoPtrOutput) Elem() IapTestServiceAccountInfoOutput {
-	return o.ApplyT(func(v *IapTestServiceAccountInfo) IapTestServiceAccountInfo { return *v }).(IapTestServiceAccountInfoOutput)
+	return o.ApplyT(func(v *IapTestServiceAccountInfo) IapTestServiceAccountInfo {
+		if v != nil {
+			return *v
+		}
+		var ret IapTestServiceAccountInfo
+		return ret
+	}).(IapTestServiceAccountInfoOutput)
 }
 
 // Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP).
@@ -1502,7 +1556,7 @@ func (o IapTestServiceAccountInfoResponseOutput) ToIapTestServiceAccountInfoResp
 }
 
 func (o IapTestServiceAccountInfoResponseOutput) ToIapTestServiceAccountInfoResponsePtrOutputWithContext(ctx context.Context) IapTestServiceAccountInfoResponsePtrOutput {
-	return o.ApplyT(func(v IapTestServiceAccountInfoResponse) *IapTestServiceAccountInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IapTestServiceAccountInfoResponse) *IapTestServiceAccountInfoResponse {
 		return &v
 	}).(IapTestServiceAccountInfoResponsePtrOutput)
 }
@@ -1527,7 +1581,13 @@ func (o IapTestServiceAccountInfoResponsePtrOutput) ToIapTestServiceAccountInfoR
 }
 
 func (o IapTestServiceAccountInfoResponsePtrOutput) Elem() IapTestServiceAccountInfoResponseOutput {
-	return o.ApplyT(func(v *IapTestServiceAccountInfoResponse) IapTestServiceAccountInfoResponse { return *v }).(IapTestServiceAccountInfoResponseOutput)
+	return o.ApplyT(func(v *IapTestServiceAccountInfoResponse) IapTestServiceAccountInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IapTestServiceAccountInfoResponse
+		return ret
+	}).(IapTestServiceAccountInfoResponseOutput)
 }
 
 // Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP).
@@ -1640,7 +1700,7 @@ func (o ScanConfigErrorOutput) ToScanConfigErrorPtrOutput() ScanConfigErrorPtrOu
 }
 
 func (o ScanConfigErrorOutput) ToScanConfigErrorPtrOutputWithContext(ctx context.Context) ScanConfigErrorPtrOutput {
-	return o.ApplyT(func(v ScanConfigError) *ScanConfigError {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScanConfigError) *ScanConfigError {
 		return &v
 	}).(ScanConfigErrorPtrOutput)
 }
@@ -1670,7 +1730,13 @@ func (o ScanConfigErrorPtrOutput) ToScanConfigErrorPtrOutputWithContext(ctx cont
 }
 
 func (o ScanConfigErrorPtrOutput) Elem() ScanConfigErrorOutput {
-	return o.ApplyT(func(v *ScanConfigError) ScanConfigError { return *v }).(ScanConfigErrorOutput)
+	return o.ApplyT(func(v *ScanConfigError) ScanConfigError {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigError
+		return ret
+	}).(ScanConfigErrorOutput)
 }
 
 // Indicates the reason code for a configuration failure.
@@ -1793,7 +1859,7 @@ func (o ScanConfigErrorResponseOutput) ToScanConfigErrorResponsePtrOutput() Scan
 }
 
 func (o ScanConfigErrorResponseOutput) ToScanConfigErrorResponsePtrOutputWithContext(ctx context.Context) ScanConfigErrorResponsePtrOutput {
-	return o.ApplyT(func(v ScanConfigErrorResponse) *ScanConfigErrorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScanConfigErrorResponse) *ScanConfigErrorResponse {
 		return &v
 	}).(ScanConfigErrorResponsePtrOutput)
 }
@@ -1823,7 +1889,13 @@ func (o ScanConfigErrorResponsePtrOutput) ToScanConfigErrorResponsePtrOutputWith
 }
 
 func (o ScanConfigErrorResponsePtrOutput) Elem() ScanConfigErrorResponseOutput {
-	return o.ApplyT(func(v *ScanConfigErrorResponse) ScanConfigErrorResponse { return *v }).(ScanConfigErrorResponseOutput)
+	return o.ApplyT(func(v *ScanConfigErrorResponse) ScanConfigErrorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigErrorResponse
+		return ret
+	}).(ScanConfigErrorResponseOutput)
 }
 
 // Indicates the reason code for a configuration failure.
@@ -1982,7 +2054,7 @@ func (o ScanRunOutput) ToScanRunPtrOutput() ScanRunPtrOutput {
 }
 
 func (o ScanRunOutput) ToScanRunPtrOutputWithContext(ctx context.Context) ScanRunPtrOutput {
-	return o.ApplyT(func(v ScanRun) *ScanRun {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScanRun) *ScanRun {
 		return &v
 	}).(ScanRunPtrOutput)
 }
@@ -2057,7 +2129,13 @@ func (o ScanRunPtrOutput) ToScanRunPtrOutputWithContext(ctx context.Context) Sca
 }
 
 func (o ScanRunPtrOutput) Elem() ScanRunOutput {
-	return o.ApplyT(func(v *ScanRun) ScanRun { return *v }).(ScanRunOutput)
+	return o.ApplyT(func(v *ScanRun) ScanRun {
+		if v != nil {
+			return *v
+		}
+		var ret ScanRun
+		return ret
+	}).(ScanRunOutput)
 }
 
 // The time at which the ScanRun reached termination state - that the ScanRun is either finished or stopped by user.
@@ -2274,7 +2352,7 @@ func (o ScanRunErrorTraceOutput) ToScanRunErrorTracePtrOutput() ScanRunErrorTrac
 }
 
 func (o ScanRunErrorTraceOutput) ToScanRunErrorTracePtrOutputWithContext(ctx context.Context) ScanRunErrorTracePtrOutput {
-	return o.ApplyT(func(v ScanRunErrorTrace) *ScanRunErrorTrace {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScanRunErrorTrace) *ScanRunErrorTrace {
 		return &v
 	}).(ScanRunErrorTracePtrOutput)
 }
@@ -2309,7 +2387,13 @@ func (o ScanRunErrorTracePtrOutput) ToScanRunErrorTracePtrOutputWithContext(ctx 
 }
 
 func (o ScanRunErrorTracePtrOutput) Elem() ScanRunErrorTraceOutput {
-	return o.ApplyT(func(v *ScanRunErrorTrace) ScanRunErrorTrace { return *v }).(ScanRunErrorTraceOutput)
+	return o.ApplyT(func(v *ScanRunErrorTrace) ScanRunErrorTrace {
+		if v != nil {
+			return *v
+		}
+		var ret ScanRunErrorTrace
+		return ret
+	}).(ScanRunErrorTraceOutput)
 }
 
 // Indicates the error reason code.
@@ -2446,7 +2530,7 @@ func (o ScanRunErrorTraceResponseOutput) ToScanRunErrorTraceResponsePtrOutput() 
 }
 
 func (o ScanRunErrorTraceResponseOutput) ToScanRunErrorTraceResponsePtrOutputWithContext(ctx context.Context) ScanRunErrorTraceResponsePtrOutput {
-	return o.ApplyT(func(v ScanRunErrorTraceResponse) *ScanRunErrorTraceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScanRunErrorTraceResponse) *ScanRunErrorTraceResponse {
 		return &v
 	}).(ScanRunErrorTraceResponsePtrOutput)
 }
@@ -2481,7 +2565,13 @@ func (o ScanRunErrorTraceResponsePtrOutput) ToScanRunErrorTraceResponsePtrOutput
 }
 
 func (o ScanRunErrorTraceResponsePtrOutput) Elem() ScanRunErrorTraceResponseOutput {
-	return o.ApplyT(func(v *ScanRunErrorTraceResponse) ScanRunErrorTraceResponse { return *v }).(ScanRunErrorTraceResponseOutput)
+	return o.ApplyT(func(v *ScanRunErrorTraceResponse) ScanRunErrorTraceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScanRunErrorTraceResponse
+		return ret
+	}).(ScanRunErrorTraceResponseOutput)
 }
 
 // Indicates the error reason code.
@@ -2650,7 +2740,7 @@ func (o ScanRunResponseOutput) ToScanRunResponsePtrOutput() ScanRunResponsePtrOu
 }
 
 func (o ScanRunResponseOutput) ToScanRunResponsePtrOutputWithContext(ctx context.Context) ScanRunResponsePtrOutput {
-	return o.ApplyT(func(v ScanRunResponse) *ScanRunResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScanRunResponse) *ScanRunResponse {
 		return &v
 	}).(ScanRunResponsePtrOutput)
 }
@@ -2725,7 +2815,13 @@ func (o ScanRunResponsePtrOutput) ToScanRunResponsePtrOutputWithContext(ctx cont
 }
 
 func (o ScanRunResponsePtrOutput) Elem() ScanRunResponseOutput {
-	return o.ApplyT(func(v *ScanRunResponse) ScanRunResponse { return *v }).(ScanRunResponseOutput)
+	return o.ApplyT(func(v *ScanRunResponse) ScanRunResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScanRunResponse
+		return ret
+	}).(ScanRunResponseOutput)
 }
 
 // The time at which the ScanRun reached termination state - that the ScanRun is either finished or stopped by user.
@@ -3138,7 +3234,7 @@ func (o ScheduleOutput) ToSchedulePtrOutput() SchedulePtrOutput {
 }
 
 func (o ScheduleOutput) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
-	return o.ApplyT(func(v Schedule) *Schedule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Schedule) *Schedule {
 		return &v
 	}).(SchedulePtrOutput)
 }
@@ -3168,7 +3264,13 @@ func (o SchedulePtrOutput) ToSchedulePtrOutputWithContext(ctx context.Context) S
 }
 
 func (o SchedulePtrOutput) Elem() ScheduleOutput {
-	return o.ApplyT(func(v *Schedule) Schedule { return *v }).(ScheduleOutput)
+	return o.ApplyT(func(v *Schedule) Schedule {
+		if v != nil {
+			return *v
+		}
+		var ret Schedule
+		return ret
+	}).(ScheduleOutput)
 }
 
 // The duration of time between executions in days.
@@ -3291,7 +3393,7 @@ func (o ScheduleResponseOutput) ToScheduleResponsePtrOutput() ScheduleResponsePt
 }
 
 func (o ScheduleResponseOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
-	return o.ApplyT(func(v ScheduleResponse) *ScheduleResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleResponse) *ScheduleResponse {
 		return &v
 	}).(ScheduleResponsePtrOutput)
 }
@@ -3321,7 +3423,13 @@ func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutputWithContext(ctx co
 }
 
 func (o ScheduleResponsePtrOutput) Elem() ScheduleResponseOutput {
-	return o.ApplyT(func(v *ScheduleResponse) ScheduleResponse { return *v }).(ScheduleResponseOutput)
+	return o.ApplyT(func(v *ScheduleResponse) ScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleResponse
+		return ret
+	}).(ScheduleResponseOutput)
 }
 
 // The duration of time between executions in days.

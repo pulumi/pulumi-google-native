@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,4 +52,105 @@ type LookupHostQueryResult struct {
 	State string `pulumi:"state"`
 	// Last updated timestamp for the query.
 	Updated string `pulumi:"updated"`
+}
+
+func LookupHostQueryOutput(ctx *pulumi.Context, args LookupHostQueryOutputArgs, opts ...pulumi.InvokeOption) LookupHostQueryResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupHostQueryResult, error) {
+			args := v.(LookupHostQueryArgs)
+			r, err := LookupHostQuery(ctx, &args, opts...)
+			return *r, err
+		}).(LookupHostQueryResultOutput)
+}
+
+type LookupHostQueryOutputArgs struct {
+	HostQueryId    pulumi.StringInput `pulumi:"hostQueryId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupHostQueryOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHostQueryArgs)(nil)).Elem()
+}
+
+type LookupHostQueryResultOutput struct{ *pulumi.OutputState }
+
+func (LookupHostQueryResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHostQueryResult)(nil)).Elem()
+}
+
+func (o LookupHostQueryResultOutput) ToLookupHostQueryResultOutput() LookupHostQueryResultOutput {
+	return o
+}
+
+func (o LookupHostQueryResultOutput) ToLookupHostQueryResultOutputWithContext(ctx context.Context) LookupHostQueryResultOutput {
+	return o
+}
+
+// Creation time of the query.
+func (o LookupHostQueryResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// Hostname is available only when query is executed at host level.
+func (o LookupHostQueryResultOutput) EnvgroupHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) string { return v.EnvgroupHostname }).(pulumi.StringOutput)
+}
+
+// Error is set when query fails.
+func (o LookupHostQueryResultOutput) Error() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) string { return v.Error }).(pulumi.StringOutput)
+}
+
+// ExecutionTime is available only after the query is completed.
+func (o LookupHostQueryResultOutput) ExecutionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) string { return v.ExecutionTime }).(pulumi.StringOutput)
+}
+
+// Asynchronous Query Name.
+func (o LookupHostQueryResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Contains information like metrics, dimenstions etc of the AsyncQuery.
+func (o LookupHostQueryResultOutput) QueryParams() GoogleCloudApigeeV1QueryMetadataResponseOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) GoogleCloudApigeeV1QueryMetadataResponse { return v.QueryParams }).(GoogleCloudApigeeV1QueryMetadataResponseOutput)
+}
+
+// Asynchronous Report ID.
+func (o LookupHostQueryResultOutput) ReportDefinitionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) string { return v.ReportDefinitionId }).(pulumi.StringOutput)
+}
+
+// Result is available only after the query is completed.
+func (o LookupHostQueryResultOutput) Result() GoogleCloudApigeeV1AsyncQueryResultResponseOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) GoogleCloudApigeeV1AsyncQueryResultResponse { return v.Result }).(GoogleCloudApigeeV1AsyncQueryResultResponseOutput)
+}
+
+// ResultFileSize is available only after the query is completed.
+func (o LookupHostQueryResultOutput) ResultFileSize() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) string { return v.ResultFileSize }).(pulumi.StringOutput)
+}
+
+// ResultRows is available only after the query is completed.
+func (o LookupHostQueryResultOutput) ResultRows() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) string { return v.ResultRows }).(pulumi.StringOutput)
+}
+
+// Self link of the query. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+func (o LookupHostQueryResultOutput) Self() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) string { return v.Self }).(pulumi.StringOutput)
+}
+
+// Query state could be "enqueued", "running", "completed", "failed".
+func (o LookupHostQueryResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Last updated timestamp for the query.
+func (o LookupHostQueryResultOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostQueryResult) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupHostQueryResultOutput{})
 }

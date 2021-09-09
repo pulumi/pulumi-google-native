@@ -13,6 +13,7 @@ __all__ = [
     'GetConversationResult',
     'AwaitableGetConversationResult',
     'get_conversation',
+    'get_conversation_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_conversation(conversation_id: Optional[str] = None,
         name=__ret__.name,
         phone_number=__ret__.phone_number,
         start_time=__ret__.start_time)
+
+
+@_utilities.lift_output_func(get_conversation)
+def get_conversation_output(conversation_id: Optional[pulumi.Input[str]] = None,
+                            location: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConversationResult]:
+    """
+    Retrieves the specific conversation.
+    """
+    ...

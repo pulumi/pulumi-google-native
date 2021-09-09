@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// ComplianceNote encapsulates all information about a specific compliance check.
+    /// </summary>
     [OutputType]
     public sealed class ComplianceNoteResponse
     {

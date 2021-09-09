@@ -114,9 +114,7 @@ func (i *History) ToHistoryOutputWithContext(ctx context.Context) HistoryOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(HistoryOutput)
 }
 
-type HistoryOutput struct {
-	*pulumi.OutputState
-}
+type HistoryOutput struct{ *pulumi.OutputState }
 
 func (HistoryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*History)(nil))

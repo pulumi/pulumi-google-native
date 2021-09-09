@@ -13,6 +13,7 @@ __all__ = [
     'GetQueueResult',
     'AwaitableGetQueueResult',
     'get_queue',
+    'get_queue_output',
 ]
 
 @pulumi.output_type
@@ -178,3 +179,15 @@ def get_queue(location: Optional[str] = None,
         stats=__ret__.stats,
         task_ttl=__ret__.task_ttl,
         tombstone_ttl=__ret__.tombstone_ttl)
+
+
+@_utilities.lift_output_func(get_queue)
+def get_queue_output(location: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     queue_id: Optional[pulumi.Input[str]] = None,
+                     read_mask: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQueueResult]:
+    """
+    Gets a queue.
+    """
+    ...

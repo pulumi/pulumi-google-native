@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for parameter validation.
+    /// </summary>
     [OutputType]
     public sealed class ParameterValidationResponse
     {

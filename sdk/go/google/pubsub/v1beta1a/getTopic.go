@@ -4,6 +4,9 @@
 package v1beta1a
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,4 +27,44 @@ type LookupTopicArgs struct {
 type LookupTopicResult struct {
 	// Name of the topic.
 	Name string `pulumi:"name"`
+}
+
+func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTopicResult, error) {
+			args := v.(LookupTopicArgs)
+			r, err := LookupTopic(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTopicResultOutput)
+}
+
+type LookupTopicOutputArgs struct {
+	TopicId pulumi.StringInput `pulumi:"topicId"`
+}
+
+func (LookupTopicOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicArgs)(nil)).Elem()
+}
+
+type LookupTopicResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTopicResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicResult)(nil)).Elem()
+}
+
+func (o LookupTopicResultOutput) ToLookupTopicResultOutput() LookupTopicResultOutput {
+	return o
+}
+
+func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx context.Context) LookupTopicResultOutput {
+	return o
+}
+
+// Name of the topic.
+func (o LookupTopicResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTopicResultOutput{})
 }

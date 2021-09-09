@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Job trigger option for hybrid jobs. Jobs must be manually created and finished.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ManualResponse
     {

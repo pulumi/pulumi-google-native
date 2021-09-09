@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
+    /// </summary>
     [OutputType]
     public sealed class HTTPHeaderResponse
     {

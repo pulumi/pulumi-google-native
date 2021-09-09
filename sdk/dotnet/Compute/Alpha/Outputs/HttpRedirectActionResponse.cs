@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Specifies settings for an HTTP redirect.
+    /// </summary>
     [OutputType]
     public sealed class HttpRedirectActionResponse
     {

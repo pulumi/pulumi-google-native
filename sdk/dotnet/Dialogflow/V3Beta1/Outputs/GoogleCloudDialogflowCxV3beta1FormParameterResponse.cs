@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents a form parameter.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1FormParameterResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// Details for an outcome with a FAILURE outcome summary.
+    /// </summary>
     [OutputType]
     public sealed class FailureDetailResponse
     {

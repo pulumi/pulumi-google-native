@@ -124,9 +124,7 @@ func (i *EdgeCacheServiceIamPolicy) ToEdgeCacheServiceIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceIamPolicyOutput)
 }
 
-type EdgeCacheServiceIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type EdgeCacheServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EdgeCacheServiceIamPolicy)(nil))

@@ -13,6 +13,7 @@ __all__ = [
     'GetKeyResult',
     'AwaitableGetKeyResult',
     'get_key',
+    'get_key_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,13 @@ def get_key(key_id: Optional[str] = None,
         name=__ret__.name,
         testing_options=__ret__.testing_options,
         web_settings=__ret__.web_settings)
+
+
+@_utilities.lift_output_func(get_key)
+def get_key_output(key_id: Optional[pulumi.Input[str]] = None,
+                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyResult]:
+    """
+    Returns the specified key.
+    """
+    ...

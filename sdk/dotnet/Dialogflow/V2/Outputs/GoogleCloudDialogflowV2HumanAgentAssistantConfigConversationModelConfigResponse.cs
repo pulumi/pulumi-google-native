@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse
     {

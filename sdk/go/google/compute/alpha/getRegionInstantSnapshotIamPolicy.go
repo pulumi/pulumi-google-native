@@ -4,6 +4,9 @@
 package alpha
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,72 @@ type LookupRegionInstantSnapshotIamPolicyResult struct {
 	Rules []RuleResponse `pulumi:"rules"`
 	// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Version int `pulumi:"version"`
+}
+
+func LookupRegionInstantSnapshotIamPolicyOutput(ctx *pulumi.Context, args LookupRegionInstantSnapshotIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionInstantSnapshotIamPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRegionInstantSnapshotIamPolicyResult, error) {
+			args := v.(LookupRegionInstantSnapshotIamPolicyArgs)
+			r, err := LookupRegionInstantSnapshotIamPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRegionInstantSnapshotIamPolicyResultOutput)
+}
+
+type LookupRegionInstantSnapshotIamPolicyOutputArgs struct {
+	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	Project                       pulumi.StringPtrInput `pulumi:"project"`
+	Region                        pulumi.StringInput    `pulumi:"region"`
+	Resource                      pulumi.StringInput    `pulumi:"resource"`
+}
+
+func (LookupRegionInstantSnapshotIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegionInstantSnapshotIamPolicyArgs)(nil)).Elem()
+}
+
+type LookupRegionInstantSnapshotIamPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRegionInstantSnapshotIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegionInstantSnapshotIamPolicyResult)(nil)).Elem()
+}
+
+func (o LookupRegionInstantSnapshotIamPolicyResultOutput) ToLookupRegionInstantSnapshotIamPolicyResultOutput() LookupRegionInstantSnapshotIamPolicyResultOutput {
+	return o
+}
+
+func (o LookupRegionInstantSnapshotIamPolicyResultOutput) ToLookupRegionInstantSnapshotIamPolicyResultOutputWithContext(ctx context.Context) LookupRegionInstantSnapshotIamPolicyResultOutput {
+	return o
+}
+
+// Specifies cloud audit logging configuration for this policy.
+func (o LookupRegionInstantSnapshotIamPolicyResultOutput) AuditConfigs() AuditConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupRegionInstantSnapshotIamPolicyResult) []AuditConfigResponse { return v.AuditConfigs }).(AuditConfigResponseArrayOutput)
+}
+
+// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+func (o LookupRegionInstantSnapshotIamPolicyResultOutput) Bindings() BindingResponseArrayOutput {
+	return o.ApplyT(func(v LookupRegionInstantSnapshotIamPolicyResult) []BindingResponse { return v.Bindings }).(BindingResponseArrayOutput)
+}
+
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
+func (o LookupRegionInstantSnapshotIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionInstantSnapshotIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// This is deprecated and has no effect. Do not use.
+func (o LookupRegionInstantSnapshotIamPolicyResultOutput) IamOwned() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegionInstantSnapshotIamPolicyResult) bool { return v.IamOwned }).(pulumi.BoolOutput)
+}
+
+// This is deprecated and has no effect. Do not use.
+func (o LookupRegionInstantSnapshotIamPolicyResultOutput) Rules() RuleResponseArrayOutput {
+	return o.ApplyT(func(v LookupRegionInstantSnapshotIamPolicyResult) []RuleResponse { return v.Rules }).(RuleResponseArrayOutput)
+}
+
+// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o LookupRegionInstantSnapshotIamPolicyResultOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRegionInstantSnapshotIamPolicyResult) int { return v.Version }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRegionInstantSnapshotIamPolicyResultOutput{})
 }

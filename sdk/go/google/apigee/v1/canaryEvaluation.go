@@ -151,9 +151,7 @@ func (i *CanaryEvaluation) ToCanaryEvaluationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CanaryEvaluationOutput)
 }
 
-type CanaryEvaluationOutput struct {
-	*pulumi.OutputState
-}
+type CanaryEvaluationOutput struct{ *pulumi.OutputState }
 
 func (CanaryEvaluationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CanaryEvaluation)(nil))

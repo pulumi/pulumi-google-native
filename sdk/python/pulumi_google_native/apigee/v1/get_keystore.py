@@ -12,6 +12,7 @@ __all__ = [
     'GetKeystoreResult',
     'AwaitableGetKeystoreResult',
     'get_keystore',
+    'get_keystore_output',
 ]
 
 @pulumi.output_type
@@ -71,3 +72,14 @@ def get_keystore(environment_id: Optional[str] = None,
     return AwaitableGetKeystoreResult(
         aliases=__ret__.aliases,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_keystore)
+def get_keystore_output(environment_id: Optional[pulumi.Input[str]] = None,
+                        keystore_id: Optional[pulumi.Input[str]] = None,
+                        organization_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeystoreResult]:
+    """
+    Gets a keystore or truststore.
+    """
+    ...

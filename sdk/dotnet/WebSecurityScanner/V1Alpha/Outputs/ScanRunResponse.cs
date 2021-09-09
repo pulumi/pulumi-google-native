@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.WebSecurityScanner.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// A ScanRun is a output-only resource representing an actual run of the scan.
+    /// </summary>
     [OutputType]
     public sealed class ScanRunResponse
     {

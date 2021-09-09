@@ -13,6 +13,7 @@ __all__ = [
     'GetRegionNotificationEndpointResult',
     'AwaitableGetRegionNotificationEndpointResult',
     'get_region_notification_endpoint',
+    'get_region_notification_endpoint_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_region_notification_endpoint(notification_endpoint: Optional[str] = None
         name=__ret__.name,
         region=__ret__.region,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_region_notification_endpoint)
+def get_region_notification_endpoint_output(notification_endpoint: Optional[pulumi.Input[str]] = None,
+                                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                                            region: Optional[pulumi.Input[str]] = None,
+                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionNotificationEndpointResult]:
+    """
+    Returns the specified NotificationEndpoint resource in the given region.
+    """
+    ...

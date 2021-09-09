@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The matcher that is based on node metadata presented by xDS clients.
+    /// </summary>
     [OutputType]
     public sealed class MetadataLabelMatcherResponse
     {

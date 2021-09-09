@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// SDK Information.
+    /// </summary>
     [OutputType]
     public sealed class SDKInfoResponse
     {

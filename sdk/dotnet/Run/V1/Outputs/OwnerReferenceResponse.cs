@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
+    /// <summary>
+    /// OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
+    /// </summary>
     [OutputType]
     public sealed class OwnerReferenceResponse
     {

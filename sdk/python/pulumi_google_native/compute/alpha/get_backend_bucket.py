@@ -13,6 +13,7 @@ __all__ = [
     'GetBackendBucketResult',
     'AwaitableGetBackendBucketResult',
     'get_backend_bucket',
+    'get_backend_bucket_output',
 ]
 
 @pulumi.output_type
@@ -200,3 +201,13 @@ def get_backend_bucket(backend_bucket: Optional[str] = None,
         name=__ret__.name,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id)
+
+
+@_utilities.lift_output_func(get_backend_bucket)
+def get_backend_bucket_output(backend_bucket: Optional[pulumi.Input[str]] = None,
+                              project: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendBucketResult]:
+    """
+    Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a list() request.
+    """
+    ...

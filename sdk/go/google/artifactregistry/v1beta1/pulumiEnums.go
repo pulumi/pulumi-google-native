@@ -116,7 +116,7 @@ func (o RepositoryFormatOutput) ToStringPtrOutputWithContext(ctx context.Context
 type RepositoryFormatPtrOutput struct{ *pulumi.OutputState }
 
 func (RepositoryFormatPtrOutput) ElementType() reflect.Type {
-	return repositoryFormatPtrType
+	return reflect.TypeOf((**RepositoryFormat)(nil)).Elem()
 }
 
 func (o RepositoryFormatPtrOutput) ToRepositoryFormatPtrOutput() RepositoryFormatPtrOutput {
@@ -125,6 +125,16 @@ func (o RepositoryFormatPtrOutput) ToRepositoryFormatPtrOutput() RepositoryForma
 
 func (o RepositoryFormatPtrOutput) ToRepositoryFormatPtrOutputWithContext(ctx context.Context) RepositoryFormatPtrOutput {
 	return o
+}
+
+func (o RepositoryFormatPtrOutput) Elem() RepositoryFormatOutput {
+	return o.ApplyT(func(v *RepositoryFormat) RepositoryFormat {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryFormat
+		return ret
+	}).(RepositoryFormatOutput)
 }
 
 func (o RepositoryFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -139,16 +149,6 @@ func (o RepositoryFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RepositoryFormatPtrOutput) Elem() RepositoryFormatOutput {
-	return o.ApplyT(func(v *RepositoryFormat) RepositoryFormat {
-		var ret RepositoryFormat
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RepositoryFormatOutput)
 }
 
 // RepositoryFormatInput is an input type that accepts RepositoryFormatArgs and RepositoryFormatOutput values.

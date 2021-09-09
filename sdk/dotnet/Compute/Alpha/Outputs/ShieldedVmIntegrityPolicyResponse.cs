@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// The policy describes the baseline against which VM instance boot integrity is measured.
+    /// </summary>
     [OutputType]
     public sealed class ShieldedVmIntegrityPolicyResponse
     {

@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,4 +35,65 @@ type LookupOrganizationReplayResult struct {
 	ResultsSummary GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse `pulumi:"resultsSummary"`
 	// The current state of the `Replay`.
 	State string `pulumi:"state"`
+}
+
+func LookupOrganizationReplayOutput(ctx *pulumi.Context, args LookupOrganizationReplayOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationReplayResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupOrganizationReplayResult, error) {
+			args := v.(LookupOrganizationReplayArgs)
+			r, err := LookupOrganizationReplay(ctx, &args, opts...)
+			return *r, err
+		}).(LookupOrganizationReplayResultOutput)
+}
+
+type LookupOrganizationReplayOutputArgs struct {
+	Location       pulumi.StringInput `pulumi:"location"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	ReplayId       pulumi.StringInput `pulumi:"replayId"`
+}
+
+func (LookupOrganizationReplayOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOrganizationReplayArgs)(nil)).Elem()
+}
+
+type LookupOrganizationReplayResultOutput struct{ *pulumi.OutputState }
+
+func (LookupOrganizationReplayResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOrganizationReplayResult)(nil)).Elem()
+}
+
+func (o LookupOrganizationReplayResultOutput) ToLookupOrganizationReplayResultOutput() LookupOrganizationReplayResultOutput {
+	return o
+}
+
+func (o LookupOrganizationReplayResultOutput) ToLookupOrganizationReplayResultOutputWithContext(ctx context.Context) LookupOrganizationReplayResultOutput {
+	return o
+}
+
+// The configuration used for the `Replay`.
+func (o LookupOrganizationReplayResultOutput) Config() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput {
+	return o.ApplyT(func(v LookupOrganizationReplayResult) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse {
+		return v.Config
+	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput)
+}
+
+// The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+func (o LookupOrganizationReplayResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationReplayResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Summary statistics about the replayed log entries.
+func (o LookupOrganizationReplayResultOutput) ResultsSummary() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput {
+	return o.ApplyT(func(v LookupOrganizationReplayResult) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse {
+		return v.ResultsSummary
+	}).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput)
+}
+
+// The current state of the `Replay`.
+func (o LookupOrganizationReplayResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationReplayResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupOrganizationReplayResultOutput{})
 }

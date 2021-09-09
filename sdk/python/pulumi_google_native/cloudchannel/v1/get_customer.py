@@ -13,6 +13,7 @@ __all__ = [
     'GetCustomerResult',
     'AwaitableGetCustomerResult',
     'get_customer',
+    'get_customer_output',
 ]
 
 @pulumi.output_type
@@ -202,3 +203,14 @@ def get_customer(account_id: Optional[str] = None,
         org_postal_address=__ret__.org_postal_address,
         primary_contact_info=__ret__.primary_contact_info,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_customer)
+def get_customer_output(account_id: Optional[pulumi.Input[str]] = None,
+                        channel_partner_link_id: Optional[pulumi.Input[str]] = None,
+                        customer_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomerResult]:
+    """
+    Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.
+    """
+    ...

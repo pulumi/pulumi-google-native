@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents an expression text. Example: title: "User account presence" description: "Determines whether the request has a user account" expression: "size(request.user) &gt; 0"
+    /// </summary>
     [OutputType]
     public sealed class ExprResponse
     {

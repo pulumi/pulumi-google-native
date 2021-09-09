@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Specification determining how headers are added to requests or responses.
+    /// </summary>
     [OutputType]
     public sealed class HttpHeaderOptionResponse
     {

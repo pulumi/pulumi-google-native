@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// Range of numerical values within min and max.
+    /// </summary>
     [OutputType]
     public sealed class GoogleMonitoringV3RangeResponse
     {

@@ -110,7 +110,7 @@ func (o GoogleCloudRetailV2AudienceOutput) ToGoogleCloudRetailV2AudiencePtrOutpu
 }
 
 func (o GoogleCloudRetailV2AudienceOutput) ToGoogleCloudRetailV2AudiencePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2AudiencePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2Audience) *GoogleCloudRetailV2Audience {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2Audience) *GoogleCloudRetailV2Audience {
 		return &v
 	}).(GoogleCloudRetailV2AudiencePtrOutput)
 }
@@ -140,7 +140,13 @@ func (o GoogleCloudRetailV2AudiencePtrOutput) ToGoogleCloudRetailV2AudiencePtrOu
 }
 
 func (o GoogleCloudRetailV2AudiencePtrOutput) Elem() GoogleCloudRetailV2AudienceOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2Audience) GoogleCloudRetailV2Audience { return *v }).(GoogleCloudRetailV2AudienceOutput)
+	return o.ApplyT(func(v *GoogleCloudRetailV2Audience) GoogleCloudRetailV2Audience {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2Audience
+		return ret
+	}).(GoogleCloudRetailV2AudienceOutput)
 }
 
 // The age groups of the audience. Strongly encouraged to use the standard values: "newborn" (up to 3 months old), "infant" (3–12 months old), "toddler" (1–5 years old), "kids" (5–13 years old), "adult" (typically teens or older). At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [age_group](https://support.google.com/merchants/answer/6324463). Schema.org property [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
@@ -263,7 +269,7 @@ func (o GoogleCloudRetailV2AudienceResponseOutput) ToGoogleCloudRetailV2Audience
 }
 
 func (o GoogleCloudRetailV2AudienceResponseOutput) ToGoogleCloudRetailV2AudienceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2AudienceResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2AudienceResponse) *GoogleCloudRetailV2AudienceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2AudienceResponse) *GoogleCloudRetailV2AudienceResponse {
 		return &v
 	}).(GoogleCloudRetailV2AudienceResponsePtrOutput)
 }
@@ -293,7 +299,13 @@ func (o GoogleCloudRetailV2AudienceResponsePtrOutput) ToGoogleCloudRetailV2Audie
 }
 
 func (o GoogleCloudRetailV2AudienceResponsePtrOutput) Elem() GoogleCloudRetailV2AudienceResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2AudienceResponse) GoogleCloudRetailV2AudienceResponse { return *v }).(GoogleCloudRetailV2AudienceResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudRetailV2AudienceResponse) GoogleCloudRetailV2AudienceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2AudienceResponse
+		return ret
+	}).(GoogleCloudRetailV2AudienceResponseOutput)
 }
 
 // The age groups of the audience. Strongly encouraged to use the standard values: "newborn" (up to 3 months old), "infant" (3–12 months old), "toddler" (1–5 years old), "kids" (5–13 years old), "adult" (typically teens or older). At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [age_group](https://support.google.com/merchants/answer/6324463). Schema.org property [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
@@ -416,7 +428,7 @@ func (o GoogleCloudRetailV2ColorInfoOutput) ToGoogleCloudRetailV2ColorInfoPtrOut
 }
 
 func (o GoogleCloudRetailV2ColorInfoOutput) ToGoogleCloudRetailV2ColorInfoPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2ColorInfoPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2ColorInfo) *GoogleCloudRetailV2ColorInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2ColorInfo) *GoogleCloudRetailV2ColorInfo {
 		return &v
 	}).(GoogleCloudRetailV2ColorInfoPtrOutput)
 }
@@ -446,7 +458,13 @@ func (o GoogleCloudRetailV2ColorInfoPtrOutput) ToGoogleCloudRetailV2ColorInfoPtr
 }
 
 func (o GoogleCloudRetailV2ColorInfoPtrOutput) Elem() GoogleCloudRetailV2ColorInfoOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2ColorInfo) GoogleCloudRetailV2ColorInfo { return *v }).(GoogleCloudRetailV2ColorInfoOutput)
+	return o.ApplyT(func(v *GoogleCloudRetailV2ColorInfo) GoogleCloudRetailV2ColorInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2ColorInfo
+		return ret
+	}).(GoogleCloudRetailV2ColorInfoOutput)
 }
 
 // The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
@@ -569,7 +587,7 @@ func (o GoogleCloudRetailV2ColorInfoResponseOutput) ToGoogleCloudRetailV2ColorIn
 }
 
 func (o GoogleCloudRetailV2ColorInfoResponseOutput) ToGoogleCloudRetailV2ColorInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2ColorInfoResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2ColorInfoResponse) *GoogleCloudRetailV2ColorInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2ColorInfoResponse) *GoogleCloudRetailV2ColorInfoResponse {
 		return &v
 	}).(GoogleCloudRetailV2ColorInfoResponsePtrOutput)
 }
@@ -599,7 +617,13 @@ func (o GoogleCloudRetailV2ColorInfoResponsePtrOutput) ToGoogleCloudRetailV2Colo
 }
 
 func (o GoogleCloudRetailV2ColorInfoResponsePtrOutput) Elem() GoogleCloudRetailV2ColorInfoResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2ColorInfoResponse) GoogleCloudRetailV2ColorInfoResponse { return *v }).(GoogleCloudRetailV2ColorInfoResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudRetailV2ColorInfoResponse) GoogleCloudRetailV2ColorInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2ColorInfoResponse
+		return ret
+	}).(GoogleCloudRetailV2ColorInfoResponseOutput)
 }
 
 // The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
@@ -1184,7 +1208,7 @@ func (o GoogleCloudRetailV2IntervalResponseOutput) ToGoogleCloudRetailV2Interval
 }
 
 func (o GoogleCloudRetailV2IntervalResponseOutput) ToGoogleCloudRetailV2IntervalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2IntervalResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2IntervalResponse) *GoogleCloudRetailV2IntervalResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2IntervalResponse) *GoogleCloudRetailV2IntervalResponse {
 		return &v
 	}).(GoogleCloudRetailV2IntervalResponsePtrOutput)
 }
@@ -1224,7 +1248,13 @@ func (o GoogleCloudRetailV2IntervalResponsePtrOutput) ToGoogleCloudRetailV2Inter
 }
 
 func (o GoogleCloudRetailV2IntervalResponsePtrOutput) Elem() GoogleCloudRetailV2IntervalResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2IntervalResponse) GoogleCloudRetailV2IntervalResponse { return *v }).(GoogleCloudRetailV2IntervalResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudRetailV2IntervalResponse) GoogleCloudRetailV2IntervalResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2IntervalResponse
+		return ret
+	}).(GoogleCloudRetailV2IntervalResponseOutput)
 }
 
 // Exclusive upper bound.
@@ -1383,7 +1413,7 @@ func (o GoogleCloudRetailV2PriceInfoOutput) ToGoogleCloudRetailV2PriceInfoPtrOut
 }
 
 func (o GoogleCloudRetailV2PriceInfoOutput) ToGoogleCloudRetailV2PriceInfoPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2PriceInfoPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2PriceInfo) *GoogleCloudRetailV2PriceInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2PriceInfo) *GoogleCloudRetailV2PriceInfo {
 		return &v
 	}).(GoogleCloudRetailV2PriceInfoPtrOutput)
 }
@@ -1433,7 +1463,13 @@ func (o GoogleCloudRetailV2PriceInfoPtrOutput) ToGoogleCloudRetailV2PriceInfoPtr
 }
 
 func (o GoogleCloudRetailV2PriceInfoPtrOutput) Elem() GoogleCloudRetailV2PriceInfoOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2PriceInfo) GoogleCloudRetailV2PriceInfo { return *v }).(GoogleCloudRetailV2PriceInfoOutput)
+	return o.ApplyT(func(v *GoogleCloudRetailV2PriceInfo) GoogleCloudRetailV2PriceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2PriceInfo
+		return ret
+	}).(GoogleCloudRetailV2PriceInfoOutput)
 }
 
 // The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
@@ -1596,7 +1632,7 @@ func (o GoogleCloudRetailV2PriceInfoPriceRangeResponseOutput) ToGoogleCloudRetai
 }
 
 func (o GoogleCloudRetailV2PriceInfoPriceRangeResponseOutput) ToGoogleCloudRetailV2PriceInfoPriceRangeResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2PriceInfoPriceRangeResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2PriceInfoPriceRangeResponse) *GoogleCloudRetailV2PriceInfoPriceRangeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2PriceInfoPriceRangeResponse) *GoogleCloudRetailV2PriceInfoPriceRangeResponse {
 		return &v
 	}).(GoogleCloudRetailV2PriceInfoPriceRangeResponsePtrOutput)
 }
@@ -1631,7 +1667,11 @@ func (o GoogleCloudRetailV2PriceInfoPriceRangeResponsePtrOutput) ToGoogleCloudRe
 
 func (o GoogleCloudRetailV2PriceInfoPriceRangeResponsePtrOutput) Elem() GoogleCloudRetailV2PriceInfoPriceRangeResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2PriceInfoPriceRangeResponse) GoogleCloudRetailV2PriceInfoPriceRangeResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2PriceInfoPriceRangeResponse
+		return ret
 	}).(GoogleCloudRetailV2PriceInfoPriceRangeResponseOutput)
 }
 
@@ -1775,7 +1815,7 @@ func (o GoogleCloudRetailV2PriceInfoResponseOutput) ToGoogleCloudRetailV2PriceIn
 }
 
 func (o GoogleCloudRetailV2PriceInfoResponseOutput) ToGoogleCloudRetailV2PriceInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2PriceInfoResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2PriceInfoResponse) *GoogleCloudRetailV2PriceInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2PriceInfoResponse) *GoogleCloudRetailV2PriceInfoResponse {
 		return &v
 	}).(GoogleCloudRetailV2PriceInfoResponsePtrOutput)
 }
@@ -1832,7 +1872,13 @@ func (o GoogleCloudRetailV2PriceInfoResponsePtrOutput) ToGoogleCloudRetailV2Pric
 }
 
 func (o GoogleCloudRetailV2PriceInfoResponsePtrOutput) Elem() GoogleCloudRetailV2PriceInfoResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2PriceInfoResponse) GoogleCloudRetailV2PriceInfoResponse { return *v }).(GoogleCloudRetailV2PriceInfoResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudRetailV2PriceInfoResponse) GoogleCloudRetailV2PriceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2PriceInfoResponse
+		return ret
+	}).(GoogleCloudRetailV2PriceInfoResponseOutput)
 }
 
 // The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
@@ -2590,7 +2636,7 @@ func (o GoogleCloudRetailV2RatingOutput) ToGoogleCloudRetailV2RatingPtrOutput() 
 }
 
 func (o GoogleCloudRetailV2RatingOutput) ToGoogleCloudRetailV2RatingPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2RatingPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2Rating) *GoogleCloudRetailV2Rating {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2Rating) *GoogleCloudRetailV2Rating {
 		return &v
 	}).(GoogleCloudRetailV2RatingPtrOutput)
 }
@@ -2625,7 +2671,13 @@ func (o GoogleCloudRetailV2RatingPtrOutput) ToGoogleCloudRetailV2RatingPtrOutput
 }
 
 func (o GoogleCloudRetailV2RatingPtrOutput) Elem() GoogleCloudRetailV2RatingOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2Rating) GoogleCloudRetailV2Rating { return *v }).(GoogleCloudRetailV2RatingOutput)
+	return o.ApplyT(func(v *GoogleCloudRetailV2Rating) GoogleCloudRetailV2Rating {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2Rating
+		return ret
+	}).(GoogleCloudRetailV2RatingOutput)
 }
 
 // The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -2762,7 +2814,7 @@ func (o GoogleCloudRetailV2RatingResponseOutput) ToGoogleCloudRetailV2RatingResp
 }
 
 func (o GoogleCloudRetailV2RatingResponseOutput) ToGoogleCloudRetailV2RatingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2RatingResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2RatingResponse) *GoogleCloudRetailV2RatingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2RatingResponse) *GoogleCloudRetailV2RatingResponse {
 		return &v
 	}).(GoogleCloudRetailV2RatingResponsePtrOutput)
 }
@@ -2797,7 +2849,13 @@ func (o GoogleCloudRetailV2RatingResponsePtrOutput) ToGoogleCloudRetailV2RatingR
 }
 
 func (o GoogleCloudRetailV2RatingResponsePtrOutput) Elem() GoogleCloudRetailV2RatingResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2RatingResponse) GoogleCloudRetailV2RatingResponse { return *v }).(GoogleCloudRetailV2RatingResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudRetailV2RatingResponse) GoogleCloudRetailV2RatingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2RatingResponse
+		return ret
+	}).(GoogleCloudRetailV2RatingResponseOutput)
 }
 
 // The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned.

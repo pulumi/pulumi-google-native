@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// This is deprecated and has no effect. Do not use.
+    /// </summary>
     [OutputType]
     public sealed class LogConfigResponse
     {

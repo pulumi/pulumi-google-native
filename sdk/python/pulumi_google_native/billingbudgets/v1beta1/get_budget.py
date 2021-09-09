@@ -13,6 +13,7 @@ __all__ = [
     'GetBudgetResult',
     'AwaitableGetBudgetResult',
     'get_budget',
+    'get_budget_output',
 ]
 
 @pulumi.output_type
@@ -135,3 +136,13 @@ def get_budget(billing_account_id: Optional[str] = None,
         etag=__ret__.etag,
         name=__ret__.name,
         threshold_rules=__ret__.threshold_rules)
+
+
+@_utilities.lift_output_func(get_budget)
+def get_budget_output(billing_account_id: Optional[pulumi.Input[str]] = None,
+                      budget_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBudgetResult]:
+    """
+    Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.
+    """
+    ...

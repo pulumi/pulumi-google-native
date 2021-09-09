@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
 {
 
+    /// <summary>
+    /// CollectionOverride allows resource handling overrides for specific resources within a BaseType
+    /// </summary>
     [OutputType]
     public sealed class CollectionOverrideResponse
     {

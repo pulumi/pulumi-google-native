@@ -104,7 +104,7 @@ func (o EntityTypeAutoExpansionModeOutput) ToStringPtrOutputWithContext(ctx cont
 type EntityTypeAutoExpansionModePtrOutput struct{ *pulumi.OutputState }
 
 func (EntityTypeAutoExpansionModePtrOutput) ElementType() reflect.Type {
-	return entityTypeAutoExpansionModePtrType
+	return reflect.TypeOf((**EntityTypeAutoExpansionMode)(nil)).Elem()
 }
 
 func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOutput() EntityTypeAutoExpansionModePtrOutput {
@@ -113,6 +113,16 @@ func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOu
 
 func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModePtrOutput {
 	return o
+}
+
+func (o EntityTypeAutoExpansionModePtrOutput) Elem() EntityTypeAutoExpansionModeOutput {
+	return o.ApplyT(func(v *EntityTypeAutoExpansionMode) EntityTypeAutoExpansionMode {
+		if v != nil {
+			return *v
+		}
+		var ret EntityTypeAutoExpansionMode
+		return ret
+	}).(EntityTypeAutoExpansionModeOutput)
 }
 
 func (o EntityTypeAutoExpansionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -127,16 +137,6 @@ func (o EntityTypeAutoExpansionModePtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EntityTypeAutoExpansionModePtrOutput) Elem() EntityTypeAutoExpansionModeOutput {
-	return o.ApplyT(func(v *EntityTypeAutoExpansionMode) EntityTypeAutoExpansionMode {
-		var ret EntityTypeAutoExpansionMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EntityTypeAutoExpansionModeOutput)
 }
 
 // EntityTypeAutoExpansionModeInput is an input type that accepts EntityTypeAutoExpansionModeArgs and EntityTypeAutoExpansionModeOutput values.
@@ -275,7 +275,7 @@ func (o EntityTypeKindOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 type EntityTypeKindPtrOutput struct{ *pulumi.OutputState }
 
 func (EntityTypeKindPtrOutput) ElementType() reflect.Type {
-	return entityTypeKindPtrType
+	return reflect.TypeOf((**EntityTypeKind)(nil)).Elem()
 }
 
 func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOutput {
@@ -284,6 +284,16 @@ func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOu
 
 func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutputWithContext(ctx context.Context) EntityTypeKindPtrOutput {
 	return o
+}
+
+func (o EntityTypeKindPtrOutput) Elem() EntityTypeKindOutput {
+	return o.ApplyT(func(v *EntityTypeKind) EntityTypeKind {
+		if v != nil {
+			return *v
+		}
+		var ret EntityTypeKind
+		return ret
+	}).(EntityTypeKindOutput)
 }
 
 func (o EntityTypeKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o EntityTypeKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EntityTypeKindPtrOutput) Elem() EntityTypeKindOutput {
-	return o.ApplyT(func(v *EntityTypeKind) EntityTypeKind {
-		var ret EntityTypeKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EntityTypeKindOutput)
 }
 
 // EntityTypeKindInput is an input type that accepts EntityTypeKindArgs and EntityTypeKindOutput values.
@@ -448,7 +448,7 @@ func (o ExperimentStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type ExperimentStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (ExperimentStateEnumPtrOutput) ElementType() reflect.Type {
-	return experimentStateEnumPtrType
+	return reflect.TypeOf((**ExperimentStateEnum)(nil)).Elem()
 }
 
 func (o ExperimentStateEnumPtrOutput) ToExperimentStateEnumPtrOutput() ExperimentStateEnumPtrOutput {
@@ -457,6 +457,16 @@ func (o ExperimentStateEnumPtrOutput) ToExperimentStateEnumPtrOutput() Experimen
 
 func (o ExperimentStateEnumPtrOutput) ToExperimentStateEnumPtrOutputWithContext(ctx context.Context) ExperimentStateEnumPtrOutput {
 	return o
+}
+
+func (o ExperimentStateEnumPtrOutput) Elem() ExperimentStateEnumOutput {
+	return o.ApplyT(func(v *ExperimentStateEnum) ExperimentStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret ExperimentStateEnum
+		return ret
+	}).(ExperimentStateEnumOutput)
 }
 
 func (o ExperimentStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -471,16 +481,6 @@ func (o ExperimentStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ExperimentStateEnumPtrOutput) Elem() ExperimentStateEnumOutput {
-	return o.ApplyT(func(v *ExperimentStateEnum) ExperimentStateEnum {
-		var ret ExperimentStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ExperimentStateEnumOutput)
 }
 
 // ExperimentStateEnumInput is an input type that accepts ExperimentStateEnumArgs and ExperimentStateEnumOutput values.
@@ -619,7 +619,7 @@ func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput) ToString
 type GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3ExperimentResultMetricCountType)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput {
@@ -628,6 +628,16 @@ func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ToGoo
 
 func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) Elem() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) GoogleCloudDialogflowCxV3ExperimentResultMetricCountType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3ExperimentResultMetricCountType
+		return ret
+	}).(GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput)
 }
 
 func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -642,16 +652,6 @@ func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ToStr
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) Elem() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) GoogleCloudDialogflowCxV3ExperimentResultMetricCountType {
-		var ret GoogleCloudDialogflowCxV3ExperimentResultMetricCountType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput)
 }
 
 // GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeArgs and GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput values.
@@ -794,7 +794,7 @@ func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput) ToStringPtrOu
 type GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowCxV3ExperimentResultMetricTypePtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3ExperimentResultMetricType)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput {
@@ -803,6 +803,16 @@ func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ToGoogleCl
 
 func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) Elem() GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3ExperimentResultMetricType) GoogleCloudDialogflowCxV3ExperimentResultMetricType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3ExperimentResultMetricType
+		return ret
+	}).(GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput)
 }
 
 func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -817,16 +827,6 @@ func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ToStringPt
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) Elem() GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3ExperimentResultMetricType) GoogleCloudDialogflowCxV3ExperimentResultMetricType {
-		var ret GoogleCloudDialogflowCxV3ExperimentResultMetricType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput)
 }
 
 // GoogleCloudDialogflowCxV3ExperimentResultMetricTypeInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultMetricTypeArgs and GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput values.
@@ -973,7 +973,7 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput) ToStringPt
 type GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput {
@@ -982,6 +982,16 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ToGoogl
 
 func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) Elem() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding
+		return ret
+	}).(GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput)
 }
 
 func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -996,16 +1006,6 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ToStrin
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) Elem() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding {
-		var ret GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput)
 }
 
 // GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingInput is an input type that accepts GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingArgs and GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput values.
@@ -1144,7 +1144,7 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput) ToStringPtr
 type GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowCxV3InputAudioConfigModelVariantPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3InputAudioConfigModelVariant)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput {
@@ -1153,6 +1153,16 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ToGoogle
 
 func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) Elem() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) GoogleCloudDialogflowCxV3InputAudioConfigModelVariant {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3InputAudioConfigModelVariant
+		return ret
+	}).(GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput)
 }
 
 func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1167,16 +1177,6 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ToString
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) Elem() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) GoogleCloudDialogflowCxV3InputAudioConfigModelVariant {
-		var ret GoogleCloudDialogflowCxV3InputAudioConfigModelVariant
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput)
 }
 
 // GoogleCloudDialogflowCxV3InputAudioConfigModelVariantInput is an input type that accepts GoogleCloudDialogflowCxV3InputAudioConfigModelVariantArgs and GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput values.
@@ -1313,7 +1313,7 @@ func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput) ToStringPtr
 type GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowCxV3NluSettingsModelTrainingModePtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput {
@@ -1322,6 +1322,16 @@ func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ToGoogle
 
 func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) Elem() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode
+		return ret
+	}).(GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput)
 }
 
 func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1336,16 +1346,6 @@ func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ToString
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) Elem() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode {
-		var ret GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput)
 }
 
 // GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeInput is an input type that accepts GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeArgs and GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput values.
@@ -1482,7 +1482,7 @@ func (o GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput) ToStringPtrOutputWi
 type GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowCxV3NluSettingsModelTypePtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3NluSettingsModelType)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput {
@@ -1491,6 +1491,16 @@ func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ToGoogleCloudDia
 
 func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) Elem() GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3NluSettingsModelType) GoogleCloudDialogflowCxV3NluSettingsModelType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3NluSettingsModelType
+		return ret
+	}).(GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput)
 }
 
 func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1505,16 +1515,6 @@ func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) Elem() GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3NluSettingsModelType) GoogleCloudDialogflowCxV3NluSettingsModelType {
-		var ret GoogleCloudDialogflowCxV3NluSettingsModelType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput)
 }
 
 // GoogleCloudDialogflowCxV3NluSettingsModelTypeInput is an input type that accepts GoogleCloudDialogflowCxV3NluSettingsModelTypeArgs and GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput values.
@@ -1651,7 +1651,7 @@ func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput) ToStringPtrOutp
 type GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowCxV3TestCaseResultTestResultPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3TestCaseResultTestResult)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput() GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput {
@@ -1660,6 +1660,16 @@ func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ToGoogleClou
 
 func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) Elem() GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3TestCaseResultTestResult) GoogleCloudDialogflowCxV3TestCaseResultTestResult {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3TestCaseResultTestResult
+		return ret
+	}).(GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput)
 }
 
 func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1674,16 +1684,6 @@ func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ToStringPtrO
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) Elem() GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3TestCaseResultTestResult) GoogleCloudDialogflowCxV3TestCaseResultTestResult {
-		var ret GoogleCloudDialogflowCxV3TestCaseResultTestResult
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput)
 }
 
 // GoogleCloudDialogflowCxV3TestCaseResultTestResultInput is an input type that accepts GoogleCloudDialogflowCxV3TestCaseResultTestResultArgs and GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput values.
@@ -1817,7 +1817,7 @@ func (o SecuritySettingPurgeDataTypesItemOutput) ToStringPtrOutputWithContext(ct
 type SecuritySettingPurgeDataTypesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (SecuritySettingPurgeDataTypesItemPtrOutput) ElementType() reflect.Type {
-	return securitySettingPurgeDataTypesItemPtrType
+	return reflect.TypeOf((**SecuritySettingPurgeDataTypesItem)(nil)).Elem()
 }
 
 func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToSecuritySettingPurgeDataTypesItemPtrOutput() SecuritySettingPurgeDataTypesItemPtrOutput {
@@ -1826,6 +1826,16 @@ func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToSecuritySettingPurgeDataTy
 
 func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToSecuritySettingPurgeDataTypesItemPtrOutputWithContext(ctx context.Context) SecuritySettingPurgeDataTypesItemPtrOutput {
 	return o
+}
+
+func (o SecuritySettingPurgeDataTypesItemPtrOutput) Elem() SecuritySettingPurgeDataTypesItemOutput {
+	return o.ApplyT(func(v *SecuritySettingPurgeDataTypesItem) SecuritySettingPurgeDataTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret SecuritySettingPurgeDataTypesItem
+		return ret
+	}).(SecuritySettingPurgeDataTypesItemOutput)
 }
 
 func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1840,16 +1850,6 @@ func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SecuritySettingPurgeDataTypesItemPtrOutput) Elem() SecuritySettingPurgeDataTypesItemOutput {
-	return o.ApplyT(func(v *SecuritySettingPurgeDataTypesItem) SecuritySettingPurgeDataTypesItem {
-		var ret SecuritySettingPurgeDataTypesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SecuritySettingPurgeDataTypesItemOutput)
 }
 
 // SecuritySettingPurgeDataTypesItemInput is an input type that accepts SecuritySettingPurgeDataTypesItemArgs and SecuritySettingPurgeDataTypesItemOutput values.
@@ -1930,8 +1930,8 @@ func (o SecuritySettingPurgeDataTypesItemArrayOutput) ToSecuritySettingPurgeData
 }
 
 func (o SecuritySettingPurgeDataTypesItemArrayOutput) Index(i pulumi.IntInput) SecuritySettingPurgeDataTypesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecuritySettingPurgeDataTypesItemOutput {
-		return vs[0].([]SecuritySettingPurgeDataTypesItem)[vs[1].(int)].ToSecuritySettingPurgeDataTypesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecuritySettingPurgeDataTypesItem {
+		return vs[0].([]SecuritySettingPurgeDataTypesItem)[vs[1].(int)]
 	}).(SecuritySettingPurgeDataTypesItemOutput)
 }
 
@@ -2029,7 +2029,7 @@ func (o SecuritySettingRedactionScopeOutput) ToStringPtrOutputWithContext(ctx co
 type SecuritySettingRedactionScopePtrOutput struct{ *pulumi.OutputState }
 
 func (SecuritySettingRedactionScopePtrOutput) ElementType() reflect.Type {
-	return securitySettingRedactionScopePtrType
+	return reflect.TypeOf((**SecuritySettingRedactionScope)(nil)).Elem()
 }
 
 func (o SecuritySettingRedactionScopePtrOutput) ToSecuritySettingRedactionScopePtrOutput() SecuritySettingRedactionScopePtrOutput {
@@ -2038,6 +2038,16 @@ func (o SecuritySettingRedactionScopePtrOutput) ToSecuritySettingRedactionScopeP
 
 func (o SecuritySettingRedactionScopePtrOutput) ToSecuritySettingRedactionScopePtrOutputWithContext(ctx context.Context) SecuritySettingRedactionScopePtrOutput {
 	return o
+}
+
+func (o SecuritySettingRedactionScopePtrOutput) Elem() SecuritySettingRedactionScopeOutput {
+	return o.ApplyT(func(v *SecuritySettingRedactionScope) SecuritySettingRedactionScope {
+		if v != nil {
+			return *v
+		}
+		var ret SecuritySettingRedactionScope
+		return ret
+	}).(SecuritySettingRedactionScopeOutput)
 }
 
 func (o SecuritySettingRedactionScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2052,16 +2062,6 @@ func (o SecuritySettingRedactionScopePtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SecuritySettingRedactionScopePtrOutput) Elem() SecuritySettingRedactionScopeOutput {
-	return o.ApplyT(func(v *SecuritySettingRedactionScope) SecuritySettingRedactionScope {
-		var ret SecuritySettingRedactionScope
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SecuritySettingRedactionScopeOutput)
 }
 
 // SecuritySettingRedactionScopeInput is an input type that accepts SecuritySettingRedactionScopeArgs and SecuritySettingRedactionScopeOutput values.
@@ -2196,7 +2196,7 @@ func (o SecuritySettingRedactionStrategyOutput) ToStringPtrOutputWithContext(ctx
 type SecuritySettingRedactionStrategyPtrOutput struct{ *pulumi.OutputState }
 
 func (SecuritySettingRedactionStrategyPtrOutput) ElementType() reflect.Type {
-	return securitySettingRedactionStrategyPtrType
+	return reflect.TypeOf((**SecuritySettingRedactionStrategy)(nil)).Elem()
 }
 
 func (o SecuritySettingRedactionStrategyPtrOutput) ToSecuritySettingRedactionStrategyPtrOutput() SecuritySettingRedactionStrategyPtrOutput {
@@ -2205,6 +2205,16 @@ func (o SecuritySettingRedactionStrategyPtrOutput) ToSecuritySettingRedactionStr
 
 func (o SecuritySettingRedactionStrategyPtrOutput) ToSecuritySettingRedactionStrategyPtrOutputWithContext(ctx context.Context) SecuritySettingRedactionStrategyPtrOutput {
 	return o
+}
+
+func (o SecuritySettingRedactionStrategyPtrOutput) Elem() SecuritySettingRedactionStrategyOutput {
+	return o.ApplyT(func(v *SecuritySettingRedactionStrategy) SecuritySettingRedactionStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret SecuritySettingRedactionStrategy
+		return ret
+	}).(SecuritySettingRedactionStrategyOutput)
 }
 
 func (o SecuritySettingRedactionStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2219,16 +2229,6 @@ func (o SecuritySettingRedactionStrategyPtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SecuritySettingRedactionStrategyPtrOutput) Elem() SecuritySettingRedactionStrategyOutput {
-	return o.ApplyT(func(v *SecuritySettingRedactionStrategy) SecuritySettingRedactionStrategy {
-		var ret SecuritySettingRedactionStrategy
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SecuritySettingRedactionStrategyOutput)
 }
 
 // SecuritySettingRedactionStrategyInput is an input type that accepts SecuritySettingRedactionStrategyArgs and SecuritySettingRedactionStrategyOutput values.
@@ -2365,7 +2365,7 @@ func (o SessionEntityTypeEntityOverrideModeOutput) ToStringPtrOutputWithContext(
 type SessionEntityTypeEntityOverrideModePtrOutput struct{ *pulumi.OutputState }
 
 func (SessionEntityTypeEntityOverrideModePtrOutput) ElementType() reflect.Type {
-	return sessionEntityTypeEntityOverrideModePtrType
+	return reflect.TypeOf((**SessionEntityTypeEntityOverrideMode)(nil)).Elem()
 }
 
 func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityOverrideModePtrOutput() SessionEntityTypeEntityOverrideModePtrOutput {
@@ -2374,6 +2374,16 @@ func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityO
 
 func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModePtrOutput {
 	return o
+}
+
+func (o SessionEntityTypeEntityOverrideModePtrOutput) Elem() SessionEntityTypeEntityOverrideModeOutput {
+	return o.ApplyT(func(v *SessionEntityTypeEntityOverrideMode) SessionEntityTypeEntityOverrideMode {
+		if v != nil {
+			return *v
+		}
+		var ret SessionEntityTypeEntityOverrideMode
+		return ret
+	}).(SessionEntityTypeEntityOverrideModeOutput)
 }
 
 func (o SessionEntityTypeEntityOverrideModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2388,16 +2398,6 @@ func (o SessionEntityTypeEntityOverrideModePtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SessionEntityTypeEntityOverrideModePtrOutput) Elem() SessionEntityTypeEntityOverrideModeOutput {
-	return o.ApplyT(func(v *SessionEntityTypeEntityOverrideMode) SessionEntityTypeEntityOverrideMode {
-		var ret SessionEntityTypeEntityOverrideMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SessionEntityTypeEntityOverrideModeOutput)
 }
 
 // SessionEntityTypeEntityOverrideModeInput is an input type that accepts SessionEntityTypeEntityOverrideModeArgs and SessionEntityTypeEntityOverrideModeOutput values.

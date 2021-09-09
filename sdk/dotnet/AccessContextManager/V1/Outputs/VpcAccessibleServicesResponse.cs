@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies how APIs are allowed to communicate within the Service Perimeter.
+    /// </summary>
     [OutputType]
     public sealed class VpcAccessibleServicesResponse
     {

@@ -120,9 +120,7 @@ func (i *Lien) ToLienOutputWithContext(ctx context.Context) LienOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LienOutput)
 }
 
-type LienOutput struct {
-	*pulumi.OutputState
-}
+type LienOutput struct{ *pulumi.OutputState }
 
 func (LienOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Lien)(nil))

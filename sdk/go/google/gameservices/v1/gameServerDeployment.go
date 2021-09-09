@@ -122,9 +122,7 @@ func (i *GameServerDeployment) ToGameServerDeploymentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentOutput)
 }
 
-type GameServerDeploymentOutput struct {
-	*pulumi.OutputState
-}
+type GameServerDeploymentOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerDeployment)(nil))

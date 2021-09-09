@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Outputs
 {
 
+    /// <summary>
+    /// InputMapping creates a 'virtual' property that will be injected into the properties before sending the request to the underlying API.
+    /// </summary>
     [OutputType]
     public sealed class InputMappingResponse
     {

@@ -554,7 +554,7 @@ func (o BackupInfoResponseOutput) ToBackupInfoResponsePtrOutput() BackupInfoResp
 }
 
 func (o BackupInfoResponseOutput) ToBackupInfoResponsePtrOutputWithContext(ctx context.Context) BackupInfoResponsePtrOutput {
-	return o.ApplyT(func(v BackupInfoResponse) *BackupInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupInfoResponse) *BackupInfoResponse {
 		return &v
 	}).(BackupInfoResponsePtrOutput)
 }
@@ -594,7 +594,13 @@ func (o BackupInfoResponsePtrOutput) ToBackupInfoResponsePtrOutputWithContext(ct
 }
 
 func (o BackupInfoResponsePtrOutput) Elem() BackupInfoResponseOutput {
-	return o.ApplyT(func(v *BackupInfoResponse) BackupInfoResponse { return *v }).(BackupInfoResponseOutput)
+	return o.ApplyT(func(v *BackupInfoResponse) BackupInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackupInfoResponse
+		return ret
+	}).(BackupInfoResponseOutput)
 }
 
 // Name of the backup.
@@ -969,7 +975,7 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPt
 }
 
 func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
-	return o.ApplyT(func(v EncryptionConfig) *EncryptionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfig) *EncryptionConfig {
 		return &v
 	}).(EncryptionConfigPtrOutput)
 }
@@ -994,7 +1000,13 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx co
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
-	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig { return *v }).(EncryptionConfigOutput)
+	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfig
+		return ret
+	}).(EncryptionConfigOutput)
 }
 
 // Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
@@ -1103,7 +1115,7 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() En
 }
 
 func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o.ApplyT(func(v EncryptionConfigResponse) *EncryptionConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfigResponse) *EncryptionConfigResponse {
 		return &v
 	}).(EncryptionConfigResponsePtrOutput)
 }
@@ -1128,7 +1140,13 @@ func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWi
 }
 
 func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse { return *v }).(EncryptionConfigResponseOutput)
+	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfigResponse
+		return ret
+	}).(EncryptionConfigResponseOutput)
 }
 
 // Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
@@ -1245,7 +1263,7 @@ func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponsePtrOutput() Encryp
 }
 
 func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponsePtrOutputWithContext(ctx context.Context) EncryptionInfoResponsePtrOutput {
-	return o.ApplyT(func(v EncryptionInfoResponse) *EncryptionInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionInfoResponse) *EncryptionInfoResponse {
 		return &v
 	}).(EncryptionInfoResponsePtrOutput)
 }
@@ -1280,7 +1298,13 @@ func (o EncryptionInfoResponsePtrOutput) ToEncryptionInfoResponsePtrOutputWithCo
 }
 
 func (o EncryptionInfoResponsePtrOutput) Elem() EncryptionInfoResponseOutput {
-	return o.ApplyT(func(v *EncryptionInfoResponse) EncryptionInfoResponse { return *v }).(EncryptionInfoResponseOutput)
+	return o.ApplyT(func(v *EncryptionInfoResponse) EncryptionInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionInfoResponse
+		return ret
+	}).(EncryptionInfoResponseOutput)
 }
 
 // The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
@@ -1421,7 +1445,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1461,7 +1485,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1678,7 +1708,7 @@ func (o MultiClusterRoutingUseAnyOutput) ToMultiClusterRoutingUseAnyPtrOutput() 
 }
 
 func (o MultiClusterRoutingUseAnyOutput) ToMultiClusterRoutingUseAnyPtrOutputWithContext(ctx context.Context) MultiClusterRoutingUseAnyPtrOutput {
-	return o.ApplyT(func(v MultiClusterRoutingUseAny) *MultiClusterRoutingUseAny {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiClusterRoutingUseAny) *MultiClusterRoutingUseAny {
 		return &v
 	}).(MultiClusterRoutingUseAnyPtrOutput)
 }
@@ -1698,7 +1728,13 @@ func (o MultiClusterRoutingUseAnyPtrOutput) ToMultiClusterRoutingUseAnyPtrOutput
 }
 
 func (o MultiClusterRoutingUseAnyPtrOutput) Elem() MultiClusterRoutingUseAnyOutput {
-	return o.ApplyT(func(v *MultiClusterRoutingUseAny) MultiClusterRoutingUseAny { return *v }).(MultiClusterRoutingUseAnyOutput)
+	return o.ApplyT(func(v *MultiClusterRoutingUseAny) MultiClusterRoutingUseAny {
+		if v != nil {
+			return *v
+		}
+		var ret MultiClusterRoutingUseAny
+		return ret
+	}).(MultiClusterRoutingUseAnyOutput)
 }
 
 // Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
@@ -1793,7 +1829,7 @@ func (o MultiClusterRoutingUseAnyResponseOutput) ToMultiClusterRoutingUseAnyResp
 }
 
 func (o MultiClusterRoutingUseAnyResponseOutput) ToMultiClusterRoutingUseAnyResponsePtrOutputWithContext(ctx context.Context) MultiClusterRoutingUseAnyResponsePtrOutput {
-	return o.ApplyT(func(v MultiClusterRoutingUseAnyResponse) *MultiClusterRoutingUseAnyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiClusterRoutingUseAnyResponse) *MultiClusterRoutingUseAnyResponse {
 		return &v
 	}).(MultiClusterRoutingUseAnyResponsePtrOutput)
 }
@@ -1813,7 +1849,13 @@ func (o MultiClusterRoutingUseAnyResponsePtrOutput) ToMultiClusterRoutingUseAnyR
 }
 
 func (o MultiClusterRoutingUseAnyResponsePtrOutput) Elem() MultiClusterRoutingUseAnyResponseOutput {
-	return o.ApplyT(func(v *MultiClusterRoutingUseAnyResponse) MultiClusterRoutingUseAnyResponse { return *v }).(MultiClusterRoutingUseAnyResponseOutput)
+	return o.ApplyT(func(v *MultiClusterRoutingUseAnyResponse) MultiClusterRoutingUseAnyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MultiClusterRoutingUseAnyResponse
+		return ret
+	}).(MultiClusterRoutingUseAnyResponseOutput)
 }
 
 // Information about a table restore.
@@ -1916,7 +1958,7 @@ func (o RestoreInfoResponseOutput) ToRestoreInfoResponsePtrOutput() RestoreInfoR
 }
 
 func (o RestoreInfoResponseOutput) ToRestoreInfoResponsePtrOutputWithContext(ctx context.Context) RestoreInfoResponsePtrOutput {
-	return o.ApplyT(func(v RestoreInfoResponse) *RestoreInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreInfoResponse) *RestoreInfoResponse {
 		return &v
 	}).(RestoreInfoResponsePtrOutput)
 }
@@ -1946,7 +1988,13 @@ func (o RestoreInfoResponsePtrOutput) ToRestoreInfoResponsePtrOutputWithContext(
 }
 
 func (o RestoreInfoResponsePtrOutput) Elem() RestoreInfoResponseOutput {
-	return o.ApplyT(func(v *RestoreInfoResponse) RestoreInfoResponse { return *v }).(RestoreInfoResponseOutput)
+	return o.ApplyT(func(v *RestoreInfoResponse) RestoreInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreInfoResponse
+		return ret
+	}).(RestoreInfoResponseOutput)
 }
 
 // Information about the backup used to restore the table. The backup may no longer exist.
@@ -2069,7 +2117,7 @@ func (o SingleClusterRoutingOutput) ToSingleClusterRoutingPtrOutput() SingleClus
 }
 
 func (o SingleClusterRoutingOutput) ToSingleClusterRoutingPtrOutputWithContext(ctx context.Context) SingleClusterRoutingPtrOutput {
-	return o.ApplyT(func(v SingleClusterRouting) *SingleClusterRouting {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SingleClusterRouting) *SingleClusterRouting {
 		return &v
 	}).(SingleClusterRoutingPtrOutput)
 }
@@ -2099,7 +2147,13 @@ func (o SingleClusterRoutingPtrOutput) ToSingleClusterRoutingPtrOutputWithContex
 }
 
 func (o SingleClusterRoutingPtrOutput) Elem() SingleClusterRoutingOutput {
-	return o.ApplyT(func(v *SingleClusterRouting) SingleClusterRouting { return *v }).(SingleClusterRoutingOutput)
+	return o.ApplyT(func(v *SingleClusterRouting) SingleClusterRouting {
+		if v != nil {
+			return *v
+		}
+		var ret SingleClusterRouting
+		return ret
+	}).(SingleClusterRoutingOutput)
 }
 
 // Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
@@ -2222,7 +2276,7 @@ func (o SingleClusterRoutingResponseOutput) ToSingleClusterRoutingResponsePtrOut
 }
 
 func (o SingleClusterRoutingResponseOutput) ToSingleClusterRoutingResponsePtrOutputWithContext(ctx context.Context) SingleClusterRoutingResponsePtrOutput {
-	return o.ApplyT(func(v SingleClusterRoutingResponse) *SingleClusterRoutingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SingleClusterRoutingResponse) *SingleClusterRoutingResponse {
 		return &v
 	}).(SingleClusterRoutingResponsePtrOutput)
 }
@@ -2252,7 +2306,13 @@ func (o SingleClusterRoutingResponsePtrOutput) ToSingleClusterRoutingResponsePtr
 }
 
 func (o SingleClusterRoutingResponsePtrOutput) Elem() SingleClusterRoutingResponseOutput {
-	return o.ApplyT(func(v *SingleClusterRoutingResponse) SingleClusterRoutingResponse { return *v }).(SingleClusterRoutingResponseOutput)
+	return o.ApplyT(func(v *SingleClusterRoutingResponse) SingleClusterRoutingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SingleClusterRoutingResponse
+		return ret
+	}).(SingleClusterRoutingResponseOutput)
 }
 
 // Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
@@ -2479,7 +2539,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -2514,7 +2574,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// A segment of a full transcript.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse
     {

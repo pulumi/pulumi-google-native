@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Description of an input or output of an execution stage.
+    /// </summary>
     [OutputType]
     public sealed class StageSourceResponse
     {

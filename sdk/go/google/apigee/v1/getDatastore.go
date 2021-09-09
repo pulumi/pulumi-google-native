@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,75 @@ type LookupDatastoreResult struct {
 	Self string `pulumi:"self"`
 	// Destination storage type. Supported types `gcs` or `bigquery`.
 	TargetType string `pulumi:"targetType"`
+}
+
+func LookupDatastoreOutput(ctx *pulumi.Context, args LookupDatastoreOutputArgs, opts ...pulumi.InvokeOption) LookupDatastoreResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDatastoreResult, error) {
+			args := v.(LookupDatastoreArgs)
+			r, err := LookupDatastore(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDatastoreResultOutput)
+}
+
+type LookupDatastoreOutputArgs struct {
+	DatastoreId    pulumi.StringInput `pulumi:"datastoreId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupDatastoreOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatastoreArgs)(nil)).Elem()
+}
+
+type LookupDatastoreResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDatastoreResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatastoreResult)(nil)).Elem()
+}
+
+func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutput() LookupDatastoreResultOutput {
+	return o
+}
+
+func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutputWithContext(ctx context.Context) LookupDatastoreResultOutput {
+	return o
+}
+
+// Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+func (o LookupDatastoreResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatastoreResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Datastore Configurations.
+func (o LookupDatastoreResultOutput) DatastoreConfig() GoogleCloudApigeeV1DatastoreConfigResponseOutput {
+	return o.ApplyT(func(v LookupDatastoreResult) GoogleCloudApigeeV1DatastoreConfigResponse { return v.DatastoreConfig }).(GoogleCloudApigeeV1DatastoreConfigResponseOutput)
+}
+
+// Display name in UI
+func (o LookupDatastoreResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatastoreResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+func (o LookupDatastoreResultOutput) LastUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatastoreResult) string { return v.LastUpdateTime }).(pulumi.StringOutput)
+}
+
+// Organization that the datastore belongs to
+func (o LookupDatastoreResultOutput) Org() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatastoreResult) string { return v.Org }).(pulumi.StringOutput)
+}
+
+// Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
+func (o LookupDatastoreResultOutput) Self() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatastoreResult) string { return v.Self }).(pulumi.StringOutput)
+}
+
+// Destination storage type. Supported types `gcs` or `bigquery`.
+func (o LookupDatastoreResultOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatastoreResult) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDatastoreResultOutput{})
 }

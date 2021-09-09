@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SourceRepo.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration to automatically mirror a repository from another hosting service, for example GitHub or Bitbucket.
+    /// </summary>
     [OutputType]
     public sealed class MirrorConfigResponse
     {

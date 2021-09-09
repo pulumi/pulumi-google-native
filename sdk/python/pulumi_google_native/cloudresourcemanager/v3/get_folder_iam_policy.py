@@ -13,6 +13,7 @@ __all__ = [
     'GetFolderIamPolicyResult',
     'AwaitableGetFolderIamPolicyResult',
     'get_folder_iam_policy',
+    'get_folder_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -94,3 +95,12 @@ def get_folder_iam_policy(folder_id: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_folder_iam_policy)
+def get_folder_iam_policy_output(folder_id: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderIamPolicyResult]:
+    """
+    Gets the access control policy for a folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
+    """
+    ...

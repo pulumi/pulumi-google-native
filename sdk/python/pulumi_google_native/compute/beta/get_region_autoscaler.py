@@ -13,6 +13,7 @@ __all__ = [
     'GetRegionAutoscalerResult',
     'AwaitableGetRegionAutoscalerResult',
     'get_region_autoscaler',
+    'get_region_autoscaler_output',
 ]
 
 @pulumi.output_type
@@ -215,3 +216,14 @@ def get_region_autoscaler(autoscaler: Optional[str] = None,
         status_details=__ret__.status_details,
         target=__ret__.target,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_region_autoscaler)
+def get_region_autoscaler_output(autoscaler: Optional[pulumi.Input[str]] = None,
+                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 region: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionAutoscalerResult]:
+    """
+    Returns the specified autoscaler.
+    """
+    ...

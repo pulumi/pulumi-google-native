@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// Represents an example that the agent is trained on.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2IntentTrainingPhraseResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
+    /// <summary>
+    /// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+    /// </summary>
     [OutputType]
     public sealed class SecretEnvSourceResponse
     {

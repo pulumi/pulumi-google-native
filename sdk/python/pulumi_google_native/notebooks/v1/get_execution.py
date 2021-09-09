@@ -13,6 +13,7 @@ __all__ = [
     'GetExecutionResult',
     'AwaitableGetExecutionResult',
     'get_execution',
+    'get_execution_output',
 ]
 
 @pulumi.output_type
@@ -163,3 +164,14 @@ def get_execution(execution_id: Optional[str] = None,
         output_notebook_file=__ret__.output_notebook_file,
         state=__ret__.state,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_execution)
+def get_execution_output(execution_id: Optional[pulumi.Input[str]] = None,
+                         location: Optional[pulumi.Input[str]] = None,
+                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExecutionResult]:
+    """
+    Gets details of executions
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Domains.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
+    /// </summary>
     [OutputType]
     public sealed class DnsSettingsResponse
     {

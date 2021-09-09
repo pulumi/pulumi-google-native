@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Associates `members` with a `role`.
+    /// </summary>
     [OutputType]
     public sealed class GoogleIamV1BindingResponse
     {

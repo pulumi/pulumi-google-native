@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+    /// </summary>
     [OutputType]
     public sealed class HttpRouteRuleResponse
     {

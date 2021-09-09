@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse
     {

@@ -142,9 +142,7 @@ func (i *ZoneInstantSnapshot) ToZoneInstantSnapshotOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneInstantSnapshotOutput)
 }
 
-type ZoneInstantSnapshotOutput struct {
-	*pulumi.OutputState
-}
+type ZoneInstantSnapshotOutput struct{ *pulumi.OutputState }
 
 func (ZoneInstantSnapshotOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ZoneInstantSnapshot)(nil))

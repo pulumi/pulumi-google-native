@@ -13,6 +13,7 @@ __all__ = [
     'GetApicategoryResult',
     'AwaitableGetApicategoryResult',
     'get_apicategory',
+    'get_apicategory_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,14 @@ def get_apicategory(apicategory_id: Optional[str] = None,
         message=__ret__.message,
         request_id=__ret__.request_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_apicategory)
+def get_apicategory_output(apicategory_id: Optional[pulumi.Input[str]] = None,
+                           organization_id: Optional[pulumi.Input[str]] = None,
+                           site_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApicategoryResult]:
+    """
+    Gets a category on the portal.
+    """
+    ...

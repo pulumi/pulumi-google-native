@@ -13,6 +13,7 @@ __all__ = [
     'GetJobTemplateResult',
     'AwaitableGetJobTemplateResult',
     'get_job_template',
+    'get_job_template_output',
 ]
 
 @pulumi.output_type
@@ -72,3 +73,14 @@ def get_job_template(job_template_id: Optional[str] = None,
     return AwaitableGetJobTemplateResult(
         config=__ret__.config,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_job_template)
+def get_job_template_output(job_template_id: Optional[pulumi.Input[str]] = None,
+                            location: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobTemplateResult]:
+    """
+    Returns the job template data.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
+    /// <summary>
+    /// A patient identifier and associated type.
+    /// </summary>
     [OutputType]
     public sealed class PatientIdResponse
     {

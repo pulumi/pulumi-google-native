@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Google Cloud Build information.
+    /// </summary>
     [OutputType]
     public sealed class BuildInfoResponse
     {

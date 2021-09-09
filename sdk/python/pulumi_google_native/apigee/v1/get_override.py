@@ -13,6 +13,7 @@ __all__ = [
     'GetOverrideResult',
     'AwaitableGetOverrideResult',
     'get_override',
+    'get_override_output',
 ]
 
 @pulumi.output_type
@@ -85,3 +86,14 @@ def get_override(environment_id: Optional[str] = None,
         api_proxy=__ret__.api_proxy,
         name=__ret__.name,
         sampling_config=__ret__.sampling_config)
+
+
+@_utilities.lift_output_func(get_override)
+def get_override_output(environment_id: Optional[pulumi.Input[str]] = None,
+                        organization_id: Optional[pulumi.Input[str]] = None,
+                        override_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOverrideResult]:
+    """
+    Gets a trace configuration override.
+    """
+    ...

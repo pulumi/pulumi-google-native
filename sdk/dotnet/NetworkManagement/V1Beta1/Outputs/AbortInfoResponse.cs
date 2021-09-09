@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Details of the final state "abort" and associated resource.
+    /// </summary>
     [OutputType]
     public sealed class AbortInfoResponse
     {

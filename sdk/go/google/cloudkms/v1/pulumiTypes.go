@@ -786,7 +786,7 @@ func (o CertificateChainsResponseOutput) ToCertificateChainsResponsePtrOutput() 
 }
 
 func (o CertificateChainsResponseOutput) ToCertificateChainsResponsePtrOutputWithContext(ctx context.Context) CertificateChainsResponsePtrOutput {
-	return o.ApplyT(func(v CertificateChainsResponse) *CertificateChainsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateChainsResponse) *CertificateChainsResponse {
 		return &v
 	}).(CertificateChainsResponsePtrOutput)
 }
@@ -821,7 +821,13 @@ func (o CertificateChainsResponsePtrOutput) ToCertificateChainsResponsePtrOutput
 }
 
 func (o CertificateChainsResponsePtrOutput) Elem() CertificateChainsResponseOutput {
-	return o.ApplyT(func(v *CertificateChainsResponse) CertificateChainsResponse { return *v }).(CertificateChainsResponseOutput)
+	return o.ApplyT(func(v *CertificateChainsResponse) CertificateChainsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateChainsResponse
+		return ret
+	}).(CertificateChainsResponseOutput)
 }
 
 // Cavium certificate chain corresponding to the attestation.
@@ -998,7 +1004,7 @@ func (o CryptoKeyVersionResponseOutput) ToCryptoKeyVersionResponsePtrOutput() Cr
 }
 
 func (o CryptoKeyVersionResponseOutput) ToCryptoKeyVersionResponsePtrOutputWithContext(ctx context.Context) CryptoKeyVersionResponsePtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionResponse) *CryptoKeyVersionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionResponse) *CryptoKeyVersionResponse {
 		return &v
 	}).(CryptoKeyVersionResponsePtrOutput)
 }
@@ -1085,7 +1091,13 @@ func (o CryptoKeyVersionResponsePtrOutput) ToCryptoKeyVersionResponsePtrOutputWi
 }
 
 func (o CryptoKeyVersionResponsePtrOutput) Elem() CryptoKeyVersionResponseOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionResponse) CryptoKeyVersionResponse { return *v }).(CryptoKeyVersionResponseOutput)
+	return o.ApplyT(func(v *CryptoKeyVersionResponse) CryptoKeyVersionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyVersionResponse
+		return ret
+	}).(CryptoKeyVersionResponseOutput)
 }
 
 // The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
@@ -1318,7 +1330,7 @@ func (o CryptoKeyVersionTemplateOutput) ToCryptoKeyVersionTemplatePtrOutput() Cr
 }
 
 func (o CryptoKeyVersionTemplateOutput) ToCryptoKeyVersionTemplatePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplatePtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionTemplate) *CryptoKeyVersionTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionTemplate) *CryptoKeyVersionTemplate {
 		return &v
 	}).(CryptoKeyVersionTemplatePtrOutput)
 }
@@ -1348,7 +1360,13 @@ func (o CryptoKeyVersionTemplatePtrOutput) ToCryptoKeyVersionTemplatePtrOutputWi
 }
 
 func (o CryptoKeyVersionTemplatePtrOutput) Elem() CryptoKeyVersionTemplateOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionTemplate) CryptoKeyVersionTemplate { return *v }).(CryptoKeyVersionTemplateOutput)
+	return o.ApplyT(func(v *CryptoKeyVersionTemplate) CryptoKeyVersionTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyVersionTemplate
+		return ret
+	}).(CryptoKeyVersionTemplateOutput)
 }
 
 // Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
@@ -1471,7 +1489,7 @@ func (o CryptoKeyVersionTemplateResponseOutput) ToCryptoKeyVersionTemplateRespon
 }
 
 func (o CryptoKeyVersionTemplateResponseOutput) ToCryptoKeyVersionTemplateResponsePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateResponsePtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionTemplateResponse) *CryptoKeyVersionTemplateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionTemplateResponse) *CryptoKeyVersionTemplateResponse {
 		return &v
 	}).(CryptoKeyVersionTemplateResponsePtrOutput)
 }
@@ -1501,7 +1519,13 @@ func (o CryptoKeyVersionTemplateResponsePtrOutput) ToCryptoKeyVersionTemplateRes
 }
 
 func (o CryptoKeyVersionTemplateResponsePtrOutput) Elem() CryptoKeyVersionTemplateResponseOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionTemplateResponse) CryptoKeyVersionTemplateResponse { return *v }).(CryptoKeyVersionTemplateResponseOutput)
+	return o.ApplyT(func(v *CryptoKeyVersionTemplateResponse) CryptoKeyVersionTemplateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyVersionTemplateResponse
+		return ret
+	}).(CryptoKeyVersionTemplateResponseOutput)
 }
 
 // Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
@@ -1632,7 +1656,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1672,7 +1696,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1893,7 +1923,7 @@ func (o ExternalProtectionLevelOptionsOutput) ToExternalProtectionLevelOptionsPt
 }
 
 func (o ExternalProtectionLevelOptionsOutput) ToExternalProtectionLevelOptionsPtrOutputWithContext(ctx context.Context) ExternalProtectionLevelOptionsPtrOutput {
-	return o.ApplyT(func(v ExternalProtectionLevelOptions) *ExternalProtectionLevelOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalProtectionLevelOptions) *ExternalProtectionLevelOptions {
 		return &v
 	}).(ExternalProtectionLevelOptionsPtrOutput)
 }
@@ -1918,7 +1948,13 @@ func (o ExternalProtectionLevelOptionsPtrOutput) ToExternalProtectionLevelOption
 }
 
 func (o ExternalProtectionLevelOptionsPtrOutput) Elem() ExternalProtectionLevelOptionsOutput {
-	return o.ApplyT(func(v *ExternalProtectionLevelOptions) ExternalProtectionLevelOptions { return *v }).(ExternalProtectionLevelOptionsOutput)
+	return o.ApplyT(func(v *ExternalProtectionLevelOptions) ExternalProtectionLevelOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalProtectionLevelOptions
+		return ret
+	}).(ExternalProtectionLevelOptionsOutput)
 }
 
 // The URI for an external resource that this CryptoKeyVersion represents.
@@ -2027,7 +2063,7 @@ func (o ExternalProtectionLevelOptionsResponseOutput) ToExternalProtectionLevelO
 }
 
 func (o ExternalProtectionLevelOptionsResponseOutput) ToExternalProtectionLevelOptionsResponsePtrOutputWithContext(ctx context.Context) ExternalProtectionLevelOptionsResponsePtrOutput {
-	return o.ApplyT(func(v ExternalProtectionLevelOptionsResponse) *ExternalProtectionLevelOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalProtectionLevelOptionsResponse) *ExternalProtectionLevelOptionsResponse {
 		return &v
 	}).(ExternalProtectionLevelOptionsResponsePtrOutput)
 }
@@ -2052,7 +2088,13 @@ func (o ExternalProtectionLevelOptionsResponsePtrOutput) ToExternalProtectionLev
 }
 
 func (o ExternalProtectionLevelOptionsResponsePtrOutput) Elem() ExternalProtectionLevelOptionsResponseOutput {
-	return o.ApplyT(func(v *ExternalProtectionLevelOptionsResponse) ExternalProtectionLevelOptionsResponse { return *v }).(ExternalProtectionLevelOptionsResponseOutput)
+	return o.ApplyT(func(v *ExternalProtectionLevelOptionsResponse) ExternalProtectionLevelOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalProtectionLevelOptionsResponse
+		return ret
+	}).(ExternalProtectionLevelOptionsResponseOutput)
 }
 
 // The URI for an external resource that this CryptoKeyVersion represents.
@@ -2169,7 +2211,7 @@ func (o KeyOperationAttestationResponseOutput) ToKeyOperationAttestationResponse
 }
 
 func (o KeyOperationAttestationResponseOutput) ToKeyOperationAttestationResponsePtrOutputWithContext(ctx context.Context) KeyOperationAttestationResponsePtrOutput {
-	return o.ApplyT(func(v KeyOperationAttestationResponse) *KeyOperationAttestationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyOperationAttestationResponse) *KeyOperationAttestationResponse {
 		return &v
 	}).(KeyOperationAttestationResponsePtrOutput)
 }
@@ -2204,7 +2246,13 @@ func (o KeyOperationAttestationResponsePtrOutput) ToKeyOperationAttestationRespo
 }
 
 func (o KeyOperationAttestationResponsePtrOutput) Elem() KeyOperationAttestationResponseOutput {
-	return o.ApplyT(func(v *KeyOperationAttestationResponse) KeyOperationAttestationResponse { return *v }).(KeyOperationAttestationResponseOutput)
+	return o.ApplyT(func(v *KeyOperationAttestationResponse) KeyOperationAttestationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyOperationAttestationResponse
+		return ret
+	}).(KeyOperationAttestationResponseOutput)
 }
 
 // The certificate chains needed to validate the attestation
@@ -2333,7 +2381,7 @@ func (o WrappingPublicKeyResponseOutput) ToWrappingPublicKeyResponsePtrOutput() 
 }
 
 func (o WrappingPublicKeyResponseOutput) ToWrappingPublicKeyResponsePtrOutputWithContext(ctx context.Context) WrappingPublicKeyResponsePtrOutput {
-	return o.ApplyT(func(v WrappingPublicKeyResponse) *WrappingPublicKeyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WrappingPublicKeyResponse) *WrappingPublicKeyResponse {
 		return &v
 	}).(WrappingPublicKeyResponsePtrOutput)
 }
@@ -2358,7 +2406,13 @@ func (o WrappingPublicKeyResponsePtrOutput) ToWrappingPublicKeyResponsePtrOutput
 }
 
 func (o WrappingPublicKeyResponsePtrOutput) Elem() WrappingPublicKeyResponseOutput {
-	return o.ApplyT(func(v *WrappingPublicKeyResponse) WrappingPublicKeyResponse { return *v }).(WrappingPublicKeyResponseOutput)
+	return o.ApplyT(func(v *WrappingPublicKeyResponse) WrappingPublicKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WrappingPublicKeyResponse
+		return ret
+	}).(WrappingPublicKeyResponseOutput)
 }
 
 // The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13).

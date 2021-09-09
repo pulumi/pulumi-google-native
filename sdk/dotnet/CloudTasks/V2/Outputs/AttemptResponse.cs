@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudTasks.V2.Outputs
 {
 
+    /// <summary>
+    /// The status of a task attempt.
+    /// </summary>
     [OutputType]
     public sealed class AttemptResponse
     {

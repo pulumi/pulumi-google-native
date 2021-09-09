@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 {
 
+    /// <summary>
+    /// An entry for an Access Control list.
+    /// </summary>
     [OutputType]
     public sealed class AclEntryResponse
     {

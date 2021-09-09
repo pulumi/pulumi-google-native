@@ -23,13 +23,21 @@ class AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
-    """Default case. Should never be this."""
+    """
+    Default case. Should never be this.
+    """
     ADMIN_READ = "ADMIN_READ"
-    """Admin reads. Example: CloudIAM getIamPolicy"""
+    """
+    Admin reads. Example: CloudIAM getIamPolicy
+    """
     DATA_WRITE = "DATA_WRITE"
-    """Data writes. Example: CloudSQL Users create"""
+    """
+    Data writes. Example: CloudSQL Users create
+    """
     DATA_READ = "DATA_READ"
-    """Data reads. Example: CloudSQL Users list"""
+    """
+    Data reads. Example: CloudSQL Users list
+    """
 
 
 class CloudSqlSettingsActivationPolicy(str, Enum):
@@ -37,11 +45,17 @@ class CloudSqlSettingsActivationPolicy(str, Enum):
     The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
     """
     SQL_ACTIVATION_POLICY_UNSPECIFIED = "SQL_ACTIVATION_POLICY_UNSPECIFIED"
-    """unspecified policy."""
+    """
+    unspecified policy.
+    """
     ALWAYS = "ALWAYS"
-    """The instance is always up and running."""
+    """
+    The instance is always up and running.
+    """
     NEVER = "NEVER"
-    """The instance should never spin up."""
+    """
+    The instance should never spin up.
+    """
 
 
 class CloudSqlSettingsDataDiskType(str, Enum):
@@ -49,11 +63,17 @@ class CloudSqlSettingsDataDiskType(str, Enum):
     The type of storage: `PD_SSD` (default) or `PD_HDD`.
     """
     SQL_DATA_DISK_TYPE_UNSPECIFIED = "SQL_DATA_DISK_TYPE_UNSPECIFIED"
-    """Unspecified."""
+    """
+    Unspecified.
+    """
     PD_SSD = "PD_SSD"
-    """SSD disk."""
+    """
+    SSD disk.
+    """
     PD_HDD = "PD_HDD"
-    """HDD disk."""
+    """
+    HDD disk.
+    """
 
 
 class CloudSqlSettingsDatabaseVersion(str, Enum):
@@ -61,13 +81,21 @@ class CloudSqlSettingsDatabaseVersion(str, Enum):
     The database engine type and version.
     """
     SQL_DATABASE_VERSION_UNSPECIFIED = "SQL_DATABASE_VERSION_UNSPECIFIED"
-    """Unspecified version."""
+    """
+    Unspecified version.
+    """
     MYSQL56 = "MYSQL_5_6"
-    """MySQL 5.6."""
+    """
+    MySQL 5.6.
+    """
     MYSQL57 = "MYSQL_5_7"
-    """MySQL 5.7."""
+    """
+    MySQL 5.7.
+    """
     MYSQL80 = "MYSQL_8_0"
-    """MySQL 8.0."""
+    """
+    MySQL 8.0.
+    """
 
 
 class ConnectionProfileProvider(str, Enum):
@@ -75,11 +103,17 @@ class ConnectionProfileProvider(str, Enum):
     The database provider.
     """
     DATABASE_PROVIDER_UNSPECIFIED = "DATABASE_PROVIDER_UNSPECIFIED"
-    """The database provider is unknown."""
+    """
+    The database provider is unknown.
+    """
     CLOUDSQL = "CLOUDSQL"
-    """CloudSQL runs the database."""
+    """
+    CloudSQL runs the database.
+    """
     RDS = "RDS"
-    """RDS runs the database."""
+    """
+    RDS runs the database.
+    """
 
 
 class ConnectionProfileState(str, Enum):
@@ -87,21 +121,37 @@ class ConnectionProfileState(str, Enum):
     The current connection profile state (e.g. DRAFT, READY, or FAILED).
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    """The state of the connection profile is unknown."""
+    """
+    The state of the connection profile is unknown.
+    """
     DRAFT = "DRAFT"
-    """The connection profile is in draft mode and fully editable."""
+    """
+    The connection profile is in draft mode and fully editable.
+    """
     CREATING = "CREATING"
-    """The connection profile is being created."""
+    """
+    The connection profile is being created.
+    """
     READY = "READY"
-    """The connection profile is ready."""
+    """
+    The connection profile is ready.
+    """
     UPDATING = "UPDATING"
-    """The connection profile is being updated."""
+    """
+    The connection profile is being updated.
+    """
     DELETING = "DELETING"
-    """The connection profile is being deleted."""
+    """
+    The connection profile is being deleted.
+    """
     DELETED = "DELETED"
-    """The connection profile has been deleted."""
+    """
+    The connection profile has been deleted.
+    """
     FAILED = "FAILED"
-    """The last action on the connection profile failed."""
+    """
+    The last action on the connection profile failed.
+    """
 
 
 class DatabaseTypeEngine(str, Enum):
@@ -109,9 +159,13 @@ class DatabaseTypeEngine(str, Enum):
     The database engine.
     """
     DATABASE_ENGINE_UNSPECIFIED = "DATABASE_ENGINE_UNSPECIFIED"
-    """The source database engine of the migration job is unknown."""
+    """
+    The source database engine of the migration job is unknown.
+    """
     MYSQL = "MYSQL"
-    """The source engine is MySQL."""
+    """
+    The source engine is MySQL.
+    """
 
 
 class DatabaseTypeProvider(str, Enum):
@@ -119,11 +173,17 @@ class DatabaseTypeProvider(str, Enum):
     The database provider.
     """
     DATABASE_PROVIDER_UNSPECIFIED = "DATABASE_PROVIDER_UNSPECIFIED"
-    """The database provider is unknown."""
+    """
+    The database provider is unknown.
+    """
     CLOUDSQL = "CLOUDSQL"
-    """CloudSQL runs the database."""
+    """
+    CloudSQL runs the database.
+    """
     RDS = "RDS"
-    """RDS runs the database."""
+    """
+    RDS runs the database.
+    """
 
 
 class MigrationJobState(str, Enum):
@@ -131,37 +191,69 @@ class MigrationJobState(str, Enum):
     The current migration job state.
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    """The state of the migration job is unknown."""
+    """
+    The state of the migration job is unknown.
+    """
     MAINTENANCE = "MAINTENANCE"
-    """The migration job is down for maintenance."""
+    """
+    The migration job is down for maintenance.
+    """
     DRAFT = "DRAFT"
-    """The migration job is in draft mode and no resources are created."""
+    """
+    The migration job is in draft mode and no resources are created.
+    """
     CREATING = "CREATING"
-    """The migration job is being created."""
+    """
+    The migration job is being created.
+    """
     NOT_STARTED = "NOT_STARTED"
-    """The migration job is created, not started and is fully editable."""
+    """
+    The migration job is created, not started and is fully editable.
+    """
     RUNNING = "RUNNING"
-    """The migration job is running."""
+    """
+    The migration job is running.
+    """
     FAILED = "FAILED"
-    """The migration job failed."""
+    """
+    The migration job failed.
+    """
     COMPLETED = "COMPLETED"
-    """The migration job has been completed."""
+    """
+    The migration job has been completed.
+    """
     DELETING = "DELETING"
-    """The migration job is being deleted."""
+    """
+    The migration job is being deleted.
+    """
     STOPPING = "STOPPING"
-    """The migration job is being stopped."""
+    """
+    The migration job is being stopped.
+    """
     STOPPED = "STOPPED"
-    """The migration job is currently stopped."""
+    """
+    The migration job is currently stopped.
+    """
     DELETED = "DELETED"
-    """The migration job has been deleted."""
+    """
+    The migration job has been deleted.
+    """
     UPDATING = "UPDATING"
-    """The migration job is being updated."""
+    """
+    The migration job is being updated.
+    """
     STARTING = "STARTING"
-    """The migration job is starting."""
+    """
+    The migration job is starting.
+    """
     RESTARTING = "RESTARTING"
-    """The migration job is restarting."""
+    """
+    The migration job is restarting.
+    """
     RESUMING = "RESUMING"
-    """The migration job is resuming."""
+    """
+    The migration job is resuming.
+    """
 
 
 class MigrationJobType(str, Enum):
@@ -169,8 +261,14 @@ class MigrationJobType(str, Enum):
     Required. The migration job type.
     """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
-    """The type of the migration job is unknown."""
+    """
+    The type of the migration job is unknown.
+    """
     ONE_TIME = "ONE_TIME"
-    """The migration job is a one time migration."""
+    """
+    The migration job is a one time migration.
+    """
     CONTINUOUS = "CONTINUOUS"
-    """The migration job is a continuous migration."""
+    """
+    The migration job is a continuous migration.
+    """

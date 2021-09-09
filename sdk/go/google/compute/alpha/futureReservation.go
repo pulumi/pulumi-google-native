@@ -139,9 +139,7 @@ func (i *FutureReservation) ToFutureReservationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(FutureReservationOutput)
 }
 
-type FutureReservationOutput struct {
-	*pulumi.OutputState
-}
+type FutureReservationOutput struct{ *pulumi.OutputState }
 
 func (FutureReservationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FutureReservation)(nil))

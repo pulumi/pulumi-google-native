@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Specification of the GRPC Endpoint.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse
     {

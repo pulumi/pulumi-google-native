@@ -13,6 +13,7 @@ __all__ = [
     'GetWorkflowTemplateIamPolicyResult',
     'AwaitableGetWorkflowTemplateIamPolicyResult',
     'get_workflow_template_iam_policy',
+    'get_workflow_template_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -85,3 +86,14 @@ def get_workflow_template_iam_policy(location: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_workflow_template_iam_policy)
+def get_workflow_template_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
+                                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                                            workflow_template_id: Optional[pulumi.Input[str]] = None,
+                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkflowTemplateIamPolicyResult]:
+    """
+    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+    """
+    ...

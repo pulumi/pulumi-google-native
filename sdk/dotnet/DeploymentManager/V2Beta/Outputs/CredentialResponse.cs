@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Outputs
 {
 
+    /// <summary>
+    /// The credential used by Deployment Manager and TypeProvider. Only one of the options is permitted.
+    /// </summary>
     [OutputType]
     public sealed class CredentialResponse
     {

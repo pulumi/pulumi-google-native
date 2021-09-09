@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// Configs for the input data used to create the issue model.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse
     {

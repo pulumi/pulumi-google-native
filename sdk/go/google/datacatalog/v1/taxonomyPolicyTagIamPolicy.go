@@ -119,9 +119,7 @@ func (i *TaxonomyPolicyTagIamPolicy) ToTaxonomyPolicyTagIamPolicyOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyPolicyTagIamPolicyOutput)
 }
 
-type TaxonomyPolicyTagIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type TaxonomyPolicyTagIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyPolicyTagIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TaxonomyPolicyTagIamPolicy)(nil))

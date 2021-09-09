@@ -12,6 +12,7 @@ __all__ = [
     'GetTopicResult',
     'AwaitableGetTopicResult',
     'get_topic',
+    'get_topic_output',
 ]
 
 @pulumi.output_type
@@ -54,3 +55,12 @@ def get_topic(topic_id: Optional[str] = None,
 
     return AwaitableGetTopicResult(
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_topic)
+def get_topic_output(topic_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicResult]:
+    """
+    Gets the configuration of a topic. Since the topic only has the name attribute, this method is only useful to check the existence of a topic. If other attributes are added in the future, they will be returned here.
+    """
+    ...

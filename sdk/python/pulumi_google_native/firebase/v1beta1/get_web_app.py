@@ -12,6 +12,7 @@ __all__ = [
     'GetWebAppResult',
     'AwaitableGetWebAppResult',
     'get_web_app',
+    'get_web_app_output',
 ]
 
 @pulumi.output_type
@@ -121,3 +122,13 @@ def get_web_app(project: Optional[str] = None,
         name=__ret__.name,
         project=__ret__.project,
         web_id=__ret__.web_id)
+
+
+@_utilities.lift_output_func(get_web_app)
+def get_web_app_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                       web_app_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebAppResult]:
+    """
+    Gets the specified WebApp.
+    """
+    ...

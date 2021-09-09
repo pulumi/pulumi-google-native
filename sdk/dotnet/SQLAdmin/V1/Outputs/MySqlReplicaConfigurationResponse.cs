@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 {
 
+    /// <summary>
+    /// Read-replica configuration specific to MySQL databases.
+    /// </summary>
     [OutputType]
     public sealed class MySqlReplicaConfigurationResponse
     {

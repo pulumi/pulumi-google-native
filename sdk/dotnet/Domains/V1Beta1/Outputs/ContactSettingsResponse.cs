@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Domains.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
+    /// </summary>
     [OutputType]
     public sealed class ContactSettingsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// AnnotationSource holds the source information of the annotation.
+    /// </summary>
     [OutputType]
     public sealed class AnnotationSourceResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// A single property entry in the Properties message.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1PropertyResponse
     {

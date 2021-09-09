@@ -13,6 +13,7 @@ __all__ = [
     'GetJobTriggerResult',
     'AwaitableGetJobTriggerResult',
     'get_job_trigger',
+    'get_job_trigger_output',
 ]
 
 @pulumi.output_type
@@ -176,3 +177,14 @@ def get_job_trigger(job_trigger_id: Optional[str] = None,
         status=__ret__.status,
         triggers=__ret__.triggers,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_job_trigger)
+def get_job_trigger_output(job_trigger_id: Optional[pulumi.Input[str]] = None,
+                           location: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobTriggerResult]:
+    """
+    Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+    """
+    ...

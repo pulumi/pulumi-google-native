@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// An image built by the pipeline.
+    /// </summary>
     [OutputType]
     public sealed class BuiltImageResponse
     {

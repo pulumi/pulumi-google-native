@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.WorkflowExecutions.V1.Outputs
 {
 
+    /// <summary>
+    /// A single stack element (frame) where an error occurred.
+    /// </summary>
     [OutputType]
     public sealed class StackTraceElementResponse
     {

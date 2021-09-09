@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Validation based on a list of allowed values.
+    /// </summary>
     [OutputType]
     public sealed class ValueValidationResponse
     {

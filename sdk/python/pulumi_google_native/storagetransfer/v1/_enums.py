@@ -13,13 +13,21 @@ __all__ = [
 
 class NotificationConfigEventTypesItem(str, Enum):
     EVENT_TYPE_UNSPECIFIED = "EVENT_TYPE_UNSPECIFIED"
-    """Illegal value, to avoid allowing a default."""
+    """
+    Illegal value, to avoid allowing a default.
+    """
     TRANSFER_OPERATION_SUCCESS = "TRANSFER_OPERATION_SUCCESS"
-    """`TransferOperation` completed with status SUCCESS."""
+    """
+    `TransferOperation` completed with status SUCCESS.
+    """
     TRANSFER_OPERATION_FAILED = "TRANSFER_OPERATION_FAILED"
-    """`TransferOperation` completed with status FAILED."""
+    """
+    `TransferOperation` completed with status FAILED.
+    """
     TRANSFER_OPERATION_ABORTED = "TRANSFER_OPERATION_ABORTED"
-    """`TransferOperation` completed with status ABORTED."""
+    """
+    `TransferOperation` completed with status ABORTED.
+    """
 
 
 class NotificationConfigPayloadFormat(str, Enum):
@@ -27,11 +35,17 @@ class NotificationConfigPayloadFormat(str, Enum):
     Required. The desired format of the notification message payloads.
     """
     PAYLOAD_FORMAT_UNSPECIFIED = "PAYLOAD_FORMAT_UNSPECIFIED"
-    """Illegal value, to avoid allowing a default."""
+    """
+    Illegal value, to avoid allowing a default.
+    """
     NONE = "NONE"
-    """No payload is included with the notification."""
+    """
+    No payload is included with the notification.
+    """
     JSON = "JSON"
-    """`TransferOperation` is [formatted as a JSON response](https://developers.google.com/protocol-buffers/docs/proto3#json), in application/json."""
+    """
+    `TransferOperation` is [formatted as a JSON response](https://developers.google.com/protocol-buffers/docs/proto3#json), in application/json.
+    """
 
 
 class TransferJobStatus(str, Enum):
@@ -39,10 +53,18 @@ class TransferJobStatus(str, Enum):
     Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
     """
     STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
-    """Zero is an illegal value."""
+    """
+    Zero is an illegal value.
+    """
     ENABLED = "ENABLED"
-    """New transfers are performed based on the schedule."""
+    """
+    New transfers are performed based on the schedule.
+    """
     DISABLED = "DISABLED"
-    """New transfers are not scheduled."""
+    """
+    New transfers are not scheduled.
+    """
     DELETED = "DELETED"
-    """This is a soft delete state. After a transfer job is set to this state, the job and all the transfer executions are subject to garbage collection. Transfer jobs become eligible for garbage collection 30 days after their status is set to `DELETED`."""
+    """
+    This is a soft delete state. After a transfer job is set to this state, the job and all the transfer executions are subject to garbage collection. Transfer jobs become eligible for garbage collection 30 days after their status is set to `DELETED`.
+    """

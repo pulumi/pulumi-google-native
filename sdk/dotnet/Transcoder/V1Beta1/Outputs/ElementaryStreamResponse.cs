@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.
+    /// </summary>
     [OutputType]
     public sealed class ElementaryStreamResponse
     {

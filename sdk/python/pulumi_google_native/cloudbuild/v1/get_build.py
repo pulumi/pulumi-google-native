@@ -13,6 +13,7 @@ __all__ = [
     'GetBuildResult',
     'AwaitableGetBuildResult',
     'get_build',
+    'get_build_output',
 ]
 
 @pulumi.output_type
@@ -414,3 +415,16 @@ def get_build(build_id: Optional[str] = None,
         timeout=__ret__.timeout,
         timing=__ret__.timing,
         warnings=__ret__.warnings)
+
+
+@_utilities.lift_output_func(get_build)
+def get_build_output(build_id: Optional[pulumi.Input[str]] = None,
+                     id: Optional[pulumi.Input[str]] = None,
+                     location: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     project_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBuildResult]:
+    """
+    Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.
+    """
+    ...

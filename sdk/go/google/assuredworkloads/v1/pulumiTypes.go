@@ -110,7 +110,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ToGoogleCloudAss
 }
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
 		return &v
 	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput)
 }
@@ -141,7 +141,11 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput {
 	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAssuredworkloadsV1WorkloadKMSSettings
+		return ret
 	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput)
 }
 
@@ -265,7 +269,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) ToGoogle
 }
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse) *GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse) *GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse {
 		return &v
 	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrOutput)
 }
@@ -296,7 +300,11 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrOutput) ToGoo
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse
+		return ret
 	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput)
 }
 

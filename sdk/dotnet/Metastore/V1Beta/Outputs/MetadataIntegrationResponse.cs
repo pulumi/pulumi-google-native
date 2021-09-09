@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Specifies how metastore metadata should be integrated with external services.
+    /// </summary>
     [OutputType]
     public sealed class MetadataIntegrationResponse
     {

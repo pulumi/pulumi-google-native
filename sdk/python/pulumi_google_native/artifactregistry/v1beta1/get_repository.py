@@ -12,6 +12,7 @@ __all__ = [
     'GetRepositoryResult',
     'AwaitableGetRepositoryResult',
     'get_repository',
+    'get_repository_output',
 ]
 
 @pulumi.output_type
@@ -136,3 +137,14 @@ def get_repository(location: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_repository)
+def get_repository_output(location: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          repository_id: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryResult]:
+    """
+    Gets a repository.
+    """
+    ...

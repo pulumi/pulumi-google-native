@@ -232,9 +232,7 @@ func (i *GlobalForwardingRule) ToGlobalForwardingRuleOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleOutput)
 }
 
-type GlobalForwardingRuleOutput struct {
-	*pulumi.OutputState
-}
+type GlobalForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (GlobalForwardingRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GlobalForwardingRule)(nil))

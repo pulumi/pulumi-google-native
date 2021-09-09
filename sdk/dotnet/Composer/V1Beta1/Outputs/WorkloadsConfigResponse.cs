@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+    /// </summary>
     [OutputType]
     public sealed class WorkloadsConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Jobs.V3.Outputs
 {
 
+    /// <summary>
+    /// Application related details of a job posting.
+    /// </summary>
     [OutputType]
     public sealed class ApplicationInfoResponse
     {

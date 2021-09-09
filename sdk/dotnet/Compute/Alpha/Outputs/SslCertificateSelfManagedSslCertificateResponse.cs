@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Configuration and status of a self-managed SSL certificate.
+    /// </summary>
     [OutputType]
     public sealed class SslCertificateSelfManagedSslCertificateResponse
     {

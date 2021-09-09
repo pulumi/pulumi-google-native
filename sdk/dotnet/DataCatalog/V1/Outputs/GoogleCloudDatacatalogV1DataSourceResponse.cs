@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 {
 
+    /// <summary>
+    /// Physical location of an entry.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1DataSourceResponse
     {

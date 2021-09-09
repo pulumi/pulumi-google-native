@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// The details of a metadata restore operation.
+    /// </summary>
     [OutputType]
     public sealed class RestoreResponse
     {

@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,70 @@ type LookupIndexResult struct {
 	Properties []GoogleDatastoreAdminV1IndexedPropertyResponse `pulumi:"properties"`
 	// The state of the index.
 	State string `pulumi:"state"`
+}
+
+func LookupIndexOutput(ctx *pulumi.Context, args LookupIndexOutputArgs, opts ...pulumi.InvokeOption) LookupIndexResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupIndexResult, error) {
+			args := v.(LookupIndexArgs)
+			r, err := LookupIndex(ctx, &args, opts...)
+			return *r, err
+		}).(LookupIndexResultOutput)
+}
+
+type LookupIndexOutputArgs struct {
+	IndexId pulumi.StringInput    `pulumi:"indexId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupIndexOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIndexArgs)(nil)).Elem()
+}
+
+type LookupIndexResultOutput struct{ *pulumi.OutputState }
+
+func (LookupIndexResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIndexResult)(nil)).Elem()
+}
+
+func (o LookupIndexResultOutput) ToLookupIndexResultOutput() LookupIndexResultOutput {
+	return o
+}
+
+func (o LookupIndexResultOutput) ToLookupIndexResultOutputWithContext(ctx context.Context) LookupIndexResultOutput {
+	return o
+}
+
+// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+func (o LookupIndexResultOutput) Ancestor() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIndexResult) string { return v.Ancestor }).(pulumi.StringOutput)
+}
+
+// The resource ID of the index.
+func (o LookupIndexResultOutput) IndexId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIndexResult) string { return v.IndexId }).(pulumi.StringOutput)
+}
+
+// The entity kind to which this index applies.
+func (o LookupIndexResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIndexResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Project ID.
+func (o LookupIndexResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIndexResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// An ordered sequence of property names and their index attributes.
+func (o LookupIndexResultOutput) Properties() GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput {
+	return o.ApplyT(func(v LookupIndexResult) []GoogleDatastoreAdminV1IndexedPropertyResponse { return v.Properties }).(GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput)
+}
+
+// The state of the index.
+func (o LookupIndexResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIndexResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupIndexResultOutput{})
 }

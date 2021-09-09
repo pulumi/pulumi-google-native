@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies a location to extract JWT from an API request.
+    /// </summary>
     [OutputType]
     public sealed class JwtLocationResponse
     {

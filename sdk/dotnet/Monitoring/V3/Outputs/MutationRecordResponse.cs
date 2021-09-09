@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// Describes a change made to a configuration.
+    /// </summary>
     [OutputType]
     public sealed class MutationRecordResponse
     {

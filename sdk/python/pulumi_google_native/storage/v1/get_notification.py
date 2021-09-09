@@ -12,6 +12,7 @@ __all__ = [
     'GetNotificationResult',
     'AwaitableGetNotificationResult',
     'get_notification',
+    'get_notification_output',
 ]
 
 @pulumi.output_type
@@ -151,3 +152,15 @@ def get_notification(bucket: Optional[str] = None,
         payload_format=__ret__.payload_format,
         self_link=__ret__.self_link,
         topic=__ret__.topic)
+
+
+@_utilities.lift_output_func(get_notification)
+def get_notification_output(bucket: Optional[pulumi.Input[str]] = None,
+                            notification: Optional[pulumi.Input[str]] = None,
+                            provisional_user_project: Optional[pulumi.Input[Optional[str]]] = None,
+                            user_project: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotificationResult]:
+    """
+    View a notification configuration.
+    """
+    ...

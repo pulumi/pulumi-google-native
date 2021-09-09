@@ -141,9 +141,7 @@ func (i *GameServerCluster) ToGameServerClusterOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterOutput)
 }
 
-type GameServerClusterOutput struct {
-	*pulumi.OutputState
-}
+type GameServerClusterOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerCluster)(nil))

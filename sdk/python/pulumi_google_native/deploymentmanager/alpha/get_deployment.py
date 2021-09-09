@@ -13,6 +13,7 @@ __all__ = [
     'GetDeploymentResult',
     'AwaitableGetDeploymentResult',
     'get_deployment',
+    'get_deployment_output',
 ]
 
 @pulumi.output_type
@@ -213,3 +214,13 @@ def get_deployment(deployment: Optional[str] = None,
         target=__ret__.target,
         update=__ret__.update,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_deployment)
+def get_deployment_output(deployment: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeploymentResult]:
+    """
+    Gets information about a specific deployment.
+    """
+    ...

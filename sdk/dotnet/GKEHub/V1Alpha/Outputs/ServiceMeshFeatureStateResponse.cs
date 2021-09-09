@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.
+    /// </summary>
     [OutputType]
     public sealed class ServiceMeshFeatureStateResponse
     {

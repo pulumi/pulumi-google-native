@@ -103,9 +103,7 @@ func (i *Keystore) ToKeystoreOutputWithContext(ctx context.Context) KeystoreOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoreOutput)
 }
 
-type KeystoreOutput struct {
-	*pulumi.OutputState
-}
+type KeystoreOutput struct{ *pulumi.OutputState }
 
 func (KeystoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Keystore)(nil))

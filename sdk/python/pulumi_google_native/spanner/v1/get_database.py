@@ -13,6 +13,7 @@ __all__ = [
     'GetDatabaseResult',
     'AwaitableGetDatabaseResult',
     'get_database',
+    'get_database_output',
 ]
 
 @pulumi.output_type
@@ -163,3 +164,14 @@ def get_database(database_id: Optional[str] = None,
         restore_info=__ret__.restore_info,
         state=__ret__.state,
         version_retention_period=__ret__.version_retention_period)
+
+
+@_utilities.lift_output_func(get_database)
+def get_database_output(database_id: Optional[pulumi.Input[str]] = None,
+                        instance_id: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseResult]:
+    """
+    Gets the state of a Cloud Spanner database.
+    """
+    ...

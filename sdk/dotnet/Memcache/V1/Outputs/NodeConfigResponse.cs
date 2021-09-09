@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Memcache.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for a Memcached Node.
+    /// </summary>
     [OutputType]
     public sealed class NodeConfigResponse
     {

@@ -12,6 +12,7 @@ __all__ = [
     'GetSourceResult',
     'AwaitableGetSourceResult',
     'get_source',
+    'get_source_output',
 ]
 
 @pulumi.output_type
@@ -82,3 +83,13 @@ def get_source(organization_id: Optional[str] = None,
         description=__ret__.description,
         display_name=__ret__.display_name,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_source)
+def get_source_output(organization_id: Optional[pulumi.Input[str]] = None,
+                      source_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSourceResult]:
+    """
+    Gets a source.
+    """
+    ...

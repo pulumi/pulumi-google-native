@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseML.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Information that is specific to TfLite models.
+    /// </summary>
     [OutputType]
     public sealed class TfLiteModelResponse
     {

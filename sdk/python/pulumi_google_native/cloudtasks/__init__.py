@@ -7,9 +7,12 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.cloudtasks.v2 as v2
-    import pulumi_google_native.cloudtasks.v2beta2 as v2beta2
-    import pulumi_google_native.cloudtasks.v2beta3 as v2beta3
+    import pulumi_google_native.cloudtasks.v2 as __v2
+    v2 = __v2
+    import pulumi_google_native.cloudtasks.v2beta2 as __v2beta2
+    v2beta2 = __v2beta2
+    import pulumi_google_native.cloudtasks.v2beta3 as __v2beta3
+    v2beta3 = __v2beta3
 else:
     v2 = _utilities.lazy_import('pulumi_google_native.cloudtasks.v2')
     v2beta2 = _utilities.lazy_import('pulumi_google_native.cloudtasks.v2beta2')

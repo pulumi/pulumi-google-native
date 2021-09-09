@@ -13,6 +13,7 @@ __all__ = [
     'GetForwardingRuleResult',
     'AwaitableGetForwardingRuleResult',
     'get_forwarding_rule',
+    'get_forwarding_rule_output',
 ]
 
 @pulumi.output_type
@@ -443,3 +444,14 @@ def get_forwarding_rule(forwarding_rule: Optional[str] = None,
         source_ip_ranges=__ret__.source_ip_ranges,
         subnetwork=__ret__.subnetwork,
         target=__ret__.target)
+
+
+@_utilities.lift_output_func(get_forwarding_rule)
+def get_forwarding_rule_output(forwarding_rule: Optional[pulumi.Input[str]] = None,
+                               project: Optional[pulumi.Input[Optional[str]]] = None,
+                               region: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetForwardingRuleResult]:
+    """
+    Returns the specified ForwardingRule resource.
+    """
+    ...

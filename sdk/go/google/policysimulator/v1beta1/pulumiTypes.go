@@ -110,7 +110,7 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigOutput) ToGoogleCloudPolicy
 }
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigPtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayConfig) *GoogleCloudPolicysimulatorV1beta1ReplayConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudPolicysimulatorV1beta1ReplayConfig) *GoogleCloudPolicysimulatorV1beta1ReplayConfig {
 		return &v
 	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrOutput)
 }
@@ -143,7 +143,11 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrOutput) ToGoogleCloudPol
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrOutput) Elem() GoogleCloudPolicysimulatorV1beta1ReplayConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayConfig) GoogleCloudPolicysimulatorV1beta1ReplayConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudPolicysimulatorV1beta1ReplayConfig
+		return ret
 	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigOutput)
 }
 
@@ -267,7 +271,7 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput) ToGoogleClo
 }
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse) *GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse) *GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse {
 		return &v
 	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput)
 }
@@ -300,7 +304,11 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput) ToGoogle
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput) Elem() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse
+		return ret
 	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput)
 }
 
@@ -440,7 +448,7 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) ToG
 }
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse {
 		return &v
 	}).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput)
 }
@@ -495,7 +503,11 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) 
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) Elem() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse
+		return ret
 	}).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput)
 }
 
@@ -663,7 +675,7 @@ func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutput() Google
 }
 
 func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
-	return o.ApplyT(func(v GoogleTypeDateResponse) *GoogleTypeDateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeDateResponse) *GoogleTypeDateResponse {
 		return &v
 	}).(GoogleTypeDateResponsePtrOutput)
 }
@@ -698,7 +710,13 @@ func (o GoogleTypeDateResponsePtrOutput) ToGoogleTypeDateResponsePtrOutputWithCo
 }
 
 func (o GoogleTypeDateResponsePtrOutput) Elem() GoogleTypeDateResponseOutput {
-	return o.ApplyT(func(v *GoogleTypeDateResponse) GoogleTypeDateResponse { return *v }).(GoogleTypeDateResponseOutput)
+	return o.ApplyT(func(v *GoogleTypeDateResponse) GoogleTypeDateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeDateResponse
+		return ret
+	}).(GoogleTypeDateResponseOutput)
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.

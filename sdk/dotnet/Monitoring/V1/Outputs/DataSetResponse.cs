@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// Groups a time series query definition with charting options.
+    /// </summary>
     [OutputType]
     public sealed class DataSetResponse
     {

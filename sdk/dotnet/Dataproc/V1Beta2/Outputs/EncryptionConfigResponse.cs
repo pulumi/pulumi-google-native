@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Encryption settings for the cluster.
+    /// </summary>
     [OutputType]
     public sealed class EncryptionConfigResponse
     {

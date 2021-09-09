@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
+    /// </summary>
     [OutputType]
     public sealed class PigJobResponse
     {

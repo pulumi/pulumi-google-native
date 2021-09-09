@@ -116,7 +116,7 @@ func (o AppEngineHttpTargetHttpMethodOutput) ToStringPtrOutputWithContext(ctx co
 type AppEngineHttpTargetHttpMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (AppEngineHttpTargetHttpMethodPtrOutput) ElementType() reflect.Type {
-	return appEngineHttpTargetHttpMethodPtrType
+	return reflect.TypeOf((**AppEngineHttpTargetHttpMethod)(nil)).Elem()
 }
 
 func (o AppEngineHttpTargetHttpMethodPtrOutput) ToAppEngineHttpTargetHttpMethodPtrOutput() AppEngineHttpTargetHttpMethodPtrOutput {
@@ -125,6 +125,16 @@ func (o AppEngineHttpTargetHttpMethodPtrOutput) ToAppEngineHttpTargetHttpMethodP
 
 func (o AppEngineHttpTargetHttpMethodPtrOutput) ToAppEngineHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpTargetHttpMethodPtrOutput {
 	return o
+}
+
+func (o AppEngineHttpTargetHttpMethodPtrOutput) Elem() AppEngineHttpTargetHttpMethodOutput {
+	return o.ApplyT(func(v *AppEngineHttpTargetHttpMethod) AppEngineHttpTargetHttpMethod {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineHttpTargetHttpMethod
+		return ret
+	}).(AppEngineHttpTargetHttpMethodOutput)
 }
 
 func (o AppEngineHttpTargetHttpMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -139,16 +149,6 @@ func (o AppEngineHttpTargetHttpMethodPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AppEngineHttpTargetHttpMethodPtrOutput) Elem() AppEngineHttpTargetHttpMethodOutput {
-	return o.ApplyT(func(v *AppEngineHttpTargetHttpMethod) AppEngineHttpTargetHttpMethod {
-		var ret AppEngineHttpTargetHttpMethod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AppEngineHttpTargetHttpMethodOutput)
 }
 
 // AppEngineHttpTargetHttpMethodInput is an input type that accepts AppEngineHttpTargetHttpMethodArgs and AppEngineHttpTargetHttpMethodOutput values.
@@ -295,7 +295,7 @@ func (o HttpTargetHttpMethodOutput) ToStringPtrOutputWithContext(ctx context.Con
 type HttpTargetHttpMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (HttpTargetHttpMethodPtrOutput) ElementType() reflect.Type {
-	return httpTargetHttpMethodPtrType
+	return reflect.TypeOf((**HttpTargetHttpMethod)(nil)).Elem()
 }
 
 func (o HttpTargetHttpMethodPtrOutput) ToHttpTargetHttpMethodPtrOutput() HttpTargetHttpMethodPtrOutput {
@@ -304,6 +304,16 @@ func (o HttpTargetHttpMethodPtrOutput) ToHttpTargetHttpMethodPtrOutput() HttpTar
 
 func (o HttpTargetHttpMethodPtrOutput) ToHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) HttpTargetHttpMethodPtrOutput {
 	return o
+}
+
+func (o HttpTargetHttpMethodPtrOutput) Elem() HttpTargetHttpMethodOutput {
+	return o.ApplyT(func(v *HttpTargetHttpMethod) HttpTargetHttpMethod {
+		if v != nil {
+			return *v
+		}
+		var ret HttpTargetHttpMethod
+		return ret
+	}).(HttpTargetHttpMethodOutput)
 }
 
 func (o HttpTargetHttpMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -318,16 +328,6 @@ func (o HttpTargetHttpMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HttpTargetHttpMethodPtrOutput) Elem() HttpTargetHttpMethodOutput {
-	return o.ApplyT(func(v *HttpTargetHttpMethod) HttpTargetHttpMethod {
-		var ret HttpTargetHttpMethod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HttpTargetHttpMethodOutput)
 }
 
 // HttpTargetHttpMethodInput is an input type that accepts HttpTargetHttpMethodArgs and HttpTargetHttpMethodOutput values.

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will proceed.
+    /// </summary>
     [OutputType]
     public sealed class AutoUpgradeOptionsResponse
     {

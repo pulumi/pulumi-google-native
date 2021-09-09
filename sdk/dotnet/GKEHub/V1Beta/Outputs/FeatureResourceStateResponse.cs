@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
+    /// </summary>
     [OutputType]
     public sealed class FeatureResourceStateResponse
     {

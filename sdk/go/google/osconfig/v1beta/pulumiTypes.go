@@ -122,7 +122,7 @@ func (o AptRepositoryOutput) ToAptRepositoryPtrOutput() AptRepositoryPtrOutput {
 }
 
 func (o AptRepositoryOutput) ToAptRepositoryPtrOutputWithContext(ctx context.Context) AptRepositoryPtrOutput {
-	return o.ApplyT(func(v AptRepository) *AptRepository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AptRepository) *AptRepository {
 		return &v
 	}).(AptRepositoryPtrOutput)
 }
@@ -167,7 +167,13 @@ func (o AptRepositoryPtrOutput) ToAptRepositoryPtrOutputWithContext(ctx context.
 }
 
 func (o AptRepositoryPtrOutput) Elem() AptRepositoryOutput {
-	return o.ApplyT(func(v *AptRepository) AptRepository { return *v }).(AptRepositoryOutput)
+	return o.ApplyT(func(v *AptRepository) AptRepository {
+		if v != nil {
+			return *v
+		}
+		var ret AptRepository
+		return ret
+	}).(AptRepositoryOutput)
 }
 
 // Type of archive files in this repository. The default behavior is DEB.
@@ -415,7 +421,7 @@ func (o AptSettingsOutput) ToAptSettingsPtrOutput() AptSettingsPtrOutput {
 }
 
 func (o AptSettingsOutput) ToAptSettingsPtrOutputWithContext(ctx context.Context) AptSettingsPtrOutput {
-	return o.ApplyT(func(v AptSettings) *AptSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AptSettings) *AptSettings {
 		return &v
 	}).(AptSettingsPtrOutput)
 }
@@ -450,7 +456,13 @@ func (o AptSettingsPtrOutput) ToAptSettingsPtrOutputWithContext(ctx context.Cont
 }
 
 func (o AptSettingsPtrOutput) Elem() AptSettingsOutput {
-	return o.ApplyT(func(v *AptSettings) AptSettings { return *v }).(AptSettingsOutput)
+	return o.ApplyT(func(v *AptSettings) AptSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AptSettings
+		return ret
+	}).(AptSettingsOutput)
 }
 
 // List of packages to exclude from update. These packages will be excluded
@@ -587,7 +599,7 @@ func (o AptSettingsResponseOutput) ToAptSettingsResponsePtrOutput() AptSettingsR
 }
 
 func (o AptSettingsResponseOutput) ToAptSettingsResponsePtrOutputWithContext(ctx context.Context) AptSettingsResponsePtrOutput {
-	return o.ApplyT(func(v AptSettingsResponse) *AptSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AptSettingsResponse) *AptSettingsResponse {
 		return &v
 	}).(AptSettingsResponsePtrOutput)
 }
@@ -622,7 +634,13 @@ func (o AptSettingsResponsePtrOutput) ToAptSettingsResponsePtrOutputWithContext(
 }
 
 func (o AptSettingsResponsePtrOutput) Elem() AptSettingsResponseOutput {
-	return o.ApplyT(func(v *AptSettingsResponse) AptSettingsResponse { return *v }).(AptSettingsResponseOutput)
+	return o.ApplyT(func(v *AptSettingsResponse) AptSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AptSettingsResponse
+		return ret
+	}).(AptSettingsResponseOutput)
 }
 
 // List of packages to exclude from update. These packages will be excluded
@@ -767,7 +785,7 @@ func (o AssignmentOutput) ToAssignmentPtrOutput() AssignmentPtrOutput {
 }
 
 func (o AssignmentOutput) ToAssignmentPtrOutputWithContext(ctx context.Context) AssignmentPtrOutput {
-	return o.ApplyT(func(v Assignment) *Assignment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Assignment) *Assignment {
 		return &v
 	}).(AssignmentPtrOutput)
 }
@@ -812,7 +830,13 @@ func (o AssignmentPtrOutput) ToAssignmentPtrOutputWithContext(ctx context.Contex
 }
 
 func (o AssignmentPtrOutput) Elem() AssignmentOutput {
-	return o.ApplyT(func(v *Assignment) Assignment { return *v }).(AssignmentOutput)
+	return o.ApplyT(func(v *Assignment) Assignment {
+		if v != nil {
+			return *v
+		}
+		var ret Assignment
+		return ret
+	}).(AssignmentOutput)
 }
 
 // Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups, for example "env=prod or env=staging".
@@ -1413,7 +1437,7 @@ func (o AssignmentResponseOutput) ToAssignmentResponsePtrOutput() AssignmentResp
 }
 
 func (o AssignmentResponseOutput) ToAssignmentResponsePtrOutputWithContext(ctx context.Context) AssignmentResponsePtrOutput {
-	return o.ApplyT(func(v AssignmentResponse) *AssignmentResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssignmentResponse) *AssignmentResponse {
 		return &v
 	}).(AssignmentResponsePtrOutput)
 }
@@ -1458,7 +1482,13 @@ func (o AssignmentResponsePtrOutput) ToAssignmentResponsePtrOutputWithContext(ct
 }
 
 func (o AssignmentResponsePtrOutput) Elem() AssignmentResponseOutput {
-	return o.ApplyT(func(v *AssignmentResponse) AssignmentResponse { return *v }).(AssignmentResponseOutput)
+	return o.ApplyT(func(v *AssignmentResponse) AssignmentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AssignmentResponse
+		return ret
+	}).(AssignmentResponseOutput)
 }
 
 // Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups, for example "env=prod or env=staging".
@@ -1611,7 +1641,7 @@ func (o ExecStepOutput) ToExecStepPtrOutput() ExecStepPtrOutput {
 }
 
 func (o ExecStepOutput) ToExecStepPtrOutputWithContext(ctx context.Context) ExecStepPtrOutput {
-	return o.ApplyT(func(v ExecStep) *ExecStep {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecStep) *ExecStep {
 		return &v
 	}).(ExecStepPtrOutput)
 }
@@ -1641,7 +1671,13 @@ func (o ExecStepPtrOutput) ToExecStepPtrOutputWithContext(ctx context.Context) E
 }
 
 func (o ExecStepPtrOutput) Elem() ExecStepOutput {
-	return o.ApplyT(func(v *ExecStep) ExecStep { return *v }).(ExecStepOutput)
+	return o.ApplyT(func(v *ExecStep) ExecStep {
+		if v != nil {
+			return *v
+		}
+		var ret ExecStep
+		return ret
+	}).(ExecStepOutput)
 }
 
 // The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -1772,7 +1808,7 @@ func (o ExecStepConfigOutput) ToExecStepConfigPtrOutput() ExecStepConfigPtrOutpu
 }
 
 func (o ExecStepConfigOutput) ToExecStepConfigPtrOutputWithContext(ctx context.Context) ExecStepConfigPtrOutput {
-	return o.ApplyT(func(v ExecStepConfig) *ExecStepConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecStepConfig) *ExecStepConfig {
 		return &v
 	}).(ExecStepConfigPtrOutput)
 }
@@ -1812,7 +1848,13 @@ func (o ExecStepConfigPtrOutput) ToExecStepConfigPtrOutputWithContext(ctx contex
 }
 
 func (o ExecStepConfigPtrOutput) Elem() ExecStepConfigOutput {
-	return o.ApplyT(func(v *ExecStepConfig) ExecStepConfig { return *v }).(ExecStepConfigOutput)
+	return o.ApplyT(func(v *ExecStepConfig) ExecStepConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ExecStepConfig
+		return ret
+	}).(ExecStepConfigOutput)
 }
 
 // Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
@@ -1963,7 +2005,7 @@ func (o ExecStepConfigResponseOutput) ToExecStepConfigResponsePtrOutput() ExecSt
 }
 
 func (o ExecStepConfigResponseOutput) ToExecStepConfigResponsePtrOutputWithContext(ctx context.Context) ExecStepConfigResponsePtrOutput {
-	return o.ApplyT(func(v ExecStepConfigResponse) *ExecStepConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecStepConfigResponse) *ExecStepConfigResponse {
 		return &v
 	}).(ExecStepConfigResponsePtrOutput)
 }
@@ -2003,7 +2045,13 @@ func (o ExecStepConfigResponsePtrOutput) ToExecStepConfigResponsePtrOutputWithCo
 }
 
 func (o ExecStepConfigResponsePtrOutput) Elem() ExecStepConfigResponseOutput {
-	return o.ApplyT(func(v *ExecStepConfigResponse) ExecStepConfigResponse { return *v }).(ExecStepConfigResponseOutput)
+	return o.ApplyT(func(v *ExecStepConfigResponse) ExecStepConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExecStepConfigResponse
+		return ret
+	}).(ExecStepConfigResponseOutput)
 }
 
 // Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
@@ -2146,7 +2194,7 @@ func (o ExecStepResponseOutput) ToExecStepResponsePtrOutput() ExecStepResponsePt
 }
 
 func (o ExecStepResponseOutput) ToExecStepResponsePtrOutputWithContext(ctx context.Context) ExecStepResponsePtrOutput {
-	return o.ApplyT(func(v ExecStepResponse) *ExecStepResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecStepResponse) *ExecStepResponse {
 		return &v
 	}).(ExecStepResponsePtrOutput)
 }
@@ -2176,7 +2224,13 @@ func (o ExecStepResponsePtrOutput) ToExecStepResponsePtrOutputWithContext(ctx co
 }
 
 func (o ExecStepResponsePtrOutput) Elem() ExecStepResponseOutput {
-	return o.ApplyT(func(v *ExecStepResponse) ExecStepResponse { return *v }).(ExecStepResponseOutput)
+	return o.ApplyT(func(v *ExecStepResponse) ExecStepResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExecStepResponse
+		return ret
+	}).(ExecStepResponseOutput)
 }
 
 // The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -2299,7 +2353,7 @@ func (o FixedOrPercentOutput) ToFixedOrPercentPtrOutput() FixedOrPercentPtrOutpu
 }
 
 func (o FixedOrPercentOutput) ToFixedOrPercentPtrOutputWithContext(ctx context.Context) FixedOrPercentPtrOutput {
-	return o.ApplyT(func(v FixedOrPercent) *FixedOrPercent {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FixedOrPercent) *FixedOrPercent {
 		return &v
 	}).(FixedOrPercentPtrOutput)
 }
@@ -2329,7 +2383,13 @@ func (o FixedOrPercentPtrOutput) ToFixedOrPercentPtrOutputWithContext(ctx contex
 }
 
 func (o FixedOrPercentPtrOutput) Elem() FixedOrPercentOutput {
-	return o.ApplyT(func(v *FixedOrPercent) FixedOrPercent { return *v }).(FixedOrPercentOutput)
+	return o.ApplyT(func(v *FixedOrPercent) FixedOrPercent {
+		if v != nil {
+			return *v
+		}
+		var ret FixedOrPercent
+		return ret
+	}).(FixedOrPercentOutput)
 }
 
 // Specifies a fixed value.
@@ -2452,7 +2512,7 @@ func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponsePtrOutput() FixedO
 }
 
 func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponsePtrOutputWithContext(ctx context.Context) FixedOrPercentResponsePtrOutput {
-	return o.ApplyT(func(v FixedOrPercentResponse) *FixedOrPercentResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FixedOrPercentResponse) *FixedOrPercentResponse {
 		return &v
 	}).(FixedOrPercentResponsePtrOutput)
 }
@@ -2482,7 +2542,13 @@ func (o FixedOrPercentResponsePtrOutput) ToFixedOrPercentResponsePtrOutputWithCo
 }
 
 func (o FixedOrPercentResponsePtrOutput) Elem() FixedOrPercentResponseOutput {
-	return o.ApplyT(func(v *FixedOrPercentResponse) FixedOrPercentResponse { return *v }).(FixedOrPercentResponseOutput)
+	return o.ApplyT(func(v *FixedOrPercentResponse) FixedOrPercentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FixedOrPercentResponse
+		return ret
+	}).(FixedOrPercentResponseOutput)
 }
 
 // Specifies a fixed value.
@@ -2609,7 +2675,7 @@ func (o GcsObjectOutput) ToGcsObjectPtrOutput() GcsObjectPtrOutput {
 }
 
 func (o GcsObjectOutput) ToGcsObjectPtrOutputWithContext(ctx context.Context) GcsObjectPtrOutput {
-	return o.ApplyT(func(v GcsObject) *GcsObject {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsObject) *GcsObject {
 		return &v
 	}).(GcsObjectPtrOutput)
 }
@@ -2644,7 +2710,13 @@ func (o GcsObjectPtrOutput) ToGcsObjectPtrOutputWithContext(ctx context.Context)
 }
 
 func (o GcsObjectPtrOutput) Elem() GcsObjectOutput {
-	return o.ApplyT(func(v *GcsObject) GcsObject { return *v }).(GcsObjectOutput)
+	return o.ApplyT(func(v *GcsObject) GcsObject {
+		if v != nil {
+			return *v
+		}
+		var ret GcsObject
+		return ret
+	}).(GcsObjectOutput)
 }
 
 // Bucket of the Google Cloud Storage object.
@@ -2781,7 +2853,7 @@ func (o GcsObjectResponseOutput) ToGcsObjectResponsePtrOutput() GcsObjectRespons
 }
 
 func (o GcsObjectResponseOutput) ToGcsObjectResponsePtrOutputWithContext(ctx context.Context) GcsObjectResponsePtrOutput {
-	return o.ApplyT(func(v GcsObjectResponse) *GcsObjectResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsObjectResponse) *GcsObjectResponse {
 		return &v
 	}).(GcsObjectResponsePtrOutput)
 }
@@ -2816,7 +2888,13 @@ func (o GcsObjectResponsePtrOutput) ToGcsObjectResponsePtrOutputWithContext(ctx 
 }
 
 func (o GcsObjectResponsePtrOutput) Elem() GcsObjectResponseOutput {
-	return o.ApplyT(func(v *GcsObjectResponse) GcsObjectResponse { return *v }).(GcsObjectResponseOutput)
+	return o.ApplyT(func(v *GcsObjectResponse) GcsObjectResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GcsObjectResponse
+		return ret
+	}).(GcsObjectResponseOutput)
 }
 
 // Bucket of the Google Cloud Storage object.
@@ -2949,7 +3027,7 @@ func (o GooRepositoryOutput) ToGooRepositoryPtrOutput() GooRepositoryPtrOutput {
 }
 
 func (o GooRepositoryOutput) ToGooRepositoryPtrOutputWithContext(ctx context.Context) GooRepositoryPtrOutput {
-	return o.ApplyT(func(v GooRepository) *GooRepository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooRepository) *GooRepository {
 		return &v
 	}).(GooRepositoryPtrOutput)
 }
@@ -2979,7 +3057,13 @@ func (o GooRepositoryPtrOutput) ToGooRepositoryPtrOutputWithContext(ctx context.
 }
 
 func (o GooRepositoryPtrOutput) Elem() GooRepositoryOutput {
-	return o.ApplyT(func(v *GooRepository) GooRepository { return *v }).(GooRepositoryOutput)
+	return o.ApplyT(func(v *GooRepository) GooRepository {
+		if v != nil {
+			return *v
+		}
+		var ret GooRepository
+		return ret
+	}).(GooRepositoryOutput)
 }
 
 // The name of the repository.
@@ -3158,7 +3242,7 @@ func (o GooSettingsOutput) ToGooSettingsPtrOutput() GooSettingsPtrOutput {
 }
 
 func (o GooSettingsOutput) ToGooSettingsPtrOutputWithContext(ctx context.Context) GooSettingsPtrOutput {
-	return o.ApplyT(func(v GooSettings) *GooSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooSettings) *GooSettings {
 		return &v
 	}).(GooSettingsPtrOutput)
 }
@@ -3178,7 +3262,13 @@ func (o GooSettingsPtrOutput) ToGooSettingsPtrOutputWithContext(ctx context.Cont
 }
 
 func (o GooSettingsPtrOutput) Elem() GooSettingsOutput {
-	return o.ApplyT(func(v *GooSettings) GooSettings { return *v }).(GooSettingsOutput)
+	return o.ApplyT(func(v *GooSettings) GooSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GooSettings
+		return ret
+	}).(GooSettingsOutput)
 }
 
 // Googet patching is performed by running `googet update`.
@@ -3273,7 +3363,7 @@ func (o GooSettingsResponseOutput) ToGooSettingsResponsePtrOutput() GooSettingsR
 }
 
 func (o GooSettingsResponseOutput) ToGooSettingsResponsePtrOutputWithContext(ctx context.Context) GooSettingsResponsePtrOutput {
-	return o.ApplyT(func(v GooSettingsResponse) *GooSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooSettingsResponse) *GooSettingsResponse {
 		return &v
 	}).(GooSettingsResponsePtrOutput)
 }
@@ -3293,7 +3383,13 @@ func (o GooSettingsResponsePtrOutput) ToGooSettingsResponsePtrOutputWithContext(
 }
 
 func (o GooSettingsResponsePtrOutput) Elem() GooSettingsResponseOutput {
-	return o.ApplyT(func(v *GooSettingsResponse) GooSettingsResponse { return *v }).(GooSettingsResponseOutput)
+	return o.ApplyT(func(v *GooSettingsResponse) GooSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooSettingsResponse
+		return ret
+	}).(GooSettingsResponseOutput)
 }
 
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
@@ -3396,7 +3492,7 @@ func (o MonthlyScheduleOutput) ToMonthlySchedulePtrOutput() MonthlySchedulePtrOu
 }
 
 func (o MonthlyScheduleOutput) ToMonthlySchedulePtrOutputWithContext(ctx context.Context) MonthlySchedulePtrOutput {
-	return o.ApplyT(func(v MonthlySchedule) *MonthlySchedule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonthlySchedule) *MonthlySchedule {
 		return &v
 	}).(MonthlySchedulePtrOutput)
 }
@@ -3426,7 +3522,13 @@ func (o MonthlySchedulePtrOutput) ToMonthlySchedulePtrOutputWithContext(ctx cont
 }
 
 func (o MonthlySchedulePtrOutput) Elem() MonthlyScheduleOutput {
-	return o.ApplyT(func(v *MonthlySchedule) MonthlySchedule { return *v }).(MonthlyScheduleOutput)
+	return o.ApplyT(func(v *MonthlySchedule) MonthlySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret MonthlySchedule
+		return ret
+	}).(MonthlyScheduleOutput)
 }
 
 // One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
@@ -3549,7 +3651,7 @@ func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponsePtrOutput() Mont
 }
 
 func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) MonthlyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v MonthlyScheduleResponse) *MonthlyScheduleResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonthlyScheduleResponse) *MonthlyScheduleResponse {
 		return &v
 	}).(MonthlyScheduleResponsePtrOutput)
 }
@@ -3579,7 +3681,13 @@ func (o MonthlyScheduleResponsePtrOutput) ToMonthlyScheduleResponsePtrOutputWith
 }
 
 func (o MonthlyScheduleResponsePtrOutput) Elem() MonthlyScheduleResponseOutput {
-	return o.ApplyT(func(v *MonthlyScheduleResponse) MonthlyScheduleResponse { return *v }).(MonthlyScheduleResponseOutput)
+	return o.ApplyT(func(v *MonthlyScheduleResponse) MonthlyScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MonthlyScheduleResponse
+		return ret
+	}).(MonthlyScheduleResponseOutput)
 }
 
 // One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
@@ -3698,7 +3806,7 @@ func (o OneTimeScheduleOutput) ToOneTimeSchedulePtrOutput() OneTimeSchedulePtrOu
 }
 
 func (o OneTimeScheduleOutput) ToOneTimeSchedulePtrOutputWithContext(ctx context.Context) OneTimeSchedulePtrOutput {
-	return o.ApplyT(func(v OneTimeSchedule) *OneTimeSchedule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OneTimeSchedule) *OneTimeSchedule {
 		return &v
 	}).(OneTimeSchedulePtrOutput)
 }
@@ -3723,7 +3831,13 @@ func (o OneTimeSchedulePtrOutput) ToOneTimeSchedulePtrOutputWithContext(ctx cont
 }
 
 func (o OneTimeSchedulePtrOutput) Elem() OneTimeScheduleOutput {
-	return o.ApplyT(func(v *OneTimeSchedule) OneTimeSchedule { return *v }).(OneTimeScheduleOutput)
+	return o.ApplyT(func(v *OneTimeSchedule) OneTimeSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret OneTimeSchedule
+		return ret
+	}).(OneTimeScheduleOutput)
 }
 
 // The desired patch job execution time.
@@ -3832,7 +3946,7 @@ func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponsePtrOutput() OneT
 }
 
 func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponsePtrOutputWithContext(ctx context.Context) OneTimeScheduleResponsePtrOutput {
-	return o.ApplyT(func(v OneTimeScheduleResponse) *OneTimeScheduleResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OneTimeScheduleResponse) *OneTimeScheduleResponse {
 		return &v
 	}).(OneTimeScheduleResponsePtrOutput)
 }
@@ -3857,7 +3971,13 @@ func (o OneTimeScheduleResponsePtrOutput) ToOneTimeScheduleResponsePtrOutputWith
 }
 
 func (o OneTimeScheduleResponsePtrOutput) Elem() OneTimeScheduleResponseOutput {
-	return o.ApplyT(func(v *OneTimeScheduleResponse) OneTimeScheduleResponse { return *v }).(OneTimeScheduleResponseOutput)
+	return o.ApplyT(func(v *OneTimeScheduleResponse) OneTimeScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OneTimeScheduleResponse
+		return ret
+	}).(OneTimeScheduleResponseOutput)
 }
 
 // The desired patch job execution time.
@@ -4484,7 +4604,7 @@ func (o PatchConfigOutput) ToPatchConfigPtrOutput() PatchConfigPtrOutput {
 }
 
 func (o PatchConfigOutput) ToPatchConfigPtrOutputWithContext(ctx context.Context) PatchConfigPtrOutput {
-	return o.ApplyT(func(v PatchConfig) *PatchConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchConfig) *PatchConfig {
 		return &v
 	}).(PatchConfigPtrOutput)
 }
@@ -4544,7 +4664,13 @@ func (o PatchConfigPtrOutput) ToPatchConfigPtrOutputWithContext(ctx context.Cont
 }
 
 func (o PatchConfigPtrOutput) Elem() PatchConfigOutput {
-	return o.ApplyT(func(v *PatchConfig) PatchConfig { return *v }).(PatchConfigOutput)
+	return o.ApplyT(func(v *PatchConfig) PatchConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PatchConfig
+		return ret
+	}).(PatchConfigOutput)
 }
 
 // Apt update settings. Use this setting to override the default `apt` patch rules.
@@ -4751,7 +4877,7 @@ func (o PatchConfigResponseOutput) ToPatchConfigResponsePtrOutput() PatchConfigR
 }
 
 func (o PatchConfigResponseOutput) ToPatchConfigResponsePtrOutputWithContext(ctx context.Context) PatchConfigResponsePtrOutput {
-	return o.ApplyT(func(v PatchConfigResponse) *PatchConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchConfigResponse) *PatchConfigResponse {
 		return &v
 	}).(PatchConfigResponsePtrOutput)
 }
@@ -4811,7 +4937,13 @@ func (o PatchConfigResponsePtrOutput) ToPatchConfigResponsePtrOutputWithContext(
 }
 
 func (o PatchConfigResponsePtrOutput) Elem() PatchConfigResponseOutput {
-	return o.ApplyT(func(v *PatchConfigResponse) PatchConfigResponse { return *v }).(PatchConfigResponseOutput)
+	return o.ApplyT(func(v *PatchConfigResponse) PatchConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PatchConfigResponse
+		return ret
+	}).(PatchConfigResponseOutput)
 }
 
 // Apt update settings. Use this setting to override the default `apt` patch rules.
@@ -5006,7 +5138,7 @@ func (o PatchInstanceFilterOutput) ToPatchInstanceFilterPtrOutput() PatchInstanc
 }
 
 func (o PatchInstanceFilterOutput) ToPatchInstanceFilterPtrOutputWithContext(ctx context.Context) PatchInstanceFilterPtrOutput {
-	return o.ApplyT(func(v PatchInstanceFilter) *PatchInstanceFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchInstanceFilter) *PatchInstanceFilter {
 		return &v
 	}).(PatchInstanceFilterPtrOutput)
 }
@@ -5051,7 +5183,13 @@ func (o PatchInstanceFilterPtrOutput) ToPatchInstanceFilterPtrOutputWithContext(
 }
 
 func (o PatchInstanceFilterPtrOutput) Elem() PatchInstanceFilterOutput {
-	return o.ApplyT(func(v *PatchInstanceFilter) PatchInstanceFilter { return *v }).(PatchInstanceFilterOutput)
+	return o.ApplyT(func(v *PatchInstanceFilter) PatchInstanceFilter {
+		if v != nil {
+			return *v
+		}
+		var ret PatchInstanceFilter
+		return ret
+	}).(PatchInstanceFilterOutput)
 }
 
 // Target all VM instances in the project. If true, no other criteria is permitted.
@@ -5416,7 +5554,7 @@ func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponsePtrOutpu
 }
 
 func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponsePtrOutputWithContext(ctx context.Context) PatchInstanceFilterResponsePtrOutput {
-	return o.ApplyT(func(v PatchInstanceFilterResponse) *PatchInstanceFilterResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchInstanceFilterResponse) *PatchInstanceFilterResponse {
 		return &v
 	}).(PatchInstanceFilterResponsePtrOutput)
 }
@@ -5461,7 +5599,13 @@ func (o PatchInstanceFilterResponsePtrOutput) ToPatchInstanceFilterResponsePtrOu
 }
 
 func (o PatchInstanceFilterResponsePtrOutput) Elem() PatchInstanceFilterResponseOutput {
-	return o.ApplyT(func(v *PatchInstanceFilterResponse) PatchInstanceFilterResponse { return *v }).(PatchInstanceFilterResponseOutput)
+	return o.ApplyT(func(v *PatchInstanceFilterResponse) PatchInstanceFilterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PatchInstanceFilterResponse
+		return ret
+	}).(PatchInstanceFilterResponseOutput)
 }
 
 // Target all VM instances in the project. If true, no other criteria is permitted.
@@ -5614,7 +5758,7 @@ func (o PatchRolloutOutput) ToPatchRolloutPtrOutput() PatchRolloutPtrOutput {
 }
 
 func (o PatchRolloutOutput) ToPatchRolloutPtrOutputWithContext(ctx context.Context) PatchRolloutPtrOutput {
-	return o.ApplyT(func(v PatchRollout) *PatchRollout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchRollout) *PatchRollout {
 		return &v
 	}).(PatchRolloutPtrOutput)
 }
@@ -5644,7 +5788,13 @@ func (o PatchRolloutPtrOutput) ToPatchRolloutPtrOutputWithContext(ctx context.Co
 }
 
 func (o PatchRolloutPtrOutput) Elem() PatchRolloutOutput {
-	return o.ApplyT(func(v *PatchRollout) PatchRollout { return *v }).(PatchRolloutOutput)
+	return o.ApplyT(func(v *PatchRollout) PatchRollout {
+		if v != nil {
+			return *v
+		}
+		var ret PatchRollout
+		return ret
+	}).(PatchRolloutOutput)
 }
 
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
@@ -5767,7 +5917,7 @@ func (o PatchRolloutResponseOutput) ToPatchRolloutResponsePtrOutput() PatchRollo
 }
 
 func (o PatchRolloutResponseOutput) ToPatchRolloutResponsePtrOutputWithContext(ctx context.Context) PatchRolloutResponsePtrOutput {
-	return o.ApplyT(func(v PatchRolloutResponse) *PatchRolloutResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchRolloutResponse) *PatchRolloutResponse {
 		return &v
 	}).(PatchRolloutResponsePtrOutput)
 }
@@ -5797,7 +5947,13 @@ func (o PatchRolloutResponsePtrOutput) ToPatchRolloutResponsePtrOutputWithContex
 }
 
 func (o PatchRolloutResponsePtrOutput) Elem() PatchRolloutResponseOutput {
-	return o.ApplyT(func(v *PatchRolloutResponse) PatchRolloutResponse { return *v }).(PatchRolloutResponseOutput)
+	return o.ApplyT(func(v *PatchRolloutResponse) PatchRolloutResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PatchRolloutResponse
+		return ret
+	}).(PatchRolloutResponseOutput)
 }
 
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
@@ -5940,7 +6096,7 @@ func (o RecurringScheduleOutput) ToRecurringSchedulePtrOutput() RecurringSchedul
 }
 
 func (o RecurringScheduleOutput) ToRecurringSchedulePtrOutputWithContext(ctx context.Context) RecurringSchedulePtrOutput {
-	return o.ApplyT(func(v RecurringSchedule) *RecurringSchedule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecurringSchedule) *RecurringSchedule {
 		return &v
 	}).(RecurringSchedulePtrOutput)
 }
@@ -5995,7 +6151,13 @@ func (o RecurringSchedulePtrOutput) ToRecurringSchedulePtrOutputWithContext(ctx 
 }
 
 func (o RecurringSchedulePtrOutput) Elem() RecurringScheduleOutput {
-	return o.ApplyT(func(v *RecurringSchedule) RecurringSchedule { return *v }).(RecurringScheduleOutput)
+	return o.ApplyT(func(v *RecurringSchedule) RecurringSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret RecurringSchedule
+		return ret
+	}).(RecurringScheduleOutput)
 }
 
 // Optional. The end time at which a recurring patch deployment schedule is no longer active.
@@ -6196,7 +6358,7 @@ func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponsePtrOutput() 
 }
 
 func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponsePtrOutputWithContext(ctx context.Context) RecurringScheduleResponsePtrOutput {
-	return o.ApplyT(func(v RecurringScheduleResponse) *RecurringScheduleResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecurringScheduleResponse) *RecurringScheduleResponse {
 		return &v
 	}).(RecurringScheduleResponsePtrOutput)
 }
@@ -6261,7 +6423,13 @@ func (o RecurringScheduleResponsePtrOutput) ToRecurringScheduleResponsePtrOutput
 }
 
 func (o RecurringScheduleResponsePtrOutput) Elem() RecurringScheduleResponseOutput {
-	return o.ApplyT(func(v *RecurringScheduleResponse) RecurringScheduleResponse { return *v }).(RecurringScheduleResponseOutput)
+	return o.ApplyT(func(v *RecurringScheduleResponse) RecurringScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RecurringScheduleResponse
+		return ret
+	}).(RecurringScheduleResponseOutput)
 }
 
 // Optional. The end time at which a recurring patch deployment schedule is no longer active.
@@ -6730,7 +6898,7 @@ func (o SoftwareRecipeArtifactGcsOutput) ToSoftwareRecipeArtifactGcsPtrOutput() 
 }
 
 func (o SoftwareRecipeArtifactGcsOutput) ToSoftwareRecipeArtifactGcsPtrOutputWithContext(ctx context.Context) SoftwareRecipeArtifactGcsPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeArtifactGcs) *SoftwareRecipeArtifactGcs {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeArtifactGcs) *SoftwareRecipeArtifactGcs {
 		return &v
 	}).(SoftwareRecipeArtifactGcsPtrOutput)
 }
@@ -6765,7 +6933,13 @@ func (o SoftwareRecipeArtifactGcsPtrOutput) ToSoftwareRecipeArtifactGcsPtrOutput
 }
 
 func (o SoftwareRecipeArtifactGcsPtrOutput) Elem() SoftwareRecipeArtifactGcsOutput {
-	return o.ApplyT(func(v *SoftwareRecipeArtifactGcs) SoftwareRecipeArtifactGcs { return *v }).(SoftwareRecipeArtifactGcsOutput)
+	return o.ApplyT(func(v *SoftwareRecipeArtifactGcs) SoftwareRecipeArtifactGcs {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeArtifactGcs
+		return ret
+	}).(SoftwareRecipeArtifactGcsOutput)
 }
 
 // Bucket of the Google Cloud Storage object. Given an example URL: `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `my-bucket`.
@@ -6971,7 +7145,7 @@ func (o SoftwareRecipeArtifactRemoteOutput) ToSoftwareRecipeArtifactRemotePtrOut
 }
 
 func (o SoftwareRecipeArtifactRemoteOutput) ToSoftwareRecipeArtifactRemotePtrOutputWithContext(ctx context.Context) SoftwareRecipeArtifactRemotePtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeArtifactRemote) *SoftwareRecipeArtifactRemote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeArtifactRemote) *SoftwareRecipeArtifactRemote {
 		return &v
 	}).(SoftwareRecipeArtifactRemotePtrOutput)
 }
@@ -7001,7 +7175,13 @@ func (o SoftwareRecipeArtifactRemotePtrOutput) ToSoftwareRecipeArtifactRemotePtr
 }
 
 func (o SoftwareRecipeArtifactRemotePtrOutput) Elem() SoftwareRecipeArtifactRemoteOutput {
-	return o.ApplyT(func(v *SoftwareRecipeArtifactRemote) SoftwareRecipeArtifactRemote { return *v }).(SoftwareRecipeArtifactRemoteOutput)
+	return o.ApplyT(func(v *SoftwareRecipeArtifactRemote) SoftwareRecipeArtifactRemote {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeArtifactRemote
+		return ret
+	}).(SoftwareRecipeArtifactRemoteOutput)
 }
 
 // Must be provided if `allow_insecure` is `false`. SHA256 checksum in hex format, to compare to the checksum of the artifact. If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any of the steps.
@@ -7613,7 +7793,7 @@ func (o SoftwareRecipeStepCopyFileOutput) ToSoftwareRecipeStepCopyFilePtrOutput(
 }
 
 func (o SoftwareRecipeStepCopyFileOutput) ToSoftwareRecipeStepCopyFilePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepCopyFilePtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepCopyFile) *SoftwareRecipeStepCopyFile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepCopyFile) *SoftwareRecipeStepCopyFile {
 		return &v
 	}).(SoftwareRecipeStepCopyFilePtrOutput)
 }
@@ -7653,7 +7833,13 @@ func (o SoftwareRecipeStepCopyFilePtrOutput) ToSoftwareRecipeStepCopyFilePtrOutp
 }
 
 func (o SoftwareRecipeStepCopyFilePtrOutput) Elem() SoftwareRecipeStepCopyFileOutput {
-	return o.ApplyT(func(v *SoftwareRecipeStepCopyFile) SoftwareRecipeStepCopyFile { return *v }).(SoftwareRecipeStepCopyFileOutput)
+	return o.ApplyT(func(v *SoftwareRecipeStepCopyFile) SoftwareRecipeStepCopyFile {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeStepCopyFile
+		return ret
+	}).(SoftwareRecipeStepCopyFileOutput)
 }
 
 // The id of the relevant artifact in the recipe.
@@ -7886,7 +8072,7 @@ func (o SoftwareRecipeStepExecFileOutput) ToSoftwareRecipeStepExecFilePtrOutput(
 }
 
 func (o SoftwareRecipeStepExecFileOutput) ToSoftwareRecipeStepExecFilePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepExecFilePtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepExecFile) *SoftwareRecipeStepExecFile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepExecFile) *SoftwareRecipeStepExecFile {
 		return &v
 	}).(SoftwareRecipeStepExecFilePtrOutput)
 }
@@ -7926,7 +8112,13 @@ func (o SoftwareRecipeStepExecFilePtrOutput) ToSoftwareRecipeStepExecFilePtrOutp
 }
 
 func (o SoftwareRecipeStepExecFilePtrOutput) Elem() SoftwareRecipeStepExecFileOutput {
-	return o.ApplyT(func(v *SoftwareRecipeStepExecFile) SoftwareRecipeStepExecFile { return *v }).(SoftwareRecipeStepExecFileOutput)
+	return o.ApplyT(func(v *SoftwareRecipeStepExecFile) SoftwareRecipeStepExecFile {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeStepExecFile
+		return ret
+	}).(SoftwareRecipeStepExecFileOutput)
 }
 
 // Defaults to [0]. A list of possible return values that the program can return to indicate a success.
@@ -8155,7 +8347,7 @@ func (o SoftwareRecipeStepExtractArchiveOutput) ToSoftwareRecipeStepExtractArchi
 }
 
 func (o SoftwareRecipeStepExtractArchiveOutput) ToSoftwareRecipeStepExtractArchivePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchivePtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepExtractArchive) *SoftwareRecipeStepExtractArchive {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepExtractArchive) *SoftwareRecipeStepExtractArchive {
 		return &v
 	}).(SoftwareRecipeStepExtractArchivePtrOutput)
 }
@@ -8190,7 +8382,13 @@ func (o SoftwareRecipeStepExtractArchivePtrOutput) ToSoftwareRecipeStepExtractAr
 }
 
 func (o SoftwareRecipeStepExtractArchivePtrOutput) Elem() SoftwareRecipeStepExtractArchiveOutput {
-	return o.ApplyT(func(v *SoftwareRecipeStepExtractArchive) SoftwareRecipeStepExtractArchive { return *v }).(SoftwareRecipeStepExtractArchiveOutput)
+	return o.ApplyT(func(v *SoftwareRecipeStepExtractArchive) SoftwareRecipeStepExtractArchive {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeStepExtractArchive
+		return ret
+	}).(SoftwareRecipeStepExtractArchiveOutput)
 }
 
 // The id of the relevant artifact in the recipe.
@@ -8392,7 +8590,7 @@ func (o SoftwareRecipeStepInstallDpkgOutput) ToSoftwareRecipeStepInstallDpkgPtrO
 }
 
 func (o SoftwareRecipeStepInstallDpkgOutput) ToSoftwareRecipeStepInstallDpkgPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallDpkgPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepInstallDpkg) *SoftwareRecipeStepInstallDpkg {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepInstallDpkg) *SoftwareRecipeStepInstallDpkg {
 		return &v
 	}).(SoftwareRecipeStepInstallDpkgPtrOutput)
 }
@@ -8417,7 +8615,13 @@ func (o SoftwareRecipeStepInstallDpkgPtrOutput) ToSoftwareRecipeStepInstallDpkgP
 }
 
 func (o SoftwareRecipeStepInstallDpkgPtrOutput) Elem() SoftwareRecipeStepInstallDpkgOutput {
-	return o.ApplyT(func(v *SoftwareRecipeStepInstallDpkg) SoftwareRecipeStepInstallDpkg { return *v }).(SoftwareRecipeStepInstallDpkgOutput)
+	return o.ApplyT(func(v *SoftwareRecipeStepInstallDpkg) SoftwareRecipeStepInstallDpkg {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeStepInstallDpkg
+		return ret
+	}).(SoftwareRecipeStepInstallDpkgOutput)
 }
 
 // The id of the relevant artifact in the recipe.
@@ -8589,7 +8793,7 @@ func (o SoftwareRecipeStepInstallMsiOutput) ToSoftwareRecipeStepInstallMsiPtrOut
 }
 
 func (o SoftwareRecipeStepInstallMsiOutput) ToSoftwareRecipeStepInstallMsiPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallMsiPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepInstallMsi) *SoftwareRecipeStepInstallMsi {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepInstallMsi) *SoftwareRecipeStepInstallMsi {
 		return &v
 	}).(SoftwareRecipeStepInstallMsiPtrOutput)
 }
@@ -8624,7 +8828,13 @@ func (o SoftwareRecipeStepInstallMsiPtrOutput) ToSoftwareRecipeStepInstallMsiPtr
 }
 
 func (o SoftwareRecipeStepInstallMsiPtrOutput) Elem() SoftwareRecipeStepInstallMsiOutput {
-	return o.ApplyT(func(v *SoftwareRecipeStepInstallMsi) SoftwareRecipeStepInstallMsi { return *v }).(SoftwareRecipeStepInstallMsiOutput)
+	return o.ApplyT(func(v *SoftwareRecipeStepInstallMsi) SoftwareRecipeStepInstallMsi {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeStepInstallMsi
+		return ret
+	}).(SoftwareRecipeStepInstallMsiOutput)
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -8826,7 +9036,7 @@ func (o SoftwareRecipeStepInstallRpmOutput) ToSoftwareRecipeStepInstallRpmPtrOut
 }
 
 func (o SoftwareRecipeStepInstallRpmOutput) ToSoftwareRecipeStepInstallRpmPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallRpmPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepInstallRpm) *SoftwareRecipeStepInstallRpm {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepInstallRpm) *SoftwareRecipeStepInstallRpm {
 		return &v
 	}).(SoftwareRecipeStepInstallRpmPtrOutput)
 }
@@ -8851,7 +9061,13 @@ func (o SoftwareRecipeStepInstallRpmPtrOutput) ToSoftwareRecipeStepInstallRpmPtr
 }
 
 func (o SoftwareRecipeStepInstallRpmPtrOutput) Elem() SoftwareRecipeStepInstallRpmOutput {
-	return o.ApplyT(func(v *SoftwareRecipeStepInstallRpm) SoftwareRecipeStepInstallRpm { return *v }).(SoftwareRecipeStepInstallRpmOutput)
+	return o.ApplyT(func(v *SoftwareRecipeStepInstallRpm) SoftwareRecipeStepInstallRpm {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeStepInstallRpm
+		return ret
+	}).(SoftwareRecipeStepInstallRpmOutput)
 }
 
 // The id of the relevant artifact in the recipe.
@@ -9179,7 +9395,7 @@ func (o SoftwareRecipeStepRunScriptOutput) ToSoftwareRecipeStepRunScriptPtrOutpu
 }
 
 func (o SoftwareRecipeStepRunScriptOutput) ToSoftwareRecipeStepRunScriptPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepRunScript) *SoftwareRecipeStepRunScript {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepRunScript) *SoftwareRecipeStepRunScript {
 		return &v
 	}).(SoftwareRecipeStepRunScriptPtrOutput)
 }
@@ -9214,7 +9430,13 @@ func (o SoftwareRecipeStepRunScriptPtrOutput) ToSoftwareRecipeStepRunScriptPtrOu
 }
 
 func (o SoftwareRecipeStepRunScriptPtrOutput) Elem() SoftwareRecipeStepRunScriptOutput {
-	return o.ApplyT(func(v *SoftwareRecipeStepRunScript) SoftwareRecipeStepRunScript { return *v }).(SoftwareRecipeStepRunScriptOutput)
+	return o.ApplyT(func(v *SoftwareRecipeStepRunScript) SoftwareRecipeStepRunScript {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeStepRunScript
+		return ret
+	}).(SoftwareRecipeStepRunScriptOutput)
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -9428,7 +9650,7 @@ func (o TimeOfDayOutput) ToTimeOfDayPtrOutput() TimeOfDayPtrOutput {
 }
 
 func (o TimeOfDayOutput) ToTimeOfDayPtrOutputWithContext(ctx context.Context) TimeOfDayPtrOutput {
-	return o.ApplyT(func(v TimeOfDay) *TimeOfDay {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeOfDay) *TimeOfDay {
 		return &v
 	}).(TimeOfDayPtrOutput)
 }
@@ -9468,7 +9690,13 @@ func (o TimeOfDayPtrOutput) ToTimeOfDayPtrOutputWithContext(ctx context.Context)
 }
 
 func (o TimeOfDayPtrOutput) Elem() TimeOfDayOutput {
-	return o.ApplyT(func(v *TimeOfDay) TimeOfDay { return *v }).(TimeOfDayOutput)
+	return o.ApplyT(func(v *TimeOfDay) TimeOfDay {
+		if v != nil {
+			return *v
+		}
+		var ret TimeOfDay
+		return ret
+	}).(TimeOfDayOutput)
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -9619,7 +9847,7 @@ func (o TimeOfDayResponseOutput) ToTimeOfDayResponsePtrOutput() TimeOfDayRespons
 }
 
 func (o TimeOfDayResponseOutput) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
-	return o.ApplyT(func(v TimeOfDayResponse) *TimeOfDayResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeOfDayResponse) *TimeOfDayResponse {
 		return &v
 	}).(TimeOfDayResponsePtrOutput)
 }
@@ -9659,7 +9887,13 @@ func (o TimeOfDayResponsePtrOutput) ToTimeOfDayResponsePtrOutputWithContext(ctx 
 }
 
 func (o TimeOfDayResponsePtrOutput) Elem() TimeOfDayResponseOutput {
-	return o.ApplyT(func(v *TimeOfDayResponse) TimeOfDayResponse { return *v }).(TimeOfDayResponseOutput)
+	return o.ApplyT(func(v *TimeOfDayResponse) TimeOfDayResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TimeOfDayResponse
+		return ret
+	}).(TimeOfDayResponseOutput)
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -9802,7 +10036,7 @@ func (o TimeZoneOutput) ToTimeZonePtrOutput() TimeZonePtrOutput {
 }
 
 func (o TimeZoneOutput) ToTimeZonePtrOutputWithContext(ctx context.Context) TimeZonePtrOutput {
-	return o.ApplyT(func(v TimeZone) *TimeZone {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeZone) *TimeZone {
 		return &v
 	}).(TimeZonePtrOutput)
 }
@@ -9832,7 +10066,13 @@ func (o TimeZonePtrOutput) ToTimeZonePtrOutputWithContext(ctx context.Context) T
 }
 
 func (o TimeZonePtrOutput) Elem() TimeZoneOutput {
-	return o.ApplyT(func(v *TimeZone) TimeZone { return *v }).(TimeZoneOutput)
+	return o.ApplyT(func(v *TimeZone) TimeZone {
+		if v != nil {
+			return *v
+		}
+		var ret TimeZone
+		return ret
+	}).(TimeZoneOutput)
 }
 
 // IANA Time Zone Database time zone, e.g. "America/New_York".
@@ -9951,7 +10191,7 @@ func (o TimeZoneResponseOutput) ToTimeZoneResponsePtrOutput() TimeZoneResponsePt
 }
 
 func (o TimeZoneResponseOutput) ToTimeZoneResponsePtrOutputWithContext(ctx context.Context) TimeZoneResponsePtrOutput {
-	return o.ApplyT(func(v TimeZoneResponse) *TimeZoneResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeZoneResponse) *TimeZoneResponse {
 		return &v
 	}).(TimeZoneResponsePtrOutput)
 }
@@ -9976,7 +10216,13 @@ func (o TimeZoneResponsePtrOutput) ToTimeZoneResponsePtrOutputWithContext(ctx co
 }
 
 func (o TimeZoneResponsePtrOutput) Elem() TimeZoneResponseOutput {
-	return o.ApplyT(func(v *TimeZoneResponse) TimeZoneResponse { return *v }).(TimeZoneResponseOutput)
+	return o.ApplyT(func(v *TimeZoneResponse) TimeZoneResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TimeZoneResponse
+		return ret
+	}).(TimeZoneResponseOutput)
 }
 
 // Optional. IANA Time Zone Database version number, e.g. "2019a".
@@ -10089,7 +10335,7 @@ func (o WeekDayOfMonthOutput) ToWeekDayOfMonthPtrOutput() WeekDayOfMonthPtrOutpu
 }
 
 func (o WeekDayOfMonthOutput) ToWeekDayOfMonthPtrOutputWithContext(ctx context.Context) WeekDayOfMonthPtrOutput {
-	return o.ApplyT(func(v WeekDayOfMonth) *WeekDayOfMonth {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeekDayOfMonth) *WeekDayOfMonth {
 		return &v
 	}).(WeekDayOfMonthPtrOutput)
 }
@@ -10119,7 +10365,13 @@ func (o WeekDayOfMonthPtrOutput) ToWeekDayOfMonthPtrOutputWithContext(ctx contex
 }
 
 func (o WeekDayOfMonthPtrOutput) Elem() WeekDayOfMonthOutput {
-	return o.ApplyT(func(v *WeekDayOfMonth) WeekDayOfMonth { return *v }).(WeekDayOfMonthOutput)
+	return o.ApplyT(func(v *WeekDayOfMonth) WeekDayOfMonth {
+		if v != nil {
+			return *v
+		}
+		var ret WeekDayOfMonth
+		return ret
+	}).(WeekDayOfMonthOutput)
 }
 
 // A day of the week.
@@ -10242,7 +10494,7 @@ func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponsePtrOutput() WeekDa
 }
 
 func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponsePtrOutputWithContext(ctx context.Context) WeekDayOfMonthResponsePtrOutput {
-	return o.ApplyT(func(v WeekDayOfMonthResponse) *WeekDayOfMonthResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeekDayOfMonthResponse) *WeekDayOfMonthResponse {
 		return &v
 	}).(WeekDayOfMonthResponsePtrOutput)
 }
@@ -10272,7 +10524,13 @@ func (o WeekDayOfMonthResponsePtrOutput) ToWeekDayOfMonthResponsePtrOutputWithCo
 }
 
 func (o WeekDayOfMonthResponsePtrOutput) Elem() WeekDayOfMonthResponseOutput {
-	return o.ApplyT(func(v *WeekDayOfMonthResponse) WeekDayOfMonthResponse { return *v }).(WeekDayOfMonthResponseOutput)
+	return o.ApplyT(func(v *WeekDayOfMonthResponse) WeekDayOfMonthResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WeekDayOfMonthResponse
+		return ret
+	}).(WeekDayOfMonthResponseOutput)
 }
 
 // A day of the week.
@@ -10391,7 +10649,7 @@ func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutpu
 }
 
 func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return o.ApplyT(func(v WeeklySchedule) *WeeklySchedule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeeklySchedule) *WeeklySchedule {
 		return &v
 	}).(WeeklySchedulePtrOutput)
 }
@@ -10416,7 +10674,13 @@ func (o WeeklySchedulePtrOutput) ToWeeklySchedulePtrOutputWithContext(ctx contex
 }
 
 func (o WeeklySchedulePtrOutput) Elem() WeeklyScheduleOutput {
-	return o.ApplyT(func(v *WeeklySchedule) WeeklySchedule { return *v }).(WeeklyScheduleOutput)
+	return o.ApplyT(func(v *WeeklySchedule) WeeklySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret WeeklySchedule
+		return ret
+	}).(WeeklyScheduleOutput)
 }
 
 // Day of the week.
@@ -10525,7 +10789,7 @@ func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponsePtrOutput() Weekly
 }
 
 func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v WeeklyScheduleResponse) *WeeklyScheduleResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeeklyScheduleResponse) *WeeklyScheduleResponse {
 		return &v
 	}).(WeeklyScheduleResponsePtrOutput)
 }
@@ -10550,7 +10814,13 @@ func (o WeeklyScheduleResponsePtrOutput) ToWeeklyScheduleResponsePtrOutputWithCo
 }
 
 func (o WeeklyScheduleResponsePtrOutput) Elem() WeeklyScheduleResponseOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) WeeklyScheduleResponse { return *v }).(WeeklyScheduleResponseOutput)
+	return o.ApplyT(func(v *WeeklyScheduleResponse) WeeklyScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WeeklyScheduleResponse
+		return ret
+	}).(WeeklyScheduleResponseOutput)
 }
 
 // Day of the week.
@@ -10667,7 +10937,7 @@ func (o WindowsUpdateSettingsOutput) ToWindowsUpdateSettingsPtrOutput() WindowsU
 }
 
 func (o WindowsUpdateSettingsOutput) ToWindowsUpdateSettingsPtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsPtrOutput {
-	return o.ApplyT(func(v WindowsUpdateSettings) *WindowsUpdateSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsUpdateSettings) *WindowsUpdateSettings {
 		return &v
 	}).(WindowsUpdateSettingsPtrOutput)
 }
@@ -10702,7 +10972,13 @@ func (o WindowsUpdateSettingsPtrOutput) ToWindowsUpdateSettingsPtrOutputWithCont
 }
 
 func (o WindowsUpdateSettingsPtrOutput) Elem() WindowsUpdateSettingsOutput {
-	return o.ApplyT(func(v *WindowsUpdateSettings) WindowsUpdateSettings { return *v }).(WindowsUpdateSettingsOutput)
+	return o.ApplyT(func(v *WindowsUpdateSettings) WindowsUpdateSettings {
+		if v != nil {
+			return *v
+		}
+		var ret WindowsUpdateSettings
+		return ret
+	}).(WindowsUpdateSettingsOutput)
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
@@ -10839,7 +11115,7 @@ func (o WindowsUpdateSettingsResponseOutput) ToWindowsUpdateSettingsResponsePtrO
 }
 
 func (o WindowsUpdateSettingsResponseOutput) ToWindowsUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponsePtrOutput {
-	return o.ApplyT(func(v WindowsUpdateSettingsResponse) *WindowsUpdateSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsUpdateSettingsResponse) *WindowsUpdateSettingsResponse {
 		return &v
 	}).(WindowsUpdateSettingsResponsePtrOutput)
 }
@@ -10874,7 +11150,13 @@ func (o WindowsUpdateSettingsResponsePtrOutput) ToWindowsUpdateSettingsResponseP
 }
 
 func (o WindowsUpdateSettingsResponsePtrOutput) Elem() WindowsUpdateSettingsResponseOutput {
-	return o.ApplyT(func(v *WindowsUpdateSettingsResponse) WindowsUpdateSettingsResponse { return *v }).(WindowsUpdateSettingsResponseOutput)
+	return o.ApplyT(func(v *WindowsUpdateSettingsResponse) WindowsUpdateSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WindowsUpdateSettingsResponse
+		return ret
+	}).(WindowsUpdateSettingsResponseOutput)
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
@@ -11015,7 +11297,7 @@ func (o YumRepositoryOutput) ToYumRepositoryPtrOutput() YumRepositoryPtrOutput {
 }
 
 func (o YumRepositoryOutput) ToYumRepositoryPtrOutputWithContext(ctx context.Context) YumRepositoryPtrOutput {
-	return o.ApplyT(func(v YumRepository) *YumRepository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YumRepository) *YumRepository {
 		return &v
 	}).(YumRepositoryPtrOutput)
 }
@@ -11055,7 +11337,13 @@ func (o YumRepositoryPtrOutput) ToYumRepositoryPtrOutputWithContext(ctx context.
 }
 
 func (o YumRepositoryPtrOutput) Elem() YumRepositoryOutput {
-	return o.ApplyT(func(v *YumRepository) YumRepository { return *v }).(YumRepositoryOutput)
+	return o.ApplyT(func(v *YumRepository) YumRepository {
+		if v != nil {
+			return *v
+		}
+		var ret YumRepository
+		return ret
+	}).(YumRepositoryOutput)
 }
 
 // The location of the repository directory.
@@ -11279,7 +11567,7 @@ func (o YumSettingsOutput) ToYumSettingsPtrOutput() YumSettingsPtrOutput {
 }
 
 func (o YumSettingsOutput) ToYumSettingsPtrOutputWithContext(ctx context.Context) YumSettingsPtrOutput {
-	return o.ApplyT(func(v YumSettings) *YumSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YumSettings) *YumSettings {
 		return &v
 	}).(YumSettingsPtrOutput)
 }
@@ -11319,7 +11607,13 @@ func (o YumSettingsPtrOutput) ToYumSettingsPtrOutputWithContext(ctx context.Cont
 }
 
 func (o YumSettingsPtrOutput) Elem() YumSettingsOutput {
-	return o.ApplyT(func(v *YumSettings) YumSettings { return *v }).(YumSettingsOutput)
+	return o.ApplyT(func(v *YumSettings) YumSettings {
+		if v != nil {
+			return *v
+		}
+		var ret YumSettings
+		return ret
+	}).(YumSettingsOutput)
 }
 
 // List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
@@ -11470,7 +11764,7 @@ func (o YumSettingsResponseOutput) ToYumSettingsResponsePtrOutput() YumSettingsR
 }
 
 func (o YumSettingsResponseOutput) ToYumSettingsResponsePtrOutputWithContext(ctx context.Context) YumSettingsResponsePtrOutput {
-	return o.ApplyT(func(v YumSettingsResponse) *YumSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YumSettingsResponse) *YumSettingsResponse {
 		return &v
 	}).(YumSettingsResponsePtrOutput)
 }
@@ -11510,7 +11804,13 @@ func (o YumSettingsResponsePtrOutput) ToYumSettingsResponsePtrOutputWithContext(
 }
 
 func (o YumSettingsResponsePtrOutput) Elem() YumSettingsResponseOutput {
-	return o.ApplyT(func(v *YumSettingsResponse) YumSettingsResponse { return *v }).(YumSettingsResponseOutput)
+	return o.ApplyT(func(v *YumSettingsResponse) YumSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret YumSettingsResponse
+		return ret
+	}).(YumSettingsResponseOutput)
 }
 
 // List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
@@ -11661,7 +11961,7 @@ func (o ZypperRepositoryOutput) ToZypperRepositoryPtrOutput() ZypperRepositoryPt
 }
 
 func (o ZypperRepositoryOutput) ToZypperRepositoryPtrOutputWithContext(ctx context.Context) ZypperRepositoryPtrOutput {
-	return o.ApplyT(func(v ZypperRepository) *ZypperRepository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZypperRepository) *ZypperRepository {
 		return &v
 	}).(ZypperRepositoryPtrOutput)
 }
@@ -11701,7 +12001,13 @@ func (o ZypperRepositoryPtrOutput) ToZypperRepositoryPtrOutputWithContext(ctx co
 }
 
 func (o ZypperRepositoryPtrOutput) Elem() ZypperRepositoryOutput {
-	return o.ApplyT(func(v *ZypperRepository) ZypperRepository { return *v }).(ZypperRepositoryOutput)
+	return o.ApplyT(func(v *ZypperRepository) ZypperRepository {
+		if v != nil {
+			return *v
+		}
+		var ret ZypperRepository
+		return ret
+	}).(ZypperRepositoryOutput)
 }
 
 // The location of the repository directory.
@@ -11933,7 +12239,7 @@ func (o ZypperSettingsOutput) ToZypperSettingsPtrOutput() ZypperSettingsPtrOutpu
 }
 
 func (o ZypperSettingsOutput) ToZypperSettingsPtrOutputWithContext(ctx context.Context) ZypperSettingsPtrOutput {
-	return o.ApplyT(func(v ZypperSettings) *ZypperSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZypperSettings) *ZypperSettings {
 		return &v
 	}).(ZypperSettingsPtrOutput)
 }
@@ -11983,7 +12289,13 @@ func (o ZypperSettingsPtrOutput) ToZypperSettingsPtrOutputWithContext(ctx contex
 }
 
 func (o ZypperSettingsPtrOutput) Elem() ZypperSettingsOutput {
-	return o.ApplyT(func(v *ZypperSettings) ZypperSettings { return *v }).(ZypperSettingsOutput)
+	return o.ApplyT(func(v *ZypperSettings) ZypperSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ZypperSettings
+		return ret
+	}).(ZypperSettingsOutput)
 }
 
 // Install only patches with these categories. Common categories include security, recommended, and feature.
@@ -12162,7 +12474,7 @@ func (o ZypperSettingsResponseOutput) ToZypperSettingsResponsePtrOutput() Zypper
 }
 
 func (o ZypperSettingsResponseOutput) ToZypperSettingsResponsePtrOutputWithContext(ctx context.Context) ZypperSettingsResponsePtrOutput {
-	return o.ApplyT(func(v ZypperSettingsResponse) *ZypperSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZypperSettingsResponse) *ZypperSettingsResponse {
 		return &v
 	}).(ZypperSettingsResponsePtrOutput)
 }
@@ -12212,7 +12524,13 @@ func (o ZypperSettingsResponsePtrOutput) ToZypperSettingsResponsePtrOutputWithCo
 }
 
 func (o ZypperSettingsResponsePtrOutput) Elem() ZypperSettingsResponseOutput {
-	return o.ApplyT(func(v *ZypperSettingsResponse) ZypperSettingsResponse { return *v }).(ZypperSettingsResponseOutput)
+	return o.ApplyT(func(v *ZypperSettingsResponse) ZypperSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ZypperSettingsResponse
+		return ret
+	}).(ZypperSettingsResponseOutput)
 }
 
 // Install only patches with these categories. Common categories include security, recommended, and feature.

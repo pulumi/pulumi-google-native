@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// Represents a single yum package repository. These are added to a repo file that is managed at `/etc/yum.repos.d/google_osconfig.repo`.
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyResourceRepositoryResourceYumRepositoryResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg mirror.
+    /// </summary>
     [OutputType]
     public sealed class DistributionResponse
     {

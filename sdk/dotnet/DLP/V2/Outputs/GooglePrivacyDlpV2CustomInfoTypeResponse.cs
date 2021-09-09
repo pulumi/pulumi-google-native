@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Custom information type provided by the user. Used to find domain-specific sensitive information configurable to the data in question.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2CustomInfoTypeResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a documentation page. A page can contain subpages to represent nested documentation set structure.
+    /// </summary>
     [OutputType]
     public sealed class PageResponse
     {

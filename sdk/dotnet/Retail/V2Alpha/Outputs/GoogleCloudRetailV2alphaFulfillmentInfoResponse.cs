@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
 {
 
+    /// <summary>
+    /// Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRetailV2alphaFulfillmentInfoResponse
     {

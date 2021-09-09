@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,56 @@ type LookupSubscriptionResult struct {
 	Name string `pulumi:"name"`
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Topic string `pulumi:"topic"`
+}
+
+func LookupSubscriptionOutput(ctx *pulumi.Context, args LookupSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSubscriptionResult, error) {
+			args := v.(LookupSubscriptionArgs)
+			r, err := LookupSubscription(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSubscriptionResultOutput)
+}
+
+type LookupSubscriptionOutputArgs struct {
+	Location       pulumi.StringInput    `pulumi:"location"`
+	Project        pulumi.StringPtrInput `pulumi:"project"`
+	SubscriptionId pulumi.StringInput    `pulumi:"subscriptionId"`
+}
+
+func (LookupSubscriptionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionArgs)(nil)).Elem()
+}
+
+type LookupSubscriptionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSubscriptionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionResult)(nil)).Elem()
+}
+
+func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutput() LookupSubscriptionResultOutput {
+	return o
+}
+
+func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutputWithContext(ctx context.Context) LookupSubscriptionResultOutput {
+	return o
+}
+
+// The settings for this subscription's message delivery.
+func (o LookupSubscriptionResultOutput) DeliveryConfig() DeliveryConfigResponseOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) DeliveryConfigResponse { return v.DeliveryConfig }).(DeliveryConfigResponseOutput)
+}
+
+// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+func (o LookupSubscriptionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+func (o LookupSubscriptionResultOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSubscriptionResultOutput{})
 }

@@ -118,7 +118,7 @@ func (o AndroidAttributesResponseOutput) ToAndroidAttributesResponsePtrOutput() 
 }
 
 func (o AndroidAttributesResponseOutput) ToAndroidAttributesResponsePtrOutputWithContext(ctx context.Context) AndroidAttributesResponsePtrOutput {
-	return o.ApplyT(func(v AndroidAttributesResponse) *AndroidAttributesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidAttributesResponse) *AndroidAttributesResponse {
 		return &v
 	}).(AndroidAttributesResponsePtrOutput)
 }
@@ -158,7 +158,13 @@ func (o AndroidAttributesResponsePtrOutput) ToAndroidAttributesResponsePtrOutput
 }
 
 func (o AndroidAttributesResponsePtrOutput) Elem() AndroidAttributesResponseOutput {
-	return o.ApplyT(func(v *AndroidAttributesResponse) AndroidAttributesResponse { return *v }).(AndroidAttributesResponseOutput)
+	return o.ApplyT(func(v *AndroidAttributesResponse) AndroidAttributesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidAttributesResponse
+		return ret
+	}).(AndroidAttributesResponseOutput)
 }
 
 // Whether applications from unknown sources can be installed on device.
@@ -297,7 +303,7 @@ func (o DynamicGroupMetadataOutput) ToDynamicGroupMetadataPtrOutput() DynamicGro
 }
 
 func (o DynamicGroupMetadataOutput) ToDynamicGroupMetadataPtrOutputWithContext(ctx context.Context) DynamicGroupMetadataPtrOutput {
-	return o.ApplyT(func(v DynamicGroupMetadata) *DynamicGroupMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DynamicGroupMetadata) *DynamicGroupMetadata {
 		return &v
 	}).(DynamicGroupMetadataPtrOutput)
 }
@@ -322,7 +328,13 @@ func (o DynamicGroupMetadataPtrOutput) ToDynamicGroupMetadataPtrOutputWithContex
 }
 
 func (o DynamicGroupMetadataPtrOutput) Elem() DynamicGroupMetadataOutput {
-	return o.ApplyT(func(v *DynamicGroupMetadata) DynamicGroupMetadata { return *v }).(DynamicGroupMetadataOutput)
+	return o.ApplyT(func(v *DynamicGroupMetadata) DynamicGroupMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret DynamicGroupMetadata
+		return ret
+	}).(DynamicGroupMetadataOutput)
 }
 
 // Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
@@ -435,7 +447,7 @@ func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponsePtrOut
 }
 
 func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponsePtrOutputWithContext(ctx context.Context) DynamicGroupMetadataResponsePtrOutput {
-	return o.ApplyT(func(v DynamicGroupMetadataResponse) *DynamicGroupMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DynamicGroupMetadataResponse) *DynamicGroupMetadataResponse {
 		return &v
 	}).(DynamicGroupMetadataResponsePtrOutput)
 }
@@ -465,7 +477,13 @@ func (o DynamicGroupMetadataResponsePtrOutput) ToDynamicGroupMetadataResponsePtr
 }
 
 func (o DynamicGroupMetadataResponsePtrOutput) Elem() DynamicGroupMetadataResponseOutput {
-	return o.ApplyT(func(v *DynamicGroupMetadataResponse) DynamicGroupMetadataResponse { return *v }).(DynamicGroupMetadataResponseOutput)
+	return o.ApplyT(func(v *DynamicGroupMetadataResponse) DynamicGroupMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DynamicGroupMetadataResponse
+		return ret
+	}).(DynamicGroupMetadataResponseOutput)
 }
 
 // Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
@@ -800,7 +818,7 @@ func (o DynamicGroupStatusResponseOutput) ToDynamicGroupStatusResponsePtrOutput(
 }
 
 func (o DynamicGroupStatusResponseOutput) ToDynamicGroupStatusResponsePtrOutputWithContext(ctx context.Context) DynamicGroupStatusResponsePtrOutput {
-	return o.ApplyT(func(v DynamicGroupStatusResponse) *DynamicGroupStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DynamicGroupStatusResponse) *DynamicGroupStatusResponse {
 		return &v
 	}).(DynamicGroupStatusResponsePtrOutput)
 }
@@ -830,7 +848,13 @@ func (o DynamicGroupStatusResponsePtrOutput) ToDynamicGroupStatusResponsePtrOutp
 }
 
 func (o DynamicGroupStatusResponsePtrOutput) Elem() DynamicGroupStatusResponseOutput {
-	return o.ApplyT(func(v *DynamicGroupStatusResponse) DynamicGroupStatusResponse { return *v }).(DynamicGroupStatusResponseOutput)
+	return o.ApplyT(func(v *DynamicGroupStatusResponse) DynamicGroupStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DynamicGroupStatusResponse
+		return ret
+	}).(DynamicGroupStatusResponseOutput)
 }
 
 // Status of the dynamic group.
@@ -978,7 +1002,7 @@ func (o EntityKeyOutput) ToEntityKeyPtrOutput() EntityKeyPtrOutput {
 }
 
 func (o EntityKeyOutput) ToEntityKeyPtrOutputWithContext(ctx context.Context) EntityKeyPtrOutput {
-	return o.ApplyT(func(v EntityKey) *EntityKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityKey) *EntityKey {
 		return &v
 	}).(EntityKeyPtrOutput)
 }
@@ -1008,7 +1032,13 @@ func (o EntityKeyPtrOutput) ToEntityKeyPtrOutputWithContext(ctx context.Context)
 }
 
 func (o EntityKeyPtrOutput) Elem() EntityKeyOutput {
-	return o.ApplyT(func(v *EntityKey) EntityKey { return *v }).(EntityKeyOutput)
+	return o.ApplyT(func(v *EntityKey) EntityKey {
+		if v != nil {
+			return *v
+		}
+		var ret EntityKey
+		return ret
+	}).(EntityKeyOutput)
 }
 
 // The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
@@ -1172,7 +1202,7 @@ func (o EntityKeyResponseOutput) ToEntityKeyResponsePtrOutput() EntityKeyRespons
 }
 
 func (o EntityKeyResponseOutput) ToEntityKeyResponsePtrOutputWithContext(ctx context.Context) EntityKeyResponsePtrOutput {
-	return o.ApplyT(func(v EntityKeyResponse) *EntityKeyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityKeyResponse) *EntityKeyResponse {
 		return &v
 	}).(EntityKeyResponsePtrOutput)
 }
@@ -1197,7 +1227,13 @@ func (o EntityKeyResponsePtrOutput) ToEntityKeyResponsePtrOutputWithContext(ctx 
 }
 
 func (o EntityKeyResponsePtrOutput) Elem() EntityKeyResponseOutput {
-	return o.ApplyT(func(v *EntityKeyResponse) EntityKeyResponse { return *v }).(EntityKeyResponseOutput)
+	return o.ApplyT(func(v *EntityKeyResponse) EntityKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EntityKeyResponse
+		return ret
+	}).(EntityKeyResponseOutput)
 }
 
 // The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
@@ -1326,7 +1362,7 @@ func (o ExpiryDetailOutput) ToExpiryDetailPtrOutput() ExpiryDetailPtrOutput {
 }
 
 func (o ExpiryDetailOutput) ToExpiryDetailPtrOutputWithContext(ctx context.Context) ExpiryDetailPtrOutput {
-	return o.ApplyT(func(v ExpiryDetail) *ExpiryDetail {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpiryDetail) *ExpiryDetail {
 		return &v
 	}).(ExpiryDetailPtrOutput)
 }
@@ -1351,7 +1387,13 @@ func (o ExpiryDetailPtrOutput) ToExpiryDetailPtrOutputWithContext(ctx context.Co
 }
 
 func (o ExpiryDetailPtrOutput) Elem() ExpiryDetailOutput {
-	return o.ApplyT(func(v *ExpiryDetail) ExpiryDetail { return *v }).(ExpiryDetailOutput)
+	return o.ApplyT(func(v *ExpiryDetail) ExpiryDetail {
+		if v != nil {
+			return *v
+		}
+		var ret ExpiryDetail
+		return ret
+	}).(ExpiryDetailOutput)
 }
 
 // The time at which the `MembershipRole` will expire.

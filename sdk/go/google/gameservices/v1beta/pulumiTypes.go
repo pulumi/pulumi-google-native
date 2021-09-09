@@ -566,7 +566,7 @@ func (o AuthorizationLoggingOptionsOutput) ToAuthorizationLoggingOptionsPtrOutpu
 }
 
 func (o AuthorizationLoggingOptionsOutput) ToAuthorizationLoggingOptionsPtrOutputWithContext(ctx context.Context) AuthorizationLoggingOptionsPtrOutput {
-	return o.ApplyT(func(v AuthorizationLoggingOptions) *AuthorizationLoggingOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorizationLoggingOptions) *AuthorizationLoggingOptions {
 		return &v
 	}).(AuthorizationLoggingOptionsPtrOutput)
 }
@@ -593,7 +593,13 @@ func (o AuthorizationLoggingOptionsPtrOutput) ToAuthorizationLoggingOptionsPtrOu
 }
 
 func (o AuthorizationLoggingOptionsPtrOutput) Elem() AuthorizationLoggingOptionsOutput {
-	return o.ApplyT(func(v *AuthorizationLoggingOptions) AuthorizationLoggingOptions { return *v }).(AuthorizationLoggingOptionsOutput)
+	return o.ApplyT(func(v *AuthorizationLoggingOptions) AuthorizationLoggingOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationLoggingOptions
+		return ret
+	}).(AuthorizationLoggingOptionsOutput)
 }
 
 // The type of the permission that was checked.
@@ -1009,7 +1015,7 @@ func (o CloudAuditOptionsOutput) ToCloudAuditOptionsPtrOutput() CloudAuditOption
 }
 
 func (o CloudAuditOptionsOutput) ToCloudAuditOptionsPtrOutputWithContext(ctx context.Context) CloudAuditOptionsPtrOutput {
-	return o.ApplyT(func(v CloudAuditOptions) *CloudAuditOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudAuditOptions) *CloudAuditOptions {
 		return &v
 	}).(CloudAuditOptionsPtrOutput)
 }
@@ -1039,7 +1045,13 @@ func (o CloudAuditOptionsPtrOutput) ToCloudAuditOptionsPtrOutputWithContext(ctx 
 }
 
 func (o CloudAuditOptionsPtrOutput) Elem() CloudAuditOptionsOutput {
-	return o.ApplyT(func(v *CloudAuditOptions) CloudAuditOptions { return *v }).(CloudAuditOptionsOutput)
+	return o.ApplyT(func(v *CloudAuditOptions) CloudAuditOptions {
+		if v != nil {
+			return *v
+		}
+		var ret CloudAuditOptions
+		return ret
+	}).(CloudAuditOptionsOutput)
 }
 
 // Information used by the Cloud Audit Logging pipeline.
@@ -1504,7 +1516,7 @@ func (o CounterOptionsOutput) ToCounterOptionsPtrOutput() CounterOptionsPtrOutpu
 }
 
 func (o CounterOptionsOutput) ToCounterOptionsPtrOutputWithContext(ctx context.Context) CounterOptionsPtrOutput {
-	return o.ApplyT(func(v CounterOptions) *CounterOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CounterOptions) *CounterOptions {
 		return &v
 	}).(CounterOptionsPtrOutput)
 }
@@ -1539,7 +1551,13 @@ func (o CounterOptionsPtrOutput) ToCounterOptionsPtrOutputWithContext(ctx contex
 }
 
 func (o CounterOptionsPtrOutput) Elem() CounterOptionsOutput {
-	return o.ApplyT(func(v *CounterOptions) CounterOptions { return *v }).(CounterOptionsOutput)
+	return o.ApplyT(func(v *CounterOptions) CounterOptions {
+		if v != nil {
+			return *v
+		}
+		var ret CounterOptions
+		return ret
+	}).(CounterOptionsOutput)
 }
 
 // Custom fields.
@@ -1957,10 +1975,11 @@ func (o DataAccessOptionsOutput) ToDataAccessOptionsPtrOutput() DataAccessOption
 }
 
 func (o DataAccessOptionsOutput) ToDataAccessOptionsPtrOutputWithContext(ctx context.Context) DataAccessOptionsPtrOutput {
-	return o.ApplyT(func(v DataAccessOptions) *DataAccessOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAccessOptions) *DataAccessOptions {
 		return &v
 	}).(DataAccessOptionsPtrOutput)
 }
+
 func (o DataAccessOptionsOutput) LogMode() DataAccessOptionsLogModePtrOutput {
 	return o.ApplyT(func(v DataAccessOptions) *DataAccessOptionsLogMode { return v.LogMode }).(DataAccessOptionsLogModePtrOutput)
 }
@@ -1980,7 +1999,13 @@ func (o DataAccessOptionsPtrOutput) ToDataAccessOptionsPtrOutputWithContext(ctx 
 }
 
 func (o DataAccessOptionsPtrOutput) Elem() DataAccessOptionsOutput {
-	return o.ApplyT(func(v *DataAccessOptions) DataAccessOptions { return *v }).(DataAccessOptionsOutput)
+	return o.ApplyT(func(v *DataAccessOptions) DataAccessOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DataAccessOptions
+		return ret
+	}).(DataAccessOptionsOutput)
 }
 
 func (o DataAccessOptionsPtrOutput) LogMode() DataAccessOptionsLogModePtrOutput {
@@ -2152,7 +2177,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -2192,7 +2217,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2639,7 +2670,7 @@ func (o GameServerClusterConnectionInfoOutput) ToGameServerClusterConnectionInfo
 }
 
 func (o GameServerClusterConnectionInfoOutput) ToGameServerClusterConnectionInfoPtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoPtrOutput {
-	return o.ApplyT(func(v GameServerClusterConnectionInfo) *GameServerClusterConnectionInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerClusterConnectionInfo) *GameServerClusterConnectionInfo {
 		return &v
 	}).(GameServerClusterConnectionInfoPtrOutput)
 }
@@ -2674,7 +2705,13 @@ func (o GameServerClusterConnectionInfoPtrOutput) ToGameServerClusterConnectionI
 }
 
 func (o GameServerClusterConnectionInfoPtrOutput) Elem() GameServerClusterConnectionInfoOutput {
-	return o.ApplyT(func(v *GameServerClusterConnectionInfo) GameServerClusterConnectionInfo { return *v }).(GameServerClusterConnectionInfoOutput)
+	return o.ApplyT(func(v *GameServerClusterConnectionInfo) GameServerClusterConnectionInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GameServerClusterConnectionInfo
+		return ret
+	}).(GameServerClusterConnectionInfoOutput)
 }
 
 // Reference to the GKE cluster where the game servers are installed.
@@ -2811,7 +2848,7 @@ func (o GameServerClusterConnectionInfoResponseOutput) ToGameServerClusterConnec
 }
 
 func (o GameServerClusterConnectionInfoResponseOutput) ToGameServerClusterConnectionInfoResponsePtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoResponsePtrOutput {
-	return o.ApplyT(func(v GameServerClusterConnectionInfoResponse) *GameServerClusterConnectionInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerClusterConnectionInfoResponse) *GameServerClusterConnectionInfoResponse {
 		return &v
 	}).(GameServerClusterConnectionInfoResponsePtrOutput)
 }
@@ -2850,7 +2887,13 @@ func (o GameServerClusterConnectionInfoResponsePtrOutput) ToGameServerClusterCon
 }
 
 func (o GameServerClusterConnectionInfoResponsePtrOutput) Elem() GameServerClusterConnectionInfoResponseOutput {
-	return o.ApplyT(func(v *GameServerClusterConnectionInfoResponse) GameServerClusterConnectionInfoResponse { return *v }).(GameServerClusterConnectionInfoResponseOutput)
+	return o.ApplyT(func(v *GameServerClusterConnectionInfoResponse) GameServerClusterConnectionInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GameServerClusterConnectionInfoResponse
+		return ret
+	}).(GameServerClusterConnectionInfoResponseOutput)
 }
 
 // Reference to the GKE cluster where the game servers are installed.
@@ -2979,7 +3022,7 @@ func (o GkeClusterReferenceOutput) ToGkeClusterReferencePtrOutput() GkeClusterRe
 }
 
 func (o GkeClusterReferenceOutput) ToGkeClusterReferencePtrOutputWithContext(ctx context.Context) GkeClusterReferencePtrOutput {
-	return o.ApplyT(func(v GkeClusterReference) *GkeClusterReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeClusterReference) *GkeClusterReference {
 		return &v
 	}).(GkeClusterReferencePtrOutput)
 }
@@ -3004,7 +3047,13 @@ func (o GkeClusterReferencePtrOutput) ToGkeClusterReferencePtrOutputWithContext(
 }
 
 func (o GkeClusterReferencePtrOutput) Elem() GkeClusterReferenceOutput {
-	return o.ApplyT(func(v *GkeClusterReference) GkeClusterReference { return *v }).(GkeClusterReferenceOutput)
+	return o.ApplyT(func(v *GkeClusterReference) GkeClusterReference {
+		if v != nil {
+			return *v
+		}
+		var ret GkeClusterReference
+		return ret
+	}).(GkeClusterReferenceOutput)
 }
 
 // The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
@@ -3113,7 +3162,7 @@ func (o GkeClusterReferenceResponseOutput) ToGkeClusterReferenceResponsePtrOutpu
 }
 
 func (o GkeClusterReferenceResponseOutput) ToGkeClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeClusterReferenceResponsePtrOutput {
-	return o.ApplyT(func(v GkeClusterReferenceResponse) *GkeClusterReferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeClusterReferenceResponse) *GkeClusterReferenceResponse {
 		return &v
 	}).(GkeClusterReferenceResponsePtrOutput)
 }
@@ -3138,7 +3187,13 @@ func (o GkeClusterReferenceResponsePtrOutput) ToGkeClusterReferenceResponsePtrOu
 }
 
 func (o GkeClusterReferenceResponsePtrOutput) Elem() GkeClusterReferenceResponseOutput {
-	return o.ApplyT(func(v *GkeClusterReferenceResponse) GkeClusterReferenceResponse { return *v }).(GkeClusterReferenceResponseOutput)
+	return o.ApplyT(func(v *GkeClusterReferenceResponse) GkeClusterReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GkeClusterReferenceResponse
+		return ret
+	}).(GkeClusterReferenceResponseOutput)
 }
 
 // The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
@@ -3247,7 +3302,7 @@ func (o GkeHubClusterReferenceOutput) ToGkeHubClusterReferencePtrOutput() GkeHub
 }
 
 func (o GkeHubClusterReferenceOutput) ToGkeHubClusterReferencePtrOutputWithContext(ctx context.Context) GkeHubClusterReferencePtrOutput {
-	return o.ApplyT(func(v GkeHubClusterReference) *GkeHubClusterReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeHubClusterReference) *GkeHubClusterReference {
 		return &v
 	}).(GkeHubClusterReferencePtrOutput)
 }
@@ -3272,7 +3327,13 @@ func (o GkeHubClusterReferencePtrOutput) ToGkeHubClusterReferencePtrOutputWithCo
 }
 
 func (o GkeHubClusterReferencePtrOutput) Elem() GkeHubClusterReferenceOutput {
-	return o.ApplyT(func(v *GkeHubClusterReference) GkeHubClusterReference { return *v }).(GkeHubClusterReferenceOutput)
+	return o.ApplyT(func(v *GkeHubClusterReference) GkeHubClusterReference {
+		if v != nil {
+			return *v
+		}
+		var ret GkeHubClusterReference
+		return ret
+	}).(GkeHubClusterReferenceOutput)
 }
 
 // The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
@@ -3381,7 +3442,7 @@ func (o GkeHubClusterReferenceResponseOutput) ToGkeHubClusterReferenceResponsePt
 }
 
 func (o GkeHubClusterReferenceResponseOutput) ToGkeHubClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponsePtrOutput {
-	return o.ApplyT(func(v GkeHubClusterReferenceResponse) *GkeHubClusterReferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeHubClusterReferenceResponse) *GkeHubClusterReferenceResponse {
 		return &v
 	}).(GkeHubClusterReferenceResponsePtrOutput)
 }
@@ -3406,7 +3467,13 @@ func (o GkeHubClusterReferenceResponsePtrOutput) ToGkeHubClusterReferenceRespons
 }
 
 func (o GkeHubClusterReferenceResponsePtrOutput) Elem() GkeHubClusterReferenceResponseOutput {
-	return o.ApplyT(func(v *GkeHubClusterReferenceResponse) GkeHubClusterReferenceResponse { return *v }).(GkeHubClusterReferenceResponseOutput)
+	return o.ApplyT(func(v *GkeHubClusterReferenceResponse) GkeHubClusterReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GkeHubClusterReferenceResponse
+		return ret
+	}).(GkeHubClusterReferenceResponseOutput)
 }
 
 // The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
@@ -3535,7 +3602,7 @@ func (o KubernetesClusterStateResponseOutput) ToKubernetesClusterStateResponsePt
 }
 
 func (o KubernetesClusterStateResponseOutput) ToKubernetesClusterStateResponsePtrOutputWithContext(ctx context.Context) KubernetesClusterStateResponsePtrOutput {
-	return o.ApplyT(func(v KubernetesClusterStateResponse) *KubernetesClusterStateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterStateResponse) *KubernetesClusterStateResponse {
 		return &v
 	}).(KubernetesClusterStateResponsePtrOutput)
 }
@@ -3585,7 +3652,13 @@ func (o KubernetesClusterStateResponsePtrOutput) ToKubernetesClusterStateRespons
 }
 
 func (o KubernetesClusterStateResponsePtrOutput) Elem() KubernetesClusterStateResponseOutput {
-	return o.ApplyT(func(v *KubernetesClusterStateResponse) KubernetesClusterStateResponse { return *v }).(KubernetesClusterStateResponseOutput)
+	return o.ApplyT(func(v *KubernetesClusterStateResponse) KubernetesClusterStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterStateResponse
+		return ret
+	}).(KubernetesClusterStateResponseOutput)
 }
 
 // The version of Agones currently installed in the registered Kubernetes cluster.

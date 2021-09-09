@@ -13,6 +13,7 @@ __all__ = [
     'GetGameServerDeploymentIamPolicyResult',
     'AwaitableGetGameServerDeploymentIamPolicyResult',
     'get_game_server_deployment_iam_policy',
+    'get_game_server_deployment_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -123,3 +124,15 @@ def get_game_server_deployment_iam_policy(game_server_deployment_id: Optional[st
         iam_owned=__ret__.iam_owned,
         rules=__ret__.rules,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_game_server_deployment_iam_policy)
+def get_game_server_deployment_iam_policy_output(game_server_deployment_id: Optional[pulumi.Input[str]] = None,
+                                                 location: Optional[pulumi.Input[str]] = None,
+                                                 options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGameServerDeploymentIamPolicyResult]:
+    """
+    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+    """
+    ...

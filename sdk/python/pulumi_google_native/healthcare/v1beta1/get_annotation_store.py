@@ -12,6 +12,7 @@ __all__ = [
     'GetAnnotationStoreResult',
     'AwaitableGetAnnotationStoreResult',
     'get_annotation_store',
+    'get_annotation_store_output',
 ]
 
 @pulumi.output_type
@@ -73,3 +74,15 @@ def get_annotation_store(annotation_store_id: Optional[str] = None,
     return AwaitableGetAnnotationStoreResult(
         labels=__ret__.labels,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_annotation_store)
+def get_annotation_store_output(annotation_store_id: Optional[pulumi.Input[str]] = None,
+                                dataset_id: Optional[pulumi.Input[str]] = None,
+                                location: Optional[pulumi.Input[str]] = None,
+                                project: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAnnotationStoreResult]:
+    """
+    Gets the specified Annotation store or returns NOT_FOUND if it does not exist.
+    """
+    ...

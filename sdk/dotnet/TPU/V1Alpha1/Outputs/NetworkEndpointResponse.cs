@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.TPU.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// A network endpoint over which a TPU worker can be reached.
+    /// </summary>
     [OutputType]
     public sealed class NetworkEndpointResponse
     {

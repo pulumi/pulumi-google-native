@@ -13,6 +13,7 @@ __all__ = [
     'GetIndexResult',
     'AwaitableGetIndexResult',
     'get_index',
+    'get_index_output',
 ]
 
 @pulumi.output_type
@@ -100,3 +101,15 @@ def get_index(collection_group_id: Optional[str] = None,
         name=__ret__.name,
         query_scope=__ret__.query_scope,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_index)
+def get_index_output(collection_group_id: Optional[pulumi.Input[str]] = None,
+                     database_id: Optional[pulumi.Input[str]] = None,
+                     index_id: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIndexResult]:
+    """
+    Gets a composite index.
+    """
+    ...

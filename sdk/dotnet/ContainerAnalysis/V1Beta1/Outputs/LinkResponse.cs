@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// This corresponds to an in-toto link.
+    /// </summary>
     [OutputType]
     public sealed class LinkResponse
     {

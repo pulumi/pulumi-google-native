@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Executes an artifact or local file.
+    /// </summary>
     [OutputType]
     public sealed class SoftwareRecipeStepExecFileResponse
     {

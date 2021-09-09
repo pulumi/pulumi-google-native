@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+    /// </summary>
     [OutputType]
     public sealed class PubsubConfigResponse
     {

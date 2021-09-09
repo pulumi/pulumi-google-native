@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A simulated forwarding path is composed of multiple steps. Each step has a well-defined state and an associated configuration.
+    /// </summary>
     [OutputType]
     public sealed class StepResponse
     {

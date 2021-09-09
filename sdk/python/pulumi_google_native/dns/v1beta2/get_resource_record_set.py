@@ -13,6 +13,7 @@ __all__ = [
     'GetResourceRecordSetResult',
     'AwaitableGetResourceRecordSetResult',
     'get_resource_record_set',
+    'get_resource_record_set_output',
 ]
 
 @pulumi.output_type
@@ -138,3 +139,16 @@ def get_resource_record_set(client_operation_id: Optional[str] = None,
         signature_rrdatas=__ret__.signature_rrdatas,
         ttl=__ret__.ttl,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_resource_record_set)
+def get_resource_record_set_output(client_operation_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                   managed_zone: Optional[pulumi.Input[str]] = None,
+                                   name: Optional[pulumi.Input[str]] = None,
+                                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                                   type: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceRecordSetResult]:
+    """
+    Fetches the representation of an existing ResourceRecordSet.
+    """
+    ...

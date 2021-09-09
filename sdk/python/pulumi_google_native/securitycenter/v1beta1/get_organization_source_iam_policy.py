@@ -13,6 +13,7 @@ __all__ = [
     'GetOrganizationSourceIamPolicyResult',
     'AwaitableGetOrganizationSourceIamPolicyResult',
     'get_organization_source_iam_policy',
+    'get_organization_source_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -96,3 +97,13 @@ def get_organization_source_iam_policy(organization_id: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_organization_source_iam_policy)
+def get_organization_source_iam_policy_output(organization_id: Optional[pulumi.Input[str]] = None,
+                                              source_id: Optional[pulumi.Input[str]] = None,
+                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationSourceIamPolicyResult]:
+    """
+    Gets the access control policy on the specified Source.
+    """
+    ...

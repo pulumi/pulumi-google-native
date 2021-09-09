@@ -12,6 +12,7 @@ __all__ = [
     'GetIngressRuleResult',
     'AwaitableGetIngressRuleResult',
     'get_ingress_rule',
+    'get_ingress_rule_output',
 ]
 
 @pulumi.output_type
@@ -95,3 +96,13 @@ def get_ingress_rule(app_id: Optional[str] = None,
         description=__ret__.description,
         priority=__ret__.priority,
         source_range=__ret__.source_range)
+
+
+@_utilities.lift_output_func(get_ingress_rule)
+def get_ingress_rule_output(app_id: Optional[pulumi.Input[str]] = None,
+                            ingress_rule_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIngressRuleResult]:
+    """
+    Gets the specified firewall rule.
+    """
+    ...

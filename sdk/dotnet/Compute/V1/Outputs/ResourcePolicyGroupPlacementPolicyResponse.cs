@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
+    /// </summary>
     [OutputType]
     public sealed class ResourcePolicyGroupPlacementPolicyResponse
     {

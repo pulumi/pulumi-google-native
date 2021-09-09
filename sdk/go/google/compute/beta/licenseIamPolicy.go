@@ -130,9 +130,7 @@ func (i *LicenseIamPolicy) ToLicenseIamPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseIamPolicyOutput)
 }
 
-type LicenseIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type LicenseIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (LicenseIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LicenseIamPolicy)(nil))

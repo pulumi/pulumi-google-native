@@ -110,7 +110,7 @@ func (o AwsAccessKeyOutput) ToAwsAccessKeyPtrOutput() AwsAccessKeyPtrOutput {
 }
 
 func (o AwsAccessKeyOutput) ToAwsAccessKeyPtrOutputWithContext(ctx context.Context) AwsAccessKeyPtrOutput {
-	return o.ApplyT(func(v AwsAccessKey) *AwsAccessKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsAccessKey) *AwsAccessKey {
 		return &v
 	}).(AwsAccessKeyPtrOutput)
 }
@@ -140,7 +140,13 @@ func (o AwsAccessKeyPtrOutput) ToAwsAccessKeyPtrOutputWithContext(ctx context.Co
 }
 
 func (o AwsAccessKeyPtrOutput) Elem() AwsAccessKeyOutput {
-	return o.ApplyT(func(v *AwsAccessKey) AwsAccessKey { return *v }).(AwsAccessKeyOutput)
+	return o.ApplyT(func(v *AwsAccessKey) AwsAccessKey {
+		if v != nil {
+			return *v
+		}
+		var ret AwsAccessKey
+		return ret
+	}).(AwsAccessKeyOutput)
 }
 
 // AWS access key ID.
@@ -263,7 +269,7 @@ func (o AwsAccessKeyResponseOutput) ToAwsAccessKeyResponsePtrOutput() AwsAccessK
 }
 
 func (o AwsAccessKeyResponseOutput) ToAwsAccessKeyResponsePtrOutputWithContext(ctx context.Context) AwsAccessKeyResponsePtrOutput {
-	return o.ApplyT(func(v AwsAccessKeyResponse) *AwsAccessKeyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsAccessKeyResponse) *AwsAccessKeyResponse {
 		return &v
 	}).(AwsAccessKeyResponsePtrOutput)
 }
@@ -293,7 +299,13 @@ func (o AwsAccessKeyResponsePtrOutput) ToAwsAccessKeyResponsePtrOutputWithContex
 }
 
 func (o AwsAccessKeyResponsePtrOutput) Elem() AwsAccessKeyResponseOutput {
-	return o.ApplyT(func(v *AwsAccessKeyResponse) AwsAccessKeyResponse { return *v }).(AwsAccessKeyResponseOutput)
+	return o.ApplyT(func(v *AwsAccessKeyResponse) AwsAccessKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AwsAccessKeyResponse
+		return ret
+	}).(AwsAccessKeyResponseOutput)
 }
 
 // AWS access key ID.
@@ -424,7 +436,7 @@ func (o AwsS3DataOutput) ToAwsS3DataPtrOutput() AwsS3DataPtrOutput {
 }
 
 func (o AwsS3DataOutput) ToAwsS3DataPtrOutputWithContext(ctx context.Context) AwsS3DataPtrOutput {
-	return o.ApplyT(func(v AwsS3Data) *AwsS3Data {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsS3Data) *AwsS3Data {
 		return &v
 	}).(AwsS3DataPtrOutput)
 }
@@ -464,7 +476,13 @@ func (o AwsS3DataPtrOutput) ToAwsS3DataPtrOutputWithContext(ctx context.Context)
 }
 
 func (o AwsS3DataPtrOutput) Elem() AwsS3DataOutput {
-	return o.ApplyT(func(v *AwsS3Data) AwsS3Data { return *v }).(AwsS3DataOutput)
+	return o.ApplyT(func(v *AwsS3Data) AwsS3Data {
+		if v != nil {
+			return *v
+		}
+		var ret AwsS3Data
+		return ret
+	}).(AwsS3DataOutput)
 }
 
 // Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
@@ -615,7 +633,7 @@ func (o AwsS3DataResponseOutput) ToAwsS3DataResponsePtrOutput() AwsS3DataRespons
 }
 
 func (o AwsS3DataResponseOutput) ToAwsS3DataResponsePtrOutputWithContext(ctx context.Context) AwsS3DataResponsePtrOutput {
-	return o.ApplyT(func(v AwsS3DataResponse) *AwsS3DataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsS3DataResponse) *AwsS3DataResponse {
 		return &v
 	}).(AwsS3DataResponsePtrOutput)
 }
@@ -655,7 +673,13 @@ func (o AwsS3DataResponsePtrOutput) ToAwsS3DataResponsePtrOutputWithContext(ctx 
 }
 
 func (o AwsS3DataResponsePtrOutput) Elem() AwsS3DataResponseOutput {
-	return o.ApplyT(func(v *AwsS3DataResponse) AwsS3DataResponse { return *v }).(AwsS3DataResponseOutput)
+	return o.ApplyT(func(v *AwsS3DataResponse) AwsS3DataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AwsS3DataResponse
+		return ret
+	}).(AwsS3DataResponseOutput)
 }
 
 // Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
@@ -806,7 +830,7 @@ func (o AzureBlobStorageDataOutput) ToAzureBlobStorageDataPtrOutput() AzureBlobS
 }
 
 func (o AzureBlobStorageDataOutput) ToAzureBlobStorageDataPtrOutputWithContext(ctx context.Context) AzureBlobStorageDataPtrOutput {
-	return o.ApplyT(func(v AzureBlobStorageData) *AzureBlobStorageData {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureBlobStorageData) *AzureBlobStorageData {
 		return &v
 	}).(AzureBlobStorageDataPtrOutput)
 }
@@ -846,7 +870,13 @@ func (o AzureBlobStorageDataPtrOutput) ToAzureBlobStorageDataPtrOutputWithContex
 }
 
 func (o AzureBlobStorageDataPtrOutput) Elem() AzureBlobStorageDataOutput {
-	return o.ApplyT(func(v *AzureBlobStorageData) AzureBlobStorageData { return *v }).(AzureBlobStorageDataOutput)
+	return o.ApplyT(func(v *AzureBlobStorageData) AzureBlobStorageData {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBlobStorageData
+		return ret
+	}).(AzureBlobStorageDataOutput)
 }
 
 // Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
@@ -997,7 +1027,7 @@ func (o AzureBlobStorageDataResponseOutput) ToAzureBlobStorageDataResponsePtrOut
 }
 
 func (o AzureBlobStorageDataResponseOutput) ToAzureBlobStorageDataResponsePtrOutputWithContext(ctx context.Context) AzureBlobStorageDataResponsePtrOutput {
-	return o.ApplyT(func(v AzureBlobStorageDataResponse) *AzureBlobStorageDataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureBlobStorageDataResponse) *AzureBlobStorageDataResponse {
 		return &v
 	}).(AzureBlobStorageDataResponsePtrOutput)
 }
@@ -1037,7 +1067,13 @@ func (o AzureBlobStorageDataResponsePtrOutput) ToAzureBlobStorageDataResponsePtr
 }
 
 func (o AzureBlobStorageDataResponsePtrOutput) Elem() AzureBlobStorageDataResponseOutput {
-	return o.ApplyT(func(v *AzureBlobStorageDataResponse) AzureBlobStorageDataResponse { return *v }).(AzureBlobStorageDataResponseOutput)
+	return o.ApplyT(func(v *AzureBlobStorageDataResponse) AzureBlobStorageDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBlobStorageDataResponse
+		return ret
+	}).(AzureBlobStorageDataResponseOutput)
 }
 
 // Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
@@ -1176,7 +1212,7 @@ func (o AzureCredentialsOutput) ToAzureCredentialsPtrOutput() AzureCredentialsPt
 }
 
 func (o AzureCredentialsOutput) ToAzureCredentialsPtrOutputWithContext(ctx context.Context) AzureCredentialsPtrOutput {
-	return o.ApplyT(func(v AzureCredentials) *AzureCredentials {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureCredentials) *AzureCredentials {
 		return &v
 	}).(AzureCredentialsPtrOutput)
 }
@@ -1201,7 +1237,13 @@ func (o AzureCredentialsPtrOutput) ToAzureCredentialsPtrOutputWithContext(ctx co
 }
 
 func (o AzureCredentialsPtrOutput) Elem() AzureCredentialsOutput {
-	return o.ApplyT(func(v *AzureCredentials) AzureCredentials { return *v }).(AzureCredentialsOutput)
+	return o.ApplyT(func(v *AzureCredentials) AzureCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret AzureCredentials
+		return ret
+	}).(AzureCredentialsOutput)
 }
 
 // Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
@@ -1310,7 +1352,7 @@ func (o AzureCredentialsResponseOutput) ToAzureCredentialsResponsePtrOutput() Az
 }
 
 func (o AzureCredentialsResponseOutput) ToAzureCredentialsResponsePtrOutputWithContext(ctx context.Context) AzureCredentialsResponsePtrOutput {
-	return o.ApplyT(func(v AzureCredentialsResponse) *AzureCredentialsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureCredentialsResponse) *AzureCredentialsResponse {
 		return &v
 	}).(AzureCredentialsResponsePtrOutput)
 }
@@ -1335,7 +1377,13 @@ func (o AzureCredentialsResponsePtrOutput) ToAzureCredentialsResponsePtrOutputWi
 }
 
 func (o AzureCredentialsResponsePtrOutput) Elem() AzureCredentialsResponseOutput {
-	return o.ApplyT(func(v *AzureCredentialsResponse) AzureCredentialsResponse { return *v }).(AzureCredentialsResponseOutput)
+	return o.ApplyT(func(v *AzureCredentialsResponse) AzureCredentialsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureCredentialsResponse
+		return ret
+	}).(AzureCredentialsResponseOutput)
 }
 
 // Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
@@ -1452,7 +1500,7 @@ func (o DateOutput) ToDatePtrOutput() DatePtrOutput {
 }
 
 func (o DateOutput) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOutput {
-	return o.ApplyT(func(v Date) *Date {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Date) *Date {
 		return &v
 	}).(DatePtrOutput)
 }
@@ -1487,7 +1535,13 @@ func (o DatePtrOutput) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOu
 }
 
 func (o DatePtrOutput) Elem() DateOutput {
-	return o.ApplyT(func(v *Date) Date { return *v }).(DateOutput)
+	return o.ApplyT(func(v *Date) Date {
+		if v != nil {
+			return *v
+		}
+		var ret Date
+		return ret
+	}).(DateOutput)
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -1624,7 +1678,7 @@ func (o DateResponseOutput) ToDateResponsePtrOutput() DateResponsePtrOutput {
 }
 
 func (o DateResponseOutput) ToDateResponsePtrOutputWithContext(ctx context.Context) DateResponsePtrOutput {
-	return o.ApplyT(func(v DateResponse) *DateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DateResponse) *DateResponse {
 		return &v
 	}).(DateResponsePtrOutput)
 }
@@ -1659,7 +1713,13 @@ func (o DateResponsePtrOutput) ToDateResponsePtrOutputWithContext(ctx context.Co
 }
 
 func (o DateResponsePtrOutput) Elem() DateResponseOutput {
-	return o.ApplyT(func(v *DateResponse) DateResponse { return *v }).(DateResponseOutput)
+	return o.ApplyT(func(v *DateResponse) DateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DateResponse
+		return ret
+	}).(DateResponseOutput)
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -1792,7 +1852,7 @@ func (o GcsDataOutput) ToGcsDataPtrOutput() GcsDataPtrOutput {
 }
 
 func (o GcsDataOutput) ToGcsDataPtrOutputWithContext(ctx context.Context) GcsDataPtrOutput {
-	return o.ApplyT(func(v GcsData) *GcsData {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsData) *GcsData {
 		return &v
 	}).(GcsDataPtrOutput)
 }
@@ -1822,7 +1882,13 @@ func (o GcsDataPtrOutput) ToGcsDataPtrOutputWithContext(ctx context.Context) Gcs
 }
 
 func (o GcsDataPtrOutput) Elem() GcsDataOutput {
-	return o.ApplyT(func(v *GcsData) GcsData { return *v }).(GcsDataOutput)
+	return o.ApplyT(func(v *GcsData) GcsData {
+		if v != nil {
+			return *v
+		}
+		var ret GcsData
+		return ret
+	}).(GcsDataOutput)
 }
 
 // Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
@@ -1945,7 +2011,7 @@ func (o GcsDataResponseOutput) ToGcsDataResponsePtrOutput() GcsDataResponsePtrOu
 }
 
 func (o GcsDataResponseOutput) ToGcsDataResponsePtrOutputWithContext(ctx context.Context) GcsDataResponsePtrOutput {
-	return o.ApplyT(func(v GcsDataResponse) *GcsDataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsDataResponse) *GcsDataResponse {
 		return &v
 	}).(GcsDataResponsePtrOutput)
 }
@@ -1975,7 +2041,13 @@ func (o GcsDataResponsePtrOutput) ToGcsDataResponsePtrOutputWithContext(ctx cont
 }
 
 func (o GcsDataResponsePtrOutput) Elem() GcsDataResponseOutput {
-	return o.ApplyT(func(v *GcsDataResponse) GcsDataResponse { return *v }).(GcsDataResponseOutput)
+	return o.ApplyT(func(v *GcsDataResponse) GcsDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GcsDataResponse
+		return ret
+	}).(GcsDataResponseOutput)
 }
 
 // Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
@@ -2094,7 +2166,7 @@ func (o HttpDataOutput) ToHttpDataPtrOutput() HttpDataPtrOutput {
 }
 
 func (o HttpDataOutput) ToHttpDataPtrOutputWithContext(ctx context.Context) HttpDataPtrOutput {
-	return o.ApplyT(func(v HttpData) *HttpData {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpData) *HttpData {
 		return &v
 	}).(HttpDataPtrOutput)
 }
@@ -2119,7 +2191,13 @@ func (o HttpDataPtrOutput) ToHttpDataPtrOutputWithContext(ctx context.Context) H
 }
 
 func (o HttpDataPtrOutput) Elem() HttpDataOutput {
-	return o.ApplyT(func(v *HttpData) HttpData { return *v }).(HttpDataOutput)
+	return o.ApplyT(func(v *HttpData) HttpData {
+		if v != nil {
+			return *v
+		}
+		var ret HttpData
+		return ret
+	}).(HttpDataOutput)
 }
 
 // The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
@@ -2228,7 +2306,7 @@ func (o HttpDataResponseOutput) ToHttpDataResponsePtrOutput() HttpDataResponsePt
 }
 
 func (o HttpDataResponseOutput) ToHttpDataResponsePtrOutputWithContext(ctx context.Context) HttpDataResponsePtrOutput {
-	return o.ApplyT(func(v HttpDataResponse) *HttpDataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpDataResponse) *HttpDataResponse {
 		return &v
 	}).(HttpDataResponsePtrOutput)
 }
@@ -2253,7 +2331,13 @@ func (o HttpDataResponsePtrOutput) ToHttpDataResponsePtrOutputWithContext(ctx co
 }
 
 func (o HttpDataResponsePtrOutput) Elem() HttpDataResponseOutput {
-	return o.ApplyT(func(v *HttpDataResponse) HttpDataResponse { return *v }).(HttpDataResponseOutput)
+	return o.ApplyT(func(v *HttpDataResponse) HttpDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpDataResponse
+		return ret
+	}).(HttpDataResponseOutput)
 }
 
 // The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
@@ -2362,7 +2446,7 @@ func (o LoggingConfigOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
 }
 
 func (o LoggingConfigOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
-	return o.ApplyT(func(v LoggingConfig) *LoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfig) *LoggingConfig {
 		return &v
 	}).(LoggingConfigPtrOutput)
 }
@@ -2387,7 +2471,13 @@ func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutputWithContext(ctx context.
 }
 
 func (o LoggingConfigPtrOutput) Elem() LoggingConfigOutput {
-	return o.ApplyT(func(v *LoggingConfig) LoggingConfig { return *v }).(LoggingConfigOutput)
+	return o.ApplyT(func(v *LoggingConfig) LoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfig
+		return ret
+	}).(LoggingConfigOutput)
 }
 
 // Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
@@ -2496,7 +2586,7 @@ func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutput() LoggingC
 }
 
 func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponse) *LoggingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfigResponse) *LoggingConfigResponse {
 		return &v
 	}).(LoggingConfigResponsePtrOutput)
 }
@@ -2521,7 +2611,13 @@ func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutputWithCont
 }
 
 func (o LoggingConfigResponsePtrOutput) Elem() LoggingConfigResponseOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) LoggingConfigResponse { return *v }).(LoggingConfigResponseOutput)
+	return o.ApplyT(func(v *LoggingConfigResponse) LoggingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfigResponse
+		return ret
+	}).(LoggingConfigResponseOutput)
 }
 
 // Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
@@ -2638,7 +2734,7 @@ func (o NotificationConfigOutput) ToNotificationConfigPtrOutput() NotificationCo
 }
 
 func (o NotificationConfigOutput) ToNotificationConfigPtrOutputWithContext(ctx context.Context) NotificationConfigPtrOutput {
-	return o.ApplyT(func(v NotificationConfig) *NotificationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfig) *NotificationConfig {
 		return &v
 	}).(NotificationConfigPtrOutput)
 }
@@ -2673,7 +2769,13 @@ func (o NotificationConfigPtrOutput) ToNotificationConfigPtrOutputWithContext(ct
 }
 
 func (o NotificationConfigPtrOutput) Elem() NotificationConfigOutput {
-	return o.ApplyT(func(v *NotificationConfig) NotificationConfig { return *v }).(NotificationConfigOutput)
+	return o.ApplyT(func(v *NotificationConfig) NotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationConfig
+		return ret
+	}).(NotificationConfigOutput)
 }
 
 // Event types for which a notification is desired. If empty, send notifications for all event types.
@@ -2810,7 +2912,7 @@ func (o NotificationConfigResponseOutput) ToNotificationConfigResponsePtrOutput(
 }
 
 func (o NotificationConfigResponseOutput) ToNotificationConfigResponsePtrOutputWithContext(ctx context.Context) NotificationConfigResponsePtrOutput {
-	return o.ApplyT(func(v NotificationConfigResponse) *NotificationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfigResponse) *NotificationConfigResponse {
 		return &v
 	}).(NotificationConfigResponsePtrOutput)
 }
@@ -2845,7 +2947,13 @@ func (o NotificationConfigResponsePtrOutput) ToNotificationConfigResponsePtrOutp
 }
 
 func (o NotificationConfigResponsePtrOutput) Elem() NotificationConfigResponseOutput {
-	return o.ApplyT(func(v *NotificationConfigResponse) NotificationConfigResponse { return *v }).(NotificationConfigResponseOutput)
+	return o.ApplyT(func(v *NotificationConfigResponse) NotificationConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationConfigResponse
+		return ret
+	}).(NotificationConfigResponseOutput)
 }
 
 // Event types for which a notification is desired. If empty, send notifications for all event types.
@@ -2994,7 +3102,7 @@ func (o ObjectConditionsOutput) ToObjectConditionsPtrOutput() ObjectConditionsPt
 }
 
 func (o ObjectConditionsOutput) ToObjectConditionsPtrOutputWithContext(ctx context.Context) ObjectConditionsPtrOutput {
-	return o.ApplyT(func(v ObjectConditions) *ObjectConditions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectConditions) *ObjectConditions {
 		return &v
 	}).(ObjectConditionsPtrOutput)
 }
@@ -3044,7 +3152,13 @@ func (o ObjectConditionsPtrOutput) ToObjectConditionsPtrOutputWithContext(ctx co
 }
 
 func (o ObjectConditionsPtrOutput) Elem() ObjectConditionsOutput {
-	return o.ApplyT(func(v *ObjectConditions) ObjectConditions { return *v }).(ObjectConditionsOutput)
+	return o.ApplyT(func(v *ObjectConditions) ObjectConditions {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectConditions
+		return ret
+	}).(ObjectConditionsOutput)
 }
 
 // If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
@@ -3223,7 +3337,7 @@ func (o ObjectConditionsResponseOutput) ToObjectConditionsResponsePtrOutput() Ob
 }
 
 func (o ObjectConditionsResponseOutput) ToObjectConditionsResponsePtrOutputWithContext(ctx context.Context) ObjectConditionsResponsePtrOutput {
-	return o.ApplyT(func(v ObjectConditionsResponse) *ObjectConditionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectConditionsResponse) *ObjectConditionsResponse {
 		return &v
 	}).(ObjectConditionsResponsePtrOutput)
 }
@@ -3273,7 +3387,13 @@ func (o ObjectConditionsResponsePtrOutput) ToObjectConditionsResponsePtrOutputWi
 }
 
 func (o ObjectConditionsResponsePtrOutput) Elem() ObjectConditionsResponseOutput {
-	return o.ApplyT(func(v *ObjectConditionsResponse) ObjectConditionsResponse { return *v }).(ObjectConditionsResponseOutput)
+	return o.ApplyT(func(v *ObjectConditionsResponse) ObjectConditionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectConditionsResponse
+		return ret
+	}).(ObjectConditionsResponseOutput)
 }
 
 // If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
@@ -3432,7 +3552,7 @@ func (o PosixFilesystemOutput) ToPosixFilesystemPtrOutput() PosixFilesystemPtrOu
 }
 
 func (o PosixFilesystemOutput) ToPosixFilesystemPtrOutputWithContext(ctx context.Context) PosixFilesystemPtrOutput {
-	return o.ApplyT(func(v PosixFilesystem) *PosixFilesystem {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PosixFilesystem) *PosixFilesystem {
 		return &v
 	}).(PosixFilesystemPtrOutput)
 }
@@ -3457,7 +3577,13 @@ func (o PosixFilesystemPtrOutput) ToPosixFilesystemPtrOutputWithContext(ctx cont
 }
 
 func (o PosixFilesystemPtrOutput) Elem() PosixFilesystemOutput {
-	return o.ApplyT(func(v *PosixFilesystem) PosixFilesystem { return *v }).(PosixFilesystemOutput)
+	return o.ApplyT(func(v *PosixFilesystem) PosixFilesystem {
+		if v != nil {
+			return *v
+		}
+		var ret PosixFilesystem
+		return ret
+	}).(PosixFilesystemOutput)
 }
 
 // Root directory path to the filesystem.
@@ -3566,7 +3692,7 @@ func (o PosixFilesystemResponseOutput) ToPosixFilesystemResponsePtrOutput() Posi
 }
 
 func (o PosixFilesystemResponseOutput) ToPosixFilesystemResponsePtrOutputWithContext(ctx context.Context) PosixFilesystemResponsePtrOutput {
-	return o.ApplyT(func(v PosixFilesystemResponse) *PosixFilesystemResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PosixFilesystemResponse) *PosixFilesystemResponse {
 		return &v
 	}).(PosixFilesystemResponsePtrOutput)
 }
@@ -3591,7 +3717,13 @@ func (o PosixFilesystemResponsePtrOutput) ToPosixFilesystemResponsePtrOutputWith
 }
 
 func (o PosixFilesystemResponsePtrOutput) Elem() PosixFilesystemResponseOutput {
-	return o.ApplyT(func(v *PosixFilesystemResponse) PosixFilesystemResponse { return *v }).(PosixFilesystemResponseOutput)
+	return o.ApplyT(func(v *PosixFilesystemResponse) PosixFilesystemResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PosixFilesystemResponse
+		return ret
+	}).(PosixFilesystemResponseOutput)
 }
 
 // Root directory path to the filesystem.
@@ -3716,7 +3848,7 @@ func (o ScheduleOutput) ToSchedulePtrOutput() SchedulePtrOutput {
 }
 
 func (o ScheduleOutput) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
-	return o.ApplyT(func(v Schedule) *Schedule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Schedule) *Schedule {
 		return &v
 	}).(SchedulePtrOutput)
 }
@@ -3761,7 +3893,13 @@ func (o SchedulePtrOutput) ToSchedulePtrOutputWithContext(ctx context.Context) S
 }
 
 func (o SchedulePtrOutput) Elem() ScheduleOutput {
-	return o.ApplyT(func(v *Schedule) Schedule { return *v }).(ScheduleOutput)
+	return o.ApplyT(func(v *Schedule) Schedule {
+		if v != nil {
+			return *v
+		}
+		var ret Schedule
+		return ret
+	}).(ScheduleOutput)
 }
 
 // The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
@@ -3926,7 +4064,7 @@ func (o ScheduleResponseOutput) ToScheduleResponsePtrOutput() ScheduleResponsePt
 }
 
 func (o ScheduleResponseOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
-	return o.ApplyT(func(v ScheduleResponse) *ScheduleResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleResponse) *ScheduleResponse {
 		return &v
 	}).(ScheduleResponsePtrOutput)
 }
@@ -3971,7 +4109,13 @@ func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutputWithContext(ctx co
 }
 
 func (o ScheduleResponsePtrOutput) Elem() ScheduleResponseOutput {
-	return o.ApplyT(func(v *ScheduleResponse) ScheduleResponse { return *v }).(ScheduleResponseOutput)
+	return o.ApplyT(func(v *ScheduleResponse) ScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleResponse
+		return ret
+	}).(ScheduleResponseOutput)
 }
 
 // The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
@@ -4132,7 +4276,7 @@ func (o TimeOfDayOutput) ToTimeOfDayPtrOutput() TimeOfDayPtrOutput {
 }
 
 func (o TimeOfDayOutput) ToTimeOfDayPtrOutputWithContext(ctx context.Context) TimeOfDayPtrOutput {
-	return o.ApplyT(func(v TimeOfDay) *TimeOfDay {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeOfDay) *TimeOfDay {
 		return &v
 	}).(TimeOfDayPtrOutput)
 }
@@ -4172,7 +4316,13 @@ func (o TimeOfDayPtrOutput) ToTimeOfDayPtrOutputWithContext(ctx context.Context)
 }
 
 func (o TimeOfDayPtrOutput) Elem() TimeOfDayOutput {
-	return o.ApplyT(func(v *TimeOfDay) TimeOfDay { return *v }).(TimeOfDayOutput)
+	return o.ApplyT(func(v *TimeOfDay) TimeOfDay {
+		if v != nil {
+			return *v
+		}
+		var ret TimeOfDay
+		return ret
+	}).(TimeOfDayOutput)
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -4323,7 +4473,7 @@ func (o TimeOfDayResponseOutput) ToTimeOfDayResponsePtrOutput() TimeOfDayRespons
 }
 
 func (o TimeOfDayResponseOutput) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
-	return o.ApplyT(func(v TimeOfDayResponse) *TimeOfDayResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeOfDayResponse) *TimeOfDayResponse {
 		return &v
 	}).(TimeOfDayResponsePtrOutput)
 }
@@ -4363,7 +4513,13 @@ func (o TimeOfDayResponsePtrOutput) ToTimeOfDayResponsePtrOutputWithContext(ctx 
 }
 
 func (o TimeOfDayResponsePtrOutput) Elem() TimeOfDayResponseOutput {
-	return o.ApplyT(func(v *TimeOfDayResponse) TimeOfDayResponse { return *v }).(TimeOfDayResponseOutput)
+	return o.ApplyT(func(v *TimeOfDayResponse) TimeOfDayResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TimeOfDayResponse
+		return ret
+	}).(TimeOfDayResponseOutput)
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -4510,7 +4666,7 @@ func (o TransferOptionsOutput) ToTransferOptionsPtrOutput() TransferOptionsPtrOu
 }
 
 func (o TransferOptionsOutput) ToTransferOptionsPtrOutputWithContext(ctx context.Context) TransferOptionsPtrOutput {
-	return o.ApplyT(func(v TransferOptions) *TransferOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferOptions) *TransferOptions {
 		return &v
 	}).(TransferOptionsPtrOutput)
 }
@@ -4545,7 +4701,13 @@ func (o TransferOptionsPtrOutput) ToTransferOptionsPtrOutputWithContext(ctx cont
 }
 
 func (o TransferOptionsPtrOutput) Elem() TransferOptionsOutput {
-	return o.ApplyT(func(v *TransferOptions) TransferOptions { return *v }).(TransferOptionsOutput)
+	return o.ApplyT(func(v *TransferOptions) TransferOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TransferOptions
+		return ret
+	}).(TransferOptionsOutput)
 }
 
 // Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
@@ -4682,7 +4844,7 @@ func (o TransferOptionsResponseOutput) ToTransferOptionsResponsePtrOutput() Tran
 }
 
 func (o TransferOptionsResponseOutput) ToTransferOptionsResponsePtrOutputWithContext(ctx context.Context) TransferOptionsResponsePtrOutput {
-	return o.ApplyT(func(v TransferOptionsResponse) *TransferOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferOptionsResponse) *TransferOptionsResponse {
 		return &v
 	}).(TransferOptionsResponsePtrOutput)
 }
@@ -4717,7 +4879,13 @@ func (o TransferOptionsResponsePtrOutput) ToTransferOptionsResponsePtrOutputWith
 }
 
 func (o TransferOptionsResponsePtrOutput) Elem() TransferOptionsResponseOutput {
-	return o.ApplyT(func(v *TransferOptionsResponse) TransferOptionsResponse { return *v }).(TransferOptionsResponseOutput)
+	return o.ApplyT(func(v *TransferOptionsResponse) TransferOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TransferOptionsResponse
+		return ret
+	}).(TransferOptionsResponseOutput)
 }
 
 // Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
@@ -4874,7 +5042,7 @@ func (o TransferSpecOutput) ToTransferSpecPtrOutput() TransferSpecPtrOutput {
 }
 
 func (o TransferSpecOutput) ToTransferSpecPtrOutputWithContext(ctx context.Context) TransferSpecPtrOutput {
-	return o.ApplyT(func(v TransferSpec) *TransferSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferSpec) *TransferSpec {
 		return &v
 	}).(TransferSpecPtrOutput)
 }
@@ -4934,7 +5102,13 @@ func (o TransferSpecPtrOutput) ToTransferSpecPtrOutputWithContext(ctx context.Co
 }
 
 func (o TransferSpecPtrOutput) Elem() TransferSpecOutput {
-	return o.ApplyT(func(v *TransferSpec) TransferSpec { return *v }).(TransferSpecOutput)
+	return o.ApplyT(func(v *TransferSpec) TransferSpec {
+		if v != nil {
+			return *v
+		}
+		var ret TransferSpec
+		return ret
+	}).(TransferSpecOutput)
 }
 
 // An AWS S3 data source.
@@ -5141,7 +5315,7 @@ func (o TransferSpecResponseOutput) ToTransferSpecResponsePtrOutput() TransferSp
 }
 
 func (o TransferSpecResponseOutput) ToTransferSpecResponsePtrOutputWithContext(ctx context.Context) TransferSpecResponsePtrOutput {
-	return o.ApplyT(func(v TransferSpecResponse) *TransferSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferSpecResponse) *TransferSpecResponse {
 		return &v
 	}).(TransferSpecResponsePtrOutput)
 }
@@ -5201,7 +5375,13 @@ func (o TransferSpecResponsePtrOutput) ToTransferSpecResponsePtrOutputWithContex
 }
 
 func (o TransferSpecResponsePtrOutput) Elem() TransferSpecResponseOutput {
-	return o.ApplyT(func(v *TransferSpecResponse) TransferSpecResponse { return *v }).(TransferSpecResponseOutput)
+	return o.ApplyT(func(v *TransferSpecResponse) TransferSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TransferSpecResponse
+		return ret
+	}).(TransferSpecResponseOutput)
 }
 
 // An AWS S3 data source.

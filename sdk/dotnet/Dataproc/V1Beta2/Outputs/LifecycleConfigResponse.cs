@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Specifies the cluster auto-delete schedule configuration.
+    /// </summary>
     [OutputType]
     public sealed class LifecycleConfigResponse
     {

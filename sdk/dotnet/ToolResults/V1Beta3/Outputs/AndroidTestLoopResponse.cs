@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// Test Loops are tests that can be launched by the app itself, determining when to run by listening for an intent.
+    /// </summary>
     [OutputType]
     public sealed class AndroidTestLoopResponse
     {

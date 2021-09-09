@@ -13,6 +13,7 @@ __all__ = [
     'GetPublicDelegatedPrefixResult',
     'AwaitableGetPublicDelegatedPrefixResult',
     'get_public_delegated_prefix',
+    'get_public_delegated_prefix_output',
 ]
 
 @pulumi.output_type
@@ -202,3 +203,14 @@ def get_public_delegated_prefix(project: Optional[str] = None,
         region=__ret__.region,
         self_link=__ret__.self_link,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_public_delegated_prefix)
+def get_public_delegated_prefix_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                       public_delegated_prefix: Optional[pulumi.Input[str]] = None,
+                                       region: Optional[pulumi.Input[str]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPublicDelegatedPrefixResult]:
+    """
+    Returns the specified PublicDelegatedPrefix resource in the given region.
+    """
+    ...

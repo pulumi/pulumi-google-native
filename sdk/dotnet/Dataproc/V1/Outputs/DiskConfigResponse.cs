@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies the config of disk options for a group of VM instances.
+    /// </summary>
     [OutputType]
     public sealed class DiskConfigResponse
     {

@@ -106,9 +106,7 @@ func (i *Schema) ToSchemaOutputWithContext(ctx context.Context) SchemaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SchemaOutput)
 }
 
-type SchemaOutput struct {
-	*pulumi.OutputState
-}
+type SchemaOutput struct{ *pulumi.OutputState }
 
 func (SchemaOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Schema)(nil))

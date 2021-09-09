@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,71 @@ type LookupDomainResult struct {
 	Status string `pulumi:"status"`
 	// The time at which the domain was last updated.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupDomainOutput(ctx *pulumi.Context, args LookupDomainOutputArgs, opts ...pulumi.InvokeOption) LookupDomainResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDomainResult, error) {
+			args := v.(LookupDomainArgs)
+			r, err := LookupDomain(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDomainResultOutput)
+}
+
+type LookupDomainOutputArgs struct {
+	DomainId pulumi.StringInput    `pulumi:"domainId"`
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+	SiteId   pulumi.StringInput    `pulumi:"siteId"`
+}
+
+func (LookupDomainOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainArgs)(nil)).Elem()
+}
+
+type LookupDomainResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDomainResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainResult)(nil)).Elem()
+}
+
+func (o LookupDomainResultOutput) ToLookupDomainResultOutput() LookupDomainResultOutput {
+	return o
+}
+
+func (o LookupDomainResultOutput) ToLookupDomainResultOutputWithContext(ctx context.Context) LookupDomainResultOutput {
+	return o
+}
+
+// The domain name of the association.
+func (o LookupDomainResultOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// If set, the domain should redirect with the provided parameters.
+func (o LookupDomainResultOutput) DomainRedirect() DomainRedirectResponseOutput {
+	return o.ApplyT(func(v LookupDomainResult) DomainRedirectResponse { return v.DomainRedirect }).(DomainRedirectResponseOutput)
+}
+
+// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+func (o LookupDomainResultOutput) Provisioning() DomainProvisioningResponseOutput {
+	return o.ApplyT(func(v LookupDomainResult) DomainProvisioningResponse { return v.Provisioning }).(DomainProvisioningResponseOutput)
+}
+
+// The site name of the association.
+func (o LookupDomainResultOutput) Site() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.Site }).(pulumi.StringOutput)
+}
+
+// Additional status of the domain association.
+func (o LookupDomainResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The time at which the domain was last updated.
+func (o LookupDomainResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDomainResultOutput{})
 }

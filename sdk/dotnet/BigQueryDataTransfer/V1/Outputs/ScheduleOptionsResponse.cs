@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1.Outputs
 {
 
+    /// <summary>
+    /// Options customizing the data transfer schedule.
+    /// </summary>
     [OutputType]
     public sealed class ScheduleOptionsResponse
     {

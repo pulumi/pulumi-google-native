@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// A set of Shielded VM options.
+    /// </summary>
     [OutputType]
     public sealed class ShieldedVmConfigResponse
     {

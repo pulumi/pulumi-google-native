@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Version of a StoredInfoType, including the configuration used to build it, create timestamp, and current state.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2StoredInfoTypeVersionResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Outputs
 {
 
+    /// <summary>
+    /// The system resources for the pipeline run.
+    /// </summary>
     [OutputType]
     public sealed class PipelineResourcesResponse
     {

@@ -314,7 +314,7 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) ToGoogleCloudRec
 }
 
 func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMap) *GoogleCloudRecommendationengineV1beta1FeatureMap {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecommendationengineV1beta1FeatureMap) *GoogleCloudRecommendationengineV1beta1FeatureMap {
 		return &v
 	}).(GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput)
 }
@@ -347,7 +347,11 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) Elem() GoogleCloudRecommendationengineV1beta1FeatureMapOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMap) GoogleCloudRecommendationengineV1beta1FeatureMap {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecommendationengineV1beta1FeatureMap
+		return ret
 	}).(GoogleCloudRecommendationengineV1beta1FeatureMapOutput)
 }
 
@@ -471,7 +475,7 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) ToGoogle
 }
 
 func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapResponse) *GoogleCloudRecommendationengineV1beta1FeatureMapResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecommendationengineV1beta1FeatureMapResponse) *GoogleCloudRecommendationengineV1beta1FeatureMapResponse {
 		return &v
 	}).(GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput)
 }
@@ -506,7 +510,11 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput) ToGoo
 
 func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMapResponse) GoogleCloudRecommendationengineV1beta1FeatureMapResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecommendationengineV1beta1FeatureMapResponse
+		return ret
 	}).(GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput)
 }
 
@@ -890,7 +898,7 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) ToGoogle
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
 		return &v
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput)
 }
@@ -959,7 +967,11 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) ToGoo
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecommendationengineV1beta1ProductCatalogItem
+		return ret
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput)
 }
 
@@ -1143,7 +1155,7 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutput
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
 		return &v
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput)
 }
@@ -1178,7 +1190,11 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOut
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice
+		return ret
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutput)
 }
 
@@ -1302,7 +1318,7 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceRespon
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse {
 		return &v
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput)
 }
@@ -1337,7 +1353,11 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceRespon
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse
+		return ret
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput)
 }
 
@@ -1461,7 +1481,7 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange {
 		return &v
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput)
 }
@@ -1492,7 +1512,11 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOut
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange
+		return ret
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput)
 }
 
@@ -1616,7 +1640,7 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeRespon
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse {
 		return &v
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput)
 }
@@ -1651,7 +1675,11 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeRespon
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
+		return ret
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput)
 }
 
@@ -1799,7 +1827,7 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) 
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
 		return &v
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput)
 }
@@ -1872,7 +1900,11 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutpu
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse
+		return ret
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput)
 }
 

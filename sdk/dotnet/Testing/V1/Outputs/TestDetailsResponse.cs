@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Additional details about the progress of the running test.
+    /// </summary>
     [OutputType]
     public sealed class TestDetailsResponse
     {

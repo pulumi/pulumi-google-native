@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration options for the private GKE cluster in a Cloud Composer environment.
+    /// </summary>
     [OutputType]
     public sealed class PrivateClusterConfigResponse
     {

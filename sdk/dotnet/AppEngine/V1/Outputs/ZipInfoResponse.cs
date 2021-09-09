@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// The zip file information for a zip deployment.
+    /// </summary>
     [OutputType]
     public sealed class ZipInfoResponse
     {

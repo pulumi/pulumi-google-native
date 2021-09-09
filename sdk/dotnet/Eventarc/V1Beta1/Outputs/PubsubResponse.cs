@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents a Pub/Sub transport.
+    /// </summary>
     [OutputType]
     public sealed class PubsubResponse
     {

@@ -15,13 +15,21 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType(str, Enu
     Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
     """
     RESOURCE_TYPE_UNSPECIFIED = "RESOURCE_TYPE_UNSPECIFIED"
-    """Unknown resource type."""
+    """
+    Unknown resource type.
+    """
     CONSUMER_PROJECT = "CONSUMER_PROJECT"
-    """Consumer project."""
+    """
+    Consumer project.
+    """
     ENCRYPTION_KEYS_PROJECT = "ENCRYPTION_KEYS_PROJECT"
-    """Consumer project containing encryption keys."""
+    """
+    Consumer project containing encryption keys.
+    """
     KEYRING = "KEYRING"
-    """Keyring resource that hosts encryption keys."""
+    """
+    Keyring resource that hosts encryption keys.
+    """
 
 
 class WorkloadComplianceRegime(str, Enum):
@@ -29,20 +37,38 @@ class WorkloadComplianceRegime(str, Enum):
     Required. Immutable. Compliance Regime associated with this workload.
     """
     COMPLIANCE_REGIME_UNSPECIFIED = "COMPLIANCE_REGIME_UNSPECIFIED"
-    """Unknown compliance regime."""
+    """
+    Unknown compliance regime.
+    """
     IL4 = "IL4"
-    """Information protection as per DoD IL4 requirements."""
+    """
+    Information protection as per DoD IL4 requirements.
+    """
     CJIS = "CJIS"
-    """Criminal Justice Information Services (CJIS) Security policies."""
+    """
+    Criminal Justice Information Services (CJIS) Security policies.
+    """
     FEDRAMP_HIGH = "FEDRAMP_HIGH"
-    """FedRAMP High data protection controls"""
+    """
+    FedRAMP High data protection controls
+    """
     FEDRAMP_MODERATE = "FEDRAMP_MODERATE"
-    """FedRAMP Moderate data protection controls"""
+    """
+    FedRAMP Moderate data protection controls
+    """
     US_REGIONAL_ACCESS = "US_REGIONAL_ACCESS"
-    """Assured Workloads For US Regions data protection controls"""
+    """
+    Assured Workloads For US Regions data protection controls
+    """
     HIPAA = "HIPAA"
-    """Health Insurance Portability and Accountability Act controls"""
+    """
+    Health Insurance Portability and Accountability Act controls
+    """
     HITRUST = "HITRUST"
-    """Health Information Trust Alliance controls"""
+    """
+    Health Information Trust Alliance controls
+    """
     EU_REGIONS_AND_SUPPORT = "EU_REGIONS_AND_SUPPORT"
-    """Assured Workloads For EU Regions and Support controls"""
+    """
+    Assured Workloads For EU Regions and Support controls
+    """

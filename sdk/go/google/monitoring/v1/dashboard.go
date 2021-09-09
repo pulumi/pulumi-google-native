@@ -134,9 +134,7 @@ func (i *Dashboard) ToDashboardOutputWithContext(ctx context.Context) DashboardO
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardOutput)
 }
 
-type DashboardOutput struct {
-	*pulumi.OutputState
-}
+type DashboardOutput struct{ *pulumi.OutputState }
 
 func (DashboardOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Dashboard)(nil))

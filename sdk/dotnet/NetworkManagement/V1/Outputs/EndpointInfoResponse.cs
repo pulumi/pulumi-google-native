@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// For display only. The specification of the endpoints for the test. EndpointInfo is derived from source and destination Endpoint and validated by the backend data plane model.
+    /// </summary>
     [OutputType]
     public sealed class EndpointInfoResponse
     {

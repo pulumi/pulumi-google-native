@@ -160,9 +160,7 @@ func (i *GlobalAddress) ToGlobalAddressOutputWithContext(ctx context.Context) Gl
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalAddressOutput)
 }
 
-type GlobalAddressOutput struct {
-	*pulumi.OutputState
-}
+type GlobalAddressOutput struct{ *pulumi.OutputState }
 
 func (GlobalAddressOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GlobalAddress)(nil))

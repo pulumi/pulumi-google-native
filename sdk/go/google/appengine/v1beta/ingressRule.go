@@ -115,9 +115,7 @@ func (i *IngressRule) ToIngressRuleOutputWithContext(ctx context.Context) Ingres
 	return pulumi.ToOutputWithContext(ctx, i).(IngressRuleOutput)
 }
 
-type IngressRuleOutput struct {
-	*pulumi.OutputState
-}
+type IngressRuleOutput struct{ *pulumi.OutputState }
 
 func (IngressRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IngressRule)(nil))

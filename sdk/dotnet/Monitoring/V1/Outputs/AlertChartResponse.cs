@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// A chart that displays alert policy data.
+    /// </summary>
     [OutputType]
     public sealed class AlertChartResponse
     {

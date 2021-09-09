@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// A description of a label.
+    /// </summary>
     [OutputType]
     public sealed class LabelDescriptorResponse
     {

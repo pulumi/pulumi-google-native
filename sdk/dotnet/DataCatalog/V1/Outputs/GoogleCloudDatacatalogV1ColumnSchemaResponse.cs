@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 {
 
+    /// <summary>
+    /// A column within a schema. Columns can be nested inside other columns.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1ColumnSchemaResponse
     {

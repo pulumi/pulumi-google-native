@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for a push delivery endpoint.
+    /// </summary>
     [OutputType]
     public sealed class PushConfigResponse
     {

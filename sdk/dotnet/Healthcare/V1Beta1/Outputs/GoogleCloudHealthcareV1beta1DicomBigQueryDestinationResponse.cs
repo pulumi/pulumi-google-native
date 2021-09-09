@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The BigQuery table where the server writes output.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse
     {

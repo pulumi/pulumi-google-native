@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The Data Fusion version.
+    /// </summary>
     [OutputType]
     public sealed class VersionResponse
     {

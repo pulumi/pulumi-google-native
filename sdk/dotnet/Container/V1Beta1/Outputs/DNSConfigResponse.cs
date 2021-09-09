@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// DNSConfig contains the desired set of options for configuring clusterDNS.
+    /// </summary>
     [OutputType]
     public sealed class DNSConfigResponse
     {

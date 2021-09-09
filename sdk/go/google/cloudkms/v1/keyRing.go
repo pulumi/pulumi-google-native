@@ -101,9 +101,7 @@ func (i *KeyRing) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingOutput)
 }
 
-type KeyRingOutput struct {
-	*pulumi.OutputState
-}
+type KeyRingOutput struct{ *pulumi.OutputState }
 
 func (KeyRingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyRing)(nil))

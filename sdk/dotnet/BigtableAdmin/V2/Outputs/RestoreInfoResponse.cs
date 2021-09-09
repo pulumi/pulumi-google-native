@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigtableAdmin.V2.Outputs
 {
 
+    /// <summary>
+    /// Information about a table restore.
+    /// </summary>
     [OutputType]
     public sealed class RestoreInfoResponse
     {

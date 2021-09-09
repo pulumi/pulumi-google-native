@@ -13,6 +13,7 @@ __all__ = [
     'GetRegionSslCertificateResult',
     'AwaitableGetRegionSslCertificateResult',
     'get_region_ssl_certificate',
+    'get_region_ssl_certificate_output',
 ]
 
 @pulumi.output_type
@@ -228,3 +229,14 @@ def get_region_ssl_certificate(project: Optional[str] = None,
         self_managed=__ret__.self_managed,
         subject_alternative_names=__ret__.subject_alternative_names,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_region_ssl_certificate)
+def get_region_ssl_certificate_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      region: Optional[pulumi.Input[str]] = None,
+                                      ssl_certificate: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionSslCertificateResult]:
+    """
+    Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.
+    """
+    ...

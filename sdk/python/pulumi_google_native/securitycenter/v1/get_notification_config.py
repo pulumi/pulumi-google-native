@@ -13,6 +13,7 @@ __all__ = [
     'GetNotificationConfigResult',
     'AwaitableGetNotificationConfigResult',
     'get_notification_config',
+    'get_notification_config_output',
 ]
 
 @pulumi.output_type
@@ -109,3 +110,13 @@ def get_notification_config(notification_config_id: Optional[str] = None,
         pubsub_topic=__ret__.pubsub_topic,
         service_account=__ret__.service_account,
         streaming_config=__ret__.streaming_config)
+
+
+@_utilities.lift_output_func(get_notification_config)
+def get_notification_config_output(notification_config_id: Optional[pulumi.Input[str]] = None,
+                                   organization_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotificationConfigResult]:
+    """
+    Gets a notification config.
+    """
+    ...

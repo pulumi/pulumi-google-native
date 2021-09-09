@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+    /// </summary>
     [OutputType]
     public sealed class SecretVolumeSourceResponse
     {

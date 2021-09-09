@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy.
+    /// </summary>
     [OutputType]
     public sealed class GridLayoutResponse
     {

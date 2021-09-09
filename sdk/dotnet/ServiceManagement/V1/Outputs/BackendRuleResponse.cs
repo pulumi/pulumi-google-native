@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// A backend rule provides configuration for an individual API element.
+    /// </summary>
     [OutputType]
     public sealed class BackendRuleResponse
     {

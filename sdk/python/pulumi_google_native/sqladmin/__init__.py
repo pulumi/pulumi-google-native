@@ -7,8 +7,10 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.sqladmin.v1 as v1
-    import pulumi_google_native.sqladmin.v1beta4 as v1beta4
+    import pulumi_google_native.sqladmin.v1 as __v1
+    v1 = __v1
+    import pulumi_google_native.sqladmin.v1beta4 as __v1beta4
+    v1beta4 = __v1beta4
 else:
     v1 = _utilities.lazy_import('pulumi_google_native.sqladmin.v1')
     v1beta4 = _utilities.lazy_import('pulumi_google_native.sqladmin.v1beta4')

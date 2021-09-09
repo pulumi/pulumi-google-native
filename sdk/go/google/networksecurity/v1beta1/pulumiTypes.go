@@ -106,7 +106,7 @@ func (o CertificateProviderInstanceOutput) ToCertificateProviderInstancePtrOutpu
 }
 
 func (o CertificateProviderInstanceOutput) ToCertificateProviderInstancePtrOutputWithContext(ctx context.Context) CertificateProviderInstancePtrOutput {
-	return o.ApplyT(func(v CertificateProviderInstance) *CertificateProviderInstance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateProviderInstance) *CertificateProviderInstance {
 		return &v
 	}).(CertificateProviderInstancePtrOutput)
 }
@@ -131,7 +131,13 @@ func (o CertificateProviderInstancePtrOutput) ToCertificateProviderInstancePtrOu
 }
 
 func (o CertificateProviderInstancePtrOutput) Elem() CertificateProviderInstanceOutput {
-	return o.ApplyT(func(v *CertificateProviderInstance) CertificateProviderInstance { return *v }).(CertificateProviderInstanceOutput)
+	return o.ApplyT(func(v *CertificateProviderInstance) CertificateProviderInstance {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateProviderInstance
+		return ret
+	}).(CertificateProviderInstanceOutput)
 }
 
 // Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
@@ -240,7 +246,7 @@ func (o CertificateProviderInstanceResponseOutput) ToCertificateProviderInstance
 }
 
 func (o CertificateProviderInstanceResponseOutput) ToCertificateProviderInstanceResponsePtrOutputWithContext(ctx context.Context) CertificateProviderInstanceResponsePtrOutput {
-	return o.ApplyT(func(v CertificateProviderInstanceResponse) *CertificateProviderInstanceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateProviderInstanceResponse) *CertificateProviderInstanceResponse {
 		return &v
 	}).(CertificateProviderInstanceResponsePtrOutput)
 }
@@ -265,7 +271,13 @@ func (o CertificateProviderInstanceResponsePtrOutput) ToCertificateProviderInsta
 }
 
 func (o CertificateProviderInstanceResponsePtrOutput) Elem() CertificateProviderInstanceResponseOutput {
-	return o.ApplyT(func(v *CertificateProviderInstanceResponse) CertificateProviderInstanceResponse { return *v }).(CertificateProviderInstanceResponseOutput)
+	return o.ApplyT(func(v *CertificateProviderInstanceResponse) CertificateProviderInstanceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateProviderInstanceResponse
+		return ret
+	}).(CertificateProviderInstanceResponseOutput)
 }
 
 // Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
@@ -640,7 +652,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -680,7 +692,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -905,7 +923,7 @@ func (o GoogleCloudNetworksecurityV1beta1CertificateProviderOutput) ToGoogleClou
 }
 
 func (o GoogleCloudNetworksecurityV1beta1CertificateProviderOutput) ToGoogleCloudNetworksecurityV1beta1CertificateProviderPtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1CertificateProviderPtrOutput {
-	return o.ApplyT(func(v GoogleCloudNetworksecurityV1beta1CertificateProvider) *GoogleCloudNetworksecurityV1beta1CertificateProvider {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudNetworksecurityV1beta1CertificateProvider) *GoogleCloudNetworksecurityV1beta1CertificateProvider {
 		return &v
 	}).(GoogleCloudNetworksecurityV1beta1CertificateProviderPtrOutput)
 }
@@ -940,7 +958,11 @@ func (o GoogleCloudNetworksecurityV1beta1CertificateProviderPtrOutput) ToGoogleC
 
 func (o GoogleCloudNetworksecurityV1beta1CertificateProviderPtrOutput) Elem() GoogleCloudNetworksecurityV1beta1CertificateProviderOutput {
 	return o.ApplyT(func(v *GoogleCloudNetworksecurityV1beta1CertificateProvider) GoogleCloudNetworksecurityV1beta1CertificateProvider {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudNetworksecurityV1beta1CertificateProvider
+		return ret
 	}).(GoogleCloudNetworksecurityV1beta1CertificateProviderOutput)
 }
 
@@ -1064,7 +1086,7 @@ func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput) ToGo
 }
 
 func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput) ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudNetworksecurityV1beta1CertificateProviderResponse) *GoogleCloudNetworksecurityV1beta1CertificateProviderResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudNetworksecurityV1beta1CertificateProviderResponse) *GoogleCloudNetworksecurityV1beta1CertificateProviderResponse {
 		return &v
 	}).(GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput)
 }
@@ -1099,7 +1121,11 @@ func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput) T
 
 func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput) Elem() GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudNetworksecurityV1beta1CertificateProviderResponse) GoogleCloudNetworksecurityV1beta1CertificateProviderResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudNetworksecurityV1beta1CertificateProviderResponse
+		return ret
 	}).(GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput)
 }
 
@@ -1219,7 +1245,7 @@ func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointOutput) ToGoogleCloudNetwor
 }
 
 func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointOutput) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointPtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1GrpcEndpointPtrOutput {
-	return o.ApplyT(func(v GoogleCloudNetworksecurityV1beta1GrpcEndpoint) *GoogleCloudNetworksecurityV1beta1GrpcEndpoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudNetworksecurityV1beta1GrpcEndpoint) *GoogleCloudNetworksecurityV1beta1GrpcEndpoint {
 		return &v
 	}).(GoogleCloudNetworksecurityV1beta1GrpcEndpointPtrOutput)
 }
@@ -1245,7 +1271,11 @@ func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointPtrOutput) ToGoogleCloudNet
 
 func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointPtrOutput) Elem() GoogleCloudNetworksecurityV1beta1GrpcEndpointOutput {
 	return o.ApplyT(func(v *GoogleCloudNetworksecurityV1beta1GrpcEndpoint) GoogleCloudNetworksecurityV1beta1GrpcEndpoint {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudNetworksecurityV1beta1GrpcEndpoint
+		return ret
 	}).(GoogleCloudNetworksecurityV1beta1GrpcEndpointOutput)
 }
 
@@ -1355,7 +1385,7 @@ func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput) ToGoogleClo
 }
 
 func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse) *GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse) *GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse {
 		return &v
 	}).(GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput)
 }
@@ -1381,7 +1411,11 @@ func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput) ToGoogle
 
 func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput) Elem() GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse
+		return ret
 	}).(GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput)
 }
 
@@ -2167,7 +2201,7 @@ func (o HttpHeaderMatchOutput) ToHttpHeaderMatchPtrOutput() HttpHeaderMatchPtrOu
 }
 
 func (o HttpHeaderMatchOutput) ToHttpHeaderMatchPtrOutputWithContext(ctx context.Context) HttpHeaderMatchPtrOutput {
-	return o.ApplyT(func(v HttpHeaderMatch) *HttpHeaderMatch {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpHeaderMatch) *HttpHeaderMatch {
 		return &v
 	}).(HttpHeaderMatchPtrOutput)
 }
@@ -2197,7 +2231,13 @@ func (o HttpHeaderMatchPtrOutput) ToHttpHeaderMatchPtrOutputWithContext(ctx cont
 }
 
 func (o HttpHeaderMatchPtrOutput) Elem() HttpHeaderMatchOutput {
-	return o.ApplyT(func(v *HttpHeaderMatch) HttpHeaderMatch { return *v }).(HttpHeaderMatchOutput)
+	return o.ApplyT(func(v *HttpHeaderMatch) HttpHeaderMatch {
+		if v != nil {
+			return *v
+		}
+		var ret HttpHeaderMatch
+		return ret
+	}).(HttpHeaderMatchOutput)
 }
 
 // The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
@@ -2380,7 +2420,7 @@ func (o MTLSPolicyOutput) ToMTLSPolicyPtrOutput() MTLSPolicyPtrOutput {
 }
 
 func (o MTLSPolicyOutput) ToMTLSPolicyPtrOutputWithContext(ctx context.Context) MTLSPolicyPtrOutput {
-	return o.ApplyT(func(v MTLSPolicy) *MTLSPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MTLSPolicy) *MTLSPolicy {
 		return &v
 	}).(MTLSPolicyPtrOutput)
 }
@@ -2405,7 +2445,13 @@ func (o MTLSPolicyPtrOutput) ToMTLSPolicyPtrOutputWithContext(ctx context.Contex
 }
 
 func (o MTLSPolicyPtrOutput) Elem() MTLSPolicyOutput {
-	return o.ApplyT(func(v *MTLSPolicy) MTLSPolicy { return *v }).(MTLSPolicyOutput)
+	return o.ApplyT(func(v *MTLSPolicy) MTLSPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret MTLSPolicy
+		return ret
+	}).(MTLSPolicyOutput)
 }
 
 //  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
@@ -2514,7 +2560,7 @@ func (o MTLSPolicyResponseOutput) ToMTLSPolicyResponsePtrOutput() MTLSPolicyResp
 }
 
 func (o MTLSPolicyResponseOutput) ToMTLSPolicyResponsePtrOutputWithContext(ctx context.Context) MTLSPolicyResponsePtrOutput {
-	return o.ApplyT(func(v MTLSPolicyResponse) *MTLSPolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MTLSPolicyResponse) *MTLSPolicyResponse {
 		return &v
 	}).(MTLSPolicyResponsePtrOutput)
 }
@@ -2539,7 +2585,13 @@ func (o MTLSPolicyResponsePtrOutput) ToMTLSPolicyResponsePtrOutputWithContext(ct
 }
 
 func (o MTLSPolicyResponsePtrOutput) Elem() MTLSPolicyResponseOutput {
-	return o.ApplyT(func(v *MTLSPolicyResponse) MTLSPolicyResponse { return *v }).(MTLSPolicyResponseOutput)
+	return o.ApplyT(func(v *MTLSPolicyResponse) MTLSPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MTLSPolicyResponse
+		return ret
+	}).(MTLSPolicyResponseOutput)
 }
 
 //  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.

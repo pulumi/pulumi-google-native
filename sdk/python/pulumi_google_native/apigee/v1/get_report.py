@@ -13,6 +13,7 @@ __all__ = [
     'GetReportResult',
     'AwaitableGetReportResult',
     'get_report',
+    'get_report_output',
 ]
 
 @pulumi.output_type
@@ -330,3 +331,13 @@ def get_report(organization_id: Optional[str] = None,
         time_unit=__ret__.time_unit,
         to_time=__ret__.to_time,
         topk=__ret__.topk)
+
+
+@_utilities.lift_output_func(get_report)
+def get_report_output(organization_id: Optional[pulumi.Input[str]] = None,
+                      report_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReportResult]:
+    """
+    Retrieve a custom report definition.
+    """
+    ...

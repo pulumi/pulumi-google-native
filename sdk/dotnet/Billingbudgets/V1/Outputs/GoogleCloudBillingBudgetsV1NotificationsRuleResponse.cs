@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Billingbudgets.V1.Outputs
 {
 
+    /// <summary>
+    /// NotificationsRule defines notifications that are sent based on budget spend and thresholds.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudBillingBudgetsV1NotificationsRuleResponse
     {

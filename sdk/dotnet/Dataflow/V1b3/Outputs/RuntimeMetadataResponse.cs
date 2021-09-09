@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// RuntimeMetadata describing a runtime environment.
+    /// </summary>
     [OutputType]
     public sealed class RuntimeMetadataResponse
     {

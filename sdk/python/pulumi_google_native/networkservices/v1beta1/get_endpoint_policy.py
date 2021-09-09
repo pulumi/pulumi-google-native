@@ -13,6 +13,7 @@ __all__ = [
     'GetEndpointPolicyResult',
     'AwaitableGetEndpointPolicyResult',
     'get_endpoint_policy',
+    'get_endpoint_policy_output',
 ]
 
 @pulumi.output_type
@@ -189,3 +190,14 @@ def get_endpoint_policy(endpoint_policy_id: Optional[str] = None,
         traffic_port_selector=__ret__.traffic_port_selector,
         type=__ret__.type,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_endpoint_policy)
+def get_endpoint_policy_output(endpoint_policy_id: Optional[pulumi.Input[str]] = None,
+                               location: Optional[pulumi.Input[str]] = None,
+                               project: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointPolicyResult]:
+    """
+    Gets details of a single EndpointPolicy.
+    """
+    ...

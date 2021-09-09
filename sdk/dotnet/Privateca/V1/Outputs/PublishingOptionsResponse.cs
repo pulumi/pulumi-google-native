@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 {
 
+    /// <summary>
+    /// Options relating to the publication of each CertificateAuthority's CA certificate and CRLs and their inclusion as extensions in issued Certificates. The options set here apply to certificates issued by any CertificateAuthority in the CaPool.
+    /// </summary>
     [OutputType]
     public sealed class PublishingOptionsResponse
     {

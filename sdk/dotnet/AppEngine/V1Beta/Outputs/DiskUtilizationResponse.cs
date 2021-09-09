@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Target scaling by disk usage. Only applicable in the App Engine flexible environment.
+    /// </summary>
     [OutputType]
     public sealed class DiskUtilizationResponse
     {

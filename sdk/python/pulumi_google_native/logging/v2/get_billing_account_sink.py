@@ -13,6 +13,7 @@ __all__ = [
     'GetBillingAccountSinkResult',
     'AwaitableGetBillingAccountSinkResult',
     'get_billing_account_sink',
+    'get_billing_account_sink_output',
 ]
 
 @pulumi.output_type
@@ -187,3 +188,13 @@ def get_billing_account_sink(billing_account_id: Optional[str] = None,
         name=__ret__.name,
         update_time=__ret__.update_time,
         writer_identity=__ret__.writer_identity)
+
+
+@_utilities.lift_output_func(get_billing_account_sink)
+def get_billing_account_sink_output(billing_account_id: Optional[pulumi.Input[str]] = None,
+                                    sink_id: Optional[pulumi.Input[str]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingAccountSinkResult]:
+    """
+    Gets a sink.
+    """
+    ...

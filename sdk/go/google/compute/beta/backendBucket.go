@@ -142,9 +142,7 @@ func (i *BackendBucket) ToBackendBucketOutputWithContext(ctx context.Context) Ba
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketOutput)
 }
 
-type BackendBucketOutput struct {
-	*pulumi.OutputState
-}
+type BackendBucketOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BackendBucket)(nil))

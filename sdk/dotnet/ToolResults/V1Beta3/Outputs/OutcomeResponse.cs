@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// Interprets a result so that humans and machines can act on it.
+    /// </summary>
     [OutputType]
     public sealed class OutcomeResponse
     {

@@ -140,9 +140,7 @@ func (i *PhraseMatcher) ToPhraseMatcherOutputWithContext(ctx context.Context) Ph
 	return pulumi.ToOutputWithContext(ctx, i).(PhraseMatcherOutput)
 }
 
-type PhraseMatcherOutput struct {
-	*pulumi.OutputState
-}
+type PhraseMatcherOutput struct{ *pulumi.OutputState }
 
 func (PhraseMatcherOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PhraseMatcher)(nil))

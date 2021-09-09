@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for AES-128 encryption.
+    /// </summary>
     [OutputType]
     public sealed class Aes128EncryptionResponse
     {

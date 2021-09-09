@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput object that is returned on successful completion of a training job with hyperparameter tuning includes a list of HyperparameterOutput objects, one for each successful trial.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1__HyperparameterOutputResponse
     {

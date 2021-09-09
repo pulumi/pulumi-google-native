@@ -272,9 +272,7 @@ func (i *RegionDisk) ToRegionDiskOutputWithContext(ctx context.Context) RegionDi
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskOutput)
 }
 
-type RegionDiskOutput struct {
-	*pulumi.OutputState
-}
+type RegionDiskOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionDisk)(nil))

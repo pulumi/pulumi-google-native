@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// A note describing an attestation
+    /// </summary>
     [OutputType]
     public sealed class DSSEAttestationNoteResponse
     {

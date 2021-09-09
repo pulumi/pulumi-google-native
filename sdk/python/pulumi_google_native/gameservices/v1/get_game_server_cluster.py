@@ -13,6 +13,7 @@ __all__ = [
     'GetGameServerClusterResult',
     'AwaitableGetGameServerClusterResult',
     'get_game_server_cluster',
+    'get_game_server_cluster_output',
 ]
 
 @pulumi.output_type
@@ -154,3 +155,16 @@ def get_game_server_cluster(game_server_cluster_id: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_game_server_cluster)
+def get_game_server_cluster_output(game_server_cluster_id: Optional[pulumi.Input[str]] = None,
+                                   location: Optional[pulumi.Input[str]] = None,
+                                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                                   realm_id: Optional[pulumi.Input[str]] = None,
+                                   view: Optional[pulumi.Input[Optional[str]]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGameServerClusterResult]:
+    """
+    Gets details of a single game server cluster.
+    """
+    ...

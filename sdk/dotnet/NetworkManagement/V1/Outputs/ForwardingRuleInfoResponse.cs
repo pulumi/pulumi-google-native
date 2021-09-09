@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// For display only. Metadata associated with a Compute Engine forwarding rule.
+    /// </summary>
     [OutputType]
     public sealed class ForwardingRuleInfoResponse
     {

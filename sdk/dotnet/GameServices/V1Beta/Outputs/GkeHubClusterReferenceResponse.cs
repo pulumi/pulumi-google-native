@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GameServices.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
+    /// </summary>
     [OutputType]
     public sealed class GkeHubClusterReferenceResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Windows patching is performed using the Windows Update Agent.
+    /// </summary>
     [OutputType]
     public sealed class WindowsUpdateSettingsResponse
     {

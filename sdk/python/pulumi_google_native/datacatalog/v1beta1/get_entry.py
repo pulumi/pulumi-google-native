@@ -13,6 +13,7 @@ __all__ = [
     'GetEntryResult',
     'AwaitableGetEntryResult',
     'get_entry',
+    'get_entry_output',
 ]
 
 @pulumi.output_type
@@ -230,3 +231,15 @@ def get_entry(entry_group_id: Optional[str] = None,
         usage_signal=__ret__.usage_signal,
         user_specified_system=__ret__.user_specified_system,
         user_specified_type=__ret__.user_specified_type)
+
+
+@_utilities.lift_output_func(get_entry)
+def get_entry_output(entry_group_id: Optional[pulumi.Input[str]] = None,
+                     entry_id: Optional[pulumi.Input[str]] = None,
+                     location: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEntryResult]:
+    """
+    Gets an entry.
+    """
+    ...

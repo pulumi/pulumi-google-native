@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Enum type definition.
+    /// </summary>
     [OutputType]
     public sealed class EnumResponse
     {

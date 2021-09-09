@@ -12,6 +12,7 @@ __all__ = [
     'GetFolderResult',
     'AwaitableGetFolderResult',
     'get_folder',
+    'get_folder_output',
 ]
 
 @pulumi.output_type
@@ -106,3 +107,12 @@ def get_folder(folder_id: Optional[str] = None,
         lifecycle_state=__ret__.lifecycle_state,
         name=__ret__.name,
         parent=__ret__.parent)
+
+
+@_utilities.lift_output_func(get_folder)
+def get_folder_output(folder_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderResult]:
+    """
+    Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.
+    """
+    ...

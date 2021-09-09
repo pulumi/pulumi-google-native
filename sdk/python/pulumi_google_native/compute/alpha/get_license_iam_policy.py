@@ -13,6 +13,7 @@ __all__ = [
     'GetLicenseIamPolicyResult',
     'AwaitableGetLicenseIamPolicyResult',
     'get_license_iam_policy',
+    'get_license_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -124,3 +125,14 @@ def get_license_iam_policy(options_requested_policy_version: Optional[str] = Non
         iam_owned=__ret__.iam_owned,
         rules=__ret__.rules,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_license_iam_policy)
+def get_license_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                  project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  resource: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLicenseIamPolicyResult]:
+    """
+    Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
+    """
+    ...

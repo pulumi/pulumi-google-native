@@ -13,6 +13,7 @@ __all__ = [
     'GetDeploymentIamPolicyResult',
     'AwaitableGetDeploymentIamPolicyResult',
     'get_deployment_iam_policy',
+    'get_deployment_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -98,3 +99,14 @@ def get_deployment_iam_policy(options_requested_policy_version: Optional[str] = 
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_deployment_iam_policy)
+def get_deployment_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                                     resource: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeploymentIamPolicyResult]:
+    """
+    Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+    """
+    ...

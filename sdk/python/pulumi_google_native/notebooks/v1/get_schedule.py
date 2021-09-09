@@ -13,6 +13,7 @@ __all__ = [
     'GetScheduleResult',
     'AwaitableGetScheduleResult',
     'get_schedule',
+    'get_schedule_output',
 ]
 
 @pulumi.output_type
@@ -173,3 +174,14 @@ def get_schedule(location: Optional[str] = None,
         state=__ret__.state,
         time_zone=__ret__.time_zone,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_schedule)
+def get_schedule_output(location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        schedule_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScheduleResult]:
+    """
+    Gets details of schedule
+    """
+    ...

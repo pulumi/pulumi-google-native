@@ -13,6 +13,7 @@ __all__ = [
     'GetJobResult',
     'AwaitableGetJobResult',
     'get_job',
+    'get_job_output',
 ]
 
 @pulumi.output_type
@@ -293,3 +294,14 @@ def get_job(job_id: Optional[str] = None,
         status=__ret__.status,
         status_history=__ret__.status_history,
         yarn_applications=__ret__.yarn_applications)
+
+
+@_utilities.lift_output_func(get_job)
+def get_job_output(job_id: Optional[pulumi.Input[str]] = None,
+                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                   region: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobResult]:
+    """
+    Gets the resource representation for a job in a project.
+    """
+    ...

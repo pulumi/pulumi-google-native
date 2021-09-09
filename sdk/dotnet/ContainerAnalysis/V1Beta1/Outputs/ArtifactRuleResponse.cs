@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Defines an object to declare an in-toto artifact rule
+    /// </summary>
     [OutputType]
     public sealed class ArtifactRuleResponse
     {

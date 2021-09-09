@@ -542,7 +542,7 @@ func (o AutomaticOutput) ToAutomaticPtrOutput() AutomaticPtrOutput {
 }
 
 func (o AutomaticOutput) ToAutomaticPtrOutputWithContext(ctx context.Context) AutomaticPtrOutput {
-	return o.ApplyT(func(v Automatic) *Automatic {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Automatic) *Automatic {
 		return &v
 	}).(AutomaticPtrOutput)
 }
@@ -567,7 +567,13 @@ func (o AutomaticPtrOutput) ToAutomaticPtrOutputWithContext(ctx context.Context)
 }
 
 func (o AutomaticPtrOutput) Elem() AutomaticOutput {
-	return o.ApplyT(func(v *Automatic) Automatic { return *v }).(AutomaticOutput)
+	return o.ApplyT(func(v *Automatic) Automatic {
+		if v != nil {
+			return *v
+		}
+		var ret Automatic
+		return ret
+	}).(AutomaticOutput)
 }
 
 // Optional. The customer-managed encryption configuration of the Secret. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
@@ -676,7 +682,7 @@ func (o AutomaticResponseOutput) ToAutomaticResponsePtrOutput() AutomaticRespons
 }
 
 func (o AutomaticResponseOutput) ToAutomaticResponsePtrOutputWithContext(ctx context.Context) AutomaticResponsePtrOutput {
-	return o.ApplyT(func(v AutomaticResponse) *AutomaticResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomaticResponse) *AutomaticResponse {
 		return &v
 	}).(AutomaticResponsePtrOutput)
 }
@@ -701,7 +707,13 @@ func (o AutomaticResponsePtrOutput) ToAutomaticResponsePtrOutputWithContext(ctx 
 }
 
 func (o AutomaticResponsePtrOutput) Elem() AutomaticResponseOutput {
-	return o.ApplyT(func(v *AutomaticResponse) AutomaticResponse { return *v }).(AutomaticResponseOutput)
+	return o.ApplyT(func(v *AutomaticResponse) AutomaticResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutomaticResponse
+		return ret
+	}).(AutomaticResponseOutput)
 }
 
 // Optional. The customer-managed encryption configuration of the Secret. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
@@ -1046,7 +1058,7 @@ func (o CustomerManagedEncryptionOutput) ToCustomerManagedEncryptionPtrOutput() 
 }
 
 func (o CustomerManagedEncryptionOutput) ToCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) CustomerManagedEncryptionPtrOutput {
-	return o.ApplyT(func(v CustomerManagedEncryption) *CustomerManagedEncryption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomerManagedEncryption) *CustomerManagedEncryption {
 		return &v
 	}).(CustomerManagedEncryptionPtrOutput)
 }
@@ -1071,7 +1083,13 @@ func (o CustomerManagedEncryptionPtrOutput) ToCustomerManagedEncryptionPtrOutput
 }
 
 func (o CustomerManagedEncryptionPtrOutput) Elem() CustomerManagedEncryptionOutput {
-	return o.ApplyT(func(v *CustomerManagedEncryption) CustomerManagedEncryption { return *v }).(CustomerManagedEncryptionOutput)
+	return o.ApplyT(func(v *CustomerManagedEncryption) CustomerManagedEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret CustomerManagedEncryption
+		return ret
+	}).(CustomerManagedEncryptionOutput)
 }
 
 // The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -1180,7 +1198,7 @@ func (o CustomerManagedEncryptionResponseOutput) ToCustomerManagedEncryptionResp
 }
 
 func (o CustomerManagedEncryptionResponseOutput) ToCustomerManagedEncryptionResponsePtrOutputWithContext(ctx context.Context) CustomerManagedEncryptionResponsePtrOutput {
-	return o.ApplyT(func(v CustomerManagedEncryptionResponse) *CustomerManagedEncryptionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomerManagedEncryptionResponse) *CustomerManagedEncryptionResponse {
 		return &v
 	}).(CustomerManagedEncryptionResponsePtrOutput)
 }
@@ -1205,7 +1223,13 @@ func (o CustomerManagedEncryptionResponsePtrOutput) ToCustomerManagedEncryptionR
 }
 
 func (o CustomerManagedEncryptionResponsePtrOutput) Elem() CustomerManagedEncryptionResponseOutput {
-	return o.ApplyT(func(v *CustomerManagedEncryptionResponse) CustomerManagedEncryptionResponse { return *v }).(CustomerManagedEncryptionResponseOutput)
+	return o.ApplyT(func(v *CustomerManagedEncryptionResponse) CustomerManagedEncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomerManagedEncryptionResponse
+		return ret
+	}).(CustomerManagedEncryptionResponseOutput)
 }
 
 // The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -1326,7 +1350,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1366,7 +1390,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1809,7 +1839,7 @@ func (o ReplicationOutput) ToReplicationPtrOutput() ReplicationPtrOutput {
 }
 
 func (o ReplicationOutput) ToReplicationPtrOutputWithContext(ctx context.Context) ReplicationPtrOutput {
-	return o.ApplyT(func(v Replication) *Replication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Replication) *Replication {
 		return &v
 	}).(ReplicationPtrOutput)
 }
@@ -1839,7 +1869,13 @@ func (o ReplicationPtrOutput) ToReplicationPtrOutputWithContext(ctx context.Cont
 }
 
 func (o ReplicationPtrOutput) Elem() ReplicationOutput {
-	return o.ApplyT(func(v *Replication) Replication { return *v }).(ReplicationOutput)
+	return o.ApplyT(func(v *Replication) Replication {
+		if v != nil {
+			return *v
+		}
+		var ret Replication
+		return ret
+	}).(ReplicationOutput)
 }
 
 // The Secret will automatically be replicated without any restrictions.
@@ -1962,7 +1998,7 @@ func (o ReplicationResponseOutput) ToReplicationResponsePtrOutput() ReplicationR
 }
 
 func (o ReplicationResponseOutput) ToReplicationResponsePtrOutputWithContext(ctx context.Context) ReplicationResponsePtrOutput {
-	return o.ApplyT(func(v ReplicationResponse) *ReplicationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicationResponse) *ReplicationResponse {
 		return &v
 	}).(ReplicationResponsePtrOutput)
 }
@@ -1992,7 +2028,13 @@ func (o ReplicationResponsePtrOutput) ToReplicationResponsePtrOutputWithContext(
 }
 
 func (o ReplicationResponsePtrOutput) Elem() ReplicationResponseOutput {
-	return o.ApplyT(func(v *ReplicationResponse) ReplicationResponse { return *v }).(ReplicationResponseOutput)
+	return o.ApplyT(func(v *ReplicationResponse) ReplicationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReplicationResponse
+		return ret
+	}).(ReplicationResponseOutput)
 }
 
 // The Secret will automatically be replicated without any restrictions.
@@ -2115,7 +2157,7 @@ func (o RotationOutput) ToRotationPtrOutput() RotationPtrOutput {
 }
 
 func (o RotationOutput) ToRotationPtrOutputWithContext(ctx context.Context) RotationPtrOutput {
-	return o.ApplyT(func(v Rotation) *Rotation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Rotation) *Rotation {
 		return &v
 	}).(RotationPtrOutput)
 }
@@ -2145,7 +2187,13 @@ func (o RotationPtrOutput) ToRotationPtrOutputWithContext(ctx context.Context) R
 }
 
 func (o RotationPtrOutput) Elem() RotationOutput {
-	return o.ApplyT(func(v *Rotation) Rotation { return *v }).(RotationOutput)
+	return o.ApplyT(func(v *Rotation) Rotation {
+		if v != nil {
+			return *v
+		}
+		var ret Rotation
+		return ret
+	}).(RotationOutput)
 }
 
 // Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5 min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is set.
@@ -2268,7 +2316,7 @@ func (o RotationResponseOutput) ToRotationResponsePtrOutput() RotationResponsePt
 }
 
 func (o RotationResponseOutput) ToRotationResponsePtrOutputWithContext(ctx context.Context) RotationResponsePtrOutput {
-	return o.ApplyT(func(v RotationResponse) *RotationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RotationResponse) *RotationResponse {
 		return &v
 	}).(RotationResponsePtrOutput)
 }
@@ -2298,7 +2346,13 @@ func (o RotationResponsePtrOutput) ToRotationResponsePtrOutputWithContext(ctx co
 }
 
 func (o RotationResponsePtrOutput) Elem() RotationResponseOutput {
-	return o.ApplyT(func(v *RotationResponse) RotationResponse { return *v }).(RotationResponseOutput)
+	return o.ApplyT(func(v *RotationResponse) RotationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RotationResponse
+		return ret
+	}).(RotationResponseOutput)
 }
 
 // Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5 min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is set.
@@ -2617,7 +2671,7 @@ func (o UserManagedOutput) ToUserManagedPtrOutput() UserManagedPtrOutput {
 }
 
 func (o UserManagedOutput) ToUserManagedPtrOutputWithContext(ctx context.Context) UserManagedPtrOutput {
-	return o.ApplyT(func(v UserManaged) *UserManaged {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserManaged) *UserManaged {
 		return &v
 	}).(UserManagedPtrOutput)
 }
@@ -2642,7 +2696,13 @@ func (o UserManagedPtrOutput) ToUserManagedPtrOutputWithContext(ctx context.Cont
 }
 
 func (o UserManagedPtrOutput) Elem() UserManagedOutput {
-	return o.ApplyT(func(v *UserManaged) UserManaged { return *v }).(UserManagedOutput)
+	return o.ApplyT(func(v *UserManaged) UserManaged {
+		if v != nil {
+			return *v
+		}
+		var ret UserManaged
+		return ret
+	}).(UserManagedOutput)
 }
 
 // The list of Replicas for this Secret. Cannot be empty.
@@ -2751,7 +2811,7 @@ func (o UserManagedResponseOutput) ToUserManagedResponsePtrOutput() UserManagedR
 }
 
 func (o UserManagedResponseOutput) ToUserManagedResponsePtrOutputWithContext(ctx context.Context) UserManagedResponsePtrOutput {
-	return o.ApplyT(func(v UserManagedResponse) *UserManagedResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserManagedResponse) *UserManagedResponse {
 		return &v
 	}).(UserManagedResponsePtrOutput)
 }
@@ -2776,7 +2836,13 @@ func (o UserManagedResponsePtrOutput) ToUserManagedResponsePtrOutputWithContext(
 }
 
 func (o UserManagedResponsePtrOutput) Elem() UserManagedResponseOutput {
-	return o.ApplyT(func(v *UserManagedResponse) UserManagedResponse { return *v }).(UserManagedResponseOutput)
+	return o.ApplyT(func(v *UserManagedResponse) UserManagedResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserManagedResponse
+		return ret
+	}).(UserManagedResponseOutput)
 }
 
 // The list of Replicas for this Secret. Cannot be empty.

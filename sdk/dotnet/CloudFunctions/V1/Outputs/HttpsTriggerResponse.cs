@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudFunctions.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes HttpsTrigger, could be used to connect web hooks to function.
+    /// </summary>
     [OutputType]
     public sealed class HttpsTriggerResponse
     {

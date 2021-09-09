@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,4 +30,50 @@ type LookupConfigResult struct {
 	Description string `pulumi:"description"`
 	// The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
 	Name string `pulumi:"name"`
+}
+
+func LookupConfigOutput(ctx *pulumi.Context, args LookupConfigOutputArgs, opts ...pulumi.InvokeOption) LookupConfigResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupConfigResult, error) {
+			args := v.(LookupConfigArgs)
+			r, err := LookupConfig(ctx, &args, opts...)
+			return *r, err
+		}).(LookupConfigResultOutput)
+}
+
+type LookupConfigOutputArgs struct {
+	ConfigId pulumi.StringInput    `pulumi:"configId"`
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupConfigOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConfigArgs)(nil)).Elem()
+}
+
+type LookupConfigResultOutput struct{ *pulumi.OutputState }
+
+func (LookupConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConfigResult)(nil)).Elem()
+}
+
+func (o LookupConfigResultOutput) ToLookupConfigResultOutput() LookupConfigResultOutput {
+	return o
+}
+
+func (o LookupConfigResultOutput) ToLookupConfigResultOutputWithContext(ctx context.Context) LookupConfigResultOutput {
+	return o
+}
+
+// An optional description of the RuntimeConfig object.
+func (o LookupConfigResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
+func (o LookupConfigResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupConfigResultOutput{})
 }

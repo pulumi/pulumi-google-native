@@ -4,6 +4,9 @@
 package v1alpha
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,4 +42,77 @@ type LookupBackupResult struct {
 	ServiceRevision ServiceResponse `pulumi:"serviceRevision"`
 	// The current state of the backup.
 	State string `pulumi:"state"`
+}
+
+func LookupBackupOutput(ctx *pulumi.Context, args LookupBackupOutputArgs, opts ...pulumi.InvokeOption) LookupBackupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupBackupResult, error) {
+			args := v.(LookupBackupArgs)
+			r, err := LookupBackup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupBackupResultOutput)
+}
+
+type LookupBackupOutputArgs struct {
+	BackupId  pulumi.StringInput    `pulumi:"backupId"`
+	Location  pulumi.StringInput    `pulumi:"location"`
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+	ServiceId pulumi.StringInput    `pulumi:"serviceId"`
+}
+
+func (LookupBackupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBackupArgs)(nil)).Elem()
+}
+
+type LookupBackupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupBackupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBackupResult)(nil)).Elem()
+}
+
+func (o LookupBackupResultOutput) ToLookupBackupResultOutput() LookupBackupResultOutput {
+	return o
+}
+
+func (o LookupBackupResultOutput) ToLookupBackupResultOutputWithContext(ctx context.Context) LookupBackupResultOutput {
+	return o
+}
+
+// The time when the backup was started.
+func (o LookupBackupResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the backup.
+func (o LookupBackupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The time when the backup finished creating.
+func (o LookupBackupResultOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+func (o LookupBackupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Services that are restoring from the backup.
+func (o LookupBackupResultOutput) RestoringServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupBackupResult) []string { return v.RestoringServices }).(pulumi.StringArrayOutput)
+}
+
+// The revision of the service at the time of backup.
+func (o LookupBackupResultOutput) ServiceRevision() ServiceResponseOutput {
+	return o.ApplyT(func(v LookupBackupResult) ServiceResponse { return v.ServiceRevision }).(ServiceResponseOutput)
+}
+
+// The current state of the backup.
+func (o LookupBackupResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupBackupResultOutput{})
 }

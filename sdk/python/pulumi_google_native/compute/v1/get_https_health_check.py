@@ -12,6 +12,7 @@ __all__ = [
     'GetHttpsHealthCheckResult',
     'AwaitableGetHttpsHealthCheckResult',
     'get_https_health_check',
+    'get_https_health_check_output',
 ]
 
 @pulumi.output_type
@@ -199,3 +200,13 @@ def get_https_health_check(https_health_check: Optional[str] = None,
         self_link=__ret__.self_link,
         timeout_sec=__ret__.timeout_sec,
         unhealthy_threshold=__ret__.unhealthy_threshold)
+
+
+@_utilities.lift_output_func(get_https_health_check)
+def get_https_health_check_output(https_health_check: Optional[pulumi.Input[str]] = None,
+                                  project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHttpsHealthCheckResult]:
+    """
+    Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by making a list() request.
+    """
+    ...

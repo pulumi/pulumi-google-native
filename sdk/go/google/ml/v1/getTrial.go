@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,4 +48,92 @@ type LookupTrialResult struct {
 	State string `pulumi:"state"`
 	// If true, the parameters in this trial are not attempted again.
 	TrialInfeasible bool `pulumi:"trialInfeasible"`
+}
+
+func LookupTrialOutput(ctx *pulumi.Context, args LookupTrialOutputArgs, opts ...pulumi.InvokeOption) LookupTrialResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTrialResult, error) {
+			args := v.(LookupTrialArgs)
+			r, err := LookupTrial(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTrialResultOutput)
+}
+
+type LookupTrialOutputArgs struct {
+	Location pulumi.StringInput    `pulumi:"location"`
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+	StudyId  pulumi.StringInput    `pulumi:"studyId"`
+	TrialId  pulumi.StringInput    `pulumi:"trialId"`
+}
+
+func (LookupTrialOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTrialArgs)(nil)).Elem()
+}
+
+type LookupTrialResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTrialResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTrialResult)(nil)).Elem()
+}
+
+func (o LookupTrialResultOutput) ToLookupTrialResultOutput() LookupTrialResultOutput {
+	return o
+}
+
+func (o LookupTrialResultOutput) ToLookupTrialResultOutputWithContext(ctx context.Context) LookupTrialResultOutput {
+	return o
+}
+
+// The identifier of the client that originally requested this trial.
+func (o LookupTrialResultOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrialResult) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Time at which the trial's status changed to COMPLETED.
+func (o LookupTrialResultOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrialResult) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The final measurement containing the objective value.
+func (o LookupTrialResultOutput) FinalMeasurement() GoogleCloudMlV1__MeasurementResponseOutput {
+	return o.ApplyT(func(v LookupTrialResult) GoogleCloudMlV1__MeasurementResponse { return v.FinalMeasurement }).(GoogleCloudMlV1__MeasurementResponseOutput)
+}
+
+// A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
+func (o LookupTrialResultOutput) InfeasibleReason() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrialResult) string { return v.InfeasibleReason }).(pulumi.StringOutput)
+}
+
+// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
+func (o LookupTrialResultOutput) Measurements() GoogleCloudMlV1__MeasurementResponseArrayOutput {
+	return o.ApplyT(func(v LookupTrialResult) []GoogleCloudMlV1__MeasurementResponse { return v.Measurements }).(GoogleCloudMlV1__MeasurementResponseArrayOutput)
+}
+
+// Name of the trial assigned by the service.
+func (o LookupTrialResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrialResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parameters of the trial.
+func (o LookupTrialResultOutput) Parameters() GoogleCloudMlV1_Trial_ParameterResponseArrayOutput {
+	return o.ApplyT(func(v LookupTrialResult) []GoogleCloudMlV1_Trial_ParameterResponse { return v.Parameters }).(GoogleCloudMlV1_Trial_ParameterResponseArrayOutput)
+}
+
+// Time at which the trial was started.
+func (o LookupTrialResultOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrialResult) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The detailed state of a trial.
+func (o LookupTrialResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrialResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// If true, the parameters in this trial are not attempted again.
+func (o LookupTrialResultOutput) TrialInfeasible() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTrialResult) bool { return v.TrialInfeasible }).(pulumi.BoolOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTrialResultOutput{})
 }

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Additional annotations that can be used to guide the usage of a metric.
+    /// </summary>
     [OutputType]
     public sealed class MetricDescriptorMetadataResponse
     {

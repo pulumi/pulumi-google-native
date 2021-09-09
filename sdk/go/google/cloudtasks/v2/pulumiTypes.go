@@ -122,7 +122,7 @@ func (o AppEngineHttpRequestOutput) ToAppEngineHttpRequestPtrOutput() AppEngineH
 }
 
 func (o AppEngineHttpRequestOutput) ToAppEngineHttpRequestPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestPtrOutput {
-	return o.ApplyT(func(v AppEngineHttpRequest) *AppEngineHttpRequest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpRequest) *AppEngineHttpRequest {
 		return &v
 	}).(AppEngineHttpRequestPtrOutput)
 }
@@ -167,7 +167,13 @@ func (o AppEngineHttpRequestPtrOutput) ToAppEngineHttpRequestPtrOutputWithContex
 }
 
 func (o AppEngineHttpRequestPtrOutput) Elem() AppEngineHttpRequestOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequest) AppEngineHttpRequest { return *v }).(AppEngineHttpRequestOutput)
+	return o.ApplyT(func(v *AppEngineHttpRequest) AppEngineHttpRequest {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineHttpRequest
+		return ret
+	}).(AppEngineHttpRequestOutput)
 }
 
 // Task-level setting for App Engine routing. * If app_engine_routing_override is set on the queue, this value is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
@@ -332,7 +338,7 @@ func (o AppEngineHttpRequestResponseOutput) ToAppEngineHttpRequestResponsePtrOut
 }
 
 func (o AppEngineHttpRequestResponseOutput) ToAppEngineHttpRequestResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpRequestResponsePtrOutput {
-	return o.ApplyT(func(v AppEngineHttpRequestResponse) *AppEngineHttpRequestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpRequestResponse) *AppEngineHttpRequestResponse {
 		return &v
 	}).(AppEngineHttpRequestResponsePtrOutput)
 }
@@ -377,7 +383,13 @@ func (o AppEngineHttpRequestResponsePtrOutput) ToAppEngineHttpRequestResponsePtr
 }
 
 func (o AppEngineHttpRequestResponsePtrOutput) Elem() AppEngineHttpRequestResponseOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequestResponse) AppEngineHttpRequestResponse { return *v }).(AppEngineHttpRequestResponseOutput)
+	return o.ApplyT(func(v *AppEngineHttpRequestResponse) AppEngineHttpRequestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineHttpRequestResponse
+		return ret
+	}).(AppEngineHttpRequestResponseOutput)
 }
 
 // Task-level setting for App Engine routing. * If app_engine_routing_override is set on the queue, this value is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
@@ -534,7 +546,7 @@ func (o AppEngineRoutingOutput) ToAppEngineRoutingPtrOutput() AppEngineRoutingPt
 }
 
 func (o AppEngineRoutingOutput) ToAppEngineRoutingPtrOutputWithContext(ctx context.Context) AppEngineRoutingPtrOutput {
-	return o.ApplyT(func(v AppEngineRouting) *AppEngineRouting {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineRouting) *AppEngineRouting {
 		return &v
 	}).(AppEngineRoutingPtrOutput)
 }
@@ -569,7 +581,13 @@ func (o AppEngineRoutingPtrOutput) ToAppEngineRoutingPtrOutputWithContext(ctx co
 }
 
 func (o AppEngineRoutingPtrOutput) Elem() AppEngineRoutingOutput {
-	return o.ApplyT(func(v *AppEngineRouting) AppEngineRouting { return *v }).(AppEngineRoutingOutput)
+	return o.ApplyT(func(v *AppEngineRouting) AppEngineRouting {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineRouting
+		return ret
+	}).(AppEngineRoutingOutput)
 }
 
 // App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
@@ -710,7 +728,7 @@ func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponsePtrOutput() Ap
 }
 
 func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponsePtrOutputWithContext(ctx context.Context) AppEngineRoutingResponsePtrOutput {
-	return o.ApplyT(func(v AppEngineRoutingResponse) *AppEngineRoutingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineRoutingResponse) *AppEngineRoutingResponse {
 		return &v
 	}).(AppEngineRoutingResponsePtrOutput)
 }
@@ -750,7 +768,13 @@ func (o AppEngineRoutingResponsePtrOutput) ToAppEngineRoutingResponsePtrOutputWi
 }
 
 func (o AppEngineRoutingResponsePtrOutput) Elem() AppEngineRoutingResponseOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) AppEngineRoutingResponse { return *v }).(AppEngineRoutingResponseOutput)
+	return o.ApplyT(func(v *AppEngineRoutingResponse) AppEngineRoutingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineRoutingResponse
+		return ret
+	}).(AppEngineRoutingResponseOutput)
 }
 
 // The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
@@ -901,7 +925,7 @@ func (o AttemptResponseOutput) ToAttemptResponsePtrOutput() AttemptResponsePtrOu
 }
 
 func (o AttemptResponseOutput) ToAttemptResponsePtrOutputWithContext(ctx context.Context) AttemptResponsePtrOutput {
-	return o.ApplyT(func(v AttemptResponse) *AttemptResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttemptResponse) *AttemptResponse {
 		return &v
 	}).(AttemptResponsePtrOutput)
 }
@@ -941,7 +965,13 @@ func (o AttemptResponsePtrOutput) ToAttemptResponsePtrOutputWithContext(ctx cont
 }
 
 func (o AttemptResponsePtrOutput) Elem() AttemptResponseOutput {
-	return o.ApplyT(func(v *AttemptResponse) AttemptResponse { return *v }).(AttemptResponseOutput)
+	return o.ApplyT(func(v *AttemptResponse) AttemptResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AttemptResponse
+		return ret
+	}).(AttemptResponseOutput)
 }
 
 // The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
@@ -1328,7 +1358,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1368,7 +1398,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1609,7 +1645,7 @@ func (o HttpRequestOutput) ToHttpRequestPtrOutput() HttpRequestPtrOutput {
 }
 
 func (o HttpRequestOutput) ToHttpRequestPtrOutputWithContext(ctx context.Context) HttpRequestPtrOutput {
-	return o.ApplyT(func(v HttpRequest) *HttpRequest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRequest) *HttpRequest {
 		return &v
 	}).(HttpRequestPtrOutput)
 }
@@ -1659,7 +1695,13 @@ func (o HttpRequestPtrOutput) ToHttpRequestPtrOutputWithContext(ctx context.Cont
 }
 
 func (o HttpRequestPtrOutput) Elem() HttpRequestOutput {
-	return o.ApplyT(func(v *HttpRequest) HttpRequest { return *v }).(HttpRequestOutput)
+	return o.ApplyT(func(v *HttpRequest) HttpRequest {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRequest
+		return ret
+	}).(HttpRequestOutput)
 }
 
 // HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
@@ -1838,7 +1880,7 @@ func (o HttpRequestResponseOutput) ToHttpRequestResponsePtrOutput() HttpRequestR
 }
 
 func (o HttpRequestResponseOutput) ToHttpRequestResponsePtrOutputWithContext(ctx context.Context) HttpRequestResponsePtrOutput {
-	return o.ApplyT(func(v HttpRequestResponse) *HttpRequestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRequestResponse) *HttpRequestResponse {
 		return &v
 	}).(HttpRequestResponsePtrOutput)
 }
@@ -1888,7 +1930,13 @@ func (o HttpRequestResponsePtrOutput) ToHttpRequestResponsePtrOutputWithContext(
 }
 
 func (o HttpRequestResponsePtrOutput) Elem() HttpRequestResponseOutput {
-	return o.ApplyT(func(v *HttpRequestResponse) HttpRequestResponse { return *v }).(HttpRequestResponseOutput)
+	return o.ApplyT(func(v *HttpRequestResponse) HttpRequestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRequestResponse
+		return ret
+	}).(HttpRequestResponseOutput)
 }
 
 // HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
@@ -2051,7 +2099,7 @@ func (o OAuthTokenOutput) ToOAuthTokenPtrOutput() OAuthTokenPtrOutput {
 }
 
 func (o OAuthTokenOutput) ToOAuthTokenPtrOutputWithContext(ctx context.Context) OAuthTokenPtrOutput {
-	return o.ApplyT(func(v OAuthToken) *OAuthToken {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OAuthToken) *OAuthToken {
 		return &v
 	}).(OAuthTokenPtrOutput)
 }
@@ -2081,7 +2129,13 @@ func (o OAuthTokenPtrOutput) ToOAuthTokenPtrOutputWithContext(ctx context.Contex
 }
 
 func (o OAuthTokenPtrOutput) Elem() OAuthTokenOutput {
-	return o.ApplyT(func(v *OAuthToken) OAuthToken { return *v }).(OAuthTokenOutput)
+	return o.ApplyT(func(v *OAuthToken) OAuthToken {
+		if v != nil {
+			return *v
+		}
+		var ret OAuthToken
+		return ret
+	}).(OAuthTokenOutput)
 }
 
 // OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
@@ -2204,7 +2258,7 @@ func (o OAuthTokenResponseOutput) ToOAuthTokenResponsePtrOutput() OAuthTokenResp
 }
 
 func (o OAuthTokenResponseOutput) ToOAuthTokenResponsePtrOutputWithContext(ctx context.Context) OAuthTokenResponsePtrOutput {
-	return o.ApplyT(func(v OAuthTokenResponse) *OAuthTokenResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OAuthTokenResponse) *OAuthTokenResponse {
 		return &v
 	}).(OAuthTokenResponsePtrOutput)
 }
@@ -2234,7 +2288,13 @@ func (o OAuthTokenResponsePtrOutput) ToOAuthTokenResponsePtrOutputWithContext(ct
 }
 
 func (o OAuthTokenResponsePtrOutput) Elem() OAuthTokenResponseOutput {
-	return o.ApplyT(func(v *OAuthTokenResponse) OAuthTokenResponse { return *v }).(OAuthTokenResponseOutput)
+	return o.ApplyT(func(v *OAuthTokenResponse) OAuthTokenResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OAuthTokenResponse
+		return ret
+	}).(OAuthTokenResponseOutput)
 }
 
 // OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
@@ -2357,7 +2417,7 @@ func (o OidcTokenOutput) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
 }
 
 func (o OidcTokenOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) OidcTokenPtrOutput {
-	return o.ApplyT(func(v OidcToken) *OidcToken {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcToken) *OidcToken {
 		return &v
 	}).(OidcTokenPtrOutput)
 }
@@ -2387,7 +2447,13 @@ func (o OidcTokenPtrOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context)
 }
 
 func (o OidcTokenPtrOutput) Elem() OidcTokenOutput {
-	return o.ApplyT(func(v *OidcToken) OidcToken { return *v }).(OidcTokenOutput)
+	return o.ApplyT(func(v *OidcToken) OidcToken {
+		if v != nil {
+			return *v
+		}
+		var ret OidcToken
+		return ret
+	}).(OidcTokenOutput)
 }
 
 // Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
@@ -2510,7 +2576,7 @@ func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutput() OidcTokenRespons
 }
 
 func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o.ApplyT(func(v OidcTokenResponse) *OidcTokenResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcTokenResponse) *OidcTokenResponse {
 		return &v
 	}).(OidcTokenResponsePtrOutput)
 }
@@ -2540,7 +2606,13 @@ func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutputWithContext(ctx 
 }
 
 func (o OidcTokenResponsePtrOutput) Elem() OidcTokenResponseOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse { return *v }).(OidcTokenResponseOutput)
+	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OidcTokenResponse
+		return ret
+	}).(OidcTokenResponseOutput)
 }
 
 // Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
@@ -2663,7 +2735,7 @@ func (o RateLimitsOutput) ToRateLimitsPtrOutput() RateLimitsPtrOutput {
 }
 
 func (o RateLimitsOutput) ToRateLimitsPtrOutputWithContext(ctx context.Context) RateLimitsPtrOutput {
-	return o.ApplyT(func(v RateLimits) *RateLimits {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimits) *RateLimits {
 		return &v
 	}).(RateLimitsPtrOutput)
 }
@@ -2693,7 +2765,13 @@ func (o RateLimitsPtrOutput) ToRateLimitsPtrOutputWithContext(ctx context.Contex
 }
 
 func (o RateLimitsPtrOutput) Elem() RateLimitsOutput {
-	return o.ApplyT(func(v *RateLimits) RateLimits { return *v }).(RateLimitsOutput)
+	return o.ApplyT(func(v *RateLimits) RateLimits {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimits
+		return ret
+	}).(RateLimitsOutput)
 }
 
 // The maximum number of concurrent tasks that Cloud Tasks allows to be dispatched for this queue. After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of concurrent requests decreases. If unspecified when the queue is created, Cloud Tasks will pick the default. The maximum allowed value is 5,000. This field has the same meaning as [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
@@ -2820,7 +2898,7 @@ func (o RateLimitsResponseOutput) ToRateLimitsResponsePtrOutput() RateLimitsResp
 }
 
 func (o RateLimitsResponseOutput) ToRateLimitsResponsePtrOutputWithContext(ctx context.Context) RateLimitsResponsePtrOutput {
-	return o.ApplyT(func(v RateLimitsResponse) *RateLimitsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitsResponse) *RateLimitsResponse {
 		return &v
 	}).(RateLimitsResponsePtrOutput)
 }
@@ -2855,7 +2933,13 @@ func (o RateLimitsResponsePtrOutput) ToRateLimitsResponsePtrOutputWithContext(ct
 }
 
 func (o RateLimitsResponsePtrOutput) Elem() RateLimitsResponseOutput {
-	return o.ApplyT(func(v *RateLimitsResponse) RateLimitsResponse { return *v }).(RateLimitsResponseOutput)
+	return o.ApplyT(func(v *RateLimitsResponse) RateLimitsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitsResponse
+		return ret
+	}).(RateLimitsResponseOutput)
 }
 
 // The max burst size. Max burst size limits how fast tasks in queue are processed when many tasks are in the queue and the rate is high. This field allows the queue to have a high rate so processing starts shortly after a task is enqueued, but still limits resource usage when many tasks are enqueued in a short period of time. The [token bucket](https://wikipedia.org/wiki/Token_Bucket) algorithm is used to control the rate of task dispatches. Each queue has a token bucket that holds tokens, up to the maximum specified by `max_burst_size`. Each time a task is dispatched, a token is removed from the bucket. Tasks will be dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new tokens based on max_dispatches_per_second. Cloud Tasks will pick the value of `max_burst_size` based on the value of max_dispatches_per_second. For queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size). Since `max_burst_size` is output only, if UpdateQueue is called on a queue created by `queue.yaml/xml`, `max_burst_size` will be reset based on the value of max_dispatches_per_second, regardless of whether max_dispatches_per_second is updated.
@@ -3000,7 +3084,7 @@ func (o RetryConfigOutput) ToRetryConfigPtrOutput() RetryConfigPtrOutput {
 }
 
 func (o RetryConfigOutput) ToRetryConfigPtrOutputWithContext(ctx context.Context) RetryConfigPtrOutput {
-	return o.ApplyT(func(v RetryConfig) *RetryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryConfig) *RetryConfig {
 		return &v
 	}).(RetryConfigPtrOutput)
 }
@@ -3045,7 +3129,13 @@ func (o RetryConfigPtrOutput) ToRetryConfigPtrOutputWithContext(ctx context.Cont
 }
 
 func (o RetryConfigPtrOutput) Elem() RetryConfigOutput {
-	return o.ApplyT(func(v *RetryConfig) RetryConfig { return *v }).(RetryConfigOutput)
+	return o.ApplyT(func(v *RetryConfig) RetryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RetryConfig
+		return ret
+	}).(RetryConfigOutput)
 }
 
 // Number of attempts per task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be >= -1. If unspecified when the queue is created, Cloud Tasks will pick the default. -1 indicates unlimited attempts. This field has the same meaning as [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
@@ -3210,7 +3300,7 @@ func (o RetryConfigResponseOutput) ToRetryConfigResponsePtrOutput() RetryConfigR
 }
 
 func (o RetryConfigResponseOutput) ToRetryConfigResponsePtrOutputWithContext(ctx context.Context) RetryConfigResponsePtrOutput {
-	return o.ApplyT(func(v RetryConfigResponse) *RetryConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryConfigResponse) *RetryConfigResponse {
 		return &v
 	}).(RetryConfigResponsePtrOutput)
 }
@@ -3255,7 +3345,13 @@ func (o RetryConfigResponsePtrOutput) ToRetryConfigResponsePtrOutputWithContext(
 }
 
 func (o RetryConfigResponsePtrOutput) Elem() RetryConfigResponseOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) RetryConfigResponse { return *v }).(RetryConfigResponseOutput)
+	return o.ApplyT(func(v *RetryConfigResponse) RetryConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RetryConfigResponse
+		return ret
+	}).(RetryConfigResponseOutput)
 }
 
 // Number of attempts per task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be >= -1. If unspecified when the queue is created, Cloud Tasks will pick the default. -1 indicates unlimited attempts. This field has the same meaning as [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
@@ -3404,7 +3500,7 @@ func (o StackdriverLoggingConfigOutput) ToStackdriverLoggingConfigPtrOutput() St
 }
 
 func (o StackdriverLoggingConfigOutput) ToStackdriverLoggingConfigPtrOutputWithContext(ctx context.Context) StackdriverLoggingConfigPtrOutput {
-	return o.ApplyT(func(v StackdriverLoggingConfig) *StackdriverLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackdriverLoggingConfig) *StackdriverLoggingConfig {
 		return &v
 	}).(StackdriverLoggingConfigPtrOutput)
 }
@@ -3429,7 +3525,13 @@ func (o StackdriverLoggingConfigPtrOutput) ToStackdriverLoggingConfigPtrOutputWi
 }
 
 func (o StackdriverLoggingConfigPtrOutput) Elem() StackdriverLoggingConfigOutput {
-	return o.ApplyT(func(v *StackdriverLoggingConfig) StackdriverLoggingConfig { return *v }).(StackdriverLoggingConfigOutput)
+	return o.ApplyT(func(v *StackdriverLoggingConfig) StackdriverLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StackdriverLoggingConfig
+		return ret
+	}).(StackdriverLoggingConfigOutput)
 }
 
 // Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
@@ -3538,7 +3640,7 @@ func (o StackdriverLoggingConfigResponseOutput) ToStackdriverLoggingConfigRespon
 }
 
 func (o StackdriverLoggingConfigResponseOutput) ToStackdriverLoggingConfigResponsePtrOutputWithContext(ctx context.Context) StackdriverLoggingConfigResponsePtrOutput {
-	return o.ApplyT(func(v StackdriverLoggingConfigResponse) *StackdriverLoggingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackdriverLoggingConfigResponse) *StackdriverLoggingConfigResponse {
 		return &v
 	}).(StackdriverLoggingConfigResponsePtrOutput)
 }
@@ -3563,7 +3665,13 @@ func (o StackdriverLoggingConfigResponsePtrOutput) ToStackdriverLoggingConfigRes
 }
 
 func (o StackdriverLoggingConfigResponsePtrOutput) Elem() StackdriverLoggingConfigResponseOutput {
-	return o.ApplyT(func(v *StackdriverLoggingConfigResponse) StackdriverLoggingConfigResponse { return *v }).(StackdriverLoggingConfigResponseOutput)
+	return o.ApplyT(func(v *StackdriverLoggingConfigResponse) StackdriverLoggingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StackdriverLoggingConfigResponse
+		return ret
+	}).(StackdriverLoggingConfigResponseOutput)
 }
 
 // Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
@@ -3680,7 +3788,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -3715,7 +3823,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

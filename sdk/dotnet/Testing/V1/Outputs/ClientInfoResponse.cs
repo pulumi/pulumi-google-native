@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Information about the client which invoked the test.
+    /// </summary>
     [OutputType]
     public sealed class ClientInfoResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Specification of a port-based selector.
+    /// </summary>
     [OutputType]
     public sealed class TrafficPortSelectorResponse
     {

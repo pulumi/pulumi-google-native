@@ -143,9 +143,7 @@ func (i *DebugSession) ToDebugSessionOutputWithContext(ctx context.Context) Debu
 	return pulumi.ToOutputWithContext(ctx, i).(DebugSessionOutput)
 }
 
-type DebugSessionOutput struct {
-	*pulumi.OutputState
-}
+type DebugSessionOutput struct{ *pulumi.OutputState }
 
 func (DebugSessionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DebugSession)(nil))

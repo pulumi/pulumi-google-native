@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A definition of a matcher that selects endpoints to which the policies should be applied.
+    /// </summary>
     [OutputType]
     public sealed class EndpointMatcherResponse
     {

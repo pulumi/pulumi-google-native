@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// CidrBlock contains an optional name and one CIDR block.
+    /// </summary>
     [OutputType]
     public sealed class CidrBlockResponse
     {

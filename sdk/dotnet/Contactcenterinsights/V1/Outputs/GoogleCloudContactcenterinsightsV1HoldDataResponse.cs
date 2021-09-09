@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// The data for a hold annotation.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1HoldDataResponse
     {

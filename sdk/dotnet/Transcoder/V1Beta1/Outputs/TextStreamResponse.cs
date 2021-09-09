@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Encoding of a text stream. For example, closed captions or subtitles.
+    /// </summary>
     [OutputType]
     public sealed class TextStreamResponse
     {

@@ -12,6 +12,7 @@ __all__ = [
     'GetInstanceResult',
     'AwaitableGetInstanceResult',
     'get_instance',
+    'get_instance_output',
 ]
 
 @pulumi.output_type
@@ -136,3 +137,14 @@ def get_instance(field_mask: Optional[str] = None,
         node_count=__ret__.node_count,
         processing_units=__ret__.processing_units,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_instance)
+def get_instance_output(field_mask: Optional[pulumi.Input[Optional[str]]] = None,
+                        instance_id: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+    """
+    Gets information about a particular instance.
+    """
+    ...

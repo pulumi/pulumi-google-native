@@ -172,9 +172,7 @@ func (i *RegionHealthCheck) ToRegionHealthCheckOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckOutput)
 }
 
-type RegionHealthCheckOutput struct {
-	*pulumi.OutputState
-}
+type RegionHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionHealthCheck)(nil))

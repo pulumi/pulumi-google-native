@@ -119,9 +119,7 @@ func (i *ArchiveDeployment) ToArchiveDeploymentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ArchiveDeploymentOutput)
 }
 
-type ArchiveDeploymentOutput struct {
-	*pulumi.OutputState
-}
+type ArchiveDeploymentOutput struct{ *pulumi.OutputState }
 
 func (ArchiveDeploymentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ArchiveDeployment)(nil))

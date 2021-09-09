@@ -107,9 +107,7 @@ func (i *Replay) ToReplayOutputWithContext(ctx context.Context) ReplayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplayOutput)
 }
 
-type ReplayOutput struct {
-	*pulumi.OutputState
-}
+type ReplayOutput struct{ *pulumi.OutputState }
 
 func (ReplayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Replay)(nil))

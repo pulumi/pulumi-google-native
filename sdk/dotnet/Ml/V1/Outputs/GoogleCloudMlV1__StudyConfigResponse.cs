@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents configuration of a study.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1__StudyConfigResponse
     {

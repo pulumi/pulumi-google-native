@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,182 @@ type LookupDeviceResult struct {
 	SerialNumber string `pulumi:"serialNumber"`
 	// WiFi MAC addresses of device.
 	WifiMacAddresses []string `pulumi:"wifiMacAddresses"`
+}
+
+func LookupDeviceOutput(ctx *pulumi.Context, args LookupDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupDeviceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDeviceResult, error) {
+			args := v.(LookupDeviceArgs)
+			r, err := LookupDevice(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDeviceResultOutput)
+}
+
+type LookupDeviceOutputArgs struct {
+	Customer pulumi.StringPtrInput `pulumi:"customer"`
+	DeviceId pulumi.StringInput    `pulumi:"deviceId"`
+}
+
+func (LookupDeviceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDeviceArgs)(nil)).Elem()
+}
+
+type LookupDeviceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDeviceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDeviceResult)(nil)).Elem()
+}
+
+func (o LookupDeviceResultOutput) ToLookupDeviceResultOutput() LookupDeviceResultOutput {
+	return o
+}
+
+func (o LookupDeviceResultOutput) ToLookupDeviceResultOutputWithContext(ctx context.Context) LookupDeviceResultOutput {
+	return o
+}
+
+// Attributes specific to Android devices.
+func (o LookupDeviceResultOutput) AndroidSpecificAttributes() GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput {
+	return o.ApplyT(func(v LookupDeviceResult) GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse {
+		return v.AndroidSpecificAttributes
+	}).(GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput)
+}
+
+// Asset tag of the device.
+func (o LookupDeviceResultOutput) AssetTag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.AssetTag }).(pulumi.StringOutput)
+}
+
+// Baseband version of the device.
+func (o LookupDeviceResultOutput) BasebandVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.BasebandVersion }).(pulumi.StringOutput)
+}
+
+// Device bootloader version. Example: 0.6.7.
+func (o LookupDeviceResultOutput) BootloaderVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.BootloaderVersion }).(pulumi.StringOutput)
+}
+
+// Device brand. Example: Samsung.
+func (o LookupDeviceResultOutput) Brand() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.Brand }).(pulumi.StringOutput)
+}
+
+// Build number of the device.
+func (o LookupDeviceResultOutput) BuildNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.BuildNumber }).(pulumi.StringOutput)
+}
+
+// Represents whether the Device is compromised.
+func (o LookupDeviceResultOutput) CompromisedState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.CompromisedState }).(pulumi.StringOutput)
+}
+
+// When the Company-Owned device was imported. This field is empty for BYOD devices.
+func (o LookupDeviceResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Type of device.
+func (o LookupDeviceResultOutput) DeviceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.DeviceType }).(pulumi.StringOutput)
+}
+
+// Whether developer options is enabled on device.
+func (o LookupDeviceResultOutput) EnabledDeveloperOptions() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDeviceResult) bool { return v.EnabledDeveloperOptions }).(pulumi.BoolOutput)
+}
+
+// Whether USB debugging is enabled on device.
+func (o LookupDeviceResultOutput) EnabledUsbDebugging() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDeviceResult) bool { return v.EnabledUsbDebugging }).(pulumi.BoolOutput)
+}
+
+// Device encryption state.
+func (o LookupDeviceResultOutput) EncryptionState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.EncryptionState }).(pulumi.StringOutput)
+}
+
+// IMEI number of device if GSM device; empty otherwise.
+func (o LookupDeviceResultOutput) Imei() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.Imei }).(pulumi.StringOutput)
+}
+
+// Kernel version of the device.
+func (o LookupDeviceResultOutput) KernelVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.KernelVersion }).(pulumi.StringOutput)
+}
+
+// Most recent time when device synced with this service.
+func (o LookupDeviceResultOutput) LastSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.LastSyncTime }).(pulumi.StringOutput)
+}
+
+// Management state of the device
+func (o LookupDeviceResultOutput) ManagementState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.ManagementState }).(pulumi.StringOutput)
+}
+
+// Device manufacturer. Example: Motorola.
+func (o LookupDeviceResultOutput) Manufacturer() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.Manufacturer }).(pulumi.StringOutput)
+}
+
+// MEID number of device if CDMA device; empty otherwise.
+func (o LookupDeviceResultOutput) Meid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.Meid }).(pulumi.StringOutput)
+}
+
+// Model name of device. Example: Pixel 3.
+func (o LookupDeviceResultOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.Model }).(pulumi.StringOutput)
+}
+
+// [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
+func (o LookupDeviceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Mobile or network operator of device, if available.
+func (o LookupDeviceResultOutput) NetworkOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.NetworkOperator }).(pulumi.StringOutput)
+}
+
+// OS version of the device. Example: Android 8.1.0.
+func (o LookupDeviceResultOutput) OsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.OsVersion }).(pulumi.StringOutput)
+}
+
+// Domain name for Google accounts on device. Type for other accounts on device. On Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in to the device policy app if that account's domain has only one account. Examples: "com.example", "xyz.com".
+func (o LookupDeviceResultOutput) OtherAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDeviceResult) []string { return v.OtherAccounts }).(pulumi.StringArrayOutput)
+}
+
+// Whether the device is owned by the company or an individual
+func (o LookupDeviceResultOutput) OwnerType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.OwnerType }).(pulumi.StringOutput)
+}
+
+// OS release version. Example: 6.0.
+func (o LookupDeviceResultOutput) ReleaseVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.ReleaseVersion }).(pulumi.StringOutput)
+}
+
+// OS security patch update time on device.
+func (o LookupDeviceResultOutput) SecurityPatchTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.SecurityPatchTime }).(pulumi.StringOutput)
+}
+
+// Serial Number of device. Example: HT82V1A01076.
+func (o LookupDeviceResultOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.SerialNumber }).(pulumi.StringOutput)
+}
+
+// WiFi MAC addresses of device.
+func (o LookupDeviceResultOutput) WifiMacAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDeviceResult) []string { return v.WifiMacAddresses }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDeviceResultOutput{})
 }

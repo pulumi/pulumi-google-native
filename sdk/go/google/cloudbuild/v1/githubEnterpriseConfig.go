@@ -144,9 +144,7 @@ func (i *GithubEnterpriseConfig) ToGithubEnterpriseConfigOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(GithubEnterpriseConfigOutput)
 }
 
-type GithubEnterpriseConfigOutput struct {
-	*pulumi.OutputState
-}
+type GithubEnterpriseConfigOutput struct{ *pulumi.OutputState }
 
 func (GithubEnterpriseConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GithubEnterpriseConfig)(nil))

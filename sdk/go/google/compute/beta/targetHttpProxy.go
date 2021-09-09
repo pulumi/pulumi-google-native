@@ -128,9 +128,7 @@ func (i *TargetHttpProxy) ToTargetHttpProxyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpProxyOutput)
 }
 
-type TargetHttpProxyOutput struct {
-	*pulumi.OutputState
-}
+type TargetHttpProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetHttpProxyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetHttpProxy)(nil))

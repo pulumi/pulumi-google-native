@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+    /// </summary>
     [OutputType]
     public sealed class BucketWebsiteResponse
     {

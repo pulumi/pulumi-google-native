@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// The metadata management activities of the metastore service.
+    /// </summary>
     [OutputType]
     public sealed class MetadataManagementActivityResponse
     {

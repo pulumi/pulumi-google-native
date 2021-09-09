@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for a V1 `PrivatePool`.
+    /// </summary>
     [OutputType]
     public sealed class PrivatePoolV1ConfigResponse
     {

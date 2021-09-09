@@ -157,9 +157,7 @@ func (i *Customer) ToCustomerOutputWithContext(ctx context.Context) CustomerOutp
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerOutput)
 }
 
-type CustomerOutput struct {
-	*pulumi.OutputState
-}
+type CustomerOutput struct{ *pulumi.OutputState }
 
 func (CustomerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Customer)(nil))

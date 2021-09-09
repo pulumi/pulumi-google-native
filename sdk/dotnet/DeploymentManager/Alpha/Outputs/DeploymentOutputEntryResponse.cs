@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Output object for Deployments
+    /// </summary>
     [OutputType]
     public sealed class DeploymentOutputEntryResponse
     {

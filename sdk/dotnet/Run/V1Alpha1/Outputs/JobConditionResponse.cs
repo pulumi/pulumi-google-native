@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// JobCondition defines a readiness condition for a Revision.
+    /// </summary>
     [OutputType]
     public sealed class JobConditionResponse
     {

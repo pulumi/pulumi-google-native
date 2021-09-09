@@ -106,9 +106,7 @@ func (i *JobTemplate) ToJobTemplateOutputWithContext(ctx context.Context) JobTem
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateOutput)
 }
 
-type JobTemplateOutput struct {
-	*pulumi.OutputState
-}
+type JobTemplateOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobTemplate)(nil))

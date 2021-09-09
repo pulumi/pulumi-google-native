@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
+    /// <summary>
+    /// Specifies an audio clip to be played by the client as part of the response.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse
     {

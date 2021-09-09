@@ -12,6 +12,7 @@ __all__ = [
     'GetEndpointResult',
     'AwaitableGetEndpointResult',
     'get_endpoint',
+    'get_endpoint_output',
 ]
 
 @pulumi.output_type
@@ -101,3 +102,16 @@ def get_endpoint(endpoint_id: Optional[str] = None,
         annotations=__ret__.annotations,
         name=__ret__.name,
         port=__ret__.port)
+
+
+@_utilities.lift_output_func(get_endpoint)
+def get_endpoint_output(endpoint_id: Optional[pulumi.Input[str]] = None,
+                        location: Optional[pulumi.Input[str]] = None,
+                        namespace_id: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        service_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointResult]:
+    """
+    Gets an endpoint.
+    """
+    ...

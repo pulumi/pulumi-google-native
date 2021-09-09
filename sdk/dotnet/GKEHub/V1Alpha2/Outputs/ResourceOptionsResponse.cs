@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Alpha2.Outputs
 {
 
+    /// <summary>
+    /// ResourceOptions represent options for Kubernetes resource generation.
+    /// </summary>
     [OutputType]
     public sealed class ResourceOptionsResponse
     {

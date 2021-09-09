@@ -4,6 +4,9 @@
 package v1alpha1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,4 +49,96 @@ type LookupSpokeResult struct {
 	UniqueId string `pulumi:"uniqueId"`
 	// The time when the Spoke was updated.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupSpokeOutput(ctx *pulumi.Context, args LookupSpokeOutputArgs, opts ...pulumi.InvokeOption) LookupSpokeResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSpokeResult, error) {
+			args := v.(LookupSpokeArgs)
+			r, err := LookupSpoke(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSpokeResultOutput)
+}
+
+type LookupSpokeOutputArgs struct {
+	Location pulumi.StringInput    `pulumi:"location"`
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+	SpokeId  pulumi.StringInput    `pulumi:"spokeId"`
+}
+
+func (LookupSpokeOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSpokeArgs)(nil)).Elem()
+}
+
+type LookupSpokeResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSpokeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSpokeResult)(nil)).Elem()
+}
+
+func (o LookupSpokeResultOutput) ToLookupSpokeResultOutput() LookupSpokeResultOutput {
+	return o
+}
+
+func (o LookupSpokeResultOutput) ToLookupSpokeResultOutputWithContext(ctx context.Context) LookupSpokeResultOutput {
+	return o
+}
+
+// The time when the Spoke was created.
+func (o LookupSpokeResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpokeResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Short description of the spoke resource
+func (o LookupSpokeResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpokeResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The resource URL of the hub resource that the spoke is attached to
+func (o LookupSpokeResultOutput) Hub() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpokeResult) string { return v.Hub }).(pulumi.StringOutput)
+}
+
+// User-defined labels.
+func (o LookupSpokeResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSpokeResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The URIs of linked interconnect attachment resources
+func (o LookupSpokeResultOutput) LinkedInterconnectAttachments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSpokeResult) []string { return v.LinkedInterconnectAttachments }).(pulumi.StringArrayOutput)
+}
+
+// The URIs of linked Router appliance resources
+func (o LookupSpokeResultOutput) LinkedRouterApplianceInstances() RouterApplianceInstanceResponseArrayOutput {
+	return o.ApplyT(func(v LookupSpokeResult) []RouterApplianceInstanceResponse { return v.LinkedRouterApplianceInstances }).(RouterApplianceInstanceResponseArrayOutput)
+}
+
+// The URIs of linked VPN tunnel resources
+func (o LookupSpokeResultOutput) LinkedVpnTunnels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSpokeResult) []string { return v.LinkedVpnTunnels }).(pulumi.StringArrayOutput)
+}
+
+// Immutable. The name of a Spoke resource.
+func (o LookupSpokeResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpokeResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current lifecycle state of this Hub.
+func (o LookupSpokeResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpokeResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
+func (o LookupSpokeResultOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpokeResult) string { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// The time when the Spoke was updated.
+func (o LookupSpokeResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpokeResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSpokeResultOutput{})
 }

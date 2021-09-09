@@ -108,7 +108,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput)
 type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrType
+	return reflect.TypeOf((**GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType)(nil)).Elem()
 }
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
@@ -117,6 +117,16 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutp
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType
+		return ret
+	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput)
 }
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutp
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType {
-		var ret GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput)
 }
 
 // GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeArgs and GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput values.
@@ -289,7 +289,7 @@ func (o WorkloadComplianceRegimeOutput) ToStringPtrOutputWithContext(ctx context
 type WorkloadComplianceRegimePtrOutput struct{ *pulumi.OutputState }
 
 func (WorkloadComplianceRegimePtrOutput) ElementType() reflect.Type {
-	return workloadComplianceRegimePtrType
+	return reflect.TypeOf((**WorkloadComplianceRegime)(nil)).Elem()
 }
 
 func (o WorkloadComplianceRegimePtrOutput) ToWorkloadComplianceRegimePtrOutput() WorkloadComplianceRegimePtrOutput {
@@ -298,6 +298,16 @@ func (o WorkloadComplianceRegimePtrOutput) ToWorkloadComplianceRegimePtrOutput()
 
 func (o WorkloadComplianceRegimePtrOutput) ToWorkloadComplianceRegimePtrOutputWithContext(ctx context.Context) WorkloadComplianceRegimePtrOutput {
 	return o
+}
+
+func (o WorkloadComplianceRegimePtrOutput) Elem() WorkloadComplianceRegimeOutput {
+	return o.ApplyT(func(v *WorkloadComplianceRegime) WorkloadComplianceRegime {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadComplianceRegime
+		return ret
+	}).(WorkloadComplianceRegimeOutput)
 }
 
 func (o WorkloadComplianceRegimePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -312,16 +322,6 @@ func (o WorkloadComplianceRegimePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkloadComplianceRegimePtrOutput) Elem() WorkloadComplianceRegimeOutput {
-	return o.ApplyT(func(v *WorkloadComplianceRegime) WorkloadComplianceRegime {
-		var ret WorkloadComplianceRegime
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(WorkloadComplianceRegimeOutput)
 }
 
 // WorkloadComplianceRegimeInput is an input type that accepts WorkloadComplianceRegimeArgs and WorkloadComplianceRegimeOutput values.

@@ -760,10 +760,11 @@ func (o BasicAuthOutput) ToBasicAuthPtrOutput() BasicAuthPtrOutput {
 }
 
 func (o BasicAuthOutput) ToBasicAuthPtrOutputWithContext(ctx context.Context) BasicAuthPtrOutput {
-	return o.ApplyT(func(v BasicAuth) *BasicAuth {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicAuth) *BasicAuth {
 		return &v
 	}).(BasicAuthPtrOutput)
 }
+
 func (o BasicAuthOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -787,7 +788,13 @@ func (o BasicAuthPtrOutput) ToBasicAuthPtrOutputWithContext(ctx context.Context)
 }
 
 func (o BasicAuthPtrOutput) Elem() BasicAuthOutput {
-	return o.ApplyT(func(v *BasicAuth) BasicAuth { return *v }).(BasicAuthOutput)
+	return o.ApplyT(func(v *BasicAuth) BasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret BasicAuth
+		return ret
+	}).(BasicAuthOutput)
 }
 
 func (o BasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
@@ -904,10 +911,11 @@ func (o BasicAuthResponseOutput) ToBasicAuthResponsePtrOutput() BasicAuthRespons
 }
 
 func (o BasicAuthResponseOutput) ToBasicAuthResponsePtrOutputWithContext(ctx context.Context) BasicAuthResponsePtrOutput {
-	return o.ApplyT(func(v BasicAuthResponse) *BasicAuthResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicAuthResponse) *BasicAuthResponse {
 		return &v
 	}).(BasicAuthResponsePtrOutput)
 }
+
 func (o BasicAuthResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v BasicAuthResponse) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -931,7 +939,13 @@ func (o BasicAuthResponsePtrOutput) ToBasicAuthResponsePtrOutputWithContext(ctx 
 }
 
 func (o BasicAuthResponsePtrOutput) Elem() BasicAuthResponseOutput {
-	return o.ApplyT(func(v *BasicAuthResponse) BasicAuthResponse { return *v }).(BasicAuthResponseOutput)
+	return o.ApplyT(func(v *BasicAuthResponse) BasicAuthResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BasicAuthResponse
+		return ret
+	}).(BasicAuthResponseOutput)
 }
 
 func (o BasicAuthResponsePtrOutput) Password() pulumi.StringPtrOutput {
@@ -1735,7 +1749,7 @@ func (o ConfigFileOutput) ToConfigFilePtrOutput() ConfigFilePtrOutput {
 }
 
 func (o ConfigFileOutput) ToConfigFilePtrOutputWithContext(ctx context.Context) ConfigFilePtrOutput {
-	return o.ApplyT(func(v ConfigFile) *ConfigFile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigFile) *ConfigFile {
 		return &v
 	}).(ConfigFilePtrOutput)
 }
@@ -1760,7 +1774,13 @@ func (o ConfigFilePtrOutput) ToConfigFilePtrOutputWithContext(ctx context.Contex
 }
 
 func (o ConfigFilePtrOutput) Elem() ConfigFileOutput {
-	return o.ApplyT(func(v *ConfigFile) ConfigFile { return *v }).(ConfigFileOutput)
+	return o.ApplyT(func(v *ConfigFile) ConfigFile {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigFile
+		return ret
+	}).(ConfigFileOutput)
 }
 
 // The contents of the file.
@@ -1866,7 +1886,7 @@ func (o ConfigFileResponseOutput) ToConfigFileResponsePtrOutput() ConfigFileResp
 }
 
 func (o ConfigFileResponseOutput) ToConfigFileResponsePtrOutputWithContext(ctx context.Context) ConfigFileResponsePtrOutput {
-	return o.ApplyT(func(v ConfigFileResponse) *ConfigFileResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigFileResponse) *ConfigFileResponse {
 		return &v
 	}).(ConfigFileResponsePtrOutput)
 }
@@ -1891,7 +1911,13 @@ func (o ConfigFileResponsePtrOutput) ToConfigFileResponsePtrOutputWithContext(ct
 }
 
 func (o ConfigFileResponsePtrOutput) Elem() ConfigFileResponseOutput {
-	return o.ApplyT(func(v *ConfigFileResponse) ConfigFileResponse { return *v }).(ConfigFileResponseOutput)
+	return o.ApplyT(func(v *ConfigFileResponse) ConfigFileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigFileResponse
+		return ret
+	}).(ConfigFileResponseOutput)
 }
 
 // The contents of the file.
@@ -2008,7 +2034,7 @@ func (o CredentialOutput) ToCredentialPtrOutput() CredentialPtrOutput {
 }
 
 func (o CredentialOutput) ToCredentialPtrOutputWithContext(ctx context.Context) CredentialPtrOutput {
-	return o.ApplyT(func(v Credential) *Credential {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Credential) *Credential {
 		return &v
 	}).(CredentialPtrOutput)
 }
@@ -2043,7 +2069,13 @@ func (o CredentialPtrOutput) ToCredentialPtrOutputWithContext(ctx context.Contex
 }
 
 func (o CredentialPtrOutput) Elem() CredentialOutput {
-	return o.ApplyT(func(v *Credential) Credential { return *v }).(CredentialOutput)
+	return o.ApplyT(func(v *Credential) Credential {
+		if v != nil {
+			return *v
+		}
+		var ret Credential
+		return ret
+	}).(CredentialOutput)
 }
 
 // Basic Auth Credential, only used by TypeProvider.
@@ -2180,7 +2212,7 @@ func (o CredentialResponseOutput) ToCredentialResponsePtrOutput() CredentialResp
 }
 
 func (o CredentialResponseOutput) ToCredentialResponsePtrOutputWithContext(ctx context.Context) CredentialResponsePtrOutput {
-	return o.ApplyT(func(v CredentialResponse) *CredentialResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CredentialResponse) *CredentialResponse {
 		return &v
 	}).(CredentialResponsePtrOutput)
 }
@@ -2215,7 +2247,13 @@ func (o CredentialResponsePtrOutput) ToCredentialResponsePtrOutputWithContext(ct
 }
 
 func (o CredentialResponsePtrOutput) Elem() CredentialResponseOutput {
-	return o.ApplyT(func(v *CredentialResponse) CredentialResponse { return *v }).(CredentialResponseOutput)
+	return o.ApplyT(func(v *CredentialResponse) CredentialResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CredentialResponse
+		return ret
+	}).(CredentialResponseOutput)
 }
 
 // Basic Auth Credential, only used by TypeProvider.
@@ -2789,7 +2827,7 @@ func (o DeploymentUpdateResponseOutput) ToDeploymentUpdateResponsePtrOutput() De
 }
 
 func (o DeploymentUpdateResponseOutput) ToDeploymentUpdateResponsePtrOutputWithContext(ctx context.Context) DeploymentUpdateResponsePtrOutput {
-	return o.ApplyT(func(v DeploymentUpdateResponse) *DeploymentUpdateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentUpdateResponse) *DeploymentUpdateResponse {
 		return &v
 	}).(DeploymentUpdateResponsePtrOutput)
 }
@@ -2829,7 +2867,13 @@ func (o DeploymentUpdateResponsePtrOutput) ToDeploymentUpdateResponsePtrOutputWi
 }
 
 func (o DeploymentUpdateResponsePtrOutput) Elem() DeploymentUpdateResponseOutput {
-	return o.ApplyT(func(v *DeploymentUpdateResponse) DeploymentUpdateResponse { return *v }).(DeploymentUpdateResponseOutput)
+	return o.ApplyT(func(v *DeploymentUpdateResponse) DeploymentUpdateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentUpdateResponse
+		return ret
+	}).(DeploymentUpdateResponseOutput)
 }
 
 // The user-provided default credential to use when deploying this preview.
@@ -3192,7 +3236,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -3232,7 +3276,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -3935,7 +3985,7 @@ func (o MethodMapOutput) ToMethodMapPtrOutput() MethodMapPtrOutput {
 }
 
 func (o MethodMapOutput) ToMethodMapPtrOutputWithContext(ctx context.Context) MethodMapPtrOutput {
-	return o.ApplyT(func(v MethodMap) *MethodMap {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MethodMap) *MethodMap {
 		return &v
 	}).(MethodMapPtrOutput)
 }
@@ -3980,7 +4030,13 @@ func (o MethodMapPtrOutput) ToMethodMapPtrOutputWithContext(ctx context.Context)
 }
 
 func (o MethodMapPtrOutput) Elem() MethodMapOutput {
-	return o.ApplyT(func(v *MethodMap) MethodMap { return *v }).(MethodMapOutput)
+	return o.ApplyT(func(v *MethodMap) MethodMap {
+		if v != nil {
+			return *v
+		}
+		var ret MethodMap
+		return ret
+	}).(MethodMapOutput)
 }
 
 // The action identifier for the create method to be used for this collection
@@ -4335,7 +4391,7 @@ func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutput() Operat
 }
 
 func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
-	return o.ApplyT(func(v OperationErrorResponse) *OperationErrorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OperationErrorResponse) *OperationErrorResponse {
 		return &v
 	}).(OperationErrorResponsePtrOutput)
 }
@@ -4360,7 +4416,13 @@ func (o OperationErrorResponsePtrOutput) ToOperationErrorResponsePtrOutputWithCo
 }
 
 func (o OperationErrorResponsePtrOutput) Elem() OperationErrorResponseOutput {
-	return o.ApplyT(func(v *OperationErrorResponse) OperationErrorResponse { return *v }).(OperationErrorResponseOutput)
+	return o.ApplyT(func(v *OperationErrorResponse) OperationErrorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OperationErrorResponse
+		return ret
+	}).(OperationErrorResponseOutput)
 }
 
 // The array of errors encountered while processing this operation.
@@ -4553,7 +4615,7 @@ func (o OperationResponseOutput) ToOperationResponsePtrOutput() OperationRespons
 }
 
 func (o OperationResponseOutput) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
-	return o.ApplyT(func(v OperationResponse) *OperationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OperationResponse) *OperationResponse {
 		return &v
 	}).(OperationResponsePtrOutput)
 }
@@ -4683,7 +4745,13 @@ func (o OperationResponsePtrOutput) ToOperationResponsePtrOutputWithContext(ctx 
 }
 
 func (o OperationResponsePtrOutput) Elem() OperationResponseOutput {
-	return o.ApplyT(func(v *OperationResponse) OperationResponse { return *v }).(OperationResponseOutput)
+	return o.ApplyT(func(v *OperationResponse) OperationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OperationResponse
+		return ret
+	}).(OperationResponseOutput)
 }
 
 // The value of `requestId` if you provided it in the request. Not present otherwise.
@@ -5235,7 +5303,7 @@ func (o OptionsOutput) ToOptionsPtrOutput() OptionsPtrOutput {
 }
 
 func (o OptionsOutput) ToOptionsPtrOutputWithContext(ctx context.Context) OptionsPtrOutput {
-	return o.ApplyT(func(v Options) *Options {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Options) *Options {
 		return &v
 	}).(OptionsPtrOutput)
 }
@@ -5275,7 +5343,13 @@ func (o OptionsPtrOutput) ToOptionsPtrOutputWithContext(ctx context.Context) Opt
 }
 
 func (o OptionsPtrOutput) Elem() OptionsOutput {
-	return o.ApplyT(func(v *Options) Options { return *v }).(OptionsOutput)
+	return o.ApplyT(func(v *Options) Options {
+		if v != nil {
+			return *v
+		}
+		var ret Options
+		return ret
+	}).(OptionsOutput)
 }
 
 // Options regarding how to thread async requests.
@@ -5426,7 +5500,7 @@ func (o OptionsResponseOutput) ToOptionsResponsePtrOutput() OptionsResponsePtrOu
 }
 
 func (o OptionsResponseOutput) ToOptionsResponsePtrOutputWithContext(ctx context.Context) OptionsResponsePtrOutput {
-	return o.ApplyT(func(v OptionsResponse) *OptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OptionsResponse) *OptionsResponse {
 		return &v
 	}).(OptionsResponsePtrOutput)
 }
@@ -5466,7 +5540,13 @@ func (o OptionsResponsePtrOutput) ToOptionsResponsePtrOutputWithContext(ctx cont
 }
 
 func (o OptionsResponsePtrOutput) Elem() OptionsResponseOutput {
-	return o.ApplyT(func(v *OptionsResponse) OptionsResponse { return *v }).(OptionsResponseOutput)
+	return o.ApplyT(func(v *OptionsResponse) OptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OptionsResponse
+		return ret
+	}).(OptionsResponseOutput)
 }
 
 // Options regarding how to thread async requests.
@@ -5618,7 +5698,7 @@ func (o PollingOptionsOutput) ToPollingOptionsPtrOutput() PollingOptionsPtrOutpu
 }
 
 func (o PollingOptionsOutput) ToPollingOptionsPtrOutputWithContext(ctx context.Context) PollingOptionsPtrOutput {
-	return o.ApplyT(func(v PollingOptions) *PollingOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PollingOptions) *PollingOptions {
 		return &v
 	}).(PollingOptionsPtrOutput)
 }
@@ -5663,7 +5743,13 @@ func (o PollingOptionsPtrOutput) ToPollingOptionsPtrOutputWithContext(ctx contex
 }
 
 func (o PollingOptionsPtrOutput) Elem() PollingOptionsOutput {
-	return o.ApplyT(func(v *PollingOptions) PollingOptions { return *v }).(PollingOptionsOutput)
+	return o.ApplyT(func(v *PollingOptions) PollingOptions {
+		if v != nil {
+			return *v
+		}
+		var ret PollingOptions
+		return ret
+	}).(PollingOptionsOutput)
 }
 
 // An array of diagnostics to be collected by Deployment Manager, these diagnostics will be displayed to the user.
@@ -5900,7 +5986,7 @@ func (o ServiceAccountOutput) ToServiceAccountPtrOutput() ServiceAccountPtrOutpu
 }
 
 func (o ServiceAccountOutput) ToServiceAccountPtrOutputWithContext(ctx context.Context) ServiceAccountPtrOutput {
-	return o.ApplyT(func(v ServiceAccount) *ServiceAccount {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceAccount) *ServiceAccount {
 		return &v
 	}).(ServiceAccountPtrOutput)
 }
@@ -5925,7 +6011,13 @@ func (o ServiceAccountPtrOutput) ToServiceAccountPtrOutputWithContext(ctx contex
 }
 
 func (o ServiceAccountPtrOutput) Elem() ServiceAccountOutput {
-	return o.ApplyT(func(v *ServiceAccount) ServiceAccount { return *v }).(ServiceAccountOutput)
+	return o.ApplyT(func(v *ServiceAccount) ServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceAccount
+		return ret
+	}).(ServiceAccountOutput)
 }
 
 // The IAM service account email address like test@myproject.iam.gserviceaccount.com
@@ -6034,7 +6126,7 @@ func (o ServiceAccountResponseOutput) ToServiceAccountResponsePtrOutput() Servic
 }
 
 func (o ServiceAccountResponseOutput) ToServiceAccountResponsePtrOutputWithContext(ctx context.Context) ServiceAccountResponsePtrOutput {
-	return o.ApplyT(func(v ServiceAccountResponse) *ServiceAccountResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceAccountResponse) *ServiceAccountResponse {
 		return &v
 	}).(ServiceAccountResponsePtrOutput)
 }
@@ -6059,7 +6151,13 @@ func (o ServiceAccountResponsePtrOutput) ToServiceAccountResponsePtrOutputWithCo
 }
 
 func (o ServiceAccountResponsePtrOutput) Elem() ServiceAccountResponseOutput {
-	return o.ApplyT(func(v *ServiceAccountResponse) ServiceAccountResponse { return *v }).(ServiceAccountResponseOutput)
+	return o.ApplyT(func(v *ServiceAccountResponse) ServiceAccountResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceAccountResponse
+		return ret
+	}).(ServiceAccountResponseOutput)
 }
 
 // The IAM service account email address like test@myproject.iam.gserviceaccount.com
@@ -6169,7 +6267,7 @@ func (o TargetConfigurationOutput) ToTargetConfigurationPtrOutput() TargetConfig
 }
 
 func (o TargetConfigurationOutput) ToTargetConfigurationPtrOutputWithContext(ctx context.Context) TargetConfigurationPtrOutput {
-	return o.ApplyT(func(v TargetConfiguration) *TargetConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetConfiguration) *TargetConfiguration {
 		return &v
 	}).(TargetConfigurationPtrOutput)
 }
@@ -6199,7 +6297,13 @@ func (o TargetConfigurationPtrOutput) ToTargetConfigurationPtrOutputWithContext(
 }
 
 func (o TargetConfigurationPtrOutput) Elem() TargetConfigurationOutput {
-	return o.ApplyT(func(v *TargetConfiguration) TargetConfiguration { return *v }).(TargetConfigurationOutput)
+	return o.ApplyT(func(v *TargetConfiguration) TargetConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret TargetConfiguration
+		return ret
+	}).(TargetConfigurationOutput)
 }
 
 // The configuration to use for this deployment.
@@ -6319,7 +6423,7 @@ func (o TargetConfigurationResponseOutput) ToTargetConfigurationResponsePtrOutpu
 }
 
 func (o TargetConfigurationResponseOutput) ToTargetConfigurationResponsePtrOutputWithContext(ctx context.Context) TargetConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v TargetConfigurationResponse) *TargetConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetConfigurationResponse) *TargetConfigurationResponse {
 		return &v
 	}).(TargetConfigurationResponsePtrOutput)
 }
@@ -6349,7 +6453,13 @@ func (o TargetConfigurationResponsePtrOutput) ToTargetConfigurationResponsePtrOu
 }
 
 func (o TargetConfigurationResponsePtrOutput) Elem() TargetConfigurationResponseOutput {
-	return o.ApplyT(func(v *TargetConfigurationResponse) TargetConfigurationResponse { return *v }).(TargetConfigurationResponseOutput)
+	return o.ApplyT(func(v *TargetConfigurationResponse) TargetConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TargetConfigurationResponse
+		return ret
+	}).(TargetConfigurationResponseOutput)
 }
 
 // The configuration to use for this deployment.
@@ -6484,7 +6594,7 @@ func (o TemplateContentsOutput) ToTemplateContentsPtrOutput() TemplateContentsPt
 }
 
 func (o TemplateContentsOutput) ToTemplateContentsPtrOutputWithContext(ctx context.Context) TemplateContentsPtrOutput {
-	return o.ApplyT(func(v TemplateContents) *TemplateContents {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateContents) *TemplateContents {
 		return &v
 	}).(TemplateContentsPtrOutput)
 }
@@ -6529,7 +6639,13 @@ func (o TemplateContentsPtrOutput) ToTemplateContentsPtrOutputWithContext(ctx co
 }
 
 func (o TemplateContentsPtrOutput) Elem() TemplateContentsOutput {
-	return o.ApplyT(func(v *TemplateContents) TemplateContents { return *v }).(TemplateContentsOutput)
+	return o.ApplyT(func(v *TemplateContents) TemplateContents {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateContents
+		return ret
+	}).(TemplateContentsOutput)
 }
 
 // Import files referenced by the main template.
@@ -6694,7 +6810,7 @@ func (o TemplateContentsResponseOutput) ToTemplateContentsResponsePtrOutput() Te
 }
 
 func (o TemplateContentsResponseOutput) ToTemplateContentsResponsePtrOutputWithContext(ctx context.Context) TemplateContentsResponsePtrOutput {
-	return o.ApplyT(func(v TemplateContentsResponse) *TemplateContentsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateContentsResponse) *TemplateContentsResponse {
 		return &v
 	}).(TemplateContentsResponsePtrOutput)
 }
@@ -6739,7 +6855,13 @@ func (o TemplateContentsResponsePtrOutput) ToTemplateContentsResponsePtrOutputWi
 }
 
 func (o TemplateContentsResponsePtrOutput) Elem() TemplateContentsResponseOutput {
-	return o.ApplyT(func(v *TemplateContentsResponse) TemplateContentsResponse { return *v }).(TemplateContentsResponseOutput)
+	return o.ApplyT(func(v *TemplateContentsResponse) TemplateContentsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateContentsResponse
+		return ret
+	}).(TemplateContentsResponseOutput)
 }
 
 // Import files referenced by the main template.
@@ -7110,7 +7232,7 @@ func (o ValidationOptionsOutput) ToValidationOptionsPtrOutput() ValidationOption
 }
 
 func (o ValidationOptionsOutput) ToValidationOptionsPtrOutputWithContext(ctx context.Context) ValidationOptionsPtrOutput {
-	return o.ApplyT(func(v ValidationOptions) *ValidationOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValidationOptions) *ValidationOptions {
 		return &v
 	}).(ValidationOptionsPtrOutput)
 }
@@ -7140,7 +7262,13 @@ func (o ValidationOptionsPtrOutput) ToValidationOptionsPtrOutputWithContext(ctx 
 }
 
 func (o ValidationOptionsPtrOutput) Elem() ValidationOptionsOutput {
-	return o.ApplyT(func(v *ValidationOptions) ValidationOptions { return *v }).(ValidationOptionsOutput)
+	return o.ApplyT(func(v *ValidationOptions) ValidationOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ValidationOptions
+		return ret
+	}).(ValidationOptionsOutput)
 }
 
 // Customize how deployment manager will validate the resource against schema errors.
@@ -7263,7 +7391,7 @@ func (o ValidationOptionsResponseOutput) ToValidationOptionsResponsePtrOutput() 
 }
 
 func (o ValidationOptionsResponseOutput) ToValidationOptionsResponsePtrOutputWithContext(ctx context.Context) ValidationOptionsResponsePtrOutput {
-	return o.ApplyT(func(v ValidationOptionsResponse) *ValidationOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValidationOptionsResponse) *ValidationOptionsResponse {
 		return &v
 	}).(ValidationOptionsResponsePtrOutput)
 }
@@ -7293,7 +7421,13 @@ func (o ValidationOptionsResponsePtrOutput) ToValidationOptionsResponsePtrOutput
 }
 
 func (o ValidationOptionsResponsePtrOutput) Elem() ValidationOptionsResponseOutput {
-	return o.ApplyT(func(v *ValidationOptionsResponse) ValidationOptionsResponse { return *v }).(ValidationOptionsResponseOutput)
+	return o.ApplyT(func(v *ValidationOptionsResponse) ValidationOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ValidationOptionsResponse
+		return ret
+	}).(ValidationOptionsResponseOutput)
 }
 
 // Customize how deployment manager will validate the resource against schema errors.

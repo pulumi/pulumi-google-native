@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
+    /// </summary>
     [OutputType]
     public sealed class CloudEndpointsResponse
     {

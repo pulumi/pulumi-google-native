@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Outputs
 {
 
+    /// <summary>
+    /// An attestor public key that will be used to verify attestations signed by this attestor.
+    /// </summary>
     [OutputType]
     public sealed class AttestorPublicKeyResponse
     {

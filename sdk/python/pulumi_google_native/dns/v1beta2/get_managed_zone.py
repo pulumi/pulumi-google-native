@@ -13,6 +13,7 @@ __all__ = [
     'GetManagedZoneResult',
     'AwaitableGetManagedZoneResult',
     'get_managed_zone',
+    'get_managed_zone_output',
 ]
 
 @pulumi.output_type
@@ -238,3 +239,14 @@ def get_managed_zone(client_operation_id: Optional[str] = None,
         reverse_lookup_config=__ret__.reverse_lookup_config,
         service_directory_config=__ret__.service_directory_config,
         visibility=__ret__.visibility)
+
+
+@_utilities.lift_output_func(get_managed_zone)
+def get_managed_zone_output(client_operation_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            managed_zone: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagedZoneResult]:
+    """
+    Fetches the representation of an existing ManagedZone.
+    """
+    ...

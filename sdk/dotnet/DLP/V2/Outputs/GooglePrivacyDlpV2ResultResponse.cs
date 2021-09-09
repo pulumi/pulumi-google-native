@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// All result fields mentioned below are updated while the job is processing.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ResultResponse
     {

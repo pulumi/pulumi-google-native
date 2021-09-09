@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// An **entity entry** for an associated entity type.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2EntityTypeEntityResponse
     {

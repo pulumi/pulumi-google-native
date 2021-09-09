@@ -125,9 +125,7 @@ func (i *Runtime) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeOutput)
 }
 
-type RuntimeOutput struct {
-	*pulumi.OutputState
-}
+type RuntimeOutput struct{ *pulumi.OutputState }
 
 func (RuntimeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Runtime)(nil))

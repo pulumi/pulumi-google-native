@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,4 +46,87 @@ type GetKeyResult struct {
 	Scopes []string `pulumi:"scopes"`
 	// Status of the credential. Valid values include `approved` or `revoked`.
 	Status string `pulumi:"status"`
+}
+
+func GetKeyOutput(ctx *pulumi.Context, args GetKeyOutputArgs, opts ...pulumi.InvokeOption) GetKeyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetKeyResult, error) {
+			args := v.(GetKeyArgs)
+			r, err := GetKey(ctx, &args, opts...)
+			return *r, err
+		}).(GetKeyResultOutput)
+}
+
+type GetKeyOutputArgs struct {
+	AppId          pulumi.StringInput `pulumi:"appId"`
+	DeveloperId    pulumi.StringInput `pulumi:"developerId"`
+	KeyId          pulumi.StringInput `pulumi:"keyId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (GetKeyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyArgs)(nil)).Elem()
+}
+
+type GetKeyResultOutput struct{ *pulumi.OutputState }
+
+func (GetKeyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyResult)(nil)).Elem()
+}
+
+func (o GetKeyResultOutput) ToGetKeyResultOutput() GetKeyResultOutput {
+	return o
+}
+
+func (o GetKeyResultOutput) ToGetKeyResultOutputWithContext(ctx context.Context) GetKeyResultOutput {
+	return o
+}
+
+// List of API products for which the credential can be used. **Note**: Do not specify the list of API products when creating a consumer key and secret for a developer app. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created.
+func (o GetKeyResultOutput) ApiProducts() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GetKeyResult) []interface{} { return v.ApiProducts }).(pulumi.ArrayOutput)
+}
+
+// List of attributes associated with the credential.
+func (o GetKeyResultOutput) Attributes() GoogleCloudApigeeV1AttributeResponseArrayOutput {
+	return o.ApplyT(func(v GetKeyResult) []GoogleCloudApigeeV1AttributeResponse { return v.Attributes }).(GoogleCloudApigeeV1AttributeResponseArrayOutput)
+}
+
+// Consumer key.
+func (o GetKeyResultOutput) ConsumerKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.ConsumerKey }).(pulumi.StringOutput)
+}
+
+// Secret key.
+func (o GetKeyResultOutput) ConsumerSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.ConsumerSecret }).(pulumi.StringOutput)
+}
+
+// Time the developer app expires in milliseconds since epoch.
+func (o GetKeyResultOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+// Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+func (o GetKeyResultOutput) ExpiresInSeconds() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.ExpiresInSeconds }).(pulumi.StringOutput)
+}
+
+// Time the developer app was created in milliseconds since epoch.
+func (o GetKeyResultOutput) IssuedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.IssuedAt }).(pulumi.StringOutput)
+}
+
+// Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
+func (o GetKeyResultOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKeyResult) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Status of the credential. Valid values include `approved` or `revoked`.
+func (o GetKeyResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetKeyResultOutput{})
 }

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Specification of HTTP header match atrributes.
+    /// </summary>
     [OutputType]
     public sealed class HttpHeaderMatchResponse
     {

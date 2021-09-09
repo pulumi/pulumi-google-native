@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies the login configuration for Runtime
+    /// </summary>
     [OutputType]
     public sealed class RuntimeAccessConfigResponse
     {

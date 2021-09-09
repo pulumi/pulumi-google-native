@@ -12,6 +12,7 @@ __all__ = [
     'GetBillingAccountResult',
     'AwaitableGetBillingAccountResult',
     'get_billing_account',
+    'get_billing_account_output',
 ]
 
 @pulumi.output_type
@@ -93,3 +94,12 @@ def get_billing_account(billing_account_id: Optional[str] = None,
         master_billing_account=__ret__.master_billing_account,
         name=__ret__.name,
         open=__ret__.open)
+
+
+@_utilities.lift_output_func(get_billing_account)
+def get_billing_account_output(billing_account_id: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingAccountResult]:
+    """
+    Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access).
+    """
+    ...

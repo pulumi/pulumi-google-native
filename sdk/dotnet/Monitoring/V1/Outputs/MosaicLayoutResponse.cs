@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid.
+    /// </summary>
     [OutputType]
     public sealed class MosaicLayoutResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 {
 
+    /// <summary>
+    /// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+    /// </summary>
     [OutputType]
     public sealed class SqlActiveDirectoryConfigResponse
     {

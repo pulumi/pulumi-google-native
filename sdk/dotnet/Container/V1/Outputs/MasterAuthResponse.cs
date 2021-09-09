@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// The authentication information for accessing the master endpoint. Authentication can be done using HTTP basic auth or using client certificates.
+    /// </summary>
     [OutputType]
     public sealed class MasterAuthResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
 {
 
+    /// <summary>
+    /// Commitment settings for commitment-based offers.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudChannelV1CommitmentSettingsResponse
     {

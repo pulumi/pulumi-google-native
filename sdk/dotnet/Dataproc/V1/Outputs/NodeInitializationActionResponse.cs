@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies an executable to run on a fully configured node and a timeout period for executable completion.
+    /// </summary>
     [OutputType]
     public sealed class NodeInitializationActionResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Message representing a set of files in Cloud Storage.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2CloudStorageFileSetResponse
     {

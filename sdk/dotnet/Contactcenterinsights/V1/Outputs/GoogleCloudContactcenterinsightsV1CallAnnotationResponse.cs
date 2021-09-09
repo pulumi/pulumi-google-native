@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// A piece of metadata that applies to a window of a call.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1CallAnnotationResponse
     {

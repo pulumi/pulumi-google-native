@@ -13,6 +13,7 @@ __all__ = [
     'GetSessionEntityTypeResult',
     'AwaitableGetSessionEntityTypeResult',
     'get_session_entity_type',
+    'get_session_entity_type_output',
 ]
 
 @pulumi.output_type
@@ -91,3 +92,17 @@ def get_session_entity_type(agent_id: Optional[str] = None,
         entities=__ret__.entities,
         entity_override_mode=__ret__.entity_override_mode,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_session_entity_type)
+def get_session_entity_type_output(agent_id: Optional[pulumi.Input[str]] = None,
+                                   entity_type_id: Optional[pulumi.Input[str]] = None,
+                                   environment_id: Optional[pulumi.Input[str]] = None,
+                                   location: Optional[pulumi.Input[str]] = None,
+                                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                                   session_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSessionEntityTypeResult]:
+    """
+    Retrieves the specified session entity type.
+    """
+    ...

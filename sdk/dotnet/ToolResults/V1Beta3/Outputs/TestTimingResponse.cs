@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// Testing timing break down to know phases.
+    /// </summary>
     [OutputType]
     public sealed class TestTimingResponse
     {

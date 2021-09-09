@@ -198,9 +198,7 @@ func (i *RatePlan) ToRatePlanOutputWithContext(ctx context.Context) RatePlanOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RatePlanOutput)
 }
 
-type RatePlanOutput struct {
-	*pulumi.OutputState
-}
+type RatePlanOutput struct{ *pulumi.OutputState }
 
 func (RatePlanOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RatePlan)(nil))

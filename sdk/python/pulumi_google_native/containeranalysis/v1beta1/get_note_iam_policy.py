@@ -13,6 +13,7 @@ __all__ = [
     'GetNoteIamPolicyResult',
     'AwaitableGetNoteIamPolicyResult',
     'get_note_iam_policy',
+    'get_note_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -83,3 +84,13 @@ def get_note_iam_policy(note_id: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_note_iam_policy)
+def get_note_iam_policy_output(note_id: Optional[pulumi.Input[str]] = None,
+                               project: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNoteIamPolicyResult]:
+    """
+    Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+    """
+    ...

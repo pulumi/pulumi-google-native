@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Source information used to create a Service Config
+    /// </summary>
     [OutputType]
     public sealed class SourceInfoResponse
     {

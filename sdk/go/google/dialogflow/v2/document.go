@@ -153,9 +153,7 @@ func (i *Document) ToDocumentOutputWithContext(ctx context.Context) DocumentOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentOutput)
 }
 
-type DocumentOutput struct {
-	*pulumi.OutputState
-}
+type DocumentOutput struct{ *pulumi.OutputState }
 
 func (DocumentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Document)(nil))

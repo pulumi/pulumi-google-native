@@ -13,6 +13,7 @@ __all__ = [
     'GetServiceLevelObjectiveResult',
     'AwaitableGetServiceLevelObjectiveResult',
     'get_service_level_objective',
+    'get_service_level_objective_output',
 ]
 
 @pulumi.output_type
@@ -141,3 +142,16 @@ def get_service_level_objective(service_id: Optional[str] = None,
         rolling_period=__ret__.rolling_period,
         service_level_indicator=__ret__.service_level_indicator,
         user_labels=__ret__.user_labels)
+
+
+@_utilities.lift_output_func(get_service_level_objective)
+def get_service_level_objective_output(service_id: Optional[pulumi.Input[str]] = None,
+                                       service_level_objective_id: Optional[pulumi.Input[str]] = None,
+                                       v3_id: Optional[pulumi.Input[str]] = None,
+                                       v3_id1: Optional[pulumi.Input[str]] = None,
+                                       view: Optional[pulumi.Input[Optional[str]]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceLevelObjectiveResult]:
+    """
+    Get a ServiceLevelObjective by name.
+    """
+    ...

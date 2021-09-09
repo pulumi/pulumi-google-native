@@ -13,6 +13,7 @@ __all__ = [
     'GetOrganizationIamPolicyResult',
     'AwaitableGetOrganizationIamPolicyResult',
     'get_organization_iam_policy',
+    'get_organization_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -94,3 +95,12 @@ def get_organization_iam_policy(organization_id: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_organization_iam_policy)
+def get_organization_iam_policy_output(organization_id: Optional[pulumi.Input[str]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationIamPolicyResult]:
+    """
+    Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
+    """
+    ...

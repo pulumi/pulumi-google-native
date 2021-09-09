@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration details used for calculating evaluation metrics and creating an Evaluation.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatalabelingV1beta1EvaluationConfigResponse
     {

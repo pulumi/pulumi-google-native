@@ -13,6 +13,7 @@ __all__ = [
     'GetServicePerimeterResult',
     'AwaitableGetServicePerimeterResult',
     'get_service_perimeter',
+    'get_service_perimeter_output',
 ]
 
 @pulumi.output_type
@@ -109,3 +110,13 @@ def get_service_perimeter(access_policy_id: Optional[str] = None,
         perimeter_type=__ret__.perimeter_type,
         status=__ret__.status,
         title=__ret__.title)
+
+
+@_utilities.lift_output_func(get_service_perimeter)
+def get_service_perimeter_output(access_policy_id: Optional[pulumi.Input[str]] = None,
+                                 service_perimeter_id: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePerimeterResult]:
+    """
+    Get a Service Perimeter by resource name.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Cloudkms.V1.Outputs
 {
 
+    /// <summary>
+    /// A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
+    /// </summary>
     [OutputType]
     public sealed class CryptoKeyVersionTemplateResponse
     {

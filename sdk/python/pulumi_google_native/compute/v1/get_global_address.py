@@ -12,6 +12,7 @@ __all__ = [
     'GetGlobalAddressResult',
     'AwaitableGetGlobalAddressResult',
     'get_global_address',
+    'get_global_address_output',
 ]
 
 @pulumi.output_type
@@ -251,3 +252,13 @@ def get_global_address(address: Optional[str] = None,
         status=__ret__.status,
         subnetwork=__ret__.subnetwork,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_global_address)
+def get_global_address_output(address: Optional[pulumi.Input[str]] = None,
+                              project: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalAddressResult]:
+    """
+    Returns the specified address resource. Gets a list of available addresses by making a list() request.
+    """
+    ...

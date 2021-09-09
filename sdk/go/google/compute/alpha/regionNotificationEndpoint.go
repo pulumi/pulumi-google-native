@@ -120,9 +120,7 @@ func (i *RegionNotificationEndpoint) ToRegionNotificationEndpointOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNotificationEndpointOutput)
 }
 
-type RegionNotificationEndpointOutput struct {
-	*pulumi.OutputState
-}
+type RegionNotificationEndpointOutput struct{ *pulumi.OutputState }
 
 func (RegionNotificationEndpointOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionNotificationEndpoint)(nil))

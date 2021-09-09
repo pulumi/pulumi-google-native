@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -277,7 +277,7 @@ func (o KeyKeyAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type KeyKeyAlgorithmPtrOutput struct{ *pulumi.OutputState }
 
 func (KeyKeyAlgorithmPtrOutput) ElementType() reflect.Type {
-	return keyKeyAlgorithmPtrType
+	return reflect.TypeOf((**KeyKeyAlgorithm)(nil)).Elem()
 }
 
 func (o KeyKeyAlgorithmPtrOutput) ToKeyKeyAlgorithmPtrOutput() KeyKeyAlgorithmPtrOutput {
@@ -286,6 +286,16 @@ func (o KeyKeyAlgorithmPtrOutput) ToKeyKeyAlgorithmPtrOutput() KeyKeyAlgorithmPt
 
 func (o KeyKeyAlgorithmPtrOutput) ToKeyKeyAlgorithmPtrOutputWithContext(ctx context.Context) KeyKeyAlgorithmPtrOutput {
 	return o
+}
+
+func (o KeyKeyAlgorithmPtrOutput) Elem() KeyKeyAlgorithmOutput {
+	return o.ApplyT(func(v *KeyKeyAlgorithm) KeyKeyAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret KeyKeyAlgorithm
+		return ret
+	}).(KeyKeyAlgorithmOutput)
 }
 
 func (o KeyKeyAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o KeyKeyAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o KeyKeyAlgorithmPtrOutput) Elem() KeyKeyAlgorithmOutput {
-	return o.ApplyT(func(v *KeyKeyAlgorithm) KeyKeyAlgorithm {
-		var ret KeyKeyAlgorithm
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(KeyKeyAlgorithmOutput)
 }
 
 // KeyKeyAlgorithmInput is an input type that accepts KeyKeyAlgorithmArgs and KeyKeyAlgorithmOutput values.
@@ -446,7 +446,7 @@ func (o KeyPrivateKeyTypeOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type KeyPrivateKeyTypePtrOutput struct{ *pulumi.OutputState }
 
 func (KeyPrivateKeyTypePtrOutput) ElementType() reflect.Type {
-	return keyPrivateKeyTypePtrType
+	return reflect.TypeOf((**KeyPrivateKeyType)(nil)).Elem()
 }
 
 func (o KeyPrivateKeyTypePtrOutput) ToKeyPrivateKeyTypePtrOutput() KeyPrivateKeyTypePtrOutput {
@@ -455,6 +455,16 @@ func (o KeyPrivateKeyTypePtrOutput) ToKeyPrivateKeyTypePtrOutput() KeyPrivateKey
 
 func (o KeyPrivateKeyTypePtrOutput) ToKeyPrivateKeyTypePtrOutputWithContext(ctx context.Context) KeyPrivateKeyTypePtrOutput {
 	return o
+}
+
+func (o KeyPrivateKeyTypePtrOutput) Elem() KeyPrivateKeyTypeOutput {
+	return o.ApplyT(func(v *KeyPrivateKeyType) KeyPrivateKeyType {
+		if v != nil {
+			return *v
+		}
+		var ret KeyPrivateKeyType
+		return ret
+	}).(KeyPrivateKeyTypeOutput)
 }
 
 func (o KeyPrivateKeyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -469,16 +479,6 @@ func (o KeyPrivateKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o KeyPrivateKeyTypePtrOutput) Elem() KeyPrivateKeyTypeOutput {
-	return o.ApplyT(func(v *KeyPrivateKeyType) KeyPrivateKeyType {
-		var ret KeyPrivateKeyType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(KeyPrivateKeyTypeOutput)
 }
 
 // KeyPrivateKeyTypeInput is an input type that accepts KeyPrivateKeyTypeArgs and KeyPrivateKeyTypeOutput values.
@@ -621,7 +621,7 @@ func (o OrganizationRoleStageOutput) ToStringPtrOutputWithContext(ctx context.Co
 type OrganizationRoleStagePtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationRoleStagePtrOutput) ElementType() reflect.Type {
-	return organizationRoleStagePtrType
+	return reflect.TypeOf((**OrganizationRoleStage)(nil)).Elem()
 }
 
 func (o OrganizationRoleStagePtrOutput) ToOrganizationRoleStagePtrOutput() OrganizationRoleStagePtrOutput {
@@ -630,6 +630,16 @@ func (o OrganizationRoleStagePtrOutput) ToOrganizationRoleStagePtrOutput() Organ
 
 func (o OrganizationRoleStagePtrOutput) ToOrganizationRoleStagePtrOutputWithContext(ctx context.Context) OrganizationRoleStagePtrOutput {
 	return o
+}
+
+func (o OrganizationRoleStagePtrOutput) Elem() OrganizationRoleStageOutput {
+	return o.ApplyT(func(v *OrganizationRoleStage) OrganizationRoleStage {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationRoleStage
+		return ret
+	}).(OrganizationRoleStageOutput)
 }
 
 func (o OrganizationRoleStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -644,16 +654,6 @@ func (o OrganizationRoleStagePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OrganizationRoleStagePtrOutput) Elem() OrganizationRoleStageOutput {
-	return o.ApplyT(func(v *OrganizationRoleStage) OrganizationRoleStage {
-		var ret OrganizationRoleStage
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OrganizationRoleStageOutput)
 }
 
 // OrganizationRoleStageInput is an input type that accepts OrganizationRoleStageArgs and OrganizationRoleStageOutput values.
@@ -796,7 +796,7 @@ func (o RoleStageOutput) ToStringPtrOutputWithContext(ctx context.Context) pulum
 type RoleStagePtrOutput struct{ *pulumi.OutputState }
 
 func (RoleStagePtrOutput) ElementType() reflect.Type {
-	return roleStagePtrType
+	return reflect.TypeOf((**RoleStage)(nil)).Elem()
 }
 
 func (o RoleStagePtrOutput) ToRoleStagePtrOutput() RoleStagePtrOutput {
@@ -805,6 +805,16 @@ func (o RoleStagePtrOutput) ToRoleStagePtrOutput() RoleStagePtrOutput {
 
 func (o RoleStagePtrOutput) ToRoleStagePtrOutputWithContext(ctx context.Context) RoleStagePtrOutput {
 	return o
+}
+
+func (o RoleStagePtrOutput) Elem() RoleStageOutput {
+	return o.ApplyT(func(v *RoleStage) RoleStage {
+		if v != nil {
+			return *v
+		}
+		var ret RoleStage
+		return ret
+	}).(RoleStageOutput)
 }
 
 func (o RoleStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -819,16 +829,6 @@ func (o RoleStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RoleStagePtrOutput) Elem() RoleStageOutput {
-	return o.ApplyT(func(v *RoleStage) RoleStage {
-		var ret RoleStage
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RoleStageOutput)
 }
 
 // RoleStageInput is an input type that accepts RoleStageArgs and RoleStageOutput values.

@@ -12,6 +12,7 @@ __all__ = [
     'GetExportResult',
     'AwaitableGetExportResult',
     'get_export',
+    'get_export_output',
 ]
 
 @pulumi.output_type
@@ -162,3 +163,14 @@ def get_export(environment_id: Optional[str] = None,
         self=__ret__.self,
         state=__ret__.state,
         updated=__ret__.updated)
+
+
+@_utilities.lift_output_func(get_export)
+def get_export_output(environment_id: Optional[pulumi.Input[str]] = None,
+                      export_id: Optional[pulumi.Input[str]] = None,
+                      organization_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExportResult]:
+    """
+    Gets the details and status of an analytics export job. If the export job is still in progress, its `state` is set to "running". After the export job has completed successfully, its `state` is set to "completed". If the export job fails, its `state` is set to `failed`.
+    """
+    ...

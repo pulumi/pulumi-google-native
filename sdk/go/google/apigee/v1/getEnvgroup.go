@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,4 +36,65 @@ type LookupEnvgroupResult struct {
 	Name string `pulumi:"name"`
 	// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
 	State string `pulumi:"state"`
+}
+
+func LookupEnvgroupOutput(ctx *pulumi.Context, args LookupEnvgroupOutputArgs, opts ...pulumi.InvokeOption) LookupEnvgroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupEnvgroupResult, error) {
+			args := v.(LookupEnvgroupArgs)
+			r, err := LookupEnvgroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupEnvgroupResultOutput)
+}
+
+type LookupEnvgroupOutputArgs struct {
+	EnvgroupId     pulumi.StringInput `pulumi:"envgroupId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupEnvgroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvgroupArgs)(nil)).Elem()
+}
+
+type LookupEnvgroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEnvgroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvgroupResult)(nil)).Elem()
+}
+
+func (o LookupEnvgroupResultOutput) ToLookupEnvgroupResultOutput() LookupEnvgroupResultOutput {
+	return o
+}
+
+func (o LookupEnvgroupResultOutput) ToLookupEnvgroupResultOutputWithContext(ctx context.Context) LookupEnvgroupResultOutput {
+	return o
+}
+
+// The time at which the environment group was created as milliseconds since epoch.
+func (o LookupEnvgroupResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvgroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Host names for this environment group.
+func (o LookupEnvgroupResultOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupEnvgroupResult) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+// The time at which the environment group was last updated as milliseconds since epoch.
+func (o LookupEnvgroupResultOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvgroupResult) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// ID of the environment group.
+func (o LookupEnvgroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvgroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
+func (o LookupEnvgroupResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvgroupResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEnvgroupResultOutput{})
 }

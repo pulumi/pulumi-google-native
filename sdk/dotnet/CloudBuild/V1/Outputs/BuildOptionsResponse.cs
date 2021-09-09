@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Optional arguments to enable specific features of builds.
+    /// </summary>
     [OutputType]
     public sealed class BuildOptionsResponse
     {

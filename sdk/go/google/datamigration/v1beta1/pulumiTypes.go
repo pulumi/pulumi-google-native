@@ -778,7 +778,7 @@ func (o CloudSqlConnectionProfileOutput) ToCloudSqlConnectionProfilePtrOutput() 
 }
 
 func (o CloudSqlConnectionProfileOutput) ToCloudSqlConnectionProfilePtrOutputWithContext(ctx context.Context) CloudSqlConnectionProfilePtrOutput {
-	return o.ApplyT(func(v CloudSqlConnectionProfile) *CloudSqlConnectionProfile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlConnectionProfile) *CloudSqlConnectionProfile {
 		return &v
 	}).(CloudSqlConnectionProfilePtrOutput)
 }
@@ -803,7 +803,13 @@ func (o CloudSqlConnectionProfilePtrOutput) ToCloudSqlConnectionProfilePtrOutput
 }
 
 func (o CloudSqlConnectionProfilePtrOutput) Elem() CloudSqlConnectionProfileOutput {
-	return o.ApplyT(func(v *CloudSqlConnectionProfile) CloudSqlConnectionProfile { return *v }).(CloudSqlConnectionProfileOutput)
+	return o.ApplyT(func(v *CloudSqlConnectionProfile) CloudSqlConnectionProfile {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlConnectionProfile
+		return ret
+	}).(CloudSqlConnectionProfileOutput)
 }
 
 // Immutable. Metadata used to create the destination Cloud SQL database.
@@ -924,7 +930,7 @@ func (o CloudSqlConnectionProfileResponseOutput) ToCloudSqlConnectionProfileResp
 }
 
 func (o CloudSqlConnectionProfileResponseOutput) ToCloudSqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) CloudSqlConnectionProfileResponsePtrOutput {
-	return o.ApplyT(func(v CloudSqlConnectionProfileResponse) *CloudSqlConnectionProfileResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlConnectionProfileResponse) *CloudSqlConnectionProfileResponse {
 		return &v
 	}).(CloudSqlConnectionProfileResponsePtrOutput)
 }
@@ -964,7 +970,13 @@ func (o CloudSqlConnectionProfileResponsePtrOutput) ToCloudSqlConnectionProfileR
 }
 
 func (o CloudSqlConnectionProfileResponsePtrOutput) Elem() CloudSqlConnectionProfileResponseOutput {
-	return o.ApplyT(func(v *CloudSqlConnectionProfileResponse) CloudSqlConnectionProfileResponse { return *v }).(CloudSqlConnectionProfileResponseOutput)
+	return o.ApplyT(func(v *CloudSqlConnectionProfileResponse) CloudSqlConnectionProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlConnectionProfileResponse
+		return ret
+	}).(CloudSqlConnectionProfileResponseOutput)
 }
 
 // The Cloud SQL instance ID that this connection profile is associated with.
@@ -1151,7 +1163,7 @@ func (o CloudSqlSettingsOutput) ToCloudSqlSettingsPtrOutput() CloudSqlSettingsPt
 }
 
 func (o CloudSqlSettingsOutput) ToCloudSqlSettingsPtrOutputWithContext(ctx context.Context) CloudSqlSettingsPtrOutput {
-	return o.ApplyT(func(v CloudSqlSettings) *CloudSqlSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlSettings) *CloudSqlSettings {
 		return &v
 	}).(CloudSqlSettingsPtrOutput)
 }
@@ -1236,7 +1248,13 @@ func (o CloudSqlSettingsPtrOutput) ToCloudSqlSettingsPtrOutputWithContext(ctx co
 }
 
 func (o CloudSqlSettingsPtrOutput) Elem() CloudSqlSettingsOutput {
-	return o.ApplyT(func(v *CloudSqlSettings) CloudSqlSettings { return *v }).(CloudSqlSettingsOutput)
+	return o.ApplyT(func(v *CloudSqlSettings) CloudSqlSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlSettings
+		return ret
+	}).(CloudSqlSettingsOutput)
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
@@ -1517,7 +1535,7 @@ func (o CloudSqlSettingsResponseOutput) ToCloudSqlSettingsResponsePtrOutput() Cl
 }
 
 func (o CloudSqlSettingsResponseOutput) ToCloudSqlSettingsResponsePtrOutputWithContext(ctx context.Context) CloudSqlSettingsResponsePtrOutput {
-	return o.ApplyT(func(v CloudSqlSettingsResponse) *CloudSqlSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlSettingsResponse) *CloudSqlSettingsResponse {
 		return &v
 	}).(CloudSqlSettingsResponsePtrOutput)
 }
@@ -1607,7 +1625,13 @@ func (o CloudSqlSettingsResponsePtrOutput) ToCloudSqlSettingsResponsePtrOutputWi
 }
 
 func (o CloudSqlSettingsResponsePtrOutput) Elem() CloudSqlSettingsResponseOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) CloudSqlSettingsResponse { return *v }).(CloudSqlSettingsResponseOutput)
+	return o.ApplyT(func(v *CloudSqlSettingsResponse) CloudSqlSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlSettingsResponse
+		return ret
+	}).(CloudSqlSettingsResponseOutput)
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
@@ -1850,7 +1874,7 @@ func (o DatabaseTypeOutput) ToDatabaseTypePtrOutput() DatabaseTypePtrOutput {
 }
 
 func (o DatabaseTypeOutput) ToDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseTypePtrOutput {
-	return o.ApplyT(func(v DatabaseType) *DatabaseType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseType) *DatabaseType {
 		return &v
 	}).(DatabaseTypePtrOutput)
 }
@@ -1880,7 +1904,13 @@ func (o DatabaseTypePtrOutput) ToDatabaseTypePtrOutputWithContext(ctx context.Co
 }
 
 func (o DatabaseTypePtrOutput) Elem() DatabaseTypeOutput {
-	return o.ApplyT(func(v *DatabaseType) DatabaseType { return *v }).(DatabaseTypeOutput)
+	return o.ApplyT(func(v *DatabaseType) DatabaseType {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseType
+		return ret
+	}).(DatabaseTypeOutput)
 }
 
 // The database engine.
@@ -2003,7 +2033,7 @@ func (o DatabaseTypeResponseOutput) ToDatabaseTypeResponsePtrOutput() DatabaseTy
 }
 
 func (o DatabaseTypeResponseOutput) ToDatabaseTypeResponsePtrOutputWithContext(ctx context.Context) DatabaseTypeResponsePtrOutput {
-	return o.ApplyT(func(v DatabaseTypeResponse) *DatabaseTypeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseTypeResponse) *DatabaseTypeResponse {
 		return &v
 	}).(DatabaseTypeResponsePtrOutput)
 }
@@ -2033,7 +2063,13 @@ func (o DatabaseTypeResponsePtrOutput) ToDatabaseTypeResponsePtrOutputWithContex
 }
 
 func (o DatabaseTypeResponsePtrOutput) Elem() DatabaseTypeResponseOutput {
-	return o.ApplyT(func(v *DatabaseTypeResponse) DatabaseTypeResponse { return *v }).(DatabaseTypeResponseOutput)
+	return o.ApplyT(func(v *DatabaseTypeResponse) DatabaseTypeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseTypeResponse
+		return ret
+	}).(DatabaseTypeResponseOutput)
 }
 
 // The database engine.
@@ -2164,7 +2200,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -2204,7 +2240,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2445,7 +2487,7 @@ func (o MySqlConnectionProfileOutput) ToMySqlConnectionProfilePtrOutput() MySqlC
 }
 
 func (o MySqlConnectionProfileOutput) ToMySqlConnectionProfilePtrOutputWithContext(ctx context.Context) MySqlConnectionProfilePtrOutput {
-	return o.ApplyT(func(v MySqlConnectionProfile) *MySqlConnectionProfile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MySqlConnectionProfile) *MySqlConnectionProfile {
 		return &v
 	}).(MySqlConnectionProfilePtrOutput)
 }
@@ -2495,7 +2537,13 @@ func (o MySqlConnectionProfilePtrOutput) ToMySqlConnectionProfilePtrOutputWithCo
 }
 
 func (o MySqlConnectionProfilePtrOutput) Elem() MySqlConnectionProfileOutput {
-	return o.ApplyT(func(v *MySqlConnectionProfile) MySqlConnectionProfile { return *v }).(MySqlConnectionProfileOutput)
+	return o.ApplyT(func(v *MySqlConnectionProfile) MySqlConnectionProfile {
+		if v != nil {
+			return *v
+		}
+		var ret MySqlConnectionProfile
+		return ret
+	}).(MySqlConnectionProfileOutput)
 }
 
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -2678,7 +2726,7 @@ func (o MySqlConnectionProfileResponseOutput) ToMySqlConnectionProfileResponsePt
 }
 
 func (o MySqlConnectionProfileResponseOutput) ToMySqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) MySqlConnectionProfileResponsePtrOutput {
-	return o.ApplyT(func(v MySqlConnectionProfileResponse) *MySqlConnectionProfileResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MySqlConnectionProfileResponse) *MySqlConnectionProfileResponse {
 		return &v
 	}).(MySqlConnectionProfileResponsePtrOutput)
 }
@@ -2733,7 +2781,13 @@ func (o MySqlConnectionProfileResponsePtrOutput) ToMySqlConnectionProfileRespons
 }
 
 func (o MySqlConnectionProfileResponsePtrOutput) Elem() MySqlConnectionProfileResponseOutput {
-	return o.ApplyT(func(v *MySqlConnectionProfileResponse) MySqlConnectionProfileResponse { return *v }).(MySqlConnectionProfileResponseOutput)
+	return o.ApplyT(func(v *MySqlConnectionProfileResponse) MySqlConnectionProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MySqlConnectionProfileResponse
+		return ret
+	}).(MySqlConnectionProfileResponseOutput)
 }
 
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -2914,7 +2968,7 @@ func (o ReverseSshConnectivityOutput) ToReverseSshConnectivityPtrOutput() Revers
 }
 
 func (o ReverseSshConnectivityOutput) ToReverseSshConnectivityPtrOutputWithContext(ctx context.Context) ReverseSshConnectivityPtrOutput {
-	return o.ApplyT(func(v ReverseSshConnectivity) *ReverseSshConnectivity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReverseSshConnectivity) *ReverseSshConnectivity {
 		return &v
 	}).(ReverseSshConnectivityPtrOutput)
 }
@@ -2954,7 +3008,13 @@ func (o ReverseSshConnectivityPtrOutput) ToReverseSshConnectivityPtrOutputWithCo
 }
 
 func (o ReverseSshConnectivityPtrOutput) Elem() ReverseSshConnectivityOutput {
-	return o.ApplyT(func(v *ReverseSshConnectivity) ReverseSshConnectivity { return *v }).(ReverseSshConnectivityOutput)
+	return o.ApplyT(func(v *ReverseSshConnectivity) ReverseSshConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret ReverseSshConnectivity
+		return ret
+	}).(ReverseSshConnectivityOutput)
 }
 
 // The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
@@ -3105,7 +3165,7 @@ func (o ReverseSshConnectivityResponseOutput) ToReverseSshConnectivityResponsePt
 }
 
 func (o ReverseSshConnectivityResponseOutput) ToReverseSshConnectivityResponsePtrOutputWithContext(ctx context.Context) ReverseSshConnectivityResponsePtrOutput {
-	return o.ApplyT(func(v ReverseSshConnectivityResponse) *ReverseSshConnectivityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReverseSshConnectivityResponse) *ReverseSshConnectivityResponse {
 		return &v
 	}).(ReverseSshConnectivityResponsePtrOutput)
 }
@@ -3145,7 +3205,13 @@ func (o ReverseSshConnectivityResponsePtrOutput) ToReverseSshConnectivityRespons
 }
 
 func (o ReverseSshConnectivityResponsePtrOutput) Elem() ReverseSshConnectivityResponseOutput {
-	return o.ApplyT(func(v *ReverseSshConnectivityResponse) ReverseSshConnectivityResponse { return *v }).(ReverseSshConnectivityResponseOutput)
+	return o.ApplyT(func(v *ReverseSshConnectivityResponse) ReverseSshConnectivityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReverseSshConnectivityResponse
+		return ret
+	}).(ReverseSshConnectivityResponseOutput)
 }
 
 // The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
@@ -3550,7 +3616,7 @@ func (o SqlIpConfigOutput) ToSqlIpConfigPtrOutput() SqlIpConfigPtrOutput {
 }
 
 func (o SqlIpConfigOutput) ToSqlIpConfigPtrOutputWithContext(ctx context.Context) SqlIpConfigPtrOutput {
-	return o.ApplyT(func(v SqlIpConfig) *SqlIpConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlIpConfig) *SqlIpConfig {
 		return &v
 	}).(SqlIpConfigPtrOutput)
 }
@@ -3590,7 +3656,13 @@ func (o SqlIpConfigPtrOutput) ToSqlIpConfigPtrOutputWithContext(ctx context.Cont
 }
 
 func (o SqlIpConfigPtrOutput) Elem() SqlIpConfigOutput {
-	return o.ApplyT(func(v *SqlIpConfig) SqlIpConfig { return *v }).(SqlIpConfigOutput)
+	return o.ApplyT(func(v *SqlIpConfig) SqlIpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SqlIpConfig
+		return ret
+	}).(SqlIpConfigOutput)
 }
 
 // The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
@@ -3741,7 +3813,7 @@ func (o SqlIpConfigResponseOutput) ToSqlIpConfigResponsePtrOutput() SqlIpConfigR
 }
 
 func (o SqlIpConfigResponseOutput) ToSqlIpConfigResponsePtrOutputWithContext(ctx context.Context) SqlIpConfigResponsePtrOutput {
-	return o.ApplyT(func(v SqlIpConfigResponse) *SqlIpConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlIpConfigResponse) *SqlIpConfigResponse {
 		return &v
 	}).(SqlIpConfigResponsePtrOutput)
 }
@@ -3781,7 +3853,13 @@ func (o SqlIpConfigResponsePtrOutput) ToSqlIpConfigResponsePtrOutputWithContext(
 }
 
 func (o SqlIpConfigResponsePtrOutput) Elem() SqlIpConfigResponseOutput {
-	return o.ApplyT(func(v *SqlIpConfigResponse) SqlIpConfigResponse { return *v }).(SqlIpConfigResponseOutput)
+	return o.ApplyT(func(v *SqlIpConfigResponse) SqlIpConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlIpConfigResponse
+		return ret
+	}).(SqlIpConfigResponseOutput)
 }
 
 // The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
@@ -3928,7 +4006,7 @@ func (o SslConfigOutput) ToSslConfigPtrOutput() SslConfigPtrOutput {
 }
 
 func (o SslConfigOutput) ToSslConfigPtrOutputWithContext(ctx context.Context) SslConfigPtrOutput {
-	return o.ApplyT(func(v SslConfig) *SslConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfig) *SslConfig {
 		return &v
 	}).(SslConfigPtrOutput)
 }
@@ -3963,7 +4041,13 @@ func (o SslConfigPtrOutput) ToSslConfigPtrOutputWithContext(ctx context.Context)
 }
 
 func (o SslConfigPtrOutput) Elem() SslConfigOutput {
-	return o.ApplyT(func(v *SslConfig) SslConfig { return *v }).(SslConfigOutput)
+	return o.ApplyT(func(v *SslConfig) SslConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SslConfig
+		return ret
+	}).(SslConfigOutput)
 }
 
 // Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
@@ -4104,7 +4188,7 @@ func (o SslConfigResponseOutput) ToSslConfigResponsePtrOutput() SslConfigRespons
 }
 
 func (o SslConfigResponseOutput) ToSslConfigResponsePtrOutputWithContext(ctx context.Context) SslConfigResponsePtrOutput {
-	return o.ApplyT(func(v SslConfigResponse) *SslConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfigResponse) *SslConfigResponse {
 		return &v
 	}).(SslConfigResponsePtrOutput)
 }
@@ -4144,7 +4228,13 @@ func (o SslConfigResponsePtrOutput) ToSslConfigResponsePtrOutputWithContext(ctx 
 }
 
 func (o SslConfigResponsePtrOutput) Elem() SslConfigResponseOutput {
-	return o.ApplyT(func(v *SslConfigResponse) SslConfigResponse { return *v }).(SslConfigResponseOutput)
+	return o.ApplyT(func(v *SslConfigResponse) SslConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SslConfigResponse
+		return ret
+	}).(SslConfigResponseOutput)
 }
 
 // Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
@@ -4279,7 +4369,7 @@ func (o StaticIpConnectivityOutput) ToStaticIpConnectivityPtrOutput() StaticIpCo
 }
 
 func (o StaticIpConnectivityOutput) ToStaticIpConnectivityPtrOutputWithContext(ctx context.Context) StaticIpConnectivityPtrOutput {
-	return o.ApplyT(func(v StaticIpConnectivity) *StaticIpConnectivity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StaticIpConnectivity) *StaticIpConnectivity {
 		return &v
 	}).(StaticIpConnectivityPtrOutput)
 }
@@ -4299,7 +4389,13 @@ func (o StaticIpConnectivityPtrOutput) ToStaticIpConnectivityPtrOutputWithContex
 }
 
 func (o StaticIpConnectivityPtrOutput) Elem() StaticIpConnectivityOutput {
-	return o.ApplyT(func(v *StaticIpConnectivity) StaticIpConnectivity { return *v }).(StaticIpConnectivityOutput)
+	return o.ApplyT(func(v *StaticIpConnectivity) StaticIpConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret StaticIpConnectivity
+		return ret
+	}).(StaticIpConnectivityOutput)
 }
 
 // The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
@@ -4394,7 +4490,7 @@ func (o StaticIpConnectivityResponseOutput) ToStaticIpConnectivityResponsePtrOut
 }
 
 func (o StaticIpConnectivityResponseOutput) ToStaticIpConnectivityResponsePtrOutputWithContext(ctx context.Context) StaticIpConnectivityResponsePtrOutput {
-	return o.ApplyT(func(v StaticIpConnectivityResponse) *StaticIpConnectivityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StaticIpConnectivityResponse) *StaticIpConnectivityResponse {
 		return &v
 	}).(StaticIpConnectivityResponsePtrOutput)
 }
@@ -4414,7 +4510,13 @@ func (o StaticIpConnectivityResponsePtrOutput) ToStaticIpConnectivityResponsePtr
 }
 
 func (o StaticIpConnectivityResponsePtrOutput) Elem() StaticIpConnectivityResponseOutput {
-	return o.ApplyT(func(v *StaticIpConnectivityResponse) StaticIpConnectivityResponse { return *v }).(StaticIpConnectivityResponseOutput)
+	return o.ApplyT(func(v *StaticIpConnectivityResponse) StaticIpConnectivityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StaticIpConnectivityResponse
+		return ret
+	}).(StaticIpConnectivityResponseOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -4521,7 +4623,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -4556,7 +4658,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -4685,7 +4793,7 @@ func (o VpcPeeringConnectivityOutput) ToVpcPeeringConnectivityPtrOutput() VpcPee
 }
 
 func (o VpcPeeringConnectivityOutput) ToVpcPeeringConnectivityPtrOutputWithContext(ctx context.Context) VpcPeeringConnectivityPtrOutput {
-	return o.ApplyT(func(v VpcPeeringConnectivity) *VpcPeeringConnectivity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcPeeringConnectivity) *VpcPeeringConnectivity {
 		return &v
 	}).(VpcPeeringConnectivityPtrOutput)
 }
@@ -4710,7 +4818,13 @@ func (o VpcPeeringConnectivityPtrOutput) ToVpcPeeringConnectivityPtrOutputWithCo
 }
 
 func (o VpcPeeringConnectivityPtrOutput) Elem() VpcPeeringConnectivityOutput {
-	return o.ApplyT(func(v *VpcPeeringConnectivity) VpcPeeringConnectivity { return *v }).(VpcPeeringConnectivityOutput)
+	return o.ApplyT(func(v *VpcPeeringConnectivity) VpcPeeringConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret VpcPeeringConnectivity
+		return ret
+	}).(VpcPeeringConnectivityOutput)
 }
 
 // The name of the VPC network to peer with the Cloud SQL private network.
@@ -4819,7 +4933,7 @@ func (o VpcPeeringConnectivityResponseOutput) ToVpcPeeringConnectivityResponsePt
 }
 
 func (o VpcPeeringConnectivityResponseOutput) ToVpcPeeringConnectivityResponsePtrOutputWithContext(ctx context.Context) VpcPeeringConnectivityResponsePtrOutput {
-	return o.ApplyT(func(v VpcPeeringConnectivityResponse) *VpcPeeringConnectivityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcPeeringConnectivityResponse) *VpcPeeringConnectivityResponse {
 		return &v
 	}).(VpcPeeringConnectivityResponsePtrOutput)
 }
@@ -4844,7 +4958,13 @@ func (o VpcPeeringConnectivityResponsePtrOutput) ToVpcPeeringConnectivityRespons
 }
 
 func (o VpcPeeringConnectivityResponsePtrOutput) Elem() VpcPeeringConnectivityResponseOutput {
-	return o.ApplyT(func(v *VpcPeeringConnectivityResponse) VpcPeeringConnectivityResponse { return *v }).(VpcPeeringConnectivityResponseOutput)
+	return o.ApplyT(func(v *VpcPeeringConnectivityResponse) VpcPeeringConnectivityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VpcPeeringConnectivityResponse
+		return ret
+	}).(VpcPeeringConnectivityResponseOutput)
 }
 
 // The name of the VPC network to peer with the Cloud SQL private network.

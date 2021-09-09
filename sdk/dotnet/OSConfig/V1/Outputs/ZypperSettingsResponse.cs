@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
 {
 
+    /// <summary>
+    /// Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
+    /// </summary>
     [OutputType]
     public sealed class ZypperSettingsResponse
     {

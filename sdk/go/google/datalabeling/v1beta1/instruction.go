@@ -126,9 +126,7 @@ func (i *Instruction) ToInstructionOutputWithContext(ctx context.Context) Instru
 	return pulumi.ToOutputWithContext(ctx, i).(InstructionOutput)
 }
 
-type InstructionOutput struct {
-	*pulumi.OutputState
-}
+type InstructionOutput struct{ *pulumi.OutputState }
 
 func (InstructionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Instruction)(nil))

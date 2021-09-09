@@ -121,9 +121,7 @@ func (i *NotificationConfig) ToNotificationConfigOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigOutput)
 }
 
-type NotificationConfigOutput struct {
-	*pulumi.OutputState
-}
+type NotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NotificationConfig)(nil))

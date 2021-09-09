@@ -12,6 +12,7 @@ __all__ = [
     'GetGatewayResult',
     'AwaitableGetGatewayResult',
     'get_gateway',
+    'get_gateway_output',
 ]
 
 @pulumi.output_type
@@ -149,3 +150,14 @@ def get_gateway(gateway_id: Optional[str] = None,
         name=__ret__.name,
         state=__ret__.state,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_gateway)
+def get_gateway_output(gateway_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayResult]:
+    """
+    Gets details of a single Gateway.
+    """
+    ...

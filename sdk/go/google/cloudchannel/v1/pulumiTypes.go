@@ -106,7 +106,7 @@ func (o GoogleCloudChannelV1AssociationInfoOutput) ToGoogleCloudChannelV1Associa
 }
 
 func (o GoogleCloudChannelV1AssociationInfoOutput) ToGoogleCloudChannelV1AssociationInfoPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1AssociationInfoPtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1AssociationInfo) *GoogleCloudChannelV1AssociationInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1AssociationInfo) *GoogleCloudChannelV1AssociationInfo {
 		return &v
 	}).(GoogleCloudChannelV1AssociationInfoPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o GoogleCloudChannelV1AssociationInfoPtrOutput) ToGoogleCloudChannelV1Asso
 }
 
 func (o GoogleCloudChannelV1AssociationInfoPtrOutput) Elem() GoogleCloudChannelV1AssociationInfoOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1AssociationInfo) GoogleCloudChannelV1AssociationInfo { return *v }).(GoogleCloudChannelV1AssociationInfoOutput)
+	return o.ApplyT(func(v *GoogleCloudChannelV1AssociationInfo) GoogleCloudChannelV1AssociationInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1AssociationInfo
+		return ret
+	}).(GoogleCloudChannelV1AssociationInfoOutput)
 }
 
 // The name of the base entitlement, for which this entitlement is an add-on.
@@ -240,7 +246,7 @@ func (o GoogleCloudChannelV1AssociationInfoResponseOutput) ToGoogleCloudChannelV
 }
 
 func (o GoogleCloudChannelV1AssociationInfoResponseOutput) ToGoogleCloudChannelV1AssociationInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1AssociationInfoResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1AssociationInfoResponse) *GoogleCloudChannelV1AssociationInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1AssociationInfoResponse) *GoogleCloudChannelV1AssociationInfoResponse {
 		return &v
 	}).(GoogleCloudChannelV1AssociationInfoResponsePtrOutput)
 }
@@ -266,7 +272,11 @@ func (o GoogleCloudChannelV1AssociationInfoResponsePtrOutput) ToGoogleCloudChann
 
 func (o GoogleCloudChannelV1AssociationInfoResponsePtrOutput) Elem() GoogleCloudChannelV1AssociationInfoResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1AssociationInfoResponse) GoogleCloudChannelV1AssociationInfoResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1AssociationInfoResponse
+		return ret
 	}).(GoogleCloudChannelV1AssociationInfoResponseOutput)
 }
 
@@ -404,7 +414,7 @@ func (o GoogleCloudChannelV1CloudIdentityInfoResponseOutput) ToGoogleCloudChanne
 }
 
 func (o GoogleCloudChannelV1CloudIdentityInfoResponseOutput) ToGoogleCloudChannelV1CloudIdentityInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1CloudIdentityInfoResponse) *GoogleCloudChannelV1CloudIdentityInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1CloudIdentityInfoResponse) *GoogleCloudChannelV1CloudIdentityInfoResponse {
 		return &v
 	}).(GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput)
 }
@@ -467,7 +477,11 @@ func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) ToGoogleCloudCha
 
 func (o GoogleCloudChannelV1CloudIdentityInfoResponsePtrOutput) Elem() GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1CloudIdentityInfoResponse) GoogleCloudChannelV1CloudIdentityInfoResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1CloudIdentityInfoResponse
+		return ret
 	}).(GoogleCloudChannelV1CloudIdentityInfoResponseOutput)
 }
 
@@ -647,7 +661,7 @@ func (o GoogleCloudChannelV1CommitmentSettingsOutput) ToGoogleCloudChannelV1Comm
 }
 
 func (o GoogleCloudChannelV1CommitmentSettingsOutput) ToGoogleCloudChannelV1CommitmentSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CommitmentSettingsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1CommitmentSettings) *GoogleCloudChannelV1CommitmentSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1CommitmentSettings) *GoogleCloudChannelV1CommitmentSettings {
 		return &v
 	}).(GoogleCloudChannelV1CommitmentSettingsPtrOutput)
 }
@@ -674,7 +688,13 @@ func (o GoogleCloudChannelV1CommitmentSettingsPtrOutput) ToGoogleCloudChannelV1C
 }
 
 func (o GoogleCloudChannelV1CommitmentSettingsPtrOutput) Elem() GoogleCloudChannelV1CommitmentSettingsOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1CommitmentSettings) GoogleCloudChannelV1CommitmentSettings { return *v }).(GoogleCloudChannelV1CommitmentSettingsOutput)
+	return o.ApplyT(func(v *GoogleCloudChannelV1CommitmentSettings) GoogleCloudChannelV1CommitmentSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1CommitmentSettings
+		return ret
+	}).(GoogleCloudChannelV1CommitmentSettingsOutput)
 }
 
 // Optional. Renewal settings applicable for a commitment-based Offer.
@@ -791,7 +811,7 @@ func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) ToGoogleCloudChann
 }
 
 func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) ToGoogleCloudChannelV1CommitmentSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1CommitmentSettingsResponse) *GoogleCloudChannelV1CommitmentSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1CommitmentSettingsResponse) *GoogleCloudChannelV1CommitmentSettingsResponse {
 		return &v
 	}).(GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput)
 }
@@ -829,7 +849,11 @@ func (o GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput) ToGoogleCloudCh
 
 func (o GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput) Elem() GoogleCloudChannelV1CommitmentSettingsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1CommitmentSettingsResponse) GoogleCloudChannelV1CommitmentSettingsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1CommitmentSettingsResponse
+		return ret
 	}).(GoogleCloudChannelV1CommitmentSettingsResponseOutput)
 }
 
@@ -975,7 +999,7 @@ func (o GoogleCloudChannelV1ContactInfoOutput) ToGoogleCloudChannelV1ContactInfo
 }
 
 func (o GoogleCloudChannelV1ContactInfoOutput) ToGoogleCloudChannelV1ContactInfoPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ContactInfoPtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfo) *GoogleCloudChannelV1ContactInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1ContactInfo) *GoogleCloudChannelV1ContactInfo {
 		return &v
 	}).(GoogleCloudChannelV1ContactInfoPtrOutput)
 }
@@ -1020,7 +1044,13 @@ func (o GoogleCloudChannelV1ContactInfoPtrOutput) ToGoogleCloudChannelV1ContactI
 }
 
 func (o GoogleCloudChannelV1ContactInfoPtrOutput) Elem() GoogleCloudChannelV1ContactInfoOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfo) GoogleCloudChannelV1ContactInfo { return *v }).(GoogleCloudChannelV1ContactInfoOutput)
+	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfo) GoogleCloudChannelV1ContactInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1ContactInfo
+		return ret
+	}).(GoogleCloudChannelV1ContactInfoOutput)
 }
 
 // The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
@@ -1189,7 +1219,7 @@ func (o GoogleCloudChannelV1ContactInfoResponseOutput) ToGoogleCloudChannelV1Con
 }
 
 func (o GoogleCloudChannelV1ContactInfoResponseOutput) ToGoogleCloudChannelV1ContactInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ContactInfoResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfoResponse) *GoogleCloudChannelV1ContactInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1ContactInfoResponse) *GoogleCloudChannelV1ContactInfoResponse {
 		return &v
 	}).(GoogleCloudChannelV1ContactInfoResponsePtrOutput)
 }
@@ -1239,7 +1269,13 @@ func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) ToGoogleCloudChannelV1
 }
 
 func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) Elem() GoogleCloudChannelV1ContactInfoResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) GoogleCloudChannelV1ContactInfoResponse { return *v }).(GoogleCloudChannelV1ContactInfoResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) GoogleCloudChannelV1ContactInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1ContactInfoResponse
+		return ret
+	}).(GoogleCloudChannelV1ContactInfoResponseOutput)
 }
 
 // The customer account contact's display name, formatted as a combination of the customer's first and last name.
@@ -1406,7 +1442,7 @@ func (o GoogleCloudChannelV1EduDataResponseOutput) ToGoogleCloudChannelV1EduData
 }
 
 func (o GoogleCloudChannelV1EduDataResponseOutput) ToGoogleCloudChannelV1EduDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1EduDataResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1EduDataResponse) *GoogleCloudChannelV1EduDataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1EduDataResponse) *GoogleCloudChannelV1EduDataResponse {
 		return &v
 	}).(GoogleCloudChannelV1EduDataResponsePtrOutput)
 }
@@ -1441,7 +1477,13 @@ func (o GoogleCloudChannelV1EduDataResponsePtrOutput) ToGoogleCloudChannelV1EduD
 }
 
 func (o GoogleCloudChannelV1EduDataResponsePtrOutput) Elem() GoogleCloudChannelV1EduDataResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1EduDataResponse) GoogleCloudChannelV1EduDataResponse { return *v }).(GoogleCloudChannelV1EduDataResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudChannelV1EduDataResponse) GoogleCloudChannelV1EduDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1EduDataResponse
+		return ret
+	}).(GoogleCloudChannelV1EduDataResponseOutput)
 }
 
 // Size of the institute.
@@ -1801,7 +1843,7 @@ func (o GoogleCloudChannelV1PeriodOutput) ToGoogleCloudChannelV1PeriodPtrOutput(
 }
 
 func (o GoogleCloudChannelV1PeriodOutput) ToGoogleCloudChannelV1PeriodPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodPtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1Period) *GoogleCloudChannelV1Period {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1Period) *GoogleCloudChannelV1Period {
 		return &v
 	}).(GoogleCloudChannelV1PeriodPtrOutput)
 }
@@ -1831,7 +1873,13 @@ func (o GoogleCloudChannelV1PeriodPtrOutput) ToGoogleCloudChannelV1PeriodPtrOutp
 }
 
 func (o GoogleCloudChannelV1PeriodPtrOutput) Elem() GoogleCloudChannelV1PeriodOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1Period) GoogleCloudChannelV1Period { return *v }).(GoogleCloudChannelV1PeriodOutput)
+	return o.ApplyT(func(v *GoogleCloudChannelV1Period) GoogleCloudChannelV1Period {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1Period
+		return ret
+	}).(GoogleCloudChannelV1PeriodOutput)
 }
 
 // Total duration of Period Type defined.
@@ -1954,7 +2002,7 @@ func (o GoogleCloudChannelV1PeriodResponseOutput) ToGoogleCloudChannelV1PeriodRe
 }
 
 func (o GoogleCloudChannelV1PeriodResponseOutput) ToGoogleCloudChannelV1PeriodResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1PeriodResponse) *GoogleCloudChannelV1PeriodResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1PeriodResponse) *GoogleCloudChannelV1PeriodResponse {
 		return &v
 	}).(GoogleCloudChannelV1PeriodResponsePtrOutput)
 }
@@ -1984,7 +2032,13 @@ func (o GoogleCloudChannelV1PeriodResponsePtrOutput) ToGoogleCloudChannelV1Perio
 }
 
 func (o GoogleCloudChannelV1PeriodResponsePtrOutput) Elem() GoogleCloudChannelV1PeriodResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1PeriodResponse) GoogleCloudChannelV1PeriodResponse { return *v }).(GoogleCloudChannelV1PeriodResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudChannelV1PeriodResponse) GoogleCloudChannelV1PeriodResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1PeriodResponse
+		return ret
+	}).(GoogleCloudChannelV1PeriodResponseOutput)
 }
 
 // Total duration of Period Type defined.
@@ -2111,7 +2165,7 @@ func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ToGoogleCloudChann
 }
 
 func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ToGoogleCloudChannelV1ProvisionedServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1ProvisionedServiceResponse) *GoogleCloudChannelV1ProvisionedServiceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1ProvisionedServiceResponse) *GoogleCloudChannelV1ProvisionedServiceResponse {
 		return &v
 	}).(GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput)
 }
@@ -2147,7 +2201,11 @@ func (o GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput) ToGoogleCloudCh
 
 func (o GoogleCloudChannelV1ProvisionedServiceResponsePtrOutput) Elem() GoogleCloudChannelV1ProvisionedServiceResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ProvisionedServiceResponse) GoogleCloudChannelV1ProvisionedServiceResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1ProvisionedServiceResponse
+		return ret
 	}).(GoogleCloudChannelV1ProvisionedServiceResponseOutput)
 }
 
@@ -2289,7 +2347,7 @@ func (o GoogleCloudChannelV1RenewalSettingsOutput) ToGoogleCloudChannelV1Renewal
 }
 
 func (o GoogleCloudChannelV1RenewalSettingsOutput) ToGoogleCloudChannelV1RenewalSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1RenewalSettings) *GoogleCloudChannelV1RenewalSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1RenewalSettings) *GoogleCloudChannelV1RenewalSettings {
 		return &v
 	}).(GoogleCloudChannelV1RenewalSettingsPtrOutput)
 }
@@ -2331,7 +2389,13 @@ func (o GoogleCloudChannelV1RenewalSettingsPtrOutput) ToGoogleCloudChannelV1Rene
 }
 
 func (o GoogleCloudChannelV1RenewalSettingsPtrOutput) Elem() GoogleCloudChannelV1RenewalSettingsOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettings) GoogleCloudChannelV1RenewalSettings { return *v }).(GoogleCloudChannelV1RenewalSettingsOutput)
+	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettings) GoogleCloudChannelV1RenewalSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1RenewalSettings
+		return ret
+	}).(GoogleCloudChannelV1RenewalSettingsOutput)
 }
 
 // If false, the plan will be completed at the end date.
@@ -2482,7 +2546,7 @@ func (o GoogleCloudChannelV1RenewalSettingsResponseOutput) ToGoogleCloudChannelV
 }
 
 func (o GoogleCloudChannelV1RenewalSettingsResponseOutput) ToGoogleCloudChannelV1RenewalSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1RenewalSettingsResponse) *GoogleCloudChannelV1RenewalSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1RenewalSettingsResponse) *GoogleCloudChannelV1RenewalSettingsResponse {
 		return &v
 	}).(GoogleCloudChannelV1RenewalSettingsResponsePtrOutput)
 }
@@ -2525,7 +2589,11 @@ func (o GoogleCloudChannelV1RenewalSettingsResponsePtrOutput) ToGoogleCloudChann
 
 func (o GoogleCloudChannelV1RenewalSettingsResponsePtrOutput) Elem() GoogleCloudChannelV1RenewalSettingsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettingsResponse) GoogleCloudChannelV1RenewalSettingsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1RenewalSettingsResponse
+		return ret
 	}).(GoogleCloudChannelV1RenewalSettingsResponseOutput)
 }
 
@@ -2669,7 +2737,7 @@ func (o GoogleCloudChannelV1TrialSettingsResponseOutput) ToGoogleCloudChannelV1T
 }
 
 func (o GoogleCloudChannelV1TrialSettingsResponseOutput) ToGoogleCloudChannelV1TrialSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1TrialSettingsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1TrialSettingsResponse) *GoogleCloudChannelV1TrialSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1TrialSettingsResponse) *GoogleCloudChannelV1TrialSettingsResponse {
 		return &v
 	}).(GoogleCloudChannelV1TrialSettingsResponsePtrOutput)
 }
@@ -2700,7 +2768,11 @@ func (o GoogleCloudChannelV1TrialSettingsResponsePtrOutput) ToGoogleCloudChannel
 
 func (o GoogleCloudChannelV1TrialSettingsResponsePtrOutput) Elem() GoogleCloudChannelV1TrialSettingsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1TrialSettingsResponse) GoogleCloudChannelV1TrialSettingsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1TrialSettingsResponse
+		return ret
 	}).(GoogleCloudChannelV1TrialSettingsResponseOutput)
 }
 
@@ -2836,7 +2908,7 @@ func (o GoogleCloudChannelV1ValueOutput) ToGoogleCloudChannelV1ValuePtrOutput() 
 }
 
 func (o GoogleCloudChannelV1ValueOutput) ToGoogleCloudChannelV1ValuePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ValuePtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1Value) *GoogleCloudChannelV1Value {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1Value) *GoogleCloudChannelV1Value {
 		return &v
 	}).(GoogleCloudChannelV1ValuePtrOutput)
 }
@@ -2881,7 +2953,13 @@ func (o GoogleCloudChannelV1ValuePtrOutput) ToGoogleCloudChannelV1ValuePtrOutput
 }
 
 func (o GoogleCloudChannelV1ValuePtrOutput) Elem() GoogleCloudChannelV1ValueOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1Value) GoogleCloudChannelV1Value { return *v }).(GoogleCloudChannelV1ValueOutput)
+	return o.ApplyT(func(v *GoogleCloudChannelV1Value) GoogleCloudChannelV1Value {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1Value
+		return ret
+	}).(GoogleCloudChannelV1ValueOutput)
 }
 
 // Represents a boolean value.
@@ -3161,7 +3239,7 @@ func (o GoogleTypePostalAddressOutput) ToGoogleTypePostalAddressPtrOutput() Goog
 }
 
 func (o GoogleTypePostalAddressOutput) ToGoogleTypePostalAddressPtrOutputWithContext(ctx context.Context) GoogleTypePostalAddressPtrOutput {
-	return o.ApplyT(func(v GoogleTypePostalAddress) *GoogleTypePostalAddress {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypePostalAddress) *GoogleTypePostalAddress {
 		return &v
 	}).(GoogleTypePostalAddressPtrOutput)
 }
@@ -3236,7 +3314,13 @@ func (o GoogleTypePostalAddressPtrOutput) ToGoogleTypePostalAddressPtrOutputWith
 }
 
 func (o GoogleTypePostalAddressPtrOutput) Elem() GoogleTypePostalAddressOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddress) GoogleTypePostalAddress { return *v }).(GoogleTypePostalAddressOutput)
+	return o.ApplyT(func(v *GoogleTypePostalAddress) GoogleTypePostalAddress {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypePostalAddress
+		return ret
+	}).(GoogleTypePostalAddressOutput)
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
@@ -3485,7 +3569,7 @@ func (o GoogleTypePostalAddressResponseOutput) ToGoogleTypePostalAddressResponse
 }
 
 func (o GoogleTypePostalAddressResponseOutput) ToGoogleTypePostalAddressResponsePtrOutputWithContext(ctx context.Context) GoogleTypePostalAddressResponsePtrOutput {
-	return o.ApplyT(func(v GoogleTypePostalAddressResponse) *GoogleTypePostalAddressResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypePostalAddressResponse) *GoogleTypePostalAddressResponse {
 		return &v
 	}).(GoogleTypePostalAddressResponsePtrOutput)
 }
@@ -3560,7 +3644,13 @@ func (o GoogleTypePostalAddressResponsePtrOutput) ToGoogleTypePostalAddressRespo
 }
 
 func (o GoogleTypePostalAddressResponsePtrOutput) Elem() GoogleTypePostalAddressResponseOutput {
-	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) GoogleTypePostalAddressResponse { return *v }).(GoogleTypePostalAddressResponseOutput)
+	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) GoogleTypePostalAddressResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypePostalAddressResponse
+		return ret
+	}).(GoogleTypePostalAddressResponseOutput)
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).

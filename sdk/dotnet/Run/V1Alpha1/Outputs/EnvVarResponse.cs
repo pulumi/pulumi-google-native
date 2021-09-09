@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// EnvVar represents an environment variable present in a Container.
+    /// </summary>
     [OutputType]
     public sealed class EnvVarResponse
     {

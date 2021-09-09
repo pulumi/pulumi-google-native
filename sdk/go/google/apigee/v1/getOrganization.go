@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,138 @@ type LookupOrganizationResult struct {
 	State string `pulumi:"state"`
 	// Not used by Apigee.
 	Type string `pulumi:"type"`
+}
+
+func LookupOrganizationOutput(ctx *pulumi.Context, args LookupOrganizationOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupOrganizationResult, error) {
+			args := v.(LookupOrganizationArgs)
+			r, err := LookupOrganization(ctx, &args, opts...)
+			return *r, err
+		}).(LookupOrganizationResultOutput)
+}
+
+type LookupOrganizationOutputArgs struct {
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupOrganizationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOrganizationArgs)(nil)).Elem()
+}
+
+type LookupOrganizationResultOutput struct{ *pulumi.OutputState }
+
+func (LookupOrganizationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOrganizationResult)(nil)).Elem()
+}
+
+func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutput() LookupOrganizationResultOutput {
+	return o
+}
+
+func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutputWithContext(ctx context.Context) LookupOrganizationResultOutput {
+	return o
+}
+
+// Addon configurations of the Apigee organization.
+func (o LookupOrganizationResultOutput) AddonsConfig() GoogleCloudApigeeV1AddonsConfigResponseOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) GoogleCloudApigeeV1AddonsConfigResponse { return v.AddonsConfig }).(GoogleCloudApigeeV1AddonsConfigResponseOutput)
+}
+
+// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+func (o LookupOrganizationResultOutput) AnalyticsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.AnalyticsRegion }).(pulumi.StringOutput)
+}
+
+// Not used by Apigee.
+func (o LookupOrganizationResultOutput) Attributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) []string { return v.Attributes }).(pulumi.StringArrayOutput)
+}
+
+// Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
+func (o LookupOrganizationResultOutput) AuthorizedNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.AuthorizedNetwork }).(pulumi.StringOutput)
+}
+
+// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+func (o LookupOrganizationResultOutput) BillingType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.BillingType }).(pulumi.StringOutput)
+}
+
+// Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
+func (o LookupOrganizationResultOutput) CaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+// Time that the Apigee organization was created in milliseconds since epoch.
+func (o LookupOrganizationResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Not used by Apigee.
+func (o LookupOrganizationResultOutput) CustomerName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.CustomerName }).(pulumi.StringOutput)
+}
+
+// Description of the Apigee organization.
+func (o LookupOrganizationResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupOrganizationResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// List of environments in the Apigee organization.
+func (o LookupOrganizationResultOutput) Environments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) []string { return v.Environments }).(pulumi.StringArrayOutput)
+}
+
+// Time that the Apigee organization is scheduled for deletion.
+func (o LookupOrganizationResultOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+// Time that the Apigee organization was last modified in milliseconds since epoch.
+func (o LookupOrganizationResultOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Name of the Apigee organization.
+func (o LookupOrganizationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Project ID associated with the Apigee organization.
+func (o LookupOrganizationResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Properties defined in the Apigee organization profile.
+func (o LookupOrganizationResultOutput) Properties() GoogleCloudApigeeV1PropertiesResponseOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) GoogleCloudApigeeV1PropertiesResponse { return v.Properties }).(GoogleCloudApigeeV1PropertiesResponseOutput)
+}
+
+// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
+func (o LookupOrganizationResultOutput) RuntimeDatabaseEncryptionKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.RuntimeDatabaseEncryptionKeyName }).(pulumi.StringOutput)
+}
+
+// Runtime type of the Apigee organization based on the Apigee subscription purchased.
+func (o LookupOrganizationResultOutput) RuntimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.RuntimeType }).(pulumi.StringOutput)
+}
+
+// State of the organization. Values other than ACTIVE means the resource is not ready to use.
+func (o LookupOrganizationResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Not used by Apigee.
+func (o LookupOrganizationResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupOrganizationResultOutput{})
 }

@@ -903,7 +903,7 @@ func (o BiEngineStatisticsResponseOutput) ToBiEngineStatisticsResponsePtrOutput(
 }
 
 func (o BiEngineStatisticsResponseOutput) ToBiEngineStatisticsResponsePtrOutputWithContext(ctx context.Context) BiEngineStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v BiEngineStatisticsResponse) *BiEngineStatisticsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BiEngineStatisticsResponse) *BiEngineStatisticsResponse {
 		return &v
 	}).(BiEngineStatisticsResponsePtrOutput)
 }
@@ -933,7 +933,13 @@ func (o BiEngineStatisticsResponsePtrOutput) ToBiEngineStatisticsResponsePtrOutp
 }
 
 func (o BiEngineStatisticsResponsePtrOutput) Elem() BiEngineStatisticsResponseOutput {
-	return o.ApplyT(func(v *BiEngineStatisticsResponse) BiEngineStatisticsResponse { return *v }).(BiEngineStatisticsResponseOutput)
+	return o.ApplyT(func(v *BiEngineStatisticsResponse) BiEngineStatisticsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BiEngineStatisticsResponse
+		return ret
+	}).(BiEngineStatisticsResponseOutput)
 }
 
 // Specifies which mode of BI Engine acceleration was performed (if any).
@@ -1053,7 +1059,7 @@ func (o BigQueryModelTrainingResponseOutput) ToBigQueryModelTrainingResponsePtrO
 }
 
 func (o BigQueryModelTrainingResponseOutput) ToBigQueryModelTrainingResponsePtrOutputWithContext(ctx context.Context) BigQueryModelTrainingResponsePtrOutput {
-	return o.ApplyT(func(v BigQueryModelTrainingResponse) *BigQueryModelTrainingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryModelTrainingResponse) *BigQueryModelTrainingResponse {
 		return &v
 	}).(BigQueryModelTrainingResponsePtrOutput)
 }
@@ -1083,7 +1089,13 @@ func (o BigQueryModelTrainingResponsePtrOutput) ToBigQueryModelTrainingResponseP
 }
 
 func (o BigQueryModelTrainingResponsePtrOutput) Elem() BigQueryModelTrainingResponseOutput {
-	return o.ApplyT(func(v *BigQueryModelTrainingResponse) BigQueryModelTrainingResponse { return *v }).(BigQueryModelTrainingResponseOutput)
+	return o.ApplyT(func(v *BigQueryModelTrainingResponse) BigQueryModelTrainingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryModelTrainingResponse
+		return ret
+	}).(BigQueryModelTrainingResponseOutput)
 }
 
 // [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
@@ -1751,7 +1763,7 @@ func (o BigtableOptionsOutput) ToBigtableOptionsPtrOutput() BigtableOptionsPtrOu
 }
 
 func (o BigtableOptionsOutput) ToBigtableOptionsPtrOutputWithContext(ctx context.Context) BigtableOptionsPtrOutput {
-	return o.ApplyT(func(v BigtableOptions) *BigtableOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigtableOptions) *BigtableOptions {
 		return &v
 	}).(BigtableOptionsPtrOutput)
 }
@@ -1786,7 +1798,13 @@ func (o BigtableOptionsPtrOutput) ToBigtableOptionsPtrOutputWithContext(ctx cont
 }
 
 func (o BigtableOptionsPtrOutput) Elem() BigtableOptionsOutput {
-	return o.ApplyT(func(v *BigtableOptions) BigtableOptions { return *v }).(BigtableOptionsOutput)
+	return o.ApplyT(func(v *BigtableOptions) BigtableOptions {
+		if v != nil {
+			return *v
+		}
+		var ret BigtableOptions
+		return ret
+	}).(BigtableOptionsOutput)
 }
 
 // [Optional] List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
@@ -1920,7 +1938,7 @@ func (o BigtableOptionsResponseOutput) ToBigtableOptionsResponsePtrOutput() Bigt
 }
 
 func (o BigtableOptionsResponseOutput) ToBigtableOptionsResponsePtrOutputWithContext(ctx context.Context) BigtableOptionsResponsePtrOutput {
-	return o.ApplyT(func(v BigtableOptionsResponse) *BigtableOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigtableOptionsResponse) *BigtableOptionsResponse {
 		return &v
 	}).(BigtableOptionsResponsePtrOutput)
 }
@@ -1955,7 +1973,13 @@ func (o BigtableOptionsResponsePtrOutput) ToBigtableOptionsResponsePtrOutputWith
 }
 
 func (o BigtableOptionsResponsePtrOutput) Elem() BigtableOptionsResponseOutput {
-	return o.ApplyT(func(v *BigtableOptionsResponse) BigtableOptionsResponse { return *v }).(BigtableOptionsResponseOutput)
+	return o.ApplyT(func(v *BigtableOptionsResponse) BigtableOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BigtableOptionsResponse
+		return ret
+	}).(BigtableOptionsResponseOutput)
 }
 
 // [Optional] List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
@@ -2848,10 +2872,11 @@ func (o BqmlTrainingRunTrainingOptionsOutput) ToBqmlTrainingRunTrainingOptionsPt
 }
 
 func (o BqmlTrainingRunTrainingOptionsOutput) ToBqmlTrainingRunTrainingOptionsPtrOutputWithContext(ctx context.Context) BqmlTrainingRunTrainingOptionsPtrOutput {
-	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *BqmlTrainingRunTrainingOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BqmlTrainingRunTrainingOptions) *BqmlTrainingRunTrainingOptions {
 		return &v
 	}).(BqmlTrainingRunTrainingOptionsPtrOutput)
 }
+
 func (o BqmlTrainingRunTrainingOptionsOutput) EarlyStop() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *bool { return v.EarlyStop }).(pulumi.BoolPtrOutput)
 }
@@ -2903,7 +2928,13 @@ func (o BqmlTrainingRunTrainingOptionsPtrOutput) ToBqmlTrainingRunTrainingOption
 }
 
 func (o BqmlTrainingRunTrainingOptionsPtrOutput) Elem() BqmlTrainingRunTrainingOptionsOutput {
-	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) BqmlTrainingRunTrainingOptions { return *v }).(BqmlTrainingRunTrainingOptionsOutput)
+	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) BqmlTrainingRunTrainingOptions {
+		if v != nil {
+			return *v
+		}
+		var ret BqmlTrainingRunTrainingOptions
+		return ret
+	}).(BqmlTrainingRunTrainingOptionsOutput)
 }
 
 func (o BqmlTrainingRunTrainingOptionsPtrOutput) EarlyStop() pulumi.BoolPtrOutput {
@@ -3180,7 +3211,7 @@ func (o ClusteringOutput) ToClusteringPtrOutput() ClusteringPtrOutput {
 }
 
 func (o ClusteringOutput) ToClusteringPtrOutputWithContext(ctx context.Context) ClusteringPtrOutput {
-	return o.ApplyT(func(v Clustering) *Clustering {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Clustering) *Clustering {
 		return &v
 	}).(ClusteringPtrOutput)
 }
@@ -3205,7 +3236,13 @@ func (o ClusteringPtrOutput) ToClusteringPtrOutputWithContext(ctx context.Contex
 }
 
 func (o ClusteringPtrOutput) Elem() ClusteringOutput {
-	return o.ApplyT(func(v *Clustering) Clustering { return *v }).(ClusteringOutput)
+	return o.ApplyT(func(v *Clustering) Clustering {
+		if v != nil {
+			return *v
+		}
+		var ret Clustering
+		return ret
+	}).(ClusteringOutput)
 }
 
 // [Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
@@ -3311,7 +3348,7 @@ func (o ClusteringResponseOutput) ToClusteringResponsePtrOutput() ClusteringResp
 }
 
 func (o ClusteringResponseOutput) ToClusteringResponsePtrOutputWithContext(ctx context.Context) ClusteringResponsePtrOutput {
-	return o.ApplyT(func(v ClusteringResponse) *ClusteringResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusteringResponse) *ClusteringResponse {
 		return &v
 	}).(ClusteringResponsePtrOutput)
 }
@@ -3336,7 +3373,13 @@ func (o ClusteringResponsePtrOutput) ToClusteringResponsePtrOutputWithContext(ct
 }
 
 func (o ClusteringResponsePtrOutput) Elem() ClusteringResponseOutput {
-	return o.ApplyT(func(v *ClusteringResponse) ClusteringResponse { return *v }).(ClusteringResponseOutput)
+	return o.ApplyT(func(v *ClusteringResponse) ClusteringResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusteringResponse
+		return ret
+	}).(ClusteringResponseOutput)
 }
 
 // [Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
@@ -3678,7 +3721,7 @@ func (o CsvOptionsOutput) ToCsvOptionsPtrOutput() CsvOptionsPtrOutput {
 }
 
 func (o CsvOptionsOutput) ToCsvOptionsPtrOutputWithContext(ctx context.Context) CsvOptionsPtrOutput {
-	return o.ApplyT(func(v CsvOptions) *CsvOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CsvOptions) *CsvOptions {
 		return &v
 	}).(CsvOptionsPtrOutput)
 }
@@ -3733,7 +3776,13 @@ func (o CsvOptionsPtrOutput) ToCsvOptionsPtrOutputWithContext(ctx context.Contex
 }
 
 func (o CsvOptionsPtrOutput) Elem() CsvOptionsOutput {
-	return o.ApplyT(func(v *CsvOptions) CsvOptions { return *v }).(CsvOptionsOutput)
+	return o.ApplyT(func(v *CsvOptions) CsvOptions {
+		if v != nil {
+			return *v
+		}
+		var ret CsvOptions
+		return ret
+	}).(CsvOptionsOutput)
 }
 
 // [Optional] Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
@@ -3923,7 +3972,7 @@ func (o CsvOptionsResponseOutput) ToCsvOptionsResponsePtrOutput() CsvOptionsResp
 }
 
 func (o CsvOptionsResponseOutput) ToCsvOptionsResponsePtrOutputWithContext(ctx context.Context) CsvOptionsResponsePtrOutput {
-	return o.ApplyT(func(v CsvOptionsResponse) *CsvOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CsvOptionsResponse) *CsvOptionsResponse {
 		return &v
 	}).(CsvOptionsResponsePtrOutput)
 }
@@ -3978,7 +4027,13 @@ func (o CsvOptionsResponsePtrOutput) ToCsvOptionsResponsePtrOutputWithContext(ct
 }
 
 func (o CsvOptionsResponsePtrOutput) Elem() CsvOptionsResponseOutput {
-	return o.ApplyT(func(v *CsvOptionsResponse) CsvOptionsResponse { return *v }).(CsvOptionsResponseOutput)
+	return o.ApplyT(func(v *CsvOptionsResponse) CsvOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CsvOptionsResponse
+		return ret
+	}).(CsvOptionsResponseOutput)
 }
 
 // [Optional] Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
@@ -4146,7 +4201,7 @@ func (o DatasetAccessEntryOutput) ToDatasetAccessEntryPtrOutput() DatasetAccessE
 }
 
 func (o DatasetAccessEntryOutput) ToDatasetAccessEntryPtrOutputWithContext(ctx context.Context) DatasetAccessEntryPtrOutput {
-	return o.ApplyT(func(v DatasetAccessEntry) *DatasetAccessEntry {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccessEntry) *DatasetAccessEntry {
 		return &v
 	}).(DatasetAccessEntryPtrOutput)
 }
@@ -4175,7 +4230,13 @@ func (o DatasetAccessEntryPtrOutput) ToDatasetAccessEntryPtrOutputWithContext(ct
 }
 
 func (o DatasetAccessEntryPtrOutput) Elem() DatasetAccessEntryOutput {
-	return o.ApplyT(func(v *DatasetAccessEntry) DatasetAccessEntry { return *v }).(DatasetAccessEntryOutput)
+	return o.ApplyT(func(v *DatasetAccessEntry) DatasetAccessEntry {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetAccessEntry
+		return ret
+	}).(DatasetAccessEntryOutput)
 }
 
 // [Required] The dataset this entry applies to.
@@ -4884,7 +4945,7 @@ func (o DatasetReferenceOutput) ToDatasetReferencePtrOutput() DatasetReferencePt
 }
 
 func (o DatasetReferenceOutput) ToDatasetReferencePtrOutputWithContext(ctx context.Context) DatasetReferencePtrOutput {
-	return o.ApplyT(func(v DatasetReference) *DatasetReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetReference) *DatasetReference {
 		return &v
 	}).(DatasetReferencePtrOutput)
 }
@@ -4914,7 +4975,13 @@ func (o DatasetReferencePtrOutput) ToDatasetReferencePtrOutputWithContext(ctx co
 }
 
 func (o DatasetReferencePtrOutput) Elem() DatasetReferenceOutput {
-	return o.ApplyT(func(v *DatasetReference) DatasetReference { return *v }).(DatasetReferenceOutput)
+	return o.ApplyT(func(v *DatasetReference) DatasetReference {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetReference
+		return ret
+	}).(DatasetReferenceOutput)
 }
 
 // [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
@@ -5034,7 +5101,7 @@ func (o DatasetReferenceResponseOutput) ToDatasetReferenceResponsePtrOutput() Da
 }
 
 func (o DatasetReferenceResponseOutput) ToDatasetReferenceResponsePtrOutputWithContext(ctx context.Context) DatasetReferenceResponsePtrOutput {
-	return o.ApplyT(func(v DatasetReferenceResponse) *DatasetReferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetReferenceResponse) *DatasetReferenceResponse {
 		return &v
 	}).(DatasetReferenceResponsePtrOutput)
 }
@@ -5064,7 +5131,13 @@ func (o DatasetReferenceResponsePtrOutput) ToDatasetReferenceResponsePtrOutputWi
 }
 
 func (o DatasetReferenceResponsePtrOutput) Elem() DatasetReferenceResponseOutput {
-	return o.ApplyT(func(v *DatasetReferenceResponse) DatasetReferenceResponse { return *v }).(DatasetReferenceResponseOutput)
+	return o.ApplyT(func(v *DatasetReferenceResponse) DatasetReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetReferenceResponse
+		return ret
+	}).(DatasetReferenceResponseOutput)
 }
 
 // [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
@@ -5188,7 +5261,7 @@ func (o DestinationTablePropertiesOutput) ToDestinationTablePropertiesPtrOutput(
 }
 
 func (o DestinationTablePropertiesOutput) ToDestinationTablePropertiesPtrOutputWithContext(ctx context.Context) DestinationTablePropertiesPtrOutput {
-	return o.ApplyT(func(v DestinationTableProperties) *DestinationTableProperties {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DestinationTableProperties) *DestinationTableProperties {
 		return &v
 	}).(DestinationTablePropertiesPtrOutput)
 }
@@ -5223,7 +5296,13 @@ func (o DestinationTablePropertiesPtrOutput) ToDestinationTablePropertiesPtrOutp
 }
 
 func (o DestinationTablePropertiesPtrOutput) Elem() DestinationTablePropertiesOutput {
-	return o.ApplyT(func(v *DestinationTableProperties) DestinationTableProperties { return *v }).(DestinationTablePropertiesOutput)
+	return o.ApplyT(func(v *DestinationTableProperties) DestinationTableProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DestinationTableProperties
+		return ret
+	}).(DestinationTablePropertiesOutput)
 }
 
 // [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
@@ -5357,7 +5436,7 @@ func (o DestinationTablePropertiesResponseOutput) ToDestinationTablePropertiesRe
 }
 
 func (o DestinationTablePropertiesResponseOutput) ToDestinationTablePropertiesResponsePtrOutputWithContext(ctx context.Context) DestinationTablePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v DestinationTablePropertiesResponse) *DestinationTablePropertiesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DestinationTablePropertiesResponse) *DestinationTablePropertiesResponse {
 		return &v
 	}).(DestinationTablePropertiesResponsePtrOutput)
 }
@@ -5392,7 +5471,13 @@ func (o DestinationTablePropertiesResponsePtrOutput) ToDestinationTablePropertie
 }
 
 func (o DestinationTablePropertiesResponsePtrOutput) Elem() DestinationTablePropertiesResponseOutput {
-	return o.ApplyT(func(v *DestinationTablePropertiesResponse) DestinationTablePropertiesResponse { return *v }).(DestinationTablePropertiesResponseOutput)
+	return o.ApplyT(func(v *DestinationTablePropertiesResponse) DestinationTablePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DestinationTablePropertiesResponse
+		return ret
+	}).(DestinationTablePropertiesResponseOutput)
 }
 
 // [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
@@ -5526,7 +5611,7 @@ func (o DmlStatisticsResponseOutput) ToDmlStatisticsResponsePtrOutput() DmlStati
 }
 
 func (o DmlStatisticsResponseOutput) ToDmlStatisticsResponsePtrOutputWithContext(ctx context.Context) DmlStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v DmlStatisticsResponse) *DmlStatisticsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DmlStatisticsResponse) *DmlStatisticsResponse {
 		return &v
 	}).(DmlStatisticsResponsePtrOutput)
 }
@@ -5561,7 +5646,13 @@ func (o DmlStatisticsResponsePtrOutput) ToDmlStatisticsResponsePtrOutputWithCont
 }
 
 func (o DmlStatisticsResponsePtrOutput) Elem() DmlStatisticsResponseOutput {
-	return o.ApplyT(func(v *DmlStatisticsResponse) DmlStatisticsResponse { return *v }).(DmlStatisticsResponseOutput)
+	return o.ApplyT(func(v *DmlStatisticsResponse) DmlStatisticsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DmlStatisticsResponse
+		return ret
+	}).(DmlStatisticsResponseOutput)
 }
 
 // Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.
@@ -5687,7 +5778,7 @@ func (o EncryptionConfigurationOutput) ToEncryptionConfigurationPtrOutput() Encr
 }
 
 func (o EncryptionConfigurationOutput) ToEncryptionConfigurationPtrOutputWithContext(ctx context.Context) EncryptionConfigurationPtrOutput {
-	return o.ApplyT(func(v EncryptionConfiguration) *EncryptionConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfiguration) *EncryptionConfiguration {
 		return &v
 	}).(EncryptionConfigurationPtrOutput)
 }
@@ -5712,7 +5803,13 @@ func (o EncryptionConfigurationPtrOutput) ToEncryptionConfigurationPtrOutputWith
 }
 
 func (o EncryptionConfigurationPtrOutput) Elem() EncryptionConfigurationOutput {
-	return o.ApplyT(func(v *EncryptionConfiguration) EncryptionConfiguration { return *v }).(EncryptionConfigurationOutput)
+	return o.ApplyT(func(v *EncryptionConfiguration) EncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfiguration
+		return ret
+	}).(EncryptionConfigurationOutput)
 }
 
 // [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -5818,7 +5915,7 @@ func (o EncryptionConfigurationResponseOutput) ToEncryptionConfigurationResponse
 }
 
 func (o EncryptionConfigurationResponseOutput) ToEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v EncryptionConfigurationResponse) *EncryptionConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfigurationResponse) *EncryptionConfigurationResponse {
 		return &v
 	}).(EncryptionConfigurationResponsePtrOutput)
 }
@@ -5843,7 +5940,13 @@ func (o EncryptionConfigurationResponsePtrOutput) ToEncryptionConfigurationRespo
 }
 
 func (o EncryptionConfigurationResponsePtrOutput) Elem() EncryptionConfigurationResponseOutput {
-	return o.ApplyT(func(v *EncryptionConfigurationResponse) EncryptionConfigurationResponse { return *v }).(EncryptionConfigurationResponseOutput)
+	return o.ApplyT(func(v *EncryptionConfigurationResponse) EncryptionConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfigurationResponse
+		return ret
+	}).(EncryptionConfigurationResponseOutput)
 }
 
 // [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -5986,7 +6089,7 @@ func (o ErrorProtoResponseOutput) ToErrorProtoResponsePtrOutput() ErrorProtoResp
 }
 
 func (o ErrorProtoResponseOutput) ToErrorProtoResponsePtrOutputWithContext(ctx context.Context) ErrorProtoResponsePtrOutput {
-	return o.ApplyT(func(v ErrorProtoResponse) *ErrorProtoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErrorProtoResponse) *ErrorProtoResponse {
 		return &v
 	}).(ErrorProtoResponsePtrOutput)
 }
@@ -6026,7 +6129,13 @@ func (o ErrorProtoResponsePtrOutput) ToErrorProtoResponsePtrOutputWithContext(ct
 }
 
 func (o ErrorProtoResponsePtrOutput) Elem() ErrorProtoResponseOutput {
-	return o.ApplyT(func(v *ErrorProtoResponse) ErrorProtoResponse { return *v }).(ErrorProtoResponseOutput)
+	return o.ApplyT(func(v *ErrorProtoResponse) ErrorProtoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorProtoResponse
+		return ret
+	}).(ErrorProtoResponseOutput)
 }
 
 // Debugging information. This property is internal to Google and should not be used.
@@ -6652,7 +6761,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -6692,7 +6801,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -6962,7 +7077,7 @@ func (o ExternalDataConfigurationOutput) ToExternalDataConfigurationPtrOutput() 
 }
 
 func (o ExternalDataConfigurationOutput) ToExternalDataConfigurationPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationPtrOutput {
-	return o.ApplyT(func(v ExternalDataConfiguration) *ExternalDataConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalDataConfiguration) *ExternalDataConfiguration {
 		return &v
 	}).(ExternalDataConfigurationPtrOutput)
 }
@@ -7052,7 +7167,13 @@ func (o ExternalDataConfigurationPtrOutput) ToExternalDataConfigurationPtrOutput
 }
 
 func (o ExternalDataConfigurationPtrOutput) Elem() ExternalDataConfigurationOutput {
-	return o.ApplyT(func(v *ExternalDataConfiguration) ExternalDataConfiguration { return *v }).(ExternalDataConfigurationOutput)
+	return o.ApplyT(func(v *ExternalDataConfiguration) ExternalDataConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalDataConfiguration
+		return ret
+	}).(ExternalDataConfigurationOutput)
 }
 
 // Try to detect schema and format options automatically. Any option specified explicitly will be honored.
@@ -7340,7 +7461,7 @@ func (o ExternalDataConfigurationResponseOutput) ToExternalDataConfigurationResp
 }
 
 func (o ExternalDataConfigurationResponseOutput) ToExternalDataConfigurationResponsePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v ExternalDataConfigurationResponse) *ExternalDataConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalDataConfigurationResponse) *ExternalDataConfigurationResponse {
 		return &v
 	}).(ExternalDataConfigurationResponsePtrOutput)
 }
@@ -7432,7 +7553,13 @@ func (o ExternalDataConfigurationResponsePtrOutput) ToExternalDataConfigurationR
 }
 
 func (o ExternalDataConfigurationResponsePtrOutput) Elem() ExternalDataConfigurationResponseOutput {
-	return o.ApplyT(func(v *ExternalDataConfigurationResponse) ExternalDataConfigurationResponse { return *v }).(ExternalDataConfigurationResponseOutput)
+	return o.ApplyT(func(v *ExternalDataConfigurationResponse) ExternalDataConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalDataConfigurationResponse
+		return ret
+	}).(ExternalDataConfigurationResponseOutput)
 }
 
 // Try to detect schema and format options automatically. Any option specified explicitly will be honored.
@@ -7672,7 +7799,7 @@ func (o GoogleSheetsOptionsOutput) ToGoogleSheetsOptionsPtrOutput() GoogleSheets
 }
 
 func (o GoogleSheetsOptionsOutput) ToGoogleSheetsOptionsPtrOutputWithContext(ctx context.Context) GoogleSheetsOptionsPtrOutput {
-	return o.ApplyT(func(v GoogleSheetsOptions) *GoogleSheetsOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleSheetsOptions) *GoogleSheetsOptions {
 		return &v
 	}).(GoogleSheetsOptionsPtrOutput)
 }
@@ -7702,7 +7829,13 @@ func (o GoogleSheetsOptionsPtrOutput) ToGoogleSheetsOptionsPtrOutputWithContext(
 }
 
 func (o GoogleSheetsOptionsPtrOutput) Elem() GoogleSheetsOptionsOutput {
-	return o.ApplyT(func(v *GoogleSheetsOptions) GoogleSheetsOptions { return *v }).(GoogleSheetsOptionsOutput)
+	return o.ApplyT(func(v *GoogleSheetsOptions) GoogleSheetsOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleSheetsOptions
+		return ret
+	}).(GoogleSheetsOptionsOutput)
 }
 
 // [Optional] Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
@@ -7822,7 +7955,7 @@ func (o GoogleSheetsOptionsResponseOutput) ToGoogleSheetsOptionsResponsePtrOutpu
 }
 
 func (o GoogleSheetsOptionsResponseOutput) ToGoogleSheetsOptionsResponsePtrOutputWithContext(ctx context.Context) GoogleSheetsOptionsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleSheetsOptionsResponse) *GoogleSheetsOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleSheetsOptionsResponse) *GoogleSheetsOptionsResponse {
 		return &v
 	}).(GoogleSheetsOptionsResponsePtrOutput)
 }
@@ -7852,7 +7985,13 @@ func (o GoogleSheetsOptionsResponsePtrOutput) ToGoogleSheetsOptionsResponsePtrOu
 }
 
 func (o GoogleSheetsOptionsResponsePtrOutput) Elem() GoogleSheetsOptionsResponseOutput {
-	return o.ApplyT(func(v *GoogleSheetsOptionsResponse) GoogleSheetsOptionsResponse { return *v }).(GoogleSheetsOptionsResponseOutput)
+	return o.ApplyT(func(v *GoogleSheetsOptionsResponse) GoogleSheetsOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleSheetsOptionsResponse
+		return ret
+	}).(GoogleSheetsOptionsResponseOutput)
 }
 
 // [Optional] Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
@@ -7976,7 +8115,7 @@ func (o HivePartitioningOptionsOutput) ToHivePartitioningOptionsPtrOutput() Hive
 }
 
 func (o HivePartitioningOptionsOutput) ToHivePartitioningOptionsPtrOutputWithContext(ctx context.Context) HivePartitioningOptionsPtrOutput {
-	return o.ApplyT(func(v HivePartitioningOptions) *HivePartitioningOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HivePartitioningOptions) *HivePartitioningOptions {
 		return &v
 	}).(HivePartitioningOptionsPtrOutput)
 }
@@ -8011,7 +8150,13 @@ func (o HivePartitioningOptionsPtrOutput) ToHivePartitioningOptionsPtrOutputWith
 }
 
 func (o HivePartitioningOptionsPtrOutput) Elem() HivePartitioningOptionsOutput {
-	return o.ApplyT(func(v *HivePartitioningOptions) HivePartitioningOptions { return *v }).(HivePartitioningOptionsOutput)
+	return o.ApplyT(func(v *HivePartitioningOptions) HivePartitioningOptions {
+		if v != nil {
+			return *v
+		}
+		var ret HivePartitioningOptions
+		return ret
+	}).(HivePartitioningOptionsOutput)
 }
 
 // [Optional] When set, what mode of hive partitioning to use when reading data. The following modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV, JSON, ORC and Parquet.
@@ -8145,7 +8290,7 @@ func (o HivePartitioningOptionsResponseOutput) ToHivePartitioningOptionsResponse
 }
 
 func (o HivePartitioningOptionsResponseOutput) ToHivePartitioningOptionsResponsePtrOutputWithContext(ctx context.Context) HivePartitioningOptionsResponsePtrOutput {
-	return o.ApplyT(func(v HivePartitioningOptionsResponse) *HivePartitioningOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HivePartitioningOptionsResponse) *HivePartitioningOptionsResponse {
 		return &v
 	}).(HivePartitioningOptionsResponsePtrOutput)
 }
@@ -8180,7 +8325,13 @@ func (o HivePartitioningOptionsResponsePtrOutput) ToHivePartitioningOptionsRespo
 }
 
 func (o HivePartitioningOptionsResponsePtrOutput) Elem() HivePartitioningOptionsResponseOutput {
-	return o.ApplyT(func(v *HivePartitioningOptionsResponse) HivePartitioningOptionsResponse { return *v }).(HivePartitioningOptionsResponseOutput)
+	return o.ApplyT(func(v *HivePartitioningOptionsResponse) HivePartitioningOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HivePartitioningOptionsResponse
+		return ret
+	}).(HivePartitioningOptionsResponseOutput)
 }
 
 // [Optional] When set, what mode of hive partitioning to use when reading data. The following modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV, JSON, ORC and Parquet.
@@ -8330,7 +8481,7 @@ func (o JobConfigurationOutput) ToJobConfigurationPtrOutput() JobConfigurationPt
 }
 
 func (o JobConfigurationOutput) ToJobConfigurationPtrOutputWithContext(ctx context.Context) JobConfigurationPtrOutput {
-	return o.ApplyT(func(v JobConfiguration) *JobConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfiguration) *JobConfiguration {
 		return &v
 	}).(JobConfigurationPtrOutput)
 }
@@ -8385,7 +8536,13 @@ func (o JobConfigurationPtrOutput) ToJobConfigurationPtrOutputWithContext(ctx co
 }
 
 func (o JobConfigurationPtrOutput) Elem() JobConfigurationOutput {
-	return o.ApplyT(func(v *JobConfiguration) JobConfiguration { return *v }).(JobConfigurationOutput)
+	return o.ApplyT(func(v *JobConfiguration) JobConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfiguration
+		return ret
+	}).(JobConfigurationOutput)
 }
 
 // [Pick one] Copies a table.
@@ -8583,7 +8740,7 @@ func (o JobConfigurationExtractOutput) ToJobConfigurationExtractPtrOutput() JobC
 }
 
 func (o JobConfigurationExtractOutput) ToJobConfigurationExtractPtrOutputWithContext(ctx context.Context) JobConfigurationExtractPtrOutput {
-	return o.ApplyT(func(v JobConfigurationExtract) *JobConfigurationExtract {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationExtract) *JobConfigurationExtract {
 		return &v
 	}).(JobConfigurationExtractPtrOutput)
 }
@@ -8648,7 +8805,13 @@ func (o JobConfigurationExtractPtrOutput) ToJobConfigurationExtractPtrOutputWith
 }
 
 func (o JobConfigurationExtractPtrOutput) Elem() JobConfigurationExtractOutput {
-	return o.ApplyT(func(v *JobConfigurationExtract) JobConfigurationExtract { return *v }).(JobConfigurationExtractOutput)
+	return o.ApplyT(func(v *JobConfigurationExtract) JobConfigurationExtract {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationExtract
+		return ret
+	}).(JobConfigurationExtractOutput)
 }
 
 // [Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable when extracting models.
@@ -8866,7 +9029,7 @@ func (o JobConfigurationExtractResponseOutput) ToJobConfigurationExtractResponse
 }
 
 func (o JobConfigurationExtractResponseOutput) ToJobConfigurationExtractResponsePtrOutputWithContext(ctx context.Context) JobConfigurationExtractResponsePtrOutput {
-	return o.ApplyT(func(v JobConfigurationExtractResponse) *JobConfigurationExtractResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationExtractResponse) *JobConfigurationExtractResponse {
 		return &v
 	}).(JobConfigurationExtractResponsePtrOutput)
 }
@@ -8931,7 +9094,13 @@ func (o JobConfigurationExtractResponsePtrOutput) ToJobConfigurationExtractRespo
 }
 
 func (o JobConfigurationExtractResponsePtrOutput) Elem() JobConfigurationExtractResponseOutput {
-	return o.ApplyT(func(v *JobConfigurationExtractResponse) JobConfigurationExtractResponse { return *v }).(JobConfigurationExtractResponseOutput)
+	return o.ApplyT(func(v *JobConfigurationExtractResponse) JobConfigurationExtractResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationExtractResponse
+		return ret
+	}).(JobConfigurationExtractResponseOutput)
 }
 
 // [Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable when extracting models.
@@ -9225,7 +9394,7 @@ func (o JobConfigurationLoadOutput) ToJobConfigurationLoadPtrOutput() JobConfigu
 }
 
 func (o JobConfigurationLoadOutput) ToJobConfigurationLoadPtrOutputWithContext(ctx context.Context) JobConfigurationLoadPtrOutput {
-	return o.ApplyT(func(v JobConfigurationLoad) *JobConfigurationLoad {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationLoad) *JobConfigurationLoad {
 		return &v
 	}).(JobConfigurationLoadPtrOutput)
 }
@@ -9385,7 +9554,13 @@ func (o JobConfigurationLoadPtrOutput) ToJobConfigurationLoadPtrOutputWithContex
 }
 
 func (o JobConfigurationLoadPtrOutput) Elem() JobConfigurationLoadOutput {
-	return o.ApplyT(func(v *JobConfigurationLoad) JobConfigurationLoad { return *v }).(JobConfigurationLoadOutput)
+	return o.ApplyT(func(v *JobConfigurationLoad) JobConfigurationLoad {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationLoad
+		return ret
+	}).(JobConfigurationLoadOutput)
 }
 
 // [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
@@ -9869,7 +10044,7 @@ func (o JobConfigurationLoadResponseOutput) ToJobConfigurationLoadResponsePtrOut
 }
 
 func (o JobConfigurationLoadResponseOutput) ToJobConfigurationLoadResponsePtrOutputWithContext(ctx context.Context) JobConfigurationLoadResponsePtrOutput {
-	return o.ApplyT(func(v JobConfigurationLoadResponse) *JobConfigurationLoadResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationLoadResponse) *JobConfigurationLoadResponse {
 		return &v
 	}).(JobConfigurationLoadResponsePtrOutput)
 }
@@ -10033,7 +10208,13 @@ func (o JobConfigurationLoadResponsePtrOutput) ToJobConfigurationLoadResponsePtr
 }
 
 func (o JobConfigurationLoadResponsePtrOutput) Elem() JobConfigurationLoadResponseOutput {
-	return o.ApplyT(func(v *JobConfigurationLoadResponse) JobConfigurationLoadResponse { return *v }).(JobConfigurationLoadResponseOutput)
+	return o.ApplyT(func(v *JobConfigurationLoadResponse) JobConfigurationLoadResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationLoadResponse
+		return ret
+	}).(JobConfigurationLoadResponseOutput)
 }
 
 // [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
@@ -10497,7 +10678,7 @@ func (o JobConfigurationQueryOutput) ToJobConfigurationQueryPtrOutput() JobConfi
 }
 
 func (o JobConfigurationQueryOutput) ToJobConfigurationQueryPtrOutputWithContext(ctx context.Context) JobConfigurationQueryPtrOutput {
-	return o.ApplyT(func(v JobConfigurationQuery) *JobConfigurationQuery {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationQuery) *JobConfigurationQuery {
 		return &v
 	}).(JobConfigurationQueryPtrOutput)
 }
@@ -10632,7 +10813,13 @@ func (o JobConfigurationQueryPtrOutput) ToJobConfigurationQueryPtrOutputWithCont
 }
 
 func (o JobConfigurationQueryPtrOutput) Elem() JobConfigurationQueryOutput {
-	return o.ApplyT(func(v *JobConfigurationQuery) JobConfigurationQuery { return *v }).(JobConfigurationQueryOutput)
+	return o.ApplyT(func(v *JobConfigurationQuery) JobConfigurationQuery {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationQuery
+		return ret
+	}).(JobConfigurationQueryOutput)
 }
 
 // [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
@@ -11046,7 +11233,7 @@ func (o JobConfigurationQueryResponseOutput) ToJobConfigurationQueryResponsePtrO
 }
 
 func (o JobConfigurationQueryResponseOutput) ToJobConfigurationQueryResponsePtrOutputWithContext(ctx context.Context) JobConfigurationQueryResponsePtrOutput {
-	return o.ApplyT(func(v JobConfigurationQueryResponse) *JobConfigurationQueryResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationQueryResponse) *JobConfigurationQueryResponse {
 		return &v
 	}).(JobConfigurationQueryResponsePtrOutput)
 }
@@ -11185,7 +11372,13 @@ func (o JobConfigurationQueryResponsePtrOutput) ToJobConfigurationQueryResponseP
 }
 
 func (o JobConfigurationQueryResponsePtrOutput) Elem() JobConfigurationQueryResponseOutput {
-	return o.ApplyT(func(v *JobConfigurationQueryResponse) JobConfigurationQueryResponse { return *v }).(JobConfigurationQueryResponseOutput)
+	return o.ApplyT(func(v *JobConfigurationQueryResponse) JobConfigurationQueryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationQueryResponse
+		return ret
+	}).(JobConfigurationQueryResponseOutput)
 }
 
 // [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
@@ -11539,7 +11732,7 @@ func (o JobConfigurationResponseOutput) ToJobConfigurationResponsePtrOutput() Jo
 }
 
 func (o JobConfigurationResponseOutput) ToJobConfigurationResponsePtrOutputWithContext(ctx context.Context) JobConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v JobConfigurationResponse) *JobConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationResponse) *JobConfigurationResponse {
 		return &v
 	}).(JobConfigurationResponsePtrOutput)
 }
@@ -11599,7 +11792,13 @@ func (o JobConfigurationResponsePtrOutput) ToJobConfigurationResponsePtrOutputWi
 }
 
 func (o JobConfigurationResponsePtrOutput) Elem() JobConfigurationResponseOutput {
-	return o.ApplyT(func(v *JobConfigurationResponse) JobConfigurationResponse { return *v }).(JobConfigurationResponseOutput)
+	return o.ApplyT(func(v *JobConfigurationResponse) JobConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationResponse
+		return ret
+	}).(JobConfigurationResponseOutput)
 }
 
 // [Pick one] Copies a table.
@@ -11803,7 +12002,7 @@ func (o JobConfigurationTableCopyOutput) ToJobConfigurationTableCopyPtrOutput() 
 }
 
 func (o JobConfigurationTableCopyOutput) ToJobConfigurationTableCopyPtrOutputWithContext(ctx context.Context) JobConfigurationTableCopyPtrOutput {
-	return o.ApplyT(func(v JobConfigurationTableCopy) *JobConfigurationTableCopy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationTableCopy) *JobConfigurationTableCopy {
 		return &v
 	}).(JobConfigurationTableCopyPtrOutput)
 }
@@ -11865,7 +12064,13 @@ func (o JobConfigurationTableCopyPtrOutput) ToJobConfigurationTableCopyPtrOutput
 }
 
 func (o JobConfigurationTableCopyPtrOutput) Elem() JobConfigurationTableCopyOutput {
-	return o.ApplyT(func(v *JobConfigurationTableCopy) JobConfigurationTableCopy { return *v }).(JobConfigurationTableCopyOutput)
+	return o.ApplyT(func(v *JobConfigurationTableCopy) JobConfigurationTableCopy {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationTableCopy
+		return ret
+	}).(JobConfigurationTableCopyOutput)
 }
 
 // [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
@@ -12069,7 +12274,7 @@ func (o JobConfigurationTableCopyResponseOutput) ToJobConfigurationTableCopyResp
 }
 
 func (o JobConfigurationTableCopyResponseOutput) ToJobConfigurationTableCopyResponsePtrOutputWithContext(ctx context.Context) JobConfigurationTableCopyResponsePtrOutput {
-	return o.ApplyT(func(v JobConfigurationTableCopyResponse) *JobConfigurationTableCopyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationTableCopyResponse) *JobConfigurationTableCopyResponse {
 		return &v
 	}).(JobConfigurationTableCopyResponsePtrOutput)
 }
@@ -12131,7 +12336,13 @@ func (o JobConfigurationTableCopyResponsePtrOutput) ToJobConfigurationTableCopyR
 }
 
 func (o JobConfigurationTableCopyResponsePtrOutput) Elem() JobConfigurationTableCopyResponseOutput {
-	return o.ApplyT(func(v *JobConfigurationTableCopyResponse) JobConfigurationTableCopyResponse { return *v }).(JobConfigurationTableCopyResponseOutput)
+	return o.ApplyT(func(v *JobConfigurationTableCopyResponse) JobConfigurationTableCopyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationTableCopyResponse
+		return ret
+	}).(JobConfigurationTableCopyResponseOutput)
 }
 
 // [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
@@ -12315,7 +12526,7 @@ func (o JobReferenceOutput) ToJobReferencePtrOutput() JobReferencePtrOutput {
 }
 
 func (o JobReferenceOutput) ToJobReferencePtrOutputWithContext(ctx context.Context) JobReferencePtrOutput {
-	return o.ApplyT(func(v JobReference) *JobReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobReference) *JobReference {
 		return &v
 	}).(JobReferencePtrOutput)
 }
@@ -12350,7 +12561,13 @@ func (o JobReferencePtrOutput) ToJobReferencePtrOutputWithContext(ctx context.Co
 }
 
 func (o JobReferencePtrOutput) Elem() JobReferenceOutput {
-	return o.ApplyT(func(v *JobReference) JobReference { return *v }).(JobReferenceOutput)
+	return o.ApplyT(func(v *JobReference) JobReference {
+		if v != nil {
+			return *v
+		}
+		var ret JobReference
+		return ret
+	}).(JobReferenceOutput)
 }
 
 // [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
@@ -12484,7 +12701,7 @@ func (o JobReferenceResponseOutput) ToJobReferenceResponsePtrOutput() JobReferen
 }
 
 func (o JobReferenceResponseOutput) ToJobReferenceResponsePtrOutputWithContext(ctx context.Context) JobReferenceResponsePtrOutput {
-	return o.ApplyT(func(v JobReferenceResponse) *JobReferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobReferenceResponse) *JobReferenceResponse {
 		return &v
 	}).(JobReferenceResponsePtrOutput)
 }
@@ -12519,7 +12736,13 @@ func (o JobReferenceResponsePtrOutput) ToJobReferenceResponsePtrOutputWithContex
 }
 
 func (o JobReferenceResponsePtrOutput) Elem() JobReferenceResponseOutput {
-	return o.ApplyT(func(v *JobReferenceResponse) JobReferenceResponse { return *v }).(JobReferenceResponseOutput)
+	return o.ApplyT(func(v *JobReferenceResponse) JobReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobReferenceResponse
+		return ret
+	}).(JobReferenceResponseOutput)
 }
 
 // [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
@@ -12855,7 +13078,7 @@ func (o JobStatistics2ResponseOutput) ToJobStatistics2ResponsePtrOutput() JobSta
 }
 
 func (o JobStatistics2ResponseOutput) ToJobStatistics2ResponsePtrOutputWithContext(ctx context.Context) JobStatistics2ResponsePtrOutput {
-	return o.ApplyT(func(v JobStatistics2Response) *JobStatistics2Response {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatistics2Response) *JobStatistics2Response {
 		return &v
 	}).(JobStatistics2ResponsePtrOutput)
 }
@@ -13010,7 +13233,13 @@ func (o JobStatistics2ResponsePtrOutput) ToJobStatistics2ResponsePtrOutputWithCo
 }
 
 func (o JobStatistics2ResponsePtrOutput) Elem() JobStatistics2ResponseOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) JobStatistics2Response { return *v }).(JobStatistics2ResponseOutput)
+	return o.ApplyT(func(v *JobStatistics2Response) JobStatistics2Response {
+		if v != nil {
+			return *v
+		}
+		var ret JobStatistics2Response
+		return ret
+	}).(JobStatistics2ResponseOutput)
 }
 
 // BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.
@@ -13392,7 +13621,7 @@ func (o JobStatistics3ResponseOutput) ToJobStatistics3ResponsePtrOutput() JobSta
 }
 
 func (o JobStatistics3ResponseOutput) ToJobStatistics3ResponsePtrOutputWithContext(ctx context.Context) JobStatistics3ResponsePtrOutput {
-	return o.ApplyT(func(v JobStatistics3Response) *JobStatistics3Response {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatistics3Response) *JobStatistics3Response {
 		return &v
 	}).(JobStatistics3ResponsePtrOutput)
 }
@@ -13437,7 +13666,13 @@ func (o JobStatistics3ResponsePtrOutput) ToJobStatistics3ResponsePtrOutputWithCo
 }
 
 func (o JobStatistics3ResponsePtrOutput) Elem() JobStatistics3ResponseOutput {
-	return o.ApplyT(func(v *JobStatistics3Response) JobStatistics3Response { return *v }).(JobStatistics3ResponseOutput)
+	return o.ApplyT(func(v *JobStatistics3Response) JobStatistics3Response {
+		if v != nil {
+			return *v
+		}
+		var ret JobStatistics3Response
+		return ret
+	}).(JobStatistics3ResponseOutput)
 }
 
 // The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
@@ -13587,7 +13822,7 @@ func (o JobStatistics4ResponseOutput) ToJobStatistics4ResponsePtrOutput() JobSta
 }
 
 func (o JobStatistics4ResponseOutput) ToJobStatistics4ResponsePtrOutputWithContext(ctx context.Context) JobStatistics4ResponsePtrOutput {
-	return o.ApplyT(func(v JobStatistics4Response) *JobStatistics4Response {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatistics4Response) *JobStatistics4Response {
 		return &v
 	}).(JobStatistics4ResponsePtrOutput)
 }
@@ -13617,7 +13852,13 @@ func (o JobStatistics4ResponsePtrOutput) ToJobStatistics4ResponsePtrOutputWithCo
 }
 
 func (o JobStatistics4ResponsePtrOutput) Elem() JobStatistics4ResponseOutput {
-	return o.ApplyT(func(v *JobStatistics4Response) JobStatistics4Response { return *v }).(JobStatistics4ResponseOutput)
+	return o.ApplyT(func(v *JobStatistics4Response) JobStatistics4Response {
+		if v != nil {
+			return *v
+		}
+		var ret JobStatistics4Response
+		return ret
+	}).(JobStatistics4ResponseOutput)
 }
 
 // Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
@@ -13903,7 +14144,7 @@ func (o JobStatisticsResponseOutput) ToJobStatisticsResponsePtrOutput() JobStati
 }
 
 func (o JobStatisticsResponseOutput) ToJobStatisticsResponsePtrOutputWithContext(ctx context.Context) JobStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v JobStatisticsResponse) *JobStatisticsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatisticsResponse) *JobStatisticsResponse {
 		return &v
 	}).(JobStatisticsResponsePtrOutput)
 }
@@ -14008,7 +14249,13 @@ func (o JobStatisticsResponsePtrOutput) ToJobStatisticsResponsePtrOutputWithCont
 }
 
 func (o JobStatisticsResponsePtrOutput) Elem() JobStatisticsResponseOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) JobStatisticsResponse { return *v }).(JobStatisticsResponseOutput)
+	return o.ApplyT(func(v *JobStatisticsResponse) JobStatisticsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobStatisticsResponse
+		return ret
+	}).(JobStatisticsResponseOutput)
 }
 
 // [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
@@ -14282,7 +14529,7 @@ func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutput() JobStatusRespons
 }
 
 func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
-	return o.ApplyT(func(v JobStatusResponse) *JobStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatusResponse) *JobStatusResponse {
 		return &v
 	}).(JobStatusResponsePtrOutput)
 }
@@ -14317,7 +14564,13 @@ func (o JobStatusResponsePtrOutput) ToJobStatusResponsePtrOutputWithContext(ctx 
 }
 
 func (o JobStatusResponsePtrOutput) Elem() JobStatusResponseOutput {
-	return o.ApplyT(func(v *JobStatusResponse) JobStatusResponse { return *v }).(JobStatusResponseOutput)
+	return o.ApplyT(func(v *JobStatusResponse) JobStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobStatusResponse
+		return ret
+	}).(JobStatusResponseOutput)
 }
 
 // Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
@@ -14451,7 +14704,7 @@ func (o MaterializedViewDefinitionOutput) ToMaterializedViewDefinitionPtrOutput(
 }
 
 func (o MaterializedViewDefinitionOutput) ToMaterializedViewDefinitionPtrOutputWithContext(ctx context.Context) MaterializedViewDefinitionPtrOutput {
-	return o.ApplyT(func(v MaterializedViewDefinition) *MaterializedViewDefinition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaterializedViewDefinition) *MaterializedViewDefinition {
 		return &v
 	}).(MaterializedViewDefinitionPtrOutput)
 }
@@ -14486,7 +14739,13 @@ func (o MaterializedViewDefinitionPtrOutput) ToMaterializedViewDefinitionPtrOutp
 }
 
 func (o MaterializedViewDefinitionPtrOutput) Elem() MaterializedViewDefinitionOutput {
-	return o.ApplyT(func(v *MaterializedViewDefinition) MaterializedViewDefinition { return *v }).(MaterializedViewDefinitionOutput)
+	return o.ApplyT(func(v *MaterializedViewDefinition) MaterializedViewDefinition {
+		if v != nil {
+			return *v
+		}
+		var ret MaterializedViewDefinition
+		return ret
+	}).(MaterializedViewDefinitionOutput)
 }
 
 // [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
@@ -14624,7 +14883,7 @@ func (o MaterializedViewDefinitionResponseOutput) ToMaterializedViewDefinitionRe
 }
 
 func (o MaterializedViewDefinitionResponseOutput) ToMaterializedViewDefinitionResponsePtrOutputWithContext(ctx context.Context) MaterializedViewDefinitionResponsePtrOutput {
-	return o.ApplyT(func(v MaterializedViewDefinitionResponse) *MaterializedViewDefinitionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaterializedViewDefinitionResponse) *MaterializedViewDefinitionResponse {
 		return &v
 	}).(MaterializedViewDefinitionResponsePtrOutput)
 }
@@ -14664,7 +14923,13 @@ func (o MaterializedViewDefinitionResponsePtrOutput) ToMaterializedViewDefinitio
 }
 
 func (o MaterializedViewDefinitionResponsePtrOutput) Elem() MaterializedViewDefinitionResponseOutput {
-	return o.ApplyT(func(v *MaterializedViewDefinitionResponse) MaterializedViewDefinitionResponse { return *v }).(MaterializedViewDefinitionResponseOutput)
+	return o.ApplyT(func(v *MaterializedViewDefinitionResponse) MaterializedViewDefinitionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MaterializedViewDefinitionResponse
+		return ret
+	}).(MaterializedViewDefinitionResponseOutput)
 }
 
 // [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
@@ -14804,7 +15069,7 @@ func (o ModelDefinitionOutput) ToModelDefinitionPtrOutput() ModelDefinitionPtrOu
 }
 
 func (o ModelDefinitionOutput) ToModelDefinitionPtrOutputWithContext(ctx context.Context) ModelDefinitionPtrOutput {
-	return o.ApplyT(func(v ModelDefinition) *ModelDefinition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelDefinition) *ModelDefinition {
 		return &v
 	}).(ModelDefinitionPtrOutput)
 }
@@ -14834,7 +15099,13 @@ func (o ModelDefinitionPtrOutput) ToModelDefinitionPtrOutputWithContext(ctx cont
 }
 
 func (o ModelDefinitionPtrOutput) Elem() ModelDefinitionOutput {
-	return o.ApplyT(func(v *ModelDefinition) ModelDefinition { return *v }).(ModelDefinitionOutput)
+	return o.ApplyT(func(v *ModelDefinition) ModelDefinition {
+		if v != nil {
+			return *v
+		}
+		var ret ModelDefinition
+		return ret
+	}).(ModelDefinitionOutput)
 }
 
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
@@ -14955,10 +15226,11 @@ func (o ModelDefinitionModelOptionsOutput) ToModelDefinitionModelOptionsPtrOutpu
 }
 
 func (o ModelDefinitionModelOptionsOutput) ToModelDefinitionModelOptionsPtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsPtrOutput {
-	return o.ApplyT(func(v ModelDefinitionModelOptions) *ModelDefinitionModelOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelDefinitionModelOptions) *ModelDefinitionModelOptions {
 		return &v
 	}).(ModelDefinitionModelOptionsPtrOutput)
 }
+
 func (o ModelDefinitionModelOptionsOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ModelDefinitionModelOptions) []string { return v.Labels }).(pulumi.StringArrayOutput)
 }
@@ -14986,7 +15258,13 @@ func (o ModelDefinitionModelOptionsPtrOutput) ToModelDefinitionModelOptionsPtrOu
 }
 
 func (o ModelDefinitionModelOptionsPtrOutput) Elem() ModelDefinitionModelOptionsOutput {
-	return o.ApplyT(func(v *ModelDefinitionModelOptions) ModelDefinitionModelOptions { return *v }).(ModelDefinitionModelOptionsOutput)
+	return o.ApplyT(func(v *ModelDefinitionModelOptions) ModelDefinitionModelOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ModelDefinitionModelOptions
+		return ret
+	}).(ModelDefinitionModelOptionsOutput)
 }
 
 func (o ModelDefinitionModelOptionsPtrOutput) Labels() pulumi.StringArrayOutput {
@@ -15114,10 +15392,11 @@ func (o ModelDefinitionModelOptionsResponseOutput) ToModelDefinitionModelOptions
 }
 
 func (o ModelDefinitionModelOptionsResponseOutput) ToModelDefinitionModelOptionsResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponsePtrOutput {
-	return o.ApplyT(func(v ModelDefinitionModelOptionsResponse) *ModelDefinitionModelOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelDefinitionModelOptionsResponse) *ModelDefinitionModelOptionsResponse {
 		return &v
 	}).(ModelDefinitionModelOptionsResponsePtrOutput)
 }
+
 func (o ModelDefinitionModelOptionsResponseOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ModelDefinitionModelOptionsResponse) []string { return v.Labels }).(pulumi.StringArrayOutput)
 }
@@ -15145,7 +15424,13 @@ func (o ModelDefinitionModelOptionsResponsePtrOutput) ToModelDefinitionModelOpti
 }
 
 func (o ModelDefinitionModelOptionsResponsePtrOutput) Elem() ModelDefinitionModelOptionsResponseOutput {
-	return o.ApplyT(func(v *ModelDefinitionModelOptionsResponse) ModelDefinitionModelOptionsResponse { return *v }).(ModelDefinitionModelOptionsResponseOutput)
+	return o.ApplyT(func(v *ModelDefinitionModelOptionsResponse) ModelDefinitionModelOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ModelDefinitionModelOptionsResponse
+		return ret
+	}).(ModelDefinitionModelOptionsResponseOutput)
 }
 
 func (o ModelDefinitionModelOptionsResponsePtrOutput) Labels() pulumi.StringArrayOutput {
@@ -15272,7 +15557,7 @@ func (o ModelDefinitionResponseOutput) ToModelDefinitionResponsePtrOutput() Mode
 }
 
 func (o ModelDefinitionResponseOutput) ToModelDefinitionResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionResponsePtrOutput {
-	return o.ApplyT(func(v ModelDefinitionResponse) *ModelDefinitionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelDefinitionResponse) *ModelDefinitionResponse {
 		return &v
 	}).(ModelDefinitionResponsePtrOutput)
 }
@@ -15302,7 +15587,13 @@ func (o ModelDefinitionResponsePtrOutput) ToModelDefinitionResponsePtrOutputWith
 }
 
 func (o ModelDefinitionResponsePtrOutput) Elem() ModelDefinitionResponseOutput {
-	return o.ApplyT(func(v *ModelDefinitionResponse) ModelDefinitionResponse { return *v }).(ModelDefinitionResponseOutput)
+	return o.ApplyT(func(v *ModelDefinitionResponse) ModelDefinitionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ModelDefinitionResponse
+		return ret
+	}).(ModelDefinitionResponseOutput)
 }
 
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
@@ -15426,7 +15717,7 @@ func (o ModelReferenceOutput) ToModelReferencePtrOutput() ModelReferencePtrOutpu
 }
 
 func (o ModelReferenceOutput) ToModelReferencePtrOutputWithContext(ctx context.Context) ModelReferencePtrOutput {
-	return o.ApplyT(func(v ModelReference) *ModelReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelReference) *ModelReference {
 		return &v
 	}).(ModelReferencePtrOutput)
 }
@@ -15461,7 +15752,13 @@ func (o ModelReferencePtrOutput) ToModelReferencePtrOutputWithContext(ctx contex
 }
 
 func (o ModelReferencePtrOutput) Elem() ModelReferenceOutput {
-	return o.ApplyT(func(v *ModelReference) ModelReference { return *v }).(ModelReferenceOutput)
+	return o.ApplyT(func(v *ModelReference) ModelReference {
+		if v != nil {
+			return *v
+		}
+		var ret ModelReference
+		return ret
+	}).(ModelReferenceOutput)
 }
 
 // [Required] The ID of the dataset containing this model.
@@ -15595,7 +15892,7 @@ func (o ModelReferenceResponseOutput) ToModelReferenceResponsePtrOutput() ModelR
 }
 
 func (o ModelReferenceResponseOutput) ToModelReferenceResponsePtrOutputWithContext(ctx context.Context) ModelReferenceResponsePtrOutput {
-	return o.ApplyT(func(v ModelReferenceResponse) *ModelReferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelReferenceResponse) *ModelReferenceResponse {
 		return &v
 	}).(ModelReferenceResponsePtrOutput)
 }
@@ -15630,7 +15927,13 @@ func (o ModelReferenceResponsePtrOutput) ToModelReferenceResponsePtrOutputWithCo
 }
 
 func (o ModelReferenceResponsePtrOutput) Elem() ModelReferenceResponseOutput {
-	return o.ApplyT(func(v *ModelReferenceResponse) ModelReferenceResponse { return *v }).(ModelReferenceResponseOutput)
+	return o.ApplyT(func(v *ModelReferenceResponse) ModelReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ModelReferenceResponse
+		return ret
+	}).(ModelReferenceResponseOutput)
 }
 
 // [Required] The ID of the dataset containing this model.
@@ -15760,7 +16063,7 @@ func (o ParquetOptionsOutput) ToParquetOptionsPtrOutput() ParquetOptionsPtrOutpu
 }
 
 func (o ParquetOptionsOutput) ToParquetOptionsPtrOutputWithContext(ctx context.Context) ParquetOptionsPtrOutput {
-	return o.ApplyT(func(v ParquetOptions) *ParquetOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParquetOptions) *ParquetOptions {
 		return &v
 	}).(ParquetOptionsPtrOutput)
 }
@@ -15790,7 +16093,13 @@ func (o ParquetOptionsPtrOutput) ToParquetOptionsPtrOutputWithContext(ctx contex
 }
 
 func (o ParquetOptionsPtrOutput) Elem() ParquetOptionsOutput {
-	return o.ApplyT(func(v *ParquetOptions) ParquetOptions { return *v }).(ParquetOptionsOutput)
+	return o.ApplyT(func(v *ParquetOptions) ParquetOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ParquetOptions
+		return ret
+	}).(ParquetOptionsOutput)
 }
 
 // [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
@@ -15910,7 +16219,7 @@ func (o ParquetOptionsResponseOutput) ToParquetOptionsResponsePtrOutput() Parque
 }
 
 func (o ParquetOptionsResponseOutput) ToParquetOptionsResponsePtrOutputWithContext(ctx context.Context) ParquetOptionsResponsePtrOutput {
-	return o.ApplyT(func(v ParquetOptionsResponse) *ParquetOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParquetOptionsResponse) *ParquetOptionsResponse {
 		return &v
 	}).(ParquetOptionsResponsePtrOutput)
 }
@@ -15940,7 +16249,13 @@ func (o ParquetOptionsResponsePtrOutput) ToParquetOptionsResponsePtrOutputWithCo
 }
 
 func (o ParquetOptionsResponsePtrOutput) Elem() ParquetOptionsResponseOutput {
-	return o.ApplyT(func(v *ParquetOptionsResponse) ParquetOptionsResponse { return *v }).(ParquetOptionsResponseOutput)
+	return o.ApplyT(func(v *ParquetOptionsResponse) ParquetOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ParquetOptionsResponse
+		return ret
+	}).(ParquetOptionsResponseOutput)
 }
 
 // [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
@@ -16294,7 +16609,7 @@ func (o QueryParameterTypeOutput) ToQueryParameterTypePtrOutput() QueryParameter
 }
 
 func (o QueryParameterTypeOutput) ToQueryParameterTypePtrOutputWithContext(ctx context.Context) QueryParameterTypePtrOutput {
-	return o.ApplyT(func(v QueryParameterType) *QueryParameterType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryParameterType) *QueryParameterType {
 		return &v
 	}).(QueryParameterTypePtrOutput)
 }
@@ -16329,7 +16644,13 @@ func (o QueryParameterTypePtrOutput) ToQueryParameterTypePtrOutputWithContext(ct
 }
 
 func (o QueryParameterTypePtrOutput) Elem() QueryParameterTypeOutput {
-	return o.ApplyT(func(v *QueryParameterType) QueryParameterType { return *v }).(QueryParameterTypeOutput)
+	return o.ApplyT(func(v *QueryParameterType) QueryParameterType {
+		if v != nil {
+			return *v
+		}
+		var ret QueryParameterType
+		return ret
+	}).(QueryParameterTypeOutput)
 }
 
 // [Optional] The type of the array's elements, if this is an array.
@@ -16788,7 +17109,7 @@ func (o QueryParameterValueOutput) ToQueryParameterValuePtrOutput() QueryParamet
 }
 
 func (o QueryParameterValueOutput) ToQueryParameterValuePtrOutputWithContext(ctx context.Context) QueryParameterValuePtrOutput {
-	return o.ApplyT(func(v QueryParameterValue) *QueryParameterValue {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryParameterValue) *QueryParameterValue {
 		return &v
 	}).(QueryParameterValuePtrOutput)
 }
@@ -16823,7 +17144,13 @@ func (o QueryParameterValuePtrOutput) ToQueryParameterValuePtrOutputWithContext(
 }
 
 func (o QueryParameterValuePtrOutput) Elem() QueryParameterValueOutput {
-	return o.ApplyT(func(v *QueryParameterValue) QueryParameterValue { return *v }).(QueryParameterValueOutput)
+	return o.ApplyT(func(v *QueryParameterValue) QueryParameterValue {
+		if v != nil {
+			return *v
+		}
+		var ret QueryParameterValue
+		return ret
+	}).(QueryParameterValueOutput)
 }
 
 // [Optional] The array values, if this is an array type.
@@ -17221,7 +17548,7 @@ func (o RangePartitioningOutput) ToRangePartitioningPtrOutput() RangePartitionin
 }
 
 func (o RangePartitioningOutput) ToRangePartitioningPtrOutputWithContext(ctx context.Context) RangePartitioningPtrOutput {
-	return o.ApplyT(func(v RangePartitioning) *RangePartitioning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RangePartitioning) *RangePartitioning {
 		return &v
 	}).(RangePartitioningPtrOutput)
 }
@@ -17251,7 +17578,13 @@ func (o RangePartitioningPtrOutput) ToRangePartitioningPtrOutputWithContext(ctx 
 }
 
 func (o RangePartitioningPtrOutput) Elem() RangePartitioningOutput {
-	return o.ApplyT(func(v *RangePartitioning) RangePartitioning { return *v }).(RangePartitioningOutput)
+	return o.ApplyT(func(v *RangePartitioning) RangePartitioning {
+		if v != nil {
+			return *v
+		}
+		var ret RangePartitioning
+		return ret
+	}).(RangePartitioningOutput)
 }
 
 // [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
@@ -17378,7 +17711,7 @@ func (o RangePartitioningRangeOutput) ToRangePartitioningRangePtrOutput() RangeP
 }
 
 func (o RangePartitioningRangeOutput) ToRangePartitioningRangePtrOutputWithContext(ctx context.Context) RangePartitioningRangePtrOutput {
-	return o.ApplyT(func(v RangePartitioningRange) *RangePartitioningRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RangePartitioningRange) *RangePartitioningRange {
 		return &v
 	}).(RangePartitioningRangePtrOutput)
 }
@@ -17413,7 +17746,13 @@ func (o RangePartitioningRangePtrOutput) ToRangePartitioningRangePtrOutputWithCo
 }
 
 func (o RangePartitioningRangePtrOutput) Elem() RangePartitioningRangeOutput {
-	return o.ApplyT(func(v *RangePartitioningRange) RangePartitioningRange { return *v }).(RangePartitioningRangeOutput)
+	return o.ApplyT(func(v *RangePartitioningRange) RangePartitioningRange {
+		if v != nil {
+			return *v
+		}
+		var ret RangePartitioningRange
+		return ret
+	}).(RangePartitioningRangeOutput)
 }
 
 // [TrustedTester] [Required] The end of range partitioning, exclusive.
@@ -17550,7 +17889,7 @@ func (o RangePartitioningRangeResponseOutput) ToRangePartitioningRangeResponsePt
 }
 
 func (o RangePartitioningRangeResponseOutput) ToRangePartitioningRangeResponsePtrOutputWithContext(ctx context.Context) RangePartitioningRangeResponsePtrOutput {
-	return o.ApplyT(func(v RangePartitioningRangeResponse) *RangePartitioningRangeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RangePartitioningRangeResponse) *RangePartitioningRangeResponse {
 		return &v
 	}).(RangePartitioningRangeResponsePtrOutput)
 }
@@ -17585,7 +17924,13 @@ func (o RangePartitioningRangeResponsePtrOutput) ToRangePartitioningRangeRespons
 }
 
 func (o RangePartitioningRangeResponsePtrOutput) Elem() RangePartitioningRangeResponseOutput {
-	return o.ApplyT(func(v *RangePartitioningRangeResponse) RangePartitioningRangeResponse { return *v }).(RangePartitioningRangeResponseOutput)
+	return o.ApplyT(func(v *RangePartitioningRangeResponse) RangePartitioningRangeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RangePartitioningRangeResponse
+		return ret
+	}).(RangePartitioningRangeResponseOutput)
 }
 
 // [TrustedTester] [Required] The end of range partitioning, exclusive.
@@ -17715,7 +18060,7 @@ func (o RangePartitioningResponseOutput) ToRangePartitioningResponsePtrOutput() 
 }
 
 func (o RangePartitioningResponseOutput) ToRangePartitioningResponsePtrOutputWithContext(ctx context.Context) RangePartitioningResponsePtrOutput {
-	return o.ApplyT(func(v RangePartitioningResponse) *RangePartitioningResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RangePartitioningResponse) *RangePartitioningResponse {
 		return &v
 	}).(RangePartitioningResponsePtrOutput)
 }
@@ -17745,7 +18090,13 @@ func (o RangePartitioningResponsePtrOutput) ToRangePartitioningResponsePtrOutput
 }
 
 func (o RangePartitioningResponsePtrOutput) Elem() RangePartitioningResponseOutput {
-	return o.ApplyT(func(v *RangePartitioningResponse) RangePartitioningResponse { return *v }).(RangePartitioningResponseOutput)
+	return o.ApplyT(func(v *RangePartitioningResponse) RangePartitioningResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RangePartitioningResponse
+		return ret
+	}).(RangePartitioningResponseOutput)
 }
 
 // [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
@@ -17869,7 +18220,7 @@ func (o RoutineReferenceOutput) ToRoutineReferencePtrOutput() RoutineReferencePt
 }
 
 func (o RoutineReferenceOutput) ToRoutineReferencePtrOutputWithContext(ctx context.Context) RoutineReferencePtrOutput {
-	return o.ApplyT(func(v RoutineReference) *RoutineReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutineReference) *RoutineReference {
 		return &v
 	}).(RoutineReferencePtrOutput)
 }
@@ -17904,7 +18255,13 @@ func (o RoutineReferencePtrOutput) ToRoutineReferencePtrOutputWithContext(ctx co
 }
 
 func (o RoutineReferencePtrOutput) Elem() RoutineReferenceOutput {
-	return o.ApplyT(func(v *RoutineReference) RoutineReference { return *v }).(RoutineReferenceOutput)
+	return o.ApplyT(func(v *RoutineReference) RoutineReference {
+		if v != nil {
+			return *v
+		}
+		var ret RoutineReference
+		return ret
+	}).(RoutineReferenceOutput)
 }
 
 // [Required] The ID of the dataset containing this routine.
@@ -18063,7 +18420,7 @@ func (o RoutineReferenceResponseOutput) ToRoutineReferenceResponsePtrOutput() Ro
 }
 
 func (o RoutineReferenceResponseOutput) ToRoutineReferenceResponsePtrOutputWithContext(ctx context.Context) RoutineReferenceResponsePtrOutput {
-	return o.ApplyT(func(v RoutineReferenceResponse) *RoutineReferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutineReferenceResponse) *RoutineReferenceResponse {
 		return &v
 	}).(RoutineReferenceResponsePtrOutput)
 }
@@ -18098,7 +18455,13 @@ func (o RoutineReferenceResponsePtrOutput) ToRoutineReferenceResponsePtrOutputWi
 }
 
 func (o RoutineReferenceResponsePtrOutput) Elem() RoutineReferenceResponseOutput {
-	return o.ApplyT(func(v *RoutineReferenceResponse) RoutineReferenceResponse { return *v }).(RoutineReferenceResponseOutput)
+	return o.ApplyT(func(v *RoutineReferenceResponse) RoutineReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RoutineReferenceResponse
+		return ret
+	}).(RoutineReferenceResponseOutput)
 }
 
 // [Required] The ID of the dataset containing this routine.
@@ -18256,7 +18619,7 @@ func (o RowAccessPolicyReferenceResponseOutput) ToRowAccessPolicyReferenceRespon
 }
 
 func (o RowAccessPolicyReferenceResponseOutput) ToRowAccessPolicyReferenceResponsePtrOutputWithContext(ctx context.Context) RowAccessPolicyReferenceResponsePtrOutput {
-	return o.ApplyT(func(v RowAccessPolicyReferenceResponse) *RowAccessPolicyReferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RowAccessPolicyReferenceResponse) *RowAccessPolicyReferenceResponse {
 		return &v
 	}).(RowAccessPolicyReferenceResponsePtrOutput)
 }
@@ -18296,7 +18659,13 @@ func (o RowAccessPolicyReferenceResponsePtrOutput) ToRowAccessPolicyReferenceRes
 }
 
 func (o RowAccessPolicyReferenceResponsePtrOutput) Elem() RowAccessPolicyReferenceResponseOutput {
-	return o.ApplyT(func(v *RowAccessPolicyReferenceResponse) RowAccessPolicyReferenceResponse { return *v }).(RowAccessPolicyReferenceResponseOutput)
+	return o.ApplyT(func(v *RowAccessPolicyReferenceResponse) RowAccessPolicyReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RowAccessPolicyReferenceResponse
+		return ret
+	}).(RowAccessPolicyReferenceResponseOutput)
 }
 
 // [Required] The ID of the dataset containing this row access policy.
@@ -18432,7 +18801,7 @@ func (o RowLevelSecurityStatisticsResponseOutput) ToRowLevelSecurityStatisticsRe
 }
 
 func (o RowLevelSecurityStatisticsResponseOutput) ToRowLevelSecurityStatisticsResponsePtrOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v RowLevelSecurityStatisticsResponse) *RowLevelSecurityStatisticsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RowLevelSecurityStatisticsResponse) *RowLevelSecurityStatisticsResponse {
 		return &v
 	}).(RowLevelSecurityStatisticsResponsePtrOutput)
 }
@@ -18457,7 +18826,13 @@ func (o RowLevelSecurityStatisticsResponsePtrOutput) ToRowLevelSecurityStatistic
 }
 
 func (o RowLevelSecurityStatisticsResponsePtrOutput) Elem() RowLevelSecurityStatisticsResponseOutput {
-	return o.ApplyT(func(v *RowLevelSecurityStatisticsResponse) RowLevelSecurityStatisticsResponse { return *v }).(RowLevelSecurityStatisticsResponseOutput)
+	return o.ApplyT(func(v *RowLevelSecurityStatisticsResponse) RowLevelSecurityStatisticsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RowLevelSecurityStatisticsResponse
+		return ret
+	}).(RowLevelSecurityStatisticsResponseOutput)
 }
 
 // [Preview] Whether any accessed data was protected by row access policies.
@@ -18709,7 +19084,7 @@ func (o ScriptStatisticsResponseOutput) ToScriptStatisticsResponsePtrOutput() Sc
 }
 
 func (o ScriptStatisticsResponseOutput) ToScriptStatisticsResponsePtrOutputWithContext(ctx context.Context) ScriptStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v ScriptStatisticsResponse) *ScriptStatisticsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScriptStatisticsResponse) *ScriptStatisticsResponse {
 		return &v
 	}).(ScriptStatisticsResponsePtrOutput)
 }
@@ -18739,7 +19114,13 @@ func (o ScriptStatisticsResponsePtrOutput) ToScriptStatisticsResponsePtrOutputWi
 }
 
 func (o ScriptStatisticsResponsePtrOutput) Elem() ScriptStatisticsResponseOutput {
-	return o.ApplyT(func(v *ScriptStatisticsResponse) ScriptStatisticsResponse { return *v }).(ScriptStatisticsResponseOutput)
+	return o.ApplyT(func(v *ScriptStatisticsResponse) ScriptStatisticsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScriptStatisticsResponse
+		return ret
+	}).(ScriptStatisticsResponseOutput)
 }
 
 // Whether this child job was a statement or expression.
@@ -18855,7 +19236,7 @@ func (o SessionInfoResponseOutput) ToSessionInfoResponsePtrOutput() SessionInfoR
 }
 
 func (o SessionInfoResponseOutput) ToSessionInfoResponsePtrOutputWithContext(ctx context.Context) SessionInfoResponsePtrOutput {
-	return o.ApplyT(func(v SessionInfoResponse) *SessionInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionInfoResponse) *SessionInfoResponse {
 		return &v
 	}).(SessionInfoResponsePtrOutput)
 }
@@ -18880,7 +19261,13 @@ func (o SessionInfoResponsePtrOutput) ToSessionInfoResponsePtrOutputWithContext(
 }
 
 func (o SessionInfoResponsePtrOutput) Elem() SessionInfoResponseOutput {
-	return o.ApplyT(func(v *SessionInfoResponse) SessionInfoResponse { return *v }).(SessionInfoResponseOutput)
+	return o.ApplyT(func(v *SessionInfoResponse) SessionInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SessionInfoResponse
+		return ret
+	}).(SessionInfoResponseOutput)
 }
 
 // // [Preview] Id of the session.
@@ -18990,7 +19377,7 @@ func (o SnapshotDefinitionResponseOutput) ToSnapshotDefinitionResponsePtrOutput(
 }
 
 func (o SnapshotDefinitionResponseOutput) ToSnapshotDefinitionResponsePtrOutputWithContext(ctx context.Context) SnapshotDefinitionResponsePtrOutput {
-	return o.ApplyT(func(v SnapshotDefinitionResponse) *SnapshotDefinitionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotDefinitionResponse) *SnapshotDefinitionResponse {
 		return &v
 	}).(SnapshotDefinitionResponsePtrOutput)
 }
@@ -19020,7 +19407,13 @@ func (o SnapshotDefinitionResponsePtrOutput) ToSnapshotDefinitionResponsePtrOutp
 }
 
 func (o SnapshotDefinitionResponsePtrOutput) Elem() SnapshotDefinitionResponseOutput {
-	return o.ApplyT(func(v *SnapshotDefinitionResponse) SnapshotDefinitionResponse { return *v }).(SnapshotDefinitionResponseOutput)
+	return o.ApplyT(func(v *SnapshotDefinitionResponse) SnapshotDefinitionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotDefinitionResponse
+		return ret
+	}).(SnapshotDefinitionResponseOutput)
 }
 
 // [Required] Reference describing the ID of the table that was snapshot.
@@ -19147,7 +19540,7 @@ func (o StandardSqlDataTypeOutput) ToStandardSqlDataTypePtrOutput() StandardSqlD
 }
 
 func (o StandardSqlDataTypeOutput) ToStandardSqlDataTypePtrOutputWithContext(ctx context.Context) StandardSqlDataTypePtrOutput {
-	return o.ApplyT(func(v StandardSqlDataType) *StandardSqlDataType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardSqlDataType) *StandardSqlDataType {
 		return &v
 	}).(StandardSqlDataTypePtrOutput)
 }
@@ -19182,7 +19575,13 @@ func (o StandardSqlDataTypePtrOutput) ToStandardSqlDataTypePtrOutputWithContext(
 }
 
 func (o StandardSqlDataTypePtrOutput) Elem() StandardSqlDataTypeOutput {
-	return o.ApplyT(func(v *StandardSqlDataType) StandardSqlDataType { return *v }).(StandardSqlDataTypeOutput)
+	return o.ApplyT(func(v *StandardSqlDataType) StandardSqlDataType {
+		if v != nil {
+			return *v
+		}
+		var ret StandardSqlDataType
+		return ret
+	}).(StandardSqlDataTypeOutput)
 }
 
 // The type of the array's elements, if type_kind = "ARRAY".
@@ -19319,7 +19718,7 @@ func (o StandardSqlDataTypeResponseOutput) ToStandardSqlDataTypeResponsePtrOutpu
 }
 
 func (o StandardSqlDataTypeResponseOutput) ToStandardSqlDataTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlDataTypeResponsePtrOutput {
-	return o.ApplyT(func(v StandardSqlDataTypeResponse) *StandardSqlDataTypeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardSqlDataTypeResponse) *StandardSqlDataTypeResponse {
 		return &v
 	}).(StandardSqlDataTypeResponsePtrOutput)
 }
@@ -19354,7 +19753,13 @@ func (o StandardSqlDataTypeResponsePtrOutput) ToStandardSqlDataTypeResponsePtrOu
 }
 
 func (o StandardSqlDataTypeResponsePtrOutput) Elem() StandardSqlDataTypeResponseOutput {
-	return o.ApplyT(func(v *StandardSqlDataTypeResponse) StandardSqlDataTypeResponse { return *v }).(StandardSqlDataTypeResponseOutput)
+	return o.ApplyT(func(v *StandardSqlDataTypeResponse) StandardSqlDataTypeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StandardSqlDataTypeResponse
+		return ret
+	}).(StandardSqlDataTypeResponseOutput)
 }
 
 // The type of the array's elements, if type_kind = "ARRAY".
@@ -19696,10 +20101,11 @@ func (o StandardSqlStructTypeOutput) ToStandardSqlStructTypePtrOutput() Standard
 }
 
 func (o StandardSqlStructTypeOutput) ToStandardSqlStructTypePtrOutputWithContext(ctx context.Context) StandardSqlStructTypePtrOutput {
-	return o.ApplyT(func(v StandardSqlStructType) *StandardSqlStructType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardSqlStructType) *StandardSqlStructType {
 		return &v
 	}).(StandardSqlStructTypePtrOutput)
 }
+
 func (o StandardSqlStructTypeOutput) Fields() StandardSqlFieldArrayOutput {
 	return o.ApplyT(func(v StandardSqlStructType) []StandardSqlField { return v.Fields }).(StandardSqlFieldArrayOutput)
 }
@@ -19719,7 +20125,13 @@ func (o StandardSqlStructTypePtrOutput) ToStandardSqlStructTypePtrOutputWithCont
 }
 
 func (o StandardSqlStructTypePtrOutput) Elem() StandardSqlStructTypeOutput {
-	return o.ApplyT(func(v *StandardSqlStructType) StandardSqlStructType { return *v }).(StandardSqlStructTypeOutput)
+	return o.ApplyT(func(v *StandardSqlStructType) StandardSqlStructType {
+		if v != nil {
+			return *v
+		}
+		var ret StandardSqlStructType
+		return ret
+	}).(StandardSqlStructTypeOutput)
 }
 
 func (o StandardSqlStructTypePtrOutput) Fields() StandardSqlFieldArrayOutput {
@@ -19822,10 +20234,11 @@ func (o StandardSqlStructTypeResponseOutput) ToStandardSqlStructTypeResponsePtrO
 }
 
 func (o StandardSqlStructTypeResponseOutput) ToStandardSqlStructTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlStructTypeResponsePtrOutput {
-	return o.ApplyT(func(v StandardSqlStructTypeResponse) *StandardSqlStructTypeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardSqlStructTypeResponse) *StandardSqlStructTypeResponse {
 		return &v
 	}).(StandardSqlStructTypeResponsePtrOutput)
 }
+
 func (o StandardSqlStructTypeResponseOutput) Fields() StandardSqlFieldResponseArrayOutput {
 	return o.ApplyT(func(v StandardSqlStructTypeResponse) []StandardSqlFieldResponse { return v.Fields }).(StandardSqlFieldResponseArrayOutput)
 }
@@ -19845,7 +20258,13 @@ func (o StandardSqlStructTypeResponsePtrOutput) ToStandardSqlStructTypeResponseP
 }
 
 func (o StandardSqlStructTypeResponsePtrOutput) Elem() StandardSqlStructTypeResponseOutput {
-	return o.ApplyT(func(v *StandardSqlStructTypeResponse) StandardSqlStructTypeResponse { return *v }).(StandardSqlStructTypeResponseOutput)
+	return o.ApplyT(func(v *StandardSqlStructTypeResponse) StandardSqlStructTypeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StandardSqlStructTypeResponse
+		return ret
+	}).(StandardSqlStructTypeResponseOutput)
 }
 
 func (o StandardSqlStructTypeResponsePtrOutput) Fields() StandardSqlFieldResponseArrayOutput {
@@ -19953,7 +20372,7 @@ func (o StandardSqlTableTypeOutput) ToStandardSqlTableTypePtrOutput() StandardSq
 }
 
 func (o StandardSqlTableTypeOutput) ToStandardSqlTableTypePtrOutputWithContext(ctx context.Context) StandardSqlTableTypePtrOutput {
-	return o.ApplyT(func(v StandardSqlTableType) *StandardSqlTableType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardSqlTableType) *StandardSqlTableType {
 		return &v
 	}).(StandardSqlTableTypePtrOutput)
 }
@@ -19978,7 +20397,13 @@ func (o StandardSqlTableTypePtrOutput) ToStandardSqlTableTypePtrOutputWithContex
 }
 
 func (o StandardSqlTableTypePtrOutput) Elem() StandardSqlTableTypeOutput {
-	return o.ApplyT(func(v *StandardSqlTableType) StandardSqlTableType { return *v }).(StandardSqlTableTypeOutput)
+	return o.ApplyT(func(v *StandardSqlTableType) StandardSqlTableType {
+		if v != nil {
+			return *v
+		}
+		var ret StandardSqlTableType
+		return ret
+	}).(StandardSqlTableTypeOutput)
 }
 
 // The columns in this table type
@@ -20087,7 +20512,7 @@ func (o StandardSqlTableTypeResponseOutput) ToStandardSqlTableTypeResponsePtrOut
 }
 
 func (o StandardSqlTableTypeResponseOutput) ToStandardSqlTableTypeResponsePtrOutputWithContext(ctx context.Context) StandardSqlTableTypeResponsePtrOutput {
-	return o.ApplyT(func(v StandardSqlTableTypeResponse) *StandardSqlTableTypeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardSqlTableTypeResponse) *StandardSqlTableTypeResponse {
 		return &v
 	}).(StandardSqlTableTypeResponsePtrOutput)
 }
@@ -20112,7 +20537,13 @@ func (o StandardSqlTableTypeResponsePtrOutput) ToStandardSqlTableTypeResponsePtr
 }
 
 func (o StandardSqlTableTypeResponsePtrOutput) Elem() StandardSqlTableTypeResponseOutput {
-	return o.ApplyT(func(v *StandardSqlTableTypeResponse) StandardSqlTableTypeResponse { return *v }).(StandardSqlTableTypeResponseOutput)
+	return o.ApplyT(func(v *StandardSqlTableTypeResponse) StandardSqlTableTypeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StandardSqlTableTypeResponse
+		return ret
+	}).(StandardSqlTableTypeResponseOutput)
 }
 
 // The columns in this table type
@@ -20226,7 +20657,7 @@ func (o StreamingbufferResponseOutput) ToStreamingbufferResponsePtrOutput() Stre
 }
 
 func (o StreamingbufferResponseOutput) ToStreamingbufferResponsePtrOutputWithContext(ctx context.Context) StreamingbufferResponsePtrOutput {
-	return o.ApplyT(func(v StreamingbufferResponse) *StreamingbufferResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamingbufferResponse) *StreamingbufferResponse {
 		return &v
 	}).(StreamingbufferResponsePtrOutput)
 }
@@ -20261,7 +20692,13 @@ func (o StreamingbufferResponsePtrOutput) ToStreamingbufferResponsePtrOutputWith
 }
 
 func (o StreamingbufferResponsePtrOutput) Elem() StreamingbufferResponseOutput {
-	return o.ApplyT(func(v *StreamingbufferResponse) StreamingbufferResponse { return *v }).(StreamingbufferResponseOutput)
+	return o.ApplyT(func(v *StreamingbufferResponse) StreamingbufferResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StreamingbufferResponse
+		return ret
+	}).(StreamingbufferResponseOutput)
 }
 
 // A lower-bound estimate of the number of bytes currently in the streaming buffer.
@@ -20574,7 +21011,7 @@ func (o TableFieldSchemaCategoriesOutput) ToTableFieldSchemaCategoriesPtrOutput(
 }
 
 func (o TableFieldSchemaCategoriesOutput) ToTableFieldSchemaCategoriesPtrOutputWithContext(ctx context.Context) TableFieldSchemaCategoriesPtrOutput {
-	return o.ApplyT(func(v TableFieldSchemaCategories) *TableFieldSchemaCategories {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableFieldSchemaCategories) *TableFieldSchemaCategories {
 		return &v
 	}).(TableFieldSchemaCategoriesPtrOutput)
 }
@@ -20599,7 +21036,13 @@ func (o TableFieldSchemaCategoriesPtrOutput) ToTableFieldSchemaCategoriesPtrOutp
 }
 
 func (o TableFieldSchemaCategoriesPtrOutput) Elem() TableFieldSchemaCategoriesOutput {
-	return o.ApplyT(func(v *TableFieldSchemaCategories) TableFieldSchemaCategories { return *v }).(TableFieldSchemaCategoriesOutput)
+	return o.ApplyT(func(v *TableFieldSchemaCategories) TableFieldSchemaCategories {
+		if v != nil {
+			return *v
+		}
+		var ret TableFieldSchemaCategories
+		return ret
+	}).(TableFieldSchemaCategoriesOutput)
 }
 
 // A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
@@ -20760,7 +21203,7 @@ func (o TableFieldSchemaPolicyTagsOutput) ToTableFieldSchemaPolicyTagsPtrOutput(
 }
 
 func (o TableFieldSchemaPolicyTagsOutput) ToTableFieldSchemaPolicyTagsPtrOutputWithContext(ctx context.Context) TableFieldSchemaPolicyTagsPtrOutput {
-	return o.ApplyT(func(v TableFieldSchemaPolicyTags) *TableFieldSchemaPolicyTags {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableFieldSchemaPolicyTags) *TableFieldSchemaPolicyTags {
 		return &v
 	}).(TableFieldSchemaPolicyTagsPtrOutput)
 }
@@ -20785,7 +21228,13 @@ func (o TableFieldSchemaPolicyTagsPtrOutput) ToTableFieldSchemaPolicyTagsPtrOutp
 }
 
 func (o TableFieldSchemaPolicyTagsPtrOutput) Elem() TableFieldSchemaPolicyTagsOutput {
-	return o.ApplyT(func(v *TableFieldSchemaPolicyTags) TableFieldSchemaPolicyTags { return *v }).(TableFieldSchemaPolicyTagsOutput)
+	return o.ApplyT(func(v *TableFieldSchemaPolicyTags) TableFieldSchemaPolicyTags {
+		if v != nil {
+			return *v
+		}
+		var ret TableFieldSchemaPolicyTags
+		return ret
+	}).(TableFieldSchemaPolicyTagsOutput)
 }
 
 // A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
@@ -21160,7 +21609,7 @@ func (o TableReferenceOutput) ToTableReferencePtrOutput() TableReferencePtrOutpu
 }
 
 func (o TableReferenceOutput) ToTableReferencePtrOutputWithContext(ctx context.Context) TableReferencePtrOutput {
-	return o.ApplyT(func(v TableReference) *TableReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableReference) *TableReference {
 		return &v
 	}).(TableReferencePtrOutput)
 }
@@ -21195,7 +21644,13 @@ func (o TableReferencePtrOutput) ToTableReferencePtrOutputWithContext(ctx contex
 }
 
 func (o TableReferencePtrOutput) Elem() TableReferenceOutput {
-	return o.ApplyT(func(v *TableReference) TableReference { return *v }).(TableReferenceOutput)
+	return o.ApplyT(func(v *TableReference) TableReference {
+		if v != nil {
+			return *v
+		}
+		var ret TableReference
+		return ret
+	}).(TableReferenceOutput)
 }
 
 // [Required] The ID of the dataset containing this table.
@@ -21374,7 +21829,7 @@ func (o TableReferenceResponseOutput) ToTableReferenceResponsePtrOutput() TableR
 }
 
 func (o TableReferenceResponseOutput) ToTableReferenceResponsePtrOutputWithContext(ctx context.Context) TableReferenceResponsePtrOutput {
-	return o.ApplyT(func(v TableReferenceResponse) *TableReferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableReferenceResponse) *TableReferenceResponse {
 		return &v
 	}).(TableReferenceResponsePtrOutput)
 }
@@ -21409,7 +21864,13 @@ func (o TableReferenceResponsePtrOutput) ToTableReferenceResponsePtrOutputWithCo
 }
 
 func (o TableReferenceResponsePtrOutput) Elem() TableReferenceResponseOutput {
-	return o.ApplyT(func(v *TableReferenceResponse) TableReferenceResponse { return *v }).(TableReferenceResponseOutput)
+	return o.ApplyT(func(v *TableReferenceResponse) TableReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TableReferenceResponse
+		return ret
+	}).(TableReferenceResponseOutput)
 }
 
 // [Required] The ID of the dataset containing this table.
@@ -21555,7 +22016,7 @@ func (o TableSchemaOutput) ToTableSchemaPtrOutput() TableSchemaPtrOutput {
 }
 
 func (o TableSchemaOutput) ToTableSchemaPtrOutputWithContext(ctx context.Context) TableSchemaPtrOutput {
-	return o.ApplyT(func(v TableSchema) *TableSchema {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableSchema) *TableSchema {
 		return &v
 	}).(TableSchemaPtrOutput)
 }
@@ -21580,7 +22041,13 @@ func (o TableSchemaPtrOutput) ToTableSchemaPtrOutputWithContext(ctx context.Cont
 }
 
 func (o TableSchemaPtrOutput) Elem() TableSchemaOutput {
-	return o.ApplyT(func(v *TableSchema) TableSchema { return *v }).(TableSchemaOutput)
+	return o.ApplyT(func(v *TableSchema) TableSchema {
+		if v != nil {
+			return *v
+		}
+		var ret TableSchema
+		return ret
+	}).(TableSchemaOutput)
 }
 
 // Describes the fields in a table.
@@ -21686,7 +22153,7 @@ func (o TableSchemaResponseOutput) ToTableSchemaResponsePtrOutput() TableSchemaR
 }
 
 func (o TableSchemaResponseOutput) ToTableSchemaResponsePtrOutputWithContext(ctx context.Context) TableSchemaResponsePtrOutput {
-	return o.ApplyT(func(v TableSchemaResponse) *TableSchemaResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableSchemaResponse) *TableSchemaResponse {
 		return &v
 	}).(TableSchemaResponsePtrOutput)
 }
@@ -21711,7 +22178,13 @@ func (o TableSchemaResponsePtrOutput) ToTableSchemaResponsePtrOutputWithContext(
 }
 
 func (o TableSchemaResponsePtrOutput) Elem() TableSchemaResponseOutput {
-	return o.ApplyT(func(v *TableSchemaResponse) TableSchemaResponse { return *v }).(TableSchemaResponseOutput)
+	return o.ApplyT(func(v *TableSchemaResponse) TableSchemaResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TableSchemaResponse
+		return ret
+	}).(TableSchemaResponseOutput)
 }
 
 // Describes the fields in a table.
@@ -21827,7 +22300,7 @@ func (o TimePartitioningOutput) ToTimePartitioningPtrOutput() TimePartitioningPt
 }
 
 func (o TimePartitioningOutput) ToTimePartitioningPtrOutputWithContext(ctx context.Context) TimePartitioningPtrOutput {
-	return o.ApplyT(func(v TimePartitioning) *TimePartitioning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimePartitioning) *TimePartitioning {
 		return &v
 	}).(TimePartitioningPtrOutput)
 }
@@ -21866,7 +22339,13 @@ func (o TimePartitioningPtrOutput) ToTimePartitioningPtrOutputWithContext(ctx co
 }
 
 func (o TimePartitioningPtrOutput) Elem() TimePartitioningOutput {
-	return o.ApplyT(func(v *TimePartitioning) TimePartitioning { return *v }).(TimePartitioningOutput)
+	return o.ApplyT(func(v *TimePartitioning) TimePartitioning {
+		if v != nil {
+			return *v
+		}
+		var ret TimePartitioning
+		return ret
+	}).(TimePartitioningOutput)
 }
 
 // [Optional] Number of milliseconds for which to keep the storage for partitions in the table. The storage in a partition will have an expiration time of its partition time plus this value.
@@ -22011,7 +22490,7 @@ func (o TimePartitioningResponseOutput) ToTimePartitioningResponsePtrOutput() Ti
 }
 
 func (o TimePartitioningResponseOutput) ToTimePartitioningResponsePtrOutputWithContext(ctx context.Context) TimePartitioningResponsePtrOutput {
-	return o.ApplyT(func(v TimePartitioningResponse) *TimePartitioningResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimePartitioningResponse) *TimePartitioningResponse {
 		return &v
 	}).(TimePartitioningResponsePtrOutput)
 }
@@ -22050,7 +22529,13 @@ func (o TimePartitioningResponsePtrOutput) ToTimePartitioningResponsePtrOutputWi
 }
 
 func (o TimePartitioningResponsePtrOutput) Elem() TimePartitioningResponseOutput {
-	return o.ApplyT(func(v *TimePartitioningResponse) TimePartitioningResponse { return *v }).(TimePartitioningResponseOutput)
+	return o.ApplyT(func(v *TimePartitioningResponse) TimePartitioningResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TimePartitioningResponse
+		return ret
+	}).(TimePartitioningResponseOutput)
 }
 
 // [Optional] Number of milliseconds for which to keep the storage for partitions in the table. The storage in a partition will have an expiration time of its partition time plus this value.
@@ -22185,7 +22670,7 @@ func (o TransactionInfoResponseOutput) ToTransactionInfoResponsePtrOutput() Tran
 }
 
 func (o TransactionInfoResponseOutput) ToTransactionInfoResponsePtrOutputWithContext(ctx context.Context) TransactionInfoResponsePtrOutput {
-	return o.ApplyT(func(v TransactionInfoResponse) *TransactionInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransactionInfoResponse) *TransactionInfoResponse {
 		return &v
 	}).(TransactionInfoResponsePtrOutput)
 }
@@ -22210,7 +22695,13 @@ func (o TransactionInfoResponsePtrOutput) ToTransactionInfoResponsePtrOutputWith
 }
 
 func (o TransactionInfoResponsePtrOutput) Elem() TransactionInfoResponseOutput {
-	return o.ApplyT(func(v *TransactionInfoResponse) TransactionInfoResponse { return *v }).(TransactionInfoResponseOutput)
+	return o.ApplyT(func(v *TransactionInfoResponse) TransactionInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TransactionInfoResponse
+		return ret
+	}).(TransactionInfoResponseOutput)
 }
 
 // // [Alpha] Id of the transaction.
@@ -22546,7 +23037,7 @@ func (o ViewDefinitionOutput) ToViewDefinitionPtrOutput() ViewDefinitionPtrOutpu
 }
 
 func (o ViewDefinitionOutput) ToViewDefinitionPtrOutputWithContext(ctx context.Context) ViewDefinitionPtrOutput {
-	return o.ApplyT(func(v ViewDefinition) *ViewDefinition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ViewDefinition) *ViewDefinition {
 		return &v
 	}).(ViewDefinitionPtrOutput)
 }
@@ -22586,7 +23077,13 @@ func (o ViewDefinitionPtrOutput) ToViewDefinitionPtrOutputWithContext(ctx contex
 }
 
 func (o ViewDefinitionPtrOutput) Elem() ViewDefinitionOutput {
-	return o.ApplyT(func(v *ViewDefinition) ViewDefinition { return *v }).(ViewDefinitionOutput)
+	return o.ApplyT(func(v *ViewDefinition) ViewDefinition {
+		if v != nil {
+			return *v
+		}
+		var ret ViewDefinition
+		return ret
+	}).(ViewDefinitionOutput)
 }
 
 // [Required] A query that BigQuery executes when the view is referenced.
@@ -22734,7 +23231,7 @@ func (o ViewDefinitionResponseOutput) ToViewDefinitionResponsePtrOutput() ViewDe
 }
 
 func (o ViewDefinitionResponseOutput) ToViewDefinitionResponsePtrOutputWithContext(ctx context.Context) ViewDefinitionResponsePtrOutput {
-	return o.ApplyT(func(v ViewDefinitionResponse) *ViewDefinitionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ViewDefinitionResponse) *ViewDefinitionResponse {
 		return &v
 	}).(ViewDefinitionResponsePtrOutput)
 }
@@ -22776,7 +23273,13 @@ func (o ViewDefinitionResponsePtrOutput) ToViewDefinitionResponsePtrOutputWithCo
 }
 
 func (o ViewDefinitionResponsePtrOutput) Elem() ViewDefinitionResponseOutput {
-	return o.ApplyT(func(v *ViewDefinitionResponse) ViewDefinitionResponse { return *v }).(ViewDefinitionResponseOutput)
+	return o.ApplyT(func(v *ViewDefinitionResponse) ViewDefinitionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ViewDefinitionResponse
+		return ret
+	}).(ViewDefinitionResponseOutput)
 }
 
 // [Required] A query that BigQuery executes when the view is referenced.

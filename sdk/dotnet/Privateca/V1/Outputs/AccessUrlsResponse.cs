@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 {
 
+    /// <summary>
+    /// URLs where a CertificateAuthority will publish content.
+    /// </summary>
     [OutputType]
     public sealed class AccessUrlsResponse
     {

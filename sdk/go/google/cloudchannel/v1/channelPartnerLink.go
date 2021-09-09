@@ -123,9 +123,7 @@ func (i *ChannelPartnerLink) ToChannelPartnerLinkOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ChannelPartnerLinkOutput)
 }
 
-type ChannelPartnerLinkOutput struct {
-	*pulumi.OutputState
-}
+type ChannelPartnerLinkOutput struct{ *pulumi.OutputState }
 
 func (ChannelPartnerLinkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ChannelPartnerLink)(nil))

@@ -168,9 +168,7 @@ func (i *Routine) ToRoutineOutputWithContext(ctx context.Context) RoutineOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RoutineOutput)
 }
 
-type RoutineOutput struct {
-	*pulumi.OutputState
-}
+type RoutineOutput struct{ *pulumi.OutputState }
 
 func (RoutineOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Routine)(nil))

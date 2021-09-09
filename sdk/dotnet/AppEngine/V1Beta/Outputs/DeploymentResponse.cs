@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Code and application artifacts used to deploy a version to App Engine.
+    /// </summary>
     [OutputType]
     public sealed class DeploymentResponse
     {

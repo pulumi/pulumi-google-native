@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// The period during which some deployable was active in a runtime.
+    /// </summary>
     [OutputType]
     public sealed class DeploymentResponse
     {

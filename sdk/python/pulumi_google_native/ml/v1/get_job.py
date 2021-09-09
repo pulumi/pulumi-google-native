@@ -13,6 +13,7 @@ __all__ = [
     'GetJobResult',
     'AwaitableGetJobResult',
     'get_job',
+    'get_job_output',
 ]
 
 @pulumi.output_type
@@ -200,3 +201,13 @@ def get_job(job_id: Optional[str] = None,
         state=__ret__.state,
         training_input=__ret__.training_input,
         training_output=__ret__.training_output)
+
+
+@_utilities.lift_output_func(get_job)
+def get_job_output(job_id: Optional[pulumi.Input[str]] = None,
+                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobResult]:
+    """
+    Describes a job.
+    """
+    ...

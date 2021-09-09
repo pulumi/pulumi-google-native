@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for resources used by Airflow workers.
+    /// </summary>
     [OutputType]
     public sealed class WorkerResourceResponse
     {

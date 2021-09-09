@@ -13,6 +13,7 @@ __all__ = [
     'GetFolderPolicyResult',
     'AwaitableGetFolderPolicyResult',
     'get_folder_policy',
+    'get_folder_policy_output',
 ]
 
 @pulumi.output_type
@@ -70,3 +71,13 @@ def get_folder_policy(folder_id: Optional[str] = None,
     return AwaitableGetFolderPolicyResult(
         name=__ret__.name,
         spec=__ret__.spec)
+
+
+@_utilities.lift_output_func(get_folder_policy)
+def get_folder_policy_output(folder_id: Optional[pulumi.Input[str]] = None,
+                             policy_id: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderPolicyResult]:
+    """
+    Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+    """
+    ...

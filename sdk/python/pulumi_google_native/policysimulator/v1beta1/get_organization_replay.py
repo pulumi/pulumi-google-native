@@ -13,6 +13,7 @@ __all__ = [
     'GetOrganizationReplayResult',
     'AwaitableGetOrganizationReplayResult',
     'get_organization_replay',
+    'get_organization_replay_output',
 ]
 
 @pulumi.output_type
@@ -98,3 +99,14 @@ def get_organization_replay(location: Optional[str] = None,
         name=__ret__.name,
         results_summary=__ret__.results_summary,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_organization_replay)
+def get_organization_replay_output(location: Optional[pulumi.Input[str]] = None,
+                                   organization_id: Optional[pulumi.Input[str]] = None,
+                                   replay_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationReplayResult]:
+    """
+    Gets the specified Replay. Each `Replay` is available for at least 7 days.
+    """
+    ...

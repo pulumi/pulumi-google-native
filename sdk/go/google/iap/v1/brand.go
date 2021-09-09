@@ -105,9 +105,7 @@ func (i *Brand) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BrandOutput)
 }
 
-type BrandOutput struct {
-	*pulumi.OutputState
-}
+type BrandOutput struct{ *pulumi.OutputState }
 
 func (BrandOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Brand)(nil))

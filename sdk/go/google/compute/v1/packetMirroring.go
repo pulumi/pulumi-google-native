@@ -150,9 +150,7 @@ func (i *PacketMirroring) ToPacketMirroringOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringOutput)
 }
 
-type PacketMirroringOutput struct {
-	*pulumi.OutputState
-}
+type PacketMirroringOutput struct{ *pulumi.OutputState }
 
 func (PacketMirroringOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PacketMirroring)(nil))

@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,142 @@ type LookupConversationResult struct {
 	TurnCount int `pulumi:"turnCount"`
 	// The most recent time at which the conversation was updated.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupConversationOutput(ctx *pulumi.Context, args LookupConversationOutputArgs, opts ...pulumi.InvokeOption) LookupConversationResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupConversationResult, error) {
+			args := v.(LookupConversationArgs)
+			r, err := LookupConversation(ctx, &args, opts...)
+			return *r, err
+		}).(LookupConversationResultOutput)
+}
+
+type LookupConversationOutputArgs struct {
+	ConversationId pulumi.StringInput    `pulumi:"conversationId"`
+	Location       pulumi.StringInput    `pulumi:"location"`
+	Project        pulumi.StringPtrInput `pulumi:"project"`
+	View           pulumi.StringPtrInput `pulumi:"view"`
+}
+
+func (LookupConversationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConversationArgs)(nil)).Elem()
+}
+
+type LookupConversationResultOutput struct{ *pulumi.OutputState }
+
+func (LookupConversationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConversationResult)(nil)).Elem()
+}
+
+func (o LookupConversationResultOutput) ToLookupConversationResultOutput() LookupConversationResultOutput {
+	return o
+}
+
+func (o LookupConversationResultOutput) ToLookupConversationResultOutputWithContext(ctx context.Context) LookupConversationResultOutput {
+	return o
+}
+
+// An opaque, user-specified string representing the human agent who handled the conversation.
+func (o LookupConversationResultOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationResult) string { return v.AgentId }).(pulumi.StringOutput)
+}
+
+// Call-specific metadata.
+func (o LookupConversationResultOutput) CallMetadata() GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput {
+	return o.ApplyT(func(v LookupConversationResult) GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
+		return v.CallMetadata
+	}).(GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput)
+}
+
+// The time at which the conversation was created.
+func (o LookupConversationResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The source of the audio and transcription for the conversation.
+func (o LookupConversationResultOutput) DataSource() GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput {
+	return o.ApplyT(func(v LookupConversationResult) GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse {
+		return v.DataSource
+	}).(GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput)
+}
+
+// All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent, format: projects/{project}/agent/{agent}/intents/{intent}
+func (o LookupConversationResultOutput) DialogflowIntents() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupConversationResult) map[string]string { return v.DialogflowIntents }).(pulumi.StringMapOutput)
+}
+
+// The duration of the conversation.
+func (o LookupConversationResultOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationResult) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
+func (o LookupConversationResultOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationResult) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// A map for the user to specify any custom fields. A maximum of 20 labels per conversation is allowed, with a maximum of 256 characters per entry.
+func (o LookupConversationResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupConversationResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A user-specified language code for the conversation.
+func (o LookupConversationResultOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationResult) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// The conversation's latest analysis, if one exists.
+func (o LookupConversationResultOutput) LatestAnalysis() GoogleCloudContactcenterinsightsV1AnalysisResponseOutput {
+	return o.ApplyT(func(v LookupConversationResult) GoogleCloudContactcenterinsightsV1AnalysisResponse {
+		return v.LatestAnalysis
+	}).(GoogleCloudContactcenterinsightsV1AnalysisResponseOutput)
+}
+
+// Immutable. The conversation medium.
+func (o LookupConversationResultOutput) Medium() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationResult) string { return v.Medium }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
+func (o LookupConversationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The annotations that were generated during the customer and agent interaction.
+func (o LookupConversationResultOutput) RuntimeAnnotations() GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArrayOutput {
+	return o.ApplyT(func(v LookupConversationResult) []GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse {
+		return v.RuntimeAnnotations
+	}).(GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArrayOutput)
+}
+
+// The time at which the conversation started.
+func (o LookupConversationResultOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationResult) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The conversation transcript.
+func (o LookupConversationResultOutput) Transcript() GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput {
+	return o.ApplyT(func(v LookupConversationResult) GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse {
+		return v.Transcript
+	}).(GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput)
+}
+
+// Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
+func (o LookupConversationResultOutput) Ttl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationResult) string { return v.Ttl }).(pulumi.StringOutput)
+}
+
+// The number of turns in the conversation.
+func (o LookupConversationResultOutput) TurnCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupConversationResult) int { return v.TurnCount }).(pulumi.IntOutput)
+}
+
+// The most recent time at which the conversation was updated.
+func (o LookupConversationResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupConversationResultOutput{})
 }

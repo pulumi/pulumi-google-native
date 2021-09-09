@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Outputs
 {
 
+    /// <summary>
+    /// Represent the resources that are children of this Workload.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse
     {

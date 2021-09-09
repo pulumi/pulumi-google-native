@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// The config settings for Compute Engine resources in an instance group, such as a master or worker group.
+    /// </summary>
     [OutputType]
     public sealed class InstanceGroupConfigResponse
     {

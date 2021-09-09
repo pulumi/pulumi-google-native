@@ -996,7 +996,7 @@ func (o CryptoKeyConfigOutput) ToCryptoKeyConfigPtrOutput() CryptoKeyConfigPtrOu
 }
 
 func (o CryptoKeyConfigOutput) ToCryptoKeyConfigPtrOutputWithContext(ctx context.Context) CryptoKeyConfigPtrOutput {
-	return o.ApplyT(func(v CryptoKeyConfig) *CryptoKeyConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyConfig) *CryptoKeyConfig {
 		return &v
 	}).(CryptoKeyConfigPtrOutput)
 }
@@ -1021,7 +1021,13 @@ func (o CryptoKeyConfigPtrOutput) ToCryptoKeyConfigPtrOutputWithContext(ctx cont
 }
 
 func (o CryptoKeyConfigPtrOutput) Elem() CryptoKeyConfigOutput {
-	return o.ApplyT(func(v *CryptoKeyConfig) CryptoKeyConfig { return *v }).(CryptoKeyConfigOutput)
+	return o.ApplyT(func(v *CryptoKeyConfig) CryptoKeyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyConfig
+		return ret
+	}).(CryptoKeyConfigOutput)
 }
 
 // The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -1130,7 +1136,7 @@ func (o CryptoKeyConfigResponseOutput) ToCryptoKeyConfigResponsePtrOutput() Cryp
 }
 
 func (o CryptoKeyConfigResponseOutput) ToCryptoKeyConfigResponsePtrOutputWithContext(ctx context.Context) CryptoKeyConfigResponsePtrOutput {
-	return o.ApplyT(func(v CryptoKeyConfigResponse) *CryptoKeyConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyConfigResponse) *CryptoKeyConfigResponse {
 		return &v
 	}).(CryptoKeyConfigResponsePtrOutput)
 }
@@ -1155,7 +1161,13 @@ func (o CryptoKeyConfigResponsePtrOutput) ToCryptoKeyConfigResponsePtrOutputWith
 }
 
 func (o CryptoKeyConfigResponsePtrOutput) Elem() CryptoKeyConfigResponseOutput {
-	return o.ApplyT(func(v *CryptoKeyConfigResponse) CryptoKeyConfigResponse { return *v }).(CryptoKeyConfigResponseOutput)
+	return o.ApplyT(func(v *CryptoKeyConfigResponse) CryptoKeyConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyConfigResponse
+		return ret
+	}).(CryptoKeyConfigResponseOutput)
 }
 
 // The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -1276,7 +1288,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1316,7 +1328,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1541,7 +1559,7 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
 }
 
 func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
-	return o.ApplyT(func(v NetworkConfig) *NetworkConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfig) *NetworkConfig {
 		return &v
 	}).(NetworkConfigPtrOutput)
 }
@@ -1571,7 +1589,13 @@ func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutputWithContext(ctx context.
 }
 
 func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
-	return o.ApplyT(func(v *NetworkConfig) NetworkConfig { return *v }).(NetworkConfigOutput)
+	return o.ApplyT(func(v *NetworkConfig) NetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfig
+		return ret
+	}).(NetworkConfigOutput)
 }
 
 // The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the customer network.
@@ -1694,7 +1718,7 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutput() NetworkC
 }
 
 func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return o.ApplyT(func(v NetworkConfigResponse) *NetworkConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigResponse) *NetworkConfigResponse {
 		return &v
 	}).(NetworkConfigResponsePtrOutput)
 }
@@ -1724,7 +1748,13 @@ func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutputWithCont
 }
 
 func (o NetworkConfigResponsePtrOutput) Elem() NetworkConfigResponseOutput {
-	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse { return *v }).(NetworkConfigResponseOutput)
+	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfigResponse
+		return ret
+	}).(NetworkConfigResponseOutput)
 }
 
 // The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the customer network.

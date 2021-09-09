@@ -146,9 +146,7 @@ func (i *AttributeDefinition) ToAttributeDefinitionOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AttributeDefinitionOutput)
 }
 
-type AttributeDefinitionOutput struct {
-	*pulumi.OutputState
-}
+type AttributeDefinitionOutput struct{ *pulumi.OutputState }
 
 func (AttributeDefinitionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AttributeDefinition)(nil))

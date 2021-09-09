@@ -13,6 +13,7 @@ __all__ = [
     'GetSubnetworkIamPolicyResult',
     'AwaitableGetSubnetworkIamPolicyResult',
     'get_subnetwork_iam_policy',
+    'get_subnetwork_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -126,3 +127,15 @@ def get_subnetwork_iam_policy(options_requested_policy_version: Optional[str] = 
         iam_owned=__ret__.iam_owned,
         rules=__ret__.rules,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_subnetwork_iam_policy)
+def get_subnetwork_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                                     region: Optional[pulumi.Input[str]] = None,
+                                     resource: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetworkIamPolicyResult]:
+    """
+    Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+    """
+    ...

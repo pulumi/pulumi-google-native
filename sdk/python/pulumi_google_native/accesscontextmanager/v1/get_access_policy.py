@@ -12,6 +12,7 @@ __all__ = [
     'GetAccessPolicyResult',
     'AwaitableGetAccessPolicyResult',
     'get_access_policy',
+    'get_access_policy_output',
 ]
 
 @pulumi.output_type
@@ -93,3 +94,12 @@ def get_access_policy(access_policy_id: Optional[str] = None,
         name=__ret__.name,
         parent=__ret__.parent,
         title=__ret__.title)
+
+
+@_utilities.lift_output_func(get_access_policy)
+def get_access_policy_output(access_policy_id: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPolicyResult]:
+    """
+    Get an AccessPolicy by name.
+    """
+    ...

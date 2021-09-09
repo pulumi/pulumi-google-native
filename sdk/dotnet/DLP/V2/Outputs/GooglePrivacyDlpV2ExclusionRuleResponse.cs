@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// The rule that specifies conditions when findings of infoTypes specified in `InspectionRuleSet` are removed from results.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ExclusionRuleResponse
     {

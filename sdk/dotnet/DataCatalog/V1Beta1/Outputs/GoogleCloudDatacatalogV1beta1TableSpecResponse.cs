@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Normal BigQuery table spec.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1beta1TableSpecResponse
     {

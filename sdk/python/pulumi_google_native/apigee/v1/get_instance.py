@@ -12,6 +12,7 @@ __all__ = [
     'GetInstanceResult',
     'AwaitableGetInstanceResult',
     'get_instance',
+    'get_instance_output',
 ]
 
 @pulumi.output_type
@@ -186,3 +187,13 @@ def get_instance(instance_id: Optional[str] = None,
         peering_cidr_range=__ret__.peering_cidr_range,
         port=__ret__.port,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_instance)
+def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
+                        organization_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+    """
+    Gets the details for an Apigee runtime instance. **Note:** Not supported for Apigee hybrid.
+    """
+    ...

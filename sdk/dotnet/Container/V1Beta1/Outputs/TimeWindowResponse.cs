@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents an arbitrary window of time.
+    /// </summary>
     [OutputType]
     public sealed class TimeWindowResponse
     {

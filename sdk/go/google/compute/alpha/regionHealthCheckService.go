@@ -142,9 +142,7 @@ func (i *RegionHealthCheckService) ToRegionHealthCheckServiceOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckServiceOutput)
 }
 
-type RegionHealthCheckServiceOutput struct {
-	*pulumi.OutputState
-}
+type RegionHealthCheckServiceOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionHealthCheckService)(nil))

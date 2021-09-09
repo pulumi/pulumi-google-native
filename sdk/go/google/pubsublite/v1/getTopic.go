@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,56 @@ type LookupTopicResult struct {
 	PartitionConfig PartitionConfigResponse `pulumi:"partitionConfig"`
 	// The settings for this topic's message retention.
 	RetentionConfig RetentionConfigResponse `pulumi:"retentionConfig"`
+}
+
+func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTopicResult, error) {
+			args := v.(LookupTopicArgs)
+			r, err := LookupTopic(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTopicResultOutput)
+}
+
+type LookupTopicOutputArgs struct {
+	Location pulumi.StringInput    `pulumi:"location"`
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+	TopicId  pulumi.StringInput    `pulumi:"topicId"`
+}
+
+func (LookupTopicOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicArgs)(nil)).Elem()
+}
+
+type LookupTopicResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTopicResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicResult)(nil)).Elem()
+}
+
+func (o LookupTopicResultOutput) ToLookupTopicResultOutput() LookupTopicResultOutput {
+	return o
+}
+
+func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx context.Context) LookupTopicResultOutput {
+	return o
+}
+
+// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+func (o LookupTopicResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The settings for this topic's partitions.
+func (o LookupTopicResultOutput) PartitionConfig() PartitionConfigResponseOutput {
+	return o.ApplyT(func(v LookupTopicResult) PartitionConfigResponse { return v.PartitionConfig }).(PartitionConfigResponseOutput)
+}
+
+// The settings for this topic's message retention.
+func (o LookupTopicResultOutput) RetentionConfig() RetentionConfigResponseOutput {
+	return o.ApplyT(func(v LookupTopicResult) RetentionConfigResponse { return v.RetentionConfig }).(RetentionConfigResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTopicResultOutput{})
 }

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// ApprovalConfig describes configuration for manual approval of a build.
+    /// </summary>
     [OutputType]
     public sealed class ApprovalConfigResponse
     {

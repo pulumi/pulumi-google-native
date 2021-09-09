@@ -12,6 +12,7 @@ __all__ = [
     'GetLienResult',
     'AwaitableGetLienResult',
     'get_lien',
+    'get_lien_output',
 ]
 
 @pulumi.output_type
@@ -119,3 +120,12 @@ def get_lien(lien_id: Optional[str] = None,
         parent=__ret__.parent,
         reason=__ret__.reason,
         restrictions=__ret__.restrictions)
+
+
+@_utilities.lift_output_func(get_lien)
+def get_lien_output(lien_id: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLienResult]:
+    """
+    Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
+    """
+    ...

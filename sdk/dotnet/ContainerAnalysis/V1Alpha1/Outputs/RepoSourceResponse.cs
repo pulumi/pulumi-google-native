@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// RepoSource describes the location of the source in a Google Cloud Source Repository.
+    /// </summary>
     [OutputType]
     public sealed class RepoSourceResponse
     {

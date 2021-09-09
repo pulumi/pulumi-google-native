@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SecretManager.V1.Outputs
 {
 
+    /// <summary>
+    /// The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
+    /// </summary>
     [OutputType]
     public sealed class RotationResponse
     {

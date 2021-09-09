@@ -152,9 +152,7 @@ func (i *Router) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouterOutput)
 }
 
-type RouterOutput struct {
-	*pulumi.OutputState
-}
+type RouterOutput struct{ *pulumi.OutputState }
 
 func (RouterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Router)(nil))

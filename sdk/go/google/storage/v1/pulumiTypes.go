@@ -333,7 +333,7 @@ func (o BucketAccessControlProjectTeamOutput) ToBucketAccessControlProjectTeamPt
 }
 
 func (o BucketAccessControlProjectTeamOutput) ToBucketAccessControlProjectTeamPtrOutputWithContext(ctx context.Context) BucketAccessControlProjectTeamPtrOutput {
-	return o.ApplyT(func(v BucketAccessControlProjectTeam) *BucketAccessControlProjectTeam {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketAccessControlProjectTeam) *BucketAccessControlProjectTeam {
 		return &v
 	}).(BucketAccessControlProjectTeamPtrOutput)
 }
@@ -363,7 +363,13 @@ func (o BucketAccessControlProjectTeamPtrOutput) ToBucketAccessControlProjectTea
 }
 
 func (o BucketAccessControlProjectTeamPtrOutput) Elem() BucketAccessControlProjectTeamOutput {
-	return o.ApplyT(func(v *BucketAccessControlProjectTeam) BucketAccessControlProjectTeam { return *v }).(BucketAccessControlProjectTeamOutput)
+	return o.ApplyT(func(v *BucketAccessControlProjectTeam) BucketAccessControlProjectTeam {
+		if v != nil {
+			return *v
+		}
+		var ret BucketAccessControlProjectTeam
+		return ret
+	}).(BucketAccessControlProjectTeamOutput)
 }
 
 // The project number.
@@ -486,7 +492,7 @@ func (o BucketAccessControlProjectTeamResponseOutput) ToBucketAccessControlProje
 }
 
 func (o BucketAccessControlProjectTeamResponseOutput) ToBucketAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) BucketAccessControlProjectTeamResponsePtrOutput {
-	return o.ApplyT(func(v BucketAccessControlProjectTeamResponse) *BucketAccessControlProjectTeamResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketAccessControlProjectTeamResponse) *BucketAccessControlProjectTeamResponse {
 		return &v
 	}).(BucketAccessControlProjectTeamResponsePtrOutput)
 }
@@ -516,7 +522,13 @@ func (o BucketAccessControlProjectTeamResponsePtrOutput) ToBucketAccessControlPr
 }
 
 func (o BucketAccessControlProjectTeamResponsePtrOutput) Elem() BucketAccessControlProjectTeamResponseOutput {
-	return o.ApplyT(func(v *BucketAccessControlProjectTeamResponse) BucketAccessControlProjectTeamResponse { return *v }).(BucketAccessControlProjectTeamResponseOutput)
+	return o.ApplyT(func(v *BucketAccessControlProjectTeamResponse) BucketAccessControlProjectTeamResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketAccessControlProjectTeamResponse
+		return ret
+	}).(BucketAccessControlProjectTeamResponseOutput)
 }
 
 // The project number.
@@ -849,7 +861,7 @@ func (o BucketBillingOutput) ToBucketBillingPtrOutput() BucketBillingPtrOutput {
 }
 
 func (o BucketBillingOutput) ToBucketBillingPtrOutputWithContext(ctx context.Context) BucketBillingPtrOutput {
-	return o.ApplyT(func(v BucketBilling) *BucketBilling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketBilling) *BucketBilling {
 		return &v
 	}).(BucketBillingPtrOutput)
 }
@@ -874,7 +886,13 @@ func (o BucketBillingPtrOutput) ToBucketBillingPtrOutputWithContext(ctx context.
 }
 
 func (o BucketBillingPtrOutput) Elem() BucketBillingOutput {
-	return o.ApplyT(func(v *BucketBilling) BucketBilling { return *v }).(BucketBillingOutput)
+	return o.ApplyT(func(v *BucketBilling) BucketBilling {
+		if v != nil {
+			return *v
+		}
+		var ret BucketBilling
+		return ret
+	}).(BucketBillingOutput)
 }
 
 // When set to true, Requester Pays is enabled for this bucket.
@@ -983,7 +1001,7 @@ func (o BucketBillingResponseOutput) ToBucketBillingResponsePtrOutput() BucketBi
 }
 
 func (o BucketBillingResponseOutput) ToBucketBillingResponsePtrOutputWithContext(ctx context.Context) BucketBillingResponsePtrOutput {
-	return o.ApplyT(func(v BucketBillingResponse) *BucketBillingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketBillingResponse) *BucketBillingResponse {
 		return &v
 	}).(BucketBillingResponsePtrOutput)
 }
@@ -1008,7 +1026,13 @@ func (o BucketBillingResponsePtrOutput) ToBucketBillingResponsePtrOutputWithCont
 }
 
 func (o BucketBillingResponsePtrOutput) Elem() BucketBillingResponseOutput {
-	return o.ApplyT(func(v *BucketBillingResponse) BucketBillingResponse { return *v }).(BucketBillingResponseOutput)
+	return o.ApplyT(func(v *BucketBillingResponse) BucketBillingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketBillingResponse
+		return ret
+	}).(BucketBillingResponseOutput)
 }
 
 // When set to true, Requester Pays is enabled for this bucket.
@@ -1365,7 +1389,7 @@ func (o BucketEncryptionOutput) ToBucketEncryptionPtrOutput() BucketEncryptionPt
 }
 
 func (o BucketEncryptionOutput) ToBucketEncryptionPtrOutputWithContext(ctx context.Context) BucketEncryptionPtrOutput {
-	return o.ApplyT(func(v BucketEncryption) *BucketEncryption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketEncryption) *BucketEncryption {
 		return &v
 	}).(BucketEncryptionPtrOutput)
 }
@@ -1390,7 +1414,13 @@ func (o BucketEncryptionPtrOutput) ToBucketEncryptionPtrOutputWithContext(ctx co
 }
 
 func (o BucketEncryptionPtrOutput) Elem() BucketEncryptionOutput {
-	return o.ApplyT(func(v *BucketEncryption) BucketEncryption { return *v }).(BucketEncryptionOutput)
+	return o.ApplyT(func(v *BucketEncryption) BucketEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret BucketEncryption
+		return ret
+	}).(BucketEncryptionOutput)
 }
 
 // A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
@@ -1499,7 +1529,7 @@ func (o BucketEncryptionResponseOutput) ToBucketEncryptionResponsePtrOutput() Bu
 }
 
 func (o BucketEncryptionResponseOutput) ToBucketEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketEncryptionResponsePtrOutput {
-	return o.ApplyT(func(v BucketEncryptionResponse) *BucketEncryptionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketEncryptionResponse) *BucketEncryptionResponse {
 		return &v
 	}).(BucketEncryptionResponsePtrOutput)
 }
@@ -1524,7 +1554,13 @@ func (o BucketEncryptionResponsePtrOutput) ToBucketEncryptionResponsePtrOutputWi
 }
 
 func (o BucketEncryptionResponsePtrOutput) Elem() BucketEncryptionResponseOutput {
-	return o.ApplyT(func(v *BucketEncryptionResponse) BucketEncryptionResponse { return *v }).(BucketEncryptionResponseOutput)
+	return o.ApplyT(func(v *BucketEncryptionResponse) BucketEncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketEncryptionResponse
+		return ret
+	}).(BucketEncryptionResponseOutput)
 }
 
 // A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
@@ -1641,7 +1677,7 @@ func (o BucketIamConfigurationOutput) ToBucketIamConfigurationPtrOutput() Bucket
 }
 
 func (o BucketIamConfigurationOutput) ToBucketIamConfigurationPtrOutputWithContext(ctx context.Context) BucketIamConfigurationPtrOutput {
-	return o.ApplyT(func(v BucketIamConfiguration) *BucketIamConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIamConfiguration) *BucketIamConfiguration {
 		return &v
 	}).(BucketIamConfigurationPtrOutput)
 }
@@ -1678,7 +1714,13 @@ func (o BucketIamConfigurationPtrOutput) ToBucketIamConfigurationPtrOutputWithCo
 }
 
 func (o BucketIamConfigurationPtrOutput) Elem() BucketIamConfigurationOutput {
-	return o.ApplyT(func(v *BucketIamConfiguration) BucketIamConfiguration { return *v }).(BucketIamConfigurationOutput)
+	return o.ApplyT(func(v *BucketIamConfiguration) BucketIamConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret BucketIamConfiguration
+		return ret
+	}).(BucketIamConfigurationOutput)
 }
 
 // The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
@@ -1811,7 +1853,7 @@ func (o BucketIamConfigurationBucketPolicyOnlyOutput) ToBucketIamConfigurationBu
 }
 
 func (o BucketIamConfigurationBucketPolicyOnlyOutput) ToBucketIamConfigurationBucketPolicyOnlyPtrOutputWithContext(ctx context.Context) BucketIamConfigurationBucketPolicyOnlyPtrOutput {
-	return o.ApplyT(func(v BucketIamConfigurationBucketPolicyOnly) *BucketIamConfigurationBucketPolicyOnly {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIamConfigurationBucketPolicyOnly) *BucketIamConfigurationBucketPolicyOnly {
 		return &v
 	}).(BucketIamConfigurationBucketPolicyOnlyPtrOutput)
 }
@@ -1841,7 +1883,13 @@ func (o BucketIamConfigurationBucketPolicyOnlyPtrOutput) ToBucketIamConfiguratio
 }
 
 func (o BucketIamConfigurationBucketPolicyOnlyPtrOutput) Elem() BucketIamConfigurationBucketPolicyOnlyOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationBucketPolicyOnly) BucketIamConfigurationBucketPolicyOnly { return *v }).(BucketIamConfigurationBucketPolicyOnlyOutput)
+	return o.ApplyT(func(v *BucketIamConfigurationBucketPolicyOnly) BucketIamConfigurationBucketPolicyOnly {
+		if v != nil {
+			return *v
+		}
+		var ret BucketIamConfigurationBucketPolicyOnly
+		return ret
+	}).(BucketIamConfigurationBucketPolicyOnlyOutput)
 }
 
 // If set, access is controlled only by bucket-level or above IAM policies.
@@ -1964,7 +2012,7 @@ func (o BucketIamConfigurationBucketPolicyOnlyResponseOutput) ToBucketIamConfigu
 }
 
 func (o BucketIamConfigurationBucketPolicyOnlyResponseOutput) ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput {
-	return o.ApplyT(func(v BucketIamConfigurationBucketPolicyOnlyResponse) *BucketIamConfigurationBucketPolicyOnlyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIamConfigurationBucketPolicyOnlyResponse) *BucketIamConfigurationBucketPolicyOnlyResponse {
 		return &v
 	}).(BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput)
 }
@@ -1995,7 +2043,11 @@ func (o BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput) ToBucketIamConf
 
 func (o BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput) Elem() BucketIamConfigurationBucketPolicyOnlyResponseOutput {
 	return o.ApplyT(func(v *BucketIamConfigurationBucketPolicyOnlyResponse) BucketIamConfigurationBucketPolicyOnlyResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret BucketIamConfigurationBucketPolicyOnlyResponse
+		return ret
 	}).(BucketIamConfigurationBucketPolicyOnlyResponseOutput)
 }
 
@@ -2123,7 +2175,7 @@ func (o BucketIamConfigurationResponseOutput) ToBucketIamConfigurationResponsePt
 }
 
 func (o BucketIamConfigurationResponseOutput) ToBucketIamConfigurationResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v BucketIamConfigurationResponse) *BucketIamConfigurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIamConfigurationResponse) *BucketIamConfigurationResponse {
 		return &v
 	}).(BucketIamConfigurationResponsePtrOutput)
 }
@@ -2162,7 +2214,13 @@ func (o BucketIamConfigurationResponsePtrOutput) ToBucketIamConfigurationRespons
 }
 
 func (o BucketIamConfigurationResponsePtrOutput) Elem() BucketIamConfigurationResponseOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationResponse) BucketIamConfigurationResponse { return *v }).(BucketIamConfigurationResponseOutput)
+	return o.ApplyT(func(v *BucketIamConfigurationResponse) BucketIamConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketIamConfigurationResponse
+		return ret
+	}).(BucketIamConfigurationResponseOutput)
 }
 
 // The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
@@ -2295,7 +2353,7 @@ func (o BucketIamConfigurationUniformBucketLevelAccessOutput) ToBucketIamConfigu
 }
 
 func (o BucketIamConfigurationUniformBucketLevelAccessOutput) ToBucketIamConfigurationUniformBucketLevelAccessPtrOutputWithContext(ctx context.Context) BucketIamConfigurationUniformBucketLevelAccessPtrOutput {
-	return o.ApplyT(func(v BucketIamConfigurationUniformBucketLevelAccess) *BucketIamConfigurationUniformBucketLevelAccess {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIamConfigurationUniformBucketLevelAccess) *BucketIamConfigurationUniformBucketLevelAccess {
 		return &v
 	}).(BucketIamConfigurationUniformBucketLevelAccessPtrOutput)
 }
@@ -2326,7 +2384,11 @@ func (o BucketIamConfigurationUniformBucketLevelAccessPtrOutput) ToBucketIamConf
 
 func (o BucketIamConfigurationUniformBucketLevelAccessPtrOutput) Elem() BucketIamConfigurationUniformBucketLevelAccessOutput {
 	return o.ApplyT(func(v *BucketIamConfigurationUniformBucketLevelAccess) BucketIamConfigurationUniformBucketLevelAccess {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret BucketIamConfigurationUniformBucketLevelAccess
+		return ret
 	}).(BucketIamConfigurationUniformBucketLevelAccessOutput)
 }
 
@@ -2450,7 +2512,7 @@ func (o BucketIamConfigurationUniformBucketLevelAccessResponseOutput) ToBucketIa
 }
 
 func (o BucketIamConfigurationUniformBucketLevelAccessResponseOutput) ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput {
-	return o.ApplyT(func(v BucketIamConfigurationUniformBucketLevelAccessResponse) *BucketIamConfigurationUniformBucketLevelAccessResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIamConfigurationUniformBucketLevelAccessResponse) *BucketIamConfigurationUniformBucketLevelAccessResponse {
 		return &v
 	}).(BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput)
 }
@@ -2481,7 +2543,11 @@ func (o BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput) ToBucke
 
 func (o BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput) Elem() BucketIamConfigurationUniformBucketLevelAccessResponseOutput {
 	return o.ApplyT(func(v *BucketIamConfigurationUniformBucketLevelAccessResponse) BucketIamConfigurationUniformBucketLevelAccessResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret BucketIamConfigurationUniformBucketLevelAccessResponse
+		return ret
 	}).(BucketIamConfigurationUniformBucketLevelAccessResponseOutput)
 }
 
@@ -2945,7 +3011,7 @@ func (o BucketLifecycleOutput) ToBucketLifecyclePtrOutput() BucketLifecyclePtrOu
 }
 
 func (o BucketLifecycleOutput) ToBucketLifecyclePtrOutputWithContext(ctx context.Context) BucketLifecyclePtrOutput {
-	return o.ApplyT(func(v BucketLifecycle) *BucketLifecycle {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLifecycle) *BucketLifecycle {
 		return &v
 	}).(BucketLifecyclePtrOutput)
 }
@@ -2970,7 +3036,13 @@ func (o BucketLifecyclePtrOutput) ToBucketLifecyclePtrOutputWithContext(ctx cont
 }
 
 func (o BucketLifecyclePtrOutput) Elem() BucketLifecycleOutput {
-	return o.ApplyT(func(v *BucketLifecycle) BucketLifecycle { return *v }).(BucketLifecycleOutput)
+	return o.ApplyT(func(v *BucketLifecycle) BucketLifecycle {
+		if v != nil {
+			return *v
+		}
+		var ret BucketLifecycle
+		return ret
+	}).(BucketLifecycleOutput)
 }
 
 // A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
@@ -3079,7 +3151,7 @@ func (o BucketLifecycleResponseOutput) ToBucketLifecycleResponsePtrOutput() Buck
 }
 
 func (o BucketLifecycleResponseOutput) ToBucketLifecycleResponsePtrOutputWithContext(ctx context.Context) BucketLifecycleResponsePtrOutput {
-	return o.ApplyT(func(v BucketLifecycleResponse) *BucketLifecycleResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLifecycleResponse) *BucketLifecycleResponse {
 		return &v
 	}).(BucketLifecycleResponsePtrOutput)
 }
@@ -3104,7 +3176,13 @@ func (o BucketLifecycleResponsePtrOutput) ToBucketLifecycleResponsePtrOutputWith
 }
 
 func (o BucketLifecycleResponsePtrOutput) Elem() BucketLifecycleResponseOutput {
-	return o.ApplyT(func(v *BucketLifecycleResponse) BucketLifecycleResponse { return *v }).(BucketLifecycleResponseOutput)
+	return o.ApplyT(func(v *BucketLifecycleResponse) BucketLifecycleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketLifecycleResponse
+		return ret
+	}).(BucketLifecycleResponseOutput)
 }
 
 // A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
@@ -3323,7 +3401,7 @@ func (o BucketLifecycleRuleItemActionOutput) ToBucketLifecycleRuleItemActionPtrO
 }
 
 func (o BucketLifecycleRuleItemActionOutput) ToBucketLifecycleRuleItemActionPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleItemActionPtrOutput {
-	return o.ApplyT(func(v BucketLifecycleRuleItemAction) *BucketLifecycleRuleItemAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLifecycleRuleItemAction) *BucketLifecycleRuleItemAction {
 		return &v
 	}).(BucketLifecycleRuleItemActionPtrOutput)
 }
@@ -3353,7 +3431,13 @@ func (o BucketLifecycleRuleItemActionPtrOutput) ToBucketLifecycleRuleItemActionP
 }
 
 func (o BucketLifecycleRuleItemActionPtrOutput) Elem() BucketLifecycleRuleItemActionOutput {
-	return o.ApplyT(func(v *BucketLifecycleRuleItemAction) BucketLifecycleRuleItemAction { return *v }).(BucketLifecycleRuleItemActionOutput)
+	return o.ApplyT(func(v *BucketLifecycleRuleItemAction) BucketLifecycleRuleItemAction {
+		if v != nil {
+			return *v
+		}
+		var ret BucketLifecycleRuleItemAction
+		return ret
+	}).(BucketLifecycleRuleItemActionOutput)
 }
 
 // Target storage class. Required iff the type of the action is SetStorageClass.
@@ -3572,7 +3656,7 @@ func (o BucketLifecycleRuleItemConditionOutput) ToBucketLifecycleRuleItemConditi
 }
 
 func (o BucketLifecycleRuleItemConditionOutput) ToBucketLifecycleRuleItemConditionPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleItemConditionPtrOutput {
-	return o.ApplyT(func(v BucketLifecycleRuleItemCondition) *BucketLifecycleRuleItemCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLifecycleRuleItemCondition) *BucketLifecycleRuleItemCondition {
 		return &v
 	}).(BucketLifecycleRuleItemConditionPtrOutput)
 }
@@ -3642,7 +3726,13 @@ func (o BucketLifecycleRuleItemConditionPtrOutput) ToBucketLifecycleRuleItemCond
 }
 
 func (o BucketLifecycleRuleItemConditionPtrOutput) Elem() BucketLifecycleRuleItemConditionOutput {
-	return o.ApplyT(func(v *BucketLifecycleRuleItemCondition) BucketLifecycleRuleItemCondition { return *v }).(BucketLifecycleRuleItemConditionOutput)
+	return o.ApplyT(func(v *BucketLifecycleRuleItemCondition) BucketLifecycleRuleItemCondition {
+		if v != nil {
+			return *v
+		}
+		var ret BucketLifecycleRuleItemCondition
+		return ret
+	}).(BucketLifecycleRuleItemConditionOutput)
 }
 
 // Age of an object (in days). This condition is satisfied when an object reaches the specified age.
@@ -4087,7 +4177,7 @@ func (o BucketLoggingOutput) ToBucketLoggingPtrOutput() BucketLoggingPtrOutput {
 }
 
 func (o BucketLoggingOutput) ToBucketLoggingPtrOutputWithContext(ctx context.Context) BucketLoggingPtrOutput {
-	return o.ApplyT(func(v BucketLogging) *BucketLogging {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLogging) *BucketLogging {
 		return &v
 	}).(BucketLoggingPtrOutput)
 }
@@ -4117,7 +4207,13 @@ func (o BucketLoggingPtrOutput) ToBucketLoggingPtrOutputWithContext(ctx context.
 }
 
 func (o BucketLoggingPtrOutput) Elem() BucketLoggingOutput {
-	return o.ApplyT(func(v *BucketLogging) BucketLogging { return *v }).(BucketLoggingOutput)
+	return o.ApplyT(func(v *BucketLogging) BucketLogging {
+		if v != nil {
+			return *v
+		}
+		var ret BucketLogging
+		return ret
+	}).(BucketLoggingOutput)
 }
 
 // The destination bucket where the current bucket's logs should be placed.
@@ -4240,7 +4336,7 @@ func (o BucketLoggingResponseOutput) ToBucketLoggingResponsePtrOutput() BucketLo
 }
 
 func (o BucketLoggingResponseOutput) ToBucketLoggingResponsePtrOutputWithContext(ctx context.Context) BucketLoggingResponsePtrOutput {
-	return o.ApplyT(func(v BucketLoggingResponse) *BucketLoggingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLoggingResponse) *BucketLoggingResponse {
 		return &v
 	}).(BucketLoggingResponsePtrOutput)
 }
@@ -4270,7 +4366,13 @@ func (o BucketLoggingResponsePtrOutput) ToBucketLoggingResponsePtrOutputWithCont
 }
 
 func (o BucketLoggingResponsePtrOutput) Elem() BucketLoggingResponseOutput {
-	return o.ApplyT(func(v *BucketLoggingResponse) BucketLoggingResponse { return *v }).(BucketLoggingResponseOutput)
+	return o.ApplyT(func(v *BucketLoggingResponse) BucketLoggingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketLoggingResponse
+		return ret
+	}).(BucketLoggingResponseOutput)
 }
 
 // The destination bucket where the current bucket's logs should be placed.
@@ -4393,7 +4495,7 @@ func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionPt
 }
 
 func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionPtrOutput {
-	return o.ApplyT(func(v BucketObjectCustomerEncryption) *BucketObjectCustomerEncryption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketObjectCustomerEncryption) *BucketObjectCustomerEncryption {
 		return &v
 	}).(BucketObjectCustomerEncryptionPtrOutput)
 }
@@ -4423,7 +4525,13 @@ func (o BucketObjectCustomerEncryptionPtrOutput) ToBucketObjectCustomerEncryptio
 }
 
 func (o BucketObjectCustomerEncryptionPtrOutput) Elem() BucketObjectCustomerEncryptionOutput {
-	return o.ApplyT(func(v *BucketObjectCustomerEncryption) BucketObjectCustomerEncryption { return *v }).(BucketObjectCustomerEncryptionOutput)
+	return o.ApplyT(func(v *BucketObjectCustomerEncryption) BucketObjectCustomerEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret BucketObjectCustomerEncryption
+		return ret
+	}).(BucketObjectCustomerEncryptionOutput)
 }
 
 // The encryption algorithm.
@@ -4546,7 +4654,7 @@ func (o BucketObjectCustomerEncryptionResponseOutput) ToBucketObjectCustomerEncr
 }
 
 func (o BucketObjectCustomerEncryptionResponseOutput) ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponsePtrOutput {
-	return o.ApplyT(func(v BucketObjectCustomerEncryptionResponse) *BucketObjectCustomerEncryptionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketObjectCustomerEncryptionResponse) *BucketObjectCustomerEncryptionResponse {
 		return &v
 	}).(BucketObjectCustomerEncryptionResponsePtrOutput)
 }
@@ -4576,7 +4684,13 @@ func (o BucketObjectCustomerEncryptionResponsePtrOutput) ToBucketObjectCustomerE
 }
 
 func (o BucketObjectCustomerEncryptionResponsePtrOutput) Elem() BucketObjectCustomerEncryptionResponseOutput {
-	return o.ApplyT(func(v *BucketObjectCustomerEncryptionResponse) BucketObjectCustomerEncryptionResponse { return *v }).(BucketObjectCustomerEncryptionResponseOutput)
+	return o.ApplyT(func(v *BucketObjectCustomerEncryptionResponse) BucketObjectCustomerEncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketObjectCustomerEncryptionResponse
+		return ret
+	}).(BucketObjectCustomerEncryptionResponseOutput)
 }
 
 // The encryption algorithm.
@@ -4699,7 +4813,7 @@ func (o BucketObjectOwnerOutput) ToBucketObjectOwnerPtrOutput() BucketObjectOwne
 }
 
 func (o BucketObjectOwnerOutput) ToBucketObjectOwnerPtrOutputWithContext(ctx context.Context) BucketObjectOwnerPtrOutput {
-	return o.ApplyT(func(v BucketObjectOwner) *BucketObjectOwner {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketObjectOwner) *BucketObjectOwner {
 		return &v
 	}).(BucketObjectOwnerPtrOutput)
 }
@@ -4729,7 +4843,13 @@ func (o BucketObjectOwnerPtrOutput) ToBucketObjectOwnerPtrOutputWithContext(ctx 
 }
 
 func (o BucketObjectOwnerPtrOutput) Elem() BucketObjectOwnerOutput {
-	return o.ApplyT(func(v *BucketObjectOwner) BucketObjectOwner { return *v }).(BucketObjectOwnerOutput)
+	return o.ApplyT(func(v *BucketObjectOwner) BucketObjectOwner {
+		if v != nil {
+			return *v
+		}
+		var ret BucketObjectOwner
+		return ret
+	}).(BucketObjectOwnerOutput)
 }
 
 // The entity, in the form user-userId.
@@ -4852,7 +4972,7 @@ func (o BucketObjectOwnerResponseOutput) ToBucketObjectOwnerResponsePtrOutput() 
 }
 
 func (o BucketObjectOwnerResponseOutput) ToBucketObjectOwnerResponsePtrOutputWithContext(ctx context.Context) BucketObjectOwnerResponsePtrOutput {
-	return o.ApplyT(func(v BucketObjectOwnerResponse) *BucketObjectOwnerResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketObjectOwnerResponse) *BucketObjectOwnerResponse {
 		return &v
 	}).(BucketObjectOwnerResponsePtrOutput)
 }
@@ -4882,7 +5002,13 @@ func (o BucketObjectOwnerResponsePtrOutput) ToBucketObjectOwnerResponsePtrOutput
 }
 
 func (o BucketObjectOwnerResponsePtrOutput) Elem() BucketObjectOwnerResponseOutput {
-	return o.ApplyT(func(v *BucketObjectOwnerResponse) BucketObjectOwnerResponse { return *v }).(BucketObjectOwnerResponseOutput)
+	return o.ApplyT(func(v *BucketObjectOwnerResponse) BucketObjectOwnerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketObjectOwnerResponse
+		return ret
+	}).(BucketObjectOwnerResponseOutput)
 }
 
 // The entity, in the form user-userId.
@@ -5005,7 +5131,7 @@ func (o BucketOwnerOutput) ToBucketOwnerPtrOutput() BucketOwnerPtrOutput {
 }
 
 func (o BucketOwnerOutput) ToBucketOwnerPtrOutputWithContext(ctx context.Context) BucketOwnerPtrOutput {
-	return o.ApplyT(func(v BucketOwner) *BucketOwner {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketOwner) *BucketOwner {
 		return &v
 	}).(BucketOwnerPtrOutput)
 }
@@ -5035,7 +5161,13 @@ func (o BucketOwnerPtrOutput) ToBucketOwnerPtrOutputWithContext(ctx context.Cont
 }
 
 func (o BucketOwnerPtrOutput) Elem() BucketOwnerOutput {
-	return o.ApplyT(func(v *BucketOwner) BucketOwner { return *v }).(BucketOwnerOutput)
+	return o.ApplyT(func(v *BucketOwner) BucketOwner {
+		if v != nil {
+			return *v
+		}
+		var ret BucketOwner
+		return ret
+	}).(BucketOwnerOutput)
 }
 
 // The entity, in the form project-owner-projectId.
@@ -5158,7 +5290,7 @@ func (o BucketOwnerResponseOutput) ToBucketOwnerResponsePtrOutput() BucketOwnerR
 }
 
 func (o BucketOwnerResponseOutput) ToBucketOwnerResponsePtrOutputWithContext(ctx context.Context) BucketOwnerResponsePtrOutput {
-	return o.ApplyT(func(v BucketOwnerResponse) *BucketOwnerResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketOwnerResponse) *BucketOwnerResponse {
 		return &v
 	}).(BucketOwnerResponsePtrOutput)
 }
@@ -5188,7 +5320,13 @@ func (o BucketOwnerResponsePtrOutput) ToBucketOwnerResponsePtrOutputWithContext(
 }
 
 func (o BucketOwnerResponsePtrOutput) Elem() BucketOwnerResponseOutput {
-	return o.ApplyT(func(v *BucketOwnerResponse) BucketOwnerResponse { return *v }).(BucketOwnerResponseOutput)
+	return o.ApplyT(func(v *BucketOwnerResponse) BucketOwnerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketOwnerResponse
+		return ret
+	}).(BucketOwnerResponseOutput)
 }
 
 // The entity, in the form project-owner-projectId.
@@ -5315,7 +5453,7 @@ func (o BucketRetentionPolicyOutput) ToBucketRetentionPolicyPtrOutput() BucketRe
 }
 
 func (o BucketRetentionPolicyOutput) ToBucketRetentionPolicyPtrOutputWithContext(ctx context.Context) BucketRetentionPolicyPtrOutput {
-	return o.ApplyT(func(v BucketRetentionPolicy) *BucketRetentionPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketRetentionPolicy) *BucketRetentionPolicy {
 		return &v
 	}).(BucketRetentionPolicyPtrOutput)
 }
@@ -5350,7 +5488,13 @@ func (o BucketRetentionPolicyPtrOutput) ToBucketRetentionPolicyPtrOutputWithCont
 }
 
 func (o BucketRetentionPolicyPtrOutput) Elem() BucketRetentionPolicyOutput {
-	return o.ApplyT(func(v *BucketRetentionPolicy) BucketRetentionPolicy { return *v }).(BucketRetentionPolicyOutput)
+	return o.ApplyT(func(v *BucketRetentionPolicy) BucketRetentionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BucketRetentionPolicy
+		return ret
+	}).(BucketRetentionPolicyOutput)
 }
 
 // Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
@@ -5487,7 +5631,7 @@ func (o BucketRetentionPolicyResponseOutput) ToBucketRetentionPolicyResponsePtrO
 }
 
 func (o BucketRetentionPolicyResponseOutput) ToBucketRetentionPolicyResponsePtrOutputWithContext(ctx context.Context) BucketRetentionPolicyResponsePtrOutput {
-	return o.ApplyT(func(v BucketRetentionPolicyResponse) *BucketRetentionPolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketRetentionPolicyResponse) *BucketRetentionPolicyResponse {
 		return &v
 	}).(BucketRetentionPolicyResponsePtrOutput)
 }
@@ -5522,7 +5666,13 @@ func (o BucketRetentionPolicyResponsePtrOutput) ToBucketRetentionPolicyResponseP
 }
 
 func (o BucketRetentionPolicyResponsePtrOutput) Elem() BucketRetentionPolicyResponseOutput {
-	return o.ApplyT(func(v *BucketRetentionPolicyResponse) BucketRetentionPolicyResponse { return *v }).(BucketRetentionPolicyResponseOutput)
+	return o.ApplyT(func(v *BucketRetentionPolicyResponse) BucketRetentionPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketRetentionPolicyResponse
+		return ret
+	}).(BucketRetentionPolicyResponseOutput)
 }
 
 // Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
@@ -5651,7 +5801,7 @@ func (o BucketVersioningOutput) ToBucketVersioningPtrOutput() BucketVersioningPt
 }
 
 func (o BucketVersioningOutput) ToBucketVersioningPtrOutputWithContext(ctx context.Context) BucketVersioningPtrOutput {
-	return o.ApplyT(func(v BucketVersioning) *BucketVersioning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketVersioning) *BucketVersioning {
 		return &v
 	}).(BucketVersioningPtrOutput)
 }
@@ -5676,7 +5826,13 @@ func (o BucketVersioningPtrOutput) ToBucketVersioningPtrOutputWithContext(ctx co
 }
 
 func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
-	return o.ApplyT(func(v *BucketVersioning) BucketVersioning { return *v }).(BucketVersioningOutput)
+	return o.ApplyT(func(v *BucketVersioning) BucketVersioning {
+		if v != nil {
+			return *v
+		}
+		var ret BucketVersioning
+		return ret
+	}).(BucketVersioningOutput)
 }
 
 // While set to true, versioning is fully enabled for this bucket.
@@ -5785,7 +5941,7 @@ func (o BucketVersioningResponseOutput) ToBucketVersioningResponsePtrOutput() Bu
 }
 
 func (o BucketVersioningResponseOutput) ToBucketVersioningResponsePtrOutputWithContext(ctx context.Context) BucketVersioningResponsePtrOutput {
-	return o.ApplyT(func(v BucketVersioningResponse) *BucketVersioningResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketVersioningResponse) *BucketVersioningResponse {
 		return &v
 	}).(BucketVersioningResponsePtrOutput)
 }
@@ -5810,7 +5966,13 @@ func (o BucketVersioningResponsePtrOutput) ToBucketVersioningResponsePtrOutputWi
 }
 
 func (o BucketVersioningResponsePtrOutput) Elem() BucketVersioningResponseOutput {
-	return o.ApplyT(func(v *BucketVersioningResponse) BucketVersioningResponse { return *v }).(BucketVersioningResponseOutput)
+	return o.ApplyT(func(v *BucketVersioningResponse) BucketVersioningResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketVersioningResponse
+		return ret
+	}).(BucketVersioningResponseOutput)
 }
 
 // While set to true, versioning is fully enabled for this bucket.
@@ -5923,7 +6085,7 @@ func (o BucketWebsiteOutput) ToBucketWebsitePtrOutput() BucketWebsitePtrOutput {
 }
 
 func (o BucketWebsiteOutput) ToBucketWebsitePtrOutputWithContext(ctx context.Context) BucketWebsitePtrOutput {
-	return o.ApplyT(func(v BucketWebsite) *BucketWebsite {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsite) *BucketWebsite {
 		return &v
 	}).(BucketWebsitePtrOutput)
 }
@@ -5953,7 +6115,13 @@ func (o BucketWebsitePtrOutput) ToBucketWebsitePtrOutputWithContext(ctx context.
 }
 
 func (o BucketWebsitePtrOutput) Elem() BucketWebsiteOutput {
-	return o.ApplyT(func(v *BucketWebsite) BucketWebsite { return *v }).(BucketWebsiteOutput)
+	return o.ApplyT(func(v *BucketWebsite) BucketWebsite {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsite
+		return ret
+	}).(BucketWebsiteOutput)
 }
 
 // If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
@@ -6076,7 +6244,7 @@ func (o BucketWebsiteResponseOutput) ToBucketWebsiteResponsePtrOutput() BucketWe
 }
 
 func (o BucketWebsiteResponseOutput) ToBucketWebsiteResponsePtrOutputWithContext(ctx context.Context) BucketWebsiteResponsePtrOutput {
-	return o.ApplyT(func(v BucketWebsiteResponse) *BucketWebsiteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteResponse) *BucketWebsiteResponse {
 		return &v
 	}).(BucketWebsiteResponsePtrOutput)
 }
@@ -6106,7 +6274,13 @@ func (o BucketWebsiteResponsePtrOutput) ToBucketWebsiteResponsePtrOutputWithCont
 }
 
 func (o BucketWebsiteResponsePtrOutput) Elem() BucketWebsiteResponseOutput {
-	return o.ApplyT(func(v *BucketWebsiteResponse) BucketWebsiteResponse { return *v }).(BucketWebsiteResponseOutput)
+	return o.ApplyT(func(v *BucketWebsiteResponse) BucketWebsiteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteResponse
+		return ret
+	}).(BucketWebsiteResponseOutput)
 }
 
 // If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
@@ -6229,7 +6403,7 @@ func (o DefaultObjectAccessControlProjectTeamOutput) ToDefaultObjectAccessContro
 }
 
 func (o DefaultObjectAccessControlProjectTeamOutput) ToDefaultObjectAccessControlProjectTeamPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamPtrOutput {
-	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *DefaultObjectAccessControlProjectTeam {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultObjectAccessControlProjectTeam) *DefaultObjectAccessControlProjectTeam {
 		return &v
 	}).(DefaultObjectAccessControlProjectTeamPtrOutput)
 }
@@ -6259,7 +6433,13 @@ func (o DefaultObjectAccessControlProjectTeamPtrOutput) ToDefaultObjectAccessCon
 }
 
 func (o DefaultObjectAccessControlProjectTeamPtrOutput) Elem() DefaultObjectAccessControlProjectTeamOutput {
-	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeam) DefaultObjectAccessControlProjectTeam { return *v }).(DefaultObjectAccessControlProjectTeamOutput)
+	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeam) DefaultObjectAccessControlProjectTeam {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultObjectAccessControlProjectTeam
+		return ret
+	}).(DefaultObjectAccessControlProjectTeamOutput)
 }
 
 // The project number.
@@ -6382,7 +6562,7 @@ func (o DefaultObjectAccessControlProjectTeamResponseOutput) ToDefaultObjectAcce
 }
 
 func (o DefaultObjectAccessControlProjectTeamResponseOutput) ToDefaultObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamResponsePtrOutput {
-	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeamResponse) *DefaultObjectAccessControlProjectTeamResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultObjectAccessControlProjectTeamResponse) *DefaultObjectAccessControlProjectTeamResponse {
 		return &v
 	}).(DefaultObjectAccessControlProjectTeamResponsePtrOutput)
 }
@@ -6413,7 +6593,11 @@ func (o DefaultObjectAccessControlProjectTeamResponsePtrOutput) ToDefaultObjectA
 
 func (o DefaultObjectAccessControlProjectTeamResponsePtrOutput) Elem() DefaultObjectAccessControlProjectTeamResponseOutput {
 	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeamResponse) DefaultObjectAccessControlProjectTeamResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DefaultObjectAccessControlProjectTeamResponse
+		return ret
 	}).(DefaultObjectAccessControlProjectTeamResponseOutput)
 }
 
@@ -6545,7 +6729,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -6585,7 +6769,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -7051,7 +7241,7 @@ func (o ObjectAccessControlProjectTeamOutput) ToObjectAccessControlProjectTeamPt
 }
 
 func (o ObjectAccessControlProjectTeamOutput) ToObjectAccessControlProjectTeamPtrOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamPtrOutput {
-	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *ObjectAccessControlProjectTeam {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectAccessControlProjectTeam) *ObjectAccessControlProjectTeam {
 		return &v
 	}).(ObjectAccessControlProjectTeamPtrOutput)
 }
@@ -7081,7 +7271,13 @@ func (o ObjectAccessControlProjectTeamPtrOutput) ToObjectAccessControlProjectTea
 }
 
 func (o ObjectAccessControlProjectTeamPtrOutput) Elem() ObjectAccessControlProjectTeamOutput {
-	return o.ApplyT(func(v *ObjectAccessControlProjectTeam) ObjectAccessControlProjectTeam { return *v }).(ObjectAccessControlProjectTeamOutput)
+	return o.ApplyT(func(v *ObjectAccessControlProjectTeam) ObjectAccessControlProjectTeam {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectAccessControlProjectTeam
+		return ret
+	}).(ObjectAccessControlProjectTeamOutput)
 }
 
 // The project number.
@@ -7204,7 +7400,7 @@ func (o ObjectAccessControlProjectTeamResponseOutput) ToObjectAccessControlProje
 }
 
 func (o ObjectAccessControlProjectTeamResponseOutput) ToObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamResponsePtrOutput {
-	return o.ApplyT(func(v ObjectAccessControlProjectTeamResponse) *ObjectAccessControlProjectTeamResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectAccessControlProjectTeamResponse) *ObjectAccessControlProjectTeamResponse {
 		return &v
 	}).(ObjectAccessControlProjectTeamResponsePtrOutput)
 }
@@ -7234,7 +7430,13 @@ func (o ObjectAccessControlProjectTeamResponsePtrOutput) ToObjectAccessControlPr
 }
 
 func (o ObjectAccessControlProjectTeamResponsePtrOutput) Elem() ObjectAccessControlProjectTeamResponseOutput {
-	return o.ApplyT(func(v *ObjectAccessControlProjectTeamResponse) ObjectAccessControlProjectTeamResponse { return *v }).(ObjectAccessControlProjectTeamResponseOutput)
+	return o.ApplyT(func(v *ObjectAccessControlProjectTeamResponse) ObjectAccessControlProjectTeamResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectAccessControlProjectTeamResponse
+		return ret
+	}).(ObjectAccessControlProjectTeamResponseOutput)
 }
 
 // The project number.

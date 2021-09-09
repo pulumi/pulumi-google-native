@@ -238,9 +238,7 @@ func (i *ForwardingRule) ToForwardingRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleOutput)
 }
 
-type ForwardingRuleOutput struct {
-	*pulumi.OutputState
-}
+type ForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ForwardingRule)(nil))

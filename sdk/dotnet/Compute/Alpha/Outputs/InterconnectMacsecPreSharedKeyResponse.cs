@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Describes a pre-shared key used to setup MACsec in static connectivity association key (CAK) mode.
+    /// </summary>
     [OutputType]
     public sealed class InterconnectMacsecPreSharedKeyResponse
     {

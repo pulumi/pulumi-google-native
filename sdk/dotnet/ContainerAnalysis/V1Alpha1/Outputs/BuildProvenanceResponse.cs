@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
+    /// </summary>
     [OutputType]
     public sealed class BuildProvenanceResponse
     {

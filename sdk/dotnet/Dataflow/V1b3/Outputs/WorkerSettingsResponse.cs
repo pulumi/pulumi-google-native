@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Provides data to pass through to the worker harness.
+    /// </summary>
     [OutputType]
     public sealed class WorkerSettingsResponse
     {

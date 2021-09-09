@@ -105,9 +105,7 @@ func (i *NatAddress) ToNatAddressOutputWithContext(ctx context.Context) NatAddre
 	return pulumi.ToOutputWithContext(ctx, i).(NatAddressOutput)
 }
 
-type NatAddressOutput struct {
-	*pulumi.OutputState
-}
+type NatAddressOutput struct{ *pulumi.OutputState }
 
 func (NatAddressOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NatAddress)(nil))

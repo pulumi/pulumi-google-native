@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.APIGateway.V1.Outputs
 {
 
+    /// <summary>
+    /// An OpenAPI Specification Document describing an API.
+    /// </summary>
     [OutputType]
     public sealed class ApigatewayApiConfigOpenApiDocumentResponse
     {

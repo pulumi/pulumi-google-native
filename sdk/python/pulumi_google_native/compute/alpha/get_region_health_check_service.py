@@ -12,6 +12,7 @@ __all__ = [
     'GetRegionHealthCheckServiceResult',
     'AwaitableGetRegionHealthCheckServiceResult',
     'get_region_health_check_service',
+    'get_region_health_check_service_output',
 ]
 
 @pulumi.output_type
@@ -201,3 +202,14 @@ def get_region_health_check_service(health_check_service: Optional[str] = None,
         region=__ret__.region,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id)
+
+
+@_utilities.lift_output_func(get_region_health_check_service)
+def get_region_health_check_service_output(health_check_service: Optional[pulumi.Input[str]] = None,
+                                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                                           region: Optional[pulumi.Input[str]] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionHealthCheckServiceResult]:
+    """
+    Returns the specified regional HealthCheckService resource.
+    """
+    ...

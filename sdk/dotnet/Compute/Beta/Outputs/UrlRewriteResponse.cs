@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// The spec for modifying the path before sending the request to the matched backend service.
+    /// </summary>
     [OutputType]
     public sealed class UrlRewriteResponse
     {
