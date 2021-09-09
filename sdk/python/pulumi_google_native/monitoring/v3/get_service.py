@@ -13,6 +13,7 @@ __all__ = [
     'GetServiceResult',
     'AwaitableGetServiceResult',
     'get_service',
+    'get_service_output',
 ]
 
 @pulumi.output_type
@@ -176,3 +177,14 @@ def get_service(service_id: Optional[str] = None,
         name=__ret__.name,
         telemetry=__ret__.telemetry,
         user_labels=__ret__.user_labels)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_output(service_id: Optional[pulumi.Input[str]] = None,
+                       v3_id: Optional[pulumi.Input[str]] = None,
+                       v3_id1: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    """
+    Get the named Service.
+    """
+    ...

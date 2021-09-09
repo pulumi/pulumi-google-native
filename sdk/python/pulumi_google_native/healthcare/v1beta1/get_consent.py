@@ -13,6 +13,7 @@ __all__ = [
     'GetConsentResult',
     'AwaitableGetConsentResult',
     'get_consent',
+    'get_consent_output',
 ]
 
 @pulumi.output_type
@@ -180,3 +181,16 @@ def get_consent(consent_id: Optional[str] = None,
         state=__ret__.state,
         ttl=__ret__.ttl,
         user_id=__ret__.user_id)
+
+
+@_utilities.lift_output_func(get_consent)
+def get_consent_output(consent_id: Optional[pulumi.Input[str]] = None,
+                       consent_store_id: Optional[pulumi.Input[str]] = None,
+                       dataset_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConsentResult]:
+    """
+    Gets the specified revision of a Consent, or the latest revision if `revision_id` is not specified in the resource name.
+    """
+    ...

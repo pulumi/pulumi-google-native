@@ -12,6 +12,7 @@ __all__ = [
     'GetAttributeDefinitionResult',
     'AwaitableGetAttributeDefinitionResult',
     'get_attribute_definition',
+    'get_attribute_definition_output',
 ]
 
 @pulumi.output_type
@@ -127,3 +128,16 @@ def get_attribute_definition(attribute_definition_id: Optional[str] = None,
         data_mapping_default_value=__ret__.data_mapping_default_value,
         description=__ret__.description,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_attribute_definition)
+def get_attribute_definition_output(attribute_definition_id: Optional[pulumi.Input[str]] = None,
+                                    consent_store_id: Optional[pulumi.Input[str]] = None,
+                                    dataset_id: Optional[pulumi.Input[str]] = None,
+                                    location: Optional[pulumi.Input[str]] = None,
+                                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttributeDefinitionResult]:
+    """
+    Gets the specified Attribute definition.
+    """
+    ...

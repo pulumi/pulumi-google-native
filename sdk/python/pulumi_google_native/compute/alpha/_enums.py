@@ -206,15 +206,25 @@ class AccessConfigNetworkTier(str, Enum):
     This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
     """
     FIXED_STANDARD = "FIXED_STANDARD"
-    """Public internet quality with fixed bandwidth."""
+    """
+    Public internet quality with fixed bandwidth.
+    """
     PREMIUM = "PREMIUM"
-    """High quality, Google-grade network tier, support for all networking products."""
+    """
+    High quality, Google-grade network tier, support for all networking products.
+    """
     SELECT = "SELECT"
-    """Price competitive network tier, support for all networking products."""
+    """
+    Price competitive network tier, support for all networking products.
+    """
     STANDARD = "STANDARD"
-    """Public internet quality, only limited support for other networking products."""
+    """
+    Public internet quality, only limited support for other networking products.
+    """
     STANDARD_OVERRIDES_FIXED_STANDARD = "STANDARD_OVERRIDES_FIXED_STANDARD"
-    """(Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured."""
+    """
+    (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+    """
 
 
 class AccessConfigType(str, Enum):
@@ -230,11 +240,17 @@ class AddressAddressType(str, Enum):
     The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
     """
     DNS_FORWARDING = "DNS_FORWARDING"
-    """DNS resolver address in the subnetwork."""
+    """
+    DNS resolver address in the subnetwork.
+    """
     EXTERNAL = "EXTERNAL"
-    """A publicly visible external IP address."""
+    """
+    A publicly visible external IP address.
+    """
     INTERNAL = "INTERNAL"
-    """A private network IP address, for use with an Instance or Internal Load Balancer forwarding rule."""
+    """
+    A private network IP address, for use with an Instance or Internal Load Balancer forwarding rule.
+    """
     UNSPECIFIED_TYPE = "UNSPECIFIED_TYPE"
 
 
@@ -252,15 +268,25 @@ class AddressNetworkTier(str, Enum):
     This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
     """
     FIXED_STANDARD = "FIXED_STANDARD"
-    """Public internet quality with fixed bandwidth."""
+    """
+    Public internet quality with fixed bandwidth.
+    """
     PREMIUM = "PREMIUM"
-    """High quality, Google-grade network tier, support for all networking products."""
+    """
+    High quality, Google-grade network tier, support for all networking products.
+    """
     SELECT = "SELECT"
-    """Price competitive network tier, support for all networking products."""
+    """
+    Price competitive network tier, support for all networking products.
+    """
     STANDARD = "STANDARD"
-    """Public internet quality, only limited support for other networking products."""
+    """
+    Public internet quality, only limited support for other networking products.
+    """
     STANDARD_OVERRIDES_FIXED_STANDARD = "STANDARD_OVERRIDES_FIXED_STANDARD"
-    """(Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured."""
+    """
+    (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+    """
 
 
 class AddressPurpose(str, Enum):
@@ -268,19 +294,33 @@ class AddressPurpose(str, Enum):
     The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using . - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
     """
     DNS_RESOLVER = "DNS_RESOLVER"
-    """DNS resolver address in the subnetwork."""
+    """
+    DNS resolver address in the subnetwork.
+    """
     GCE_ENDPOINT = "GCE_ENDPOINT"
-    """VM internal/alias IP, Internal LB service IP, etc."""
+    """
+    VM internal/alias IP, Internal LB service IP, etc.
+    """
     IPSEC_INTERCONNECT = "IPSEC_INTERCONNECT"
-    """A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range."""
+    """
+    A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+    """
     NAT_AUTO = "NAT_AUTO"
-    """External IP automatically reserved for Cloud NAT."""
+    """
+    External IP automatically reserved for Cloud NAT.
+    """
     PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
-    """A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL"""
+    """
+    A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
+    """
     SHARED_LOADBALANCER_VIP = "SHARED_LOADBALANCER_VIP"
-    """A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules."""
+    """
+    A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
+    """
     VPC_PEERING = "VPC_PEERING"
-    """IP range for peer networks."""
+    """
+    IP range for peer networks.
+    """
 
 
 class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface(str, Enum):
@@ -297,7 +337,9 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterv
     For more information about maintenance intervals, see Setting maintenance intervals.
     """
     PERIODIC = "PERIODIC"
-    """VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available."""
+    """
+    VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
+    """
 
 
 class AttachedDiskInitializeParamsInterface(str, Enum):
@@ -314,11 +356,17 @@ class AttachedDiskInitializeParamsOnUpdateAction(str, Enum):
     Specifies which action to take on instance update with this disk. Default is to use the existing disk.
     """
     RECREATE_DISK = "RECREATE_DISK"
-    """Always recreate the disk."""
+    """
+    Always recreate the disk.
+    """
     RECREATE_DISK_IF_SOURCE_CHANGED = "RECREATE_DISK_IF_SOURCE_CHANGED"
-    """Recreate the disk if source (image, snapshot) of this disk is different from source of existing disk."""
+    """
+    Recreate the disk if source (image, snapshot) of this disk is different from source of existing disk.
+    """
     USE_EXISTING_DISK = "USE_EXISTING_DISK"
-    """Use the existing disk, this is the default behaviour."""
+    """
+    Use the existing disk, this is the default behaviour.
+    """
 
 
 class AttachedDiskInterface(str, Enum):
@@ -335,9 +383,13 @@ class AttachedDiskMode(str, Enum):
     The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
     """
     READ_ONLY = "READ_ONLY"
-    """Attaches this disk in read-only mode. Multiple virtual machines can use a disk in read-only mode at a time."""
+    """
+    Attaches this disk in read-only mode. Multiple virtual machines can use a disk in read-only mode at a time.
+    """
     READ_WRITE = "READ_WRITE"
-    """*[Default]* Attaches this disk in read-write mode. Only one virtual machine at a time can be attached to a disk in read-write mode."""
+    """
+    *[Default]* Attaches this disk in read-write mode. Only one virtual machine at a time can be attached to a disk in read-write mode.
+    """
 
 
 class AttachedDiskSavedState(str, Enum):
@@ -345,9 +397,13 @@ class AttachedDiskSavedState(str, Enum):
     For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field is set to PRESERVED if the LocalSSD data has been saved to a persistent location by customer request. (see the discard_local_ssd option on Stop/Suspend). Read-only in the api.
     """
     DISK_SAVED_STATE_UNSPECIFIED = "DISK_SAVED_STATE_UNSPECIFIED"
-    """*[Default]* Disk state has not been preserved."""
+    """
+    *[Default]* Disk state has not been preserved.
+    """
     PRESERVED = "PRESERVED"
-    """Disk state has been preserved."""
+    """
+    Disk state has been preserved.
+    """
 
 
 class AttachedDiskType(str, Enum):
@@ -363,13 +419,21 @@ class AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     ADMIN_READ = "ADMIN_READ"
-    """Admin reads. Example: CloudIAM getIamPolicy"""
+    """
+    Admin reads. Example: CloudIAM getIamPolicy
+    """
     DATA_READ = "DATA_READ"
-    """Data reads. Example: CloudSQL Users list"""
+    """
+    Data reads. Example: CloudSQL Users list
+    """
     DATA_WRITE = "DATA_WRITE"
-    """Data writes. Example: CloudSQL Users create"""
+    """
+    Data writes. Example: CloudSQL Users create
+    """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
-    """Default case. Should never be this."""
+    """
+    Default case. Should never be this.
+    """
 
 
 class AuthorizationLoggingOptionsPermissionType(str, Enum):
@@ -377,15 +441,25 @@ class AuthorizationLoggingOptionsPermissionType(str, Enum):
     This is deprecated and has no effect. Do not use.
     """
     ADMIN_READ = "ADMIN_READ"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     ADMIN_WRITE = "ADMIN_WRITE"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     DATA_READ = "DATA_READ"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     DATA_WRITE = "DATA_WRITE"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     PERMISSION_TYPE_UNSPECIFIED = "PERMISSION_TYPE_UNSPECIFIED"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
 
 
 class AutoscalingPolicyCpuUtilizationPredictiveMethod(str, Enum):
@@ -393,12 +467,18 @@ class AutoscalingPolicyCpuUtilizationPredictiveMethod(str, Enum):
     Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are: * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
     """
     NONE = "NONE"
-    """No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics"""
+    """
+    No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics
+    """
     OPTIMIZE_AVAILABILITY = "OPTIMIZE_AVAILABILITY"
-    """Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand."""
+    """
+    Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+    """
     PREDICTIVE_METHOD_UNSPECIFIED = "PREDICTIVE_METHOD_UNSPECIFIED"
     STANDARD = "STANDARD"
-    """Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand. This value is being DEPRECATED - it won't be promoted to beta and v1. Use OPTIMIZE_AVAILABILITY instead."""
+    """
+    Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand. This value is being DEPRECATED - it won't be promoted to beta and v1. Use OPTIMIZE_AVAILABILITY instead.
+    """
 
 
 class AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType(str, Enum):
@@ -406,11 +486,17 @@ class AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType(str, Enum):
     Defines how target utilization value is expressed for a Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE.
     """
     DELTA_PER_MINUTE = "DELTA_PER_MINUTE"
-    """Sets the utilization target value for a cumulative or delta metric, expressed as the rate of growth per minute."""
+    """
+    Sets the utilization target value for a cumulative or delta metric, expressed as the rate of growth per minute.
+    """
     DELTA_PER_SECOND = "DELTA_PER_SECOND"
-    """Sets the utilization target value for a cumulative or delta metric, expressed as the rate of growth per second."""
+    """
+    Sets the utilization target value for a cumulative or delta metric, expressed as the rate of growth per second.
+    """
     GAUGE = "GAUGE"
-    """Sets the utilization target value for a gauge metric. The autoscaler will collect the average utilization of the virtual machines from the last couple of minutes, and compare the value to the utilization target value to perform autoscaling."""
+    """
+    Sets the utilization target value for a gauge metric. The autoscaler will collect the average utilization of the virtual machines from the last couple of minutes, and compare the value to the utilization target value to perform autoscaling.
+    """
 
 
 class AutoscalingPolicyMode(str, Enum):
@@ -418,13 +504,21 @@ class AutoscalingPolicyMode(str, Enum):
     Defines operating mode for this policy.
     """
     OFF = "OFF"
-    """Do not automatically scale the MIG in or out. The recommended_size field contains the size of MIG that would be set if the actuation mode was enabled."""
+    """
+    Do not automatically scale the MIG in or out. The recommended_size field contains the size of MIG that would be set if the actuation mode was enabled.
+    """
     ON = "ON"
-    """Automatically scale the MIG in and out according to the policy."""
+    """
+    Automatically scale the MIG in and out according to the policy.
+    """
     ONLY_SCALE_OUT = "ONLY_SCALE_OUT"
-    """Automatically create VMs according to the policy, but do not scale the MIG in."""
+    """
+    Automatically create VMs according to the policy, but do not scale the MIG in.
+    """
     ONLY_UP = "ONLY_UP"
-    """Automatically create VMs according to the policy, but do not scale the MIG in."""
+    """
+    Automatically create VMs according to the policy, but do not scale the MIG in.
+    """
 
 
 class BackendBalancingMode(str, Enum):
@@ -432,11 +526,17 @@ class BackendBalancingMode(str, Enum):
     Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
     """
     CONNECTION = "CONNECTION"
-    """Balance based on the number of simultaneous connections."""
+    """
+    Balance based on the number of simultaneous connections.
+    """
     RATE = "RATE"
-    """Balance based on requests per second (RPS)."""
+    """
+    Balance based on requests per second (RPS).
+    """
     UTILIZATION = "UTILIZATION"
-    """Balance based on the backend utilization."""
+    """
+    Balance based on the backend utilization.
+    """
 
 
 class BackendBucketCdnPolicyCacheMode(str, Enum):
@@ -444,12 +544,18 @@ class BackendBucketCdnPolicyCacheMode(str, Enum):
     Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
     """
     CACHE_ALL_STATIC = "CACHE_ALL_STATIC"
-    """Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached."""
+    """
+    Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
+    """
     FORCE_CACHE_ALL = "FORCE_CACHE_ALL"
-    """Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content."""
+    """
+    Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
+    """
     INVALID_CACHE_MODE = "INVALID_CACHE_MODE"
     USE_ORIGIN_HEADERS = "USE_ORIGIN_HEADERS"
-    """Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server."""
+    """
+    Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
+    """
 
 
 class BackendBucketCompressionMode(str, Enum):
@@ -457,9 +563,13 @@ class BackendBucketCompressionMode(str, Enum):
     Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
     """
     AUTOMATIC = "AUTOMATIC"
-    """Automatically uses the best compression based on the Accept-Encoding header sent by the client."""
+    """
+    Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+    """
     DISABLED = "DISABLED"
-    """Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients."""
+    """
+    Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+    """
 
 
 class BackendServiceCdnPolicyCacheMode(str, Enum):
@@ -467,12 +577,18 @@ class BackendServiceCdnPolicyCacheMode(str, Enum):
     Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
     """
     CACHE_ALL_STATIC = "CACHE_ALL_STATIC"
-    """Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached."""
+    """
+    Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
+    """
     FORCE_CACHE_ALL = "FORCE_CACHE_ALL"
-    """Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content."""
+    """
+    Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
+    """
     INVALID_CACHE_MODE = "INVALID_CACHE_MODE"
     USE_ORIGIN_HEADERS = "USE_ORIGIN_HEADERS"
-    """Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server."""
+    """
+    Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
+    """
 
 
 class BackendServiceCompressionMode(str, Enum):
@@ -480,9 +596,13 @@ class BackendServiceCompressionMode(str, Enum):
     Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
     """
     AUTOMATIC = "AUTOMATIC"
-    """Automatically uses the best compression based on the Accept-Encoding header sent by the client."""
+    """
+    Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+    """
     DISABLED = "DISABLED"
-    """Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients."""
+    """
+    Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+    """
 
 
 class BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends(str, Enum):
@@ -508,15 +628,25 @@ class BackendServiceLoadBalancingScheme(str, Enum):
     Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
     """
     EXTERNAL = "EXTERNAL"
-    """Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing"""
+    """
+    Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+    """
     EXTERNAL_MANAGED = "EXTERNAL_MANAGED"
-    """Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing."""
+    """
+    Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+    """
     INTERNAL = "INTERNAL"
-    """Signifies that this will be used for Internal TCP/UDP Load Balancing."""
+    """
+    Signifies that this will be used for Internal TCP/UDP Load Balancing.
+    """
     INTERNAL_MANAGED = "INTERNAL_MANAGED"
-    """Signifies that this will be used for Internal HTTP(S) Load Balancing."""
+    """
+    Signifies that this will be used for Internal HTTP(S) Load Balancing.
+    """
     INTERNAL_SELF_MANAGED = "INTERNAL_SELF_MANAGED"
-    """Signifies that this will be used by Traffic Director."""
+    """
+    Signifies that this will be used by Traffic Director.
+    """
     INVALID_LOAD_BALANCING_SCHEME = "INVALID_LOAD_BALANCING_SCHEME"
 
 
@@ -526,17 +656,29 @@ class BackendServiceLocalityLbPolicy(str, Enum):
     """
     INVALID_LB_POLICY = "INVALID_LB_POLICY"
     LEAST_REQUEST = "LEAST_REQUEST"
-    """An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests."""
+    """
+    An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
+    """
     MAGLEV = "MAGLEV"
-    """This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824"""
+    """
+    This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
+    """
     ORIGINAL_DESTINATION = "ORIGINAL_DESTINATION"
-    """Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer."""
+    """
+    Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
+    """
     RANDOM = "RANDOM"
-    """The load balancer selects a random healthy host."""
+    """
+    The load balancer selects a random healthy host.
+    """
     RING_HASH = "RING_HASH"
-    """The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests."""
+    """
+    The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
+    """
     ROUND_ROBIN = "ROUND_ROBIN"
-    """This is a simple policy in which each healthy backend is selected in round robin order. This is the default."""
+    """
+    This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
+    """
 
 
 class BackendServiceProtocol(str, Enum):
@@ -544,21 +686,35 @@ class BackendServiceProtocol(str, Enum):
     The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
     """
     ALL = "ALL"
-    """ALL includes TCP, UDP, ICMP, ESP, AH and SCTP. Note that this should never be used together with target_xx_proxies."""
+    """
+    ALL includes TCP, UDP, ICMP, ESP, AH and SCTP. Note that this should never be used together with target_xx_proxies.
+    """
     GRPC = "GRPC"
-    """gRPC (available for Traffic Director)."""
+    """
+    gRPC (available for Traffic Director).
+    """
     HTTP = "HTTP"
     HTTP2 = "HTTP2"
-    """HTTP/2 with SSL."""
+    """
+    HTTP/2 with SSL.
+    """
     HTTPS = "HTTPS"
     SSL = "SSL"
-    """TCP proxying with SSL."""
+    """
+    TCP proxying with SSL.
+    """
     TCP = "TCP"
-    """TCP proxying or TCP pass-through."""
+    """
+    TCP proxying or TCP pass-through.
+    """
     UDP = "UDP"
-    """UDP."""
+    """
+    UDP.
+    """
     UNSPECIFIED = "UNSPECIFIED"
-    """If a Backend Service has UNSPECIFIED as its protocol, it can be used with any L3/L4 Forwarding Rules."""
+    """
+    If a Backend Service has UNSPECIFIED as its protocol, it can be used with any L3/L4 Forwarding Rules.
+    """
 
 
 class BackendServiceSessionAffinity(str, Enum):
@@ -566,21 +722,37 @@ class BackendServiceSessionAffinity(str, Enum):
     Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
     """
     CLIENT_IP = "CLIENT_IP"
-    """2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy."""
+    """
+    2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy.
+    """
     CLIENT_IP_NO_DESTINATION = "CLIENT_IP_NO_DESTINATION"
-    """1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing."""
+    """
+    1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing.
+    """
     CLIENT_IP_PORT_PROTO = "CLIENT_IP_PORT_PROTO"
-    """5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing."""
+    """
+    5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+    """
     CLIENT_IP_PROTO = "CLIENT_IP_PROTO"
-    """3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing."""
+    """
+    3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+    """
     GENERATED_COOKIE = "GENERATED_COOKIE"
-    """Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing."""
+    """
+    Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing.
+    """
     HEADER_FIELD = "HEADER_FIELD"
-    """The hash is based on a user specified header field."""
+    """
+    The hash is based on a user specified header field.
+    """
     HTTP_COOKIE = "HTTP_COOKIE"
-    """The hash is based on a user provided cookie."""
+    """
+    The hash is based on a user provided cookie.
+    """
     NONE = "NONE"
-    """No session affinity. Connections from the same client IP may go to any instance in the pool."""
+    """
+    No session affinity. Connections from the same client IP may go to any instance in the pool.
+    """
 
 
 class CallCredentialsCallCredentialType(str, Enum):
@@ -588,9 +760,13 @@ class CallCredentialsCallCredentialType(str, Enum):
     The type of call credentials to use for GRPC requests to the SDS server. This field can be set to one of the following: - GCE_VM: The local GCE VM service account credentials are used to access the SDS server. - FROM_PLUGIN: Custom authenticator credentials are used to access the SDS server.
     """
     FROM_PLUGIN = "FROM_PLUGIN"
-    """Custom authenticator credentials are used to access the SDS server."""
+    """
+    Custom authenticator credentials are used to access the SDS server.
+    """
     GCE_VM = "GCE_VM"
-    """The local GCE VM service account credentials are used to access the SDS server."""
+    """
+    The local GCE VM service account credentials are used to access the SDS server.
+    """
     INVALID = "INVALID"
 
 
@@ -599,9 +775,13 @@ class ChannelCredentialsChannelCredentialType(str, Enum):
     The channel credentials to access the SDS server. This field can be set to one of the following: CERTIFICATES: Use TLS certificates to access the SDS server. GCE_VM: Use local GCE VM credentials to access the SDS server.
     """
     CERTIFICATES = "CERTIFICATES"
-    """Use TLS certificates to access the SDS server."""
+    """
+    Use TLS certificates to access the SDS server.
+    """
     GCE_VM = "GCE_VM"
-    """Use local GCE VM credentials to access the SDS server."""
+    """
+    Use local GCE VM credentials to access the SDS server.
+    """
     INVALID = "INVALID"
 
 
@@ -610,21 +790,37 @@ class ConditionIam(str, Enum):
     This is deprecated and has no effect. Do not use.
     """
     APPROVER = "APPROVER"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     ATTRIBUTION = "ATTRIBUTION"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     AUTHORITY = "AUTHORITY"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     CREDENTIALS_TYPE = "CREDENTIALS_TYPE"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     CREDS_ASSERTION = "CREDS_ASSERTION"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     JUSTIFICATION_TYPE = "JUSTIFICATION_TYPE"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     NO_ATTR = "NO_ATTR"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     SECURITY_REALM = "SECURITY_REALM"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
 
 
 class ConditionOp(str, Enum):
@@ -632,17 +828,29 @@ class ConditionOp(str, Enum):
     This is deprecated and has no effect. Do not use.
     """
     DISCHARGED = "DISCHARGED"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     EQUALS = "EQUALS"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     IN_ = "IN"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     NOT_EQUALS = "NOT_EQUALS"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     NOT_IN = "NOT_IN"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     NO_OP = "NO_OP"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
 
 
 class ConditionSys(str, Enum):
@@ -650,15 +858,25 @@ class ConditionSys(str, Enum):
     This is deprecated and has no effect. Do not use.
     """
     IP = "IP"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     NAME = "NAME"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     NO_ATTR = "NO_ATTR"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     REGION = "REGION"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     SERVICE = "SERVICE"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
 
 
 class DeprecationStatusState(str, Enum):
@@ -676,19 +894,33 @@ class DiskInstantiationConfigInstantiateFrom(str, Enum):
     Specifies whether to include the disk and what image to use. Possible values are: - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks. - attach-read-only: to attach a read-only disk. Applicable to read-only disks. - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks. 
     """
     ATTACH_READ_ONLY = "ATTACH_READ_ONLY"
-    """Attach the existing disk in read-only mode. The request will fail if the disk was attached in read-write mode on the source instance. Applicable to: read-only disks."""
+    """
+    Attach the existing disk in read-only mode. The request will fail if the disk was attached in read-write mode on the source instance. Applicable to: read-only disks.
+    """
     BLANK = "BLANK"
-    """Create a blank disk. The disk will be created unformatted. Applicable to: additional read-write disks, local SSDs."""
+    """
+    Create a blank disk. The disk will be created unformatted. Applicable to: additional read-write disks, local SSDs.
+    """
     CUSTOM_IMAGE = "CUSTOM_IMAGE"
-    """Use the custom image specified in the custom_image field. Applicable to: boot disk, additional read-write disks."""
+    """
+    Use the custom image specified in the custom_image field. Applicable to: boot disk, additional read-write disks.
+    """
     DEFAULT = "DEFAULT"
-    """Use the default instantiation option for the corresponding type of disk. For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes."""
+    """
+    Use the default instantiation option for the corresponding type of disk. For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+    """
     DO_NOT_INCLUDE = "DO_NOT_INCLUDE"
-    """Do not include the disk in the instance template. Applicable to: additional read-write disks, local SSDs, read-only disks."""
+    """
+    Do not include the disk in the instance template. Applicable to: additional read-write disks, local SSDs, read-only disks.
+    """
     SOURCE_IMAGE = "SOURCE_IMAGE"
-    """Use the same source image used for creation of the source instance's corresponding disk. The request will fail if the source VM's disk was created from a snapshot. Applicable to: boot disk, additional read-write disks."""
+    """
+    Use the same source image used for creation of the source instance's corresponding disk. The request will fail if the source VM's disk was created from a snapshot. Applicable to: boot disk, additional read-write disks.
+    """
     SOURCE_IMAGE_FAMILY = "SOURCE_IMAGE_FAMILY"
-    """Use the same source image family used for creation of the source instance's corresponding disk. The request will fail if the source image of the source disk does not belong to any image family. Applicable to: boot disk, additional read-write disks."""
+    """
+    Use the same source image family used for creation of the source instance's corresponding disk. The request will fail if the source image of the source disk does not belong to any image family. Applicable to: boot disk, additional read-write disks.
+    """
 
 
 class DiskInterface(str, Enum):
@@ -705,11 +937,17 @@ class DistributionPolicyTargetShape(str, Enum):
     The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
     """
     ANY = "ANY"
-    """The group picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability."""
+    """
+    The group picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
+    """
     BALANCED = "BALANCED"
-    """The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads."""
+    """
+    The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
+    """
     EVEN = "EVEN"
-    """The group schedules VM instance creation and deletion to achieve and maintain an even number of managed instances across the selected zones. The distribution is even when the number of managed instances does not differ by more than 1 between any two zones. Recommended for highly available serving workloads."""
+    """
+    The group schedules VM instance creation and deletion to achieve and maintain an even number of managed instances across the selected zones. The distribution is even when the number of managed instances does not differ by more than 1 between any two zones. Recommended for highly available serving workloads.
+    """
 
 
 class ExternalVpnGatewayRedundancyType(str, Enum):
@@ -717,11 +955,17 @@ class ExternalVpnGatewayRedundancyType(str, Enum):
     Indicates the user-supplied redundancy type of this external VPN gateway.
     """
     FOUR_IPS_REDUNDANCY = "FOUR_IPS_REDUNDANCY"
-    """The external VPN gateway has four public IP addresses; at the time of writing this API, the AWS virtual private gateway is an example which has four public IP addresses for high availability connections; there should be two VPN connections in the AWS virtual private gateway , each AWS VPN connection has two public IP addresses; please make sure to put two public IP addresses from one AWS VPN connection into interfaces 0 and 1 of this external VPN gateway, and put the other two public IP addresses from another AWS VPN connection into interfaces 2 and 3 of this external VPN gateway. When displaying highly available configuration status for the VPN tunnels connected to FOUR_IPS_REDUNDANCY external VPN gateway, Google will always detect whether interfaces 0 and 1 are connected on one interface of HA Cloud VPN gateway, and detect whether interfaces 2 and 3 are connected to another interface of the HA Cloud VPN gateway."""
+    """
+    The external VPN gateway has four public IP addresses; at the time of writing this API, the AWS virtual private gateway is an example which has four public IP addresses for high availability connections; there should be two VPN connections in the AWS virtual private gateway , each AWS VPN connection has two public IP addresses; please make sure to put two public IP addresses from one AWS VPN connection into interfaces 0 and 1 of this external VPN gateway, and put the other two public IP addresses from another AWS VPN connection into interfaces 2 and 3 of this external VPN gateway. When displaying highly available configuration status for the VPN tunnels connected to FOUR_IPS_REDUNDANCY external VPN gateway, Google will always detect whether interfaces 0 and 1 are connected on one interface of HA Cloud VPN gateway, and detect whether interfaces 2 and 3 are connected to another interface of the HA Cloud VPN gateway.
+    """
     SINGLE_IP_INTERNALLY_REDUNDANT = "SINGLE_IP_INTERNALLY_REDUNDANT"
-    """The external VPN gateway has only one public IP address which internally provide redundancy or failover."""
+    """
+    The external VPN gateway has only one public IP address which internally provide redundancy or failover.
+    """
     TWO_IPS_REDUNDANCY = "TWO_IPS_REDUNDANCY"
-    """The external VPN gateway has two public IP addresses which are redundant with each other, the following two types of setup on your on-premises side would have this type of redundancy: (1) Two separate on-premises gateways, each with one public IP address, the two on-premises gateways are redundant with each other. (2) A single on-premise gateway with two public IP addresses that are redundant with eatch other."""
+    """
+    The external VPN gateway has two public IP addresses which are redundant with each other, the following two types of setup on your on-premises side would have this type of redundancy: (1) Two separate on-premises gateways, each with one public IP address, the two on-premises gateways are redundant with each other. (2) A single on-premise gateway with two public IP addresses that are redundant with eatch other.
+    """
 
 
 class FileContentBufferFileType(str, Enum):
@@ -738,9 +982,13 @@ class FirewallDirection(str, Enum):
     Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
     """
     EGRESS = "EGRESS"
-    """Indicates that firewall should apply to outgoing traffic."""
+    """
+    Indicates that firewall should apply to outgoing traffic.
+    """
     INGRESS = "INGRESS"
-    """Indicates that firewall should apply to incoming traffic."""
+    """
+    Indicates that firewall should apply to incoming traffic.
+    """
 
 
 class FirewallLogConfigMetadata(str, Enum):
@@ -799,26 +1047,44 @@ class ForwardingRuleNetworkTier(str, Enum):
     This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
     """
     FIXED_STANDARD = "FIXED_STANDARD"
-    """Public internet quality with fixed bandwidth."""
+    """
+    Public internet quality with fixed bandwidth.
+    """
     PREMIUM = "PREMIUM"
-    """High quality, Google-grade network tier, support for all networking products."""
+    """
+    High quality, Google-grade network tier, support for all networking products.
+    """
     SELECT = "SELECT"
-    """Price competitive network tier, support for all networking products."""
+    """
+    Price competitive network tier, support for all networking products.
+    """
     STANDARD = "STANDARD"
-    """Public internet quality, only limited support for other networking products."""
+    """
+    Public internet quality, only limited support for other networking products.
+    """
     STANDARD_OVERRIDES_FIXED_STANDARD = "STANDARD_OVERRIDES_FIXED_STANDARD"
-    """(Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured."""
+    """
+    (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+    """
 
 
 class ForwardingRulePscConnectionStatus(str, Enum):
     ACCEPTED = "ACCEPTED"
-    """The connection has been accepted by the producer."""
+    """
+    The connection has been accepted by the producer.
+    """
     CLOSED = "CLOSED"
-    """The connection has been closed by the producer and will not serve traffic going forward."""
+    """
+    The connection has been closed by the producer and will not serve traffic going forward.
+    """
     PENDING = "PENDING"
-    """The connection is pending acceptance by the producer."""
+    """
+    The connection is pending acceptance by the producer.
+    """
     REJECTED = "REJECTED"
-    """The connection has been rejected by the producer."""
+    """
+    The connection has been rejected by the producer.
+    """
     STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
 
 
@@ -827,11 +1093,17 @@ class GRPCHealthCheckPortSpecification(str, Enum):
     Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
-    """The port number in port is used for health checking."""
+    """
+    The port number in port is used for health checking.
+    """
     USE_NAMED_PORT = "USE_NAMED_PORT"
-    """The portName is used for health checking."""
+    """
+    The portName is used for health checking.
+    """
     USE_SERVING_PORT = "USE_SERVING_PORT"
-    """For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking."""
+    """
+    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    """
 
 
 class GlobalAddressAddressType(str, Enum):
@@ -839,11 +1111,17 @@ class GlobalAddressAddressType(str, Enum):
     The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
     """
     DNS_FORWARDING = "DNS_FORWARDING"
-    """DNS resolver address in the subnetwork."""
+    """
+    DNS resolver address in the subnetwork.
+    """
     EXTERNAL = "EXTERNAL"
-    """A publicly visible external IP address."""
+    """
+    A publicly visible external IP address.
+    """
     INTERNAL = "INTERNAL"
-    """A private network IP address, for use with an Instance or Internal Load Balancer forwarding rule."""
+    """
+    A private network IP address, for use with an Instance or Internal Load Balancer forwarding rule.
+    """
     UNSPECIFIED_TYPE = "UNSPECIFIED_TYPE"
 
 
@@ -861,15 +1139,25 @@ class GlobalAddressNetworkTier(str, Enum):
     This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
     """
     FIXED_STANDARD = "FIXED_STANDARD"
-    """Public internet quality with fixed bandwidth."""
+    """
+    Public internet quality with fixed bandwidth.
+    """
     PREMIUM = "PREMIUM"
-    """High quality, Google-grade network tier, support for all networking products."""
+    """
+    High quality, Google-grade network tier, support for all networking products.
+    """
     SELECT = "SELECT"
-    """Price competitive network tier, support for all networking products."""
+    """
+    Price competitive network tier, support for all networking products.
+    """
     STANDARD = "STANDARD"
-    """Public internet quality, only limited support for other networking products."""
+    """
+    Public internet quality, only limited support for other networking products.
+    """
     STANDARD_OVERRIDES_FIXED_STANDARD = "STANDARD_OVERRIDES_FIXED_STANDARD"
-    """(Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured."""
+    """
+    (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+    """
 
 
 class GlobalAddressPurpose(str, Enum):
@@ -877,19 +1165,33 @@ class GlobalAddressPurpose(str, Enum):
     The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using . - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
     """
     DNS_RESOLVER = "DNS_RESOLVER"
-    """DNS resolver address in the subnetwork."""
+    """
+    DNS resolver address in the subnetwork.
+    """
     GCE_ENDPOINT = "GCE_ENDPOINT"
-    """VM internal/alias IP, Internal LB service IP, etc."""
+    """
+    VM internal/alias IP, Internal LB service IP, etc.
+    """
     IPSEC_INTERCONNECT = "IPSEC_INTERCONNECT"
-    """A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range."""
+    """
+    A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+    """
     NAT_AUTO = "NAT_AUTO"
-    """External IP automatically reserved for Cloud NAT."""
+    """
+    External IP automatically reserved for Cloud NAT.
+    """
     PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
-    """A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL"""
+    """
+    A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
+    """
     SHARED_LOADBALANCER_VIP = "SHARED_LOADBALANCER_VIP"
-    """A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules."""
+    """
+    A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
+    """
     VPC_PEERING = "VPC_PEERING"
-    """IP range for peer networks."""
+    """
+    IP range for peer networks.
+    """
 
 
 class GlobalForwardingRuleIpProtocol(str, Enum):
@@ -932,26 +1234,44 @@ class GlobalForwardingRuleNetworkTier(str, Enum):
     This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
     """
     FIXED_STANDARD = "FIXED_STANDARD"
-    """Public internet quality with fixed bandwidth."""
+    """
+    Public internet quality with fixed bandwidth.
+    """
     PREMIUM = "PREMIUM"
-    """High quality, Google-grade network tier, support for all networking products."""
+    """
+    High quality, Google-grade network tier, support for all networking products.
+    """
     SELECT = "SELECT"
-    """Price competitive network tier, support for all networking products."""
+    """
+    Price competitive network tier, support for all networking products.
+    """
     STANDARD = "STANDARD"
-    """Public internet quality, only limited support for other networking products."""
+    """
+    Public internet quality, only limited support for other networking products.
+    """
     STANDARD_OVERRIDES_FIXED_STANDARD = "STANDARD_OVERRIDES_FIXED_STANDARD"
-    """(Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured."""
+    """
+    (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+    """
 
 
 class GlobalForwardingRulePscConnectionStatus(str, Enum):
     ACCEPTED = "ACCEPTED"
-    """The connection has been accepted by the producer."""
+    """
+    The connection has been accepted by the producer.
+    """
     CLOSED = "CLOSED"
-    """The connection has been closed by the producer and will not serve traffic going forward."""
+    """
+    The connection has been closed by the producer and will not serve traffic going forward.
+    """
     PENDING = "PENDING"
-    """The connection is pending acceptance by the producer."""
+    """
+    The connection is pending acceptance by the producer.
+    """
     REJECTED = "REJECTED"
-    """The connection has been rejected by the producer."""
+    """
+    The connection has been rejected by the producer.
+    """
     STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
 
 
@@ -960,21 +1280,37 @@ class GlobalNetworkEndpointGroupNetworkEndpointType(str, Enum):
     Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     """
     GCE_VM_IP = "GCE_VM_IP"
-    """The network endpoint is represented by an IP address."""
+    """
+    The network endpoint is represented by an IP address.
+    """
     GCE_VM_IP_PORT = "GCE_VM_IP_PORT"
-    """The network endpoint is represented by IP address and port pair."""
+    """
+    The network endpoint is represented by IP address and port pair.
+    """
     GCE_VM_PRIMARY_IP = "GCE_VM_PRIMARY_IP"
-    """The network endpoint is the primary IP address on any network interface of a VM in Compute Engine."""
+    """
+    The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
+    """
     INTERNET_FQDN_PORT = "INTERNET_FQDN_PORT"
-    """The network endpoint is represented by fully qualified domain name and port."""
+    """
+    The network endpoint is represented by fully qualified domain name and port.
+    """
     INTERNET_IP_PORT = "INTERNET_IP_PORT"
-    """The network endpoint is represented by an internet IP address and port."""
+    """
+    The network endpoint is represented by an internet IP address and port.
+    """
     NON_GCP_PRIVATE_IP_PORT = "NON_GCP_PRIVATE_IP_PORT"
-    """The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises."""
+    """
+    The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
+    """
     PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
-    """The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect"""
+    """
+    The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+    """
     SERVERLESS = "SERVERLESS"
-    """The network endpoint is handled by specified serverless infrastructure."""
+    """
+    The network endpoint is handled by specified serverless infrastructure.
+    """
 
 
 class GlobalNetworkEndpointGroupType(str, Enum):
@@ -982,7 +1318,9 @@ class GlobalNetworkEndpointGroupType(str, Enum):
     Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
     """
     LOAD_BALANCING = "LOAD_BALANCING"
-    """The network endpoint group is a backend of a load balancer."""
+    """
+    The network endpoint group is a backend of a load balancer.
+    """
 
 
 class GuestOsFeatureType(str, Enum):
@@ -1005,11 +1343,17 @@ class HTTP2HealthCheckPortSpecification(str, Enum):
     Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
-    """The port number in port is used for health checking."""
+    """
+    The port number in port is used for health checking.
+    """
     USE_NAMED_PORT = "USE_NAMED_PORT"
-    """The portName is used for health checking."""
+    """
+    The portName is used for health checking.
+    """
     USE_SERVING_PORT = "USE_SERVING_PORT"
-    """For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking."""
+    """
+    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    """
 
 
 class HTTP2HealthCheckProxyHeader(str, Enum):
@@ -1025,11 +1369,17 @@ class HTTP2HealthCheckWeightReportMode(str, Enum):
     Weight report mode. used for weighted Load Balancing.
     """
     DISABLE = "DISABLE"
-    """Health Checker will not parse the header field."""
+    """
+    Health Checker will not parse the header field.
+    """
     DRY_RUN = "DRY_RUN"
-    """Health Checker will parse and report the weight in the header field, but load balancing will not be based on the weights and will use equal weights."""
+    """
+    Health Checker will parse and report the weight in the header field, but load balancing will not be based on the weights and will use equal weights.
+    """
     ENABLE = "ENABLE"
-    """Health Checker will try to parse and report the weight in the header field, and load balancing will be based on the weights as long as all backends have a valid weight or only a subset of backends has the UNAVAILABLE_WEIGHT WeightError. The latter case is to continue the weighted load balancing while some backends are in TIMEOUT or UNKNOWN health status."""
+    """
+    Health Checker will try to parse and report the weight in the header field, and load balancing will be based on the weights as long as all backends have a valid weight or only a subset of backends has the UNAVAILABLE_WEIGHT WeightError. The latter case is to continue the weighted load balancing while some backends are in TIMEOUT or UNKNOWN health status.
+    """
 
 
 class HTTPHealthCheckPortSpecification(str, Enum):
@@ -1037,11 +1387,17 @@ class HTTPHealthCheckPortSpecification(str, Enum):
     Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
-    """The port number in port is used for health checking."""
+    """
+    The port number in port is used for health checking.
+    """
     USE_NAMED_PORT = "USE_NAMED_PORT"
-    """The portName is used for health checking."""
+    """
+    The portName is used for health checking.
+    """
     USE_SERVING_PORT = "USE_SERVING_PORT"
-    """For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking."""
+    """
+    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    """
 
 
 class HTTPHealthCheckProxyHeader(str, Enum):
@@ -1057,11 +1413,17 @@ class HTTPHealthCheckWeightReportMode(str, Enum):
     Weight report mode. used for weighted Load Balancing.
     """
     DISABLE = "DISABLE"
-    """Health Checker will not parse the header field."""
+    """
+    Health Checker will not parse the header field.
+    """
     DRY_RUN = "DRY_RUN"
-    """Health Checker will parse and report the weight in the header field, but load balancing will not be based on the weights and will use equal weights."""
+    """
+    Health Checker will parse and report the weight in the header field, but load balancing will not be based on the weights and will use equal weights.
+    """
     ENABLE = "ENABLE"
-    """Health Checker will try to parse and report the weight in the header field, and load balancing will be based on the weights as long as all backends have a valid weight or only a subset of backends has the UNAVAILABLE_WEIGHT WeightError. The latter case is to continue the weighted load balancing while some backends are in TIMEOUT or UNKNOWN health status."""
+    """
+    Health Checker will try to parse and report the weight in the header field, and load balancing will be based on the weights as long as all backends have a valid weight or only a subset of backends has the UNAVAILABLE_WEIGHT WeightError. The latter case is to continue the weighted load balancing while some backends are in TIMEOUT or UNKNOWN health status.
+    """
 
 
 class HTTPSHealthCheckPortSpecification(str, Enum):
@@ -1069,11 +1431,17 @@ class HTTPSHealthCheckPortSpecification(str, Enum):
     Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
-    """The port number in port is used for health checking."""
+    """
+    The port number in port is used for health checking.
+    """
     USE_NAMED_PORT = "USE_NAMED_PORT"
-    """The portName is used for health checking."""
+    """
+    The portName is used for health checking.
+    """
     USE_SERVING_PORT = "USE_SERVING_PORT"
-    """For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking."""
+    """
+    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    """
 
 
 class HTTPSHealthCheckProxyHeader(str, Enum):
@@ -1089,11 +1457,17 @@ class HTTPSHealthCheckWeightReportMode(str, Enum):
     Weight report mode. used for weighted Load Balancing.
     """
     DISABLE = "DISABLE"
-    """Health Checker will not parse the header field."""
+    """
+    Health Checker will not parse the header field.
+    """
     DRY_RUN = "DRY_RUN"
-    """Health Checker will parse and report the weight in the header field, but load balancing will not be based on the weights and will use equal weights."""
+    """
+    Health Checker will parse and report the weight in the header field, but load balancing will not be based on the weights and will use equal weights.
+    """
     ENABLE = "ENABLE"
-    """Health Checker will try to parse and report the weight in the header field, and load balancing will be based on the weights as long as all backends have a valid weight or only a subset of backends has the UNAVAILABLE_WEIGHT WeightError. The latter case is to continue the weighted load balancing while some backends are in TIMEOUT or UNKNOWN health status."""
+    """
+    Health Checker will try to parse and report the weight in the header field, and load balancing will be based on the weights as long as all backends have a valid weight or only a subset of backends has the UNAVAILABLE_WEIGHT WeightError. The latter case is to continue the weighted load balancing while some backends are in TIMEOUT or UNKNOWN health status.
+    """
 
 
 class HealthCheckType(str, Enum):
@@ -1115,15 +1489,25 @@ class HttpRedirectActionRedirectResponseCode(str, Enum):
     The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained. 
     """
     FOUND = "FOUND"
-    """Http Status Code 302 - Found."""
+    """
+    Http Status Code 302 - Found.
+    """
     MOVED_PERMANENTLY_DEFAULT = "MOVED_PERMANENTLY_DEFAULT"
-    """Http Status Code 301 - Moved Permanently."""
+    """
+    Http Status Code 301 - Moved Permanently.
+    """
     PERMANENT_REDIRECT = "PERMANENT_REDIRECT"
-    """Http Status Code 308 - Permanent Redirect maintaining HTTP method."""
+    """
+    Http Status Code 308 - Permanent Redirect maintaining HTTP method.
+    """
     SEE_OTHER = "SEE_OTHER"
-    """Http Status Code 303 - See Other."""
+    """
+    Http Status Code 303 - See Other.
+    """
     TEMPORARY_REDIRECT = "TEMPORARY_REDIRECT"
-    """Http Status Code 307 - Temporary Redirect maintaining HTTP method."""
+    """
+    Http Status Code 307 - Temporary Redirect maintaining HTTP method.
+    """
 
 
 class ImageRawDiskContainerType(str, Enum):
@@ -1153,9 +1537,13 @@ class InstanceGroupManagerUpdatePolicyInstanceRedistributionType(str, Enum):
     The instance redistribution policy for regional managed instance groups. Valid values are: - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. - NONE: For non-autoscaled groups, proactive redistribution is disabled. 
     """
     NONE = "NONE"
-    """No action is being proactively performed in order to bring this IGM to its target instance distribution."""
+    """
+    No action is being proactively performed in order to bring this IGM to its target instance distribution.
+    """
     PROACTIVE = "PROACTIVE"
-    """This IGM will actively converge to its target instance distribution."""
+    """
+    This IGM will actively converge to its target instance distribution.
+    """
 
 
 class InstanceGroupManagerUpdatePolicyMinimalAction(str, Enum):
@@ -1163,13 +1551,21 @@ class InstanceGroupManagerUpdatePolicyMinimalAction(str, Enum):
     Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
     """
     NONE = "NONE"
-    """Do not perform any action."""
+    """
+    Do not perform any action.
+    """
     REFRESH = "REFRESH"
-    """Updates applied in runtime, instances will not be disrupted."""
+    """
+    Updates applied in runtime, instances will not be disrupted.
+    """
     REPLACE = "REPLACE"
-    """Old instances will be deleted. New instances will be created from the target template."""
+    """
+    Old instances will be deleted. New instances will be created from the target template.
+    """
     RESTART = "RESTART"
-    """Every instance will be restarted."""
+    """
+    Every instance will be restarted.
+    """
 
 
 class InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction(str, Enum):
@@ -1177,13 +1573,21 @@ class InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction(str, Enum):
     Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
     """
     NONE = "NONE"
-    """Do not perform any action."""
+    """
+    Do not perform any action.
+    """
     REFRESH = "REFRESH"
-    """Updates applied in runtime, instances will not be disrupted."""
+    """
+    Updates applied in runtime, instances will not be disrupted.
+    """
     REPLACE = "REPLACE"
-    """Old instances will be deleted. New instances will be created from the target template."""
+    """
+    Old instances will be deleted. New instances will be created from the target template.
+    """
     RESTART = "RESTART"
-    """Every instance will be restarted."""
+    """
+    Every instance will be restarted.
+    """
 
 
 class InstanceGroupManagerUpdatePolicyReplacementMethod(str, Enum):
@@ -1191,9 +1595,13 @@ class InstanceGroupManagerUpdatePolicyReplacementMethod(str, Enum):
     What action should be used to replace instances. See minimal_action.REPLACE
     """
     RECREATE = "RECREATE"
-    """Instances will be recreated (with the same name)"""
+    """
+    Instances will be recreated (with the same name)
+    """
     SUBSTITUTE = "SUBSTITUTE"
-    """Default option: instances will be deleted and created (with a new name)"""
+    """
+    Default option: instances will be deleted and created (with a new name)
+    """
 
 
 class InstanceGroupManagerUpdatePolicyType(str, Enum):
@@ -1201,9 +1609,13 @@ class InstanceGroupManagerUpdatePolicyType(str, Enum):
     The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
     """
     OPPORTUNISTIC = "OPPORTUNISTIC"
-    """No action is being proactively performed in order to bring this IGM to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field)."""
+    """
+    No action is being proactively performed in order to bring this IGM to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+    """
     PROACTIVE = "PROACTIVE"
-    """This IGM will actively converge to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field)."""
+    """
+    This IGM will actively converge to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+    """
 
 
 class InstancePostKeyRevocationActionType(str, Enum):
@@ -1211,11 +1623,17 @@ class InstancePostKeyRevocationActionType(str, Enum):
     PostKeyRevocationActionType of the instance.
     """
     NOOP = "NOOP"
-    """Indicates user chose no operation."""
+    """
+    Indicates user chose no operation.
+    """
     POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED = "POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
-    """Default value. This value is unused."""
+    """
+    Default value. This value is unused.
+    """
     SHUTDOWN = "SHUTDOWN"
-    """Indicates user chose to opt for VM shutdown on key revocation."""
+    """
+    Indicates user chose to opt for VM shutdown on key revocation.
+    """
 
 
 class InstancePrivateIpv6GoogleAccess(str, Enum):
@@ -1223,11 +1641,17 @@ class InstancePrivateIpv6GoogleAccess(str, Enum):
     The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
     """
     ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE = "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
-    """Bidirectional private IPv6 access to/from Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before."""
+    """
+    Bidirectional private IPv6 access to/from Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
+    """
     ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE = "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
-    """Outbound private IPv6 access from VMs in this subnet to Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before."""
+    """
+    Outbound private IPv6 access from VMs in this subnet to Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
+    """
     INHERIT_FROM_SUBNETWORK = "INHERIT_FROM_SUBNETWORK"
-    """Each network interface inherits PrivateIpv6GoogleAccess from its subnetwork."""
+    """
+    Each network interface inherits PrivateIpv6GoogleAccess from its subnetwork.
+    """
 
 
 class InstancePropertiesPostKeyRevocationActionType(str, Enum):
@@ -1235,11 +1659,17 @@ class InstancePropertiesPostKeyRevocationActionType(str, Enum):
     PostKeyRevocationActionType of the instance.
     """
     NOOP = "NOOP"
-    """Indicates user chose no operation."""
+    """
+    Indicates user chose no operation.
+    """
     POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED = "POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
-    """Default value. This value is unused."""
+    """
+    Default value. This value is unused.
+    """
     SHUTDOWN = "SHUTDOWN"
-    """Indicates user chose to opt for VM shutdown on key revocation."""
+    """
+    Indicates user chose to opt for VM shutdown on key revocation.
+    """
 
 
 class InstancePropertiesPrivateIpv6GoogleAccess(str, Enum):
@@ -1247,11 +1677,17 @@ class InstancePropertiesPrivateIpv6GoogleAccess(str, Enum):
     The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
     """
     ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE = "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
-    """Bidirectional private IPv6 access to/from Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before."""
+    """
+    Bidirectional private IPv6 access to/from Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
+    """
     ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE = "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
-    """Outbound private IPv6 access from VMs in this subnet to Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before."""
+    """
+    Outbound private IPv6 access from VMs in this subnet to Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
+    """
     INHERIT_FROM_SUBNETWORK = "INHERIT_FROM_SUBNETWORK"
-    """Each network interface inherits PrivateIpv6GoogleAccess from its subnetwork."""
+    """
+    Each network interface inherits PrivateIpv6GoogleAccess from its subnetwork.
+    """
 
 
 class InterconnectAttachmentBandwidth(str, Enum):
@@ -1259,29 +1695,53 @@ class InterconnectAttachmentBandwidth(str, Enum):
     Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s 
     """
     BPS100M = "BPS_100M"
-    """100 Mbit/s"""
+    """
+    100 Mbit/s
+    """
     BPS10G = "BPS_10G"
-    """10 Gbit/s"""
+    """
+    10 Gbit/s
+    """
     BPS1G = "BPS_1G"
-    """1 Gbit/s"""
+    """
+    1 Gbit/s
+    """
     BPS200M = "BPS_200M"
-    """200 Mbit/s"""
+    """
+    200 Mbit/s
+    """
     BPS20G = "BPS_20G"
-    """20 Gbit/s"""
+    """
+    20 Gbit/s
+    """
     BPS2G = "BPS_2G"
-    """2 Gbit/s"""
+    """
+    2 Gbit/s
+    """
     BPS300M = "BPS_300M"
-    """300 Mbit/s"""
+    """
+    300 Mbit/s
+    """
     BPS400M = "BPS_400M"
-    """400 Mbit/s"""
+    """
+    400 Mbit/s
+    """
     BPS500M = "BPS_500M"
-    """500 Mbit/s"""
+    """
+    500 Mbit/s
+    """
     BPS50G = "BPS_50G"
-    """50 Gbit/s"""
+    """
+    50 Gbit/s
+    """
     BPS50M = "BPS_50M"
-    """50 Mbit/s"""
+    """
+    50 Mbit/s
+    """
     BPS5G = "BPS_5G"
-    """5 Gbit/s"""
+    """
+    5 Gbit/s
+    """
 
 
 class InterconnectAttachmentEdgeAvailabilityDomain(str, Enum):
@@ -1298,9 +1758,13 @@ class InterconnectAttachmentEncryption(str, Enum):
     Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
     """
     IPSEC = "IPSEC"
-    """The interconnect attachment will carry only encrypted traffic that is encrypted by an IPsec device such as HA VPN gateway; VMs cannot directly send traffic to or receive traffic from such an interconnect attachment. To use IPsec-encrypted Cloud Interconnect, the interconnect attachment must be created with this option."""
+    """
+    The interconnect attachment will carry only encrypted traffic that is encrypted by an IPsec device such as HA VPN gateway; VMs cannot directly send traffic to or receive traffic from such an interconnect attachment. To use IPsec-encrypted Cloud Interconnect, the interconnect attachment must be created with this option.
+    """
     NONE = "NONE"
-    """This is the default value, which means the Interconnect Attachment will carry unencrypted traffic. VMs will be able to send traffic to or receive traffic from such interconnect attachment."""
+    """
+    This is the default value, which means the Interconnect Attachment will carry unencrypted traffic. VMs will be able to send traffic to or receive traffic from such interconnect attachment.
+    """
 
 
 class InterconnectAttachmentStackType(str, Enum):
@@ -1308,9 +1772,13 @@ class InterconnectAttachmentStackType(str, Enum):
     The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
     """
     IPV4_IPV6 = "IPV4_IPV6"
-    """The interconnect attachment can have both IPv4 and IPv6 addresses."""
+    """
+    The interconnect attachment can have both IPv4 and IPv6 addresses.
+    """
     IPV4_ONLY = "IPV4_ONLY"
-    """The interconnect attachment will only be assigned IPv4 addresses."""
+    """
+    The interconnect attachment will only be assigned IPv4 addresses.
+    """
 
 
 class InterconnectAttachmentType(str, Enum):
@@ -1318,11 +1786,17 @@ class InterconnectAttachmentType(str, Enum):
     The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
     """
     DEDICATED = "DEDICATED"
-    """Attachment to a dedicated interconnect."""
+    """
+    Attachment to a dedicated interconnect.
+    """
     PARTNER = "PARTNER"
-    """Attachment to a partner interconnect, created by the customer."""
+    """
+    Attachment to a partner interconnect, created by the customer.
+    """
     PARTNER_PROVIDER = "PARTNER_PROVIDER"
-    """Attachment to a partner interconnect, created by the partner."""
+    """
+    Attachment to a partner interconnect, created by the partner.
+    """
 
 
 class InterconnectInterconnectType(str, Enum):
@@ -1330,11 +1804,17 @@ class InterconnectInterconnectType(str, Enum):
     Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
     """
     DEDICATED = "DEDICATED"
-    """A dedicated physical interconnection with the customer."""
+    """
+    A dedicated physical interconnection with the customer.
+    """
     IT_PRIVATE = "IT_PRIVATE"
-    """[Deprecated] A private, physical interconnection with the customer."""
+    """
+    [Deprecated] A private, physical interconnection with the customer.
+    """
     PARTNER = "PARTNER"
-    """A partner-managed interconnection shared between customers via partner."""
+    """
+    A partner-managed interconnection shared between customers via partner.
+    """
 
 
 class InterconnectLinkType(str, Enum):
@@ -1342,9 +1822,13 @@ class InterconnectLinkType(str, Enum):
     Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
     """
     LINK_TYPE_ETHERNET100G_LR = "LINK_TYPE_ETHERNET_100G_LR"
-    """100G Ethernet, LR Optics."""
+    """
+    100G Ethernet, LR Optics.
+    """
     LINK_TYPE_ETHERNET10G_LR = "LINK_TYPE_ETHERNET_10G_LR"
-    """10G Ethernet, LR Optics. [(rate_bps) = 10000000000];"""
+    """
+    10G Ethernet, LR Optics. [(rate_bps) = 10000000000];
+    """
 
 
 class LogConfigCloudAuditOptionsLogName(str, Enum):
@@ -1352,11 +1836,17 @@ class LogConfigCloudAuditOptionsLogName(str, Enum):
     This is deprecated and has no effect. Do not use.
     """
     ADMIN_ACTIVITY = "ADMIN_ACTIVITY"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     DATA_ACCESS = "DATA_ACCESS"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     UNSPECIFIED_LOG_NAME = "UNSPECIFIED_LOG_NAME"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
 
 
 class LogConfigDataAccessOptionsLogMode(str, Enum):
@@ -1364,9 +1854,13 @@ class LogConfigDataAccessOptionsLogMode(str, Enum):
     This is deprecated and has no effect. Do not use.
     """
     LOG_FAIL_CLOSED = "LOG_FAIL_CLOSED"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     LOG_MODE_UNSPECIFIED = "LOG_MODE_UNSPECIFIED"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
 
 
 class MetadataFilterFilterMatchCriteria(str, Enum):
@@ -1374,11 +1868,17 @@ class MetadataFilterFilterMatchCriteria(str, Enum):
     Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata. 
     """
     MATCH_ALL = "MATCH_ALL"
-    """Specifies that all filterLabels must match for the metadataFilter to be considered a match."""
+    """
+    Specifies that all filterLabels must match for the metadataFilter to be considered a match.
+    """
     MATCH_ANY = "MATCH_ANY"
-    """Specifies that any filterLabel must match for the metadataFilter to be considered a match."""
+    """
+    Specifies that any filterLabel must match for the metadataFilter to be considered a match.
+    """
     NOT_SET = "NOT_SET"
-    """Indicates that the match criteria was not set. A metadataFilter must never be created with this value."""
+    """
+    Indicates that the match criteria was not set. A metadataFilter must never be created with this value.
+    """
 
 
 class NetworkEndpointGroupNetworkEndpointType(str, Enum):
@@ -1386,21 +1886,37 @@ class NetworkEndpointGroupNetworkEndpointType(str, Enum):
     Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     """
     GCE_VM_IP = "GCE_VM_IP"
-    """The network endpoint is represented by an IP address."""
+    """
+    The network endpoint is represented by an IP address.
+    """
     GCE_VM_IP_PORT = "GCE_VM_IP_PORT"
-    """The network endpoint is represented by IP address and port pair."""
+    """
+    The network endpoint is represented by IP address and port pair.
+    """
     GCE_VM_PRIMARY_IP = "GCE_VM_PRIMARY_IP"
-    """The network endpoint is the primary IP address on any network interface of a VM in Compute Engine."""
+    """
+    The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
+    """
     INTERNET_FQDN_PORT = "INTERNET_FQDN_PORT"
-    """The network endpoint is represented by fully qualified domain name and port."""
+    """
+    The network endpoint is represented by fully qualified domain name and port.
+    """
     INTERNET_IP_PORT = "INTERNET_IP_PORT"
-    """The network endpoint is represented by an internet IP address and port."""
+    """
+    The network endpoint is represented by an internet IP address and port.
+    """
     NON_GCP_PRIVATE_IP_PORT = "NON_GCP_PRIVATE_IP_PORT"
-    """The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises."""
+    """
+    The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
+    """
     PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
-    """The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect"""
+    """
+    The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+    """
     SERVERLESS = "SERVERLESS"
-    """The network endpoint is handled by specified serverless infrastructure."""
+    """
+    The network endpoint is handled by specified serverless infrastructure.
+    """
 
 
 class NetworkEndpointGroupType(str, Enum):
@@ -1408,7 +1924,9 @@ class NetworkEndpointGroupType(str, Enum):
     Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
     """
     LOAD_BALANCING = "LOAD_BALANCING"
-    """The network endpoint group is a backend of a load balancer."""
+    """
+    The network endpoint group is a backend of a load balancer.
+    """
 
 
 class NetworkInterfaceNicType(str, Enum):
@@ -1416,11 +1934,17 @@ class NetworkInterfaceNicType(str, Enum):
     The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
     """
     GVNIC = "GVNIC"
-    """GVNIC"""
+    """
+    GVNIC
+    """
     UNSPECIFIED_NIC_TYPE = "UNSPECIFIED_NIC_TYPE"
-    """No type specified."""
+    """
+    No type specified.
+    """
     VIRTIO_NET = "VIRTIO_NET"
-    """VIRTIO"""
+    """
+    VIRTIO
+    """
 
 
 class NetworkInterfaceStackType(str, Enum):
@@ -1428,17 +1952,25 @@ class NetworkInterfaceStackType(str, Enum):
     The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
     """
     IPV4_IPV6 = "IPV4_IPV6"
-    """The network interface can have both IPv4 and IPv6 addresses."""
+    """
+    The network interface can have both IPv4 and IPv6 addresses.
+    """
     IPV4_ONLY = "IPV4_ONLY"
-    """The network interface will be assigned IPv4 address."""
+    """
+    The network interface will be assigned IPv4 address.
+    """
     UNSPECIFIED_STACK_TYPE = "UNSPECIFIED_STACK_TYPE"
 
 
 class NetworkInterfaceSubInterfaceIpAllocationMode(str, Enum):
     ALLOCATE_IP = "ALLOCATE_IP"
-    """Allocates an internal IPv4 IP address from subnets secondary IP Range."""
+    """
+    Allocates an internal IPv4 IP address from subnets secondary IP Range.
+    """
     DO_NOT_ALLOCATE_IP = "DO_NOT_ALLOCATE_IP"
-    """No IP allocation is done for the subinterface."""
+    """
+    No IP allocation is done for the subinterface.
+    """
     UNSPECIFIED = "UNSPECIFIED"
 
 
@@ -1466,11 +1998,17 @@ class NodeGroupAutoscalingPolicyMode(str, Enum):
     """
     MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
     OFF = "OFF"
-    """Autoscaling is disabled."""
+    """
+    Autoscaling is disabled.
+    """
     ON = "ON"
-    """Autocaling is fully enabled."""
+    """
+    Autocaling is fully enabled.
+    """
     ONLY_SCALE_OUT = "ONLY_SCALE_OUT"
-    """Autoscaling will only scale out and will not remove nodes."""
+    """
+    Autoscaling will only scale out and will not remove nodes.
+    """
 
 
 class NodeGroupMaintenancePolicy(str, Enum):
@@ -1478,12 +2016,18 @@ class NodeGroupMaintenancePolicy(str, Enum):
     Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
     """
     DEFAULT = "DEFAULT"
-    """Allow the node and corresponding instances to retain default maintenance behavior."""
+    """
+    Allow the node and corresponding instances to retain default maintenance behavior.
+    """
     MAINTENANCE_POLICY_UNSPECIFIED = "MAINTENANCE_POLICY_UNSPECIFIED"
     MIGRATE_WITHIN_NODE_GROUP = "MIGRATE_WITHIN_NODE_GROUP"
-    """When maintenance must be done on a node, the instances on that node will be moved to other nodes in the group. Instances with onHostMaintenance = MIGRATE will live migrate to their destinations while instances with onHostMaintenance = TERMINATE will terminate and then restart on their destination nodes if automaticRestart = true."""
+    """
+    When maintenance must be done on a node, the instances on that node will be moved to other nodes in the group. Instances with onHostMaintenance = MIGRATE will live migrate to their destinations while instances with onHostMaintenance = TERMINATE will terminate and then restart on their destination nodes if automaticRestart = true.
+    """
     RESTART_IN_PLACE = "RESTART_IN_PLACE"
-    """Instances in this group will restart on the same node when maintenance has completed. Instances must have onHostMaintenance = TERMINATE, and they will only restart if automaticRestart = true."""
+    """
+    Instances in this group will restart on the same node when maintenance has completed. Instances must have onHostMaintenance = TERMINATE, and they will only restart if automaticRestart = true.
+    """
 
 
 class NodeGroupStatus(str, Enum):
@@ -1525,11 +2069,17 @@ class PacketMirroringFilterDirection(str, Enum):
     Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
     """
     BOTH = "BOTH"
-    """Default, both directions are mirrored."""
+    """
+    Default, both directions are mirrored.
+    """
     EGRESS = "EGRESS"
-    """Only egress traffic is mirrored."""
+    """
+    Only egress traffic is mirrored.
+    """
     INGRESS = "INGRESS"
-    """Only ingress traffic is mirrored."""
+    """
+    Only ingress traffic is mirrored.
+    """
 
 
 class PublicAdvertisedPrefixStatus(str, Enum):
@@ -1550,9 +2100,13 @@ class RegionBackendServiceCompressionMode(str, Enum):
     Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
     """
     AUTOMATIC = "AUTOMATIC"
-    """Automatically uses the best compression based on the Accept-Encoding header sent by the client."""
+    """
+    Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+    """
     DISABLED = "DISABLED"
-    """Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients."""
+    """
+    Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+    """
 
 
 class RegionBackendServiceLoadBalancingScheme(str, Enum):
@@ -1560,15 +2114,25 @@ class RegionBackendServiceLoadBalancingScheme(str, Enum):
     Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
     """
     EXTERNAL = "EXTERNAL"
-    """Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing"""
+    """
+    Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+    """
     EXTERNAL_MANAGED = "EXTERNAL_MANAGED"
-    """Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing."""
+    """
+    Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+    """
     INTERNAL = "INTERNAL"
-    """Signifies that this will be used for Internal TCP/UDP Load Balancing."""
+    """
+    Signifies that this will be used for Internal TCP/UDP Load Balancing.
+    """
     INTERNAL_MANAGED = "INTERNAL_MANAGED"
-    """Signifies that this will be used for Internal HTTP(S) Load Balancing."""
+    """
+    Signifies that this will be used for Internal HTTP(S) Load Balancing.
+    """
     INTERNAL_SELF_MANAGED = "INTERNAL_SELF_MANAGED"
-    """Signifies that this will be used by Traffic Director."""
+    """
+    Signifies that this will be used by Traffic Director.
+    """
     INVALID_LOAD_BALANCING_SCHEME = "INVALID_LOAD_BALANCING_SCHEME"
 
 
@@ -1578,17 +2142,29 @@ class RegionBackendServiceLocalityLbPolicy(str, Enum):
     """
     INVALID_LB_POLICY = "INVALID_LB_POLICY"
     LEAST_REQUEST = "LEAST_REQUEST"
-    """An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests."""
+    """
+    An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
+    """
     MAGLEV = "MAGLEV"
-    """This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824"""
+    """
+    This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
+    """
     ORIGINAL_DESTINATION = "ORIGINAL_DESTINATION"
-    """Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer."""
+    """
+    Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
+    """
     RANDOM = "RANDOM"
-    """The load balancer selects a random healthy host."""
+    """
+    The load balancer selects a random healthy host.
+    """
     RING_HASH = "RING_HASH"
-    """The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests."""
+    """
+    The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
+    """
     ROUND_ROBIN = "ROUND_ROBIN"
-    """This is a simple policy in which each healthy backend is selected in round robin order. This is the default."""
+    """
+    This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
+    """
 
 
 class RegionBackendServiceProtocol(str, Enum):
@@ -1596,21 +2172,35 @@ class RegionBackendServiceProtocol(str, Enum):
     The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
     """
     ALL = "ALL"
-    """ALL includes TCP, UDP, ICMP, ESP, AH and SCTP. Note that this should never be used together with target_xx_proxies."""
+    """
+    ALL includes TCP, UDP, ICMP, ESP, AH and SCTP. Note that this should never be used together with target_xx_proxies.
+    """
     GRPC = "GRPC"
-    """gRPC (available for Traffic Director)."""
+    """
+    gRPC (available for Traffic Director).
+    """
     HTTP = "HTTP"
     HTTP2 = "HTTP2"
-    """HTTP/2 with SSL."""
+    """
+    HTTP/2 with SSL.
+    """
     HTTPS = "HTTPS"
     SSL = "SSL"
-    """TCP proxying with SSL."""
+    """
+    TCP proxying with SSL.
+    """
     TCP = "TCP"
-    """TCP proxying or TCP pass-through."""
+    """
+    TCP proxying or TCP pass-through.
+    """
     UDP = "UDP"
-    """UDP."""
+    """
+    UDP.
+    """
     UNSPECIFIED = "UNSPECIFIED"
-    """If a Backend Service has UNSPECIFIED as its protocol, it can be used with any L3/L4 Forwarding Rules."""
+    """
+    If a Backend Service has UNSPECIFIED as its protocol, it can be used with any L3/L4 Forwarding Rules.
+    """
 
 
 class RegionBackendServiceSessionAffinity(str, Enum):
@@ -1618,21 +2208,37 @@ class RegionBackendServiceSessionAffinity(str, Enum):
     Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
     """
     CLIENT_IP = "CLIENT_IP"
-    """2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy."""
+    """
+    2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy.
+    """
     CLIENT_IP_NO_DESTINATION = "CLIENT_IP_NO_DESTINATION"
-    """1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing."""
+    """
+    1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing.
+    """
     CLIENT_IP_PORT_PROTO = "CLIENT_IP_PORT_PROTO"
-    """5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing."""
+    """
+    5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+    """
     CLIENT_IP_PROTO = "CLIENT_IP_PROTO"
-    """3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing."""
+    """
+    3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+    """
     GENERATED_COOKIE = "GENERATED_COOKIE"
-    """Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing."""
+    """
+    Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing.
+    """
     HEADER_FIELD = "HEADER_FIELD"
-    """The hash is based on a user specified header field."""
+    """
+    The hash is based on a user specified header field.
+    """
     HTTP_COOKIE = "HTTP_COOKIE"
-    """The hash is based on a user provided cookie."""
+    """
+    The hash is based on a user provided cookie.
+    """
     NONE = "NONE"
-    """No session affinity. Connections from the same client IP may go to any instance in the pool."""
+    """
+    No session affinity. Connections from the same client IP may go to any instance in the pool.
+    """
 
 
 class RegionCommitmentCategory(str, Enum):
@@ -1682,9 +2288,13 @@ class RegionHealthCheckServiceHealthStatusAggregationPolicy(str, Enum):
     Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
     """
     AND_ = "AND"
-    """If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY."""
+    """
+    If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
+    """
     NO_AGGREGATION = "NO_AGGREGATION"
-    """An EndpointHealth message is returned for each backend in the health check service."""
+    """
+    An EndpointHealth message is returned for each backend in the health check service.
+    """
 
 
 class RegionHealthCheckType(str, Enum):
@@ -1714,21 +2324,37 @@ class RegionNetworkEndpointGroupNetworkEndpointType(str, Enum):
     Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     """
     GCE_VM_IP = "GCE_VM_IP"
-    """The network endpoint is represented by an IP address."""
+    """
+    The network endpoint is represented by an IP address.
+    """
     GCE_VM_IP_PORT = "GCE_VM_IP_PORT"
-    """The network endpoint is represented by IP address and port pair."""
+    """
+    The network endpoint is represented by IP address and port pair.
+    """
     GCE_VM_PRIMARY_IP = "GCE_VM_PRIMARY_IP"
-    """The network endpoint is the primary IP address on any network interface of a VM in Compute Engine."""
+    """
+    The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
+    """
     INTERNET_FQDN_PORT = "INTERNET_FQDN_PORT"
-    """The network endpoint is represented by fully qualified domain name and port."""
+    """
+    The network endpoint is represented by fully qualified domain name and port.
+    """
     INTERNET_IP_PORT = "INTERNET_IP_PORT"
-    """The network endpoint is represented by an internet IP address and port."""
+    """
+    The network endpoint is represented by an internet IP address and port.
+    """
     NON_GCP_PRIVATE_IP_PORT = "NON_GCP_PRIVATE_IP_PORT"
-    """The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises."""
+    """
+    The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
+    """
     PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
-    """The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect"""
+    """
+    The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+    """
     SERVERLESS = "SERVERLESS"
-    """The network endpoint is handled by specified serverless infrastructure."""
+    """
+    The network endpoint is handled by specified serverless infrastructure.
+    """
 
 
 class RegionNetworkEndpointGroupType(str, Enum):
@@ -1736,7 +2362,9 @@ class RegionNetworkEndpointGroupType(str, Enum):
     Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
     """
     LOAD_BALANCING = "LOAD_BALANCING"
-    """The network endpoint group is a backend of a load balancer."""
+    """
+    The network endpoint group is a backend of a load balancer.
+    """
 
 
 class RegionSecurityPolicyType(str, Enum):
@@ -1754,9 +2382,13 @@ class RegionSslCertificateType(str, Enum):
     (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
     """
     MANAGED = "MANAGED"
-    """Google-managed SSLCertificate."""
+    """
+    Google-managed SSLCertificate.
+    """
     SELF_MANAGED = "SELF_MANAGED"
-    """Certificate uploaded by user."""
+    """
+    Certificate uploaded by user.
+    """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
 
 
@@ -1765,11 +2397,17 @@ class RegionTargetHttpsProxyQuicOverride(str, Enum):
     Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
     """
     DISABLE = "DISABLE"
-    """The load balancer will not attempt to negotiate QUIC with clients."""
+    """
+    The load balancer will not attempt to negotiate QUIC with clients.
+    """
     ENABLE = "ENABLE"
-    """The load balancer will attempt to negotiate QUIC with clients."""
+    """
+    The load balancer will attempt to negotiate QUIC with clients.
+    """
     NONE = "NONE"
-    """No overrides to the default QUIC policy. This option is implicit if no QUIC override has been specified in the request."""
+    """
+    No overrides to the default QUIC policy. This option is implicit if no QUIC override has been specified in the request.
+    """
 
 
 class ReservationAffinityConsumeReservationType(str, Enum):
@@ -1777,13 +2415,21 @@ class ReservationAffinityConsumeReservationType(str, Enum):
     Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
     """
     ANY_RESERVATION = "ANY_RESERVATION"
-    """Consume any allocation available."""
+    """
+    Consume any allocation available.
+    """
     NO_RESERVATION = "NO_RESERVATION"
-    """Do not consume from any allocated capacity."""
+    """
+    Do not consume from any allocated capacity.
+    """
     SPECIFIC_RESERVATION = "SPECIFIC_RESERVATION"
-    """Must consume from a specific reservation. Must specify key value fields for specifying the reservations."""
+    """
+    Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+    """
     SPECIFIC_THEN_ANY_RESERVATION = "SPECIFIC_THEN_ANY_RESERVATION"
-    """Prefer to consume from a specific reservation, but still consume any reservation available if the specified reservation is not available or exhausted. Must specify key value fields for specifying the reservations."""
+    """
+    Prefer to consume from a specific reservation, but still consume any reservation available if the specified reservation is not available or exhausted. Must specify key value fields for specifying the reservations.
+    """
     UNSPECIFIED = "UNSPECIFIED"
 
 
@@ -1803,7 +2449,9 @@ class ResourcePolicyGroupPlacementPolicyCollocation(str, Enum):
     Specifies network collocation
     """
     CLUSTERED = "CLUSTERED"
-    """Specifies collocation option that provides tight collocation with minimum network latency."""
+    """
+    Specifies collocation option that provides tight collocation with minimum network latency.
+    """
     COLLOCATED = "COLLOCATED"
     UNSPECIFIED_COLLOCATION = "UNSPECIFIED_COLLOCATION"
 
@@ -1822,9 +2470,13 @@ class ResourcePolicyGroupPlacementPolicyScope(str, Enum):
     Scope specifies the availability domain to which the VMs should be spread.
     """
     HOST = "HOST"
-    """Specifies availability domain scope across hosts. VMs will be spread across different hosts."""
+    """
+    Specifies availability domain scope across hosts. VMs will be spread across different hosts.
+    """
     UNSPECIFIED_SCOPE = "UNSPECIFIED_SCOPE"
-    """VMs will be spread across different instrastructure to not share power, host and networking."""
+    """
+    VMs will be spread across different instrastructure to not share power, host and networking.
+    """
 
 
 class ResourcePolicyGroupPlacementPolicyStyle(str, Enum):
@@ -1832,9 +2484,13 @@ class ResourcePolicyGroupPlacementPolicyStyle(str, Enum):
     Specifies instances to hosts placement relationship
     """
     COMPACT = "COMPACT"
-    """VMs are placed without regard for shared hosts"""
+    """
+    VMs are placed without regard for shared hosts
+    """
     FULLY_SPREAD = "FULLY_SPREAD"
-    """VMs do not share the same hosts"""
+    """
+    VMs do not share the same hosts
+    """
     UNSPECIFIED_PLACEMENT_TYPE = "UNSPECIFIED_PLACEMENT_TYPE"
 
 
@@ -1872,9 +2528,13 @@ class RouteIlbRouteBehaviorOnUnhealthy(str, Enum):
     ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
     """
     DO_NOT_WITHDRAW_ROUTE_IF_ILB_UNHEALTHY = "DO_NOT_WITHDRAW_ROUTE_IF_ILB_UNHEALTHY"
-    """Do not Withdraw route if the ILB is deemed unhealthy based on user specified threshold on the Backend Service of the ILB. This is default behavior for ilb as next hop route without IlbRouteBehavior."""
+    """
+    Do not Withdraw route if the ILB is deemed unhealthy based on user specified threshold on the Backend Service of the ILB. This is default behavior for ilb as next hop route without IlbRouteBehavior.
+    """
     WITHDRAW_ROUTE_IF_ILB_UNHEALTHY = "WITHDRAW_ROUTE_IF_ILB_UNHEALTHY"
-    """Withdraw route if the ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing. Currently the withdrawn route will be reinserted when the backends are restored to healthy. If you wish to prevent the re-insertion of the route and trigger the fall-back at your discretion, override the health result from the backends to signal as healthy only when ready to fallback."""
+    """
+    Withdraw route if the ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing. Currently the withdrawn route will be reinserted when the backends are restored to healthy. If you wish to prevent the re-insertion of the route and trigger the fall-back at your discretion, override the health result from the backends to signal as healthy only when ready to fallback.
+    """
 
 
 class RouterBgpAdvertiseMode(str, Enum):
@@ -1887,11 +2547,17 @@ class RouterBgpAdvertiseMode(str, Enum):
 
 class RouterBgpAdvertisedGroupsItem(str, Enum):
     ALL_PEER_VPC_SUBNETS = "ALL_PEER_VPC_SUBNETS"
-    """Advertise peer subnets of the router's VPC."""
+    """
+    Advertise peer subnets of the router's VPC.
+    """
     ALL_SUBNETS = "ALL_SUBNETS"
-    """Advertise all available subnets (including peer VPC subnets)."""
+    """
+    Advertise all available subnets (including peer VPC subnets).
+    """
     ALL_VPC_SUBNETS = "ALL_VPC_SUBNETS"
-    """Advertise the router's own VPC subnets."""
+    """
+    Advertise the router's own VPC subnets.
+    """
 
 
 class RouterBgpPeerAdvertiseMode(str, Enum):
@@ -1904,11 +2570,17 @@ class RouterBgpPeerAdvertiseMode(str, Enum):
 
 class RouterBgpPeerAdvertisedGroupsItem(str, Enum):
     ALL_PEER_VPC_SUBNETS = "ALL_PEER_VPC_SUBNETS"
-    """Advertise peer subnets of the router's VPC."""
+    """
+    Advertise peer subnets of the router's VPC.
+    """
     ALL_SUBNETS = "ALL_SUBNETS"
-    """Advertise all available subnets (including peer VPC subnets)."""
+    """
+    Advertise all available subnets (including peer VPC subnets).
+    """
     ALL_VPC_SUBNETS = "ALL_VPC_SUBNETS"
-    """Advertise the router's own VPC subnets."""
+    """
+    Advertise the router's own VPC subnets.
+    """
 
 
 class RouterBgpPeerBfdMode(str, Enum):
@@ -1950,11 +2622,17 @@ class RouterNatLogConfigFilter(str, Enum):
     Specify the desired filtering of logs on this NAT. If unspecified, logs are exported for all connections handled by this NAT. This option can take one of the following values: - ERRORS_ONLY: Export logs only for connection failures. - TRANSLATIONS_ONLY: Export logs only for successful connections. - ALL: Export logs for all connections, successful and unsuccessful. 
     """
     ALL = "ALL"
-    """Export logs for all (successful and unsuccessful) connections."""
+    """
+    Export logs for all (successful and unsuccessful) connections.
+    """
     ERRORS_ONLY = "ERRORS_ONLY"
-    """Export logs for connection failures only."""
+    """
+    Export logs for connection failures only.
+    """
     TRANSLATIONS_ONLY = "TRANSLATIONS_ONLY"
-    """Export logs for successful connections only."""
+    """
+    Export logs for successful connections only.
+    """
 
 
 class RouterNatNatIpAllocateOption(str, Enum):
@@ -1962,9 +2640,13 @@ class RouterNatNatIpAllocateOption(str, Enum):
     Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty. 
     """
     AUTO_ONLY = "AUTO_ONLY"
-    """Nat IPs are allocated by GCP; customers can not specify any Nat IPs."""
+    """
+    Nat IPs are allocated by GCP; customers can not specify any Nat IPs.
+    """
     MANUAL_ONLY = "MANUAL_ONLY"
-    """Only use Nat IPs provided by customers. When specified Nat IPs are not enough then the Nat service fails for new VMs."""
+    """
+    Only use Nat IPs provided by customers. When specified Nat IPs are not enough then the Nat service fails for new VMs.
+    """
 
 
 class RouterNatSourceSubnetworkIpRangesToNat(str, Enum):
@@ -1972,20 +2654,32 @@ class RouterNatSourceSubnetworkIpRangesToNat(str, Enum):
     Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
     """
     ALL_SUBNETWORKS_ALL_IP_RANGES = "ALL_SUBNETWORKS_ALL_IP_RANGES"
-    """All the IP ranges in every Subnetwork are allowed to Nat."""
+    """
+    All the IP ranges in every Subnetwork are allowed to Nat.
+    """
     ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES = "ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES"
-    """All the primary IP ranges in every Subnetwork are allowed to Nat."""
+    """
+    All the primary IP ranges in every Subnetwork are allowed to Nat.
+    """
     LIST_OF_SUBNETWORKS = "LIST_OF_SUBNETWORKS"
-    """A list of Subnetworks are allowed to Nat (specified in the field subnetwork below)"""
+    """
+    A list of Subnetworks are allowed to Nat (specified in the field subnetwork below)
+    """
 
 
 class RouterNatSubnetworkToNatSourceIpRangesToNatItem(str, Enum):
     ALL_IP_RANGES = "ALL_IP_RANGES"
-    """The primary and all the secondary ranges are allowed to Nat."""
+    """
+    The primary and all the secondary ranges are allowed to Nat.
+    """
     LIST_OF_SECONDARY_IP_RANGES = "LIST_OF_SECONDARY_IP_RANGES"
-    """A list of secondary ranges are allowed to Nat."""
+    """
+    A list of secondary ranges are allowed to Nat.
+    """
     PRIMARY_IP_RANGE = "PRIMARY_IP_RANGE"
-    """The primary range is allowed to Nat."""
+    """
+    The primary range is allowed to Nat.
+    """
 
 
 class RuleAction(str, Enum):
@@ -1993,17 +2687,29 @@ class RuleAction(str, Enum):
     This is deprecated and has no effect. Do not use.
     """
     ALLOW = "ALLOW"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     ALLOW_WITH_LOG = "ALLOW_WITH_LOG"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     DENY = "DENY"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     DENY_WITH_LOG = "DENY_WITH_LOG"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     LOG = "LOG"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
     NO_ACTION = "NO_ACTION"
-    """This is deprecated and has no effect. Do not use."""
+    """
+    This is deprecated and has no effect. Do not use.
+    """
 
 
 class SSLHealthCheckPortSpecification(str, Enum):
@@ -2011,11 +2717,17 @@ class SSLHealthCheckPortSpecification(str, Enum):
     Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
-    """The port number in port is used for health checking."""
+    """
+    The port number in port is used for health checking.
+    """
     USE_NAMED_PORT = "USE_NAMED_PORT"
-    """The portName is used for health checking."""
+    """
+    The portName is used for health checking.
+    """
     USE_SERVING_PORT = "USE_SERVING_PORT"
-    """For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking."""
+    """
+    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    """
 
 
 class SSLHealthCheckProxyHeader(str, Enum):
@@ -2031,7 +2743,9 @@ class SchedulingMaintenanceInterval(str, Enum):
     For more information about maintenance intervals, see Setting maintenance intervals.
     """
     PERIODIC = "PERIODIC"
-    """VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available."""
+    """
+    VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
+    """
 
 
 class SchedulingNodeAffinityOperator(str, Enum):
@@ -2039,9 +2753,13 @@ class SchedulingNodeAffinityOperator(str, Enum):
     Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
     """
     IN_ = "IN"
-    """Requires Compute Engine to seek for matched nodes."""
+    """
+    Requires Compute Engine to seek for matched nodes.
+    """
     NOT_IN = "NOT_IN"
-    """Requires Compute Engine to avoid certain nodes."""
+    """
+    Requires Compute Engine to avoid certain nodes.
+    """
     OPERATOR_UNSPECIFIED = "OPERATOR_UNSPECIFIED"
 
 
@@ -2050,9 +2768,13 @@ class SchedulingOnHostMaintenance(str, Enum):
     Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
     """
     MIGRATE = "MIGRATE"
-    """*[Default]* Allows Compute Engine to automatically migrate instances out of the way of maintenance events."""
+    """
+    *[Default]* Allows Compute Engine to automatically migrate instances out of the way of maintenance events.
+    """
     TERMINATE = "TERMINATE"
-    """Tells Compute Engine to terminate and (optionally) restart the instance away from the maintenance activity. If you would like your instance to be restarted, set the automaticRestart flag to true. Your instance may be restarted more than once, and it may be restarted outside the window of maintenance events."""
+    """
+    Tells Compute Engine to terminate and (optionally) restart the instance away from the maintenance activity. If you would like your instance to be restarted, set the automaticRestart flag to true. Your instance may be restarted more than once, and it may be restarted outside the window of maintenance events.
+    """
 
 
 class SchedulingProvisioningModel(str, Enum):
@@ -2060,7 +2782,9 @@ class SchedulingProvisioningModel(str, Enum):
     Specifies the provisioning model of the instance.
     """
     SPOT = "SPOT"
-    """Heavily discounted, no guaranteed runtime."""
+    """
+    Heavily discounted, no guaranteed runtime.
+    """
 
 
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility(str, Enum):
@@ -2100,7 +2824,9 @@ class SecurityPolicyRuleMatcherVersionedExpr(str, Enum):
     """
     FIREWALL = "FIREWALL"
     SRC_IPS_V1 = "SRC_IPS_V1"
-    """Matches the source IP address of a request to the IP ranges supplied in config."""
+    """
+    Matches the source IP address of a request to the IP ranges supplied in config.
+    """
 
 
 class SecurityPolicyRuleRateLimitOptionsEnforceOnKey(str, Enum):
@@ -2134,9 +2860,13 @@ class SecurityPolicyType(str, Enum):
 
 class ServerBindingType(str, Enum):
     RESTART_NODE_ON_ANY_SERVER = "RESTART_NODE_ON_ANY_SERVER"
-    """Node may associate with any physical server over its lifetime."""
+    """
+    Node may associate with any physical server over its lifetime.
+    """
     RESTART_NODE_ON_MINIMAL_SERVERS = "RESTART_NODE_ON_MINIMAL_SERVERS"
-    """Node may associate with minimal physical servers over its lifetime."""
+    """
+    Node may associate with minimal physical servers over its lifetime.
+    """
     SERVER_BINDING_TYPE_UNSPECIFIED = "SERVER_BINDING_TYPE_UNSPECIFIED"
 
 
@@ -2146,9 +2876,13 @@ class ServerTlsSettingsTlsMode(str, Enum):
     """
     INVALID = "INVALID"
     MUTUAL = "MUTUAL"
-    """Secure connections to the backends using mutual TLS by presenting client certificates for authentication."""
+    """
+    Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+    """
     SIMPLE = "SIMPLE"
-    """Secure connections with standard TLS semantics."""
+    """
+    Secure connections with standard TLS semantics.
+    """
 
 
 class ServiceAttachmentConnectionPreference(str, Enum):
@@ -2165,15 +2899,25 @@ class ShareSettingsShareType(str, Enum):
     Type of sharing for this shared-reservation
     """
     DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS = "DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS"
-    """Shared-reservation is open to direct child projects of specific folders."""
+    """
+    Shared-reservation is open to direct child projects of specific folders.
+    """
     LOCAL = "LOCAL"
-    """Default value."""
+    """
+    Default value.
+    """
     ORGANIZATION = "ORGANIZATION"
-    """Shared-reservation is open to entire Organization"""
+    """
+    Shared-reservation is open to entire Organization
+    """
     SHARE_TYPE_UNSPECIFIED = "SHARE_TYPE_UNSPECIFIED"
-    """Default value. This value is unused."""
+    """
+    Default value. This value is unused.
+    """
     SPECIFIC_PROJECTS = "SPECIFIC_PROJECTS"
-    """Shared-reservation is open to specific projects"""
+    """
+    Shared-reservation is open to specific projects
+    """
 
 
 class SslCertificateType(str, Enum):
@@ -2181,9 +2925,13 @@ class SslCertificateType(str, Enum):
     (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
     """
     MANAGED = "MANAGED"
-    """Google-managed SSLCertificate."""
+    """
+    Google-managed SSLCertificate.
+    """
     SELF_MANAGED = "SELF_MANAGED"
-    """Certificate uploaded by user."""
+    """
+    Certificate uploaded by user.
+    """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
 
 
@@ -2192,11 +2940,17 @@ class SslPolicyMinTlsVersion(str, Enum):
     The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
     """
     TLS10 = "TLS_1_0"
-    """TLS 1.0"""
+    """
+    TLS 1.0
+    """
     TLS11 = "TLS_1_1"
-    """TLS 1.1"""
+    """
+    TLS 1.1
+    """
     TLS12 = "TLS_1_2"
-    """TLS 1.2"""
+    """
+    TLS 1.2
+    """
 
 
 class SslPolicyProfile(str, Enum):
@@ -2204,13 +2958,21 @@ class SslPolicyProfile(str, Enum):
     Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
     """
     COMPATIBLE = "COMPATIBLE"
-    """Compatible profile. Allows the broadset set of clients, even those which support only out-of-date SSL features to negotiate with the load balancer."""
+    """
+    Compatible profile. Allows the broadset set of clients, even those which support only out-of-date SSL features to negotiate with the load balancer.
+    """
     CUSTOM = "CUSTOM"
-    """Custom profile. Allow only the set of allowed SSL features specified in the customFeatures field."""
+    """
+    Custom profile. Allow only the set of allowed SSL features specified in the customFeatures field.
+    """
     MODERN = "MODERN"
-    """Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the load balancer."""
+    """
+    Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the load balancer.
+    """
     RESTRICTED = "RESTRICTED"
-    """Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements."""
+    """
+    Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
+    """
 
 
 class SubnetworkAggregationInterval(str, Enum):
@@ -2230,11 +2992,17 @@ class SubnetworkIpv6AccessType(str, Enum):
     The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
     """
     EXTERNAL = "EXTERNAL"
-    """VMs in this subnet can have external IPv6."""
+    """
+    VMs in this subnet can have external IPv6.
+    """
     INTERNAL = "INTERNAL"
-    """VMs in this subnet can have internal IPv6."""
+    """
+    VMs in this subnet can have internal IPv6.
+    """
     UNSPECIFIED_IPV6_ACCESS_TYPE = "UNSPECIFIED_IPV6_ACCESS_TYPE"
-    """IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet."""
+    """
+    IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet.
+    """
 
 
 class SubnetworkLogConfigAggregationInterval(str, Enum):
@@ -2271,13 +3039,21 @@ class SubnetworkPrivateIpv6GoogleAccess(str, Enum):
     The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
     """
     DISABLE_GOOGLE_ACCESS = "DISABLE_GOOGLE_ACCESS"
-    """Disable private IPv6 access to/from Google services."""
+    """
+    Disable private IPv6 access to/from Google services.
+    """
     ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE = "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
-    """Bidirectional private IPv6 access to/from Google services."""
+    """
+    Bidirectional private IPv6 access to/from Google services.
+    """
     ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE = "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
-    """Outbound private IPv6 access from VMs in this subnet to Google services."""
+    """
+    Outbound private IPv6 access from VMs in this subnet to Google services.
+    """
     ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS = "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS"
-    """Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. Outbound private IPv6 access is enabled per VM based on Service Accounts. This applies only to VMs with primary service accounts as listed in private_ipv6_google_access_service_account."""
+    """
+    Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. Outbound private IPv6 access is enabled per VM based on Service Accounts. This applies only to VMs with primary service accounts as listed in private_ipv6_google_access_service_account.
+    """
 
 
 class SubnetworkPurpose(str, Enum):
@@ -2285,19 +3061,33 @@ class SubnetworkPurpose(str, Enum):
     The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
     """
     AGGREGATE = "AGGREGATE"
-    """Subnetwork used to aggregate multiple private subnetworks."""
+    """
+    Subnetwork used to aggregate multiple private subnetworks.
+    """
     CLOUD_EXTENSION = "CLOUD_EXTENSION"
-    """Subnetworks created for Cloud Extension Machines."""
+    """
+    Subnetworks created for Cloud Extension Machines.
+    """
     INTERNAL_HTTPS_LOAD_BALANCER = "INTERNAL_HTTPS_LOAD_BALANCER"
-    """Subnet reserved for Internal HTTP(S) Load Balancing."""
+    """
+    Subnet reserved for Internal HTTP(S) Load Balancing.
+    """
     PRIVATE = "PRIVATE"
-    """Regular user created or automatically created subnet."""
+    """
+    Regular user created or automatically created subnet.
+    """
     PRIVATE_RFC1918 = "PRIVATE_RFC_1918"
-    """Regular user created or automatically created subnet."""
+    """
+    Regular user created or automatically created subnet.
+    """
     PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
-    """Subnetworks created for Private Service Connect in the producer network."""
+    """
+    Subnetworks created for Private Service Connect in the producer network.
+    """
     REGIONAL_MANAGED_PROXY = "REGIONAL_MANAGED_PROXY"
-    """Subnetwork used for Regional Internal/External HTTP(S) Load Balancing."""
+    """
+    Subnetwork used for Regional Internal/External HTTP(S) Load Balancing.
+    """
 
 
 class SubnetworkRole(str, Enum):
@@ -2305,9 +3095,13 @@ class SubnetworkRole(str, Enum):
     The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
     """
     ACTIVE = "ACTIVE"
-    """The ACTIVE subnet that is currently used."""
+    """
+    The ACTIVE subnet that is currently used.
+    """
     BACKUP = "BACKUP"
-    """The BACKUP subnet that could be promoted to ACTIVE."""
+    """
+    The BACKUP subnet that could be promoted to ACTIVE.
+    """
 
 
 class SubnetworkStackType(str, Enum):
@@ -2315,17 +3109,25 @@ class SubnetworkStackType(str, Enum):
     The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
     """
     IPV4_IPV6 = "IPV4_IPV6"
-    """New VMs in this subnet can have both IPv4 and IPv6 addresses."""
+    """
+    New VMs in this subnet can have both IPv4 and IPv6 addresses.
+    """
     IPV4_ONLY = "IPV4_ONLY"
-    """New VMs in this subnet will only be assigned IPv4 addresses."""
+    """
+    New VMs in this subnet will only be assigned IPv4 addresses.
+    """
     UNSPECIFIED_STACK_TYPE = "UNSPECIFIED_STACK_TYPE"
 
 
 class SubsettingPolicy(str, Enum):
     CONSISTENT_HASH_SUBSETTING = "CONSISTENT_HASH_SUBSETTING"
-    """Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is adjusted based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled."""
+    """
+    Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is adjusted based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
+    """
     NONE = "NONE"
-    """No Subsetting. Clients may open connections and send traffic to all backends of this backend service. This can lead to performance issues if there is substantial imbalance in the count of clients and backends."""
+    """
+    No Subsetting. Clients may open connections and send traffic to all backends of this backend service. This can lead to performance issues if there is substantial imbalance in the count of clients and backends.
+    """
 
 
 class TCPHealthCheckPortSpecification(str, Enum):
@@ -2333,11 +3135,17 @@ class TCPHealthCheckPortSpecification(str, Enum):
     Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
-    """The port number in port is used for health checking."""
+    """
+    The port number in port is used for health checking.
+    """
     USE_NAMED_PORT = "USE_NAMED_PORT"
-    """The portName is used for health checking."""
+    """
+    The portName is used for health checking.
+    """
     USE_SERVING_PORT = "USE_SERVING_PORT"
-    """For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking."""
+    """
+    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    """
 
 
 class TCPHealthCheckProxyHeader(str, Enum):
@@ -2353,11 +3161,17 @@ class TargetHttpsProxyQuicOverride(str, Enum):
     Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
     """
     DISABLE = "DISABLE"
-    """The load balancer will not attempt to negotiate QUIC with clients."""
+    """
+    The load balancer will not attempt to negotiate QUIC with clients.
+    """
     ENABLE = "ENABLE"
-    """The load balancer will attempt to negotiate QUIC with clients."""
+    """
+    The load balancer will attempt to negotiate QUIC with clients.
+    """
     NONE = "NONE"
-    """No overrides to the default QUIC policy. This option is implicit if no QUIC override has been specified in the request."""
+    """
+    No overrides to the default QUIC policy. This option is implicit if no QUIC override has been specified in the request.
+    """
 
 
 class TargetInstanceNatPolicy(str, Enum):
@@ -2365,7 +3179,9 @@ class TargetInstanceNatPolicy(str, Enum):
     NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
     """
     NO_NAT = "NO_NAT"
-    """No NAT performed."""
+    """
+    No NAT performed.
+    """
 
 
 class TargetPoolSessionAffinity(str, Enum):
@@ -2373,21 +3189,37 @@ class TargetPoolSessionAffinity(str, Enum):
     Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
     """
     CLIENT_IP = "CLIENT_IP"
-    """2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy."""
+    """
+    2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy.
+    """
     CLIENT_IP_NO_DESTINATION = "CLIENT_IP_NO_DESTINATION"
-    """1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing."""
+    """
+    1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing.
+    """
     CLIENT_IP_PORT_PROTO = "CLIENT_IP_PORT_PROTO"
-    """5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing."""
+    """
+    5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+    """
     CLIENT_IP_PROTO = "CLIENT_IP_PROTO"
-    """3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing."""
+    """
+    3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+    """
     GENERATED_COOKIE = "GENERATED_COOKIE"
-    """Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing."""
+    """
+    Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing.
+    """
     HEADER_FIELD = "HEADER_FIELD"
-    """The hash is based on a user specified header field."""
+    """
+    The hash is based on a user specified header field.
+    """
     HTTP_COOKIE = "HTTP_COOKIE"
-    """The hash is based on a user provided cookie."""
+    """
+    The hash is based on a user provided cookie.
+    """
     NONE = "NONE"
-    """No session affinity. Connections from the same client IP may go to any instance in the pool."""
+    """
+    No session affinity. Connections from the same client IP may go to any instance in the pool.
+    """
 
 
 class TargetSslProxyProxyHeader(str, Enum):
@@ -2412,9 +3244,13 @@ class TlsCertificateContextCertificateSource(str, Enum):
     """
     INVALID = "INVALID"
     USE_PATH = "USE_PATH"
-    """USE_PATH specifies that the certificates and private key are obtained from a locally mounted filesystem path."""
+    """
+    USE_PATH specifies that the certificates and private key are obtained from a locally mounted filesystem path.
+    """
     USE_SDS = "USE_SDS"
-    """USE_SDS specifies that the certificates and private key are obtained from a SDS server."""
+    """
+    USE_SDS specifies that the certificates and private key are obtained from a SDS server.
+    """
 
 
 class TlsValidationContextValidationSource(str, Enum):
@@ -2423,9 +3259,13 @@ class TlsValidationContextValidationSource(str, Enum):
     """
     INVALID = "INVALID"
     USE_PATH = "USE_PATH"
-    """USE_PATH specifies that the certificates and private key are obtained from a locally mounted filesystem path."""
+    """
+    USE_PATH specifies that the certificates and private key are obtained from a locally mounted filesystem path.
+    """
     USE_SDS = "USE_SDS"
-    """USE_SDS specifies that the certificates and private key are obtained from a SDS server."""
+    """
+    USE_SDS specifies that the certificates and private key are obtained from a SDS server.
+    """
 
 
 class VpnGatewayStackType(str, Enum):
@@ -2433,6 +3273,10 @@ class VpnGatewayStackType(str, Enum):
     The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
     """
     IPV4_IPV6 = "IPV4_IPV6"
-    """Enable VPN gateway with both IPv4 and IPv6 protocols."""
+    """
+    Enable VPN gateway with both IPv4 and IPv6 protocols.
+    """
     IPV4_ONLY = "IPV4_ONLY"
-    """Enable VPN gateway with only IPv4 protocol."""
+    """
+    Enable VPN gateway with only IPv4 protocol.
+    """

@@ -12,6 +12,7 @@ __all__ = [
     'GetPolicyTagResult',
     'AwaitableGetPolicyTagResult',
     'get_policy_tag',
+    'get_policy_tag_output',
 ]
 
 @pulumi.output_type
@@ -112,3 +113,15 @@ def get_policy_tag(location: Optional[str] = None,
         display_name=__ret__.display_name,
         name=__ret__.name,
         parent_policy_tag=__ret__.parent_policy_tag)
+
+
+@_utilities.lift_output_func(get_policy_tag)
+def get_policy_tag_output(location: Optional[pulumi.Input[str]] = None,
+                          policy_tag_id: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          taxonomy_id: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyTagResult]:
+    """
+    Gets a policy tag.
+    """
+    ...

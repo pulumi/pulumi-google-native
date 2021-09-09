@@ -13,6 +13,7 @@ __all__ = [
     'GetAppResult',
     'AwaitableGetAppResult',
     'get_app',
+    'get_app_output',
 ]
 
 @pulumi.output_type
@@ -219,3 +220,16 @@ def get_app(app_id: Optional[str] = None,
         name=__ret__.name,
         scopes=__ret__.scopes,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_app)
+def get_app_output(app_id: Optional[pulumi.Input[str]] = None,
+                   developer_id: Optional[pulumi.Input[str]] = None,
+                   entity: Optional[pulumi.Input[Optional[str]]] = None,
+                   organization_id: Optional[pulumi.Input[str]] = None,
+                   query: Optional[pulumi.Input[Optional[str]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppResult]:
+    """
+    Returns the details for a developer app.
+    """
+    ...

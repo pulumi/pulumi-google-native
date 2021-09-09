@@ -13,6 +13,7 @@ __all__ = [
     'GetWorkloadResult',
     'AwaitableGetWorkloadResult',
     'get_workload',
+    'get_workload_output',
 ]
 
 @pulumi.output_type
@@ -189,3 +190,14 @@ def get_workload(location: Optional[str] = None,
         provisioned_resources_parent=__ret__.provisioned_resources_parent,
         resource_settings=__ret__.resource_settings,
         resources=__ret__.resources)
+
+
+@_utilities.lift_output_func(get_workload)
+def get_workload_output(location: Optional[pulumi.Input[str]] = None,
+                        organization_id: Optional[pulumi.Input[str]] = None,
+                        workload_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkloadResult]:
+    """
+    Gets Assured Workload associated with a CRM Node
+    """
+    ...

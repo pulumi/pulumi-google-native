@@ -13,6 +13,7 @@ __all__ = [
     'GetFeedbackMessageResult',
     'AwaitableGetFeedbackMessageResult',
     'get_feedback_message',
+    'get_feedback_message_output',
 ]
 
 @pulumi.output_type
@@ -122,3 +123,16 @@ def get_feedback_message(annotated_dataset_id: Optional[str] = None,
         name=__ret__.name,
         operator_feedback_metadata=__ret__.operator_feedback_metadata,
         requester_feedback_metadata=__ret__.requester_feedback_metadata)
+
+
+@_utilities.lift_output_func(get_feedback_message)
+def get_feedback_message_output(annotated_dataset_id: Optional[pulumi.Input[str]] = None,
+                                dataset_id: Optional[pulumi.Input[str]] = None,
+                                feedback_message_id: Optional[pulumi.Input[str]] = None,
+                                feedback_thread_id: Optional[pulumi.Input[str]] = None,
+                                project: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFeedbackMessageResult]:
+    """
+    Get a FeedbackMessage object.
+    """
+    ...

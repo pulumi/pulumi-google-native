@@ -13,6 +13,7 @@ __all__ = [
     'GetFunctionResult',
     'AwaitableGetFunctionResult',
     'get_function',
+    'get_function_output',
 ]
 
 @pulumi.output_type
@@ -436,3 +437,14 @@ def get_function(function_id: Optional[str] = None,
         version_id=__ret__.version_id,
         vpc_connector=__ret__.vpc_connector,
         vpc_connector_egress_settings=__ret__.vpc_connector_egress_settings)
+
+
+@_utilities.lift_output_func(get_function)
+def get_function_output(function_id: Optional[pulumi.Input[str]] = None,
+                        location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionResult]:
+    """
+    Returns a function with the given name from the requested project.
+    """
+    ...

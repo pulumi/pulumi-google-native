@@ -13,6 +13,7 @@ __all__ = [
     'GetExecutionResult',
     'AwaitableGetExecutionResult',
     'get_execution',
+    'get_execution_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,14 @@ def get_execution(execution_id: Optional[str] = None,
         specification=__ret__.specification,
         state=__ret__.state,
         test_execution_matrix_id=__ret__.test_execution_matrix_id)
+
+
+@_utilities.lift_output_func(get_execution)
+def get_execution_output(execution_id: Optional[pulumi.Input[str]] = None,
+                         history_id: Optional[pulumi.Input[str]] = None,
+                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExecutionResult]:
+    """
+    Gets an Execution. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution does not exist
+    """
+    ...

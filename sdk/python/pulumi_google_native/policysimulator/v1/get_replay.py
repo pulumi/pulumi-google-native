@@ -13,6 +13,7 @@ __all__ = [
     'GetReplayResult',
     'AwaitableGetReplayResult',
     'get_replay',
+    'get_replay_output',
 ]
 
 @pulumi.output_type
@@ -98,3 +99,14 @@ def get_replay(location: Optional[str] = None,
         name=__ret__.name,
         results_summary=__ret__.results_summary,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_replay)
+def get_replay_output(location: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      replay_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReplayResult]:
+    """
+    Gets the specified Replay. Each `Replay` is available for at least 7 days.
+    """
+    ...

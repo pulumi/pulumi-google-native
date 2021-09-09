@@ -12,6 +12,7 @@ __all__ = [
     'GetNatAddressResult',
     'AwaitableGetNatAddressResult',
     'get_nat_address',
+    'get_nat_address_output',
 ]
 
 @pulumi.output_type
@@ -84,3 +85,14 @@ def get_nat_address(instance_id: Optional[str] = None,
         ip_address=__ret__.ip_address,
         name=__ret__.name,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_nat_address)
+def get_nat_address_output(instance_id: Optional[pulumi.Input[str]] = None,
+                           nat_address_id: Optional[pulumi.Input[str]] = None,
+                           organization_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNatAddressResult]:
+    """
+    Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.
+    """
+    ...

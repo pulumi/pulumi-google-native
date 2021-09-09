@@ -12,6 +12,7 @@ __all__ = [
     'GetReleaseResult',
     'AwaitableGetReleaseResult',
     'get_release',
+    'get_release_output',
 ]
 
 @pulumi.output_type
@@ -95,3 +96,13 @@ def get_release(project: Optional[str] = None,
         name=__ret__.name,
         ruleset_name=__ret__.ruleset_name,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_release)
+def get_release_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                       release_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReleaseResult]:
+    """
+    Get a `Release` by name.
+    """
+    ...

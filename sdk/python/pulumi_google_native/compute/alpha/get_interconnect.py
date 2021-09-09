@@ -13,6 +13,7 @@ __all__ = [
     'GetInterconnectResult',
     'AwaitableGetInterconnectResult',
     'get_interconnect',
+    'get_interconnect_output',
 ]
 
 @pulumi.output_type
@@ -395,3 +396,13 @@ def get_interconnect(interconnect: Optional[str] = None,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_interconnect)
+def get_interconnect_output(interconnect: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInterconnectResult]:
+    """
+    Returns the specified interconnect. Get a list of available interconnects by making a list() request.
+    """
+    ...

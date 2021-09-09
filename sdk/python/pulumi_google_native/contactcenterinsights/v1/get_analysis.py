@@ -13,6 +13,7 @@ __all__ = [
     'GetAnalysisResult',
     'AwaitableGetAnalysisResult',
     'get_analysis',
+    'get_analysis_output',
 ]
 
 @pulumi.output_type
@@ -100,3 +101,15 @@ def get_analysis(analysis_id: Optional[str] = None,
         create_time=__ret__.create_time,
         name=__ret__.name,
         request_time=__ret__.request_time)
+
+
+@_utilities.lift_output_func(get_analysis)
+def get_analysis_output(analysis_id: Optional[pulumi.Input[str]] = None,
+                        conversation_id: Optional[pulumi.Input[str]] = None,
+                        location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAnalysisResult]:
+    """
+    Gets an analysis.
+    """
+    ...

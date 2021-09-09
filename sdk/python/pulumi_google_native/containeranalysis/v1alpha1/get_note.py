@@ -13,6 +13,7 @@ __all__ = [
     'GetNoteResult',
     'AwaitableGetNoteResult',
     'get_note',
+    'get_note_output',
 ]
 
 @pulumi.output_type
@@ -330,3 +331,13 @@ def get_note(note_id: Optional[str] = None,
         update_time=__ret__.update_time,
         upgrade=__ret__.upgrade,
         vulnerability_type=__ret__.vulnerability_type)
+
+
+@_utilities.lift_output_func(get_note)
+def get_note_output(note_id: Optional[pulumi.Input[str]] = None,
+                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNoteResult]:
+    """
+    Returns the requested `Note`.
+    """
+    ...

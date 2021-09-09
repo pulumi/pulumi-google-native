@@ -16,23 +16,41 @@ __all__ = [
 
 class ContactNotificationCategorySubscriptionsItem(str, Enum):
     NOTIFICATION_CATEGORY_UNSPECIFIED = "NOTIFICATION_CATEGORY_UNSPECIFIED"
-    """Notification category is unrecognized or unspecified."""
+    """
+    Notification category is unrecognized or unspecified.
+    """
     ALL = "ALL"
-    """All notifications related to the resource, including notifications pertaining to categories added in the future."""
+    """
+    All notifications related to the resource, including notifications pertaining to categories added in the future.
+    """
     SUSPENSION = "SUSPENSION"
-    """Notifications related to imminent account suspension."""
+    """
+    Notifications related to imminent account suspension.
+    """
     SECURITY = "SECURITY"
-    """Notifications related to security/privacy incidents, notifications, and vulnerabilities."""
+    """
+    Notifications related to security/privacy incidents, notifications, and vulnerabilities.
+    """
     TECHNICAL = "TECHNICAL"
-    """Notifications related to technical events and issues such as outages, errors, or bugs."""
+    """
+    Notifications related to technical events and issues such as outages, errors, or bugs.
+    """
     BILLING = "BILLING"
-    """Notifications related to billing and payments notifications, price updates, errors, or credits."""
+    """
+    Notifications related to billing and payments notifications, price updates, errors, or credits.
+    """
     LEGAL = "LEGAL"
-    """Notifications related to enforcement actions, regulatory compliance, or government notices."""
+    """
+    Notifications related to enforcement actions, regulatory compliance, or government notices.
+    """
     PRODUCT_UPDATES = "PRODUCT_UPDATES"
-    """Notifications related to new versions, product terms updates, or deprecations."""
+    """
+    Notifications related to new versions, product terms updates, or deprecations.
+    """
     TECHNICAL_INCIDENTS = "TECHNICAL_INCIDENTS"
-    """Child category of TECHNICAL. If assigned, technical incident notifications will go to these contacts instead of TECHNICAL."""
+    """
+    Child category of TECHNICAL. If assigned, technical incident notifications will go to these contacts instead of TECHNICAL.
+    """
 
 
 class ContactValidationState(str, Enum):
@@ -40,32 +58,56 @@ class ContactValidationState(str, Enum):
     The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
     """
     VALIDATION_STATE_UNSPECIFIED = "VALIDATION_STATE_UNSPECIFIED"
-    """The validation state is unknown or unspecified."""
+    """
+    The validation state is unknown or unspecified.
+    """
     VALID = "VALID"
-    """The contact is marked as valid. This is usually done manually by the contact admin. All new contacts begin in the valid state."""
+    """
+    The contact is marked as valid. This is usually done manually by the contact admin. All new contacts begin in the valid state.
+    """
     INVALID = "INVALID"
-    """The contact is considered invalid. This may become the state if the contact's email is found to be unreachable."""
+    """
+    The contact is considered invalid. This may become the state if the contact's email is found to be unreachable.
+    """
 
 
 class FolderContactNotificationCategorySubscriptionsItem(str, Enum):
     NOTIFICATION_CATEGORY_UNSPECIFIED = "NOTIFICATION_CATEGORY_UNSPECIFIED"
-    """Notification category is unrecognized or unspecified."""
+    """
+    Notification category is unrecognized or unspecified.
+    """
     ALL = "ALL"
-    """All notifications related to the resource, including notifications pertaining to categories added in the future."""
+    """
+    All notifications related to the resource, including notifications pertaining to categories added in the future.
+    """
     SUSPENSION = "SUSPENSION"
-    """Notifications related to imminent account suspension."""
+    """
+    Notifications related to imminent account suspension.
+    """
     SECURITY = "SECURITY"
-    """Notifications related to security/privacy incidents, notifications, and vulnerabilities."""
+    """
+    Notifications related to security/privacy incidents, notifications, and vulnerabilities.
+    """
     TECHNICAL = "TECHNICAL"
-    """Notifications related to technical events and issues such as outages, errors, or bugs."""
+    """
+    Notifications related to technical events and issues such as outages, errors, or bugs.
+    """
     BILLING = "BILLING"
-    """Notifications related to billing and payments notifications, price updates, errors, or credits."""
+    """
+    Notifications related to billing and payments notifications, price updates, errors, or credits.
+    """
     LEGAL = "LEGAL"
-    """Notifications related to enforcement actions, regulatory compliance, or government notices."""
+    """
+    Notifications related to enforcement actions, regulatory compliance, or government notices.
+    """
     PRODUCT_UPDATES = "PRODUCT_UPDATES"
-    """Notifications related to new versions, product terms updates, or deprecations."""
+    """
+    Notifications related to new versions, product terms updates, or deprecations.
+    """
     TECHNICAL_INCIDENTS = "TECHNICAL_INCIDENTS"
-    """Child category of TECHNICAL. If assigned, technical incident notifications will go to these contacts instead of TECHNICAL."""
+    """
+    Child category of TECHNICAL. If assigned, technical incident notifications will go to these contacts instead of TECHNICAL.
+    """
 
 
 class FolderContactValidationState(str, Enum):
@@ -73,32 +115,56 @@ class FolderContactValidationState(str, Enum):
     The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
     """
     VALIDATION_STATE_UNSPECIFIED = "VALIDATION_STATE_UNSPECIFIED"
-    """The validation state is unknown or unspecified."""
+    """
+    The validation state is unknown or unspecified.
+    """
     VALID = "VALID"
-    """The contact is marked as valid. This is usually done manually by the contact admin. All new contacts begin in the valid state."""
+    """
+    The contact is marked as valid. This is usually done manually by the contact admin. All new contacts begin in the valid state.
+    """
     INVALID = "INVALID"
-    """The contact is considered invalid. This may become the state if the contact's email is found to be unreachable."""
+    """
+    The contact is considered invalid. This may become the state if the contact's email is found to be unreachable.
+    """
 
 
 class OrganizationContactNotificationCategorySubscriptionsItem(str, Enum):
     NOTIFICATION_CATEGORY_UNSPECIFIED = "NOTIFICATION_CATEGORY_UNSPECIFIED"
-    """Notification category is unrecognized or unspecified."""
+    """
+    Notification category is unrecognized or unspecified.
+    """
     ALL = "ALL"
-    """All notifications related to the resource, including notifications pertaining to categories added in the future."""
+    """
+    All notifications related to the resource, including notifications pertaining to categories added in the future.
+    """
     SUSPENSION = "SUSPENSION"
-    """Notifications related to imminent account suspension."""
+    """
+    Notifications related to imminent account suspension.
+    """
     SECURITY = "SECURITY"
-    """Notifications related to security/privacy incidents, notifications, and vulnerabilities."""
+    """
+    Notifications related to security/privacy incidents, notifications, and vulnerabilities.
+    """
     TECHNICAL = "TECHNICAL"
-    """Notifications related to technical events and issues such as outages, errors, or bugs."""
+    """
+    Notifications related to technical events and issues such as outages, errors, or bugs.
+    """
     BILLING = "BILLING"
-    """Notifications related to billing and payments notifications, price updates, errors, or credits."""
+    """
+    Notifications related to billing and payments notifications, price updates, errors, or credits.
+    """
     LEGAL = "LEGAL"
-    """Notifications related to enforcement actions, regulatory compliance, or government notices."""
+    """
+    Notifications related to enforcement actions, regulatory compliance, or government notices.
+    """
     PRODUCT_UPDATES = "PRODUCT_UPDATES"
-    """Notifications related to new versions, product terms updates, or deprecations."""
+    """
+    Notifications related to new versions, product terms updates, or deprecations.
+    """
     TECHNICAL_INCIDENTS = "TECHNICAL_INCIDENTS"
-    """Child category of TECHNICAL. If assigned, technical incident notifications will go to these contacts instead of TECHNICAL."""
+    """
+    Child category of TECHNICAL. If assigned, technical incident notifications will go to these contacts instead of TECHNICAL.
+    """
 
 
 class OrganizationContactValidationState(str, Enum):
@@ -106,8 +172,14 @@ class OrganizationContactValidationState(str, Enum):
     The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
     """
     VALIDATION_STATE_UNSPECIFIED = "VALIDATION_STATE_UNSPECIFIED"
-    """The validation state is unknown or unspecified."""
+    """
+    The validation state is unknown or unspecified.
+    """
     VALID = "VALID"
-    """The contact is marked as valid. This is usually done manually by the contact admin. All new contacts begin in the valid state."""
+    """
+    The contact is marked as valid. This is usually done manually by the contact admin. All new contacts begin in the valid state.
+    """
     INVALID = "INVALID"
-    """The contact is considered invalid. This may become the state if the contact's email is found to be unreachable."""
+    """
+    The contact is considered invalid. This may become the state if the contact's email is found to be unreachable.
+    """

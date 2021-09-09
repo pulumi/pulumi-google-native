@@ -13,6 +13,7 @@ __all__ = [
     'GetFirewallResult',
     'AwaitableGetFirewallResult',
     'get_firewall',
+    'get_firewall_output',
 ]
 
 @pulumi.output_type
@@ -291,3 +292,13 @@ def get_firewall(firewall: Optional[str] = None,
         source_tags=__ret__.source_tags,
         target_service_accounts=__ret__.target_service_accounts,
         target_tags=__ret__.target_tags)
+
+
+@_utilities.lift_output_func(get_firewall)
+def get_firewall_output(firewall: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallResult]:
+    """
+    Returns the specified firewall.
+    """
+    ...

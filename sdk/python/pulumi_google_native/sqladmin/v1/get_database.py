@@ -13,6 +13,7 @@ __all__ = [
     'GetDatabaseResult',
     'AwaitableGetDatabaseResult',
     'get_database',
+    'get_database_output',
 ]
 
 @pulumi.output_type
@@ -147,3 +148,14 @@ def get_database(database: Optional[str] = None,
         project=__ret__.project,
         self_link=__ret__.self_link,
         sqlserver_database_details=__ret__.sqlserver_database_details)
+
+
+@_utilities.lift_output_func(get_database)
+def get_database_output(database: Optional[pulumi.Input[str]] = None,
+                        instance: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseResult]:
+    """
+    Retrieves a resource containing information about a database inside a Cloud SQL instance.
+    """
+    ...

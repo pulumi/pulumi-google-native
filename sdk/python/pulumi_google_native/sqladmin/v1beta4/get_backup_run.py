@@ -13,6 +13,7 @@ __all__ = [
     'GetBackupRunResult',
     'AwaitableGetBackupRunResult',
     'get_backup_run',
+    'get_backup_run_output',
 ]
 
 @pulumi.output_type
@@ -241,3 +242,14 @@ def get_backup_run(id: Optional[str] = None,
         status=__ret__.status,
         type=__ret__.type,
         window_start_time=__ret__.window_start_time)
+
+
+@_utilities.lift_output_func(get_backup_run)
+def get_backup_run_output(id: Optional[pulumi.Input[str]] = None,
+                          instance: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupRunResult]:
+    """
+    Retrieves a resource containing information about a backup run.
+    """
+    ...

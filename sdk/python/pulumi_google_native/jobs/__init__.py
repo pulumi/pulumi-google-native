@@ -7,8 +7,10 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.jobs.v3 as v3
-    import pulumi_google_native.jobs.v4 as v4
+    import pulumi_google_native.jobs.v3 as __v3
+    v3 = __v3
+    import pulumi_google_native.jobs.v4 as __v4
+    v4 = __v4
 else:
     v3 = _utilities.lazy_import('pulumi_google_native.jobs.v3')
     v4 = _utilities.lazy_import('pulumi_google_native.jobs.v4')

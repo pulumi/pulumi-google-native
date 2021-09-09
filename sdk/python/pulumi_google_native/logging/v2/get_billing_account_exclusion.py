@@ -12,6 +12,7 @@ __all__ = [
     'GetBillingAccountExclusionResult',
     'AwaitableGetBillingAccountExclusionResult',
     'get_billing_account_exclusion',
+    'get_billing_account_exclusion_output',
 ]
 
 @pulumi.output_type
@@ -121,3 +122,13 @@ def get_billing_account_exclusion(billing_account_id: Optional[str] = None,
         filter=__ret__.filter,
         name=__ret__.name,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_billing_account_exclusion)
+def get_billing_account_exclusion_output(billing_account_id: Optional[pulumi.Input[str]] = None,
+                                         exclusion_id: Optional[pulumi.Input[str]] = None,
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingAccountExclusionResult]:
+    """
+    Gets the description of an exclusion.
+    """
+    ...

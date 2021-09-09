@@ -13,6 +13,7 @@ __all__ = [
     'GetRegionInstanceGroupManagerResult',
     'AwaitableGetRegionInstanceGroupManagerResult',
     'get_region_instance_group_manager',
+    'get_region_instance_group_manager_output',
 ]
 
 @pulumi.output_type
@@ -319,3 +320,14 @@ def get_region_instance_group_manager(instance_group_manager: Optional[str] = No
         update_policy=__ret__.update_policy,
         versions=__ret__.versions,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_region_instance_group_manager)
+def get_region_instance_group_manager_output(instance_group_manager: Optional[pulumi.Input[str]] = None,
+                                             project: Optional[pulumi.Input[Optional[str]]] = None,
+                                             region: Optional[pulumi.Input[str]] = None,
+                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionInstanceGroupManagerResult]:
+    """
+    Returns all of the details about the specified managed instance group.
+    """
+    ...

@@ -12,6 +12,7 @@ __all__ = [
     'GetBackupResult',
     'AwaitableGetBackupResult',
     'get_backup',
+    'get_backup_output',
 ]
 
 @pulumi.output_type
@@ -201,3 +202,14 @@ def get_backup(backup_id: Optional[str] = None,
         source_instance_tier=__ret__.source_instance_tier,
         state=__ret__.state,
         storage_bytes=__ret__.storage_bytes)
+
+
+@_utilities.lift_output_func(get_backup)
+def get_backup_output(backup_id: Optional[pulumi.Input[str]] = None,
+                      location: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupResult]:
+    """
+    Gets the details of a specific backup.
+    """
+    ...

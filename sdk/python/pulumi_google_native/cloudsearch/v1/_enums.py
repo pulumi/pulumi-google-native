@@ -17,10 +17,14 @@ class CompositeFilterLogicOperator(str, Enum):
     The logic operator of the sub filter.
     """
     AND_ = "AND"
-    """Logical operators, which can only be applied to sub filters."""
+    """
+    Logical operators, which can only be applied to sub filters.
+    """
     OR_ = "OR"
     NOT_ = "NOT"
-    """NOT can only be applied on a single sub filter."""
+    """
+    NOT can only be applied on a single sub filter.
+    """
 
 
 class SortOptionsSortOrder(str, Enum):
@@ -37,9 +41,13 @@ class SourcePredefinedSource(str, Enum):
     """
     NONE = "NONE"
     QUERY_HISTORY = "QUERY_HISTORY"
-    """Suggests queries issued by the user in the past. Only valid when used with the suggest API. Ignored when used in the query API."""
+    """
+    Suggests queries issued by the user in the past. Only valid when used with the suggest API. Ignored when used in the query API.
+    """
     PERSON = "PERSON"
-    """Suggests people in the organization. Only valid when used with the suggest API. Results in an error when used in the query API."""
+    """
+    Suggests people in the organization. Only valid when used with the suggest API. Results in an error when used in the query API.
+    """
     GOOGLE_DRIVE = "GOOGLE_DRIVE"
     GOOGLE_GMAIL = "GOOGLE_GMAIL"
     GOOGLE_SITES = "GOOGLE_SITES"

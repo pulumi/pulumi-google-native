@@ -13,6 +13,7 @@ __all__ = [
     'GetV1beta1IamPolicyResult',
     'AwaitableGetV1beta1IamPolicyResult',
     'get_v1beta1_iam_policy',
+    'get_v1beta1_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -81,3 +82,12 @@ def get_v1beta1_iam_policy(v1beta1_id: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_v1beta1_iam_policy)
+def get_v1beta1_iam_policy_output(v1beta1_id: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetV1beta1IamPolicyResult]:
+    """
+    Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
+    """
+    ...

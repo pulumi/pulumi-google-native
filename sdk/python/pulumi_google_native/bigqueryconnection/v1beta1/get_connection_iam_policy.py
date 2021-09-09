@@ -13,6 +13,7 @@ __all__ = [
     'GetConnectionIamPolicyResult',
     'AwaitableGetConnectionIamPolicyResult',
     'get_connection_iam_policy',
+    'get_connection_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -98,3 +99,14 @@ def get_connection_iam_policy(connection_id: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_connection_iam_policy)
+def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[str]] = None,
+                                     location: Optional[pulumi.Input[str]] = None,
+                                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionIamPolicyResult]:
+    """
+    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetProjectResult',
     'AwaitableGetProjectResult',
     'get_project',
+    'get_project_output',
 ]
 
 @pulumi.output_type
@@ -133,3 +134,12 @@ def get_project(project: Optional[str] = None,
         parent=__ret__.parent,
         project=__ret__.project,
         project_number=__ret__.project_number)
+
+
+@_utilities.lift_output_func(get_project)
+def get_project_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+    """
+    Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project.
+    """
+    ...

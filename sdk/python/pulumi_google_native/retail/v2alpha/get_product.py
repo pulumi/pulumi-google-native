@@ -13,6 +13,7 @@ __all__ = [
     'GetProductResult',
     'AwaitableGetProductResult',
     'get_product',
+    'get_product_output',
 ]
 
 @pulumi.output_type
@@ -466,3 +467,16 @@ def get_product(branch_id: Optional[str] = None,
         type=__ret__.type,
         uri=__ret__.uri,
         variants=__ret__.variants)
+
+
+@_utilities.lift_output_func(get_product)
+def get_product_output(branch_id: Optional[pulumi.Input[str]] = None,
+                       catalog_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       product_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductResult]:
+    """
+    Gets a Product.
+    """
+    ...

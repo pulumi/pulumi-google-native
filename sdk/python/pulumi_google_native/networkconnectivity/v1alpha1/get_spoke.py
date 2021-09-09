@@ -13,6 +13,7 @@ __all__ = [
     'GetSpokeResult',
     'AwaitableGetSpokeResult',
     'get_spoke',
+    'get_spoke_output',
 ]
 
 @pulumi.output_type
@@ -189,3 +190,14 @@ def get_spoke(location: Optional[str] = None,
         state=__ret__.state,
         unique_id=__ret__.unique_id,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_spoke)
+def get_spoke_output(location: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     spoke_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpokeResult]:
+    """
+    Gets details of a single Spoke.
+    """
+    ...

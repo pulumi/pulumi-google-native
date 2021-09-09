@@ -13,6 +13,7 @@ __all__ = [
     'GetRegionDiskResult',
     'AwaitableGetRegionDiskResult',
     'get_region_disk',
+    'get_region_disk_output',
 ]
 
 @pulumi.output_type
@@ -592,3 +593,14 @@ def get_region_disk(disk: Optional[str] = None,
         user_licenses=__ret__.user_licenses,
         users=__ret__.users,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_region_disk)
+def get_region_disk_output(disk: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           region: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionDiskResult]:
+    """
+    Returns a specified regional persistent disk.
+    """
+    ...

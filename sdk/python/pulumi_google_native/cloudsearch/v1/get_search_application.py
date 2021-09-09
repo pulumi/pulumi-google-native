@@ -13,6 +13,7 @@ __all__ = [
     'GetSearchApplicationResult',
     'AwaitableGetSearchApplicationResult',
     'get_search_application',
+    'get_search_application_output',
 ]
 
 @pulumi.output_type
@@ -174,3 +175,13 @@ def get_search_application(debug_options_enable_debugging: Optional[str] = None,
         query_interpretation_config=__ret__.query_interpretation_config,
         scoring_config=__ret__.scoring_config,
         source_config=__ret__.source_config)
+
+
+@_utilities.lift_output_func(get_search_application)
+def get_search_application_output(debug_options_enable_debugging: Optional[pulumi.Input[Optional[str]]] = None,
+                                  searchapplication_id: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSearchApplicationResult]:
+    """
+    Gets the specified search application. **Note:** This API requires an admin account to execute.
+    """
+    ...

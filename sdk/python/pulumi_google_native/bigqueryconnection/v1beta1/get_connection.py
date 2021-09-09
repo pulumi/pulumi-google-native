@@ -13,6 +13,7 @@ __all__ = [
     'GetConnectionResult',
     'AwaitableGetConnectionResult',
     'get_connection',
+    'get_connection_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_connection(connection_id: Optional[str] = None,
         has_credential=__ret__.has_credential,
         last_modified_time=__ret__.last_modified_time,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_connection)
+def get_connection_output(connection_id: Optional[pulumi.Input[str]] = None,
+                          location: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionResult]:
+    """
+    Returns specified connection.
+    """
+    ...

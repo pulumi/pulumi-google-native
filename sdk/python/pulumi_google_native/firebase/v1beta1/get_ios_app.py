@@ -12,6 +12,7 @@ __all__ = [
     'GetIosAppResult',
     'AwaitableGetIosAppResult',
     'get_ios_app',
+    'get_ios_app_output',
 ]
 
 @pulumi.output_type
@@ -121,3 +122,13 @@ def get_ios_app(ios_app_id: Optional[str] = None,
         display_name=__ret__.display_name,
         name=__ret__.name,
         project=__ret__.project)
+
+
+@_utilities.lift_output_func(get_ios_app)
+def get_ios_app_output(ios_app_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIosAppResult]:
+    """
+    Gets the specified IosApp.
+    """
+    ...

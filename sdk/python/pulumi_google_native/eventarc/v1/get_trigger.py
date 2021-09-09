@@ -13,6 +13,7 @@ __all__ = [
     'GetTriggerResult',
     'AwaitableGetTriggerResult',
     'get_trigger',
+    'get_trigger_output',
 ]
 
 @pulumi.output_type
@@ -176,3 +177,14 @@ def get_trigger(location: Optional[str] = None,
         transport=__ret__.transport,
         uid=__ret__.uid,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_trigger)
+def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       trigger_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTriggerResult]:
+    """
+    Get a single trigger.
+    """
+    ...

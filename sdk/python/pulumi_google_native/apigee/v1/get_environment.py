@@ -13,6 +13,7 @@ __all__ = [
     'GetEnvironmentResult',
     'AwaitableGetEnvironmentResult',
     'get_environment',
+    'get_environment_output',
 ]
 
 @pulumi.output_type
@@ -161,3 +162,13 @@ def get_environment(environment_id: Optional[str] = None,
         name=__ret__.name,
         properties=__ret__.properties,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_environment)
+def get_environment_output(environment_id: Optional[pulumi.Input[str]] = None,
+                           organization_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentResult]:
+    """
+    Gets environment details.
+    """
+    ...

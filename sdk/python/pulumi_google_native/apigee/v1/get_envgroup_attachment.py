@@ -12,6 +12,7 @@ __all__ = [
     'GetEnvgroupAttachmentResult',
     'AwaitableGetEnvgroupAttachmentResult',
     'get_envgroup_attachment',
+    'get_envgroup_attachment_output',
 ]
 
 @pulumi.output_type
@@ -84,3 +85,14 @@ def get_envgroup_attachment(attachment_id: Optional[str] = None,
         created_at=__ret__.created_at,
         environment=__ret__.environment,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_envgroup_attachment)
+def get_envgroup_attachment_output(attachment_id: Optional[pulumi.Input[str]] = None,
+                                   envgroup_id: Optional[pulumi.Input[str]] = None,
+                                   organization_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvgroupAttachmentResult]:
+    """
+    Gets an environment group attachment.
+    """
+    ...

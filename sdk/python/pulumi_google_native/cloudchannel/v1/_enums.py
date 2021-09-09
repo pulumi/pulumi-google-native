@@ -16,15 +16,25 @@ class ChannelPartnerLinkLinkState(str, Enum):
     Required. State of the channel partner link.
     """
     CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED = "CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED"
-    """The state is not specified."""
+    """
+    The state is not specified.
+    """
     INVITED = "INVITED"
-    """An invitation has been sent to the reseller to create a channel partner link."""
+    """
+    An invitation has been sent to the reseller to create a channel partner link.
+    """
     ACTIVE = "ACTIVE"
-    """Status when the reseller is active."""
+    """
+    Status when the reseller is active.
+    """
     REVOKED = "REVOKED"
-    """Status when the reseller has been revoked by the distributor."""
+    """
+    Status when the reseller has been revoked by the distributor.
+    """
     SUSPENDED = "SUSPENDED"
-    """Status when the reseller is suspended by Google or distributor."""
+    """
+    Status when the reseller is suspended by Google or distributor.
+    """
 
 
 class GoogleCloudChannelV1PeriodPeriodType(str, Enum):
@@ -32,13 +42,21 @@ class GoogleCloudChannelV1PeriodPeriodType(str, Enum):
     Period Type.
     """
     PERIOD_TYPE_UNSPECIFIED = "PERIOD_TYPE_UNSPECIFIED"
-    """Not used."""
+    """
+    Not used.
+    """
     DAY = "DAY"
-    """Day."""
+    """
+    Day.
+    """
     MONTH = "MONTH"
-    """Month."""
+    """
+    Month.
+    """
     YEAR = "YEAR"
-    """Year."""
+    """
+    Year.
+    """
 
 
 class GoogleCloudChannelV1RenewalSettingsPaymentPlan(str, Enum):
@@ -46,14 +64,26 @@ class GoogleCloudChannelV1RenewalSettingsPaymentPlan(str, Enum):
     Describes how a reseller will be billed.
     """
     PAYMENT_PLAN_UNSPECIFIED = "PAYMENT_PLAN_UNSPECIFIED"
-    """Not used."""
+    """
+    Not used.
+    """
     COMMITMENT = "COMMITMENT"
-    """Commitment."""
+    """
+    Commitment.
+    """
     FLEXIBLE = "FLEXIBLE"
-    """No commitment."""
+    """
+    No commitment.
+    """
     FREE = "FREE"
-    """Free."""
+    """
+    Free.
+    """
     TRIAL = "TRIAL"
-    """Trial."""
+    """
+    Trial.
+    """
     OFFLINE = "OFFLINE"
-    """Price and ordering not available through API."""
+    """
+    Price and ordering not available through API.
+    """

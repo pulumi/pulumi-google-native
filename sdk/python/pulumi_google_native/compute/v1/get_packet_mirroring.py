@@ -13,6 +13,7 @@ __all__ = [
     'GetPacketMirroringResult',
     'AwaitableGetPacketMirroringResult',
     'get_packet_mirroring',
+    'get_packet_mirroring_output',
 ]
 
 @pulumi.output_type
@@ -202,3 +203,14 @@ def get_packet_mirroring(packet_mirroring: Optional[str] = None,
         priority=__ret__.priority,
         region=__ret__.region,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_packet_mirroring)
+def get_packet_mirroring_output(packet_mirroring: Optional[pulumi.Input[str]] = None,
+                                project: Optional[pulumi.Input[Optional[str]]] = None,
+                                region: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPacketMirroringResult]:
+    """
+    Returns the specified PacketMirroring resource.
+    """
+    ...

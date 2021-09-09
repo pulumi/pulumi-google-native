@@ -12,6 +12,7 @@ __all__ = [
     'GetArchiveDeploymentResult',
     'AwaitableGetArchiveDeploymentResult',
     'get_archive_deployment',
+    'get_archive_deployment_output',
 ]
 
 @pulumi.output_type
@@ -123,3 +124,14 @@ def get_archive_deployment(archive_deployment_id: Optional[str] = None,
         name=__ret__.name,
         operation=__ret__.operation,
         updated_at=__ret__.updated_at)
+
+
+@_utilities.lift_output_func(get_archive_deployment)
+def get_archive_deployment_output(archive_deployment_id: Optional[pulumi.Input[str]] = None,
+                                  environment_id: Optional[pulumi.Input[str]] = None,
+                                  organization_id: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetArchiveDeploymentResult]:
+    """
+    Gets the specified ArchiveDeployment.
+    """
+    ...

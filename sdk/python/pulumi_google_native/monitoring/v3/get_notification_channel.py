@@ -13,6 +13,7 @@ __all__ = [
     'GetNotificationChannelResult',
     'AwaitableGetNotificationChannelResult',
     'get_notification_channel',
+    'get_notification_channel_output',
 ]
 
 @pulumi.output_type
@@ -174,3 +175,13 @@ def get_notification_channel(notification_channel_id: Optional[str] = None,
         type=__ret__.type,
         user_labels=__ret__.user_labels,
         verification_status=__ret__.verification_status)
+
+
+@_utilities.lift_output_func(get_notification_channel)
+def get_notification_channel_output(notification_channel_id: Optional[pulumi.Input[str]] = None,
+                                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotificationChannelResult]:
+    """
+    Gets a single notification channel. The channel includes the relevant configuration details with which the channel was created. However, the response may truncate or omit passwords, API keys, or other private key matter and thus the response may not be 100% identical to the information that was supplied in the call to the create method.
+    """
+    ...

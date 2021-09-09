@@ -13,6 +13,7 @@ __all__ = [
     'GetTagKeyIamPolicyResult',
     'AwaitableGetTagKeyIamPolicyResult',
     'get_tag_key_iam_policy',
+    'get_tag_key_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -94,3 +95,12 @@ def get_tag_key_iam_policy(tag_key_id: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_tag_key_iam_policy)
+def get_tag_key_iam_policy_output(tag_key_id: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagKeyIamPolicyResult]:
+    """
+    Gets the access control policy for a TagKey. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `cloudresourcemanager.googleapis.com/tagKeys.getIamPolicy` permission on the specified TagKey.
+    """
+    ...

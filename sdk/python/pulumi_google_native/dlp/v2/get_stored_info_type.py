@@ -13,6 +13,7 @@ __all__ = [
     'GetStoredInfoTypeResult',
     'AwaitableGetStoredInfoTypeResult',
     'get_stored_info_type',
+    'get_stored_info_type_output',
 ]
 
 @pulumi.output_type
@@ -85,3 +86,14 @@ def get_stored_info_type(location: Optional[str] = None,
         current_version=__ret__.current_version,
         name=__ret__.name,
         pending_versions=__ret__.pending_versions)
+
+
+@_utilities.lift_output_func(get_stored_info_type)
+def get_stored_info_type_output(location: Optional[pulumi.Input[str]] = None,
+                                project: Optional[pulumi.Input[Optional[str]]] = None,
+                                stored_info_type_id: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStoredInfoTypeResult]:
+    """
+    Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+    """
+    ...

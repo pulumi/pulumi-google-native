@@ -12,6 +12,7 @@ __all__ = [
     'GetAndroidAppResult',
     'AwaitableGetAndroidAppResult',
     'get_android_app',
+    'get_android_app_output',
 ]
 
 @pulumi.output_type
@@ -108,3 +109,13 @@ def get_android_app(android_app_id: Optional[str] = None,
         name=__ret__.name,
         package_name=__ret__.package_name,
         project=__ret__.project)
+
+
+@_utilities.lift_output_func(get_android_app)
+def get_android_app_output(android_app_id: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAndroidAppResult]:
+    """
+    Gets the specified AndroidApp.
+    """
+    ...

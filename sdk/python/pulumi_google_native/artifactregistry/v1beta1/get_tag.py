@@ -12,6 +12,7 @@ __all__ = [
     'GetTagResult',
     'AwaitableGetTagResult',
     'get_tag',
+    'get_tag_output',
 ]
 
 @pulumi.output_type
@@ -75,3 +76,16 @@ def get_tag(location: Optional[str] = None,
     return AwaitableGetTagResult(
         name=__ret__.name,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_tag)
+def get_tag_output(location: Optional[pulumi.Input[str]] = None,
+                   package_id: Optional[pulumi.Input[str]] = None,
+                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                   repository_id: Optional[pulumi.Input[str]] = None,
+                   tag_id: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagResult]:
+    """
+    Gets a tag.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetRouteResult',
     'AwaitableGetRouteResult',
     'get_route',
+    'get_route_output',
 ]
 
 @pulumi.output_type
@@ -317,3 +318,13 @@ def get_route(project: Optional[str] = None,
         self_link_with_id=__ret__.self_link_with_id,
         tags=__ret__.tags,
         warnings=__ret__.warnings)
+
+
+@_utilities.lift_output_func(get_route)
+def get_route_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                     route: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteResult]:
+    """
+    Returns the specified Route resource. Gets a list of available routes by making a list() request.
+    """
+    ...

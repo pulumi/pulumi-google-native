@@ -13,6 +13,7 @@ __all__ = [
     'GetZoneInPlaceSnapshotIamPolicyResult',
     'AwaitableGetZoneInPlaceSnapshotIamPolicyResult',
     'get_zone_in_place_snapshot_iam_policy',
+    'get_zone_in_place_snapshot_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -126,3 +127,15 @@ def get_zone_in_place_snapshot_iam_policy(options_requested_policy_version: Opti
         iam_owned=__ret__.iam_owned,
         rules=__ret__.rules,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_zone_in_place_snapshot_iam_policy)
+def get_zone_in_place_snapshot_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                                 resource: Optional[pulumi.Input[str]] = None,
+                                                 zone: Optional[pulumi.Input[str]] = None,
+                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneInPlaceSnapshotIamPolicyResult]:
+    """
+    Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+    """
+    ...

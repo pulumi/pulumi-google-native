@@ -13,6 +13,7 @@ __all__ = [
     'GetDeidentifyTemplateResult',
     'AwaitableGetDeidentifyTemplateResult',
     'get_deidentify_template',
+    'get_deidentify_template_output',
 ]
 
 @pulumi.output_type
@@ -124,3 +125,14 @@ def get_deidentify_template(deidentify_template_id: Optional[str] = None,
         display_name=__ret__.display_name,
         name=__ret__.name,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_deidentify_template)
+def get_deidentify_template_output(deidentify_template_id: Optional[pulumi.Input[str]] = None,
+                                   location: Optional[pulumi.Input[str]] = None,
+                                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeidentifyTemplateResult]:
+    """
+    Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+    """
+    ...

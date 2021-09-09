@@ -13,6 +13,7 @@ __all__ = [
     'GetHostQueryResult',
     'AwaitableGetHostQueryResult',
     'get_host_query',
+    'get_host_query_output',
 ]
 
 @pulumi.output_type
@@ -213,3 +214,13 @@ def get_host_query(host_query_id: Optional[str] = None,
         self=__ret__.self,
         state=__ret__.state,
         updated=__ret__.updated)
+
+
+@_utilities.lift_output_func(get_host_query)
+def get_host_query_output(host_query_id: Optional[pulumi.Input[str]] = None,
+                          organization_id: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostQueryResult]:
+    """
+    Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
+    """
+    ...

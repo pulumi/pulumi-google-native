@@ -13,6 +13,7 @@ __all__ = [
     'GetAgentResult',
     'AwaitableGetAgentResult',
     'get_agent',
+    'get_agent_output',
 ]
 
 @pulumi.output_type
@@ -215,3 +216,14 @@ def get_agent(agent_id: Optional[str] = None,
         start_flow=__ret__.start_flow,
         supported_language_codes=__ret__.supported_language_codes,
         time_zone=__ret__.time_zone)
+
+
+@_utilities.lift_output_func(get_agent)
+def get_agent_output(agent_id: Optional[pulumi.Input[str]] = None,
+                     location: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAgentResult]:
+    """
+    Retrieves the specified agent.
+    """
+    ...

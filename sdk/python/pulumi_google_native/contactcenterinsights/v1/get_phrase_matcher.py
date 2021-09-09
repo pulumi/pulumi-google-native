@@ -13,6 +13,7 @@ __all__ = [
     'GetPhraseMatcherResult',
     'AwaitableGetPhraseMatcherResult',
     'get_phrase_matcher',
+    'get_phrase_matcher_output',
 ]
 
 @pulumi.output_type
@@ -176,3 +177,14 @@ def get_phrase_matcher(location: Optional[str] = None,
         role_match=__ret__.role_match,
         type=__ret__.type,
         version_tag=__ret__.version_tag)
+
+
+@_utilities.lift_output_func(get_phrase_matcher)
+def get_phrase_matcher_output(location: Optional[pulumi.Input[str]] = None,
+                              phrase_matcher_id: Optional[pulumi.Input[str]] = None,
+                              project: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPhraseMatcherResult]:
+    """
+    Gets a phrase matcher.
+    """
+    ...

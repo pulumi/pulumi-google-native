@@ -13,6 +13,7 @@ __all__ = [
     'GetReferenceImageResult',
     'AwaitableGetReferenceImageResult',
     'get_reference_image',
+    'get_reference_image_output',
 ]
 
 @pulumi.output_type
@@ -87,3 +88,15 @@ def get_reference_image(location: Optional[str] = None,
         bounding_polys=__ret__.bounding_polys,
         name=__ret__.name,
         uri=__ret__.uri)
+
+
+@_utilities.lift_output_func(get_reference_image)
+def get_reference_image_output(location: Optional[pulumi.Input[str]] = None,
+                               product_id: Optional[pulumi.Input[str]] = None,
+                               project: Optional[pulumi.Input[Optional[str]]] = None,
+                               reference_image_id: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReferenceImageResult]:
+    """
+    Gets information associated with a ReferenceImage. Possible errors: * Returns NOT_FOUND if the specified image does not exist.
+    """
+    ...

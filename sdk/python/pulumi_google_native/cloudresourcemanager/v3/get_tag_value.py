@@ -12,6 +12,7 @@ __all__ = [
     'GetTagValueResult',
     'AwaitableGetTagValueResult',
     'get_tag_value',
+    'get_tag_value_output',
 ]
 
 @pulumi.output_type
@@ -145,3 +146,12 @@ def get_tag_value(tag_value_id: Optional[str] = None,
         parent=__ret__.parent,
         short_name=__ret__.short_name,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_tag_value)
+def get_tag_value_output(tag_value_id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagValueResult]:
+    """
+    Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have permission to view it, this method will return `PERMISSION_DENIED`.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetDatastoreResult',
     'AwaitableGetDatastoreResult',
     'get_datastore',
+    'get_datastore_output',
 ]
 
 @pulumi.output_type
@@ -135,3 +136,13 @@ def get_datastore(datastore_id: Optional[str] = None,
         org=__ret__.org,
         self=__ret__.self,
         target_type=__ret__.target_type)
+
+
+@_utilities.lift_output_func(get_datastore)
+def get_datastore_output(datastore_id: Optional[pulumi.Input[str]] = None,
+                         organization_id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoreResult]:
+    """
+    Get a Datastore
+    """
+    ...

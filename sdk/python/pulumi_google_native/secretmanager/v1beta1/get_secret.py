@@ -13,6 +13,7 @@ __all__ = [
     'GetSecretResult',
     'AwaitableGetSecretResult',
     'get_secret',
+    'get_secret_output',
 ]
 
 @pulumi.output_type
@@ -96,3 +97,13 @@ def get_secret(project: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         replication=__ret__.replication)
+
+
+@_utilities.lift_output_func(get_secret)
+def get_secret_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                      secret_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
+    """
+    Gets metadata for a given Secret.
+    """
+    ...

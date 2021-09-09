@@ -18,11 +18,17 @@ class ConversationMedium(str, Enum):
     Immutable. The conversation medium.
     """
     MEDIUM_UNSPECIFIED = "MEDIUM_UNSPECIFIED"
-    """Default value."""
+    """
+    Default value.
+    """
     PHONE_CALL = "PHONE_CALL"
-    """The format for conversations that took place over the phone."""
+    """
+    The format for conversations that took place over the phone.
+    """
     CHAT = "CHAT"
-    """The format for conversations that took place over chat."""
+    """
+    The format for conversations that took place over chat.
+    """
 
 
 class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium(str, Enum):
@@ -30,11 +36,17 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium(str, Enu
     Required. Medium of conversations used in training data.
     """
     MEDIUM_UNSPECIFIED = "MEDIUM_UNSPECIFIED"
-    """Default value."""
+    """
+    Default value.
+    """
     PHONE_CALL = "PHONE_CALL"
-    """The format for conversations that took place over the phone."""
+    """
+    The format for conversations that took place over the phone.
+    """
     CHAT = "CHAT"
-    """The format for conversations that took place over chat."""
+    """
+    The format for conversations that took place over chat.
+    """
 
 
 class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType(str, Enum):
@@ -42,11 +54,17 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType(str, Enum):
     Required. The type of this phrase match rule group.
     """
     PHRASE_MATCH_RULE_GROUP_TYPE_UNSPECIFIED = "PHRASE_MATCH_RULE_GROUP_TYPE_UNSPECIFIED"
-    """Unspecified."""
+    """
+    Unspecified.
+    """
     ALL_OF = "ALL_OF"
-    """Must meet all phrase match rules or there is no match."""
+    """
+    Must meet all phrase match rules or there is no match.
+    """
     ANY_OF = "ANY_OF"
-    """If any of the phrase match rules are met, there is a match."""
+    """
+    If any of the phrase match rules are met, there is a match.
+    """
 
 
 class PhraseMatcherRoleMatch(str, Enum):
@@ -54,15 +72,25 @@ class PhraseMatcherRoleMatch(str, Enum):
     The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript.
     """
     ROLE_UNSPECIFIED = "ROLE_UNSPECIFIED"
-    """Participant's role is not set."""
+    """
+    Participant's role is not set.
+    """
     HUMAN_AGENT = "HUMAN_AGENT"
-    """Participant is a human agent."""
+    """
+    Participant is a human agent.
+    """
     AUTOMATED_AGENT = "AUTOMATED_AGENT"
-    """Participant is an automated agent."""
+    """
+    Participant is an automated agent.
+    """
     END_USER = "END_USER"
-    """Participant is an end user who conversed with the contact center."""
+    """
+    Participant is an end user who conversed with the contact center.
+    """
     ANY_AGENT = "ANY_AGENT"
-    """Participant is either a human or automated agent."""
+    """
+    Participant is either a human or automated agent.
+    """
 
 
 class PhraseMatcherType(str, Enum):
@@ -70,8 +98,14 @@ class PhraseMatcherType(str, Enum):
     Required. The type of this phrase matcher.
     """
     PHRASE_MATCHER_TYPE_UNSPECIFIED = "PHRASE_MATCHER_TYPE_UNSPECIFIED"
-    """Unspecified."""
+    """
+    Unspecified.
+    """
     ALL_OF = "ALL_OF"
-    """Must meet all phrase match rule groups or there is no match."""
+    """
+    Must meet all phrase match rule groups or there is no match.
+    """
     ANY_OF = "ANY_OF"
-    """If any of the phrase match rule groups are met, there is a match."""
+    """
+    If any of the phrase match rule groups are met, there is a match.
+    """

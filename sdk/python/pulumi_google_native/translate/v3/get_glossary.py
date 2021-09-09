@@ -13,6 +13,7 @@ __all__ = [
     'GetGlossaryResult',
     'AwaitableGetGlossaryResult',
     'get_glossary',
+    'get_glossary_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_glossary(glossary_id: Optional[str] = None,
         language_pair=__ret__.language_pair,
         name=__ret__.name,
         submit_time=__ret__.submit_time)
+
+
+@_utilities.lift_output_func(get_glossary)
+def get_glossary_output(glossary_id: Optional[pulumi.Input[str]] = None,
+                        location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlossaryResult]:
+    """
+    Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
+    """
+    ...

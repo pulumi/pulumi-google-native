@@ -13,6 +13,7 @@ __all__ = [
     'GetServiceResult',
     'AwaitableGetServiceResult',
     'get_service',
+    'get_service_output',
 ]
 
 @pulumi.output_type
@@ -87,3 +88,15 @@ def get_service(location: Optional[str] = None,
         annotations=__ret__.annotations,
         endpoints=__ret__.endpoints,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_output(location: Optional[pulumi.Input[str]] = None,
+                       namespace_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       service_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    """
+    Gets a service.
+    """
+    ...

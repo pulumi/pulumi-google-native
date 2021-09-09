@@ -13,6 +13,7 @@ __all__ = [
     'GetChannelPartnerLinkResult',
     'AwaitableGetChannelPartnerLinkResult',
     'get_channel_partner_link',
+    'get_channel_partner_link_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,14 @@ def get_channel_partner_link(account_id: Optional[str] = None,
         public_id=__ret__.public_id,
         reseller_cloud_identity_id=__ret__.reseller_cloud_identity_id,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_channel_partner_link)
+def get_channel_partner_link_output(account_id: Optional[pulumi.Input[str]] = None,
+                                    channel_partner_link_id: Optional[pulumi.Input[str]] = None,
+                                    view: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChannelPartnerLinkResult]:
+    """
+    Returns the requested ChannelPartnerLink resource. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link name. Return value: The ChannelPartnerLink resource.
+    """
+    ...

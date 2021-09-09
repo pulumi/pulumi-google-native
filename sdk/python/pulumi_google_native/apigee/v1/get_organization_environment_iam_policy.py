@@ -13,6 +13,7 @@ __all__ = [
     'GetOrganizationEnvironmentIamPolicyResult',
     'AwaitableGetOrganizationEnvironmentIamPolicyResult',
     'get_organization_environment_iam_policy',
+    'get_organization_environment_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -98,3 +99,14 @@ def get_organization_environment_iam_policy(environment_id: Optional[str] = None
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_organization_environment_iam_policy)
+def get_organization_environment_iam_policy_output(environment_id: Optional[pulumi.Input[str]] = None,
+                                                   options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                                   organization_id: Optional[pulumi.Input[str]] = None,
+                                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationEnvironmentIamPolicyResult]:
+    """
+    Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.
+    """
+    ...

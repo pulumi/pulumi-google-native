@@ -7,9 +7,12 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.deploymentmanager.alpha as alpha
-    import pulumi_google_native.deploymentmanager.v2 as v2
-    import pulumi_google_native.deploymentmanager.v2beta as v2beta
+    import pulumi_google_native.deploymentmanager.alpha as __alpha
+    alpha = __alpha
+    import pulumi_google_native.deploymentmanager.v2 as __v2
+    v2 = __v2
+    import pulumi_google_native.deploymentmanager.v2beta as __v2beta
+    v2beta = __v2beta
 else:
     alpha = _utilities.lazy_import('pulumi_google_native.deploymentmanager.alpha')
     v2 = _utilities.lazy_import('pulumi_google_native.deploymentmanager.v2')

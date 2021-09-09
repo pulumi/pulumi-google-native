@@ -13,6 +13,7 @@ __all__ = [
     'GetRoutineResult',
     'AwaitableGetRoutineResult',
     'get_routine',
+    'get_routine_output',
 ]
 
 @pulumi.output_type
@@ -217,3 +218,15 @@ def get_routine(dataset_id: Optional[str] = None,
         return_type=__ret__.return_type,
         routine_reference=__ret__.routine_reference,
         routine_type=__ret__.routine_type)
+
+
+@_utilities.lift_output_func(get_routine)
+def get_routine_output(dataset_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       read_mask: Optional[pulumi.Input[Optional[str]]] = None,
+                       routine_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoutineResult]:
+    """
+    Gets the specified routine resource by routine ID.
+    """
+    ...

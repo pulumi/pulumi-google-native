@@ -12,6 +12,7 @@ __all__ = [
     'GetResourcefileResult',
     'AwaitableGetResourcefileResult',
     'get_resourcefile',
+    'get_resourcefile_output',
 ]
 
 @pulumi.output_type
@@ -86,3 +87,15 @@ def get_resourcefile(environment_id: Optional[str] = None,
         content_type=__ret__.content_type,
         data=__ret__.data,
         extensions=__ret__.extensions)
+
+
+@_utilities.lift_output_func(get_resourcefile)
+def get_resourcefile_output(environment_id: Optional[pulumi.Input[str]] = None,
+                            name: Optional[pulumi.Input[str]] = None,
+                            organization_id: Optional[pulumi.Input[str]] = None,
+                            type: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcefileResult]:
+    """
+    Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+    """
+    ...

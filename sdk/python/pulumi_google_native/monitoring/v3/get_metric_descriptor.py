@@ -13,6 +13,7 @@ __all__ = [
     'GetMetricDescriptorResult',
     'AwaitableGetMetricDescriptorResult',
     'get_metric_descriptor',
+    'get_metric_descriptor_output',
 ]
 
 @pulumi.output_type
@@ -187,3 +188,13 @@ def get_metric_descriptor(metric_descriptor_id: Optional[str] = None,
         type=__ret__.type,
         unit=__ret__.unit,
         value_type=__ret__.value_type)
+
+
+@_utilities.lift_output_func(get_metric_descriptor)
+def get_metric_descriptor_output(metric_descriptor_id: Optional[pulumi.Input[str]] = None,
+                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetricDescriptorResult]:
+    """
+    Gets a single metric descriptor. This method does not require a Workspace.
+    """
+    ...

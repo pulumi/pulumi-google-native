@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceResult',
     'AwaitableGetInstanceResult',
     'get_instance',
+    'get_instance_output',
 ]
 
 @pulumi.output_type
@@ -447,3 +448,13 @@ def get_instance(instance: Optional[str] = None,
         settings=__ret__.settings,
         state=__ret__.state,
         suspension_reason=__ret__.suspension_reason)
+
+
+@_utilities.lift_output_func(get_instance)
+def get_instance_output(instance: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+    """
+    Retrieves a resource containing information about a Cloud SQL instance.
+    """
+    ...

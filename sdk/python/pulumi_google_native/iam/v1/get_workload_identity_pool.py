@@ -12,6 +12,7 @@ __all__ = [
     'GetWorkloadIdentityPoolResult',
     'AwaitableGetWorkloadIdentityPoolResult',
     'get_workload_identity_pool',
+    'get_workload_identity_pool_output',
 ]
 
 @pulumi.output_type
@@ -110,3 +111,14 @@ def get_workload_identity_pool(location: Optional[str] = None,
         display_name=__ret__.display_name,
         name=__ret__.name,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_workload_identity_pool)
+def get_workload_identity_pool_output(location: Optional[pulumi.Input[str]] = None,
+                                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkloadIdentityPoolResult]:
+    """
+    Gets an individual WorkloadIdentityPool.
+    """
+    ...

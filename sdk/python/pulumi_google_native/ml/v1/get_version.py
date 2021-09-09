@@ -13,6 +13,7 @@ __all__ = [
     'GetVersionResult',
     'AwaitableGetVersionResult',
     'get_version',
+    'get_version_output',
 ]
 
 @pulumi.output_type
@@ -384,3 +385,14 @@ def get_version(model_id: Optional[str] = None,
         runtime_version=__ret__.runtime_version,
         service_account=__ret__.service_account,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_version)
+def get_version_output(model_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       version_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVersionResult]:
+    """
+    Gets information about a model version. Models can have multiple versions. You can call projects.models.versions.list to get the same information that this method returns for all of the versions of a model.
+    """
+    ...

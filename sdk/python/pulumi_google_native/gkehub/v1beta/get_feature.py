@@ -13,6 +13,7 @@ __all__ = [
     'GetFeatureResult',
     'AwaitableGetFeatureResult',
     'get_feature',
+    'get_feature_output',
 ]
 
 @pulumi.output_type
@@ -176,3 +177,14 @@ def get_feature(feature_id: Optional[str] = None,
         spec=__ret__.spec,
         state=__ret__.state,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_feature)
+def get_feature_output(feature_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFeatureResult]:
+    """
+    Gets details of a single Feature.
+    """
+    ...

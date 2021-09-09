@@ -13,6 +13,7 @@ __all__ = [
     'GetProductSetResult',
     'AwaitableGetProductSetResult',
     'get_product_set',
+    'get_product_set_output',
 ]
 
 @pulumi.output_type
@@ -98,3 +99,14 @@ def get_product_set(location: Optional[str] = None,
         index_error=__ret__.index_error,
         index_time=__ret__.index_time,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_product_set)
+def get_product_set_output(location: Optional[pulumi.Input[str]] = None,
+                           product_set_id: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductSetResult]:
+    """
+    Gets information associated with a ProductSet. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist.
+    """
+    ...

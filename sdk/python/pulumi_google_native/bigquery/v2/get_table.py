@@ -13,6 +13,7 @@ __all__ = [
     'GetTableResult',
     'AwaitableGetTableResult',
     'get_table',
+    'get_table_output',
 ]
 
 @pulumi.output_type
@@ -412,3 +413,15 @@ def get_table(dataset_id: Optional[str] = None,
         time_partitioning=__ret__.time_partitioning,
         type=__ret__.type,
         view=__ret__.view)
+
+
+@_utilities.lift_output_func(get_table)
+def get_table_output(dataset_id: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     selected_fields: Optional[pulumi.Input[Optional[str]]] = None,
+                     table_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTableResult]:
+    """
+    Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
+    """
+    ...

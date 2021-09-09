@@ -12,6 +12,7 @@ __all__ = [
     'GetSchemaResult',
     'AwaitableGetSchemaResult',
     'get_schema',
+    'get_schema_output',
 ]
 
 @pulumi.output_type
@@ -84,3 +85,14 @@ def get_schema(project: Optional[str] = None,
         definition=__ret__.definition,
         name=__ret__.name,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_schema)
+def get_schema_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                      schema_id: Optional[pulumi.Input[str]] = None,
+                      view: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchemaResult]:
+    """
+    Gets a schema.
+    """
+    ...

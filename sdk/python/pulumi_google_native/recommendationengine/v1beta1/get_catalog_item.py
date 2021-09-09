@@ -13,6 +13,7 @@ __all__ = [
     'GetCatalogItemResult',
     'AwaitableGetCatalogItemResult',
     'get_catalog_item',
+    'get_catalog_item_output',
 ]
 
 @pulumi.output_type
@@ -139,3 +140,15 @@ def get_catalog_item(catalog_id: Optional[str] = None,
         product_metadata=__ret__.product_metadata,
         tags=__ret__.tags,
         title=__ret__.title)
+
+
+@_utilities.lift_output_func(get_catalog_item)
+def get_catalog_item_output(catalog_id: Optional[pulumi.Input[str]] = None,
+                            catalog_item_id: Optional[pulumi.Input[str]] = None,
+                            location: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogItemResult]:
+    """
+    Gets a specific catalog item.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetMessageResult',
     'AwaitableGetMessageResult',
     'get_message',
+    'get_message_output',
 ]
 
 @pulumi.output_type
@@ -182,3 +183,17 @@ def get_message(dataset_id: Optional[str] = None,
         schematized_data=__ret__.schematized_data,
         send_facility=__ret__.send_facility,
         send_time=__ret__.send_time)
+
+
+@_utilities.lift_output_func(get_message)
+def get_message_output(dataset_id: Optional[pulumi.Input[str]] = None,
+                       hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       message_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       view: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMessageResult]:
+    """
+    Gets an HL7v2 message.
+    """
+    ...

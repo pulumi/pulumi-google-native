@@ -15,13 +15,21 @@ class AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
-    """Default case. Should never be this."""
+    """
+    Default case. Should never be this.
+    """
     ADMIN_READ = "ADMIN_READ"
-    """Admin reads. Example: CloudIAM getIamPolicy"""
+    """
+    Admin reads. Example: CloudIAM getIamPolicy
+    """
     DATA_WRITE = "DATA_WRITE"
-    """Data writes. Example: CloudSQL Users create"""
+    """
+    Data writes. Example: CloudSQL Users create
+    """
     DATA_READ = "DATA_READ"
-    """Data reads. Example: CloudSQL Users list"""
+    """
+    Data reads. Example: CloudSQL Users list
+    """
 
 
 class CloudSqlPropertiesType(str, Enum):
@@ -29,8 +37,14 @@ class CloudSqlPropertiesType(str, Enum):
     Type of the Cloud SQL database.
     """
     DATABASE_TYPE_UNSPECIFIED = "DATABASE_TYPE_UNSPECIFIED"
-    """Unspecified database type."""
+    """
+    Unspecified database type.
+    """
     POSTGRES = "POSTGRES"
-    """Cloud SQL for PostgreSQL."""
+    """
+    Cloud SQL for PostgreSQL.
+    """
     MYSQL = "MYSQL"
-    """Cloud SQL for MySQL."""
+    """
+    Cloud SQL for MySQL.
+    """

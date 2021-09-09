@@ -13,6 +13,7 @@ __all__ = [
     'GetCertificateResult',
     'AwaitableGetCertificateResult',
     'get_certificate',
+    'get_certificate_output',
 ]
 
 @pulumi.output_type
@@ -191,3 +192,15 @@ def get_certificate(certificate_authority_id: Optional[str] = None,
         pem_csr=__ret__.pem_csr,
         revocation_details=__ret__.revocation_details,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_certificate)
+def get_certificate_output(certificate_authority_id: Optional[pulumi.Input[str]] = None,
+                           certificate_id: Optional[pulumi.Input[str]] = None,
+                           location: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+    """
+    Returns a Certificate.
+    """
+    ...

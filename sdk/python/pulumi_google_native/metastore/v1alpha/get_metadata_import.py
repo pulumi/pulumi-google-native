@@ -13,6 +13,7 @@ __all__ = [
     'GetMetadataImportResult',
     'AwaitableGetMetadataImportResult',
     'get_metadata_import',
+    'get_metadata_import_output',
 ]
 
 @pulumi.output_type
@@ -139,3 +140,15 @@ def get_metadata_import(location: Optional[str] = None,
         name=__ret__.name,
         state=__ret__.state,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_metadata_import)
+def get_metadata_import_output(location: Optional[pulumi.Input[str]] = None,
+                               metadata_import_id: Optional[pulumi.Input[str]] = None,
+                               project: Optional[pulumi.Input[Optional[str]]] = None,
+                               service_id: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetadataImportResult]:
+    """
+    Gets details of a single import.
+    """
+    ...

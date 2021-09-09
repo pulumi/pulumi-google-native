@@ -13,6 +13,7 @@ __all__ = [
     'GetFirewallPolicyResult',
     'AwaitableGetFirewallPolicyResult',
     'get_firewall_policy',
+    'get_firewall_policy_output',
 ]
 
 @pulumi.output_type
@@ -198,3 +199,12 @@ def get_firewall_policy(firewall_policy: Optional[str] = None,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
         short_name=__ret__.short_name)
+
+
+@_utilities.lift_output_func(get_firewall_policy)
+def get_firewall_policy_output(firewall_policy: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallPolicyResult]:
+    """
+    Returns the specified firewall policy.
+    """
+    ...

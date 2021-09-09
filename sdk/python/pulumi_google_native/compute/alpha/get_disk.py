@@ -13,6 +13,7 @@ __all__ = [
     'GetDiskResult',
     'AwaitableGetDiskResult',
     'get_disk',
+    'get_disk_output',
 ]
 
 @pulumi.output_type
@@ -592,3 +593,14 @@ def get_disk(disk: Optional[str] = None,
         user_licenses=__ret__.user_licenses,
         users=__ret__.users,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_disk)
+def get_disk_output(disk: Optional[pulumi.Input[str]] = None,
+                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                    zone: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiskResult]:
+    """
+    Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+    """
+    ...

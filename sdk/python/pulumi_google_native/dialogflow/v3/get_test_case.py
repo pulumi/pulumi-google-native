@@ -13,6 +13,7 @@ __all__ = [
     'GetTestCaseResult',
     'AwaitableGetTestCaseResult',
     'get_test_case',
+    'get_test_case_output',
 ]
 
 @pulumi.output_type
@@ -152,3 +153,15 @@ def get_test_case(agent_id: Optional[str] = None,
         tags=__ret__.tags,
         test_case_conversation_turns=__ret__.test_case_conversation_turns,
         test_config=__ret__.test_config)
+
+
+@_utilities.lift_output_func(get_test_case)
+def get_test_case_output(agent_id: Optional[pulumi.Input[str]] = None,
+                         location: Optional[pulumi.Input[str]] = None,
+                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                         test_case_id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTestCaseResult]:
+    """
+    Gets a test case.
+    """
+    ...

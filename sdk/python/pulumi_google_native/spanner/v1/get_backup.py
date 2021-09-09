@@ -13,6 +13,7 @@ __all__ = [
     'GetBackupResult',
     'AwaitableGetBackupResult',
     'get_backup',
+    'get_backup_output',
 ]
 
 @pulumi.output_type
@@ -163,3 +164,14 @@ def get_backup(backup_id: Optional[str] = None,
         size_bytes=__ret__.size_bytes,
         state=__ret__.state,
         version_time=__ret__.version_time)
+
+
+@_utilities.lift_output_func(get_backup)
+def get_backup_output(backup_id: Optional[pulumi.Input[str]] = None,
+                      instance_id: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupResult]:
+    """
+    Gets metadata on a pending or completed Backup.
+    """
+    ...

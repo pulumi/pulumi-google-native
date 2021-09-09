@@ -13,6 +13,7 @@ __all__ = [
     'GetSecuritySettingResult',
     'AwaitableGetSecuritySettingResult',
     'get_security_setting',
+    'get_security_setting_output',
 ]
 
 @pulumi.output_type
@@ -163,3 +164,14 @@ def get_security_setting(location: Optional[str] = None,
         redaction_scope=__ret__.redaction_scope,
         redaction_strategy=__ret__.redaction_strategy,
         retention_window_days=__ret__.retention_window_days)
+
+
+@_utilities.lift_output_func(get_security_setting)
+def get_security_setting_output(location: Optional[pulumi.Input[str]] = None,
+                                project: Optional[pulumi.Input[Optional[str]]] = None,
+                                security_setting_id: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecuritySettingResult]:
+    """
+    Retrieves the specified SecuritySettings. The returned settings may be stale by up to 1 minute.
+    """
+    ...

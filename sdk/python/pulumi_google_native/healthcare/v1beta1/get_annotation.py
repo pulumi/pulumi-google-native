@@ -13,6 +13,7 @@ __all__ = [
     'GetAnnotationResult',
     'AwaitableGetAnnotationResult',
     'get_annotation',
+    'get_annotation_output',
 ]
 
 @pulumi.output_type
@@ -128,3 +129,16 @@ def get_annotation(annotation_id: Optional[str] = None,
         name=__ret__.name,
         resource_annotation=__ret__.resource_annotation,
         text_annotation=__ret__.text_annotation)
+
+
+@_utilities.lift_output_func(get_annotation)
+def get_annotation_output(annotation_id: Optional[pulumi.Input[str]] = None,
+                          annotation_store_id: Optional[pulumi.Input[str]] = None,
+                          dataset_id: Optional[pulumi.Input[str]] = None,
+                          location: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAnnotationResult]:
+    """
+    Gets an Annotation.
+    """
+    ...

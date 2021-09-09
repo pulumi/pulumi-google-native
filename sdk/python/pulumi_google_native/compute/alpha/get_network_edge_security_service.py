@@ -12,6 +12,7 @@ __all__ = [
     'GetNetworkEdgeSecurityServiceResult',
     'AwaitableGetNetworkEdgeSecurityServiceResult',
     'get_network_edge_security_service',
+    'get_network_edge_security_service_output',
 ]
 
 @pulumi.output_type
@@ -159,3 +160,14 @@ def get_network_edge_security_service(network_edge_security_service: Optional[st
         security_policy=__ret__.security_policy,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id)
+
+
+@_utilities.lift_output_func(get_network_edge_security_service)
+def get_network_edge_security_service_output(network_edge_security_service: Optional[pulumi.Input[str]] = None,
+                                             project: Optional[pulumi.Input[Optional[str]]] = None,
+                                             region: Optional[pulumi.Input[str]] = None,
+                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkEdgeSecurityServiceResult]:
+    """
+    Gets a specified NetworkEdgeSecurityService.
+    """
+    ...

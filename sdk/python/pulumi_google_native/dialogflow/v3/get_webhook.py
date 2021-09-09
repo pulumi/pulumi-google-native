@@ -13,6 +13,7 @@ __all__ = [
     'GetWebhookResult',
     'AwaitableGetWebhookResult',
     'get_webhook',
+    'get_webhook_output',
 ]
 
 @pulumi.output_type
@@ -126,3 +127,15 @@ def get_webhook(agent_id: Optional[str] = None,
         name=__ret__.name,
         service_directory=__ret__.service_directory,
         timeout=__ret__.timeout)
+
+
+@_utilities.lift_output_func(get_webhook)
+def get_webhook_output(agent_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       webhook_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebhookResult]:
+    """
+    Retrieves the specified webhook.
+    """
+    ...

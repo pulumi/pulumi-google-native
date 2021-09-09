@@ -15,11 +15,17 @@ class GoogleDatastoreAdminV1IndexedPropertyDirection(str, Enum):
     Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
     """
     DIRECTION_UNSPECIFIED = "DIRECTION_UNSPECIFIED"
-    """The direction is unspecified."""
+    """
+    The direction is unspecified.
+    """
     ASCENDING = "ASCENDING"
-    """The property's values are indexed so as to support sequencing in ascending order and also query by <, >, <=, >=, and =."""
+    """
+    The property's values are indexed so as to support sequencing in ascending order and also query by <, >, <=, >=, and =.
+    """
     DESCENDING = "DESCENDING"
-    """The property's values are indexed so as to support sequencing in descending order and also query by <, >, <=, >=, and =."""
+    """
+    The property's values are indexed so as to support sequencing in descending order and also query by <, >, <=, >=, and =.
+    """
 
 
 class IndexAncestor(str, Enum):
@@ -27,8 +33,14 @@ class IndexAncestor(str, Enum):
     Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
     """
     ANCESTOR_MODE_UNSPECIFIED = "ANCESTOR_MODE_UNSPECIFIED"
-    """The ancestor mode is unspecified."""
+    """
+    The ancestor mode is unspecified.
+    """
     NONE = "NONE"
-    """Do not include the entity's ancestors in the index."""
+    """
+    Do not include the entity's ancestors in the index.
+    """
     ALL_ANCESTORS = "ALL_ANCESTORS"
-    """Include all the entity's ancestors in the index."""
+    """
+    Include all the entity's ancestors in the index.
+    """

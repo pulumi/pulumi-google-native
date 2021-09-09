@@ -13,6 +13,7 @@ __all__ = [
     'GetInstructionResult',
     'AwaitableGetInstructionResult',
     'get_instruction',
+    'get_instruction_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,13 @@ def get_instruction(instruction_id: Optional[str] = None,
         name=__ret__.name,
         pdf_instruction=__ret__.pdf_instruction,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_instruction)
+def get_instruction_output(instruction_id: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstructionResult]:
+    """
+    Gets an instruction by resource name.
+    """
+    ...

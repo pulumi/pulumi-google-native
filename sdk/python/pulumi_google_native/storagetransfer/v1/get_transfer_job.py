@@ -13,6 +13,7 @@ __all__ = [
     'GetTransferJobResult',
     'AwaitableGetTransferJobResult',
     'get_transfer_job',
+    'get_transfer_job_output',
 ]
 
 @pulumi.output_type
@@ -200,3 +201,13 @@ def get_transfer_job(project_id: Optional[str] = None,
         schedule=__ret__.schedule,
         status=__ret__.status,
         transfer_spec=__ret__.transfer_spec)
+
+
+@_utilities.lift_output_func(get_transfer_job)
+def get_transfer_job_output(project_id: Optional[pulumi.Input[str]] = None,
+                            transfer_job_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransferJobResult]:
+    """
+    Gets a transfer job.
+    """
+    ...

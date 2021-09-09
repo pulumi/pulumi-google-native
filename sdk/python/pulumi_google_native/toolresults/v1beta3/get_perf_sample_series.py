@@ -13,6 +13,7 @@ __all__ = [
     'GetPerfSampleSeriesResult',
     'AwaitableGetPerfSampleSeriesResult',
     'get_perf_sample_series',
+    'get_perf_sample_series_output',
 ]
 
 @pulumi.output_type
@@ -128,3 +129,16 @@ def get_perf_sample_series(execution_id: Optional[str] = None,
         project=__ret__.project,
         sample_series_id=__ret__.sample_series_id,
         step_id=__ret__.step_id)
+
+
+@_utilities.lift_output_func(get_perf_sample_series)
+def get_perf_sample_series_output(execution_id: Optional[pulumi.Input[str]] = None,
+                                  history_id: Optional[pulumi.Input[str]] = None,
+                                  project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  sample_series_id: Optional[pulumi.Input[str]] = None,
+                                  step_id: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPerfSampleSeriesResult]:
+    """
+    Gets a PerfSampleSeries. May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not exist
+    """
+    ...

@@ -7,7 +7,8 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.cloudtrace.v2beta1 as v2beta1
+    import pulumi_google_native.cloudtrace.v2beta1 as __v2beta1
+    v2beta1 = __v2beta1
 else:
     v2beta1 = _utilities.lazy_import('pulumi_google_native.cloudtrace.v2beta1')
 

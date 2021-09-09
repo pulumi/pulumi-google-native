@@ -13,6 +13,7 @@ __all__ = [
     'GetApiResult',
     'AwaitableGetApiResult',
     'get_api',
+    'get_api_output',
 ]
 
 @pulumi.output_type
@@ -109,3 +110,13 @@ def get_api(api_id: Optional[str] = None,
         meta_data=__ret__.meta_data,
         name=__ret__.name,
         revision=__ret__.revision)
+
+
+@_utilities.lift_output_func(get_api)
+def get_api_output(api_id: Optional[pulumi.Input[str]] = None,
+                   organization_id: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiResult]:
+    """
+    Gets an API proxy including a list of existing revisions.
+    """
+    ...

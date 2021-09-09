@@ -7,10 +7,14 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.dialogflow.v2 as v2
-    import pulumi_google_native.dialogflow.v2beta1 as v2beta1
-    import pulumi_google_native.dialogflow.v3 as v3
-    import pulumi_google_native.dialogflow.v3beta1 as v3beta1
+    import pulumi_google_native.dialogflow.v2 as __v2
+    v2 = __v2
+    import pulumi_google_native.dialogflow.v2beta1 as __v2beta1
+    v2beta1 = __v2beta1
+    import pulumi_google_native.dialogflow.v3 as __v3
+    v3 = __v3
+    import pulumi_google_native.dialogflow.v3beta1 as __v3beta1
+    v3beta1 = __v3beta1
 else:
     v2 = _utilities.lazy_import('pulumi_google_native.dialogflow.v2')
     v2beta1 = _utilities.lazy_import('pulumi_google_native.dialogflow.v2beta1')

@@ -13,6 +13,7 @@ __all__ = [
     'GetRolloutResult',
     'AwaitableGetRolloutResult',
     'get_rollout',
+    'get_rollout_output',
 ]
 
 @pulumi.output_type
@@ -122,3 +123,13 @@ def get_rollout(rollout_id: Optional[str] = None,
         service_name=__ret__.service_name,
         status=__ret__.status,
         traffic_percent_strategy=__ret__.traffic_percent_strategy)
+
+
+@_utilities.lift_output_func(get_rollout)
+def get_rollout_output(rollout_id: Optional[pulumi.Input[str]] = None,
+                       service_name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolloutResult]:
+    """
+    Gets a service configuration rollout.
+    """
+    ...

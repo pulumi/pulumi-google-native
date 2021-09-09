@@ -13,6 +13,7 @@ __all__ = [
     'GetRegionBackendServiceResult',
     'AwaitableGetRegionBackendServiceResult',
     'get_region_backend_service',
+    'get_region_backend_service_output',
 ]
 
 @pulumi.output_type
@@ -443,3 +444,14 @@ def get_region_backend_service(backend_service: Optional[str] = None,
         self_link=__ret__.self_link,
         session_affinity=__ret__.session_affinity,
         timeout_sec=__ret__.timeout_sec)
+
+
+@_utilities.lift_output_func(get_region_backend_service)
+def get_region_backend_service_output(backend_service: Optional[pulumi.Input[str]] = None,
+                                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      region: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionBackendServiceResult]:
+    """
+    Returns the specified regional BackendService resource.
+    """
+    ...

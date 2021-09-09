@@ -13,6 +13,7 @@ __all__ = [
     'GetCryptoKeyVersionResult',
     'AwaitableGetCryptoKeyVersionResult',
     'get_crypto_key_version',
+    'get_crypto_key_version_output',
 ]
 
 @pulumi.output_type
@@ -219,3 +220,16 @@ def get_crypto_key_version(crypto_key_id: Optional[str] = None,
         name=__ret__.name,
         protection_level=__ret__.protection_level,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_crypto_key_version)
+def get_crypto_key_version_output(crypto_key_id: Optional[pulumi.Input[str]] = None,
+                                  crypto_key_version_id: Optional[pulumi.Input[str]] = None,
+                                  key_ring_id: Optional[pulumi.Input[str]] = None,
+                                  location: Optional[pulumi.Input[str]] = None,
+                                  project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCryptoKeyVersionResult]:
+    """
+    Returns metadata for a given CryptoKeyVersion.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetImportJobResult',
     'AwaitableGetImportJobResult',
     'get_import_job',
+    'get_import_job_output',
 ]
 
 @pulumi.output_type
@@ -178,3 +179,15 @@ def get_import_job(import_job_id: Optional[str] = None,
         protection_level=__ret__.protection_level,
         public_key=__ret__.public_key,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_import_job)
+def get_import_job_output(import_job_id: Optional[pulumi.Input[str]] = None,
+                          key_ring_id: Optional[pulumi.Input[str]] = None,
+                          location: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImportJobResult]:
+    """
+    Returns metadata for a given ImportJob.
+    """
+    ...

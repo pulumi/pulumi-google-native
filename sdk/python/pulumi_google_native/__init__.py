@@ -9,111 +9,216 @@ from .provider import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.accesscontextmanager as accesscontextmanager
-    import pulumi_google_native.apigateway as apigateway
-    import pulumi_google_native.apigee as apigee
-    import pulumi_google_native.apikeys as apikeys
-    import pulumi_google_native.appengine as appengine
-    import pulumi_google_native.artifactregistry as artifactregistry
-    import pulumi_google_native.assuredworkloads as assuredworkloads
-    import pulumi_google_native.bigquery as bigquery
-    import pulumi_google_native.bigqueryconnection as bigqueryconnection
-    import pulumi_google_native.bigquerydatatransfer as bigquerydatatransfer
-    import pulumi_google_native.bigqueryreservation as bigqueryreservation
-    import pulumi_google_native.bigtableadmin as bigtableadmin
-    import pulumi_google_native.billingbudgets as billingbudgets
-    import pulumi_google_native.binaryauthorization as binaryauthorization
-    import pulumi_google_native.cloudasset as cloudasset
-    import pulumi_google_native.cloudbilling as cloudbilling
-    import pulumi_google_native.cloudbuild as cloudbuild
-    import pulumi_google_native.cloudchannel as cloudchannel
-    import pulumi_google_native.cloudfunctions as cloudfunctions
-    import pulumi_google_native.cloudidentity as cloudidentity
-    import pulumi_google_native.cloudiot as cloudiot
-    import pulumi_google_native.cloudkms as cloudkms
-    import pulumi_google_native.cloudresourcemanager as cloudresourcemanager
-    import pulumi_google_native.cloudscheduler as cloudscheduler
-    import pulumi_google_native.cloudsearch as cloudsearch
-    import pulumi_google_native.cloudtasks as cloudtasks
-    import pulumi_google_native.cloudtrace as cloudtrace
-    import pulumi_google_native.composer as composer
-    import pulumi_google_native.compute as compute
-    import pulumi_google_native.config as config
-    import pulumi_google_native.contactcenterinsights as contactcenterinsights
-    import pulumi_google_native.container as container
-    import pulumi_google_native.containeranalysis as containeranalysis
-    import pulumi_google_native.datacatalog as datacatalog
-    import pulumi_google_native.dataflow as dataflow
-    import pulumi_google_native.datafusion as datafusion
-    import pulumi_google_native.datalabeling as datalabeling
-    import pulumi_google_native.datamigration as datamigration
-    import pulumi_google_native.dataproc as dataproc
-    import pulumi_google_native.datastore as datastore
-    import pulumi_google_native.deploymentmanager as deploymentmanager
-    import pulumi_google_native.dialogflow as dialogflow
-    import pulumi_google_native.dlp as dlp
-    import pulumi_google_native.dns as dns
-    import pulumi_google_native.domains as domains
-    import pulumi_google_native.essentialcontacts as essentialcontacts
-    import pulumi_google_native.eventarc as eventarc
-    import pulumi_google_native.file as file
-    import pulumi_google_native.firebase as firebase
-    import pulumi_google_native.firebaseappcheck as firebaseappcheck
-    import pulumi_google_native.firebasedatabase as firebasedatabase
-    import pulumi_google_native.firebasehosting as firebasehosting
-    import pulumi_google_native.firebaseml as firebaseml
-    import pulumi_google_native.firebaserules as firebaserules
-    import pulumi_google_native.firestore as firestore
-    import pulumi_google_native.gameservices as gameservices
-    import pulumi_google_native.genomics as genomics
-    import pulumi_google_native.gkehub as gkehub
-    import pulumi_google_native.healthcare as healthcare
-    import pulumi_google_native.iam as iam
-    import pulumi_google_native.iap as iap
-    import pulumi_google_native.jobs as jobs
-    import pulumi_google_native.logging as logging
-    import pulumi_google_native.managedidentities as managedidentities
-    import pulumi_google_native.memcache as memcache
-    import pulumi_google_native.metastore as metastore
-    import pulumi_google_native.ml as ml
-    import pulumi_google_native.monitoring as monitoring
-    import pulumi_google_native.networkconnectivity as networkconnectivity
-    import pulumi_google_native.networkmanagement as networkmanagement
-    import pulumi_google_native.networksecurity as networksecurity
-    import pulumi_google_native.networkservices as networkservices
-    import pulumi_google_native.notebooks as notebooks
-    import pulumi_google_native.orgpolicy as orgpolicy
-    import pulumi_google_native.osconfig as osconfig
-    import pulumi_google_native.policysimulator as policysimulator
-    import pulumi_google_native.privateca as privateca
-    import pulumi_google_native.pubsub as pubsub
-    import pulumi_google_native.pubsublite as pubsublite
-    import pulumi_google_native.recaptchaenterprise as recaptchaenterprise
-    import pulumi_google_native.recommendationengine as recommendationengine
-    import pulumi_google_native.redis as redis
-    import pulumi_google_native.remotebuildexecution as remotebuildexecution
-    import pulumi_google_native.retail as retail
-    import pulumi_google_native.run as run
-    import pulumi_google_native.runtimeconfig as runtimeconfig
-    import pulumi_google_native.secretmanager as secretmanager
-    import pulumi_google_native.securitycenter as securitycenter
-    import pulumi_google_native.servicedirectory as servicedirectory
-    import pulumi_google_native.servicemanagement as servicemanagement
-    import pulumi_google_native.sourcerepo as sourcerepo
-    import pulumi_google_native.spanner as spanner
-    import pulumi_google_native.sqladmin as sqladmin
-    import pulumi_google_native.storage as storage
-    import pulumi_google_native.storagetransfer as storagetransfer
-    import pulumi_google_native.testing as testing
-    import pulumi_google_native.toolresults as toolresults
-    import pulumi_google_native.tpu as tpu
-    import pulumi_google_native.transcoder as transcoder
-    import pulumi_google_native.translate as translate
-    import pulumi_google_native.vision as vision
-    import pulumi_google_native.vpcaccess as vpcaccess
-    import pulumi_google_native.websecurityscanner as websecurityscanner
-    import pulumi_google_native.workflowexecutions as workflowexecutions
-    import pulumi_google_native.workflows as workflows
+    import pulumi_google_native.accesscontextmanager as __accesscontextmanager
+    accesscontextmanager = __accesscontextmanager
+    import pulumi_google_native.apigateway as __apigateway
+    apigateway = __apigateway
+    import pulumi_google_native.apigee as __apigee
+    apigee = __apigee
+    import pulumi_google_native.apikeys as __apikeys
+    apikeys = __apikeys
+    import pulumi_google_native.appengine as __appengine
+    appengine = __appengine
+    import pulumi_google_native.artifactregistry as __artifactregistry
+    artifactregistry = __artifactregistry
+    import pulumi_google_native.assuredworkloads as __assuredworkloads
+    assuredworkloads = __assuredworkloads
+    import pulumi_google_native.bigquery as __bigquery
+    bigquery = __bigquery
+    import pulumi_google_native.bigqueryconnection as __bigqueryconnection
+    bigqueryconnection = __bigqueryconnection
+    import pulumi_google_native.bigquerydatatransfer as __bigquerydatatransfer
+    bigquerydatatransfer = __bigquerydatatransfer
+    import pulumi_google_native.bigqueryreservation as __bigqueryreservation
+    bigqueryreservation = __bigqueryreservation
+    import pulumi_google_native.bigtableadmin as __bigtableadmin
+    bigtableadmin = __bigtableadmin
+    import pulumi_google_native.billingbudgets as __billingbudgets
+    billingbudgets = __billingbudgets
+    import pulumi_google_native.binaryauthorization as __binaryauthorization
+    binaryauthorization = __binaryauthorization
+    import pulumi_google_native.cloudasset as __cloudasset
+    cloudasset = __cloudasset
+    import pulumi_google_native.cloudbilling as __cloudbilling
+    cloudbilling = __cloudbilling
+    import pulumi_google_native.cloudbuild as __cloudbuild
+    cloudbuild = __cloudbuild
+    import pulumi_google_native.cloudchannel as __cloudchannel
+    cloudchannel = __cloudchannel
+    import pulumi_google_native.cloudfunctions as __cloudfunctions
+    cloudfunctions = __cloudfunctions
+    import pulumi_google_native.cloudidentity as __cloudidentity
+    cloudidentity = __cloudidentity
+    import pulumi_google_native.cloudiot as __cloudiot
+    cloudiot = __cloudiot
+    import pulumi_google_native.cloudkms as __cloudkms
+    cloudkms = __cloudkms
+    import pulumi_google_native.cloudresourcemanager as __cloudresourcemanager
+    cloudresourcemanager = __cloudresourcemanager
+    import pulumi_google_native.cloudscheduler as __cloudscheduler
+    cloudscheduler = __cloudscheduler
+    import pulumi_google_native.cloudsearch as __cloudsearch
+    cloudsearch = __cloudsearch
+    import pulumi_google_native.cloudtasks as __cloudtasks
+    cloudtasks = __cloudtasks
+    import pulumi_google_native.cloudtrace as __cloudtrace
+    cloudtrace = __cloudtrace
+    import pulumi_google_native.composer as __composer
+    composer = __composer
+    import pulumi_google_native.compute as __compute
+    compute = __compute
+    import pulumi_google_native.config as __config
+    config = __config
+    import pulumi_google_native.contactcenterinsights as __contactcenterinsights
+    contactcenterinsights = __contactcenterinsights
+    import pulumi_google_native.container as __container
+    container = __container
+    import pulumi_google_native.containeranalysis as __containeranalysis
+    containeranalysis = __containeranalysis
+    import pulumi_google_native.datacatalog as __datacatalog
+    datacatalog = __datacatalog
+    import pulumi_google_native.dataflow as __dataflow
+    dataflow = __dataflow
+    import pulumi_google_native.datafusion as __datafusion
+    datafusion = __datafusion
+    import pulumi_google_native.datalabeling as __datalabeling
+    datalabeling = __datalabeling
+    import pulumi_google_native.datamigration as __datamigration
+    datamigration = __datamigration
+    import pulumi_google_native.dataproc as __dataproc
+    dataproc = __dataproc
+    import pulumi_google_native.datastore as __datastore
+    datastore = __datastore
+    import pulumi_google_native.deploymentmanager as __deploymentmanager
+    deploymentmanager = __deploymentmanager
+    import pulumi_google_native.dialogflow as __dialogflow
+    dialogflow = __dialogflow
+    import pulumi_google_native.dlp as __dlp
+    dlp = __dlp
+    import pulumi_google_native.dns as __dns
+    dns = __dns
+    import pulumi_google_native.domains as __domains
+    domains = __domains
+    import pulumi_google_native.essentialcontacts as __essentialcontacts
+    essentialcontacts = __essentialcontacts
+    import pulumi_google_native.eventarc as __eventarc
+    eventarc = __eventarc
+    import pulumi_google_native.file as __file
+    file = __file
+    import pulumi_google_native.firebase as __firebase
+    firebase = __firebase
+    import pulumi_google_native.firebaseappcheck as __firebaseappcheck
+    firebaseappcheck = __firebaseappcheck
+    import pulumi_google_native.firebasedatabase as __firebasedatabase
+    firebasedatabase = __firebasedatabase
+    import pulumi_google_native.firebasehosting as __firebasehosting
+    firebasehosting = __firebasehosting
+    import pulumi_google_native.firebaseml as __firebaseml
+    firebaseml = __firebaseml
+    import pulumi_google_native.firebaserules as __firebaserules
+    firebaserules = __firebaserules
+    import pulumi_google_native.firestore as __firestore
+    firestore = __firestore
+    import pulumi_google_native.gameservices as __gameservices
+    gameservices = __gameservices
+    import pulumi_google_native.genomics as __genomics
+    genomics = __genomics
+    import pulumi_google_native.gkehub as __gkehub
+    gkehub = __gkehub
+    import pulumi_google_native.healthcare as __healthcare
+    healthcare = __healthcare
+    import pulumi_google_native.iam as __iam
+    iam = __iam
+    import pulumi_google_native.iap as __iap
+    iap = __iap
+    import pulumi_google_native.jobs as __jobs
+    jobs = __jobs
+    import pulumi_google_native.logging as __logging
+    logging = __logging
+    import pulumi_google_native.managedidentities as __managedidentities
+    managedidentities = __managedidentities
+    import pulumi_google_native.memcache as __memcache
+    memcache = __memcache
+    import pulumi_google_native.metastore as __metastore
+    metastore = __metastore
+    import pulumi_google_native.ml as __ml
+    ml = __ml
+    import pulumi_google_native.monitoring as __monitoring
+    monitoring = __monitoring
+    import pulumi_google_native.networkconnectivity as __networkconnectivity
+    networkconnectivity = __networkconnectivity
+    import pulumi_google_native.networkmanagement as __networkmanagement
+    networkmanagement = __networkmanagement
+    import pulumi_google_native.networksecurity as __networksecurity
+    networksecurity = __networksecurity
+    import pulumi_google_native.networkservices as __networkservices
+    networkservices = __networkservices
+    import pulumi_google_native.notebooks as __notebooks
+    notebooks = __notebooks
+    import pulumi_google_native.orgpolicy as __orgpolicy
+    orgpolicy = __orgpolicy
+    import pulumi_google_native.osconfig as __osconfig
+    osconfig = __osconfig
+    import pulumi_google_native.policysimulator as __policysimulator
+    policysimulator = __policysimulator
+    import pulumi_google_native.privateca as __privateca
+    privateca = __privateca
+    import pulumi_google_native.pubsub as __pubsub
+    pubsub = __pubsub
+    import pulumi_google_native.pubsublite as __pubsublite
+    pubsublite = __pubsublite
+    import pulumi_google_native.recaptchaenterprise as __recaptchaenterprise
+    recaptchaenterprise = __recaptchaenterprise
+    import pulumi_google_native.recommendationengine as __recommendationengine
+    recommendationengine = __recommendationengine
+    import pulumi_google_native.redis as __redis
+    redis = __redis
+    import pulumi_google_native.remotebuildexecution as __remotebuildexecution
+    remotebuildexecution = __remotebuildexecution
+    import pulumi_google_native.retail as __retail
+    retail = __retail
+    import pulumi_google_native.run as __run
+    run = __run
+    import pulumi_google_native.runtimeconfig as __runtimeconfig
+    runtimeconfig = __runtimeconfig
+    import pulumi_google_native.secretmanager as __secretmanager
+    secretmanager = __secretmanager
+    import pulumi_google_native.securitycenter as __securitycenter
+    securitycenter = __securitycenter
+    import pulumi_google_native.servicedirectory as __servicedirectory
+    servicedirectory = __servicedirectory
+    import pulumi_google_native.servicemanagement as __servicemanagement
+    servicemanagement = __servicemanagement
+    import pulumi_google_native.sourcerepo as __sourcerepo
+    sourcerepo = __sourcerepo
+    import pulumi_google_native.spanner as __spanner
+    spanner = __spanner
+    import pulumi_google_native.sqladmin as __sqladmin
+    sqladmin = __sqladmin
+    import pulumi_google_native.storage as __storage
+    storage = __storage
+    import pulumi_google_native.storagetransfer as __storagetransfer
+    storagetransfer = __storagetransfer
+    import pulumi_google_native.testing as __testing
+    testing = __testing
+    import pulumi_google_native.toolresults as __toolresults
+    toolresults = __toolresults
+    import pulumi_google_native.tpu as __tpu
+    tpu = __tpu
+    import pulumi_google_native.transcoder as __transcoder
+    transcoder = __transcoder
+    import pulumi_google_native.translate as __translate
+    translate = __translate
+    import pulumi_google_native.vision as __vision
+    vision = __vision
+    import pulumi_google_native.vpcaccess as __vpcaccess
+    vpcaccess = __vpcaccess
+    import pulumi_google_native.websecurityscanner as __websecurityscanner
+    websecurityscanner = __websecurityscanner
+    import pulumi_google_native.workflowexecutions as __workflowexecutions
+    workflowexecutions = __workflowexecutions
+    import pulumi_google_native.workflows as __workflows
+    workflows = __workflows
 else:
     accesscontextmanager = _utilities.lazy_import('pulumi_google_native.accesscontextmanager')
     apigateway = _utilities.lazy_import('pulumi_google_native.apigateway')

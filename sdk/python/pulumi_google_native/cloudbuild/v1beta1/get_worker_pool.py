@@ -13,6 +13,7 @@ __all__ = [
     'GetWorkerPoolResult',
     'AwaitableGetWorkerPoolResult',
     'get_worker_pool',
+    'get_worker_pool_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_worker_pool(location: Optional[str] = None,
         state=__ret__.state,
         update_time=__ret__.update_time,
         worker_config=__ret__.worker_config)
+
+
+@_utilities.lift_output_func(get_worker_pool)
+def get_worker_pool_output(location: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           worker_pool_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkerPoolResult]:
+    """
+    Returns details of a `WorkerPool`.
+    """
+    ...

@@ -12,6 +12,7 @@ __all__ = [
     'GetEnvgroupResult',
     'AwaitableGetEnvgroupResult',
     'get_envgroup',
+    'get_envgroup_output',
 ]
 
 @pulumi.output_type
@@ -108,3 +109,13 @@ def get_envgroup(envgroup_id: Optional[str] = None,
         last_modified_at=__ret__.last_modified_at,
         name=__ret__.name,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_envgroup)
+def get_envgroup_output(envgroup_id: Optional[pulumi.Input[str]] = None,
+                        organization_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvgroupResult]:
+    """
+    Gets an environment group.
+    """
+    ...

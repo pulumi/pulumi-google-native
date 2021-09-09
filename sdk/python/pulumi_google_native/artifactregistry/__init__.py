@@ -7,8 +7,10 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.artifactregistry.v1beta1 as v1beta1
-    import pulumi_google_native.artifactregistry.v1beta2 as v1beta2
+    import pulumi_google_native.artifactregistry.v1beta1 as __v1beta1
+    v1beta1 = __v1beta1
+    import pulumi_google_native.artifactregistry.v1beta2 as __v1beta2
+    v1beta2 = __v1beta2
 else:
     v1beta1 = _utilities.lazy_import('pulumi_google_native.artifactregistry.v1beta1')
     v1beta2 = _utilities.lazy_import('pulumi_google_native.artifactregistry.v1beta2')

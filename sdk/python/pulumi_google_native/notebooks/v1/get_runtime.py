@@ -13,6 +13,7 @@ __all__ = [
     'GetRuntimeResult',
     'AwaitableGetRuntimeResult',
     'get_runtime',
+    'get_runtime_output',
 ]
 
 @pulumi.output_type
@@ -163,3 +164,14 @@ def get_runtime(location: Optional[str] = None,
         state=__ret__.state,
         update_time=__ret__.update_time,
         virtual_machine=__ret__.virtual_machine)
+
+
+@_utilities.lift_output_func(get_runtime)
+def get_runtime_output(location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       runtime_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuntimeResult]:
+    """
+    Gets details of a single Runtime. The location must be a regional endpoint rather than zonal.
+    """
+    ...

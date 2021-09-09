@@ -13,6 +13,7 @@ __all__ = [
     'GetKeyResult',
     'AwaitableGetKeyResult',
     'get_key',
+    'get_key_output',
 ]
 
 @pulumi.output_type
@@ -163,3 +164,14 @@ def get_key(key_id: Optional[str] = None,
         restrictions=__ret__.restrictions,
         uid=__ret__.uid,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_key)
+def get_key_output(key_id: Optional[pulumi.Input[str]] = None,
+                   location: Optional[pulumi.Input[str]] = None,
+                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyResult]:
+    """
+    Gets the metadata for an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+    """
+    ...

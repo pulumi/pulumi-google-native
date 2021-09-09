@@ -12,6 +12,7 @@ __all__ = [
     'GetSnapshotResult',
     'AwaitableGetSnapshotResult',
     'get_snapshot',
+    'get_snapshot_output',
 ]
 
 @pulumi.output_type
@@ -95,3 +96,13 @@ def get_snapshot(project: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         topic=__ret__.topic)
+
+
+@_utilities.lift_output_func(get_snapshot)
+def get_snapshot_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                        snapshot_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
+    """
+    Gets the configuration details of a snapshot. Snapshots are used in Seek operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot.
+    """
+    ...

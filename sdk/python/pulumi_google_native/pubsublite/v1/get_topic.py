@@ -13,6 +13,7 @@ __all__ = [
     'GetTopicResult',
     'AwaitableGetTopicResult',
     'get_topic',
+    'get_topic_output',
 ]
 
 @pulumi.output_type
@@ -85,3 +86,14 @@ def get_topic(location: Optional[str] = None,
         name=__ret__.name,
         partition_config=__ret__.partition_config,
         retention_config=__ret__.retention_config)
+
+
+@_utilities.lift_output_func(get_topic)
+def get_topic_output(location: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     topic_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicResult]:
+    """
+    Returns the topic configuration.
+    """
+    ...

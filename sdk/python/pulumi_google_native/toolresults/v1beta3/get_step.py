@@ -13,6 +13,7 @@ __all__ = [
     'GetStepResult',
     'AwaitableGetStepResult',
     'get_step',
+    'get_step_output',
 ]
 
 @pulumi.output_type
@@ -243,3 +244,15 @@ def get_step(execution_id: Optional[str] = None,
         step_id=__ret__.step_id,
         test_execution_step=__ret__.test_execution_step,
         tool_execution_step=__ret__.tool_execution_step)
+
+
+@_utilities.lift_output_func(get_step)
+def get_step_output(execution_id: Optional[pulumi.Input[str]] = None,
+                    history_id: Optional[pulumi.Input[str]] = None,
+                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                    step_id: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStepResult]:
+    """
+    Gets a Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Step does not exist
+    """
+    ...

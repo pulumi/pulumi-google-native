@@ -12,6 +12,7 @@ __all__ = [
     'GetServiceAccountResult',
     'AwaitableGetServiceAccountResult',
     'get_service_account',
+    'get_service_account_output',
 ]
 
 @pulumi.output_type
@@ -147,3 +148,13 @@ def get_service_account(project: Optional[str] = None,
         oauth2_client_id=__ret__.oauth2_client_id,
         project=__ret__.project,
         unique_id=__ret__.unique_id)
+
+
+@_utilities.lift_output_func(get_service_account)
+def get_service_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                               service_account_id: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceAccountResult]:
+    """
+    Gets a ServiceAccount.
+    """
+    ...

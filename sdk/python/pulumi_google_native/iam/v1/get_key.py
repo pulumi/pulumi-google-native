@@ -12,6 +12,7 @@ __all__ = [
     'GetKeyResult',
     'AwaitableGetKeyResult',
     'get_key',
+    'get_key_output',
 ]
 
 @pulumi.output_type
@@ -164,3 +165,15 @@ def get_key(key_id: Optional[str] = None,
         public_key_data=__ret__.public_key_data,
         valid_after_time=__ret__.valid_after_time,
         valid_before_time=__ret__.valid_before_time)
+
+
+@_utilities.lift_output_func(get_key)
+def get_key_output(key_id: Optional[pulumi.Input[str]] = None,
+                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                   public_key_type: Optional[pulumi.Input[Optional[str]]] = None,
+                   service_account_id: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyResult]:
+    """
+    Gets a ServiceAccountKey.
+    """
+    ...

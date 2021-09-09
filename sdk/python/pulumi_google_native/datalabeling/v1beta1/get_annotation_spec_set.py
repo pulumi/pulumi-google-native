@@ -13,6 +13,7 @@ __all__ = [
     'GetAnnotationSpecSetResult',
     'AwaitableGetAnnotationSpecSetResult',
     'get_annotation_spec_set',
+    'get_annotation_spec_set_output',
 ]
 
 @pulumi.output_type
@@ -109,3 +110,13 @@ def get_annotation_spec_set(annotation_spec_set_id: Optional[str] = None,
         description=__ret__.description,
         display_name=__ret__.display_name,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_annotation_spec_set)
+def get_annotation_spec_set_output(annotation_spec_set_id: Optional[pulumi.Input[str]] = None,
+                                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAnnotationSpecSetResult]:
+    """
+    Gets an annotation spec set by resource name.
+    """
+    ...

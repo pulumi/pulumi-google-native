@@ -13,6 +13,7 @@ __all__ = [
     'GetOsPolicyAssignmentResult',
     'AwaitableGetOsPolicyAssignmentResult',
     'get_os_policy_assignment',
+    'get_os_policy_assignment_output',
 ]
 
 @pulumi.output_type
@@ -215,3 +216,14 @@ def get_os_policy_assignment(location: Optional[str] = None,
         rollout=__ret__.rollout,
         rollout_state=__ret__.rollout_state,
         uid=__ret__.uid)
+
+
+@_utilities.lift_output_func(get_os_policy_assignment)
+def get_os_policy_assignment_output(location: Optional[pulumi.Input[str]] = None,
+                                    os_policy_assignment_id: Optional[pulumi.Input[str]] = None,
+                                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOsPolicyAssignmentResult]:
+    """
+    Retrieve an existing OS policy assignment. This method always returns the latest revision. In order to retrieve a previous revision of the assignment, also provide the revision ID in the `name` parameter.
+    """
+    ...

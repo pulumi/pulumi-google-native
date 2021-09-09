@@ -12,6 +12,7 @@ __all__ = [
     'GetVariableResult',
     'AwaitableGetVariableResult',
     'get_variable',
+    'get_variable_output',
 ]
 
 @pulumi.output_type
@@ -110,3 +111,14 @@ def get_variable(config_id: Optional[str] = None,
         text=__ret__.text,
         update_time=__ret__.update_time,
         value=__ret__.value)
+
+
+@_utilities.lift_output_func(get_variable)
+def get_variable_output(config_id: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        variable_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVariableResult]:
+    """
+    Gets information about a single variable.
+    """
+    ...

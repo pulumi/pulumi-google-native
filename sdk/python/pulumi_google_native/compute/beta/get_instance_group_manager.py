@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceGroupManagerResult',
     'AwaitableGetInstanceGroupManagerResult',
     'get_instance_group_manager',
+    'get_instance_group_manager_output',
 ]
 
 @pulumi.output_type
@@ -345,3 +346,14 @@ def get_instance_group_manager(instance_group_manager: Optional[str] = None,
         update_policy=__ret__.update_policy,
         versions=__ret__.versions,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_instance_group_manager)
+def get_instance_group_manager_output(instance_group_manager: Optional[pulumi.Input[str]] = None,
+                                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      zone: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceGroupManagerResult]:
+    """
+    Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.
+    """
+    ...

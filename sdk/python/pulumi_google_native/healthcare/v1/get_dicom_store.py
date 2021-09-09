@@ -13,6 +13,7 @@ __all__ = [
     'GetDicomStoreResult',
     'AwaitableGetDicomStoreResult',
     'get_dicom_store',
+    'get_dicom_store_output',
 ]
 
 @pulumi.output_type
@@ -87,3 +88,15 @@ def get_dicom_store(dataset_id: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         notification_config=__ret__.notification_config)
+
+
+@_utilities.lift_output_func(get_dicom_store)
+def get_dicom_store_output(dataset_id: Optional[pulumi.Input[str]] = None,
+                           dicom_store_id: Optional[pulumi.Input[str]] = None,
+                           location: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDicomStoreResult]:
+    """
+    Gets the specified DICOM store.
+    """
+    ...

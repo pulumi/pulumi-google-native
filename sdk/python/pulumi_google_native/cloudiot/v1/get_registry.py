@@ -13,6 +13,7 @@ __all__ = [
     'GetRegistryResult',
     'AwaitableGetRegistryResult',
     'get_registry',
+    'get_registry_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_registry(location: Optional[str] = None,
         mqtt_config=__ret__.mqtt_config,
         name=__ret__.name,
         state_notification_config=__ret__.state_notification_config)
+
+
+@_utilities.lift_output_func(get_registry)
+def get_registry_output(location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        registry_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryResult]:
+    """
+    Gets a device registry configuration.
+    """
+    ...

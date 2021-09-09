@@ -13,6 +13,7 @@ __all__ = [
     'GetBucketAccessControlResult',
     'AwaitableGetBucketAccessControlResult',
     'get_bucket_access_control',
+    'get_bucket_access_control_output',
 ]
 
 @pulumi.output_type
@@ -189,3 +190,15 @@ def get_bucket_access_control(bucket: Optional[str] = None,
         project_team=__ret__.project_team,
         role=__ret__.role,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_bucket_access_control)
+def get_bucket_access_control_output(bucket: Optional[pulumi.Input[str]] = None,
+                                     entity: Optional[pulumi.Input[str]] = None,
+                                     provisional_user_project: Optional[pulumi.Input[Optional[str]]] = None,
+                                     user_project: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketAccessControlResult]:
+    """
+    Returns the ACL entry for the specified entity on the specified bucket.
+    """
+    ...

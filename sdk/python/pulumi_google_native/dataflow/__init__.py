@@ -7,7 +7,8 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.dataflow.v1b3 as v1b3
+    import pulumi_google_native.dataflow.v1b3 as __v1b3
+    v1b3 = __v1b3
 else:
     v1b3 = _utilities.lazy_import('pulumi_google_native.dataflow.v1b3')
 

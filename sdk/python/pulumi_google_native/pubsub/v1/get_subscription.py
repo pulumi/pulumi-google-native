@@ -13,6 +13,7 @@ __all__ = [
     'GetSubscriptionResult',
     'AwaitableGetSubscriptionResult',
     'get_subscription',
+    'get_subscription_output',
 ]
 
 @pulumi.output_type
@@ -226,3 +227,13 @@ def get_subscription(project: Optional[str] = None,
         retry_policy=__ret__.retry_policy,
         topic=__ret__.topic,
         topic_message_retention_duration=__ret__.topic_message_retention_duration)
+
+
+@_utilities.lift_output_func(get_subscription)
+def get_subscription_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                            subscription_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionResult]:
+    """
+    Gets the configuration details of a subscription.
+    """
+    ...

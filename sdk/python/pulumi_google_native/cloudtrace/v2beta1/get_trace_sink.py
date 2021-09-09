@@ -13,6 +13,7 @@ __all__ = [
     'GetTraceSinkResult',
     'AwaitableGetTraceSinkResult',
     'get_trace_sink',
+    'get_trace_sink_output',
 ]
 
 @pulumi.output_type
@@ -83,3 +84,13 @@ def get_trace_sink(project: Optional[str] = None,
         name=__ret__.name,
         output_config=__ret__.output_config,
         writer_identity=__ret__.writer_identity)
+
+
+@_utilities.lift_output_func(get_trace_sink)
+def get_trace_sink_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                          trace_sink_id: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTraceSinkResult]:
+    """
+    Get a trace sink by name under the parent resource (GCP project).
+    """
+    ...

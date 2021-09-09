@@ -7,7 +7,8 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.remotebuildexecution.v1alpha as v1alpha
+    import pulumi_google_native.remotebuildexecution.v1alpha as __v1alpha
+    v1alpha = __v1alpha
 else:
     v1alpha = _utilities.lazy_import('pulumi_google_native.remotebuildexecution.v1alpha')
 

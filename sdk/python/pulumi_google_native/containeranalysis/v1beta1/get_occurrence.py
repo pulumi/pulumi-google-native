@@ -13,6 +13,7 @@ __all__ = [
     'GetOccurrenceResult',
     'AwaitableGetOccurrenceResult',
     'get_occurrence',
+    'get_occurrence_output',
 ]
 
 @pulumi.output_type
@@ -291,3 +292,13 @@ def get_occurrence(occurrence_id: Optional[str] = None,
         spdx_relationship=__ret__.spdx_relationship,
         update_time=__ret__.update_time,
         vulnerability=__ret__.vulnerability)
+
+
+@_utilities.lift_output_func(get_occurrence)
+def get_occurrence_output(occurrence_id: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOccurrenceResult]:
+    """
+    Gets the specified occurrence.
+    """
+    ...

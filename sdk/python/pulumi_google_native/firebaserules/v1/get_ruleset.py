@@ -13,6 +13,7 @@ __all__ = [
     'GetRulesetResult',
     'AwaitableGetRulesetResult',
     'get_ruleset',
+    'get_ruleset_output',
 ]
 
 @pulumi.output_type
@@ -96,3 +97,13 @@ def get_ruleset(project: Optional[str] = None,
         metadata=__ret__.metadata,
         name=__ret__.name,
         source=__ret__.source)
+
+
+@_utilities.lift_output_func(get_ruleset)
+def get_ruleset_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                       ruleset_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesetResult]:
+    """
+    Get a `Ruleset` by name including the full `Source` contents.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetCapacityCommitmentResult',
     'AwaitableGetCapacityCommitmentResult',
     'get_capacity_commitment',
+    'get_capacity_commitment_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,14 @@ def get_capacity_commitment(capacity_commitment_id: Optional[str] = None,
         renewal_plan=__ret__.renewal_plan,
         slot_count=__ret__.slot_count,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_capacity_commitment)
+def get_capacity_commitment_output(capacity_commitment_id: Optional[pulumi.Input[str]] = None,
+                                   location: Optional[pulumi.Input[str]] = None,
+                                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCapacityCommitmentResult]:
+    """
+    Returns information about the capacity commitment.
+    """
+    ...

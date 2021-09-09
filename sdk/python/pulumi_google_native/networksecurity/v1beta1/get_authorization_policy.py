@@ -13,6 +13,7 @@ __all__ = [
     'GetAuthorizationPolicyResult',
     'AwaitableGetAuthorizationPolicyResult',
     'get_authorization_policy',
+    'get_authorization_policy_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_authorization_policy(authorization_policy_id: Optional[str] = None,
         name=__ret__.name,
         rules=__ret__.rules,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_authorization_policy)
+def get_authorization_policy_output(authorization_policy_id: Optional[pulumi.Input[str]] = None,
+                                    location: Optional[pulumi.Input[str]] = None,
+                                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthorizationPolicyResult]:
+    """
+    Gets details of a single AuthorizationPolicy.
+    """
+    ...

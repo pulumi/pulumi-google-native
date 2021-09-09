@@ -21,15 +21,25 @@ class DeviceLogLevel(str, Enum):
     **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
     """
     LOG_LEVEL_UNSPECIFIED = "LOG_LEVEL_UNSPECIFIED"
-    """No logging specified. If not specified, logging will be disabled."""
+    """
+    No logging specified. If not specified, logging will be disabled.
+    """
     NONE = "NONE"
-    """Disables logging."""
+    """
+    Disables logging.
+    """
     ERROR = "ERROR"
-    """Error events will be logged."""
+    """
+    Error events will be logged.
+    """
     INFO = "INFO"
-    """Informational events will be logged, such as connections and disconnections."""
+    """
+    Informational events will be logged, such as connections and disconnections.
+    """
     DEBUG = "DEBUG"
-    """All events will be logged."""
+    """
+    All events will be logged.
+    """
 
 
 class GatewayConfigGatewayAuthMethod(str, Enum):
@@ -37,13 +47,21 @@ class GatewayConfigGatewayAuthMethod(str, Enum):
     Indicates how to authorize and/or authenticate devices to access the gateway.
     """
     GATEWAY_AUTH_METHOD_UNSPECIFIED = "GATEWAY_AUTH_METHOD_UNSPECIFIED"
-    """No authentication/authorization method specified. No devices are allowed to access the gateway."""
+    """
+    No authentication/authorization method specified. No devices are allowed to access the gateway.
+    """
     ASSOCIATION_ONLY = "ASSOCIATION_ONLY"
-    """The device is authenticated through the gateway association only. Device credentials are ignored even if provided."""
+    """
+    The device is authenticated through the gateway association only. Device credentials are ignored even if provided.
+    """
     DEVICE_AUTH_TOKEN_ONLY = "DEVICE_AUTH_TOKEN_ONLY"
-    """The device is authenticated through its own credentials. Gateway association is not checked."""
+    """
+    The device is authenticated through its own credentials. Gateway association is not checked.
+    """
     ASSOCIATION_AND_DEVICE_AUTH_TOKEN = "ASSOCIATION_AND_DEVICE_AUTH_TOKEN"
-    """The device is authenticated through both device credentials and gateway association. The device must be bound to the gateway and must provide its own credentials."""
+    """
+    The device is authenticated through both device credentials and gateway association. The device must be bound to the gateway and must provide its own credentials.
+    """
 
 
 class GatewayConfigGatewayType(str, Enum):
@@ -51,11 +69,17 @@ class GatewayConfigGatewayType(str, Enum):
     Indicates whether the device is a gateway.
     """
     GATEWAY_TYPE_UNSPECIFIED = "GATEWAY_TYPE_UNSPECIFIED"
-    """If unspecified, the device is considered a non-gateway device."""
+    """
+    If unspecified, the device is considered a non-gateway device.
+    """
     GATEWAY = "GATEWAY"
-    """The device is a gateway."""
+    """
+    The device is a gateway.
+    """
     NON_GATEWAY = "NON_GATEWAY"
-    """The device is not a gateway."""
+    """
+    The device is not a gateway.
+    """
 
 
 class HttpConfigHttpEnabledState(str, Enum):
@@ -63,11 +87,17 @@ class HttpConfigHttpEnabledState(str, Enum):
     If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
     """
     HTTP_STATE_UNSPECIFIED = "HTTP_STATE_UNSPECIFIED"
-    """No HTTP state specified. If not specified, DeviceService will be enabled by default."""
+    """
+    No HTTP state specified. If not specified, DeviceService will be enabled by default.
+    """
     HTTP_ENABLED = "HTTP_ENABLED"
-    """Enables DeviceService (HTTP) service for the registry."""
+    """
+    Enables DeviceService (HTTP) service for the registry.
+    """
     HTTP_DISABLED = "HTTP_DISABLED"
-    """Disables DeviceService (HTTP) service for the registry."""
+    """
+    Disables DeviceService (HTTP) service for the registry.
+    """
 
 
 class MqttConfigMqttEnabledState(str, Enum):
@@ -75,11 +105,17 @@ class MqttConfigMqttEnabledState(str, Enum):
     If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
     """
     MQTT_STATE_UNSPECIFIED = "MQTT_STATE_UNSPECIFIED"
-    """No MQTT state specified. If not specified, MQTT will be enabled by default."""
+    """
+    No MQTT state specified. If not specified, MQTT will be enabled by default.
+    """
     MQTT_ENABLED = "MQTT_ENABLED"
-    """Enables a MQTT connection."""
+    """
+    Enables a MQTT connection.
+    """
     MQTT_DISABLED = "MQTT_DISABLED"
-    """Disables a MQTT connection."""
+    """
+    Disables a MQTT connection.
+    """
 
 
 class PublicKeyCertificateFormat(str, Enum):
@@ -87,9 +123,13 @@ class PublicKeyCertificateFormat(str, Enum):
     The certificate format.
     """
     UNSPECIFIED_PUBLIC_KEY_CERTIFICATE_FORMAT = "UNSPECIFIED_PUBLIC_KEY_CERTIFICATE_FORMAT"
-    """The format has not been specified. This is an invalid default value and must not be used."""
+    """
+    The format has not been specified. This is an invalid default value and must not be used.
+    """
     X509_CERTIFICATE_PEM = "X509_CERTIFICATE_PEM"
-    """An X.509v3 certificate ([RFC5280](https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`."""
+    """
+    An X.509v3 certificate ([RFC5280](https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+    """
 
 
 class PublicKeyCredentialFormat(str, Enum):
@@ -97,15 +137,25 @@ class PublicKeyCredentialFormat(str, Enum):
     The format of the key.
     """
     UNSPECIFIED_PUBLIC_KEY_FORMAT = "UNSPECIFIED_PUBLIC_KEY_FORMAT"
-    """The format has not been specified. This is an invalid default value and must not be used."""
+    """
+    The format has not been specified. This is an invalid default value and must not be used.
+    """
     RSA_PEM = "RSA_PEM"
-    """An RSA public key encoded in base64, and wrapped by `-----BEGIN PUBLIC KEY-----` and `-----END PUBLIC KEY-----`. This can be used to verify `RS256` signatures in JWT tokens ([RFC7518]( https://www.ietf.org/rfc/rfc7518.txt))."""
+    """
+    An RSA public key encoded in base64, and wrapped by `-----BEGIN PUBLIC KEY-----` and `-----END PUBLIC KEY-----`. This can be used to verify `RS256` signatures in JWT tokens ([RFC7518]( https://www.ietf.org/rfc/rfc7518.txt)).
+    """
     RSA_X509_PEM = "RSA_X509_PEM"
-    """As RSA_PEM, but wrapped in an X.509v3 certificate ([RFC5280]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`."""
+    """
+    As RSA_PEM, but wrapped in an X.509v3 certificate ([RFC5280]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+    """
     ES256_PEM = "ES256_PEM"
-    """Public key for the ECDSA algorithm using P-256 and SHA-256, encoded in base64, and wrapped by `-----BEGIN PUBLIC KEY-----` and `-----END PUBLIC KEY-----`. This can be used to verify JWT tokens with the `ES256` algorithm ([RFC7518](https://www.ietf.org/rfc/rfc7518.txt)). This curve is defined in [OpenSSL](https://www.openssl.org/) as the `prime256v1` curve."""
+    """
+    Public key for the ECDSA algorithm using P-256 and SHA-256, encoded in base64, and wrapped by `-----BEGIN PUBLIC KEY-----` and `-----END PUBLIC KEY-----`. This can be used to verify JWT tokens with the `ES256` algorithm ([RFC7518](https://www.ietf.org/rfc/rfc7518.txt)). This curve is defined in [OpenSSL](https://www.openssl.org/) as the `prime256v1` curve.
+    """
     ES256_X509_PEM = "ES256_X509_PEM"
-    """As ES256_PEM, but wrapped in an X.509v3 certificate ([RFC5280]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`."""
+    """
+    As ES256_PEM, but wrapped in an X.509v3 certificate ([RFC5280]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+    """
 
 
 class RegistryLogLevel(str, Enum):
@@ -113,12 +163,22 @@ class RegistryLogLevel(str, Enum):
     **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
     """
     LOG_LEVEL_UNSPECIFIED = "LOG_LEVEL_UNSPECIFIED"
-    """No logging specified. If not specified, logging will be disabled."""
+    """
+    No logging specified. If not specified, logging will be disabled.
+    """
     NONE = "NONE"
-    """Disables logging."""
+    """
+    Disables logging.
+    """
     ERROR = "ERROR"
-    """Error events will be logged."""
+    """
+    Error events will be logged.
+    """
     INFO = "INFO"
-    """Informational events will be logged, such as connections and disconnections."""
+    """
+    Informational events will be logged, such as connections and disconnections.
+    """
     DEBUG = "DEBUG"
-    """All events will be logged."""
+    """
+    All events will be logged.
+    """

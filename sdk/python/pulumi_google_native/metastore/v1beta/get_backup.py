@@ -13,6 +13,7 @@ __all__ = [
     'GetBackupResult',
     'AwaitableGetBackupResult',
     'get_backup',
+    'get_backup_output',
 ]
 
 @pulumi.output_type
@@ -139,3 +140,15 @@ def get_backup(backup_id: Optional[str] = None,
         restoring_services=__ret__.restoring_services,
         service_revision=__ret__.service_revision,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_backup)
+def get_backup_output(backup_id: Optional[pulumi.Input[str]] = None,
+                      location: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      service_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupResult]:
+    """
+    Gets details of a single backup.
+    """
+    ...

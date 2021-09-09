@@ -12,6 +12,7 @@ __all__ = [
     'GetSnapshotResult',
     'AwaitableGetSnapshotResult',
     'get_snapshot',
+    'get_snapshot_output',
 ]
 
 @pulumi.output_type
@@ -125,3 +126,15 @@ def get_snapshot(instance_id: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_snapshot)
+def get_snapshot_output(instance_id: Optional[pulumi.Input[str]] = None,
+                        location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        snapshot_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
+    """
+    Gets the details of a specific snapshot.
+    """
+    ...

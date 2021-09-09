@@ -13,6 +13,7 @@ __all__ = [
     'GetRegistrationResult',
     'AwaitableGetRegistrationResult',
     'get_registration',
+    'get_registration_output',
 ]
 
 @pulumi.output_type
@@ -202,3 +203,14 @@ def get_registration(location: Optional[str] = None,
         pending_contact_settings=__ret__.pending_contact_settings,
         state=__ret__.state,
         supported_privacy=__ret__.supported_privacy)
+
+
+@_utilities.lift_output_func(get_registration)
+def get_registration_output(location: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            registration_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistrationResult]:
+    """
+    Gets the details of a `Registration` resource.
+    """
+    ...

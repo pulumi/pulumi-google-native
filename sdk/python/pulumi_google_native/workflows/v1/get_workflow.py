@@ -12,6 +12,7 @@ __all__ = [
     'GetWorkflowResult',
     'AwaitableGetWorkflowResult',
     'get_workflow',
+    'get_workflow_output',
 ]
 
 @pulumi.output_type
@@ -175,3 +176,14 @@ def get_workflow(location: Optional[str] = None,
         source_contents=__ret__.source_contents,
         state=__ret__.state,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_workflow)
+def get_workflow_output(location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        workflow_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkflowResult]:
+    """
+    Gets details of a single Workflow.
+    """
+    ...

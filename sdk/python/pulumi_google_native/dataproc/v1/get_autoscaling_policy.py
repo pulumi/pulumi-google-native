@@ -13,6 +13,7 @@ __all__ = [
     'GetAutoscalingPolicyResult',
     'AwaitableGetAutoscalingPolicyResult',
     'get_autoscaling_policy',
+    'get_autoscaling_policy_output',
 ]
 
 @pulumi.output_type
@@ -95,3 +96,14 @@ def get_autoscaling_policy(autoscaling_policy_id: Optional[str] = None,
         name=__ret__.name,
         secondary_worker_config=__ret__.secondary_worker_config,
         worker_config=__ret__.worker_config)
+
+
+@_utilities.lift_output_func(get_autoscaling_policy)
+def get_autoscaling_policy_output(autoscaling_policy_id: Optional[pulumi.Input[str]] = None,
+                                  location: Optional[pulumi.Input[str]] = None,
+                                  project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutoscalingPolicyResult]:
+    """
+    Retrieves autoscaling policy.
+    """
+    ...

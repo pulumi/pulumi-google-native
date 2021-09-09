@@ -13,6 +13,7 @@ __all__ = [
     'GetRouterResult',
     'AwaitableGetRouterResult',
     'get_router',
+    'get_router_output',
 ]
 
 @pulumi.output_type
@@ -202,3 +203,14 @@ def get_router(project: Optional[str] = None,
         network=__ret__.network,
         region=__ret__.region,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_router)
+def get_router_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                      region: Optional[pulumi.Input[str]] = None,
+                      router: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterResult]:
+    """
+    Returns the specified Router resource. Gets a list of available routers by making a list() request.
+    """
+    ...

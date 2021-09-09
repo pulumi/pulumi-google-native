@@ -12,6 +12,7 @@ __all__ = [
     'GetSubscriptionResult',
     'AwaitableGetSubscriptionResult',
     'get_subscription',
+    'get_subscription_output',
 ]
 
 @pulumi.output_type
@@ -123,3 +124,14 @@ def get_subscription(developer_id: Optional[str] = None,
         last_modified_at=__ret__.last_modified_at,
         name=__ret__.name,
         start_time=__ret__.start_time)
+
+
+@_utilities.lift_output_func(get_subscription)
+def get_subscription_output(developer_id: Optional[pulumi.Input[str]] = None,
+                            organization_id: Optional[pulumi.Input[str]] = None,
+                            subscription_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionResult]:
+    """
+    Gets details for an API product subscription.
+    """
+    ...

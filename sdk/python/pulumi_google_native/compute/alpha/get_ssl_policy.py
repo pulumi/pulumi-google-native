@@ -13,6 +13,7 @@ __all__ = [
     'GetSslPolicyResult',
     'AwaitableGetSslPolicyResult',
     'get_ssl_policy',
+    'get_ssl_policy_output',
 ]
 
 @pulumi.output_type
@@ -213,3 +214,13 @@ def get_ssl_policy(project: Optional[str] = None,
         self_link_with_id=__ret__.self_link_with_id,
         tls_settings=__ret__.tls_settings,
         warnings=__ret__.warnings)
+
+
+@_utilities.lift_output_func(get_ssl_policy)
+def get_ssl_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                          ssl_policy: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSslPolicyResult]:
+    """
+    Lists all of the ordered rules present in a single specified policy.
+    """
+    ...

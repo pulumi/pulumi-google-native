@@ -13,6 +13,7 @@ __all__ = [
     'GetTargetServerResult',
     'AwaitableGetTargetServerResult',
     'get_target_server',
+    'get_target_server_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_target_server(environment_id: Optional[str] = None,
         port=__ret__.port,
         protocol=__ret__.protocol,
         s_sl_info=__ret__.s_sl_info)
+
+
+@_utilities.lift_output_func(get_target_server)
+def get_target_server_output(environment_id: Optional[pulumi.Input[str]] = None,
+                             organization_id: Optional[pulumi.Input[str]] = None,
+                             targetserver_id: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetServerResult]:
+    """
+    Gets a TargetServer resource.
+    """
+    ...
