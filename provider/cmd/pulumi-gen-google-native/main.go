@@ -68,11 +68,18 @@ func main() {
 			}
 			fmt.Printf("Generating samples from %q\n", wd)
 			var samples map[string][]gen.Sample
-			samples, err = gen.ExtractSamples(os.DirFS(filepath.Join(".", "declarative-resource-client-library")), pkgSpec)
+			samples, err = gen.ExtractSamples(os.DirFS(filepath.Join(".", "declarative-resource-client-library")), pkgSpec, meta)
 			if err != nil {
 				break
 			}
-			fmt.Printf("Samples: %#v\n", samples)
+			err = gen.SampleCode(pkgSpec, samples, []string{"nodejs", "dotnet", "python", "go"})
+			if err != nil {
+				break
+			}
+			dir := filepath.Join(".", "provider", "cmd", "pulumi-resource-google-native")
+			if err = emitSchema(*pkgSpec, version, dir, "main", true); err != nil {
+				break
+			}
 		default:
 			dir := path.Join(".", "sdk", language)
 			pkgSpec.Version = version

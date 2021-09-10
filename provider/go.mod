@@ -4,7 +4,9 @@ go 1.16
 
 require (
 	github.com/agext/levenshtein v1.2.2 // indirect
+	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/aymerick/raymond v2.0.2+incompatible // indirect
+	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/bmatcuk/doublestar/v4 v4.0.2
 	github.com/cheggaaa/pb v1.0.27 // indirect
 	github.com/fatih/color v1.10.0 // indirect
@@ -21,6 +23,8 @@ require (
 	github.com/pulumi/pulumi/pkg/v3 v3.7.1
 	github.com/pulumi/pulumi/sdk/v3 v3.7.1
 	github.com/stretchr/testify v1.7.0
+	github.com/vmihailenco/msgpack/v4 v4.3.12 // indirect
+	github.com/zclconf/go-cty v1.3.1 // indirect
 	golang.org/x/oauth2 v0.0.0-20210427180440-81ed05c6b58c
 	google.golang.org/api v0.46.0
 	google.golang.org/grpc v1.37.0
