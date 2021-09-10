@@ -4,6 +4,8 @@ go 1.16
 
 require (
 	github.com/agext/levenshtein v1.2.2 // indirect
+	github.com/aymerick/raymond v2.0.2+incompatible // indirect
+	github.com/bmatcuk/doublestar/v4 v4.0.2
 	github.com/cheggaaa/pb v1.0.27 // indirect
 	github.com/fatih/color v1.10.0 // indirect
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813
@@ -22,4 +24,5 @@ require (
 	golang.org/x/oauth2 v0.0.0-20210427180440-81ed05c6b58c
 	google.golang.org/api v0.46.0
 	google.golang.org/grpc v1.37.0
+	gopkg.in/yaml.v2 v2.2.8 // indirect
 )

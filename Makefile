@@ -38,6 +38,11 @@ generate_schema::
 	$(WORKING_DIR)/bin/$(CODEGEN) schema ${VERSION}
 	echo "Finished generating schema."
 
+generate_samples::
+	echo "Generating samples..."
+	$(WORKING_DIR)/bin/$(CODEGEN) samples ${VERSION}
+	echo "Finished generating samples."
+
 codegen::
 	(cd provider && go build -a -o $(WORKING_DIR)/bin/$(CODEGEN) $(VERSION_FLAGS) $(PROJECT)/provider/cmd/$(CODEGEN))
 

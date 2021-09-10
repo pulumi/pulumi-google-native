@@ -7,14 +7,16 @@ import (
 	"compress/gzip"
 	"encoding/json"
 	"fmt"
-	"google.golang.org/api/discovery/v1"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"path"
+	"path/filepath"
 	"regexp"
 	"strings"
+
+	"google.golang.org/api/discovery/v1"
 
 	"github.com/pkg/errors"
 
@@ -50,7 +52,7 @@ func main() {
 				break
 			}
 		case "schema":
-			dir := path.Join(".", "provider", "cmd", "pulumi-resource-google-native")
+			dir := filepath.Join(".", "provider", "cmd", "pulumi-resource-google-native")
 			if err = emitSchema(*pkgSpec, version, dir, "main", true); err != nil {
 				break
 			}
@@ -58,6 +60,19 @@ func main() {
 			if err = emitMetadata(meta, dir, "main", true); err != nil {
 				break
 			}
+		case "samples":
+			var wd string
+			wd, err = os.Getwd()
+			if err != nil {
+				break
+			}
+			fmt.Printf("Generating samples from %q\n", wd)
+			var samples map[string][]gen.Sample
+			samples, err = gen.ExtractSamples(os.DirFS(filepath.Join(".", "declarative-resource-client-library")), pkgSpec)
+			if err != nil {
+				break
+			}
+			fmt.Printf("Samples: %#v\n", samples)
 		default:
 			dir := path.Join(".", "sdk", language)
 			pkgSpec.Version = version
