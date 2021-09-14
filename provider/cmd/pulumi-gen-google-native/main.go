@@ -16,6 +16,8 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/jedib0t/go-pretty/v6/table"
+
 	"google.golang.org/api/discovery/v1"
 
 	"github.com/pkg/errors"
@@ -72,6 +74,7 @@ func main() {
 			if err != nil {
 				break
 			}
+
 			err = gen.SampleCode(pkgSpec, samples, []string{"nodejs", "dotnet", "python", "go"})
 			if err != nil {
 				break
@@ -80,6 +83,18 @@ func main() {
 			if err = emitSchema(*pkgSpec, version, dir, "main", true); err != nil {
 				break
 			}
+
+			t := table.NewWriter()
+			t.SetOutputMirror(os.Stdout)
+			t.AppendHeader(table.Row{"#", "Token", "Number of Examples"})
+			count := 1
+			for tok, examples := range samples {
+				if len(examples) > 0 {
+					t.AppendRow(table.Row{count, tok, len(examples)})
+					count += 1
+				}
+			}
+			t.Render()
 		default:
 			dir := path.Join(".", "sdk", language)
 			pkgSpec.Version = version

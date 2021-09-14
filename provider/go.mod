@@ -15,6 +15,7 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/hashicorp/go-cleanhttp v0.5.2
 	github.com/hashicorp/hcl/v2 v2.6.0 // indirect
+	github.com/jedib0t/go-pretty/v6 v6.2.4 // indirect
 	github.com/jpillora/backoff v1.0.0
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/mattn/go-runewidth v0.0.9 // indirect

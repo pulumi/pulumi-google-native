@@ -84,6 +84,7 @@ func ExtractSamples(baseFs fs.FS, pkgSpec *schema.PackageSpec, meta *resources.C
 			fmt.Printf("Failure processing sample: %q. Error: %v\n", path, err)
 			return nil
 		}
+
 		if len(s) > 0 {
 			fmt.Printf("Parsed %q:\n%#v\n", path, s)
 		}
