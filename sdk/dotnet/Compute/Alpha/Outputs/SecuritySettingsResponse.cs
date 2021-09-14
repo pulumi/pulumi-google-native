@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// The authentication and authorization settings for a BackendService.
+    /// </summary>
     [OutputType]
     public sealed class SecuritySettingsResponse
     {

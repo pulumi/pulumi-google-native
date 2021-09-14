@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// HttpRouteRuleMatch criteria for field values that must stay within the specified integer range.
+    /// </summary>
     [OutputType]
     public sealed class Int64RangeMatchResponse
     {

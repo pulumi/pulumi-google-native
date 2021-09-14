@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
+    /// </summary>
     [OutputType]
     public sealed class SegmentSettingsResponse
     {

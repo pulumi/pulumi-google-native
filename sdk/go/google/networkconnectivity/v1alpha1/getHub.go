@@ -4,6 +4,9 @@
 package v1alpha1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,75 @@ type LookupHubResult struct {
 	UniqueId string `pulumi:"uniqueId"`
 	// Time when the Hub was updated.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupHubOutput(ctx *pulumi.Context, args LookupHubOutputArgs, opts ...pulumi.InvokeOption) LookupHubResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupHubResult, error) {
+			args := v.(LookupHubArgs)
+			r, err := LookupHub(ctx, &args, opts...)
+			return *r, err
+		}).(LookupHubResultOutput)
+}
+
+type LookupHubOutputArgs struct {
+	HubId   pulumi.StringInput    `pulumi:"hubId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupHubOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHubArgs)(nil)).Elem()
+}
+
+type LookupHubResultOutput struct{ *pulumi.OutputState }
+
+func (LookupHubResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHubResult)(nil)).Elem()
+}
+
+func (o LookupHubResultOutput) ToLookupHubResultOutput() LookupHubResultOutput {
+	return o
+}
+
+func (o LookupHubResultOutput) ToLookupHubResultOutputWithContext(ctx context.Context) LookupHubResultOutput {
+	return o
+}
+
+// Time when the Hub was created.
+func (o LookupHubResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Short description of the hub resource.
+func (o LookupHubResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// User-defined labels.
+func (o LookupHubResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupHubResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Immutable. The name of a Hub resource.
+func (o LookupHubResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current lifecycle state of this Hub.
+func (o LookupHubResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
+func (o LookupHubResultOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// Time when the Hub was updated.
+func (o LookupHubResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupHubResultOutput{})
 }

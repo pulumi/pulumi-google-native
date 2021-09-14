@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Shared message indicating Cloud storage type.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2StorageConfigResponse
     {

@@ -4,6 +4,9 @@
 package v2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,4 +84,182 @@ type LookupTableResult struct {
 	Type string `pulumi:"type"`
 	// [Optional] The view definition.
 	View ViewDefinitionResponse `pulumi:"view"`
+}
+
+func LookupTableOutput(ctx *pulumi.Context, args LookupTableOutputArgs, opts ...pulumi.InvokeOption) LookupTableResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTableResult, error) {
+			args := v.(LookupTableArgs)
+			r, err := LookupTable(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTableResultOutput)
+}
+
+type LookupTableOutputArgs struct {
+	DatasetId      pulumi.StringInput    `pulumi:"datasetId"`
+	Project        pulumi.StringPtrInput `pulumi:"project"`
+	SelectedFields pulumi.StringPtrInput `pulumi:"selectedFields"`
+	TableId        pulumi.StringInput    `pulumi:"tableId"`
+}
+
+func (LookupTableOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTableArgs)(nil)).Elem()
+}
+
+type LookupTableResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTableResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTableResult)(nil)).Elem()
+}
+
+func (o LookupTableResultOutput) ToLookupTableResultOutput() LookupTableResultOutput {
+	return o
+}
+
+func (o LookupTableResultOutput) ToLookupTableResultOutputWithContext(ctx context.Context) LookupTableResultOutput {
+	return o
+}
+
+// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+func (o LookupTableResultOutput) Clustering() ClusteringResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) ClusteringResponse { return v.Clustering }).(ClusteringResponseOutput)
+}
+
+// The time when this table was created, in milliseconds since the epoch.
+func (o LookupTableResultOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// [Optional] A user-friendly description of this table.
+func (o LookupTableResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Custom encryption configuration (e.g., Cloud KMS keys).
+func (o LookupTableResultOutput) EncryptionConfiguration() EncryptionConfigurationResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) EncryptionConfigurationResponse { return v.EncryptionConfiguration }).(EncryptionConfigurationResponseOutput)
+}
+
+// A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+func (o LookupTableResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
+func (o LookupTableResultOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+func (o LookupTableResultOutput) ExternalDataConfiguration() ExternalDataConfigurationResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) ExternalDataConfigurationResponse { return v.ExternalDataConfiguration }).(ExternalDataConfigurationResponseOutput)
+}
+
+// [Optional] A descriptive name for this table.
+func (o LookupTableResultOutput) FriendlyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.FriendlyName }).(pulumi.StringOutput)
+}
+
+// The type of the resource.
+func (o LookupTableResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
+func (o LookupTableResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTableResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The time when this table was last modified, in milliseconds since the epoch.
+func (o LookupTableResultOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// The geographic location where the table resides. This value is inherited from the dataset.
+func (o LookupTableResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// [Optional] Materialized view definition.
+func (o LookupTableResultOutput) MaterializedView() MaterializedViewDefinitionResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) MaterializedViewDefinitionResponse { return v.MaterializedView }).(MaterializedViewDefinitionResponseOutput)
+}
+
+// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+func (o LookupTableResultOutput) Model() ModelDefinitionResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) ModelDefinitionResponse { return v.Model }).(ModelDefinitionResponseOutput)
+}
+
+// The size of this table in bytes, excluding any data in the streaming buffer.
+func (o LookupTableResultOutput) NumBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumBytes }).(pulumi.StringOutput)
+}
+
+// The number of bytes in the table that are considered "long-term storage".
+func (o LookupTableResultOutput) NumLongTermBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumLongTermBytes }).(pulumi.StringOutput)
+}
+
+// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+func (o LookupTableResultOutput) NumPhysicalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumPhysicalBytes }).(pulumi.StringOutput)
+}
+
+// The number of rows of data in this table, excluding any data in the streaming buffer.
+func (o LookupTableResultOutput) NumRows() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumRows }).(pulumi.StringOutput)
+}
+
+// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+func (o LookupTableResultOutput) RangePartitioning() RangePartitioningResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) RangePartitioningResponse { return v.RangePartitioning }).(RangePartitioningResponseOutput)
+}
+
+// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+func (o LookupTableResultOutput) RequirePartitionFilter() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTableResult) bool { return v.RequirePartitionFilter }).(pulumi.BoolOutput)
+}
+
+// [Optional] Describes the schema of this table.
+func (o LookupTableResultOutput) Schema() TableSchemaResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) TableSchemaResponse { return v.Schema }).(TableSchemaResponseOutput)
+}
+
+// A URL that can be used to access this resource again.
+func (o LookupTableResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Snapshot definition.
+func (o LookupTableResultOutput) SnapshotDefinition() SnapshotDefinitionResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) SnapshotDefinitionResponse { return v.SnapshotDefinition }).(SnapshotDefinitionResponseOutput)
+}
+
+// Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
+func (o LookupTableResultOutput) StreamingBuffer() StreamingbufferResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) StreamingbufferResponse { return v.StreamingBuffer }).(StreamingbufferResponseOutput)
+}
+
+// [Required] Reference describing the ID of this table.
+func (o LookupTableResultOutput) TableReference() TableReferenceResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) TableReferenceResponse { return v.TableReference }).(TableReferenceResponseOutput)
+}
+
+// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+func (o LookupTableResultOutput) TimePartitioning() TimePartitioningResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) TimePartitioningResponse { return v.TimePartitioning }).(TimePartitioningResponseOutput)
+}
+
+// Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+func (o LookupTableResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// [Optional] The view definition.
+func (o LookupTableResultOutput) View() ViewDefinitionResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) ViewDefinitionResponse { return v.View }).(ViewDefinitionResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTableResultOutput{})
 }

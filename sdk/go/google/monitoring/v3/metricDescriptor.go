@@ -152,9 +152,7 @@ func (i *MetricDescriptor) ToMetricDescriptorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorOutput)
 }
 
-type MetricDescriptorOutput struct {
-	*pulumi.OutputState
-}
+type MetricDescriptorOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetricDescriptor)(nil))

@@ -13,6 +13,7 @@ __all__ = [
     'GetJobResult',
     'AwaitableGetJobResult',
     'get_job',
+    'get_job_output',
 ]
 
 @pulumi.output_type
@@ -347,3 +348,15 @@ def get_job(job_id: Optional[str] = None,
         temp_files=__ret__.temp_files,
         transform_name_mapping=__ret__.transform_name_mapping,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_job)
+def get_job_output(job_id: Optional[pulumi.Input[str]] = None,
+                   location: Optional[pulumi.Input[str]] = None,
+                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                   view: Optional[pulumi.Input[Optional[str]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobResult]:
+    """
+    Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not recommended, as you can only get the state of jobs that are running in `us-central1`.
+    """
+    ...

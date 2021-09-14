@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Outputs
 {
 
+    /// <summary>
+    /// An user owned Grafeas note references a Grafeas Attestation.Authority Note created by the user.
+    /// </summary>
     [OutputType]
     public sealed class UserOwnedGrafeasNoteResponse
     {

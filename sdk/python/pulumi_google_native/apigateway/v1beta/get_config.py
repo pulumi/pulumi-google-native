@@ -13,6 +13,7 @@ __all__ = [
     'GetConfigResult',
     'AwaitableGetConfigResult',
     'get_config',
+    'get_config_output',
 ]
 
 @pulumi.output_type
@@ -206,3 +207,16 @@ def get_config(api_id: Optional[str] = None,
         service_config_id=__ret__.service_config_id,
         state=__ret__.state,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_config)
+def get_config_output(api_id: Optional[pulumi.Input[str]] = None,
+                      config_id: Optional[pulumi.Input[str]] = None,
+                      location: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      view: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigResult]:
+    """
+    Gets details of a single ApiConfig.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for Automated Early Stopping of Trials. If no implementation_config is set, automated early stopping will not be run.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1__AutomatedStoppingConfigResponse
     {

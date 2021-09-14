@@ -129,9 +129,7 @@ func (i *MetadataImport) ToMetadataImportOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataImportOutput)
 }
 
-type MetadataImportOutput struct {
-	*pulumi.OutputState
-}
+type MetadataImportOutput struct{ *pulumi.OutputState }
 
 func (MetadataImportOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetadataImport)(nil))

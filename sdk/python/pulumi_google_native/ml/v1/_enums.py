@@ -29,11 +29,17 @@ class GoogleCloudMlV1_StudyConfig_MetricSpecGoal(str, Enum):
     Required. The optimization goal of the metric.
     """
     GOAL_TYPE_UNSPECIFIED = "GOAL_TYPE_UNSPECIFIED"
-    """Goal Type will default to maximize."""
+    """
+    Goal Type will default to maximize.
+    """
     MAXIMIZE = "MAXIMIZE"
-    """Maximize the goal metric."""
+    """
+    Maximize the goal metric.
+    """
     MINIMIZE = "MINIMIZE"
-    """Minimize the goal metric."""
+    """
+    Minimize the goal metric.
+    """
 
 
 class GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType(str, Enum):
@@ -41,13 +47,21 @@ class GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType(str, Enum):
     How the parameter should be scaled. Leave unset for categorical parameters.
     """
     SCALE_TYPE_UNSPECIFIED = "SCALE_TYPE_UNSPECIFIED"
-    """By default, no scaling is applied."""
+    """
+    By default, no scaling is applied.
+    """
     UNIT_LINEAR_SCALE = "UNIT_LINEAR_SCALE"
-    """Scales the feasible space to (0, 1) linearly."""
+    """
+    Scales the feasible space to (0, 1) linearly.
+    """
     UNIT_LOG_SCALE = "UNIT_LOG_SCALE"
-    """Scales the feasible space logarithmically to (0, 1). The entire feasible space must be strictly positive."""
+    """
+    Scales the feasible space logarithmically to (0, 1). The entire feasible space must be strictly positive.
+    """
     UNIT_REVERSE_LOG_SCALE = "UNIT_REVERSE_LOG_SCALE"
-    """Scales the feasible space "reverse" logarithmically to (0, 1). The result is that values close to the top of the feasible space are spread out more than points near the bottom. The entire feasible space must be strictly positive."""
+    """
+    Scales the feasible space "reverse" logarithmically to (0, 1). The result is that values close to the top of the feasible space are spread out more than points near the bottom. The entire feasible space must be strictly positive.
+    """
 
 
 class GoogleCloudMlV1_StudyConfig_ParameterSpecType(str, Enum):
@@ -55,15 +69,25 @@ class GoogleCloudMlV1_StudyConfig_ParameterSpecType(str, Enum):
     Required. The type of the parameter.
     """
     PARAMETER_TYPE_UNSPECIFIED = "PARAMETER_TYPE_UNSPECIFIED"
-    """You must specify a valid type. Using this unspecified type will result in an error."""
+    """
+    You must specify a valid type. Using this unspecified type will result in an error.
+    """
     DOUBLE = "DOUBLE"
-    """Type for real-valued parameters."""
+    """
+    Type for real-valued parameters.
+    """
     INTEGER = "INTEGER"
-    """Type for integral parameters."""
+    """
+    Type for integral parameters.
+    """
     CATEGORICAL = "CATEGORICAL"
-    """The parameter is categorical, with a value chosen from the categories field."""
+    """
+    The parameter is categorical, with a value chosen from the categories field.
+    """
     DISCRETE = "DISCRETE"
-    """The parameter is real valued, with a fixed set of feasible points. If `type==DISCRETE`, feasible_points must be provided, and {`min_value`, `max_value`} will be ignored."""
+    """
+    The parameter is real valued, with a fixed set of feasible points. If `type==DISCRETE`, feasible_points must be provided, and {`min_value`, `max_value`} will be ignored.
+    """
 
 
 class GoogleCloudMlV1__AcceleratorConfigType(str, Enum):
@@ -71,23 +95,41 @@ class GoogleCloudMlV1__AcceleratorConfigType(str, Enum):
     The type of accelerator to use.
     """
     ACCELERATOR_TYPE_UNSPECIFIED = "ACCELERATOR_TYPE_UNSPECIFIED"
-    """Unspecified accelerator type. Default to no GPU."""
+    """
+    Unspecified accelerator type. Default to no GPU.
+    """
     NVIDIA_TESLA_K80 = "NVIDIA_TESLA_K80"
-    """Nvidia Tesla K80 GPU."""
+    """
+    Nvidia Tesla K80 GPU.
+    """
     NVIDIA_TESLA_P100 = "NVIDIA_TESLA_P100"
-    """Nvidia Tesla P100 GPU."""
+    """
+    Nvidia Tesla P100 GPU.
+    """
     NVIDIA_TESLA_V100 = "NVIDIA_TESLA_V100"
-    """Nvidia V100 GPU."""
+    """
+    Nvidia V100 GPU.
+    """
     NVIDIA_TESLA_P4 = "NVIDIA_TESLA_P4"
-    """Nvidia Tesla P4 GPU."""
+    """
+    Nvidia Tesla P4 GPU.
+    """
     NVIDIA_TESLA_T4 = "NVIDIA_TESLA_T4"
-    """Nvidia T4 GPU."""
+    """
+    Nvidia T4 GPU.
+    """
     NVIDIA_TESLA_A100 = "NVIDIA_TESLA_A100"
-    """Nvidia A100 GPU."""
+    """
+    Nvidia A100 GPU.
+    """
     TPU_V2 = "TPU_V2"
-    """TPU v2."""
+    """
+    TPU v2.
+    """
     TPU_V3 = "TPU_V3"
-    """TPU v3."""
+    """
+    TPU v3.
+    """
 
 
 class GoogleCloudMlV1__HyperparameterSpecAlgorithm(str, Enum):
@@ -95,11 +137,17 @@ class GoogleCloudMlV1__HyperparameterSpecAlgorithm(str, Enum):
     Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
     """
     ALGORITHM_UNSPECIFIED = "ALGORITHM_UNSPECIFIED"
-    """The default algorithm used by the hyperparameter tuning service. This is a Bayesian optimization algorithm."""
+    """
+    The default algorithm used by the hyperparameter tuning service. This is a Bayesian optimization algorithm.
+    """
     GRID_SEARCH = "GRID_SEARCH"
-    """Simple grid search within the feasible space. To use grid search, all parameters must be `INTEGER`, `CATEGORICAL`, or `DISCRETE`."""
+    """
+    Simple grid search within the feasible space. To use grid search, all parameters must be `INTEGER`, `CATEGORICAL`, or `DISCRETE`.
+    """
     RANDOM_SEARCH = "RANDOM_SEARCH"
-    """Simple random search within the feasible space."""
+    """
+    Simple random search within the feasible space.
+    """
 
 
 class GoogleCloudMlV1__HyperparameterSpecGoal(str, Enum):
@@ -107,11 +155,17 @@ class GoogleCloudMlV1__HyperparameterSpecGoal(str, Enum):
     Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
     """
     GOAL_TYPE_UNSPECIFIED = "GOAL_TYPE_UNSPECIFIED"
-    """Goal Type will default to maximize."""
+    """
+    Goal Type will default to maximize.
+    """
     MAXIMIZE = "MAXIMIZE"
-    """Maximize the goal metric."""
+    """
+    Maximize the goal metric.
+    """
     MINIMIZE = "MINIMIZE"
-    """Minimize the goal metric."""
+    """
+    Minimize the goal metric.
+    """
 
 
 class GoogleCloudMlV1__MetricSpecName(str, Enum):
@@ -119,11 +173,17 @@ class GoogleCloudMlV1__MetricSpecName(str, Enum):
     metric name.
     """
     METRIC_NAME_UNSPECIFIED = "METRIC_NAME_UNSPECIFIED"
-    """Unspecified MetricName."""
+    """
+    Unspecified MetricName.
+    """
     CPU_USAGE = "CPU_USAGE"
-    """CPU usage."""
+    """
+    CPU usage.
+    """
     GPU_DUTY_CYCLE = "GPU_DUTY_CYCLE"
-    """GPU duty cycle."""
+    """
+    GPU duty cycle.
+    """
 
 
 class GoogleCloudMlV1__ParameterSpecScaleType(str, Enum):
@@ -131,13 +191,21 @@ class GoogleCloudMlV1__ParameterSpecScaleType(str, Enum):
     Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
     """
     NONE = "NONE"
-    """By default, no scaling is applied."""
+    """
+    By default, no scaling is applied.
+    """
     UNIT_LINEAR_SCALE = "UNIT_LINEAR_SCALE"
-    """Scales the feasible space to (0, 1) linearly."""
+    """
+    Scales the feasible space to (0, 1) linearly.
+    """
     UNIT_LOG_SCALE = "UNIT_LOG_SCALE"
-    """Scales the feasible space logarithmically to (0, 1). The entire feasible space must be strictly positive."""
+    """
+    Scales the feasible space logarithmically to (0, 1). The entire feasible space must be strictly positive.
+    """
     UNIT_REVERSE_LOG_SCALE = "UNIT_REVERSE_LOG_SCALE"
-    """Scales the feasible space "reverse" logarithmically to (0, 1). The result is that values close to the top of the feasible space are spread out more than points near the bottom. The entire feasible space must be strictly positive."""
+    """
+    Scales the feasible space "reverse" logarithmically to (0, 1). The result is that values close to the top of the feasible space are spread out more than points near the bottom. The entire feasible space must be strictly positive.
+    """
 
 
 class GoogleCloudMlV1__ParameterSpecType(str, Enum):
@@ -145,15 +213,25 @@ class GoogleCloudMlV1__ParameterSpecType(str, Enum):
     Required. The type of the parameter.
     """
     PARAMETER_TYPE_UNSPECIFIED = "PARAMETER_TYPE_UNSPECIFIED"
-    """You must specify a valid type. Using this unspecified type will result in an error."""
+    """
+    You must specify a valid type. Using this unspecified type will result in an error.
+    """
     DOUBLE = "DOUBLE"
-    """Type for real-valued parameters."""
+    """
+    Type for real-valued parameters.
+    """
     INTEGER = "INTEGER"
-    """Type for integral parameters."""
+    """
+    Type for integral parameters.
+    """
     CATEGORICAL = "CATEGORICAL"
-    """The parameter is categorical, with a value chosen from the categories field."""
+    """
+    The parameter is categorical, with a value chosen from the categories field.
+    """
     DISCRETE = "DISCRETE"
-    """The parameter is real valued, with a fixed set of feasible points. If `type==DISCRETE`, feasible_points must be provided, and {`min_value`, `max_value`} will be ignored."""
+    """
+    The parameter is real valued, with a fixed set of feasible points. If `type==DISCRETE`, feasible_points must be provided, and {`min_value`, `max_value`} will be ignored.
+    """
 
 
 class GoogleCloudMlV1__PredictionInputDataFormat(str, Enum):
@@ -161,17 +239,29 @@ class GoogleCloudMlV1__PredictionInputDataFormat(str, Enum):
     Required. The format of the input data files.
     """
     DATA_FORMAT_UNSPECIFIED = "DATA_FORMAT_UNSPECIFIED"
-    """Unspecified format."""
+    """
+    Unspecified format.
+    """
     JSON = "JSON"
-    """Each line of the file is a JSON dictionary representing one record."""
+    """
+    Each line of the file is a JSON dictionary representing one record.
+    """
     TEXT = "TEXT"
-    """Deprecated. Use JSON instead."""
+    """
+    Deprecated. Use JSON instead.
+    """
     TF_RECORD = "TF_RECORD"
-    """The source file is a TFRecord file. Currently available only for input data."""
+    """
+    The source file is a TFRecord file. Currently available only for input data.
+    """
     TF_RECORD_GZIP = "TF_RECORD_GZIP"
-    """The source file is a GZIP-compressed TFRecord file. Currently available only for input data."""
+    """
+    The source file is a GZIP-compressed TFRecord file. Currently available only for input data.
+    """
     CSV = "CSV"
-    """Values are comma-separated rows, with keys in a separate file. Currently available only for output data."""
+    """
+    Values are comma-separated rows, with keys in a separate file. Currently available only for output data.
+    """
 
 
 class GoogleCloudMlV1__PredictionInputOutputDataFormat(str, Enum):
@@ -179,17 +269,29 @@ class GoogleCloudMlV1__PredictionInputOutputDataFormat(str, Enum):
     Optional. Format of the output data files, defaults to JSON.
     """
     DATA_FORMAT_UNSPECIFIED = "DATA_FORMAT_UNSPECIFIED"
-    """Unspecified format."""
+    """
+    Unspecified format.
+    """
     JSON = "JSON"
-    """Each line of the file is a JSON dictionary representing one record."""
+    """
+    Each line of the file is a JSON dictionary representing one record.
+    """
     TEXT = "TEXT"
-    """Deprecated. Use JSON instead."""
+    """
+    Deprecated. Use JSON instead.
+    """
     TF_RECORD = "TF_RECORD"
-    """The source file is a TFRecord file. Currently available only for input data."""
+    """
+    The source file is a TFRecord file. Currently available only for input data.
+    """
     TF_RECORD_GZIP = "TF_RECORD_GZIP"
-    """The source file is a GZIP-compressed TFRecord file. Currently available only for input data."""
+    """
+    The source file is a GZIP-compressed TFRecord file. Currently available only for input data.
+    """
     CSV = "CSV"
-    """Values are comma-separated rows, with keys in a separate file. Currently available only for output data."""
+    """
+    Values are comma-separated rows, with keys in a separate file. Currently available only for output data.
+    """
 
 
 class GoogleCloudMlV1__StudyConfigAlgorithm(str, Enum):
@@ -197,13 +299,21 @@ class GoogleCloudMlV1__StudyConfigAlgorithm(str, Enum):
     The search algorithm specified for the study.
     """
     ALGORITHM_UNSPECIFIED = "ALGORITHM_UNSPECIFIED"
-    """The default algorithm used by the Cloud AI Platform Vizier service."""
+    """
+    The default algorithm used by the Cloud AI Platform Vizier service.
+    """
     GAUSSIAN_PROCESS_BANDIT = "GAUSSIAN_PROCESS_BANDIT"
-    """Gaussian Process Bandit."""
+    """
+    Gaussian Process Bandit.
+    """
     GRID_SEARCH = "GRID_SEARCH"
-    """Simple grid search within the feasible space. To use grid search, all parameters must be `INTEGER`, `CATEGORICAL`, or `DISCRETE`."""
+    """
+    Simple grid search within the feasible space. To use grid search, all parameters must be `INTEGER`, `CATEGORICAL`, or `DISCRETE`.
+    """
     RANDOM_SEARCH = "RANDOM_SEARCH"
-    """Simple random search within the feasible space."""
+    """
+    Simple random search within the feasible space.
+    """
 
 
 class GoogleCloudMlV1__TrainingInputScaleTier(str, Enum):
@@ -211,17 +321,29 @@ class GoogleCloudMlV1__TrainingInputScaleTier(str, Enum):
     Required. Specifies the machine types, the number of replicas for workers and parameter servers.
     """
     BASIC = "BASIC"
-    """A single worker instance. This tier is suitable for learning how to use Cloud ML, and for experimenting with new models using small datasets."""
+    """
+    A single worker instance. This tier is suitable for learning how to use Cloud ML, and for experimenting with new models using small datasets.
+    """
     STANDARD1 = "STANDARD_1"
-    """Many workers and a few parameter servers."""
+    """
+    Many workers and a few parameter servers.
+    """
     PREMIUM1 = "PREMIUM_1"
-    """A large number of workers with many parameter servers."""
+    """
+    A large number of workers with many parameter servers.
+    """
     BASIC_GPU = "BASIC_GPU"
-    """A single worker instance [with a GPU](/ai-platform/training/docs/using-gpus)."""
+    """
+    A single worker instance [with a GPU](/ai-platform/training/docs/using-gpus).
+    """
     BASIC_TPU = "BASIC_TPU"
-    """A single worker instance with a [Cloud TPU](/ml-engine/docs/tensorflow/using-tpus)."""
+    """
+    A single worker instance with a [Cloud TPU](/ml-engine/docs/tensorflow/using-tpus).
+    """
     CUSTOM = "CUSTOM"
-    """The CUSTOM tier is not a set tier, but rather enables you to use your own cluster specification. When you use this tier, set values to configure your processing cluster according to these guidelines: * You _must_ set `TrainingInput.masterType` to specify the type of machine to use for your master node. This is the only required setting. * You _may_ set `TrainingInput.workerCount` to specify the number of workers to use. If you specify one or more workers, you _must_ also set `TrainingInput.workerType` to specify the type of machine to use for your worker nodes. * You _may_ set `TrainingInput.parameterServerCount` to specify the number of parameter servers to use. If you specify one or more parameter servers, you _must_ also set `TrainingInput.parameterServerType` to specify the type of machine to use for your parameter servers. Note that all of your workers must use the same machine type, which can be different from your parameter server type and master type. Your parameter servers must likewise use the same machine type, which can be different from your worker type and master type."""
+    """
+    The CUSTOM tier is not a set tier, but rather enables you to use your own cluster specification. When you use this tier, set values to configure your processing cluster according to these guidelines: * You _must_ set `TrainingInput.masterType` to specify the type of machine to use for your master node. This is the only required setting. * You _may_ set `TrainingInput.workerCount` to specify the number of workers to use. If you specify one or more workers, you _must_ also set `TrainingInput.workerType` to specify the type of machine to use for your worker nodes. * You _may_ set `TrainingInput.parameterServerCount` to specify the number of parameter servers to use. If you specify one or more parameter servers, you _must_ also set `TrainingInput.parameterServerType` to specify the type of machine to use for your parameter servers. Note that all of your workers must use the same machine type, which can be different from your parameter server type and master type. Your parameter servers must likewise use the same machine type, which can be different from your worker type and master type.
+    """
 
 
 class GoogleIamV1__AuditLogConfigLogType(str, Enum):
@@ -229,13 +351,21 @@ class GoogleIamV1__AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
-    """Default case. Should never be this."""
+    """
+    Default case. Should never be this.
+    """
     ADMIN_READ = "ADMIN_READ"
-    """Admin reads. Example: CloudIAM getIamPolicy"""
+    """
+    Admin reads. Example: CloudIAM getIamPolicy
+    """
     DATA_WRITE = "DATA_WRITE"
-    """Data writes. Example: CloudSQL Users create"""
+    """
+    Data writes. Example: CloudSQL Users create
+    """
     DATA_READ = "DATA_READ"
-    """Data reads. Example: CloudSQL Users list"""
+    """
+    Data reads. Example: CloudSQL Users list
+    """
 
 
 class TrialState(str, Enum):
@@ -243,15 +373,25 @@ class TrialState(str, Enum):
     The detailed state of a trial.
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    """The trial state is unspecified."""
+    """
+    The trial state is unspecified.
+    """
     REQUESTED = "REQUESTED"
-    """Indicates that a specific trial has been requested, but it has not yet been suggested by the service."""
+    """
+    Indicates that a specific trial has been requested, but it has not yet been suggested by the service.
+    """
     ACTIVE = "ACTIVE"
-    """Indicates that the trial has been suggested."""
+    """
+    Indicates that the trial has been suggested.
+    """
     COMPLETED = "COMPLETED"
-    """Indicates that the trial is done, and either has a final_measurement set, or is marked as trial_infeasible."""
+    """
+    Indicates that the trial is done, and either has a final_measurement set, or is marked as trial_infeasible.
+    """
     STOPPING = "STOPPING"
-    """Indicates that the trial should stop according to the service."""
+    """
+    Indicates that the trial should stop according to the service.
+    """
 
 
 class VersionFramework(str, Enum):
@@ -259,10 +399,18 @@ class VersionFramework(str, Enum):
     Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
     """
     FRAMEWORK_UNSPECIFIED = "FRAMEWORK_UNSPECIFIED"
-    """Unspecified framework. Assigns a value based on the file suffix."""
+    """
+    Unspecified framework. Assigns a value based on the file suffix.
+    """
     TENSORFLOW = "TENSORFLOW"
-    """Tensorflow framework."""
+    """
+    Tensorflow framework.
+    """
     SCIKIT_LEARN = "SCIKIT_LEARN"
-    """Scikit-learn framework."""
+    """
+    Scikit-learn framework.
+    """
     XGBOOST = "XGBOOST"
-    """XGBoost framework."""
+    """
+    XGBoost framework.
+    """

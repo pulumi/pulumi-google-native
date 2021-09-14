@@ -13,6 +13,7 @@ __all__ = [
     'GetRatePlanResult',
     'AwaitableGetRatePlanResult',
     'get_rate_plan',
+    'get_rate_plan_output',
 ]
 
 @pulumi.output_type
@@ -293,3 +294,14 @@ def get_rate_plan(apiproduct_id: Optional[str] = None,
         setup_fee=__ret__.setup_fee,
         start_time=__ret__.start_time,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_rate_plan)
+def get_rate_plan_output(apiproduct_id: Optional[pulumi.Input[str]] = None,
+                         organization_id: Optional[pulumi.Input[str]] = None,
+                         rateplan_id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRatePlanResult]:
+    """
+    Gets the details of a rate plan.
+    """
+    ...

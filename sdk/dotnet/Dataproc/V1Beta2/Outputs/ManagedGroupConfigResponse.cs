@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Specifies the resources used to actively manage an instance group.
+    /// </summary>
     [OutputType]
     public sealed class ManagedGroupConfigResponse
     {

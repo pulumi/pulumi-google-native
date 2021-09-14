@@ -107,7 +107,7 @@ func (o CompositeFilterOutput) ToCompositeFilterPtrOutput() CompositeFilterPtrOu
 }
 
 func (o CompositeFilterOutput) ToCompositeFilterPtrOutputWithContext(ctx context.Context) CompositeFilterPtrOutput {
-	return o.ApplyT(func(v CompositeFilter) *CompositeFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompositeFilter) *CompositeFilter {
 		return &v
 	}).(CompositeFilterPtrOutput)
 }
@@ -137,7 +137,13 @@ func (o CompositeFilterPtrOutput) ToCompositeFilterPtrOutputWithContext(ctx cont
 }
 
 func (o CompositeFilterPtrOutput) Elem() CompositeFilterOutput {
-	return o.ApplyT(func(v *CompositeFilter) CompositeFilter { return *v }).(CompositeFilterOutput)
+	return o.ApplyT(func(v *CompositeFilter) CompositeFilter {
+		if v != nil {
+			return *v
+		}
+		var ret CompositeFilter
+		return ret
+	}).(CompositeFilterOutput)
 }
 
 // The logic operator of the sub filter.
@@ -543,7 +549,7 @@ func (o DateOutput) ToDatePtrOutput() DatePtrOutput {
 }
 
 func (o DateOutput) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOutput {
-	return o.ApplyT(func(v Date) *Date {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Date) *Date {
 		return &v
 	}).(DatePtrOutput)
 }
@@ -578,7 +584,13 @@ func (o DatePtrOutput) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOu
 }
 
 func (o DatePtrOutput) Elem() DateOutput {
-	return o.ApplyT(func(v *Date) Date { return *v }).(DateOutput)
+	return o.ApplyT(func(v *Date) Date {
+		if v != nil {
+			return *v
+		}
+		var ret Date
+		return ret
+	}).(DateOutput)
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
@@ -1114,10 +1126,11 @@ func (o FilterOutput) ToFilterPtrOutput() FilterPtrOutput {
 }
 
 func (o FilterOutput) ToFilterPtrOutputWithContext(ctx context.Context) FilterPtrOutput {
-	return o.ApplyT(func(v Filter) *Filter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Filter) *Filter {
 		return &v
 	}).(FilterPtrOutput)
 }
+
 func (o FilterOutput) CompositeFilter() CompositeFilterPtrOutput {
 	return o.ApplyT(func(v Filter) *CompositeFilter { return v.CompositeFilter }).(CompositeFilterPtrOutput)
 }
@@ -1141,7 +1154,13 @@ func (o FilterPtrOutput) ToFilterPtrOutputWithContext(ctx context.Context) Filte
 }
 
 func (o FilterPtrOutput) Elem() FilterOutput {
-	return o.ApplyT(func(v *Filter) Filter { return *v }).(FilterOutput)
+	return o.ApplyT(func(v *Filter) Filter {
+		if v != nil {
+			return *v
+		}
+		var ret Filter
+		return ret
+	}).(FilterOutput)
 }
 
 func (o FilterPtrOutput) CompositeFilter() CompositeFilterPtrOutput {
@@ -1833,7 +1852,7 @@ func (o QueryInterpretationConfigOutput) ToQueryInterpretationConfigPtrOutput() 
 }
 
 func (o QueryInterpretationConfigOutput) ToQueryInterpretationConfigPtrOutputWithContext(ctx context.Context) QueryInterpretationConfigPtrOutput {
-	return o.ApplyT(func(v QueryInterpretationConfig) *QueryInterpretationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryInterpretationConfig) *QueryInterpretationConfig {
 		return &v
 	}).(QueryInterpretationConfigPtrOutput)
 }
@@ -1863,7 +1882,13 @@ func (o QueryInterpretationConfigPtrOutput) ToQueryInterpretationConfigPtrOutput
 }
 
 func (o QueryInterpretationConfigPtrOutput) Elem() QueryInterpretationConfigOutput {
-	return o.ApplyT(func(v *QueryInterpretationConfig) QueryInterpretationConfig { return *v }).(QueryInterpretationConfigOutput)
+	return o.ApplyT(func(v *QueryInterpretationConfig) QueryInterpretationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret QueryInterpretationConfig
+		return ret
+	}).(QueryInterpretationConfigOutput)
 }
 
 // Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
@@ -1986,7 +2011,7 @@ func (o QueryInterpretationConfigResponseOutput) ToQueryInterpretationConfigResp
 }
 
 func (o QueryInterpretationConfigResponseOutput) ToQueryInterpretationConfigResponsePtrOutputWithContext(ctx context.Context) QueryInterpretationConfigResponsePtrOutput {
-	return o.ApplyT(func(v QueryInterpretationConfigResponse) *QueryInterpretationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryInterpretationConfigResponse) *QueryInterpretationConfigResponse {
 		return &v
 	}).(QueryInterpretationConfigResponsePtrOutput)
 }
@@ -2016,7 +2041,13 @@ func (o QueryInterpretationConfigResponsePtrOutput) ToQueryInterpretationConfigR
 }
 
 func (o QueryInterpretationConfigResponsePtrOutput) Elem() QueryInterpretationConfigResponseOutput {
-	return o.ApplyT(func(v *QueryInterpretationConfigResponse) QueryInterpretationConfigResponse { return *v }).(QueryInterpretationConfigResponseOutput)
+	return o.ApplyT(func(v *QueryInterpretationConfigResponse) QueryInterpretationConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret QueryInterpretationConfigResponse
+		return ret
+	}).(QueryInterpretationConfigResponseOutput)
 }
 
 // Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
@@ -2139,7 +2170,7 @@ func (o ScoringConfigOutput) ToScoringConfigPtrOutput() ScoringConfigPtrOutput {
 }
 
 func (o ScoringConfigOutput) ToScoringConfigPtrOutputWithContext(ctx context.Context) ScoringConfigPtrOutput {
-	return o.ApplyT(func(v ScoringConfig) *ScoringConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScoringConfig) *ScoringConfig {
 		return &v
 	}).(ScoringConfigPtrOutput)
 }
@@ -2169,7 +2200,13 @@ func (o ScoringConfigPtrOutput) ToScoringConfigPtrOutputWithContext(ctx context.
 }
 
 func (o ScoringConfigPtrOutput) Elem() ScoringConfigOutput {
-	return o.ApplyT(func(v *ScoringConfig) ScoringConfig { return *v }).(ScoringConfigOutput)
+	return o.ApplyT(func(v *ScoringConfig) ScoringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ScoringConfig
+		return ret
+	}).(ScoringConfigOutput)
 }
 
 // Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
@@ -2292,7 +2329,7 @@ func (o ScoringConfigResponseOutput) ToScoringConfigResponsePtrOutput() ScoringC
 }
 
 func (o ScoringConfigResponseOutput) ToScoringConfigResponsePtrOutputWithContext(ctx context.Context) ScoringConfigResponsePtrOutput {
-	return o.ApplyT(func(v ScoringConfigResponse) *ScoringConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScoringConfigResponse) *ScoringConfigResponse {
 		return &v
 	}).(ScoringConfigResponsePtrOutput)
 }
@@ -2322,7 +2359,13 @@ func (o ScoringConfigResponsePtrOutput) ToScoringConfigResponsePtrOutputWithCont
 }
 
 func (o ScoringConfigResponsePtrOutput) Elem() ScoringConfigResponseOutput {
-	return o.ApplyT(func(v *ScoringConfigResponse) ScoringConfigResponse { return *v }).(ScoringConfigResponseOutput)
+	return o.ApplyT(func(v *ScoringConfigResponse) ScoringConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScoringConfigResponse
+		return ret
+	}).(ScoringConfigResponseOutput)
 }
 
 // Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
@@ -2442,7 +2485,7 @@ func (o SortOptionsOutput) ToSortOptionsPtrOutput() SortOptionsPtrOutput {
 }
 
 func (o SortOptionsOutput) ToSortOptionsPtrOutputWithContext(ctx context.Context) SortOptionsPtrOutput {
-	return o.ApplyT(func(v SortOptions) *SortOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SortOptions) *SortOptions {
 		return &v
 	}).(SortOptionsPtrOutput)
 }
@@ -2472,7 +2515,13 @@ func (o SortOptionsPtrOutput) ToSortOptionsPtrOutputWithContext(ctx context.Cont
 }
 
 func (o SortOptionsPtrOutput) Elem() SortOptionsOutput {
-	return o.ApplyT(func(v *SortOptions) SortOptions { return *v }).(SortOptionsOutput)
+	return o.ApplyT(func(v *SortOptions) SortOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SortOptions
+		return ret
+	}).(SortOptionsOutput)
 }
 
 // Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
@@ -2592,7 +2641,7 @@ func (o SortOptionsResponseOutput) ToSortOptionsResponsePtrOutput() SortOptionsR
 }
 
 func (o SortOptionsResponseOutput) ToSortOptionsResponsePtrOutputWithContext(ctx context.Context) SortOptionsResponsePtrOutput {
-	return o.ApplyT(func(v SortOptionsResponse) *SortOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SortOptionsResponse) *SortOptionsResponse {
 		return &v
 	}).(SortOptionsResponsePtrOutput)
 }
@@ -2622,7 +2671,13 @@ func (o SortOptionsResponsePtrOutput) ToSortOptionsResponsePtrOutputWithContext(
 }
 
 func (o SortOptionsResponsePtrOutput) Elem() SortOptionsResponseOutput {
-	return o.ApplyT(func(v *SortOptionsResponse) SortOptionsResponse { return *v }).(SortOptionsResponseOutput)
+	return o.ApplyT(func(v *SortOptionsResponse) SortOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SortOptionsResponse
+		return ret
+	}).(SortOptionsResponseOutput)
 }
 
 // Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
@@ -2745,7 +2800,7 @@ func (o SourceOutput) ToSourcePtrOutput() SourcePtrOutput {
 }
 
 func (o SourceOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return o.ApplyT(func(v Source) *Source {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Source) *Source {
 		return &v
 	}).(SourcePtrOutput)
 }
@@ -2775,7 +2830,13 @@ func (o SourcePtrOutput) ToSourcePtrOutputWithContext(ctx context.Context) Sourc
 }
 
 func (o SourcePtrOutput) Elem() SourceOutput {
-	return o.ApplyT(func(v *Source) Source { return *v }).(SourceOutput)
+	return o.ApplyT(func(v *Source) Source {
+		if v != nil {
+			return *v
+		}
+		var ret Source
+		return ret
+	}).(SourceOutput)
 }
 
 // Source name for content indexed by the Indexing API.
@@ -3134,7 +3195,7 @@ func (o SourceCrowdingConfigOutput) ToSourceCrowdingConfigPtrOutput() SourceCrow
 }
 
 func (o SourceCrowdingConfigOutput) ToSourceCrowdingConfigPtrOutputWithContext(ctx context.Context) SourceCrowdingConfigPtrOutput {
-	return o.ApplyT(func(v SourceCrowdingConfig) *SourceCrowdingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceCrowdingConfig) *SourceCrowdingConfig {
 		return &v
 	}).(SourceCrowdingConfigPtrOutput)
 }
@@ -3164,7 +3225,13 @@ func (o SourceCrowdingConfigPtrOutput) ToSourceCrowdingConfigPtrOutputWithContex
 }
 
 func (o SourceCrowdingConfigPtrOutput) Elem() SourceCrowdingConfigOutput {
-	return o.ApplyT(func(v *SourceCrowdingConfig) SourceCrowdingConfig { return *v }).(SourceCrowdingConfigOutput)
+	return o.ApplyT(func(v *SourceCrowdingConfig) SourceCrowdingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SourceCrowdingConfig
+		return ret
+	}).(SourceCrowdingConfigOutput)
 }
 
 // Maximum number of results allowed from a source. No limits will be set on results if this value is less than or equal to 0.
@@ -3411,7 +3478,7 @@ func (o SourceScoringConfigOutput) ToSourceScoringConfigPtrOutput() SourceScorin
 }
 
 func (o SourceScoringConfigOutput) ToSourceScoringConfigPtrOutputWithContext(ctx context.Context) SourceScoringConfigPtrOutput {
-	return o.ApplyT(func(v SourceScoringConfig) *SourceScoringConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceScoringConfig) *SourceScoringConfig {
 		return &v
 	}).(SourceScoringConfigPtrOutput)
 }
@@ -3436,7 +3503,13 @@ func (o SourceScoringConfigPtrOutput) ToSourceScoringConfigPtrOutputWithContext(
 }
 
 func (o SourceScoringConfigPtrOutput) Elem() SourceScoringConfigOutput {
-	return o.ApplyT(func(v *SourceScoringConfig) SourceScoringConfig { return *v }).(SourceScoringConfigOutput)
+	return o.ApplyT(func(v *SourceScoringConfig) SourceScoringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SourceScoringConfig
+		return ret
+	}).(SourceScoringConfigOutput)
 }
 
 // Importance of the source.
@@ -3608,10 +3681,11 @@ func (o ValueOutput) ToValuePtrOutput() ValuePtrOutput {
 }
 
 func (o ValueOutput) ToValuePtrOutputWithContext(ctx context.Context) ValuePtrOutput {
-	return o.ApplyT(func(v Value) *Value {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Value) *Value {
 		return &v
 	}).(ValuePtrOutput)
 }
+
 func (o ValueOutput) BooleanValue() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Value) *bool { return v.BooleanValue }).(pulumi.BoolPtrOutput)
 }
@@ -3651,7 +3725,13 @@ func (o ValuePtrOutput) ToValuePtrOutputWithContext(ctx context.Context) ValuePt
 }
 
 func (o ValuePtrOutput) Elem() ValueOutput {
-	return o.ApplyT(func(v *Value) Value { return *v }).(ValueOutput)
+	return o.ApplyT(func(v *Value) Value {
+		if v != nil {
+			return *v
+		}
+		var ret Value
+		return ret
+	}).(ValueOutput)
 }
 
 func (o ValuePtrOutput) BooleanValue() pulumi.BoolPtrOutput {
@@ -3805,7 +3885,7 @@ func (o ValueFilterOutput) ToValueFilterPtrOutput() ValueFilterPtrOutput {
 }
 
 func (o ValueFilterOutput) ToValueFilterPtrOutputWithContext(ctx context.Context) ValueFilterPtrOutput {
-	return o.ApplyT(func(v ValueFilter) *ValueFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValueFilter) *ValueFilter {
 		return &v
 	}).(ValueFilterPtrOutput)
 }
@@ -3835,7 +3915,13 @@ func (o ValueFilterPtrOutput) ToValueFilterPtrOutputWithContext(ctx context.Cont
 }
 
 func (o ValueFilterPtrOutput) Elem() ValueFilterOutput {
-	return o.ApplyT(func(v *ValueFilter) ValueFilter { return *v }).(ValueFilterOutput)
+	return o.ApplyT(func(v *ValueFilter) ValueFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ValueFilter
+		return ret
+	}).(ValueFilterOutput)
 }
 
 // The `operator_name` applied to the query, such as *price_greater_than*. The filter can work against both types of filters defined in the schema for your data source: 1. `operator_name`, where the query filters results by the property that matches the value. 2. `greater_than_operator_name` or `less_than_operator_name` in your schema. The query filters the results for the property values that are greater than or less than the supplied value in the query.

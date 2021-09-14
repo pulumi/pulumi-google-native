@@ -106,7 +106,7 @@ func (o InstanceConnectModeOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type InstanceConnectModePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceConnectModePtrOutput) ElementType() reflect.Type {
-	return instanceConnectModePtrType
+	return reflect.TypeOf((**InstanceConnectMode)(nil)).Elem()
 }
 
 func (o InstanceConnectModePtrOutput) ToInstanceConnectModePtrOutput() InstanceConnectModePtrOutput {
@@ -115,6 +115,16 @@ func (o InstanceConnectModePtrOutput) ToInstanceConnectModePtrOutput() InstanceC
 
 func (o InstanceConnectModePtrOutput) ToInstanceConnectModePtrOutputWithContext(ctx context.Context) InstanceConnectModePtrOutput {
 	return o
+}
+
+func (o InstanceConnectModePtrOutput) Elem() InstanceConnectModeOutput {
+	return o.ApplyT(func(v *InstanceConnectMode) InstanceConnectMode {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConnectMode
+		return ret
+	}).(InstanceConnectModeOutput)
 }
 
 func (o InstanceConnectModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o InstanceConnectModePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceConnectModePtrOutput) Elem() InstanceConnectModeOutput {
-	return o.ApplyT(func(v *InstanceConnectMode) InstanceConnectMode {
-		var ret InstanceConnectMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceConnectModeOutput)
 }
 
 // InstanceConnectModeInput is an input type that accepts InstanceConnectModeArgs and InstanceConnectModeOutput values.
@@ -275,7 +275,7 @@ func (o InstanceTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type InstanceTierPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceTierPtrOutput) ElementType() reflect.Type {
-	return instanceTierPtrType
+	return reflect.TypeOf((**InstanceTier)(nil)).Elem()
 }
 
 func (o InstanceTierPtrOutput) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
@@ -284,6 +284,16 @@ func (o InstanceTierPtrOutput) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
 
 func (o InstanceTierPtrOutput) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
 	return o
+}
+
+func (o InstanceTierPtrOutput) Elem() InstanceTierOutput {
+	return o.ApplyT(func(v *InstanceTier) InstanceTier {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceTier
+		return ret
+	}).(InstanceTierOutput)
 }
 
 func (o InstanceTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o InstanceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceTierPtrOutput) Elem() InstanceTierOutput {
-	return o.ApplyT(func(v *InstanceTier) InstanceTier {
-		var ret InstanceTier
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceTierOutput)
 }
 
 // InstanceTierInput is an input type that accepts InstanceTierArgs and InstanceTierOutput values.
@@ -444,7 +444,7 @@ func (o InstanceTransitEncryptionModeOutput) ToStringPtrOutputWithContext(ctx co
 type InstanceTransitEncryptionModePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceTransitEncryptionModePtrOutput) ElementType() reflect.Type {
-	return instanceTransitEncryptionModePtrType
+	return reflect.TypeOf((**InstanceTransitEncryptionMode)(nil)).Elem()
 }
 
 func (o InstanceTransitEncryptionModePtrOutput) ToInstanceTransitEncryptionModePtrOutput() InstanceTransitEncryptionModePtrOutput {
@@ -453,6 +453,16 @@ func (o InstanceTransitEncryptionModePtrOutput) ToInstanceTransitEncryptionModeP
 
 func (o InstanceTransitEncryptionModePtrOutput) ToInstanceTransitEncryptionModePtrOutputWithContext(ctx context.Context) InstanceTransitEncryptionModePtrOutput {
 	return o
+}
+
+func (o InstanceTransitEncryptionModePtrOutput) Elem() InstanceTransitEncryptionModeOutput {
+	return o.ApplyT(func(v *InstanceTransitEncryptionMode) InstanceTransitEncryptionMode {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceTransitEncryptionMode
+		return ret
+	}).(InstanceTransitEncryptionModeOutput)
 }
 
 func (o InstanceTransitEncryptionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -467,16 +477,6 @@ func (o InstanceTransitEncryptionModePtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceTransitEncryptionModePtrOutput) Elem() InstanceTransitEncryptionModeOutput {
-	return o.ApplyT(func(v *InstanceTransitEncryptionMode) InstanceTransitEncryptionMode {
-		var ret InstanceTransitEncryptionMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceTransitEncryptionModeOutput)
 }
 
 // InstanceTransitEncryptionModeInput is an input type that accepts InstanceTransitEncryptionModeArgs and InstanceTransitEncryptionModeOutput values.
@@ -623,7 +623,7 @@ func (o WeeklyMaintenanceWindowDayOutput) ToStringPtrOutputWithContext(ctx conte
 type WeeklyMaintenanceWindowDayPtrOutput struct{ *pulumi.OutputState }
 
 func (WeeklyMaintenanceWindowDayPtrOutput) ElementType() reflect.Type {
-	return weeklyMaintenanceWindowDayPtrType
+	return reflect.TypeOf((**WeeklyMaintenanceWindowDay)(nil)).Elem()
 }
 
 func (o WeeklyMaintenanceWindowDayPtrOutput) ToWeeklyMaintenanceWindowDayPtrOutput() WeeklyMaintenanceWindowDayPtrOutput {
@@ -632,6 +632,16 @@ func (o WeeklyMaintenanceWindowDayPtrOutput) ToWeeklyMaintenanceWindowDayPtrOutp
 
 func (o WeeklyMaintenanceWindowDayPtrOutput) ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowDayPtrOutput {
 	return o
+}
+
+func (o WeeklyMaintenanceWindowDayPtrOutput) Elem() WeeklyMaintenanceWindowDayOutput {
+	return o.ApplyT(func(v *WeeklyMaintenanceWindowDay) WeeklyMaintenanceWindowDay {
+		if v != nil {
+			return *v
+		}
+		var ret WeeklyMaintenanceWindowDay
+		return ret
+	}).(WeeklyMaintenanceWindowDayOutput)
 }
 
 func (o WeeklyMaintenanceWindowDayPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -646,16 +656,6 @@ func (o WeeklyMaintenanceWindowDayPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o WeeklyMaintenanceWindowDayPtrOutput) Elem() WeeklyMaintenanceWindowDayOutput {
-	return o.ApplyT(func(v *WeeklyMaintenanceWindowDay) WeeklyMaintenanceWindowDay {
-		var ret WeeklyMaintenanceWindowDay
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(WeeklyMaintenanceWindowDayOutput)
 }
 
 // WeeklyMaintenanceWindowDayInput is an input type that accepts WeeklyMaintenanceWindowDayArgs and WeeklyMaintenanceWindowDayOutput values.

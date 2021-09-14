@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// The interface for the external VPN gateway.
+    /// </summary>
     [OutputType]
     public sealed class ExternalVpnGatewayInterfaceResponse
     {

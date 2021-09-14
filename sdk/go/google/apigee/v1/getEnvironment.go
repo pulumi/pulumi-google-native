@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,4 +44,85 @@ type LookupEnvironmentResult struct {
 	Properties GoogleCloudApigeeV1PropertiesResponse `pulumi:"properties"`
 	// State of the environment. Values other than ACTIVE means the resource is not ready to use.
 	State string `pulumi:"state"`
+}
+
+func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupEnvironmentResult, error) {
+			args := v.(LookupEnvironmentArgs)
+			r, err := LookupEnvironment(ctx, &args, opts...)
+			return *r, err
+		}).(LookupEnvironmentResultOutput)
+}
+
+type LookupEnvironmentOutputArgs struct {
+	EnvironmentId  pulumi.StringInput `pulumi:"environmentId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupEnvironmentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentArgs)(nil)).Elem()
+}
+
+type LookupEnvironmentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEnvironmentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentResult)(nil)).Elem()
+}
+
+func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutput() LookupEnvironmentResultOutput {
+	return o
+}
+
+func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContext(ctx context.Context) LookupEnvironmentResultOutput {
+	return o
+}
+
+// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+func (o LookupEnvironmentResultOutput) ApiProxyType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.ApiProxyType }).(pulumi.StringOutput)
+}
+
+// Creation time of this environment as milliseconds since epoch.
+func (o LookupEnvironmentResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+func (o LookupEnvironmentResultOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the environment.
+func (o LookupEnvironmentResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Display name for this environment.
+func (o LookupEnvironmentResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Last modification time of this environment as milliseconds since epoch.
+func (o LookupEnvironmentResultOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Key-value pairs that may be used for customizing the environment.
+func (o LookupEnvironmentResultOutput) Properties() GoogleCloudApigeeV1PropertiesResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) GoogleCloudApigeeV1PropertiesResponse { return v.Properties }).(GoogleCloudApigeeV1PropertiesResponseOutput)
+}
+
+// State of the environment. Values other than ACTIVE means the resource is not ready to use.
+func (o LookupEnvironmentResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEnvironmentResultOutput{})
 }

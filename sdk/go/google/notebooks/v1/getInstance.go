@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -92,4 +95,211 @@ type LookupInstanceResult struct {
 	UpgradeHistory []UpgradeHistoryEntryResponse `pulumi:"upgradeHistory"`
 	// Use a Compute Engine VM image to start the notebook instance.
 	VmImage VmImageResponse `pulumi:"vmImage"`
+}
+
+func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupInstanceResult, error) {
+			args := v.(LookupInstanceArgs)
+			r, err := LookupInstance(ctx, &args, opts...)
+			return *r, err
+		}).(LookupInstanceResultOutput)
+}
+
+type LookupInstanceOutputArgs struct {
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Location   pulumi.StringInput    `pulumi:"location"`
+	Project    pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupInstanceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceArgs)(nil)).Elem()
+}
+
+type LookupInstanceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceResult)(nil)).Elem()
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanceResultOutput {
+	return o
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
+	return o
+}
+
+// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+func (o LookupInstanceResultOutput) AcceleratorConfig() AcceleratorConfigResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) AcceleratorConfigResponse { return v.AcceleratorConfig }).(AcceleratorConfigResponseOutput)
+}
+
+// Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
+func (o LookupInstanceResultOutput) BootDiskSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.BootDiskSizeGb }).(pulumi.StringOutput)
+}
+
+// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+func (o LookupInstanceResultOutput) BootDiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.BootDiskType }).(pulumi.StringOutput)
+}
+
+// Use a container image to start the notebook instance.
+func (o LookupInstanceResultOutput) ContainerImage() ContainerImageResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) ContainerImageResponse { return v.ContainerImage }).(ContainerImageResponseOutput)
+}
+
+// Instance creation time.
+func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
+func (o LookupInstanceResultOutput) CustomGpuDriverPath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CustomGpuDriverPath }).(pulumi.StringOutput)
+}
+
+// Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
+func (o LookupInstanceResultOutput) DataDiskSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DataDiskSizeGb }).(pulumi.StringOutput)
+}
+
+// Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+func (o LookupInstanceResultOutput) DataDiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DataDiskType }).(pulumi.StringOutput)
+}
+
+// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+func (o LookupInstanceResultOutput) DiskEncryption() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DiskEncryption }).(pulumi.StringOutput)
+}
+
+// Attached disks to notebook instance.
+func (o LookupInstanceResultOutput) Disks() DiskResponseArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []DiskResponse { return v.Disks }).(DiskResponseArrayOutput)
+}
+
+// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
+func (o LookupInstanceResultOutput) InstallGpuDriver() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.InstallGpuDriver }).(pulumi.BoolOutput)
+}
+
+// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
+func (o LookupInstanceResultOutput) InstanceOwners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.InstanceOwners }).(pulumi.StringArrayOutput)
+}
+
+// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
+func (o LookupInstanceResultOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+// Labels to apply to this instance. These can be later modified by the setLabels method.
+func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+func (o LookupInstanceResultOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Custom metadata to apply to this instance.
+func (o LookupInstanceResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
+func (o LookupInstanceResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+func (o LookupInstanceResultOutput) NicType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.NicType }).(pulumi.StringOutput)
+}
+
+// If true, the notebook instance will not register with the proxy.
+func (o LookupInstanceResultOutput) NoProxyAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.NoProxyAccess }).(pulumi.BoolOutput)
+}
+
+// If true, no public IP will be assigned to this instance.
+func (o LookupInstanceResultOutput) NoPublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.NoPublicIp }).(pulumi.BoolOutput)
+}
+
+// Input only. If true, the data disk will not be auto deleted when deleting the instance.
+func (o LookupInstanceResultOutput) NoRemoveDataDisk() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.NoRemoveDataDisk }).(pulumi.BoolOutput)
+}
+
+// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+func (o LookupInstanceResultOutput) PostStartupScript() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.PostStartupScript }).(pulumi.StringOutput)
+}
+
+// The proxy endpoint that is used to access the Jupyter notebook.
+func (o LookupInstanceResultOutput) ProxyUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ProxyUri }).(pulumi.StringOutput)
+}
+
+// Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
+func (o LookupInstanceResultOutput) ReservationAffinity() ReservationAffinityResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) ReservationAffinityResponse { return v.ReservationAffinity }).(ReservationAffinityResponseOutput)
+}
+
+// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+func (o LookupInstanceResultOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
+func (o LookupInstanceResultOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.ServiceAccountScopes }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+func (o LookupInstanceResultOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) ShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
+}
+
+// The state of this instance.
+func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+func (o LookupInstanceResultOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+func (o LookupInstanceResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Instance update time.
+func (o LookupInstanceResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The upgrade history of this instance.
+func (o LookupInstanceResultOutput) UpgradeHistory() UpgradeHistoryEntryResponseArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []UpgradeHistoryEntryResponse { return v.UpgradeHistory }).(UpgradeHistoryEntryResponseArrayOutput)
+}
+
+// Use a Compute Engine VM image to start the notebook instance.
+func (o LookupInstanceResultOutput) VmImage() VmImageResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) VmImageResponse { return v.VmImage }).(VmImageResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInstanceResultOutput{})
 }

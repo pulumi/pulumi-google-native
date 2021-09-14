@@ -13,6 +13,7 @@ __all__ = [
     'GetTestMatrixResult',
     'AwaitableGetTestMatrixResult',
     'get_test_matrix',
+    'get_test_matrix_output',
 ]
 
 @pulumi.output_type
@@ -213,3 +214,13 @@ def get_test_matrix(project: Optional[str] = None,
         test_matrix_id=__ret__.test_matrix_id,
         test_specification=__ret__.test_specification,
         timestamp=__ret__.timestamp)
+
+
+@_utilities.lift_output_func(get_test_matrix)
+def get_test_matrix_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                           test_matrix_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTestMatrixResult]:
+    """
+    Checks the status of a test matrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
+    """
+    ...

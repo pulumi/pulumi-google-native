@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse
     {

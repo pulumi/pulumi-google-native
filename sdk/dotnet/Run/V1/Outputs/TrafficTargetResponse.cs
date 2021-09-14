@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
+    /// <summary>
+    /// TrafficTarget holds a single entry of the routing table for a Route.
+    /// </summary>
     [OutputType]
     public sealed class TrafficTargetResponse
     {

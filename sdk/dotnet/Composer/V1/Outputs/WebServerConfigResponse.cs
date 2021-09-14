@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1.Outputs
 {
 
+    /// <summary>
+    /// The configuration settings for the Airflow web server App Engine instance.
+    /// </summary>
     [OutputType]
     public sealed class WebServerConfigResponse
     {

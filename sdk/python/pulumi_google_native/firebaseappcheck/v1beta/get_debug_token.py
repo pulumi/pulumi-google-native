@@ -12,6 +12,7 @@ __all__ = [
     'GetDebugTokenResult',
     'AwaitableGetDebugTokenResult',
     'get_debug_token',
+    'get_debug_token_output',
 ]
 
 @pulumi.output_type
@@ -84,3 +85,14 @@ def get_debug_token(app_id: Optional[str] = None,
         display_name=__ret__.display_name,
         name=__ret__.name,
         token=__ret__.token)
+
+
+@_utilities.lift_output_func(get_debug_token)
+def get_debug_token_output(app_id: Optional[pulumi.Input[str]] = None,
+                           debug_token_id: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDebugTokenResult]:
+    """
+    Gets the specified DebugToken. For security reasons, the `token` field is never populated in the response.
+    """
+    ...

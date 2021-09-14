@@ -15,11 +15,17 @@ class AuthorizationPolicyAction(str, Enum):
     Required. The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
     """
     ACTION_UNSPECIFIED = "ACTION_UNSPECIFIED"
-    """Default value."""
+    """
+    Default value.
+    """
     ALLOW = "ALLOW"
-    """Grant access."""
+    """
+    Grant access.
+    """
     DENY = "DENY"
-    """Deny access."""
+    """
+    Deny access.
+    """
 
 
 class GoogleIamV1AuditLogConfigLogType(str, Enum):
@@ -27,10 +33,18 @@ class GoogleIamV1AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
-    """Default case. Should never be this."""
+    """
+    Default case. Should never be this.
+    """
     ADMIN_READ = "ADMIN_READ"
-    """Admin reads. Example: CloudIAM getIamPolicy"""
+    """
+    Admin reads. Example: CloudIAM getIamPolicy
+    """
     DATA_WRITE = "DATA_WRITE"
-    """Data writes. Example: CloudSQL Users create"""
+    """
+    Data writes. Example: CloudSQL Users create
+    """
     DATA_READ = "DATA_READ"
-    """Data reads. Example: CloudSQL Users list"""
+    """
+    Data reads. Example: CloudSQL Users list
+    """

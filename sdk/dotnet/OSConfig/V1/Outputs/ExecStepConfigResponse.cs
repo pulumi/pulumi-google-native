@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
 {
 
+    /// <summary>
+    /// Common configurations for an ExecStep.
+    /// </summary>
     [OutputType]
     public sealed class ExecStepConfigResponse
     {

@@ -112,9 +112,7 @@ func (i *OccurrenceIamPolicy) ToOccurrenceIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(OccurrenceIamPolicyOutput)
 }
 
-type OccurrenceIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type OccurrenceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (OccurrenceIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OccurrenceIamPolicy)(nil))

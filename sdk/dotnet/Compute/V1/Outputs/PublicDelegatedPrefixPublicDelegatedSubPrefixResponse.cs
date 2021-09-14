@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a sub PublicDelegatedPrefix.
+    /// </summary>
     [OutputType]
     public sealed class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse
     {

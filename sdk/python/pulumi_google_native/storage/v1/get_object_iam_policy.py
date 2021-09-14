@@ -13,6 +13,7 @@ __all__ = [
     'GetObjectIamPolicyResult',
     'AwaitableGetObjectIamPolicyResult',
     'get_object_iam_policy',
+    'get_object_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -115,3 +116,16 @@ def get_object_iam_policy(bucket: Optional[str] = None,
         kind=__ret__.kind,
         resource_id=__ret__.resource_id,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_object_iam_policy)
+def get_object_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
+                                 generation: Optional[pulumi.Input[Optional[str]]] = None,
+                                 object: Optional[pulumi.Input[str]] = None,
+                                 provisional_user_project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 user_project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetObjectIamPolicyResult]:
+    """
+    Returns an IAM policy for the specified object.
+    """
+    ...

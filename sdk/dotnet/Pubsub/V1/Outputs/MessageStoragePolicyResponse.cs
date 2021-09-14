@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
 {
 
+    /// <summary>
+    /// A policy constraining the storage of messages published to the topic.
+    /// </summary>
     [OutputType]
     public sealed class MessageStoragePolicyResponse
     {

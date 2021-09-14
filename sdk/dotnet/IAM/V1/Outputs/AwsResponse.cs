@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.IAM.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents an Amazon Web Services identity provider.
+    /// </summary>
     [OutputType]
     public sealed class AwsResponse
     {

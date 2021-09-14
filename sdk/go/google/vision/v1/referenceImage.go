@@ -117,9 +117,7 @@ func (i *ReferenceImage) ToReferenceImageOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ReferenceImageOutput)
 }
 
-type ReferenceImageOutput struct {
-	*pulumi.OutputState
-}
+type ReferenceImageOutput struct{ *pulumi.OutputState }
 
 func (ReferenceImageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReferenceImage)(nil))

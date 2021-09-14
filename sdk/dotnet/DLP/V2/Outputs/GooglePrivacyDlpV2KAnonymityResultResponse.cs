@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Result of the k-anonymity computation.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2KAnonymityResultResponse
     {

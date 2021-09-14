@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// Represents intent parameters.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2IntentParameterResponse
     {

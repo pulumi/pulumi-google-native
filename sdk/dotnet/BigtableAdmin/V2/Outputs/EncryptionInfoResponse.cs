@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigtableAdmin.V2.Outputs
 {
 
+    /// <summary>
+    /// Encryption information for a given resource. If this resource is protected with customer managed encryption, the in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status.
+    /// </summary>
     [OutputType]
     public sealed class EncryptionInfoResponse
     {

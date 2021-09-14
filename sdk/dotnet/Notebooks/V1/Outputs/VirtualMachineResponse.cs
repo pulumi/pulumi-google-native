@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// Runtime using Virtual Machine for computing.
+    /// </summary>
     [OutputType]
     public sealed class VirtualMachineResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// A package managed by APT. - install: `apt-get update &amp;&amp; apt-get -y install [name]` - remove: `apt-get -y remove [name]`
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyResourcePackageResourceAPTResponse
     {

@@ -252,9 +252,7 @@ func (i *InterconnectAttachment) ToInterconnectAttachmentOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentOutput)
 }
 
-type InterconnectAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type InterconnectAttachmentOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InterconnectAttachment)(nil))

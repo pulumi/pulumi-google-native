@@ -12,6 +12,7 @@ __all__ = [
     'GetVersionResult',
     'AwaitableGetVersionResult',
     'get_version',
+    'get_version_output',
 ]
 
 @pulumi.output_type
@@ -110,3 +111,14 @@ def get_version(location: Optional[str] = None,
         name=__ret__.name,
         status=__ret__.status,
         version_number=__ret__.version_number)
+
+
+@_utilities.lift_output_func(get_version)
+def get_version_output(location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       version_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVersionResult]:
+    """
+    Retrieves the specified agent version.
+    """
+    ...

@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,71 @@ type LookupSubscriptionResult struct {
 	Name string `pulumi:"name"`
 	// Time when the API product subscription starts in milliseconds since epoch.
 	StartTime string `pulumi:"startTime"`
+}
+
+func LookupSubscriptionOutput(ctx *pulumi.Context, args LookupSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSubscriptionResult, error) {
+			args := v.(LookupSubscriptionArgs)
+			r, err := LookupSubscription(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSubscriptionResultOutput)
+}
+
+type LookupSubscriptionOutputArgs struct {
+	DeveloperId    pulumi.StringInput `pulumi:"developerId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	SubscriptionId pulumi.StringInput `pulumi:"subscriptionId"`
+}
+
+func (LookupSubscriptionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionArgs)(nil)).Elem()
+}
+
+type LookupSubscriptionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSubscriptionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionResult)(nil)).Elem()
+}
+
+func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutput() LookupSubscriptionResultOutput {
+	return o
+}
+
+func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutputWithContext(ctx context.Context) LookupSubscriptionResultOutput {
+	return o
+}
+
+// Name of the API product for which the developer is purchasing a subscription.
+func (o LookupSubscriptionResultOutput) Apiproduct() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.Apiproduct }).(pulumi.StringOutput)
+}
+
+// Time when the API product subscription was created in milliseconds since epoch.
+func (o LookupSubscriptionResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Time when the API product subscription ends in milliseconds since epoch.
+func (o LookupSubscriptionResultOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Time when the API product subscription was last modified in milliseconds since epoch.
+func (o LookupSubscriptionResultOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API product subscription.
+func (o LookupSubscriptionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Time when the API product subscription starts in milliseconds since epoch.
+func (o LookupSubscriptionResultOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSubscriptionResultOutput{})
 }

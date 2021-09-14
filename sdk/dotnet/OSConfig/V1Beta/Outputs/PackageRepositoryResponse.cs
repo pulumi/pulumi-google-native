@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// A package repository.
+    /// </summary>
     [OutputType]
     public sealed class PackageRepositoryResponse
     {

@@ -114,9 +114,7 @@ func (i *QueueIamPolicy) ToQueueIamPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamPolicyOutput)
 }
 
-type QueueIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type QueueIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (QueueIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*QueueIamPolicy)(nil))

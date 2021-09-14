@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// The configuration that controls how the data will change.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2DeidentifyConfigResponse
     {

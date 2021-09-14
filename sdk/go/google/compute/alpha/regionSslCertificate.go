@@ -150,9 +150,7 @@ func (i *RegionSslCertificate) ToRegionSslCertificateOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSslCertificateOutput)
 }
 
-type RegionSslCertificateOutput struct {
-	*pulumi.OutputState
-}
+type RegionSslCertificateOutput struct{ *pulumi.OutputState }
 
 func (RegionSslCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionSslCertificate)(nil))

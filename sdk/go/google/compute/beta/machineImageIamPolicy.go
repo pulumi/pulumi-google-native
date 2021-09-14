@@ -130,9 +130,7 @@ func (i *MachineImageIamPolicy) ToMachineImageIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamPolicyOutput)
 }
 
-type MachineImageIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type MachineImageIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (MachineImageIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MachineImageIamPolicy)(nil))

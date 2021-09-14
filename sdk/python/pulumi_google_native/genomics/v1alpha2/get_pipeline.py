@@ -13,6 +13,7 @@ __all__ = [
     'GetPipelineResult',
     'AwaitableGetPipelineResult',
     'get_pipeline',
+    'get_pipeline_output',
 ]
 
 @pulumi.output_type
@@ -146,3 +147,12 @@ def get_pipeline(pipeline_id: Optional[str] = None,
         pipeline_id=__ret__.pipeline_id,
         project=__ret__.project,
         resources=__ret__.resources)
+
+
+@_utilities.lift_output_func(get_pipeline)
+def get_pipeline_output(pipeline_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPipelineResult]:
+    """
+    Retrieves a pipeline based on ID. Caller must have READ permission to the project.
+    """
+    ...

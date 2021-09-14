@@ -108,7 +108,7 @@ func (o GoogleFirestoreAdminV1beta1IndexFieldModeOutput) ToStringPtrOutputWithCo
 type GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) ElementType() reflect.Type {
-	return googleFirestoreAdminV1beta1IndexFieldModePtrType
+	return reflect.TypeOf((**GoogleFirestoreAdminV1beta1IndexFieldMode)(nil)).Elem()
 }
 
 func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) ToGoogleFirestoreAdminV1beta1IndexFieldModePtrOutput() GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput {
@@ -117,6 +117,16 @@ func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) ToGoogleFirestoreAdm
 
 func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) ToGoogleFirestoreAdminV1beta1IndexFieldModePtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput {
 	return o
+}
+
+func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) Elem() GoogleFirestoreAdminV1beta1IndexFieldModeOutput {
+	return o.ApplyT(func(v *GoogleFirestoreAdminV1beta1IndexFieldMode) GoogleFirestoreAdminV1beta1IndexFieldMode {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleFirestoreAdminV1beta1IndexFieldMode
+		return ret
+	}).(GoogleFirestoreAdminV1beta1IndexFieldModeOutput)
 }
 
 func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) ToStringPtrOutputWit
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) Elem() GoogleFirestoreAdminV1beta1IndexFieldModeOutput {
-	return o.ApplyT(func(v *GoogleFirestoreAdminV1beta1IndexFieldMode) GoogleFirestoreAdminV1beta1IndexFieldMode {
-		var ret GoogleFirestoreAdminV1beta1IndexFieldMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleFirestoreAdminV1beta1IndexFieldModeOutput)
 }
 
 // GoogleFirestoreAdminV1beta1IndexFieldModeInput is an input type that accepts GoogleFirestoreAdminV1beta1IndexFieldModeArgs and GoogleFirestoreAdminV1beta1IndexFieldModeOutput values.
@@ -279,7 +279,7 @@ func (o IndexStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 type IndexStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (IndexStateEnumPtrOutput) ElementType() reflect.Type {
-	return indexStateEnumPtrType
+	return reflect.TypeOf((**IndexStateEnum)(nil)).Elem()
 }
 
 func (o IndexStateEnumPtrOutput) ToIndexStateEnumPtrOutput() IndexStateEnumPtrOutput {
@@ -288,6 +288,16 @@ func (o IndexStateEnumPtrOutput) ToIndexStateEnumPtrOutput() IndexStateEnumPtrOu
 
 func (o IndexStateEnumPtrOutput) ToIndexStateEnumPtrOutputWithContext(ctx context.Context) IndexStateEnumPtrOutput {
 	return o
+}
+
+func (o IndexStateEnumPtrOutput) Elem() IndexStateEnumOutput {
+	return o.ApplyT(func(v *IndexStateEnum) IndexStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret IndexStateEnum
+		return ret
+	}).(IndexStateEnumOutput)
 }
 
 func (o IndexStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -302,16 +312,6 @@ func (o IndexStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o IndexStateEnumPtrOutput) Elem() IndexStateEnumOutput {
-	return o.ApplyT(func(v *IndexStateEnum) IndexStateEnum {
-		var ret IndexStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(IndexStateEnumOutput)
 }
 
 // IndexStateEnumInput is an input type that accepts IndexStateEnumArgs and IndexStateEnumOutput values.

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for how human labeling task should be done.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse
     {

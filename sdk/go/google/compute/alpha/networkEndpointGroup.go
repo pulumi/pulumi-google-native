@@ -182,9 +182,7 @@ func (i *NetworkEndpointGroup) ToNetworkEndpointGroupOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupOutput)
 }
 
-type NetworkEndpointGroupOutput struct {
-	*pulumi.OutputState
-}
+type NetworkEndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (NetworkEndpointGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkEndpointGroup)(nil))

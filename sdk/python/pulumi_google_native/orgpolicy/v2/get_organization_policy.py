@@ -13,6 +13,7 @@ __all__ = [
     'GetOrganizationPolicyResult',
     'AwaitableGetOrganizationPolicyResult',
     'get_organization_policy',
+    'get_organization_policy_output',
 ]
 
 @pulumi.output_type
@@ -70,3 +71,13 @@ def get_organization_policy(organization_id: Optional[str] = None,
     return AwaitableGetOrganizationPolicyResult(
         name=__ret__.name,
         spec=__ret__.spec)
+
+
+@_utilities.lift_output_func(get_organization_policy)
+def get_organization_policy_output(organization_id: Optional[pulumi.Input[str]] = None,
+                                   policy_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationPolicyResult]:
+    """
+    Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+    """
+    ...

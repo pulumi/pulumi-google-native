@@ -12,6 +12,7 @@ __all__ = [
     'GetConsentStoreResult',
     'AwaitableGetConsentStoreResult',
     'get_consent_store',
+    'get_consent_store_output',
 ]
 
 @pulumi.output_type
@@ -99,3 +100,15 @@ def get_consent_store(consent_store_id: Optional[str] = None,
         enable_consent_create_on_update=__ret__.enable_consent_create_on_update,
         labels=__ret__.labels,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_consent_store)
+def get_consent_store_output(consent_store_id: Optional[pulumi.Input[str]] = None,
+                             dataset_id: Optional[pulumi.Input[str]] = None,
+                             location: Optional[pulumi.Input[str]] = None,
+                             project: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConsentStoreResult]:
+    """
+    Gets the specified consent store.
+    """
+    ...

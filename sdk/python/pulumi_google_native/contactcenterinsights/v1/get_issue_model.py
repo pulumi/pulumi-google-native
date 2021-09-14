@@ -13,6 +13,7 @@ __all__ = [
     'GetIssueModelResult',
     'AwaitableGetIssueModelResult',
     'get_issue_model',
+    'get_issue_model_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_issue_model(issue_model_id: Optional[str] = None,
         state=__ret__.state,
         training_stats=__ret__.training_stats,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_issue_model)
+def get_issue_model_output(issue_model_id: Optional[pulumi.Input[str]] = None,
+                           location: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIssueModelResult]:
+    """
+    Gets an issue model.
+    """
+    ...

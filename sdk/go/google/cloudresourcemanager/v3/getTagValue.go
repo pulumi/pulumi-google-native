@@ -4,6 +4,9 @@
 package v3
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,79 @@ type LookupTagValueResult struct {
 	ShortName string `pulumi:"shortName"`
 	// Update time.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupTagValueOutput(ctx *pulumi.Context, args LookupTagValueOutputArgs, opts ...pulumi.InvokeOption) LookupTagValueResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTagValueResult, error) {
+			args := v.(LookupTagValueArgs)
+			r, err := LookupTagValue(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTagValueResultOutput)
+}
+
+type LookupTagValueOutputArgs struct {
+	TagValueId pulumi.StringInput `pulumi:"tagValueId"`
+}
+
+func (LookupTagValueOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTagValueArgs)(nil)).Elem()
+}
+
+type LookupTagValueResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTagValueResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTagValueResult)(nil)).Elem()
+}
+
+func (o LookupTagValueResultOutput) ToLookupTagValueResultOutput() LookupTagValueResultOutput {
+	return o
+}
+
+func (o LookupTagValueResultOutput) ToLookupTagValueResultOutputWithContext(ctx context.Context) LookupTagValueResultOutput {
+	return o
+}
+
+// Creation time.
+func (o LookupTagValueResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagValueResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.
+func (o LookupTagValueResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagValueResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagValueRequest for details.
+func (o LookupTagValueResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagValueResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Immutable. Resource name for TagValue in the format `tagValues/456`.
+func (o LookupTagValueResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagValueResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
+func (o LookupTagValueResultOutput) NamespacedName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagValueResult) string { return v.NamespacedName }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
+func (o LookupTagValueResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagValueResult) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+func (o LookupTagValueResultOutput) ShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagValueResult) string { return v.ShortName }).(pulumi.StringOutput)
+}
+
+// Update time.
+func (o LookupTagValueResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagValueResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTagValueResultOutput{})
 }

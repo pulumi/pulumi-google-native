@@ -13,6 +13,7 @@ __all__ = [
     'GetOrganizationResult',
     'AwaitableGetOrganizationResult',
     'get_organization',
+    'get_organization_output',
 ]
 
 @pulumi.output_type
@@ -299,3 +300,12 @@ def get_organization(organization_id: Optional[str] = None,
         runtime_type=__ret__.runtime_type,
         state=__ret__.state,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_organization)
+def get_organization_output(organization_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
+    """
+    Gets the profile for an Apigee organization. See [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
+    """
+    ...

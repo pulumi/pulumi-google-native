@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// A set of Shielded Instance options.
+    /// </summary>
     [OutputType]
     public sealed class ShieldedInstanceConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration options for Cloud Armor Adaptive Protection (CAAP).
+    /// </summary>
     [OutputType]
     public sealed class SecurityPolicyAdaptiveProtectionConfigResponse
     {

@@ -13,6 +13,7 @@ __all__ = [
     'GetBackupResult',
     'AwaitableGetBackupResult',
     'get_backup',
+    'get_backup_output',
 ]
 
 @pulumi.output_type
@@ -152,3 +153,15 @@ def get_backup(backup_id: Optional[str] = None,
         source_table=__ret__.source_table,
         start_time=__ret__.start_time,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_backup)
+def get_backup_output(backup_id: Optional[pulumi.Input[str]] = None,
+                      cluster_id: Optional[pulumi.Input[str]] = None,
+                      instance_id: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupResult]:
+    """
+    Gets metadata on a pending or completed Cloud Bigtable Backup.
+    """
+    ...

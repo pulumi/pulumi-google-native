@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Instance represents the status of an instance of a Job.
+    /// </summary>
     [OutputType]
     public sealed class InstanceStatusResponse
     {

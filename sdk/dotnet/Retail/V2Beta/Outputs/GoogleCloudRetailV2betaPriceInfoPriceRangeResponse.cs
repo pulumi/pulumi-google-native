@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Retail.V2Beta.Outputs
 {
 
+    /// <summary>
+    /// The price range of all variant Product having the same Product.primary_product_id.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRetailV2betaPriceInfoPriceRangeResponse
     {

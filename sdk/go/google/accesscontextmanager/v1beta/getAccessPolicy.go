@@ -4,6 +4,9 @@
 package v1beta
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,4 +31,54 @@ type LookupAccessPolicyResult struct {
 	Parent string `pulumi:"parent"`
 	// Human readable title. Does not affect behavior.
 	Title string `pulumi:"title"`
+}
+
+func LookupAccessPolicyOutput(ctx *pulumi.Context, args LookupAccessPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAccessPolicyResult, error) {
+			args := v.(LookupAccessPolicyArgs)
+			r, err := LookupAccessPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAccessPolicyResultOutput)
+}
+
+type LookupAccessPolicyOutputArgs struct {
+	AccessPolicyId pulumi.StringInput `pulumi:"accessPolicyId"`
+}
+
+func (LookupAccessPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccessPolicyArgs)(nil)).Elem()
+}
+
+type LookupAccessPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAccessPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccessPolicyResult)(nil)).Elem()
+}
+
+func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutput() LookupAccessPolicyResultOutput {
+	return o
+}
+
+func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutputWithContext(ctx context.Context) LookupAccessPolicyResultOutput {
+	return o
+}
+
+// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+func (o LookupAccessPolicyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+func (o LookupAccessPolicyResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Human readable title. Does not affect behavior.
+func (o LookupAccessPolicyResultOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Title }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAccessPolicyResultOutput{})
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetBucketResult',
     'AwaitableGetBucketResult',
     'get_bucket',
+    'get_bucket_output',
 ]
 
 @pulumi.output_type
@@ -403,3 +404,17 @@ def get_bucket(bucket: Optional[str] = None,
         versioning=__ret__.versioning,
         website=__ret__.website,
         zone_affinity=__ret__.zone_affinity)
+
+
+@_utilities.lift_output_func(get_bucket)
+def get_bucket_output(bucket: Optional[pulumi.Input[str]] = None,
+                      if_metageneration_match: Optional[pulumi.Input[Optional[str]]] = None,
+                      if_metageneration_not_match: Optional[pulumi.Input[Optional[str]]] = None,
+                      projection: Optional[pulumi.Input[Optional[str]]] = None,
+                      provisional_user_project: Optional[pulumi.Input[Optional[str]]] = None,
+                      user_project: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketResult]:
+    """
+    Returns metadata for the specified bucket.
+    """
+    ...

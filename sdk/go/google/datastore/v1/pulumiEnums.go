@@ -106,7 +106,7 @@ func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToStringPtrOutputW
 type GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ElementType() reflect.Type {
-	return googleDatastoreAdminV1IndexedPropertyDirectionPtrType
+	return reflect.TypeOf((**GoogleDatastoreAdminV1IndexedPropertyDirection)(nil)).Elem()
 }
 
 func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput() GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
@@ -115,6 +115,16 @@ func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToGoogleDatasto
 
 func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
 	return o
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) Elem() GoogleDatastoreAdminV1IndexedPropertyDirectionOutput {
+	return o.ApplyT(func(v *GoogleDatastoreAdminV1IndexedPropertyDirection) GoogleDatastoreAdminV1IndexedPropertyDirection {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDatastoreAdminV1IndexedPropertyDirection
+		return ret
+	}).(GoogleDatastoreAdminV1IndexedPropertyDirectionOutput)
 }
 
 func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToStringPtrOutp
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) Elem() GoogleDatastoreAdminV1IndexedPropertyDirectionOutput {
-	return o.ApplyT(func(v *GoogleDatastoreAdminV1IndexedPropertyDirection) GoogleDatastoreAdminV1IndexedPropertyDirection {
-		var ret GoogleDatastoreAdminV1IndexedPropertyDirection
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleDatastoreAdminV1IndexedPropertyDirectionOutput)
 }
 
 // GoogleDatastoreAdminV1IndexedPropertyDirectionInput is an input type that accepts GoogleDatastoreAdminV1IndexedPropertyDirectionArgs and GoogleDatastoreAdminV1IndexedPropertyDirectionOutput values.
@@ -275,7 +275,7 @@ func (o IndexAncestorOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 type IndexAncestorPtrOutput struct{ *pulumi.OutputState }
 
 func (IndexAncestorPtrOutput) ElementType() reflect.Type {
-	return indexAncestorPtrType
+	return reflect.TypeOf((**IndexAncestor)(nil)).Elem()
 }
 
 func (o IndexAncestorPtrOutput) ToIndexAncestorPtrOutput() IndexAncestorPtrOutput {
@@ -284,6 +284,16 @@ func (o IndexAncestorPtrOutput) ToIndexAncestorPtrOutput() IndexAncestorPtrOutpu
 
 func (o IndexAncestorPtrOutput) ToIndexAncestorPtrOutputWithContext(ctx context.Context) IndexAncestorPtrOutput {
 	return o
+}
+
+func (o IndexAncestorPtrOutput) Elem() IndexAncestorOutput {
+	return o.ApplyT(func(v *IndexAncestor) IndexAncestor {
+		if v != nil {
+			return *v
+		}
+		var ret IndexAncestor
+		return ret
+	}).(IndexAncestorOutput)
 }
 
 func (o IndexAncestorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o IndexAncestorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o IndexAncestorPtrOutput) Elem() IndexAncestorOutput {
-	return o.ApplyT(func(v *IndexAncestor) IndexAncestor {
-		var ret IndexAncestor
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(IndexAncestorOutput)
 }
 
 // IndexAncestorInput is an input type that accepts IndexAncestorArgs and IndexAncestorOutput values.

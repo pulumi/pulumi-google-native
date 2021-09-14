@@ -13,6 +13,7 @@ __all__ = [
     'GetTopicResult',
     'AwaitableGetTopicResult',
     'get_topic',
+    'get_topic_output',
 ]
 
 @pulumi.output_type
@@ -135,3 +136,13 @@ def get_topic(project: Optional[str] = None,
         name=__ret__.name,
         satisfies_pzs=__ret__.satisfies_pzs,
         schema_settings=__ret__.schema_settings)
+
+
+@_utilities.lift_output_func(get_topic)
+def get_topic_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                     topic_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicResult]:
+    """
+    Gets the configuration of a topic.
+    """
+    ...

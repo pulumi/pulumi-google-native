@@ -13,6 +13,7 @@ __all__ = [
     'GetServiceConsumerIamPolicyResult',
     'AwaitableGetServiceConsumerIamPolicyResult',
     'get_service_consumer_iam_policy',
+    'get_service_consumer_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -96,3 +97,13 @@ def get_service_consumer_iam_policy(consumer_id: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_service_consumer_iam_policy)
+def get_service_consumer_iam_policy_output(consumer_id: Optional[pulumi.Input[str]] = None,
+                                           service_id: Optional[pulumi.Input[str]] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceConsumerIamPolicyResult]:
+    """
+    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+    """
+    ...

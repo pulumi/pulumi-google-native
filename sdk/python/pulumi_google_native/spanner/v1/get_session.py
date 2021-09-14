@@ -12,6 +12,7 @@ __all__ = [
     'GetSessionResult',
     'AwaitableGetSessionResult',
     'get_session',
+    'get_session_output',
 ]
 
 @pulumi.output_type
@@ -99,3 +100,15 @@ def get_session(database_id: Optional[str] = None,
         create_time=__ret__.create_time,
         labels=__ret__.labels,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_session)
+def get_session_output(database_id: Optional[pulumi.Input[str]] = None,
+                       instance_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       session_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSessionResult]:
+    """
+    Gets a session. Returns `NOT_FOUND` if the session does not exist. This is mainly useful for determining whether a session is still alive.
+    """
+    ...

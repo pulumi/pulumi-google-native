@@ -12,6 +12,7 @@ __all__ = [
     'GetTenantResult',
     'AwaitableGetTenantResult',
     'get_tenant',
+    'get_tenant_output',
 ]
 
 @pulumi.output_type
@@ -69,3 +70,13 @@ def get_tenant(project: Optional[str] = None,
     return AwaitableGetTenantResult(
         external_id=__ret__.external_id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_tenant)
+def get_tenant_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                      tenant_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTenantResult]:
+    """
+    Retrieves specified tenant.
+    """
+    ...

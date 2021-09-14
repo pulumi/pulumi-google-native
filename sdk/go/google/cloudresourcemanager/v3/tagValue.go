@@ -126,9 +126,7 @@ func (i *TagValue) ToTagValueOutputWithContext(ctx context.Context) TagValueOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueOutput)
 }
 
-type TagValueOutput struct {
-	*pulumi.OutputState
-}
+type TagValueOutput struct{ *pulumi.OutputState }
 
 func (TagValueOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TagValue)(nil))

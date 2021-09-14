@@ -110,7 +110,7 @@ func (o FixedOrPercentOutput) ToFixedOrPercentPtrOutput() FixedOrPercentPtrOutpu
 }
 
 func (o FixedOrPercentOutput) ToFixedOrPercentPtrOutputWithContext(ctx context.Context) FixedOrPercentPtrOutput {
-	return o.ApplyT(func(v FixedOrPercent) *FixedOrPercent {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FixedOrPercent) *FixedOrPercent {
 		return &v
 	}).(FixedOrPercentPtrOutput)
 }
@@ -140,7 +140,13 @@ func (o FixedOrPercentPtrOutput) ToFixedOrPercentPtrOutputWithContext(ctx contex
 }
 
 func (o FixedOrPercentPtrOutput) Elem() FixedOrPercentOutput {
-	return o.ApplyT(func(v *FixedOrPercent) FixedOrPercent { return *v }).(FixedOrPercentOutput)
+	return o.ApplyT(func(v *FixedOrPercent) FixedOrPercent {
+		if v != nil {
+			return *v
+		}
+		var ret FixedOrPercent
+		return ret
+	}).(FixedOrPercentOutput)
 }
 
 // Specifies a fixed value.
@@ -263,7 +269,7 @@ func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponsePtrOutput() FixedO
 }
 
 func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponsePtrOutputWithContext(ctx context.Context) FixedOrPercentResponsePtrOutput {
-	return o.ApplyT(func(v FixedOrPercentResponse) *FixedOrPercentResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FixedOrPercentResponse) *FixedOrPercentResponse {
 		return &v
 	}).(FixedOrPercentResponsePtrOutput)
 }
@@ -293,7 +299,13 @@ func (o FixedOrPercentResponsePtrOutput) ToFixedOrPercentResponsePtrOutputWithCo
 }
 
 func (o FixedOrPercentResponsePtrOutput) Elem() FixedOrPercentResponseOutput {
-	return o.ApplyT(func(v *FixedOrPercentResponse) FixedOrPercentResponse { return *v }).(FixedOrPercentResponseOutput)
+	return o.ApplyT(func(v *FixedOrPercentResponse) FixedOrPercentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FixedOrPercentResponse
+		return ret
+	}).(FixedOrPercentResponseOutput)
 }
 
 // Specifies a fixed value.
@@ -564,7 +576,7 @@ func (o OSPolicyAssignmentInstanceFilterOutput) ToOSPolicyAssignmentInstanceFilt
 }
 
 func (o OSPolicyAssignmentInstanceFilterOutput) ToOSPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterPtrOutput {
-	return o.ApplyT(func(v OSPolicyAssignmentInstanceFilter) *OSPolicyAssignmentInstanceFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyAssignmentInstanceFilter) *OSPolicyAssignmentInstanceFilter {
 		return &v
 	}).(OSPolicyAssignmentInstanceFilterPtrOutput)
 }
@@ -611,7 +623,13 @@ func (o OSPolicyAssignmentInstanceFilterPtrOutput) ToOSPolicyAssignmentInstanceF
 }
 
 func (o OSPolicyAssignmentInstanceFilterPtrOutput) Elem() OSPolicyAssignmentInstanceFilterOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilter) OSPolicyAssignmentInstanceFilter { return *v }).(OSPolicyAssignmentInstanceFilterOutput)
+	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilter) OSPolicyAssignmentInstanceFilter {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyAssignmentInstanceFilter
+		return ret
+	}).(OSPolicyAssignmentInstanceFilterOutput)
 }
 
 // Target all VMs in the project. If true, no other criteria is permitted.
@@ -994,7 +1012,7 @@ func (o OSPolicyAssignmentInstanceFilterResponseOutput) ToOSPolicyAssignmentInst
 }
 
 func (o OSPolicyAssignmentInstanceFilterResponseOutput) ToOSPolicyAssignmentInstanceFilterResponsePtrOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterResponsePtrOutput {
-	return o.ApplyT(func(v OSPolicyAssignmentInstanceFilterResponse) *OSPolicyAssignmentInstanceFilterResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyAssignmentInstanceFilterResponse) *OSPolicyAssignmentInstanceFilterResponse {
 		return &v
 	}).(OSPolicyAssignmentInstanceFilterResponsePtrOutput)
 }
@@ -1045,7 +1063,13 @@ func (o OSPolicyAssignmentInstanceFilterResponsePtrOutput) ToOSPolicyAssignmentI
 }
 
 func (o OSPolicyAssignmentInstanceFilterResponsePtrOutput) Elem() OSPolicyAssignmentInstanceFilterResponseOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilterResponse) OSPolicyAssignmentInstanceFilterResponse { return *v }).(OSPolicyAssignmentInstanceFilterResponseOutput)
+	return o.ApplyT(func(v *OSPolicyAssignmentInstanceFilterResponse) OSPolicyAssignmentInstanceFilterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyAssignmentInstanceFilterResponse
+		return ret
+	}).(OSPolicyAssignmentInstanceFilterResponseOutput)
 }
 
 // Target all VMs in the project. If true, no other criteria is permitted.
@@ -1398,7 +1422,7 @@ func (o OSPolicyAssignmentRolloutOutput) ToOSPolicyAssignmentRolloutPtrOutput() 
 }
 
 func (o OSPolicyAssignmentRolloutOutput) ToOSPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutPtrOutput {
-	return o.ApplyT(func(v OSPolicyAssignmentRollout) *OSPolicyAssignmentRollout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyAssignmentRollout) *OSPolicyAssignmentRollout {
 		return &v
 	}).(OSPolicyAssignmentRolloutPtrOutput)
 }
@@ -1428,7 +1452,13 @@ func (o OSPolicyAssignmentRolloutPtrOutput) ToOSPolicyAssignmentRolloutPtrOutput
 }
 
 func (o OSPolicyAssignmentRolloutPtrOutput) Elem() OSPolicyAssignmentRolloutOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentRollout) OSPolicyAssignmentRollout { return *v }).(OSPolicyAssignmentRolloutOutput)
+	return o.ApplyT(func(v *OSPolicyAssignmentRollout) OSPolicyAssignmentRollout {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyAssignmentRollout
+		return ret
+	}).(OSPolicyAssignmentRolloutOutput)
 }
 
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
@@ -1551,7 +1581,7 @@ func (o OSPolicyAssignmentRolloutResponseOutput) ToOSPolicyAssignmentRolloutResp
 }
 
 func (o OSPolicyAssignmentRolloutResponseOutput) ToOSPolicyAssignmentRolloutResponsePtrOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutResponsePtrOutput {
-	return o.ApplyT(func(v OSPolicyAssignmentRolloutResponse) *OSPolicyAssignmentRolloutResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyAssignmentRolloutResponse) *OSPolicyAssignmentRolloutResponse {
 		return &v
 	}).(OSPolicyAssignmentRolloutResponsePtrOutput)
 }
@@ -1581,7 +1611,13 @@ func (o OSPolicyAssignmentRolloutResponsePtrOutput) ToOSPolicyAssignmentRolloutR
 }
 
 func (o OSPolicyAssignmentRolloutResponsePtrOutput) Elem() OSPolicyAssignmentRolloutResponseOutput {
-	return o.ApplyT(func(v *OSPolicyAssignmentRolloutResponse) OSPolicyAssignmentRolloutResponse { return *v }).(OSPolicyAssignmentRolloutResponseOutput)
+	return o.ApplyT(func(v *OSPolicyAssignmentRolloutResponse) OSPolicyAssignmentRolloutResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyAssignmentRolloutResponse
+		return ret
+	}).(OSPolicyAssignmentRolloutResponseOutput)
 }
 
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
@@ -1922,7 +1958,7 @@ func (o OSPolicyOSFilterOutput) ToOSPolicyOSFilterPtrOutput() OSPolicyOSFilterPt
 }
 
 func (o OSPolicyOSFilterOutput) ToOSPolicyOSFilterPtrOutputWithContext(ctx context.Context) OSPolicyOSFilterPtrOutput {
-	return o.ApplyT(func(v OSPolicyOSFilter) *OSPolicyOSFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyOSFilter) *OSPolicyOSFilter {
 		return &v
 	}).(OSPolicyOSFilterPtrOutput)
 }
@@ -1952,7 +1988,13 @@ func (o OSPolicyOSFilterPtrOutput) ToOSPolicyOSFilterPtrOutputWithContext(ctx co
 }
 
 func (o OSPolicyOSFilterPtrOutput) Elem() OSPolicyOSFilterOutput {
-	return o.ApplyT(func(v *OSPolicyOSFilter) OSPolicyOSFilter { return *v }).(OSPolicyOSFilterOutput)
+	return o.ApplyT(func(v *OSPolicyOSFilter) OSPolicyOSFilter {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyOSFilter
+		return ret
+	}).(OSPolicyOSFilterOutput)
 }
 
 // This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
@@ -2275,7 +2317,7 @@ func (o OSPolicyResourceExecResourceOutput) ToOSPolicyResourceExecResourcePtrOut
 }
 
 func (o OSPolicyResourceExecResourceOutput) ToOSPolicyResourceExecResourcePtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourcePtrOutput {
-	return o.ApplyT(func(v OSPolicyResourceExecResource) *OSPolicyResourceExecResource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceExecResource) *OSPolicyResourceExecResource {
 		return &v
 	}).(OSPolicyResourceExecResourcePtrOutput)
 }
@@ -2305,7 +2347,13 @@ func (o OSPolicyResourceExecResourcePtrOutput) ToOSPolicyResourceExecResourcePtr
 }
 
 func (o OSPolicyResourceExecResourcePtrOutput) Elem() OSPolicyResourceExecResourceOutput {
-	return o.ApplyT(func(v *OSPolicyResourceExecResource) OSPolicyResourceExecResource { return *v }).(OSPolicyResourceExecResourceOutput)
+	return o.ApplyT(func(v *OSPolicyResourceExecResource) OSPolicyResourceExecResource {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceExecResource
+		return ret
+	}).(OSPolicyResourceExecResourceOutput)
 }
 
 // What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
@@ -2440,7 +2488,7 @@ func (o OSPolicyResourceExecResourceExecOutput) ToOSPolicyResourceExecResourceEx
 }
 
 func (o OSPolicyResourceExecResourceExecOutput) ToOSPolicyResourceExecResourceExecPtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourceExecResourceExec) *OSPolicyResourceExecResourceExec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceExecResourceExec) *OSPolicyResourceExecResourceExec {
 		return &v
 	}).(OSPolicyResourceExecResourceExecPtrOutput)
 }
@@ -2487,7 +2535,13 @@ func (o OSPolicyResourceExecResourceExecPtrOutput) ToOSPolicyResourceExecResourc
 }
 
 func (o OSPolicyResourceExecResourceExecPtrOutput) Elem() OSPolicyResourceExecResourceExecOutput {
-	return o.ApplyT(func(v *OSPolicyResourceExecResourceExec) OSPolicyResourceExecResourceExec { return *v }).(OSPolicyResourceExecResourceExecOutput)
+	return o.ApplyT(func(v *OSPolicyResourceExecResourceExec) OSPolicyResourceExecResourceExec {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceExecResourceExec
+		return ret
+	}).(OSPolicyResourceExecResourceExecOutput)
 }
 
 // Optional arguments to pass to the source during execution.
@@ -2807,7 +2861,7 @@ func (o OSPolicyResourceFileOutput) ToOSPolicyResourceFilePtrOutput() OSPolicyRe
 }
 
 func (o OSPolicyResourceFileOutput) ToOSPolicyResourceFilePtrOutputWithContext(ctx context.Context) OSPolicyResourceFilePtrOutput {
-	return o.ApplyT(func(v OSPolicyResourceFile) *OSPolicyResourceFile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceFile) *OSPolicyResourceFile {
 		return &v
 	}).(OSPolicyResourceFilePtrOutput)
 }
@@ -2847,7 +2901,13 @@ func (o OSPolicyResourceFilePtrOutput) ToOSPolicyResourceFilePtrOutputWithContex
 }
 
 func (o OSPolicyResourceFilePtrOutput) Elem() OSPolicyResourceFileOutput {
-	return o.ApplyT(func(v *OSPolicyResourceFile) OSPolicyResourceFile { return *v }).(OSPolicyResourceFileOutput)
+	return o.ApplyT(func(v *OSPolicyResourceFile) OSPolicyResourceFile {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceFile
+		return ret
+	}).(OSPolicyResourceFileOutput)
 }
 
 // Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
@@ -2994,7 +3054,7 @@ func (o OSPolicyResourceFileGcsOutput) ToOSPolicyResourceFileGcsPtrOutput() OSPo
 }
 
 func (o OSPolicyResourceFileGcsOutput) ToOSPolicyResourceFileGcsPtrOutputWithContext(ctx context.Context) OSPolicyResourceFileGcsPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourceFileGcs) *OSPolicyResourceFileGcs {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceFileGcs) *OSPolicyResourceFileGcs {
 		return &v
 	}).(OSPolicyResourceFileGcsPtrOutput)
 }
@@ -3029,7 +3089,13 @@ func (o OSPolicyResourceFileGcsPtrOutput) ToOSPolicyResourceFileGcsPtrOutputWith
 }
 
 func (o OSPolicyResourceFileGcsPtrOutput) Elem() OSPolicyResourceFileGcsOutput {
-	return o.ApplyT(func(v *OSPolicyResourceFileGcs) OSPolicyResourceFileGcs { return *v }).(OSPolicyResourceFileGcsOutput)
+	return o.ApplyT(func(v *OSPolicyResourceFileGcs) OSPolicyResourceFileGcs {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceFileGcs
+		return ret
+	}).(OSPolicyResourceFileGcsOutput)
 }
 
 // Bucket of the Cloud Storage object.
@@ -3235,7 +3301,7 @@ func (o OSPolicyResourceFileRemoteOutput) ToOSPolicyResourceFileRemotePtrOutput(
 }
 
 func (o OSPolicyResourceFileRemoteOutput) ToOSPolicyResourceFileRemotePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileRemotePtrOutput {
-	return o.ApplyT(func(v OSPolicyResourceFileRemote) *OSPolicyResourceFileRemote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceFileRemote) *OSPolicyResourceFileRemote {
 		return &v
 	}).(OSPolicyResourceFileRemotePtrOutput)
 }
@@ -3265,7 +3331,13 @@ func (o OSPolicyResourceFileRemotePtrOutput) ToOSPolicyResourceFileRemotePtrOutp
 }
 
 func (o OSPolicyResourceFileRemotePtrOutput) Elem() OSPolicyResourceFileRemoteOutput {
-	return o.ApplyT(func(v *OSPolicyResourceFileRemote) OSPolicyResourceFileRemote { return *v }).(OSPolicyResourceFileRemoteOutput)
+	return o.ApplyT(func(v *OSPolicyResourceFileRemote) OSPolicyResourceFileRemote {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceFileRemote
+		return ret
+	}).(OSPolicyResourceFileRemoteOutput)
 }
 
 // SHA256 checksum of the remote file.
@@ -3464,7 +3536,7 @@ func (o OSPolicyResourceFileResourceOutput) ToOSPolicyResourceFileResourcePtrOut
 }
 
 func (o OSPolicyResourceFileResourceOutput) ToOSPolicyResourceFileResourcePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileResourcePtrOutput {
-	return o.ApplyT(func(v OSPolicyResourceFileResource) *OSPolicyResourceFileResource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceFileResource) *OSPolicyResourceFileResource {
 		return &v
 	}).(OSPolicyResourceFileResourcePtrOutput)
 }
@@ -3509,7 +3581,13 @@ func (o OSPolicyResourceFileResourcePtrOutput) ToOSPolicyResourceFileResourcePtr
 }
 
 func (o OSPolicyResourceFileResourcePtrOutput) Elem() OSPolicyResourceFileResourceOutput {
-	return o.ApplyT(func(v *OSPolicyResourceFileResource) OSPolicyResourceFileResource { return *v }).(OSPolicyResourceFileResourceOutput)
+	return o.ApplyT(func(v *OSPolicyResourceFileResource) OSPolicyResourceFileResource {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceFileResource
+		return ret
+	}).(OSPolicyResourceFileResourceOutput)
 }
 
 // A a file with this content. The size of the content is limited to 1024 characters.
@@ -4095,7 +4173,7 @@ func (o OSPolicyResourcePackageResourceOutput) ToOSPolicyResourcePackageResource
 }
 
 func (o OSPolicyResourcePackageResourceOutput) ToOSPolicyResourcePackageResourcePtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourcePtrOutput {
-	return o.ApplyT(func(v OSPolicyResourcePackageResource) *OSPolicyResourcePackageResource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourcePackageResource) *OSPolicyResourcePackageResource {
 		return &v
 	}).(OSPolicyResourcePackageResourcePtrOutput)
 }
@@ -4157,7 +4235,13 @@ func (o OSPolicyResourcePackageResourcePtrOutput) ToOSPolicyResourcePackageResou
 }
 
 func (o OSPolicyResourcePackageResourcePtrOutput) Elem() OSPolicyResourcePackageResourceOutput {
-	return o.ApplyT(func(v *OSPolicyResourcePackageResource) OSPolicyResourcePackageResource { return *v }).(OSPolicyResourcePackageResourceOutput)
+	return o.ApplyT(func(v *OSPolicyResourcePackageResource) OSPolicyResourcePackageResource {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourcePackageResource
+		return ret
+	}).(OSPolicyResourcePackageResourceOutput)
 }
 
 // A package managed by Apt.
@@ -4336,7 +4420,7 @@ func (o OSPolicyResourcePackageResourceAPTOutput) ToOSPolicyResourcePackageResou
 }
 
 func (o OSPolicyResourcePackageResourceAPTOutput) ToOSPolicyResourcePackageResourceAPTPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceAPTPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourcePackageResourceAPT) *OSPolicyResourcePackageResourceAPT {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourcePackageResourceAPT) *OSPolicyResourcePackageResourceAPT {
 		return &v
 	}).(OSPolicyResourcePackageResourceAPTPtrOutput)
 }
@@ -4361,7 +4445,13 @@ func (o OSPolicyResourcePackageResourceAPTPtrOutput) ToOSPolicyResourcePackageRe
 }
 
 func (o OSPolicyResourcePackageResourceAPTPtrOutput) Elem() OSPolicyResourcePackageResourceAPTOutput {
-	return o.ApplyT(func(v *OSPolicyResourcePackageResourceAPT) OSPolicyResourcePackageResourceAPT { return *v }).(OSPolicyResourcePackageResourceAPTOutput)
+	return o.ApplyT(func(v *OSPolicyResourcePackageResourceAPT) OSPolicyResourcePackageResourceAPT {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourcePackageResourceAPT
+		return ret
+	}).(OSPolicyResourcePackageResourceAPTOutput)
 }
 
 // Package name.
@@ -4529,7 +4619,7 @@ func (o OSPolicyResourcePackageResourceDebOutput) ToOSPolicyResourcePackageResou
 }
 
 func (o OSPolicyResourcePackageResourceDebOutput) ToOSPolicyResourcePackageResourceDebPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDebPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourcePackageResourceDeb) *OSPolicyResourcePackageResourceDeb {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourcePackageResourceDeb) *OSPolicyResourcePackageResourceDeb {
 		return &v
 	}).(OSPolicyResourcePackageResourceDebPtrOutput)
 }
@@ -4559,7 +4649,13 @@ func (o OSPolicyResourcePackageResourceDebPtrOutput) ToOSPolicyResourcePackageRe
 }
 
 func (o OSPolicyResourcePackageResourceDebPtrOutput) Elem() OSPolicyResourcePackageResourceDebOutput {
-	return o.ApplyT(func(v *OSPolicyResourcePackageResourceDeb) OSPolicyResourcePackageResourceDeb { return *v }).(OSPolicyResourcePackageResourceDebOutput)
+	return o.ApplyT(func(v *OSPolicyResourcePackageResourceDeb) OSPolicyResourcePackageResourceDeb {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourcePackageResourceDeb
+		return ret
+	}).(OSPolicyResourcePackageResourceDebOutput)
 }
 
 // Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
@@ -4742,7 +4838,7 @@ func (o OSPolicyResourcePackageResourceGooGetOutput) ToOSPolicyResourcePackageRe
 }
 
 func (o OSPolicyResourcePackageResourceGooGetOutput) ToOSPolicyResourcePackageResourceGooGetPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceGooGetPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourcePackageResourceGooGet) *OSPolicyResourcePackageResourceGooGet {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourcePackageResourceGooGet) *OSPolicyResourcePackageResourceGooGet {
 		return &v
 	}).(OSPolicyResourcePackageResourceGooGetPtrOutput)
 }
@@ -4767,7 +4863,13 @@ func (o OSPolicyResourcePackageResourceGooGetPtrOutput) ToOSPolicyResourcePackag
 }
 
 func (o OSPolicyResourcePackageResourceGooGetPtrOutput) Elem() OSPolicyResourcePackageResourceGooGetOutput {
-	return o.ApplyT(func(v *OSPolicyResourcePackageResourceGooGet) OSPolicyResourcePackageResourceGooGet { return *v }).(OSPolicyResourcePackageResourceGooGetOutput)
+	return o.ApplyT(func(v *OSPolicyResourcePackageResourceGooGet) OSPolicyResourcePackageResourceGooGet {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourcePackageResourceGooGet
+		return ret
+	}).(OSPolicyResourcePackageResourceGooGetOutput)
 }
 
 // Package name.
@@ -4935,7 +5037,7 @@ func (o OSPolicyResourcePackageResourceMSIOutput) ToOSPolicyResourcePackageResou
 }
 
 func (o OSPolicyResourcePackageResourceMSIOutput) ToOSPolicyResourcePackageResourceMSIPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceMSIPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourcePackageResourceMSI) *OSPolicyResourcePackageResourceMSI {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourcePackageResourceMSI) *OSPolicyResourcePackageResourceMSI {
 		return &v
 	}).(OSPolicyResourcePackageResourceMSIPtrOutput)
 }
@@ -4965,7 +5067,13 @@ func (o OSPolicyResourcePackageResourceMSIPtrOutput) ToOSPolicyResourcePackageRe
 }
 
 func (o OSPolicyResourcePackageResourceMSIPtrOutput) Elem() OSPolicyResourcePackageResourceMSIOutput {
-	return o.ApplyT(func(v *OSPolicyResourcePackageResourceMSI) OSPolicyResourcePackageResourceMSI { return *v }).(OSPolicyResourcePackageResourceMSIOutput)
+	return o.ApplyT(func(v *OSPolicyResourcePackageResourceMSI) OSPolicyResourcePackageResourceMSI {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourcePackageResourceMSI
+		return ret
+	}).(OSPolicyResourcePackageResourceMSIOutput)
 }
 
 // Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
@@ -5152,7 +5260,7 @@ func (o OSPolicyResourcePackageResourceRPMOutput) ToOSPolicyResourcePackageResou
 }
 
 func (o OSPolicyResourcePackageResourceRPMOutput) ToOSPolicyResourcePackageResourceRPMPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceRPMPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourcePackageResourceRPM) *OSPolicyResourcePackageResourceRPM {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourcePackageResourceRPM) *OSPolicyResourcePackageResourceRPM {
 		return &v
 	}).(OSPolicyResourcePackageResourceRPMPtrOutput)
 }
@@ -5182,7 +5290,13 @@ func (o OSPolicyResourcePackageResourceRPMPtrOutput) ToOSPolicyResourcePackageRe
 }
 
 func (o OSPolicyResourcePackageResourceRPMPtrOutput) Elem() OSPolicyResourcePackageResourceRPMOutput {
-	return o.ApplyT(func(v *OSPolicyResourcePackageResourceRPM) OSPolicyResourcePackageResourceRPM { return *v }).(OSPolicyResourcePackageResourceRPMOutput)
+	return o.ApplyT(func(v *OSPolicyResourcePackageResourceRPM) OSPolicyResourcePackageResourceRPM {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourcePackageResourceRPM
+		return ret
+	}).(OSPolicyResourcePackageResourceRPMOutput)
 }
 
 // Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
@@ -5497,7 +5611,7 @@ func (o OSPolicyResourcePackageResourceYUMOutput) ToOSPolicyResourcePackageResou
 }
 
 func (o OSPolicyResourcePackageResourceYUMOutput) ToOSPolicyResourcePackageResourceYUMPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceYUMPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourcePackageResourceYUM) *OSPolicyResourcePackageResourceYUM {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourcePackageResourceYUM) *OSPolicyResourcePackageResourceYUM {
 		return &v
 	}).(OSPolicyResourcePackageResourceYUMPtrOutput)
 }
@@ -5522,7 +5636,13 @@ func (o OSPolicyResourcePackageResourceYUMPtrOutput) ToOSPolicyResourcePackageRe
 }
 
 func (o OSPolicyResourcePackageResourceYUMPtrOutput) Elem() OSPolicyResourcePackageResourceYUMOutput {
-	return o.ApplyT(func(v *OSPolicyResourcePackageResourceYUM) OSPolicyResourcePackageResourceYUM { return *v }).(OSPolicyResourcePackageResourceYUMOutput)
+	return o.ApplyT(func(v *OSPolicyResourcePackageResourceYUM) OSPolicyResourcePackageResourceYUM {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourcePackageResourceYUM
+		return ret
+	}).(OSPolicyResourcePackageResourceYUMOutput)
 }
 
 // Package name.
@@ -5686,7 +5806,7 @@ func (o OSPolicyResourcePackageResourceZypperOutput) ToOSPolicyResourcePackageRe
 }
 
 func (o OSPolicyResourcePackageResourceZypperOutput) ToOSPolicyResourcePackageResourceZypperPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceZypperPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourcePackageResourceZypper) *OSPolicyResourcePackageResourceZypper {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourcePackageResourceZypper) *OSPolicyResourcePackageResourceZypper {
 		return &v
 	}).(OSPolicyResourcePackageResourceZypperPtrOutput)
 }
@@ -5711,7 +5831,13 @@ func (o OSPolicyResourcePackageResourceZypperPtrOutput) ToOSPolicyResourcePackag
 }
 
 func (o OSPolicyResourcePackageResourceZypperPtrOutput) Elem() OSPolicyResourcePackageResourceZypperOutput {
-	return o.ApplyT(func(v *OSPolicyResourcePackageResourceZypper) OSPolicyResourcePackageResourceZypper { return *v }).(OSPolicyResourcePackageResourceZypperOutput)
+	return o.ApplyT(func(v *OSPolicyResourcePackageResourceZypper) OSPolicyResourcePackageResourceZypper {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourcePackageResourceZypper
+		return ret
+	}).(OSPolicyResourcePackageResourceZypperOutput)
 }
 
 // Package name.
@@ -5887,7 +6013,7 @@ func (o OSPolicyResourceRepositoryResourceOutput) ToOSPolicyResourceRepositoryRe
 }
 
 func (o OSPolicyResourceRepositoryResourceOutput) ToOSPolicyResourceRepositoryResourcePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourcePtrOutput {
-	return o.ApplyT(func(v OSPolicyResourceRepositoryResource) *OSPolicyResourceRepositoryResource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceRepositoryResource) *OSPolicyResourceRepositoryResource {
 		return &v
 	}).(OSPolicyResourceRepositoryResourcePtrOutput)
 }
@@ -5935,7 +6061,13 @@ func (o OSPolicyResourceRepositoryResourcePtrOutput) ToOSPolicyResourceRepositor
 }
 
 func (o OSPolicyResourceRepositoryResourcePtrOutput) Elem() OSPolicyResourceRepositoryResourceOutput {
-	return o.ApplyT(func(v *OSPolicyResourceRepositoryResource) OSPolicyResourceRepositoryResource { return *v }).(OSPolicyResourceRepositoryResourceOutput)
+	return o.ApplyT(func(v *OSPolicyResourceRepositoryResource) OSPolicyResourceRepositoryResource {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceRepositoryResource
+		return ret
+	}).(OSPolicyResourceRepositoryResourceOutput)
 }
 
 // An Apt Repository.
@@ -6090,7 +6222,7 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryOutput) ToOSPolicyResourc
 }
 
 func (o OSPolicyResourceRepositoryResourceAptRepositoryOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryPtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceAptRepository) *OSPolicyResourceRepositoryResourceAptRepository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceRepositoryResourceAptRepository) *OSPolicyResourceRepositoryResourceAptRepository {
 		return &v
 	}).(OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput)
 }
@@ -6138,7 +6270,11 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput) ToOSPolicyReso
 
 func (o OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput) Elem() OSPolicyResourceRepositoryResourceAptRepositoryOutput {
 	return o.ApplyT(func(v *OSPolicyResourceRepositoryResourceAptRepository) OSPolicyResourceRepositoryResourceAptRepository {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceRepositoryResourceAptRepository
+		return ret
 	}).(OSPolicyResourceRepositoryResourceAptRepositoryOutput)
 }
 
@@ -6383,7 +6519,7 @@ func (o OSPolicyResourceRepositoryResourceGooRepositoryOutput) ToOSPolicyResourc
 }
 
 func (o OSPolicyResourceRepositoryResourceGooRepositoryOutput) ToOSPolicyResourceRepositoryResourceGooRepositoryPtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceGooRepository) *OSPolicyResourceRepositoryResourceGooRepository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceRepositoryResourceGooRepository) *OSPolicyResourceRepositoryResourceGooRepository {
 		return &v
 	}).(OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput)
 }
@@ -6414,7 +6550,11 @@ func (o OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput) ToOSPolicyReso
 
 func (o OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput) Elem() OSPolicyResourceRepositoryResourceGooRepositoryOutput {
 	return o.ApplyT(func(v *OSPolicyResourceRepositoryResourceGooRepository) OSPolicyResourceRepositoryResourceGooRepository {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceRepositoryResourceGooRepository
+		return ret
 	}).(OSPolicyResourceRepositoryResourceGooRepositoryOutput)
 }
 
@@ -6700,7 +6840,7 @@ func (o OSPolicyResourceRepositoryResourceYumRepositoryOutput) ToOSPolicyResourc
 }
 
 func (o OSPolicyResourceRepositoryResourceYumRepositoryOutput) ToOSPolicyResourceRepositoryResourceYumRepositoryPtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceYumRepository) *OSPolicyResourceRepositoryResourceYumRepository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceRepositoryResourceYumRepository) *OSPolicyResourceRepositoryResourceYumRepository {
 		return &v
 	}).(OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput)
 }
@@ -6741,7 +6881,11 @@ func (o OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput) ToOSPolicyReso
 
 func (o OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput) Elem() OSPolicyResourceRepositoryResourceYumRepositoryOutput {
 	return o.ApplyT(func(v *OSPolicyResourceRepositoryResourceYumRepository) OSPolicyResourceRepositoryResourceYumRepository {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceRepositoryResourceYumRepository
+		return ret
 	}).(OSPolicyResourceRepositoryResourceYumRepositoryOutput)
 }
 
@@ -6966,7 +7110,7 @@ func (o OSPolicyResourceRepositoryResourceZypperRepositoryOutput) ToOSPolicyReso
 }
 
 func (o OSPolicyResourceRepositoryResourceZypperRepositoryOutput) ToOSPolicyResourceRepositoryResourceZypperRepositoryPtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput {
-	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceZypperRepository) *OSPolicyResourceRepositoryResourceZypperRepository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceRepositoryResourceZypperRepository) *OSPolicyResourceRepositoryResourceZypperRepository {
 		return &v
 	}).(OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput)
 }
@@ -7007,7 +7151,11 @@ func (o OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput) ToOSPolicyR
 
 func (o OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput) Elem() OSPolicyResourceRepositoryResourceZypperRepositoryOutput {
 	return o.ApplyT(func(v *OSPolicyResourceRepositoryResourceZypperRepository) OSPolicyResourceRepositoryResourceZypperRepository {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceRepositoryResourceZypperRepository
+		return ret
 	}).(OSPolicyResourceRepositoryResourceZypperRepositoryOutput)
 }
 

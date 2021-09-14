@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// The config settings for virtual machine.
+    /// </summary>
     [OutputType]
     public sealed class VirtualMachineConfigResponse
     {

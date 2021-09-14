@@ -13,6 +13,7 @@ __all__ = [
     'GetConsentArtifactResult',
     'AwaitableGetConsentArtifactResult',
     'get_consent_artifact',
+    'get_consent_artifact_output',
 ]
 
 @pulumi.output_type
@@ -154,3 +155,16 @@ def get_consent_artifact(consent_artifact_id: Optional[str] = None,
         user_id=__ret__.user_id,
         user_signature=__ret__.user_signature,
         witness_signature=__ret__.witness_signature)
+
+
+@_utilities.lift_output_func(get_consent_artifact)
+def get_consent_artifact_output(consent_artifact_id: Optional[pulumi.Input[str]] = None,
+                                consent_store_id: Optional[pulumi.Input[str]] = None,
+                                dataset_id: Optional[pulumi.Input[str]] = None,
+                                location: Optional[pulumi.Input[str]] = None,
+                                project: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConsentArtifactResult]:
+    """
+    Gets the specified Consent artifact.
+    """
+    ...

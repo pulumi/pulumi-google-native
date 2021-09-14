@@ -114,9 +114,7 @@ func (i *RegistryIamPolicy) ToRegistryIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamPolicyOutput)
 }
 
-type RegistryIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type RegistryIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegistryIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegistryIamPolicy)(nil))

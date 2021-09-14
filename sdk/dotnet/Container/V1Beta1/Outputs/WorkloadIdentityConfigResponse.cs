@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
+    /// </summary>
     [OutputType]
     public sealed class WorkloadIdentityConfigResponse
     {

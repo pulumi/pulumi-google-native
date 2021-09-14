@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// The configuration for auto rollout.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3RolloutConfigResponse
     {

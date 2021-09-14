@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Settings that determine the retry behavior. By default, if a job does not complete successfully (meaning that an acknowledgement is not received from the handler, then it will be retried with exponential backoff according to the settings in RetryConfig.
+    /// </summary>
     [OutputType]
     public sealed class RetryConfigResponse
     {

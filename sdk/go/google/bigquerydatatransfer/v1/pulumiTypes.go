@@ -106,7 +106,7 @@ func (o EmailPreferencesOutput) ToEmailPreferencesPtrOutput() EmailPreferencesPt
 }
 
 func (o EmailPreferencesOutput) ToEmailPreferencesPtrOutputWithContext(ctx context.Context) EmailPreferencesPtrOutput {
-	return o.ApplyT(func(v EmailPreferences) *EmailPreferences {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailPreferences) *EmailPreferences {
 		return &v
 	}).(EmailPreferencesPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o EmailPreferencesPtrOutput) ToEmailPreferencesPtrOutputWithContext(ctx co
 }
 
 func (o EmailPreferencesPtrOutput) Elem() EmailPreferencesOutput {
-	return o.ApplyT(func(v *EmailPreferences) EmailPreferences { return *v }).(EmailPreferencesOutput)
+	return o.ApplyT(func(v *EmailPreferences) EmailPreferences {
+		if v != nil {
+			return *v
+		}
+		var ret EmailPreferences
+		return ret
+	}).(EmailPreferencesOutput)
 }
 
 // If true, email notifications will be sent on transfer run failures.
@@ -240,7 +246,7 @@ func (o EmailPreferencesResponseOutput) ToEmailPreferencesResponsePtrOutput() Em
 }
 
 func (o EmailPreferencesResponseOutput) ToEmailPreferencesResponsePtrOutputWithContext(ctx context.Context) EmailPreferencesResponsePtrOutput {
-	return o.ApplyT(func(v EmailPreferencesResponse) *EmailPreferencesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailPreferencesResponse) *EmailPreferencesResponse {
 		return &v
 	}).(EmailPreferencesResponsePtrOutput)
 }
@@ -265,7 +271,13 @@ func (o EmailPreferencesResponsePtrOutput) ToEmailPreferencesResponsePtrOutputWi
 }
 
 func (o EmailPreferencesResponsePtrOutput) Elem() EmailPreferencesResponseOutput {
-	return o.ApplyT(func(v *EmailPreferencesResponse) EmailPreferencesResponse { return *v }).(EmailPreferencesResponseOutput)
+	return o.ApplyT(func(v *EmailPreferencesResponse) EmailPreferencesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EmailPreferencesResponse
+		return ret
+	}).(EmailPreferencesResponseOutput)
 }
 
 // If true, email notifications will be sent on transfer run failures.
@@ -382,7 +394,7 @@ func (o ScheduleOptionsOutput) ToScheduleOptionsPtrOutput() ScheduleOptionsPtrOu
 }
 
 func (o ScheduleOptionsOutput) ToScheduleOptionsPtrOutputWithContext(ctx context.Context) ScheduleOptionsPtrOutput {
-	return o.ApplyT(func(v ScheduleOptions) *ScheduleOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleOptions) *ScheduleOptions {
 		return &v
 	}).(ScheduleOptionsPtrOutput)
 }
@@ -417,7 +429,13 @@ func (o ScheduleOptionsPtrOutput) ToScheduleOptionsPtrOutputWithContext(ctx cont
 }
 
 func (o ScheduleOptionsPtrOutput) Elem() ScheduleOptionsOutput {
-	return o.ApplyT(func(v *ScheduleOptions) ScheduleOptions { return *v }).(ScheduleOptionsOutput)
+	return o.ApplyT(func(v *ScheduleOptions) ScheduleOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleOptions
+		return ret
+	}).(ScheduleOptionsOutput)
 }
 
 // If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored.
@@ -554,7 +572,7 @@ func (o ScheduleOptionsResponseOutput) ToScheduleOptionsResponsePtrOutput() Sche
 }
 
 func (o ScheduleOptionsResponseOutput) ToScheduleOptionsResponsePtrOutputWithContext(ctx context.Context) ScheduleOptionsResponsePtrOutput {
-	return o.ApplyT(func(v ScheduleOptionsResponse) *ScheduleOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleOptionsResponse) *ScheduleOptionsResponse {
 		return &v
 	}).(ScheduleOptionsResponsePtrOutput)
 }
@@ -589,7 +607,13 @@ func (o ScheduleOptionsResponsePtrOutput) ToScheduleOptionsResponsePtrOutputWith
 }
 
 func (o ScheduleOptionsResponsePtrOutput) Elem() ScheduleOptionsResponseOutput {
-	return o.ApplyT(func(v *ScheduleOptionsResponse) ScheduleOptionsResponse { return *v }).(ScheduleOptionsResponseOutput)
+	return o.ApplyT(func(v *ScheduleOptionsResponse) ScheduleOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleOptionsResponse
+		return ret
+	}).(ScheduleOptionsResponseOutput)
 }
 
 // If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored.
@@ -718,7 +742,7 @@ func (o UserInfoResponseOutput) ToUserInfoResponsePtrOutput() UserInfoResponsePt
 }
 
 func (o UserInfoResponseOutput) ToUserInfoResponsePtrOutputWithContext(ctx context.Context) UserInfoResponsePtrOutput {
-	return o.ApplyT(func(v UserInfoResponse) *UserInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserInfoResponse) *UserInfoResponse {
 		return &v
 	}).(UserInfoResponsePtrOutput)
 }
@@ -743,7 +767,13 @@ func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutputWithContext(ctx co
 }
 
 func (o UserInfoResponsePtrOutput) Elem() UserInfoResponseOutput {
-	return o.ApplyT(func(v *UserInfoResponse) UserInfoResponse { return *v }).(UserInfoResponseOutput)
+	return o.ApplyT(func(v *UserInfoResponse) UserInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserInfoResponse
+		return ret
+	}).(UserInfoResponseOutput)
 }
 
 // E-mail address of the user.

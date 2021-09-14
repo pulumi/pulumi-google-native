@@ -13,6 +13,7 @@ __all__ = [
     'GetModelResult',
     'AwaitableGetModelResult',
     'get_model',
+    'get_model_output',
 ]
 
 @pulumi.output_type
@@ -174,3 +175,13 @@ def get_model(model_id: Optional[str] = None,
         tags=__ret__.tags,
         tflite_model=__ret__.tflite_model,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_model)
+def get_model_output(model_id: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetModelResult]:
+    """
+    Gets a model resource.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetAccessLevelResult',
     'AwaitableGetAccessLevelResult',
     'get_access_level',
+    'get_access_level_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,14 @@ def get_access_level(access_level_format: Optional[str] = None,
         description=__ret__.description,
         name=__ret__.name,
         title=__ret__.title)
+
+
+@_utilities.lift_output_func(get_access_level)
+def get_access_level_output(access_level_format: Optional[pulumi.Input[Optional[str]]] = None,
+                            access_level_id: Optional[pulumi.Input[str]] = None,
+                            access_policy_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessLevelResult]:
+    """
+    Get an Access Level by resource name.
+    """
+    ...

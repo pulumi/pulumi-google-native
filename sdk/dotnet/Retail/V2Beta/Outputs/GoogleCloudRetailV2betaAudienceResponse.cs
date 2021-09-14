@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Retail.V2Beta.Outputs
 {
 
+    /// <summary>
+    /// An intended audience of the Product for whom it's sold.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRetailV2betaAudienceResponse
     {

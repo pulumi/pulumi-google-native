@@ -12,6 +12,7 @@ __all__ = [
     'GetIdentityAwareProxyClientResult',
     'AwaitableGetIdentityAwareProxyClientResult',
     'get_identity_aware_proxy_client',
+    'get_identity_aware_proxy_client_output',
 ]
 
 @pulumi.output_type
@@ -84,3 +85,14 @@ def get_identity_aware_proxy_client(brand_id: Optional[str] = None,
         display_name=__ret__.display_name,
         name=__ret__.name,
         secret=__ret__.secret)
+
+
+@_utilities.lift_output_func(get_identity_aware_proxy_client)
+def get_identity_aware_proxy_client_output(brand_id: Optional[pulumi.Input[str]] = None,
+                                           identity_aware_proxy_client_id: Optional[pulumi.Input[str]] = None,
+                                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdentityAwareProxyClientResult]:
+    """
+    Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.
+    """
+    ...

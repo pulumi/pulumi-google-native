@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
 {
 
+    /// <summary>
+    /// The source that IngressPolicy authorizes access from.
+    /// </summary>
     [OutputType]
     public sealed class IngressSourceResponse
     {

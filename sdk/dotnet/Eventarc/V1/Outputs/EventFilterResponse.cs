@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
 {
 
+    /// <summary>
+    /// Filters events based on exact matches on the CloudEvents attributes.
+    /// </summary>
     [OutputType]
     public sealed class EventFilterResponse
     {

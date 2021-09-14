@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Message for specifying a window around a finding to apply a detection rule.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ProximityResponse
     {

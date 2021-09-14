@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Image annotation.
+    /// </summary>
     [OutputType]
     public sealed class ImageAnnotationResponse
     {

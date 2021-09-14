@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// Key-value pair to store extra metadata.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1AttributeResponse
     {

@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -277,7 +277,7 @@ func (o ClusterDefaultStorageTypeOutput) ToStringPtrOutputWithContext(ctx contex
 type ClusterDefaultStorageTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterDefaultStorageTypePtrOutput) ElementType() reflect.Type {
-	return clusterDefaultStorageTypePtrType
+	return reflect.TypeOf((**ClusterDefaultStorageType)(nil)).Elem()
 }
 
 func (o ClusterDefaultStorageTypePtrOutput) ToClusterDefaultStorageTypePtrOutput() ClusterDefaultStorageTypePtrOutput {
@@ -286,6 +286,16 @@ func (o ClusterDefaultStorageTypePtrOutput) ToClusterDefaultStorageTypePtrOutput
 
 func (o ClusterDefaultStorageTypePtrOutput) ToClusterDefaultStorageTypePtrOutputWithContext(ctx context.Context) ClusterDefaultStorageTypePtrOutput {
 	return o
+}
+
+func (o ClusterDefaultStorageTypePtrOutput) Elem() ClusterDefaultStorageTypeOutput {
+	return o.ApplyT(func(v *ClusterDefaultStorageType) ClusterDefaultStorageType {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterDefaultStorageType
+		return ret
+	}).(ClusterDefaultStorageTypeOutput)
 }
 
 func (o ClusterDefaultStorageTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o ClusterDefaultStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ClusterDefaultStorageTypePtrOutput) Elem() ClusterDefaultStorageTypeOutput {
-	return o.ApplyT(func(v *ClusterDefaultStorageType) ClusterDefaultStorageType {
-		var ret ClusterDefaultStorageType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ClusterDefaultStorageTypeOutput)
 }
 
 // ClusterDefaultStorageTypeInput is an input type that accepts ClusterDefaultStorageTypeArgs and ClusterDefaultStorageTypeOutput values.
@@ -446,7 +446,7 @@ func (o InstanceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type InstanceTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceTypePtrOutput) ElementType() reflect.Type {
-	return instanceTypePtrType
+	return reflect.TypeOf((**InstanceType)(nil)).Elem()
 }
 
 func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
@@ -455,6 +455,16 @@ func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
 
 func (o InstanceTypePtrOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
 	return o
+}
+
+func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
+	return o.ApplyT(func(v *InstanceType) InstanceType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceType
+		return ret
+	}).(InstanceTypeOutput)
 }
 
 func (o InstanceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -469,16 +479,6 @@ func (o InstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
-	return o.ApplyT(func(v *InstanceType) InstanceType {
-		var ret InstanceType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceTypeOutput)
 }
 
 // InstanceTypeInput is an input type that accepts InstanceTypeArgs and InstanceTypeOutput values.
@@ -613,7 +613,7 @@ func (o TableGranularityOutput) ToStringPtrOutputWithContext(ctx context.Context
 type TableGranularityPtrOutput struct{ *pulumi.OutputState }
 
 func (TableGranularityPtrOutput) ElementType() reflect.Type {
-	return tableGranularityPtrType
+	return reflect.TypeOf((**TableGranularity)(nil)).Elem()
 }
 
 func (o TableGranularityPtrOutput) ToTableGranularityPtrOutput() TableGranularityPtrOutput {
@@ -622,6 +622,16 @@ func (o TableGranularityPtrOutput) ToTableGranularityPtrOutput() TableGranularit
 
 func (o TableGranularityPtrOutput) ToTableGranularityPtrOutputWithContext(ctx context.Context) TableGranularityPtrOutput {
 	return o
+}
+
+func (o TableGranularityPtrOutput) Elem() TableGranularityOutput {
+	return o.ApplyT(func(v *TableGranularity) TableGranularity {
+		if v != nil {
+			return *v
+		}
+		var ret TableGranularity
+		return ret
+	}).(TableGranularityOutput)
 }
 
 func (o TableGranularityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -636,16 +646,6 @@ func (o TableGranularityPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TableGranularityPtrOutput) Elem() TableGranularityOutput {
-	return o.ApplyT(func(v *TableGranularity) TableGranularity {
-		var ret TableGranularity
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TableGranularityOutput)
 }
 
 // TableGranularityInput is an input type that accepts TableGranularityArgs and TableGranularityOutput values.

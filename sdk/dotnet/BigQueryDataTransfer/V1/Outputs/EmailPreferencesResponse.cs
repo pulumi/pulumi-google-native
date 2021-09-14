@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents preferences for sending email notifications for transfer run events.
+    /// </summary>
     [OutputType]
     public sealed class EmailPreferencesResponse
     {

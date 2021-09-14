@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration options for private clusters.
+    /// </summary>
     [OutputType]
     public sealed class PrivateClusterConfigResponse
     {

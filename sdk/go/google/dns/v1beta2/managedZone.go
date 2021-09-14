@@ -179,9 +179,7 @@ func (i *ManagedZone) ToManagedZoneOutputWithContext(ctx context.Context) Manage
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneOutput)
 }
 
-type ManagedZoneOutput struct {
-	*pulumi.OutputState
-}
+type ManagedZoneOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedZone)(nil))

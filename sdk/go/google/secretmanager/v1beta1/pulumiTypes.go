@@ -538,7 +538,7 @@ func (o AutomaticOutput) ToAutomaticPtrOutput() AutomaticPtrOutput {
 }
 
 func (o AutomaticOutput) ToAutomaticPtrOutputWithContext(ctx context.Context) AutomaticPtrOutput {
-	return o.ApplyT(func(v Automatic) *Automatic {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Automatic) *Automatic {
 		return &v
 	}).(AutomaticPtrOutput)
 }
@@ -558,7 +558,13 @@ func (o AutomaticPtrOutput) ToAutomaticPtrOutputWithContext(ctx context.Context)
 }
 
 func (o AutomaticPtrOutput) Elem() AutomaticOutput {
-	return o.ApplyT(func(v *Automatic) Automatic { return *v }).(AutomaticOutput)
+	return o.ApplyT(func(v *Automatic) Automatic {
+		if v != nil {
+			return *v
+		}
+		var ret Automatic
+		return ret
+	}).(AutomaticOutput)
 }
 
 // A replication policy that replicates the Secret payload without any restrictions.
@@ -653,7 +659,7 @@ func (o AutomaticResponseOutput) ToAutomaticResponsePtrOutput() AutomaticRespons
 }
 
 func (o AutomaticResponseOutput) ToAutomaticResponsePtrOutputWithContext(ctx context.Context) AutomaticResponsePtrOutput {
-	return o.ApplyT(func(v AutomaticResponse) *AutomaticResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomaticResponse) *AutomaticResponse {
 		return &v
 	}).(AutomaticResponsePtrOutput)
 }
@@ -673,7 +679,13 @@ func (o AutomaticResponsePtrOutput) ToAutomaticResponsePtrOutputWithContext(ctx 
 }
 
 func (o AutomaticResponsePtrOutput) Elem() AutomaticResponseOutput {
-	return o.ApplyT(func(v *AutomaticResponse) AutomaticResponse { return *v }).(AutomaticResponseOutput)
+	return o.ApplyT(func(v *AutomaticResponse) AutomaticResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutomaticResponse
+		return ret
+	}).(AutomaticResponseOutput)
 }
 
 // Associates `members` with a `role`.
@@ -1020,7 +1032,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1060,7 +1072,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1485,7 +1503,7 @@ func (o ReplicationOutput) ToReplicationPtrOutput() ReplicationPtrOutput {
 }
 
 func (o ReplicationOutput) ToReplicationPtrOutputWithContext(ctx context.Context) ReplicationPtrOutput {
-	return o.ApplyT(func(v Replication) *Replication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Replication) *Replication {
 		return &v
 	}).(ReplicationPtrOutput)
 }
@@ -1515,7 +1533,13 @@ func (o ReplicationPtrOutput) ToReplicationPtrOutputWithContext(ctx context.Cont
 }
 
 func (o ReplicationPtrOutput) Elem() ReplicationOutput {
-	return o.ApplyT(func(v *Replication) Replication { return *v }).(ReplicationOutput)
+	return o.ApplyT(func(v *Replication) Replication {
+		if v != nil {
+			return *v
+		}
+		var ret Replication
+		return ret
+	}).(ReplicationOutput)
 }
 
 // The Secret will automatically be replicated without any restrictions.
@@ -1638,7 +1662,7 @@ func (o ReplicationResponseOutput) ToReplicationResponsePtrOutput() ReplicationR
 }
 
 func (o ReplicationResponseOutput) ToReplicationResponsePtrOutputWithContext(ctx context.Context) ReplicationResponsePtrOutput {
-	return o.ApplyT(func(v ReplicationResponse) *ReplicationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicationResponse) *ReplicationResponse {
 		return &v
 	}).(ReplicationResponsePtrOutput)
 }
@@ -1668,7 +1692,13 @@ func (o ReplicationResponsePtrOutput) ToReplicationResponsePtrOutputWithContext(
 }
 
 func (o ReplicationResponsePtrOutput) Elem() ReplicationResponseOutput {
-	return o.ApplyT(func(v *ReplicationResponse) ReplicationResponse { return *v }).(ReplicationResponseOutput)
+	return o.ApplyT(func(v *ReplicationResponse) ReplicationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReplicationResponse
+		return ret
+	}).(ReplicationResponseOutput)
 }
 
 // The Secret will automatically be replicated without any restrictions.
@@ -1787,7 +1817,7 @@ func (o UserManagedOutput) ToUserManagedPtrOutput() UserManagedPtrOutput {
 }
 
 func (o UserManagedOutput) ToUserManagedPtrOutputWithContext(ctx context.Context) UserManagedPtrOutput {
-	return o.ApplyT(func(v UserManaged) *UserManaged {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserManaged) *UserManaged {
 		return &v
 	}).(UserManagedPtrOutput)
 }
@@ -1812,7 +1842,13 @@ func (o UserManagedPtrOutput) ToUserManagedPtrOutputWithContext(ctx context.Cont
 }
 
 func (o UserManagedPtrOutput) Elem() UserManagedOutput {
-	return o.ApplyT(func(v *UserManaged) UserManaged { return *v }).(UserManagedOutput)
+	return o.ApplyT(func(v *UserManaged) UserManaged {
+		if v != nil {
+			return *v
+		}
+		var ret UserManaged
+		return ret
+	}).(UserManagedOutput)
 }
 
 // The list of Replicas for this Secret. Cannot be empty.
@@ -1921,7 +1957,7 @@ func (o UserManagedResponseOutput) ToUserManagedResponsePtrOutput() UserManagedR
 }
 
 func (o UserManagedResponseOutput) ToUserManagedResponsePtrOutputWithContext(ctx context.Context) UserManagedResponsePtrOutput {
-	return o.ApplyT(func(v UserManagedResponse) *UserManagedResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserManagedResponse) *UserManagedResponse {
 		return &v
 	}).(UserManagedResponsePtrOutput)
 }
@@ -1946,7 +1982,13 @@ func (o UserManagedResponsePtrOutput) ToUserManagedResponsePtrOutputWithContext(
 }
 
 func (o UserManagedResponsePtrOutput) Elem() UserManagedResponseOutput {
-	return o.ApplyT(func(v *UserManagedResponse) UserManagedResponse { return *v }).(UserManagedResponseOutput)
+	return o.ApplyT(func(v *UserManagedResponse) UserManagedResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserManagedResponse
+		return ret
+	}).(UserManagedResponseOutput)
 }
 
 // The list of Replicas for this Secret. Cannot be empty.

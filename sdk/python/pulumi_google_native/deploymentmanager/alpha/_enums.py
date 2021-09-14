@@ -20,13 +20,21 @@ class AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
-    """Default case. Should never be this."""
+    """
+    Default case. Should never be this.
+    """
     ADMIN_READ = "ADMIN_READ"
-    """Admin reads. Example: CloudIAM getIamPolicy"""
+    """
+    Admin reads. Example: CloudIAM getIamPolicy
+    """
     DATA_WRITE = "DATA_WRITE"
-    """Data writes. Example: CloudSQL Users create"""
+    """
+    Data writes. Example: CloudSQL Users create
+    """
     DATA_READ = "DATA_READ"
-    """Data reads. Example: CloudSQL Users list"""
+    """
+    Data reads. Example: CloudSQL Users list
+    """
 
 
 class CompositeTypeStatus(str, Enum):
@@ -42,11 +50,17 @@ class DiagnosticLevel(str, Enum):
     """
     UNKNOWN = "UNKNOWN"
     INFORMATION = "INFORMATION"
-    """If level is informational, it only gets displayed as part of the resource."""
+    """
+    If level is informational, it only gets displayed as part of the resource.
+    """
     WARNING = "WARNING"
-    """If level is warning, will end up in the resource as a warning."""
+    """
+    If level is warning, will end up in the resource as a warning.
+    """
     ERROR = "ERROR"
-    """If level is error, it will indicate an error occurred after finishCondition is set, and this field will populate resource errors and operation errors."""
+    """
+    If level is error, it will indicate an error occurred after finishCondition is set, and this field will populate resource errors and operation errors.
+    """
 
 
 class InputMappingLocation(str, Enum):
@@ -75,11 +89,17 @@ class ValidationOptionsSchemaValidation(str, Enum):
     """
     UNKNOWN = "UNKNOWN"
     IGNORE = "IGNORE"
-    """Ignore schema failures."""
+    """
+    Ignore schema failures.
+    """
     IGNORE_WITH_WARNINGS = "IGNORE_WITH_WARNINGS"
-    """Ignore schema failures but display them as warnings."""
+    """
+    Ignore schema failures but display them as warnings.
+    """
     FAIL = "FAIL"
-    """Fail the resource if the schema is not valid, this is the default behavior."""
+    """
+    Fail the resource if the schema is not valid, this is the default behavior.
+    """
 
 
 class ValidationOptionsUndeclaredProperties(str, Enum):
@@ -88,12 +108,22 @@ class ValidationOptionsUndeclaredProperties(str, Enum):
     """
     UNKNOWN = "UNKNOWN"
     INCLUDE = "INCLUDE"
-    """Always include even if not present on discovery doc."""
+    """
+    Always include even if not present on discovery doc.
+    """
     IGNORE = "IGNORE"
-    """Always ignore if not present on discovery doc."""
+    """
+    Always ignore if not present on discovery doc.
+    """
     INCLUDE_WITH_WARNINGS = "INCLUDE_WITH_WARNINGS"
-    """Include on request, but emit a warning."""
+    """
+    Include on request, but emit a warning.
+    """
     IGNORE_WITH_WARNINGS = "IGNORE_WITH_WARNINGS"
-    """Ignore properties, but emit a warning."""
+    """
+    Ignore properties, but emit a warning.
+    """
     FAIL = "FAIL"
-    """Always fail if undeclared properties are present."""
+    """
+    Always fail if undeclared properties are present.
+    """

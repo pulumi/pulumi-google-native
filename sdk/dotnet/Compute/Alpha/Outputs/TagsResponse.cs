@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// A set of instance tags.
+    /// </summary>
     [OutputType]
     public sealed class TagsResponse
     {

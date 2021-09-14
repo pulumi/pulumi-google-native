@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
+    /// <summary>
+    /// The list of messages or conditional cases to activate for this case.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse
     {

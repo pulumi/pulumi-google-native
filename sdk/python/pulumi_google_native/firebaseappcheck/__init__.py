@@ -7,7 +7,8 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.firebaseappcheck.v1beta as v1beta
+    import pulumi_google_native.firebaseappcheck.v1beta as __v1beta
+    v1beta = __v1beta
 else:
     v1beta = _utilities.lazy_import('pulumi_google_native.firebaseappcheck.v1beta')
 

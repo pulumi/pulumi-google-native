@@ -13,6 +13,7 @@ __all__ = [
     'GetExecutionResult',
     'AwaitableGetExecutionResult',
     'get_execution',
+    'get_execution_output',
 ]
 
 @pulumi.output_type
@@ -154,3 +155,16 @@ def get_execution(execution_id: Optional[str] = None,
         start_time=__ret__.start_time,
         state=__ret__.state,
         workflow_revision_id=__ret__.workflow_revision_id)
+
+
+@_utilities.lift_output_func(get_execution)
+def get_execution_output(execution_id: Optional[pulumi.Input[str]] = None,
+                         location: Optional[pulumi.Input[str]] = None,
+                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                         view: Optional[pulumi.Input[Optional[str]]] = None,
+                         workflow_id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExecutionResult]:
+    """
+    Returns an execution of the given name.
+    """
+    ...

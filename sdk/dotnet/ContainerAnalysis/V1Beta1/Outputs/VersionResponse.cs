@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Version contains structured information about the version of a package.
+    /// </summary>
     [OutputType]
     public sealed class VersionResponse
     {

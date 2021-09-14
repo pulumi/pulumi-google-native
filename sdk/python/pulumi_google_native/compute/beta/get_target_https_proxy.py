@@ -12,6 +12,7 @@ __all__ = [
     'GetTargetHttpsProxyResult',
     'AwaitableGetTargetHttpsProxyResult',
     'get_target_https_proxy',
+    'get_target_https_proxy_output',
 ]
 
 @pulumi.output_type
@@ -251,3 +252,13 @@ def get_target_https_proxy(project: Optional[str] = None,
         ssl_certificates=__ret__.ssl_certificates,
         ssl_policy=__ret__.ssl_policy,
         url_map=__ret__.url_map)
+
+
+@_utilities.lift_output_func(get_target_https_proxy)
+def get_target_https_proxy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  target_https_proxy: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetHttpsProxyResult]:
+    """
+    Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by making a list() request.
+    """
+    ...

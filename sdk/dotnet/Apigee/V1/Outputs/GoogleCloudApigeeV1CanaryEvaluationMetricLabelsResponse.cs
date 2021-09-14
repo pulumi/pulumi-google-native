@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// Labels that can be used to filter Apigee metrics.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse
     {

@@ -4,6 +4,9 @@
 package v2beta2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,56 @@ type LookupQueueIamPolicyResult struct {
 	Etag string `pulumi:"etag"`
 	// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Version int `pulumi:"version"`
+}
+
+func LookupQueueIamPolicyOutput(ctx *pulumi.Context, args LookupQueueIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupQueueIamPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupQueueIamPolicyResult, error) {
+			args := v.(LookupQueueIamPolicyArgs)
+			r, err := LookupQueueIamPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupQueueIamPolicyResultOutput)
+}
+
+type LookupQueueIamPolicyOutputArgs struct {
+	Location pulumi.StringInput    `pulumi:"location"`
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+	QueueId  pulumi.StringInput    `pulumi:"queueId"`
+}
+
+func (LookupQueueIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupQueueIamPolicyArgs)(nil)).Elem()
+}
+
+type LookupQueueIamPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupQueueIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupQueueIamPolicyResult)(nil)).Elem()
+}
+
+func (o LookupQueueIamPolicyResultOutput) ToLookupQueueIamPolicyResultOutput() LookupQueueIamPolicyResultOutput {
+	return o
+}
+
+func (o LookupQueueIamPolicyResultOutput) ToLookupQueueIamPolicyResultOutputWithContext(ctx context.Context) LookupQueueIamPolicyResultOutput {
+	return o
+}
+
+// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+func (o LookupQueueIamPolicyResultOutput) Bindings() BindingResponseArrayOutput {
+	return o.ApplyT(func(v LookupQueueIamPolicyResult) []BindingResponse { return v.Bindings }).(BindingResponseArrayOutput)
+}
+
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
+func (o LookupQueueIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o LookupQueueIamPolicyResultOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupQueueIamPolicyResult) int { return v.Version }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupQueueIamPolicyResultOutput{})
 }

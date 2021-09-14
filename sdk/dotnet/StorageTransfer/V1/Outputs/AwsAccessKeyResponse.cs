@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 {
 
+    /// <summary>
+    /// AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+    /// </summary>
     [OutputType]
     public sealed class AwsAccessKeyResponse
     {

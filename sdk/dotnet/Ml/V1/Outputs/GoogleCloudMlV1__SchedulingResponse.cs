@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// All parameters related to scheduling of training jobs.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1__SchedulingResponse
     {

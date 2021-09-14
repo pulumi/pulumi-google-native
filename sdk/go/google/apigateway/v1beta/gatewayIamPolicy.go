@@ -124,9 +124,7 @@ func (i *GatewayIamPolicy) ToGatewayIamPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamPolicyOutput)
 }
 
-type GatewayIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type GatewayIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (GatewayIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GatewayIamPolicy)(nil))

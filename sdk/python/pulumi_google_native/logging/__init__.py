@@ -7,7 +7,8 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.logging.v2 as v2
+    import pulumi_google_native.logging.v2 as __v2
+    v2 = __v2
 else:
     v2 = _utilities.lazy_import('pulumi_google_native.logging.v2')
 

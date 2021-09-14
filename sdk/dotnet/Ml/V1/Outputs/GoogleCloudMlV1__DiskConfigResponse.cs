@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents the config of disk options.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1__DiskConfigResponse
     {

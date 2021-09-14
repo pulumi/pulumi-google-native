@@ -131,9 +131,7 @@ func (i *Trial) ToTrialOutputWithContext(ctx context.Context) TrialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrialOutput)
 }
 
-type TrialOutput struct {
-	*pulumi.OutputState
-}
+type TrialOutput struct{ *pulumi.OutputState }
 
 func (TrialOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Trial)(nil))

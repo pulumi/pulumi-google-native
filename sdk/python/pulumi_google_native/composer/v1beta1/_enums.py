@@ -15,13 +15,21 @@ class EnvironmentConfigEnvironmentSize(str, Enum):
     Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
     """
     ENVIRONMENT_SIZE_UNSPECIFIED = "ENVIRONMENT_SIZE_UNSPECIFIED"
-    """The size of the environment is unspecified."""
+    """
+    The size of the environment is unspecified.
+    """
     ENVIRONMENT_SIZE_SMALL = "ENVIRONMENT_SIZE_SMALL"
-    """The environment size is small."""
+    """
+    The environment size is small.
+    """
     ENVIRONMENT_SIZE_MEDIUM = "ENVIRONMENT_SIZE_MEDIUM"
-    """The environment size is medium."""
+    """
+    The environment size is medium.
+    """
     ENVIRONMENT_SIZE_LARGE = "ENVIRONMENT_SIZE_LARGE"
-    """The environment size is large."""
+    """
+    The environment size is large.
+    """
 
 
 class EnvironmentState(str, Enum):
@@ -29,14 +37,26 @@ class EnvironmentState(str, Enum):
     The current state of the environment.
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    """The state of the environment is unknown."""
+    """
+    The state of the environment is unknown.
+    """
     CREATING = "CREATING"
-    """The environment is in the process of being created."""
+    """
+    The environment is in the process of being created.
+    """
     RUNNING = "RUNNING"
-    """The environment is currently running and healthy. It is ready for use."""
+    """
+    The environment is currently running and healthy. It is ready for use.
+    """
     UPDATING = "UPDATING"
-    """The environment is being updated. It remains usable but cannot receive additional update requests or be deleted at this time."""
+    """
+    The environment is being updated. It remains usable but cannot receive additional update requests or be deleted at this time.
+    """
     DELETING = "DELETING"
-    """The environment is undergoing deletion. It cannot be used."""
+    """
+    The environment is undergoing deletion. It cannot be used.
+    """
     ERROR = "ERROR"
-    """The environment has encountered an error and cannot be used."""
+    """
+    The environment has encountered an error and cannot be used.
+    """

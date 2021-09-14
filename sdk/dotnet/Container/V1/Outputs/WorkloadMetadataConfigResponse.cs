@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool.
+    /// </summary>
     [OutputType]
     public sealed class WorkloadMetadataConfigResponse
     {

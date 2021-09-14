@@ -136,9 +136,7 @@ func (i *ImportJob) ToImportJobOutputWithContext(ctx context.Context) ImportJobO
 	return pulumi.ToOutputWithContext(ctx, i).(ImportJobOutput)
 }
 
-type ImportJobOutput struct {
-	*pulumi.OutputState
-}
+type ImportJobOutput struct{ *pulumi.OutputState }
 
 func (ImportJobOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ImportJob)(nil))

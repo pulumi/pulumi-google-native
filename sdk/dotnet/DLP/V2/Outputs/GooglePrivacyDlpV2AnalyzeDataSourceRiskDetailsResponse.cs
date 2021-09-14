@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Result of a risk analysis operation request.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse
     {

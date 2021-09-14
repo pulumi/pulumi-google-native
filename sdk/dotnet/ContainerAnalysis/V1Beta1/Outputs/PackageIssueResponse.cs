@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+    /// </summary>
     [OutputType]
     public sealed class PackageIssueResponse
     {

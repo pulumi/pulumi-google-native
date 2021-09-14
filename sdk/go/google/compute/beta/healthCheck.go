@@ -166,9 +166,7 @@ func (i *HealthCheck) ToHealthCheckOutputWithContext(ctx context.Context) Health
 	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckOutput)
 }
 
-type HealthCheckOutput struct {
-	*pulumi.OutputState
-}
+type HealthCheckOutput struct{ *pulumi.OutputState }
 
 func (HealthCheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HealthCheck)(nil))

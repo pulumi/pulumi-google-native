@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// A securely stored value.
+    /// </summary>
     [OutputType]
     public sealed class SecretResponse
     {

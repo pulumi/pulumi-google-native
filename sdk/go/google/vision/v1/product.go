@@ -120,9 +120,7 @@ func (i *Product) ToProductOutputWithContext(ctx context.Context) ProductOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProductOutput)
 }
 
-type ProductOutput struct {
-	*pulumi.OutputState
-}
+type ProductOutput struct{ *pulumi.OutputState }
 
 func (ProductOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Product)(nil))

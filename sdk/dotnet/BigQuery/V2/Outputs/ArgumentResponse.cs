@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Input/output argument of a function or a stored procedure.
+    /// </summary>
     [OutputType]
     public sealed class ArgumentResponse
     {

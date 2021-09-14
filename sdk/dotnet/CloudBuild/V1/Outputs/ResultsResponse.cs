@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Artifacts created by the build pipeline.
+    /// </summary>
     [OutputType]
     public sealed class ResultsResponse
     {

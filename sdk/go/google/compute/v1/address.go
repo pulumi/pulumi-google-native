@@ -166,9 +166,7 @@ func (i *Address) ToAddressOutputWithContext(ctx context.Context) AddressOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AddressOutput)
 }
 
-type AddressOutput struct {
-	*pulumi.OutputState
-}
+type AddressOutput struct{ *pulumi.OutputState }
 
 func (AddressOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Address)(nil))

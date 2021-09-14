@@ -599,7 +599,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -639,7 +639,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -864,7 +870,7 @@ func (o PkixPublicKeyOutput) ToPkixPublicKeyPtrOutput() PkixPublicKeyPtrOutput {
 }
 
 func (o PkixPublicKeyOutput) ToPkixPublicKeyPtrOutputWithContext(ctx context.Context) PkixPublicKeyPtrOutput {
-	return o.ApplyT(func(v PkixPublicKey) *PkixPublicKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PkixPublicKey) *PkixPublicKey {
 		return &v
 	}).(PkixPublicKeyPtrOutput)
 }
@@ -894,7 +900,13 @@ func (o PkixPublicKeyPtrOutput) ToPkixPublicKeyPtrOutputWithContext(ctx context.
 }
 
 func (o PkixPublicKeyPtrOutput) Elem() PkixPublicKeyOutput {
-	return o.ApplyT(func(v *PkixPublicKey) PkixPublicKey { return *v }).(PkixPublicKeyOutput)
+	return o.ApplyT(func(v *PkixPublicKey) PkixPublicKey {
+		if v != nil {
+			return *v
+		}
+		var ret PkixPublicKey
+		return ret
+	}).(PkixPublicKeyOutput)
 }
 
 // A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
@@ -1081,7 +1093,7 @@ func (o UserOwnedGrafeasNoteOutput) ToUserOwnedGrafeasNotePtrOutput() UserOwnedG
 }
 
 func (o UserOwnedGrafeasNoteOutput) ToUserOwnedGrafeasNotePtrOutputWithContext(ctx context.Context) UserOwnedGrafeasNotePtrOutput {
-	return o.ApplyT(func(v UserOwnedGrafeasNote) *UserOwnedGrafeasNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserOwnedGrafeasNote) *UserOwnedGrafeasNote {
 		return &v
 	}).(UserOwnedGrafeasNotePtrOutput)
 }
@@ -1111,7 +1123,13 @@ func (o UserOwnedGrafeasNotePtrOutput) ToUserOwnedGrafeasNotePtrOutputWithContex
 }
 
 func (o UserOwnedGrafeasNotePtrOutput) Elem() UserOwnedGrafeasNoteOutput {
-	return o.ApplyT(func(v *UserOwnedGrafeasNote) UserOwnedGrafeasNote { return *v }).(UserOwnedGrafeasNoteOutput)
+	return o.ApplyT(func(v *UserOwnedGrafeasNote) UserOwnedGrafeasNote {
+		if v != nil {
+			return *v
+		}
+		var ret UserOwnedGrafeasNote
+		return ret
+	}).(UserOwnedGrafeasNoteOutput)
 }
 
 // The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
@@ -1238,7 +1256,7 @@ func (o UserOwnedGrafeasNoteResponseOutput) ToUserOwnedGrafeasNoteResponsePtrOut
 }
 
 func (o UserOwnedGrafeasNoteResponseOutput) ToUserOwnedGrafeasNoteResponsePtrOutputWithContext(ctx context.Context) UserOwnedGrafeasNoteResponsePtrOutput {
-	return o.ApplyT(func(v UserOwnedGrafeasNoteResponse) *UserOwnedGrafeasNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserOwnedGrafeasNoteResponse) *UserOwnedGrafeasNoteResponse {
 		return &v
 	}).(UserOwnedGrafeasNoteResponsePtrOutput)
 }
@@ -1273,7 +1291,13 @@ func (o UserOwnedGrafeasNoteResponsePtrOutput) ToUserOwnedGrafeasNoteResponsePtr
 }
 
 func (o UserOwnedGrafeasNoteResponsePtrOutput) Elem() UserOwnedGrafeasNoteResponseOutput {
-	return o.ApplyT(func(v *UserOwnedGrafeasNoteResponse) UserOwnedGrafeasNoteResponse { return *v }).(UserOwnedGrafeasNoteResponseOutput)
+	return o.ApplyT(func(v *UserOwnedGrafeasNoteResponse) UserOwnedGrafeasNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserOwnedGrafeasNoteResponse
+		return ret
+	}).(UserOwnedGrafeasNoteResponseOutput)
 }
 
 // This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.

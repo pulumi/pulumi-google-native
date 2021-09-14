@@ -13,6 +13,7 @@ __all__ = [
     'GetEvaluationJobResult',
     'AwaitableGetEvaluationJobResult',
     'get_evaluation_job',
+    'get_evaluation_job_output',
 ]
 
 @pulumi.output_type
@@ -174,3 +175,13 @@ def get_evaluation_job(evaluation_job_id: Optional[str] = None,
         name=__ret__.name,
         schedule=__ret__.schedule,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_evaluation_job)
+def get_evaluation_job_output(evaluation_job_id: Optional[pulumi.Input[str]] = None,
+                              project: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEvaluationJobResult]:
+    """
+    Gets an evaluation job by resource name.
+    """
+    ...

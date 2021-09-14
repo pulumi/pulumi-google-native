@@ -13,6 +13,7 @@ __all__ = [
     'GetNetworkResult',
     'AwaitableGetNetworkResult',
     'get_network',
+    'get_network_output',
 ]
 
 @pulumi.output_type
@@ -187,3 +188,13 @@ def get_network(network: Optional[str] = None,
         routing_config=__ret__.routing_config,
         self_link=__ret__.self_link,
         subnetworks=__ret__.subnetworks)
+
+
+@_utilities.lift_output_func(get_network)
+def get_network_output(network: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
+    """
+    Returns the specified network. Gets a list of available networks by making a list() request.
+    """
+    ...

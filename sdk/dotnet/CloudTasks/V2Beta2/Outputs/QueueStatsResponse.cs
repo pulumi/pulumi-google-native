@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Outputs
 {
 
+    /// <summary>
+    /// Statistics for a queue.
+    /// </summary>
     [OutputType]
     public sealed class QueueStatsResponse
     {

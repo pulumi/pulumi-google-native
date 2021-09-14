@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// Defines the Automated Agent to connect to a conversation.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2AutomatedAgentConfigResponse
     {

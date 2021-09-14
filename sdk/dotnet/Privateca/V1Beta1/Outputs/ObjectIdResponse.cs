@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    /// </summary>
     [OutputType]
     public sealed class ObjectIdResponse
     {

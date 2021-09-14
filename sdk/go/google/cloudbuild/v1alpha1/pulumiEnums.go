@@ -109,7 +109,7 @@ func (o WorkerPoolRegionsItemOutput) ToStringPtrOutputWithContext(ctx context.Co
 type WorkerPoolRegionsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolRegionsItemPtrOutput) ElementType() reflect.Type {
-	return workerPoolRegionsItemPtrType
+	return reflect.TypeOf((**WorkerPoolRegionsItem)(nil)).Elem()
 }
 
 func (o WorkerPoolRegionsItemPtrOutput) ToWorkerPoolRegionsItemPtrOutput() WorkerPoolRegionsItemPtrOutput {
@@ -118,6 +118,16 @@ func (o WorkerPoolRegionsItemPtrOutput) ToWorkerPoolRegionsItemPtrOutput() Worke
 
 func (o WorkerPoolRegionsItemPtrOutput) ToWorkerPoolRegionsItemPtrOutputWithContext(ctx context.Context) WorkerPoolRegionsItemPtrOutput {
 	return o
+}
+
+func (o WorkerPoolRegionsItemPtrOutput) Elem() WorkerPoolRegionsItemOutput {
+	return o.ApplyT(func(v *WorkerPoolRegionsItem) WorkerPoolRegionsItem {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolRegionsItem
+		return ret
+	}).(WorkerPoolRegionsItemOutput)
 }
 
 func (o WorkerPoolRegionsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -132,16 +142,6 @@ func (o WorkerPoolRegionsItemPtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkerPoolRegionsItemPtrOutput) Elem() WorkerPoolRegionsItemOutput {
-	return o.ApplyT(func(v *WorkerPoolRegionsItem) WorkerPoolRegionsItem {
-		var ret WorkerPoolRegionsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(WorkerPoolRegionsItemOutput)
 }
 
 // WorkerPoolRegionsItemInput is an input type that accepts WorkerPoolRegionsItemArgs and WorkerPoolRegionsItemOutput values.
@@ -222,8 +222,8 @@ func (o WorkerPoolRegionsItemArrayOutput) ToWorkerPoolRegionsItemArrayOutputWith
 }
 
 func (o WorkerPoolRegionsItemArrayOutput) Index(i pulumi.IntInput) WorkerPoolRegionsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPoolRegionsItemOutput {
-		return vs[0].([]WorkerPoolRegionsItem)[vs[1].(int)].ToWorkerPoolRegionsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPoolRegionsItem {
+		return vs[0].([]WorkerPoolRegionsItem)[vs[1].(int)]
 	}).(WorkerPoolRegionsItemOutput)
 }
 

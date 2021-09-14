@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Message for specifying the start activities to crawl.
+    /// </summary>
     [OutputType]
     public sealed class RoboStartingIntentResponse
     {

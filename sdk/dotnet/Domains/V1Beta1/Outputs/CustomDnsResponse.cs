@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Domains.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for an arbitrary DNS provider.
+    /// </summary>
     [OutputType]
     public sealed class CustomDnsResponse
     {

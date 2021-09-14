@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
+    /// </summary>
     [OutputType]
     public sealed class FeatureStateResponse
     {

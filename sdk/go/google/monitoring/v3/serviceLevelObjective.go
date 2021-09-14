@@ -145,9 +145,7 @@ func (i *ServiceLevelObjective) ToServiceLevelObjectiveOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceLevelObjectiveOutput)
 }
 
-type ServiceLevelObjectiveOutput struct {
-	*pulumi.OutputState
-}
+type ServiceLevelObjectiveOutput struct{ *pulumi.OutputState }
 
 func (ServiceLevelObjectiveOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceLevelObjective)(nil))

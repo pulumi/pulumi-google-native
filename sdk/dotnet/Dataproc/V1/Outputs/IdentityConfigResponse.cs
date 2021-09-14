@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Identity related configuration, including service account based secure multi-tenancy user mappings.
+    /// </summary>
     [OutputType]
     public sealed class IdentityConfigResponse
     {

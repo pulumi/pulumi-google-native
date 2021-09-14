@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// A reference to a file, used for user inputs.
+    /// </summary>
     [OutputType]
     public sealed class FileReferenceResponse
     {

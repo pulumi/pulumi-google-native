@@ -4,6 +4,9 @@
 package v2beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,78 @@ type LookupEnvironmentResult struct {
 	TextToSpeechSettings GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse `pulumi:"textToSpeechSettings"`
 	// The last update time of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupEnvironmentResult, error) {
+			args := v.(LookupEnvironmentArgs)
+			r, err := LookupEnvironment(ctx, &args, opts...)
+			return *r, err
+		}).(LookupEnvironmentResultOutput)
+}
+
+type LookupEnvironmentOutputArgs struct {
+	EnvironmentId pulumi.StringInput    `pulumi:"environmentId"`
+	Location      pulumi.StringInput    `pulumi:"location"`
+	Project       pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupEnvironmentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentArgs)(nil)).Elem()
+}
+
+type LookupEnvironmentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEnvironmentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentResult)(nil)).Elem()
+}
+
+func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutput() LookupEnvironmentResultOutput {
+	return o
+}
+
+func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContext(ctx context.Context) LookupEnvironmentResultOutput {
+	return o
+}
+
+// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+func (o LookupEnvironmentResultOutput) AgentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.AgentVersion }).(pulumi.StringOutput)
+}
+
+// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+func (o LookupEnvironmentResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. The fulfillment settings to use for this environment.
+func (o LookupEnvironmentResultOutput) Fulfillment() GoogleCloudDialogflowV2beta1FulfillmentResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) GoogleCloudDialogflowV2beta1FulfillmentResponse { return v.Fulfillment }).(GoogleCloudDialogflowV2beta1FulfillmentResponseOutput)
+}
+
+// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
+func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
+func (o LookupEnvironmentResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional. Text to speech settings for this environment.
+func (o LookupEnvironmentResultOutput) TextToSpeechSettings() GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse {
+		return v.TextToSpeechSettings
+	}).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput)
+}
+
+// The last update time of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
+func (o LookupEnvironmentResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEnvironmentResultOutput{})
 }

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents an amount of money with its currency type.
+    /// </summary>
     [OutputType]
     public sealed class GoogleTypeMoneyResponse
     {

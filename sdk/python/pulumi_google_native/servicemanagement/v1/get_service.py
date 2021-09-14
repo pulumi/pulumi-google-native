@@ -12,6 +12,7 @@ __all__ = [
     'GetServiceResult',
     'AwaitableGetServiceResult',
     'get_service',
+    'get_service_output',
 ]
 
 @pulumi.output_type
@@ -67,3 +68,12 @@ def get_service(service_name: Optional[str] = None,
     return AwaitableGetServiceResult(
         producer_project_id=__ret__.producer_project_id,
         service_name=__ret__.service_name)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_output(service_name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    """
+    Gets a managed service. Authentication is required unless the service is public.
+    """
+    ...

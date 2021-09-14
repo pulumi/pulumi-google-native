@@ -13,6 +13,7 @@ __all__ = [
     'GetDomainMappingResult',
     'AwaitableGetDomainMappingResult',
     'get_domain_mapping',
+    'get_domain_mapping_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,14 @@ def get_domain_mapping(domainmapping_id: Optional[str] = None,
         metadata=__ret__.metadata,
         spec=__ret__.spec,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_domain_mapping)
+def get_domain_mapping_output(domainmapping_id: Optional[pulumi.Input[str]] = None,
+                              location: Optional[pulumi.Input[str]] = None,
+                              project: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainMappingResult]:
+    """
+    Get information about a domain mapping.
+    """
+    ...

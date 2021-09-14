@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,4 +48,95 @@ type LookupInstanceResult struct {
 	Port string `pulumi:"port"`
 	// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
 	State string `pulumi:"state"`
+}
+
+func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupInstanceResult, error) {
+			args := v.(LookupInstanceArgs)
+			r, err := LookupInstance(ctx, &args, opts...)
+			return *r, err
+		}).(LookupInstanceResultOutput)
+}
+
+type LookupInstanceOutputArgs struct {
+	InstanceId     pulumi.StringInput `pulumi:"instanceId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupInstanceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceArgs)(nil)).Elem()
+}
+
+type LookupInstanceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceResult)(nil)).Elem()
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanceResultOutput {
+	return o
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
+	return o
+}
+
+// Time the instance was created in milliseconds since epoch.
+func (o LookupInstanceResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the instance.
+func (o LookupInstanceResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+func (o LookupInstanceResultOutput) DiskEncryptionKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DiskEncryptionKeyName }).(pulumi.StringOutput)
+}
+
+// Optional. Display name for the instance.
+func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
+func (o LookupInstanceResultOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Time the instance was last modified in milliseconds since epoch.
+func (o LookupInstanceResultOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Compute Engine location where the instance resides.
+func (o LookupInstanceResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
+func (o LookupInstanceResultOutput) PeeringCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.PeeringCidrRange }).(pulumi.StringOutput)
+}
+
+// Port number of the exposed Apigee endpoint.
+func (o LookupInstanceResultOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
+func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInstanceResultOutput{})
 }

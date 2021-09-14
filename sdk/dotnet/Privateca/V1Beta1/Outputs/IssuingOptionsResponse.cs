@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Options that affect all certificates issued by a CertificateAuthority.
+    /// </summary>
     [OutputType]
     public sealed class IssuingOptionsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Results of active probing from the last run of the test.
+    /// </summary>
     [OutputType]
     public sealed class ProbingDetailsResponse
     {

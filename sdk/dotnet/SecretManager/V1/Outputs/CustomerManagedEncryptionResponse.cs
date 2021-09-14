@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SecretManager.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for encrypting secret payloads using customer-managed encryption keys (CMEK).
+    /// </summary>
     [OutputType]
     public sealed class CustomerManagedEncryptionResponse
     {

@@ -12,6 +12,7 @@ __all__ = [
     'GetTargetPoolResult',
     'AwaitableGetTargetPoolResult',
     'get_target_pool',
+    'get_target_pool_output',
 ]
 
 @pulumi.output_type
@@ -201,3 +202,14 @@ def get_target_pool(project: Optional[str] = None,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
         session_affinity=__ret__.session_affinity)
+
+
+@_utilities.lift_output_func(get_target_pool)
+def get_target_pool_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                           region: Optional[pulumi.Input[str]] = None,
+                           target_pool: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetPoolResult]:
+    """
+    Returns the specified target pool. Gets a list of available target pools by making a list() request.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+    /// </summary>
     [OutputType]
     public sealed class LivenessCheckResponse
     {

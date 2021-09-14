@@ -165,9 +165,7 @@ func (i *HostQuery) ToHostQueryOutputWithContext(ctx context.Context) HostQueryO
 	return pulumi.ToOutputWithContext(ctx, i).(HostQueryOutput)
 }
 
-type HostQueryOutput struct {
-	*pulumi.OutputState
-}
+type HostQueryOutput struct{ *pulumi.OutputState }
 
 func (HostQueryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HostQuery)(nil))

@@ -4,6 +4,9 @@
 package v3
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,76 @@ type LookupWebhookResult struct {
 	ServiceDirectory GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse `pulumi:"serviceDirectory"`
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
 	Timeout string `pulumi:"timeout"`
+}
+
+func LookupWebhookOutput(ctx *pulumi.Context, args LookupWebhookOutputArgs, opts ...pulumi.InvokeOption) LookupWebhookResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupWebhookResult, error) {
+			args := v.(LookupWebhookArgs)
+			r, err := LookupWebhook(ctx, &args, opts...)
+			return *r, err
+		}).(LookupWebhookResultOutput)
+}
+
+type LookupWebhookOutputArgs struct {
+	AgentId   pulumi.StringInput    `pulumi:"agentId"`
+	Location  pulumi.StringInput    `pulumi:"location"`
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+	WebhookId pulumi.StringInput    `pulumi:"webhookId"`
+}
+
+func (LookupWebhookOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWebhookArgs)(nil)).Elem()
+}
+
+type LookupWebhookResultOutput struct{ *pulumi.OutputState }
+
+func (LookupWebhookResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWebhookResult)(nil)).Elem()
+}
+
+func (o LookupWebhookResultOutput) ToLookupWebhookResultOutput() LookupWebhookResultOutput {
+	return o
+}
+
+func (o LookupWebhookResultOutput) ToLookupWebhookResultOutputWithContext(ctx context.Context) LookupWebhookResultOutput {
+	return o
+}
+
+// Indicates whether the webhook is disabled.
+func (o LookupWebhookResultOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWebhookResult) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The human-readable name of the webhook, unique within the agent.
+func (o LookupWebhookResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebhookResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Configuration for a generic web service.
+func (o LookupWebhookResultOutput) GenericWebService() GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput {
+	return o.ApplyT(func(v LookupWebhookResult) GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse {
+		return v.GenericWebService
+	}).(GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput)
+}
+
+// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+func (o LookupWebhookResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebhookResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+func (o LookupWebhookResultOutput) ServiceDirectory() GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponseOutput {
+	return o.ApplyT(func(v LookupWebhookResult) GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse {
+		return v.ServiceDirectory
+	}).(GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponseOutput)
+}
+
+// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+func (o LookupWebhookResultOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebhookResult) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupWebhookResultOutput{})
 }

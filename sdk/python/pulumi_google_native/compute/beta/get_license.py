@@ -13,6 +13,7 @@ __all__ = [
     'GetLicenseResult',
     'AwaitableGetLicenseResult',
     'get_license',
+    'get_license_output',
 ]
 
 @pulumi.output_type
@@ -145,3 +146,13 @@ def get_license(license: Optional[str] = None,
         resource_requirements=__ret__.resource_requirements,
         self_link=__ret__.self_link,
         transferable=__ret__.transferable)
+
+
+@_utilities.lift_output_func(get_license)
+def get_license_output(license: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLicenseResult]:
+    """
+    Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
+    """
+    ...

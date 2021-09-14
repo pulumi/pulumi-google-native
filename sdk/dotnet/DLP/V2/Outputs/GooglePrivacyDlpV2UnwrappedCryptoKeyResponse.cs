@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2UnwrappedCryptoKeyResponse
     {

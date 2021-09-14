@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Provides details for how an evaluation job sends email alerts based on the results of a run.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse
     {

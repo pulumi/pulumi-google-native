@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// An internal checker allows Uptime checks to run on private/internal GCP resources.
+    /// </summary>
     [OutputType]
     public sealed class InternalCheckerResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Defines an object for the environment field in in-toto links. The suggested fields are "variables", "filesystem", and "workdir".
+    /// </summary>
     [OutputType]
     public sealed class EnvironmentResponse
     {

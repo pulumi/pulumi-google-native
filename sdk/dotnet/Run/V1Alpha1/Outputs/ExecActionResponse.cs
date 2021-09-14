@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Not supported by Cloud Run ExecAction describes a "run in container" action.
+    /// </summary>
     [OutputType]
     public sealed class ExecActionResponse
     {

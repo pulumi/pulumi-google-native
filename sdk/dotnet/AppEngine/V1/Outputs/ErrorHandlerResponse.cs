@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// Custom static error page to be served when an error occurs.
+    /// </summary>
     [OutputType]
     public sealed class ErrorHandlerResponse
     {

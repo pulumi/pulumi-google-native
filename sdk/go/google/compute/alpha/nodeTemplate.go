@@ -156,9 +156,7 @@ func (i *NodeTemplate) ToNodeTemplateOutputWithContext(ctx context.Context) Node
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateOutput)
 }
 
-type NodeTemplateOutput struct {
-	*pulumi.OutputState
-}
+type NodeTemplateOutput struct{ *pulumi.OutputState }
 
 func (NodeTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodeTemplate)(nil))

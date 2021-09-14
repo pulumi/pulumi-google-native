@@ -12,6 +12,7 @@ __all__ = [
     'GetApiResult',
     'AwaitableGetApiResult',
     'get_api',
+    'get_api_output',
 ]
 
 @pulumi.output_type
@@ -136,3 +137,14 @@ def get_api(api_id: Optional[str] = None,
         name=__ret__.name,
         state=__ret__.state,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_api)
+def get_api_output(api_id: Optional[pulumi.Input[str]] = None,
+                   location: Optional[pulumi.Input[str]] = None,
+                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiResult]:
+    """
+    Gets details of a single Api.
+    """
+    ...

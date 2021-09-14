@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A 2D coordinate in an image. The origin is the top-left.
+    /// </summary>
     [OutputType]
     public sealed class VertexResponse
     {

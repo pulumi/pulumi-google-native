@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// The entry of VM image upgrade history.
+    /// </summary>
     [OutputType]
     public sealed class UpgradeHistoryEntryResponse
     {

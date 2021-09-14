@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// An alias IP range attached to an instance's network interface.
+    /// </summary>
     [OutputType]
     public sealed class AliasIpRangeResponse
     {

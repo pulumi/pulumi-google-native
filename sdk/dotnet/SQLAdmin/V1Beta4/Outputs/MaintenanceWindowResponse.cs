@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 {
 
+    /// <summary>
+    /// Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
+    /// </summary>
     [OutputType]
     public sealed class MaintenanceWindowResponse
     {

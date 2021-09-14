@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Describes the data disk used by a workflow job.
+    /// </summary>
     [OutputType]
     public sealed class DiskResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Enable email notification to project owners and editors on jobs's completion/failure.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2JobNotificationEmailsResponse
     {

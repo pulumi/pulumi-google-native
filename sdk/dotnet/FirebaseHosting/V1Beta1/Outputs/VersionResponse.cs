@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A `Version` is a configuration and a collection of static files which determine how a site is displayed.
+    /// </summary>
     [OutputType]
     public sealed class VersionResponse
     {

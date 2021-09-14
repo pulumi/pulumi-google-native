@@ -13,6 +13,7 @@ __all__ = [
     'GetApiProductResult',
     'AwaitableGetApiProductResult',
     'get_api_product',
+    'get_api_product_output',
 ]
 
 @pulumi.output_type
@@ -249,3 +250,13 @@ def get_api_product(apiproduct_id: Optional[str] = None,
         quota_interval=__ret__.quota_interval,
         quota_time_unit=__ret__.quota_time_unit,
         scopes=__ret__.scopes)
+
+
+@_utilities.lift_output_func(get_api_product)
+def get_api_product_output(apiproduct_id: Optional[pulumi.Input[str]] = None,
+                           organization_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiProductResult]:
+    """
+    Gets configuration details for an API product. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via the UI or the API. View the list of API products to verify the internal name.
+    """
+    ...

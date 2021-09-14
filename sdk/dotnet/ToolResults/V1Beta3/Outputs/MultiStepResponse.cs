@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// Details when multiple steps are run with the same configuration as a group.
+    /// </summary>
     [OutputType]
     public sealed class MultiStepResponse
     {

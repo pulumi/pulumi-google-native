@@ -13,6 +13,7 @@ __all__ = [
     'GetDlpJobResult',
     'AwaitableGetDlpJobResult',
     'get_dlp_job',
+    'get_dlp_job_output',
 ]
 
 @pulumi.output_type
@@ -176,3 +177,14 @@ def get_dlp_job(dlp_job_id: Optional[str] = None,
         start_time=__ret__.start_time,
         state=__ret__.state,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_dlp_job)
+def get_dlp_job_output(dlp_job_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDlpJobResult]:
+    """
+    Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+    """
+    ...

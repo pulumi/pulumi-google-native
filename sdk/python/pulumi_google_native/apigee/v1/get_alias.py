@@ -13,6 +13,7 @@ __all__ = [
     'GetAliasResult',
     'AwaitableGetAliasResult',
     'get_alias',
+    'get_alias_output',
 ]
 
 @pulumi.output_type
@@ -87,3 +88,15 @@ def get_alias(alias_id: Optional[str] = None,
         alias=__ret__.alias,
         certs_info=__ret__.certs_info,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_alias)
+def get_alias_output(alias_id: Optional[pulumi.Input[str]] = None,
+                     environment_id: Optional[pulumi.Input[str]] = None,
+                     keystore_id: Optional[pulumi.Input[str]] = None,
+                     organization_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAliasResult]:
+    """
+    Gets an alias.
+    """
+    ...

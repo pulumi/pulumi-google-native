@@ -13,6 +13,7 @@ __all__ = [
     'GetDeveloperResult',
     'AwaitableGetDeveloperResult',
     'get_developer',
+    'get_developer_output',
 ]
 
 @pulumi.output_type
@@ -228,3 +229,14 @@ def get_developer(action: Optional[str] = None,
         organization_name=__ret__.organization_name,
         status=__ret__.status,
         user_name=__ret__.user_name)
+
+
+@_utilities.lift_output_func(get_developer)
+def get_developer_output(action: Optional[pulumi.Input[Optional[str]]] = None,
+                         developer_id: Optional[pulumi.Input[str]] = None,
+                         organization_id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeveloperResult]:
+    """
+    Returns the developer details, including the developer's name, email address, apps, and other information. **Note**: The response includes only the first 100 developer apps.
+    """
+    ...

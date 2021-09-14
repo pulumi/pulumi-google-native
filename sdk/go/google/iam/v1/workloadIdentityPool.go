@@ -117,9 +117,7 @@ func (i *WorkloadIdentityPool) ToWorkloadIdentityPoolOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolOutput)
 }
 
-type WorkloadIdentityPoolOutput struct {
-	*pulumi.OutputState
-}
+type WorkloadIdentityPoolOutput struct{ *pulumi.OutputState }
 
 func (WorkloadIdentityPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WorkloadIdentityPool)(nil))

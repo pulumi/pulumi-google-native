@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Network describes the GCP network used to create workers in.
+    /// </summary>
     [OutputType]
     public sealed class NetworkResponse
     {

@@ -132,9 +132,7 @@ func (i *Hl7V2Store) ToHl7V2StoreOutputWithContext(ctx context.Context) Hl7V2Sto
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7V2StoreOutput)
 }
 
-type Hl7V2StoreOutput struct {
-	*pulumi.OutputState
-}
+type Hl7V2StoreOutput struct{ *pulumi.OutputState }
 
 func (Hl7V2StoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hl7V2Store)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Datastore.V1.Outputs
 {
 
+    /// <summary>
+    /// A property of an index.
+    /// </summary>
     [OutputType]
     public sealed class GoogleDatastoreAdminV1IndexedPropertyResponse
     {

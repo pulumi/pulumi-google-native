@@ -118,7 +118,7 @@ func (o GoogleCloudOrgpolicyV2PolicySpecOutput) ToGoogleCloudOrgpolicyV2PolicySp
 }
 
 func (o GoogleCloudOrgpolicyV2PolicySpecOutput) ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpec) *GoogleCloudOrgpolicyV2PolicySpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2PolicySpec) *GoogleCloudOrgpolicyV2PolicySpec {
 		return &v
 	}).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
 }
@@ -158,7 +158,13 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) ToGoogleCloudOrgpolicyV2Polic
 }
 
 func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) Elem() GoogleCloudOrgpolicyV2PolicySpecOutput {
-	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpec) GoogleCloudOrgpolicyV2PolicySpec { return *v }).(GoogleCloudOrgpolicyV2PolicySpecOutput)
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpec) GoogleCloudOrgpolicyV2PolicySpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudOrgpolicyV2PolicySpec
+		return ret
+	}).(GoogleCloudOrgpolicyV2PolicySpecOutput)
 }
 
 // An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
@@ -577,7 +583,7 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) ToGoogleCl
 }
 
 func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
-	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues) *GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues) *GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
 		return &v
 	}).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput)
 }
@@ -608,7 +614,11 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) ToGoogl
 
 func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) Elem() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput {
 	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
+		return ret
 	}).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput)
 }
 
@@ -810,7 +820,7 @@ func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2
 }
 
 func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2PolicySpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecResponse) *GoogleCloudOrgpolicyV2PolicySpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2PolicySpecResponse) *GoogleCloudOrgpolicyV2PolicySpecResponse {
 		return &v
 	}).(GoogleCloudOrgpolicyV2PolicySpecResponsePtrOutput)
 }
@@ -857,7 +867,13 @@ func (o GoogleCloudOrgpolicyV2PolicySpecResponsePtrOutput) ToGoogleCloudOrgpolic
 }
 
 func (o GoogleCloudOrgpolicyV2PolicySpecResponsePtrOutput) Elem() GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpecResponse) GoogleCloudOrgpolicyV2PolicySpecResponse { return *v }).(GoogleCloudOrgpolicyV2PolicySpecResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpecResponse) GoogleCloudOrgpolicyV2PolicySpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudOrgpolicyV2PolicySpecResponse
+		return ret
+	}).(GoogleCloudOrgpolicyV2PolicySpecResponseOutput)
 }
 
 // An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
@@ -1018,7 +1034,7 @@ func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutpu
 }
 
 func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
-	return o.ApplyT(func(v GoogleTypeExpr) *GoogleTypeExpr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
 		return &v
 	}).(GoogleTypeExprPtrOutput)
 }
@@ -1058,7 +1074,13 @@ func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx contex
 }
 
 func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
-	return o.ApplyT(func(v *GoogleTypeExpr) GoogleTypeExpr { return *v }).(GoogleTypeExprOutput)
+	return o.ApplyT(func(v *GoogleTypeExpr) GoogleTypeExpr {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeExpr
+		return ret
+	}).(GoogleTypeExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

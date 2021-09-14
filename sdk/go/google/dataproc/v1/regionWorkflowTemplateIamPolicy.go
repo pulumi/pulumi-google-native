@@ -117,9 +117,7 @@ func (i *RegionWorkflowTemplateIamPolicy) ToRegionWorkflowTemplateIamPolicyOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(RegionWorkflowTemplateIamPolicyOutput)
 }
 
-type RegionWorkflowTemplateIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type RegionWorkflowTemplateIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionWorkflowTemplateIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionWorkflowTemplateIamPolicy)(nil))

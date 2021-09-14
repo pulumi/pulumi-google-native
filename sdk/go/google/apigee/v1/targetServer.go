@@ -143,9 +143,7 @@ func (i *TargetServer) ToTargetServerOutputWithContext(ctx context.Context) Targ
 	return pulumi.ToOutputWithContext(ctx, i).(TargetServerOutput)
 }
 
-type TargetServerOutput struct {
-	*pulumi.OutputState
-}
+type TargetServerOutput struct{ *pulumi.OutputState }
 
 func (TargetServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetServer)(nil))

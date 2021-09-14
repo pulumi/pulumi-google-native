@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Jobs.V4.Outputs
 {
 
+    /// <summary>
+    /// Derived details about the company.
+    /// </summary>
     [OutputType]
     public sealed class CompanyDerivedInfoResponse
     {

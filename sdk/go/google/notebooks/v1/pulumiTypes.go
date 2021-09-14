@@ -110,7 +110,7 @@ func (o AcceleratorConfigOutput) ToAcceleratorConfigPtrOutput() AcceleratorConfi
 }
 
 func (o AcceleratorConfigOutput) ToAcceleratorConfigPtrOutputWithContext(ctx context.Context) AcceleratorConfigPtrOutput {
-	return o.ApplyT(func(v AcceleratorConfig) *AcceleratorConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcceleratorConfig) *AcceleratorConfig {
 		return &v
 	}).(AcceleratorConfigPtrOutput)
 }
@@ -140,7 +140,13 @@ func (o AcceleratorConfigPtrOutput) ToAcceleratorConfigPtrOutputWithContext(ctx 
 }
 
 func (o AcceleratorConfigPtrOutput) Elem() AcceleratorConfigOutput {
-	return o.ApplyT(func(v *AcceleratorConfig) AcceleratorConfig { return *v }).(AcceleratorConfigOutput)
+	return o.ApplyT(func(v *AcceleratorConfig) AcceleratorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorConfig
+		return ret
+	}).(AcceleratorConfigOutput)
 }
 
 // Count of cores of this accelerator.
@@ -263,7 +269,7 @@ func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponsePtrOutput() 
 }
 
 func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) AcceleratorConfigResponsePtrOutput {
-	return o.ApplyT(func(v AcceleratorConfigResponse) *AcceleratorConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcceleratorConfigResponse) *AcceleratorConfigResponse {
 		return &v
 	}).(AcceleratorConfigResponsePtrOutput)
 }
@@ -293,7 +299,13 @@ func (o AcceleratorConfigResponsePtrOutput) ToAcceleratorConfigResponsePtrOutput
 }
 
 func (o AcceleratorConfigResponsePtrOutput) Elem() AcceleratorConfigResponseOutput {
-	return o.ApplyT(func(v *AcceleratorConfigResponse) AcceleratorConfigResponse { return *v }).(AcceleratorConfigResponseOutput)
+	return o.ApplyT(func(v *AcceleratorConfigResponse) AcceleratorConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorConfigResponse
+		return ret
+	}).(AcceleratorConfigResponseOutput)
 }
 
 // Count of cores of this accelerator.
@@ -677,7 +689,7 @@ func (o ContainerImageOutput) ToContainerImagePtrOutput() ContainerImagePtrOutpu
 }
 
 func (o ContainerImageOutput) ToContainerImagePtrOutputWithContext(ctx context.Context) ContainerImagePtrOutput {
-	return o.ApplyT(func(v ContainerImage) *ContainerImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerImage) *ContainerImage {
 		return &v
 	}).(ContainerImagePtrOutput)
 }
@@ -707,7 +719,13 @@ func (o ContainerImagePtrOutput) ToContainerImagePtrOutputWithContext(ctx contex
 }
 
 func (o ContainerImagePtrOutput) Elem() ContainerImageOutput {
-	return o.ApplyT(func(v *ContainerImage) ContainerImage { return *v }).(ContainerImageOutput)
+	return o.ApplyT(func(v *ContainerImage) ContainerImage {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerImage
+		return ret
+	}).(ContainerImageOutput)
 }
 
 // The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
@@ -875,7 +893,7 @@ func (o ContainerImageResponseOutput) ToContainerImageResponsePtrOutput() Contai
 }
 
 func (o ContainerImageResponseOutput) ToContainerImageResponsePtrOutputWithContext(ctx context.Context) ContainerImageResponsePtrOutput {
-	return o.ApplyT(func(v ContainerImageResponse) *ContainerImageResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerImageResponse) *ContainerImageResponse {
 		return &v
 	}).(ContainerImageResponsePtrOutput)
 }
@@ -905,7 +923,13 @@ func (o ContainerImageResponsePtrOutput) ToContainerImageResponsePtrOutputWithCo
 }
 
 func (o ContainerImageResponsePtrOutput) Elem() ContainerImageResponseOutput {
-	return o.ApplyT(func(v *ContainerImageResponse) ContainerImageResponse { return *v }).(ContainerImageResponseOutput)
+	return o.ApplyT(func(v *ContainerImageResponse) ContainerImageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerImageResponse
+		return ret
+	}).(ContainerImageResponseOutput)
 }
 
 // The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
@@ -1044,7 +1068,7 @@ func (o DataprocParametersOutput) ToDataprocParametersPtrOutput() DataprocParame
 }
 
 func (o DataprocParametersOutput) ToDataprocParametersPtrOutputWithContext(ctx context.Context) DataprocParametersPtrOutput {
-	return o.ApplyT(func(v DataprocParameters) *DataprocParameters {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataprocParameters) *DataprocParameters {
 		return &v
 	}).(DataprocParametersPtrOutput)
 }
@@ -1069,7 +1093,13 @@ func (o DataprocParametersPtrOutput) ToDataprocParametersPtrOutputWithContext(ct
 }
 
 func (o DataprocParametersPtrOutput) Elem() DataprocParametersOutput {
-	return o.ApplyT(func(v *DataprocParameters) DataprocParameters { return *v }).(DataprocParametersOutput)
+	return o.ApplyT(func(v *DataprocParameters) DataprocParameters {
+		if v != nil {
+			return *v
+		}
+		var ret DataprocParameters
+		return ret
+	}).(DataprocParametersOutput)
 }
 
 // URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
@@ -1178,7 +1208,7 @@ func (o DataprocParametersResponseOutput) ToDataprocParametersResponsePtrOutput(
 }
 
 func (o DataprocParametersResponseOutput) ToDataprocParametersResponsePtrOutputWithContext(ctx context.Context) DataprocParametersResponsePtrOutput {
-	return o.ApplyT(func(v DataprocParametersResponse) *DataprocParametersResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataprocParametersResponse) *DataprocParametersResponse {
 		return &v
 	}).(DataprocParametersResponsePtrOutput)
 }
@@ -1203,7 +1233,13 @@ func (o DataprocParametersResponsePtrOutput) ToDataprocParametersResponsePtrOutp
 }
 
 func (o DataprocParametersResponsePtrOutput) Elem() DataprocParametersResponseOutput {
-	return o.ApplyT(func(v *DataprocParametersResponse) DataprocParametersResponse { return *v }).(DataprocParametersResponseOutput)
+	return o.ApplyT(func(v *DataprocParametersResponse) DataprocParametersResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataprocParametersResponse
+		return ret
+	}).(DataprocParametersResponseOutput)
 }
 
 // URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
@@ -1511,7 +1547,7 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPt
 }
 
 func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
-	return o.ApplyT(func(v EncryptionConfig) *EncryptionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfig) *EncryptionConfig {
 		return &v
 	}).(EncryptionConfigPtrOutput)
 }
@@ -1536,7 +1572,13 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx co
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
-	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig { return *v }).(EncryptionConfigOutput)
+	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfig
+		return ret
+	}).(EncryptionConfigOutput)
 }
 
 // The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a disks. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
@@ -1645,7 +1687,7 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() En
 }
 
 func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o.ApplyT(func(v EncryptionConfigResponse) *EncryptionConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfigResponse) *EncryptionConfigResponse {
 		return &v
 	}).(EncryptionConfigResponsePtrOutput)
 }
@@ -1670,7 +1712,13 @@ func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWi
 }
 
 func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse { return *v }).(EncryptionConfigResponseOutput)
+	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfigResponse
+		return ret
+	}).(EncryptionConfigResponseOutput)
 }
 
 // The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a disks. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
@@ -1991,7 +2039,7 @@ func (o ExecutionTemplateOutput) ToExecutionTemplatePtrOutput() ExecutionTemplat
 }
 
 func (o ExecutionTemplateOutput) ToExecutionTemplatePtrOutputWithContext(ctx context.Context) ExecutionTemplatePtrOutput {
-	return o.ApplyT(func(v ExecutionTemplate) *ExecutionTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecutionTemplate) *ExecutionTemplate {
 		return &v
 	}).(ExecutionTemplatePtrOutput)
 }
@@ -2066,7 +2114,13 @@ func (o ExecutionTemplatePtrOutput) ToExecutionTemplatePtrOutputWithContext(ctx 
 }
 
 func (o ExecutionTemplatePtrOutput) Elem() ExecutionTemplateOutput {
-	return o.ApplyT(func(v *ExecutionTemplate) ExecutionTemplate { return *v }).(ExecutionTemplateOutput)
+	return o.ApplyT(func(v *ExecutionTemplate) ExecutionTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret ExecutionTemplate
+		return ret
+	}).(ExecutionTemplateOutput)
 }
 
 // Configuration (count and accelerator type) for hardware running notebook execution.
@@ -2315,7 +2369,7 @@ func (o ExecutionTemplateResponseOutput) ToExecutionTemplateResponsePtrOutput() 
 }
 
 func (o ExecutionTemplateResponseOutput) ToExecutionTemplateResponsePtrOutputWithContext(ctx context.Context) ExecutionTemplateResponsePtrOutput {
-	return o.ApplyT(func(v ExecutionTemplateResponse) *ExecutionTemplateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecutionTemplateResponse) *ExecutionTemplateResponse {
 		return &v
 	}).(ExecutionTemplateResponsePtrOutput)
 }
@@ -2390,7 +2444,13 @@ func (o ExecutionTemplateResponsePtrOutput) ToExecutionTemplateResponsePtrOutput
 }
 
 func (o ExecutionTemplateResponsePtrOutput) Elem() ExecutionTemplateResponseOutput {
-	return o.ApplyT(func(v *ExecutionTemplateResponse) ExecutionTemplateResponse { return *v }).(ExecutionTemplateResponseOutput)
+	return o.ApplyT(func(v *ExecutionTemplateResponse) ExecutionTemplateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExecutionTemplateResponse
+		return ret
+	}).(ExecutionTemplateResponseOutput)
 }
 
 // Configuration (count and accelerator type) for hardware running notebook execution.
@@ -2611,7 +2671,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -2651,7 +2711,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2988,7 +3054,7 @@ func (o LocalDiskOutput) ToLocalDiskPtrOutput() LocalDiskPtrOutput {
 }
 
 func (o LocalDiskOutput) ToLocalDiskPtrOutputWithContext(ctx context.Context) LocalDiskPtrOutput {
-	return o.ApplyT(func(v LocalDisk) *LocalDisk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocalDisk) *LocalDisk {
 		return &v
 	}).(LocalDiskPtrOutput)
 }
@@ -3033,7 +3099,13 @@ func (o LocalDiskPtrOutput) ToLocalDiskPtrOutputWithContext(ctx context.Context)
 }
 
 func (o LocalDiskPtrOutput) Elem() LocalDiskOutput {
-	return o.ApplyT(func(v *LocalDisk) LocalDisk { return *v }).(LocalDiskOutput)
+	return o.ApplyT(func(v *LocalDisk) LocalDisk {
+		if v != nil {
+			return *v
+		}
+		var ret LocalDisk
+		return ret
+	}).(LocalDiskOutput)
 }
 
 // Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
@@ -3198,7 +3270,7 @@ func (o LocalDiskInitializeParamsOutput) ToLocalDiskInitializeParamsPtrOutput() 
 }
 
 func (o LocalDiskInitializeParamsOutput) ToLocalDiskInitializeParamsPtrOutputWithContext(ctx context.Context) LocalDiskInitializeParamsPtrOutput {
-	return o.ApplyT(func(v LocalDiskInitializeParams) *LocalDiskInitializeParams {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocalDiskInitializeParams) *LocalDiskInitializeParams {
 		return &v
 	}).(LocalDiskInitializeParamsPtrOutput)
 }
@@ -3243,7 +3315,13 @@ func (o LocalDiskInitializeParamsPtrOutput) ToLocalDiskInitializeParamsPtrOutput
 }
 
 func (o LocalDiskInitializeParamsPtrOutput) Elem() LocalDiskInitializeParamsOutput {
-	return o.ApplyT(func(v *LocalDiskInitializeParams) LocalDiskInitializeParams { return *v }).(LocalDiskInitializeParamsOutput)
+	return o.ApplyT(func(v *LocalDiskInitializeParams) LocalDiskInitializeParams {
+		if v != nil {
+			return *v
+		}
+		var ret LocalDiskInitializeParams
+		return ret
+	}).(LocalDiskInitializeParamsOutput)
 }
 
 // Optional. Provide this property when creating the disk.
@@ -3408,7 +3486,7 @@ func (o LocalDiskInitializeParamsResponseOutput) ToLocalDiskInitializeParamsResp
 }
 
 func (o LocalDiskInitializeParamsResponseOutput) ToLocalDiskInitializeParamsResponsePtrOutputWithContext(ctx context.Context) LocalDiskInitializeParamsResponsePtrOutput {
-	return o.ApplyT(func(v LocalDiskInitializeParamsResponse) *LocalDiskInitializeParamsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocalDiskInitializeParamsResponse) *LocalDiskInitializeParamsResponse {
 		return &v
 	}).(LocalDiskInitializeParamsResponsePtrOutput)
 }
@@ -3453,7 +3531,13 @@ func (o LocalDiskInitializeParamsResponsePtrOutput) ToLocalDiskInitializeParamsR
 }
 
 func (o LocalDiskInitializeParamsResponsePtrOutput) Elem() LocalDiskInitializeParamsResponseOutput {
-	return o.ApplyT(func(v *LocalDiskInitializeParamsResponse) LocalDiskInitializeParamsResponse { return *v }).(LocalDiskInitializeParamsResponseOutput)
+	return o.ApplyT(func(v *LocalDiskInitializeParamsResponse) LocalDiskInitializeParamsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LocalDiskInitializeParamsResponse
+		return ret
+	}).(LocalDiskInitializeParamsResponseOutput)
 }
 
 // Optional. Provide this property when creating the disk.
@@ -3646,7 +3730,7 @@ func (o LocalDiskResponseOutput) ToLocalDiskResponsePtrOutput() LocalDiskRespons
 }
 
 func (o LocalDiskResponseOutput) ToLocalDiskResponsePtrOutputWithContext(ctx context.Context) LocalDiskResponsePtrOutput {
-	return o.ApplyT(func(v LocalDiskResponse) *LocalDiskResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocalDiskResponse) *LocalDiskResponse {
 		return &v
 	}).(LocalDiskResponsePtrOutput)
 }
@@ -3726,7 +3810,13 @@ func (o LocalDiskResponsePtrOutput) ToLocalDiskResponsePtrOutputWithContext(ctx 
 }
 
 func (o LocalDiskResponsePtrOutput) Elem() LocalDiskResponseOutput {
-	return o.ApplyT(func(v *LocalDiskResponse) LocalDiskResponse { return *v }).(LocalDiskResponseOutput)
+	return o.ApplyT(func(v *LocalDiskResponse) LocalDiskResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LocalDiskResponse
+		return ret
+	}).(LocalDiskResponseOutput)
 }
 
 // Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
@@ -3953,7 +4043,7 @@ func (o ReservationAffinityOutput) ToReservationAffinityPtrOutput() ReservationA
 }
 
 func (o ReservationAffinityOutput) ToReservationAffinityPtrOutputWithContext(ctx context.Context) ReservationAffinityPtrOutput {
-	return o.ApplyT(func(v ReservationAffinity) *ReservationAffinity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationAffinity) *ReservationAffinity {
 		return &v
 	}).(ReservationAffinityPtrOutput)
 }
@@ -3990,7 +4080,13 @@ func (o ReservationAffinityPtrOutput) ToReservationAffinityPtrOutputWithContext(
 }
 
 func (o ReservationAffinityPtrOutput) Elem() ReservationAffinityOutput {
-	return o.ApplyT(func(v *ReservationAffinity) ReservationAffinity { return *v }).(ReservationAffinityOutput)
+	return o.ApplyT(func(v *ReservationAffinity) ReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationAffinity
+		return ret
+	}).(ReservationAffinityOutput)
 }
 
 // Optional. Type of reservation to consume
@@ -4127,7 +4223,7 @@ func (o ReservationAffinityResponseOutput) ToReservationAffinityResponsePtrOutpu
 }
 
 func (o ReservationAffinityResponseOutput) ToReservationAffinityResponsePtrOutputWithContext(ctx context.Context) ReservationAffinityResponsePtrOutput {
-	return o.ApplyT(func(v ReservationAffinityResponse) *ReservationAffinityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationAffinityResponse) *ReservationAffinityResponse {
 		return &v
 	}).(ReservationAffinityResponsePtrOutput)
 }
@@ -4162,7 +4258,13 @@ func (o ReservationAffinityResponsePtrOutput) ToReservationAffinityResponsePtrOu
 }
 
 func (o ReservationAffinityResponsePtrOutput) Elem() ReservationAffinityResponseOutput {
-	return o.ApplyT(func(v *ReservationAffinityResponse) ReservationAffinityResponse { return *v }).(ReservationAffinityResponseOutput)
+	return o.ApplyT(func(v *ReservationAffinityResponse) ReservationAffinityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationAffinityResponse
+		return ret
+	}).(ReservationAffinityResponseOutput)
 }
 
 // Optional. Type of reservation to consume
@@ -4295,7 +4397,7 @@ func (o RuntimeAcceleratorConfigOutput) ToRuntimeAcceleratorConfigPtrOutput() Ru
 }
 
 func (o RuntimeAcceleratorConfigOutput) ToRuntimeAcceleratorConfigPtrOutputWithContext(ctx context.Context) RuntimeAcceleratorConfigPtrOutput {
-	return o.ApplyT(func(v RuntimeAcceleratorConfig) *RuntimeAcceleratorConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeAcceleratorConfig) *RuntimeAcceleratorConfig {
 		return &v
 	}).(RuntimeAcceleratorConfigPtrOutput)
 }
@@ -4325,7 +4427,13 @@ func (o RuntimeAcceleratorConfigPtrOutput) ToRuntimeAcceleratorConfigPtrOutputWi
 }
 
 func (o RuntimeAcceleratorConfigPtrOutput) Elem() RuntimeAcceleratorConfigOutput {
-	return o.ApplyT(func(v *RuntimeAcceleratorConfig) RuntimeAcceleratorConfig { return *v }).(RuntimeAcceleratorConfigOutput)
+	return o.ApplyT(func(v *RuntimeAcceleratorConfig) RuntimeAcceleratorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeAcceleratorConfig
+		return ret
+	}).(RuntimeAcceleratorConfigOutput)
 }
 
 // Count of cores of this accelerator.
@@ -4448,7 +4556,7 @@ func (o RuntimeAcceleratorConfigResponseOutput) ToRuntimeAcceleratorConfigRespon
 }
 
 func (o RuntimeAcceleratorConfigResponseOutput) ToRuntimeAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) RuntimeAcceleratorConfigResponsePtrOutput {
-	return o.ApplyT(func(v RuntimeAcceleratorConfigResponse) *RuntimeAcceleratorConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeAcceleratorConfigResponse) *RuntimeAcceleratorConfigResponse {
 		return &v
 	}).(RuntimeAcceleratorConfigResponsePtrOutput)
 }
@@ -4478,7 +4586,13 @@ func (o RuntimeAcceleratorConfigResponsePtrOutput) ToRuntimeAcceleratorConfigRes
 }
 
 func (o RuntimeAcceleratorConfigResponsePtrOutput) Elem() RuntimeAcceleratorConfigResponseOutput {
-	return o.ApplyT(func(v *RuntimeAcceleratorConfigResponse) RuntimeAcceleratorConfigResponse { return *v }).(RuntimeAcceleratorConfigResponseOutput)
+	return o.ApplyT(func(v *RuntimeAcceleratorConfigResponse) RuntimeAcceleratorConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeAcceleratorConfigResponse
+		return ret
+	}).(RuntimeAcceleratorConfigResponseOutput)
 }
 
 // Count of cores of this accelerator.
@@ -4601,7 +4715,7 @@ func (o RuntimeAccessConfigOutput) ToRuntimeAccessConfigPtrOutput() RuntimeAcces
 }
 
 func (o RuntimeAccessConfigOutput) ToRuntimeAccessConfigPtrOutputWithContext(ctx context.Context) RuntimeAccessConfigPtrOutput {
-	return o.ApplyT(func(v RuntimeAccessConfig) *RuntimeAccessConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeAccessConfig) *RuntimeAccessConfig {
 		return &v
 	}).(RuntimeAccessConfigPtrOutput)
 }
@@ -4631,7 +4745,13 @@ func (o RuntimeAccessConfigPtrOutput) ToRuntimeAccessConfigPtrOutputWithContext(
 }
 
 func (o RuntimeAccessConfigPtrOutput) Elem() RuntimeAccessConfigOutput {
-	return o.ApplyT(func(v *RuntimeAccessConfig) RuntimeAccessConfig { return *v }).(RuntimeAccessConfigOutput)
+	return o.ApplyT(func(v *RuntimeAccessConfig) RuntimeAccessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeAccessConfig
+		return ret
+	}).(RuntimeAccessConfigOutput)
 }
 
 // The type of access mode this instance.
@@ -4758,7 +4878,7 @@ func (o RuntimeAccessConfigResponseOutput) ToRuntimeAccessConfigResponsePtrOutpu
 }
 
 func (o RuntimeAccessConfigResponseOutput) ToRuntimeAccessConfigResponsePtrOutputWithContext(ctx context.Context) RuntimeAccessConfigResponsePtrOutput {
-	return o.ApplyT(func(v RuntimeAccessConfigResponse) *RuntimeAccessConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeAccessConfigResponse) *RuntimeAccessConfigResponse {
 		return &v
 	}).(RuntimeAccessConfigResponsePtrOutput)
 }
@@ -4793,7 +4913,13 @@ func (o RuntimeAccessConfigResponsePtrOutput) ToRuntimeAccessConfigResponsePtrOu
 }
 
 func (o RuntimeAccessConfigResponsePtrOutput) Elem() RuntimeAccessConfigResponseOutput {
-	return o.ApplyT(func(v *RuntimeAccessConfigResponse) RuntimeAccessConfigResponse { return *v }).(RuntimeAccessConfigResponseOutput)
+	return o.ApplyT(func(v *RuntimeAccessConfigResponse) RuntimeAccessConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeAccessConfigResponse
+		return ret
+	}).(RuntimeAccessConfigResponseOutput)
 }
 
 // The type of access mode this instance.
@@ -5022,7 +5148,7 @@ func (o RuntimeMetricsResponseOutput) ToRuntimeMetricsResponsePtrOutput() Runtim
 }
 
 func (o RuntimeMetricsResponseOutput) ToRuntimeMetricsResponsePtrOutputWithContext(ctx context.Context) RuntimeMetricsResponsePtrOutput {
-	return o.ApplyT(func(v RuntimeMetricsResponse) *RuntimeMetricsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeMetricsResponse) *RuntimeMetricsResponse {
 		return &v
 	}).(RuntimeMetricsResponsePtrOutput)
 }
@@ -5047,7 +5173,13 @@ func (o RuntimeMetricsResponsePtrOutput) ToRuntimeMetricsResponsePtrOutputWithCo
 }
 
 func (o RuntimeMetricsResponsePtrOutput) Elem() RuntimeMetricsResponseOutput {
-	return o.ApplyT(func(v *RuntimeMetricsResponse) RuntimeMetricsResponse { return *v }).(RuntimeMetricsResponseOutput)
+	return o.ApplyT(func(v *RuntimeMetricsResponse) RuntimeMetricsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeMetricsResponse
+		return ret
+	}).(RuntimeMetricsResponseOutput)
 }
 
 // The system metrics.
@@ -5164,7 +5296,7 @@ func (o RuntimeShieldedInstanceConfigOutput) ToRuntimeShieldedInstanceConfigPtrO
 }
 
 func (o RuntimeShieldedInstanceConfigOutput) ToRuntimeShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) RuntimeShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func(v RuntimeShieldedInstanceConfig) *RuntimeShieldedInstanceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeShieldedInstanceConfig) *RuntimeShieldedInstanceConfig {
 		return &v
 	}).(RuntimeShieldedInstanceConfigPtrOutput)
 }
@@ -5199,7 +5331,13 @@ func (o RuntimeShieldedInstanceConfigPtrOutput) ToRuntimeShieldedInstanceConfigP
 }
 
 func (o RuntimeShieldedInstanceConfigPtrOutput) Elem() RuntimeShieldedInstanceConfigOutput {
-	return o.ApplyT(func(v *RuntimeShieldedInstanceConfig) RuntimeShieldedInstanceConfig { return *v }).(RuntimeShieldedInstanceConfigOutput)
+	return o.ApplyT(func(v *RuntimeShieldedInstanceConfig) RuntimeShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeShieldedInstanceConfig
+		return ret
+	}).(RuntimeShieldedInstanceConfigOutput)
 }
 
 // Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
@@ -5336,7 +5474,7 @@ func (o RuntimeShieldedInstanceConfigResponseOutput) ToRuntimeShieldedInstanceCo
 }
 
 func (o RuntimeShieldedInstanceConfigResponseOutput) ToRuntimeShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) RuntimeShieldedInstanceConfigResponsePtrOutput {
-	return o.ApplyT(func(v RuntimeShieldedInstanceConfigResponse) *RuntimeShieldedInstanceConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeShieldedInstanceConfigResponse) *RuntimeShieldedInstanceConfigResponse {
 		return &v
 	}).(RuntimeShieldedInstanceConfigResponsePtrOutput)
 }
@@ -5371,7 +5509,13 @@ func (o RuntimeShieldedInstanceConfigResponsePtrOutput) ToRuntimeShieldedInstanc
 }
 
 func (o RuntimeShieldedInstanceConfigResponsePtrOutput) Elem() RuntimeShieldedInstanceConfigResponseOutput {
-	return o.ApplyT(func(v *RuntimeShieldedInstanceConfigResponse) RuntimeShieldedInstanceConfigResponse { return *v }).(RuntimeShieldedInstanceConfigResponseOutput)
+	return o.ApplyT(func(v *RuntimeShieldedInstanceConfigResponse) RuntimeShieldedInstanceConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeShieldedInstanceConfigResponse
+		return ret
+	}).(RuntimeShieldedInstanceConfigResponseOutput)
 }
 
 // Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
@@ -5524,7 +5668,7 @@ func (o RuntimeSoftwareConfigOutput) ToRuntimeSoftwareConfigPtrOutput() RuntimeS
 }
 
 func (o RuntimeSoftwareConfigOutput) ToRuntimeSoftwareConfigPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPtrOutput {
-	return o.ApplyT(func(v RuntimeSoftwareConfig) *RuntimeSoftwareConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeSoftwareConfig) *RuntimeSoftwareConfig {
 		return &v
 	}).(RuntimeSoftwareConfigPtrOutput)
 }
@@ -5579,7 +5723,13 @@ func (o RuntimeSoftwareConfigPtrOutput) ToRuntimeSoftwareConfigPtrOutputWithCont
 }
 
 func (o RuntimeSoftwareConfigPtrOutput) Elem() RuntimeSoftwareConfigOutput {
-	return o.ApplyT(func(v *RuntimeSoftwareConfig) RuntimeSoftwareConfig { return *v }).(RuntimeSoftwareConfigOutput)
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) RuntimeSoftwareConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeSoftwareConfig
+		return ret
+	}).(RuntimeSoftwareConfigOutput)
 }
 
 // Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -5772,7 +5922,7 @@ func (o RuntimeSoftwareConfigResponseOutput) ToRuntimeSoftwareConfigResponsePtrO
 }
 
 func (o RuntimeSoftwareConfigResponseOutput) ToRuntimeSoftwareConfigResponsePtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigResponsePtrOutput {
-	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) *RuntimeSoftwareConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeSoftwareConfigResponse) *RuntimeSoftwareConfigResponse {
 		return &v
 	}).(RuntimeSoftwareConfigResponsePtrOutput)
 }
@@ -5827,7 +5977,13 @@ func (o RuntimeSoftwareConfigResponsePtrOutput) ToRuntimeSoftwareConfigResponseP
 }
 
 func (o RuntimeSoftwareConfigResponsePtrOutput) Elem() RuntimeSoftwareConfigResponseOutput {
-	return o.ApplyT(func(v *RuntimeSoftwareConfigResponse) RuntimeSoftwareConfigResponse { return *v }).(RuntimeSoftwareConfigResponseOutput)
+	return o.ApplyT(func(v *RuntimeSoftwareConfigResponse) RuntimeSoftwareConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeSoftwareConfigResponse
+		return ret
+	}).(RuntimeSoftwareConfigResponseOutput)
 }
 
 // Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -6000,7 +6156,7 @@ func (o SchedulerAcceleratorConfigOutput) ToSchedulerAcceleratorConfigPtrOutput(
 }
 
 func (o SchedulerAcceleratorConfigOutput) ToSchedulerAcceleratorConfigPtrOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigPtrOutput {
-	return o.ApplyT(func(v SchedulerAcceleratorConfig) *SchedulerAcceleratorConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulerAcceleratorConfig) *SchedulerAcceleratorConfig {
 		return &v
 	}).(SchedulerAcceleratorConfigPtrOutput)
 }
@@ -6030,7 +6186,13 @@ func (o SchedulerAcceleratorConfigPtrOutput) ToSchedulerAcceleratorConfigPtrOutp
 }
 
 func (o SchedulerAcceleratorConfigPtrOutput) Elem() SchedulerAcceleratorConfigOutput {
-	return o.ApplyT(func(v *SchedulerAcceleratorConfig) SchedulerAcceleratorConfig { return *v }).(SchedulerAcceleratorConfigOutput)
+	return o.ApplyT(func(v *SchedulerAcceleratorConfig) SchedulerAcceleratorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulerAcceleratorConfig
+		return ret
+	}).(SchedulerAcceleratorConfigOutput)
 }
 
 // Count of cores of this accelerator.
@@ -6153,7 +6315,7 @@ func (o SchedulerAcceleratorConfigResponseOutput) ToSchedulerAcceleratorConfigRe
 }
 
 func (o SchedulerAcceleratorConfigResponseOutput) ToSchedulerAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigResponsePtrOutput {
-	return o.ApplyT(func(v SchedulerAcceleratorConfigResponse) *SchedulerAcceleratorConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulerAcceleratorConfigResponse) *SchedulerAcceleratorConfigResponse {
 		return &v
 	}).(SchedulerAcceleratorConfigResponsePtrOutput)
 }
@@ -6183,7 +6345,13 @@ func (o SchedulerAcceleratorConfigResponsePtrOutput) ToSchedulerAcceleratorConfi
 }
 
 func (o SchedulerAcceleratorConfigResponsePtrOutput) Elem() SchedulerAcceleratorConfigResponseOutput {
-	return o.ApplyT(func(v *SchedulerAcceleratorConfigResponse) SchedulerAcceleratorConfigResponse { return *v }).(SchedulerAcceleratorConfigResponseOutput)
+	return o.ApplyT(func(v *SchedulerAcceleratorConfigResponse) SchedulerAcceleratorConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulerAcceleratorConfigResponse
+		return ret
+	}).(SchedulerAcceleratorConfigResponseOutput)
 }
 
 // Count of cores of this accelerator.
@@ -6310,7 +6478,7 @@ func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigPtrOutput() Shield
 }
 
 func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func(v ShieldedInstanceConfig) *ShieldedInstanceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShieldedInstanceConfig) *ShieldedInstanceConfig {
 		return &v
 	}).(ShieldedInstanceConfigPtrOutput)
 }
@@ -6345,7 +6513,13 @@ func (o ShieldedInstanceConfigPtrOutput) ToShieldedInstanceConfigPtrOutputWithCo
 }
 
 func (o ShieldedInstanceConfigPtrOutput) Elem() ShieldedInstanceConfigOutput {
-	return o.ApplyT(func(v *ShieldedInstanceConfig) ShieldedInstanceConfig { return *v }).(ShieldedInstanceConfigOutput)
+	return o.ApplyT(func(v *ShieldedInstanceConfig) ShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ShieldedInstanceConfig
+		return ret
+	}).(ShieldedInstanceConfigOutput)
 }
 
 // Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
@@ -6482,7 +6656,7 @@ func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponsePt
 }
 
 func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponsePtrOutput {
-	return o.ApplyT(func(v ShieldedInstanceConfigResponse) *ShieldedInstanceConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShieldedInstanceConfigResponse) *ShieldedInstanceConfigResponse {
 		return &v
 	}).(ShieldedInstanceConfigResponsePtrOutput)
 }
@@ -6517,7 +6691,13 @@ func (o ShieldedInstanceConfigResponsePtrOutput) ToShieldedInstanceConfigRespons
 }
 
 func (o ShieldedInstanceConfigResponsePtrOutput) Elem() ShieldedInstanceConfigResponseOutput {
-	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) ShieldedInstanceConfigResponse { return *v }).(ShieldedInstanceConfigResponseOutput)
+	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) ShieldedInstanceConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ShieldedInstanceConfigResponse
+		return ret
+	}).(ShieldedInstanceConfigResponseOutput)
 }
 
 // Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
@@ -7008,7 +7188,7 @@ func (o VirtualMachineOutput) ToVirtualMachinePtrOutput() VirtualMachinePtrOutpu
 }
 
 func (o VirtualMachineOutput) ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput {
-	return o.ApplyT(func(v VirtualMachine) *VirtualMachine {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachine) *VirtualMachine {
 		return &v
 	}).(VirtualMachinePtrOutput)
 }
@@ -7033,7 +7213,13 @@ func (o VirtualMachinePtrOutput) ToVirtualMachinePtrOutputWithContext(ctx contex
 }
 
 func (o VirtualMachinePtrOutput) Elem() VirtualMachineOutput {
-	return o.ApplyT(func(v *VirtualMachine) VirtualMachine { return *v }).(VirtualMachineOutput)
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachine {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachine
+		return ret
+	}).(VirtualMachineOutput)
 }
 
 // Virtual Machine configuration settings.
@@ -7190,7 +7376,7 @@ func (o VirtualMachineConfigOutput) ToVirtualMachineConfigPtrOutput() VirtualMac
 }
 
 func (o VirtualMachineConfigOutput) ToVirtualMachineConfigPtrOutputWithContext(ctx context.Context) VirtualMachineConfigPtrOutput {
-	return o.ApplyT(func(v VirtualMachineConfig) *VirtualMachineConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineConfig) *VirtualMachineConfig {
 		return &v
 	}).(VirtualMachineConfigPtrOutput)
 }
@@ -7275,7 +7461,13 @@ func (o VirtualMachineConfigPtrOutput) ToVirtualMachineConfigPtrOutputWithContex
 }
 
 func (o VirtualMachineConfigPtrOutput) Elem() VirtualMachineConfigOutput {
-	return o.ApplyT(func(v *VirtualMachineConfig) VirtualMachineConfig { return *v }).(VirtualMachineConfigOutput)
+	return o.ApplyT(func(v *VirtualMachineConfig) VirtualMachineConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineConfig
+		return ret
+	}).(VirtualMachineConfigOutput)
 }
 
 // Optional. The Compute Engine accelerator configuration for this runtime.
@@ -7560,7 +7752,7 @@ func (o VirtualMachineConfigResponseOutput) ToVirtualMachineConfigResponsePtrOut
 }
 
 func (o VirtualMachineConfigResponseOutput) ToVirtualMachineConfigResponsePtrOutputWithContext(ctx context.Context) VirtualMachineConfigResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineConfigResponse) *VirtualMachineConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineConfigResponse) *VirtualMachineConfigResponse {
 		return &v
 	}).(VirtualMachineConfigResponsePtrOutput)
 }
@@ -7657,7 +7849,13 @@ func (o VirtualMachineConfigResponsePtrOutput) ToVirtualMachineConfigResponsePtr
 }
 
 func (o VirtualMachineConfigResponsePtrOutput) Elem() VirtualMachineConfigResponseOutput {
-	return o.ApplyT(func(v *VirtualMachineConfigResponse) VirtualMachineConfigResponse { return *v }).(VirtualMachineConfigResponseOutput)
+	return o.ApplyT(func(v *VirtualMachineConfigResponse) VirtualMachineConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineConfigResponse
+		return ret
+	}).(VirtualMachineConfigResponseOutput)
 }
 
 // Optional. The Compute Engine accelerator configuration for this runtime.
@@ -7914,7 +8112,7 @@ func (o VirtualMachineResponseOutput) ToVirtualMachineResponsePtrOutput() Virtua
 }
 
 func (o VirtualMachineResponseOutput) ToVirtualMachineResponsePtrOutputWithContext(ctx context.Context) VirtualMachineResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineResponse) *VirtualMachineResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineResponse) *VirtualMachineResponse {
 		return &v
 	}).(VirtualMachineResponsePtrOutput)
 }
@@ -7949,7 +8147,13 @@ func (o VirtualMachineResponsePtrOutput) ToVirtualMachineResponsePtrOutputWithCo
 }
 
 func (o VirtualMachineResponsePtrOutput) Elem() VirtualMachineResponseOutput {
-	return o.ApplyT(func(v *VirtualMachineResponse) VirtualMachineResponse { return *v }).(VirtualMachineResponseOutput)
+	return o.ApplyT(func(v *VirtualMachineResponse) VirtualMachineResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineResponse
+		return ret
+	}).(VirtualMachineResponseOutput)
 }
 
 // The unique identifier of the Managed Compute Engine instance.
@@ -8086,7 +8290,7 @@ func (o VmImageOutput) ToVmImagePtrOutput() VmImagePtrOutput {
 }
 
 func (o VmImageOutput) ToVmImagePtrOutputWithContext(ctx context.Context) VmImagePtrOutput {
-	return o.ApplyT(func(v VmImage) *VmImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmImage) *VmImage {
 		return &v
 	}).(VmImagePtrOutput)
 }
@@ -8121,7 +8325,13 @@ func (o VmImagePtrOutput) ToVmImagePtrOutputWithContext(ctx context.Context) VmI
 }
 
 func (o VmImagePtrOutput) Elem() VmImageOutput {
-	return o.ApplyT(func(v *VmImage) VmImage { return *v }).(VmImageOutput)
+	return o.ApplyT(func(v *VmImage) VmImage {
+		if v != nil {
+			return *v
+		}
+		var ret VmImage
+		return ret
+	}).(VmImageOutput)
 }
 
 // Use this VM image family to find the image; the newest image in this family will be used.
@@ -8258,7 +8468,7 @@ func (o VmImageResponseOutput) ToVmImageResponsePtrOutput() VmImageResponsePtrOu
 }
 
 func (o VmImageResponseOutput) ToVmImageResponsePtrOutputWithContext(ctx context.Context) VmImageResponsePtrOutput {
-	return o.ApplyT(func(v VmImageResponse) *VmImageResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmImageResponse) *VmImageResponse {
 		return &v
 	}).(VmImageResponsePtrOutput)
 }
@@ -8293,7 +8503,13 @@ func (o VmImageResponsePtrOutput) ToVmImageResponsePtrOutputWithContext(ctx cont
 }
 
 func (o VmImageResponsePtrOutput) Elem() VmImageResponseOutput {
-	return o.ApplyT(func(v *VmImageResponse) VmImageResponse { return *v }).(VmImageResponseOutput)
+	return o.ApplyT(func(v *VmImageResponse) VmImageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VmImageResponse
+		return ret
+	}).(VmImageResponseOutput)
 }
 
 // Use this VM image family to find the image; the newest image in this family will be used.

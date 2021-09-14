@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Pairs a secret environment variable with a SecretVersion in Secret Manager.
+    /// </summary>
     [OutputType]
     public sealed class SecretManagerSecretResponse
     {

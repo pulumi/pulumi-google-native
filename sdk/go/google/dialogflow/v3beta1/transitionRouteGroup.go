@@ -122,9 +122,7 @@ func (i *TransitionRouteGroup) ToTransitionRouteGroupOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TransitionRouteGroupOutput)
 }
 
-type TransitionRouteGroupOutput struct {
-	*pulumi.OutputState
-}
+type TransitionRouteGroupOutput struct{ *pulumi.OutputState }
 
 func (TransitionRouteGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransitionRouteGroup)(nil))

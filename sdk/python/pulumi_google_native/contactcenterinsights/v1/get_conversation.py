@@ -13,6 +13,7 @@ __all__ = [
     'GetConversationResult',
     'AwaitableGetConversationResult',
     'get_conversation',
+    'get_conversation_output',
 ]
 
 @pulumi.output_type
@@ -282,3 +283,15 @@ def get_conversation(conversation_id: Optional[str] = None,
         ttl=__ret__.ttl,
         turn_count=__ret__.turn_count,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_conversation)
+def get_conversation_output(conversation_id: Optional[pulumi.Input[str]] = None,
+                            location: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            view: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConversationResult]:
+    """
+    Gets a conversation.
+    """
+    ...

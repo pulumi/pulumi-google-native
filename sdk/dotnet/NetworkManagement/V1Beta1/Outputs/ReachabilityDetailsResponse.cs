@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Results of the configuration analysis from the last run of the test.
+    /// </summary>
     [OutputType]
     public sealed class ReachabilityDetailsResponse
     {

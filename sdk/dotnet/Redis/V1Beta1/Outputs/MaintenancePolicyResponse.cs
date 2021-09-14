@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Redis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Maintenance policy for an instance.
+    /// </summary>
     [OutputType]
     public sealed class MaintenancePolicyResponse
     {

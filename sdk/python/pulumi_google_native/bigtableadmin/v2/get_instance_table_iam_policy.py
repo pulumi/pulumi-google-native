@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceTableIamPolicyResult',
     'AwaitableGetInstanceTableIamPolicyResult',
     'get_instance_table_iam_policy',
+    'get_instance_table_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -98,3 +99,14 @@ def get_instance_table_iam_policy(instance_id: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_instance_table_iam_policy)
+def get_instance_table_iam_policy_output(instance_id: Optional[pulumi.Input[str]] = None,
+                                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                                         table_id: Optional[pulumi.Input[str]] = None,
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTableIamPolicyResult]:
+    """
+    Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+    """
+    ...

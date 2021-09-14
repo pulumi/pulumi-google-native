@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Domains.V1Alpha2.Outputs
 {
 
+    /// <summary>
+    /// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+    /// </summary>
     [OutputType]
     public sealed class GoogleDomainsDnsResponse
     {

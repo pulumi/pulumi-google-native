@@ -12,6 +12,7 @@ __all__ = [
     'GetZoneInstantSnapshotResult',
     'AwaitableGetZoneInstantSnapshotResult',
     'get_zone_instant_snapshot',
+    'get_zone_instant_snapshot_output',
 ]
 
 @pulumi.output_type
@@ -253,3 +254,14 @@ def get_zone_instant_snapshot(instant_snapshot: Optional[str] = None,
         source_disk_id=__ret__.source_disk_id,
         status=__ret__.status,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_zone_instant_snapshot)
+def get_zone_instant_snapshot_output(instant_snapshot: Optional[pulumi.Input[str]] = None,
+                                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                                     zone: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneInstantSnapshotResult]:
+    """
+    Returns the specified InstantSnapshot resource in the specified zone.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetMachineImageResult',
     'AwaitableGetMachineImageResult',
     'get_machine_image',
+    'get_machine_image_output',
 ]
 
 @pulumi.output_type
@@ -226,3 +227,13 @@ def get_machine_image(machine_image: Optional[str] = None,
         status=__ret__.status,
         storage_locations=__ret__.storage_locations,
         total_storage_bytes=__ret__.total_storage_bytes)
+
+
+@_utilities.lift_output_func(get_machine_image)
+def get_machine_image_output(machine_image: Optional[pulumi.Input[str]] = None,
+                             project: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMachineImageResult]:
+    """
+    Returns the specified machine image. Gets a list of available machine images by making a list() request.
+    """
+    ...

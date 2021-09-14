@@ -782,7 +782,7 @@ func (o CloudSqlCredentialOutput) ToCloudSqlCredentialPtrOutput() CloudSqlCreden
 }
 
 func (o CloudSqlCredentialOutput) ToCloudSqlCredentialPtrOutputWithContext(ctx context.Context) CloudSqlCredentialPtrOutput {
-	return o.ApplyT(func(v CloudSqlCredential) *CloudSqlCredential {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlCredential) *CloudSqlCredential {
 		return &v
 	}).(CloudSqlCredentialPtrOutput)
 }
@@ -812,7 +812,13 @@ func (o CloudSqlCredentialPtrOutput) ToCloudSqlCredentialPtrOutputWithContext(ct
 }
 
 func (o CloudSqlCredentialPtrOutput) Elem() CloudSqlCredentialOutput {
-	return o.ApplyT(func(v *CloudSqlCredential) CloudSqlCredential { return *v }).(CloudSqlCredentialOutput)
+	return o.ApplyT(func(v *CloudSqlCredential) CloudSqlCredential {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlCredential
+		return ret
+	}).(CloudSqlCredentialOutput)
 }
 
 // The password for the credential.
@@ -935,7 +941,7 @@ func (o CloudSqlCredentialResponseOutput) ToCloudSqlCredentialResponsePtrOutput(
 }
 
 func (o CloudSqlCredentialResponseOutput) ToCloudSqlCredentialResponsePtrOutputWithContext(ctx context.Context) CloudSqlCredentialResponsePtrOutput {
-	return o.ApplyT(func(v CloudSqlCredentialResponse) *CloudSqlCredentialResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlCredentialResponse) *CloudSqlCredentialResponse {
 		return &v
 	}).(CloudSqlCredentialResponsePtrOutput)
 }
@@ -965,7 +971,13 @@ func (o CloudSqlCredentialResponsePtrOutput) ToCloudSqlCredentialResponsePtrOutp
 }
 
 func (o CloudSqlCredentialResponsePtrOutput) Elem() CloudSqlCredentialResponseOutput {
-	return o.ApplyT(func(v *CloudSqlCredentialResponse) CloudSqlCredentialResponse { return *v }).(CloudSqlCredentialResponseOutput)
+	return o.ApplyT(func(v *CloudSqlCredentialResponse) CloudSqlCredentialResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlCredentialResponse
+		return ret
+	}).(CloudSqlCredentialResponseOutput)
 }
 
 // The password for the credential.
@@ -1096,7 +1108,7 @@ func (o CloudSqlPropertiesOutput) ToCloudSqlPropertiesPtrOutput() CloudSqlProper
 }
 
 func (o CloudSqlPropertiesOutput) ToCloudSqlPropertiesPtrOutputWithContext(ctx context.Context) CloudSqlPropertiesPtrOutput {
-	return o.ApplyT(func(v CloudSqlProperties) *CloudSqlProperties {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlProperties) *CloudSqlProperties {
 		return &v
 	}).(CloudSqlPropertiesPtrOutput)
 }
@@ -1136,7 +1148,13 @@ func (o CloudSqlPropertiesPtrOutput) ToCloudSqlPropertiesPtrOutputWithContext(ct
 }
 
 func (o CloudSqlPropertiesPtrOutput) Elem() CloudSqlPropertiesOutput {
-	return o.ApplyT(func(v *CloudSqlProperties) CloudSqlProperties { return *v }).(CloudSqlPropertiesOutput)
+	return o.ApplyT(func(v *CloudSqlProperties) CloudSqlProperties {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlProperties
+		return ret
+	}).(CloudSqlPropertiesOutput)
 }
 
 // Input only. Cloud SQL credential.
@@ -1287,7 +1305,7 @@ func (o CloudSqlPropertiesResponseOutput) ToCloudSqlPropertiesResponsePtrOutput(
 }
 
 func (o CloudSqlPropertiesResponseOutput) ToCloudSqlPropertiesResponsePtrOutputWithContext(ctx context.Context) CloudSqlPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v CloudSqlPropertiesResponse) *CloudSqlPropertiesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlPropertiesResponse) *CloudSqlPropertiesResponse {
 		return &v
 	}).(CloudSqlPropertiesResponsePtrOutput)
 }
@@ -1327,7 +1345,13 @@ func (o CloudSqlPropertiesResponsePtrOutput) ToCloudSqlPropertiesResponsePtrOutp
 }
 
 func (o CloudSqlPropertiesResponsePtrOutput) Elem() CloudSqlPropertiesResponseOutput {
-	return o.ApplyT(func(v *CloudSqlPropertiesResponse) CloudSqlPropertiesResponse { return *v }).(CloudSqlPropertiesResponseOutput)
+	return o.ApplyT(func(v *CloudSqlPropertiesResponse) CloudSqlPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlPropertiesResponse
+		return ret
+	}).(CloudSqlPropertiesResponseOutput)
 }
 
 // Input only. Cloud SQL credential.
@@ -1478,7 +1502,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1518,7 +1542,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

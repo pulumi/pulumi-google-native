@@ -13,6 +13,7 @@ __all__ = [
     'GetClientTlsPolicyResult',
     'AwaitableGetClientTlsPolicyResult',
     'get_client_tls_policy',
+    'get_client_tls_policy_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,14 @@ def get_client_tls_policy(client_tls_policy_id: Optional[str] = None,
         server_validation_ca=__ret__.server_validation_ca,
         sni=__ret__.sni,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_client_tls_policy)
+def get_client_tls_policy_output(client_tls_policy_id: Optional[pulumi.Input[str]] = None,
+                                 location: Optional[pulumi.Input[str]] = None,
+                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientTlsPolicyResult]:
+    """
+    Gets details of a single ClientTlsPolicy.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// Control over the rate of notifications sent to this alert policy's notification channels.
+    /// </summary>
     [OutputType]
     public sealed class NotificationRateLimitResponse
     {

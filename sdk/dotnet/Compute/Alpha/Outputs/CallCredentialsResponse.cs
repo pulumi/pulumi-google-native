@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// [Deprecated] gRPC call credentials to access the SDS server. gRPC call credentials to access the SDS server.
+    /// </summary>
     [OutputType]
     public sealed class CallCredentialsResponse
     {

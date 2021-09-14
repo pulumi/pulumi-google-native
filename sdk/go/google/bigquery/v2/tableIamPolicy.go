@@ -127,9 +127,7 @@ func (i *TableIamPolicy) ToTableIamPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamPolicyOutput)
 }
 
-type TableIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type TableIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TableIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableIamPolicy)(nil))

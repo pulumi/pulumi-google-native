@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Alpha2.Outputs
 {
 
+    /// <summary>
+    /// ResourceManifest represents a single Kubernetes resource to be applied to the cluster.
+    /// </summary>
     [OutputType]
     public sealed class ResourceManifestResponse
     {

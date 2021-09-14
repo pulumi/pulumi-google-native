@@ -13,6 +13,7 @@ __all__ = [
     'GetProviderResult',
     'AwaitableGetProviderResult',
     'get_provider',
+    'get_provider_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,15 @@ def get_provider(location: Optional[str] = None,
         name=__ret__.name,
         oidc=__ret__.oidc,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_provider)
+def get_provider_output(location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        provider_id: Optional[pulumi.Input[str]] = None,
+                        workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProviderResult]:
+    """
+    Gets an individual WorkloadIdentityPoolProvider.
+    """
+    ...

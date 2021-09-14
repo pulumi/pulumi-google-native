@@ -346,7 +346,7 @@ func (o CardinalityOutput) ToCardinalityPtrOutput() CardinalityPtrOutput {
 }
 
 func (o CardinalityOutput) ToCardinalityPtrOutputWithContext(ctx context.Context) CardinalityPtrOutput {
-	return o.ApplyT(func(v Cardinality) *Cardinality {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Cardinality) *Cardinality {
 		return &v
 	}).(CardinalityPtrOutput)
 }
@@ -376,7 +376,13 @@ func (o CardinalityPtrOutput) ToCardinalityPtrOutputWithContext(ctx context.Cont
 }
 
 func (o CardinalityPtrOutput) Elem() CardinalityOutput {
-	return o.ApplyT(func(v *Cardinality) Cardinality { return *v }).(CardinalityOutput)
+	return o.ApplyT(func(v *Cardinality) Cardinality {
+		if v != nil {
+			return *v
+		}
+		var ret Cardinality
+		return ret
+	}).(CardinalityOutput)
 }
 
 // The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
@@ -499,7 +505,7 @@ func (o CardinalityResponseOutput) ToCardinalityResponsePtrOutput() CardinalityR
 }
 
 func (o CardinalityResponseOutput) ToCardinalityResponsePtrOutputWithContext(ctx context.Context) CardinalityResponsePtrOutput {
-	return o.ApplyT(func(v CardinalityResponse) *CardinalityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CardinalityResponse) *CardinalityResponse {
 		return &v
 	}).(CardinalityResponsePtrOutput)
 }
@@ -529,7 +535,13 @@ func (o CardinalityResponsePtrOutput) ToCardinalityResponsePtrOutputWithContext(
 }
 
 func (o CardinalityResponsePtrOutput) Elem() CardinalityResponseOutput {
-	return o.ApplyT(func(v *CardinalityResponse) CardinalityResponse { return *v }).(CardinalityResponseOutput)
+	return o.ApplyT(func(v *CardinalityResponse) CardinalityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CardinalityResponse
+		return ret
+	}).(CardinalityResponseOutput)
 }
 
 // The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
@@ -648,7 +660,7 @@ func (o EndConditionOutput) ToEndConditionPtrOutput() EndConditionPtrOutput {
 }
 
 func (o EndConditionOutput) ToEndConditionPtrOutputWithContext(ctx context.Context) EndConditionPtrOutput {
-	return o.ApplyT(func(v EndCondition) *EndCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndCondition) *EndCondition {
 		return &v
 	}).(EndConditionPtrOutput)
 }
@@ -673,7 +685,13 @@ func (o EndConditionPtrOutput) ToEndConditionPtrOutputWithContext(ctx context.Co
 }
 
 func (o EndConditionPtrOutput) Elem() EndConditionOutput {
-	return o.ApplyT(func(v *EndCondition) EndCondition { return *v }).(EndConditionOutput)
+	return o.ApplyT(func(v *EndCondition) EndCondition {
+		if v != nil {
+			return *v
+		}
+		var ret EndCondition
+		return ret
+	}).(EndConditionOutput)
 }
 
 // The cardinality of the `EndCondition`.
@@ -782,7 +800,7 @@ func (o EndConditionResponseOutput) ToEndConditionResponsePtrOutput() EndConditi
 }
 
 func (o EndConditionResponseOutput) ToEndConditionResponsePtrOutputWithContext(ctx context.Context) EndConditionResponsePtrOutput {
-	return o.ApplyT(func(v EndConditionResponse) *EndConditionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndConditionResponse) *EndConditionResponse {
 		return &v
 	}).(EndConditionResponsePtrOutput)
 }
@@ -807,7 +825,13 @@ func (o EndConditionResponsePtrOutput) ToEndConditionResponsePtrOutputWithContex
 }
 
 func (o EndConditionResponsePtrOutput) Elem() EndConditionResponseOutput {
-	return o.ApplyT(func(v *EndConditionResponse) EndConditionResponse { return *v }).(EndConditionResponseOutput)
+	return o.ApplyT(func(v *EndConditionResponse) EndConditionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EndConditionResponse
+		return ret
+	}).(EndConditionResponseOutput)
 }
 
 // The cardinality of the `EndCondition`.
@@ -928,7 +952,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -968,7 +992,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1197,7 +1227,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -1232,7 +1262,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

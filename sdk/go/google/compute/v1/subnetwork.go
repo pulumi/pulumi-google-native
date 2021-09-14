@@ -192,9 +192,7 @@ func (i *Subnetwork) ToSubnetworkOutputWithContext(ctx context.Context) Subnetwo
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkOutput)
 }
 
-type SubnetworkOutput struct {
-	*pulumi.OutputState
-}
+type SubnetworkOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Subnetwork)(nil))

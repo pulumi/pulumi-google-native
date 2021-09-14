@@ -110,7 +110,7 @@ func (o AutoscalingSettingsOutput) ToAutoscalingSettingsPtrOutput() AutoscalingS
 }
 
 func (o AutoscalingSettingsOutput) ToAutoscalingSettingsPtrOutputWithContext(ctx context.Context) AutoscalingSettingsPtrOutput {
-	return o.ApplyT(func(v AutoscalingSettings) *AutoscalingSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingSettings) *AutoscalingSettings {
 		return &v
 	}).(AutoscalingSettingsPtrOutput)
 }
@@ -140,7 +140,13 @@ func (o AutoscalingSettingsPtrOutput) ToAutoscalingSettingsPtrOutputWithContext(
 }
 
 func (o AutoscalingSettingsPtrOutput) Elem() AutoscalingSettingsOutput {
-	return o.ApplyT(func(v *AutoscalingSettings) AutoscalingSettings { return *v }).(AutoscalingSettingsOutput)
+	return o.ApplyT(func(v *AutoscalingSettings) AutoscalingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingSettings
+		return ret
+	}).(AutoscalingSettingsOutput)
 }
 
 // The algorithm to use for autoscaling.
@@ -1503,7 +1509,7 @@ func (o DebugOptionsOutput) ToDebugOptionsPtrOutput() DebugOptionsPtrOutput {
 }
 
 func (o DebugOptionsOutput) ToDebugOptionsPtrOutputWithContext(ctx context.Context) DebugOptionsPtrOutput {
-	return o.ApplyT(func(v DebugOptions) *DebugOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DebugOptions) *DebugOptions {
 		return &v
 	}).(DebugOptionsPtrOutput)
 }
@@ -1528,7 +1534,13 @@ func (o DebugOptionsPtrOutput) ToDebugOptionsPtrOutputWithContext(ctx context.Co
 }
 
 func (o DebugOptionsPtrOutput) Elem() DebugOptionsOutput {
-	return o.ApplyT(func(v *DebugOptions) DebugOptions { return *v }).(DebugOptionsOutput)
+	return o.ApplyT(func(v *DebugOptions) DebugOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DebugOptions
+		return ret
+	}).(DebugOptionsOutput)
 }
 
 // When true, enables the logging of the literal hot key to the user's Cloud Logging.
@@ -1637,7 +1649,7 @@ func (o DebugOptionsResponseOutput) ToDebugOptionsResponsePtrOutput() DebugOptio
 }
 
 func (o DebugOptionsResponseOutput) ToDebugOptionsResponsePtrOutputWithContext(ctx context.Context) DebugOptionsResponsePtrOutput {
-	return o.ApplyT(func(v DebugOptionsResponse) *DebugOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DebugOptionsResponse) *DebugOptionsResponse {
 		return &v
 	}).(DebugOptionsResponsePtrOutput)
 }
@@ -1662,7 +1674,13 @@ func (o DebugOptionsResponsePtrOutput) ToDebugOptionsResponsePtrOutputWithContex
 }
 
 func (o DebugOptionsResponsePtrOutput) Elem() DebugOptionsResponseOutput {
-	return o.ApplyT(func(v *DebugOptionsResponse) DebugOptionsResponse { return *v }).(DebugOptionsResponseOutput)
+	return o.ApplyT(func(v *DebugOptionsResponse) DebugOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DebugOptionsResponse
+		return ret
+	}).(DebugOptionsResponseOutput)
 }
 
 // When true, enables the logging of the literal hot key to the user's Cloud Logging.
@@ -2465,7 +2483,7 @@ func (o EnvironmentOutput) ToEnvironmentPtrOutput() EnvironmentPtrOutput {
 }
 
 func (o EnvironmentOutput) ToEnvironmentPtrOutputWithContext(ctx context.Context) EnvironmentPtrOutput {
-	return o.ApplyT(func(v Environment) *Environment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Environment) *Environment {
 		return &v
 	}).(EnvironmentPtrOutput)
 }
@@ -2565,7 +2583,13 @@ func (o EnvironmentPtrOutput) ToEnvironmentPtrOutputWithContext(ctx context.Cont
 }
 
 func (o EnvironmentPtrOutput) Elem() EnvironmentOutput {
-	return o.ApplyT(func(v *Environment) Environment { return *v }).(EnvironmentOutput)
+	return o.ApplyT(func(v *Environment) Environment {
+		if v != nil {
+			return *v
+		}
+		var ret Environment
+		return ret
+	}).(EnvironmentOutput)
 }
 
 // The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
@@ -2888,7 +2912,7 @@ func (o EnvironmentResponseOutput) ToEnvironmentResponsePtrOutput() EnvironmentR
 }
 
 func (o EnvironmentResponseOutput) ToEnvironmentResponsePtrOutputWithContext(ctx context.Context) EnvironmentResponsePtrOutput {
-	return o.ApplyT(func(v EnvironmentResponse) *EnvironmentResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentResponse) *EnvironmentResponse {
 		return &v
 	}).(EnvironmentResponsePtrOutput)
 }
@@ -2993,7 +3017,13 @@ func (o EnvironmentResponsePtrOutput) ToEnvironmentResponsePtrOutputWithContext(
 }
 
 func (o EnvironmentResponsePtrOutput) Elem() EnvironmentResponseOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) EnvironmentResponse { return *v }).(EnvironmentResponseOutput)
+	return o.ApplyT(func(v *EnvironmentResponse) EnvironmentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentResponse
+		return ret
+	}).(EnvironmentResponseOutput)
 }
 
 // The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
@@ -4039,7 +4069,7 @@ func (o JobMetadataOutput) ToJobMetadataPtrOutput() JobMetadataPtrOutput {
 }
 
 func (o JobMetadataOutput) ToJobMetadataPtrOutputWithContext(ctx context.Context) JobMetadataPtrOutput {
-	return o.ApplyT(func(v JobMetadata) *JobMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobMetadata) *JobMetadata {
 		return &v
 	}).(JobMetadataPtrOutput)
 }
@@ -4094,7 +4124,13 @@ func (o JobMetadataPtrOutput) ToJobMetadataPtrOutputWithContext(ctx context.Cont
 }
 
 func (o JobMetadataPtrOutput) Elem() JobMetadataOutput {
-	return o.ApplyT(func(v *JobMetadata) JobMetadata { return *v }).(JobMetadataOutput)
+	return o.ApplyT(func(v *JobMetadata) JobMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret JobMetadata
+		return ret
+	}).(JobMetadataOutput)
 }
 
 // Identification of a Cloud BigTable source used in the Dataflow job.
@@ -4287,7 +4323,7 @@ func (o JobMetadataResponseOutput) ToJobMetadataResponsePtrOutput() JobMetadataR
 }
 
 func (o JobMetadataResponseOutput) ToJobMetadataResponsePtrOutputWithContext(ctx context.Context) JobMetadataResponsePtrOutput {
-	return o.ApplyT(func(v JobMetadataResponse) *JobMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobMetadataResponse) *JobMetadataResponse {
 		return &v
 	}).(JobMetadataResponsePtrOutput)
 }
@@ -4342,7 +4378,13 @@ func (o JobMetadataResponsePtrOutput) ToJobMetadataResponsePtrOutputWithContext(
 }
 
 func (o JobMetadataResponsePtrOutput) Elem() JobMetadataResponseOutput {
-	return o.ApplyT(func(v *JobMetadataResponse) JobMetadataResponse { return *v }).(JobMetadataResponseOutput)
+	return o.ApplyT(func(v *JobMetadataResponse) JobMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobMetadataResponse
+		return ret
+	}).(JobMetadataResponseOutput)
 }
 
 // Identification of a Cloud BigTable source used in the Dataflow job.
@@ -4891,7 +4933,7 @@ func (o PipelineDescriptionOutput) ToPipelineDescriptionPtrOutput() PipelineDesc
 }
 
 func (o PipelineDescriptionOutput) ToPipelineDescriptionPtrOutputWithContext(ctx context.Context) PipelineDescriptionPtrOutput {
-	return o.ApplyT(func(v PipelineDescription) *PipelineDescription {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDescription) *PipelineDescription {
 		return &v
 	}).(PipelineDescriptionPtrOutput)
 }
@@ -4926,7 +4968,13 @@ func (o PipelineDescriptionPtrOutput) ToPipelineDescriptionPtrOutputWithContext(
 }
 
 func (o PipelineDescriptionPtrOutput) Elem() PipelineDescriptionOutput {
-	return o.ApplyT(func(v *PipelineDescription) PipelineDescription { return *v }).(PipelineDescriptionOutput)
+	return o.ApplyT(func(v *PipelineDescription) PipelineDescription {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineDescription
+		return ret
+	}).(PipelineDescriptionOutput)
 }
 
 // Pipeline level display data.
@@ -5063,7 +5111,7 @@ func (o PipelineDescriptionResponseOutput) ToPipelineDescriptionResponsePtrOutpu
 }
 
 func (o PipelineDescriptionResponseOutput) ToPipelineDescriptionResponsePtrOutputWithContext(ctx context.Context) PipelineDescriptionResponsePtrOutput {
-	return o.ApplyT(func(v PipelineDescriptionResponse) *PipelineDescriptionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDescriptionResponse) *PipelineDescriptionResponse {
 		return &v
 	}).(PipelineDescriptionResponsePtrOutput)
 }
@@ -5098,7 +5146,13 @@ func (o PipelineDescriptionResponsePtrOutput) ToPipelineDescriptionResponsePtrOu
 }
 
 func (o PipelineDescriptionResponsePtrOutput) Elem() PipelineDescriptionResponseOutput {
-	return o.ApplyT(func(v *PipelineDescriptionResponse) PipelineDescriptionResponse { return *v }).(PipelineDescriptionResponseOutput)
+	return o.ApplyT(func(v *PipelineDescriptionResponse) PipelineDescriptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineDescriptionResponse
+		return ret
+	}).(PipelineDescriptionResponseOutput)
 }
 
 // Pipeline level display data.
@@ -5505,7 +5559,7 @@ func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentPtrOutput() RuntimeEnviron
 }
 
 func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentPtrOutputWithContext(ctx context.Context) RuntimeEnvironmentPtrOutput {
-	return o.ApplyT(func(v RuntimeEnvironment) *RuntimeEnvironment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeEnvironment) *RuntimeEnvironment {
 		return &v
 	}).(RuntimeEnvironmentPtrOutput)
 }
@@ -5605,7 +5659,13 @@ func (o RuntimeEnvironmentPtrOutput) ToRuntimeEnvironmentPtrOutputWithContext(ct
 }
 
 func (o RuntimeEnvironmentPtrOutput) Elem() RuntimeEnvironmentOutput {
-	return o.ApplyT(func(v *RuntimeEnvironment) RuntimeEnvironment { return *v }).(RuntimeEnvironmentOutput)
+	return o.ApplyT(func(v *RuntimeEnvironment) RuntimeEnvironment {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeEnvironment
+		return ret
+	}).(RuntimeEnvironmentOutput)
 }
 
 // Additional experiment flags for the job.
@@ -5868,7 +5928,7 @@ func (o RuntimeMetadataResponseOutput) ToRuntimeMetadataResponsePtrOutput() Runt
 }
 
 func (o RuntimeMetadataResponseOutput) ToRuntimeMetadataResponsePtrOutputWithContext(ctx context.Context) RuntimeMetadataResponsePtrOutput {
-	return o.ApplyT(func(v RuntimeMetadataResponse) *RuntimeMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeMetadataResponse) *RuntimeMetadataResponse {
 		return &v
 	}).(RuntimeMetadataResponsePtrOutput)
 }
@@ -5898,7 +5958,13 @@ func (o RuntimeMetadataResponsePtrOutput) ToRuntimeMetadataResponsePtrOutputWith
 }
 
 func (o RuntimeMetadataResponsePtrOutput) Elem() RuntimeMetadataResponseOutput {
-	return o.ApplyT(func(v *RuntimeMetadataResponse) RuntimeMetadataResponse { return *v }).(RuntimeMetadataResponseOutput)
+	return o.ApplyT(func(v *RuntimeMetadataResponse) RuntimeMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeMetadataResponse
+		return ret
+	}).(RuntimeMetadataResponseOutput)
 }
 
 // The parameters for the template.
@@ -6021,7 +6087,7 @@ func (o SDKInfoResponseOutput) ToSDKInfoResponsePtrOutput() SDKInfoResponsePtrOu
 }
 
 func (o SDKInfoResponseOutput) ToSDKInfoResponsePtrOutputWithContext(ctx context.Context) SDKInfoResponsePtrOutput {
-	return o.ApplyT(func(v SDKInfoResponse) *SDKInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SDKInfoResponse) *SDKInfoResponse {
 		return &v
 	}).(SDKInfoResponsePtrOutput)
 }
@@ -6051,7 +6117,13 @@ func (o SDKInfoResponsePtrOutput) ToSDKInfoResponsePtrOutputWithContext(ctx cont
 }
 
 func (o SDKInfoResponsePtrOutput) Elem() SDKInfoResponseOutput {
-	return o.ApplyT(func(v *SDKInfoResponse) SDKInfoResponse { return *v }).(SDKInfoResponseOutput)
+	return o.ApplyT(func(v *SDKInfoResponse) SDKInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SDKInfoResponse
+		return ret
+	}).(SDKInfoResponseOutput)
 }
 
 // The SDK Language.
@@ -6414,7 +6486,7 @@ func (o SdkVersionOutput) ToSdkVersionPtrOutput() SdkVersionPtrOutput {
 }
 
 func (o SdkVersionOutput) ToSdkVersionPtrOutputWithContext(ctx context.Context) SdkVersionPtrOutput {
-	return o.ApplyT(func(v SdkVersion) *SdkVersion {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SdkVersion) *SdkVersion {
 		return &v
 	}).(SdkVersionPtrOutput)
 }
@@ -6449,7 +6521,13 @@ func (o SdkVersionPtrOutput) ToSdkVersionPtrOutputWithContext(ctx context.Contex
 }
 
 func (o SdkVersionPtrOutput) Elem() SdkVersionOutput {
-	return o.ApplyT(func(v *SdkVersion) SdkVersion { return *v }).(SdkVersionOutput)
+	return o.ApplyT(func(v *SdkVersion) SdkVersion {
+		if v != nil {
+			return *v
+		}
+		var ret SdkVersion
+		return ret
+	}).(SdkVersionOutput)
 }
 
 // The support status for this SDK version.
@@ -6586,7 +6664,7 @@ func (o SdkVersionResponseOutput) ToSdkVersionResponsePtrOutput() SdkVersionResp
 }
 
 func (o SdkVersionResponseOutput) ToSdkVersionResponsePtrOutputWithContext(ctx context.Context) SdkVersionResponsePtrOutput {
-	return o.ApplyT(func(v SdkVersionResponse) *SdkVersionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SdkVersionResponse) *SdkVersionResponse {
 		return &v
 	}).(SdkVersionResponsePtrOutput)
 }
@@ -6621,7 +6699,13 @@ func (o SdkVersionResponsePtrOutput) ToSdkVersionResponsePtrOutputWithContext(ct
 }
 
 func (o SdkVersionResponsePtrOutput) Elem() SdkVersionResponseOutput {
-	return o.ApplyT(func(v *SdkVersionResponse) SdkVersionResponse { return *v }).(SdkVersionResponseOutput)
+	return o.ApplyT(func(v *SdkVersionResponse) SdkVersionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SdkVersionResponse
+		return ret
+	}).(SdkVersionResponseOutput)
 }
 
 // The support status for this SDK version.
@@ -7248,7 +7332,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -7283,7 +7367,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -7720,7 +7810,7 @@ func (o TaskRunnerSettingsOutput) ToTaskRunnerSettingsPtrOutput() TaskRunnerSett
 }
 
 func (o TaskRunnerSettingsOutput) ToTaskRunnerSettingsPtrOutputWithContext(ctx context.Context) TaskRunnerSettingsPtrOutput {
-	return o.ApplyT(func(v TaskRunnerSettings) *TaskRunnerSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskRunnerSettings) *TaskRunnerSettings {
 		return &v
 	}).(TaskRunnerSettingsPtrOutput)
 }
@@ -7835,7 +7925,13 @@ func (o TaskRunnerSettingsPtrOutput) ToTaskRunnerSettingsPtrOutputWithContext(ct
 }
 
 func (o TaskRunnerSettingsPtrOutput) Elem() TaskRunnerSettingsOutput {
-	return o.ApplyT(func(v *TaskRunnerSettings) TaskRunnerSettings { return *v }).(TaskRunnerSettingsOutput)
+	return o.ApplyT(func(v *TaskRunnerSettings) TaskRunnerSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TaskRunnerSettings
+		return ret
+	}).(TaskRunnerSettingsOutput)
 }
 
 // Whether to also send taskrunner log info to stderr.
@@ -8349,7 +8445,7 @@ func (o TemplateMetadataResponseOutput) ToTemplateMetadataResponsePtrOutput() Te
 }
 
 func (o TemplateMetadataResponseOutput) ToTemplateMetadataResponsePtrOutputWithContext(ctx context.Context) TemplateMetadataResponsePtrOutput {
-	return o.ApplyT(func(v TemplateMetadataResponse) *TemplateMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateMetadataResponse) *TemplateMetadataResponse {
 		return &v
 	}).(TemplateMetadataResponsePtrOutput)
 }
@@ -8384,7 +8480,13 @@ func (o TemplateMetadataResponsePtrOutput) ToTemplateMetadataResponsePtrOutputWi
 }
 
 func (o TemplateMetadataResponsePtrOutput) Elem() TemplateMetadataResponseOutput {
-	return o.ApplyT(func(v *TemplateMetadataResponse) TemplateMetadataResponse { return *v }).(TemplateMetadataResponseOutput)
+	return o.ApplyT(func(v *TemplateMetadataResponse) TemplateMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateMetadataResponse
+		return ret
+	}).(TemplateMetadataResponseOutput)
 }
 
 // Optional. A description of the template.
@@ -9374,7 +9476,7 @@ func (o WorkerSettingsOutput) ToWorkerSettingsPtrOutput() WorkerSettingsPtrOutpu
 }
 
 func (o WorkerSettingsOutput) ToWorkerSettingsPtrOutputWithContext(ctx context.Context) WorkerSettingsPtrOutput {
-	return o.ApplyT(func(v WorkerSettings) *WorkerSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerSettings) *WorkerSettings {
 		return &v
 	}).(WorkerSettingsPtrOutput)
 }
@@ -9424,7 +9526,13 @@ func (o WorkerSettingsPtrOutput) ToWorkerSettingsPtrOutputWithContext(ctx contex
 }
 
 func (o WorkerSettingsPtrOutput) Elem() WorkerSettingsOutput {
-	return o.ApplyT(func(v *WorkerSettings) WorkerSettings { return *v }).(WorkerSettingsOutput)
+	return o.ApplyT(func(v *WorkerSettings) WorkerSettings {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerSettings
+		return ret
+	}).(WorkerSettingsOutput)
 }
 
 // The base URL for accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to use for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, "Relative Uniform Resource Locators". If not specified, the default value is "http://www.googleapis.com/"

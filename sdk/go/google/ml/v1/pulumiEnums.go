@@ -106,7 +106,7 @@ func (o GoogleCloudMlV1_StudyConfig_MetricSpecGoalOutput) ToStringPtrOutputWithC
 type GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1_StudyConfig_MetricSpecGoalPtrType
+	return reflect.TypeOf((**GoogleCloudMlV1_StudyConfig_MetricSpecGoal)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput) ToGoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput() GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput {
@@ -115,6 +115,16 @@ func (o GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput) ToGoogleCloudMlV1_S
 
 func (o GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput) ToGoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput) Elem() GoogleCloudMlV1_StudyConfig_MetricSpecGoalOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfig_MetricSpecGoal) GoogleCloudMlV1_StudyConfig_MetricSpecGoal {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_StudyConfig_MetricSpecGoal
+		return ret
+	}).(GoogleCloudMlV1_StudyConfig_MetricSpecGoalOutput)
 }
 
 func (o GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput) ToStringPtrOutputWi
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput) Elem() GoogleCloudMlV1_StudyConfig_MetricSpecGoalOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfig_MetricSpecGoal) GoogleCloudMlV1_StudyConfig_MetricSpecGoal {
-		var ret GoogleCloudMlV1_StudyConfig_MetricSpecGoal
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1_StudyConfig_MetricSpecGoalOutput)
 }
 
 // GoogleCloudMlV1_StudyConfig_MetricSpecGoalInput is an input type that accepts GoogleCloudMlV1_StudyConfig_MetricSpecGoalArgs and GoogleCloudMlV1_StudyConfig_MetricSpecGoalOutput values.
@@ -277,7 +277,7 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeOutput) ToStringPtrOut
 type GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrType
+	return reflect.TypeOf((**GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput) ToGoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput() GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput {
@@ -286,6 +286,16 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput) ToGoogleClo
 
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput) ToGoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput) Elem() GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType) GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType
+		return ret
+	}).(GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeOutput)
 }
 
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput) ToStringPtr
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput) Elem() GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType) GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType {
-		var ret GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeOutput)
 }
 
 // GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeInput is an input type that accepts GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeArgs and GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeOutput values.
@@ -450,7 +450,7 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecTypeOutput) ToStringPtrOutputWi
 type GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1_StudyConfig_ParameterSpecTypePtrType
+	return reflect.TypeOf((**GoogleCloudMlV1_StudyConfig_ParameterSpecType)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput) ToGoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput() GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput {
@@ -459,6 +459,16 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput) ToGoogleCloudMlV
 
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput) ToGoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput) Elem() GoogleCloudMlV1_StudyConfig_ParameterSpecTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfig_ParameterSpecType) GoogleCloudMlV1_StudyConfig_ParameterSpecType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_StudyConfig_ParameterSpecType
+		return ret
+	}).(GoogleCloudMlV1_StudyConfig_ParameterSpecTypeOutput)
 }
 
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -473,16 +483,6 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput) Elem() GoogleCloudMlV1_StudyConfig_ParameterSpecTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfig_ParameterSpecType) GoogleCloudMlV1_StudyConfig_ParameterSpecType {
-		var ret GoogleCloudMlV1_StudyConfig_ParameterSpecType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1_StudyConfig_ParameterSpecTypeOutput)
 }
 
 // GoogleCloudMlV1_StudyConfig_ParameterSpecTypeInput is an input type that accepts GoogleCloudMlV1_StudyConfig_ParameterSpecTypeArgs and GoogleCloudMlV1_StudyConfig_ParameterSpecTypeOutput values.
@@ -631,7 +631,7 @@ func (o GoogleCloudMlV1__AcceleratorConfigTypeOutput) ToStringPtrOutputWithConte
 type GoogleCloudMlV1__AcceleratorConfigTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__AcceleratorConfigTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1__AcceleratorConfigTypePtrType
+	return reflect.TypeOf((**GoogleCloudMlV1__AcceleratorConfigType)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1__AcceleratorConfigTypePtrOutput) ToGoogleCloudMlV1__AcceleratorConfigTypePtrOutput() GoogleCloudMlV1__AcceleratorConfigTypePtrOutput {
@@ -640,6 +640,16 @@ func (o GoogleCloudMlV1__AcceleratorConfigTypePtrOutput) ToGoogleCloudMlV1__Acce
 
 func (o GoogleCloudMlV1__AcceleratorConfigTypePtrOutput) ToGoogleCloudMlV1__AcceleratorConfigTypePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__AcceleratorConfigTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__AcceleratorConfigTypePtrOutput) Elem() GoogleCloudMlV1__AcceleratorConfigTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__AcceleratorConfigType) GoogleCloudMlV1__AcceleratorConfigType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__AcceleratorConfigType
+		return ret
+	}).(GoogleCloudMlV1__AcceleratorConfigTypeOutput)
 }
 
 func (o GoogleCloudMlV1__AcceleratorConfigTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -654,16 +664,6 @@ func (o GoogleCloudMlV1__AcceleratorConfigTypePtrOutput) ToStringPtrOutputWithCo
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1__AcceleratorConfigTypePtrOutput) Elem() GoogleCloudMlV1__AcceleratorConfigTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__AcceleratorConfigType) GoogleCloudMlV1__AcceleratorConfigType {
-		var ret GoogleCloudMlV1__AcceleratorConfigType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1__AcceleratorConfigTypeOutput)
 }
 
 // GoogleCloudMlV1__AcceleratorConfigTypeInput is an input type that accepts GoogleCloudMlV1__AcceleratorConfigTypeArgs and GoogleCloudMlV1__AcceleratorConfigTypeOutput values.
@@ -800,7 +800,7 @@ func (o GoogleCloudMlV1__HyperparameterSpecAlgorithmOutput) ToStringPtrOutputWit
 type GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1__HyperparameterSpecAlgorithmPtrType
+	return reflect.TypeOf((**GoogleCloudMlV1__HyperparameterSpecAlgorithm)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput) ToGoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput() GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput {
@@ -809,6 +809,16 @@ func (o GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput) ToGoogleCloudMlV1
 
 func (o GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput) ToGoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput) Elem() GoogleCloudMlV1__HyperparameterSpecAlgorithmOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpecAlgorithm) GoogleCloudMlV1__HyperparameterSpecAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__HyperparameterSpecAlgorithm
+		return ret
+	}).(GoogleCloudMlV1__HyperparameterSpecAlgorithmOutput)
 }
 
 func (o GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -823,16 +833,6 @@ func (o GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput) ToStringPtrOutput
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput) Elem() GoogleCloudMlV1__HyperparameterSpecAlgorithmOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpecAlgorithm) GoogleCloudMlV1__HyperparameterSpecAlgorithm {
-		var ret GoogleCloudMlV1__HyperparameterSpecAlgorithm
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1__HyperparameterSpecAlgorithmOutput)
 }
 
 // GoogleCloudMlV1__HyperparameterSpecAlgorithmInput is an input type that accepts GoogleCloudMlV1__HyperparameterSpecAlgorithmArgs and GoogleCloudMlV1__HyperparameterSpecAlgorithmOutput values.
@@ -969,7 +969,7 @@ func (o GoogleCloudMlV1__HyperparameterSpecGoalOutput) ToStringPtrOutputWithCont
 type GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1__HyperparameterSpecGoalPtrType
+	return reflect.TypeOf((**GoogleCloudMlV1__HyperparameterSpecGoal)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput) ToGoogleCloudMlV1__HyperparameterSpecGoalPtrOutput() GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput {
@@ -978,6 +978,16 @@ func (o GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput) ToGoogleCloudMlV1__Hyp
 
 func (o GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput) ToGoogleCloudMlV1__HyperparameterSpecGoalPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput) Elem() GoogleCloudMlV1__HyperparameterSpecGoalOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpecGoal) GoogleCloudMlV1__HyperparameterSpecGoal {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__HyperparameterSpecGoal
+		return ret
+	}).(GoogleCloudMlV1__HyperparameterSpecGoalOutput)
 }
 
 func (o GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -992,16 +1002,6 @@ func (o GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput) ToStringPtrOutputWithC
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput) Elem() GoogleCloudMlV1__HyperparameterSpecGoalOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpecGoal) GoogleCloudMlV1__HyperparameterSpecGoal {
-		var ret GoogleCloudMlV1__HyperparameterSpecGoal
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1__HyperparameterSpecGoalOutput)
 }
 
 // GoogleCloudMlV1__HyperparameterSpecGoalInput is an input type that accepts GoogleCloudMlV1__HyperparameterSpecGoalArgs and GoogleCloudMlV1__HyperparameterSpecGoalOutput values.
@@ -1138,7 +1138,7 @@ func (o GoogleCloudMlV1__MetricSpecNameOutput) ToStringPtrOutputWithContext(ctx 
 type GoogleCloudMlV1__MetricSpecNamePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__MetricSpecNamePtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1__MetricSpecNamePtrType
+	return reflect.TypeOf((**GoogleCloudMlV1__MetricSpecName)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1__MetricSpecNamePtrOutput) ToGoogleCloudMlV1__MetricSpecNamePtrOutput() GoogleCloudMlV1__MetricSpecNamePtrOutput {
@@ -1147,6 +1147,16 @@ func (o GoogleCloudMlV1__MetricSpecNamePtrOutput) ToGoogleCloudMlV1__MetricSpecN
 
 func (o GoogleCloudMlV1__MetricSpecNamePtrOutput) ToGoogleCloudMlV1__MetricSpecNamePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__MetricSpecNamePtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__MetricSpecNamePtrOutput) Elem() GoogleCloudMlV1__MetricSpecNameOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__MetricSpecName) GoogleCloudMlV1__MetricSpecName {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__MetricSpecName
+		return ret
+	}).(GoogleCloudMlV1__MetricSpecNameOutput)
 }
 
 func (o GoogleCloudMlV1__MetricSpecNamePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1161,16 +1171,6 @@ func (o GoogleCloudMlV1__MetricSpecNamePtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1__MetricSpecNamePtrOutput) Elem() GoogleCloudMlV1__MetricSpecNameOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__MetricSpecName) GoogleCloudMlV1__MetricSpecName {
-		var ret GoogleCloudMlV1__MetricSpecName
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1__MetricSpecNameOutput)
 }
 
 // GoogleCloudMlV1__MetricSpecNameInput is an input type that accepts GoogleCloudMlV1__MetricSpecNameArgs and GoogleCloudMlV1__MetricSpecNameOutput values.
@@ -1309,7 +1309,7 @@ func (o GoogleCloudMlV1__ParameterSpecScaleTypeOutput) ToStringPtrOutputWithCont
 type GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1__ParameterSpecScaleTypePtrType
+	return reflect.TypeOf((**GoogleCloudMlV1__ParameterSpecScaleType)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput) ToGoogleCloudMlV1__ParameterSpecScaleTypePtrOutput() GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput {
@@ -1318,6 +1318,16 @@ func (o GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput) ToGoogleCloudMlV1__Par
 
 func (o GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput) ToGoogleCloudMlV1__ParameterSpecScaleTypePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput) Elem() GoogleCloudMlV1__ParameterSpecScaleTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__ParameterSpecScaleType) GoogleCloudMlV1__ParameterSpecScaleType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__ParameterSpecScaleType
+		return ret
+	}).(GoogleCloudMlV1__ParameterSpecScaleTypeOutput)
 }
 
 func (o GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1332,16 +1342,6 @@ func (o GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput) ToStringPtrOutputWithC
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput) Elem() GoogleCloudMlV1__ParameterSpecScaleTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__ParameterSpecScaleType) GoogleCloudMlV1__ParameterSpecScaleType {
-		var ret GoogleCloudMlV1__ParameterSpecScaleType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1__ParameterSpecScaleTypeOutput)
 }
 
 // GoogleCloudMlV1__ParameterSpecScaleTypeInput is an input type that accepts GoogleCloudMlV1__ParameterSpecScaleTypeArgs and GoogleCloudMlV1__ParameterSpecScaleTypeOutput values.
@@ -1482,7 +1482,7 @@ func (o GoogleCloudMlV1__ParameterSpecTypeOutput) ToStringPtrOutputWithContext(c
 type GoogleCloudMlV1__ParameterSpecTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__ParameterSpecTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1__ParameterSpecTypePtrType
+	return reflect.TypeOf((**GoogleCloudMlV1__ParameterSpecType)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1__ParameterSpecTypePtrOutput) ToGoogleCloudMlV1__ParameterSpecTypePtrOutput() GoogleCloudMlV1__ParameterSpecTypePtrOutput {
@@ -1491,6 +1491,16 @@ func (o GoogleCloudMlV1__ParameterSpecTypePtrOutput) ToGoogleCloudMlV1__Paramete
 
 func (o GoogleCloudMlV1__ParameterSpecTypePtrOutput) ToGoogleCloudMlV1__ParameterSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ParameterSpecTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ParameterSpecTypePtrOutput) Elem() GoogleCloudMlV1__ParameterSpecTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__ParameterSpecType) GoogleCloudMlV1__ParameterSpecType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__ParameterSpecType
+		return ret
+	}).(GoogleCloudMlV1__ParameterSpecTypeOutput)
 }
 
 func (o GoogleCloudMlV1__ParameterSpecTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1505,16 +1515,6 @@ func (o GoogleCloudMlV1__ParameterSpecTypePtrOutput) ToStringPtrOutputWithContex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1__ParameterSpecTypePtrOutput) Elem() GoogleCloudMlV1__ParameterSpecTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__ParameterSpecType) GoogleCloudMlV1__ParameterSpecType {
-		var ret GoogleCloudMlV1__ParameterSpecType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1__ParameterSpecTypeOutput)
 }
 
 // GoogleCloudMlV1__ParameterSpecTypeInput is an input type that accepts GoogleCloudMlV1__ParameterSpecTypeArgs and GoogleCloudMlV1__ParameterSpecTypeOutput values.
@@ -1657,7 +1657,7 @@ func (o GoogleCloudMlV1__PredictionInputDataFormatOutput) ToStringPtrOutputWithC
 type GoogleCloudMlV1__PredictionInputDataFormatPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__PredictionInputDataFormatPtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1__PredictionInputDataFormatPtrType
+	return reflect.TypeOf((**GoogleCloudMlV1__PredictionInputDataFormat)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1__PredictionInputDataFormatPtrOutput) ToGoogleCloudMlV1__PredictionInputDataFormatPtrOutput() GoogleCloudMlV1__PredictionInputDataFormatPtrOutput {
@@ -1666,6 +1666,16 @@ func (o GoogleCloudMlV1__PredictionInputDataFormatPtrOutput) ToGoogleCloudMlV1__
 
 func (o GoogleCloudMlV1__PredictionInputDataFormatPtrOutput) ToGoogleCloudMlV1__PredictionInputDataFormatPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__PredictionInputDataFormatPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__PredictionInputDataFormatPtrOutput) Elem() GoogleCloudMlV1__PredictionInputDataFormatOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInputDataFormat) GoogleCloudMlV1__PredictionInputDataFormat {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__PredictionInputDataFormat
+		return ret
+	}).(GoogleCloudMlV1__PredictionInputDataFormatOutput)
 }
 
 func (o GoogleCloudMlV1__PredictionInputDataFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1680,16 +1690,6 @@ func (o GoogleCloudMlV1__PredictionInputDataFormatPtrOutput) ToStringPtrOutputWi
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1__PredictionInputDataFormatPtrOutput) Elem() GoogleCloudMlV1__PredictionInputDataFormatOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInputDataFormat) GoogleCloudMlV1__PredictionInputDataFormat {
-		var ret GoogleCloudMlV1__PredictionInputDataFormat
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1__PredictionInputDataFormatOutput)
 }
 
 // GoogleCloudMlV1__PredictionInputDataFormatInput is an input type that accepts GoogleCloudMlV1__PredictionInputDataFormatArgs and GoogleCloudMlV1__PredictionInputDataFormatOutput values.
@@ -1832,7 +1832,7 @@ func (o GoogleCloudMlV1__PredictionInputOutputDataFormatOutput) ToStringPtrOutpu
 type GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1__PredictionInputOutputDataFormatPtrType
+	return reflect.TypeOf((**GoogleCloudMlV1__PredictionInputOutputDataFormat)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput) ToGoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput() GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput {
@@ -1841,6 +1841,16 @@ func (o GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput) ToGoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput) Elem() GoogleCloudMlV1__PredictionInputOutputDataFormatOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInputOutputDataFormat) GoogleCloudMlV1__PredictionInputOutputDataFormat {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__PredictionInputOutputDataFormat
+		return ret
+	}).(GoogleCloudMlV1__PredictionInputOutputDataFormatOutput)
 }
 
 func (o GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1855,16 +1865,6 @@ func (o GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput) ToStringPtrOu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput) Elem() GoogleCloudMlV1__PredictionInputOutputDataFormatOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInputOutputDataFormat) GoogleCloudMlV1__PredictionInputOutputDataFormat {
-		var ret GoogleCloudMlV1__PredictionInputOutputDataFormat
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1__PredictionInputOutputDataFormatOutput)
 }
 
 // GoogleCloudMlV1__PredictionInputOutputDataFormatInput is an input type that accepts GoogleCloudMlV1__PredictionInputOutputDataFormatArgs and GoogleCloudMlV1__PredictionInputOutputDataFormatOutput values.
@@ -2003,7 +2003,7 @@ func (o GoogleCloudMlV1__StudyConfigAlgorithmOutput) ToStringPtrOutputWithContex
 type GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1__StudyConfigAlgorithmPtrType
+	return reflect.TypeOf((**GoogleCloudMlV1__StudyConfigAlgorithm)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput) ToGoogleCloudMlV1__StudyConfigAlgorithmPtrOutput() GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput {
@@ -2012,6 +2012,16 @@ func (o GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput) ToGoogleCloudMlV1__Study
 
 func (o GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput) ToGoogleCloudMlV1__StudyConfigAlgorithmPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput) Elem() GoogleCloudMlV1__StudyConfigAlgorithmOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__StudyConfigAlgorithm) GoogleCloudMlV1__StudyConfigAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__StudyConfigAlgorithm
+		return ret
+	}).(GoogleCloudMlV1__StudyConfigAlgorithmOutput)
 }
 
 func (o GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2026,16 +2036,6 @@ func (o GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput) ToStringPtrOutputWithCon
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput) Elem() GoogleCloudMlV1__StudyConfigAlgorithmOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__StudyConfigAlgorithm) GoogleCloudMlV1__StudyConfigAlgorithm {
-		var ret GoogleCloudMlV1__StudyConfigAlgorithm
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1__StudyConfigAlgorithmOutput)
 }
 
 // GoogleCloudMlV1__StudyConfigAlgorithmInput is an input type that accepts GoogleCloudMlV1__StudyConfigAlgorithmArgs and GoogleCloudMlV1__StudyConfigAlgorithmOutput values.
@@ -2178,7 +2178,7 @@ func (o GoogleCloudMlV1__TrainingInputScaleTierOutput) ToStringPtrOutputWithCont
 type GoogleCloudMlV1__TrainingInputScaleTierPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__TrainingInputScaleTierPtrOutput) ElementType() reflect.Type {
-	return googleCloudMlV1__TrainingInputScaleTierPtrType
+	return reflect.TypeOf((**GoogleCloudMlV1__TrainingInputScaleTier)(nil)).Elem()
 }
 
 func (o GoogleCloudMlV1__TrainingInputScaleTierPtrOutput) ToGoogleCloudMlV1__TrainingInputScaleTierPtrOutput() GoogleCloudMlV1__TrainingInputScaleTierPtrOutput {
@@ -2187,6 +2187,16 @@ func (o GoogleCloudMlV1__TrainingInputScaleTierPtrOutput) ToGoogleCloudMlV1__Tra
 
 func (o GoogleCloudMlV1__TrainingInputScaleTierPtrOutput) ToGoogleCloudMlV1__TrainingInputScaleTierPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__TrainingInputScaleTierPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__TrainingInputScaleTierPtrOutput) Elem() GoogleCloudMlV1__TrainingInputScaleTierOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInputScaleTier) GoogleCloudMlV1__TrainingInputScaleTier {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__TrainingInputScaleTier
+		return ret
+	}).(GoogleCloudMlV1__TrainingInputScaleTierOutput)
 }
 
 func (o GoogleCloudMlV1__TrainingInputScaleTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2201,16 +2211,6 @@ func (o GoogleCloudMlV1__TrainingInputScaleTierPtrOutput) ToStringPtrOutputWithC
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudMlV1__TrainingInputScaleTierPtrOutput) Elem() GoogleCloudMlV1__TrainingInputScaleTierOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInputScaleTier) GoogleCloudMlV1__TrainingInputScaleTier {
-		var ret GoogleCloudMlV1__TrainingInputScaleTier
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudMlV1__TrainingInputScaleTierOutput)
 }
 
 // GoogleCloudMlV1__TrainingInputScaleTierInput is an input type that accepts GoogleCloudMlV1__TrainingInputScaleTierArgs and GoogleCloudMlV1__TrainingInputScaleTierOutput values.
@@ -2349,7 +2349,7 @@ func (o GoogleIamV1__AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(c
 type GoogleIamV1__AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleIamV1__AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return googleIamV1__AuditLogConfigLogTypePtrType
+	return reflect.TypeOf((**GoogleIamV1__AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o GoogleIamV1__AuditLogConfigLogTypePtrOutput) ToGoogleIamV1__AuditLogConfigLogTypePtrOutput() GoogleIamV1__AuditLogConfigLogTypePtrOutput {
@@ -2358,6 +2358,16 @@ func (o GoogleIamV1__AuditLogConfigLogTypePtrOutput) ToGoogleIamV1__AuditLogConf
 
 func (o GoogleIamV1__AuditLogConfigLogTypePtrOutput) ToGoogleIamV1__AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1__AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o GoogleIamV1__AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1__AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *GoogleIamV1__AuditLogConfigLogType) GoogleIamV1__AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleIamV1__AuditLogConfigLogType
+		return ret
+	}).(GoogleIamV1__AuditLogConfigLogTypeOutput)
 }
 
 func (o GoogleIamV1__AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2372,16 +2382,6 @@ func (o GoogleIamV1__AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleIamV1__AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1__AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *GoogleIamV1__AuditLogConfigLogType) GoogleIamV1__AuditLogConfigLogType {
-		var ret GoogleIamV1__AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleIamV1__AuditLogConfigLogTypeOutput)
 }
 
 // GoogleIamV1__AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1__AuditLogConfigLogTypeArgs and GoogleIamV1__AuditLogConfigLogTypeOutput values.
@@ -2522,7 +2522,7 @@ func (o TrialStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 type TrialStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (TrialStateEnumPtrOutput) ElementType() reflect.Type {
-	return trialStateEnumPtrType
+	return reflect.TypeOf((**TrialStateEnum)(nil)).Elem()
 }
 
 func (o TrialStateEnumPtrOutput) ToTrialStateEnumPtrOutput() TrialStateEnumPtrOutput {
@@ -2531,6 +2531,16 @@ func (o TrialStateEnumPtrOutput) ToTrialStateEnumPtrOutput() TrialStateEnumPtrOu
 
 func (o TrialStateEnumPtrOutput) ToTrialStateEnumPtrOutputWithContext(ctx context.Context) TrialStateEnumPtrOutput {
 	return o
+}
+
+func (o TrialStateEnumPtrOutput) Elem() TrialStateEnumOutput {
+	return o.ApplyT(func(v *TrialStateEnum) TrialStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret TrialStateEnum
+		return ret
+	}).(TrialStateEnumOutput)
 }
 
 func (o TrialStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2545,16 +2555,6 @@ func (o TrialStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TrialStateEnumPtrOutput) Elem() TrialStateEnumOutput {
-	return o.ApplyT(func(v *TrialStateEnum) TrialStateEnum {
-		var ret TrialStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TrialStateEnumOutput)
 }
 
 // TrialStateEnumInput is an input type that accepts TrialStateEnumArgs and TrialStateEnumOutput values.
@@ -2693,7 +2693,7 @@ func (o VersionFrameworkOutput) ToStringPtrOutputWithContext(ctx context.Context
 type VersionFrameworkPtrOutput struct{ *pulumi.OutputState }
 
 func (VersionFrameworkPtrOutput) ElementType() reflect.Type {
-	return versionFrameworkPtrType
+	return reflect.TypeOf((**VersionFramework)(nil)).Elem()
 }
 
 func (o VersionFrameworkPtrOutput) ToVersionFrameworkPtrOutput() VersionFrameworkPtrOutput {
@@ -2702,6 +2702,16 @@ func (o VersionFrameworkPtrOutput) ToVersionFrameworkPtrOutput() VersionFramewor
 
 func (o VersionFrameworkPtrOutput) ToVersionFrameworkPtrOutputWithContext(ctx context.Context) VersionFrameworkPtrOutput {
 	return o
+}
+
+func (o VersionFrameworkPtrOutput) Elem() VersionFrameworkOutput {
+	return o.ApplyT(func(v *VersionFramework) VersionFramework {
+		if v != nil {
+			return *v
+		}
+		var ret VersionFramework
+		return ret
+	}).(VersionFrameworkOutput)
 }
 
 func (o VersionFrameworkPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2716,16 +2726,6 @@ func (o VersionFrameworkPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o VersionFrameworkPtrOutput) Elem() VersionFrameworkOutput {
-	return o.ApplyT(func(v *VersionFramework) VersionFramework {
-		var ret VersionFramework
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(VersionFrameworkOutput)
 }
 
 // VersionFrameworkInput is an input type that accepts VersionFrameworkArgs and VersionFrameworkOutput values.

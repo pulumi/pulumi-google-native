@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,76 @@ type LookupConnectionResult struct {
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
 	Name string `pulumi:"name"`
+}
+
+func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupConnectionResult, error) {
+			args := v.(LookupConnectionArgs)
+			r, err := LookupConnection(ctx, &args, opts...)
+			return *r, err
+		}).(LookupConnectionResultOutput)
+}
+
+type LookupConnectionOutputArgs struct {
+	ConnectionId pulumi.StringInput    `pulumi:"connectionId"`
+	Location     pulumi.StringInput    `pulumi:"location"`
+	Project      pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupConnectionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConnectionArgs)(nil)).Elem()
+}
+
+type LookupConnectionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupConnectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConnectionResult)(nil)).Elem()
+}
+
+func (o LookupConnectionResultOutput) ToLookupConnectionResultOutput() LookupConnectionResultOutput {
+	return o
+}
+
+func (o LookupConnectionResultOutput) ToLookupConnectionResultOutputWithContext(ctx context.Context) LookupConnectionResultOutput {
+	return o
+}
+
+// Cloud SQL properties.
+func (o LookupConnectionResultOutput) CloudSql() CloudSqlPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupConnectionResult) CloudSqlPropertiesResponse { return v.CloudSql }).(CloudSqlPropertiesResponseOutput)
+}
+
+// The creation timestamp of the connection.
+func (o LookupConnectionResultOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// User provided description.
+func (o LookupConnectionResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// User provided display name for the connection.
+func (o LookupConnectionResultOutput) FriendlyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.FriendlyName }).(pulumi.StringOutput)
+}
+
+// True, if credential is configured for this connection.
+func (o LookupConnectionResultOutput) HasCredential() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupConnectionResult) bool { return v.HasCredential }).(pulumi.BoolOutput)
+}
+
+// The last update timestamp of the connection.
+func (o LookupConnectionResultOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+func (o LookupConnectionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupConnectionResultOutput{})
 }

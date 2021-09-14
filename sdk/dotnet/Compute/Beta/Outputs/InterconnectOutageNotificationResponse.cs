@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Description of a planned outage on this Interconnect.
+    /// </summary>
     [OutputType]
     public sealed class InterconnectOutageNotificationResponse
     {

@@ -13,6 +13,7 @@ __all__ = [
     'GetPatchDeploymentResult',
     'AwaitableGetPatchDeploymentResult',
     'get_patch_deployment',
+    'get_patch_deployment_output',
 ]
 
 @pulumi.output_type
@@ -187,3 +188,13 @@ def get_patch_deployment(patch_deployment_id: Optional[str] = None,
         recurring_schedule=__ret__.recurring_schedule,
         rollout=__ret__.rollout,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_patch_deployment)
+def get_patch_deployment_output(patch_deployment_id: Optional[pulumi.Input[str]] = None,
+                                project: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPatchDeploymentResult]:
+    """
+    Get an OS Config patch deployment.
+    """
+    ...

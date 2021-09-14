@@ -114,9 +114,7 @@ func (i *IssueModel) ToIssueModelOutputWithContext(ctx context.Context) IssueMod
 	return pulumi.ToOutputWithContext(ctx, i).(IssueModelOutput)
 }
 
-type IssueModelOutput struct {
-	*pulumi.OutputState
-}
+type IssueModelOutput struct{ *pulumi.OutputState }
 
 func (IssueModelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IssueModel)(nil))

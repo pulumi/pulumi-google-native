@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// The named port. For example: &lt;"http", 80&gt;.
+    /// </summary>
     [OutputType]
     public sealed class NamedPortResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigtableAdmin.V2.Outputs
 {
 
+    /// <summary>
+    /// Information about a backup.
+    /// </summary>
     [OutputType]
     public sealed class BackupInfoResponse
     {

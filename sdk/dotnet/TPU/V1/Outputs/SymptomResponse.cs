@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.TPU.V1.Outputs
 {
 
+    /// <summary>
+    /// A Symptom instance.
+    /// </summary>
     [OutputType]
     public sealed class SymptomResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Describes measured latency distribution.
+    /// </summary>
     [OutputType]
     public sealed class LatencyDistributionResponse
     {

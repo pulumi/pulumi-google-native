@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -279,7 +279,7 @@ func (o FunctionIngressSettingsOutput) ToStringPtrOutputWithContext(ctx context.
 type FunctionIngressSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionIngressSettingsPtrOutput) ElementType() reflect.Type {
-	return functionIngressSettingsPtrType
+	return reflect.TypeOf((**FunctionIngressSettings)(nil)).Elem()
 }
 
 func (o FunctionIngressSettingsPtrOutput) ToFunctionIngressSettingsPtrOutput() FunctionIngressSettingsPtrOutput {
@@ -288,6 +288,16 @@ func (o FunctionIngressSettingsPtrOutput) ToFunctionIngressSettingsPtrOutput() F
 
 func (o FunctionIngressSettingsPtrOutput) ToFunctionIngressSettingsPtrOutputWithContext(ctx context.Context) FunctionIngressSettingsPtrOutput {
 	return o
+}
+
+func (o FunctionIngressSettingsPtrOutput) Elem() FunctionIngressSettingsOutput {
+	return o.ApplyT(func(v *FunctionIngressSettings) FunctionIngressSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionIngressSettings
+		return ret
+	}).(FunctionIngressSettingsOutput)
 }
 
 func (o FunctionIngressSettingsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -302,16 +312,6 @@ func (o FunctionIngressSettingsPtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FunctionIngressSettingsPtrOutput) Elem() FunctionIngressSettingsOutput {
-	return o.ApplyT(func(v *FunctionIngressSettings) FunctionIngressSettings {
-		var ret FunctionIngressSettings
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FunctionIngressSettingsOutput)
 }
 
 // FunctionIngressSettingsInput is an input type that accepts FunctionIngressSettingsArgs and FunctionIngressSettingsOutput values.
@@ -448,7 +448,7 @@ func (o FunctionVpcConnectorEgressSettingsOutput) ToStringPtrOutputWithContext(c
 type FunctionVpcConnectorEgressSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionVpcConnectorEgressSettingsPtrOutput) ElementType() reflect.Type {
-	return functionVpcConnectorEgressSettingsPtrType
+	return reflect.TypeOf((**FunctionVpcConnectorEgressSettings)(nil)).Elem()
 }
 
 func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToFunctionVpcConnectorEgressSettingsPtrOutput() FunctionVpcConnectorEgressSettingsPtrOutput {
@@ -457,6 +457,16 @@ func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToFunctionVpcConnectorEgres
 
 func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToFunctionVpcConnectorEgressSettingsPtrOutputWithContext(ctx context.Context) FunctionVpcConnectorEgressSettingsPtrOutput {
 	return o
+}
+
+func (o FunctionVpcConnectorEgressSettingsPtrOutput) Elem() FunctionVpcConnectorEgressSettingsOutput {
+	return o.ApplyT(func(v *FunctionVpcConnectorEgressSettings) FunctionVpcConnectorEgressSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionVpcConnectorEgressSettings
+		return ret
+	}).(FunctionVpcConnectorEgressSettingsOutput)
 }
 
 func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -471,16 +481,6 @@ func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToStringPtrOutputWithContex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FunctionVpcConnectorEgressSettingsPtrOutput) Elem() FunctionVpcConnectorEgressSettingsOutput {
-	return o.ApplyT(func(v *FunctionVpcConnectorEgressSettings) FunctionVpcConnectorEgressSettings {
-		var ret FunctionVpcConnectorEgressSettings
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FunctionVpcConnectorEgressSettingsOutput)
 }
 
 // FunctionVpcConnectorEgressSettingsInput is an input type that accepts FunctionVpcConnectorEgressSettingsArgs and FunctionVpcConnectorEgressSettingsOutput values.
@@ -617,7 +617,7 @@ func (o HttpsTriggerSecurityLevelOutput) ToStringPtrOutputWithContext(ctx contex
 type HttpsTriggerSecurityLevelPtrOutput struct{ *pulumi.OutputState }
 
 func (HttpsTriggerSecurityLevelPtrOutput) ElementType() reflect.Type {
-	return httpsTriggerSecurityLevelPtrType
+	return reflect.TypeOf((**HttpsTriggerSecurityLevel)(nil)).Elem()
 }
 
 func (o HttpsTriggerSecurityLevelPtrOutput) ToHttpsTriggerSecurityLevelPtrOutput() HttpsTriggerSecurityLevelPtrOutput {
@@ -626,6 +626,16 @@ func (o HttpsTriggerSecurityLevelPtrOutput) ToHttpsTriggerSecurityLevelPtrOutput
 
 func (o HttpsTriggerSecurityLevelPtrOutput) ToHttpsTriggerSecurityLevelPtrOutputWithContext(ctx context.Context) HttpsTriggerSecurityLevelPtrOutput {
 	return o
+}
+
+func (o HttpsTriggerSecurityLevelPtrOutput) Elem() HttpsTriggerSecurityLevelOutput {
+	return o.ApplyT(func(v *HttpsTriggerSecurityLevel) HttpsTriggerSecurityLevel {
+		if v != nil {
+			return *v
+		}
+		var ret HttpsTriggerSecurityLevel
+		return ret
+	}).(HttpsTriggerSecurityLevelOutput)
 }
 
 func (o HttpsTriggerSecurityLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -640,16 +650,6 @@ func (o HttpsTriggerSecurityLevelPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HttpsTriggerSecurityLevelPtrOutput) Elem() HttpsTriggerSecurityLevelOutput {
-	return o.ApplyT(func(v *HttpsTriggerSecurityLevel) HttpsTriggerSecurityLevel {
-		var ret HttpsTriggerSecurityLevel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HttpsTriggerSecurityLevelOutput)
 }
 
 // HttpsTriggerSecurityLevelInput is an input type that accepts HttpsTriggerSecurityLevelArgs and HttpsTriggerSecurityLevelOutput values.

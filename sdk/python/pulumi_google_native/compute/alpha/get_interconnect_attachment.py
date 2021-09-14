@@ -13,6 +13,7 @@ __all__ = [
     'GetInterconnectAttachmentResult',
     'AwaitableGetInterconnectAttachmentResult',
     'get_interconnect_attachment',
+    'get_interconnect_attachment_output',
 ]
 
 @pulumi.output_type
@@ -514,3 +515,14 @@ def get_interconnect_attachment(interconnect_attachment: Optional[str] = None,
         state=__ret__.state,
         type=__ret__.type,
         vlan_tag8021q=__ret__.vlan_tag8021q)
+
+
+@_utilities.lift_output_func(get_interconnect_attachment)
+def get_interconnect_attachment_output(interconnect_attachment: Optional[pulumi.Input[str]] = None,
+                                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                                       region: Optional[pulumi.Input[str]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInterconnectAttachmentResult]:
+    """
+    Returns the specified interconnect attachment.
+    """
+    ...

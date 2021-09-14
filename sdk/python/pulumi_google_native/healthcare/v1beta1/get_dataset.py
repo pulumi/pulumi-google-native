@@ -12,6 +12,7 @@ __all__ = [
     'GetDatasetResult',
     'AwaitableGetDatasetResult',
     'get_dataset',
+    'get_dataset_output',
 ]
 
 @pulumi.output_type
@@ -71,3 +72,14 @@ def get_dataset(dataset_id: Optional[str] = None,
     return AwaitableGetDatasetResult(
         name=__ret__.name,
         time_zone=__ret__.time_zone)
+
+
+@_utilities.lift_output_func(get_dataset)
+def get_dataset_output(dataset_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetResult]:
+    """
+    Gets any metadata associated with a dataset.
+    """
+    ...

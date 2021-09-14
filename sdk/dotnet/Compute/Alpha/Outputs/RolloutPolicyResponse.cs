@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// A rollout policy configuration.
+    /// </summary>
     [OutputType]
     public sealed class RolloutPolicyResponse
     {

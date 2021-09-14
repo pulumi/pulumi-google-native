@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GameServices.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Write a Cloud Audit log
+    /// </summary>
     [OutputType]
     public sealed class CloudAuditOptionsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Domains.V1Alpha2.Outputs
 {
 
+    /// <summary>
+    /// Defines renewal, billing, and transfer settings for a `Registration`.
+    /// </summary>
     [OutputType]
     public sealed class ManagementSettingsResponse
     {

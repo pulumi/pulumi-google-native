@@ -110,7 +110,7 @@ func (o ActingUserResponseOutput) ToActingUserResponsePtrOutput() ActingUserResp
 }
 
 func (o ActingUserResponseOutput) ToActingUserResponsePtrOutputWithContext(ctx context.Context) ActingUserResponsePtrOutput {
-	return o.ApplyT(func(v ActingUserResponse) *ActingUserResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActingUserResponse) *ActingUserResponse {
 		return &v
 	}).(ActingUserResponsePtrOutput)
 }
@@ -140,7 +140,13 @@ func (o ActingUserResponsePtrOutput) ToActingUserResponsePtrOutputWithContext(ct
 }
 
 func (o ActingUserResponsePtrOutput) Elem() ActingUserResponseOutput {
-	return o.ApplyT(func(v *ActingUserResponse) ActingUserResponse { return *v }).(ActingUserResponseOutput)
+	return o.ApplyT(func(v *ActingUserResponse) ActingUserResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ActingUserResponse
+		return ret
+	}).(ActingUserResponseOutput)
 }
 
 // The email address of the user when the user performed the action.
@@ -263,7 +269,7 @@ func (o CertDnsChallengeResponseOutput) ToCertDnsChallengeResponsePtrOutput() Ce
 }
 
 func (o CertDnsChallengeResponseOutput) ToCertDnsChallengeResponsePtrOutputWithContext(ctx context.Context) CertDnsChallengeResponsePtrOutput {
-	return o.ApplyT(func(v CertDnsChallengeResponse) *CertDnsChallengeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertDnsChallengeResponse) *CertDnsChallengeResponse {
 		return &v
 	}).(CertDnsChallengeResponsePtrOutput)
 }
@@ -293,7 +299,13 @@ func (o CertDnsChallengeResponsePtrOutput) ToCertDnsChallengeResponsePtrOutputWi
 }
 
 func (o CertDnsChallengeResponsePtrOutput) Elem() CertDnsChallengeResponseOutput {
-	return o.ApplyT(func(v *CertDnsChallengeResponse) CertDnsChallengeResponse { return *v }).(CertDnsChallengeResponseOutput)
+	return o.ApplyT(func(v *CertDnsChallengeResponse) CertDnsChallengeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertDnsChallengeResponse
+		return ret
+	}).(CertDnsChallengeResponseOutput)
 }
 
 // The domain name upon which the DNS challenge must be satisfied.
@@ -416,7 +428,7 @@ func (o CertHttpChallengeResponseOutput) ToCertHttpChallengeResponsePtrOutput() 
 }
 
 func (o CertHttpChallengeResponseOutput) ToCertHttpChallengeResponsePtrOutputWithContext(ctx context.Context) CertHttpChallengeResponsePtrOutput {
-	return o.ApplyT(func(v CertHttpChallengeResponse) *CertHttpChallengeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertHttpChallengeResponse) *CertHttpChallengeResponse {
 		return &v
 	}).(CertHttpChallengeResponsePtrOutput)
 }
@@ -446,7 +458,13 @@ func (o CertHttpChallengeResponsePtrOutput) ToCertHttpChallengeResponsePtrOutput
 }
 
 func (o CertHttpChallengeResponsePtrOutput) Elem() CertHttpChallengeResponseOutput {
-	return o.ApplyT(func(v *CertHttpChallengeResponse) CertHttpChallengeResponse { return *v }).(CertHttpChallengeResponseOutput)
+	return o.ApplyT(func(v *CertHttpChallengeResponse) CertHttpChallengeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertHttpChallengeResponse
+		return ret
+	}).(CertHttpChallengeResponseOutput)
 }
 
 // The URL path on which to serve the specified token to satisfy the certificate challenge.
@@ -657,7 +675,7 @@ func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponsePtrOutput(
 }
 
 func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponsePtrOutputWithContext(ctx context.Context) DomainProvisioningResponsePtrOutput {
-	return o.ApplyT(func(v DomainProvisioningResponse) *DomainProvisioningResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainProvisioningResponse) *DomainProvisioningResponse {
 		return &v
 	}).(DomainProvisioningResponsePtrOutput)
 }
@@ -717,7 +735,13 @@ func (o DomainProvisioningResponsePtrOutput) ToDomainProvisioningResponsePtrOutp
 }
 
 func (o DomainProvisioningResponsePtrOutput) Elem() DomainProvisioningResponseOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) DomainProvisioningResponse { return *v }).(DomainProvisioningResponseOutput)
+	return o.ApplyT(func(v *DomainProvisioningResponse) DomainProvisioningResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DomainProvisioningResponse
+		return ret
+	}).(DomainProvisioningResponseOutput)
 }
 
 // The TXT records (for the certificate challenge) that were found at the last DNS fetch.
@@ -900,7 +924,7 @@ func (o DomainRedirectOutput) ToDomainRedirectPtrOutput() DomainRedirectPtrOutpu
 }
 
 func (o DomainRedirectOutput) ToDomainRedirectPtrOutputWithContext(ctx context.Context) DomainRedirectPtrOutput {
-	return o.ApplyT(func(v DomainRedirect) *DomainRedirect {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainRedirect) *DomainRedirect {
 		return &v
 	}).(DomainRedirectPtrOutput)
 }
@@ -930,7 +954,13 @@ func (o DomainRedirectPtrOutput) ToDomainRedirectPtrOutputWithContext(ctx contex
 }
 
 func (o DomainRedirectPtrOutput) Elem() DomainRedirectOutput {
-	return o.ApplyT(func(v *DomainRedirect) DomainRedirect { return *v }).(DomainRedirectOutput)
+	return o.ApplyT(func(v *DomainRedirect) DomainRedirect {
+		if v != nil {
+			return *v
+		}
+		var ret DomainRedirect
+		return ret
+	}).(DomainRedirectOutput)
 }
 
 // The domain name to redirect to.
@@ -1053,7 +1083,7 @@ func (o DomainRedirectResponseOutput) ToDomainRedirectResponsePtrOutput() Domain
 }
 
 func (o DomainRedirectResponseOutput) ToDomainRedirectResponsePtrOutputWithContext(ctx context.Context) DomainRedirectResponsePtrOutput {
-	return o.ApplyT(func(v DomainRedirectResponse) *DomainRedirectResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainRedirectResponse) *DomainRedirectResponse {
 		return &v
 	}).(DomainRedirectResponsePtrOutput)
 }
@@ -1083,7 +1113,13 @@ func (o DomainRedirectResponsePtrOutput) ToDomainRedirectResponsePtrOutputWithCo
 }
 
 func (o DomainRedirectResponsePtrOutput) Elem() DomainRedirectResponseOutput {
-	return o.ApplyT(func(v *DomainRedirectResponse) DomainRedirectResponse { return *v }).(DomainRedirectResponseOutput)
+	return o.ApplyT(func(v *DomainRedirectResponse) DomainRedirectResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DomainRedirectResponse
+		return ret
+	}).(DomainRedirectResponseOutput)
 }
 
 // The domain name to redirect to.
@@ -1320,7 +1356,7 @@ func (o I18nConfigResponseOutput) ToI18nConfigResponsePtrOutput() I18nConfigResp
 }
 
 func (o I18nConfigResponseOutput) ToI18nConfigResponsePtrOutputWithContext(ctx context.Context) I18nConfigResponsePtrOutput {
-	return o.ApplyT(func(v I18nConfigResponse) *I18nConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v I18nConfigResponse) *I18nConfigResponse {
 		return &v
 	}).(I18nConfigResponsePtrOutput)
 }
@@ -1345,7 +1381,13 @@ func (o I18nConfigResponsePtrOutput) ToI18nConfigResponsePtrOutputWithContext(ct
 }
 
 func (o I18nConfigResponsePtrOutput) Elem() I18nConfigResponseOutput {
-	return o.ApplyT(func(v *I18nConfigResponse) I18nConfigResponse { return *v }).(I18nConfigResponseOutput)
+	return o.ApplyT(func(v *I18nConfigResponse) I18nConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret I18nConfigResponse
+		return ret
+	}).(I18nConfigResponseOutput)
 }
 
 // The user-supplied path where country and language specific content will be looked for within the public directory.
@@ -1601,7 +1643,7 @@ func (o ReleaseResponseOutput) ToReleaseResponsePtrOutput() ReleaseResponsePtrOu
 }
 
 func (o ReleaseResponseOutput) ToReleaseResponsePtrOutputWithContext(ctx context.Context) ReleaseResponsePtrOutput {
-	return o.ApplyT(func(v ReleaseResponse) *ReleaseResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseResponse) *ReleaseResponse {
 		return &v
 	}).(ReleaseResponsePtrOutput)
 }
@@ -1651,7 +1693,13 @@ func (o ReleaseResponsePtrOutput) ToReleaseResponsePtrOutputWithContext(ctx cont
 }
 
 func (o ReleaseResponsePtrOutput) Elem() ReleaseResponseOutput {
-	return o.ApplyT(func(v *ReleaseResponse) ReleaseResponse { return *v }).(ReleaseResponseOutput)
+	return o.ApplyT(func(v *ReleaseResponse) ReleaseResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseResponse
+		return ret
+	}).(ReleaseResponseOutput)
 }
 
 // The deploy description when the release was created. The value can be up to 512 characters.
@@ -1979,7 +2027,7 @@ func (o ServingConfigResponseOutput) ToServingConfigResponsePtrOutput() ServingC
 }
 
 func (o ServingConfigResponseOutput) ToServingConfigResponsePtrOutputWithContext(ctx context.Context) ServingConfigResponsePtrOutput {
-	return o.ApplyT(func(v ServingConfigResponse) *ServingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServingConfigResponse) *ServingConfigResponse {
 		return &v
 	}).(ServingConfigResponsePtrOutput)
 }
@@ -2034,7 +2082,13 @@ func (o ServingConfigResponsePtrOutput) ToServingConfigResponsePtrOutputWithCont
 }
 
 func (o ServingConfigResponsePtrOutput) Elem() ServingConfigResponseOutput {
-	return o.ApplyT(func(v *ServingConfigResponse) ServingConfigResponse { return *v }).(ServingConfigResponseOutput)
+	return o.ApplyT(func(v *ServingConfigResponse) ServingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServingConfigResponse
+		return ret
+	}).(ServingConfigResponseOutput)
 }
 
 // How to handle well known App Association files.
@@ -2247,7 +2301,7 @@ func (o VersionResponseOutput) ToVersionResponsePtrOutput() VersionResponsePtrOu
 }
 
 func (o VersionResponseOutput) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
-	return o.ApplyT(func(v VersionResponse) *VersionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VersionResponse) *VersionResponse {
 		return &v
 	}).(VersionResponsePtrOutput)
 }
@@ -2327,7 +2381,13 @@ func (o VersionResponsePtrOutput) ToVersionResponsePtrOutputWithContext(ctx cont
 }
 
 func (o VersionResponsePtrOutput) Elem() VersionResponseOutput {
-	return o.ApplyT(func(v *VersionResponse) VersionResponse { return *v }).(VersionResponseOutput)
+	return o.ApplyT(func(v *VersionResponse) VersionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VersionResponse
+		return ret
+	}).(VersionResponseOutput)
 }
 
 // The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.

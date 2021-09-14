@@ -4,6 +4,9 @@
 package v3beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,4 +45,88 @@ type LookupSecuritySettingResult struct {
 	RedactionStrategy string `pulumi:"redactionStrategy"`
 	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
 	RetentionWindowDays int `pulumi:"retentionWindowDays"`
+}
+
+func LookupSecuritySettingOutput(ctx *pulumi.Context, args LookupSecuritySettingOutputArgs, opts ...pulumi.InvokeOption) LookupSecuritySettingResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSecuritySettingResult, error) {
+			args := v.(LookupSecuritySettingArgs)
+			r, err := LookupSecuritySetting(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSecuritySettingResultOutput)
+}
+
+type LookupSecuritySettingOutputArgs struct {
+	Location          pulumi.StringInput    `pulumi:"location"`
+	Project           pulumi.StringPtrInput `pulumi:"project"`
+	SecuritySettingId pulumi.StringInput    `pulumi:"securitySettingId"`
+}
+
+func (LookupSecuritySettingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecuritySettingArgs)(nil)).Elem()
+}
+
+type LookupSecuritySettingResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSecuritySettingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecuritySettingResult)(nil)).Elem()
+}
+
+func (o LookupSecuritySettingResultOutput) ToLookupSecuritySettingResultOutput() LookupSecuritySettingResultOutput {
+	return o
+}
+
+func (o LookupSecuritySettingResultOutput) ToLookupSecuritySettingResultOutputWithContext(ctx context.Context) LookupSecuritySettingResultOutput {
+	return o
+}
+
+// [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
+func (o LookupSecuritySettingResultOutput) DeidentifyTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecuritySettingResult) string { return v.DeidentifyTemplate }).(pulumi.StringOutput)
+}
+
+// The human-readable name of the security settings, unique within the location.
+func (o LookupSecuritySettingResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecuritySettingResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
+func (o LookupSecuritySettingResultOutput) InsightsExportSettings() GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponseOutput {
+	return o.ApplyT(func(v LookupSecuritySettingResult) GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponse {
+		return v.InsightsExportSettings
+	}).(GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponseOutput)
+}
+
+// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
+func (o LookupSecuritySettingResultOutput) InspectTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecuritySettingResult) string { return v.InspectTemplate }).(pulumi.StringOutput)
+}
+
+// Resource name of the settings. Format: `projects//locations//securitySettings/`.
+func (o LookupSecuritySettingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecuritySettingResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of types of data to remove when retention settings triggers purge.
+func (o LookupSecuritySettingResultOutput) PurgeDataTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSecuritySettingResult) []string { return v.PurgeDataTypes }).(pulumi.StringArrayOutput)
+}
+
+// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
+func (o LookupSecuritySettingResultOutput) RedactionScope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecuritySettingResult) string { return v.RedactionScope }).(pulumi.StringOutput)
+}
+
+// Strategy that defines how we do redaction.
+func (o LookupSecuritySettingResultOutput) RedactionStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecuritySettingResult) string { return v.RedactionStrategy }).(pulumi.StringOutput)
+}
+
+// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
+func (o LookupSecuritySettingResultOutput) RetentionWindowDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSecuritySettingResult) int { return v.RetentionWindowDays }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSecuritySettingResultOutput{})
 }

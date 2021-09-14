@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -277,7 +277,7 @@ func (o MembershipInfrastructureTypeOutput) ToStringPtrOutputWithContext(ctx con
 type MembershipInfrastructureTypePtrOutput struct{ *pulumi.OutputState }
 
 func (MembershipInfrastructureTypePtrOutput) ElementType() reflect.Type {
-	return membershipInfrastructureTypePtrType
+	return reflect.TypeOf((**MembershipInfrastructureType)(nil)).Elem()
 }
 
 func (o MembershipInfrastructureTypePtrOutput) ToMembershipInfrastructureTypePtrOutput() MembershipInfrastructureTypePtrOutput {
@@ -286,6 +286,16 @@ func (o MembershipInfrastructureTypePtrOutput) ToMembershipInfrastructureTypePtr
 
 func (o MembershipInfrastructureTypePtrOutput) ToMembershipInfrastructureTypePtrOutputWithContext(ctx context.Context) MembershipInfrastructureTypePtrOutput {
 	return o
+}
+
+func (o MembershipInfrastructureTypePtrOutput) Elem() MembershipInfrastructureTypeOutput {
+	return o.ApplyT(func(v *MembershipInfrastructureType) MembershipInfrastructureType {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipInfrastructureType
+		return ret
+	}).(MembershipInfrastructureTypeOutput)
 }
 
 func (o MembershipInfrastructureTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o MembershipInfrastructureTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MembershipInfrastructureTypePtrOutput) Elem() MembershipInfrastructureTypeOutput {
-	return o.ApplyT(func(v *MembershipInfrastructureType) MembershipInfrastructureType {
-		var ret MembershipInfrastructureType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MembershipInfrastructureTypeOutput)
 }
 
 // MembershipInfrastructureTypeInput is an input type that accepts MembershipInfrastructureTypeArgs and MembershipInfrastructureTypeOutput values.

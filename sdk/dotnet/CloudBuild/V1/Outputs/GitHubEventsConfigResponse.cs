@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+    /// </summary>
     [OutputType]
     public sealed class GitHubEventsConfigResponse
     {

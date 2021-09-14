@@ -135,9 +135,7 @@ func (i *Annotation) ToAnnotationOutputWithContext(ctx context.Context) Annotati
 	return pulumi.ToOutputWithContext(ctx, i).(AnnotationOutput)
 }
 
-type AnnotationOutput struct {
-	*pulumi.OutputState
-}
+type AnnotationOutput struct{ *pulumi.OutputState }
 
 func (AnnotationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Annotation)(nil))

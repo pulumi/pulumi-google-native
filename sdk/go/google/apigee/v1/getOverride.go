@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,56 @@ type LookupOverrideResult struct {
 	Name string `pulumi:"name"`
 	// Trace configuration to override.
 	SamplingConfig GoogleCloudApigeeV1TraceSamplingConfigResponse `pulumi:"samplingConfig"`
+}
+
+func LookupOverrideOutput(ctx *pulumi.Context, args LookupOverrideOutputArgs, opts ...pulumi.InvokeOption) LookupOverrideResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupOverrideResult, error) {
+			args := v.(LookupOverrideArgs)
+			r, err := LookupOverride(ctx, &args, opts...)
+			return *r, err
+		}).(LookupOverrideResultOutput)
+}
+
+type LookupOverrideOutputArgs struct {
+	EnvironmentId  pulumi.StringInput `pulumi:"environmentId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	OverrideId     pulumi.StringInput `pulumi:"overrideId"`
+}
+
+func (LookupOverrideOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOverrideArgs)(nil)).Elem()
+}
+
+type LookupOverrideResultOutput struct{ *pulumi.OutputState }
+
+func (LookupOverrideResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOverrideResult)(nil)).Elem()
+}
+
+func (o LookupOverrideResultOutput) ToLookupOverrideResultOutput() LookupOverrideResultOutput {
+	return o
+}
+
+func (o LookupOverrideResultOutput) ToLookupOverrideResultOutputWithContext(ctx context.Context) LookupOverrideResultOutput {
+	return o
+}
+
+// ID of the API proxy that will have its trace configuration overridden.
+func (o LookupOverrideResultOutput) ApiProxy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOverrideResult) string { return v.ApiProxy }).(pulumi.StringOutput)
+}
+
+// ID of the trace configuration override specified as a system-generated UUID.
+func (o LookupOverrideResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOverrideResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Trace configuration to override.
+func (o LookupOverrideResultOutput) SamplingConfig() GoogleCloudApigeeV1TraceSamplingConfigResponseOutput {
+	return o.ApplyT(func(v LookupOverrideResult) GoogleCloudApigeeV1TraceSamplingConfigResponse { return v.SamplingConfig }).(GoogleCloudApigeeV1TraceSamplingConfigResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupOverrideResultOutput{})
 }

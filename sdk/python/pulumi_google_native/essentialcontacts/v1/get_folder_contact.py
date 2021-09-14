@@ -12,6 +12,7 @@ __all__ = [
     'GetFolderContactResult',
     'AwaitableGetFolderContactResult',
     'get_folder_contact',
+    'get_folder_contact_output',
 ]
 
 @pulumi.output_type
@@ -121,3 +122,13 @@ def get_folder_contact(contact_id: Optional[str] = None,
         notification_category_subscriptions=__ret__.notification_category_subscriptions,
         validate_time=__ret__.validate_time,
         validation_state=__ret__.validation_state)
+
+
+@_utilities.lift_output_func(get_folder_contact)
+def get_folder_contact_output(contact_id: Optional[pulumi.Input[str]] = None,
+                              folder_id: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderContactResult]:
+    """
+    Gets a single contact.
+    """
+    ...

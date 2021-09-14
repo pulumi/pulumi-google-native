@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
+    /// </summary>
     [OutputType]
     public sealed class PerformanceThresholdResponse
     {

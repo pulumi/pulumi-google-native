@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// Guest OS features for boot disk.
+    /// </summary>
     [OutputType]
     public sealed class GuestOsFeatureResponse
     {

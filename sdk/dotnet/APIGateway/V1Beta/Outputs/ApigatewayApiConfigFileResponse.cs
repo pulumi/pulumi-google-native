@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.APIGateway.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// A lightweight description of a file.
+    /// </summary>
     [OutputType]
     public sealed class ApigatewayApiConfigFileResponse
     {

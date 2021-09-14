@@ -120,9 +120,7 @@ func (i *ResponsePolicy) ToResponsePolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyOutput)
 }
 
-type ResponsePolicyOutput struct {
-	*pulumi.OutputState
-}
+type ResponsePolicyOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResponsePolicy)(nil))

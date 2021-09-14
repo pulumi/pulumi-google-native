@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Outputs
 {
 
+    /// <summary>
+    /// A Google Compute Engine disk resource specification.
+    /// </summary>
     [OutputType]
     public sealed class DiskResponse
     {

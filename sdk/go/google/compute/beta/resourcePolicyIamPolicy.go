@@ -135,9 +135,7 @@ func (i *ResourcePolicyIamPolicy) ToResourcePolicyIamPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyIamPolicyOutput)
 }
 
-type ResourcePolicyIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type ResourcePolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ResourcePolicyIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourcePolicyIamPolicy)(nil))

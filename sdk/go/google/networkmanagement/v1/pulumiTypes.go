@@ -1098,7 +1098,7 @@ func (o EndpointOutput) ToEndpointPtrOutput() EndpointPtrOutput {
 }
 
 func (o EndpointOutput) ToEndpointPtrOutputWithContext(ctx context.Context) EndpointPtrOutput {
-	return o.ApplyT(func(v Endpoint) *Endpoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Endpoint) *Endpoint {
 		return &v
 	}).(EndpointPtrOutput)
 }
@@ -1158,7 +1158,13 @@ func (o EndpointPtrOutput) ToEndpointPtrOutputWithContext(ctx context.Context) E
 }
 
 func (o EndpointPtrOutput) Elem() EndpointOutput {
-	return o.ApplyT(func(v *Endpoint) Endpoint { return *v }).(EndpointOutput)
+	return o.ApplyT(func(v *Endpoint) Endpoint {
+		if v != nil {
+			return *v
+		}
+		var ret Endpoint
+		return ret
+	}).(EndpointOutput)
 }
 
 // A [Cloud SQL](https://cloud.google.com/sql) instance URI.
@@ -1474,7 +1480,7 @@ func (o EndpointResponseOutput) ToEndpointResponsePtrOutput() EndpointResponsePt
 }
 
 func (o EndpointResponseOutput) ToEndpointResponsePtrOutputWithContext(ctx context.Context) EndpointResponsePtrOutput {
-	return o.ApplyT(func(v EndpointResponse) *EndpointResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointResponse) *EndpointResponse {
 		return &v
 	}).(EndpointResponsePtrOutput)
 }
@@ -1534,7 +1540,13 @@ func (o EndpointResponsePtrOutput) ToEndpointResponsePtrOutputWithContext(ctx co
 }
 
 func (o EndpointResponsePtrOutput) Elem() EndpointResponseOutput {
-	return o.ApplyT(func(v *EndpointResponse) EndpointResponse { return *v }).(EndpointResponseOutput)
+	return o.ApplyT(func(v *EndpointResponse) EndpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointResponse
+		return ret
+	}).(EndpointResponseOutput)
 }
 
 // A [Cloud SQL](https://cloud.google.com/sql) instance URI.
@@ -1725,7 +1737,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1765,7 +1777,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2807,7 +2825,7 @@ func (o ReachabilityDetailsResponseOutput) ToReachabilityDetailsResponsePtrOutpu
 }
 
 func (o ReachabilityDetailsResponseOutput) ToReachabilityDetailsResponsePtrOutputWithContext(ctx context.Context) ReachabilityDetailsResponsePtrOutput {
-	return o.ApplyT(func(v ReachabilityDetailsResponse) *ReachabilityDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReachabilityDetailsResponse) *ReachabilityDetailsResponse {
 		return &v
 	}).(ReachabilityDetailsResponsePtrOutput)
 }
@@ -2847,7 +2865,13 @@ func (o ReachabilityDetailsResponsePtrOutput) ToReachabilityDetailsResponsePtrOu
 }
 
 func (o ReachabilityDetailsResponsePtrOutput) Elem() ReachabilityDetailsResponseOutput {
-	return o.ApplyT(func(v *ReachabilityDetailsResponse) ReachabilityDetailsResponse { return *v }).(ReachabilityDetailsResponseOutput)
+	return o.ApplyT(func(v *ReachabilityDetailsResponse) ReachabilityDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReachabilityDetailsResponse
+		return ret
+	}).(ReachabilityDetailsResponseOutput)
 }
 
 // The details of a failure or a cancellation of reachability analysis.
@@ -3121,7 +3145,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -3156,7 +3180,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

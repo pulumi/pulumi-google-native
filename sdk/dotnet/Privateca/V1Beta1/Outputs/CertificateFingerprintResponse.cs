@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A group of fingerprints for the x509 certificate.
+    /// </summary>
     [OutputType]
     public sealed class CertificateFingerprintResponse
     {

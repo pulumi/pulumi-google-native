@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 {
 
+    /// <summary>
+    /// Settings for creating a Cloud SQL database instance.
+    /// </summary>
     [OutputType]
     public sealed class CloudSqlSettingsResponse
     {

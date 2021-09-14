@@ -13,6 +13,7 @@ __all__ = [
     'GetGithubEnterpriseConfigResult',
     'AwaitableGetGithubEnterpriseConfigResult',
     'get_github_enterprise_config',
+    'get_github_enterprise_config_output',
 ]
 
 @pulumi.output_type
@@ -167,3 +168,16 @@ def get_github_enterprise_config(config_id: Optional[str] = None,
         secrets=__ret__.secrets,
         ssl_ca=__ret__.ssl_ca,
         webhook_key=__ret__.webhook_key)
+
+
+@_utilities.lift_output_func(get_github_enterprise_config)
+def get_github_enterprise_config_output(config_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                        github_enterprise_config_id: Optional[pulumi.Input[str]] = None,
+                                        location: Optional[pulumi.Input[str]] = None,
+                                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                                        project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGithubEnterpriseConfigResult]:
+    """
+    Retrieve a GitHubEnterpriseConfig. This API is experimental.
+    """
+    ...

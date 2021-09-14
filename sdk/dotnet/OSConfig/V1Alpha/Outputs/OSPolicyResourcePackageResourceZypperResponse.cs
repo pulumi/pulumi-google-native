@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// A package managed by Zypper. - install: `zypper -y install package` - remove: `zypper -y rm package`
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyResourcePackageResourceZypperResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GameServices.V1.Outputs
 {
 
+    /// <summary>
+    /// A reference to a GKE cluster.
+    /// </summary>
     [OutputType]
     public sealed class GkeClusterReferenceResponse
     {

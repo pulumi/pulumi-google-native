@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Message for specifying an adjustment to the likelihood of a finding as part of a detection rule.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2LikelihoodAdjustmentResponse
     {

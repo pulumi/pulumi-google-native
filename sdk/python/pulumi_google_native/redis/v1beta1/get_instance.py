@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceResult',
     'AwaitableGetInstanceResult',
     'get_instance',
+    'get_instance_output',
 ]
 
 @pulumi.output_type
@@ -358,3 +359,14 @@ def get_instance(instance_id: Optional[str] = None,
         status_message=__ret__.status_message,
         tier=__ret__.tier,
         transit_encryption_mode=__ret__.transit_encryption_mode)
+
+
+@_utilities.lift_output_func(get_instance)
+def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
+                        location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+    """
+    Gets the details of a specific Redis instance.
+    """
+    ...

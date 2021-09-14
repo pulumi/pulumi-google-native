@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a custom encryption key configuration that can be applied to a resource.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1__EncryptionConfigResponse
     {

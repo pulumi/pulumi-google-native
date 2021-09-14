@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Message defining a list of words or phrases to search for in the data.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2WordListResponse
     {

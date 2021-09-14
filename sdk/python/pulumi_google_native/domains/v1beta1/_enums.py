@@ -21,13 +21,21 @@ class AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
-    """Default case. Should never be this."""
+    """
+    Default case. Should never be this.
+    """
     ADMIN_READ = "ADMIN_READ"
-    """Admin reads. Example: CloudIAM getIamPolicy"""
+    """
+    Admin reads. Example: CloudIAM getIamPolicy
+    """
     DATA_WRITE = "DATA_WRITE"
-    """Data writes. Example: CloudSQL Users create"""
+    """
+    Data writes. Example: CloudSQL Users create
+    """
     DATA_READ = "DATA_READ"
-    """Data reads. Example: CloudSQL Users list"""
+    """
+    Data reads. Example: CloudSQL Users list
+    """
 
 
 class ContactSettingsPrivacy(str, Enum):
@@ -35,13 +43,21 @@ class ContactSettingsPrivacy(str, Enum):
     Required. Privacy setting for the contacts associated with the `Registration`.
     """
     CONTACT_PRIVACY_UNSPECIFIED = "CONTACT_PRIVACY_UNSPECIFIED"
-    """The contact privacy settings are undefined."""
+    """
+    The contact privacy settings are undefined.
+    """
     PUBLIC_CONTACT_DATA = "PUBLIC_CONTACT_DATA"
-    """All the data from `ContactSettings` is publicly available. When setting this option, you must also provide a `PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT` in the `contact_notices` field of the request."""
+    """
+    All the data from `ContactSettings` is publicly available. When setting this option, you must also provide a `PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT` in the `contact_notices` field of the request.
+    """
     PRIVATE_CONTACT_DATA = "PRIVATE_CONTACT_DATA"
-    """None of the data from `ContactSettings` is publicly available. Instead, proxy contact data is published for your domain. Email sent to the proxy email address is forwarded to the registrant's email address. Cloud Domains provides this privacy proxy service at no additional cost."""
+    """
+    None of the data from `ContactSettings` is publicly available. Instead, proxy contact data is published for your domain. Email sent to the proxy email address is forwarded to the registrant's email address. Cloud Domains provides this privacy proxy service at no additional cost.
+    """
     REDACTED_CONTACT_DATA = "REDACTED_CONTACT_DATA"
-    """Some data from `ContactSettings` is publicly available. The actual information redacted depends on the domain. For details, see [the registration privacy article](https://support.google.com/domains/answer/3251242)."""
+    """
+    Some data from `ContactSettings` is publicly available. The actual information redacted depends on the domain. For details, see [the registration privacy article](https://support.google.com/domains/answer/3251242).
+    """
 
 
 class DsRecordAlgorithm(str, Enum):
@@ -49,31 +65,57 @@ class DsRecordAlgorithm(str, Enum):
     The algorithm used to generate the referenced DNSKEY.
     """
     ALGORITHM_UNSPECIFIED = "ALGORITHM_UNSPECIFIED"
-    """The algorithm is unspecified."""
+    """
+    The algorithm is unspecified.
+    """
     DSA = "DSA"
-    """DSA/SHA1. Not recommended for new deployments."""
+    """
+    DSA/SHA1. Not recommended for new deployments.
+    """
     ECC = "ECC"
-    """ECC. Not recommended for new deployments."""
+    """
+    ECC. Not recommended for new deployments.
+    """
     RSASHA1 = "RSASHA1"
-    """RSA/SHA-1. Not recommended for new deployments."""
+    """
+    RSA/SHA-1. Not recommended for new deployments.
+    """
     DSANSEC3SHA1 = "DSANSEC3SHA1"
-    """DSA-NSEC3-SHA1. Not recommended for new deployments."""
+    """
+    DSA-NSEC3-SHA1. Not recommended for new deployments.
+    """
     RSASHA1NSEC3SHA1 = "RSASHA1NSEC3SHA1"
-    """RSA/SHA1-NSEC3-SHA1. Not recommended for new deployments."""
+    """
+    RSA/SHA1-NSEC3-SHA1. Not recommended for new deployments.
+    """
     RSASHA256 = "RSASHA256"
-    """RSA/SHA-256."""
+    """
+    RSA/SHA-256.
+    """
     RSASHA512 = "RSASHA512"
-    """RSA/SHA-512."""
+    """
+    RSA/SHA-512.
+    """
     ECCGOST = "ECCGOST"
-    """GOST R 34.10-2001."""
+    """
+    GOST R 34.10-2001.
+    """
     ECDSAP256SHA256 = "ECDSAP256SHA256"
-    """ECDSA Curve P-256 with SHA-256."""
+    """
+    ECDSA Curve P-256 with SHA-256.
+    """
     ECDSAP384SHA384 = "ECDSAP384SHA384"
-    """ECDSA Curve P-384 with SHA-384."""
+    """
+    ECDSA Curve P-384 with SHA-384.
+    """
     ED25519 = "ED25519"
-    """Ed25519."""
+    """
+    Ed25519.
+    """
     ED448 = "ED448"
-    """Ed448."""
+    """
+    Ed448.
+    """
 
 
 class DsRecordDigestType(str, Enum):
@@ -81,15 +123,25 @@ class DsRecordDigestType(str, Enum):
     The hash function used to generate the digest of the referenced DNSKEY.
     """
     DIGEST_TYPE_UNSPECIFIED = "DIGEST_TYPE_UNSPECIFIED"
-    """The DigestType is unspecified."""
+    """
+    The DigestType is unspecified.
+    """
     SHA1 = "SHA1"
-    """SHA-1. Not recommended for new deployments."""
+    """
+    SHA-1. Not recommended for new deployments.
+    """
     SHA256 = "SHA256"
-    """SHA-256."""
+    """
+    SHA-256.
+    """
     GOST3411 = "GOST3411"
-    """GOST R 34.11-94."""
+    """
+    GOST R 34.11-94.
+    """
     SHA384 = "SHA384"
-    """SHA-384."""
+    """
+    SHA-384.
+    """
 
 
 class GoogleDomainsDnsDsState(str, Enum):
@@ -97,11 +149,17 @@ class GoogleDomainsDnsDsState(str, Enum):
     Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
     """
     DS_STATE_UNSPECIFIED = "DS_STATE_UNSPECIFIED"
-    """DS state is unspecified."""
+    """
+    DS state is unspecified.
+    """
     DS_RECORDS_UNPUBLISHED = "DS_RECORDS_UNPUBLISHED"
-    """DNSSEC is disabled for this domain. No DS records for this domain are published in the parent DNS zone."""
+    """
+    DNSSEC is disabled for this domain. No DS records for this domain are published in the parent DNS zone.
+    """
     DS_RECORDS_PUBLISHED = "DS_RECORDS_PUBLISHED"
-    """DNSSEC is enabled for this domain. Appropriate DS records for this domain are published in the parent DNS zone. This option is valid only if the DNS zone referenced in the `Registration`'s `dns_provider` field is already DNSSEC-signed."""
+    """
+    DNSSEC is enabled for this domain. Appropriate DS records for this domain are published in the parent DNS zone. This option is valid only if the DNS zone referenced in the `Registration`'s `dns_provider` field is already DNSSEC-signed.
+    """
 
 
 class ManagementSettingsTransferLockState(str, Enum):
@@ -109,22 +167,36 @@ class ManagementSettingsTransferLockState(str, Enum):
     Controls whether the domain can be transferred to another registrar.
     """
     TRANSFER_LOCK_STATE_UNSPECIFIED = "TRANSFER_LOCK_STATE_UNSPECIFIED"
-    """The state is unspecified."""
+    """
+    The state is unspecified.
+    """
     UNLOCKED = "UNLOCKED"
-    """The domain is unlocked and can be transferred to another registrar."""
+    """
+    The domain is unlocked and can be transferred to another registrar.
+    """
     LOCKED = "LOCKED"
-    """The domain is locked and cannot be transferred to another registrar."""
+    """
+    The domain is locked and cannot be transferred to another registrar.
+    """
 
 
 class RegistrationContactNoticesItem(str, Enum):
     CONTACT_NOTICE_UNSPECIFIED = "CONTACT_NOTICE_UNSPECIFIED"
-    """The notice is undefined."""
+    """
+    The notice is undefined.
+    """
     PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT = "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT"
-    """Required when setting the `privacy` field of `ContactSettings` to `PUBLIC_CONTACT_DATA`, which exposes contact data publicly."""
+    """
+    Required when setting the `privacy` field of `ContactSettings` to `PUBLIC_CONTACT_DATA`, which exposes contact data publicly.
+    """
 
 
 class RegistrationDomainNoticesItem(str, Enum):
     DOMAIN_NOTICE_UNSPECIFIED = "DOMAIN_NOTICE_UNSPECIFIED"
-    """The notice is undefined."""
+    """
+    The notice is undefined.
+    """
     HSTS_PRELOADED = "HSTS_PRELOADED"
-    """Indicates that the domain is preloaded on the HTTP Strict Transport Security list in browsers. Serving a website on such domain requires an SSL certificate. For details, see [how to get an SSL certificate](https://support.google.com/domains/answer/7638036)."""
+    """
+    Indicates that the domain is preloaded on the HTTP Strict Transport Security list in browsers. Serving a website on such domain requires an SSL certificate. For details, see [how to get an SSL certificate](https://support.google.com/domains/answer/7638036).
+    """

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a metric to optimize.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1_StudyConfig_MetricSpecResponse
     {

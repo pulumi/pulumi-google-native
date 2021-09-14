@@ -13,6 +13,7 @@ __all__ = [
     'GetNodePoolResult',
     'AwaitableGetNodePoolResult',
     'get_node_pool',
+    'get_node_pool_output',
 ]
 
 @pulumi.output_type
@@ -243,3 +244,15 @@ def get_node_pool(cluster_id: Optional[str] = None,
         status=__ret__.status,
         upgrade_settings=__ret__.upgrade_settings,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_node_pool)
+def get_node_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                         location: Optional[pulumi.Input[str]] = None,
+                         node_pool_id: Optional[pulumi.Input[str]] = None,
+                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodePoolResult]:
+    """
+    Retrieves the requested node pool.
+    """
+    ...

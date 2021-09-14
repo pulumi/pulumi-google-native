@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// The GKE config for this cluster.
+    /// </summary>
     [OutputType]
     public sealed class GkeClusterConfigResponse
     {

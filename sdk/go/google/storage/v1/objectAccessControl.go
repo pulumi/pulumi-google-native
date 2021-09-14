@@ -205,9 +205,7 @@ func (i *ObjectAccessControl) ToObjectAccessControlOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlOutput)
 }
 
-type ObjectAccessControlOutput struct {
-	*pulumi.OutputState
-}
+type ObjectAccessControlOutput struct{ *pulumi.OutputState }
 
 func (ObjectAccessControlOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ObjectAccessControl)(nil))

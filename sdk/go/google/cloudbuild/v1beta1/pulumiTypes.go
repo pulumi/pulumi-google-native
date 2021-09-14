@@ -106,7 +106,7 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
 }
 
 func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
-	return o.ApplyT(func(v NetworkConfig) *NetworkConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfig) *NetworkConfig {
 		return &v
 	}).(NetworkConfigPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutputWithContext(ctx context.
 }
 
 func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
-	return o.ApplyT(func(v *NetworkConfig) NetworkConfig { return *v }).(NetworkConfigOutput)
+	return o.ApplyT(func(v *NetworkConfig) NetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfig
+		return ret
+	}).(NetworkConfigOutput)
 }
 
 // Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
@@ -240,7 +246,7 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutput() NetworkC
 }
 
 func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return o.ApplyT(func(v NetworkConfigResponse) *NetworkConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigResponse) *NetworkConfigResponse {
 		return &v
 	}).(NetworkConfigResponsePtrOutput)
 }
@@ -265,7 +271,13 @@ func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutputWithCont
 }
 
 func (o NetworkConfigResponsePtrOutput) Elem() NetworkConfigResponseOutput {
-	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse { return *v }).(NetworkConfigResponseOutput)
+	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfigResponse
+		return ret
+	}).(NetworkConfigResponseOutput)
 }
 
 // Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
@@ -382,7 +394,7 @@ func (o WorkerConfigOutput) ToWorkerConfigPtrOutput() WorkerConfigPtrOutput {
 }
 
 func (o WorkerConfigOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerConfigPtrOutput {
-	return o.ApplyT(func(v WorkerConfig) *WorkerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerConfig) *WorkerConfig {
 		return &v
 	}).(WorkerConfigPtrOutput)
 }
@@ -417,7 +429,13 @@ func (o WorkerConfigPtrOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Co
 }
 
 func (o WorkerConfigPtrOutput) Elem() WorkerConfigOutput {
-	return o.ApplyT(func(v *WorkerConfig) WorkerConfig { return *v }).(WorkerConfigOutput)
+	return o.ApplyT(func(v *WorkerConfig) WorkerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerConfig
+		return ret
+	}).(WorkerConfigOutput)
 }
 
 // Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
@@ -554,7 +572,7 @@ func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutput() WorkerConf
 }
 
 func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
-	return o.ApplyT(func(v WorkerConfigResponse) *WorkerConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerConfigResponse) *WorkerConfigResponse {
 		return &v
 	}).(WorkerConfigResponsePtrOutput)
 }
@@ -589,7 +607,13 @@ func (o WorkerConfigResponsePtrOutput) ToWorkerConfigResponsePtrOutputWithContex
 }
 
 func (o WorkerConfigResponsePtrOutput) Elem() WorkerConfigResponseOutput {
-	return o.ApplyT(func(v *WorkerConfigResponse) WorkerConfigResponse { return *v }).(WorkerConfigResponseOutput)
+	return o.ApplyT(func(v *WorkerConfigResponse) WorkerConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerConfigResponse
+		return ret
+	}).(WorkerConfigResponseOutput)
 }
 
 // Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.

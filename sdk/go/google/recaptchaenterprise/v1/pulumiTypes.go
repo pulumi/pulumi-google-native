@@ -106,7 +106,7 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput) ToGoogleCloudR
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput) ToGoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) *GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) *GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput)
 }
@@ -132,7 +132,11 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) ToGoogleClo
 
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
+		return ret
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput)
 }
 
@@ -242,7 +246,7 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) ToGoog
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) ToGoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) *GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) *GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput)
 }
@@ -270,7 +274,11 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput) ToG
 
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse
+		return ret
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput)
 }
 
@@ -380,7 +388,7 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) ToGoogleCloudRecap
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) ToGoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettings) *GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1IOSKeySettings) *GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput)
 }
@@ -406,7 +414,11 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) ToGoogleCloudRe
 
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1IOSKeySettings) GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1IOSKeySettings
+		return ret
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput)
 }
 
@@ -516,7 +528,7 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) ToGoogleCl
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) ToGoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) *GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) *GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutput)
 }
@@ -542,7 +554,11 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutput) ToGoogl
 
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse
+		return ret
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput)
 }
 
@@ -656,7 +672,7 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput) ToGoogleCloudRecap
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput) ToGoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1TestingOptions) *GoogleCloudRecaptchaenterpriseV1TestingOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1TestingOptions) *GoogleCloudRecaptchaenterpriseV1TestingOptions {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput)
 }
@@ -689,7 +705,11 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput) ToGoogleCloudRe
 
 func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1TestingOptions) GoogleCloudRecaptchaenterpriseV1TestingOptions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1TestingOptions
+		return ret
 	}).(GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput)
 }
 
@@ -813,7 +833,7 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput) ToGoogleCl
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput) ToGoogleCloudRecaptchaenterpriseV1TestingOptionsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1TestingOptionsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse) *GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse) *GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1TestingOptionsResponsePtrOutput)
 }
@@ -844,7 +864,11 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsResponsePtrOutput) ToGoogl
 
 func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsResponsePtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse) GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse
+		return ret
 	}).(GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput)
 }
 
@@ -980,7 +1004,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) ToGoogleCloudRecap
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WebKeySettings) *GoogleCloudRecaptchaenterpriseV1WebKeySettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1WebKeySettings) *GoogleCloudRecaptchaenterpriseV1WebKeySettings {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput)
 }
@@ -1030,7 +1054,11 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) ToGoogleCloudRe
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettings) GoogleCloudRecaptchaenterpriseV1WebKeySettings {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1WebKeySettings
+		return ret
 	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput)
 }
 
@@ -1196,7 +1224,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput) ToGoogleCl
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput) ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse) *GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse) *GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponsePtrOutput)
 }
@@ -1244,7 +1272,11 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponsePtrOutput) ToGoogl
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponsePtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse) GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse
+		return ret
 	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput)
 }
 

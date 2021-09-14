@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for exporting cluster resource usages.
+    /// </summary>
     [OutputType]
     public sealed class ResourceUsageExportConfigResponse
     {

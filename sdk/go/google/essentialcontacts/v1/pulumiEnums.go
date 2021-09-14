@@ -117,7 +117,7 @@ func (o ContactNotificationCategorySubscriptionsItemOutput) ToStringPtrOutputWit
 type ContactNotificationCategorySubscriptionsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (ContactNotificationCategorySubscriptionsItemPtrOutput) ElementType() reflect.Type {
-	return contactNotificationCategorySubscriptionsItemPtrType
+	return reflect.TypeOf((**ContactNotificationCategorySubscriptionsItem)(nil)).Elem()
 }
 
 func (o ContactNotificationCategorySubscriptionsItemPtrOutput) ToContactNotificationCategorySubscriptionsItemPtrOutput() ContactNotificationCategorySubscriptionsItemPtrOutput {
@@ -126,6 +126,16 @@ func (o ContactNotificationCategorySubscriptionsItemPtrOutput) ToContactNotifica
 
 func (o ContactNotificationCategorySubscriptionsItemPtrOutput) ToContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx context.Context) ContactNotificationCategorySubscriptionsItemPtrOutput {
 	return o
+}
+
+func (o ContactNotificationCategorySubscriptionsItemPtrOutput) Elem() ContactNotificationCategorySubscriptionsItemOutput {
+	return o.ApplyT(func(v *ContactNotificationCategorySubscriptionsItem) ContactNotificationCategorySubscriptionsItem {
+		if v != nil {
+			return *v
+		}
+		var ret ContactNotificationCategorySubscriptionsItem
+		return ret
+	}).(ContactNotificationCategorySubscriptionsItemOutput)
 }
 
 func (o ContactNotificationCategorySubscriptionsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -140,16 +150,6 @@ func (o ContactNotificationCategorySubscriptionsItemPtrOutput) ToStringPtrOutput
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ContactNotificationCategorySubscriptionsItemPtrOutput) Elem() ContactNotificationCategorySubscriptionsItemOutput {
-	return o.ApplyT(func(v *ContactNotificationCategorySubscriptionsItem) ContactNotificationCategorySubscriptionsItem {
-		var ret ContactNotificationCategorySubscriptionsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ContactNotificationCategorySubscriptionsItemOutput)
 }
 
 // ContactNotificationCategorySubscriptionsItemInput is an input type that accepts ContactNotificationCategorySubscriptionsItemArgs and ContactNotificationCategorySubscriptionsItemOutput values.
@@ -230,8 +230,8 @@ func (o ContactNotificationCategorySubscriptionsItemArrayOutput) ToContactNotifi
 }
 
 func (o ContactNotificationCategorySubscriptionsItemArrayOutput) Index(i pulumi.IntInput) ContactNotificationCategorySubscriptionsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContactNotificationCategorySubscriptionsItemOutput {
-		return vs[0].([]ContactNotificationCategorySubscriptionsItem)[vs[1].(int)].ToContactNotificationCategorySubscriptionsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContactNotificationCategorySubscriptionsItem {
+		return vs[0].([]ContactNotificationCategorySubscriptionsItem)[vs[1].(int)]
 	}).(ContactNotificationCategorySubscriptionsItemOutput)
 }
 
@@ -331,7 +331,7 @@ func (o ContactValidationStateOutput) ToStringPtrOutputWithContext(ctx context.C
 type ContactValidationStatePtrOutput struct{ *pulumi.OutputState }
 
 func (ContactValidationStatePtrOutput) ElementType() reflect.Type {
-	return contactValidationStatePtrType
+	return reflect.TypeOf((**ContactValidationState)(nil)).Elem()
 }
 
 func (o ContactValidationStatePtrOutput) ToContactValidationStatePtrOutput() ContactValidationStatePtrOutput {
@@ -340,6 +340,16 @@ func (o ContactValidationStatePtrOutput) ToContactValidationStatePtrOutput() Con
 
 func (o ContactValidationStatePtrOutput) ToContactValidationStatePtrOutputWithContext(ctx context.Context) ContactValidationStatePtrOutput {
 	return o
+}
+
+func (o ContactValidationStatePtrOutput) Elem() ContactValidationStateOutput {
+	return o.ApplyT(func(v *ContactValidationState) ContactValidationState {
+		if v != nil {
+			return *v
+		}
+		var ret ContactValidationState
+		return ret
+	}).(ContactValidationStateOutput)
 }
 
 func (o ContactValidationStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -354,16 +364,6 @@ func (o ContactValidationStatePtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ContactValidationStatePtrOutput) Elem() ContactValidationStateOutput {
-	return o.ApplyT(func(v *ContactValidationState) ContactValidationState {
-		var ret ContactValidationState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ContactValidationStateOutput)
 }
 
 // ContactValidationStateInput is an input type that accepts ContactValidationStateArgs and ContactValidationStateOutput values.
@@ -511,7 +511,7 @@ func (o FolderContactNotificationCategorySubscriptionsItemOutput) ToStringPtrOut
 type FolderContactNotificationCategorySubscriptionsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (FolderContactNotificationCategorySubscriptionsItemPtrOutput) ElementType() reflect.Type {
-	return folderContactNotificationCategorySubscriptionsItemPtrType
+	return reflect.TypeOf((**FolderContactNotificationCategorySubscriptionsItem)(nil)).Elem()
 }
 
 func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) ToFolderContactNotificationCategorySubscriptionsItemPtrOutput() FolderContactNotificationCategorySubscriptionsItemPtrOutput {
@@ -520,6 +520,16 @@ func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) ToFolderCon
 
 func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) ToFolderContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx context.Context) FolderContactNotificationCategorySubscriptionsItemPtrOutput {
 	return o
+}
+
+func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) Elem() FolderContactNotificationCategorySubscriptionsItemOutput {
+	return o.ApplyT(func(v *FolderContactNotificationCategorySubscriptionsItem) FolderContactNotificationCategorySubscriptionsItem {
+		if v != nil {
+			return *v
+		}
+		var ret FolderContactNotificationCategorySubscriptionsItem
+		return ret
+	}).(FolderContactNotificationCategorySubscriptionsItemOutput)
 }
 
 func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -534,16 +544,6 @@ func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) ToStringPtr
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) Elem() FolderContactNotificationCategorySubscriptionsItemOutput {
-	return o.ApplyT(func(v *FolderContactNotificationCategorySubscriptionsItem) FolderContactNotificationCategorySubscriptionsItem {
-		var ret FolderContactNotificationCategorySubscriptionsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FolderContactNotificationCategorySubscriptionsItemOutput)
 }
 
 // FolderContactNotificationCategorySubscriptionsItemInput is an input type that accepts FolderContactNotificationCategorySubscriptionsItemArgs and FolderContactNotificationCategorySubscriptionsItemOutput values.
@@ -624,8 +624,8 @@ func (o FolderContactNotificationCategorySubscriptionsItemArrayOutput) ToFolderC
 }
 
 func (o FolderContactNotificationCategorySubscriptionsItemArrayOutput) Index(i pulumi.IntInput) FolderContactNotificationCategorySubscriptionsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FolderContactNotificationCategorySubscriptionsItemOutput {
-		return vs[0].([]FolderContactNotificationCategorySubscriptionsItem)[vs[1].(int)].ToFolderContactNotificationCategorySubscriptionsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FolderContactNotificationCategorySubscriptionsItem {
+		return vs[0].([]FolderContactNotificationCategorySubscriptionsItem)[vs[1].(int)]
 	}).(FolderContactNotificationCategorySubscriptionsItemOutput)
 }
 
@@ -725,7 +725,7 @@ func (o FolderContactValidationStateOutput) ToStringPtrOutputWithContext(ctx con
 type FolderContactValidationStatePtrOutput struct{ *pulumi.OutputState }
 
 func (FolderContactValidationStatePtrOutput) ElementType() reflect.Type {
-	return folderContactValidationStatePtrType
+	return reflect.TypeOf((**FolderContactValidationState)(nil)).Elem()
 }
 
 func (o FolderContactValidationStatePtrOutput) ToFolderContactValidationStatePtrOutput() FolderContactValidationStatePtrOutput {
@@ -734,6 +734,16 @@ func (o FolderContactValidationStatePtrOutput) ToFolderContactValidationStatePtr
 
 func (o FolderContactValidationStatePtrOutput) ToFolderContactValidationStatePtrOutputWithContext(ctx context.Context) FolderContactValidationStatePtrOutput {
 	return o
+}
+
+func (o FolderContactValidationStatePtrOutput) Elem() FolderContactValidationStateOutput {
+	return o.ApplyT(func(v *FolderContactValidationState) FolderContactValidationState {
+		if v != nil {
+			return *v
+		}
+		var ret FolderContactValidationState
+		return ret
+	}).(FolderContactValidationStateOutput)
 }
 
 func (o FolderContactValidationStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -748,16 +758,6 @@ func (o FolderContactValidationStatePtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FolderContactValidationStatePtrOutput) Elem() FolderContactValidationStateOutput {
-	return o.ApplyT(func(v *FolderContactValidationState) FolderContactValidationState {
-		var ret FolderContactValidationState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FolderContactValidationStateOutput)
 }
 
 // FolderContactValidationStateInput is an input type that accepts FolderContactValidationStateArgs and FolderContactValidationStateOutput values.
@@ -905,7 +905,7 @@ func (o OrganizationContactNotificationCategorySubscriptionsItemOutput) ToString
 type OrganizationContactNotificationCategorySubscriptionsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) ElementType() reflect.Type {
-	return organizationContactNotificationCategorySubscriptionsItemPtrType
+	return reflect.TypeOf((**OrganizationContactNotificationCategorySubscriptionsItem)(nil)).Elem()
 }
 
 func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) ToOrganizationContactNotificationCategorySubscriptionsItemPtrOutput() OrganizationContactNotificationCategorySubscriptionsItemPtrOutput {
@@ -914,6 +914,16 @@ func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) ToOrg
 
 func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) ToOrganizationContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx context.Context) OrganizationContactNotificationCategorySubscriptionsItemPtrOutput {
 	return o
+}
+
+func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) Elem() OrganizationContactNotificationCategorySubscriptionsItemOutput {
+	return o.ApplyT(func(v *OrganizationContactNotificationCategorySubscriptionsItem) OrganizationContactNotificationCategorySubscriptionsItem {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationContactNotificationCategorySubscriptionsItem
+		return ret
+	}).(OrganizationContactNotificationCategorySubscriptionsItemOutput)
 }
 
 func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -928,16 +938,6 @@ func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) ToStr
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) Elem() OrganizationContactNotificationCategorySubscriptionsItemOutput {
-	return o.ApplyT(func(v *OrganizationContactNotificationCategorySubscriptionsItem) OrganizationContactNotificationCategorySubscriptionsItem {
-		var ret OrganizationContactNotificationCategorySubscriptionsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OrganizationContactNotificationCategorySubscriptionsItemOutput)
 }
 
 // OrganizationContactNotificationCategorySubscriptionsItemInput is an input type that accepts OrganizationContactNotificationCategorySubscriptionsItemArgs and OrganizationContactNotificationCategorySubscriptionsItemOutput values.
@@ -1018,8 +1018,8 @@ func (o OrganizationContactNotificationCategorySubscriptionsItemArrayOutput) ToO
 }
 
 func (o OrganizationContactNotificationCategorySubscriptionsItemArrayOutput) Index(i pulumi.IntInput) OrganizationContactNotificationCategorySubscriptionsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationContactNotificationCategorySubscriptionsItemOutput {
-		return vs[0].([]OrganizationContactNotificationCategorySubscriptionsItem)[vs[1].(int)].ToOrganizationContactNotificationCategorySubscriptionsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationContactNotificationCategorySubscriptionsItem {
+		return vs[0].([]OrganizationContactNotificationCategorySubscriptionsItem)[vs[1].(int)]
 	}).(OrganizationContactNotificationCategorySubscriptionsItemOutput)
 }
 
@@ -1119,7 +1119,7 @@ func (o OrganizationContactValidationStateOutput) ToStringPtrOutputWithContext(c
 type OrganizationContactValidationStatePtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationContactValidationStatePtrOutput) ElementType() reflect.Type {
-	return organizationContactValidationStatePtrType
+	return reflect.TypeOf((**OrganizationContactValidationState)(nil)).Elem()
 }
 
 func (o OrganizationContactValidationStatePtrOutput) ToOrganizationContactValidationStatePtrOutput() OrganizationContactValidationStatePtrOutput {
@@ -1128,6 +1128,16 @@ func (o OrganizationContactValidationStatePtrOutput) ToOrganizationContactValida
 
 func (o OrganizationContactValidationStatePtrOutput) ToOrganizationContactValidationStatePtrOutputWithContext(ctx context.Context) OrganizationContactValidationStatePtrOutput {
 	return o
+}
+
+func (o OrganizationContactValidationStatePtrOutput) Elem() OrganizationContactValidationStateOutput {
+	return o.ApplyT(func(v *OrganizationContactValidationState) OrganizationContactValidationState {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationContactValidationState
+		return ret
+	}).(OrganizationContactValidationStateOutput)
 }
 
 func (o OrganizationContactValidationStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1142,16 +1152,6 @@ func (o OrganizationContactValidationStatePtrOutput) ToStringPtrOutputWithContex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OrganizationContactValidationStatePtrOutput) Elem() OrganizationContactValidationStateOutput {
-	return o.ApplyT(func(v *OrganizationContactValidationState) OrganizationContactValidationState {
-		var ret OrganizationContactValidationState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OrganizationContactValidationStateOutput)
 }
 
 // OrganizationContactValidationStateInput is an input type that accepts OrganizationContactValidationStateArgs and OrganizationContactValidationStateOutput values.

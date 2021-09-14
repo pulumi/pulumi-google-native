@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Encryption settings for the service.
+    /// </summary>
     [OutputType]
     public sealed class EncryptionConfigResponse
     {

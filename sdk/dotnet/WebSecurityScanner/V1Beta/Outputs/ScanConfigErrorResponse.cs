@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Defines a custom error message used by CreateScanConfig and UpdateScanConfig APIs when scan configuration validation fails. It is also reported as part of a ScanRunErrorTrace message if scan validation fails due to a scan configuration error.
+    /// </summary>
     [OutputType]
     public sealed class ScanConfigErrorResponse
     {

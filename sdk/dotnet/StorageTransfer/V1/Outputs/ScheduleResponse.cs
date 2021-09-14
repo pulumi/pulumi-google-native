@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 {
 
+    /// <summary>
+    /// Transfers can be scheduled to recur or to run just once.
+    /// </summary>
     [OutputType]
     public sealed class ScheduleResponse
     {

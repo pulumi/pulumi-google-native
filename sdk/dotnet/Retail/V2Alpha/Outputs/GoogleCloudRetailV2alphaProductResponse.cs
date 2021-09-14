@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
 {
 
+    /// <summary>
+    /// Product captures all metadata information of items to be recommended or searched.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRetailV2alphaProductResponse
     {

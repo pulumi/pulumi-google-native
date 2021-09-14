@@ -135,7 +135,7 @@ func (o ApigatewayApiConfigFileOutput) ToApigatewayApiConfigFilePtrOutput() Apig
 }
 
 func (o ApigatewayApiConfigFileOutput) ToApigatewayApiConfigFilePtrOutputWithContext(ctx context.Context) ApigatewayApiConfigFilePtrOutput {
-	return o.ApplyT(func(v ApigatewayApiConfigFile) *ApigatewayApiConfigFile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApigatewayApiConfigFile) *ApigatewayApiConfigFile {
 		return &v
 	}).(ApigatewayApiConfigFilePtrOutput)
 }
@@ -165,7 +165,13 @@ func (o ApigatewayApiConfigFilePtrOutput) ToApigatewayApiConfigFilePtrOutputWith
 }
 
 func (o ApigatewayApiConfigFilePtrOutput) Elem() ApigatewayApiConfigFileOutput {
-	return o.ApplyT(func(v *ApigatewayApiConfigFile) ApigatewayApiConfigFile { return *v }).(ApigatewayApiConfigFileOutput)
+	return o.ApplyT(func(v *ApigatewayApiConfigFile) ApigatewayApiConfigFile {
+		if v != nil {
+			return *v
+		}
+		var ret ApigatewayApiConfigFile
+		return ret
+	}).(ApigatewayApiConfigFileOutput)
 }
 
 // The bytes that constitute the file.
@@ -1271,7 +1277,7 @@ func (o ApigatewayBackendConfigOutput) ToApigatewayBackendConfigPtrOutput() Apig
 }
 
 func (o ApigatewayBackendConfigOutput) ToApigatewayBackendConfigPtrOutputWithContext(ctx context.Context) ApigatewayBackendConfigPtrOutput {
-	return o.ApplyT(func(v ApigatewayBackendConfig) *ApigatewayBackendConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApigatewayBackendConfig) *ApigatewayBackendConfig {
 		return &v
 	}).(ApigatewayBackendConfigPtrOutput)
 }
@@ -1296,7 +1302,13 @@ func (o ApigatewayBackendConfigPtrOutput) ToApigatewayBackendConfigPtrOutputWith
 }
 
 func (o ApigatewayBackendConfigPtrOutput) Elem() ApigatewayBackendConfigOutput {
-	return o.ApplyT(func(v *ApigatewayBackendConfig) ApigatewayBackendConfig { return *v }).(ApigatewayBackendConfigOutput)
+	return o.ApplyT(func(v *ApigatewayBackendConfig) ApigatewayBackendConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApigatewayBackendConfig
+		return ret
+	}).(ApigatewayBackendConfigOutput)
 }
 
 // Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend). This may either be the Service Account's email (i.e. "{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com") or its full resource name (i.e. "projects/{PROJECT}/accounts/{UNIQUE_ID}"). This is most often used when the backend is a GCP resource such as a Cloud Run Service or an IAP-secured service. Note that this token is always sent as an authorization header bearer token. The audience of the OIDC token is configured in the associated Service Config in the BackendRule option (https://github.com/googleapis/googleapis/blob/master/google/api/backend.proto#L125).
@@ -1405,7 +1417,7 @@ func (o ApigatewayBackendConfigResponseOutput) ToApigatewayBackendConfigResponse
 }
 
 func (o ApigatewayBackendConfigResponseOutput) ToApigatewayBackendConfigResponsePtrOutputWithContext(ctx context.Context) ApigatewayBackendConfigResponsePtrOutput {
-	return o.ApplyT(func(v ApigatewayBackendConfigResponse) *ApigatewayBackendConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApigatewayBackendConfigResponse) *ApigatewayBackendConfigResponse {
 		return &v
 	}).(ApigatewayBackendConfigResponsePtrOutput)
 }
@@ -1430,7 +1442,13 @@ func (o ApigatewayBackendConfigResponsePtrOutput) ToApigatewayBackendConfigRespo
 }
 
 func (o ApigatewayBackendConfigResponsePtrOutput) Elem() ApigatewayBackendConfigResponseOutput {
-	return o.ApplyT(func(v *ApigatewayBackendConfigResponse) ApigatewayBackendConfigResponse { return *v }).(ApigatewayBackendConfigResponseOutput)
+	return o.ApplyT(func(v *ApigatewayBackendConfigResponse) ApigatewayBackendConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApigatewayBackendConfigResponse
+		return ret
+	}).(ApigatewayBackendConfigResponseOutput)
 }
 
 // Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend). This may either be the Service Account's email (i.e. "{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com") or its full resource name (i.e. "projects/{PROJECT}/accounts/{UNIQUE_ID}"). This is most often used when the backend is a GCP resource such as a Cloud Run Service or an IAP-secured service. Note that this token is always sent as an authorization header bearer token. The audience of the OIDC token is configured in the associated Service Config in the BackendRule option (https://github.com/googleapis/googleapis/blob/master/google/api/backend.proto#L125).
@@ -1787,7 +1805,7 @@ func (o ApigatewayExprOutput) ToApigatewayExprPtrOutput() ApigatewayExprPtrOutpu
 }
 
 func (o ApigatewayExprOutput) ToApigatewayExprPtrOutputWithContext(ctx context.Context) ApigatewayExprPtrOutput {
-	return o.ApplyT(func(v ApigatewayExpr) *ApigatewayExpr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApigatewayExpr) *ApigatewayExpr {
 		return &v
 	}).(ApigatewayExprPtrOutput)
 }
@@ -1827,7 +1845,13 @@ func (o ApigatewayExprPtrOutput) ToApigatewayExprPtrOutputWithContext(ctx contex
 }
 
 func (o ApigatewayExprPtrOutput) Elem() ApigatewayExprOutput {
-	return o.ApplyT(func(v *ApigatewayExpr) ApigatewayExpr { return *v }).(ApigatewayExprOutput)
+	return o.ApplyT(func(v *ApigatewayExpr) ApigatewayExpr {
+		if v != nil {
+			return *v
+		}
+		var ret ApigatewayExpr
+		return ret
+	}).(ApigatewayExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2048,7 +2072,7 @@ func (o ApigatewayGatewayConfigOutput) ToApigatewayGatewayConfigPtrOutput() Apig
 }
 
 func (o ApigatewayGatewayConfigOutput) ToApigatewayGatewayConfigPtrOutputWithContext(ctx context.Context) ApigatewayGatewayConfigPtrOutput {
-	return o.ApplyT(func(v ApigatewayGatewayConfig) *ApigatewayGatewayConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApigatewayGatewayConfig) *ApigatewayGatewayConfig {
 		return &v
 	}).(ApigatewayGatewayConfigPtrOutput)
 }
@@ -2073,7 +2097,13 @@ func (o ApigatewayGatewayConfigPtrOutput) ToApigatewayGatewayConfigPtrOutputWith
 }
 
 func (o ApigatewayGatewayConfigPtrOutput) Elem() ApigatewayGatewayConfigOutput {
-	return o.ApplyT(func(v *ApigatewayGatewayConfig) ApigatewayGatewayConfig { return *v }).(ApigatewayGatewayConfigOutput)
+	return o.ApplyT(func(v *ApigatewayGatewayConfig) ApigatewayGatewayConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApigatewayGatewayConfig
+		return ret
+	}).(ApigatewayGatewayConfigOutput)
 }
 
 // Backend settings that are applied to all backends of the Gateway.
@@ -2182,7 +2212,7 @@ func (o ApigatewayGatewayConfigResponseOutput) ToApigatewayGatewayConfigResponse
 }
 
 func (o ApigatewayGatewayConfigResponseOutput) ToApigatewayGatewayConfigResponsePtrOutputWithContext(ctx context.Context) ApigatewayGatewayConfigResponsePtrOutput {
-	return o.ApplyT(func(v ApigatewayGatewayConfigResponse) *ApigatewayGatewayConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApigatewayGatewayConfigResponse) *ApigatewayGatewayConfigResponse {
 		return &v
 	}).(ApigatewayGatewayConfigResponsePtrOutput)
 }
@@ -2207,7 +2237,13 @@ func (o ApigatewayGatewayConfigResponsePtrOutput) ToApigatewayGatewayConfigRespo
 }
 
 func (o ApigatewayGatewayConfigResponsePtrOutput) Elem() ApigatewayGatewayConfigResponseOutput {
-	return o.ApplyT(func(v *ApigatewayGatewayConfigResponse) ApigatewayGatewayConfigResponse { return *v }).(ApigatewayGatewayConfigResponseOutput)
+	return o.ApplyT(func(v *ApigatewayGatewayConfigResponse) ApigatewayGatewayConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApigatewayGatewayConfigResponse
+		return ret
+	}).(ApigatewayGatewayConfigResponseOutput)
 }
 
 // Backend settings that are applied to all backends of the Gateway.

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// BuildApproval describes a build's approval configuration, state, and result.
+    /// </summary>
     [OutputType]
     public sealed class BuildApprovalResponse
     {

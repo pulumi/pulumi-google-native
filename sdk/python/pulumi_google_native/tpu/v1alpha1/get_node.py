@@ -13,6 +13,7 @@ __all__ = [
     'GetNodeResult',
     'AwaitableGetNodeResult',
     'get_node',
+    'get_node_output',
 ]
 
 @pulumi.output_type
@@ -267,3 +268,14 @@ def get_node(location: Optional[str] = None,
         symptoms=__ret__.symptoms,
         tensorflow_version=__ret__.tensorflow_version,
         use_service_networking=__ret__.use_service_networking)
+
+
+@_utilities.lift_output_func(get_node)
+def get_node_output(location: Optional[pulumi.Input[str]] = None,
+                    node_id: Optional[pulumi.Input[str]] = None,
+                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeResult]:
+    """
+    Gets the details of a node.
+    """
+    ...

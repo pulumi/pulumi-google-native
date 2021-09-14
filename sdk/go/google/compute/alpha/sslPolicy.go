@@ -138,9 +138,7 @@ func (i *SslPolicy) ToSslPolicyOutputWithContext(ctx context.Context) SslPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(SslPolicyOutput)
 }
 
-type SslPolicyOutput struct {
-	*pulumi.OutputState
-}
+type SslPolicyOutput struct{ *pulumi.OutputState }
 
 func (SslPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SslPolicy)(nil))

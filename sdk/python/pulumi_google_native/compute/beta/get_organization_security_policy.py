@@ -13,6 +13,7 @@ __all__ = [
     'GetOrganizationSecurityPolicyResult',
     'AwaitableGetOrganizationSecurityPolicyResult',
     'get_organization_security_policy',
+    'get_organization_security_policy_output',
 ]
 
 @pulumi.output_type
@@ -257,3 +258,12 @@ def get_organization_security_policy(security_policy: Optional[str] = None,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_organization_security_policy)
+def get_organization_security_policy_output(security_policy: Optional[pulumi.Input[str]] = None,
+                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationSecurityPolicyResult]:
+    """
+    List all of the ordered rules present in a single specified policy.
+    """
+    ...

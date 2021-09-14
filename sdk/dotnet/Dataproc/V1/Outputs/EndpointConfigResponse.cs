@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Endpoint config for this cluster
+    /// </summary>
     [OutputType]
     public sealed class EndpointConfigResponse
     {

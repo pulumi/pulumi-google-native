@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseML.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// This resource represents a long-running operation that is the result of a network API call.
+    /// </summary>
     [OutputType]
     public sealed class OperationResponse
     {

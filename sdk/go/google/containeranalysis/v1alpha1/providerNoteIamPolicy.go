@@ -115,9 +115,7 @@ func (i *ProviderNoteIamPolicy) ToProviderNoteIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderNoteIamPolicyOutput)
 }
 
-type ProviderNoteIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type ProviderNoteIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ProviderNoteIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProviderNoteIamPolicy)(nil))

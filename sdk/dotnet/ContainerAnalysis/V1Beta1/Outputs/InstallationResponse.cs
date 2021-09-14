@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// This represents how a particular software package may be installed on a system.
+    /// </summary>
     [OutputType]
     public sealed class InstallationResponse
     {

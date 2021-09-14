@@ -4,6 +4,9 @@
 package v1beta
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,4 +37,66 @@ type LookupInstanceResult struct {
 	State string `pulumi:"state"`
 	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 	Type string `pulumi:"type"`
+}
+
+func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupInstanceResult, error) {
+			args := v.(LookupInstanceArgs)
+			r, err := LookupInstance(ctx, &args, opts...)
+			return *r, err
+		}).(LookupInstanceResultOutput)
+}
+
+type LookupInstanceOutputArgs struct {
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Location   pulumi.StringInput    `pulumi:"location"`
+	Project    pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupInstanceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceArgs)(nil)).Elem()
+}
+
+type LookupInstanceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceResult)(nil)).Elem()
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanceResultOutput {
+	return o
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
+	return o
+}
+
+// Immutable. The globally unique hostname of the database.
+func (o LookupInstanceResultOutput) DatabaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DatabaseUrl }).(pulumi.StringOutput)
+}
+
+// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
+func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
+func (o LookupInstanceResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The database's lifecycle state. Read-only.
+func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+func (o LookupInstanceResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInstanceResultOutput{})
 }

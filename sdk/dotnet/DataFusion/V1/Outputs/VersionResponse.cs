@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataFusion.V1.Outputs
 {
 
+    /// <summary>
+    /// The Data Fusion version. This proto message stores information about certain Data Fusion version, which is used for Data Fusion version upgrade.
+    /// </summary>
     [OutputType]
     public sealed class VersionResponse
     {

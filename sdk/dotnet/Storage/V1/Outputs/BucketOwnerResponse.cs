@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// The owner of the bucket. This is always the project team's owner group.
+    /// </summary>
     [OutputType]
     public sealed class BucketOwnerResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// Defines the layout properties and content for a row.
+    /// </summary>
     [OutputType]
     public sealed class RowResponse
     {

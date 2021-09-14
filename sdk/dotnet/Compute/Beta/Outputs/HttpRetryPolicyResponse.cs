@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// The retry policy associates with HttpRouteRule
+    /// </summary>
     [OutputType]
     public sealed class HttpRetryPolicyResponse
     {

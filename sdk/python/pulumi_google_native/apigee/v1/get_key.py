@@ -13,6 +13,7 @@ __all__ = [
     'GetKeyResult',
     'AwaitableGetKeyResult',
     'get_key',
+    'get_key_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,15 @@ def get_key(app_id: Optional[str] = None,
         issued_at=__ret__.issued_at,
         scopes=__ret__.scopes,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_key)
+def get_key_output(app_id: Optional[pulumi.Input[str]] = None,
+                   developer_id: Optional[pulumi.Input[str]] = None,
+                   key_id: Optional[pulumi.Input[str]] = None,
+                   organization_id: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyResult]:
+    """
+    Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
+    """
+    ...

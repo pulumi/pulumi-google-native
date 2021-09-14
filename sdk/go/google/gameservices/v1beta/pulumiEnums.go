@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -281,7 +281,7 @@ func (o AuthorizationLoggingOptionsPermissionTypeOutput) ToStringPtrOutputWithCo
 type AuthorizationLoggingOptionsPermissionTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationLoggingOptionsPermissionTypePtrOutput) ElementType() reflect.Type {
-	return authorizationLoggingOptionsPermissionTypePtrType
+	return reflect.TypeOf((**AuthorizationLoggingOptionsPermissionType)(nil)).Elem()
 }
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggingOptionsPermissionTypePtrOutput() AuthorizationLoggingOptionsPermissionTypePtrOutput {
@@ -290,6 +290,16 @@ func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggi
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggingOptionsPermissionTypePtrOutputWithContext(ctx context.Context) AuthorizationLoggingOptionsPermissionTypePtrOutput {
 	return o
+}
+
+func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) Elem() AuthorizationLoggingOptionsPermissionTypeOutput {
+	return o.ApplyT(func(v *AuthorizationLoggingOptionsPermissionType) AuthorizationLoggingOptionsPermissionType {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationLoggingOptionsPermissionType
+		return ret
+	}).(AuthorizationLoggingOptionsPermissionTypeOutput)
 }
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -304,16 +314,6 @@ func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToStringPtrOutputWit
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) Elem() AuthorizationLoggingOptionsPermissionTypeOutput {
-	return o.ApplyT(func(v *AuthorizationLoggingOptionsPermissionType) AuthorizationLoggingOptionsPermissionType {
-		var ret AuthorizationLoggingOptionsPermissionType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuthorizationLoggingOptionsPermissionTypeOutput)
 }
 
 // AuthorizationLoggingOptionsPermissionTypeInput is an input type that accepts AuthorizationLoggingOptionsPermissionTypeArgs and AuthorizationLoggingOptionsPermissionTypeOutput values.
@@ -450,7 +450,7 @@ func (o CloudAuditOptionsLogNameOutput) ToStringPtrOutputWithContext(ctx context
 type CloudAuditOptionsLogNamePtrOutput struct{ *pulumi.OutputState }
 
 func (CloudAuditOptionsLogNamePtrOutput) ElementType() reflect.Type {
-	return cloudAuditOptionsLogNamePtrType
+	return reflect.TypeOf((**CloudAuditOptionsLogName)(nil)).Elem()
 }
 
 func (o CloudAuditOptionsLogNamePtrOutput) ToCloudAuditOptionsLogNamePtrOutput() CloudAuditOptionsLogNamePtrOutput {
@@ -459,6 +459,16 @@ func (o CloudAuditOptionsLogNamePtrOutput) ToCloudAuditOptionsLogNamePtrOutput()
 
 func (o CloudAuditOptionsLogNamePtrOutput) ToCloudAuditOptionsLogNamePtrOutputWithContext(ctx context.Context) CloudAuditOptionsLogNamePtrOutput {
 	return o
+}
+
+func (o CloudAuditOptionsLogNamePtrOutput) Elem() CloudAuditOptionsLogNameOutput {
+	return o.ApplyT(func(v *CloudAuditOptionsLogName) CloudAuditOptionsLogName {
+		if v != nil {
+			return *v
+		}
+		var ret CloudAuditOptionsLogName
+		return ret
+	}).(CloudAuditOptionsLogNameOutput)
 }
 
 func (o CloudAuditOptionsLogNamePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -473,16 +483,6 @@ func (o CloudAuditOptionsLogNamePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CloudAuditOptionsLogNamePtrOutput) Elem() CloudAuditOptionsLogNameOutput {
-	return o.ApplyT(func(v *CloudAuditOptionsLogName) CloudAuditOptionsLogName {
-		var ret CloudAuditOptionsLogName
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CloudAuditOptionsLogNameOutput)
 }
 
 // CloudAuditOptionsLogNameInput is an input type that accepts CloudAuditOptionsLogNameArgs and CloudAuditOptionsLogNameOutput values.
@@ -629,7 +629,7 @@ func (o ConditionIamOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type ConditionIamPtrOutput struct{ *pulumi.OutputState }
 
 func (ConditionIamPtrOutput) ElementType() reflect.Type {
-	return conditionIamPtrType
+	return reflect.TypeOf((**ConditionIam)(nil)).Elem()
 }
 
 func (o ConditionIamPtrOutput) ToConditionIamPtrOutput() ConditionIamPtrOutput {
@@ -638,6 +638,16 @@ func (o ConditionIamPtrOutput) ToConditionIamPtrOutput() ConditionIamPtrOutput {
 
 func (o ConditionIamPtrOutput) ToConditionIamPtrOutputWithContext(ctx context.Context) ConditionIamPtrOutput {
 	return o
+}
+
+func (o ConditionIamPtrOutput) Elem() ConditionIamOutput {
+	return o.ApplyT(func(v *ConditionIam) ConditionIam {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionIam
+		return ret
+	}).(ConditionIamOutput)
 }
 
 func (o ConditionIamPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -652,16 +662,6 @@ func (o ConditionIamPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ConditionIamPtrOutput) Elem() ConditionIamOutput {
-	return o.ApplyT(func(v *ConditionIam) ConditionIam {
-		var ret ConditionIam
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ConditionIamOutput)
 }
 
 // ConditionIamInput is an input type that accepts ConditionIamArgs and ConditionIamOutput values.
@@ -804,7 +804,7 @@ func (o ConditionOpOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 type ConditionOpPtrOutput struct{ *pulumi.OutputState }
 
 func (ConditionOpPtrOutput) ElementType() reflect.Type {
-	return conditionOpPtrType
+	return reflect.TypeOf((**ConditionOp)(nil)).Elem()
 }
 
 func (o ConditionOpPtrOutput) ToConditionOpPtrOutput() ConditionOpPtrOutput {
@@ -813,6 +813,16 @@ func (o ConditionOpPtrOutput) ToConditionOpPtrOutput() ConditionOpPtrOutput {
 
 func (o ConditionOpPtrOutput) ToConditionOpPtrOutputWithContext(ctx context.Context) ConditionOpPtrOutput {
 	return o
+}
+
+func (o ConditionOpPtrOutput) Elem() ConditionOpOutput {
+	return o.ApplyT(func(v *ConditionOp) ConditionOp {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionOp
+		return ret
+	}).(ConditionOpOutput)
 }
 
 func (o ConditionOpPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -827,16 +837,6 @@ func (o ConditionOpPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ConditionOpPtrOutput) Elem() ConditionOpOutput {
-	return o.ApplyT(func(v *ConditionOp) ConditionOp {
-		var ret ConditionOp
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ConditionOpOutput)
 }
 
 // ConditionOpInput is an input type that accepts ConditionOpArgs and ConditionOpOutput values.
@@ -977,7 +977,7 @@ func (o ConditionSysOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type ConditionSysPtrOutput struct{ *pulumi.OutputState }
 
 func (ConditionSysPtrOutput) ElementType() reflect.Type {
-	return conditionSysPtrType
+	return reflect.TypeOf((**ConditionSys)(nil)).Elem()
 }
 
 func (o ConditionSysPtrOutput) ToConditionSysPtrOutput() ConditionSysPtrOutput {
@@ -986,6 +986,16 @@ func (o ConditionSysPtrOutput) ToConditionSysPtrOutput() ConditionSysPtrOutput {
 
 func (o ConditionSysPtrOutput) ToConditionSysPtrOutputWithContext(ctx context.Context) ConditionSysPtrOutput {
 	return o
+}
+
+func (o ConditionSysPtrOutput) Elem() ConditionSysOutput {
+	return o.ApplyT(func(v *ConditionSys) ConditionSys {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionSys
+		return ret
+	}).(ConditionSysOutput)
 }
 
 func (o ConditionSysPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1000,16 +1010,6 @@ func (o ConditionSysPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ConditionSysPtrOutput) Elem() ConditionSysOutput {
-	return o.ApplyT(func(v *ConditionSys) ConditionSys {
-		var ret ConditionSys
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ConditionSysOutput)
 }
 
 // ConditionSysInput is an input type that accepts ConditionSysArgs and ConditionSysOutput values.
@@ -1143,7 +1143,7 @@ func (o DataAccessOptionsLogModeOutput) ToStringPtrOutputWithContext(ctx context
 type DataAccessOptionsLogModePtrOutput struct{ *pulumi.OutputState }
 
 func (DataAccessOptionsLogModePtrOutput) ElementType() reflect.Type {
-	return dataAccessOptionsLogModePtrType
+	return reflect.TypeOf((**DataAccessOptionsLogMode)(nil)).Elem()
 }
 
 func (o DataAccessOptionsLogModePtrOutput) ToDataAccessOptionsLogModePtrOutput() DataAccessOptionsLogModePtrOutput {
@@ -1152,6 +1152,16 @@ func (o DataAccessOptionsLogModePtrOutput) ToDataAccessOptionsLogModePtrOutput()
 
 func (o DataAccessOptionsLogModePtrOutput) ToDataAccessOptionsLogModePtrOutputWithContext(ctx context.Context) DataAccessOptionsLogModePtrOutput {
 	return o
+}
+
+func (o DataAccessOptionsLogModePtrOutput) Elem() DataAccessOptionsLogModeOutput {
+	return o.ApplyT(func(v *DataAccessOptionsLogMode) DataAccessOptionsLogMode {
+		if v != nil {
+			return *v
+		}
+		var ret DataAccessOptionsLogMode
+		return ret
+	}).(DataAccessOptionsLogModeOutput)
 }
 
 func (o DataAccessOptionsLogModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1166,16 +1176,6 @@ func (o DataAccessOptionsLogModePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DataAccessOptionsLogModePtrOutput) Elem() DataAccessOptionsLogModeOutput {
-	return o.ApplyT(func(v *DataAccessOptionsLogMode) DataAccessOptionsLogMode {
-		var ret DataAccessOptionsLogMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DataAccessOptionsLogModeOutput)
 }
 
 // DataAccessOptionsLogModeInput is an input type that accepts DataAccessOptionsLogModeArgs and DataAccessOptionsLogModeOutput values.
@@ -1316,7 +1316,7 @@ func (o GameServerClusterAllocationPriorityOutput) ToStringPtrOutputWithContext(
 type GameServerClusterAllocationPriorityPtrOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterAllocationPriorityPtrOutput) ElementType() reflect.Type {
-	return gameServerClusterAllocationPriorityPtrType
+	return reflect.TypeOf((**GameServerClusterAllocationPriority)(nil)).Elem()
 }
 
 func (o GameServerClusterAllocationPriorityPtrOutput) ToGameServerClusterAllocationPriorityPtrOutput() GameServerClusterAllocationPriorityPtrOutput {
@@ -1325,6 +1325,16 @@ func (o GameServerClusterAllocationPriorityPtrOutput) ToGameServerClusterAllocat
 
 func (o GameServerClusterAllocationPriorityPtrOutput) ToGameServerClusterAllocationPriorityPtrOutputWithContext(ctx context.Context) GameServerClusterAllocationPriorityPtrOutput {
 	return o
+}
+
+func (o GameServerClusterAllocationPriorityPtrOutput) Elem() GameServerClusterAllocationPriorityOutput {
+	return o.ApplyT(func(v *GameServerClusterAllocationPriority) GameServerClusterAllocationPriority {
+		if v != nil {
+			return *v
+		}
+		var ret GameServerClusterAllocationPriority
+		return ret
+	}).(GameServerClusterAllocationPriorityOutput)
 }
 
 func (o GameServerClusterAllocationPriorityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1339,16 +1349,6 @@ func (o GameServerClusterAllocationPriorityPtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GameServerClusterAllocationPriorityPtrOutput) Elem() GameServerClusterAllocationPriorityOutput {
-	return o.ApplyT(func(v *GameServerClusterAllocationPriority) GameServerClusterAllocationPriority {
-		var ret GameServerClusterAllocationPriority
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GameServerClusterAllocationPriorityOutput)
 }
 
 // GameServerClusterAllocationPriorityInput is an input type that accepts GameServerClusterAllocationPriorityArgs and GameServerClusterAllocationPriorityOutput values.
@@ -1491,7 +1491,7 @@ func (o RuleActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 type RuleActionPtrOutput struct{ *pulumi.OutputState }
 
 func (RuleActionPtrOutput) ElementType() reflect.Type {
-	return ruleActionPtrType
+	return reflect.TypeOf((**RuleAction)(nil)).Elem()
 }
 
 func (o RuleActionPtrOutput) ToRuleActionPtrOutput() RuleActionPtrOutput {
@@ -1500,6 +1500,16 @@ func (o RuleActionPtrOutput) ToRuleActionPtrOutput() RuleActionPtrOutput {
 
 func (o RuleActionPtrOutput) ToRuleActionPtrOutputWithContext(ctx context.Context) RuleActionPtrOutput {
 	return o
+}
+
+func (o RuleActionPtrOutput) Elem() RuleActionOutput {
+	return o.ApplyT(func(v *RuleAction) RuleAction {
+		if v != nil {
+			return *v
+		}
+		var ret RuleAction
+		return ret
+	}).(RuleActionOutput)
 }
 
 func (o RuleActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1514,16 +1524,6 @@ func (o RuleActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RuleActionPtrOutput) Elem() RuleActionOutput {
-	return o.ApplyT(func(v *RuleAction) RuleAction {
-		var ret RuleAction
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RuleActionOutput)
 }
 
 // RuleActionInput is an input type that accepts RuleActionArgs and RuleActionOutput values.

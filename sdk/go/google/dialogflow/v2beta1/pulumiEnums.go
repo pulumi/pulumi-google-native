@@ -106,7 +106,7 @@ func (o ConversationConversationStageOutput) ToStringPtrOutputWithContext(ctx co
 type ConversationConversationStagePtrOutput struct{ *pulumi.OutputState }
 
 func (ConversationConversationStagePtrOutput) ElementType() reflect.Type {
-	return conversationConversationStagePtrType
+	return reflect.TypeOf((**ConversationConversationStage)(nil)).Elem()
 }
 
 func (o ConversationConversationStagePtrOutput) ToConversationConversationStagePtrOutput() ConversationConversationStagePtrOutput {
@@ -115,6 +115,16 @@ func (o ConversationConversationStagePtrOutput) ToConversationConversationStageP
 
 func (o ConversationConversationStagePtrOutput) ToConversationConversationStagePtrOutputWithContext(ctx context.Context) ConversationConversationStagePtrOutput {
 	return o
+}
+
+func (o ConversationConversationStagePtrOutput) Elem() ConversationConversationStageOutput {
+	return o.ApplyT(func(v *ConversationConversationStage) ConversationConversationStage {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationConversationStage
+		return ret
+	}).(ConversationConversationStageOutput)
 }
 
 func (o ConversationConversationStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o ConversationConversationStagePtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ConversationConversationStagePtrOutput) Elem() ConversationConversationStageOutput {
-	return o.ApplyT(func(v *ConversationConversationStage) ConversationConversationStage {
-		var ret ConversationConversationStage
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ConversationConversationStageOutput)
 }
 
 // ConversationConversationStageInput is an input type that accepts ConversationConversationStageArgs and ConversationConversationStageOutput values.
@@ -278,7 +278,7 @@ func (o DocumentKnowledgeTypesItemOutput) ToStringPtrOutputWithContext(ctx conte
 type DocumentKnowledgeTypesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentKnowledgeTypesItemPtrOutput) ElementType() reflect.Type {
-	return documentKnowledgeTypesItemPtrType
+	return reflect.TypeOf((**DocumentKnowledgeTypesItem)(nil)).Elem()
 }
 
 func (o DocumentKnowledgeTypesItemPtrOutput) ToDocumentKnowledgeTypesItemPtrOutput() DocumentKnowledgeTypesItemPtrOutput {
@@ -287,6 +287,16 @@ func (o DocumentKnowledgeTypesItemPtrOutput) ToDocumentKnowledgeTypesItemPtrOutp
 
 func (o DocumentKnowledgeTypesItemPtrOutput) ToDocumentKnowledgeTypesItemPtrOutputWithContext(ctx context.Context) DocumentKnowledgeTypesItemPtrOutput {
 	return o
+}
+
+func (o DocumentKnowledgeTypesItemPtrOutput) Elem() DocumentKnowledgeTypesItemOutput {
+	return o.ApplyT(func(v *DocumentKnowledgeTypesItem) DocumentKnowledgeTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentKnowledgeTypesItem
+		return ret
+	}).(DocumentKnowledgeTypesItemOutput)
 }
 
 func (o DocumentKnowledgeTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -301,16 +311,6 @@ func (o DocumentKnowledgeTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DocumentKnowledgeTypesItemPtrOutput) Elem() DocumentKnowledgeTypesItemOutput {
-	return o.ApplyT(func(v *DocumentKnowledgeTypesItem) DocumentKnowledgeTypesItem {
-		var ret DocumentKnowledgeTypesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DocumentKnowledgeTypesItemOutput)
 }
 
 // DocumentKnowledgeTypesItemInput is an input type that accepts DocumentKnowledgeTypesItemArgs and DocumentKnowledgeTypesItemOutput values.
@@ -391,8 +391,8 @@ func (o DocumentKnowledgeTypesItemArrayOutput) ToDocumentKnowledgeTypesItemArray
 }
 
 func (o DocumentKnowledgeTypesItemArrayOutput) Index(i pulumi.IntInput) DocumentKnowledgeTypesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DocumentKnowledgeTypesItemOutput {
-		return vs[0].([]DocumentKnowledgeTypesItem)[vs[1].(int)].ToDocumentKnowledgeTypesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DocumentKnowledgeTypesItem {
+		return vs[0].([]DocumentKnowledgeTypesItem)[vs[1].(int)]
 	}).(DocumentKnowledgeTypesItemOutput)
 }
 
@@ -490,7 +490,7 @@ func (o EntityTypeAutoExpansionModeOutput) ToStringPtrOutputWithContext(ctx cont
 type EntityTypeAutoExpansionModePtrOutput struct{ *pulumi.OutputState }
 
 func (EntityTypeAutoExpansionModePtrOutput) ElementType() reflect.Type {
-	return entityTypeAutoExpansionModePtrType
+	return reflect.TypeOf((**EntityTypeAutoExpansionMode)(nil)).Elem()
 }
 
 func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOutput() EntityTypeAutoExpansionModePtrOutput {
@@ -499,6 +499,16 @@ func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOu
 
 func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModePtrOutput {
 	return o
+}
+
+func (o EntityTypeAutoExpansionModePtrOutput) Elem() EntityTypeAutoExpansionModeOutput {
+	return o.ApplyT(func(v *EntityTypeAutoExpansionMode) EntityTypeAutoExpansionMode {
+		if v != nil {
+			return *v
+		}
+		var ret EntityTypeAutoExpansionMode
+		return ret
+	}).(EntityTypeAutoExpansionModeOutput)
 }
 
 func (o EntityTypeAutoExpansionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -513,16 +523,6 @@ func (o EntityTypeAutoExpansionModePtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EntityTypeAutoExpansionModePtrOutput) Elem() EntityTypeAutoExpansionModeOutput {
-	return o.ApplyT(func(v *EntityTypeAutoExpansionMode) EntityTypeAutoExpansionMode {
-		var ret EntityTypeAutoExpansionMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EntityTypeAutoExpansionModeOutput)
 }
 
 // EntityTypeAutoExpansionModeInput is an input type that accepts EntityTypeAutoExpansionModeArgs and EntityTypeAutoExpansionModeOutput values.
@@ -661,7 +661,7 @@ func (o EntityTypeKindOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 type EntityTypeKindPtrOutput struct{ *pulumi.OutputState }
 
 func (EntityTypeKindPtrOutput) ElementType() reflect.Type {
-	return entityTypeKindPtrType
+	return reflect.TypeOf((**EntityTypeKind)(nil)).Elem()
 }
 
 func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOutput {
@@ -670,6 +670,16 @@ func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOu
 
 func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutputWithContext(ctx context.Context) EntityTypeKindPtrOutput {
 	return o
+}
+
+func (o EntityTypeKindPtrOutput) Elem() EntityTypeKindOutput {
+	return o.ApplyT(func(v *EntityTypeKind) EntityTypeKind {
+		if v != nil {
+			return *v
+		}
+		var ret EntityTypeKind
+		return ret
+	}).(EntityTypeKindOutput)
 }
 
 func (o EntityTypeKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -684,16 +694,6 @@ func (o EntityTypeKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EntityTypeKindPtrOutput) Elem() EntityTypeKindOutput {
-	return o.ApplyT(func(v *EntityTypeKind) EntityTypeKind {
-		var ret EntityTypeKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EntityTypeKindOutput)
 }
 
 // EntityTypeKindInput is an input type that accepts EntityTypeKindArgs and EntityTypeKindOutput values.
@@ -828,7 +828,7 @@ func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeOutput) ToStringPtrOut
 type GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1FulfillmentFeatureTypePtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1FulfillmentFeatureType)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput {
@@ -837,6 +837,16 @@ func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) ToGoogleClo
 
 func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentFeatureType) GoogleCloudDialogflowV2beta1FulfillmentFeatureType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1FulfillmentFeatureType
+		return ret
+	}).(GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -851,16 +861,6 @@ func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) ToStringPtr
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentFeatureType) GoogleCloudDialogflowV2beta1FulfillmentFeatureType {
-		var ret GoogleCloudDialogflowV2beta1FulfillmentFeatureType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeOutput)
 }
 
 // GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeArgs and GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeOutput values.
@@ -997,7 +997,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouse
 type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput() GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput {
@@ -1006,6 +1006,16 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouse
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint) GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint
+		return ret
+	}).(GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1020,16 +1030,6 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouse
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint) GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint {
-		var ret GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintOutput)
 }
 
 // GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintArgs and GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintOutput values.
@@ -1170,7 +1170,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayO
 type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput() GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput {
@@ -1179,6 +1179,16 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayO
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions) GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions
+		return ret
+	}).(GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1193,16 +1203,6 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayO
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions) GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions {
-		var ret GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsOutput)
 }
 
 // GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsArgs and GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsOutput values.
@@ -1341,7 +1341,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlign
 type GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput() GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput {
@@ -1350,6 +1350,16 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlign
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment) GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment
+		return ret
+	}).(GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1364,16 +1374,6 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlign
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment) GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment {
-		var ret GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentOutput)
 }
 
 // GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentArgs and GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentOutput values.
@@ -1508,7 +1508,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeOutput) To
 type GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput() GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput {
@@ -1517,6 +1517,16 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput)
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType) GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType
+		return ret
+	}).(GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1531,16 +1541,6 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType) GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType {
-		var ret GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeOutput)
 }
 
 // GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeArgs and GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeOutput values.
@@ -1693,7 +1693,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformOutput) ToStringPtrOutp
 type GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1IntentMessagePlatformPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1IntentMessagePlatform)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput() GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput {
@@ -1702,6 +1702,16 @@ func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) ToGoogleClou
 
 func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessagePlatformOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessagePlatform) GoogleCloudDialogflowV2beta1IntentMessagePlatform {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1IntentMessagePlatform
+		return ret
+	}).(GoogleCloudDialogflowV2beta1IntentMessagePlatformOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1716,16 +1726,6 @@ func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) ToStringPtrO
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessagePlatformOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessagePlatform) GoogleCloudDialogflowV2beta1IntentMessagePlatform {
-		var ret GoogleCloudDialogflowV2beta1IntentMessagePlatform
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1IntentMessagePlatformOutput)
 }
 
 // GoogleCloudDialogflowV2beta1IntentMessagePlatformInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessagePlatformArgs and GoogleCloudDialogflowV2beta1IntentMessagePlatformOutput values.
@@ -1864,7 +1864,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightOut
 type GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput() GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput {
@@ -1873,6 +1873,16 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtr
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight) GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight
+		return ret
+	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1887,16 +1897,6 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtr
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight) GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight {
-		var ret GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightOutput)
 }
 
 // GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightOutput values.
@@ -2033,7 +2033,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthOutput)
 type GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput() GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput {
@@ -2042,6 +2042,16 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutp
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth) GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth
+		return ret
+	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2056,16 +2066,6 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutp
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth) GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth {
-		var ret GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthOutput)
 }
 
 // GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthOutput values.
@@ -2202,7 +2202,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientatio
 type GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput() GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput {
@@ -2211,6 +2211,16 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientatio
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation) GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation
+		return ret
+	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2225,16 +2235,6 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientatio
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation) GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation {
-		var ret GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationOutput)
 }
 
 // GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationOutput values.
@@ -2371,7 +2371,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImage
 type GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput() GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput {
@@ -2380,6 +2380,16 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImage
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment) GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment
+		return ret
+	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2394,16 +2404,6 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImage
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment) GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment {
-		var ret GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentOutput)
 }
 
 // GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentOutput values.
@@ -2540,7 +2540,7 @@ func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeOutput) ToStringPtrO
 type GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1IntentTrainingPhraseType)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) ToGoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput() GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput {
@@ -2549,6 +2549,16 @@ func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) ToGoogleC
 
 func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) ToGoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentTrainingPhraseType) GoogleCloudDialogflowV2beta1IntentTrainingPhraseType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1IntentTrainingPhraseType
+		return ret
+	}).(GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2563,16 +2573,6 @@ func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) ToStringP
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1IntentTrainingPhraseType) GoogleCloudDialogflowV2beta1IntentTrainingPhraseType {
-		var ret GoogleCloudDialogflowV2beta1IntentTrainingPhraseType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeOutput)
 }
 
 // GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeArgs and GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeOutput values.
@@ -2709,7 +2709,7 @@ func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatOutput) ToStr
 type GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) ToGoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput() GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput {
@@ -2718,6 +2718,16 @@ func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) To
 
 func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) ToGoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) Elem() GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat) GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat
+		return ret
+	}).(GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2732,16 +2742,6 @@ func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) To
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) Elem() GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat) GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat {
-		var ret GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatOutput)
 }
 
 // GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatInput is an input type that accepts GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatArgs and GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatOutput values.
@@ -2880,7 +2880,7 @@ func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantOutput) 
 type GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput() GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput {
@@ -2889,6 +2889,16 @@ func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutpu
 
 func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput) Elem() GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant) GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant
+		return ret
+	}).(GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2903,16 +2913,6 @@ func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput) Elem() GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant) GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant {
-		var ret GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantOutput)
 }
 
 // GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantInput is an input type that accepts GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantArgs and GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantOutput values.
@@ -3051,7 +3051,7 @@ func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypeOutput) ToStringPtrOutp
 type GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1SuggestionFeatureTypePtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1SuggestionFeatureType)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) ToGoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput() GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput {
@@ -3060,6 +3060,16 @@ func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) ToGoogleClou
 
 func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) ToGoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1SuggestionFeatureTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SuggestionFeatureType) GoogleCloudDialogflowV2beta1SuggestionFeatureType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1SuggestionFeatureType
+		return ret
+	}).(GoogleCloudDialogflowV2beta1SuggestionFeatureTypeOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3074,16 +3084,6 @@ func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) ToStringPtrO
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1SuggestionFeatureTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SuggestionFeatureType) GoogleCloudDialogflowV2beta1SuggestionFeatureType {
-		var ret GoogleCloudDialogflowV2beta1SuggestionFeatureType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1SuggestionFeatureTypeOutput)
 }
 
 // GoogleCloudDialogflowV2beta1SuggestionFeatureTypeInput is an input type that accepts GoogleCloudDialogflowV2beta1SuggestionFeatureTypeArgs and GoogleCloudDialogflowV2beta1SuggestionFeatureTypeOutput values.
@@ -3226,7 +3226,7 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingOutpu
 type GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput) ElementType() reflect.Type {
-	return googleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrType
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding)(nil)).Elem()
 }
 
 func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput {
@@ -3235,6 +3235,16 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOu
 
 func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput) Elem() GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding) GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding
+		return ret
+	}).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingOutput)
 }
 
 func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3249,16 +3259,6 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput) Elem() GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding) GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding {
-		var ret GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingOutput)
 }
 
 // GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingInput is an input type that accepts GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingArgs and GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingOutput values.
@@ -3410,7 +3410,7 @@ func (o IntentDefaultResponsePlatformsItemOutput) ToStringPtrOutputWithContext(c
 type IntentDefaultResponsePlatformsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (IntentDefaultResponsePlatformsItemPtrOutput) ElementType() reflect.Type {
-	return intentDefaultResponsePlatformsItemPtrType
+	return reflect.TypeOf((**IntentDefaultResponsePlatformsItem)(nil)).Elem()
 }
 
 func (o IntentDefaultResponsePlatformsItemPtrOutput) ToIntentDefaultResponsePlatformsItemPtrOutput() IntentDefaultResponsePlatformsItemPtrOutput {
@@ -3419,6 +3419,16 @@ func (o IntentDefaultResponsePlatformsItemPtrOutput) ToIntentDefaultResponsePlat
 
 func (o IntentDefaultResponsePlatformsItemPtrOutput) ToIntentDefaultResponsePlatformsItemPtrOutputWithContext(ctx context.Context) IntentDefaultResponsePlatformsItemPtrOutput {
 	return o
+}
+
+func (o IntentDefaultResponsePlatformsItemPtrOutput) Elem() IntentDefaultResponsePlatformsItemOutput {
+	return o.ApplyT(func(v *IntentDefaultResponsePlatformsItem) IntentDefaultResponsePlatformsItem {
+		if v != nil {
+			return *v
+		}
+		var ret IntentDefaultResponsePlatformsItem
+		return ret
+	}).(IntentDefaultResponsePlatformsItemOutput)
 }
 
 func (o IntentDefaultResponsePlatformsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3433,16 +3443,6 @@ func (o IntentDefaultResponsePlatformsItemPtrOutput) ToStringPtrOutputWithContex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o IntentDefaultResponsePlatformsItemPtrOutput) Elem() IntentDefaultResponsePlatformsItemOutput {
-	return o.ApplyT(func(v *IntentDefaultResponsePlatformsItem) IntentDefaultResponsePlatformsItem {
-		var ret IntentDefaultResponsePlatformsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(IntentDefaultResponsePlatformsItemOutput)
 }
 
 // IntentDefaultResponsePlatformsItemInput is an input type that accepts IntentDefaultResponsePlatformsItemArgs and IntentDefaultResponsePlatformsItemOutput values.
@@ -3523,8 +3523,8 @@ func (o IntentDefaultResponsePlatformsItemArrayOutput) ToIntentDefaultResponsePl
 }
 
 func (o IntentDefaultResponsePlatformsItemArrayOutput) Index(i pulumi.IntInput) IntentDefaultResponsePlatformsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntentDefaultResponsePlatformsItemOutput {
-		return vs[0].([]IntentDefaultResponsePlatformsItem)[vs[1].(int)].ToIntentDefaultResponsePlatformsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntentDefaultResponsePlatformsItem {
+		return vs[0].([]IntentDefaultResponsePlatformsItem)[vs[1].(int)]
 	}).(IntentDefaultResponsePlatformsItemOutput)
 }
 
@@ -3624,7 +3624,7 @@ func (o IntentWebhookStateOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type IntentWebhookStatePtrOutput struct{ *pulumi.OutputState }
 
 func (IntentWebhookStatePtrOutput) ElementType() reflect.Type {
-	return intentWebhookStatePtrType
+	return reflect.TypeOf((**IntentWebhookState)(nil)).Elem()
 }
 
 func (o IntentWebhookStatePtrOutput) ToIntentWebhookStatePtrOutput() IntentWebhookStatePtrOutput {
@@ -3633,6 +3633,16 @@ func (o IntentWebhookStatePtrOutput) ToIntentWebhookStatePtrOutput() IntentWebho
 
 func (o IntentWebhookStatePtrOutput) ToIntentWebhookStatePtrOutputWithContext(ctx context.Context) IntentWebhookStatePtrOutput {
 	return o
+}
+
+func (o IntentWebhookStatePtrOutput) Elem() IntentWebhookStateOutput {
+	return o.ApplyT(func(v *IntentWebhookState) IntentWebhookState {
+		if v != nil {
+			return *v
+		}
+		var ret IntentWebhookState
+		return ret
+	}).(IntentWebhookStateOutput)
 }
 
 func (o IntentWebhookStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3647,16 +3657,6 @@ func (o IntentWebhookStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o IntentWebhookStatePtrOutput) Elem() IntentWebhookStateOutput {
-	return o.ApplyT(func(v *IntentWebhookState) IntentWebhookState {
-		var ret IntentWebhookState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(IntentWebhookStateOutput)
 }
 
 // IntentWebhookStateInput is an input type that accepts IntentWebhookStateArgs and IntentWebhookStateOutput values.
@@ -3795,7 +3795,7 @@ func (o ParticipantRoleOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type ParticipantRolePtrOutput struct{ *pulumi.OutputState }
 
 func (ParticipantRolePtrOutput) ElementType() reflect.Type {
-	return participantRolePtrType
+	return reflect.TypeOf((**ParticipantRole)(nil)).Elem()
 }
 
 func (o ParticipantRolePtrOutput) ToParticipantRolePtrOutput() ParticipantRolePtrOutput {
@@ -3804,6 +3804,16 @@ func (o ParticipantRolePtrOutput) ToParticipantRolePtrOutput() ParticipantRolePt
 
 func (o ParticipantRolePtrOutput) ToParticipantRolePtrOutputWithContext(ctx context.Context) ParticipantRolePtrOutput {
 	return o
+}
+
+func (o ParticipantRolePtrOutput) Elem() ParticipantRoleOutput {
+	return o.ApplyT(func(v *ParticipantRole) ParticipantRole {
+		if v != nil {
+			return *v
+		}
+		var ret ParticipantRole
+		return ret
+	}).(ParticipantRoleOutput)
 }
 
 func (o ParticipantRolePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3818,16 +3828,6 @@ func (o ParticipantRolePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ParticipantRolePtrOutput) Elem() ParticipantRoleOutput {
-	return o.ApplyT(func(v *ParticipantRole) ParticipantRole {
-		var ret ParticipantRole
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ParticipantRoleOutput)
 }
 
 // ParticipantRoleInput is an input type that accepts ParticipantRoleArgs and ParticipantRoleOutput values.
@@ -3964,7 +3964,7 @@ func (o SessionEntityTypeEntityOverrideModeOutput) ToStringPtrOutputWithContext(
 type SessionEntityTypeEntityOverrideModePtrOutput struct{ *pulumi.OutputState }
 
 func (SessionEntityTypeEntityOverrideModePtrOutput) ElementType() reflect.Type {
-	return sessionEntityTypeEntityOverrideModePtrType
+	return reflect.TypeOf((**SessionEntityTypeEntityOverrideMode)(nil)).Elem()
 }
 
 func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityOverrideModePtrOutput() SessionEntityTypeEntityOverrideModePtrOutput {
@@ -3973,6 +3973,16 @@ func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityO
 
 func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModePtrOutput {
 	return o
+}
+
+func (o SessionEntityTypeEntityOverrideModePtrOutput) Elem() SessionEntityTypeEntityOverrideModeOutput {
+	return o.ApplyT(func(v *SessionEntityTypeEntityOverrideMode) SessionEntityTypeEntityOverrideMode {
+		if v != nil {
+			return *v
+		}
+		var ret SessionEntityTypeEntityOverrideMode
+		return ret
+	}).(SessionEntityTypeEntityOverrideModeOutput)
 }
 
 func (o SessionEntityTypeEntityOverrideModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3987,16 +3997,6 @@ func (o SessionEntityTypeEntityOverrideModePtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SessionEntityTypeEntityOverrideModePtrOutput) Elem() SessionEntityTypeEntityOverrideModeOutput {
-	return o.ApplyT(func(v *SessionEntityTypeEntityOverrideMode) SessionEntityTypeEntityOverrideMode {
-		var ret SessionEntityTypeEntityOverrideMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SessionEntityTypeEntityOverrideModeOutput)
 }
 
 // SessionEntityTypeEntityOverrideModeInput is an input type that accepts SessionEntityTypeEntityOverrideModeArgs and SessionEntityTypeEntityOverrideModeOutput values.

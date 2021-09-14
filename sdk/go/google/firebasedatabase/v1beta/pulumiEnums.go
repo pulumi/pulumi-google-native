@@ -108,7 +108,7 @@ func (o InstanceStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type InstanceStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceStateEnumPtrOutput) ElementType() reflect.Type {
-	return instanceStateEnumPtrType
+	return reflect.TypeOf((**InstanceStateEnum)(nil)).Elem()
 }
 
 func (o InstanceStateEnumPtrOutput) ToInstanceStateEnumPtrOutput() InstanceStateEnumPtrOutput {
@@ -117,6 +117,16 @@ func (o InstanceStateEnumPtrOutput) ToInstanceStateEnumPtrOutput() InstanceState
 
 func (o InstanceStateEnumPtrOutput) ToInstanceStateEnumPtrOutputWithContext(ctx context.Context) InstanceStateEnumPtrOutput {
 	return o
+}
+
+func (o InstanceStateEnumPtrOutput) Elem() InstanceStateEnumOutput {
+	return o.ApplyT(func(v *InstanceStateEnum) InstanceStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceStateEnum
+		return ret
+	}).(InstanceStateEnumOutput)
 }
 
 func (o InstanceStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o InstanceStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceStateEnumPtrOutput) Elem() InstanceStateEnumOutput {
-	return o.ApplyT(func(v *InstanceStateEnum) InstanceStateEnum {
-		var ret InstanceStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceStateEnumOutput)
 }
 
 // InstanceStateEnumInput is an input type that accepts InstanceStateEnumArgs and InstanceStateEnumOutput values.
@@ -277,7 +277,7 @@ func (o InstanceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type InstanceTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceTypePtrOutput) ElementType() reflect.Type {
-	return instanceTypePtrType
+	return reflect.TypeOf((**InstanceType)(nil)).Elem()
 }
 
 func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
@@ -286,6 +286,16 @@ func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
 
 func (o InstanceTypePtrOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
 	return o
+}
+
+func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
+	return o.ApplyT(func(v *InstanceType) InstanceType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceType
+		return ret
+	}).(InstanceTypeOutput)
 }
 
 func (o InstanceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o InstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
-	return o.ApplyT(func(v *InstanceType) InstanceType {
-		var ret InstanceType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceTypeOutput)
 }
 
 // InstanceTypeInput is an input type that accepts InstanceTypeArgs and InstanceTypeOutput values.

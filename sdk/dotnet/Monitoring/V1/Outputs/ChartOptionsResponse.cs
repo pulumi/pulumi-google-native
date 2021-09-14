@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// Options to control visual rendering of a chart.
+    /// </summary>
     [OutputType]
     public sealed class ChartOptionsResponse
     {

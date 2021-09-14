@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
+    /// </summary>
     [OutputType]
     public sealed class PathRuleResponse
     {

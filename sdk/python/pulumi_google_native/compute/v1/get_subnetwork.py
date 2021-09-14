@@ -13,6 +13,7 @@ __all__ = [
     'GetSubnetworkResult',
     'AwaitableGetSubnetworkResult',
     'get_subnetwork',
+    'get_subnetwork_output',
 ]
 
 @pulumi.output_type
@@ -332,3 +333,14 @@ def get_subnetwork(project: Optional[str] = None,
         self_link=__ret__.self_link,
         stack_type=__ret__.stack_type,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_subnetwork)
+def get_subnetwork_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                          region: Optional[pulumi.Input[str]] = None,
+                          subnetwork: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetworkResult]:
+    """
+    Returns the specified subnetwork. Gets a list of available subnetworks list() request.
+    """
+    ...

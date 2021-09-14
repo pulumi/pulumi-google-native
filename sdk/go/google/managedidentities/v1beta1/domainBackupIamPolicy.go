@@ -117,9 +117,7 @@ func (i *DomainBackupIamPolicy) ToDomainBackupIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DomainBackupIamPolicyOutput)
 }
 
-type DomainBackupIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type DomainBackupIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DomainBackupIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainBackupIamPolicy)(nil))

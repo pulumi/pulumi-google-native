@@ -13,6 +13,7 @@ __all__ = [
     'GetAttestorResult',
     'AwaitableGetAttestorResult',
     'get_attestor',
+    'get_attestor_output',
 ]
 
 @pulumi.output_type
@@ -96,3 +97,13 @@ def get_attestor(attestor_id: Optional[str] = None,
         name=__ret__.name,
         update_time=__ret__.update_time,
         user_owned_grafeas_note=__ret__.user_owned_grafeas_note)
+
+
+@_utilities.lift_output_func(get_attestor)
+def get_attestor_output(attestor_id: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttestorResult]:
+    """
+    Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetConnectionProfileResult',
     'AwaitableGetConnectionProfileResult',
     'get_connection_profile',
+    'get_connection_profile_output',
 ]
 
 @pulumi.output_type
@@ -189,3 +190,14 @@ def get_connection_profile(connection_profile_id: Optional[str] = None,
         provider=__ret__.provider,
         state=__ret__.state,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_connection_profile)
+def get_connection_profile_output(connection_profile_id: Optional[pulumi.Input[str]] = None,
+                                  location: Optional[pulumi.Input[str]] = None,
+                                  project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionProfileResult]:
+    """
+    Gets details of a single connection profile.
+    """
+    ...

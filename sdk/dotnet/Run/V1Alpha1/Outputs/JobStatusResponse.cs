@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// JobStatus represents the current state of a Job.
+    /// </summary>
     [OutputType]
     public sealed class JobStatusResponse
     {

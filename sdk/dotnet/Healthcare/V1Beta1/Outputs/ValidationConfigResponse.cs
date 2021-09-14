@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Contains the configuration for FHIR profiles and validation.
+    /// </summary>
     [OutputType]
     public sealed class ValidationConfigResponse
     {

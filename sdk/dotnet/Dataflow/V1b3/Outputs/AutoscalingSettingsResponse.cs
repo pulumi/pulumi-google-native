@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Settings for WorkerPool autoscaling.
+    /// </summary>
     [OutputType]
     public sealed class AutoscalingSettingsResponse
     {

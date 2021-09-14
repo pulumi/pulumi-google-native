@@ -13,6 +13,7 @@ __all__ = [
     'GetProjectIamPolicyResult',
     'AwaitableGetProjectIamPolicyResult',
     'get_project_iam_policy',
+    'get_project_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -94,3 +95,12 @@ def get_project_iam_policy(project: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_project_iam_policy)
+def get_project_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectIamPolicyResult]:
+    """
+    Returns the IAM access control policy for the specified project, in the format `projects/{ProjectIdOrNumber}` e.g. projects/123. Permission is denied if the policy or the resource do not exist.
+    """
+    ...

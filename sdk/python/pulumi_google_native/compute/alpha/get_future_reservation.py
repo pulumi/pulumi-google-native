@@ -13,6 +13,7 @@ __all__ = [
     'GetFutureReservationResult',
     'AwaitableGetFutureReservationResult',
     'get_future_reservation',
+    'get_future_reservation_output',
 ]
 
 @pulumi.output_type
@@ -199,3 +200,14 @@ def get_future_reservation(future_reservation: Optional[str] = None,
         status=__ret__.status,
         time_window=__ret__.time_window,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_future_reservation)
+def get_future_reservation_output(future_reservation: Optional[pulumi.Input[str]] = None,
+                                  project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  zone: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFutureReservationResult]:
+    """
+    Retrieves information about the specified future reservation.
+    """
+    ...

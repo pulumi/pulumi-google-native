@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// An Android package file to install.
+    /// </summary>
     [OutputType]
     public sealed class ApkResponse
     {

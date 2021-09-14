@@ -4,6 +4,9 @@
 package v1beta4
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,4 +45,86 @@ type LookupSslCertResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Sha1 Fingerprint.
 	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
+}
+
+func LookupSslCertOutput(ctx *pulumi.Context, args LookupSslCertOutputArgs, opts ...pulumi.InvokeOption) LookupSslCertResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSslCertResult, error) {
+			args := v.(LookupSslCertArgs)
+			r, err := LookupSslCert(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSslCertResultOutput)
+}
+
+type LookupSslCertOutputArgs struct {
+	Instance        pulumi.StringInput    `pulumi:"instance"`
+	Project         pulumi.StringPtrInput `pulumi:"project"`
+	Sha1Fingerprint pulumi.StringInput    `pulumi:"sha1Fingerprint"`
+}
+
+func (LookupSslCertOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSslCertArgs)(nil)).Elem()
+}
+
+type LookupSslCertResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSslCertResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSslCertResult)(nil)).Elem()
+}
+
+func (o LookupSslCertResultOutput) ToLookupSslCertResultOutput() LookupSslCertResultOutput {
+	return o
+}
+
+func (o LookupSslCertResultOutput) ToLookupSslCertResultOutputWithContext(ctx context.Context) LookupSslCertResultOutput {
+	return o
+}
+
+// PEM representation.
+func (o LookupSslCertResultOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslCertResult) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+// Serial number, as extracted from the certificate.
+func (o LookupSslCertResultOutput) CertSerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslCertResult) string { return v.CertSerialNumber }).(pulumi.StringOutput)
+}
+
+// User supplied name. Constrained to [a-zA-Z.-_ ]+.
+func (o LookupSslCertResultOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslCertResult) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+// The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
+func (o LookupSslCertResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslCertResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+func (o LookupSslCertResultOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslCertResult) string { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// Name of the database instance.
+func (o LookupSslCertResultOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslCertResult) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// This is always *sql#sslCert*.
+func (o LookupSslCertResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslCertResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The URI of this resource.
+func (o LookupSslCertResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslCertResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Sha1 Fingerprint.
+func (o LookupSslCertResultOutput) Sha1Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslCertResult) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSslCertResultOutput{})
 }

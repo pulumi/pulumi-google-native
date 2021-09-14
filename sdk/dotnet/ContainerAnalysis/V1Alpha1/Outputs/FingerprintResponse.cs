@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// A set of properties that uniquely identify a given Docker image.
+    /// </summary>
     [OutputType]
     public sealed class FingerprintResponse
     {

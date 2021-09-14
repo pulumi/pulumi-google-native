@@ -134,9 +134,7 @@ func (i *Autoscaler) ToAutoscalerOutputWithContext(ctx context.Context) Autoscal
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerOutput)
 }
 
-type AutoscalerOutput struct {
-	*pulumi.OutputState
-}
+type AutoscalerOutput struct{ *pulumi.OutputState }
 
 func (AutoscalerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Autoscaler)(nil))

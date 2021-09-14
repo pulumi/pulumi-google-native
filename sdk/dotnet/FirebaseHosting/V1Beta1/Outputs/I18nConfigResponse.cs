@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// If provided, i18n rewrites are enabled.
+    /// </summary>
     [OutputType]
     public sealed class I18nConfigResponse
     {

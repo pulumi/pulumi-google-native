@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// A list of Android device configurations in which the test is to be executed.
+    /// </summary>
     [OutputType]
     public sealed class AndroidDeviceListResponse
     {

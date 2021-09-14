@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
+    /// </summary>
     [OutputType]
     public sealed class CloudSqlConnectionProfileResponse
     {

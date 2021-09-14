@@ -13,6 +13,7 @@ __all__ = [
     'GetGroupResult',
     'AwaitableGetGroupResult',
     'get_group',
+    'get_group_output',
 ]
 
 @pulumi.output_type
@@ -185,3 +186,12 @@ def get_group(group_id: Optional[str] = None,
         parent=__ret__.parent,
         posix_groups=__ret__.posix_groups,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_group)
+def get_group_output(group_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
+    """
+    Retrieves a `Group`.
+    """
+    ...

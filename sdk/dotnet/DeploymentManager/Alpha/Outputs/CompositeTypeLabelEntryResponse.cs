@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Label object for CompositeTypes
+    /// </summary>
     [OutputType]
     public sealed class CompositeTypeLabelEntryResponse
     {

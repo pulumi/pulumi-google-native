@@ -114,9 +114,7 @@ func (i *AutoscalingPolicyIamPolicy) ToAutoscalingPolicyIamPolicyOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamPolicyOutput)
 }
 
-type AutoscalingPolicyIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type AutoscalingPolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AutoscalingPolicyIamPolicy)(nil))

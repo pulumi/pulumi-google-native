@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
+    /// </summary>
     [OutputType]
     public sealed class CloudAuditLoggingFeatureSpecResponse
     {

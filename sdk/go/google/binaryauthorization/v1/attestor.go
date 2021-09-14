@@ -112,9 +112,7 @@ func (i *Attestor) ToAttestorOutputWithContext(ctx context.Context) AttestorOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorOutput)
 }
 
-type AttestorOutput struct {
-	*pulumi.OutputState
-}
+type AttestorOutput struct{ *pulumi.OutputState }
 
 func (AttestorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Attestor)(nil))

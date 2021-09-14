@@ -127,9 +127,7 @@ func (i *Contact) ToContactOutputWithContext(ctx context.Context) ContactOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ContactOutput)
 }
 
-type ContactOutput struct {
-	*pulumi.OutputState
-}
+type ContactOutput struct{ *pulumi.OutputState }
 
 func (ContactOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Contact)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Compute numerical stats over an individual column, including min, max, and quantiles.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2NumericalStatsConfigResponse
     {

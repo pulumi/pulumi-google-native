@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Extracts an archive of the type specified in the specified directory.
+    /// </summary>
     [OutputType]
     public sealed class SoftwareRecipeStepExtractArchiveResponse
     {

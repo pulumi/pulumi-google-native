@@ -4,6 +4,9 @@
 package v2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,4 +30,50 @@ type LookupFolderPolicyResult struct {
 	Name string `pulumi:"name"`
 	// Basic information about the Organization Policy.
 	Spec GoogleCloudOrgpolicyV2PolicySpecResponse `pulumi:"spec"`
+}
+
+func LookupFolderPolicyOutput(ctx *pulumi.Context, args LookupFolderPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupFolderPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupFolderPolicyResult, error) {
+			args := v.(LookupFolderPolicyArgs)
+			r, err := LookupFolderPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupFolderPolicyResultOutput)
+}
+
+type LookupFolderPolicyOutputArgs struct {
+	FolderId pulumi.StringInput `pulumi:"folderId"`
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+}
+
+func (LookupFolderPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFolderPolicyArgs)(nil)).Elem()
+}
+
+type LookupFolderPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupFolderPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFolderPolicyResult)(nil)).Elem()
+}
+
+func (o LookupFolderPolicyResultOutput) ToLookupFolderPolicyResultOutput() LookupFolderPolicyResultOutput {
+	return o
+}
+
+func (o LookupFolderPolicyResultOutput) ToLookupFolderPolicyResultOutputWithContext(ctx context.Context) LookupFolderPolicyResultOutput {
+	return o
+}
+
+// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+func (o LookupFolderPolicyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Basic information about the Organization Policy.
+func (o LookupFolderPolicyResultOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
+	return o.ApplyT(func(v LookupFolderPolicyResult) GoogleCloudOrgpolicyV2PolicySpecResponse { return v.Spec }).(GoogleCloudOrgpolicyV2PolicySpecResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupFolderPolicyResultOutput{})
 }

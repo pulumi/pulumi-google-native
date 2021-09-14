@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Source describes the location of the source used for the build.
+    /// </summary>
     [OutputType]
     public sealed class SourceResponse
     {

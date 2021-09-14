@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Describes a selector for extracting and matching an MSH field to a value.
+    /// </summary>
     [OutputType]
     public sealed class VersionSourceResponse
     {

@@ -13,6 +13,7 @@ __all__ = [
     'GetMigrationJobResult',
     'AwaitableGetMigrationJobResult',
     'get_migration_job',
+    'get_migration_job_output',
 ]
 
 @pulumi.output_type
@@ -293,3 +294,14 @@ def get_migration_job(location: Optional[str] = None,
         type=__ret__.type,
         update_time=__ret__.update_time,
         vpc_peering_connectivity=__ret__.vpc_peering_connectivity)
+
+
+@_utilities.lift_output_func(get_migration_job)
+def get_migration_job_output(location: Optional[pulumi.Input[str]] = None,
+                             migration_job_id: Optional[pulumi.Input[str]] = None,
+                             project: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMigrationJobResult]:
+    """
+    Gets details of a single migration job.
+    """
+    ...

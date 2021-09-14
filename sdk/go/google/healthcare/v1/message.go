@@ -151,9 +151,7 @@ func (i *Message) ToMessageOutputWithContext(ctx context.Context) MessageOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(MessageOutput)
 }
 
-type MessageOutput struct {
-	*pulumi.OutputState
-}
+type MessageOutput struct{ *pulumi.OutputState }
 
 func (MessageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Message)(nil))

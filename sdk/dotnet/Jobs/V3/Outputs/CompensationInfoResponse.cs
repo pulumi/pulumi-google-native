@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Jobs.V3.Outputs
 {
 
+    /// <summary>
+    /// Job compensation details.
+    /// </summary>
     [OutputType]
     public sealed class CompensationInfoResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// This encapsulates a metric property of the form sum(message_count) where name is message_count and function is sum
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1CustomReportMetricResponse
     {

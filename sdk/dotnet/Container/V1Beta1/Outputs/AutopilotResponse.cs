@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Autopilot is the configuration for Autopilot settings on the cluster.
+    /// </summary>
     [OutputType]
     public sealed class AutopilotResponse
     {

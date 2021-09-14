@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A unique identifier for a Cloud Repo.
+    /// </summary>
     [OutputType]
     public sealed class RepoIdResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Message containing what to include in the cache key for a request for Cloud CDN.
+    /// </summary>
     [OutputType]
     public sealed class CacheKeyPolicyResponse
     {

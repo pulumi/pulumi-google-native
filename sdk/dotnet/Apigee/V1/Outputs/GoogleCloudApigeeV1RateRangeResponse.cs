@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// API call volume range and the fees charged when the total number of API calls is within the range.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1RateRangeResponse
     {

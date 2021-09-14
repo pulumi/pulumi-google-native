@@ -106,7 +106,7 @@ func (o PushConfigOutput) ToPushConfigPtrOutput() PushConfigPtrOutput {
 }
 
 func (o PushConfigOutput) ToPushConfigPtrOutputWithContext(ctx context.Context) PushConfigPtrOutput {
-	return o.ApplyT(func(v PushConfig) *PushConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushConfig) *PushConfig {
 		return &v
 	}).(PushConfigPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o PushConfigPtrOutput) ToPushConfigPtrOutputWithContext(ctx context.Contex
 }
 
 func (o PushConfigPtrOutput) Elem() PushConfigOutput {
-	return o.ApplyT(func(v *PushConfig) PushConfig { return *v }).(PushConfigOutput)
+	return o.ApplyT(func(v *PushConfig) PushConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PushConfig
+		return ret
+	}).(PushConfigOutput)
 }
 
 // A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
@@ -240,7 +246,7 @@ func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutput() PushConfigResp
 }
 
 func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
-	return o.ApplyT(func(v PushConfigResponse) *PushConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushConfigResponse) *PushConfigResponse {
 		return &v
 	}).(PushConfigResponsePtrOutput)
 }
@@ -265,7 +271,13 @@ func (o PushConfigResponsePtrOutput) ToPushConfigResponsePtrOutputWithContext(ct
 }
 
 func (o PushConfigResponsePtrOutput) Elem() PushConfigResponseOutput {
-	return o.ApplyT(func(v *PushConfigResponse) PushConfigResponse { return *v }).(PushConfigResponseOutput)
+	return o.ApplyT(func(v *PushConfigResponse) PushConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PushConfigResponse
+		return ret
+	}).(PushConfigResponseOutput)
 }
 
 // A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".

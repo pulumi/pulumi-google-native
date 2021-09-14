@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
+    /// </summary>
     [OutputType]
     public sealed class SourceProvenanceResponse
     {

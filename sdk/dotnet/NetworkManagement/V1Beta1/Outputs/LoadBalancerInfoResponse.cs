@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// For display only. Metadata associated with a load balancer.
+    /// </summary>
     [OutputType]
     public sealed class LoadBalancerInfoResponse
     {

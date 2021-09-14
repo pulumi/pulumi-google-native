@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Time window specified for daily maintenance operations. GCE's internal maintenance will be performed within this window.
+    /// </summary>
     [OutputType]
     public sealed class NodeGroupMaintenanceWindowResponse
     {

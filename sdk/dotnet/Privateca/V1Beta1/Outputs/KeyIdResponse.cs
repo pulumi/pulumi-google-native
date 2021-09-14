@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A KeyId identifies a specific public key, usually by hashing the public key.
+    /// </summary>
     [OutputType]
     public sealed class KeyIdResponse
     {

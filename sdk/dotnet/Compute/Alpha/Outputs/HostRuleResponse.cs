@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// UrlMaps A host-matching rule for a URL. If matched, will use the named PathMatcher to select the BackendService.
+    /// </summary>
     [OutputType]
     public sealed class HostRuleResponse
     {

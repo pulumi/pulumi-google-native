@@ -152,9 +152,7 @@ func (i *OrganizationSecurityPolicy) ToOrganizationSecurityPolicyOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyOutput)
 }
 
-type OrganizationSecurityPolicyOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationSecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSecurityPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationSecurityPolicy)(nil))

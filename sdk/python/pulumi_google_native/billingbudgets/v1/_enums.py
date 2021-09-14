@@ -17,11 +17,17 @@ class GoogleCloudBillingBudgetsV1FilterCalendarPeriod(str, Enum):
     """
     CALENDAR_PERIOD_UNSPECIFIED = "CALENDAR_PERIOD_UNSPECIFIED"
     MONTH = "MONTH"
-    """A month. Month starts on the first day of each month, such as January 1, February 1, March 1, and so on."""
+    """
+    A month. Month starts on the first day of each month, such as January 1, February 1, March 1, and so on.
+    """
     QUARTER = "QUARTER"
-    """A quarter. Quarters start on dates January 1, April 1, July 1, and October 1 of each year."""
+    """
+    A quarter. Quarters start on dates January 1, April 1, July 1, and October 1 of each year.
+    """
     YEAR = "YEAR"
-    """A year. Year starts on January 1."""
+    """
+    A year. Year starts on January 1.
+    """
 
 
 class GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment(str, Enum):
@@ -30,11 +36,17 @@ class GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment(str, Enum):
     """
     CREDIT_TYPES_TREATMENT_UNSPECIFIED = "CREDIT_TYPES_TREATMENT_UNSPECIFIED"
     INCLUDE_ALL_CREDITS = "INCLUDE_ALL_CREDITS"
-    """All types of credit are subtracted from the gross cost to determine the spend for threshold calculations."""
+    """
+    All types of credit are subtracted from the gross cost to determine the spend for threshold calculations.
+    """
     EXCLUDE_ALL_CREDITS = "EXCLUDE_ALL_CREDITS"
-    """All types of credit are added to the net cost to determine the spend for threshold calculations."""
+    """
+    All types of credit are added to the net cost to determine the spend for threshold calculations.
+    """
     INCLUDE_SPECIFIED_CREDITS = "INCLUDE_SPECIFIED_CREDITS"
-    """[Credit types](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type) specified in the credit_types field are subtracted from the gross cost to determine the spend for threshold calculations."""
+    """
+    [Credit types](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type) specified in the credit_types field are subtracted from the gross cost to determine the spend for threshold calculations.
+    """
 
 
 class GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis(str, Enum):
@@ -42,8 +54,14 @@ class GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis(str, Enum):
     Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
     """
     BASIS_UNSPECIFIED = "BASIS_UNSPECIFIED"
-    """Unspecified threshold basis."""
+    """
+    Unspecified threshold basis.
+    """
     CURRENT_SPEND = "CURRENT_SPEND"
-    """Use current spend as the basis for comparison against the threshold."""
+    """
+    Use current spend as the basis for comparison against the threshold.
+    """
     FORECASTED_SPEND = "FORECASTED_SPEND"
-    """Use forecasted spend for the period as the basis for comparison against the threshold. FORECASTED_SPEND can only be set when the budget's time period is a Filter.calendar_period. It cannot be set in combination with Filter.custom_period."""
+    """
+    Use forecasted spend for the period as the basis for comparison against the threshold. FORECASTED_SPEND can only be set when the budget's time period is a Filter.calendar_period. It cannot be set in combination with Filter.custom_period.
+    """

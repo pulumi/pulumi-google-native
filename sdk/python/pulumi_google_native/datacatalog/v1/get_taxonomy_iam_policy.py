@@ -13,6 +13,7 @@ __all__ = [
     'GetTaxonomyIamPolicyResult',
     'AwaitableGetTaxonomyIamPolicyResult',
     'get_taxonomy_iam_policy',
+    'get_taxonomy_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -85,3 +86,14 @@ def get_taxonomy_iam_policy(location: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_taxonomy_iam_policy)
+def get_taxonomy_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
+                                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                                   taxonomy_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTaxonomyIamPolicyResult]:
+    """
+    Gets the IAM policy for a policy tag or a taxonomy.
+    """
+    ...

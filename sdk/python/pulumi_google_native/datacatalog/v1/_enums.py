@@ -20,25 +20,45 @@ class EntryType(str, Enum):
     The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
     """
     ENTRY_TYPE_UNSPECIFIED = "ENTRY_TYPE_UNSPECIFIED"
-    """Default unknown type."""
+    """
+    Default unknown type.
+    """
     TABLE = "TABLE"
-    """Output only. The entry type that has a GoogleSQL schema, including logical views."""
+    """
+    Output only. The entry type that has a GoogleSQL schema, including logical views.
+    """
     MODEL = "MODEL"
-    """Output only. The type of models. For more information, see [Supported models in BigQuery ML] (https://cloud.google.com/bigquery-ml/docs/introduction#supported_models_in)."""
+    """
+    Output only. The type of models. For more information, see [Supported models in BigQuery ML] (https://cloud.google.com/bigquery-ml/docs/introduction#supported_models_in).
+    """
     DATA_STREAM = "DATA_STREAM"
-    """An entry type for streaming entries. For example, a Pub/Sub topic."""
+    """
+    An entry type for streaming entries. For example, a Pub/Sub topic.
+    """
     FILESET = "FILESET"
-    """An entry type for a set of files or objects. For example, a Cloud Storage fileset."""
+    """
+    An entry type for a set of files or objects. For example, a Cloud Storage fileset.
+    """
     CLUSTER = "CLUSTER"
-    """A group of servers that work together. For example, a Kafka cluster."""
+    """
+    A group of servers that work together. For example, a Kafka cluster.
+    """
     DATABASE = "DATABASE"
-    """A database."""
+    """
+    A database.
+    """
     DATA_SOURCE_CONNECTION = "DATA_SOURCE_CONNECTION"
-    """Output only. Connection to a data source. For example, a BigQuery connection."""
+    """
+    Output only. Connection to a data source. For example, a BigQuery connection.
+    """
     ROUTINE = "ROUTINE"
-    """Output only. Routine, for example, a BigQuery routine."""
+    """
+    Output only. Routine, for example, a BigQuery routine.
+    """
     SERVICE = "SERVICE"
-    """A service, for example, a Dataproc Metastore service."""
+    """
+    A service, for example, a Dataproc Metastore service.
+    """
 
 
 class GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType(str, Enum):
@@ -46,9 +66,13 @@ class GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType(str, Enum):
     The type of the BigQuery connection.
     """
     CONNECTION_TYPE_UNSPECIFIED = "CONNECTION_TYPE_UNSPECIFIED"
-    """Unspecified type."""
+    """
+    Unspecified type.
+    """
     CLOUD_SQL = "CLOUD_SQL"
-    """Cloud SQL connection."""
+    """
+    Cloud SQL connection.
+    """
 
 
 class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType(str, Enum):
@@ -56,11 +80,17 @@ class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType(str, Enum):
     Type of the Cloud SQL database.
     """
     DATABASE_TYPE_UNSPECIFIED = "DATABASE_TYPE_UNSPECIFIED"
-    """Unspecified database type."""
+    """
+    Unspecified database type.
+    """
     POSTGRES = "POSTGRES"
-    """Cloud SQL for PostgreSQL."""
+    """
+    Cloud SQL for PostgreSQL.
+    """
     MYSQL = "MYSQL"
-    """Cloud SQL for MySQL."""
+    """
+    Cloud SQL for MySQL.
+    """
 
 
 class GoogleCloudDatacatalogV1DatabaseTableSpecType(str, Enum):
@@ -68,11 +98,17 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecType(str, Enum):
     Type of this table.
     """
     TABLE_TYPE_UNSPECIFIED = "TABLE_TYPE_UNSPECIFIED"
-    """Default unknown table type."""
+    """
+    Default unknown table type.
+    """
     NATIVE = "NATIVE"
-    """Native table."""
+    """
+    Native table.
+    """
     EXTERNAL = "EXTERNAL"
-    """External table."""
+    """
+    External table.
+    """
 
 
 class GoogleCloudDatacatalogV1RoutineSpecArgumentMode(str, Enum):
@@ -80,13 +116,21 @@ class GoogleCloudDatacatalogV1RoutineSpecArgumentMode(str, Enum):
     Specifies whether the argument is input or output.
     """
     MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
-    """Unspecified mode."""
+    """
+    Unspecified mode.
+    """
     IN_ = "IN"
-    """The argument is input-only."""
+    """
+    The argument is input-only.
+    """
     OUT = "OUT"
-    """The argument is output-only."""
+    """
+    The argument is output-only.
+    """
     INOUT = "INOUT"
-    """The argument is both an input and an output."""
+    """
+    The argument is both an input and an output.
+    """
 
 
 class GoogleCloudDatacatalogV1RoutineSpecRoutineType(str, Enum):
@@ -94,15 +138,25 @@ class GoogleCloudDatacatalogV1RoutineSpecRoutineType(str, Enum):
     The type of the routine.
     """
     ROUTINE_TYPE_UNSPECIFIED = "ROUTINE_TYPE_UNSPECIFIED"
-    """Unspecified type."""
+    """
+    Unspecified type.
+    """
     SCALAR_FUNCTION = "SCALAR_FUNCTION"
-    """Non-builtin permanent scalar function."""
+    """
+    Non-builtin permanent scalar function.
+    """
     PROCEDURE = "PROCEDURE"
-    """Stored procedure."""
+    """
+    Stored procedure.
+    """
 
 
 class TaxonomyActivatedPolicyTypesItem(str, Enum):
     POLICY_TYPE_UNSPECIFIED = "POLICY_TYPE_UNSPECIFIED"
-    """Unspecified policy type."""
+    """
+    Unspecified policy type.
+    """
     FINE_GRAINED_ACCESS_CONTROL = "FINE_GRAINED_ACCESS_CONTROL"
-    """Fine-grained access control policy that enables access control on tagged sub-resources."""
+    """
+    Fine-grained access control policy that enables access control on tagged sub-resources.
+    """

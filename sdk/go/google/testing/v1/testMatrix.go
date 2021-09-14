@@ -153,9 +153,7 @@ func (i *TestMatrix) ToTestMatrixOutputWithContext(ctx context.Context) TestMatr
 	return pulumi.ToOutputWithContext(ctx, i).(TestMatrixOutput)
 }
 
-type TestMatrixOutput struct {
-	*pulumi.OutputState
-}
+type TestMatrixOutput struct{ *pulumi.OutputState }
 
 func (TestMatrixOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TestMatrix)(nil))

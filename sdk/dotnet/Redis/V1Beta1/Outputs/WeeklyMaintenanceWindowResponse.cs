@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Redis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
+    /// </summary>
     [OutputType]
     public sealed class WeeklyMaintenanceWindowResponse
     {

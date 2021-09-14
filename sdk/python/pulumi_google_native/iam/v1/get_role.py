@@ -12,6 +12,7 @@ __all__ = [
     'GetRoleResult',
     'AwaitableGetRoleResult',
     'get_role',
+    'get_role_output',
 ]
 
 @pulumi.output_type
@@ -134,3 +135,13 @@ def get_role(project: Optional[str] = None,
         name=__ret__.name,
         stage=__ret__.stage,
         title=__ret__.title)
+
+
+@_utilities.lift_output_func(get_role)
+def get_role_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                    role_id: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
+    """
+    Gets the definition of a Role.
+    """
+    ...

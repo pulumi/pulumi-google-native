@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
 {
 
+    /// <summary>
+    /// CommonFeatureState contains Hub-wide Feature status information.
+    /// </summary>
     [OutputType]
     public sealed class CommonFeatureStateResponse
     {

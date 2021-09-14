@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Description of an interstitial value between transforms in an execution stage.
+    /// </summary>
     [OutputType]
     public sealed class ComponentSourceResponse
     {

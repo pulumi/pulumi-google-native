@@ -106,7 +106,7 @@ func (o AccountOutput) ToAccountPtrOutput() AccountPtrOutput {
 }
 
 func (o AccountOutput) ToAccountPtrOutputWithContext(ctx context.Context) AccountPtrOutput {
-	return o.ApplyT(func(v Account) *Account {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Account) *Account {
 		return &v
 	}).(AccountPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o AccountPtrOutput) ToAccountPtrOutputWithContext(ctx context.Context) Acc
 }
 
 func (o AccountPtrOutput) Elem() AccountOutput {
-	return o.ApplyT(func(v *Account) Account { return *v }).(AccountOutput)
+	return o.ApplyT(func(v *Account) Account {
+		if v != nil {
+			return *v
+		}
+		var ret Account
+		return ret
+	}).(AccountOutput)
 }
 
 // An automatic google login account.
@@ -240,7 +246,7 @@ func (o AccountResponseOutput) ToAccountResponsePtrOutput() AccountResponsePtrOu
 }
 
 func (o AccountResponseOutput) ToAccountResponsePtrOutputWithContext(ctx context.Context) AccountResponsePtrOutput {
-	return o.ApplyT(func(v AccountResponse) *AccountResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountResponse) *AccountResponse {
 		return &v
 	}).(AccountResponsePtrOutput)
 }
@@ -265,7 +271,13 @@ func (o AccountResponsePtrOutput) ToAccountResponsePtrOutputWithContext(ctx cont
 }
 
 func (o AccountResponsePtrOutput) Elem() AccountResponseOutput {
-	return o.ApplyT(func(v *AccountResponse) AccountResponse { return *v }).(AccountResponseOutput)
+	return o.ApplyT(func(v *AccountResponse) AccountResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AccountResponse
+		return ret
+	}).(AccountResponseOutput)
 }
 
 // An automatic google login account.
@@ -501,7 +513,7 @@ func (o AndroidDeviceListOutput) ToAndroidDeviceListPtrOutput() AndroidDeviceLis
 }
 
 func (o AndroidDeviceListOutput) ToAndroidDeviceListPtrOutputWithContext(ctx context.Context) AndroidDeviceListPtrOutput {
-	return o.ApplyT(func(v AndroidDeviceList) *AndroidDeviceList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidDeviceList) *AndroidDeviceList {
 		return &v
 	}).(AndroidDeviceListPtrOutput)
 }
@@ -526,7 +538,13 @@ func (o AndroidDeviceListPtrOutput) ToAndroidDeviceListPtrOutputWithContext(ctx 
 }
 
 func (o AndroidDeviceListPtrOutput) Elem() AndroidDeviceListOutput {
-	return o.ApplyT(func(v *AndroidDeviceList) AndroidDeviceList { return *v }).(AndroidDeviceListOutput)
+	return o.ApplyT(func(v *AndroidDeviceList) AndroidDeviceList {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidDeviceList
+		return ret
+	}).(AndroidDeviceListOutput)
 }
 
 // A list of Android devices.
@@ -635,7 +653,7 @@ func (o AndroidDeviceListResponseOutput) ToAndroidDeviceListResponsePtrOutput() 
 }
 
 func (o AndroidDeviceListResponseOutput) ToAndroidDeviceListResponsePtrOutputWithContext(ctx context.Context) AndroidDeviceListResponsePtrOutput {
-	return o.ApplyT(func(v AndroidDeviceListResponse) *AndroidDeviceListResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidDeviceListResponse) *AndroidDeviceListResponse {
 		return &v
 	}).(AndroidDeviceListResponsePtrOutput)
 }
@@ -660,7 +678,13 @@ func (o AndroidDeviceListResponsePtrOutput) ToAndroidDeviceListResponsePtrOutput
 }
 
 func (o AndroidDeviceListResponsePtrOutput) Elem() AndroidDeviceListResponseOutput {
-	return o.ApplyT(func(v *AndroidDeviceListResponse) AndroidDeviceListResponse { return *v }).(AndroidDeviceListResponseOutput)
+	return o.ApplyT(func(v *AndroidDeviceListResponse) AndroidDeviceListResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidDeviceListResponse
+		return ret
+	}).(AndroidDeviceListResponseOutput)
 }
 
 // A list of Android devices.
@@ -928,7 +952,7 @@ func (o AndroidInstrumentationTestOutput) ToAndroidInstrumentationTestPtrOutput(
 }
 
 func (o AndroidInstrumentationTestOutput) ToAndroidInstrumentationTestPtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestPtrOutput {
-	return o.ApplyT(func(v AndroidInstrumentationTest) *AndroidInstrumentationTest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidInstrumentationTest) *AndroidInstrumentationTest {
 		return &v
 	}).(AndroidInstrumentationTestPtrOutput)
 }
@@ -995,7 +1019,13 @@ func (o AndroidInstrumentationTestPtrOutput) ToAndroidInstrumentationTestPtrOutp
 }
 
 func (o AndroidInstrumentationTestPtrOutput) Elem() AndroidInstrumentationTestOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTest) AndroidInstrumentationTest { return *v }).(AndroidInstrumentationTestOutput)
+	return o.ApplyT(func(v *AndroidInstrumentationTest) AndroidInstrumentationTest {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidInstrumentationTest
+		return ret
+	}).(AndroidInstrumentationTestOutput)
 }
 
 // The APK for the application under test.
@@ -1216,7 +1246,7 @@ func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestRe
 }
 
 func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponsePtrOutput {
-	return o.ApplyT(func(v AndroidInstrumentationTestResponse) *AndroidInstrumentationTestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidInstrumentationTestResponse) *AndroidInstrumentationTestResponse {
 		return &v
 	}).(AndroidInstrumentationTestResponsePtrOutput)
 }
@@ -1281,7 +1311,13 @@ func (o AndroidInstrumentationTestResponsePtrOutput) ToAndroidInstrumentationTes
 }
 
 func (o AndroidInstrumentationTestResponsePtrOutput) Elem() AndroidInstrumentationTestResponseOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) AndroidInstrumentationTestResponse { return *v }).(AndroidInstrumentationTestResponseOutput)
+	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) AndroidInstrumentationTestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidInstrumentationTestResponse
+		return ret
+	}).(AndroidInstrumentationTestResponseOutput)
 }
 
 // The APK for the application under test.
@@ -1482,7 +1518,7 @@ func (o AndroidMatrixOutput) ToAndroidMatrixPtrOutput() AndroidMatrixPtrOutput {
 }
 
 func (o AndroidMatrixOutput) ToAndroidMatrixPtrOutputWithContext(ctx context.Context) AndroidMatrixPtrOutput {
-	return o.ApplyT(func(v AndroidMatrix) *AndroidMatrix {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidMatrix) *AndroidMatrix {
 		return &v
 	}).(AndroidMatrixPtrOutput)
 }
@@ -1522,7 +1558,13 @@ func (o AndroidMatrixPtrOutput) ToAndroidMatrixPtrOutputWithContext(ctx context.
 }
 
 func (o AndroidMatrixPtrOutput) Elem() AndroidMatrixOutput {
-	return o.ApplyT(func(v *AndroidMatrix) AndroidMatrix { return *v }).(AndroidMatrixOutput)
+	return o.ApplyT(func(v *AndroidMatrix) AndroidMatrix {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidMatrix
+		return ret
+	}).(AndroidMatrixOutput)
 }
 
 // The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
@@ -1673,7 +1715,7 @@ func (o AndroidMatrixResponseOutput) ToAndroidMatrixResponsePtrOutput() AndroidM
 }
 
 func (o AndroidMatrixResponseOutput) ToAndroidMatrixResponsePtrOutputWithContext(ctx context.Context) AndroidMatrixResponsePtrOutput {
-	return o.ApplyT(func(v AndroidMatrixResponse) *AndroidMatrixResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidMatrixResponse) *AndroidMatrixResponse {
 		return &v
 	}).(AndroidMatrixResponsePtrOutput)
 }
@@ -1713,7 +1755,13 @@ func (o AndroidMatrixResponsePtrOutput) ToAndroidMatrixResponsePtrOutputWithCont
 }
 
 func (o AndroidMatrixResponsePtrOutput) Elem() AndroidMatrixResponseOutput {
-	return o.ApplyT(func(v *AndroidMatrixResponse) AndroidMatrixResponse { return *v }).(AndroidMatrixResponseOutput)
+	return o.ApplyT(func(v *AndroidMatrixResponse) AndroidMatrixResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidMatrixResponse
+		return ret
+	}).(AndroidMatrixResponseOutput)
 }
 
 // The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
@@ -1888,7 +1936,7 @@ func (o AndroidRoboTestOutput) ToAndroidRoboTestPtrOutput() AndroidRoboTestPtrOu
 }
 
 func (o AndroidRoboTestOutput) ToAndroidRoboTestPtrOutputWithContext(ctx context.Context) AndroidRoboTestPtrOutput {
-	return o.ApplyT(func(v AndroidRoboTest) *AndroidRoboTest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidRoboTest) *AndroidRoboTest {
 		return &v
 	}).(AndroidRoboTestPtrOutput)
 }
@@ -1958,7 +2006,13 @@ func (o AndroidRoboTestPtrOutput) ToAndroidRoboTestPtrOutputWithContext(ctx cont
 }
 
 func (o AndroidRoboTestPtrOutput) Elem() AndroidRoboTestOutput {
-	return o.ApplyT(func(v *AndroidRoboTest) AndroidRoboTest { return *v }).(AndroidRoboTestOutput)
+	return o.ApplyT(func(v *AndroidRoboTest) AndroidRoboTest {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidRoboTest
+		return ret
+	}).(AndroidRoboTestOutput)
 }
 
 // The APK for the application under test.
@@ -2193,7 +2247,7 @@ func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponsePtrOutput() Andr
 }
 
 func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponsePtrOutputWithContext(ctx context.Context) AndroidRoboTestResponsePtrOutput {
-	return o.ApplyT(func(v AndroidRoboTestResponse) *AndroidRoboTestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidRoboTestResponse) *AndroidRoboTestResponse {
 		return &v
 	}).(AndroidRoboTestResponsePtrOutput)
 }
@@ -2263,7 +2317,13 @@ func (o AndroidRoboTestResponsePtrOutput) ToAndroidRoboTestResponsePtrOutputWith
 }
 
 func (o AndroidRoboTestResponsePtrOutput) Elem() AndroidRoboTestResponseOutput {
-	return o.ApplyT(func(v *AndroidRoboTestResponse) AndroidRoboTestResponse { return *v }).(AndroidRoboTestResponseOutput)
+	return o.ApplyT(func(v *AndroidRoboTestResponse) AndroidRoboTestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidRoboTestResponse
+		return ret
+	}).(AndroidRoboTestResponseOutput)
 }
 
 // The APK for the application under test.
@@ -2478,7 +2538,7 @@ func (o AndroidTestLoopOutput) ToAndroidTestLoopPtrOutput() AndroidTestLoopPtrOu
 }
 
 func (o AndroidTestLoopOutput) ToAndroidTestLoopPtrOutputWithContext(ctx context.Context) AndroidTestLoopPtrOutput {
-	return o.ApplyT(func(v AndroidTestLoop) *AndroidTestLoop {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidTestLoop) *AndroidTestLoop {
 		return &v
 	}).(AndroidTestLoopPtrOutput)
 }
@@ -2523,7 +2583,13 @@ func (o AndroidTestLoopPtrOutput) ToAndroidTestLoopPtrOutputWithContext(ctx cont
 }
 
 func (o AndroidTestLoopPtrOutput) Elem() AndroidTestLoopOutput {
-	return o.ApplyT(func(v *AndroidTestLoop) AndroidTestLoop { return *v }).(AndroidTestLoopOutput)
+	return o.ApplyT(func(v *AndroidTestLoop) AndroidTestLoop {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidTestLoop
+		return ret
+	}).(AndroidTestLoopOutput)
 }
 
 // The APK for the application under test.
@@ -2688,7 +2754,7 @@ func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponsePtrOutput() Andr
 }
 
 func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponsePtrOutputWithContext(ctx context.Context) AndroidTestLoopResponsePtrOutput {
-	return o.ApplyT(func(v AndroidTestLoopResponse) *AndroidTestLoopResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidTestLoopResponse) *AndroidTestLoopResponse {
 		return &v
 	}).(AndroidTestLoopResponsePtrOutput)
 }
@@ -2733,7 +2799,13 @@ func (o AndroidTestLoopResponsePtrOutput) ToAndroidTestLoopResponsePtrOutputWith
 }
 
 func (o AndroidTestLoopResponsePtrOutput) Elem() AndroidTestLoopResponseOutput {
-	return o.ApplyT(func(v *AndroidTestLoopResponse) AndroidTestLoopResponse { return *v }).(AndroidTestLoopResponseOutput)
+	return o.ApplyT(func(v *AndroidTestLoopResponse) AndroidTestLoopResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidTestLoopResponse
+		return ret
+	}).(AndroidTestLoopResponseOutput)
 }
 
 // The APK for the application under test.
@@ -3100,7 +3172,7 @@ func (o AppBundleOutput) ToAppBundlePtrOutput() AppBundlePtrOutput {
 }
 
 func (o AppBundleOutput) ToAppBundlePtrOutputWithContext(ctx context.Context) AppBundlePtrOutput {
-	return o.ApplyT(func(v AppBundle) *AppBundle {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppBundle) *AppBundle {
 		return &v
 	}).(AppBundlePtrOutput)
 }
@@ -3125,7 +3197,13 @@ func (o AppBundlePtrOutput) ToAppBundlePtrOutputWithContext(ctx context.Context)
 }
 
 func (o AppBundlePtrOutput) Elem() AppBundleOutput {
-	return o.ApplyT(func(v *AppBundle) AppBundle { return *v }).(AppBundleOutput)
+	return o.ApplyT(func(v *AppBundle) AppBundle {
+		if v != nil {
+			return *v
+		}
+		var ret AppBundle
+		return ret
+	}).(AppBundleOutput)
 }
 
 // .aab file representing the app bundle under test.
@@ -3234,7 +3312,7 @@ func (o AppBundleResponseOutput) ToAppBundleResponsePtrOutput() AppBundleRespons
 }
 
 func (o AppBundleResponseOutput) ToAppBundleResponsePtrOutputWithContext(ctx context.Context) AppBundleResponsePtrOutput {
-	return o.ApplyT(func(v AppBundleResponse) *AppBundleResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppBundleResponse) *AppBundleResponse {
 		return &v
 	}).(AppBundleResponsePtrOutput)
 }
@@ -3259,7 +3337,13 @@ func (o AppBundleResponsePtrOutput) ToAppBundleResponsePtrOutputWithContext(ctx 
 }
 
 func (o AppBundleResponsePtrOutput) Elem() AppBundleResponseOutput {
-	return o.ApplyT(func(v *AppBundleResponse) AppBundleResponse { return *v }).(AppBundleResponseOutput)
+	return o.ApplyT(func(v *AppBundleResponse) AppBundleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppBundleResponse
+		return ret
+	}).(AppBundleResponseOutput)
 }
 
 // .aab file representing the app bundle under test.
@@ -3372,7 +3456,7 @@ func (o ClientInfoOutput) ToClientInfoPtrOutput() ClientInfoPtrOutput {
 }
 
 func (o ClientInfoOutput) ToClientInfoPtrOutputWithContext(ctx context.Context) ClientInfoPtrOutput {
-	return o.ApplyT(func(v ClientInfo) *ClientInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientInfo) *ClientInfo {
 		return &v
 	}).(ClientInfoPtrOutput)
 }
@@ -3402,7 +3486,13 @@ func (o ClientInfoPtrOutput) ToClientInfoPtrOutputWithContext(ctx context.Contex
 }
 
 func (o ClientInfoPtrOutput) Elem() ClientInfoOutput {
-	return o.ApplyT(func(v *ClientInfo) ClientInfo { return *v }).(ClientInfoOutput)
+	return o.ApplyT(func(v *ClientInfo) ClientInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ClientInfo
+		return ret
+	}).(ClientInfoOutput)
 }
 
 // The list of detailed information about client.
@@ -3743,7 +3833,7 @@ func (o ClientInfoResponseOutput) ToClientInfoResponsePtrOutput() ClientInfoResp
 }
 
 func (o ClientInfoResponseOutput) ToClientInfoResponsePtrOutputWithContext(ctx context.Context) ClientInfoResponsePtrOutput {
-	return o.ApplyT(func(v ClientInfoResponse) *ClientInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientInfoResponse) *ClientInfoResponse {
 		return &v
 	}).(ClientInfoResponsePtrOutput)
 }
@@ -3773,7 +3863,13 @@ func (o ClientInfoResponsePtrOutput) ToClientInfoResponsePtrOutputWithContext(ct
 }
 
 func (o ClientInfoResponsePtrOutput) Elem() ClientInfoResponseOutput {
-	return o.ApplyT(func(v *ClientInfoResponse) ClientInfoResponse { return *v }).(ClientInfoResponseOutput)
+	return o.ApplyT(func(v *ClientInfoResponse) ClientInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClientInfoResponse
+		return ret
+	}).(ClientInfoResponseOutput)
 }
 
 // The list of detailed information about client.
@@ -4118,7 +4214,7 @@ func (o EnvironmentMatrixOutput) ToEnvironmentMatrixPtrOutput() EnvironmentMatri
 }
 
 func (o EnvironmentMatrixOutput) ToEnvironmentMatrixPtrOutputWithContext(ctx context.Context) EnvironmentMatrixPtrOutput {
-	return o.ApplyT(func(v EnvironmentMatrix) *EnvironmentMatrix {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentMatrix) *EnvironmentMatrix {
 		return &v
 	}).(EnvironmentMatrixPtrOutput)
 }
@@ -4153,7 +4249,13 @@ func (o EnvironmentMatrixPtrOutput) ToEnvironmentMatrixPtrOutputWithContext(ctx 
 }
 
 func (o EnvironmentMatrixPtrOutput) Elem() EnvironmentMatrixOutput {
-	return o.ApplyT(func(v *EnvironmentMatrix) EnvironmentMatrix { return *v }).(EnvironmentMatrixOutput)
+	return o.ApplyT(func(v *EnvironmentMatrix) EnvironmentMatrix {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentMatrix
+		return ret
+	}).(EnvironmentMatrixOutput)
 }
 
 // A list of Android devices; the test will be run only on the specified devices.
@@ -4290,7 +4392,7 @@ func (o EnvironmentMatrixResponseOutput) ToEnvironmentMatrixResponsePtrOutput() 
 }
 
 func (o EnvironmentMatrixResponseOutput) ToEnvironmentMatrixResponsePtrOutputWithContext(ctx context.Context) EnvironmentMatrixResponsePtrOutput {
-	return o.ApplyT(func(v EnvironmentMatrixResponse) *EnvironmentMatrixResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentMatrixResponse) *EnvironmentMatrixResponse {
 		return &v
 	}).(EnvironmentMatrixResponsePtrOutput)
 }
@@ -4325,7 +4427,13 @@ func (o EnvironmentMatrixResponsePtrOutput) ToEnvironmentMatrixResponsePtrOutput
 }
 
 func (o EnvironmentMatrixResponsePtrOutput) Elem() EnvironmentMatrixResponseOutput {
-	return o.ApplyT(func(v *EnvironmentMatrixResponse) EnvironmentMatrixResponse { return *v }).(EnvironmentMatrixResponseOutput)
+	return o.ApplyT(func(v *EnvironmentMatrixResponse) EnvironmentMatrixResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentMatrixResponse
+		return ret
+	}).(EnvironmentMatrixResponseOutput)
 }
 
 // A list of Android devices; the test will be run only on the specified devices.
@@ -4761,7 +4869,7 @@ func (o FileReferenceOutput) ToFileReferencePtrOutput() FileReferencePtrOutput {
 }
 
 func (o FileReferenceOutput) ToFileReferencePtrOutputWithContext(ctx context.Context) FileReferencePtrOutput {
-	return o.ApplyT(func(v FileReference) *FileReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileReference) *FileReference {
 		return &v
 	}).(FileReferencePtrOutput)
 }
@@ -4786,7 +4894,13 @@ func (o FileReferencePtrOutput) ToFileReferencePtrOutputWithContext(ctx context.
 }
 
 func (o FileReferencePtrOutput) Elem() FileReferenceOutput {
-	return o.ApplyT(func(v *FileReference) FileReference { return *v }).(FileReferenceOutput)
+	return o.ApplyT(func(v *FileReference) FileReference {
+		if v != nil {
+			return *v
+		}
+		var ret FileReference
+		return ret
+	}).(FileReferenceOutput)
 }
 
 // A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
@@ -4940,7 +5054,7 @@ func (o FileReferenceResponseOutput) ToFileReferenceResponsePtrOutput() FileRefe
 }
 
 func (o FileReferenceResponseOutput) ToFileReferenceResponsePtrOutputWithContext(ctx context.Context) FileReferenceResponsePtrOutput {
-	return o.ApplyT(func(v FileReferenceResponse) *FileReferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileReferenceResponse) *FileReferenceResponse {
 		return &v
 	}).(FileReferenceResponsePtrOutput)
 }
@@ -4965,7 +5079,13 @@ func (o FileReferenceResponsePtrOutput) ToFileReferenceResponsePtrOutputWithCont
 }
 
 func (o FileReferenceResponsePtrOutput) Elem() FileReferenceResponseOutput {
-	return o.ApplyT(func(v *FileReferenceResponse) FileReferenceResponse { return *v }).(FileReferenceResponseOutput)
+	return o.ApplyT(func(v *FileReferenceResponse) FileReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FileReferenceResponse
+		return ret
+	}).(FileReferenceResponseOutput)
 }
 
 // A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
@@ -5090,7 +5210,7 @@ func (o GoogleAutoOutput) ToGoogleAutoPtrOutput() GoogleAutoPtrOutput {
 }
 
 func (o GoogleAutoOutput) ToGoogleAutoPtrOutputWithContext(ctx context.Context) GoogleAutoPtrOutput {
-	return o.ApplyT(func(v GoogleAuto) *GoogleAuto {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleAuto) *GoogleAuto {
 		return &v
 	}).(GoogleAutoPtrOutput)
 }
@@ -5110,7 +5230,13 @@ func (o GoogleAutoPtrOutput) ToGoogleAutoPtrOutputWithContext(ctx context.Contex
 }
 
 func (o GoogleAutoPtrOutput) Elem() GoogleAutoOutput {
-	return o.ApplyT(func(v *GoogleAuto) GoogleAuto { return *v }).(GoogleAutoOutput)
+	return o.ApplyT(func(v *GoogleAuto) GoogleAuto {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleAuto
+		return ret
+	}).(GoogleAutoOutput)
 }
 
 // Enables automatic Google account login. If set, the service automatically generates a Google test account and adds it to the device, before executing the test. Note that test accounts might be reused. Many applications show their full set of functionalities when an account is present on the device. Logging into the device with these generated accounts allows testing more functionalities.
@@ -5205,7 +5331,7 @@ func (o GoogleAutoResponseOutput) ToGoogleAutoResponsePtrOutput() GoogleAutoResp
 }
 
 func (o GoogleAutoResponseOutput) ToGoogleAutoResponsePtrOutputWithContext(ctx context.Context) GoogleAutoResponsePtrOutput {
-	return o.ApplyT(func(v GoogleAutoResponse) *GoogleAutoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleAutoResponse) *GoogleAutoResponse {
 		return &v
 	}).(GoogleAutoResponsePtrOutput)
 }
@@ -5225,7 +5351,13 @@ func (o GoogleAutoResponsePtrOutput) ToGoogleAutoResponsePtrOutputWithContext(ct
 }
 
 func (o GoogleAutoResponsePtrOutput) Elem() GoogleAutoResponseOutput {
-	return o.ApplyT(func(v *GoogleAutoResponse) GoogleAutoResponse { return *v }).(GoogleAutoResponseOutput)
+	return o.ApplyT(func(v *GoogleAutoResponse) GoogleAutoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleAutoResponse
+		return ret
+	}).(GoogleAutoResponseOutput)
 }
 
 // A storage location within Google cloud storage (GCS).
@@ -5324,7 +5456,7 @@ func (o GoogleCloudStorageOutput) ToGoogleCloudStoragePtrOutput() GoogleCloudSto
 }
 
 func (o GoogleCloudStorageOutput) ToGoogleCloudStoragePtrOutputWithContext(ctx context.Context) GoogleCloudStoragePtrOutput {
-	return o.ApplyT(func(v GoogleCloudStorage) *GoogleCloudStorage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudStorage) *GoogleCloudStorage {
 		return &v
 	}).(GoogleCloudStoragePtrOutput)
 }
@@ -5349,7 +5481,13 @@ func (o GoogleCloudStoragePtrOutput) ToGoogleCloudStoragePtrOutputWithContext(ct
 }
 
 func (o GoogleCloudStoragePtrOutput) Elem() GoogleCloudStorageOutput {
-	return o.ApplyT(func(v *GoogleCloudStorage) GoogleCloudStorage { return *v }).(GoogleCloudStorageOutput)
+	return o.ApplyT(func(v *GoogleCloudStorage) GoogleCloudStorage {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudStorage
+		return ret
+	}).(GoogleCloudStorageOutput)
 }
 
 // The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
@@ -5458,7 +5596,7 @@ func (o GoogleCloudStorageResponseOutput) ToGoogleCloudStorageResponsePtrOutput(
 }
 
 func (o GoogleCloudStorageResponseOutput) ToGoogleCloudStorageResponsePtrOutputWithContext(ctx context.Context) GoogleCloudStorageResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudStorageResponse) *GoogleCloudStorageResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudStorageResponse) *GoogleCloudStorageResponse {
 		return &v
 	}).(GoogleCloudStorageResponsePtrOutput)
 }
@@ -5483,7 +5621,13 @@ func (o GoogleCloudStorageResponsePtrOutput) ToGoogleCloudStorageResponsePtrOutp
 }
 
 func (o GoogleCloudStorageResponsePtrOutput) Elem() GoogleCloudStorageResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudStorageResponse) GoogleCloudStorageResponse { return *v }).(GoogleCloudStorageResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudStorageResponse) GoogleCloudStorageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudStorageResponse
+		return ret
+	}).(GoogleCloudStorageResponseOutput)
 }
 
 // The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
@@ -5955,7 +6099,7 @@ func (o IosDeviceListOutput) ToIosDeviceListPtrOutput() IosDeviceListPtrOutput {
 }
 
 func (o IosDeviceListOutput) ToIosDeviceListPtrOutputWithContext(ctx context.Context) IosDeviceListPtrOutput {
-	return o.ApplyT(func(v IosDeviceList) *IosDeviceList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosDeviceList) *IosDeviceList {
 		return &v
 	}).(IosDeviceListPtrOutput)
 }
@@ -5980,7 +6124,13 @@ func (o IosDeviceListPtrOutput) ToIosDeviceListPtrOutputWithContext(ctx context.
 }
 
 func (o IosDeviceListPtrOutput) Elem() IosDeviceListOutput {
-	return o.ApplyT(func(v *IosDeviceList) IosDeviceList { return *v }).(IosDeviceListOutput)
+	return o.ApplyT(func(v *IosDeviceList) IosDeviceList {
+		if v != nil {
+			return *v
+		}
+		var ret IosDeviceList
+		return ret
+	}).(IosDeviceListOutput)
 }
 
 // A list of iOS devices.
@@ -6089,7 +6239,7 @@ func (o IosDeviceListResponseOutput) ToIosDeviceListResponsePtrOutput() IosDevic
 }
 
 func (o IosDeviceListResponseOutput) ToIosDeviceListResponsePtrOutputWithContext(ctx context.Context) IosDeviceListResponsePtrOutput {
-	return o.ApplyT(func(v IosDeviceListResponse) *IosDeviceListResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosDeviceListResponse) *IosDeviceListResponse {
 		return &v
 	}).(IosDeviceListResponsePtrOutput)
 }
@@ -6114,7 +6264,13 @@ func (o IosDeviceListResponsePtrOutput) ToIosDeviceListResponsePtrOutputWithCont
 }
 
 func (o IosDeviceListResponsePtrOutput) Elem() IosDeviceListResponseOutput {
-	return o.ApplyT(func(v *IosDeviceListResponse) IosDeviceListResponse { return *v }).(IosDeviceListResponseOutput)
+	return o.ApplyT(func(v *IosDeviceListResponse) IosDeviceListResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IosDeviceListResponse
+		return ret
+	}).(IosDeviceListResponseOutput)
 }
 
 // A list of iOS devices.
@@ -6354,7 +6510,7 @@ func (o IosTestLoopOutput) ToIosTestLoopPtrOutput() IosTestLoopPtrOutput {
 }
 
 func (o IosTestLoopOutput) ToIosTestLoopPtrOutputWithContext(ctx context.Context) IosTestLoopPtrOutput {
-	return o.ApplyT(func(v IosTestLoop) *IosTestLoop {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosTestLoop) *IosTestLoop {
 		return &v
 	}).(IosTestLoopPtrOutput)
 }
@@ -6384,7 +6540,13 @@ func (o IosTestLoopPtrOutput) ToIosTestLoopPtrOutputWithContext(ctx context.Cont
 }
 
 func (o IosTestLoopPtrOutput) Elem() IosTestLoopOutput {
-	return o.ApplyT(func(v *IosTestLoop) IosTestLoop { return *v }).(IosTestLoopOutput)
+	return o.ApplyT(func(v *IosTestLoop) IosTestLoop {
+		if v != nil {
+			return *v
+		}
+		var ret IosTestLoop
+		return ret
+	}).(IosTestLoopOutput)
 }
 
 // The .ipa of the application to test.
@@ -6511,7 +6673,7 @@ func (o IosTestLoopResponseOutput) ToIosTestLoopResponsePtrOutput() IosTestLoopR
 }
 
 func (o IosTestLoopResponseOutput) ToIosTestLoopResponsePtrOutputWithContext(ctx context.Context) IosTestLoopResponsePtrOutput {
-	return o.ApplyT(func(v IosTestLoopResponse) *IosTestLoopResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosTestLoopResponse) *IosTestLoopResponse {
 		return &v
 	}).(IosTestLoopResponsePtrOutput)
 }
@@ -6546,7 +6708,13 @@ func (o IosTestLoopResponsePtrOutput) ToIosTestLoopResponsePtrOutputWithContext(
 }
 
 func (o IosTestLoopResponsePtrOutput) Elem() IosTestLoopResponseOutput {
-	return o.ApplyT(func(v *IosTestLoopResponse) IosTestLoopResponse { return *v }).(IosTestLoopResponseOutput)
+	return o.ApplyT(func(v *IosTestLoopResponse) IosTestLoopResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IosTestLoopResponse
+		return ret
+	}).(IosTestLoopResponseOutput)
 }
 
 // The bundle id for the application under test.
@@ -6687,7 +6855,7 @@ func (o IosTestSetupOutput) ToIosTestSetupPtrOutput() IosTestSetupPtrOutput {
 }
 
 func (o IosTestSetupOutput) ToIosTestSetupPtrOutputWithContext(ctx context.Context) IosTestSetupPtrOutput {
-	return o.ApplyT(func(v IosTestSetup) *IosTestSetup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosTestSetup) *IosTestSetup {
 		return &v
 	}).(IosTestSetupPtrOutput)
 }
@@ -6727,7 +6895,13 @@ func (o IosTestSetupPtrOutput) ToIosTestSetupPtrOutputWithContext(ctx context.Co
 }
 
 func (o IosTestSetupPtrOutput) Elem() IosTestSetupOutput {
-	return o.ApplyT(func(v *IosTestSetup) IosTestSetup { return *v }).(IosTestSetupOutput)
+	return o.ApplyT(func(v *IosTestSetup) IosTestSetup {
+		if v != nil {
+			return *v
+		}
+		var ret IosTestSetup
+		return ret
+	}).(IosTestSetupOutput)
 }
 
 // iOS apps to install in addition to those being directly tested.
@@ -6878,7 +7052,7 @@ func (o IosTestSetupResponseOutput) ToIosTestSetupResponsePtrOutput() IosTestSet
 }
 
 func (o IosTestSetupResponseOutput) ToIosTestSetupResponsePtrOutputWithContext(ctx context.Context) IosTestSetupResponsePtrOutput {
-	return o.ApplyT(func(v IosTestSetupResponse) *IosTestSetupResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosTestSetupResponse) *IosTestSetupResponse {
 		return &v
 	}).(IosTestSetupResponsePtrOutput)
 }
@@ -6918,7 +7092,13 @@ func (o IosTestSetupResponsePtrOutput) ToIosTestSetupResponsePtrOutputWithContex
 }
 
 func (o IosTestSetupResponsePtrOutput) Elem() IosTestSetupResponseOutput {
-	return o.ApplyT(func(v *IosTestSetupResponse) IosTestSetupResponse { return *v }).(IosTestSetupResponseOutput)
+	return o.ApplyT(func(v *IosTestSetupResponse) IosTestSetupResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IosTestSetupResponse
+		return ret
+	}).(IosTestSetupResponseOutput)
 }
 
 // iOS apps to install in addition to those being directly tested.
@@ -7069,7 +7249,7 @@ func (o IosXcTestOutput) ToIosXcTestPtrOutput() IosXcTestPtrOutput {
 }
 
 func (o IosXcTestOutput) ToIosXcTestPtrOutputWithContext(ctx context.Context) IosXcTestPtrOutput {
-	return o.ApplyT(func(v IosXcTest) *IosXcTest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosXcTest) *IosXcTest {
 		return &v
 	}).(IosXcTestPtrOutput)
 }
@@ -7109,7 +7289,13 @@ func (o IosXcTestPtrOutput) ToIosXcTestPtrOutputWithContext(ctx context.Context)
 }
 
 func (o IosXcTestPtrOutput) Elem() IosXcTestOutput {
-	return o.ApplyT(func(v *IosXcTest) IosXcTest { return *v }).(IosXcTestOutput)
+	return o.ApplyT(func(v *IosXcTest) IosXcTest {
+		if v != nil {
+			return *v
+		}
+		var ret IosXcTest
+		return ret
+	}).(IosXcTestOutput)
 }
 
 // The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
@@ -7264,7 +7450,7 @@ func (o IosXcTestResponseOutput) ToIosXcTestResponsePtrOutput() IosXcTestRespons
 }
 
 func (o IosXcTestResponseOutput) ToIosXcTestResponsePtrOutputWithContext(ctx context.Context) IosXcTestResponsePtrOutput {
-	return o.ApplyT(func(v IosXcTestResponse) *IosXcTestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosXcTestResponse) *IosXcTestResponse {
 		return &v
 	}).(IosXcTestResponsePtrOutput)
 }
@@ -7309,7 +7495,13 @@ func (o IosXcTestResponsePtrOutput) ToIosXcTestResponsePtrOutputWithContext(ctx 
 }
 
 func (o IosXcTestResponsePtrOutput) Elem() IosXcTestResponseOutput {
-	return o.ApplyT(func(v *IosXcTestResponse) IosXcTestResponse { return *v }).(IosXcTestResponseOutput)
+	return o.ApplyT(func(v *IosXcTestResponse) IosXcTestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IosXcTestResponse
+		return ret
+	}).(IosXcTestResponseOutput)
 }
 
 // The bundle id for the application under test.
@@ -7454,7 +7646,7 @@ func (o LauncherActivityIntentOutput) ToLauncherActivityIntentPtrOutput() Launch
 }
 
 func (o LauncherActivityIntentOutput) ToLauncherActivityIntentPtrOutputWithContext(ctx context.Context) LauncherActivityIntentPtrOutput {
-	return o.ApplyT(func(v LauncherActivityIntent) *LauncherActivityIntent {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LauncherActivityIntent) *LauncherActivityIntent {
 		return &v
 	}).(LauncherActivityIntentPtrOutput)
 }
@@ -7474,7 +7666,13 @@ func (o LauncherActivityIntentPtrOutput) ToLauncherActivityIntentPtrOutputWithCo
 }
 
 func (o LauncherActivityIntentPtrOutput) Elem() LauncherActivityIntentOutput {
-	return o.ApplyT(func(v *LauncherActivityIntent) LauncherActivityIntent { return *v }).(LauncherActivityIntentOutput)
+	return o.ApplyT(func(v *LauncherActivityIntent) LauncherActivityIntent {
+		if v != nil {
+			return *v
+		}
+		var ret LauncherActivityIntent
+		return ret
+	}).(LauncherActivityIntentOutput)
 }
 
 // Specifies an intent that starts the main launcher activity.
@@ -7619,7 +7817,7 @@ func (o ManualShardingOutput) ToManualShardingPtrOutput() ManualShardingPtrOutpu
 }
 
 func (o ManualShardingOutput) ToManualShardingPtrOutputWithContext(ctx context.Context) ManualShardingPtrOutput {
-	return o.ApplyT(func(v ManualSharding) *ManualSharding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManualSharding) *ManualSharding {
 		return &v
 	}).(ManualShardingPtrOutput)
 }
@@ -7644,7 +7842,13 @@ func (o ManualShardingPtrOutput) ToManualShardingPtrOutputWithContext(ctx contex
 }
 
 func (o ManualShardingPtrOutput) Elem() ManualShardingOutput {
-	return o.ApplyT(func(v *ManualSharding) ManualSharding { return *v }).(ManualShardingOutput)
+	return o.ApplyT(func(v *ManualSharding) ManualSharding {
+		if v != nil {
+			return *v
+		}
+		var ret ManualSharding
+		return ret
+	}).(ManualShardingOutput)
 }
 
 // Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
@@ -7753,7 +7957,7 @@ func (o ManualShardingResponseOutput) ToManualShardingResponsePtrOutput() Manual
 }
 
 func (o ManualShardingResponseOutput) ToManualShardingResponsePtrOutputWithContext(ctx context.Context) ManualShardingResponsePtrOutput {
-	return o.ApplyT(func(v ManualShardingResponse) *ManualShardingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManualShardingResponse) *ManualShardingResponse {
 		return &v
 	}).(ManualShardingResponsePtrOutput)
 }
@@ -7778,7 +7982,13 @@ func (o ManualShardingResponsePtrOutput) ToManualShardingResponsePtrOutputWithCo
 }
 
 func (o ManualShardingResponsePtrOutput) Elem() ManualShardingResponseOutput {
-	return o.ApplyT(func(v *ManualShardingResponse) ManualShardingResponse { return *v }).(ManualShardingResponseOutput)
+	return o.ApplyT(func(v *ManualShardingResponse) ManualShardingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManualShardingResponse
+		return ret
+	}).(ManualShardingResponseOutput)
 }
 
 // Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
@@ -7891,7 +8101,7 @@ func (o ObbFileOutput) ToObbFilePtrOutput() ObbFilePtrOutput {
 }
 
 func (o ObbFileOutput) ToObbFilePtrOutputWithContext(ctx context.Context) ObbFilePtrOutput {
-	return o.ApplyT(func(v ObbFile) *ObbFile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObbFile) *ObbFile {
 		return &v
 	}).(ObbFilePtrOutput)
 }
@@ -7921,7 +8131,13 @@ func (o ObbFilePtrOutput) ToObbFilePtrOutputWithContext(ctx context.Context) Obb
 }
 
 func (o ObbFilePtrOutput) Elem() ObbFileOutput {
-	return o.ApplyT(func(v *ObbFile) ObbFile { return *v }).(ObbFileOutput)
+	return o.ApplyT(func(v *ObbFile) ObbFile {
+		if v != nil {
+			return *v
+		}
+		var ret ObbFile
+		return ret
+	}).(ObbFileOutput)
 }
 
 // Opaque Binary Blob (OBB) file(s) to install on the device.
@@ -8108,7 +8324,7 @@ func (o RegularFileOutput) ToRegularFilePtrOutput() RegularFilePtrOutput {
 }
 
 func (o RegularFileOutput) ToRegularFilePtrOutputWithContext(ctx context.Context) RegularFilePtrOutput {
-	return o.ApplyT(func(v RegularFile) *RegularFile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegularFile) *RegularFile {
 		return &v
 	}).(RegularFilePtrOutput)
 }
@@ -8138,7 +8354,13 @@ func (o RegularFilePtrOutput) ToRegularFilePtrOutputWithContext(ctx context.Cont
 }
 
 func (o RegularFilePtrOutput) Elem() RegularFileOutput {
-	return o.ApplyT(func(v *RegularFile) RegularFile { return *v }).(RegularFileOutput)
+	return o.ApplyT(func(v *RegularFile) RegularFile {
+		if v != nil {
+			return *v
+		}
+		var ret RegularFile
+		return ret
+	}).(RegularFileOutput)
 }
 
 // The source file.
@@ -8325,7 +8547,7 @@ func (o ResultStorageOutput) ToResultStoragePtrOutput() ResultStoragePtrOutput {
 }
 
 func (o ResultStorageOutput) ToResultStoragePtrOutputWithContext(ctx context.Context) ResultStoragePtrOutput {
-	return o.ApplyT(func(v ResultStorage) *ResultStorage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResultStorage) *ResultStorage {
 		return &v
 	}).(ResultStoragePtrOutput)
 }
@@ -8355,7 +8577,13 @@ func (o ResultStoragePtrOutput) ToResultStoragePtrOutputWithContext(ctx context.
 }
 
 func (o ResultStoragePtrOutput) Elem() ResultStorageOutput {
-	return o.ApplyT(func(v *ResultStorage) ResultStorage { return *v }).(ResultStorageOutput)
+	return o.ApplyT(func(v *ResultStorage) ResultStorage {
+		if v != nil {
+			return *v
+		}
+		var ret ResultStorage
+		return ret
+	}).(ResultStorageOutput)
 }
 
 // Required.
@@ -8486,7 +8714,7 @@ func (o ResultStorageResponseOutput) ToResultStorageResponsePtrOutput() ResultSt
 }
 
 func (o ResultStorageResponseOutput) ToResultStorageResponsePtrOutputWithContext(ctx context.Context) ResultStorageResponsePtrOutput {
-	return o.ApplyT(func(v ResultStorageResponse) *ResultStorageResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResultStorageResponse) *ResultStorageResponse {
 		return &v
 	}).(ResultStorageResponsePtrOutput)
 }
@@ -8526,7 +8754,13 @@ func (o ResultStorageResponsePtrOutput) ToResultStorageResponsePtrOutputWithCont
 }
 
 func (o ResultStorageResponsePtrOutput) Elem() ResultStorageResponseOutput {
-	return o.ApplyT(func(v *ResultStorageResponse) ResultStorageResponse { return *v }).(ResultStorageResponseOutput)
+	return o.ApplyT(func(v *ResultStorageResponse) ResultStorageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResultStorageResponse
+		return ret
+	}).(ResultStorageResponseOutput)
 }
 
 // Required.
@@ -9214,7 +9448,7 @@ func (o ShardingOptionOutput) ToShardingOptionPtrOutput() ShardingOptionPtrOutpu
 }
 
 func (o ShardingOptionOutput) ToShardingOptionPtrOutputWithContext(ctx context.Context) ShardingOptionPtrOutput {
-	return o.ApplyT(func(v ShardingOption) *ShardingOption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShardingOption) *ShardingOption {
 		return &v
 	}).(ShardingOptionPtrOutput)
 }
@@ -9244,7 +9478,13 @@ func (o ShardingOptionPtrOutput) ToShardingOptionPtrOutputWithContext(ctx contex
 }
 
 func (o ShardingOptionPtrOutput) Elem() ShardingOptionOutput {
-	return o.ApplyT(func(v *ShardingOption) ShardingOption { return *v }).(ShardingOptionOutput)
+	return o.ApplyT(func(v *ShardingOption) ShardingOption {
+		if v != nil {
+			return *v
+		}
+		var ret ShardingOption
+		return ret
+	}).(ShardingOptionOutput)
 }
 
 // Shards test cases into the specified groups of packages, classes, and/or methods.
@@ -9367,7 +9607,7 @@ func (o ShardingOptionResponseOutput) ToShardingOptionResponsePtrOutput() Shardi
 }
 
 func (o ShardingOptionResponseOutput) ToShardingOptionResponsePtrOutputWithContext(ctx context.Context) ShardingOptionResponsePtrOutput {
-	return o.ApplyT(func(v ShardingOptionResponse) *ShardingOptionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShardingOptionResponse) *ShardingOptionResponse {
 		return &v
 	}).(ShardingOptionResponsePtrOutput)
 }
@@ -9397,7 +9637,13 @@ func (o ShardingOptionResponsePtrOutput) ToShardingOptionResponsePtrOutputWithCo
 }
 
 func (o ShardingOptionResponsePtrOutput) Elem() ShardingOptionResponseOutput {
-	return o.ApplyT(func(v *ShardingOptionResponse) ShardingOptionResponse { return *v }).(ShardingOptionResponseOutput)
+	return o.ApplyT(func(v *ShardingOptionResponse) ShardingOptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ShardingOptionResponse
+		return ret
+	}).(ShardingOptionResponseOutput)
 }
 
 // Shards test cases into the specified groups of packages, classes, and/or methods.
@@ -9524,7 +9770,7 @@ func (o StartActivityIntentOutput) ToStartActivityIntentPtrOutput() StartActivit
 }
 
 func (o StartActivityIntentOutput) ToStartActivityIntentPtrOutputWithContext(ctx context.Context) StartActivityIntentPtrOutput {
-	return o.ApplyT(func(v StartActivityIntent) *StartActivityIntent {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StartActivityIntent) *StartActivityIntent {
 		return &v
 	}).(StartActivityIntentPtrOutput)
 }
@@ -9559,7 +9805,13 @@ func (o StartActivityIntentPtrOutput) ToStartActivityIntentPtrOutputWithContext(
 }
 
 func (o StartActivityIntentPtrOutput) Elem() StartActivityIntentOutput {
-	return o.ApplyT(func(v *StartActivityIntent) StartActivityIntent { return *v }).(StartActivityIntentOutput)
+	return o.ApplyT(func(v *StartActivityIntent) StartActivityIntent {
+		if v != nil {
+			return *v
+		}
+		var ret StartActivityIntent
+		return ret
+	}).(StartActivityIntentOutput)
 }
 
 // Action name. Required for START_ACTIVITY.
@@ -10021,7 +10273,7 @@ func (o TestSetupOutput) ToTestSetupPtrOutput() TestSetupPtrOutput {
 }
 
 func (o TestSetupOutput) ToTestSetupPtrOutputWithContext(ctx context.Context) TestSetupPtrOutput {
-	return o.ApplyT(func(v TestSetup) *TestSetup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestSetup) *TestSetup {
 		return &v
 	}).(TestSetupPtrOutput)
 }
@@ -10076,7 +10328,13 @@ func (o TestSetupPtrOutput) ToTestSetupPtrOutputWithContext(ctx context.Context)
 }
 
 func (o TestSetupPtrOutput) Elem() TestSetupOutput {
-	return o.ApplyT(func(v *TestSetup) TestSetup { return *v }).(TestSetupOutput)
+	return o.ApplyT(func(v *TestSetup) TestSetup {
+		if v != nil {
+			return *v
+		}
+		var ret TestSetup
+		return ret
+	}).(TestSetupOutput)
 }
 
 // The device will be logged in on this account for the duration of the test.
@@ -10269,7 +10527,7 @@ func (o TestSetupResponseOutput) ToTestSetupResponsePtrOutput() TestSetupRespons
 }
 
 func (o TestSetupResponseOutput) ToTestSetupResponsePtrOutputWithContext(ctx context.Context) TestSetupResponsePtrOutput {
-	return o.ApplyT(func(v TestSetupResponse) *TestSetupResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestSetupResponse) *TestSetupResponse {
 		return &v
 	}).(TestSetupResponsePtrOutput)
 }
@@ -10324,7 +10582,13 @@ func (o TestSetupResponsePtrOutput) ToTestSetupResponsePtrOutputWithContext(ctx 
 }
 
 func (o TestSetupResponsePtrOutput) Elem() TestSetupResponseOutput {
-	return o.ApplyT(func(v *TestSetupResponse) TestSetupResponse { return *v }).(TestSetupResponseOutput)
+	return o.ApplyT(func(v *TestSetupResponse) TestSetupResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TestSetupResponse
+		return ret
+	}).(TestSetupResponseOutput)
 }
 
 // The device will be logged in on this account for the duration of the test.
@@ -10529,7 +10793,7 @@ func (o TestSpecificationOutput) ToTestSpecificationPtrOutput() TestSpecificatio
 }
 
 func (o TestSpecificationOutput) ToTestSpecificationPtrOutputWithContext(ctx context.Context) TestSpecificationPtrOutput {
-	return o.ApplyT(func(v TestSpecification) *TestSpecification {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestSpecification) *TestSpecification {
 		return &v
 	}).(TestSpecificationPtrOutput)
 }
@@ -10599,7 +10863,13 @@ func (o TestSpecificationPtrOutput) ToTestSpecificationPtrOutputWithContext(ctx 
 }
 
 func (o TestSpecificationPtrOutput) Elem() TestSpecificationOutput {
-	return o.ApplyT(func(v *TestSpecification) TestSpecification { return *v }).(TestSpecificationOutput)
+	return o.ApplyT(func(v *TestSpecification) TestSpecification {
+		if v != nil {
+			return *v
+		}
+		var ret TestSpecification
+		return ret
+	}).(TestSpecificationOutput)
 }
 
 // An Android instrumentation test.
@@ -10834,7 +11104,7 @@ func (o TestSpecificationResponseOutput) ToTestSpecificationResponsePtrOutput() 
 }
 
 func (o TestSpecificationResponseOutput) ToTestSpecificationResponsePtrOutputWithContext(ctx context.Context) TestSpecificationResponsePtrOutput {
-	return o.ApplyT(func(v TestSpecificationResponse) *TestSpecificationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestSpecificationResponse) *TestSpecificationResponse {
 		return &v
 	}).(TestSpecificationResponsePtrOutput)
 }
@@ -10906,7 +11176,13 @@ func (o TestSpecificationResponsePtrOutput) ToTestSpecificationResponsePtrOutput
 }
 
 func (o TestSpecificationResponsePtrOutput) Elem() TestSpecificationResponseOutput {
-	return o.ApplyT(func(v *TestSpecificationResponse) TestSpecificationResponse { return *v }).(TestSpecificationResponseOutput)
+	return o.ApplyT(func(v *TestSpecificationResponse) TestSpecificationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TestSpecificationResponse
+		return ret
+	}).(TestSpecificationResponseOutput)
 }
 
 // An Android instrumentation test.
@@ -11313,7 +11589,7 @@ func (o ToolResultsExecutionResponseOutput) ToToolResultsExecutionResponsePtrOut
 }
 
 func (o ToolResultsExecutionResponseOutput) ToToolResultsExecutionResponsePtrOutputWithContext(ctx context.Context) ToolResultsExecutionResponsePtrOutput {
-	return o.ApplyT(func(v ToolResultsExecutionResponse) *ToolResultsExecutionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolResultsExecutionResponse) *ToolResultsExecutionResponse {
 		return &v
 	}).(ToolResultsExecutionResponsePtrOutput)
 }
@@ -11348,7 +11624,13 @@ func (o ToolResultsExecutionResponsePtrOutput) ToToolResultsExecutionResponsePtr
 }
 
 func (o ToolResultsExecutionResponsePtrOutput) Elem() ToolResultsExecutionResponseOutput {
-	return o.ApplyT(func(v *ToolResultsExecutionResponse) ToolResultsExecutionResponse { return *v }).(ToolResultsExecutionResponseOutput)
+	return o.ApplyT(func(v *ToolResultsExecutionResponse) ToolResultsExecutionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ToolResultsExecutionResponse
+		return ret
+	}).(ToolResultsExecutionResponseOutput)
 }
 
 // A tool results execution ID.
@@ -11481,7 +11763,7 @@ func (o ToolResultsHistoryOutput) ToToolResultsHistoryPtrOutput() ToolResultsHis
 }
 
 func (o ToolResultsHistoryOutput) ToToolResultsHistoryPtrOutputWithContext(ctx context.Context) ToolResultsHistoryPtrOutput {
-	return o.ApplyT(func(v ToolResultsHistory) *ToolResultsHistory {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolResultsHistory) *ToolResultsHistory {
 		return &v
 	}).(ToolResultsHistoryPtrOutput)
 }
@@ -11511,7 +11793,13 @@ func (o ToolResultsHistoryPtrOutput) ToToolResultsHistoryPtrOutputWithContext(ct
 }
 
 func (o ToolResultsHistoryPtrOutput) Elem() ToolResultsHistoryOutput {
-	return o.ApplyT(func(v *ToolResultsHistory) ToolResultsHistory { return *v }).(ToolResultsHistoryOutput)
+	return o.ApplyT(func(v *ToolResultsHistory) ToolResultsHistory {
+		if v != nil {
+			return *v
+		}
+		var ret ToolResultsHistory
+		return ret
+	}).(ToolResultsHistoryOutput)
 }
 
 // A tool results history ID.
@@ -11634,7 +11922,7 @@ func (o ToolResultsHistoryResponseOutput) ToToolResultsHistoryResponsePtrOutput(
 }
 
 func (o ToolResultsHistoryResponseOutput) ToToolResultsHistoryResponsePtrOutputWithContext(ctx context.Context) ToolResultsHistoryResponsePtrOutput {
-	return o.ApplyT(func(v ToolResultsHistoryResponse) *ToolResultsHistoryResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolResultsHistoryResponse) *ToolResultsHistoryResponse {
 		return &v
 	}).(ToolResultsHistoryResponsePtrOutput)
 }
@@ -11664,7 +11952,13 @@ func (o ToolResultsHistoryResponsePtrOutput) ToToolResultsHistoryResponsePtrOutp
 }
 
 func (o ToolResultsHistoryResponsePtrOutput) Elem() ToolResultsHistoryResponseOutput {
-	return o.ApplyT(func(v *ToolResultsHistoryResponse) ToolResultsHistoryResponse { return *v }).(ToolResultsHistoryResponseOutput)
+	return o.ApplyT(func(v *ToolResultsHistoryResponse) ToolResultsHistoryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ToolResultsHistoryResponse
+		return ret
+	}).(ToolResultsHistoryResponseOutput)
 }
 
 // A tool results history ID.
@@ -11865,7 +12159,7 @@ func (o UniformShardingOutput) ToUniformShardingPtrOutput() UniformShardingPtrOu
 }
 
 func (o UniformShardingOutput) ToUniformShardingPtrOutputWithContext(ctx context.Context) UniformShardingPtrOutput {
-	return o.ApplyT(func(v UniformSharding) *UniformSharding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UniformSharding) *UniformSharding {
 		return &v
 	}).(UniformShardingPtrOutput)
 }
@@ -11890,7 +12184,13 @@ func (o UniformShardingPtrOutput) ToUniformShardingPtrOutputWithContext(ctx cont
 }
 
 func (o UniformShardingPtrOutput) Elem() UniformShardingOutput {
-	return o.ApplyT(func(v *UniformSharding) UniformSharding { return *v }).(UniformShardingOutput)
+	return o.ApplyT(func(v *UniformSharding) UniformSharding {
+		if v != nil {
+			return *v
+		}
+		var ret UniformSharding
+		return ret
+	}).(UniformShardingOutput)
 }
 
 // Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
@@ -11999,7 +12299,7 @@ func (o UniformShardingResponseOutput) ToUniformShardingResponsePtrOutput() Unif
 }
 
 func (o UniformShardingResponseOutput) ToUniformShardingResponsePtrOutputWithContext(ctx context.Context) UniformShardingResponsePtrOutput {
-	return o.ApplyT(func(v UniformShardingResponse) *UniformShardingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UniformShardingResponse) *UniformShardingResponse {
 		return &v
 	}).(UniformShardingResponsePtrOutput)
 }
@@ -12024,7 +12324,13 @@ func (o UniformShardingResponsePtrOutput) ToUniformShardingResponsePtrOutputWith
 }
 
 func (o UniformShardingResponsePtrOutput) Elem() UniformShardingResponseOutput {
-	return o.ApplyT(func(v *UniformShardingResponse) UniformShardingResponse { return *v }).(UniformShardingResponseOutput)
+	return o.ApplyT(func(v *UniformShardingResponse) UniformShardingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UniformShardingResponse
+		return ret
+	}).(UniformShardingResponseOutput)
 }
 
 // Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.

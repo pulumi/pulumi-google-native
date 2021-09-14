@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,76 @@ type LookupEnvironmentResult struct {
 	PostStartupScript string `pulumi:"postStartupScript"`
 	// Use a Compute Engine VM image to start the notebook instance.
 	VmImage VmImageResponse `pulumi:"vmImage"`
+}
+
+func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupEnvironmentResult, error) {
+			args := v.(LookupEnvironmentArgs)
+			r, err := LookupEnvironment(ctx, &args, opts...)
+			return *r, err
+		}).(LookupEnvironmentResultOutput)
+}
+
+type LookupEnvironmentOutputArgs struct {
+	EnvironmentId pulumi.StringInput    `pulumi:"environmentId"`
+	Location      pulumi.StringInput    `pulumi:"location"`
+	Project       pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupEnvironmentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentArgs)(nil)).Elem()
+}
+
+type LookupEnvironmentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEnvironmentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentResult)(nil)).Elem()
+}
+
+func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutput() LookupEnvironmentResultOutput {
+	return o
+}
+
+func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContext(ctx context.Context) LookupEnvironmentResultOutput {
+	return o
+}
+
+// Use a container image to start the notebook instance.
+func (o LookupEnvironmentResultOutput) ContainerImage() ContainerImageResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) ContainerImageResponse { return v.ContainerImage }).(ContainerImageResponseOutput)
+}
+
+// The time at which this environment was created.
+func (o LookupEnvironmentResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A brief description of this environment.
+func (o LookupEnvironmentResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name of this environment for the UI.
+func (o LookupEnvironmentResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
+func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
+func (o LookupEnvironmentResultOutput) PostStartupScript() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.PostStartupScript }).(pulumi.StringOutput)
+}
+
+// Use a Compute Engine VM image to start the notebook instance.
+func (o LookupEnvironmentResultOutput) VmImage() VmImageResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) VmImageResponse { return v.VmImage }).(VmImageResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEnvironmentResultOutput{})
 }

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Schedule for inspect job triggers.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ScheduleResponse
     {

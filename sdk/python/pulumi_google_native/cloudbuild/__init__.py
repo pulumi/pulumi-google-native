@@ -7,10 +7,14 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_google_native.cloudbuild.v1 as v1
-    import pulumi_google_native.cloudbuild.v1alpha1 as v1alpha1
-    import pulumi_google_native.cloudbuild.v1alpha2 as v1alpha2
-    import pulumi_google_native.cloudbuild.v1beta1 as v1beta1
+    import pulumi_google_native.cloudbuild.v1 as __v1
+    v1 = __v1
+    import pulumi_google_native.cloudbuild.v1alpha1 as __v1alpha1
+    v1alpha1 = __v1alpha1
+    import pulumi_google_native.cloudbuild.v1alpha2 as __v1alpha2
+    v1alpha2 = __v1alpha2
+    import pulumi_google_native.cloudbuild.v1beta1 as __v1beta1
+    v1beta1 = __v1beta1
 else:
     v1 = _utilities.lazy_import('pulumi_google_native.cloudbuild.v1')
     v1alpha1 = _utilities.lazy_import('pulumi_google_native.cloudbuild.v1alpha1')

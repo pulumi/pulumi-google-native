@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,4 +31,51 @@ type LookupKeystoreResult struct {
 	Aliases []string `pulumi:"aliases"`
 	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
 	Name string `pulumi:"name"`
+}
+
+func LookupKeystoreOutput(ctx *pulumi.Context, args LookupKeystoreOutputArgs, opts ...pulumi.InvokeOption) LookupKeystoreResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKeystoreResult, error) {
+			args := v.(LookupKeystoreArgs)
+			r, err := LookupKeystore(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKeystoreResultOutput)
+}
+
+type LookupKeystoreOutputArgs struct {
+	EnvironmentId  pulumi.StringInput `pulumi:"environmentId"`
+	KeystoreId     pulumi.StringInput `pulumi:"keystoreId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupKeystoreOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeystoreArgs)(nil)).Elem()
+}
+
+type LookupKeystoreResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKeystoreResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeystoreResult)(nil)).Elem()
+}
+
+func (o LookupKeystoreResultOutput) ToLookupKeystoreResultOutput() LookupKeystoreResultOutput {
+	return o
+}
+
+func (o LookupKeystoreResultOutput) ToLookupKeystoreResultOutputWithContext(ctx context.Context) LookupKeystoreResultOutput {
+	return o
+}
+
+// Aliases in this keystore.
+func (o LookupKeystoreResultOutput) Aliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupKeystoreResult) []string { return v.Aliases }).(pulumi.StringArrayOutput)
+}
+
+// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+func (o LookupKeystoreResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeystoreResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKeystoreResultOutput{})
 }

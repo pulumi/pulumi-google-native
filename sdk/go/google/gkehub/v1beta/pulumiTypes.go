@@ -778,7 +778,7 @@ func (o CommonFeatureSpecOutput) ToCommonFeatureSpecPtrOutput() CommonFeatureSpe
 }
 
 func (o CommonFeatureSpecOutput) ToCommonFeatureSpecPtrOutputWithContext(ctx context.Context) CommonFeatureSpecPtrOutput {
-	return o.ApplyT(func(v CommonFeatureSpec) *CommonFeatureSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonFeatureSpec) *CommonFeatureSpec {
 		return &v
 	}).(CommonFeatureSpecPtrOutput)
 }
@@ -803,7 +803,13 @@ func (o CommonFeatureSpecPtrOutput) ToCommonFeatureSpecPtrOutputWithContext(ctx 
 }
 
 func (o CommonFeatureSpecPtrOutput) Elem() CommonFeatureSpecOutput {
-	return o.ApplyT(func(v *CommonFeatureSpec) CommonFeatureSpec { return *v }).(CommonFeatureSpecOutput)
+	return o.ApplyT(func(v *CommonFeatureSpec) CommonFeatureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CommonFeatureSpec
+		return ret
+	}).(CommonFeatureSpecOutput)
 }
 
 // Multicluster Ingress-specific spec.
@@ -912,7 +918,7 @@ func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponsePtrOutput() 
 }
 
 func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponsePtrOutputWithContext(ctx context.Context) CommonFeatureSpecResponsePtrOutput {
-	return o.ApplyT(func(v CommonFeatureSpecResponse) *CommonFeatureSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonFeatureSpecResponse) *CommonFeatureSpecResponse {
 		return &v
 	}).(CommonFeatureSpecResponsePtrOutput)
 }
@@ -937,7 +943,13 @@ func (o CommonFeatureSpecResponsePtrOutput) ToCommonFeatureSpecResponsePtrOutput
 }
 
 func (o CommonFeatureSpecResponsePtrOutput) Elem() CommonFeatureSpecResponseOutput {
-	return o.ApplyT(func(v *CommonFeatureSpecResponse) CommonFeatureSpecResponse { return *v }).(CommonFeatureSpecResponseOutput)
+	return o.ApplyT(func(v *CommonFeatureSpecResponse) CommonFeatureSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CommonFeatureSpecResponse
+		return ret
+	}).(CommonFeatureSpecResponseOutput)
 }
 
 // Multicluster Ingress-specific spec.
@@ -1046,7 +1058,7 @@ func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponsePtrOutput(
 }
 
 func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponsePtrOutputWithContext(ctx context.Context) CommonFeatureStateResponsePtrOutput {
-	return o.ApplyT(func(v CommonFeatureStateResponse) *CommonFeatureStateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonFeatureStateResponse) *CommonFeatureStateResponse {
 		return &v
 	}).(CommonFeatureStateResponsePtrOutput)
 }
@@ -1071,7 +1083,13 @@ func (o CommonFeatureStateResponsePtrOutput) ToCommonFeatureStateResponsePtrOutp
 }
 
 func (o CommonFeatureStateResponsePtrOutput) Elem() CommonFeatureStateResponseOutput {
-	return o.ApplyT(func(v *CommonFeatureStateResponse) CommonFeatureStateResponse { return *v }).(CommonFeatureStateResponseOutput)
+	return o.ApplyT(func(v *CommonFeatureStateResponse) CommonFeatureStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CommonFeatureStateResponse
+		return ret
+	}).(CommonFeatureStateResponseOutput)
 }
 
 // The "running state" of the Feature in this Hub.
@@ -1192,7 +1210,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1232,7 +1250,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1453,7 +1477,7 @@ func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponsePtrOut
 }
 
 func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponsePtrOutputWithContext(ctx context.Context) FeatureResourceStateResponsePtrOutput {
-	return o.ApplyT(func(v FeatureResourceStateResponse) *FeatureResourceStateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureResourceStateResponse) *FeatureResourceStateResponse {
 		return &v
 	}).(FeatureResourceStateResponsePtrOutput)
 }
@@ -1478,7 +1502,13 @@ func (o FeatureResourceStateResponsePtrOutput) ToFeatureResourceStateResponsePtr
 }
 
 func (o FeatureResourceStateResponsePtrOutput) Elem() FeatureResourceStateResponseOutput {
-	return o.ApplyT(func(v *FeatureResourceStateResponse) FeatureResourceStateResponse { return *v }).(FeatureResourceStateResponseOutput)
+	return o.ApplyT(func(v *FeatureResourceStateResponse) FeatureResourceStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureResourceStateResponse
+		return ret
+	}).(FeatureResourceStateResponseOutput)
 }
 
 // The current state of the Feature resource in the Hub API.
@@ -1595,7 +1625,7 @@ func (o FeatureStateResponseOutput) ToFeatureStateResponsePtrOutput() FeatureSta
 }
 
 func (o FeatureStateResponseOutput) ToFeatureStateResponsePtrOutputWithContext(ctx context.Context) FeatureStateResponsePtrOutput {
-	return o.ApplyT(func(v FeatureStateResponse) *FeatureStateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureStateResponse) *FeatureStateResponse {
 		return &v
 	}).(FeatureStateResponsePtrOutput)
 }
@@ -1630,7 +1660,13 @@ func (o FeatureStateResponsePtrOutput) ToFeatureStateResponsePtrOutputWithContex
 }
 
 func (o FeatureStateResponsePtrOutput) Elem() FeatureStateResponseOutput {
-	return o.ApplyT(func(v *FeatureStateResponse) FeatureStateResponse { return *v }).(FeatureStateResponseOutput)
+	return o.ApplyT(func(v *FeatureStateResponse) FeatureStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureStateResponse
+		return ret
+	}).(FeatureStateResponseOutput)
 }
 
 // The high-level, machine-readable status of this Feature.
@@ -1759,7 +1795,7 @@ func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPt
 }
 
 func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecPtrOutput {
-	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpec {
 		return &v
 	}).(MultiClusterIngressFeatureSpecPtrOutput)
 }
@@ -1784,7 +1820,13 @@ func (o MultiClusterIngressFeatureSpecPtrOutput) ToMultiClusterIngressFeatureSpe
 }
 
 func (o MultiClusterIngressFeatureSpecPtrOutput) Elem() MultiClusterIngressFeatureSpecOutput {
-	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) MultiClusterIngressFeatureSpec { return *v }).(MultiClusterIngressFeatureSpecOutput)
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) MultiClusterIngressFeatureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret MultiClusterIngressFeatureSpec
+		return ret
+	}).(MultiClusterIngressFeatureSpecOutput)
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
@@ -1893,7 +1935,7 @@ func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatu
 }
 
 func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput {
-	return o.ApplyT(func(v MultiClusterIngressFeatureSpecResponse) *MultiClusterIngressFeatureSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiClusterIngressFeatureSpecResponse) *MultiClusterIngressFeatureSpecResponse {
 		return &v
 	}).(MultiClusterIngressFeatureSpecResponsePtrOutput)
 }
@@ -1918,7 +1960,13 @@ func (o MultiClusterIngressFeatureSpecResponsePtrOutput) ToMultiClusterIngressFe
 }
 
 func (o MultiClusterIngressFeatureSpecResponsePtrOutput) Elem() MultiClusterIngressFeatureSpecResponseOutput {
-	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return *v }).(MultiClusterIngressFeatureSpecResponseOutput)
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MultiClusterIngressFeatureSpecResponse
+		return ret
+	}).(MultiClusterIngressFeatureSpecResponseOutput)
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`

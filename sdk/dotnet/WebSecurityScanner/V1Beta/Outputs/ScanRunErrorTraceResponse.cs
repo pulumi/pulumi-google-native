@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Output only. Defines an error trace message for a ScanRun.
+    /// </summary>
     [OutputType]
     public sealed class ScanRunErrorTraceResponse
     {

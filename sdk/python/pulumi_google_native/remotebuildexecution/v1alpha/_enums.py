@@ -15,13 +15,21 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy(s
     The policy of the feature.
     """
     POLICY_UNSPECIFIED = "POLICY_UNSPECIFIED"
-    """Default value, if not explicitly set. Equivalent to FORBIDDEN, unless otherwise documented on a specific Feature."""
+    """
+    Default value, if not explicitly set. Equivalent to FORBIDDEN, unless otherwise documented on a specific Feature.
+    """
     ALLOWED = "ALLOWED"
-    """Feature is explicitly allowed."""
+    """
+    Feature is explicitly allowed.
+    """
     FORBIDDEN = "FORBIDDEN"
-    """Feature is forbidden. Requests attempting to leverage it will get an FailedPrecondition error, with a message like: "Feature forbidden by FeaturePolicy: Feature on instance """"
+    """
+    Feature is forbidden. Requests attempting to leverage it will get an FailedPrecondition error, with a message like: "Feature forbidden by FeaturePolicy: Feature on instance "
+    """
     RESTRICTED = "RESTRICTED"
-    """Only the values specified in the `allowed_values` are allowed."""
+    """
+    Only the values specified in the `allowed_values` are allowed.
+    """
 
 
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation(str, Enum):
@@ -29,8 +37,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation(
     linux_isolation allows overriding the docker runtime used for containers started on Linux.
     """
     LINUX_ISOLATION_UNSPECIFIED = "LINUX_ISOLATION_UNSPECIFIED"
-    """Default value. Will be using Linux default runtime."""
+    """
+    Default value. Will be using Linux default runtime.
+    """
     GVISOR = "GVISOR"
-    """Use gVisor runsc runtime."""
+    """
+    Use gVisor runsc runtime.
+    """
     OFF = "OFF"
-    """Use stardard Linux runtime. This has the same behaviour as unspecified, but it can be used to revert back from gVisor."""
+    """
+    Use stardard Linux runtime. This has the same behaviour as unspecified, but it can be used to revert back from gVisor.
+    """

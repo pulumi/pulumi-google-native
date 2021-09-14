@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIoT.V1.Outputs
 {
 
+    /// <summary>
+    /// The configuration of MQTT for a device registry.
+    /// </summary>
     [OutputType]
     public sealed class MqttConfigResponse
     {

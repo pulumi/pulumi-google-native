@@ -150,9 +150,7 @@ func (i *CatalogItem) ToCatalogItemOutputWithContext(ctx context.Context) Catalo
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogItemOutput)
 }
 
-type CatalogItemOutput struct {
-	*pulumi.OutputState
-}
+type CatalogItemOutput struct{ *pulumi.OutputState }
 
 func (CatalogItemOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CatalogItem)(nil))

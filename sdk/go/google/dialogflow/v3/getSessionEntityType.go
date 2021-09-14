@@ -4,6 +4,9 @@
 package v3
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,4 +36,61 @@ type LookupSessionEntityTypeResult struct {
 	EntityOverrideMode string `pulumi:"entityOverrideMode"`
 	// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
 	Name string `pulumi:"name"`
+}
+
+func LookupSessionEntityTypeOutput(ctx *pulumi.Context, args LookupSessionEntityTypeOutputArgs, opts ...pulumi.InvokeOption) LookupSessionEntityTypeResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSessionEntityTypeResult, error) {
+			args := v.(LookupSessionEntityTypeArgs)
+			r, err := LookupSessionEntityType(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSessionEntityTypeResultOutput)
+}
+
+type LookupSessionEntityTypeOutputArgs struct {
+	AgentId       pulumi.StringInput    `pulumi:"agentId"`
+	EntityTypeId  pulumi.StringInput    `pulumi:"entityTypeId"`
+	EnvironmentId pulumi.StringInput    `pulumi:"environmentId"`
+	Location      pulumi.StringInput    `pulumi:"location"`
+	Project       pulumi.StringPtrInput `pulumi:"project"`
+	SessionId     pulumi.StringInput    `pulumi:"sessionId"`
+}
+
+func (LookupSessionEntityTypeOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSessionEntityTypeArgs)(nil)).Elem()
+}
+
+type LookupSessionEntityTypeResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSessionEntityTypeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSessionEntityTypeResult)(nil)).Elem()
+}
+
+func (o LookupSessionEntityTypeResultOutput) ToLookupSessionEntityTypeResultOutput() LookupSessionEntityTypeResultOutput {
+	return o
+}
+
+func (o LookupSessionEntityTypeResultOutput) ToLookupSessionEntityTypeResultOutputWithContext(ctx context.Context) LookupSessionEntityTypeResultOutput {
+	return o
+}
+
+// The collection of entities to override or supplement the custom entity type.
+func (o LookupSessionEntityTypeResultOutput) Entities() GoogleCloudDialogflowCxV3EntityTypeEntityResponseArrayOutput {
+	return o.ApplyT(func(v LookupSessionEntityTypeResult) []GoogleCloudDialogflowCxV3EntityTypeEntityResponse {
+		return v.Entities
+	}).(GoogleCloudDialogflowCxV3EntityTypeEntityResponseArrayOutput)
+}
+
+// Indicates whether the additional data should override or supplement the custom entity type definition.
+func (o LookupSessionEntityTypeResultOutput) EntityOverrideMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSessionEntityTypeResult) string { return v.EntityOverrideMode }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+func (o LookupSessionEntityTypeResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSessionEntityTypeResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSessionEntityTypeResultOutput{})
 }

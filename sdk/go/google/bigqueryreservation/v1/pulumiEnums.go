@@ -110,7 +110,7 @@ func (o CapacityCommitmentPlanOutput) ToStringPtrOutputWithContext(ctx context.C
 type CapacityCommitmentPlanPtrOutput struct{ *pulumi.OutputState }
 
 func (CapacityCommitmentPlanPtrOutput) ElementType() reflect.Type {
-	return capacityCommitmentPlanPtrType
+	return reflect.TypeOf((**CapacityCommitmentPlan)(nil)).Elem()
 }
 
 func (o CapacityCommitmentPlanPtrOutput) ToCapacityCommitmentPlanPtrOutput() CapacityCommitmentPlanPtrOutput {
@@ -119,6 +119,16 @@ func (o CapacityCommitmentPlanPtrOutput) ToCapacityCommitmentPlanPtrOutput() Cap
 
 func (o CapacityCommitmentPlanPtrOutput) ToCapacityCommitmentPlanPtrOutputWithContext(ctx context.Context) CapacityCommitmentPlanPtrOutput {
 	return o
+}
+
+func (o CapacityCommitmentPlanPtrOutput) Elem() CapacityCommitmentPlanOutput {
+	return o.ApplyT(func(v *CapacityCommitmentPlan) CapacityCommitmentPlan {
+		if v != nil {
+			return *v
+		}
+		var ret CapacityCommitmentPlan
+		return ret
+	}).(CapacityCommitmentPlanOutput)
 }
 
 func (o CapacityCommitmentPlanPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -133,16 +143,6 @@ func (o CapacityCommitmentPlanPtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CapacityCommitmentPlanPtrOutput) Elem() CapacityCommitmentPlanOutput {
-	return o.ApplyT(func(v *CapacityCommitmentPlan) CapacityCommitmentPlan {
-		var ret CapacityCommitmentPlan
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CapacityCommitmentPlanOutput)
 }
 
 // CapacityCommitmentPlanInput is an input type that accepts CapacityCommitmentPlanArgs and CapacityCommitmentPlanOutput values.
@@ -283,7 +283,7 @@ func (o CapacityCommitmentRenewalPlanOutput) ToStringPtrOutputWithContext(ctx co
 type CapacityCommitmentRenewalPlanPtrOutput struct{ *pulumi.OutputState }
 
 func (CapacityCommitmentRenewalPlanPtrOutput) ElementType() reflect.Type {
-	return capacityCommitmentRenewalPlanPtrType
+	return reflect.TypeOf((**CapacityCommitmentRenewalPlan)(nil)).Elem()
 }
 
 func (o CapacityCommitmentRenewalPlanPtrOutput) ToCapacityCommitmentRenewalPlanPtrOutput() CapacityCommitmentRenewalPlanPtrOutput {
@@ -292,6 +292,16 @@ func (o CapacityCommitmentRenewalPlanPtrOutput) ToCapacityCommitmentRenewalPlanP
 
 func (o CapacityCommitmentRenewalPlanPtrOutput) ToCapacityCommitmentRenewalPlanPtrOutputWithContext(ctx context.Context) CapacityCommitmentRenewalPlanPtrOutput {
 	return o
+}
+
+func (o CapacityCommitmentRenewalPlanPtrOutput) Elem() CapacityCommitmentRenewalPlanOutput {
+	return o.ApplyT(func(v *CapacityCommitmentRenewalPlan) CapacityCommitmentRenewalPlan {
+		if v != nil {
+			return *v
+		}
+		var ret CapacityCommitmentRenewalPlan
+		return ret
+	}).(CapacityCommitmentRenewalPlanOutput)
 }
 
 func (o CapacityCommitmentRenewalPlanPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -306,16 +316,6 @@ func (o CapacityCommitmentRenewalPlanPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CapacityCommitmentRenewalPlanPtrOutput) Elem() CapacityCommitmentRenewalPlanOutput {
-	return o.ApplyT(func(v *CapacityCommitmentRenewalPlan) CapacityCommitmentRenewalPlan {
-		var ret CapacityCommitmentRenewalPlan
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CapacityCommitmentRenewalPlanOutput)
 }
 
 // CapacityCommitmentRenewalPlanInput is an input type that accepts CapacityCommitmentRenewalPlanArgs and CapacityCommitmentRenewalPlanOutput values.

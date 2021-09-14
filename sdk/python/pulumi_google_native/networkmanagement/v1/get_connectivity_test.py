@@ -13,6 +13,7 @@ __all__ = [
     'GetConnectivityTestResult',
     'AwaitableGetConnectivityTestResult',
     'get_connectivity_test',
+    'get_connectivity_test_output',
 ]
 
 @pulumi.output_type
@@ -187,3 +188,13 @@ def get_connectivity_test(connectivity_test_id: Optional[str] = None,
         related_projects=__ret__.related_projects,
         source=__ret__.source,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_connectivity_test)
+def get_connectivity_test_output(connectivity_test_id: Optional[pulumi.Input[str]] = None,
+                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectivityTestResult]:
+    """
+    Gets the details of a specific Connectivity Test.
+    """
+    ...

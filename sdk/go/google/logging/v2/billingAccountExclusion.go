@@ -121,9 +121,7 @@ func (i *BillingAccountExclusion) ToBillingAccountExclusionOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountExclusionOutput)
 }
 
-type BillingAccountExclusionOutput struct {
-	*pulumi.OutputState
-}
+type BillingAccountExclusionOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountExclusionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BillingAccountExclusion)(nil))

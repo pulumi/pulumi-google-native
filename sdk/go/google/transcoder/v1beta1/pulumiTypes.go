@@ -306,7 +306,7 @@ func (o Aes128EncryptionOutput) ToAes128EncryptionPtrOutput() Aes128EncryptionPt
 }
 
 func (o Aes128EncryptionOutput) ToAes128EncryptionPtrOutputWithContext(ctx context.Context) Aes128EncryptionPtrOutput {
-	return o.ApplyT(func(v Aes128Encryption) *Aes128Encryption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Aes128Encryption) *Aes128Encryption {
 		return &v
 	}).(Aes128EncryptionPtrOutput)
 }
@@ -331,7 +331,13 @@ func (o Aes128EncryptionPtrOutput) ToAes128EncryptionPtrOutputWithContext(ctx co
 }
 
 func (o Aes128EncryptionPtrOutput) Elem() Aes128EncryptionOutput {
-	return o.ApplyT(func(v *Aes128Encryption) Aes128Encryption { return *v }).(Aes128EncryptionOutput)
+	return o.ApplyT(func(v *Aes128Encryption) Aes128Encryption {
+		if v != nil {
+			return *v
+		}
+		var ret Aes128Encryption
+		return ret
+	}).(Aes128EncryptionOutput)
 }
 
 // URI of the key delivery service. This URI is inserted into the M3U8 header.
@@ -613,7 +619,7 @@ func (o AnimationEndOutput) ToAnimationEndPtrOutput() AnimationEndPtrOutput {
 }
 
 func (o AnimationEndOutput) ToAnimationEndPtrOutputWithContext(ctx context.Context) AnimationEndPtrOutput {
-	return o.ApplyT(func(v AnimationEnd) *AnimationEnd {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnimationEnd) *AnimationEnd {
 		return &v
 	}).(AnimationEndPtrOutput)
 }
@@ -638,7 +644,13 @@ func (o AnimationEndPtrOutput) ToAnimationEndPtrOutputWithContext(ctx context.Co
 }
 
 func (o AnimationEndPtrOutput) Elem() AnimationEndOutput {
-	return o.ApplyT(func(v *AnimationEnd) AnimationEnd { return *v }).(AnimationEndOutput)
+	return o.ApplyT(func(v *AnimationEnd) AnimationEnd {
+		if v != nil {
+			return *v
+		}
+		var ret AnimationEnd
+		return ret
+	}).(AnimationEndOutput)
 }
 
 // The time to end overlay object, in seconds. Default: 0
@@ -814,7 +826,7 @@ func (o AnimationFadeOutput) ToAnimationFadePtrOutput() AnimationFadePtrOutput {
 }
 
 func (o AnimationFadeOutput) ToAnimationFadePtrOutputWithContext(ctx context.Context) AnimationFadePtrOutput {
-	return o.ApplyT(func(v AnimationFade) *AnimationFade {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnimationFade) *AnimationFade {
 		return &v
 	}).(AnimationFadePtrOutput)
 }
@@ -854,7 +866,13 @@ func (o AnimationFadePtrOutput) ToAnimationFadePtrOutputWithContext(ctx context.
 }
 
 func (o AnimationFadePtrOutput) Elem() AnimationFadeOutput {
-	return o.ApplyT(func(v *AnimationFade) AnimationFade { return *v }).(AnimationFadeOutput)
+	return o.ApplyT(func(v *AnimationFade) AnimationFade {
+		if v != nil {
+			return *v
+		}
+		var ret AnimationFade
+		return ret
+	}).(AnimationFadeOutput)
 }
 
 // The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
@@ -1197,7 +1215,7 @@ func (o AnimationStaticOutput) ToAnimationStaticPtrOutput() AnimationStaticPtrOu
 }
 
 func (o AnimationStaticOutput) ToAnimationStaticPtrOutputWithContext(ctx context.Context) AnimationStaticPtrOutput {
-	return o.ApplyT(func(v AnimationStatic) *AnimationStatic {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnimationStatic) *AnimationStatic {
 		return &v
 	}).(AnimationStaticPtrOutput)
 }
@@ -1227,7 +1245,13 @@ func (o AnimationStaticPtrOutput) ToAnimationStaticPtrOutputWithContext(ctx cont
 }
 
 func (o AnimationStaticPtrOutput) Elem() AnimationStaticOutput {
-	return o.ApplyT(func(v *AnimationStatic) AnimationStatic { return *v }).(AnimationStaticOutput)
+	return o.ApplyT(func(v *AnimationStatic) AnimationStatic {
+		if v != nil {
+			return *v
+		}
+		var ret AnimationStatic
+		return ret
+	}).(AnimationStaticOutput)
 }
 
 // The time to start displaying the overlay object, in seconds. Default: 0
@@ -1418,7 +1442,7 @@ func (o AudioOutput) ToAudioPtrOutput() AudioPtrOutput {
 }
 
 func (o AudioOutput) ToAudioPtrOutputWithContext(ctx context.Context) AudioPtrOutput {
-	return o.ApplyT(func(v Audio) *Audio {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Audio) *Audio {
 		return &v
 	}).(AudioPtrOutput)
 }
@@ -1453,7 +1477,13 @@ func (o AudioPtrOutput) ToAudioPtrOutputWithContext(ctx context.Context) AudioPt
 }
 
 func (o AudioPtrOutput) Elem() AudioOutput {
-	return o.ApplyT(func(v *Audio) Audio { return *v }).(AudioOutput)
+	return o.ApplyT(func(v *Audio) Audio {
+		if v != nil {
+			return *v
+		}
+		var ret Audio
+		return ret
+	}).(AudioOutput)
 }
 
 // Enable boosting high frequency components. The default is `false`.
@@ -1707,7 +1737,7 @@ func (o AudioAtomResponseArrayOutput) Index(i pulumi.IntInput) AudioAtomResponse
 // The audio channel.
 type AudioChannel struct {
 	// List of `Job.inputs` for this audio channel.
-	Inputs []AudioChannelInput `pulumi:"inputs"`
+	Inputs []AudioChannelInputType `pulumi:"inputs"`
 }
 
 // AudioChannelInput is an input type that accepts AudioChannelArgs and AudioChannelOutput values.
@@ -1724,7 +1754,7 @@ type AudioChannelInput interface {
 // The audio channel.
 type AudioChannelArgs struct {
 	// List of `Job.inputs` for this audio channel.
-	Inputs AudioChannelInputArrayInput `pulumi:"inputs"`
+	Inputs AudioChannelInputTypeArrayInput `pulumi:"inputs"`
 }
 
 func (AudioChannelArgs) ElementType() reflect.Type {
@@ -1780,8 +1810,8 @@ func (o AudioChannelOutput) ToAudioChannelOutputWithContext(ctx context.Context)
 }
 
 // List of `Job.inputs` for this audio channel.
-func (o AudioChannelOutput) Inputs() AudioChannelInputArrayOutput {
-	return o.ApplyT(func(v AudioChannel) []AudioChannelInput { return v.Inputs }).(AudioChannelInputArrayOutput)
+func (o AudioChannelOutput) Inputs() AudioChannelInputTypeArrayOutput {
+	return o.ApplyT(func(v AudioChannel) []AudioChannelInputType { return v.Inputs }).(AudioChannelInputTypeArrayOutput)
 }
 
 type AudioChannelArrayOutput struct{ *pulumi.OutputState }
@@ -1805,7 +1835,7 @@ func (o AudioChannelArrayOutput) Index(i pulumi.IntInput) AudioChannelOutput {
 }
 
 // Identifies which input file, track, and channel should be used.
-type AudioChannelInput struct {
+type AudioChannelInputType struct {
 	// The zero-based index of the channel in the input file.
 	Channel int `pulumi:"channel"`
 	// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
@@ -1816,19 +1846,19 @@ type AudioChannelInput struct {
 	Track int `pulumi:"track"`
 }
 
-// AudioChannelInputInput is an input type that accepts AudioChannelInputArgs and AudioChannelInputOutput values.
-// You can construct a concrete instance of `AudioChannelInputInput` via:
+// AudioChannelInputTypeInput is an input type that accepts AudioChannelInputTypeArgs and AudioChannelInputTypeOutput values.
+// You can construct a concrete instance of `AudioChannelInputTypeInput` via:
 //
-//          AudioChannelInputArgs{...}
-type AudioChannelInputInput interface {
+//          AudioChannelInputTypeArgs{...}
+type AudioChannelInputTypeInput interface {
 	pulumi.Input
 
-	ToAudioChannelInputOutput() AudioChannelInputOutput
-	ToAudioChannelInputOutputWithContext(context.Context) AudioChannelInputOutput
+	ToAudioChannelInputTypeOutput() AudioChannelInputTypeOutput
+	ToAudioChannelInputTypeOutputWithContext(context.Context) AudioChannelInputTypeOutput
 }
 
 // Identifies which input file, track, and channel should be used.
-type AudioChannelInputArgs struct {
+type AudioChannelInputTypeArgs struct {
 	// The zero-based index of the channel in the input file.
 	Channel pulumi.IntInput `pulumi:"channel"`
 	// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
@@ -1839,96 +1869,96 @@ type AudioChannelInputArgs struct {
 	Track pulumi.IntInput `pulumi:"track"`
 }
 
-func (AudioChannelInputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AudioChannelInput)(nil)).Elem()
+func (AudioChannelInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AudioChannelInputType)(nil)).Elem()
 }
 
-func (i AudioChannelInputArgs) ToAudioChannelInputOutput() AudioChannelInputOutput {
-	return i.ToAudioChannelInputOutputWithContext(context.Background())
+func (i AudioChannelInputTypeArgs) ToAudioChannelInputTypeOutput() AudioChannelInputTypeOutput {
+	return i.ToAudioChannelInputTypeOutputWithContext(context.Background())
 }
 
-func (i AudioChannelInputArgs) ToAudioChannelInputOutputWithContext(ctx context.Context) AudioChannelInputOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AudioChannelInputOutput)
+func (i AudioChannelInputTypeArgs) ToAudioChannelInputTypeOutputWithContext(ctx context.Context) AudioChannelInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AudioChannelInputTypeOutput)
 }
 
-// AudioChannelInputArrayInput is an input type that accepts AudioChannelInputArray and AudioChannelInputArrayOutput values.
-// You can construct a concrete instance of `AudioChannelInputArrayInput` via:
+// AudioChannelInputTypeArrayInput is an input type that accepts AudioChannelInputTypeArray and AudioChannelInputTypeArrayOutput values.
+// You can construct a concrete instance of `AudioChannelInputTypeArrayInput` via:
 //
-//          AudioChannelInputArray{ AudioChannelInputArgs{...} }
-type AudioChannelInputArrayInput interface {
+//          AudioChannelInputTypeArray{ AudioChannelInputTypeArgs{...} }
+type AudioChannelInputTypeArrayInput interface {
 	pulumi.Input
 
-	ToAudioChannelInputArrayOutput() AudioChannelInputArrayOutput
-	ToAudioChannelInputArrayOutputWithContext(context.Context) AudioChannelInputArrayOutput
+	ToAudioChannelInputTypeArrayOutput() AudioChannelInputTypeArrayOutput
+	ToAudioChannelInputTypeArrayOutputWithContext(context.Context) AudioChannelInputTypeArrayOutput
 }
 
-type AudioChannelInputArray []AudioChannelInputInput
+type AudioChannelInputTypeArray []AudioChannelInputTypeInput
 
-func (AudioChannelInputArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AudioChannelInput)(nil)).Elem()
+func (AudioChannelInputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AudioChannelInputType)(nil)).Elem()
 }
 
-func (i AudioChannelInputArray) ToAudioChannelInputArrayOutput() AudioChannelInputArrayOutput {
-	return i.ToAudioChannelInputArrayOutputWithContext(context.Background())
+func (i AudioChannelInputTypeArray) ToAudioChannelInputTypeArrayOutput() AudioChannelInputTypeArrayOutput {
+	return i.ToAudioChannelInputTypeArrayOutputWithContext(context.Background())
 }
 
-func (i AudioChannelInputArray) ToAudioChannelInputArrayOutputWithContext(ctx context.Context) AudioChannelInputArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AudioChannelInputArrayOutput)
+func (i AudioChannelInputTypeArray) ToAudioChannelInputTypeArrayOutputWithContext(ctx context.Context) AudioChannelInputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AudioChannelInputTypeArrayOutput)
 }
 
 // Identifies which input file, track, and channel should be used.
-type AudioChannelInputOutput struct{ *pulumi.OutputState }
+type AudioChannelInputTypeOutput struct{ *pulumi.OutputState }
 
-func (AudioChannelInputOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AudioChannelInput)(nil)).Elem()
+func (AudioChannelInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AudioChannelInputType)(nil)).Elem()
 }
 
-func (o AudioChannelInputOutput) ToAudioChannelInputOutput() AudioChannelInputOutput {
+func (o AudioChannelInputTypeOutput) ToAudioChannelInputTypeOutput() AudioChannelInputTypeOutput {
 	return o
 }
 
-func (o AudioChannelInputOutput) ToAudioChannelInputOutputWithContext(ctx context.Context) AudioChannelInputOutput {
+func (o AudioChannelInputTypeOutput) ToAudioChannelInputTypeOutputWithContext(ctx context.Context) AudioChannelInputTypeOutput {
 	return o
 }
 
 // The zero-based index of the channel in the input file.
-func (o AudioChannelInputOutput) Channel() pulumi.IntOutput {
-	return o.ApplyT(func(v AudioChannelInput) int { return v.Channel }).(pulumi.IntOutput)
+func (o AudioChannelInputTypeOutput) Channel() pulumi.IntOutput {
+	return o.ApplyT(func(v AudioChannelInputType) int { return v.Channel }).(pulumi.IntOutput)
 }
 
 // Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
-func (o AudioChannelInputOutput) GainDb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v AudioChannelInput) *float64 { return v.GainDb }).(pulumi.Float64PtrOutput)
+func (o AudioChannelInputTypeOutput) GainDb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AudioChannelInputType) *float64 { return v.GainDb }).(pulumi.Float64PtrOutput)
 }
 
 // The `Input.key` that identifies the input file.
-func (o AudioChannelInputOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v AudioChannelInput) string { return v.Key }).(pulumi.StringOutput)
+func (o AudioChannelInputTypeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AudioChannelInputType) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The zero-based index of the track in the input file.
-func (o AudioChannelInputOutput) Track() pulumi.IntOutput {
-	return o.ApplyT(func(v AudioChannelInput) int { return v.Track }).(pulumi.IntOutput)
+func (o AudioChannelInputTypeOutput) Track() pulumi.IntOutput {
+	return o.ApplyT(func(v AudioChannelInputType) int { return v.Track }).(pulumi.IntOutput)
 }
 
-type AudioChannelInputArrayOutput struct{ *pulumi.OutputState }
+type AudioChannelInputTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (AudioChannelInputArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AudioChannelInput)(nil)).Elem()
+func (AudioChannelInputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AudioChannelInputType)(nil)).Elem()
 }
 
-func (o AudioChannelInputArrayOutput) ToAudioChannelInputArrayOutput() AudioChannelInputArrayOutput {
+func (o AudioChannelInputTypeArrayOutput) ToAudioChannelInputTypeArrayOutput() AudioChannelInputTypeArrayOutput {
 	return o
 }
 
-func (o AudioChannelInputArrayOutput) ToAudioChannelInputArrayOutputWithContext(ctx context.Context) AudioChannelInputArrayOutput {
+func (o AudioChannelInputTypeArrayOutput) ToAudioChannelInputTypeArrayOutputWithContext(ctx context.Context) AudioChannelInputTypeArrayOutput {
 	return o
 }
 
-func (o AudioChannelInputArrayOutput) Index(i pulumi.IntInput) AudioChannelInputOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AudioChannelInput {
-		return vs[0].([]AudioChannelInput)[vs[1].(int)]
-	}).(AudioChannelInputOutput)
+func (o AudioChannelInputTypeArrayOutput) Index(i pulumi.IntInput) AudioChannelInputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AudioChannelInputType {
+		return vs[0].([]AudioChannelInputType)[vs[1].(int)]
+	}).(AudioChannelInputTypeOutput)
 }
 
 // Identifies which input file, track, and channel should be used.
@@ -2347,7 +2377,7 @@ func (o AudioStreamOutput) ToAudioStreamPtrOutput() AudioStreamPtrOutput {
 }
 
 func (o AudioStreamOutput) ToAudioStreamPtrOutputWithContext(ctx context.Context) AudioStreamPtrOutput {
-	return o.ApplyT(func(v AudioStream) *AudioStream {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AudioStream) *AudioStream {
 		return &v
 	}).(AudioStreamPtrOutput)
 }
@@ -2397,7 +2427,13 @@ func (o AudioStreamPtrOutput) ToAudioStreamPtrOutputWithContext(ctx context.Cont
 }
 
 func (o AudioStreamPtrOutput) Elem() AudioStreamOutput {
-	return o.ApplyT(func(v *AudioStream) AudioStream { return *v }).(AudioStreamOutput)
+	return o.ApplyT(func(v *AudioStream) AudioStream {
+		if v != nil {
+			return *v
+		}
+		var ret AudioStream
+		return ret
+	}).(AudioStreamOutput)
 }
 
 // Audio bitrate in bits per second. Must be between 1 and 10,000,000.
@@ -2664,7 +2700,7 @@ func (o ColorOutput) ToColorPtrOutput() ColorPtrOutput {
 }
 
 func (o ColorOutput) ToColorPtrOutputWithContext(ctx context.Context) ColorPtrOutput {
-	return o.ApplyT(func(v Color) *Color {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Color) *Color {
 		return &v
 	}).(ColorPtrOutput)
 }
@@ -2699,7 +2735,13 @@ func (o ColorPtrOutput) ToColorPtrOutputWithContext(ctx context.Context) ColorPt
 }
 
 func (o ColorPtrOutput) Elem() ColorOutput {
-	return o.ApplyT(func(v *Color) Color { return *v }).(ColorOutput)
+	return o.ApplyT(func(v *Color) Color {
+		if v != nil {
+			return *v
+		}
+		var ret Color
+		return ret
+	}).(ColorOutput)
 }
 
 // Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
@@ -2913,7 +2955,7 @@ func (o CropOutput) ToCropPtrOutput() CropPtrOutput {
 }
 
 func (o CropOutput) ToCropPtrOutputWithContext(ctx context.Context) CropPtrOutput {
-	return o.ApplyT(func(v Crop) *Crop {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Crop) *Crop {
 		return &v
 	}).(CropPtrOutput)
 }
@@ -2953,7 +2995,13 @@ func (o CropPtrOutput) ToCropPtrOutputWithContext(ctx context.Context) CropPtrOu
 }
 
 func (o CropPtrOutput) Elem() CropOutput {
-	return o.ApplyT(func(v *Crop) Crop { return *v }).(CropOutput)
+	return o.ApplyT(func(v *Crop) Crop {
+		if v != nil {
+			return *v
+		}
+		var ret Crop
+		return ret
+	}).(CropOutput)
 }
 
 // The number of pixels to crop from the bottom. The default is 0.
@@ -3178,7 +3226,7 @@ func (o DeblockOutput) ToDeblockPtrOutput() DeblockPtrOutput {
 }
 
 func (o DeblockOutput) ToDeblockPtrOutputWithContext(ctx context.Context) DeblockPtrOutput {
-	return o.ApplyT(func(v Deblock) *Deblock {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Deblock) *Deblock {
 		return &v
 	}).(DeblockPtrOutput)
 }
@@ -3208,7 +3256,13 @@ func (o DeblockPtrOutput) ToDeblockPtrOutputWithContext(ctx context.Context) Deb
 }
 
 func (o DeblockPtrOutput) Elem() DeblockOutput {
-	return o.ApplyT(func(v *Deblock) Deblock { return *v }).(DeblockOutput)
+	return o.ApplyT(func(v *Deblock) Deblock {
+		if v != nil {
+			return *v
+		}
+		var ret Deblock
+		return ret
+	}).(DeblockOutput)
 }
 
 // Enable deblocker. The default is `false`.
@@ -3395,7 +3449,7 @@ func (o DenoiseOutput) ToDenoisePtrOutput() DenoisePtrOutput {
 }
 
 func (o DenoiseOutput) ToDenoisePtrOutputWithContext(ctx context.Context) DenoisePtrOutput {
-	return o.ApplyT(func(v Denoise) *Denoise {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Denoise) *Denoise {
 		return &v
 	}).(DenoisePtrOutput)
 }
@@ -3425,7 +3479,13 @@ func (o DenoisePtrOutput) ToDenoisePtrOutputWithContext(ctx context.Context) Den
 }
 
 func (o DenoisePtrOutput) Elem() DenoiseOutput {
-	return o.ApplyT(func(v *Denoise) Denoise { return *v }).(DenoiseOutput)
+	return o.ApplyT(func(v *Denoise) Denoise {
+		if v != nil {
+			return *v
+		}
+		var ret Denoise
+		return ret
+	}).(DenoiseOutput)
 }
 
 // Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
@@ -4132,7 +4192,7 @@ func (o EncryptionOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
 }
 
 func (o EncryptionOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
-	return o.ApplyT(func(v Encryption) *Encryption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Encryption) *Encryption {
 		return &v
 	}).(EncryptionPtrOutput)
 }
@@ -4177,7 +4237,13 @@ func (o EncryptionPtrOutput) ToEncryptionPtrOutputWithContext(ctx context.Contex
 }
 
 func (o EncryptionPtrOutput) Elem() EncryptionOutput {
-	return o.ApplyT(func(v *Encryption) Encryption { return *v }).(EncryptionOutput)
+	return o.ApplyT(func(v *Encryption) Encryption {
+		if v != nil {
+			return *v
+		}
+		var ret Encryption
+		return ret
+	}).(EncryptionOutput)
 }
 
 // Configuration for AES-128 encryption.
@@ -4525,7 +4591,7 @@ func (o ImageOutput) ToImagePtrOutput() ImagePtrOutput {
 }
 
 func (o ImageOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOutput {
-	return o.ApplyT(func(v Image) *Image {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Image) *Image {
 		return &v
 	}).(ImagePtrOutput)
 }
@@ -4560,7 +4626,13 @@ func (o ImagePtrOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePt
 }
 
 func (o ImagePtrOutput) Elem() ImageOutput {
-	return o.ApplyT(func(v *Image) Image { return *v }).(ImageOutput)
+	return o.ApplyT(func(v *Image) Image {
+		if v != nil {
+			return *v
+		}
+		var ret Image
+		return ret
+	}).(ImageOutput)
 }
 
 // Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
@@ -5034,7 +5106,7 @@ func (o JobConfigOutput) ToJobConfigPtrOutput() JobConfigPtrOutput {
 }
 
 func (o JobConfigOutput) ToJobConfigPtrOutputWithContext(ctx context.Context) JobConfigPtrOutput {
-	return o.ApplyT(func(v JobConfig) *JobConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfig) *JobConfig {
 		return &v
 	}).(JobConfigPtrOutput)
 }
@@ -5104,7 +5176,13 @@ func (o JobConfigPtrOutput) ToJobConfigPtrOutputWithContext(ctx context.Context)
 }
 
 func (o JobConfigPtrOutput) Elem() JobConfigOutput {
-	return o.ApplyT(func(v *JobConfig) JobConfig { return *v }).(JobConfigOutput)
+	return o.ApplyT(func(v *JobConfig) JobConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfig
+		return ret
+	}).(JobConfigOutput)
 }
 
 // List of ad breaks. Specifies where to insert ad break tags in the output manifests.
@@ -5339,7 +5417,7 @@ func (o JobConfigResponseOutput) ToJobConfigResponsePtrOutput() JobConfigRespons
 }
 
 func (o JobConfigResponseOutput) ToJobConfigResponsePtrOutputWithContext(ctx context.Context) JobConfigResponsePtrOutput {
-	return o.ApplyT(func(v JobConfigResponse) *JobConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigResponse) *JobConfigResponse {
 		return &v
 	}).(JobConfigResponsePtrOutput)
 }
@@ -5409,7 +5487,13 @@ func (o JobConfigResponsePtrOutput) ToJobConfigResponsePtrOutputWithContext(ctx 
 }
 
 func (o JobConfigResponsePtrOutput) Elem() JobConfigResponseOutput {
-	return o.ApplyT(func(v *JobConfigResponse) JobConfigResponse { return *v }).(JobConfigResponseOutput)
+	return o.ApplyT(func(v *JobConfigResponse) JobConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigResponse
+		return ret
+	}).(JobConfigResponseOutput)
 }
 
 // List of ad breaks. Specifies where to insert ad break tags in the output manifests.
@@ -5848,7 +5932,7 @@ func (o MpegCommonEncryptionOutput) ToMpegCommonEncryptionPtrOutput() MpegCommon
 }
 
 func (o MpegCommonEncryptionOutput) ToMpegCommonEncryptionPtrOutputWithContext(ctx context.Context) MpegCommonEncryptionPtrOutput {
-	return o.ApplyT(func(v MpegCommonEncryption) *MpegCommonEncryption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MpegCommonEncryption) *MpegCommonEncryption {
 		return &v
 	}).(MpegCommonEncryptionPtrOutput)
 }
@@ -5878,7 +5962,13 @@ func (o MpegCommonEncryptionPtrOutput) ToMpegCommonEncryptionPtrOutputWithContex
 }
 
 func (o MpegCommonEncryptionPtrOutput) Elem() MpegCommonEncryptionOutput {
-	return o.ApplyT(func(v *MpegCommonEncryption) MpegCommonEncryption { return *v }).(MpegCommonEncryptionOutput)
+	return o.ApplyT(func(v *MpegCommonEncryption) MpegCommonEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret MpegCommonEncryption
+		return ret
+	}).(MpegCommonEncryptionOutput)
 }
 
 // 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
@@ -6355,7 +6445,7 @@ func (o NormalizedCoordinateOutput) ToNormalizedCoordinatePtrOutput() Normalized
 }
 
 func (o NormalizedCoordinateOutput) ToNormalizedCoordinatePtrOutputWithContext(ctx context.Context) NormalizedCoordinatePtrOutput {
-	return o.ApplyT(func(v NormalizedCoordinate) *NormalizedCoordinate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NormalizedCoordinate) *NormalizedCoordinate {
 		return &v
 	}).(NormalizedCoordinatePtrOutput)
 }
@@ -6385,7 +6475,13 @@ func (o NormalizedCoordinatePtrOutput) ToNormalizedCoordinatePtrOutputWithContex
 }
 
 func (o NormalizedCoordinatePtrOutput) Elem() NormalizedCoordinateOutput {
-	return o.ApplyT(func(v *NormalizedCoordinate) NormalizedCoordinate { return *v }).(NormalizedCoordinateOutput)
+	return o.ApplyT(func(v *NormalizedCoordinate) NormalizedCoordinate {
+		if v != nil {
+			return *v
+		}
+		var ret NormalizedCoordinate
+		return ret
+	}).(NormalizedCoordinateOutput)
 }
 
 // Normalized x coordinate.
@@ -6572,7 +6668,7 @@ func (o OriginUriResponseOutput) ToOriginUriResponsePtrOutput() OriginUriRespons
 }
 
 func (o OriginUriResponseOutput) ToOriginUriResponsePtrOutputWithContext(ctx context.Context) OriginUriResponsePtrOutput {
-	return o.ApplyT(func(v OriginUriResponse) *OriginUriResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OriginUriResponse) *OriginUriResponse {
 		return &v
 	}).(OriginUriResponsePtrOutput)
 }
@@ -6602,7 +6698,13 @@ func (o OriginUriResponsePtrOutput) ToOriginUriResponsePtrOutputWithContext(ctx 
 }
 
 func (o OriginUriResponsePtrOutput) Elem() OriginUriResponseOutput {
-	return o.ApplyT(func(v *OriginUriResponse) OriginUriResponse { return *v }).(OriginUriResponseOutput)
+	return o.ApplyT(func(v *OriginUriResponse) OriginUriResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OriginUriResponse
+		return ret
+	}).(OriginUriResponseOutput)
 }
 
 // Dash manifest URI. If multiple Dash manifests are created, only the first one is listed.
@@ -6721,7 +6823,7 @@ func (o OutputOutput) ToOutputPtrOutput() OutputPtrOutput {
 }
 
 func (o OutputOutput) ToOutputPtrOutputWithContext(ctx context.Context) OutputPtrOutput {
-	return o.ApplyT(func(v Output) *Output {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Output) *Output {
 		return &v
 	}).(OutputPtrOutput)
 }
@@ -6746,7 +6848,13 @@ func (o OutputPtrOutput) ToOutputPtrOutputWithContext(ctx context.Context) Outpu
 }
 
 func (o OutputPtrOutput) Elem() OutputOutput {
-	return o.ApplyT(func(v *Output) Output { return *v }).(OutputOutput)
+	return o.ApplyT(func(v *Output) Output {
+		if v != nil {
+			return *v
+		}
+		var ret Output
+		return ret
+	}).(OutputOutput)
 }
 
 // URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
@@ -6855,7 +6963,7 @@ func (o OutputResponseOutput) ToOutputResponsePtrOutput() OutputResponsePtrOutpu
 }
 
 func (o OutputResponseOutput) ToOutputResponsePtrOutputWithContext(ctx context.Context) OutputResponsePtrOutput {
-	return o.ApplyT(func(v OutputResponse) *OutputResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OutputResponse) *OutputResponse {
 		return &v
 	}).(OutputResponsePtrOutput)
 }
@@ -6880,7 +6988,13 @@ func (o OutputResponsePtrOutput) ToOutputResponsePtrOutputWithContext(ctx contex
 }
 
 func (o OutputResponsePtrOutput) Elem() OutputResponseOutput {
-	return o.ApplyT(func(v *OutputResponse) OutputResponse { return *v }).(OutputResponseOutput)
+	return o.ApplyT(func(v *OutputResponse) OutputResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OutputResponse
+		return ret
+	}).(OutputResponseOutput)
 }
 
 // URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
@@ -7219,7 +7333,7 @@ func (o PadOutput) ToPadPtrOutput() PadPtrOutput {
 }
 
 func (o PadOutput) ToPadPtrOutputWithContext(ctx context.Context) PadPtrOutput {
-	return o.ApplyT(func(v Pad) *Pad {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Pad) *Pad {
 		return &v
 	}).(PadPtrOutput)
 }
@@ -7259,7 +7373,13 @@ func (o PadPtrOutput) ToPadPtrOutputWithContext(ctx context.Context) PadPtrOutpu
 }
 
 func (o PadPtrOutput) Elem() PadOutput {
-	return o.ApplyT(func(v *Pad) Pad { return *v }).(PadOutput)
+	return o.ApplyT(func(v *Pad) Pad {
+		if v != nil {
+			return *v
+		}
+		var ret Pad
+		return ret
+	}).(PadOutput)
 }
 
 // The number of pixels to add to the bottom. The default is 0.
@@ -7500,7 +7620,7 @@ func (o PreprocessingConfigOutput) ToPreprocessingConfigPtrOutput() Preprocessin
 }
 
 func (o PreprocessingConfigOutput) ToPreprocessingConfigPtrOutputWithContext(ctx context.Context) PreprocessingConfigPtrOutput {
-	return o.ApplyT(func(v PreprocessingConfig) *PreprocessingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreprocessingConfig) *PreprocessingConfig {
 		return &v
 	}).(PreprocessingConfigPtrOutput)
 }
@@ -7550,7 +7670,13 @@ func (o PreprocessingConfigPtrOutput) ToPreprocessingConfigPtrOutputWithContext(
 }
 
 func (o PreprocessingConfigPtrOutput) Elem() PreprocessingConfigOutput {
-	return o.ApplyT(func(v *PreprocessingConfig) PreprocessingConfig { return *v }).(PreprocessingConfigOutput)
+	return o.ApplyT(func(v *PreprocessingConfig) PreprocessingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PreprocessingConfig
+		return ret
+	}).(PreprocessingConfigOutput)
 }
 
 // Audio preprocessing configuration.
@@ -7821,7 +7947,7 @@ func (o ProgressResponseOutput) ToProgressResponsePtrOutput() ProgressResponsePt
 }
 
 func (o ProgressResponseOutput) ToProgressResponsePtrOutputWithContext(ctx context.Context) ProgressResponsePtrOutput {
-	return o.ApplyT(func(v ProgressResponse) *ProgressResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProgressResponse) *ProgressResponse {
 		return &v
 	}).(ProgressResponsePtrOutput)
 }
@@ -7861,7 +7987,13 @@ func (o ProgressResponsePtrOutput) ToProgressResponsePtrOutputWithContext(ctx co
 }
 
 func (o ProgressResponsePtrOutput) Elem() ProgressResponseOutput {
-	return o.ApplyT(func(v *ProgressResponse) ProgressResponse { return *v }).(ProgressResponseOutput)
+	return o.ApplyT(func(v *ProgressResponse) ProgressResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ProgressResponse
+		return ret
+	}).(ProgressResponseOutput)
 }
 
 // Estimated fractional progress for `analyzing` step.
@@ -8000,7 +8132,7 @@ func (o PubsubDestinationOutput) ToPubsubDestinationPtrOutput() PubsubDestinatio
 }
 
 func (o PubsubDestinationOutput) ToPubsubDestinationPtrOutputWithContext(ctx context.Context) PubsubDestinationPtrOutput {
-	return o.ApplyT(func(v PubsubDestination) *PubsubDestination {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubDestination) *PubsubDestination {
 		return &v
 	}).(PubsubDestinationPtrOutput)
 }
@@ -8025,7 +8157,13 @@ func (o PubsubDestinationPtrOutput) ToPubsubDestinationPtrOutputWithContext(ctx 
 }
 
 func (o PubsubDestinationPtrOutput) Elem() PubsubDestinationOutput {
-	return o.ApplyT(func(v *PubsubDestination) PubsubDestination { return *v }).(PubsubDestinationOutput)
+	return o.ApplyT(func(v *PubsubDestination) PubsubDestination {
+		if v != nil {
+			return *v
+		}
+		var ret PubsubDestination
+		return ret
+	}).(PubsubDestinationOutput)
 }
 
 // The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
@@ -8134,7 +8272,7 @@ func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponsePtrOutput() 
 }
 
 func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
-	return o.ApplyT(func(v PubsubDestinationResponse) *PubsubDestinationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubDestinationResponse) *PubsubDestinationResponse {
 		return &v
 	}).(PubsubDestinationResponsePtrOutput)
 }
@@ -8159,7 +8297,13 @@ func (o PubsubDestinationResponsePtrOutput) ToPubsubDestinationResponsePtrOutput
 }
 
 func (o PubsubDestinationResponsePtrOutput) Elem() PubsubDestinationResponseOutput {
-	return o.ApplyT(func(v *PubsubDestinationResponse) PubsubDestinationResponse { return *v }).(PubsubDestinationResponseOutput)
+	return o.ApplyT(func(v *PubsubDestinationResponse) PubsubDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PubsubDestinationResponse
+		return ret
+	}).(PubsubDestinationResponseOutput)
 }
 
 // The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
@@ -8268,7 +8412,7 @@ func (o SampleAesEncryptionOutput) ToSampleAesEncryptionPtrOutput() SampleAesEnc
 }
 
 func (o SampleAesEncryptionOutput) ToSampleAesEncryptionPtrOutputWithContext(ctx context.Context) SampleAesEncryptionPtrOutput {
-	return o.ApplyT(func(v SampleAesEncryption) *SampleAesEncryption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SampleAesEncryption) *SampleAesEncryption {
 		return &v
 	}).(SampleAesEncryptionPtrOutput)
 }
@@ -8293,7 +8437,13 @@ func (o SampleAesEncryptionPtrOutput) ToSampleAesEncryptionPtrOutputWithContext(
 }
 
 func (o SampleAesEncryptionPtrOutput) Elem() SampleAesEncryptionOutput {
-	return o.ApplyT(func(v *SampleAesEncryption) SampleAesEncryption { return *v }).(SampleAesEncryptionOutput)
+	return o.ApplyT(func(v *SampleAesEncryption) SampleAesEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret SampleAesEncryption
+		return ret
+	}).(SampleAesEncryptionOutput)
 }
 
 // URI of the key delivery service. This URI is inserted into the M3U8 header.
@@ -8461,7 +8611,7 @@ func (o SegmentSettingsOutput) ToSegmentSettingsPtrOutput() SegmentSettingsPtrOu
 }
 
 func (o SegmentSettingsOutput) ToSegmentSettingsPtrOutputWithContext(ctx context.Context) SegmentSettingsPtrOutput {
-	return o.ApplyT(func(v SegmentSettings) *SegmentSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SegmentSettings) *SegmentSettings {
 		return &v
 	}).(SegmentSettingsPtrOutput)
 }
@@ -8491,7 +8641,13 @@ func (o SegmentSettingsPtrOutput) ToSegmentSettingsPtrOutputWithContext(ctx cont
 }
 
 func (o SegmentSettingsPtrOutput) Elem() SegmentSettingsOutput {
-	return o.ApplyT(func(v *SegmentSettings) SegmentSettings { return *v }).(SegmentSettingsOutput)
+	return o.ApplyT(func(v *SegmentSettings) SegmentSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SegmentSettings
+		return ret
+	}).(SegmentSettingsOutput)
 }
 
 // Create an individual segment file. The default is `false`.
@@ -9498,7 +9654,7 @@ func (o TextStreamOutput) ToTextStreamPtrOutput() TextStreamPtrOutput {
 }
 
 func (o TextStreamOutput) ToTextStreamPtrOutputWithContext(ctx context.Context) TextStreamPtrOutput {
-	return o.ApplyT(func(v TextStream) *TextStream {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextStream) *TextStream {
 		return &v
 	}).(TextStreamPtrOutput)
 }
@@ -9533,7 +9689,13 @@ func (o TextStreamPtrOutput) ToTextStreamPtrOutputWithContext(ctx context.Contex
 }
 
 func (o TextStreamPtrOutput) Elem() TextStreamOutput {
-	return o.ApplyT(func(v *TextStream) TextStream { return *v }).(TextStreamOutput)
+	return o.ApplyT(func(v *TextStream) TextStream {
+		if v != nil {
+			return *v
+		}
+		var ret TextStream
+		return ret
+	}).(TextStreamOutput)
 }
 
 // The codec for this text stream. The default is `"webvtt"`. Supported text codecs: - 'srt' - 'ttml' - 'cea608' - 'cea708' - 'webvtt'
@@ -9815,7 +9977,7 @@ func (o VideoStreamOutput) ToVideoStreamPtrOutput() VideoStreamPtrOutput {
 }
 
 func (o VideoStreamOutput) ToVideoStreamPtrOutputWithContext(ctx context.Context) VideoStreamPtrOutput {
-	return o.ApplyT(func(v VideoStream) *VideoStream {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VideoStream) *VideoStream {
 		return &v
 	}).(VideoStreamPtrOutput)
 }
@@ -9940,7 +10102,13 @@ func (o VideoStreamPtrOutput) ToVideoStreamPtrOutputWithContext(ctx context.Cont
 }
 
 func (o VideoStreamPtrOutput) Elem() VideoStreamOutput {
-	return o.ApplyT(func(v *VideoStream) VideoStream { return *v }).(VideoStreamOutput)
+	return o.ApplyT(func(v *VideoStream) VideoStream {
+		if v != nil {
+			return *v
+		}
+		var ret VideoStream
+		return ret
+	}).(VideoStreamOutput)
 }
 
 // Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
@@ -10417,8 +10585,8 @@ func init() {
 	pulumi.RegisterOutputType(AudioAtomResponseArrayOutput{})
 	pulumi.RegisterOutputType(AudioChannelOutput{})
 	pulumi.RegisterOutputType(AudioChannelArrayOutput{})
-	pulumi.RegisterOutputType(AudioChannelInputOutput{})
-	pulumi.RegisterOutputType(AudioChannelInputArrayOutput{})
+	pulumi.RegisterOutputType(AudioChannelInputTypeOutput{})
+	pulumi.RegisterOutputType(AudioChannelInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(AudioChannelInputResponseOutput{})
 	pulumi.RegisterOutputType(AudioChannelInputResponseArrayOutput{})
 	pulumi.RegisterOutputType(AudioChannelResponseOutput{})

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
+    /// </summary>
     [OutputType]
     public sealed class BuildResponse
     {

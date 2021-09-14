@@ -13,6 +13,7 @@ __all__ = [
     'GetInspectTemplateResult',
     'AwaitableGetInspectTemplateResult',
     'get_inspect_template',
+    'get_inspect_template_output',
 ]
 
 @pulumi.output_type
@@ -124,3 +125,14 @@ def get_inspect_template(inspect_template_id: Optional[str] = None,
         inspect_config=__ret__.inspect_config,
         name=__ret__.name,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_inspect_template)
+def get_inspect_template_output(inspect_template_id: Optional[pulumi.Input[str]] = None,
+                                location: Optional[pulumi.Input[str]] = None,
+                                project: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInspectTemplateResult]:
+    """
+    Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+    """
+    ...

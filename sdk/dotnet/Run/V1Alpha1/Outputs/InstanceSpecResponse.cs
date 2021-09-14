@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// InstanceSpec is a description of an instance.
+    /// </summary>
     [OutputType]
     public sealed class InstanceSpecResponse
     {

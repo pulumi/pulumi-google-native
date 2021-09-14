@@ -114,9 +114,7 @@ func (i *EntryGroup) ToEntryGroupOutputWithContext(ctx context.Context) EntryGro
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupOutput)
 }
 
-type EntryGroupOutput struct {
-	*pulumi.OutputState
-}
+type EntryGroupOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EntryGroup)(nil))

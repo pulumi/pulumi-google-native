@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GameServices.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// The game server cluster connection information.
+    /// </summary>
     [OutputType]
     public sealed class GameServerClusterConnectionInfoResponse
     {

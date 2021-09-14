@@ -790,7 +790,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -830,7 +830,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1059,7 +1065,7 @@ func (o MirrorConfigOutput) ToMirrorConfigPtrOutput() MirrorConfigPtrOutput {
 }
 
 func (o MirrorConfigOutput) ToMirrorConfigPtrOutputWithContext(ctx context.Context) MirrorConfigPtrOutput {
-	return o.ApplyT(func(v MirrorConfig) *MirrorConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MirrorConfig) *MirrorConfig {
 		return &v
 	}).(MirrorConfigPtrOutput)
 }
@@ -1094,7 +1100,13 @@ func (o MirrorConfigPtrOutput) ToMirrorConfigPtrOutputWithContext(ctx context.Co
 }
 
 func (o MirrorConfigPtrOutput) Elem() MirrorConfigOutput {
-	return o.ApplyT(func(v *MirrorConfig) MirrorConfig { return *v }).(MirrorConfigOutput)
+	return o.ApplyT(func(v *MirrorConfig) MirrorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MirrorConfig
+		return ret
+	}).(MirrorConfigOutput)
 }
 
 // ID of the SSH deploy key at the other hosting service. Removing this key from the other service would deauthorize Google Cloud Source Repositories from mirroring.
@@ -1231,7 +1243,7 @@ func (o MirrorConfigResponseOutput) ToMirrorConfigResponsePtrOutput() MirrorConf
 }
 
 func (o MirrorConfigResponseOutput) ToMirrorConfigResponsePtrOutputWithContext(ctx context.Context) MirrorConfigResponsePtrOutput {
-	return o.ApplyT(func(v MirrorConfigResponse) *MirrorConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MirrorConfigResponse) *MirrorConfigResponse {
 		return &v
 	}).(MirrorConfigResponsePtrOutput)
 }
@@ -1266,7 +1278,13 @@ func (o MirrorConfigResponsePtrOutput) ToMirrorConfigResponsePtrOutputWithContex
 }
 
 func (o MirrorConfigResponsePtrOutput) Elem() MirrorConfigResponseOutput {
-	return o.ApplyT(func(v *MirrorConfigResponse) MirrorConfigResponse { return *v }).(MirrorConfigResponseOutput)
+	return o.ApplyT(func(v *MirrorConfigResponse) MirrorConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MirrorConfigResponse
+		return ret
+	}).(MirrorConfigResponseOutput)
 }
 
 // ID of the SSH deploy key at the other hosting service. Removing this key from the other service would deauthorize Google Cloud Source Repositories from mirroring.

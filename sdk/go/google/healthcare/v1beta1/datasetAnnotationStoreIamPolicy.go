@@ -129,9 +129,7 @@ func (i *DatasetAnnotationStoreIamPolicy) ToDatasetAnnotationStoreIamPolicyOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAnnotationStoreIamPolicyOutput)
 }
 
-type DatasetAnnotationStoreIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type DatasetAnnotationStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatasetAnnotationStoreIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetAnnotationStoreIamPolicy)(nil))

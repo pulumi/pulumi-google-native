@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// Target scaling by CPU usage.
+    /// </summary>
     [OutputType]
     public sealed class CpuUtilizationResponse
     {

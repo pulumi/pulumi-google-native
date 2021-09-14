@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration of a specific billing destination (Currently only support bill against consumer project).
+    /// </summary>
     [OutputType]
     public sealed class BillingDestinationResponse
     {

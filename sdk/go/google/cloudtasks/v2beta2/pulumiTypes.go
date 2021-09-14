@@ -122,7 +122,7 @@ func (o AppEngineHttpRequestOutput) ToAppEngineHttpRequestPtrOutput() AppEngineH
 }
 
 func (o AppEngineHttpRequestOutput) ToAppEngineHttpRequestPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestPtrOutput {
-	return o.ApplyT(func(v AppEngineHttpRequest) *AppEngineHttpRequest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpRequest) *AppEngineHttpRequest {
 		return &v
 	}).(AppEngineHttpRequestPtrOutput)
 }
@@ -167,7 +167,13 @@ func (o AppEngineHttpRequestPtrOutput) ToAppEngineHttpRequestPtrOutputWithContex
 }
 
 func (o AppEngineHttpRequestPtrOutput) Elem() AppEngineHttpRequestOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequest) AppEngineHttpRequest { return *v }).(AppEngineHttpRequestOutput)
+	return o.ApplyT(func(v *AppEngineHttpRequest) AppEngineHttpRequest {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineHttpRequest
+		return ret
+	}).(AppEngineHttpRequestOutput)
 }
 
 // Task-level setting for App Engine routing. If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
@@ -332,7 +338,7 @@ func (o AppEngineHttpRequestResponseOutput) ToAppEngineHttpRequestResponsePtrOut
 }
 
 func (o AppEngineHttpRequestResponseOutput) ToAppEngineHttpRequestResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpRequestResponsePtrOutput {
-	return o.ApplyT(func(v AppEngineHttpRequestResponse) *AppEngineHttpRequestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpRequestResponse) *AppEngineHttpRequestResponse {
 		return &v
 	}).(AppEngineHttpRequestResponsePtrOutput)
 }
@@ -377,7 +383,13 @@ func (o AppEngineHttpRequestResponsePtrOutput) ToAppEngineHttpRequestResponsePtr
 }
 
 func (o AppEngineHttpRequestResponsePtrOutput) Elem() AppEngineHttpRequestResponseOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequestResponse) AppEngineHttpRequestResponse { return *v }).(AppEngineHttpRequestResponseOutput)
+	return o.ApplyT(func(v *AppEngineHttpRequestResponse) AppEngineHttpRequestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineHttpRequestResponse
+		return ret
+	}).(AppEngineHttpRequestResponseOutput)
 }
 
 // Task-level setting for App Engine routing. If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
@@ -526,7 +538,7 @@ func (o AppEngineHttpTargetOutput) ToAppEngineHttpTargetPtrOutput() AppEngineHtt
 }
 
 func (o AppEngineHttpTargetOutput) ToAppEngineHttpTargetPtrOutputWithContext(ctx context.Context) AppEngineHttpTargetPtrOutput {
-	return o.ApplyT(func(v AppEngineHttpTarget) *AppEngineHttpTarget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpTarget) *AppEngineHttpTarget {
 		return &v
 	}).(AppEngineHttpTargetPtrOutput)
 }
@@ -551,7 +563,13 @@ func (o AppEngineHttpTargetPtrOutput) ToAppEngineHttpTargetPtrOutputWithContext(
 }
 
 func (o AppEngineHttpTargetPtrOutput) Elem() AppEngineHttpTargetOutput {
-	return o.ApplyT(func(v *AppEngineHttpTarget) AppEngineHttpTarget { return *v }).(AppEngineHttpTargetOutput)
+	return o.ApplyT(func(v *AppEngineHttpTarget) AppEngineHttpTarget {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineHttpTarget
+		return ret
+	}).(AppEngineHttpTargetOutput)
 }
 
 // Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
@@ -660,7 +678,7 @@ func (o AppEngineHttpTargetResponseOutput) ToAppEngineHttpTargetResponsePtrOutpu
 }
 
 func (o AppEngineHttpTargetResponseOutput) ToAppEngineHttpTargetResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpTargetResponsePtrOutput {
-	return o.ApplyT(func(v AppEngineHttpTargetResponse) *AppEngineHttpTargetResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpTargetResponse) *AppEngineHttpTargetResponse {
 		return &v
 	}).(AppEngineHttpTargetResponsePtrOutput)
 }
@@ -685,7 +703,13 @@ func (o AppEngineHttpTargetResponsePtrOutput) ToAppEngineHttpTargetResponsePtrOu
 }
 
 func (o AppEngineHttpTargetResponsePtrOutput) Elem() AppEngineHttpTargetResponseOutput {
-	return o.ApplyT(func(v *AppEngineHttpTargetResponse) AppEngineHttpTargetResponse { return *v }).(AppEngineHttpTargetResponseOutput)
+	return o.ApplyT(func(v *AppEngineHttpTargetResponse) AppEngineHttpTargetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineHttpTargetResponse
+		return ret
+	}).(AppEngineHttpTargetResponseOutput)
 }
 
 // Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
@@ -802,7 +826,7 @@ func (o AppEngineRoutingOutput) ToAppEngineRoutingPtrOutput() AppEngineRoutingPt
 }
 
 func (o AppEngineRoutingOutput) ToAppEngineRoutingPtrOutputWithContext(ctx context.Context) AppEngineRoutingPtrOutput {
-	return o.ApplyT(func(v AppEngineRouting) *AppEngineRouting {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineRouting) *AppEngineRouting {
 		return &v
 	}).(AppEngineRoutingPtrOutput)
 }
@@ -837,7 +861,13 @@ func (o AppEngineRoutingPtrOutput) ToAppEngineRoutingPtrOutputWithContext(ctx co
 }
 
 func (o AppEngineRoutingPtrOutput) Elem() AppEngineRoutingOutput {
-	return o.ApplyT(func(v *AppEngineRouting) AppEngineRouting { return *v }).(AppEngineRoutingOutput)
+	return o.ApplyT(func(v *AppEngineRouting) AppEngineRouting {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineRouting
+		return ret
+	}).(AppEngineRoutingOutput)
 }
 
 // App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
@@ -978,7 +1008,7 @@ func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponsePtrOutput() Ap
 }
 
 func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponsePtrOutputWithContext(ctx context.Context) AppEngineRoutingResponsePtrOutput {
-	return o.ApplyT(func(v AppEngineRoutingResponse) *AppEngineRoutingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineRoutingResponse) *AppEngineRoutingResponse {
 		return &v
 	}).(AppEngineRoutingResponsePtrOutput)
 }
@@ -1018,7 +1048,13 @@ func (o AppEngineRoutingResponsePtrOutput) ToAppEngineRoutingResponsePtrOutputWi
 }
 
 func (o AppEngineRoutingResponsePtrOutput) Elem() AppEngineRoutingResponseOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) AppEngineRoutingResponse { return *v }).(AppEngineRoutingResponseOutput)
+	return o.ApplyT(func(v *AppEngineRoutingResponse) AppEngineRoutingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineRoutingResponse
+		return ret
+	}).(AppEngineRoutingResponseOutput)
 }
 
 // The host that the task is sent to. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed). The host is constructed as: * `host = [application_domain_name]` `| [service] + '.' + [application_domain_name]` `| [version] + '.' + [application_domain_name]` `| [version_dot_service]+ '.' + [application_domain_name]` `| [instance] + '.' + [application_domain_name]` `| [instance_dot_service] + '.' + [application_domain_name]` `| [instance_dot_version] + '.' + [application_domain_name]` `| [instance_dot_version_dot_service] + '.' + [application_domain_name]` * `application_domain_name` = The domain name of the app, for example .appspot.com, which is associated with the queue's project ID. Some tasks which were created using the App Engine SDK use a custom domain name. * `service =` service * `version =` version * `version_dot_service =` version `+ '.' +` service * `instance =` instance * `instance_dot_service =` instance `+ '.' +` service * `instance_dot_version =` instance `+ '.' +` version * `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +` service If service is empty, then the task will be sent to the service which is the default service when the task is attempted. If version is empty, then the task will be sent to the version which is the default version when the task is attempted. If instance is empty, then the task will be sent to an instance which is available when the task is attempted. If service, version, or instance is invalid, then the task will be sent to the default version of the default service when the task is attempted.
@@ -1169,7 +1205,7 @@ func (o AttemptStatusResponseOutput) ToAttemptStatusResponsePtrOutput() AttemptS
 }
 
 func (o AttemptStatusResponseOutput) ToAttemptStatusResponsePtrOutputWithContext(ctx context.Context) AttemptStatusResponsePtrOutput {
-	return o.ApplyT(func(v AttemptStatusResponse) *AttemptStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttemptStatusResponse) *AttemptStatusResponse {
 		return &v
 	}).(AttemptStatusResponsePtrOutput)
 }
@@ -1209,7 +1245,13 @@ func (o AttemptStatusResponsePtrOutput) ToAttemptStatusResponsePtrOutputWithCont
 }
 
 func (o AttemptStatusResponsePtrOutput) Elem() AttemptStatusResponseOutput {
-	return o.ApplyT(func(v *AttemptStatusResponse) AttemptStatusResponse { return *v }).(AttemptStatusResponseOutput)
+	return o.ApplyT(func(v *AttemptStatusResponse) AttemptStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AttemptStatusResponse
+		return ret
+	}).(AttemptStatusResponseOutput)
 }
 
 // The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
@@ -1596,7 +1638,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1636,7 +1678,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1861,7 +1909,7 @@ func (o PullMessageOutput) ToPullMessagePtrOutput() PullMessagePtrOutput {
 }
 
 func (o PullMessageOutput) ToPullMessagePtrOutputWithContext(ctx context.Context) PullMessagePtrOutput {
-	return o.ApplyT(func(v PullMessage) *PullMessage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PullMessage) *PullMessage {
 		return &v
 	}).(PullMessagePtrOutput)
 }
@@ -1891,7 +1939,13 @@ func (o PullMessagePtrOutput) ToPullMessagePtrOutputWithContext(ctx context.Cont
 }
 
 func (o PullMessagePtrOutput) Elem() PullMessageOutput {
-	return o.ApplyT(func(v *PullMessage) PullMessage { return *v }).(PullMessageOutput)
+	return o.ApplyT(func(v *PullMessage) PullMessage {
+		if v != nil {
+			return *v
+		}
+		var ret PullMessage
+		return ret
+	}).(PullMessageOutput)
 }
 
 // A data payload consumed by the worker to execute the task.
@@ -2014,7 +2068,7 @@ func (o PullMessageResponseOutput) ToPullMessageResponsePtrOutput() PullMessageR
 }
 
 func (o PullMessageResponseOutput) ToPullMessageResponsePtrOutputWithContext(ctx context.Context) PullMessageResponsePtrOutput {
-	return o.ApplyT(func(v PullMessageResponse) *PullMessageResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PullMessageResponse) *PullMessageResponse {
 		return &v
 	}).(PullMessageResponsePtrOutput)
 }
@@ -2044,7 +2098,13 @@ func (o PullMessageResponsePtrOutput) ToPullMessageResponsePtrOutputWithContext(
 }
 
 func (o PullMessageResponsePtrOutput) Elem() PullMessageResponseOutput {
-	return o.ApplyT(func(v *PullMessageResponse) PullMessageResponse { return *v }).(PullMessageResponseOutput)
+	return o.ApplyT(func(v *PullMessageResponse) PullMessageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PullMessageResponse
+		return ret
+	}).(PullMessageResponseOutput)
 }
 
 // A data payload consumed by the worker to execute the task.
@@ -2159,7 +2219,7 @@ func (o PullTargetOutput) ToPullTargetPtrOutput() PullTargetPtrOutput {
 }
 
 func (o PullTargetOutput) ToPullTargetPtrOutputWithContext(ctx context.Context) PullTargetPtrOutput {
-	return o.ApplyT(func(v PullTarget) *PullTarget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PullTarget) *PullTarget {
 		return &v
 	}).(PullTargetPtrOutput)
 }
@@ -2179,7 +2239,13 @@ func (o PullTargetPtrOutput) ToPullTargetPtrOutputWithContext(ctx context.Contex
 }
 
 func (o PullTargetPtrOutput) Elem() PullTargetOutput {
-	return o.ApplyT(func(v *PullTarget) PullTarget { return *v }).(PullTargetOutput)
+	return o.ApplyT(func(v *PullTarget) PullTarget {
+		if v != nil {
+			return *v
+		}
+		var ret PullTarget
+		return ret
+	}).(PullTargetOutput)
 }
 
 // Pull target.
@@ -2274,7 +2340,7 @@ func (o PullTargetResponseOutput) ToPullTargetResponsePtrOutput() PullTargetResp
 }
 
 func (o PullTargetResponseOutput) ToPullTargetResponsePtrOutputWithContext(ctx context.Context) PullTargetResponsePtrOutput {
-	return o.ApplyT(func(v PullTargetResponse) *PullTargetResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PullTargetResponse) *PullTargetResponse {
 		return &v
 	}).(PullTargetResponsePtrOutput)
 }
@@ -2294,7 +2360,13 @@ func (o PullTargetResponsePtrOutput) ToPullTargetResponsePtrOutputWithContext(ct
 }
 
 func (o PullTargetResponsePtrOutput) Elem() PullTargetResponseOutput {
-	return o.ApplyT(func(v *PullTargetResponse) PullTargetResponse { return *v }).(PullTargetResponseOutput)
+	return o.ApplyT(func(v *PullTargetResponse) PullTargetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PullTargetResponse
+		return ret
+	}).(PullTargetResponseOutput)
 }
 
 // Statistics for a queue.
@@ -2409,7 +2481,7 @@ func (o QueueStatsResponseOutput) ToQueueStatsResponsePtrOutput() QueueStatsResp
 }
 
 func (o QueueStatsResponseOutput) ToQueueStatsResponsePtrOutputWithContext(ctx context.Context) QueueStatsResponsePtrOutput {
-	return o.ApplyT(func(v QueueStatsResponse) *QueueStatsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueStatsResponse) *QueueStatsResponse {
 		return &v
 	}).(QueueStatsResponsePtrOutput)
 }
@@ -2454,7 +2526,13 @@ func (o QueueStatsResponsePtrOutput) ToQueueStatsResponsePtrOutputWithContext(ct
 }
 
 func (o QueueStatsResponsePtrOutput) Elem() QueueStatsResponseOutput {
-	return o.ApplyT(func(v *QueueStatsResponse) QueueStatsResponse { return *v }).(QueueStatsResponseOutput)
+	return o.ApplyT(func(v *QueueStatsResponse) QueueStatsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret QueueStatsResponse
+		return ret
+	}).(QueueStatsResponseOutput)
 }
 
 // The number of requests that the queue has dispatched but has not received a reply for yet.
@@ -2611,7 +2689,7 @@ func (o RateLimitsOutput) ToRateLimitsPtrOutput() RateLimitsPtrOutput {
 }
 
 func (o RateLimitsOutput) ToRateLimitsPtrOutputWithContext(ctx context.Context) RateLimitsPtrOutput {
-	return o.ApplyT(func(v RateLimits) *RateLimits {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimits) *RateLimits {
 		return &v
 	}).(RateLimitsPtrOutput)
 }
@@ -2646,7 +2724,13 @@ func (o RateLimitsPtrOutput) ToRateLimitsPtrOutputWithContext(ctx context.Contex
 }
 
 func (o RateLimitsPtrOutput) Elem() RateLimitsOutput {
-	return o.ApplyT(func(v *RateLimits) RateLimits { return *v }).(RateLimitsOutput)
+	return o.ApplyT(func(v *RateLimits) RateLimits {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimits
+		return ret
+	}).(RateLimitsOutput)
 }
 
 // The max burst size. Max burst size limits how fast tasks in queue are processed when many tasks are in the queue and the rate is high. This field allows the queue to have a high rate so processing starts shortly after a task is enqueued, but still limits resource usage when many tasks are enqueued in a short period of time. The [token bucket](https://wikipedia.org/wiki/Token_Bucket) algorithm is used to control the rate of task dispatches. Each queue has a token bucket that holds tokens, up to the maximum specified by `max_burst_size`. Each time a task is dispatched, a token is removed from the bucket. Tasks will be dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new tokens based on max_dispatches_per_second. The default value of `max_burst_size` is picked by Cloud Tasks based on the value of max_dispatches_per_second. The maximum value of `max_burst_size` is 500. For App Engine queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size). If UpdateQueue is called on a queue without explicitly setting a value for `max_burst_size`, `max_burst_size` value will get updated if UpdateQueue is updating max_dispatches_per_second.
@@ -2783,7 +2867,7 @@ func (o RateLimitsResponseOutput) ToRateLimitsResponsePtrOutput() RateLimitsResp
 }
 
 func (o RateLimitsResponseOutput) ToRateLimitsResponsePtrOutputWithContext(ctx context.Context) RateLimitsResponsePtrOutput {
-	return o.ApplyT(func(v RateLimitsResponse) *RateLimitsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitsResponse) *RateLimitsResponse {
 		return &v
 	}).(RateLimitsResponsePtrOutput)
 }
@@ -2818,7 +2902,13 @@ func (o RateLimitsResponsePtrOutput) ToRateLimitsResponsePtrOutputWithContext(ct
 }
 
 func (o RateLimitsResponsePtrOutput) Elem() RateLimitsResponseOutput {
-	return o.ApplyT(func(v *RateLimitsResponse) RateLimitsResponse { return *v }).(RateLimitsResponseOutput)
+	return o.ApplyT(func(v *RateLimitsResponse) RateLimitsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitsResponse
+		return ret
+	}).(RateLimitsResponseOutput)
 }
 
 // The max burst size. Max burst size limits how fast tasks in queue are processed when many tasks are in the queue and the rate is high. This field allows the queue to have a high rate so processing starts shortly after a task is enqueued, but still limits resource usage when many tasks are enqueued in a short period of time. The [token bucket](https://wikipedia.org/wiki/Token_Bucket) algorithm is used to control the rate of task dispatches. Each queue has a token bucket that holds tokens, up to the maximum specified by `max_burst_size`. Each time a task is dispatched, a token is removed from the bucket. Tasks will be dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new tokens based on max_dispatches_per_second. The default value of `max_burst_size` is picked by Cloud Tasks based on the value of max_dispatches_per_second. The maximum value of `max_burst_size` is 500. For App Engine queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size). If UpdateQueue is called on a queue without explicitly setting a value for `max_burst_size`, `max_burst_size` value will get updated if UpdateQueue is updating max_dispatches_per_second.
@@ -2967,7 +3057,7 @@ func (o RetryConfigOutput) ToRetryConfigPtrOutput() RetryConfigPtrOutput {
 }
 
 func (o RetryConfigOutput) ToRetryConfigPtrOutputWithContext(ctx context.Context) RetryConfigPtrOutput {
-	return o.ApplyT(func(v RetryConfig) *RetryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryConfig) *RetryConfig {
 		return &v
 	}).(RetryConfigPtrOutput)
 }
@@ -3017,7 +3107,13 @@ func (o RetryConfigPtrOutput) ToRetryConfigPtrOutputWithContext(ctx context.Cont
 }
 
 func (o RetryConfigPtrOutput) Elem() RetryConfigOutput {
-	return o.ApplyT(func(v *RetryConfig) RetryConfig { return *v }).(RetryConfigOutput)
+	return o.ApplyT(func(v *RetryConfig) RetryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RetryConfig
+		return ret
+	}).(RetryConfigOutput)
 }
 
 // The maximum number of attempts for a task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be > 0.
@@ -3196,7 +3292,7 @@ func (o RetryConfigResponseOutput) ToRetryConfigResponsePtrOutput() RetryConfigR
 }
 
 func (o RetryConfigResponseOutput) ToRetryConfigResponsePtrOutputWithContext(ctx context.Context) RetryConfigResponsePtrOutput {
-	return o.ApplyT(func(v RetryConfigResponse) *RetryConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryConfigResponse) *RetryConfigResponse {
 		return &v
 	}).(RetryConfigResponsePtrOutput)
 }
@@ -3246,7 +3342,13 @@ func (o RetryConfigResponsePtrOutput) ToRetryConfigResponsePtrOutputWithContext(
 }
 
 func (o RetryConfigResponsePtrOutput) Elem() RetryConfigResponseOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) RetryConfigResponse { return *v }).(RetryConfigResponseOutput)
+	return o.ApplyT(func(v *RetryConfigResponse) RetryConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RetryConfigResponse
+		return ret
+	}).(RetryConfigResponseOutput)
 }
 
 // The maximum number of attempts for a task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be > 0.
@@ -3413,7 +3515,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -3448,7 +3550,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -3589,7 +3697,7 @@ func (o TaskStatusResponseOutput) ToTaskStatusResponsePtrOutput() TaskStatusResp
 }
 
 func (o TaskStatusResponseOutput) ToTaskStatusResponsePtrOutputWithContext(ctx context.Context) TaskStatusResponsePtrOutput {
-	return o.ApplyT(func(v TaskStatusResponse) *TaskStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskStatusResponse) *TaskStatusResponse {
 		return &v
 	}).(TaskStatusResponsePtrOutput)
 }
@@ -3629,7 +3737,13 @@ func (o TaskStatusResponsePtrOutput) ToTaskStatusResponsePtrOutputWithContext(ct
 }
 
 func (o TaskStatusResponsePtrOutput) Elem() TaskStatusResponseOutput {
-	return o.ApplyT(func(v *TaskStatusResponse) TaskStatusResponse { return *v }).(TaskStatusResponseOutput)
+	return o.ApplyT(func(v *TaskStatusResponse) TaskStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TaskStatusResponse
+		return ret
+	}).(TaskStatusResponseOutput)
 }
 
 // The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.

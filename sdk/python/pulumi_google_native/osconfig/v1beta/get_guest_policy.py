@@ -13,6 +13,7 @@ __all__ = [
     'GetGuestPolicyResult',
     'AwaitableGetGuestPolicyResult',
     'get_guest_policy',
+    'get_guest_policy_output',
 ]
 
 @pulumi.output_type
@@ -161,3 +162,13 @@ def get_guest_policy(guest_policy_id: Optional[str] = None,
         packages=__ret__.packages,
         recipes=__ret__.recipes,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_guest_policy)
+def get_guest_policy_output(guest_policy_id: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGuestPolicyResult]:
+    """
+    Get an OS Config guest policy.
+    """
+    ...

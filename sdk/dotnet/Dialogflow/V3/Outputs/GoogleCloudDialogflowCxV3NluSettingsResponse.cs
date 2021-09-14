@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// Settings related to NLU.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3NluSettingsResponse
     {

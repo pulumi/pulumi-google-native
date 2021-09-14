@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// A package managed by YUM. - install: `yum -y install package` - remove: `yum -y remove package`
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyResourcePackageResourceYUMResponse
     {

@@ -149,9 +149,7 @@ func (i *NodeGroup) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupO
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupOutput)
 }
 
-type NodeGroupOutput struct {
-	*pulumi.OutputState
-}
+type NodeGroupOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodeGroup)(nil))

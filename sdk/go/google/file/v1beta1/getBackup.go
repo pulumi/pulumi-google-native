@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,4 +51,101 @@ type LookupBackupResult struct {
 	State string `pulumi:"state"`
 	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
 	StorageBytes string `pulumi:"storageBytes"`
+}
+
+func LookupBackupOutput(ctx *pulumi.Context, args LookupBackupOutputArgs, opts ...pulumi.InvokeOption) LookupBackupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupBackupResult, error) {
+			args := v.(LookupBackupArgs)
+			r, err := LookupBackup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupBackupResultOutput)
+}
+
+type LookupBackupOutputArgs struct {
+	BackupId pulumi.StringInput    `pulumi:"backupId"`
+	Location pulumi.StringInput    `pulumi:"location"`
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupBackupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBackupArgs)(nil)).Elem()
+}
+
+type LookupBackupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupBackupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBackupResult)(nil)).Elem()
+}
+
+func (o LookupBackupResultOutput) ToLookupBackupResultOutput() LookupBackupResultOutput {
+	return o
+}
+
+func (o LookupBackupResultOutput) ToLookupBackupResultOutputWithContext(ctx context.Context) LookupBackupResultOutput {
+	return o
+}
+
+// Capacity of the source file share when the backup was created.
+func (o LookupBackupResultOutput) CapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.CapacityGb }).(pulumi.StringOutput)
+}
+
+// The time when the backup was created.
+func (o LookupBackupResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
+func (o LookupBackupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Amount of bytes that will be downloaded if the backup is restored
+func (o LookupBackupResultOutput) DownloadBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.DownloadBytes }).(pulumi.StringOutput)
+}
+
+// Resource labels to represent user provided metadata.
+func (o LookupBackupResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBackupResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
+func (o LookupBackupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o LookupBackupResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBackupResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
+// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+func (o LookupBackupResultOutput) SourceFileShare() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.SourceFileShare }).(pulumi.StringOutput)
+}
+
+// The resource name of the source Cloud Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+func (o LookupBackupResultOutput) SourceInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.SourceInstance }).(pulumi.StringOutput)
+}
+
+// The service tier of the source Cloud Filestore instance that this backup is created from.
+func (o LookupBackupResultOutput) SourceInstanceTier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.SourceInstanceTier }).(pulumi.StringOutput)
+}
+
+// The backup state.
+func (o LookupBackupResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+func (o LookupBackupResultOutput) StorageBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.StorageBytes }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupBackupResultOutput{})
 }

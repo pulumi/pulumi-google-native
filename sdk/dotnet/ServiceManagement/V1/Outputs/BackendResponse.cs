@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// `Backend` defines the backend configuration for a service.
+    /// </summary>
     [OutputType]
     public sealed class BackendResponse
     {

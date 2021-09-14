@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 {
 
+    /// <summary>
+    /// These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
+    /// </summary>
     [OutputType]
     public sealed class SubjectConfigResponse
     {

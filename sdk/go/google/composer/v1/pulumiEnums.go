@@ -112,7 +112,7 @@ func (o EnvironmentStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Con
 type EnvironmentStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentStateEnumPtrOutput) ElementType() reflect.Type {
-	return environmentStateEnumPtrType
+	return reflect.TypeOf((**EnvironmentStateEnum)(nil)).Elem()
 }
 
 func (o EnvironmentStateEnumPtrOutput) ToEnvironmentStateEnumPtrOutput() EnvironmentStateEnumPtrOutput {
@@ -121,6 +121,16 @@ func (o EnvironmentStateEnumPtrOutput) ToEnvironmentStateEnumPtrOutput() Environ
 
 func (o EnvironmentStateEnumPtrOutput) ToEnvironmentStateEnumPtrOutputWithContext(ctx context.Context) EnvironmentStateEnumPtrOutput {
 	return o
+}
+
+func (o EnvironmentStateEnumPtrOutput) Elem() EnvironmentStateEnumOutput {
+	return o.ApplyT(func(v *EnvironmentStateEnum) EnvironmentStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentStateEnum
+		return ret
+	}).(EnvironmentStateEnumOutput)
 }
 
 func (o EnvironmentStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -135,16 +145,6 @@ func (o EnvironmentStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EnvironmentStateEnumPtrOutput) Elem() EnvironmentStateEnumOutput {
-	return o.ApplyT(func(v *EnvironmentStateEnum) EnvironmentStateEnum {
-		var ret EnvironmentStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EnvironmentStateEnumOutput)
 }
 
 // EnvironmentStateEnumInput is an input type that accepts EnvironmentStateEnumArgs and EnvironmentStateEnumOutput values.

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Details of an image occurrence.
+    /// </summary>
     [OutputType]
     public sealed class GrafeasV1beta1ImageDetailsResponse
     {

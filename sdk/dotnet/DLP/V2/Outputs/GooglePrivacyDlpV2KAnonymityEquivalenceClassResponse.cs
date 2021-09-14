@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// The set of columns' values that share the same ldiversity value
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse
     {

@@ -13,6 +13,7 @@ __all__ = [
     'GetImageResult',
     'AwaitableGetImageResult',
     'get_image',
+    'get_image_output',
 ]
 
 @pulumi.output_type
@@ -486,3 +487,13 @@ def get_image(image: Optional[str] = None,
         status=__ret__.status,
         storage_locations=__ret__.storage_locations,
         user_licenses=__ret__.user_licenses)
+
+
+@_utilities.lift_output_func(get_image)
+def get_image_output(image: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
+    """
+    Returns the specified image. Gets a list of available images by making a list() request.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CertificateAuthority.
+    /// </summary>
     [OutputType]
     public sealed class IssuanceModesResponse
     {

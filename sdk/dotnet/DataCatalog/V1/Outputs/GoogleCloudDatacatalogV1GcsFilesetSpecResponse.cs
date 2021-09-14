@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes a Cloud Storage fileset entry.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1GcsFilesetSpecResponse
     {

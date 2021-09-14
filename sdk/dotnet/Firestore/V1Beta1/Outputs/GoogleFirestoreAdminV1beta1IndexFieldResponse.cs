@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Firestore.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A field of an index.
+    /// </summary>
     [OutputType]
     public sealed class GoogleFirestoreAdminV1beta1IndexFieldResponse
     {

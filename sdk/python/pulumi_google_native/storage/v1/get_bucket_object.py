@@ -13,6 +13,7 @@ __all__ = [
     'GetBucketObjectResult',
     'AwaitableGetBucketObjectResult',
     'get_bucket_object',
+    'get_bucket_object_output',
 ]
 
 @pulumi.output_type
@@ -463,3 +464,21 @@ def get_bucket_object(bucket: Optional[str] = None,
         time_deleted=__ret__.time_deleted,
         time_storage_class_updated=__ret__.time_storage_class_updated,
         updated=__ret__.updated)
+
+
+@_utilities.lift_output_func(get_bucket_object)
+def get_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
+                             generation: Optional[pulumi.Input[Optional[str]]] = None,
+                             if_generation_match: Optional[pulumi.Input[Optional[str]]] = None,
+                             if_generation_not_match: Optional[pulumi.Input[Optional[str]]] = None,
+                             if_metageneration_match: Optional[pulumi.Input[Optional[str]]] = None,
+                             if_metageneration_not_match: Optional[pulumi.Input[Optional[str]]] = None,
+                             object: Optional[pulumi.Input[str]] = None,
+                             projection: Optional[pulumi.Input[Optional[str]]] = None,
+                             provisional_user_project: Optional[pulumi.Input[Optional[str]]] = None,
+                             user_project: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketObjectResult]:
+    """
+    Retrieves an object or its metadata.
+    """
+    ...

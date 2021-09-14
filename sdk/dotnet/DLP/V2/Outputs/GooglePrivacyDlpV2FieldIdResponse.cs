@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// General identifier of a data field in a storage service.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2FieldIdResponse
     {

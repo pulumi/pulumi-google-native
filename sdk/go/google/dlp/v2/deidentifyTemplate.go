@@ -117,9 +117,7 @@ func (i *DeidentifyTemplate) ToDeidentifyTemplateOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DeidentifyTemplateOutput)
 }
 
-type DeidentifyTemplateOutput struct {
-	*pulumi.OutputState
-}
+type DeidentifyTemplateOutput struct{ *pulumi.OutputState }
 
 func (DeidentifyTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DeidentifyTemplate)(nil))

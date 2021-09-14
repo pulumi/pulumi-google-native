@@ -124,9 +124,7 @@ func (i *Waiter) ToWaiterOutputWithContext(ctx context.Context) WaiterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WaiterOutput)
 }
 
-type WaiterOutput struct {
-	*pulumi.OutputState
-}
+type WaiterOutput struct{ *pulumi.OutputState }
 
 func (WaiterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Waiter)(nil))

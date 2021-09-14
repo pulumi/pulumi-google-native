@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
+    /// <summary>
+    /// User signature.
+    /// </summary>
     [OutputType]
     public sealed class SignatureResponse
     {

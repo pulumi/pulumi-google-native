@@ -13,6 +13,7 @@ __all__ = [
     'GetTrialResult',
     'AwaitableGetTrialResult',
     'get_trial',
+    'get_trial_output',
 ]
 
 @pulumi.output_type
@@ -178,3 +179,15 @@ def get_trial(location: Optional[str] = None,
         start_time=__ret__.start_time,
         state=__ret__.state,
         trial_infeasible=__ret__.trial_infeasible)
+
+
+@_utilities.lift_output_func(get_trial)
+def get_trial_output(location: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     study_id: Optional[pulumi.Input[str]] = None,
+                     trial_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrialResult]:
+    """
+    Gets a trial.
+    """
+    ...

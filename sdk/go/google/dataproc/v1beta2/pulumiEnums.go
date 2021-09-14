@@ -108,7 +108,7 @@ func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToStringPtrOutputWithCont
 type GceClusterConfigPrivateIpv6GoogleAccessPtrOutput struct{ *pulumi.OutputState }
 
 func (GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ElementType() reflect.Type {
-	return gceClusterConfigPrivateIpv6GoogleAccessPtrType
+	return reflect.TypeOf((**GceClusterConfigPrivateIpv6GoogleAccess)(nil)).Elem()
 }
 
 func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutput() GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
@@ -117,6 +117,16 @@ func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToGceClusterConfigPriv
 
 func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
 	return o
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) Elem() GceClusterConfigPrivateIpv6GoogleAccessOutput {
+	return o.ApplyT(func(v *GceClusterConfigPrivateIpv6GoogleAccess) GceClusterConfigPrivateIpv6GoogleAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GceClusterConfigPrivateIpv6GoogleAccess
+		return ret
+	}).(GceClusterConfigPrivateIpv6GoogleAccessOutput)
 }
 
 func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWithC
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) Elem() GceClusterConfigPrivateIpv6GoogleAccessOutput {
-	return o.ApplyT(func(v *GceClusterConfigPrivateIpv6GoogleAccess) GceClusterConfigPrivateIpv6GoogleAccess {
-		var ret GceClusterConfigPrivateIpv6GoogleAccess
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GceClusterConfigPrivateIpv6GoogleAccessOutput)
 }
 
 // GceClusterConfigPrivateIpv6GoogleAccessInput is an input type that accepts GceClusterConfigPrivateIpv6GoogleAccessArgs and GceClusterConfigPrivateIpv6GoogleAccessOutput values.
@@ -277,7 +277,7 @@ func (o InstanceGroupConfigPreemptibilityOutput) ToStringPtrOutputWithContext(ct
 type InstanceGroupConfigPreemptibilityPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupConfigPreemptibilityPtrOutput) ElementType() reflect.Type {
-	return instanceGroupConfigPreemptibilityPtrType
+	return reflect.TypeOf((**InstanceGroupConfigPreemptibility)(nil)).Elem()
 }
 
 func (o InstanceGroupConfigPreemptibilityPtrOutput) ToInstanceGroupConfigPreemptibilityPtrOutput() InstanceGroupConfigPreemptibilityPtrOutput {
@@ -286,6 +286,16 @@ func (o InstanceGroupConfigPreemptibilityPtrOutput) ToInstanceGroupConfigPreempt
 
 func (o InstanceGroupConfigPreemptibilityPtrOutput) ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(ctx context.Context) InstanceGroupConfigPreemptibilityPtrOutput {
 	return o
+}
+
+func (o InstanceGroupConfigPreemptibilityPtrOutput) Elem() InstanceGroupConfigPreemptibilityOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigPreemptibility) InstanceGroupConfigPreemptibility {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupConfigPreemptibility
+		return ret
+	}).(InstanceGroupConfigPreemptibilityOutput)
 }
 
 func (o InstanceGroupConfigPreemptibilityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o InstanceGroupConfigPreemptibilityPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceGroupConfigPreemptibilityPtrOutput) Elem() InstanceGroupConfigPreemptibilityOutput {
-	return o.ApplyT(func(v *InstanceGroupConfigPreemptibility) InstanceGroupConfigPreemptibility {
-		var ret InstanceGroupConfigPreemptibility
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceGroupConfigPreemptibilityOutput)
 }
 
 // InstanceGroupConfigPreemptibilityInput is an input type that accepts InstanceGroupConfigPreemptibilityArgs and InstanceGroupConfigPreemptibilityOutput values.
@@ -447,7 +447,7 @@ func (o ReservationAffinityConsumeReservationTypeOutput) ToStringPtrOutputWithCo
 type ReservationAffinityConsumeReservationTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ReservationAffinityConsumeReservationTypePtrOutput) ElementType() reflect.Type {
-	return reservationAffinityConsumeReservationTypePtrType
+	return reflect.TypeOf((**ReservationAffinityConsumeReservationType)(nil)).Elem()
 }
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput {
@@ -456,6 +456,16 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinit
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
+	return o.ApplyT(func(v *ReservationAffinityConsumeReservationType) ReservationAffinityConsumeReservationType {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationAffinityConsumeReservationType
+		return ret
+	}).(ReservationAffinityConsumeReservationTypeOutput)
 }
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -470,16 +480,6 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutputWit
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
-	return o.ApplyT(func(v *ReservationAffinityConsumeReservationType) ReservationAffinityConsumeReservationType {
-		var ret ReservationAffinityConsumeReservationType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ReservationAffinityConsumeReservationTypeOutput)
 }
 
 // ReservationAffinityConsumeReservationTypeInput is an input type that accepts ReservationAffinityConsumeReservationTypeArgs and ReservationAffinityConsumeReservationTypeOutput values.
@@ -637,7 +637,7 @@ func (o SoftwareConfigOptionalComponentsItemOutput) ToStringPtrOutputWithContext
 type SoftwareConfigOptionalComponentsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (SoftwareConfigOptionalComponentsItemPtrOutput) ElementType() reflect.Type {
-	return softwareConfigOptionalComponentsItemPtrType
+	return reflect.TypeOf((**SoftwareConfigOptionalComponentsItem)(nil)).Elem()
 }
 
 func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToSoftwareConfigOptionalComponentsItemPtrOutput() SoftwareConfigOptionalComponentsItemPtrOutput {
@@ -646,6 +646,16 @@ func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToSoftwareConfigOptionalC
 
 func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemPtrOutput {
 	return o
+}
+
+func (o SoftwareConfigOptionalComponentsItemPtrOutput) Elem() SoftwareConfigOptionalComponentsItemOutput {
+	return o.ApplyT(func(v *SoftwareConfigOptionalComponentsItem) SoftwareConfigOptionalComponentsItem {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareConfigOptionalComponentsItem
+		return ret
+	}).(SoftwareConfigOptionalComponentsItemOutput)
 }
 
 func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -660,16 +670,6 @@ func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToStringPtrOutputWithCont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SoftwareConfigOptionalComponentsItemPtrOutput) Elem() SoftwareConfigOptionalComponentsItemOutput {
-	return o.ApplyT(func(v *SoftwareConfigOptionalComponentsItem) SoftwareConfigOptionalComponentsItem {
-		var ret SoftwareConfigOptionalComponentsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SoftwareConfigOptionalComponentsItemOutput)
 }
 
 // SoftwareConfigOptionalComponentsItemInput is an input type that accepts SoftwareConfigOptionalComponentsItemArgs and SoftwareConfigOptionalComponentsItemOutput values.
@@ -750,8 +750,8 @@ func (o SoftwareConfigOptionalComponentsItemArrayOutput) ToSoftwareConfigOptiona
 }
 
 func (o SoftwareConfigOptionalComponentsItemArrayOutput) Index(i pulumi.IntInput) SoftwareConfigOptionalComponentsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SoftwareConfigOptionalComponentsItemOutput {
-		return vs[0].([]SoftwareConfigOptionalComponentsItem)[vs[1].(int)].ToSoftwareConfigOptionalComponentsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SoftwareConfigOptionalComponentsItem {
+		return vs[0].([]SoftwareConfigOptionalComponentsItem)[vs[1].(int)]
 	}).(SoftwareConfigOptionalComponentsItemOutput)
 }
 

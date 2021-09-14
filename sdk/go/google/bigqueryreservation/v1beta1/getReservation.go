@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,4 +37,66 @@ type LookupReservationResult struct {
 	SlotCapacity string `pulumi:"slotCapacity"`
 	// Last update time of the reservation.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupReservationOutput(ctx *pulumi.Context, args LookupReservationOutputArgs, opts ...pulumi.InvokeOption) LookupReservationResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupReservationResult, error) {
+			args := v.(LookupReservationArgs)
+			r, err := LookupReservation(ctx, &args, opts...)
+			return *r, err
+		}).(LookupReservationResultOutput)
+}
+
+type LookupReservationOutputArgs struct {
+	Location      pulumi.StringInput    `pulumi:"location"`
+	Project       pulumi.StringPtrInput `pulumi:"project"`
+	ReservationId pulumi.StringInput    `pulumi:"reservationId"`
+}
+
+func (LookupReservationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupReservationArgs)(nil)).Elem()
+}
+
+type LookupReservationResultOutput struct{ *pulumi.OutputState }
+
+func (LookupReservationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupReservationResult)(nil)).Elem()
+}
+
+func (o LookupReservationResultOutput) ToLookupReservationResultOutput() LookupReservationResultOutput {
+	return o
+}
+
+func (o LookupReservationResultOutput) ToLookupReservationResultOutputWithContext(ctx context.Context) LookupReservationResultOutput {
+	return o
+}
+
+// Creation time of the reservation.
+func (o LookupReservationResultOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReservationResult) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+func (o LookupReservationResultOutput) IgnoreIdleSlots() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupReservationResult) bool { return v.IgnoreIdleSlots }).(pulumi.BoolOutput)
+}
+
+// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+func (o LookupReservationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReservationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
+func (o LookupReservationResultOutput) SlotCapacity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReservationResult) string { return v.SlotCapacity }).(pulumi.StringOutput)
+}
+
+// Last update time of the reservation.
+func (o LookupReservationResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReservationResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupReservationResultOutput{})
 }

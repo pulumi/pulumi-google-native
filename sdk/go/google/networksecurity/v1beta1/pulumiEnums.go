@@ -106,7 +106,7 @@ func (o AuthorizationPolicyActionOutput) ToStringPtrOutputWithContext(ctx contex
 type AuthorizationPolicyActionPtrOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationPolicyActionPtrOutput) ElementType() reflect.Type {
-	return authorizationPolicyActionPtrType
+	return reflect.TypeOf((**AuthorizationPolicyAction)(nil)).Elem()
 }
 
 func (o AuthorizationPolicyActionPtrOutput) ToAuthorizationPolicyActionPtrOutput() AuthorizationPolicyActionPtrOutput {
@@ -115,6 +115,16 @@ func (o AuthorizationPolicyActionPtrOutput) ToAuthorizationPolicyActionPtrOutput
 
 func (o AuthorizationPolicyActionPtrOutput) ToAuthorizationPolicyActionPtrOutputWithContext(ctx context.Context) AuthorizationPolicyActionPtrOutput {
 	return o
+}
+
+func (o AuthorizationPolicyActionPtrOutput) Elem() AuthorizationPolicyActionOutput {
+	return o.ApplyT(func(v *AuthorizationPolicyAction) AuthorizationPolicyAction {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationPolicyAction
+		return ret
+	}).(AuthorizationPolicyActionOutput)
 }
 
 func (o AuthorizationPolicyActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o AuthorizationPolicyActionPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuthorizationPolicyActionPtrOutput) Elem() AuthorizationPolicyActionOutput {
-	return o.ApplyT(func(v *AuthorizationPolicyAction) AuthorizationPolicyAction {
-		var ret AuthorizationPolicyAction
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuthorizationPolicyActionOutput)
 }
 
 // AuthorizationPolicyActionInput is an input type that accepts AuthorizationPolicyActionArgs and AuthorizationPolicyActionOutput values.
@@ -277,7 +277,7 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx
 type GoogleIamV1AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleIamV1AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return googleIamV1AuditLogConfigLogTypePtrType
+	return reflect.TypeOf((**GoogleIamV1AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput {
@@ -286,6 +286,16 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *GoogleIamV1AuditLogConfigLogType) GoogleIamV1AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleIamV1AuditLogConfigLogType
+		return ret
+	}).(GoogleIamV1AuditLogConfigLogTypeOutput)
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *GoogleIamV1AuditLogConfigLogType) GoogleIamV1AuditLogConfigLogType {
-		var ret GoogleIamV1AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleIamV1AuditLogConfigLogTypeOutput)
 }
 
 // GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.

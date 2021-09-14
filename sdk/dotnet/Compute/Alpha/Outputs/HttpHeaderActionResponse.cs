@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// The request and response header transformations that take effect before the request is passed along to the selected backendService.
+    /// </summary>
     [OutputType]
     public sealed class HttpHeaderActionResponse
     {

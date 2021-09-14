@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2InspectConfigResponse
     {

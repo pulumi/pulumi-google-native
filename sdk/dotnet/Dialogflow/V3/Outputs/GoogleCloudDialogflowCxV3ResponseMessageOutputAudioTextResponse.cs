@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponse
     {

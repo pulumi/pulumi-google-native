@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceDirectory.V1.Outputs
 {
 
+    /// <summary>
+    /// An individual endpoint that provides a service. The service must already exist to create an endpoint.
+    /// </summary>
     [OutputType]
     public sealed class EndpointResponse
     {

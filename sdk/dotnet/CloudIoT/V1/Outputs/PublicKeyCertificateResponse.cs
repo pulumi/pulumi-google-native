@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIoT.V1.Outputs
 {
 
+    /// <summary>
+    /// A public key certificate format and data.
+    /// </summary>
     [OutputType]
     public sealed class PublicKeyCertificateResponse
     {

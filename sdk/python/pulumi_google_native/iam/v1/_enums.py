@@ -18,13 +18,21 @@ class AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
-    """Default case. Should never be this."""
+    """
+    Default case. Should never be this.
+    """
     ADMIN_READ = "ADMIN_READ"
-    """Admin reads. Example: CloudIAM getIamPolicy"""
+    """
+    Admin reads. Example: CloudIAM getIamPolicy
+    """
     DATA_WRITE = "DATA_WRITE"
-    """Data writes. Example: CloudSQL Users create"""
+    """
+    Data writes. Example: CloudSQL Users create
+    """
     DATA_READ = "DATA_READ"
-    """Data reads. Example: CloudSQL Users list"""
+    """
+    Data reads. Example: CloudSQL Users list
+    """
 
 
 class KeyKeyAlgorithm(str, Enum):
@@ -32,11 +40,17 @@ class KeyKeyAlgorithm(str, Enum):
     Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
     """
     KEY_ALG_UNSPECIFIED = "KEY_ALG_UNSPECIFIED"
-    """An unspecified key algorithm."""
+    """
+    An unspecified key algorithm.
+    """
     KEY_ALG_RSA1024 = "KEY_ALG_RSA_1024"
-    """1k RSA Key."""
+    """
+    1k RSA Key.
+    """
     KEY_ALG_RSA2048 = "KEY_ALG_RSA_2048"
-    """2k RSA Key."""
+    """
+    2k RSA Key.
+    """
 
 
 class KeyPrivateKeyType(str, Enum):
@@ -44,11 +58,17 @@ class KeyPrivateKeyType(str, Enum):
     The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
     """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
-    """Unspecified. Equivalent to `TYPE_GOOGLE_CREDENTIALS_FILE`."""
+    """
+    Unspecified. Equivalent to `TYPE_GOOGLE_CREDENTIALS_FILE`.
+    """
     TYPE_PKCS12_FILE = "TYPE_PKCS12_FILE"
-    """PKCS12 format. The password for the PKCS12 file is `notasecret`. For more information, see https://tools.ietf.org/html/rfc7292."""
+    """
+    PKCS12 format. The password for the PKCS12 file is `notasecret`. For more information, see https://tools.ietf.org/html/rfc7292.
+    """
     TYPE_GOOGLE_CREDENTIALS_FILE = "TYPE_GOOGLE_CREDENTIALS_FILE"
-    """Google Credentials File format."""
+    """
+    Google Credentials File format.
+    """
 
 
 class OrganizationRoleStage(str, Enum):
@@ -56,17 +76,29 @@ class OrganizationRoleStage(str, Enum):
     The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
     """
     ALPHA = "ALPHA"
-    """The user has indicated this role is currently in an Alpha phase. If this launch stage is selected, the `stage` field will not be included when requesting the definition for a given role."""
+    """
+    The user has indicated this role is currently in an Alpha phase. If this launch stage is selected, the `stage` field will not be included when requesting the definition for a given role.
+    """
     BETA = "BETA"
-    """The user has indicated this role is currently in a Beta phase."""
+    """
+    The user has indicated this role is currently in a Beta phase.
+    """
     GA = "GA"
-    """The user has indicated this role is generally available."""
+    """
+    The user has indicated this role is generally available.
+    """
     DEPRECATED = "DEPRECATED"
-    """The user has indicated this role is being deprecated."""
+    """
+    The user has indicated this role is being deprecated.
+    """
     DISABLED = "DISABLED"
-    """This role is disabled and will not contribute permissions to any members it is granted to in policies."""
+    """
+    This role is disabled and will not contribute permissions to any members it is granted to in policies.
+    """
     EAP = "EAP"
-    """The user has indicated this role is currently in an EAP phase."""
+    """
+    The user has indicated this role is currently in an EAP phase.
+    """
 
 
 class RoleStage(str, Enum):
@@ -74,14 +106,26 @@ class RoleStage(str, Enum):
     The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
     """
     ALPHA = "ALPHA"
-    """The user has indicated this role is currently in an Alpha phase. If this launch stage is selected, the `stage` field will not be included when requesting the definition for a given role."""
+    """
+    The user has indicated this role is currently in an Alpha phase. If this launch stage is selected, the `stage` field will not be included when requesting the definition for a given role.
+    """
     BETA = "BETA"
-    """The user has indicated this role is currently in a Beta phase."""
+    """
+    The user has indicated this role is currently in a Beta phase.
+    """
     GA = "GA"
-    """The user has indicated this role is generally available."""
+    """
+    The user has indicated this role is generally available.
+    """
     DEPRECATED = "DEPRECATED"
-    """The user has indicated this role is being deprecated."""
+    """
+    The user has indicated this role is being deprecated.
+    """
     DISABLED = "DISABLED"
-    """This role is disabled and will not contribute permissions to any members it is granted to in policies."""
+    """
+    This role is disabled and will not contribute permissions to any members it is granted to in policies.
+    """
     EAP = "EAP"
-    """The user has indicated this role is currently in an EAP phase."""
+    """
+    The user has indicated this role is currently in an EAP phase.
+    """

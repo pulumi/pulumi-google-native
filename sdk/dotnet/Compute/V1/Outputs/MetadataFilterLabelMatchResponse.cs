@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+    /// </summary>
     [OutputType]
     public sealed class MetadataFilterLabelMatchResponse
     {

@@ -12,6 +12,7 @@ __all__ = [
     'GetGcpUserAccessBindingResult',
     'AwaitableGetGcpUserAccessBindingResult',
     'get_gcp_user_access_binding',
+    'get_gcp_user_access_binding_output',
 ]
 
 @pulumi.output_type
@@ -82,3 +83,13 @@ def get_gcp_user_access_binding(gcp_user_access_binding_id: Optional[str] = None
         access_levels=__ret__.access_levels,
         group_key=__ret__.group_key,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_gcp_user_access_binding)
+def get_gcp_user_access_binding_output(gcp_user_access_binding_id: Optional[pulumi.Input[str]] = None,
+                                       organization_id: Optional[pulumi.Input[str]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGcpUserAccessBindingResult]:
+    """
+    Gets the GcpUserAccessBinding with the given name.
+    """
+    ...

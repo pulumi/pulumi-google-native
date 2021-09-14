@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// A field or a column.
+    /// </summary>
     [OutputType]
     public sealed class StandardSqlFieldResponse
     {

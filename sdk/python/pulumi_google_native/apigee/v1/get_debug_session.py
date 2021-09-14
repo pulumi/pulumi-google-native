@@ -12,6 +12,7 @@ __all__ = [
     'GetDebugSessionResult',
     'AwaitableGetDebugSessionResult',
     'get_debug_session',
+    'get_debug_session_output',
 ]
 
 @pulumi.output_type
@@ -127,3 +128,16 @@ def get_debug_session(api_id: Optional[str] = None,
         timeout=__ret__.timeout,
         tracesize=__ret__.tracesize,
         validity=__ret__.validity)
+
+
+@_utilities.lift_output_func(get_debug_session)
+def get_debug_session_output(api_id: Optional[pulumi.Input[str]] = None,
+                             debugsession_id: Optional[pulumi.Input[str]] = None,
+                             environment_id: Optional[pulumi.Input[str]] = None,
+                             organization_id: Optional[pulumi.Input[str]] = None,
+                             revision_id: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDebugSessionResult]:
+    """
+    Retrieves a debug session.
+    """
+    ...

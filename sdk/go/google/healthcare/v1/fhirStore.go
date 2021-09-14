@@ -147,9 +147,7 @@ func (i *FhirStore) ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreO
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreOutput)
 }
 
-type FhirStoreOutput struct {
-	*pulumi.OutputState
-}
+type FhirStoreOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FhirStore)(nil))

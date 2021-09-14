@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// A single device file description.
+    /// </summary>
     [OutputType]
     public sealed class DeviceFileResponse
     {

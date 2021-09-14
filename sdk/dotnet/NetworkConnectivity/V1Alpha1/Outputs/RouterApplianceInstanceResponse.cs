@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// RouterAppliance represents a Router appliance which is specified by a VM URI and a NIC address.
+    /// </summary>
     [OutputType]
     public sealed class RouterApplianceInstanceResponse
     {

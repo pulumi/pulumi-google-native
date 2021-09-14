@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// A file or directory to install on the device before the test starts.
+    /// </summary>
     [OutputType]
     public sealed class RegularFileResponse
     {

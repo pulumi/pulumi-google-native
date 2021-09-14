@@ -146,9 +146,7 @@ func (i *Page) ToPageOutputWithContext(ctx context.Context) PageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PageOutput)
 }
 
-type PageOutput struct {
-	*pulumi.OutputState
-}
+type PageOutput struct{ *pulumi.OutputState }
 
 func (PageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Page)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// The condition(s) under which the action will be taken.
+    /// </summary>
     [OutputType]
     public sealed class BucketLifecycleRuleItemConditionResponse
     {

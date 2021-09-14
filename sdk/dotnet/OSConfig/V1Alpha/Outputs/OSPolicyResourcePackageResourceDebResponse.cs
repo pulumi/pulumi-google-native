@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// A deb package file. dpkg packages only support INSTALLED state.
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyResourcePackageResourceDebResponse
     {

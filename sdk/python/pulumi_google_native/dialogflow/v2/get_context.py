@@ -12,6 +12,7 @@ __all__ = [
     'GetContextResult',
     'AwaitableGetContextResult',
     'get_context',
+    'get_context_output',
 ]
 
 @pulumi.output_type
@@ -90,3 +91,17 @@ def get_context(context_id: Optional[str] = None,
         lifespan_count=__ret__.lifespan_count,
         name=__ret__.name,
         parameters=__ret__.parameters)
+
+
+@_utilities.lift_output_func(get_context)
+def get_context_output(context_id: Optional[pulumi.Input[str]] = None,
+                       environment_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       session_id: Optional[pulumi.Input[str]] = None,
+                       user_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContextResult]:
+    """
+    Retrieves the specified context.
+    """
+    ...

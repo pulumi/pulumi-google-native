@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,4 +52,108 @@ type LookupAppResult struct {
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Serving status of this application.
 	ServingStatus string `pulumi:"servingStatus"`
+}
+
+func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAppResult, error) {
+			args := v.(LookupAppArgs)
+			r, err := LookupApp(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAppResultOutput)
+}
+
+type LookupAppOutputArgs struct {
+	AppId pulumi.StringInput `pulumi:"appId"`
+}
+
+func (LookupAppOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAppArgs)(nil)).Elem()
+}
+
+type LookupAppResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAppResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAppResult)(nil)).Elem()
+}
+
+func (o LookupAppResultOutput) ToLookupAppResultOutput() LookupAppResultOutput {
+	return o
+}
+
+func (o LookupAppResultOutput) ToLookupAppResultOutputWithContext(ctx context.Context) LookupAppResultOutput {
+	return o
+}
+
+// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
+func (o LookupAppResultOutput) AuthDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.AuthDomain }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
+func (o LookupAppResultOutput) CodeBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.CodeBucket }).(pulumi.StringOutput)
+}
+
+// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+func (o LookupAppResultOutput) DatabaseType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.DatabaseType }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage bucket that can be used by this application to store content.
+func (o LookupAppResultOutput) DefaultBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.DefaultBucket }).(pulumi.StringOutput)
+}
+
+// Cookie expiration policy for this application.
+func (o LookupAppResultOutput) DefaultCookieExpiration() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.DefaultCookieExpiration }).(pulumi.StringOutput)
+}
+
+// Hostname used to reach this application, as resolved by App Engine.
+func (o LookupAppResultOutput) DefaultHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.DefaultHostname }).(pulumi.StringOutput)
+}
+
+// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
+func (o LookupAppResultOutput) DispatchRules() UrlDispatchRuleResponseArrayOutput {
+	return o.ApplyT(func(v LookupAppResult) []UrlDispatchRuleResponse { return v.DispatchRules }).(UrlDispatchRuleResponseArrayOutput)
+}
+
+// The feature specific settings to be used in the application.
+func (o LookupAppResultOutput) FeatureSettings() FeatureSettingsResponseOutput {
+	return o.ApplyT(func(v LookupAppResult) FeatureSettingsResponse { return v.FeatureSettings }).(FeatureSettingsResponseOutput)
+}
+
+// The Google Container Registry domain used for storing managed build docker images for this application.
+func (o LookupAppResultOutput) GcrDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.GcrDomain }).(pulumi.StringOutput)
+}
+
+func (o LookupAppResultOutput) Iap() IdentityAwareProxyResponseOutput {
+	return o.ApplyT(func(v LookupAppResult) IdentityAwareProxyResponse { return v.Iap }).(IdentityAwareProxyResponseOutput)
+}
+
+// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
+func (o LookupAppResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Full path to the Application resource in the API. Example: apps/myapp.
+func (o LookupAppResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+func (o LookupAppResultOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Serving status of this application.
+func (o LookupAppResultOutput) ServingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.ServingStatus }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAppResultOutput{})
 }

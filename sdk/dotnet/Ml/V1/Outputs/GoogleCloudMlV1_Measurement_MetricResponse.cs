@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// A message representing a metric in the measurement.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1_Measurement_MetricResponse
     {

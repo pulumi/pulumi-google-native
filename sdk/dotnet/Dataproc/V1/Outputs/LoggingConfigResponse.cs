@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// The runtime logging config of the job.
+    /// </summary>
     [OutputType]
     public sealed class LoggingConfigResponse
     {

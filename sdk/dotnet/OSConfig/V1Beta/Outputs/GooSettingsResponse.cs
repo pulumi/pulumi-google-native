@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Googet patching is performed by running `googet update`.
+    /// </summary>
     [OutputType]
     public sealed class GooSettingsResponse
     {

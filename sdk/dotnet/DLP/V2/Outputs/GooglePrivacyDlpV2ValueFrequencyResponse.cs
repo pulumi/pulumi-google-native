@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// A value of a field, including its frequency.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ValueFrequencyResponse
     {

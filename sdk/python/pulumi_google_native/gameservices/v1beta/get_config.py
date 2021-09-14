@@ -13,6 +13,7 @@ __all__ = [
     'GetConfigResult',
     'AwaitableGetConfigResult',
     'get_config',
+    'get_config_output',
 ]
 
 @pulumi.output_type
@@ -139,3 +140,15 @@ def get_config(config_id: Optional[str] = None,
         name=__ret__.name,
         scaling_configs=__ret__.scaling_configs,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_config)
+def get_config_output(config_id: Optional[pulumi.Input[str]] = None,
+                      game_server_deployment_id: Optional[pulumi.Input[str]] = None,
+                      location: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigResult]:
+    """
+    Gets details of a single game server config.
+    """
+    ...

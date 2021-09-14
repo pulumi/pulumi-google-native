@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// The parameters of the raw disk image.
+    /// </summary>
     [OutputType]
     public sealed class ImageRawDiskResponse
     {

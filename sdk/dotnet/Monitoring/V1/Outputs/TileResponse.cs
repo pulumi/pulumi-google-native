@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// A single tile in the mosaic. The placement and size of the tile are configurable.
+    /// </summary>
     [OutputType]
     public sealed class TileResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// Service Level Indicators for which atomic units of service are counted directly.
+    /// </summary>
     [OutputType]
     public sealed class RequestBasedSliResponse
     {

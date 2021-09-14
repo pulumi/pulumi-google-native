@@ -13,6 +13,7 @@ __all__ = [
     'GetTriggerResult',
     'AwaitableGetTriggerResult',
     'get_trigger',
+    'get_trigger_output',
 ]
 
 @pulumi.output_type
@@ -321,3 +322,15 @@ def get_trigger(location: Optional[str] = None,
         tags=__ret__.tags,
         trigger_template=__ret__.trigger_template,
         webhook_config=__ret__.webhook_config)
+
+
+@_utilities.lift_output_func(get_trigger)
+def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       project_id: Optional[pulumi.Input[str]] = None,
+                       trigger_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTriggerResult]:
+    """
+    Returns information about a `BuildTrigger`. This API is experimental.
+    """
+    ...

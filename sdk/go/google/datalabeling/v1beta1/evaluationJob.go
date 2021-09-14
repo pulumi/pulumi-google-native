@@ -150,9 +150,7 @@ func (i *EvaluationJob) ToEvaluationJobOutputWithContext(ctx context.Context) Ev
 	return pulumi.ToOutputWithContext(ctx, i).(EvaluationJobOutput)
 }
 
-type EvaluationJobOutput struct {
-	*pulumi.OutputState
-}
+type EvaluationJobOutput struct{ *pulumi.OutputState }
 
 func (EvaluationJobOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EvaluationJob)(nil))

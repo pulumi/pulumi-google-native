@@ -13,6 +13,7 @@ __all__ = [
     'GetQueueResult',
     'AwaitableGetQueueResult',
     'get_queue',
+    'get_queue_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_queue(location: Optional[str] = None,
         retry_config=__ret__.retry_config,
         stackdriver_logging_config=__ret__.stackdriver_logging_config,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_queue)
+def get_queue_output(location: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     queue_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQueueResult]:
+    """
+    Gets a queue.
+    """
+    ...

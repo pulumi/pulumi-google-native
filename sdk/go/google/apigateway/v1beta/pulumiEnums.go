@@ -108,7 +108,7 @@ func (o ApigatewayAuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx 
 type ApigatewayAuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ApigatewayAuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return apigatewayAuditLogConfigLogTypePtrType
+	return reflect.TypeOf((**ApigatewayAuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o ApigatewayAuditLogConfigLogTypePtrOutput) ToApigatewayAuditLogConfigLogTypePtrOutput() ApigatewayAuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o ApigatewayAuditLogConfigLogTypePtrOutput) ToApigatewayAuditLogConfigLogT
 
 func (o ApigatewayAuditLogConfigLogTypePtrOutput) ToApigatewayAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) ApigatewayAuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o ApigatewayAuditLogConfigLogTypePtrOutput) Elem() ApigatewayAuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *ApigatewayAuditLogConfigLogType) ApigatewayAuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret ApigatewayAuditLogConfigLogType
+		return ret
+	}).(ApigatewayAuditLogConfigLogTypeOutput)
 }
 
 func (o ApigatewayAuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o ApigatewayAuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ApigatewayAuditLogConfigLogTypePtrOutput) Elem() ApigatewayAuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *ApigatewayAuditLogConfigLogType) ApigatewayAuditLogConfigLogType {
-		var ret ApigatewayAuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ApigatewayAuditLogConfigLogTypeOutput)
 }
 
 // ApigatewayAuditLogConfigLogTypeInput is an input type that accepts ApigatewayAuditLogConfigLogTypeArgs and ApigatewayAuditLogConfigLogTypeOutput values.

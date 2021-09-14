@@ -12,6 +12,7 @@ __all__ = [
     'GetTargetSslProxyResult',
     'AwaitableGetTargetSslProxyResult',
     'get_target_ssl_proxy',
+    'get_target_ssl_proxy_output',
 ]
 
 @pulumi.output_type
@@ -160,3 +161,13 @@ def get_target_ssl_proxy(project: Optional[str] = None,
         service=__ret__.service,
         ssl_certificates=__ret__.ssl_certificates,
         ssl_policy=__ret__.ssl_policy)
+
+
+@_utilities.lift_output_func(get_target_ssl_proxy)
+def get_target_ssl_proxy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                target_ssl_proxy: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetSslProxyResult]:
+    """
+    Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by making a list() request.
+    """
+    ...

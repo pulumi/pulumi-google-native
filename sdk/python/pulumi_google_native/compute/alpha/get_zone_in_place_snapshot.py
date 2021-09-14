@@ -12,6 +12,7 @@ __all__ = [
     'GetZoneInPlaceSnapshotResult',
     'AwaitableGetZoneInPlaceSnapshotResult',
     'get_zone_in_place_snapshot',
+    'get_zone_in_place_snapshot_output',
 ]
 
 @pulumi.output_type
@@ -240,3 +241,14 @@ def get_zone_in_place_snapshot(in_place_snapshot: Optional[str] = None,
         source_disk_id=__ret__.source_disk_id,
         status=__ret__.status,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_zone_in_place_snapshot)
+def get_zone_in_place_snapshot_output(in_place_snapshot: Optional[pulumi.Input[str]] = None,
+                                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      zone: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneInPlaceSnapshotResult]:
+    """
+    Returns the specified InPlaceSnapshot resource in the specified zone.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SecretManager.V1.Outputs
 {
 
+    /// <summary>
+    /// A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
+    /// </summary>
     [OutputType]
     public sealed class TopicResponse
     {

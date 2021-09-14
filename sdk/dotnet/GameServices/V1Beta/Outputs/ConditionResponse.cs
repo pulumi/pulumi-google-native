@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GameServices.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// A condition to be met.
+    /// </summary>
     [OutputType]
     public sealed class ConditionResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Additional information about the reasons for the failure.
+    /// </summary>
     [OutputType]
     public sealed class FailureDetailResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
 {
 
+    /// <summary>
+    /// Label object for Deployments
+    /// </summary>
     [OutputType]
     public sealed class DeploymentLabelEntryResponse
     {

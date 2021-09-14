@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Retail.V2.Outputs
 {
 
+    /// <summary>
+    /// Promotion information.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRetailV2PromotionResponse
     {

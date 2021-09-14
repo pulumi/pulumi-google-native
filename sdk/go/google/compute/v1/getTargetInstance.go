@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,4 +43,81 @@ type LookupTargetInstanceResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Zone string `pulumi:"zone"`
+}
+
+func LookupTargetInstanceOutput(ctx *pulumi.Context, args LookupTargetInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupTargetInstanceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTargetInstanceResult, error) {
+			args := v.(LookupTargetInstanceArgs)
+			r, err := LookupTargetInstance(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTargetInstanceResultOutput)
+}
+
+type LookupTargetInstanceOutputArgs struct {
+	Project        pulumi.StringPtrInput `pulumi:"project"`
+	TargetInstance pulumi.StringInput    `pulumi:"targetInstance"`
+	Zone           pulumi.StringInput    `pulumi:"zone"`
+}
+
+func (LookupTargetInstanceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTargetInstanceArgs)(nil)).Elem()
+}
+
+type LookupTargetInstanceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTargetInstanceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTargetInstanceResult)(nil)).Elem()
+}
+
+func (o LookupTargetInstanceResultOutput) ToLookupTargetInstanceResultOutput() LookupTargetInstanceResultOutput {
+	return o
+}
+
+func (o LookupTargetInstanceResultOutput) ToLookupTargetInstanceResultOutputWithContext(ctx context.Context) LookupTargetInstanceResultOutput {
+	return o
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o LookupTargetInstanceResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o LookupTargetInstanceResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance
+func (o LookupTargetInstanceResultOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// The type of the resource. Always compute#targetInstance for target instances.
+func (o LookupTargetInstanceResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o LookupTargetInstanceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+func (o LookupTargetInstanceResultOutput) NatPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.NatPolicy }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o LookupTargetInstanceResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+func (o LookupTargetInstanceResultOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTargetInstanceResultOutput{})
 }

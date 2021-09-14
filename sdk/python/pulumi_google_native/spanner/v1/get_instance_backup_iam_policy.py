@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceBackupIamPolicyResult',
     'AwaitableGetInstanceBackupIamPolicyResult',
     'get_instance_backup_iam_policy',
+    'get_instance_backup_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -85,3 +86,14 @@ def get_instance_backup_iam_policy(backup_id: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_instance_backup_iam_policy)
+def get_instance_backup_iam_policy_output(backup_id: Optional[pulumi.Input[str]] = None,
+                                          instance_id: Optional[pulumi.Input[str]] = None,
+                                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceBackupIamPolicyResult]:
+    """
+    Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource.
+    """
+    ...

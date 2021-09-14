@@ -126,9 +126,7 @@ func (i *ExternalVpnGateway) ToExternalVpnGatewayOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalVpnGatewayOutput)
 }
 
-type ExternalVpnGatewayOutput struct {
-	*pulumi.OutputState
-}
+type ExternalVpnGatewayOutput struct{ *pulumi.OutputState }
 
 func (ExternalVpnGatewayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ExternalVpnGateway)(nil))

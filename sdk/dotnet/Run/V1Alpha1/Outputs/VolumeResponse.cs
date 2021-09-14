@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Volume represents a named volume in a container.
+    /// </summary>
     [OutputType]
     public sealed class VolumeResponse
     {

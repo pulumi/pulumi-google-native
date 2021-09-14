@@ -13,6 +13,7 @@ __all__ = [
     'GetAppProfileResult',
     'AwaitableGetAppProfileResult',
     'get_app_profile',
+    'get_app_profile_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,14 @@ def get_app_profile(app_profile_id: Optional[str] = None,
         multi_cluster_routing_use_any=__ret__.multi_cluster_routing_use_any,
         name=__ret__.name,
         single_cluster_routing=__ret__.single_cluster_routing)
+
+
+@_utilities.lift_output_func(get_app_profile)
+def get_app_profile_output(app_profile_id: Optional[pulumi.Input[str]] = None,
+                           instance_id: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppProfileResult]:
+    """
+    Gets information about an app profile.
+    """
+    ...

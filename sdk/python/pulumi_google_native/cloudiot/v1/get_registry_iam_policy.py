@@ -13,6 +13,7 @@ __all__ = [
     'GetRegistryIamPolicyResult',
     'AwaitableGetRegistryIamPolicyResult',
     'get_registry_iam_policy',
+    'get_registry_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -85,3 +86,14 @@ def get_registry_iam_policy(location: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_registry_iam_policy)
+def get_registry_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
+                                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                                   registry_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryIamPolicyResult]:
+    """
+    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+    """
+    ...

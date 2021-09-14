@@ -132,9 +132,7 @@ func (i *FeedbackMessage) ToFeedbackMessageOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(FeedbackMessageOutput)
 }
 
-type FeedbackMessageOutput struct {
-	*pulumi.OutputState
-}
+type FeedbackMessageOutput struct{ *pulumi.OutputState }
 
 func (FeedbackMessageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FeedbackMessage)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
+    /// </summary>
     [OutputType]
     public sealed class ArtifactObjectsResponse
     {

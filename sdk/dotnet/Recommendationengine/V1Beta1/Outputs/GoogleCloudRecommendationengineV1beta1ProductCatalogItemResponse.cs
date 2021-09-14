@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// ProductCatalogItem captures item metadata specific to retail products.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse
     {

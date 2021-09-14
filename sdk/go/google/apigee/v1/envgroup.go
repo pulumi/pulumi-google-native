@@ -111,9 +111,7 @@ func (i *Envgroup) ToEnvgroupOutputWithContext(ctx context.Context) EnvgroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EnvgroupOutput)
 }
 
-type EnvgroupOutput struct {
-	*pulumi.OutputState
-}
+type EnvgroupOutput struct{ *pulumi.OutputState }
 
 func (EnvgroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Envgroup)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// An access-control entry.
+    /// </summary>
     [OutputType]
     public sealed class BucketAccessControlResponse
     {

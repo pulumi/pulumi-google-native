@@ -13,6 +13,7 @@ __all__ = [
     'GetEntitlementResult',
     'AwaitableGetEntitlementResult',
     'get_entitlement',
+    'get_entitlement_output',
 ]
 
 @pulumi.output_type
@@ -202,3 +203,14 @@ def get_entitlement(account_id: Optional[str] = None,
         suspension_reasons=__ret__.suspension_reasons,
         trial_settings=__ret__.trial_settings,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_entitlement)
+def get_entitlement_output(account_id: Optional[pulumi.Input[str]] = None,
+                           customer_id: Optional[pulumi.Input[str]] = None,
+                           entitlement_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEntitlementResult]:
+    """
+    Returns the requested Entitlement resource. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer entitlement was not found. Return value: The requested Entitlement resource.
+    """
+    ...

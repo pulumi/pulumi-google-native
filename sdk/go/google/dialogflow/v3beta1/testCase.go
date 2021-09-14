@@ -143,9 +143,7 @@ func (i *TestCase) ToTestCaseOutputWithContext(ctx context.Context) TestCaseOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TestCaseOutput)
 }
 
-type TestCaseOutput struct {
-	*pulumi.OutputState
-}
+type TestCaseOutput struct{ *pulumi.OutputState }
 
 func (TestCaseOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TestCase)(nil))

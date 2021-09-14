@@ -110,7 +110,7 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput) ElementType() reflect.Type {
-	return googleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrType
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState)(nil)).Elem()
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput {
@@ -119,6 +119,16 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOut
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput {
 	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState) GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState
+		return ret
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput)
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -133,16 +143,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOut
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput {
-	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState) GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState {
-		var ret GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput)
 }
 
 // GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateArgs and GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput values.

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Time window specified for daily maintenance operations.
+    /// </summary>
     [OutputType]
     public sealed class DailyMaintenanceWindowResponse
     {

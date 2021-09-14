@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// An Android mobile test specification.
+    /// </summary>
     [OutputType]
     public sealed class AndroidTestResponse
     {

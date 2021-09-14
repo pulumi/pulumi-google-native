@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIoT.V1.Outputs
 {
 
+    /// <summary>
+    /// The configuration of the HTTP bridge for a device registry.
+    /// </summary>
     [OutputType]
     public sealed class HttpConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Defines an object for the byproducts field in in-toto links. The suggested fields are "stderr", "stdout", and "return-value".
+    /// </summary>
     [OutputType]
     public sealed class ByProductsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Specifies how metastore metadata should be integrated with the Data Catalog service.
+    /// </summary>
     [OutputType]
     public sealed class DataCatalogConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// 2D normalized coordinates. Default: `{0.0, 0.0}`
+    /// </summary>
     [OutputType]
     public sealed class NormalizedCoordinateResponse
     {

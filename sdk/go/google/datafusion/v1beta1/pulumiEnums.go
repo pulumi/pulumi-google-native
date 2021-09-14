@@ -106,7 +106,7 @@ func (o AcceleratorAcceleratorTypeOutput) ToStringPtrOutputWithContext(ctx conte
 type AcceleratorAcceleratorTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AcceleratorAcceleratorTypePtrOutput) ElementType() reflect.Type {
-	return acceleratorAcceleratorTypePtrType
+	return reflect.TypeOf((**AcceleratorAcceleratorType)(nil)).Elem()
 }
 
 func (o AcceleratorAcceleratorTypePtrOutput) ToAcceleratorAcceleratorTypePtrOutput() AcceleratorAcceleratorTypePtrOutput {
@@ -115,6 +115,16 @@ func (o AcceleratorAcceleratorTypePtrOutput) ToAcceleratorAcceleratorTypePtrOutp
 
 func (o AcceleratorAcceleratorTypePtrOutput) ToAcceleratorAcceleratorTypePtrOutputWithContext(ctx context.Context) AcceleratorAcceleratorTypePtrOutput {
 	return o
+}
+
+func (o AcceleratorAcceleratorTypePtrOutput) Elem() AcceleratorAcceleratorTypeOutput {
+	return o.ApplyT(func(v *AcceleratorAcceleratorType) AcceleratorAcceleratorType {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorAcceleratorType
+		return ret
+	}).(AcceleratorAcceleratorTypeOutput)
 }
 
 func (o AcceleratorAcceleratorTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o AcceleratorAcceleratorTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AcceleratorAcceleratorTypePtrOutput) Elem() AcceleratorAcceleratorTypeOutput {
-	return o.ApplyT(func(v *AcceleratorAcceleratorType) AcceleratorAcceleratorType {
-		var ret AcceleratorAcceleratorType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AcceleratorAcceleratorTypeOutput)
 }
 
 // AcceleratorAcceleratorTypeInput is an input type that accepts AcceleratorAcceleratorTypeArgs and AcceleratorAcceleratorTypeOutput values.
@@ -277,7 +277,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -286,6 +286,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -448,7 +448,7 @@ func (o InstanceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type InstanceTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceTypePtrOutput) ElementType() reflect.Type {
-	return instanceTypePtrType
+	return reflect.TypeOf((**InstanceType)(nil)).Elem()
 }
 
 func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
@@ -457,6 +457,16 @@ func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
 
 func (o InstanceTypePtrOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
 	return o
+}
+
+func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
+	return o.ApplyT(func(v *InstanceType) InstanceType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceType
+		return ret
+	}).(InstanceTypeOutput)
 }
 
 func (o InstanceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -471,16 +481,6 @@ func (o InstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
-	return o.ApplyT(func(v *InstanceType) InstanceType {
-		var ret InstanceType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceTypeOutput)
 }
 
 // InstanceTypeInput is an input type that accepts InstanceTypeArgs and InstanceTypeOutput values.

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
+    /// <summary>
+    /// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
+    /// </summary>
     [OutputType]
     public sealed class EnvFromSourceResponse
     {

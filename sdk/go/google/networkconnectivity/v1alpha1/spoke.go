@@ -150,9 +150,7 @@ func (i *Spoke) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeOutput)
 }
 
-type SpokeOutput struct {
-	*pulumi.OutputState
-}
+type SpokeOutput struct{ *pulumi.OutputState }
 
 func (SpokeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Spoke)(nil))

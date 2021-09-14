@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,4 +35,61 @@ type LookupNamespaceResult struct {
 	Name string `pulumi:"name"`
 	// The timestamp when the namespace was last updated.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupNamespaceResult, error) {
+			args := v.(LookupNamespaceArgs)
+			r, err := LookupNamespace(ctx, &args, opts...)
+			return *r, err
+		}).(LookupNamespaceResultOutput)
+}
+
+type LookupNamespaceOutputArgs struct {
+	Location    pulumi.StringInput    `pulumi:"location"`
+	NamespaceId pulumi.StringInput    `pulumi:"namespaceId"`
+	Project     pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupNamespaceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNamespaceArgs)(nil)).Elem()
+}
+
+type LookupNamespaceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNamespaceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNamespaceResult)(nil)).Elem()
+}
+
+func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutput() LookupNamespaceResultOutput {
+	return o
+}
+
+func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ctx context.Context) LookupNamespaceResultOutput {
+	return o
+}
+
+// The timestamp when the namespace was created.
+func (o LookupNamespaceResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
+func (o LookupNamespaceResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
+func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The timestamp when the namespace was last updated.
+func (o LookupNamespaceResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNamespaceResultOutput{})
 }

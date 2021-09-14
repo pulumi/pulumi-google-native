@@ -118,7 +118,7 @@ func (o GoogleCloudContactcenterinsightsV1AnalysisResponseOutput) ToGoogleCloudC
 }
 
 func (o GoogleCloudContactcenterinsightsV1AnalysisResponseOutput) ToGoogleCloudContactcenterinsightsV1AnalysisResponsePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnalysisResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResponse) *GoogleCloudContactcenterinsightsV1AnalysisResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1AnalysisResponse) *GoogleCloudContactcenterinsightsV1AnalysisResponse {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResponsePtrOutput)
 }
@@ -161,7 +161,11 @@ func (o GoogleCloudContactcenterinsightsV1AnalysisResponsePtrOutput) ToGoogleClo
 
 func (o GoogleCloudContactcenterinsightsV1AnalysisResponsePtrOutput) Elem() GoogleCloudContactcenterinsightsV1AnalysisResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnalysisResponse) GoogleCloudContactcenterinsightsV1AnalysisResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1AnalysisResponse
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResponseOutput)
 }
 
@@ -321,7 +325,7 @@ func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResp
 }
 
 func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) ToGoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) *GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) *GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponsePtrOutput)
 }
@@ -384,7 +388,11 @@ func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResp
 
 func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponsePtrOutput) Elem() GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput)
 }
 
@@ -548,7 +556,7 @@ func (o GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput) ToGoogle
 }
 
 func (o GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput) ToGoogleCloudContactcenterinsightsV1AnalysisResultResponsePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnalysisResultResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultResponse) *GoogleCloudContactcenterinsightsV1AnalysisResultResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1AnalysisResultResponse) *GoogleCloudContactcenterinsightsV1AnalysisResultResponse {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResultResponsePtrOutput)
 }
@@ -581,7 +589,11 @@ func (o GoogleCloudContactcenterinsightsV1AnalysisResultResponsePtrOutput) ToGoo
 
 func (o GoogleCloudContactcenterinsightsV1AnalysisResultResponsePtrOutput) Elem() GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnalysisResultResponse) GoogleCloudContactcenterinsightsV1AnalysisResultResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1AnalysisResultResponse
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput)
 }
 
@@ -1145,7 +1157,7 @@ func (o GoogleCloudContactcenterinsightsV1ConversationCallMetadataOutput) ToGoog
 }
 
 func (o GoogleCloudContactcenterinsightsV1ConversationCallMetadataOutput) ToGoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationCallMetadata) *GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1ConversationCallMetadata) *GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrOutput)
 }
@@ -1176,7 +1188,11 @@ func (o GoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrOutput) ToG
 
 func (o GoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrOutput) Elem() GoogleCloudContactcenterinsightsV1ConversationCallMetadataOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1ConversationCallMetadata) GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1ConversationCallMetadata
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1ConversationCallMetadataOutput)
 }
 
@@ -1300,7 +1316,7 @@ func (o GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput
 }
 
 func (o GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationCallMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse) *GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse) *GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponsePtrOutput)
 }
@@ -1333,7 +1349,11 @@ func (o GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponsePtrOut
 
 func (o GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponsePtrOutput) Elem() GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse) GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput)
 }
 
@@ -1457,7 +1477,7 @@ func (o GoogleCloudContactcenterinsightsV1ConversationDataSourceOutput) ToGoogle
 }
 
 func (o GoogleCloudContactcenterinsightsV1ConversationDataSourceOutput) ToGoogleCloudContactcenterinsightsV1ConversationDataSourcePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationDataSourcePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationDataSource) *GoogleCloudContactcenterinsightsV1ConversationDataSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1ConversationDataSource) *GoogleCloudContactcenterinsightsV1ConversationDataSource {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1ConversationDataSourcePtrOutput)
 }
@@ -1492,7 +1512,11 @@ func (o GoogleCloudContactcenterinsightsV1ConversationDataSourcePtrOutput) ToGoo
 
 func (o GoogleCloudContactcenterinsightsV1ConversationDataSourcePtrOutput) Elem() GoogleCloudContactcenterinsightsV1ConversationDataSourceOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1ConversationDataSource) GoogleCloudContactcenterinsightsV1ConversationDataSource {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1ConversationDataSource
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1ConversationDataSourceOutput)
 }
 
@@ -1616,7 +1640,7 @@ func (o GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput) 
 }
 
 func (o GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationDataSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationDataSourceResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse) *GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse) *GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1ConversationDataSourceResponsePtrOutput)
 }
@@ -1651,7 +1675,11 @@ func (o GoogleCloudContactcenterinsightsV1ConversationDataSourceResponsePtrOutpu
 
 func (o GoogleCloudContactcenterinsightsV1ConversationDataSourceResponsePtrOutput) Elem() GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse) GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput)
 }
 
@@ -1957,7 +1985,7 @@ func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput) 
 }
 
 func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationTranscriptResponsePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationTranscriptResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse) *GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse) *GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1ConversationTranscriptResponsePtrOutput)
 }
@@ -1985,7 +2013,11 @@ func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptResponsePtrOutpu
 
 func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptResponsePtrOutput) Elem() GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse) GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput)
 }
 
@@ -2455,7 +2487,7 @@ func (o GoogleCloudContactcenterinsightsV1DialogflowSourceOutput) ToGoogleCloudC
 }
 
 func (o GoogleCloudContactcenterinsightsV1DialogflowSourceOutput) ToGoogleCloudContactcenterinsightsV1DialogflowSourcePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1DialogflowSourcePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1DialogflowSource) *GoogleCloudContactcenterinsightsV1DialogflowSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1DialogflowSource) *GoogleCloudContactcenterinsightsV1DialogflowSource {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1DialogflowSourcePtrOutput)
 }
@@ -2481,7 +2513,11 @@ func (o GoogleCloudContactcenterinsightsV1DialogflowSourcePtrOutput) ToGoogleClo
 
 func (o GoogleCloudContactcenterinsightsV1DialogflowSourcePtrOutput) Elem() GoogleCloudContactcenterinsightsV1DialogflowSourceOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1DialogflowSource) GoogleCloudContactcenterinsightsV1DialogflowSource {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1DialogflowSource
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1DialogflowSourceOutput)
 }
 
@@ -2595,7 +2631,7 @@ func (o GoogleCloudContactcenterinsightsV1DialogflowSourceResponseOutput) ToGoog
 }
 
 func (o GoogleCloudContactcenterinsightsV1DialogflowSourceResponseOutput) ToGoogleCloudContactcenterinsightsV1DialogflowSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1DialogflowSourceResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1DialogflowSourceResponse) *GoogleCloudContactcenterinsightsV1DialogflowSourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1DialogflowSourceResponse) *GoogleCloudContactcenterinsightsV1DialogflowSourceResponse {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1DialogflowSourceResponsePtrOutput)
 }
@@ -2628,7 +2664,11 @@ func (o GoogleCloudContactcenterinsightsV1DialogflowSourceResponsePtrOutput) ToG
 
 func (o GoogleCloudContactcenterinsightsV1DialogflowSourceResponsePtrOutput) Elem() GoogleCloudContactcenterinsightsV1DialogflowSourceResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1DialogflowSourceResponse) GoogleCloudContactcenterinsightsV1DialogflowSourceResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1DialogflowSourceResponse
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1DialogflowSourceResponseOutput)
 }
 
@@ -2823,7 +2863,7 @@ func (o GoogleCloudContactcenterinsightsV1ExactMatchConfigOutput) ToGoogleCloudC
 }
 
 func (o GoogleCloudContactcenterinsightsV1ExactMatchConfigOutput) ToGoogleCloudContactcenterinsightsV1ExactMatchConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ExactMatchConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ExactMatchConfig) *GoogleCloudContactcenterinsightsV1ExactMatchConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1ExactMatchConfig) *GoogleCloudContactcenterinsightsV1ExactMatchConfig {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1ExactMatchConfigPtrOutput)
 }
@@ -2849,7 +2889,11 @@ func (o GoogleCloudContactcenterinsightsV1ExactMatchConfigPtrOutput) ToGoogleClo
 
 func (o GoogleCloudContactcenterinsightsV1ExactMatchConfigPtrOutput) Elem() GoogleCloudContactcenterinsightsV1ExactMatchConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1ExactMatchConfig) GoogleCloudContactcenterinsightsV1ExactMatchConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1ExactMatchConfig
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1ExactMatchConfigOutput)
 }
 
@@ -3118,7 +3162,7 @@ func (o GoogleCloudContactcenterinsightsV1GcsSourceOutput) ToGoogleCloudContactc
 }
 
 func (o GoogleCloudContactcenterinsightsV1GcsSourceOutput) ToGoogleCloudContactcenterinsightsV1GcsSourcePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1GcsSourcePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1GcsSource) *GoogleCloudContactcenterinsightsV1GcsSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1GcsSource) *GoogleCloudContactcenterinsightsV1GcsSource {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1GcsSourcePtrOutput)
 }
@@ -3149,7 +3193,11 @@ func (o GoogleCloudContactcenterinsightsV1GcsSourcePtrOutput) ToGoogleCloudConta
 
 func (o GoogleCloudContactcenterinsightsV1GcsSourcePtrOutput) Elem() GoogleCloudContactcenterinsightsV1GcsSourceOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1GcsSource) GoogleCloudContactcenterinsightsV1GcsSource {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1GcsSource
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1GcsSourceOutput)
 }
 
@@ -3273,7 +3321,7 @@ func (o GoogleCloudContactcenterinsightsV1GcsSourceResponseOutput) ToGoogleCloud
 }
 
 func (o GoogleCloudContactcenterinsightsV1GcsSourceResponseOutput) ToGoogleCloudContactcenterinsightsV1GcsSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1GcsSourceResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1GcsSourceResponse) *GoogleCloudContactcenterinsightsV1GcsSourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1GcsSourceResponse) *GoogleCloudContactcenterinsightsV1GcsSourceResponse {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1GcsSourceResponsePtrOutput)
 }
@@ -3304,7 +3352,11 @@ func (o GoogleCloudContactcenterinsightsV1GcsSourceResponsePtrOutput) ToGoogleCl
 
 func (o GoogleCloudContactcenterinsightsV1GcsSourceResponsePtrOutput) Elem() GoogleCloudContactcenterinsightsV1GcsSourceResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1GcsSourceResponse) GoogleCloudContactcenterinsightsV1GcsSourceResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1GcsSourceResponse
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1GcsSourceResponseOutput)
 }
 
@@ -3680,7 +3732,7 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput) ToGoo
 }
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput) ToGoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig) *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig) *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput)
 }
@@ -3708,7 +3760,11 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput) To
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput) Elem() GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig) GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput)
 }
 
@@ -3822,7 +3878,7 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutpu
 }
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput) ToGoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse) *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse) *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponsePtrOutput)
 }
@@ -3855,7 +3911,11 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponsePtrOu
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponsePtrOutput) Elem() GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse) GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput)
 }
 
@@ -3983,7 +4043,7 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput) To
 }
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput) ToGoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse) *GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse) *GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponsePtrOutput)
 }
@@ -4025,7 +4085,11 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponsePtrOutput)
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponsePtrOutput) Elem() GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse) GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput)
 }
 
@@ -4159,7 +4223,7 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelResultResponseOutput) ToGoog
 }
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelResultResponseOutput) ToGoogleCloudContactcenterinsightsV1IssueModelResultResponsePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1IssueModelResultResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelResultResponse) *GoogleCloudContactcenterinsightsV1IssueModelResultResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1IssueModelResultResponse) *GoogleCloudContactcenterinsightsV1IssueModelResultResponse {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1IssueModelResultResponsePtrOutput)
 }
@@ -4192,7 +4256,11 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelResultResponsePtrOutput) ToG
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelResultResponsePtrOutput) Elem() GoogleCloudContactcenterinsightsV1IssueModelResultResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1IssueModelResultResponse) GoogleCloudContactcenterinsightsV1IssueModelResultResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1IssueModelResultResponse
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1IssueModelResultResponseOutput)
 }
 
@@ -4496,7 +4564,7 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigOutput) ToGoogleC
 }
 
 func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigOutput) ToGoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig) *GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig) *GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
 		return &v
 	}).(GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigPtrOutput)
 }
@@ -4524,7 +4592,11 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigPtrOutput) ToGoog
 
 func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigPtrOutput) Elem() GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig) GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig
+		return ret
 	}).(GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigOutput)
 }
 

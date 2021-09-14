@@ -13,6 +13,7 @@ __all__ = [
     'GetUrlMapResult',
     'AwaitableGetUrlMapResult',
     'get_url_map',
+    'get_url_map_output',
 ]
 
 @pulumi.output_type
@@ -226,3 +227,13 @@ def get_url_map(project: Optional[str] = None,
         region=__ret__.region,
         self_link=__ret__.self_link,
         tests=__ret__.tests)
+
+
+@_utilities.lift_output_func(get_url_map)
+def get_url_map_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                       url_map: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUrlMapResult]:
+    """
+    Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+    """
+    ...

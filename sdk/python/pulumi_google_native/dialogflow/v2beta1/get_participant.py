@@ -12,6 +12,7 @@ __all__ = [
     'GetParticipantResult',
     'AwaitableGetParticipantResult',
     'get_participant',
+    'get_participant_output',
 ]
 
 @pulumi.output_type
@@ -86,3 +87,15 @@ def get_participant(conversation_id: Optional[str] = None,
         name=__ret__.name,
         obfuscated_external_user_id=__ret__.obfuscated_external_user_id,
         role=__ret__.role)
+
+
+@_utilities.lift_output_func(get_participant)
+def get_participant_output(conversation_id: Optional[pulumi.Input[str]] = None,
+                           location: Optional[pulumi.Input[str]] = None,
+                           participant_id: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetParticipantResult]:
+    """
+    Retrieves a conversation participant.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GameServices.V1.Outputs
 {
 
+    /// <summary>
+    /// Fleet configs for Agones.
+    /// </summary>
     [OutputType]
     public sealed class FleetConfigResponse
     {

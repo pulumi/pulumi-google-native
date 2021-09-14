@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Outputs
 {
 
+    /// <summary>
+    /// Retry config. These settings determine how a failed task attempt is retried.
+    /// </summary>
     [OutputType]
     public sealed class RetryConfigResponse
     {

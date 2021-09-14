@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Defines a hash object for use in Materials and Products.
+    /// </summary>
     [OutputType]
     public sealed class ArtifactHashesResponse
     {

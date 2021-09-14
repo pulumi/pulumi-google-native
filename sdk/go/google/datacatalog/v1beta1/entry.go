@@ -168,9 +168,7 @@ func (i *Entry) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryOutput)
 }
 
-type EntryOutput struct {
-	*pulumi.OutputState
-}
+type EntryOutput struct{ *pulumi.OutputState }
 
 func (EntryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Entry)(nil))

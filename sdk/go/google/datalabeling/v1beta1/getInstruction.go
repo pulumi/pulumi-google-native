@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,4 +42,82 @@ type LookupInstructionResult struct {
 	PdfInstruction GoogleCloudDatalabelingV1beta1PdfInstructionResponse `pulumi:"pdfInstruction"`
 	// Last update time of instruction.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupInstructionOutput(ctx *pulumi.Context, args LookupInstructionOutputArgs, opts ...pulumi.InvokeOption) LookupInstructionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupInstructionResult, error) {
+			args := v.(LookupInstructionArgs)
+			r, err := LookupInstruction(ctx, &args, opts...)
+			return *r, err
+		}).(LookupInstructionResultOutput)
+}
+
+type LookupInstructionOutputArgs struct {
+	InstructionId pulumi.StringInput    `pulumi:"instructionId"`
+	Project       pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupInstructionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstructionArgs)(nil)).Elem()
+}
+
+type LookupInstructionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInstructionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstructionResult)(nil)).Elem()
+}
+
+func (o LookupInstructionResultOutput) ToLookupInstructionResultOutput() LookupInstructionResultOutput {
+	return o
+}
+
+func (o LookupInstructionResultOutput) ToLookupInstructionResultOutputWithContext(ctx context.Context) LookupInstructionResultOutput {
+	return o
+}
+
+// The names of any related resources that are blocking changes to the instruction.
+func (o LookupInstructionResultOutput) BlockingResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstructionResult) []string { return v.BlockingResources }).(pulumi.StringArrayOutput)
+}
+
+// Creation time of instruction.
+func (o LookupInstructionResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstructionResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The data type of this instruction.
+func (o LookupInstructionResultOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstructionResult) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+func (o LookupInstructionResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstructionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of the instruction. Maximum of 64 characters.
+func (o LookupInstructionResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstructionResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+func (o LookupInstructionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstructionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+func (o LookupInstructionResultOutput) PdfInstruction() GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput {
+	return o.ApplyT(func(v LookupInstructionResult) GoogleCloudDatalabelingV1beta1PdfInstructionResponse {
+		return v.PdfInstruction
+	}).(GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput)
+}
+
+// Last update time of instruction.
+func (o LookupInstructionResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstructionResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInstructionResultOutput{})
 }

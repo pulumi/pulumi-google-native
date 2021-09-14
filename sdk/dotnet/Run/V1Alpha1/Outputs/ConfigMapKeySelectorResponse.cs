@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Not supported by Cloud Run Selects a key from a ConfigMap.
+    /// </summary>
     [OutputType]
     public sealed class ConfigMapKeySelectorResponse
     {

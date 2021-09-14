@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Autoscaling Policy config associated with the cluster.
+    /// </summary>
     [OutputType]
     public sealed class AutoscalingConfigResponse
     {

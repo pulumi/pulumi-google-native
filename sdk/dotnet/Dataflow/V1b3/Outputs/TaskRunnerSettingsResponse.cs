@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Taskrunner configuration settings.
+    /// </summary>
     [OutputType]
     public sealed class TaskRunnerSettingsResponse
     {

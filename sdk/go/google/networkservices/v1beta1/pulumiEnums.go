@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -277,7 +277,7 @@ func (o EndpointPolicyTypeOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type EndpointPolicyTypePtrOutput struct{ *pulumi.OutputState }
 
 func (EndpointPolicyTypePtrOutput) ElementType() reflect.Type {
-	return endpointPolicyTypePtrType
+	return reflect.TypeOf((**EndpointPolicyType)(nil)).Elem()
 }
 
 func (o EndpointPolicyTypePtrOutput) ToEndpointPolicyTypePtrOutput() EndpointPolicyTypePtrOutput {
@@ -286,6 +286,16 @@ func (o EndpointPolicyTypePtrOutput) ToEndpointPolicyTypePtrOutput() EndpointPol
 
 func (o EndpointPolicyTypePtrOutput) ToEndpointPolicyTypePtrOutputWithContext(ctx context.Context) EndpointPolicyTypePtrOutput {
 	return o
+}
+
+func (o EndpointPolicyTypePtrOutput) Elem() EndpointPolicyTypeOutput {
+	return o.ApplyT(func(v *EndpointPolicyType) EndpointPolicyType {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointPolicyType
+		return ret
+	}).(EndpointPolicyTypeOutput)
 }
 
 func (o EndpointPolicyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o EndpointPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EndpointPolicyTypePtrOutput) Elem() EndpointPolicyTypeOutput {
-	return o.ApplyT(func(v *EndpointPolicyType) EndpointPolicyType {
-		var ret EndpointPolicyType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EndpointPolicyTypeOutput)
 }
 
 // EndpointPolicyTypeInput is an input type that accepts EndpointPolicyTypeArgs and EndpointPolicyTypeOutput values.
@@ -446,7 +446,7 @@ func (o MetadataLabelMatcherMetadataLabelMatchCriteriaOutput) ToStringPtrOutputW
 type MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput struct{ *pulumi.OutputState }
 
 func (MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ElementType() reflect.Type {
-	return metadataLabelMatcherMetadataLabelMatchCriteriaPtrType
+	return reflect.TypeOf((**MetadataLabelMatcherMetadataLabelMatchCriteria)(nil)).Elem()
 }
 
 func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ToMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput() MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput {
@@ -455,6 +455,16 @@ func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ToMetadataLabel
 
 func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ToMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutputWithContext(ctx context.Context) MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput {
 	return o
+}
+
+func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) Elem() MetadataLabelMatcherMetadataLabelMatchCriteriaOutput {
+	return o.ApplyT(func(v *MetadataLabelMatcherMetadataLabelMatchCriteria) MetadataLabelMatcherMetadataLabelMatchCriteria {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataLabelMatcherMetadataLabelMatchCriteria
+		return ret
+	}).(MetadataLabelMatcherMetadataLabelMatchCriteriaOutput)
 }
 
 func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -469,16 +479,6 @@ func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ToStringPtrOutp
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) Elem() MetadataLabelMatcherMetadataLabelMatchCriteriaOutput {
-	return o.ApplyT(func(v *MetadataLabelMatcherMetadataLabelMatchCriteria) MetadataLabelMatcherMetadataLabelMatchCriteria {
-		var ret MetadataLabelMatcherMetadataLabelMatchCriteria
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MetadataLabelMatcherMetadataLabelMatchCriteriaOutput)
 }
 
 // MetadataLabelMatcherMetadataLabelMatchCriteriaInput is an input type that accepts MetadataLabelMatcherMetadataLabelMatchCriteriaArgs and MetadataLabelMatcherMetadataLabelMatchCriteriaOutput values.

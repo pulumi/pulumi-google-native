@@ -4,6 +4,9 @@
 package v1beta2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,53 @@ type LookupTagResult struct {
 	Name string `pulumi:"name"`
 	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
 	Version string `pulumi:"version"`
+}
+
+func LookupTagOutput(ctx *pulumi.Context, args LookupTagOutputArgs, opts ...pulumi.InvokeOption) LookupTagResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTagResult, error) {
+			args := v.(LookupTagArgs)
+			r, err := LookupTag(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTagResultOutput)
+}
+
+type LookupTagOutputArgs struct {
+	Location     pulumi.StringInput    `pulumi:"location"`
+	PackageId    pulumi.StringInput    `pulumi:"packageId"`
+	Project      pulumi.StringPtrInput `pulumi:"project"`
+	RepositoryId pulumi.StringInput    `pulumi:"repositoryId"`
+	TagId        pulumi.StringInput    `pulumi:"tagId"`
+}
+
+func (LookupTagOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTagArgs)(nil)).Elem()
+}
+
+type LookupTagResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTagResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTagResult)(nil)).Elem()
+}
+
+func (o LookupTagResultOutput) ToLookupTagResultOutput() LookupTagResultOutput {
+	return o
+}
+
+func (o LookupTagResultOutput) ToLookupTagResultOutputWithContext(ctx context.Context) LookupTagResultOutput {
+	return o
+}
+
+// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
+func (o LookupTagResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
+func (o LookupTagResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTagResultOutput{})
 }

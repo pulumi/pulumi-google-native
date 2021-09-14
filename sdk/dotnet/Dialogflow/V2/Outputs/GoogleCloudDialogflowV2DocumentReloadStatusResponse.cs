@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 {
 
+    /// <summary>
+    /// The status of a reload attempt.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2DocumentReloadStatusResponse
     {

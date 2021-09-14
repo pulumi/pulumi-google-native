@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The configuration for exporting to BigQuery.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse
     {

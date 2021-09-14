@@ -161,9 +161,7 @@ func (i *Workload) ToWorkloadOutputWithContext(ctx context.Context) WorkloadOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadOutput)
 }
 
-type WorkloadOutput struct {
-	*pulumi.OutputState
-}
+type WorkloadOutput struct{ *pulumi.OutputState }
 
 func (WorkloadOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Workload)(nil))

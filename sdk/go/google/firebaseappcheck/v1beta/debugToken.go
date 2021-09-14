@@ -113,9 +113,7 @@ func (i *DebugToken) ToDebugTokenOutputWithContext(ctx context.Context) DebugTok
 	return pulumi.ToOutputWithContext(ctx, i).(DebugTokenOutput)
 }
 
-type DebugTokenOutput struct {
-	*pulumi.OutputState
-}
+type DebugTokenOutput struct{ *pulumi.OutputState }
 
 func (DebugTokenOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DebugToken)(nil))

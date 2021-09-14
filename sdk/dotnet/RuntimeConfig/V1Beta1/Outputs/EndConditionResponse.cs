@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The condition that a Waiter resource is waiting for.
+    /// </summary>
     [OutputType]
     public sealed class EndConditionResponse
     {

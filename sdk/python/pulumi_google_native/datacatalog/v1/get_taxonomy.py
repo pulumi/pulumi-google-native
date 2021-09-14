@@ -13,6 +13,7 @@ __all__ = [
     'GetTaxonomyResult',
     'AwaitableGetTaxonomyResult',
     'get_taxonomy',
+    'get_taxonomy_output',
 ]
 
 @pulumi.output_type
@@ -124,3 +125,14 @@ def get_taxonomy(location: Optional[str] = None,
         name=__ret__.name,
         policy_tag_count=__ret__.policy_tag_count,
         taxonomy_timestamps=__ret__.taxonomy_timestamps)
+
+
+@_utilities.lift_output_func(get_taxonomy)
+def get_taxonomy_output(location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        taxonomy_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTaxonomyResult]:
+    """
+    Gets a taxonomy.
+    """
+    ...

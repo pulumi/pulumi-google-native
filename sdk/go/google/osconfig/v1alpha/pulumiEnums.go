@@ -106,7 +106,7 @@ func (o OSPolicyModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type OSPolicyModePtrOutput struct{ *pulumi.OutputState }
 
 func (OSPolicyModePtrOutput) ElementType() reflect.Type {
-	return ospolicyModePtrType
+	return reflect.TypeOf((**OSPolicyMode)(nil)).Elem()
 }
 
 func (o OSPolicyModePtrOutput) ToOSPolicyModePtrOutput() OSPolicyModePtrOutput {
@@ -115,6 +115,16 @@ func (o OSPolicyModePtrOutput) ToOSPolicyModePtrOutput() OSPolicyModePtrOutput {
 
 func (o OSPolicyModePtrOutput) ToOSPolicyModePtrOutputWithContext(ctx context.Context) OSPolicyModePtrOutput {
 	return o
+}
+
+func (o OSPolicyModePtrOutput) Elem() OSPolicyModeOutput {
+	return o.ApplyT(func(v *OSPolicyMode) OSPolicyMode {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyMode
+		return ret
+	}).(OSPolicyModeOutput)
 }
 
 func (o OSPolicyModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o OSPolicyModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OSPolicyModePtrOutput) Elem() OSPolicyModeOutput {
-	return o.ApplyT(func(v *OSPolicyMode) OSPolicyMode {
-		var ret OSPolicyMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OSPolicyModeOutput)
 }
 
 // OSPolicyModeInput is an input type that accepts OSPolicyModeArgs and OSPolicyModeOutput values.
@@ -277,7 +277,7 @@ func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToStringPtrOutputWith
 type OSPolicyResourceExecResourceExecInterpreterPtrOutput struct{ *pulumi.OutputState }
 
 func (OSPolicyResourceExecResourceExecInterpreterPtrOutput) ElementType() reflect.Type {
-	return ospolicyResourceExecResourceExecInterpreterPtrType
+	return reflect.TypeOf((**OSPolicyResourceExecResourceExecInterpreter)(nil)).Elem()
 }
 
 func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToOSPolicyResourceExecResourceExecInterpreterPtrOutput() OSPolicyResourceExecResourceExecInterpreterPtrOutput {
@@ -286,6 +286,16 @@ func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToOSPolicyResource
 
 func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecInterpreterPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) Elem() OSPolicyResourceExecResourceExecInterpreterOutput {
+	return o.ApplyT(func(v *OSPolicyResourceExecResourceExecInterpreter) OSPolicyResourceExecResourceExecInterpreter {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceExecResourceExecInterpreter
+		return ret
+	}).(OSPolicyResourceExecResourceExecInterpreterOutput)
 }
 
 func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToStringPtrOutputW
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) Elem() OSPolicyResourceExecResourceExecInterpreterOutput {
-	return o.ApplyT(func(v *OSPolicyResourceExecResourceExecInterpreter) OSPolicyResourceExecResourceExecInterpreter {
-		var ret OSPolicyResourceExecResourceExecInterpreter
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OSPolicyResourceExecResourceExecInterpreterOutput)
 }
 
 // OSPolicyResourceExecResourceExecInterpreterInput is an input type that accepts OSPolicyResourceExecResourceExecInterpreterArgs and OSPolicyResourceExecResourceExecInterpreterOutput values.
@@ -448,7 +448,7 @@ func (o OSPolicyResourceFileResourceStateOutput) ToStringPtrOutputWithContext(ct
 type OSPolicyResourceFileResourceStatePtrOutput struct{ *pulumi.OutputState }
 
 func (OSPolicyResourceFileResourceStatePtrOutput) ElementType() reflect.Type {
-	return ospolicyResourceFileResourceStatePtrType
+	return reflect.TypeOf((**OSPolicyResourceFileResourceState)(nil)).Elem()
 }
 
 func (o OSPolicyResourceFileResourceStatePtrOutput) ToOSPolicyResourceFileResourceStatePtrOutput() OSPolicyResourceFileResourceStatePtrOutput {
@@ -457,6 +457,16 @@ func (o OSPolicyResourceFileResourceStatePtrOutput) ToOSPolicyResourceFileResour
 
 func (o OSPolicyResourceFileResourceStatePtrOutput) ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceStatePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceFileResourceStatePtrOutput) Elem() OSPolicyResourceFileResourceStateOutput {
+	return o.ApplyT(func(v *OSPolicyResourceFileResourceState) OSPolicyResourceFileResourceState {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceFileResourceState
+		return ret
+	}).(OSPolicyResourceFileResourceStateOutput)
 }
 
 func (o OSPolicyResourceFileResourceStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -471,16 +481,6 @@ func (o OSPolicyResourceFileResourceStatePtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OSPolicyResourceFileResourceStatePtrOutput) Elem() OSPolicyResourceFileResourceStateOutput {
-	return o.ApplyT(func(v *OSPolicyResourceFileResourceState) OSPolicyResourceFileResourceState {
-		var ret OSPolicyResourceFileResourceState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OSPolicyResourceFileResourceStateOutput)
 }
 
 // OSPolicyResourceFileResourceStateInput is an input type that accepts OSPolicyResourceFileResourceStateArgs and OSPolicyResourceFileResourceStateOutput values.
@@ -617,7 +617,7 @@ func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToStringPtrOutputWith
 type OSPolicyResourcePackageResourceDesiredStatePtrOutput struct{ *pulumi.OutputState }
 
 func (OSPolicyResourcePackageResourceDesiredStatePtrOutput) ElementType() reflect.Type {
-	return ospolicyResourcePackageResourceDesiredStatePtrType
+	return reflect.TypeOf((**OSPolicyResourcePackageResourceDesiredState)(nil)).Elem()
 }
 
 func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToOSPolicyResourcePackageResourceDesiredStatePtrOutput() OSPolicyResourcePackageResourceDesiredStatePtrOutput {
@@ -626,6 +626,16 @@ func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToOSPolicyResource
 
 func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDesiredStatePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) Elem() OSPolicyResourcePackageResourceDesiredStateOutput {
+	return o.ApplyT(func(v *OSPolicyResourcePackageResourceDesiredState) OSPolicyResourcePackageResourceDesiredState {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourcePackageResourceDesiredState
+		return ret
+	}).(OSPolicyResourcePackageResourceDesiredStateOutput)
 }
 
 func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -640,16 +650,6 @@ func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToStringPtrOutputW
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) Elem() OSPolicyResourcePackageResourceDesiredStateOutput {
-	return o.ApplyT(func(v *OSPolicyResourcePackageResourceDesiredState) OSPolicyResourcePackageResourceDesiredState {
-		var ret OSPolicyResourcePackageResourceDesiredState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OSPolicyResourcePackageResourceDesiredStateOutput)
 }
 
 // OSPolicyResourcePackageResourceDesiredStateInput is an input type that accepts OSPolicyResourcePackageResourceDesiredStateArgs and OSPolicyResourcePackageResourceDesiredStateOutput values.
@@ -786,7 +786,7 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToStri
 type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput struct{ *pulumi.OutputState }
 
 func (OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ElementType() reflect.Type {
-	return ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrType
+	return reflect.TypeOf((**OSPolicyResourceRepositoryResourceAptRepositoryArchiveType)(nil)).Elem()
 }
 
 func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
@@ -795,6 +795,16 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToO
 
 func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) Elem() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput {
+	return o.ApplyT(func(v *OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) OSPolicyResourceRepositoryResourceAptRepositoryArchiveType {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyResourceRepositoryResourceAptRepositoryArchiveType
+		return ret
+	}).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput)
 }
 
 func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -809,16 +819,6 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToS
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) Elem() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput {
-	return o.ApplyT(func(v *OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) OSPolicyResourceRepositoryResourceAptRepositoryArchiveType {
-		var ret OSPolicyResourceRepositoryResourceAptRepositoryArchiveType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput)
 }
 
 // OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeInput is an input type that accepts OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeArgs and OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput values.

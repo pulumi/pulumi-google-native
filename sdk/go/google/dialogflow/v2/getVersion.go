@@ -4,6 +4,9 @@
 package v2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,4 +37,66 @@ type LookupVersionResult struct {
 	Status string `pulumi:"status"`
 	// The sequential number of this version. This field is read-only which means it cannot be set by create and update methods.
 	VersionNumber int `pulumi:"versionNumber"`
+}
+
+func LookupVersionOutput(ctx *pulumi.Context, args LookupVersionOutputArgs, opts ...pulumi.InvokeOption) LookupVersionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupVersionResult, error) {
+			args := v.(LookupVersionArgs)
+			r, err := LookupVersion(ctx, &args, opts...)
+			return *r, err
+		}).(LookupVersionResultOutput)
+}
+
+type LookupVersionOutputArgs struct {
+	Location  pulumi.StringInput    `pulumi:"location"`
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+	VersionId pulumi.StringInput    `pulumi:"versionId"`
+}
+
+func (LookupVersionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVersionArgs)(nil)).Elem()
+}
+
+type LookupVersionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVersionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVersionResult)(nil)).Elem()
+}
+
+func (o LookupVersionResultOutput) ToLookupVersionResultOutput() LookupVersionResultOutput {
+	return o
+}
+
+func (o LookupVersionResultOutput) ToLookupVersionResultOutputWithContext(ctx context.Context) LookupVersionResultOutput {
+	return o
+}
+
+// The creation time of this version. This field is read-only, i.e., it cannot be set by create and update methods.
+func (o LookupVersionResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVersionResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. The developer-provided description of this version.
+func (o LookupVersionResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVersionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+func (o LookupVersionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVersionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The status of this version. This field is read-only and cannot be set by create and update methods.
+func (o LookupVersionResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVersionResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The sequential number of this version. This field is read-only which means it cannot be set by create and update methods.
+func (o LookupVersionResultOutput) VersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupVersionResult) int { return v.VersionNumber }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVersionResultOutput{})
 }

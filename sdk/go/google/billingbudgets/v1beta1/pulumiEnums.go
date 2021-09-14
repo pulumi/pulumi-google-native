@@ -107,7 +107,7 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput) ToStringPtrO
 type GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) ElementType() reflect.Type {
-	return googleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrType
+	return reflect.TypeOf((**GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod)(nil)).Elem()
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) ToGoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput() GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput {
@@ -116,6 +116,16 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) ToGoogleC
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) ToGoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput {
 	return o
+}
+
+func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod) GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod
+		return ret
+	}).(GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput)
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -130,16 +140,6 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) ToStringP
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod) GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod {
-		var ret GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput)
 }
 
 // GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodArgs and GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput values.
@@ -277,7 +277,7 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput) ToStri
 type GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) ElementType() reflect.Type {
-	return googleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrType
+	return reflect.TypeOf((**GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment)(nil)).Elem()
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) ToGoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput() GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput {
@@ -286,6 +286,16 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) ToG
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) ToGoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput {
 	return o
+}
+
+func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment) GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment
+		return ret
+	}).(GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput)
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) ToS
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment) GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment {
-		var ret GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput)
 }
 
 // GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentArgs and GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput values.
@@ -446,7 +446,7 @@ func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput) ToStringP
 type GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) ElementType() reflect.Type {
-	return googleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrType
+	return reflect.TypeOf((**GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis)(nil)).Elem()
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) ToGoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput() GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput {
@@ -455,6 +455,16 @@ func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) ToGoog
 
 func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) ToGoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput {
 	return o
+}
+
+func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis) GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis
+		return ret
+	}).(GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput)
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -469,16 +479,6 @@ func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) ToStri
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis) GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis {
-		var ret GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput)
 }
 
 // GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisArgs and GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput values.

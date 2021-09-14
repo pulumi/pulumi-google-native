@@ -104,7 +104,7 @@ func (o BackupRetentionSettingsRetentionUnitOutput) ToStringPtrOutputWithContext
 type BackupRetentionSettingsRetentionUnitPtrOutput struct{ *pulumi.OutputState }
 
 func (BackupRetentionSettingsRetentionUnitPtrOutput) ElementType() reflect.Type {
-	return backupRetentionSettingsRetentionUnitPtrType
+	return reflect.TypeOf((**BackupRetentionSettingsRetentionUnit)(nil)).Elem()
 }
 
 func (o BackupRetentionSettingsRetentionUnitPtrOutput) ToBackupRetentionSettingsRetentionUnitPtrOutput() BackupRetentionSettingsRetentionUnitPtrOutput {
@@ -113,6 +113,16 @@ func (o BackupRetentionSettingsRetentionUnitPtrOutput) ToBackupRetentionSettings
 
 func (o BackupRetentionSettingsRetentionUnitPtrOutput) ToBackupRetentionSettingsRetentionUnitPtrOutputWithContext(ctx context.Context) BackupRetentionSettingsRetentionUnitPtrOutput {
 	return o
+}
+
+func (o BackupRetentionSettingsRetentionUnitPtrOutput) Elem() BackupRetentionSettingsRetentionUnitOutput {
+	return o.ApplyT(func(v *BackupRetentionSettingsRetentionUnit) BackupRetentionSettingsRetentionUnit {
+		if v != nil {
+			return *v
+		}
+		var ret BackupRetentionSettingsRetentionUnit
+		return ret
+	}).(BackupRetentionSettingsRetentionUnitOutput)
 }
 
 func (o BackupRetentionSettingsRetentionUnitPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -127,16 +137,6 @@ func (o BackupRetentionSettingsRetentionUnitPtrOutput) ToStringPtrOutputWithCont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackupRetentionSettingsRetentionUnitPtrOutput) Elem() BackupRetentionSettingsRetentionUnitOutput {
-	return o.ApplyT(func(v *BackupRetentionSettingsRetentionUnit) BackupRetentionSettingsRetentionUnit {
-		var ret BackupRetentionSettingsRetentionUnit
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackupRetentionSettingsRetentionUnitOutput)
 }
 
 // BackupRetentionSettingsRetentionUnitInput is an input type that accepts BackupRetentionSettingsRetentionUnitArgs and BackupRetentionSettingsRetentionUnitOutput values.
@@ -273,7 +273,7 @@ func (o BackupRunBackupKindOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type BackupRunBackupKindPtrOutput struct{ *pulumi.OutputState }
 
 func (BackupRunBackupKindPtrOutput) ElementType() reflect.Type {
-	return backupRunBackupKindPtrType
+	return reflect.TypeOf((**BackupRunBackupKind)(nil)).Elem()
 }
 
 func (o BackupRunBackupKindPtrOutput) ToBackupRunBackupKindPtrOutput() BackupRunBackupKindPtrOutput {
@@ -282,6 +282,16 @@ func (o BackupRunBackupKindPtrOutput) ToBackupRunBackupKindPtrOutput() BackupRun
 
 func (o BackupRunBackupKindPtrOutput) ToBackupRunBackupKindPtrOutputWithContext(ctx context.Context) BackupRunBackupKindPtrOutput {
 	return o
+}
+
+func (o BackupRunBackupKindPtrOutput) Elem() BackupRunBackupKindOutput {
+	return o.ApplyT(func(v *BackupRunBackupKind) BackupRunBackupKind {
+		if v != nil {
+			return *v
+		}
+		var ret BackupRunBackupKind
+		return ret
+	}).(BackupRunBackupKindOutput)
 }
 
 func (o BackupRunBackupKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -296,16 +306,6 @@ func (o BackupRunBackupKindPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackupRunBackupKindPtrOutput) Elem() BackupRunBackupKindOutput {
-	return o.ApplyT(func(v *BackupRunBackupKind) BackupRunBackupKind {
-		var ret BackupRunBackupKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackupRunBackupKindOutput)
 }
 
 // BackupRunBackupKindInput is an input type that accepts BackupRunBackupKindArgs and BackupRunBackupKindOutput values.
@@ -456,7 +456,7 @@ func (o BackupRunStatusOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type BackupRunStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (BackupRunStatusPtrOutput) ElementType() reflect.Type {
-	return backupRunStatusPtrType
+	return reflect.TypeOf((**BackupRunStatus)(nil)).Elem()
 }
 
 func (o BackupRunStatusPtrOutput) ToBackupRunStatusPtrOutput() BackupRunStatusPtrOutput {
@@ -465,6 +465,16 @@ func (o BackupRunStatusPtrOutput) ToBackupRunStatusPtrOutput() BackupRunStatusPt
 
 func (o BackupRunStatusPtrOutput) ToBackupRunStatusPtrOutputWithContext(ctx context.Context) BackupRunStatusPtrOutput {
 	return o
+}
+
+func (o BackupRunStatusPtrOutput) Elem() BackupRunStatusOutput {
+	return o.ApplyT(func(v *BackupRunStatus) BackupRunStatus {
+		if v != nil {
+			return *v
+		}
+		var ret BackupRunStatus
+		return ret
+	}).(BackupRunStatusOutput)
 }
 
 func (o BackupRunStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -479,16 +489,6 @@ func (o BackupRunStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackupRunStatusPtrOutput) Elem() BackupRunStatusOutput {
-	return o.ApplyT(func(v *BackupRunStatus) BackupRunStatus {
-		var ret BackupRunStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackupRunStatusOutput)
 }
 
 // BackupRunStatusInput is an input type that accepts BackupRunStatusArgs and BackupRunStatusOutput values.
@@ -625,7 +625,7 @@ func (o BackupRunTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 type BackupRunTypePtrOutput struct{ *pulumi.OutputState }
 
 func (BackupRunTypePtrOutput) ElementType() reflect.Type {
-	return backupRunTypePtrType
+	return reflect.TypeOf((**BackupRunType)(nil)).Elem()
 }
 
 func (o BackupRunTypePtrOutput) ToBackupRunTypePtrOutput() BackupRunTypePtrOutput {
@@ -634,6 +634,16 @@ func (o BackupRunTypePtrOutput) ToBackupRunTypePtrOutput() BackupRunTypePtrOutpu
 
 func (o BackupRunTypePtrOutput) ToBackupRunTypePtrOutputWithContext(ctx context.Context) BackupRunTypePtrOutput {
 	return o
+}
+
+func (o BackupRunTypePtrOutput) Elem() BackupRunTypeOutput {
+	return o.ApplyT(func(v *BackupRunType) BackupRunType {
+		if v != nil {
+			return *v
+		}
+		var ret BackupRunType
+		return ret
+	}).(BackupRunTypeOutput)
 }
 
 func (o BackupRunTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -648,16 +658,6 @@ func (o BackupRunTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackupRunTypePtrOutput) Elem() BackupRunTypeOutput {
-	return o.ApplyT(func(v *BackupRunType) BackupRunType {
-		var ret BackupRunType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackupRunTypeOutput)
 }
 
 // BackupRunTypeInput is an input type that accepts BackupRunTypeArgs and BackupRunTypeOutput values.
@@ -796,7 +796,7 @@ func (o InstanceBackendTypeOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type InstanceBackendTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceBackendTypePtrOutput) ElementType() reflect.Type {
-	return instanceBackendTypePtrType
+	return reflect.TypeOf((**InstanceBackendType)(nil)).Elem()
 }
 
 func (o InstanceBackendTypePtrOutput) ToInstanceBackendTypePtrOutput() InstanceBackendTypePtrOutput {
@@ -805,6 +805,16 @@ func (o InstanceBackendTypePtrOutput) ToInstanceBackendTypePtrOutput() InstanceB
 
 func (o InstanceBackendTypePtrOutput) ToInstanceBackendTypePtrOutputWithContext(ctx context.Context) InstanceBackendTypePtrOutput {
 	return o
+}
+
+func (o InstanceBackendTypePtrOutput) Elem() InstanceBackendTypeOutput {
+	return o.ApplyT(func(v *InstanceBackendType) InstanceBackendType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceBackendType
+		return ret
+	}).(InstanceBackendTypeOutput)
 }
 
 func (o InstanceBackendTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -819,16 +829,6 @@ func (o InstanceBackendTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceBackendTypePtrOutput) Elem() InstanceBackendTypeOutput {
-	return o.ApplyT(func(v *InstanceBackendType) InstanceBackendType {
-		var ret InstanceBackendType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceBackendTypeOutput)
 }
 
 // InstanceBackendTypeInput is an input type that accepts InstanceBackendTypeArgs and InstanceBackendTypeOutput values.
@@ -997,7 +997,7 @@ func (o InstanceDatabaseVersionOutput) ToStringPtrOutputWithContext(ctx context.
 type InstanceDatabaseVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatabaseVersionPtrOutput) ElementType() reflect.Type {
-	return instanceDatabaseVersionPtrType
+	return reflect.TypeOf((**InstanceDatabaseVersion)(nil)).Elem()
 }
 
 func (o InstanceDatabaseVersionPtrOutput) ToInstanceDatabaseVersionPtrOutput() InstanceDatabaseVersionPtrOutput {
@@ -1006,6 +1006,16 @@ func (o InstanceDatabaseVersionPtrOutput) ToInstanceDatabaseVersionPtrOutput() I
 
 func (o InstanceDatabaseVersionPtrOutput) ToInstanceDatabaseVersionPtrOutputWithContext(ctx context.Context) InstanceDatabaseVersionPtrOutput {
 	return o
+}
+
+func (o InstanceDatabaseVersionPtrOutput) Elem() InstanceDatabaseVersionOutput {
+	return o.ApplyT(func(v *InstanceDatabaseVersion) InstanceDatabaseVersion {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceDatabaseVersion
+		return ret
+	}).(InstanceDatabaseVersionOutput)
 }
 
 func (o InstanceDatabaseVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1020,16 +1030,6 @@ func (o InstanceDatabaseVersionPtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceDatabaseVersionPtrOutput) Elem() InstanceDatabaseVersionOutput {
-	return o.ApplyT(func(v *InstanceDatabaseVersion) InstanceDatabaseVersion {
-		var ret InstanceDatabaseVersion
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceDatabaseVersionOutput)
 }
 
 // InstanceDatabaseVersionInput is an input type that accepts InstanceDatabaseVersionArgs and InstanceDatabaseVersionOutput values.
@@ -1168,7 +1168,7 @@ func (o InstanceInstanceTypeOutput) ToStringPtrOutputWithContext(ctx context.Con
 type InstanceInstanceTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceInstanceTypePtrOutput) ElementType() reflect.Type {
-	return instanceInstanceTypePtrType
+	return reflect.TypeOf((**InstanceInstanceType)(nil)).Elem()
 }
 
 func (o InstanceInstanceTypePtrOutput) ToInstanceInstanceTypePtrOutput() InstanceInstanceTypePtrOutput {
@@ -1177,6 +1177,16 @@ func (o InstanceInstanceTypePtrOutput) ToInstanceInstanceTypePtrOutput() Instanc
 
 func (o InstanceInstanceTypePtrOutput) ToInstanceInstanceTypePtrOutputWithContext(ctx context.Context) InstanceInstanceTypePtrOutput {
 	return o
+}
+
+func (o InstanceInstanceTypePtrOutput) Elem() InstanceInstanceTypeOutput {
+	return o.ApplyT(func(v *InstanceInstanceType) InstanceInstanceType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceInstanceType
+		return ret
+	}).(InstanceInstanceTypeOutput)
 }
 
 func (o InstanceInstanceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1191,16 +1201,6 @@ func (o InstanceInstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceInstanceTypePtrOutput) Elem() InstanceInstanceTypeOutput {
-	return o.ApplyT(func(v *InstanceInstanceType) InstanceInstanceType {
-		var ret InstanceInstanceType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceInstanceTypeOutput)
 }
 
 // InstanceInstanceTypeInput is an input type that accepts InstanceInstanceTypeArgs and InstanceInstanceTypeOutput values.
@@ -1347,7 +1347,7 @@ func (o InstanceStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type InstanceStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceStateEnumPtrOutput) ElementType() reflect.Type {
-	return instanceStateEnumPtrType
+	return reflect.TypeOf((**InstanceStateEnum)(nil)).Elem()
 }
 
 func (o InstanceStateEnumPtrOutput) ToInstanceStateEnumPtrOutput() InstanceStateEnumPtrOutput {
@@ -1356,6 +1356,16 @@ func (o InstanceStateEnumPtrOutput) ToInstanceStateEnumPtrOutput() InstanceState
 
 func (o InstanceStateEnumPtrOutput) ToInstanceStateEnumPtrOutputWithContext(ctx context.Context) InstanceStateEnumPtrOutput {
 	return o
+}
+
+func (o InstanceStateEnumPtrOutput) Elem() InstanceStateEnumOutput {
+	return o.ApplyT(func(v *InstanceStateEnum) InstanceStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceStateEnum
+		return ret
+	}).(InstanceStateEnumOutput)
 }
 
 func (o InstanceStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1370,16 +1380,6 @@ func (o InstanceStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceStateEnumPtrOutput) Elem() InstanceStateEnumOutput {
-	return o.ApplyT(func(v *InstanceStateEnum) InstanceStateEnum {
-		var ret InstanceStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceStateEnumOutput)
 }
 
 // InstanceStateEnumInput is an input type that accepts InstanceStateEnumArgs and InstanceStateEnumOutput values.
@@ -1519,7 +1519,7 @@ func (o InstanceSuspensionReasonItemOutput) ToStringPtrOutputWithContext(ctx con
 type InstanceSuspensionReasonItemPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceSuspensionReasonItemPtrOutput) ElementType() reflect.Type {
-	return instanceSuspensionReasonItemPtrType
+	return reflect.TypeOf((**InstanceSuspensionReasonItem)(nil)).Elem()
 }
 
 func (o InstanceSuspensionReasonItemPtrOutput) ToInstanceSuspensionReasonItemPtrOutput() InstanceSuspensionReasonItemPtrOutput {
@@ -1528,6 +1528,16 @@ func (o InstanceSuspensionReasonItemPtrOutput) ToInstanceSuspensionReasonItemPtr
 
 func (o InstanceSuspensionReasonItemPtrOutput) ToInstanceSuspensionReasonItemPtrOutputWithContext(ctx context.Context) InstanceSuspensionReasonItemPtrOutput {
 	return o
+}
+
+func (o InstanceSuspensionReasonItemPtrOutput) Elem() InstanceSuspensionReasonItemOutput {
+	return o.ApplyT(func(v *InstanceSuspensionReasonItem) InstanceSuspensionReasonItem {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceSuspensionReasonItem
+		return ret
+	}).(InstanceSuspensionReasonItemOutput)
 }
 
 func (o InstanceSuspensionReasonItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1542,16 +1552,6 @@ func (o InstanceSuspensionReasonItemPtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceSuspensionReasonItemPtrOutput) Elem() InstanceSuspensionReasonItemOutput {
-	return o.ApplyT(func(v *InstanceSuspensionReasonItem) InstanceSuspensionReasonItem {
-		var ret InstanceSuspensionReasonItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceSuspensionReasonItemOutput)
 }
 
 // InstanceSuspensionReasonItemInput is an input type that accepts InstanceSuspensionReasonItemArgs and InstanceSuspensionReasonItemOutput values.
@@ -1632,8 +1632,8 @@ func (o InstanceSuspensionReasonItemArrayOutput) ToInstanceSuspensionReasonItemA
 }
 
 func (o InstanceSuspensionReasonItemArrayOutput) Index(i pulumi.IntInput) InstanceSuspensionReasonItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSuspensionReasonItemOutput {
-		return vs[0].([]InstanceSuspensionReasonItem)[vs[1].(int)].ToInstanceSuspensionReasonItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSuspensionReasonItem {
+		return vs[0].([]InstanceSuspensionReasonItem)[vs[1].(int)]
 	}).(InstanceSuspensionReasonItemOutput)
 }
 
@@ -1737,7 +1737,7 @@ func (o IpMappingTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 type IpMappingTypePtrOutput struct{ *pulumi.OutputState }
 
 func (IpMappingTypePtrOutput) ElementType() reflect.Type {
-	return ipMappingTypePtrType
+	return reflect.TypeOf((**IpMappingType)(nil)).Elem()
 }
 
 func (o IpMappingTypePtrOutput) ToIpMappingTypePtrOutput() IpMappingTypePtrOutput {
@@ -1746,6 +1746,16 @@ func (o IpMappingTypePtrOutput) ToIpMappingTypePtrOutput() IpMappingTypePtrOutpu
 
 func (o IpMappingTypePtrOutput) ToIpMappingTypePtrOutputWithContext(ctx context.Context) IpMappingTypePtrOutput {
 	return o
+}
+
+func (o IpMappingTypePtrOutput) Elem() IpMappingTypeOutput {
+	return o.ApplyT(func(v *IpMappingType) IpMappingType {
+		if v != nil {
+			return *v
+		}
+		var ret IpMappingType
+		return ret
+	}).(IpMappingTypeOutput)
 }
 
 func (o IpMappingTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1760,16 +1770,6 @@ func (o IpMappingTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o IpMappingTypePtrOutput) Elem() IpMappingTypeOutput {
-	return o.ApplyT(func(v *IpMappingType) IpMappingType {
-		var ret IpMappingType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(IpMappingTypeOutput)
 }
 
 // IpMappingTypeInput is an input type that accepts IpMappingTypeArgs and IpMappingTypeOutput values.
@@ -1906,7 +1906,7 @@ func (o MaintenanceWindowUpdateTrackOutput) ToStringPtrOutputWithContext(ctx con
 type MaintenanceWindowUpdateTrackPtrOutput struct{ *pulumi.OutputState }
 
 func (MaintenanceWindowUpdateTrackPtrOutput) ElementType() reflect.Type {
-	return maintenanceWindowUpdateTrackPtrType
+	return reflect.TypeOf((**MaintenanceWindowUpdateTrack)(nil)).Elem()
 }
 
 func (o MaintenanceWindowUpdateTrackPtrOutput) ToMaintenanceWindowUpdateTrackPtrOutput() MaintenanceWindowUpdateTrackPtrOutput {
@@ -1915,6 +1915,16 @@ func (o MaintenanceWindowUpdateTrackPtrOutput) ToMaintenanceWindowUpdateTrackPtr
 
 func (o MaintenanceWindowUpdateTrackPtrOutput) ToMaintenanceWindowUpdateTrackPtrOutputWithContext(ctx context.Context) MaintenanceWindowUpdateTrackPtrOutput {
 	return o
+}
+
+func (o MaintenanceWindowUpdateTrackPtrOutput) Elem() MaintenanceWindowUpdateTrackOutput {
+	return o.ApplyT(func(v *MaintenanceWindowUpdateTrack) MaintenanceWindowUpdateTrack {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceWindowUpdateTrack
+		return ret
+	}).(MaintenanceWindowUpdateTrackOutput)
 }
 
 func (o MaintenanceWindowUpdateTrackPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1929,16 +1939,6 @@ func (o MaintenanceWindowUpdateTrackPtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MaintenanceWindowUpdateTrackPtrOutput) Elem() MaintenanceWindowUpdateTrackOutput {
-	return o.ApplyT(func(v *MaintenanceWindowUpdateTrack) MaintenanceWindowUpdateTrack {
-		var ret MaintenanceWindowUpdateTrack
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MaintenanceWindowUpdateTrackOutput)
 }
 
 // MaintenanceWindowUpdateTrackInput is an input type that accepts MaintenanceWindowUpdateTrackArgs and MaintenanceWindowUpdateTrackOutput values.
@@ -2077,7 +2077,7 @@ func (o SettingsActivationPolicyOutput) ToStringPtrOutputWithContext(ctx context
 type SettingsActivationPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (SettingsActivationPolicyPtrOutput) ElementType() reflect.Type {
-	return settingsActivationPolicyPtrType
+	return reflect.TypeOf((**SettingsActivationPolicy)(nil)).Elem()
 }
 
 func (o SettingsActivationPolicyPtrOutput) ToSettingsActivationPolicyPtrOutput() SettingsActivationPolicyPtrOutput {
@@ -2086,6 +2086,16 @@ func (o SettingsActivationPolicyPtrOutput) ToSettingsActivationPolicyPtrOutput()
 
 func (o SettingsActivationPolicyPtrOutput) ToSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) SettingsActivationPolicyPtrOutput {
 	return o
+}
+
+func (o SettingsActivationPolicyPtrOutput) Elem() SettingsActivationPolicyOutput {
+	return o.ApplyT(func(v *SettingsActivationPolicy) SettingsActivationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsActivationPolicy
+		return ret
+	}).(SettingsActivationPolicyOutput)
 }
 
 func (o SettingsActivationPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2100,16 +2110,6 @@ func (o SettingsActivationPolicyPtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SettingsActivationPolicyPtrOutput) Elem() SettingsActivationPolicyOutput {
-	return o.ApplyT(func(v *SettingsActivationPolicy) SettingsActivationPolicy {
-		var ret SettingsActivationPolicy
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SettingsActivationPolicyOutput)
 }
 
 // SettingsActivationPolicyInput is an input type that accepts SettingsActivationPolicyArgs and SettingsActivationPolicyOutput values.
@@ -2246,7 +2246,7 @@ func (o SettingsAvailabilityTypeOutput) ToStringPtrOutputWithContext(ctx context
 type SettingsAvailabilityTypePtrOutput struct{ *pulumi.OutputState }
 
 func (SettingsAvailabilityTypePtrOutput) ElementType() reflect.Type {
-	return settingsAvailabilityTypePtrType
+	return reflect.TypeOf((**SettingsAvailabilityType)(nil)).Elem()
 }
 
 func (o SettingsAvailabilityTypePtrOutput) ToSettingsAvailabilityTypePtrOutput() SettingsAvailabilityTypePtrOutput {
@@ -2255,6 +2255,16 @@ func (o SettingsAvailabilityTypePtrOutput) ToSettingsAvailabilityTypePtrOutput()
 
 func (o SettingsAvailabilityTypePtrOutput) ToSettingsAvailabilityTypePtrOutputWithContext(ctx context.Context) SettingsAvailabilityTypePtrOutput {
 	return o
+}
+
+func (o SettingsAvailabilityTypePtrOutput) Elem() SettingsAvailabilityTypeOutput {
+	return o.ApplyT(func(v *SettingsAvailabilityType) SettingsAvailabilityType {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsAvailabilityType
+		return ret
+	}).(SettingsAvailabilityTypeOutput)
 }
 
 func (o SettingsAvailabilityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2269,16 +2279,6 @@ func (o SettingsAvailabilityTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SettingsAvailabilityTypePtrOutput) Elem() SettingsAvailabilityTypeOutput {
-	return o.ApplyT(func(v *SettingsAvailabilityType) SettingsAvailabilityType {
-		var ret SettingsAvailabilityType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SettingsAvailabilityTypeOutput)
 }
 
 // SettingsAvailabilityTypeInput is an input type that accepts SettingsAvailabilityTypeArgs and SettingsAvailabilityTypeOutput values.
@@ -2417,7 +2417,7 @@ func (o SettingsDataDiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Con
 type SettingsDataDiskTypePtrOutput struct{ *pulumi.OutputState }
 
 func (SettingsDataDiskTypePtrOutput) ElementType() reflect.Type {
-	return settingsDataDiskTypePtrType
+	return reflect.TypeOf((**SettingsDataDiskType)(nil)).Elem()
 }
 
 func (o SettingsDataDiskTypePtrOutput) ToSettingsDataDiskTypePtrOutput() SettingsDataDiskTypePtrOutput {
@@ -2426,6 +2426,16 @@ func (o SettingsDataDiskTypePtrOutput) ToSettingsDataDiskTypePtrOutput() Setting
 
 func (o SettingsDataDiskTypePtrOutput) ToSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) SettingsDataDiskTypePtrOutput {
 	return o
+}
+
+func (o SettingsDataDiskTypePtrOutput) Elem() SettingsDataDiskTypeOutput {
+	return o.ApplyT(func(v *SettingsDataDiskType) SettingsDataDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsDataDiskType
+		return ret
+	}).(SettingsDataDiskTypeOutput)
 }
 
 func (o SettingsDataDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2440,16 +2450,6 @@ func (o SettingsDataDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SettingsDataDiskTypePtrOutput) Elem() SettingsDataDiskTypeOutput {
-	return o.ApplyT(func(v *SettingsDataDiskType) SettingsDataDiskType {
-		var ret SettingsDataDiskType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SettingsDataDiskTypeOutput)
 }
 
 // SettingsDataDiskTypeInput is an input type that accepts SettingsDataDiskTypeArgs and SettingsDataDiskTypeOutput values.
@@ -2586,7 +2586,7 @@ func (o SettingsPricingPlanOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type SettingsPricingPlanPtrOutput struct{ *pulumi.OutputState }
 
 func (SettingsPricingPlanPtrOutput) ElementType() reflect.Type {
-	return settingsPricingPlanPtrType
+	return reflect.TypeOf((**SettingsPricingPlan)(nil)).Elem()
 }
 
 func (o SettingsPricingPlanPtrOutput) ToSettingsPricingPlanPtrOutput() SettingsPricingPlanPtrOutput {
@@ -2595,6 +2595,16 @@ func (o SettingsPricingPlanPtrOutput) ToSettingsPricingPlanPtrOutput() SettingsP
 
 func (o SettingsPricingPlanPtrOutput) ToSettingsPricingPlanPtrOutputWithContext(ctx context.Context) SettingsPricingPlanPtrOutput {
 	return o
+}
+
+func (o SettingsPricingPlanPtrOutput) Elem() SettingsPricingPlanOutput {
+	return o.ApplyT(func(v *SettingsPricingPlan) SettingsPricingPlan {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsPricingPlan
+		return ret
+	}).(SettingsPricingPlanOutput)
 }
 
 func (o SettingsPricingPlanPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2609,16 +2619,6 @@ func (o SettingsPricingPlanPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SettingsPricingPlanPtrOutput) Elem() SettingsPricingPlanOutput {
-	return o.ApplyT(func(v *SettingsPricingPlan) SettingsPricingPlan {
-		var ret SettingsPricingPlan
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SettingsPricingPlanOutput)
 }
 
 // SettingsPricingPlanInput is an input type that accepts SettingsPricingPlanArgs and SettingsPricingPlanOutput values.
@@ -2755,7 +2755,7 @@ func (o SqlOutOfDiskReportSqlOutOfDiskStateOutput) ToStringPtrOutputWithContext(
 type SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput struct{ *pulumi.OutputState }
 
 func (SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) ElementType() reflect.Type {
-	return sqlOutOfDiskReportSqlOutOfDiskStatePtrType
+	return reflect.TypeOf((**SqlOutOfDiskReportSqlOutOfDiskState)(nil)).Elem()
 }
 
 func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) ToSqlOutOfDiskReportSqlOutOfDiskStatePtrOutput() SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput {
@@ -2764,6 +2764,16 @@ func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) ToSqlOutOfDiskReportSqlOut
 
 func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) ToSqlOutOfDiskReportSqlOutOfDiskStatePtrOutputWithContext(ctx context.Context) SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput {
 	return o
+}
+
+func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) Elem() SqlOutOfDiskReportSqlOutOfDiskStateOutput {
+	return o.ApplyT(func(v *SqlOutOfDiskReportSqlOutOfDiskState) SqlOutOfDiskReportSqlOutOfDiskState {
+		if v != nil {
+			return *v
+		}
+		var ret SqlOutOfDiskReportSqlOutOfDiskState
+		return ret
+	}).(SqlOutOfDiskReportSqlOutOfDiskStateOutput)
 }
 
 func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2778,16 +2788,6 @@ func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) Elem() SqlOutOfDiskReportSqlOutOfDiskStateOutput {
-	return o.ApplyT(func(v *SqlOutOfDiskReportSqlOutOfDiskState) SqlOutOfDiskReportSqlOutOfDiskState {
-		var ret SqlOutOfDiskReportSqlOutOfDiskState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SqlOutOfDiskReportSqlOutOfDiskStateOutput)
 }
 
 // SqlOutOfDiskReportSqlOutOfDiskStateInput is an input type that accepts SqlOutOfDiskReportSqlOutOfDiskStateArgs and SqlOutOfDiskReportSqlOutOfDiskStateOutput values.

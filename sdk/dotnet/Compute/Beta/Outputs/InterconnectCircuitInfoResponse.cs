@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Describes a single physical circuit between the Customer and Google. CircuitInfo objects are created by Google, so all fields are output only.
+    /// </summary>
     [OutputType]
     public sealed class InterconnectCircuitInfoResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// A resource that manages the state of a file.
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyResourceFileResourceResponse
     {

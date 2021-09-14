@@ -124,9 +124,7 @@ func (i *EdgeCacheKeysetIamPolicy) ToEdgeCacheKeysetIamPolicyOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetIamPolicyOutput)
 }
 
-type EdgeCacheKeysetIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type EdgeCacheKeysetIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheKeysetIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EdgeCacheKeysetIamPolicy)(nil))

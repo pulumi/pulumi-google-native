@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceResult',
     'AwaitableGetInstanceResult',
     'get_instance',
+    'get_instance_output',
 ]
 
 @pulumi.output_type
@@ -684,3 +685,14 @@ def get_instance(instance: Optional[str] = None,
         tags=__ret__.tags,
         upcoming_maintenance=__ret__.upcoming_maintenance,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_instance)
+def get_instance_output(instance: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        zone: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+    """
+    Returns the specified Instance resource. Gets a list of available instances by making a list() request.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// A managed metastore service that serves metadata queries.
+    /// </summary>
     [OutputType]
     public sealed class ServiceResponse
     {

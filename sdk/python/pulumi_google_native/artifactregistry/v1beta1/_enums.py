@@ -14,18 +14,34 @@ class RepositoryFormat(str, Enum):
     The format of packages that are stored in the repository.
     """
     FORMAT_UNSPECIFIED = "FORMAT_UNSPECIFIED"
-    """Unspecified package format."""
+    """
+    Unspecified package format.
+    """
     DOCKER = "DOCKER"
-    """Docker package format."""
+    """
+    Docker package format.
+    """
     MAVEN = "MAVEN"
-    """Maven package format."""
+    """
+    Maven package format.
+    """
     NPM = "NPM"
-    """NPM package format."""
+    """
+    NPM package format.
+    """
     PYPI = "PYPI"
-    """PyPI package format."""
+    """
+    PyPI package format.
+    """
     APT = "APT"
-    """APT package format."""
+    """
+    APT package format.
+    """
     YUM = "YUM"
-    """YUM package format."""
+    """
+    YUM package format.
+    """
     PYTHON = "PYTHON"
-    """Python package format."""
+    """
+    Python package format.
+    """

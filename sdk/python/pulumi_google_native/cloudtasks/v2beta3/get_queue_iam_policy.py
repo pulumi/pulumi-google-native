@@ -13,6 +13,7 @@ __all__ = [
     'GetQueueIamPolicyResult',
     'AwaitableGetQueueIamPolicyResult',
     'get_queue_iam_policy',
+    'get_queue_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -85,3 +86,14 @@ def get_queue_iam_policy(location: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_queue_iam_policy)
+def get_queue_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
+                                project: Optional[pulumi.Input[Optional[str]]] = None,
+                                queue_id: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQueueIamPolicyResult]:
+    """
+    Gets the access control policy for a Queue. Returns an empty policy if the resource exists and does not have a policy set. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.getIamPolicy`
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceGroupResult',
     'AwaitableGetInstanceGroupResult',
     'get_instance_group',
+    'get_instance_group_output',
 ]
 
 @pulumi.output_type
@@ -202,3 +203,14 @@ def get_instance_group(instance_group: Optional[str] = None,
         size=__ret__.size,
         subnetwork=__ret__.subnetwork,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_instance_group)
+def get_instance_group_output(instance_group: Optional[pulumi.Input[str]] = None,
+                              project: Optional[pulumi.Input[Optional[str]]] = None,
+                              zone: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceGroupResult]:
+    """
+    Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
+    """
+    ...

@@ -14,6 +14,10 @@ class DynamicGroupQueryResourceType(str, Enum):
     Resource type for the Dynamic Group Query
     """
     RESOURCE_TYPE_UNSPECIFIED = "RESOURCE_TYPE_UNSPECIFIED"
-    """Default value (not valid)"""
+    """
+    Default value (not valid)
+    """
     USER = "USER"
-    """For queries on User"""
+    """
+    For queries on User
+    """

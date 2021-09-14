@@ -118,7 +118,7 @@ func (o BackupInfoResponseOutput) ToBackupInfoResponsePtrOutput() BackupInfoResp
 }
 
 func (o BackupInfoResponseOutput) ToBackupInfoResponsePtrOutputWithContext(ctx context.Context) BackupInfoResponsePtrOutput {
-	return o.ApplyT(func(v BackupInfoResponse) *BackupInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupInfoResponse) *BackupInfoResponse {
 		return &v
 	}).(BackupInfoResponsePtrOutput)
 }
@@ -158,7 +158,13 @@ func (o BackupInfoResponsePtrOutput) ToBackupInfoResponsePtrOutputWithContext(ct
 }
 
 func (o BackupInfoResponsePtrOutput) Elem() BackupInfoResponseOutput {
-	return o.ApplyT(func(v *BackupInfoResponse) BackupInfoResponse { return *v }).(BackupInfoResponseOutput)
+	return o.ApplyT(func(v *BackupInfoResponse) BackupInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackupInfoResponse
+		return ret
+	}).(BackupInfoResponseOutput)
 }
 
 // Name of the backup.
@@ -533,7 +539,7 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPt
 }
 
 func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
-	return o.ApplyT(func(v EncryptionConfig) *EncryptionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfig) *EncryptionConfig {
 		return &v
 	}).(EncryptionConfigPtrOutput)
 }
@@ -558,7 +564,13 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx co
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
-	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig { return *v }).(EncryptionConfigOutput)
+	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfig
+		return ret
+	}).(EncryptionConfigOutput)
 }
 
 // The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
@@ -667,7 +679,7 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() En
 }
 
 func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o.ApplyT(func(v EncryptionConfigResponse) *EncryptionConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfigResponse) *EncryptionConfigResponse {
 		return &v
 	}).(EncryptionConfigResponsePtrOutput)
 }
@@ -692,7 +704,13 @@ func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWi
 }
 
 func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse { return *v }).(EncryptionConfigResponseOutput)
+	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfigResponse
+		return ret
+	}).(EncryptionConfigResponseOutput)
 }
 
 // The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
@@ -834,7 +852,7 @@ func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponsePtrOutput() Encryp
 }
 
 func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponsePtrOutputWithContext(ctx context.Context) EncryptionInfoResponsePtrOutput {
-	return o.ApplyT(func(v EncryptionInfoResponse) *EncryptionInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionInfoResponse) *EncryptionInfoResponse {
 		return &v
 	}).(EncryptionInfoResponsePtrOutput)
 }
@@ -869,7 +887,13 @@ func (o EncryptionInfoResponsePtrOutput) ToEncryptionInfoResponsePtrOutputWithCo
 }
 
 func (o EncryptionInfoResponsePtrOutput) Elem() EncryptionInfoResponseOutput {
-	return o.ApplyT(func(v *EncryptionInfoResponse) EncryptionInfoResponse { return *v }).(EncryptionInfoResponseOutput)
+	return o.ApplyT(func(v *EncryptionInfoResponse) EncryptionInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionInfoResponse
+		return ret
+	}).(EncryptionInfoResponseOutput)
 }
 
 // If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
@@ -1030,7 +1054,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1070,7 +1094,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1295,7 +1325,7 @@ func (o RestoreInfoResponseOutput) ToRestoreInfoResponsePtrOutput() RestoreInfoR
 }
 
 func (o RestoreInfoResponseOutput) ToRestoreInfoResponsePtrOutputWithContext(ctx context.Context) RestoreInfoResponsePtrOutput {
-	return o.ApplyT(func(v RestoreInfoResponse) *RestoreInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreInfoResponse) *RestoreInfoResponse {
 		return &v
 	}).(RestoreInfoResponsePtrOutput)
 }
@@ -1325,7 +1355,13 @@ func (o RestoreInfoResponsePtrOutput) ToRestoreInfoResponsePtrOutputWithContext(
 }
 
 func (o RestoreInfoResponsePtrOutput) Elem() RestoreInfoResponseOutput {
-	return o.ApplyT(func(v *RestoreInfoResponse) RestoreInfoResponse { return *v }).(RestoreInfoResponseOutput)
+	return o.ApplyT(func(v *RestoreInfoResponse) RestoreInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreInfoResponse
+		return ret
+	}).(RestoreInfoResponseOutput)
 }
 
 // Information about the backup used to restore the database. The backup may no longer exist.
@@ -1452,7 +1488,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -1487,7 +1523,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

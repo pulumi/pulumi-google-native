@@ -114,9 +114,7 @@ func (i *TagTemplateIamPolicy) ToTagTemplateIamPolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamPolicyOutput)
 }
 
-type TagTemplateIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type TagTemplateIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TagTemplateIamPolicy)(nil))

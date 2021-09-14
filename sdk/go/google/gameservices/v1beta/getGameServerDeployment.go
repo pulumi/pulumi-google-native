@@ -4,6 +4,9 @@
 package v1beta
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,71 @@ type LookupGameServerDeploymentResult struct {
 	Name string `pulumi:"name"`
 	// The last-modified time.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupGameServerDeploymentOutput(ctx *pulumi.Context, args LookupGameServerDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupGameServerDeploymentResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupGameServerDeploymentResult, error) {
+			args := v.(LookupGameServerDeploymentArgs)
+			r, err := LookupGameServerDeployment(ctx, &args, opts...)
+			return *r, err
+		}).(LookupGameServerDeploymentResultOutput)
+}
+
+type LookupGameServerDeploymentOutputArgs struct {
+	GameServerDeploymentId pulumi.StringInput    `pulumi:"gameServerDeploymentId"`
+	Location               pulumi.StringInput    `pulumi:"location"`
+	Project                pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupGameServerDeploymentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGameServerDeploymentArgs)(nil)).Elem()
+}
+
+type LookupGameServerDeploymentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGameServerDeploymentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGameServerDeploymentResult)(nil)).Elem()
+}
+
+func (o LookupGameServerDeploymentResultOutput) ToLookupGameServerDeploymentResultOutput() LookupGameServerDeploymentResultOutput {
+	return o
+}
+
+func (o LookupGameServerDeploymentResultOutput) ToLookupGameServerDeploymentResultOutputWithContext(ctx context.Context) LookupGameServerDeploymentResultOutput {
+	return o
+}
+
+// The creation time.
+func (o LookupGameServerDeploymentResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Human readable description of the game server delpoyment.
+func (o LookupGameServerDeploymentResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// ETag of the resource.
+func (o LookupGameServerDeploymentResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The labels associated with this game server deployment. Each label is a key-value pair.
+func (o LookupGameServerDeploymentResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+func (o LookupGameServerDeploymentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The last-modified time.
+func (o LookupGameServerDeploymentResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGameServerDeploymentResultOutput{})
 }

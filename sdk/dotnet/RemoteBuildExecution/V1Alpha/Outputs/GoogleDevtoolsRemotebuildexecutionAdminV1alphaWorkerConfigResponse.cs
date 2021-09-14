@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// Defines the configuration to be used for creating workers in the worker pool.
+    /// </summary>
     [OutputType]
     public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse
     {

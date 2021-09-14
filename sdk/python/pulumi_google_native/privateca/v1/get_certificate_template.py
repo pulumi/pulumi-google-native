@@ -13,6 +13,7 @@ __all__ = [
     'GetCertificateTemplateResult',
     'AwaitableGetCertificateTemplateResult',
     'get_certificate_template',
+    'get_certificate_template_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,14 @@ def get_certificate_template(certificate_template_id: Optional[str] = None,
         passthrough_extensions=__ret__.passthrough_extensions,
         predefined_values=__ret__.predefined_values,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_certificate_template)
+def get_certificate_template_output(certificate_template_id: Optional[pulumi.Input[str]] = None,
+                                    location: Optional[pulumi.Input[str]] = None,
+                                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateTemplateResult]:
+    """
+    Returns a CertificateTemplate.
+    """
+    ...

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Cloud repository for storing output.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2OutputStorageConfigResponse
     {

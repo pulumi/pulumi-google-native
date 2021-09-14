@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// A test of an Android application that can control an Android component independently of its normal lifecycle. See for more information on types of Android tests.
+    /// </summary>
     [OutputType]
     public sealed class AndroidInstrumentationTestResponse
     {

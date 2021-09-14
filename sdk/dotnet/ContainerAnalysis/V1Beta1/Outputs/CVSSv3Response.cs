@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
+    /// </summary>
     [OutputType]
     public sealed class CVSSv3Response
     {

@@ -13,6 +13,7 @@ __all__ = [
     'GetRepositoryIamPolicyResult',
     'AwaitableGetRepositoryIamPolicyResult',
     'get_repository_iam_policy',
+    'get_repository_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -87,3 +88,15 @@ def get_repository_iam_policy(location: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_repository_iam_policy)
+def get_repository_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
+                                     options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                                     repository_id: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryIamPolicyResult]:
+    """
+    Gets the IAM policy for a given resource.
+    """
+    ...

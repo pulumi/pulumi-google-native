@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// Generic tool step to be used for binaries we do not explicitly support. For example: running cp to copy artifacts from one location to another.
+    /// </summary>
     [OutputType]
     public sealed class ToolExecutionStepResponse
     {

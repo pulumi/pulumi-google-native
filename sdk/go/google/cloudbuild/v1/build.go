@@ -208,9 +208,7 @@ func (i *Build) ToBuildOutputWithContext(ctx context.Context) BuildOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BuildOutput)
 }
 
-type BuildOutput struct {
-	*pulumi.OutputState
-}
+type BuildOutput struct{ *pulumi.OutputState }
 
 func (BuildOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Build)(nil))

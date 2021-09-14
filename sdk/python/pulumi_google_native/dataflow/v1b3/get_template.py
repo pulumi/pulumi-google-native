@@ -13,6 +13,7 @@ __all__ = [
     'GetTemplateResult',
     'AwaitableGetTemplateResult',
     'get_template',
+    'get_template_output',
 ]
 
 @pulumi.output_type
@@ -100,3 +101,15 @@ def get_template(gcs_path: Optional[str] = None,
         runtime_metadata=__ret__.runtime_metadata,
         status=__ret__.status,
         template_type=__ret__.template_type)
+
+
+@_utilities.lift_output_func(get_template)
+def get_template_output(gcs_path: Optional[pulumi.Input[str]] = None,
+                        location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        view: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplateResult]:
+    """
+    Get the template associated with a template.
+    """
+    ...

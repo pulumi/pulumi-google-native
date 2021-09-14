@@ -13,6 +13,7 @@ __all__ = [
     'GetTaskResult',
     'AwaitableGetTaskResult',
     'get_task',
+    'get_task_output',
 ]
 
 @pulumi.output_type
@@ -206,3 +207,16 @@ def get_task(location: Optional[str] = None,
         response_count=__ret__.response_count,
         schedule_time=__ret__.schedule_time,
         view=__ret__.view)
+
+
+@_utilities.lift_output_func(get_task)
+def get_task_output(location: Optional[pulumi.Input[str]] = None,
+                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                    queue_id: Optional[pulumi.Input[str]] = None,
+                    response_view: Optional[pulumi.Input[Optional[str]]] = None,
+                    task_id: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTaskResult]:
+    """
+    Gets a task.
+    """
+    ...

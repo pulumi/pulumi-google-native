@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
+    /// <summary>
+    /// A segment in a structured format.
+    /// </summary>
     [OutputType]
     public sealed class SegmentResponse
     {

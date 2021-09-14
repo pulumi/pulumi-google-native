@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Rules to match an HTTP request and dispatch that request to a service.
+    /// </summary>
     [OutputType]
     public sealed class UrlDispatchRuleResponse
     {

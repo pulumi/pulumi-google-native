@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GameServices.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// The label selector, used to group labels on the resources.
+    /// </summary>
     [OutputType]
     public sealed class LabelSelectorResponse
     {

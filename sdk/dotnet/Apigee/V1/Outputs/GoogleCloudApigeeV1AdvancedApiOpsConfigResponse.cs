@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for the Advanced API Ops add-on.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1AdvancedApiOpsConfigResponse
     {

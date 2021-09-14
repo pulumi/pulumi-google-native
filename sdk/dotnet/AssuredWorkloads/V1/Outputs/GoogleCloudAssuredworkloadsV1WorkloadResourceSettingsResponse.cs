@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Outputs
 {
 
+    /// <summary>
+    /// Represent the custom settings for the resources to be created.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse
     {

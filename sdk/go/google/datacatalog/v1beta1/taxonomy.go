@@ -117,9 +117,7 @@ func (i *Taxonomy) ToTaxonomyOutputWithContext(ctx context.Context) TaxonomyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyOutput)
 }
 
-type TaxonomyOutput struct {
-	*pulumi.OutputState
-}
+type TaxonomyOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Taxonomy)(nil))

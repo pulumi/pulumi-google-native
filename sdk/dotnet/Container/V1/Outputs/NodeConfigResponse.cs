@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Parameters that describe the nodes in a cluster.
+    /// </summary>
     [OutputType]
     public sealed class NodeConfigResponse
     {

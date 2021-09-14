@@ -13,6 +13,7 @@ __all__ = [
     'GetDashboardResult',
     'AwaitableGetDashboardResult',
     'get_dashboard',
+    'get_dashboard_output',
 ]
 
 @pulumi.output_type
@@ -135,3 +136,13 @@ def get_dashboard(dashboard_id: Optional[str] = None,
         mosaic_layout=__ret__.mosaic_layout,
         name=__ret__.name,
         row_layout=__ret__.row_layout)
+
+
+@_utilities.lift_output_func(get_dashboard)
+def get_dashboard_output(dashboard_id: Optional[pulumi.Input[str]] = None,
+                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDashboardResult]:
+    """
+    Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on the specified dashboard. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam).
+    """
+    ...

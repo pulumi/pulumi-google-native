@@ -129,9 +129,7 @@ func (i *WorkerPool) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolOutput)
 }
 
-type WorkerPoolOutput struct {
-	*pulumi.OutputState
-}
+type WorkerPoolOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WorkerPool)(nil))

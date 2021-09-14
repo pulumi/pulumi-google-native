@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Bucket is represented as a range, along with replacement values.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2BucketResponse
     {

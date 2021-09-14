@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIoT.V1.Outputs
 {
 
+    /// <summary>
+    /// A server-stored device credential used for authentication.
+    /// </summary>
     [OutputType]
     public sealed class DeviceCredentialResponse
     {

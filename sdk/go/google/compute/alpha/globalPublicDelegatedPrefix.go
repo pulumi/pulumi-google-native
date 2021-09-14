@@ -138,9 +138,7 @@ func (i *GlobalPublicDelegatedPrefix) ToGlobalPublicDelegatedPrefixOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalPublicDelegatedPrefixOutput)
 }
 
-type GlobalPublicDelegatedPrefixOutput struct {
-	*pulumi.OutputState
-}
+type GlobalPublicDelegatedPrefixOutput struct{ *pulumi.OutputState }
 
 func (GlobalPublicDelegatedPrefixOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GlobalPublicDelegatedPrefix)(nil))

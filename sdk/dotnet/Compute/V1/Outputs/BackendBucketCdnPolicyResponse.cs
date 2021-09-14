@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Message containing Cloud CDN configuration for a backend bucket.
+    /// </summary>
     [OutputType]
     public sealed class BackendBucketCdnPolicyResponse
     {

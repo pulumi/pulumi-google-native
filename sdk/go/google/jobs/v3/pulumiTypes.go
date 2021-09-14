@@ -114,7 +114,7 @@ func (o ApplicationInfoOutput) ToApplicationInfoPtrOutput() ApplicationInfoPtrOu
 }
 
 func (o ApplicationInfoOutput) ToApplicationInfoPtrOutputWithContext(ctx context.Context) ApplicationInfoPtrOutput {
-	return o.ApplyT(func(v ApplicationInfo) *ApplicationInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationInfo) *ApplicationInfo {
 		return &v
 	}).(ApplicationInfoPtrOutput)
 }
@@ -149,7 +149,13 @@ func (o ApplicationInfoPtrOutput) ToApplicationInfoPtrOutputWithContext(ctx cont
 }
 
 func (o ApplicationInfoPtrOutput) Elem() ApplicationInfoOutput {
-	return o.ApplyT(func(v *ApplicationInfo) ApplicationInfo { return *v }).(ApplicationInfoOutput)
+	return o.ApplyT(func(v *ApplicationInfo) ApplicationInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationInfo
+		return ret
+	}).(ApplicationInfoOutput)
 }
 
 // Optional but at least one of uris, emails or instruction must be specified. Use this field to specify email address(es) to which resumes or applications can be sent. The maximum number of allowed characters for each entry is 255.
@@ -286,7 +292,7 @@ func (o ApplicationInfoResponseOutput) ToApplicationInfoResponsePtrOutput() Appl
 }
 
 func (o ApplicationInfoResponseOutput) ToApplicationInfoResponsePtrOutputWithContext(ctx context.Context) ApplicationInfoResponsePtrOutput {
-	return o.ApplyT(func(v ApplicationInfoResponse) *ApplicationInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationInfoResponse) *ApplicationInfoResponse {
 		return &v
 	}).(ApplicationInfoResponsePtrOutput)
 }
@@ -321,7 +327,13 @@ func (o ApplicationInfoResponsePtrOutput) ToApplicationInfoResponsePtrOutputWith
 }
 
 func (o ApplicationInfoResponsePtrOutput) Elem() ApplicationInfoResponseOutput {
-	return o.ApplyT(func(v *ApplicationInfoResponse) ApplicationInfoResponse { return *v }).(ApplicationInfoResponseOutput)
+	return o.ApplyT(func(v *ApplicationInfoResponse) ApplicationInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationInfoResponse
+		return ret
+	}).(ApplicationInfoResponseOutput)
 }
 
 // Optional but at least one of uris, emails or instruction must be specified. Use this field to specify email address(es) to which resumes or applications can be sent. The maximum number of allowed characters for each entry is 255.
@@ -450,7 +462,7 @@ func (o CompanyDerivedInfoResponseOutput) ToCompanyDerivedInfoResponsePtrOutput(
 }
 
 func (o CompanyDerivedInfoResponseOutput) ToCompanyDerivedInfoResponsePtrOutputWithContext(ctx context.Context) CompanyDerivedInfoResponsePtrOutput {
-	return o.ApplyT(func(v CompanyDerivedInfoResponse) *CompanyDerivedInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompanyDerivedInfoResponse) *CompanyDerivedInfoResponse {
 		return &v
 	}).(CompanyDerivedInfoResponsePtrOutput)
 }
@@ -475,7 +487,13 @@ func (o CompanyDerivedInfoResponsePtrOutput) ToCompanyDerivedInfoResponsePtrOutp
 }
 
 func (o CompanyDerivedInfoResponsePtrOutput) Elem() CompanyDerivedInfoResponseOutput {
-	return o.ApplyT(func(v *CompanyDerivedInfoResponse) CompanyDerivedInfoResponse { return *v }).(CompanyDerivedInfoResponseOutput)
+	return o.ApplyT(func(v *CompanyDerivedInfoResponse) CompanyDerivedInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CompanyDerivedInfoResponse
+		return ret
+	}).(CompanyDerivedInfoResponseOutput)
 }
 
 // A structured headquarters location of the company, resolved from Company.hq_location if provided.
@@ -874,7 +892,7 @@ func (o CompensationInfoOutput) ToCompensationInfoPtrOutput() CompensationInfoPt
 }
 
 func (o CompensationInfoOutput) ToCompensationInfoPtrOutputWithContext(ctx context.Context) CompensationInfoPtrOutput {
-	return o.ApplyT(func(v CompensationInfo) *CompensationInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompensationInfo) *CompensationInfo {
 		return &v
 	}).(CompensationInfoPtrOutput)
 }
@@ -899,7 +917,13 @@ func (o CompensationInfoPtrOutput) ToCompensationInfoPtrOutputWithContext(ctx co
 }
 
 func (o CompensationInfoPtrOutput) Elem() CompensationInfoOutput {
-	return o.ApplyT(func(v *CompensationInfo) CompensationInfo { return *v }).(CompensationInfoOutput)
+	return o.ApplyT(func(v *CompensationInfo) CompensationInfo {
+		if v != nil {
+			return *v
+		}
+		var ret CompensationInfo
+		return ret
+	}).(CompensationInfoOutput)
 }
 
 // Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.
@@ -1016,7 +1040,7 @@ func (o CompensationInfoResponseOutput) ToCompensationInfoResponsePtrOutput() Co
 }
 
 func (o CompensationInfoResponseOutput) ToCompensationInfoResponsePtrOutputWithContext(ctx context.Context) CompensationInfoResponsePtrOutput {
-	return o.ApplyT(func(v CompensationInfoResponse) *CompensationInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompensationInfoResponse) *CompensationInfoResponse {
 		return &v
 	}).(CompensationInfoResponsePtrOutput)
 }
@@ -1051,7 +1075,13 @@ func (o CompensationInfoResponsePtrOutput) ToCompensationInfoResponsePtrOutputWi
 }
 
 func (o CompensationInfoResponsePtrOutput) Elem() CompensationInfoResponseOutput {
-	return o.ApplyT(func(v *CompensationInfoResponse) CompensationInfoResponse { return *v }).(CompensationInfoResponseOutput)
+	return o.ApplyT(func(v *CompensationInfoResponse) CompensationInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CompensationInfoResponse
+		return ret
+	}).(CompensationInfoResponseOutput)
 }
 
 // Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
@@ -1184,7 +1214,7 @@ func (o CompensationRangeOutput) ToCompensationRangePtrOutput() CompensationRang
 }
 
 func (o CompensationRangeOutput) ToCompensationRangePtrOutputWithContext(ctx context.Context) CompensationRangePtrOutput {
-	return o.ApplyT(func(v CompensationRange) *CompensationRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompensationRange) *CompensationRange {
 		return &v
 	}).(CompensationRangePtrOutput)
 }
@@ -1214,7 +1244,13 @@ func (o CompensationRangePtrOutput) ToCompensationRangePtrOutputWithContext(ctx 
 }
 
 func (o CompensationRangePtrOutput) Elem() CompensationRangeOutput {
-	return o.ApplyT(func(v *CompensationRange) CompensationRange { return *v }).(CompensationRangeOutput)
+	return o.ApplyT(func(v *CompensationRange) CompensationRange {
+		if v != nil {
+			return *v
+		}
+		var ret CompensationRange
+		return ret
+	}).(CompensationRangeOutput)
 }
 
 // Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
@@ -1337,7 +1373,7 @@ func (o CompensationRangeResponseOutput) ToCompensationRangeResponsePtrOutput() 
 }
 
 func (o CompensationRangeResponseOutput) ToCompensationRangeResponsePtrOutputWithContext(ctx context.Context) CompensationRangeResponsePtrOutput {
-	return o.ApplyT(func(v CompensationRangeResponse) *CompensationRangeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompensationRangeResponse) *CompensationRangeResponse {
 		return &v
 	}).(CompensationRangeResponsePtrOutput)
 }
@@ -1367,7 +1403,13 @@ func (o CompensationRangeResponsePtrOutput) ToCompensationRangeResponsePtrOutput
 }
 
 func (o CompensationRangeResponsePtrOutput) Elem() CompensationRangeResponseOutput {
-	return o.ApplyT(func(v *CompensationRangeResponse) CompensationRangeResponse { return *v }).(CompensationRangeResponseOutput)
+	return o.ApplyT(func(v *CompensationRangeResponse) CompensationRangeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CompensationRangeResponse
+		return ret
+	}).(CompensationRangeResponseOutput)
 }
 
 // Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
@@ -1490,7 +1532,7 @@ func (o JobDerivedInfoResponseOutput) ToJobDerivedInfoResponsePtrOutput() JobDer
 }
 
 func (o JobDerivedInfoResponseOutput) ToJobDerivedInfoResponsePtrOutputWithContext(ctx context.Context) JobDerivedInfoResponsePtrOutput {
-	return o.ApplyT(func(v JobDerivedInfoResponse) *JobDerivedInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobDerivedInfoResponse) *JobDerivedInfoResponse {
 		return &v
 	}).(JobDerivedInfoResponsePtrOutput)
 }
@@ -1520,7 +1562,13 @@ func (o JobDerivedInfoResponsePtrOutput) ToJobDerivedInfoResponsePtrOutputWithCo
 }
 
 func (o JobDerivedInfoResponsePtrOutput) Elem() JobDerivedInfoResponseOutput {
-	return o.ApplyT(func(v *JobDerivedInfoResponse) JobDerivedInfoResponse { return *v }).(JobDerivedInfoResponseOutput)
+	return o.ApplyT(func(v *JobDerivedInfoResponse) JobDerivedInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobDerivedInfoResponse
+		return ret
+	}).(JobDerivedInfoResponseOutput)
 }
 
 // Job categories derived from Job.title and Job.description.
@@ -1643,7 +1691,7 @@ func (o LatLngResponseOutput) ToLatLngResponsePtrOutput() LatLngResponsePtrOutpu
 }
 
 func (o LatLngResponseOutput) ToLatLngResponsePtrOutputWithContext(ctx context.Context) LatLngResponsePtrOutput {
-	return o.ApplyT(func(v LatLngResponse) *LatLngResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LatLngResponse) *LatLngResponse {
 		return &v
 	}).(LatLngResponsePtrOutput)
 }
@@ -1673,7 +1721,13 @@ func (o LatLngResponsePtrOutput) ToLatLngResponsePtrOutputWithContext(ctx contex
 }
 
 func (o LatLngResponsePtrOutput) Elem() LatLngResponseOutput {
-	return o.ApplyT(func(v *LatLngResponse) LatLngResponse { return *v }).(LatLngResponseOutput)
+	return o.ApplyT(func(v *LatLngResponse) LatLngResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LatLngResponse
+		return ret
+	}).(LatLngResponseOutput)
 }
 
 // The latitude in degrees. It must be in the range [-90.0, +90.0].
@@ -1829,7 +1883,7 @@ func (o LocationResponseOutput) ToLocationResponsePtrOutput() LocationResponsePt
 }
 
 func (o LocationResponseOutput) ToLocationResponsePtrOutputWithContext(ctx context.Context) LocationResponsePtrOutput {
-	return o.ApplyT(func(v LocationResponse) *LocationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationResponse) *LocationResponse {
 		return &v
 	}).(LocationResponsePtrOutput)
 }
@@ -1869,7 +1923,13 @@ func (o LocationResponsePtrOutput) ToLocationResponsePtrOutputWithContext(ctx co
 }
 
 func (o LocationResponsePtrOutput) Elem() LocationResponseOutput {
-	return o.ApplyT(func(v *LocationResponse) LocationResponse { return *v }).(LocationResponseOutput)
+	return o.ApplyT(func(v *LocationResponse) LocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LocationResponse
+		return ret
+	}).(LocationResponseOutput)
 }
 
 // An object representing a latitude/longitude pair.
@@ -2036,7 +2096,7 @@ func (o MoneyOutput) ToMoneyPtrOutput() MoneyPtrOutput {
 }
 
 func (o MoneyOutput) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPtrOutput {
-	return o.ApplyT(func(v Money) *Money {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Money) *Money {
 		return &v
 	}).(MoneyPtrOutput)
 }
@@ -2071,7 +2131,13 @@ func (o MoneyPtrOutput) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPt
 }
 
 func (o MoneyPtrOutput) Elem() MoneyOutput {
-	return o.ApplyT(func(v *Money) Money { return *v }).(MoneyOutput)
+	return o.ApplyT(func(v *Money) Money {
+		if v != nil {
+			return *v
+		}
+		var ret Money
+		return ret
+	}).(MoneyOutput)
 }
 
 // The three-letter currency code defined in ISO 4217.
@@ -2208,7 +2274,7 @@ func (o MoneyResponseOutput) ToMoneyResponsePtrOutput() MoneyResponsePtrOutput {
 }
 
 func (o MoneyResponseOutput) ToMoneyResponsePtrOutputWithContext(ctx context.Context) MoneyResponsePtrOutput {
-	return o.ApplyT(func(v MoneyResponse) *MoneyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoneyResponse) *MoneyResponse {
 		return &v
 	}).(MoneyResponsePtrOutput)
 }
@@ -2243,7 +2309,13 @@ func (o MoneyResponsePtrOutput) ToMoneyResponsePtrOutputWithContext(ctx context.
 }
 
 func (o MoneyResponsePtrOutput) Elem() MoneyResponseOutput {
-	return o.ApplyT(func(v *MoneyResponse) MoneyResponse { return *v }).(MoneyResponseOutput)
+	return o.ApplyT(func(v *MoneyResponse) MoneyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MoneyResponse
+		return ret
+	}).(MoneyResponseOutput)
 }
 
 // The three-letter currency code defined in ISO 4217.
@@ -2412,7 +2484,7 @@ func (o PostalAddressResponseOutput) ToPostalAddressResponsePtrOutput() PostalAd
 }
 
 func (o PostalAddressResponseOutput) ToPostalAddressResponsePtrOutputWithContext(ctx context.Context) PostalAddressResponsePtrOutput {
-	return o.ApplyT(func(v PostalAddressResponse) *PostalAddressResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostalAddressResponse) *PostalAddressResponse {
 		return &v
 	}).(PostalAddressResponsePtrOutput)
 }
@@ -2487,7 +2559,13 @@ func (o PostalAddressResponsePtrOutput) ToPostalAddressResponsePtrOutputWithCont
 }
 
 func (o PostalAddressResponsePtrOutput) Elem() PostalAddressResponseOutput {
-	return o.ApplyT(func(v *PostalAddressResponse) PostalAddressResponse { return *v }).(PostalAddressResponseOutput)
+	return o.ApplyT(func(v *PostalAddressResponse) PostalAddressResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PostalAddressResponse
+		return ret
+	}).(PostalAddressResponseOutput)
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
@@ -2700,7 +2778,7 @@ func (o ProcessingOptionsOutput) ToProcessingOptionsPtrOutput() ProcessingOption
 }
 
 func (o ProcessingOptionsOutput) ToProcessingOptionsPtrOutputWithContext(ctx context.Context) ProcessingOptionsPtrOutput {
-	return o.ApplyT(func(v ProcessingOptions) *ProcessingOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProcessingOptions) *ProcessingOptions {
 		return &v
 	}).(ProcessingOptionsPtrOutput)
 }
@@ -2730,7 +2808,13 @@ func (o ProcessingOptionsPtrOutput) ToProcessingOptionsPtrOutputWithContext(ctx 
 }
 
 func (o ProcessingOptionsPtrOutput) Elem() ProcessingOptionsOutput {
-	return o.ApplyT(func(v *ProcessingOptions) ProcessingOptions { return *v }).(ProcessingOptionsOutput)
+	return o.ApplyT(func(v *ProcessingOptions) ProcessingOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ProcessingOptions
+		return ret
+	}).(ProcessingOptionsOutput)
 }
 
 // Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
@@ -2853,7 +2937,7 @@ func (o ProcessingOptionsResponseOutput) ToProcessingOptionsResponsePtrOutput() 
 }
 
 func (o ProcessingOptionsResponseOutput) ToProcessingOptionsResponsePtrOutputWithContext(ctx context.Context) ProcessingOptionsResponsePtrOutput {
-	return o.ApplyT(func(v ProcessingOptionsResponse) *ProcessingOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProcessingOptionsResponse) *ProcessingOptionsResponse {
 		return &v
 	}).(ProcessingOptionsResponsePtrOutput)
 }
@@ -2883,7 +2967,13 @@ func (o ProcessingOptionsResponsePtrOutput) ToProcessingOptionsResponsePtrOutput
 }
 
 func (o ProcessingOptionsResponsePtrOutput) Elem() ProcessingOptionsResponseOutput {
-	return o.ApplyT(func(v *ProcessingOptionsResponse) ProcessingOptionsResponse { return *v }).(ProcessingOptionsResponseOutput)
+	return o.ApplyT(func(v *ProcessingOptionsResponse) ProcessingOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ProcessingOptionsResponse
+		return ret
+	}).(ProcessingOptionsResponseOutput)
 }
 
 // Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.

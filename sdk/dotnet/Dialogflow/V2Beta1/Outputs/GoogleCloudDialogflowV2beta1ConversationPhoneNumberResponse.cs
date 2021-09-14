@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents a phone number for telephony integration. It allows for connecting a particular conversation over telephony.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse
     {

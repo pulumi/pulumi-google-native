@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.APIGateway.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// A gRPC service definition.
+    /// </summary>
     [OutputType]
     public sealed class ApigatewayApiConfigGrpcServiceDefinitionResponse
     {

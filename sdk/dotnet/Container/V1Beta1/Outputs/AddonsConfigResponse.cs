@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
+    /// </summary>
     [OutputType]
     public sealed class AddonsConfigResponse
     {

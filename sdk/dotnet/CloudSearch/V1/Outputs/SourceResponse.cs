@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
 {
 
+    /// <summary>
+    /// Defines sources for the suggest/search APIs.
+    /// </summary>
     [OutputType]
     public sealed class SourceResponse
     {

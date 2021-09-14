@@ -13,6 +13,7 @@ __all__ = [
     'GetIndexResult',
     'AwaitableGetIndexResult',
     'get_index',
+    'get_index_output',
 ]
 
 @pulumi.output_type
@@ -122,3 +123,13 @@ def get_index(index_id: Optional[str] = None,
         project=__ret__.project,
         properties=__ret__.properties,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_index)
+def get_index_output(index_id: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIndexResult]:
+    """
+    Gets an index.
+    """
+    ...

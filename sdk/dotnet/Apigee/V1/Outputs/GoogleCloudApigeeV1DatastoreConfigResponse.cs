@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration detail for datastore
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1DatastoreConfigResponse
     {

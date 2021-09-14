@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration options for L7 DDoS detection.
+    /// </summary>
     [OutputType]
     public sealed class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse
     {

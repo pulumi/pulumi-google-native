@@ -110,7 +110,7 @@ func (o CertificateRawDataOutput) ToCertificateRawDataPtrOutput() CertificateRaw
 }
 
 func (o CertificateRawDataOutput) ToCertificateRawDataPtrOutputWithContext(ctx context.Context) CertificateRawDataPtrOutput {
-	return o.ApplyT(func(v CertificateRawData) *CertificateRawData {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateRawData) *CertificateRawData {
 		return &v
 	}).(CertificateRawDataPtrOutput)
 }
@@ -140,7 +140,13 @@ func (o CertificateRawDataPtrOutput) ToCertificateRawDataPtrOutputWithContext(ct
 }
 
 func (o CertificateRawDataPtrOutput) Elem() CertificateRawDataOutput {
-	return o.ApplyT(func(v *CertificateRawData) CertificateRawData { return *v }).(CertificateRawDataOutput)
+	return o.ApplyT(func(v *CertificateRawData) CertificateRawData {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateRawData
+		return ret
+	}).(CertificateRawDataOutput)
 }
 
 // Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
@@ -263,7 +269,7 @@ func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponsePtrOutput(
 }
 
 func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponsePtrOutputWithContext(ctx context.Context) CertificateRawDataResponsePtrOutput {
-	return o.ApplyT(func(v CertificateRawDataResponse) *CertificateRawDataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateRawDataResponse) *CertificateRawDataResponse {
 		return &v
 	}).(CertificateRawDataResponsePtrOutput)
 }
@@ -293,7 +299,13 @@ func (o CertificateRawDataResponsePtrOutput) ToCertificateRawDataResponsePtrOutp
 }
 
 func (o CertificateRawDataResponsePtrOutput) Elem() CertificateRawDataResponseOutput {
-	return o.ApplyT(func(v *CertificateRawDataResponse) CertificateRawDataResponse { return *v }).(CertificateRawDataResponseOutput)
+	return o.ApplyT(func(v *CertificateRawDataResponse) CertificateRawDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateRawDataResponse
+		return ret
+	}).(CertificateRawDataResponseOutput)
 }
 
 // Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
@@ -416,7 +428,7 @@ func (o ManagedCertificateResponseOutput) ToManagedCertificateResponsePtrOutput(
 }
 
 func (o ManagedCertificateResponseOutput) ToManagedCertificateResponsePtrOutputWithContext(ctx context.Context) ManagedCertificateResponsePtrOutput {
-	return o.ApplyT(func(v ManagedCertificateResponse) *ManagedCertificateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedCertificateResponse) *ManagedCertificateResponse {
 		return &v
 	}).(ManagedCertificateResponsePtrOutput)
 }
@@ -446,7 +458,13 @@ func (o ManagedCertificateResponsePtrOutput) ToManagedCertificateResponsePtrOutp
 }
 
 func (o ManagedCertificateResponsePtrOutput) Elem() ManagedCertificateResponseOutput {
-	return o.ApplyT(func(v *ManagedCertificateResponse) ManagedCertificateResponse { return *v }).(ManagedCertificateResponseOutput)
+	return o.ApplyT(func(v *ManagedCertificateResponse) ManagedCertificateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedCertificateResponse
+		return ret
+	}).(ManagedCertificateResponseOutput)
 }
 
 // Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
@@ -683,7 +701,7 @@ func (o SslSettingsOutput) ToSslSettingsPtrOutput() SslSettingsPtrOutput {
 }
 
 func (o SslSettingsOutput) ToSslSettingsPtrOutputWithContext(ctx context.Context) SslSettingsPtrOutput {
-	return o.ApplyT(func(v SslSettings) *SslSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslSettings) *SslSettings {
 		return &v
 	}).(SslSettingsPtrOutput)
 }
@@ -708,7 +726,13 @@ func (o SslSettingsPtrOutput) ToSslSettingsPtrOutputWithContext(ctx context.Cont
 }
 
 func (o SslSettingsPtrOutput) Elem() SslSettingsOutput {
-	return o.ApplyT(func(v *SslSettings) SslSettings { return *v }).(SslSettingsOutput)
+	return o.ApplyT(func(v *SslSettings) SslSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SslSettings
+		return ret
+	}).(SslSettingsOutput)
 }
 
 // ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
@@ -821,7 +845,7 @@ func (o SslSettingsResponseOutput) ToSslSettingsResponsePtrOutput() SslSettingsR
 }
 
 func (o SslSettingsResponseOutput) ToSslSettingsResponsePtrOutputWithContext(ctx context.Context) SslSettingsResponsePtrOutput {
-	return o.ApplyT(func(v SslSettingsResponse) *SslSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslSettingsResponse) *SslSettingsResponse {
 		return &v
 	}).(SslSettingsResponsePtrOutput)
 }
@@ -851,7 +875,13 @@ func (o SslSettingsResponsePtrOutput) ToSslSettingsResponsePtrOutputWithContext(
 }
 
 func (o SslSettingsResponsePtrOutput) Elem() SslSettingsResponseOutput {
-	return o.ApplyT(func(v *SslSettingsResponse) SslSettingsResponse { return *v }).(SslSettingsResponseOutput)
+	return o.ApplyT(func(v *SslSettingsResponse) SslSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SslSettingsResponse
+		return ret
+	}).(SslSettingsResponseOutput)
 }
 
 // ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.

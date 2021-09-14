@@ -778,7 +778,7 @@ func (o EndpointMatcherOutput) ToEndpointMatcherPtrOutput() EndpointMatcherPtrOu
 }
 
 func (o EndpointMatcherOutput) ToEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherPtrOutput {
-	return o.ApplyT(func(v EndpointMatcher) *EndpointMatcher {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointMatcher) *EndpointMatcher {
 		return &v
 	}).(EndpointMatcherPtrOutput)
 }
@@ -803,7 +803,13 @@ func (o EndpointMatcherPtrOutput) ToEndpointMatcherPtrOutputWithContext(ctx cont
 }
 
 func (o EndpointMatcherPtrOutput) Elem() EndpointMatcherOutput {
-	return o.ApplyT(func(v *EndpointMatcher) EndpointMatcher { return *v }).(EndpointMatcherOutput)
+	return o.ApplyT(func(v *EndpointMatcher) EndpointMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointMatcher
+		return ret
+	}).(EndpointMatcherOutput)
 }
 
 // The matcher is based on node metadata presented by xDS clients.
@@ -912,7 +918,7 @@ func (o EndpointMatcherResponseOutput) ToEndpointMatcherResponsePtrOutput() Endp
 }
 
 func (o EndpointMatcherResponseOutput) ToEndpointMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherResponsePtrOutput {
-	return o.ApplyT(func(v EndpointMatcherResponse) *EndpointMatcherResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointMatcherResponse) *EndpointMatcherResponse {
 		return &v
 	}).(EndpointMatcherResponsePtrOutput)
 }
@@ -937,7 +943,13 @@ func (o EndpointMatcherResponsePtrOutput) ToEndpointMatcherResponsePtrOutputWith
 }
 
 func (o EndpointMatcherResponsePtrOutput) Elem() EndpointMatcherResponseOutput {
-	return o.ApplyT(func(v *EndpointMatcherResponse) EndpointMatcherResponse { return *v }).(EndpointMatcherResponseOutput)
+	return o.ApplyT(func(v *EndpointMatcherResponse) EndpointMatcherResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointMatcherResponse
+		return ret
+	}).(EndpointMatcherResponseOutput)
 }
 
 // The matcher is based on node metadata presented by xDS clients.
@@ -1058,7 +1070,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1098,7 +1110,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1323,7 +1341,7 @@ func (o MetadataLabelMatcherOutput) ToMetadataLabelMatcherPtrOutput() MetadataLa
 }
 
 func (o MetadataLabelMatcherOutput) ToMetadataLabelMatcherPtrOutputWithContext(ctx context.Context) MetadataLabelMatcherPtrOutput {
-	return o.ApplyT(func(v MetadataLabelMatcher) *MetadataLabelMatcher {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataLabelMatcher) *MetadataLabelMatcher {
 		return &v
 	}).(MetadataLabelMatcherPtrOutput)
 }
@@ -1355,7 +1373,13 @@ func (o MetadataLabelMatcherPtrOutput) ToMetadataLabelMatcherPtrOutputWithContex
 }
 
 func (o MetadataLabelMatcherPtrOutput) Elem() MetadataLabelMatcherOutput {
-	return o.ApplyT(func(v *MetadataLabelMatcher) MetadataLabelMatcher { return *v }).(MetadataLabelMatcherOutput)
+	return o.ApplyT(func(v *MetadataLabelMatcher) MetadataLabelMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataLabelMatcher
+		return ret
+	}).(MetadataLabelMatcherOutput)
 }
 
 // Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
@@ -1478,7 +1502,7 @@ func (o MetadataLabelMatcherResponseOutput) ToMetadataLabelMatcherResponsePtrOut
 }
 
 func (o MetadataLabelMatcherResponseOutput) ToMetadataLabelMatcherResponsePtrOutputWithContext(ctx context.Context) MetadataLabelMatcherResponsePtrOutput {
-	return o.ApplyT(func(v MetadataLabelMatcherResponse) *MetadataLabelMatcherResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataLabelMatcherResponse) *MetadataLabelMatcherResponse {
 		return &v
 	}).(MetadataLabelMatcherResponsePtrOutput)
 }
@@ -1508,7 +1532,13 @@ func (o MetadataLabelMatcherResponsePtrOutput) ToMetadataLabelMatcherResponsePtr
 }
 
 func (o MetadataLabelMatcherResponsePtrOutput) Elem() MetadataLabelMatcherResponseOutput {
-	return o.ApplyT(func(v *MetadataLabelMatcherResponse) MetadataLabelMatcherResponse { return *v }).(MetadataLabelMatcherResponseOutput)
+	return o.ApplyT(func(v *MetadataLabelMatcherResponse) MetadataLabelMatcherResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataLabelMatcherResponse
+		return ret
+	}).(MetadataLabelMatcherResponseOutput)
 }
 
 // Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
@@ -1845,7 +1875,7 @@ func (o TrafficPortSelectorOutput) ToTrafficPortSelectorPtrOutput() TrafficPortS
 }
 
 func (o TrafficPortSelectorOutput) ToTrafficPortSelectorPtrOutputWithContext(ctx context.Context) TrafficPortSelectorPtrOutput {
-	return o.ApplyT(func(v TrafficPortSelector) *TrafficPortSelector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrafficPortSelector) *TrafficPortSelector {
 		return &v
 	}).(TrafficPortSelectorPtrOutput)
 }
@@ -1870,7 +1900,13 @@ func (o TrafficPortSelectorPtrOutput) ToTrafficPortSelectorPtrOutputWithContext(
 }
 
 func (o TrafficPortSelectorPtrOutput) Elem() TrafficPortSelectorOutput {
-	return o.ApplyT(func(v *TrafficPortSelector) TrafficPortSelector { return *v }).(TrafficPortSelectorOutput)
+	return o.ApplyT(func(v *TrafficPortSelector) TrafficPortSelector {
+		if v != nil {
+			return *v
+		}
+		var ret TrafficPortSelector
+		return ret
+	}).(TrafficPortSelectorOutput)
 }
 
 // Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
@@ -1979,7 +2015,7 @@ func (o TrafficPortSelectorResponseOutput) ToTrafficPortSelectorResponsePtrOutpu
 }
 
 func (o TrafficPortSelectorResponseOutput) ToTrafficPortSelectorResponsePtrOutputWithContext(ctx context.Context) TrafficPortSelectorResponsePtrOutput {
-	return o.ApplyT(func(v TrafficPortSelectorResponse) *TrafficPortSelectorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrafficPortSelectorResponse) *TrafficPortSelectorResponse {
 		return &v
 	}).(TrafficPortSelectorResponsePtrOutput)
 }
@@ -2004,7 +2040,13 @@ func (o TrafficPortSelectorResponsePtrOutput) ToTrafficPortSelectorResponsePtrOu
 }
 
 func (o TrafficPortSelectorResponsePtrOutput) Elem() TrafficPortSelectorResponseOutput {
-	return o.ApplyT(func(v *TrafficPortSelectorResponse) TrafficPortSelectorResponse { return *v }).(TrafficPortSelectorResponseOutput)
+	return o.ApplyT(func(v *TrafficPortSelectorResponse) TrafficPortSelectorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TrafficPortSelectorResponse
+		return ret
+	}).(TrafficPortSelectorResponseOutput)
 }
 
 // Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.

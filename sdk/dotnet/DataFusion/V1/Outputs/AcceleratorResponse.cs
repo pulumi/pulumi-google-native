@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataFusion.V1.Outputs
 {
 
+    /// <summary>
+    /// Identifies Data Fusion accelerators for an instance.
+    /// </summary>
     [OutputType]
     public sealed class AcceleratorResponse
     {

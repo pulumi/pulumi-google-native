@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// An action that can be taken as part of installing or updating a recipe.
+    /// </summary>
     [OutputType]
     public sealed class SoftwareRecipeStepResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes an Elliptic Curve key that may be used in a Certificate issued from a CaPool.
+    /// </summary>
     [OutputType]
     public sealed class EcKeyTypeResponse
     {

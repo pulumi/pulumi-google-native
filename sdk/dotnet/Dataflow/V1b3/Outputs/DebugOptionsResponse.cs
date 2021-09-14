@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Describes any options that have an effect on the debugging of pipelines.
+    /// </summary>
     [OutputType]
     public sealed class DebugOptionsResponse
     {

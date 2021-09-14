@@ -13,6 +13,7 @@ __all__ = [
     'GetCanaryEvaluationResult',
     'AwaitableGetCanaryEvaluationResult',
     'get_canary_evaluation',
+    'get_canary_evaluation_output',
 ]
 
 @pulumi.output_type
@@ -163,3 +164,14 @@ def get_canary_evaluation(canaryevaluation_id: Optional[str] = None,
         state=__ret__.state,
         treatment=__ret__.treatment,
         verdict=__ret__.verdict)
+
+
+@_utilities.lift_output_func(get_canary_evaluation)
+def get_canary_evaluation_output(canaryevaluation_id: Optional[pulumi.Input[str]] = None,
+                                 instance_id: Optional[pulumi.Input[str]] = None,
+                                 organization_id: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCanaryEvaluationResult]:
+    """
+    Gets a CanaryEvaluation for an organization.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetCompositeTypeResult',
     'AwaitableGetCompositeTypeResult',
     'get_composite_type',
+    'get_composite_type_output',
 ]
 
 @pulumi.output_type
@@ -145,3 +146,13 @@ def get_composite_type(composite_type: Optional[str] = None,
         self_link=__ret__.self_link,
         status=__ret__.status,
         template_contents=__ret__.template_contents)
+
+
+@_utilities.lift_output_func(get_composite_type)
+def get_composite_type_output(composite_type: Optional[pulumi.Input[str]] = None,
+                              project: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCompositeTypeResult]:
+    """
+    Gets information about a specific composite type.
+    """
+    ...

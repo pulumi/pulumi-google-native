@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// Specifies a file available via some URI.
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyResourceFileRemoteResponse
     {

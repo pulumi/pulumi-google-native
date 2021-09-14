@@ -13,6 +13,7 @@ __all__ = [
     'GetTransferConfigResult',
     'AwaitableGetTransferConfigResult',
     'get_transfer_config',
+    'get_transfer_config_output',
 ]
 
 @pulumi.output_type
@@ -254,3 +255,14 @@ def get_transfer_config(location: Optional[str] = None,
         schedule_options=__ret__.schedule_options,
         state=__ret__.state,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_transfer_config)
+def get_transfer_config_output(location: Optional[pulumi.Input[str]] = None,
+                               project: Optional[pulumi.Input[Optional[str]]] = None,
+                               transfer_config_id: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransferConfigResult]:
+    """
+    Returns information about a data transfer config.
+    """
+    ...

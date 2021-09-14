@@ -126,9 +126,7 @@ func (i *InstanceTemplate) ToInstanceTemplateOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateOutput)
 }
 
-type InstanceTemplateOutput struct {
-	*pulumi.OutputState
-}
+type InstanceTemplateOutput struct{ *pulumi.OutputState }
 
 func (InstanceTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceTemplate)(nil))

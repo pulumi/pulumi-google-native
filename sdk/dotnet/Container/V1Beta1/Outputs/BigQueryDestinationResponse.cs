@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Parameters for using BigQuery as the destination of resource usage export.
+    /// </summary>
     [OutputType]
     public sealed class BigQueryDestinationResponse
     {

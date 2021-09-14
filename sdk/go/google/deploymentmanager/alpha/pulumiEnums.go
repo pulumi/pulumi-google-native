@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -274,7 +274,7 @@ func (o CompositeTypeStatusOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type CompositeTypeStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (CompositeTypeStatusPtrOutput) ElementType() reflect.Type {
-	return compositeTypeStatusPtrType
+	return reflect.TypeOf((**CompositeTypeStatus)(nil)).Elem()
 }
 
 func (o CompositeTypeStatusPtrOutput) ToCompositeTypeStatusPtrOutput() CompositeTypeStatusPtrOutput {
@@ -283,6 +283,16 @@ func (o CompositeTypeStatusPtrOutput) ToCompositeTypeStatusPtrOutput() Composite
 
 func (o CompositeTypeStatusPtrOutput) ToCompositeTypeStatusPtrOutputWithContext(ctx context.Context) CompositeTypeStatusPtrOutput {
 	return o
+}
+
+func (o CompositeTypeStatusPtrOutput) Elem() CompositeTypeStatusOutput {
+	return o.ApplyT(func(v *CompositeTypeStatus) CompositeTypeStatus {
+		if v != nil {
+			return *v
+		}
+		var ret CompositeTypeStatus
+		return ret
+	}).(CompositeTypeStatusOutput)
 }
 
 func (o CompositeTypeStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -297,16 +307,6 @@ func (o CompositeTypeStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CompositeTypeStatusPtrOutput) Elem() CompositeTypeStatusOutput {
-	return o.ApplyT(func(v *CompositeTypeStatus) CompositeTypeStatus {
-		var ret CompositeTypeStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CompositeTypeStatusOutput)
 }
 
 // CompositeTypeStatusInput is an input type that accepts CompositeTypeStatusArgs and CompositeTypeStatusOutput values.
@@ -444,7 +444,7 @@ func (o DiagnosticLevelOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type DiagnosticLevelPtrOutput struct{ *pulumi.OutputState }
 
 func (DiagnosticLevelPtrOutput) ElementType() reflect.Type {
-	return diagnosticLevelPtrType
+	return reflect.TypeOf((**DiagnosticLevel)(nil)).Elem()
 }
 
 func (o DiagnosticLevelPtrOutput) ToDiagnosticLevelPtrOutput() DiagnosticLevelPtrOutput {
@@ -453,6 +453,16 @@ func (o DiagnosticLevelPtrOutput) ToDiagnosticLevelPtrOutput() DiagnosticLevelPt
 
 func (o DiagnosticLevelPtrOutput) ToDiagnosticLevelPtrOutputWithContext(ctx context.Context) DiagnosticLevelPtrOutput {
 	return o
+}
+
+func (o DiagnosticLevelPtrOutput) Elem() DiagnosticLevelOutput {
+	return o.ApplyT(func(v *DiagnosticLevel) DiagnosticLevel {
+		if v != nil {
+			return *v
+		}
+		var ret DiagnosticLevel
+		return ret
+	}).(DiagnosticLevelOutput)
 }
 
 func (o DiagnosticLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -467,16 +477,6 @@ func (o DiagnosticLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DiagnosticLevelPtrOutput) Elem() DiagnosticLevelOutput {
-	return o.ApplyT(func(v *DiagnosticLevel) DiagnosticLevel {
-		var ret DiagnosticLevel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DiagnosticLevelOutput)
 }
 
 // DiagnosticLevelInput is an input type that accepts DiagnosticLevelArgs and DiagnosticLevelOutput values.
@@ -612,7 +612,7 @@ func (o InputMappingLocationOutput) ToStringPtrOutputWithContext(ctx context.Con
 type InputMappingLocationPtrOutput struct{ *pulumi.OutputState }
 
 func (InputMappingLocationPtrOutput) ElementType() reflect.Type {
-	return inputMappingLocationPtrType
+	return reflect.TypeOf((**InputMappingLocation)(nil)).Elem()
 }
 
 func (o InputMappingLocationPtrOutput) ToInputMappingLocationPtrOutput() InputMappingLocationPtrOutput {
@@ -621,6 +621,16 @@ func (o InputMappingLocationPtrOutput) ToInputMappingLocationPtrOutput() InputMa
 
 func (o InputMappingLocationPtrOutput) ToInputMappingLocationPtrOutputWithContext(ctx context.Context) InputMappingLocationPtrOutput {
 	return o
+}
+
+func (o InputMappingLocationPtrOutput) Elem() InputMappingLocationOutput {
+	return o.ApplyT(func(v *InputMappingLocation) InputMappingLocation {
+		if v != nil {
+			return *v
+		}
+		var ret InputMappingLocation
+		return ret
+	}).(InputMappingLocationOutput)
 }
 
 func (o InputMappingLocationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -635,16 +645,6 @@ func (o InputMappingLocationPtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InputMappingLocationPtrOutput) Elem() InputMappingLocationOutput {
-	return o.ApplyT(func(v *InputMappingLocation) InputMappingLocation {
-		var ret InputMappingLocation
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InputMappingLocationOutput)
 }
 
 // InputMappingLocationInput is an input type that accepts InputMappingLocationArgs and InputMappingLocationOutput values.
@@ -778,7 +778,7 @@ func (o TemplateContentsInterpreterOutput) ToStringPtrOutputWithContext(ctx cont
 type TemplateContentsInterpreterPtrOutput struct{ *pulumi.OutputState }
 
 func (TemplateContentsInterpreterPtrOutput) ElementType() reflect.Type {
-	return templateContentsInterpreterPtrType
+	return reflect.TypeOf((**TemplateContentsInterpreter)(nil)).Elem()
 }
 
 func (o TemplateContentsInterpreterPtrOutput) ToTemplateContentsInterpreterPtrOutput() TemplateContentsInterpreterPtrOutput {
@@ -787,6 +787,16 @@ func (o TemplateContentsInterpreterPtrOutput) ToTemplateContentsInterpreterPtrOu
 
 func (o TemplateContentsInterpreterPtrOutput) ToTemplateContentsInterpreterPtrOutputWithContext(ctx context.Context) TemplateContentsInterpreterPtrOutput {
 	return o
+}
+
+func (o TemplateContentsInterpreterPtrOutput) Elem() TemplateContentsInterpreterOutput {
+	return o.ApplyT(func(v *TemplateContentsInterpreter) TemplateContentsInterpreter {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateContentsInterpreter
+		return ret
+	}).(TemplateContentsInterpreterOutput)
 }
 
 func (o TemplateContentsInterpreterPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -801,16 +811,6 @@ func (o TemplateContentsInterpreterPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TemplateContentsInterpreterPtrOutput) Elem() TemplateContentsInterpreterOutput {
-	return o.ApplyT(func(v *TemplateContentsInterpreter) TemplateContentsInterpreter {
-		var ret TemplateContentsInterpreter
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TemplateContentsInterpreterOutput)
 }
 
 // TemplateContentsInterpreterInput is an input type that accepts TemplateContentsInterpreterArgs and TemplateContentsInterpreterOutput values.
@@ -948,7 +948,7 @@ func (o ValidationOptionsSchemaValidationOutput) ToStringPtrOutputWithContext(ct
 type ValidationOptionsSchemaValidationPtrOutput struct{ *pulumi.OutputState }
 
 func (ValidationOptionsSchemaValidationPtrOutput) ElementType() reflect.Type {
-	return validationOptionsSchemaValidationPtrType
+	return reflect.TypeOf((**ValidationOptionsSchemaValidation)(nil)).Elem()
 }
 
 func (o ValidationOptionsSchemaValidationPtrOutput) ToValidationOptionsSchemaValidationPtrOutput() ValidationOptionsSchemaValidationPtrOutput {
@@ -957,6 +957,16 @@ func (o ValidationOptionsSchemaValidationPtrOutput) ToValidationOptionsSchemaVal
 
 func (o ValidationOptionsSchemaValidationPtrOutput) ToValidationOptionsSchemaValidationPtrOutputWithContext(ctx context.Context) ValidationOptionsSchemaValidationPtrOutput {
 	return o
+}
+
+func (o ValidationOptionsSchemaValidationPtrOutput) Elem() ValidationOptionsSchemaValidationOutput {
+	return o.ApplyT(func(v *ValidationOptionsSchemaValidation) ValidationOptionsSchemaValidation {
+		if v != nil {
+			return *v
+		}
+		var ret ValidationOptionsSchemaValidation
+		return ret
+	}).(ValidationOptionsSchemaValidationOutput)
 }
 
 func (o ValidationOptionsSchemaValidationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -971,16 +981,6 @@ func (o ValidationOptionsSchemaValidationPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ValidationOptionsSchemaValidationPtrOutput) Elem() ValidationOptionsSchemaValidationOutput {
-	return o.ApplyT(func(v *ValidationOptionsSchemaValidation) ValidationOptionsSchemaValidation {
-		var ret ValidationOptionsSchemaValidation
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ValidationOptionsSchemaValidationOutput)
 }
 
 // ValidationOptionsSchemaValidationInput is an input type that accepts ValidationOptionsSchemaValidationArgs and ValidationOptionsSchemaValidationOutput values.
@@ -1122,7 +1122,7 @@ func (o ValidationOptionsUndeclaredPropertiesOutput) ToStringPtrOutputWithContex
 type ValidationOptionsUndeclaredPropertiesPtrOutput struct{ *pulumi.OutputState }
 
 func (ValidationOptionsUndeclaredPropertiesPtrOutput) ElementType() reflect.Type {
-	return validationOptionsUndeclaredPropertiesPtrType
+	return reflect.TypeOf((**ValidationOptionsUndeclaredProperties)(nil)).Elem()
 }
 
 func (o ValidationOptionsUndeclaredPropertiesPtrOutput) ToValidationOptionsUndeclaredPropertiesPtrOutput() ValidationOptionsUndeclaredPropertiesPtrOutput {
@@ -1131,6 +1131,16 @@ func (o ValidationOptionsUndeclaredPropertiesPtrOutput) ToValidationOptionsUndec
 
 func (o ValidationOptionsUndeclaredPropertiesPtrOutput) ToValidationOptionsUndeclaredPropertiesPtrOutputWithContext(ctx context.Context) ValidationOptionsUndeclaredPropertiesPtrOutput {
 	return o
+}
+
+func (o ValidationOptionsUndeclaredPropertiesPtrOutput) Elem() ValidationOptionsUndeclaredPropertiesOutput {
+	return o.ApplyT(func(v *ValidationOptionsUndeclaredProperties) ValidationOptionsUndeclaredProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ValidationOptionsUndeclaredProperties
+		return ret
+	}).(ValidationOptionsUndeclaredPropertiesOutput)
 }
 
 func (o ValidationOptionsUndeclaredPropertiesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1145,16 +1155,6 @@ func (o ValidationOptionsUndeclaredPropertiesPtrOutput) ToStringPtrOutputWithCon
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ValidationOptionsUndeclaredPropertiesPtrOutput) Elem() ValidationOptionsUndeclaredPropertiesOutput {
-	return o.ApplyT(func(v *ValidationOptionsUndeclaredProperties) ValidationOptionsUndeclaredProperties {
-		var ret ValidationOptionsUndeclaredProperties
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ValidationOptionsUndeclaredPropertiesOutput)
 }
 
 // ValidationOptionsUndeclaredPropertiesInput is an input type that accepts ValidationOptionsUndeclaredPropertiesArgs and ValidationOptionsUndeclaredPropertiesOutput values.

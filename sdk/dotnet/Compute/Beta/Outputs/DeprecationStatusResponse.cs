@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Deprecation status for a public resource.
+    /// </summary>
     [OutputType]
     public sealed class DeprecationStatusResponse
     {

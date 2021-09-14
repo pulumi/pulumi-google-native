@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration options for the Config Connector add-on.
+    /// </summary>
     [OutputType]
     public sealed class ConfigConnectorConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Details of the final state "forward" and associated resource.
+    /// </summary>
     [OutputType]
     public sealed class ForwardInfoResponse
     {

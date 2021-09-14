@@ -133,9 +133,7 @@ func (i *UserDataMapping) ToUserDataMappingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(UserDataMappingOutput)
 }
 
-type UserDataMappingOutput struct {
-	*pulumi.OutputState
-}
+type UserDataMappingOutput struct{ *pulumi.OutputState }
 
 func (UserDataMappingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UserDataMapping)(nil))

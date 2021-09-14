@@ -106,9 +106,7 @@ func (i *ProductSet) ToProductSetOutputWithContext(ctx context.Context) ProductS
 	return pulumi.ToOutputWithContext(ctx, i).(ProductSetOutput)
 }
 
-type ProductSetOutput struct {
-	*pulumi.OutputState
-}
+type ProductSetOutput struct{ *pulumi.OutputState }
 
 func (ProductSetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProductSet)(nil))

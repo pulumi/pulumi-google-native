@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 {
 
+    /// <summary>
+    /// Logging configure.
+    /// </summary>
     [OutputType]
     public sealed class LoggingConfigResponse
     {

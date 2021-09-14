@@ -13,6 +13,7 @@ __all__ = [
     'GetCaPoolResult',
     'AwaitableGetCaPoolResult',
     'get_ca_pool',
+    'get_ca_pool_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,14 @@ def get_ca_pool(ca_pool_id: Optional[str] = None,
         name=__ret__.name,
         publishing_options=__ret__.publishing_options,
         tier=__ret__.tier)
+
+
+@_utilities.lift_output_func(get_ca_pool)
+def get_ca_pool_output(ca_pool_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCaPoolResult]:
+    """
+    Returns a CaPool.
+    """
+    ...

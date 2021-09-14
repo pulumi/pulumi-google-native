@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// An entity that can have metadata. For example, a Docker image.
+    /// </summary>
     [OutputType]
     public sealed class ResourceResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 {
 
+    /// <summary>
+    /// Table view specification.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1ViewSpecResponse
     {

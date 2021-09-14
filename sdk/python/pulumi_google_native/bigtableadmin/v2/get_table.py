@@ -13,6 +13,7 @@ __all__ = [
     'GetTableResult',
     'AwaitableGetTableResult',
     'get_table',
+    'get_table_output',
 ]
 
 @pulumi.output_type
@@ -113,3 +114,15 @@ def get_table(instance_id: Optional[str] = None,
         granularity=__ret__.granularity,
         name=__ret__.name,
         restore_info=__ret__.restore_info)
+
+
+@_utilities.lift_output_func(get_table)
+def get_table_output(instance_id: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     table_id: Optional[pulumi.Input[str]] = None,
+                     view: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTableResult]:
+    """
+    Gets metadata information about the specified table.
+    """
+    ...

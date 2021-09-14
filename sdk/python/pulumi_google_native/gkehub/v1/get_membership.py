@@ -13,6 +13,7 @@ __all__ = [
     'GetMembershipResult',
     'AwaitableGetMembershipResult',
     'get_membership',
+    'get_membership_output',
 ]
 
 @pulumi.output_type
@@ -202,3 +203,14 @@ def get_membership(location: Optional[str] = None,
         state=__ret__.state,
         unique_id=__ret__.unique_id,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_membership)
+def get_membership_output(location: Optional[pulumi.Input[str]] = None,
+                          membership_id: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMembershipResult]:
+    """
+    Gets the details of a Membership.
+    """
+    ...

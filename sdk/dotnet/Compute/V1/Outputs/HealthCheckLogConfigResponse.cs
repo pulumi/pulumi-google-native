@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration of logging on a health check. If logging is enabled, logs will be exported to Stackdriver.
+    /// </summary>
     [OutputType]
     public sealed class HealthCheckLogConfigResponse
     {

@@ -135,9 +135,7 @@ func (i *RegionDiskIamPolicy) ToRegionDiskIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamPolicyOutput)
 }
 
-type RegionDiskIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type RegionDiskIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionDiskIamPolicy)(nil))

@@ -122,7 +122,7 @@ func (o AppEngineHttpTargetOutput) ToAppEngineHttpTargetPtrOutput() AppEngineHtt
 }
 
 func (o AppEngineHttpTargetOutput) ToAppEngineHttpTargetPtrOutputWithContext(ctx context.Context) AppEngineHttpTargetPtrOutput {
-	return o.ApplyT(func(v AppEngineHttpTarget) *AppEngineHttpTarget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpTarget) *AppEngineHttpTarget {
 		return &v
 	}).(AppEngineHttpTargetPtrOutput)
 }
@@ -167,7 +167,13 @@ func (o AppEngineHttpTargetPtrOutput) ToAppEngineHttpTargetPtrOutputWithContext(
 }
 
 func (o AppEngineHttpTargetPtrOutput) Elem() AppEngineHttpTargetOutput {
-	return o.ApplyT(func(v *AppEngineHttpTarget) AppEngineHttpTarget { return *v }).(AppEngineHttpTargetOutput)
+	return o.ApplyT(func(v *AppEngineHttpTarget) AppEngineHttpTarget {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineHttpTarget
+		return ret
+	}).(AppEngineHttpTargetOutput)
 }
 
 // App Engine Routing setting for the job.
@@ -332,7 +338,7 @@ func (o AppEngineHttpTargetResponseOutput) ToAppEngineHttpTargetResponsePtrOutpu
 }
 
 func (o AppEngineHttpTargetResponseOutput) ToAppEngineHttpTargetResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpTargetResponsePtrOutput {
-	return o.ApplyT(func(v AppEngineHttpTargetResponse) *AppEngineHttpTargetResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpTargetResponse) *AppEngineHttpTargetResponse {
 		return &v
 	}).(AppEngineHttpTargetResponsePtrOutput)
 }
@@ -377,7 +383,13 @@ func (o AppEngineHttpTargetResponsePtrOutput) ToAppEngineHttpTargetResponsePtrOu
 }
 
 func (o AppEngineHttpTargetResponsePtrOutput) Elem() AppEngineHttpTargetResponseOutput {
-	return o.ApplyT(func(v *AppEngineHttpTargetResponse) AppEngineHttpTargetResponse { return *v }).(AppEngineHttpTargetResponseOutput)
+	return o.ApplyT(func(v *AppEngineHttpTargetResponse) AppEngineHttpTargetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineHttpTargetResponse
+		return ret
+	}).(AppEngineHttpTargetResponseOutput)
 }
 
 // App Engine Routing setting for the job.
@@ -534,7 +546,7 @@ func (o AppEngineRoutingOutput) ToAppEngineRoutingPtrOutput() AppEngineRoutingPt
 }
 
 func (o AppEngineRoutingOutput) ToAppEngineRoutingPtrOutputWithContext(ctx context.Context) AppEngineRoutingPtrOutput {
-	return o.ApplyT(func(v AppEngineRouting) *AppEngineRouting {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineRouting) *AppEngineRouting {
 		return &v
 	}).(AppEngineRoutingPtrOutput)
 }
@@ -569,7 +581,13 @@ func (o AppEngineRoutingPtrOutput) ToAppEngineRoutingPtrOutputWithContext(ctx co
 }
 
 func (o AppEngineRoutingPtrOutput) Elem() AppEngineRoutingOutput {
-	return o.ApplyT(func(v *AppEngineRouting) AppEngineRouting { return *v }).(AppEngineRoutingOutput)
+	return o.ApplyT(func(v *AppEngineRouting) AppEngineRouting {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineRouting
+		return ret
+	}).(AppEngineRoutingOutput)
 }
 
 // App instance. By default, the job is sent to an instance which is available when the job is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
@@ -710,7 +728,7 @@ func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponsePtrOutput() Ap
 }
 
 func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponsePtrOutputWithContext(ctx context.Context) AppEngineRoutingResponsePtrOutput {
-	return o.ApplyT(func(v AppEngineRoutingResponse) *AppEngineRoutingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineRoutingResponse) *AppEngineRoutingResponse {
 		return &v
 	}).(AppEngineRoutingResponsePtrOutput)
 }
@@ -750,7 +768,13 @@ func (o AppEngineRoutingResponsePtrOutput) ToAppEngineRoutingResponsePtrOutputWi
 }
 
 func (o AppEngineRoutingResponsePtrOutput) Elem() AppEngineRoutingResponseOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) AppEngineRoutingResponse { return *v }).(AppEngineRoutingResponseOutput)
+	return o.ApplyT(func(v *AppEngineRoutingResponse) AppEngineRoutingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineRoutingResponse
+		return ret
+	}).(AppEngineRoutingResponseOutput)
 }
 
 // The host that the job is sent to. For more information about how App Engine requests are routed, see [here](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed). The host is constructed as: * `host = [application_domain_name]` `| [service] + '.' + [application_domain_name]` `| [version] + '.' + [application_domain_name]` `| [version_dot_service]+ '.' + [application_domain_name]` `| [instance] + '.' + [application_domain_name]` `| [instance_dot_service] + '.' + [application_domain_name]` `| [instance_dot_version] + '.' + [application_domain_name]` `| [instance_dot_version_dot_service] + '.' + [application_domain_name]` * `application_domain_name` = The domain name of the app, for example .appspot.com, which is associated with the job's project ID. * `service =` service * `version =` version * `version_dot_service =` version `+ '.' +` service * `instance =` instance * `instance_dot_service =` instance `+ '.' +` service * `instance_dot_version =` instance `+ '.' +` version * `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +` service If service is empty, then the job will be sent to the service which is the default service when the job is attempted. If version is empty, then the job will be sent to the version which is the default version when the job is attempted. If instance is empty, then the job will be sent to an instance which is available when the job is attempted. If service, version, or instance is invalid, then the job will be sent to the default version of the default service when the job is attempted.
@@ -909,7 +933,7 @@ func (o HttpTargetOutput) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
 }
 
 func (o HttpTargetOutput) ToHttpTargetPtrOutputWithContext(ctx context.Context) HttpTargetPtrOutput {
-	return o.ApplyT(func(v HttpTarget) *HttpTarget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpTarget) *HttpTarget {
 		return &v
 	}).(HttpTargetPtrOutput)
 }
@@ -959,7 +983,13 @@ func (o HttpTargetPtrOutput) ToHttpTargetPtrOutputWithContext(ctx context.Contex
 }
 
 func (o HttpTargetPtrOutput) Elem() HttpTargetOutput {
-	return o.ApplyT(func(v *HttpTarget) HttpTarget { return *v }).(HttpTargetOutput)
+	return o.ApplyT(func(v *HttpTarget) HttpTarget {
+		if v != nil {
+			return *v
+		}
+		var ret HttpTarget
+		return ret
+	}).(HttpTargetOutput)
 }
 
 // HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a job with an incompatible HttpMethod.
@@ -1138,7 +1168,7 @@ func (o HttpTargetResponseOutput) ToHttpTargetResponsePtrOutput() HttpTargetResp
 }
 
 func (o HttpTargetResponseOutput) ToHttpTargetResponsePtrOutputWithContext(ctx context.Context) HttpTargetResponsePtrOutput {
-	return o.ApplyT(func(v HttpTargetResponse) *HttpTargetResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpTargetResponse) *HttpTargetResponse {
 		return &v
 	}).(HttpTargetResponsePtrOutput)
 }
@@ -1188,7 +1218,13 @@ func (o HttpTargetResponsePtrOutput) ToHttpTargetResponsePtrOutputWithContext(ct
 }
 
 func (o HttpTargetResponsePtrOutput) Elem() HttpTargetResponseOutput {
-	return o.ApplyT(func(v *HttpTargetResponse) HttpTargetResponse { return *v }).(HttpTargetResponseOutput)
+	return o.ApplyT(func(v *HttpTargetResponse) HttpTargetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpTargetResponse
+		return ret
+	}).(HttpTargetResponseOutput)
 }
 
 // HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a job with an incompatible HttpMethod.
@@ -1351,7 +1387,7 @@ func (o OAuthTokenOutput) ToOAuthTokenPtrOutput() OAuthTokenPtrOutput {
 }
 
 func (o OAuthTokenOutput) ToOAuthTokenPtrOutputWithContext(ctx context.Context) OAuthTokenPtrOutput {
-	return o.ApplyT(func(v OAuthToken) *OAuthToken {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OAuthToken) *OAuthToken {
 		return &v
 	}).(OAuthTokenPtrOutput)
 }
@@ -1381,7 +1417,13 @@ func (o OAuthTokenPtrOutput) ToOAuthTokenPtrOutputWithContext(ctx context.Contex
 }
 
 func (o OAuthTokenPtrOutput) Elem() OAuthTokenOutput {
-	return o.ApplyT(func(v *OAuthToken) OAuthToken { return *v }).(OAuthTokenOutput)
+	return o.ApplyT(func(v *OAuthToken) OAuthToken {
+		if v != nil {
+			return *v
+		}
+		var ret OAuthToken
+		return ret
+	}).(OAuthTokenOutput)
 }
 
 // OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
@@ -1504,7 +1546,7 @@ func (o OAuthTokenResponseOutput) ToOAuthTokenResponsePtrOutput() OAuthTokenResp
 }
 
 func (o OAuthTokenResponseOutput) ToOAuthTokenResponsePtrOutputWithContext(ctx context.Context) OAuthTokenResponsePtrOutput {
-	return o.ApplyT(func(v OAuthTokenResponse) *OAuthTokenResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OAuthTokenResponse) *OAuthTokenResponse {
 		return &v
 	}).(OAuthTokenResponsePtrOutput)
 }
@@ -1534,7 +1576,13 @@ func (o OAuthTokenResponsePtrOutput) ToOAuthTokenResponsePtrOutputWithContext(ct
 }
 
 func (o OAuthTokenResponsePtrOutput) Elem() OAuthTokenResponseOutput {
-	return o.ApplyT(func(v *OAuthTokenResponse) OAuthTokenResponse { return *v }).(OAuthTokenResponseOutput)
+	return o.ApplyT(func(v *OAuthTokenResponse) OAuthTokenResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OAuthTokenResponse
+		return ret
+	}).(OAuthTokenResponseOutput)
 }
 
 // OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
@@ -1657,7 +1705,7 @@ func (o OidcTokenOutput) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
 }
 
 func (o OidcTokenOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) OidcTokenPtrOutput {
-	return o.ApplyT(func(v OidcToken) *OidcToken {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcToken) *OidcToken {
 		return &v
 	}).(OidcTokenPtrOutput)
 }
@@ -1687,7 +1735,13 @@ func (o OidcTokenPtrOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context)
 }
 
 func (o OidcTokenPtrOutput) Elem() OidcTokenOutput {
-	return o.ApplyT(func(v *OidcToken) OidcToken { return *v }).(OidcTokenOutput)
+	return o.ApplyT(func(v *OidcToken) OidcToken {
+		if v != nil {
+			return *v
+		}
+		var ret OidcToken
+		return ret
+	}).(OidcTokenOutput)
 }
 
 // Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
@@ -1810,7 +1864,7 @@ func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutput() OidcTokenRespons
 }
 
 func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o.ApplyT(func(v OidcTokenResponse) *OidcTokenResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcTokenResponse) *OidcTokenResponse {
 		return &v
 	}).(OidcTokenResponsePtrOutput)
 }
@@ -1840,7 +1894,13 @@ func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutputWithContext(ctx 
 }
 
 func (o OidcTokenResponsePtrOutput) Elem() OidcTokenResponseOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse { return *v }).(OidcTokenResponseOutput)
+	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OidcTokenResponse
+		return ret
+	}).(OidcTokenResponseOutput)
 }
 
 // Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
@@ -1967,7 +2027,7 @@ func (o PubsubTargetOutput) ToPubsubTargetPtrOutput() PubsubTargetPtrOutput {
 }
 
 func (o PubsubTargetOutput) ToPubsubTargetPtrOutputWithContext(ctx context.Context) PubsubTargetPtrOutput {
-	return o.ApplyT(func(v PubsubTarget) *PubsubTarget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubTarget) *PubsubTarget {
 		return &v
 	}).(PubsubTargetPtrOutput)
 }
@@ -2002,7 +2062,13 @@ func (o PubsubTargetPtrOutput) ToPubsubTargetPtrOutputWithContext(ctx context.Co
 }
 
 func (o PubsubTargetPtrOutput) Elem() PubsubTargetOutput {
-	return o.ApplyT(func(v *PubsubTarget) PubsubTarget { return *v }).(PubsubTargetOutput)
+	return o.ApplyT(func(v *PubsubTarget) PubsubTarget {
+		if v != nil {
+			return *v
+		}
+		var ret PubsubTarget
+		return ret
+	}).(PubsubTargetOutput)
 }
 
 // Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
@@ -2139,7 +2205,7 @@ func (o PubsubTargetResponseOutput) ToPubsubTargetResponsePtrOutput() PubsubTarg
 }
 
 func (o PubsubTargetResponseOutput) ToPubsubTargetResponsePtrOutputWithContext(ctx context.Context) PubsubTargetResponsePtrOutput {
-	return o.ApplyT(func(v PubsubTargetResponse) *PubsubTargetResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubTargetResponse) *PubsubTargetResponse {
 		return &v
 	}).(PubsubTargetResponsePtrOutput)
 }
@@ -2174,7 +2240,13 @@ func (o PubsubTargetResponsePtrOutput) ToPubsubTargetResponsePtrOutputWithContex
 }
 
 func (o PubsubTargetResponsePtrOutput) Elem() PubsubTargetResponseOutput {
-	return o.ApplyT(func(v *PubsubTargetResponse) PubsubTargetResponse { return *v }).(PubsubTargetResponseOutput)
+	return o.ApplyT(func(v *PubsubTargetResponse) PubsubTargetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PubsubTargetResponse
+		return ret
+	}).(PubsubTargetResponseOutput)
 }
 
 // Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
@@ -2319,7 +2391,7 @@ func (o RetryConfigOutput) ToRetryConfigPtrOutput() RetryConfigPtrOutput {
 }
 
 func (o RetryConfigOutput) ToRetryConfigPtrOutputWithContext(ctx context.Context) RetryConfigPtrOutput {
-	return o.ApplyT(func(v RetryConfig) *RetryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryConfig) *RetryConfig {
 		return &v
 	}).(RetryConfigPtrOutput)
 }
@@ -2364,7 +2436,13 @@ func (o RetryConfigPtrOutput) ToRetryConfigPtrOutputWithContext(ctx context.Cont
 }
 
 func (o RetryConfigPtrOutput) Elem() RetryConfigOutput {
-	return o.ApplyT(func(v *RetryConfig) RetryConfig { return *v }).(RetryConfigOutput)
+	return o.ApplyT(func(v *RetryConfig) RetryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RetryConfig
+		return ret
+	}).(RetryConfigOutput)
 }
 
 // The maximum amount of time to wait before retrying a job after it fails. The default value of this field is 1 hour.
@@ -2529,7 +2607,7 @@ func (o RetryConfigResponseOutput) ToRetryConfigResponsePtrOutput() RetryConfigR
 }
 
 func (o RetryConfigResponseOutput) ToRetryConfigResponsePtrOutputWithContext(ctx context.Context) RetryConfigResponsePtrOutput {
-	return o.ApplyT(func(v RetryConfigResponse) *RetryConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryConfigResponse) *RetryConfigResponse {
 		return &v
 	}).(RetryConfigResponsePtrOutput)
 }
@@ -2574,7 +2652,13 @@ func (o RetryConfigResponsePtrOutput) ToRetryConfigResponsePtrOutputWithContext(
 }
 
 func (o RetryConfigResponsePtrOutput) Elem() RetryConfigResponseOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) RetryConfigResponse { return *v }).(RetryConfigResponseOutput)
+	return o.ApplyT(func(v *RetryConfigResponse) RetryConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RetryConfigResponse
+		return ret
+	}).(RetryConfigResponseOutput)
 }
 
 // The maximum amount of time to wait before retrying a job after it fails. The default value of this field is 1 hour.
@@ -2731,7 +2815,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -2766,7 +2850,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

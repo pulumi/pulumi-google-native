@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Configuration information for a Kerberos principal.
+    /// </summary>
     [OutputType]
     public sealed class KerberosConfigResponse
     {

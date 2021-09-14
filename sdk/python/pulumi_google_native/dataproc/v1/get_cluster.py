@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterResult',
     'AwaitableGetClusterResult',
     'get_cluster',
+    'get_cluster_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,14 @@ def get_cluster(cluster_name: Optional[str] = None,
         project=__ret__.project,
         status=__ret__.status,
         status_history=__ret__.status_history)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_output(cluster_name: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       region: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    """
+    Gets the resource representation for a cluster in a project.
+    """
+    ...

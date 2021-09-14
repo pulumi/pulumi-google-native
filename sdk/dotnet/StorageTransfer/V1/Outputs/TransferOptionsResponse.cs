@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 {
 
+    /// <summary>
+    /// TransferOptions define the actions to be performed on objects in a transfer.
+    /// </summary>
     [OutputType]
     public sealed class TransferOptionsResponse
     {

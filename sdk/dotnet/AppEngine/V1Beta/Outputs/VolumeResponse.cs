@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Volumes mounted within the app container. Only applicable in the App Engine flexible environment.
+    /// </summary>
     [OutputType]
     public sealed class VolumeResponse
     {

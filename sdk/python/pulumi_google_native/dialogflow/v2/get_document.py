@@ -13,6 +13,7 @@ __all__ = [
     'GetDocumentResult',
     'AwaitableGetDocumentResult',
     'get_document',
+    'get_document_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,15 @@ def get_document(document_id: Optional[str] = None,
         mime_type=__ret__.mime_type,
         name=__ret__.name,
         raw_content=__ret__.raw_content)
+
+
+@_utilities.lift_output_func(get_document)
+def get_document_output(document_id: Optional[pulumi.Input[str]] = None,
+                        knowledge_base_id: Optional[pulumi.Input[str]] = None,
+                        location: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDocumentResult]:
+    """
+    Retrieves the specified document.
+    """
+    ...

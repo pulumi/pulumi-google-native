@@ -790,7 +790,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -830,7 +830,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1051,7 +1057,7 @@ func (o StreamingConfigOutput) ToStreamingConfigPtrOutput() StreamingConfigPtrOu
 }
 
 func (o StreamingConfigOutput) ToStreamingConfigPtrOutputWithContext(ctx context.Context) StreamingConfigPtrOutput {
-	return o.ApplyT(func(v StreamingConfig) *StreamingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamingConfig) *StreamingConfig {
 		return &v
 	}).(StreamingConfigPtrOutput)
 }
@@ -1076,7 +1082,13 @@ func (o StreamingConfigPtrOutput) ToStreamingConfigPtrOutputWithContext(ctx cont
 }
 
 func (o StreamingConfigPtrOutput) Elem() StreamingConfigOutput {
-	return o.ApplyT(func(v *StreamingConfig) StreamingConfig { return *v }).(StreamingConfigOutput)
+	return o.ApplyT(func(v *StreamingConfig) StreamingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamingConfig
+		return ret
+	}).(StreamingConfigOutput)
 }
 
 // Expression that defines the filter to apply across create/update events of assets or findings as specified by the event type. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the corresponding resource. The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.
@@ -1185,7 +1197,7 @@ func (o StreamingConfigResponseOutput) ToStreamingConfigResponsePtrOutput() Stre
 }
 
 func (o StreamingConfigResponseOutput) ToStreamingConfigResponsePtrOutputWithContext(ctx context.Context) StreamingConfigResponsePtrOutput {
-	return o.ApplyT(func(v StreamingConfigResponse) *StreamingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamingConfigResponse) *StreamingConfigResponse {
 		return &v
 	}).(StreamingConfigResponsePtrOutput)
 }
@@ -1210,7 +1222,13 @@ func (o StreamingConfigResponsePtrOutput) ToStreamingConfigResponsePtrOutputWith
 }
 
 func (o StreamingConfigResponsePtrOutput) Elem() StreamingConfigResponseOutput {
-	return o.ApplyT(func(v *StreamingConfigResponse) StreamingConfigResponse { return *v }).(StreamingConfigResponseOutput)
+	return o.ApplyT(func(v *StreamingConfigResponse) StreamingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StreamingConfigResponse
+		return ret
+	}).(StreamingConfigResponseOutput)
 }
 
 // Expression that defines the filter to apply across create/update events of assets or findings as specified by the event type. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the corresponding resource. The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.

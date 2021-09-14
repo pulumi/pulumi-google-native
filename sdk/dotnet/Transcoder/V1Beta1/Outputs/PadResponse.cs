@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.
+    /// </summary>
     [OutputType]
     public sealed class PadResponse
     {

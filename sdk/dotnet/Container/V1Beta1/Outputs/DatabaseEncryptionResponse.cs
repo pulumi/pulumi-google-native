@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration of etcd encryption.
+    /// </summary>
     [OutputType]
     public sealed class DatabaseEncryptionResponse
     {

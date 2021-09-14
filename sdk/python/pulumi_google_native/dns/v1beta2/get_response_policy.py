@@ -13,6 +13,7 @@ __all__ = [
     'GetResponsePolicyResult',
     'AwaitableGetResponsePolicyResult',
     'get_response_policy',
+    'get_response_policy_output',
 ]
 
 @pulumi.output_type
@@ -108,3 +109,14 @@ def get_response_policy(client_operation_id: Optional[str] = None,
         kind=__ret__.kind,
         networks=__ret__.networks,
         response_policy_name=__ret__.response_policy_name)
+
+
+@_utilities.lift_output_func(get_response_policy)
+def get_response_policy_output(client_operation_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               project: Optional[pulumi.Input[Optional[str]]] = None,
+                               response_policy: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResponsePolicyResult]:
+    """
+    Fetches the representation of an existing Response Policy.
+    """
+    ...

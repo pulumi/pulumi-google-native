@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Metadata for a Pub/Sub connector used by the job.
+    /// </summary>
     [OutputType]
     public sealed class PubSubIODetailsResponse
     {

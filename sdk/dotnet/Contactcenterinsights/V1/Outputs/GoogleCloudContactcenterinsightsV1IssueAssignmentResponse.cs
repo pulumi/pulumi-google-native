@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// Information about the issue.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse
     {

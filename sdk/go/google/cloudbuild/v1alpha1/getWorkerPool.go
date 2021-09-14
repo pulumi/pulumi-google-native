@@ -4,6 +4,9 @@
 package v1alpha1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,4 +46,90 @@ type LookupWorkerPoolResult struct {
 	WorkerConfig WorkerConfigResponse `pulumi:"workerConfig"`
 	// Total number of workers to be created across all requested regions.
 	WorkerCount string `pulumi:"workerCount"`
+}
+
+func LookupWorkerPoolOutput(ctx *pulumi.Context, args LookupWorkerPoolOutputArgs, opts ...pulumi.InvokeOption) LookupWorkerPoolResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupWorkerPoolResult, error) {
+			args := v.(LookupWorkerPoolArgs)
+			r, err := LookupWorkerPool(ctx, &args, opts...)
+			return *r, err
+		}).(LookupWorkerPoolResultOutput)
+}
+
+type LookupWorkerPoolOutputArgs struct {
+	Project      pulumi.StringPtrInput `pulumi:"project"`
+	WorkerPoolId pulumi.StringInput    `pulumi:"workerPoolId"`
+}
+
+func (LookupWorkerPoolOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkerPoolArgs)(nil)).Elem()
+}
+
+type LookupWorkerPoolResultOutput struct{ *pulumi.OutputState }
+
+func (LookupWorkerPoolResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkerPoolResult)(nil)).Elem()
+}
+
+func (o LookupWorkerPoolResultOutput) ToLookupWorkerPoolResultOutput() LookupWorkerPoolResultOutput {
+	return o
+}
+
+func (o LookupWorkerPoolResultOutput) ToLookupWorkerPoolResultOutputWithContext(ctx context.Context) LookupWorkerPoolResultOutput {
+	return o
+}
+
+// Time at which the request to create the `WorkerPool` was received.
+func (o LookupWorkerPoolResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Time at which the request to delete the `WorkerPool` was received.
+func (o LookupWorkerPoolResultOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// User-defined name of the `WorkerPool`.
+func (o LookupWorkerPoolResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project ID of the GCP project for which the `WorkerPool` is created.
+func (o LookupWorkerPoolResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
+func (o LookupWorkerPoolResultOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
+func (o LookupWorkerPoolResultOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// WorkerPool Status.
+func (o LookupWorkerPoolResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Time at which the request to update the `WorkerPool` was received.
+func (o LookupWorkerPoolResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Configuration to be used for a creating workers in the `WorkerPool`.
+func (o LookupWorkerPoolResultOutput) WorkerConfig() WorkerConfigResponseOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) WorkerConfigResponse { return v.WorkerConfig }).(WorkerConfigResponseOutput)
+}
+
+// Total number of workers to be created across all requested regions.
+func (o LookupWorkerPoolResultOutput) WorkerCount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.WorkerCount }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupWorkerPoolResultOutput{})
 }

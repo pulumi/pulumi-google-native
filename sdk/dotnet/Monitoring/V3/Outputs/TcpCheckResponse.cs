@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// Information required for a TCP Uptime check request.
+    /// </summary>
     [OutputType]
     public sealed class TcpCheckResponse
     {

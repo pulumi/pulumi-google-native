@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+    /// </summary>
     [OutputType]
     public sealed class ConfidentialNodesResponse
     {

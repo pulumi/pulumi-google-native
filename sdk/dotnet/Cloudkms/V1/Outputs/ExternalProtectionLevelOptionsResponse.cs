@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Cloudkms.V1.Outputs
 {
 
+    /// <summary>
+    /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+    /// </summary>
     [OutputType]
     public sealed class ExternalProtectionLevelOptionsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// HttpRouteRuleMatch criteria for a request's query parameter.
+    /// </summary>
     [OutputType]
     public sealed class HttpQueryParameterMatchResponse
     {

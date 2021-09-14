@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// A full, namespace-isolated deployment target for an existing GKE cluster.
+    /// </summary>
     [OutputType]
     public sealed class NamespacedGkeDeploymentTargetResponse
     {

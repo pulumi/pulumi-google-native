@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+    /// </summary>
     [OutputType]
     public sealed class BucketLoggingResponse
     {

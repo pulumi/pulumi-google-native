@@ -13,6 +13,7 @@ __all__ = [
     'GetEnvironmentResult',
     'AwaitableGetEnvironmentResult',
     'get_environment',
+    'get_environment_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,14 @@ def get_environment(environment_id: Optional[str] = None,
         state=__ret__.state,
         text_to_speech_settings=__ret__.text_to_speech_settings,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_environment)
+def get_environment_output(environment_id: Optional[pulumi.Input[str]] = None,
+                           location: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentResult]:
+    """
+    Retrieves the specified agent environment.
+    """
+    ...

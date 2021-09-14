@@ -126,9 +126,7 @@ func (i *CaPool) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolOutput)
 }
 
-type CaPoolOutput struct {
-	*pulumi.OutputState
-}
+type CaPoolOutput struct{ *pulumi.OutputState }
 
 func (CaPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CaPool)(nil))

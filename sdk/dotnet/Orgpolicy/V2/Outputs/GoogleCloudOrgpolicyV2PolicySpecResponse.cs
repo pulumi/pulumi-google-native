@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Orgpolicy.V2.Outputs
 {
 
+    /// <summary>
+    /// Defines a Cloud Organization `PolicySpec` which is used to specify `Constraints` for configurations of Cloud Platform resources.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudOrgpolicyV2PolicySpecResponse
     {

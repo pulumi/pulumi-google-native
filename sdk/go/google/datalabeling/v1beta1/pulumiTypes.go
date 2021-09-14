@@ -441,7 +441,7 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourceOutput) ToGoogleCloudDatalab
 }
 
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourceOutput) ToGoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BigQuerySource) *GoogleCloudDatalabelingV1beta1BigQuerySource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1BigQuerySource) *GoogleCloudDatalabelingV1beta1BigQuerySource {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput)
 }
@@ -467,7 +467,11 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput) ToGoogleCloudData
 
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput) Elem() GoogleCloudDatalabelingV1beta1BigQuerySourceOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BigQuerySource) GoogleCloudDatalabelingV1beta1BigQuerySource {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1BigQuerySource
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1BigQuerySourceOutput)
 }
 
@@ -577,7 +581,7 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput) ToGoogleClou
 }
 
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput) ToGoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BigQuerySourceResponse) *GoogleCloudDatalabelingV1beta1BigQuerySourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1BigQuerySourceResponse) *GoogleCloudDatalabelingV1beta1BigQuerySourceResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput)
 }
@@ -603,7 +607,11 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput) ToGoogleC
 
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BigQuerySourceResponse) GoogleCloudDatalabelingV1beta1BigQuerySourceResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1BigQuerySourceResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput)
 }
 
@@ -713,7 +721,7 @@ func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput) ToGoog
 }
 
 func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions) *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions) *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput)
 }
@@ -739,7 +747,11 @@ func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput) ToG
 
 func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput) Elem() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput)
 }
 
@@ -849,7 +861,7 @@ func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput
 }
 
 func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse) *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse) *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput)
 }
@@ -877,7 +889,11 @@ func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOut
 
 func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput)
 }
 
@@ -991,7 +1007,7 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput) ToGoogleCloudDat
 }
 
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingPolyConfig) *GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1BoundingPolyConfig) *GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput)
 }
@@ -1022,7 +1038,11 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BoundingPolyConfig) GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1BoundingPolyConfig
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput)
 }
 
@@ -1146,7 +1166,7 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) ToGoogle
 }
 
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) *GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) *GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput)
 }
@@ -1177,7 +1197,11 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput) ToGoo
 
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput)
 }
 
@@ -1297,7 +1321,7 @@ func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput) ToGoogleClou
 }
 
 func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ClassificationMetadata) *GoogleCloudDatalabelingV1beta1ClassificationMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1ClassificationMetadata) *GoogleCloudDatalabelingV1beta1ClassificationMetadata {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput)
 }
@@ -1323,7 +1347,11 @@ func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput) ToGoogleC
 
 func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput) Elem() GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ClassificationMetadata) GoogleCloudDatalabelingV1beta1ClassificationMetadata {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1ClassificationMetadata
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput)
 }
 
@@ -1433,7 +1461,7 @@ func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput) ToGo
 }
 
 func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse) *GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse) *GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput)
 }
@@ -1459,7 +1487,11 @@ func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput) T
 
 func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse) GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput)
 }
 
@@ -1569,7 +1601,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationConfigOutput) ToGoogleCloudDatal
 }
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationConfigOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationConfig) *GoogleCloudDatalabelingV1beta1EvaluationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationConfig) *GoogleCloudDatalabelingV1beta1EvaluationConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput)
 }
@@ -1597,7 +1629,11 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationConfig) GoogleCloudDatalabelingV1beta1EvaluationConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1EvaluationConfig
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigOutput)
 }
 
@@ -1707,7 +1743,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput) ToGoogleCl
 }
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationConfigResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput)
 }
@@ -1735,7 +1771,11 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput) ToGoogl
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationConfigResponse) GoogleCloudDatalabelingV1beta1EvaluationConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1EvaluationConfigResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput)
 }
 
@@ -1849,7 +1889,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput) ToGoogleCl
 }
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig) *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig) *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput)
 }
@@ -1882,7 +1922,11 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput) ToGoogl
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput)
 }
 
@@ -2006,7 +2050,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) To
 }
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput)
 }
@@ -2039,7 +2083,11 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput)
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput)
 }
 
@@ -2195,7 +2243,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ToGoogleCloudDa
 }
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput)
 }
@@ -2282,7 +2330,11 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) ToGoogleClou
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1EvaluationJobConfig
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput)
 }
 
@@ -2518,7 +2570,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ToGoogl
 }
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput)
 }
@@ -2607,7 +2659,11 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) ToGo
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput)
 }
 
@@ -2811,7 +2867,7 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceOutput) ToGoogleCloudDatalabeling
 }
 
 func (o GoogleCloudDatalabelingV1beta1GcsSourceOutput) ToGoogleCloudDatalabelingV1beta1GcsSourcePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1GcsSource) *GoogleCloudDatalabelingV1beta1GcsSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1GcsSource) *GoogleCloudDatalabelingV1beta1GcsSource {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput)
 }
@@ -2841,7 +2897,13 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput) ToGoogleCloudDatalabel
 }
 
 func (o GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput) Elem() GoogleCloudDatalabelingV1beta1GcsSourceOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1GcsSource) GoogleCloudDatalabelingV1beta1GcsSource { return *v }).(GoogleCloudDatalabelingV1beta1GcsSourceOutput)
+	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1GcsSource) GoogleCloudDatalabelingV1beta1GcsSource {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1GcsSource
+		return ret
+	}).(GoogleCloudDatalabelingV1beta1GcsSourceOutput)
 }
 
 // The input URI of source file. This must be a Cloud Storage path (`gs://...`).
@@ -2964,7 +3026,7 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) ToGoogleCloudData
 }
 
 func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) ToGoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1GcsSourceResponse) *GoogleCloudDatalabelingV1beta1GcsSourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1GcsSourceResponse) *GoogleCloudDatalabelingV1beta1GcsSourceResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput)
 }
@@ -2995,7 +3057,11 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) ToGoogleCloudD
 
 func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1GcsSourceResponse) GoogleCloudDatalabelingV1beta1GcsSourceResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1GcsSourceResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput)
 }
 
@@ -3147,7 +3213,7 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput) ToGoogleCloud
 }
 
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1HumanAnnotationConfig) *GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1HumanAnnotationConfig) *GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput)
 }
@@ -3217,7 +3283,11 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput) ToGoogleCl
 
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfig) GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1HumanAnnotationConfig
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput)
 }
 
@@ -3439,7 +3509,7 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) ToGoo
 }
 
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput)
 }
@@ -3511,7 +3581,11 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) To
 
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput)
 }
 
@@ -3709,7 +3783,7 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput) ToGoogleC
 }
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ImageClassificationConfig) *GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1ImageClassificationConfig) *GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput)
 }
@@ -3747,7 +3821,11 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) ToGoog
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfig) GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1ImageClassificationConfig
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput)
 }
 
@@ -3885,7 +3963,7 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) T
 }
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) *GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) *GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput)
 }
@@ -3925,7 +4003,11 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput)
 }
 
@@ -4075,7 +4157,7 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) ToGoogleCloudDatalabeli
 }
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) ToGoogleCloudDatalabelingV1beta1InputConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1InputConfig) *GoogleCloudDatalabelingV1beta1InputConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1InputConfig) *GoogleCloudDatalabelingV1beta1InputConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1InputConfigPtrOutput)
 }
@@ -4138,7 +4220,11 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) ToGoogleCloudDatalab
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1InputConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfig) GoogleCloudDatalabelingV1beta1InputConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1InputConfig
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1InputConfigOutput)
 }
 
@@ -4343,7 +4429,7 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) ToGoogleCloudDa
 }
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1InputConfigResponse) *GoogleCloudDatalabelingV1beta1InputConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1InputConfigResponse) *GoogleCloudDatalabelingV1beta1InputConfigResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput)
 }
@@ -4402,7 +4488,11 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) ToGoogleClou
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1InputConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigResponse) GoogleCloudDatalabelingV1beta1InputConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1InputConfigResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1InputConfigResponseOutput)
 }
 
@@ -4578,7 +4668,7 @@ func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput) ToGoogleCl
 }
 
 func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata) *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata) *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput)
 }
@@ -4599,7 +4689,11 @@ func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput) ToGoogl
 
 func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput) Elem() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput)
 }
 
@@ -4695,7 +4789,7 @@ func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput) To
 }
 
 func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse) *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse) *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput)
 }
@@ -4716,7 +4810,11 @@ func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput)
 
 func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput)
 }
 
@@ -4816,7 +4914,7 @@ func (o GoogleCloudDatalabelingV1beta1PdfInstructionOutput) ToGoogleCloudDatalab
 }
 
 func (o GoogleCloudDatalabelingV1beta1PdfInstructionOutput) ToGoogleCloudDatalabelingV1beta1PdfInstructionPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1PdfInstruction) *GoogleCloudDatalabelingV1beta1PdfInstruction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1PdfInstruction) *GoogleCloudDatalabelingV1beta1PdfInstruction {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput)
 }
@@ -4842,7 +4940,11 @@ func (o GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput) ToGoogleCloudData
 
 func (o GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput) Elem() GoogleCloudDatalabelingV1beta1PdfInstructionOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1PdfInstruction) GoogleCloudDatalabelingV1beta1PdfInstruction {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1PdfInstruction
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1PdfInstructionOutput)
 }
 
@@ -4952,7 +5054,7 @@ func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput) ToGoogleClou
 }
 
 func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput) ToGoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1PdfInstructionResponse) *GoogleCloudDatalabelingV1beta1PdfInstructionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1PdfInstructionResponse) *GoogleCloudDatalabelingV1beta1PdfInstructionResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput)
 }
@@ -4978,7 +5080,11 @@ func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput) ToGoogleC
 
 func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1PdfInstructionResponse) GoogleCloudDatalabelingV1beta1PdfInstructionResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1PdfInstructionResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput)
 }
 
@@ -5084,7 +5190,7 @@ func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput) ToGoogleC
 }
 
 func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata) *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata) *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput)
 }
@@ -5105,7 +5211,11 @@ func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput) ToGoog
 
 func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput) Elem() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput)
 }
 
@@ -5201,7 +5311,7 @@ func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput) T
 }
 
 func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse) *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse) *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput)
 }
@@ -5222,7 +5332,11 @@ func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput
 
 func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput)
 }
 
@@ -5322,7 +5436,7 @@ func (o GoogleCloudDatalabelingV1beta1SentimentConfigOutput) ToGoogleCloudDatala
 }
 
 func (o GoogleCloudDatalabelingV1beta1SentimentConfigOutput) ToGoogleCloudDatalabelingV1beta1SentimentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1SentimentConfig) *GoogleCloudDatalabelingV1beta1SentimentConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1SentimentConfig) *GoogleCloudDatalabelingV1beta1SentimentConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput)
 }
@@ -5348,7 +5462,11 @@ func (o GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1SentimentConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1SentimentConfig) GoogleCloudDatalabelingV1beta1SentimentConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1SentimentConfig
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1SentimentConfigOutput)
 }
 
@@ -5458,7 +5576,7 @@ func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput) ToGoogleClo
 }
 
 func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1SentimentConfigResponse) *GoogleCloudDatalabelingV1beta1SentimentConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1SentimentConfigResponse) *GoogleCloudDatalabelingV1beta1SentimentConfigResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput)
 }
@@ -5486,7 +5604,11 @@ func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput) ToGoogle
 
 func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1SentimentConfigResponse) GoogleCloudDatalabelingV1beta1SentimentConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1SentimentConfigResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput)
 }
 
@@ -5604,7 +5726,7 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput) ToGoogleCl
 }
 
 func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextClassificationConfig) *GoogleCloudDatalabelingV1beta1TextClassificationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1TextClassificationConfig) *GoogleCloudDatalabelingV1beta1TextClassificationConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput)
 }
@@ -5642,7 +5764,11 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput) ToGoogl
 
 func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextClassificationConfig) GoogleCloudDatalabelingV1beta1TextClassificationConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1TextClassificationConfig
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput)
 }
 
@@ -5780,7 +5906,7 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) To
 }
 
 func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) *GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) *GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput)
 }
@@ -5820,7 +5946,11 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput)
 
 func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput)
 }
 
@@ -5950,7 +6080,7 @@ func (o GoogleCloudDatalabelingV1beta1TextMetadataOutput) ToGoogleCloudDatalabel
 }
 
 func (o GoogleCloudDatalabelingV1beta1TextMetadataOutput) ToGoogleCloudDatalabelingV1beta1TextMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextMetadata) *GoogleCloudDatalabelingV1beta1TextMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1TextMetadata) *GoogleCloudDatalabelingV1beta1TextMetadata {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput)
 }
@@ -5976,7 +6106,11 @@ func (o GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput) ToGoogleCloudDatala
 
 func (o GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput) Elem() GoogleCloudDatalabelingV1beta1TextMetadataOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextMetadata) GoogleCloudDatalabelingV1beta1TextMetadata {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1TextMetadata
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1TextMetadataOutput)
 }
 
@@ -6086,7 +6220,7 @@ func (o GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput) ToGoogleCloudD
 }
 
 func (o GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextMetadataResponse) *GoogleCloudDatalabelingV1beta1TextMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1TextMetadataResponse) *GoogleCloudDatalabelingV1beta1TextMetadataResponse {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput)
 }
@@ -6112,7 +6246,11 @@ func (o GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput) ToGoogleClo
 
 func (o GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput) Elem() GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextMetadataResponse) GoogleCloudDatalabelingV1beta1TextMetadataResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1TextMetadataResponse
+		return ret
 	}).(GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput)
 }
 

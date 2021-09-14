@@ -106,7 +106,7 @@ func (o BuildSignatureKeyTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type BuildSignatureKeyTypePtrOutput struct{ *pulumi.OutputState }
 
 func (BuildSignatureKeyTypePtrOutput) ElementType() reflect.Type {
-	return buildSignatureKeyTypePtrType
+	return reflect.TypeOf((**BuildSignatureKeyType)(nil)).Elem()
 }
 
 func (o BuildSignatureKeyTypePtrOutput) ToBuildSignatureKeyTypePtrOutput() BuildSignatureKeyTypePtrOutput {
@@ -115,6 +115,16 @@ func (o BuildSignatureKeyTypePtrOutput) ToBuildSignatureKeyTypePtrOutput() Build
 
 func (o BuildSignatureKeyTypePtrOutput) ToBuildSignatureKeyTypePtrOutputWithContext(ctx context.Context) BuildSignatureKeyTypePtrOutput {
 	return o
+}
+
+func (o BuildSignatureKeyTypePtrOutput) Elem() BuildSignatureKeyTypeOutput {
+	return o.ApplyT(func(v *BuildSignatureKeyType) BuildSignatureKeyType {
+		if v != nil {
+			return *v
+		}
+		var ret BuildSignatureKeyType
+		return ret
+	}).(BuildSignatureKeyTypeOutput)
 }
 
 func (o BuildSignatureKeyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o BuildSignatureKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BuildSignatureKeyTypePtrOutput) Elem() BuildSignatureKeyTypeOutput {
-	return o.ApplyT(func(v *BuildSignatureKeyType) BuildSignatureKeyType {
-		var ret BuildSignatureKeyType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BuildSignatureKeyTypeOutput)
 }
 
 // BuildSignatureKeyTypeInput is an input type that accepts BuildSignatureKeyTypeArgs and BuildSignatureKeyTypeOutput values.
@@ -281,7 +281,7 @@ func (o CisBenchmarkSeverityOutput) ToStringPtrOutputWithContext(ctx context.Con
 type CisBenchmarkSeverityPtrOutput struct{ *pulumi.OutputState }
 
 func (CisBenchmarkSeverityPtrOutput) ElementType() reflect.Type {
-	return cisBenchmarkSeverityPtrType
+	return reflect.TypeOf((**CisBenchmarkSeverity)(nil)).Elem()
 }
 
 func (o CisBenchmarkSeverityPtrOutput) ToCisBenchmarkSeverityPtrOutput() CisBenchmarkSeverityPtrOutput {
@@ -290,6 +290,16 @@ func (o CisBenchmarkSeverityPtrOutput) ToCisBenchmarkSeverityPtrOutput() CisBenc
 
 func (o CisBenchmarkSeverityPtrOutput) ToCisBenchmarkSeverityPtrOutputWithContext(ctx context.Context) CisBenchmarkSeverityPtrOutput {
 	return o
+}
+
+func (o CisBenchmarkSeverityPtrOutput) Elem() CisBenchmarkSeverityOutput {
+	return o.ApplyT(func(v *CisBenchmarkSeverity) CisBenchmarkSeverity {
+		if v != nil {
+			return *v
+		}
+		var ret CisBenchmarkSeverity
+		return ret
+	}).(CisBenchmarkSeverityOutput)
 }
 
 func (o CisBenchmarkSeverityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -304,16 +314,6 @@ func (o CisBenchmarkSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CisBenchmarkSeverityPtrOutput) Elem() CisBenchmarkSeverityOutput {
-	return o.ApplyT(func(v *CisBenchmarkSeverity) CisBenchmarkSeverity {
-		var ret CisBenchmarkSeverity
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CisBenchmarkSeverityOutput)
 }
 
 // CisBenchmarkSeverityInput is an input type that accepts CisBenchmarkSeverityArgs and CisBenchmarkSeverityOutput values.
@@ -452,7 +452,7 @@ func (o DeploymentPlatformOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type DeploymentPlatformPtrOutput struct{ *pulumi.OutputState }
 
 func (DeploymentPlatformPtrOutput) ElementType() reflect.Type {
-	return deploymentPlatformPtrType
+	return reflect.TypeOf((**DeploymentPlatform)(nil)).Elem()
 }
 
 func (o DeploymentPlatformPtrOutput) ToDeploymentPlatformPtrOutput() DeploymentPlatformPtrOutput {
@@ -461,6 +461,16 @@ func (o DeploymentPlatformPtrOutput) ToDeploymentPlatformPtrOutput() DeploymentP
 
 func (o DeploymentPlatformPtrOutput) ToDeploymentPlatformPtrOutputWithContext(ctx context.Context) DeploymentPlatformPtrOutput {
 	return o
+}
+
+func (o DeploymentPlatformPtrOutput) Elem() DeploymentPlatformOutput {
+	return o.ApplyT(func(v *DeploymentPlatform) DeploymentPlatform {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentPlatform
+		return ret
+	}).(DeploymentPlatformOutput)
 }
 
 func (o DeploymentPlatformPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -475,16 +485,6 @@ func (o DeploymentPlatformPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DeploymentPlatformPtrOutput) Elem() DeploymentPlatformOutput {
-	return o.ApplyT(func(v *DeploymentPlatform) DeploymentPlatform {
-		var ret DeploymentPlatform
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DeploymentPlatformOutput)
 }
 
 // DeploymentPlatformInput is an input type that accepts DeploymentPlatformArgs and DeploymentPlatformOutput values.
@@ -627,7 +627,7 @@ func (o DiscoveredAnalysisStatusOutput) ToStringPtrOutputWithContext(ctx context
 type DiscoveredAnalysisStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (DiscoveredAnalysisStatusPtrOutput) ElementType() reflect.Type {
-	return discoveredAnalysisStatusPtrType
+	return reflect.TypeOf((**DiscoveredAnalysisStatus)(nil)).Elem()
 }
 
 func (o DiscoveredAnalysisStatusPtrOutput) ToDiscoveredAnalysisStatusPtrOutput() DiscoveredAnalysisStatusPtrOutput {
@@ -636,6 +636,16 @@ func (o DiscoveredAnalysisStatusPtrOutput) ToDiscoveredAnalysisStatusPtrOutput()
 
 func (o DiscoveredAnalysisStatusPtrOutput) ToDiscoveredAnalysisStatusPtrOutputWithContext(ctx context.Context) DiscoveredAnalysisStatusPtrOutput {
 	return o
+}
+
+func (o DiscoveredAnalysisStatusPtrOutput) Elem() DiscoveredAnalysisStatusOutput {
+	return o.ApplyT(func(v *DiscoveredAnalysisStatus) DiscoveredAnalysisStatus {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveredAnalysisStatus
+		return ret
+	}).(DiscoveredAnalysisStatusOutput)
 }
 
 func (o DiscoveredAnalysisStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -650,16 +660,6 @@ func (o DiscoveredAnalysisStatusPtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DiscoveredAnalysisStatusPtrOutput) Elem() DiscoveredAnalysisStatusOutput {
-	return o.ApplyT(func(v *DiscoveredAnalysisStatus) DiscoveredAnalysisStatus {
-		var ret DiscoveredAnalysisStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DiscoveredAnalysisStatusOutput)
 }
 
 // DiscoveredAnalysisStatusInput is an input type that accepts DiscoveredAnalysisStatusArgs and DiscoveredAnalysisStatusOutput values.
@@ -796,7 +796,7 @@ func (o DiscoveredContinuousAnalysisOutput) ToStringPtrOutputWithContext(ctx con
 type DiscoveredContinuousAnalysisPtrOutput struct{ *pulumi.OutputState }
 
 func (DiscoveredContinuousAnalysisPtrOutput) ElementType() reflect.Type {
-	return discoveredContinuousAnalysisPtrType
+	return reflect.TypeOf((**DiscoveredContinuousAnalysis)(nil)).Elem()
 }
 
 func (o DiscoveredContinuousAnalysisPtrOutput) ToDiscoveredContinuousAnalysisPtrOutput() DiscoveredContinuousAnalysisPtrOutput {
@@ -805,6 +805,16 @@ func (o DiscoveredContinuousAnalysisPtrOutput) ToDiscoveredContinuousAnalysisPtr
 
 func (o DiscoveredContinuousAnalysisPtrOutput) ToDiscoveredContinuousAnalysisPtrOutputWithContext(ctx context.Context) DiscoveredContinuousAnalysisPtrOutput {
 	return o
+}
+
+func (o DiscoveredContinuousAnalysisPtrOutput) Elem() DiscoveredContinuousAnalysisOutput {
+	return o.ApplyT(func(v *DiscoveredContinuousAnalysis) DiscoveredContinuousAnalysis {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveredContinuousAnalysis
+		return ret
+	}).(DiscoveredContinuousAnalysisOutput)
 }
 
 func (o DiscoveredContinuousAnalysisPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -819,16 +829,6 @@ func (o DiscoveredContinuousAnalysisPtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DiscoveredContinuousAnalysisPtrOutput) Elem() DiscoveredContinuousAnalysisOutput {
-	return o.ApplyT(func(v *DiscoveredContinuousAnalysis) DiscoveredContinuousAnalysis {
-		var ret DiscoveredContinuousAnalysis
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DiscoveredContinuousAnalysisOutput)
 }
 
 // DiscoveredContinuousAnalysisInput is an input type that accepts DiscoveredContinuousAnalysisArgs and DiscoveredContinuousAnalysisOutput values.
@@ -989,7 +989,7 @@ func (o DiscoveryAnalysisKindOutput) ToStringPtrOutputWithContext(ctx context.Co
 type DiscoveryAnalysisKindPtrOutput struct{ *pulumi.OutputState }
 
 func (DiscoveryAnalysisKindPtrOutput) ElementType() reflect.Type {
-	return discoveryAnalysisKindPtrType
+	return reflect.TypeOf((**DiscoveryAnalysisKind)(nil)).Elem()
 }
 
 func (o DiscoveryAnalysisKindPtrOutput) ToDiscoveryAnalysisKindPtrOutput() DiscoveryAnalysisKindPtrOutput {
@@ -998,6 +998,16 @@ func (o DiscoveryAnalysisKindPtrOutput) ToDiscoveryAnalysisKindPtrOutput() Disco
 
 func (o DiscoveryAnalysisKindPtrOutput) ToDiscoveryAnalysisKindPtrOutputWithContext(ctx context.Context) DiscoveryAnalysisKindPtrOutput {
 	return o
+}
+
+func (o DiscoveryAnalysisKindPtrOutput) Elem() DiscoveryAnalysisKindOutput {
+	return o.ApplyT(func(v *DiscoveryAnalysisKind) DiscoveryAnalysisKind {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveryAnalysisKind
+		return ret
+	}).(DiscoveryAnalysisKindOutput)
 }
 
 func (o DiscoveryAnalysisKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1012,16 +1022,6 @@ func (o DiscoveryAnalysisKindPtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DiscoveryAnalysisKindPtrOutput) Elem() DiscoveryAnalysisKindOutput {
-	return o.ApplyT(func(v *DiscoveryAnalysisKind) DiscoveryAnalysisKind {
-		var ret DiscoveryAnalysisKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DiscoveryAnalysisKindOutput)
 }
 
 // DiscoveryAnalysisKindInput is an input type that accepts DiscoveryAnalysisKindArgs and DiscoveryAnalysisKindOutput values.
@@ -1158,7 +1158,7 @@ func (o DistributionArchitectureOutput) ToStringPtrOutputWithContext(ctx context
 type DistributionArchitecturePtrOutput struct{ *pulumi.OutputState }
 
 func (DistributionArchitecturePtrOutput) ElementType() reflect.Type {
-	return distributionArchitecturePtrType
+	return reflect.TypeOf((**DistributionArchitecture)(nil)).Elem()
 }
 
 func (o DistributionArchitecturePtrOutput) ToDistributionArchitecturePtrOutput() DistributionArchitecturePtrOutput {
@@ -1167,6 +1167,16 @@ func (o DistributionArchitecturePtrOutput) ToDistributionArchitecturePtrOutput()
 
 func (o DistributionArchitecturePtrOutput) ToDistributionArchitecturePtrOutputWithContext(ctx context.Context) DistributionArchitecturePtrOutput {
 	return o
+}
+
+func (o DistributionArchitecturePtrOutput) Elem() DistributionArchitectureOutput {
+	return o.ApplyT(func(v *DistributionArchitecture) DistributionArchitecture {
+		if v != nil {
+			return *v
+		}
+		var ret DistributionArchitecture
+		return ret
+	}).(DistributionArchitectureOutput)
 }
 
 func (o DistributionArchitecturePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1181,16 +1191,6 @@ func (o DistributionArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DistributionArchitecturePtrOutput) Elem() DistributionArchitectureOutput {
-	return o.ApplyT(func(v *DistributionArchitecture) DistributionArchitecture {
-		var ret DistributionArchitecture
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DistributionArchitectureOutput)
 }
 
 // DistributionArchitectureInput is an input type that accepts DistributionArchitectureArgs and DistributionArchitectureOutput values.
@@ -1331,7 +1331,7 @@ func (o ExternalRefCategoryOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type ExternalRefCategoryPtrOutput struct{ *pulumi.OutputState }
 
 func (ExternalRefCategoryPtrOutput) ElementType() reflect.Type {
-	return externalRefCategoryPtrType
+	return reflect.TypeOf((**ExternalRefCategory)(nil)).Elem()
 }
 
 func (o ExternalRefCategoryPtrOutput) ToExternalRefCategoryPtrOutput() ExternalRefCategoryPtrOutput {
@@ -1340,6 +1340,16 @@ func (o ExternalRefCategoryPtrOutput) ToExternalRefCategoryPtrOutput() ExternalR
 
 func (o ExternalRefCategoryPtrOutput) ToExternalRefCategoryPtrOutputWithContext(ctx context.Context) ExternalRefCategoryPtrOutput {
 	return o
+}
+
+func (o ExternalRefCategoryPtrOutput) Elem() ExternalRefCategoryOutput {
+	return o.ApplyT(func(v *ExternalRefCategory) ExternalRefCategory {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalRefCategory
+		return ret
+	}).(ExternalRefCategoryOutput)
 }
 
 func (o ExternalRefCategoryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1354,16 +1364,6 @@ func (o ExternalRefCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ExternalRefCategoryPtrOutput) Elem() ExternalRefCategoryOutput {
-	return o.ApplyT(func(v *ExternalRefCategory) ExternalRefCategory {
-		var ret ExternalRefCategory
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ExternalRefCategoryOutput)
 }
 
 // ExternalRefCategoryInput is an input type that accepts ExternalRefCategoryArgs and ExternalRefCategoryOutput values.
@@ -1518,7 +1518,7 @@ func (o FileNoteFileTypeOutput) ToStringPtrOutputWithContext(ctx context.Context
 type FileNoteFileTypePtrOutput struct{ *pulumi.OutputState }
 
 func (FileNoteFileTypePtrOutput) ElementType() reflect.Type {
-	return fileNoteFileTypePtrType
+	return reflect.TypeOf((**FileNoteFileType)(nil)).Elem()
 }
 
 func (o FileNoteFileTypePtrOutput) ToFileNoteFileTypePtrOutput() FileNoteFileTypePtrOutput {
@@ -1527,6 +1527,16 @@ func (o FileNoteFileTypePtrOutput) ToFileNoteFileTypePtrOutput() FileNoteFileTyp
 
 func (o FileNoteFileTypePtrOutput) ToFileNoteFileTypePtrOutputWithContext(ctx context.Context) FileNoteFileTypePtrOutput {
 	return o
+}
+
+func (o FileNoteFileTypePtrOutput) Elem() FileNoteFileTypeOutput {
+	return o.ApplyT(func(v *FileNoteFileType) FileNoteFileType {
+		if v != nil {
+			return *v
+		}
+		var ret FileNoteFileType
+		return ret
+	}).(FileNoteFileTypeOutput)
 }
 
 func (o FileNoteFileTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1541,16 +1551,6 @@ func (o FileNoteFileTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FileNoteFileTypePtrOutput) Elem() FileNoteFileTypeOutput {
-	return o.ApplyT(func(v *FileNoteFileType) FileNoteFileType {
-		var ret FileNoteFileType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FileNoteFileTypeOutput)
 }
 
 // FileNoteFileTypeInput is an input type that accepts FileNoteFileTypeArgs and FileNoteFileTypeOutput values.
@@ -1689,7 +1689,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindOutput) ToStringP
 type GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput) ElementType() reflect.Type {
-	return googleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrType
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind)(nil)).Elem()
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput {
@@ -1698,6 +1698,16 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput) ToGoog
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput {
 	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind) GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind
+		return ret
+	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindOutput)
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1712,16 +1722,6 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput) ToStri
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind) GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind {
-		var ret GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindOutput)
 }
 
 // GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindArgs and GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindOutput values.
@@ -1856,7 +1856,7 @@ func (o HashTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 type HashTypePtrOutput struct{ *pulumi.OutputState }
 
 func (HashTypePtrOutput) ElementType() reflect.Type {
-	return hashTypePtrType
+	return reflect.TypeOf((**HashType)(nil)).Elem()
 }
 
 func (o HashTypePtrOutput) ToHashTypePtrOutput() HashTypePtrOutput {
@@ -1865,6 +1865,16 @@ func (o HashTypePtrOutput) ToHashTypePtrOutput() HashTypePtrOutput {
 
 func (o HashTypePtrOutput) ToHashTypePtrOutputWithContext(ctx context.Context) HashTypePtrOutput {
 	return o
+}
+
+func (o HashTypePtrOutput) Elem() HashTypeOutput {
+	return o.ApplyT(func(v *HashType) HashType {
+		if v != nil {
+			return *v
+		}
+		var ret HashType
+		return ret
+	}).(HashTypeOutput)
 }
 
 func (o HashTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1879,16 +1889,6 @@ func (o HashTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HashTypePtrOutput) Elem() HashTypeOutput {
-	return o.ApplyT(func(v *HashType) HashType {
-		var ret HashType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HashTypeOutput)
 }
 
 // HashTypeInput is an input type that accepts HashTypeArgs and HashTypeOutput values.
@@ -2055,7 +2055,7 @@ func (o LayerDirectiveOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 type LayerDirectivePtrOutput struct{ *pulumi.OutputState }
 
 func (LayerDirectivePtrOutput) ElementType() reflect.Type {
-	return layerDirectivePtrType
+	return reflect.TypeOf((**LayerDirective)(nil)).Elem()
 }
 
 func (o LayerDirectivePtrOutput) ToLayerDirectivePtrOutput() LayerDirectivePtrOutput {
@@ -2064,6 +2064,16 @@ func (o LayerDirectivePtrOutput) ToLayerDirectivePtrOutput() LayerDirectivePtrOu
 
 func (o LayerDirectivePtrOutput) ToLayerDirectivePtrOutputWithContext(ctx context.Context) LayerDirectivePtrOutput {
 	return o
+}
+
+func (o LayerDirectivePtrOutput) Elem() LayerDirectiveOutput {
+	return o.ApplyT(func(v *LayerDirective) LayerDirective {
+		if v != nil {
+			return *v
+		}
+		var ret LayerDirective
+		return ret
+	}).(LayerDirectiveOutput)
 }
 
 func (o LayerDirectivePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2078,16 +2088,6 @@ func (o LayerDirectivePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o LayerDirectivePtrOutput) Elem() LayerDirectiveOutput {
-	return o.ApplyT(func(v *LayerDirective) LayerDirective {
-		var ret LayerDirective
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(LayerDirectiveOutput)
 }
 
 // LayerDirectiveInput is an input type that accepts LayerDirectiveArgs and LayerDirectiveOutput values.
@@ -2222,7 +2222,7 @@ func (o PgpSignedAttestationContentTypeOutput) ToStringPtrOutputWithContext(ctx 
 type PgpSignedAttestationContentTypePtrOutput struct{ *pulumi.OutputState }
 
 func (PgpSignedAttestationContentTypePtrOutput) ElementType() reflect.Type {
-	return pgpSignedAttestationContentTypePtrType
+	return reflect.TypeOf((**PgpSignedAttestationContentType)(nil)).Elem()
 }
 
 func (o PgpSignedAttestationContentTypePtrOutput) ToPgpSignedAttestationContentTypePtrOutput() PgpSignedAttestationContentTypePtrOutput {
@@ -2231,6 +2231,16 @@ func (o PgpSignedAttestationContentTypePtrOutput) ToPgpSignedAttestationContentT
 
 func (o PgpSignedAttestationContentTypePtrOutput) ToPgpSignedAttestationContentTypePtrOutputWithContext(ctx context.Context) PgpSignedAttestationContentTypePtrOutput {
 	return o
+}
+
+func (o PgpSignedAttestationContentTypePtrOutput) Elem() PgpSignedAttestationContentTypeOutput {
+	return o.ApplyT(func(v *PgpSignedAttestationContentType) PgpSignedAttestationContentType {
+		if v != nil {
+			return *v
+		}
+		var ret PgpSignedAttestationContentType
+		return ret
+	}).(PgpSignedAttestationContentTypeOutput)
 }
 
 func (o PgpSignedAttestationContentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2245,16 +2255,6 @@ func (o PgpSignedAttestationContentTypePtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PgpSignedAttestationContentTypePtrOutput) Elem() PgpSignedAttestationContentTypeOutput {
-	return o.ApplyT(func(v *PgpSignedAttestationContentType) PgpSignedAttestationContentType {
-		var ret PgpSignedAttestationContentType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PgpSignedAttestationContentTypeOutput)
 }
 
 // PgpSignedAttestationContentTypeInput is an input type that accepts PgpSignedAttestationContentTypeArgs and PgpSignedAttestationContentTypeOutput values.
@@ -2473,7 +2473,7 @@ func (o RelationshipOccurrenceTypeOutput) ToStringPtrOutputWithContext(ctx conte
 type RelationshipOccurrenceTypePtrOutput struct{ *pulumi.OutputState }
 
 func (RelationshipOccurrenceTypePtrOutput) ElementType() reflect.Type {
-	return relationshipOccurrenceTypePtrType
+	return reflect.TypeOf((**RelationshipOccurrenceType)(nil)).Elem()
 }
 
 func (o RelationshipOccurrenceTypePtrOutput) ToRelationshipOccurrenceTypePtrOutput() RelationshipOccurrenceTypePtrOutput {
@@ -2482,6 +2482,16 @@ func (o RelationshipOccurrenceTypePtrOutput) ToRelationshipOccurrenceTypePtrOutp
 
 func (o RelationshipOccurrenceTypePtrOutput) ToRelationshipOccurrenceTypePtrOutputWithContext(ctx context.Context) RelationshipOccurrenceTypePtrOutput {
 	return o
+}
+
+func (o RelationshipOccurrenceTypePtrOutput) Elem() RelationshipOccurrenceTypeOutput {
+	return o.ApplyT(func(v *RelationshipOccurrenceType) RelationshipOccurrenceType {
+		if v != nil {
+			return *v
+		}
+		var ret RelationshipOccurrenceType
+		return ret
+	}).(RelationshipOccurrenceTypeOutput)
 }
 
 func (o RelationshipOccurrenceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2496,16 +2506,6 @@ func (o RelationshipOccurrenceTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RelationshipOccurrenceTypePtrOutput) Elem() RelationshipOccurrenceTypeOutput {
-	return o.ApplyT(func(v *RelationshipOccurrenceType) RelationshipOccurrenceType {
-		var ret RelationshipOccurrenceType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RelationshipOccurrenceTypeOutput)
 }
 
 // RelationshipOccurrenceTypeInput is an input type that accepts RelationshipOccurrenceTypeArgs and RelationshipOccurrenceTypeOutput values.
@@ -2642,7 +2642,7 @@ func (o VersionKindOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 type VersionKindPtrOutput struct{ *pulumi.OutputState }
 
 func (VersionKindPtrOutput) ElementType() reflect.Type {
-	return versionKindPtrType
+	return reflect.TypeOf((**VersionKind)(nil)).Elem()
 }
 
 func (o VersionKindPtrOutput) ToVersionKindPtrOutput() VersionKindPtrOutput {
@@ -2651,6 +2651,16 @@ func (o VersionKindPtrOutput) ToVersionKindPtrOutput() VersionKindPtrOutput {
 
 func (o VersionKindPtrOutput) ToVersionKindPtrOutputWithContext(ctx context.Context) VersionKindPtrOutput {
 	return o
+}
+
+func (o VersionKindPtrOutput) Elem() VersionKindOutput {
+	return o.ApplyT(func(v *VersionKind) VersionKind {
+		if v != nil {
+			return *v
+		}
+		var ret VersionKind
+		return ret
+	}).(VersionKindOutput)
 }
 
 func (o VersionKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2665,16 +2675,6 @@ func (o VersionKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o VersionKindPtrOutput) Elem() VersionKindOutput {
-	return o.ApplyT(func(v *VersionKind) VersionKind {
-		var ret VersionKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(VersionKindOutput)
 }
 
 // VersionKindInput is an input type that accepts VersionKindArgs and VersionKindOutput values.
@@ -2817,7 +2817,7 @@ func (o VulnerabilityDetailsEffectiveSeverityOutput) ToStringPtrOutputWithContex
 type VulnerabilityDetailsEffectiveSeverityPtrOutput struct{ *pulumi.OutputState }
 
 func (VulnerabilityDetailsEffectiveSeverityPtrOutput) ElementType() reflect.Type {
-	return vulnerabilityDetailsEffectiveSeverityPtrType
+	return reflect.TypeOf((**VulnerabilityDetailsEffectiveSeverity)(nil)).Elem()
 }
 
 func (o VulnerabilityDetailsEffectiveSeverityPtrOutput) ToVulnerabilityDetailsEffectiveSeverityPtrOutput() VulnerabilityDetailsEffectiveSeverityPtrOutput {
@@ -2826,6 +2826,16 @@ func (o VulnerabilityDetailsEffectiveSeverityPtrOutput) ToVulnerabilityDetailsEf
 
 func (o VulnerabilityDetailsEffectiveSeverityPtrOutput) ToVulnerabilityDetailsEffectiveSeverityPtrOutputWithContext(ctx context.Context) VulnerabilityDetailsEffectiveSeverityPtrOutput {
 	return o
+}
+
+func (o VulnerabilityDetailsEffectiveSeverityPtrOutput) Elem() VulnerabilityDetailsEffectiveSeverityOutput {
+	return o.ApplyT(func(v *VulnerabilityDetailsEffectiveSeverity) VulnerabilityDetailsEffectiveSeverity {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityDetailsEffectiveSeverity
+		return ret
+	}).(VulnerabilityDetailsEffectiveSeverityOutput)
 }
 
 func (o VulnerabilityDetailsEffectiveSeverityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2840,16 +2850,6 @@ func (o VulnerabilityDetailsEffectiveSeverityPtrOutput) ToStringPtrOutputWithCon
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o VulnerabilityDetailsEffectiveSeverityPtrOutput) Elem() VulnerabilityDetailsEffectiveSeverityOutput {
-	return o.ApplyT(func(v *VulnerabilityDetailsEffectiveSeverity) VulnerabilityDetailsEffectiveSeverity {
-		var ret VulnerabilityDetailsEffectiveSeverity
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(VulnerabilityDetailsEffectiveSeverityOutput)
 }
 
 // VulnerabilityDetailsEffectiveSeverityInput is an input type that accepts VulnerabilityDetailsEffectiveSeverityArgs and VulnerabilityDetailsEffectiveSeverityOutput values.
@@ -2992,7 +2992,7 @@ func (o VulnerabilityTypeSeverityOutput) ToStringPtrOutputWithContext(ctx contex
 type VulnerabilityTypeSeverityPtrOutput struct{ *pulumi.OutputState }
 
 func (VulnerabilityTypeSeverityPtrOutput) ElementType() reflect.Type {
-	return vulnerabilityTypeSeverityPtrType
+	return reflect.TypeOf((**VulnerabilityTypeSeverity)(nil)).Elem()
 }
 
 func (o VulnerabilityTypeSeverityPtrOutput) ToVulnerabilityTypeSeverityPtrOutput() VulnerabilityTypeSeverityPtrOutput {
@@ -3001,6 +3001,16 @@ func (o VulnerabilityTypeSeverityPtrOutput) ToVulnerabilityTypeSeverityPtrOutput
 
 func (o VulnerabilityTypeSeverityPtrOutput) ToVulnerabilityTypeSeverityPtrOutputWithContext(ctx context.Context) VulnerabilityTypeSeverityPtrOutput {
 	return o
+}
+
+func (o VulnerabilityTypeSeverityPtrOutput) Elem() VulnerabilityTypeSeverityOutput {
+	return o.ApplyT(func(v *VulnerabilityTypeSeverity) VulnerabilityTypeSeverity {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityTypeSeverity
+		return ret
+	}).(VulnerabilityTypeSeverityOutput)
 }
 
 func (o VulnerabilityTypeSeverityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3015,16 +3025,6 @@ func (o VulnerabilityTypeSeverityPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o VulnerabilityTypeSeverityPtrOutput) Elem() VulnerabilityTypeSeverityOutput {
-	return o.ApplyT(func(v *VulnerabilityTypeSeverity) VulnerabilityTypeSeverity {
-		var ret VulnerabilityTypeSeverity
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(VulnerabilityTypeSeverityOutput)
 }
 
 // VulnerabilityTypeSeverityInput is an input type that accepts VulnerabilityTypeSeverityArgs and VulnerabilityTypeSeverityOutput values.

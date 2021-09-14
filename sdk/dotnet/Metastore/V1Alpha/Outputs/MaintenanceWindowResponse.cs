@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
+    /// </summary>
     [OutputType]
     public sealed class MaintenanceWindowResponse
     {

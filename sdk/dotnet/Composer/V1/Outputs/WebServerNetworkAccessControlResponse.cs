@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1.Outputs
 {
 
+    /// <summary>
+    /// Network-level access control policy for the Airflow web server.
+    /// </summary>
     [OutputType]
     public sealed class WebServerNetworkAccessControlResponse
     {

@@ -130,9 +130,7 @@ func (i *BackendServiceIamPolicy) ToBackendServiceIamPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceIamPolicyOutput)
 }
 
-type BackendServiceIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type BackendServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BackendServiceIamPolicy)(nil))

@@ -21,9 +21,13 @@ class ArgumentArgumentKind(str, Enum):
     """
     ARGUMENT_KIND_UNSPECIFIED = "ARGUMENT_KIND_UNSPECIFIED"
     FIXED_TYPE = "FIXED_TYPE"
-    """The argument is a variable with fully specified type, which can be a struct or an array, but not a table."""
+    """
+    The argument is a variable with fully specified type, which can be a struct or an array, but not a table.
+    """
     ANY_TYPE = "ANY_TYPE"
-    """The argument is any type, including struct or array, but not a table. To be added: FIXED_TABLE, ANY_TABLE"""
+    """
+    The argument is any type, including struct or array, but not a table. To be added: FIXED_TABLE, ANY_TABLE
+    """
 
 
 class ArgumentMode(str, Enum):
@@ -32,11 +36,17 @@ class ArgumentMode(str, Enum):
     """
     MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
     IN_ = "IN"
-    """The argument is input-only."""
+    """
+    The argument is input-only.
+    """
     OUT = "OUT"
-    """The argument is output-only."""
+    """
+    The argument is output-only.
+    """
     INOUT = "INOUT"
-    """The argument is both an input and an output."""
+    """
+    The argument is both an input and an output.
+    """
 
 
 class AuditLogConfigLogType(str, Enum):
@@ -44,13 +54,21 @@ class AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
-    """Default case. Should never be this."""
+    """
+    Default case. Should never be this.
+    """
     ADMIN_READ = "ADMIN_READ"
-    """Admin reads. Example: CloudIAM getIamPolicy"""
+    """
+    Admin reads. Example: CloudIAM getIamPolicy
+    """
     DATA_WRITE = "DATA_WRITE"
-    """Data writes. Example: CloudSQL Users create"""
+    """
+    Data writes. Example: CloudSQL Users create
+    """
     DATA_READ = "DATA_READ"
-    """Data reads. Example: CloudSQL Users list"""
+    """
+    Data reads. Example: CloudSQL Users list
+    """
 
 
 class RoutineDeterminismLevel(str, Enum):
@@ -58,11 +76,17 @@ class RoutineDeterminismLevel(str, Enum):
     Optional. The determinism level of the JavaScript UDF, if defined.
     """
     DETERMINISM_LEVEL_UNSPECIFIED = "DETERMINISM_LEVEL_UNSPECIFIED"
-    """The determinism of the UDF is unspecified."""
+    """
+    The determinism of the UDF is unspecified.
+    """
     DETERMINISTIC = "DETERMINISTIC"
-    """The UDF is deterministic, meaning that 2 function calls with the same inputs always produce the same result, even across 2 query runs."""
+    """
+    The UDF is deterministic, meaning that 2 function calls with the same inputs always produce the same result, even across 2 query runs.
+    """
     NOT_DETERMINISTIC = "NOT_DETERMINISTIC"
-    """The UDF is not deterministic."""
+    """
+    The UDF is not deterministic.
+    """
 
 
 class RoutineLanguage(str, Enum):
@@ -71,9 +95,13 @@ class RoutineLanguage(str, Enum):
     """
     LANGUAGE_UNSPECIFIED = "LANGUAGE_UNSPECIFIED"
     SQL = "SQL"
-    """SQL language."""
+    """
+    SQL language.
+    """
     JAVASCRIPT = "JAVASCRIPT"
-    """JavaScript language."""
+    """
+    JavaScript language.
+    """
 
 
 class RoutineRoutineType(str, Enum):
@@ -82,11 +110,17 @@ class RoutineRoutineType(str, Enum):
     """
     ROUTINE_TYPE_UNSPECIFIED = "ROUTINE_TYPE_UNSPECIFIED"
     SCALAR_FUNCTION = "SCALAR_FUNCTION"
-    """Non-builtin permanent scalar function."""
+    """
+    Non-builtin permanent scalar function.
+    """
     PROCEDURE = "PROCEDURE"
-    """Stored procedure."""
+    """
+    Stored procedure.
+    """
     TABLE_VALUED_FUNCTION = "TABLE_VALUED_FUNCTION"
-    """Non-builtin permanent TVF."""
+    """
+    Non-builtin permanent TVF.
+    """
 
 
 class StandardSqlDataTypeTypeKind(str, Enum):
@@ -94,36 +128,70 @@ class StandardSqlDataTypeTypeKind(str, Enum):
     Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
     """
     TYPE_KIND_UNSPECIFIED = "TYPE_KIND_UNSPECIFIED"
-    """Invalid type."""
+    """
+    Invalid type.
+    """
     INT64 = "INT64"
-    """Encoded as a string in decimal format."""
+    """
+    Encoded as a string in decimal format.
+    """
     BOOL = "BOOL"
-    """Encoded as a boolean "false" or "true"."""
+    """
+    Encoded as a boolean "false" or "true".
+    """
     FLOAT64 = "FLOAT64"
-    """Encoded as a number, or string "NaN", "Infinity" or "-Infinity"."""
+    """
+    Encoded as a number, or string "NaN", "Infinity" or "-Infinity".
+    """
     STRING = "STRING"
-    """Encoded as a string value."""
+    """
+    Encoded as a string value.
+    """
     BYTES = "BYTES"
-    """Encoded as a base64 string per RFC 4648, section 4."""
+    """
+    Encoded as a base64 string per RFC 4648, section 4.
+    """
     TIMESTAMP = "TIMESTAMP"
-    """Encoded as an RFC 3339 timestamp with mandatory "Z" time zone string: 1985-04-12T23:20:50.52Z"""
+    """
+    Encoded as an RFC 3339 timestamp with mandatory "Z" time zone string: 1985-04-12T23:20:50.52Z
+    """
     DATE = "DATE"
-    """Encoded as RFC 3339 full-date format string: 1985-04-12"""
+    """
+    Encoded as RFC 3339 full-date format string: 1985-04-12
+    """
     TIME = "TIME"
-    """Encoded as RFC 3339 partial-time format string: 23:20:50.52"""
+    """
+    Encoded as RFC 3339 partial-time format string: 23:20:50.52
+    """
     DATETIME = "DATETIME"
-    """Encoded as RFC 3339 full-date "T" partial-time: 1985-04-12T23:20:50.52"""
+    """
+    Encoded as RFC 3339 full-date "T" partial-time: 1985-04-12T23:20:50.52
+    """
     INTERVAL = "INTERVAL"
-    """Encoded as fully qualified 3 part: 0-5 15 2:30:45.6"""
+    """
+    Encoded as fully qualified 3 part: 0-5 15 2:30:45.6
+    """
     GEOGRAPHY = "GEOGRAPHY"
-    """Encoded as WKT"""
+    """
+    Encoded as WKT
+    """
     NUMERIC = "NUMERIC"
-    """Encoded as a decimal string."""
+    """
+    Encoded as a decimal string.
+    """
     BIGNUMERIC = "BIGNUMERIC"
-    """Encoded as a decimal string."""
+    """
+    Encoded as a decimal string.
+    """
     JSON = "JSON"
-    """Encoded as a string."""
+    """
+    Encoded as a string.
+    """
     ARRAY = "ARRAY"
-    """Encoded as a list with types matching Type.array_type."""
+    """
+    Encoded as a list with types matching Type.array_type.
+    """
     STRUCT = "STRUCT"
-    """Encoded as a list with fields of type Type.struct_type[i]. List is used because a JSON object cannot have duplicate field names."""
+    """
+    Encoded as a list with fields of type Type.struct_type[i]. List is used because a JSON object cannot have duplicate field names.
+    """

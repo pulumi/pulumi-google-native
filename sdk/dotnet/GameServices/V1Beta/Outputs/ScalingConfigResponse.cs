@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GameServices.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Autoscaling config for an Agones fleet.
+    /// </summary>
     [OutputType]
     public sealed class ScalingConfigResponse
     {

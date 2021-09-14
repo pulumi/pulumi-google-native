@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Describes the CIS benchmark version that is applicable to a given OS and os version.
+    /// </summary>
     [OutputType]
     public sealed class ComplianceVersionResponse
     {

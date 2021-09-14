@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Commitment for a particular license resource.
+    /// </summary>
     [OutputType]
     public sealed class LicenseResourceCommitmentResponse
     {

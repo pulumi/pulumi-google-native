@@ -13,6 +13,7 @@ __all__ = [
     'GetProjectIamPolicyResult',
     'AwaitableGetProjectIamPolicyResult',
     'get_project_iam_policy',
+    'get_project_iam_policy_output',
 ]
 
 @pulumi.output_type
@@ -94,3 +95,12 @@ def get_project_iam_policy(resource: Optional[str] = None,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_project_iam_policy)
+def get_project_iam_policy_output(resource: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectIamPolicyResult]:
+    """
+    Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names).
+    """
+    ...

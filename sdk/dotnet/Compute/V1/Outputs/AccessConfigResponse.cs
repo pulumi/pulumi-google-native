@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// An access configuration attached to an instance's network interface. Only one access config per instance is supported.
+    /// </summary>
     [OutputType]
     public sealed class AccessConfigResponse
     {

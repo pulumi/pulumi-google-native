@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// A schedule for disks where the schedueled operations are performed.
+    /// </summary>
     [OutputType]
     public sealed class ResourcePolicySnapshotSchedulePolicyScheduleResponse
     {

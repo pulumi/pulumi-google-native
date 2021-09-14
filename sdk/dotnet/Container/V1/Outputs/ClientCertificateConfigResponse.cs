@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for client certificates on the cluster.
+    /// </summary>
     [OutputType]
     public sealed class ClientCertificateConfigResponse
     {

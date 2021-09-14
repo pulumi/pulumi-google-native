@@ -4,6 +4,9 @@
 package v1alpha2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,4 +42,80 @@ type LookupWorkerPoolResult struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig WorkerConfigResponse `pulumi:"workerConfig"`
+}
+
+func LookupWorkerPoolOutput(ctx *pulumi.Context, args LookupWorkerPoolOutputArgs, opts ...pulumi.InvokeOption) LookupWorkerPoolResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupWorkerPoolResult, error) {
+			args := v.(LookupWorkerPoolArgs)
+			r, err := LookupWorkerPool(ctx, &args, opts...)
+			return *r, err
+		}).(LookupWorkerPoolResultOutput)
+}
+
+type LookupWorkerPoolOutputArgs struct {
+	Project      pulumi.StringPtrInput `pulumi:"project"`
+	WorkerPoolId pulumi.StringInput    `pulumi:"workerPoolId"`
+}
+
+func (LookupWorkerPoolOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkerPoolArgs)(nil)).Elem()
+}
+
+type LookupWorkerPoolResultOutput struct{ *pulumi.OutputState }
+
+func (LookupWorkerPoolResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkerPoolResult)(nil)).Elem()
+}
+
+func (o LookupWorkerPoolResultOutput) ToLookupWorkerPoolResultOutput() LookupWorkerPoolResultOutput {
+	return o
+}
+
+func (o LookupWorkerPoolResultOutput) ToLookupWorkerPoolResultOutputWithContext(ctx context.Context) LookupWorkerPoolResultOutput {
+	return o
+}
+
+// Time at which the request to create the `WorkerPool` was received.
+func (o LookupWorkerPoolResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Time at which the request to delete the `WorkerPool` was received.
+func (o LookupWorkerPoolResultOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.
+func (o LookupWorkerPoolResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network configuration for the `WorkerPool`.
+func (o LookupWorkerPoolResultOutput) NetworkConfig() NetworkConfigResponseOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) NetworkConfigResponse { return v.NetworkConfig }).(NetworkConfigResponseOutput)
+}
+
+// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+func (o LookupWorkerPoolResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// WorkerPool state.
+func (o LookupWorkerPoolResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Time at which the request to update the `WorkerPool` was received.
+func (o LookupWorkerPoolResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Worker configuration for the `WorkerPool`.
+func (o LookupWorkerPoolResultOutput) WorkerConfig() WorkerConfigResponseOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) WorkerConfigResponse { return v.WorkerConfig }).(WorkerConfigResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupWorkerPoolResultOutput{})
 }

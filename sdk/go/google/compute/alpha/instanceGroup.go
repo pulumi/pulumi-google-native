@@ -128,9 +128,7 @@ func (i *InstanceGroup) ToInstanceGroupOutputWithContext(ctx context.Context) In
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupOutput)
 }
 
-type InstanceGroupOutput struct {
-	*pulumi.OutputState
-}
+type InstanceGroupOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceGroup)(nil))

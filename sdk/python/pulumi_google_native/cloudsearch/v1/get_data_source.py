@@ -13,6 +13,7 @@ __all__ = [
     'GetDataSourceResult',
     'AwaitableGetDataSourceResult',
     'get_data_source',
+    'get_data_source_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,13 @@ def get_data_source(datasource_id: Optional[str] = None,
         name=__ret__.name,
         operation_ids=__ret__.operation_ids,
         short_name=__ret__.short_name)
+
+
+@_utilities.lift_output_func(get_data_source)
+def get_data_source_output(datasource_id: Optional[pulumi.Input[str]] = None,
+                           debug_options_enable_debugging: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataSourceResult]:
+    """
+    Gets a datasource. **Note:** This API requires an admin account to execute.
+    """
+    ...

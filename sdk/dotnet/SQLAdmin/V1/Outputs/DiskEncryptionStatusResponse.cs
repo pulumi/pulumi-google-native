@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 {
 
+    /// <summary>
+    /// Disk encryption status for an instance.
+    /// </summary>
     [OutputType]
     public sealed class DiskEncryptionStatusResponse
     {

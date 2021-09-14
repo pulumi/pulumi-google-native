@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterResult',
     'AwaitableGetClusterResult',
     'get_cluster',
+    'get_cluster_output',
 ]
 
 @pulumi.output_type
@@ -124,3 +125,14 @@ def get_cluster(cluster_id: Optional[str] = None,
         name=__ret__.name,
         serve_nodes=__ret__.serve_nodes,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                       instance_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    """
+    Gets information about a cluster.
+    """
+    ...

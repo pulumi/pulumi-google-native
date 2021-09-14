@@ -103,9 +103,7 @@ func (i *FolderPolicy) ToFolderPolicyOutputWithContext(ctx context.Context) Fold
 	return pulumi.ToOutputWithContext(ctx, i).(FolderPolicyOutput)
 }
 
-type FolderPolicyOutput struct {
-	*pulumi.OutputState
-}
+type FolderPolicyOutput struct{ *pulumi.OutputState }
 
 func (FolderPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FolderPolicy)(nil))

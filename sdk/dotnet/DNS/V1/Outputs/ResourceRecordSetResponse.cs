@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1.Outputs
 {
 
+    /// <summary>
+    /// A unit of data that is returned by the DNS servers.
+    /// </summary>
     [OutputType]
     public sealed class ResourceRecordSetResponse
     {

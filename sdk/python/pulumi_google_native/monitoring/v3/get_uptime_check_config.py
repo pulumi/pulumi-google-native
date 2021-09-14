@@ -13,6 +13,7 @@ __all__ = [
     'GetUptimeCheckConfigResult',
     'AwaitableGetUptimeCheckConfigResult',
     'get_uptime_check_config',
+    'get_uptime_check_config_output',
 ]
 
 @pulumi.output_type
@@ -200,3 +201,13 @@ def get_uptime_check_config(project: Optional[str] = None,
         selected_regions=__ret__.selected_regions,
         tcp_check=__ret__.tcp_check,
         timeout=__ret__.timeout)
+
+
+@_utilities.lift_output_func(get_uptime_check_config)
+def get_uptime_check_config_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                   uptime_check_config_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUptimeCheckConfigResult]:
+    """
+    Gets a single Uptime check configuration.
+    """
+    ...

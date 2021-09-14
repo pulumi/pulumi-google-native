@@ -128,7 +128,7 @@ func (o AggregationCrossSeriesReducerOutput) ToStringPtrOutputWithContext(ctx co
 type AggregationCrossSeriesReducerPtrOutput struct{ *pulumi.OutputState }
 
 func (AggregationCrossSeriesReducerPtrOutput) ElementType() reflect.Type {
-	return aggregationCrossSeriesReducerPtrType
+	return reflect.TypeOf((**AggregationCrossSeriesReducer)(nil)).Elem()
 }
 
 func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput {
@@ -137,6 +137,16 @@ func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerP
 
 func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
 	return o
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) Elem() AggregationCrossSeriesReducerOutput {
+	return o.ApplyT(func(v *AggregationCrossSeriesReducer) AggregationCrossSeriesReducer {
+		if v != nil {
+			return *v
+		}
+		var ret AggregationCrossSeriesReducer
+		return ret
+	}).(AggregationCrossSeriesReducerOutput)
 }
 
 func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -151,16 +161,6 @@ func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AggregationCrossSeriesReducerPtrOutput) Elem() AggregationCrossSeriesReducerOutput {
-	return o.ApplyT(func(v *AggregationCrossSeriesReducer) AggregationCrossSeriesReducer {
-		var ret AggregationCrossSeriesReducer
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AggregationCrossSeriesReducerOutput)
 }
 
 // AggregationCrossSeriesReducerInput is an input type that accepts AggregationCrossSeriesReducerArgs and AggregationCrossSeriesReducerOutput values.
@@ -329,7 +329,7 @@ func (o AggregationPerSeriesAlignerOutput) ToStringPtrOutputWithContext(ctx cont
 type AggregationPerSeriesAlignerPtrOutput struct{ *pulumi.OutputState }
 
 func (AggregationPerSeriesAlignerPtrOutput) ElementType() reflect.Type {
-	return aggregationPerSeriesAlignerPtrType
+	return reflect.TypeOf((**AggregationPerSeriesAligner)(nil)).Elem()
 }
 
 func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput {
@@ -338,6 +338,16 @@ func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOu
 
 func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
 	return o
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) Elem() AggregationPerSeriesAlignerOutput {
+	return o.ApplyT(func(v *AggregationPerSeriesAligner) AggregationPerSeriesAligner {
+		if v != nil {
+			return *v
+		}
+		var ret AggregationPerSeriesAligner
+		return ret
+	}).(AggregationPerSeriesAlignerOutput)
 }
 
 func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -352,16 +362,6 @@ func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AggregationPerSeriesAlignerPtrOutput) Elem() AggregationPerSeriesAlignerOutput {
-	return o.ApplyT(func(v *AggregationPerSeriesAligner) AggregationPerSeriesAligner {
-		var ret AggregationPerSeriesAligner
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AggregationPerSeriesAlignerOutput)
 }
 
 // AggregationPerSeriesAlignerInput is an input type that accepts AggregationPerSeriesAlignerArgs and AggregationPerSeriesAlignerOutput values.
@@ -500,7 +500,7 @@ func (o AlertPolicyCombinerOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type AlertPolicyCombinerPtrOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyCombinerPtrOutput) ElementType() reflect.Type {
-	return alertPolicyCombinerPtrType
+	return reflect.TypeOf((**AlertPolicyCombiner)(nil)).Elem()
 }
 
 func (o AlertPolicyCombinerPtrOutput) ToAlertPolicyCombinerPtrOutput() AlertPolicyCombinerPtrOutput {
@@ -509,6 +509,16 @@ func (o AlertPolicyCombinerPtrOutput) ToAlertPolicyCombinerPtrOutput() AlertPoli
 
 func (o AlertPolicyCombinerPtrOutput) ToAlertPolicyCombinerPtrOutputWithContext(ctx context.Context) AlertPolicyCombinerPtrOutput {
 	return o
+}
+
+func (o AlertPolicyCombinerPtrOutput) Elem() AlertPolicyCombinerOutput {
+	return o.ApplyT(func(v *AlertPolicyCombiner) AlertPolicyCombiner {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyCombiner
+		return ret
+	}).(AlertPolicyCombinerOutput)
 }
 
 func (o AlertPolicyCombinerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -523,16 +533,6 @@ func (o AlertPolicyCombinerPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AlertPolicyCombinerPtrOutput) Elem() AlertPolicyCombinerOutput {
-	return o.ApplyT(func(v *AlertPolicyCombiner) AlertPolicyCombiner {
-		var ret AlertPolicyCombiner
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AlertPolicyCombinerOutput)
 }
 
 // AlertPolicyCombinerInput is an input type that accepts AlertPolicyCombinerArgs and AlertPolicyCombinerOutput values.
@@ -673,7 +673,7 @@ func (o ContentMatcherMatcherOutput) ToStringPtrOutputWithContext(ctx context.Co
 type ContentMatcherMatcherPtrOutput struct{ *pulumi.OutputState }
 
 func (ContentMatcherMatcherPtrOutput) ElementType() reflect.Type {
-	return contentMatcherMatcherPtrType
+	return reflect.TypeOf((**ContentMatcherMatcher)(nil)).Elem()
 }
 
 func (o ContentMatcherMatcherPtrOutput) ToContentMatcherMatcherPtrOutput() ContentMatcherMatcherPtrOutput {
@@ -682,6 +682,16 @@ func (o ContentMatcherMatcherPtrOutput) ToContentMatcherMatcherPtrOutput() Conte
 
 func (o ContentMatcherMatcherPtrOutput) ToContentMatcherMatcherPtrOutputWithContext(ctx context.Context) ContentMatcherMatcherPtrOutput {
 	return o
+}
+
+func (o ContentMatcherMatcherPtrOutput) Elem() ContentMatcherMatcherOutput {
+	return o.ApplyT(func(v *ContentMatcherMatcher) ContentMatcherMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret ContentMatcherMatcher
+		return ret
+	}).(ContentMatcherMatcherOutput)
 }
 
 func (o ContentMatcherMatcherPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -696,16 +706,6 @@ func (o ContentMatcherMatcherPtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ContentMatcherMatcherPtrOutput) Elem() ContentMatcherMatcherOutput {
-	return o.ApplyT(func(v *ContentMatcherMatcher) ContentMatcherMatcher {
-		var ret ContentMatcherMatcher
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ContentMatcherMatcherOutput)
 }
 
 // ContentMatcherMatcherInput is an input type that accepts ContentMatcherMatcherArgs and ContentMatcherMatcherOutput values.
@@ -840,7 +840,7 @@ func (o HttpCheckContentTypeOutput) ToStringPtrOutputWithContext(ctx context.Con
 type HttpCheckContentTypePtrOutput struct{ *pulumi.OutputState }
 
 func (HttpCheckContentTypePtrOutput) ElementType() reflect.Type {
-	return httpCheckContentTypePtrType
+	return reflect.TypeOf((**HttpCheckContentType)(nil)).Elem()
 }
 
 func (o HttpCheckContentTypePtrOutput) ToHttpCheckContentTypePtrOutput() HttpCheckContentTypePtrOutput {
@@ -849,6 +849,16 @@ func (o HttpCheckContentTypePtrOutput) ToHttpCheckContentTypePtrOutput() HttpChe
 
 func (o HttpCheckContentTypePtrOutput) ToHttpCheckContentTypePtrOutputWithContext(ctx context.Context) HttpCheckContentTypePtrOutput {
 	return o
+}
+
+func (o HttpCheckContentTypePtrOutput) Elem() HttpCheckContentTypeOutput {
+	return o.ApplyT(func(v *HttpCheckContentType) HttpCheckContentType {
+		if v != nil {
+			return *v
+		}
+		var ret HttpCheckContentType
+		return ret
+	}).(HttpCheckContentTypeOutput)
 }
 
 func (o HttpCheckContentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -863,16 +873,6 @@ func (o HttpCheckContentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HttpCheckContentTypePtrOutput) Elem() HttpCheckContentTypeOutput {
-	return o.ApplyT(func(v *HttpCheckContentType) HttpCheckContentType {
-		var ret HttpCheckContentType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HttpCheckContentTypeOutput)
 }
 
 // HttpCheckContentTypeInput is an input type that accepts HttpCheckContentTypeArgs and HttpCheckContentTypeOutput values.
@@ -1009,7 +1009,7 @@ func (o HttpCheckRequestMethodOutput) ToStringPtrOutputWithContext(ctx context.C
 type HttpCheckRequestMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (HttpCheckRequestMethodPtrOutput) ElementType() reflect.Type {
-	return httpCheckRequestMethodPtrType
+	return reflect.TypeOf((**HttpCheckRequestMethod)(nil)).Elem()
 }
 
 func (o HttpCheckRequestMethodPtrOutput) ToHttpCheckRequestMethodPtrOutput() HttpCheckRequestMethodPtrOutput {
@@ -1018,6 +1018,16 @@ func (o HttpCheckRequestMethodPtrOutput) ToHttpCheckRequestMethodPtrOutput() Htt
 
 func (o HttpCheckRequestMethodPtrOutput) ToHttpCheckRequestMethodPtrOutputWithContext(ctx context.Context) HttpCheckRequestMethodPtrOutput {
 	return o
+}
+
+func (o HttpCheckRequestMethodPtrOutput) Elem() HttpCheckRequestMethodOutput {
+	return o.ApplyT(func(v *HttpCheckRequestMethod) HttpCheckRequestMethod {
+		if v != nil {
+			return *v
+		}
+		var ret HttpCheckRequestMethod
+		return ret
+	}).(HttpCheckRequestMethodOutput)
 }
 
 func (o HttpCheckRequestMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1032,16 +1042,6 @@ func (o HttpCheckRequestMethodPtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HttpCheckRequestMethodPtrOutput) Elem() HttpCheckRequestMethodOutput {
-	return o.ApplyT(func(v *HttpCheckRequestMethod) HttpCheckRequestMethod {
-		var ret HttpCheckRequestMethod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HttpCheckRequestMethodOutput)
 }
 
 // HttpCheckRequestMethodInput is an input type that accepts HttpCheckRequestMethodArgs and HttpCheckRequestMethodOutput values.
@@ -1178,7 +1178,7 @@ func (o InternalCheckerStateOutput) ToStringPtrOutputWithContext(ctx context.Con
 type InternalCheckerStatePtrOutput struct{ *pulumi.OutputState }
 
 func (InternalCheckerStatePtrOutput) ElementType() reflect.Type {
-	return internalCheckerStatePtrType
+	return reflect.TypeOf((**InternalCheckerState)(nil)).Elem()
 }
 
 func (o InternalCheckerStatePtrOutput) ToInternalCheckerStatePtrOutput() InternalCheckerStatePtrOutput {
@@ -1187,6 +1187,16 @@ func (o InternalCheckerStatePtrOutput) ToInternalCheckerStatePtrOutput() Interna
 
 func (o InternalCheckerStatePtrOutput) ToInternalCheckerStatePtrOutputWithContext(ctx context.Context) InternalCheckerStatePtrOutput {
 	return o
+}
+
+func (o InternalCheckerStatePtrOutput) Elem() InternalCheckerStateOutput {
+	return o.ApplyT(func(v *InternalCheckerState) InternalCheckerState {
+		if v != nil {
+			return *v
+		}
+		var ret InternalCheckerState
+		return ret
+	}).(InternalCheckerStateOutput)
 }
 
 func (o InternalCheckerStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1201,16 +1211,6 @@ func (o InternalCheckerStatePtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InternalCheckerStatePtrOutput) Elem() InternalCheckerStateOutput {
-	return o.ApplyT(func(v *InternalCheckerState) InternalCheckerState {
-		var ret InternalCheckerState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InternalCheckerStateOutput)
 }
 
 // InternalCheckerStateInput is an input type that accepts InternalCheckerStateArgs and InternalCheckerStateOutput values.
@@ -1347,7 +1347,7 @@ func (o LabelDescriptorValueTypeOutput) ToStringPtrOutputWithContext(ctx context
 type LabelDescriptorValueTypePtrOutput struct{ *pulumi.OutputState }
 
 func (LabelDescriptorValueTypePtrOutput) ElementType() reflect.Type {
-	return labelDescriptorValueTypePtrType
+	return reflect.TypeOf((**LabelDescriptorValueType)(nil)).Elem()
 }
 
 func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutput() LabelDescriptorValueTypePtrOutput {
@@ -1356,6 +1356,16 @@ func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutput()
 
 func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutputWithContext(ctx context.Context) LabelDescriptorValueTypePtrOutput {
 	return o
+}
+
+func (o LabelDescriptorValueTypePtrOutput) Elem() LabelDescriptorValueTypeOutput {
+	return o.ApplyT(func(v *LabelDescriptorValueType) LabelDescriptorValueType {
+		if v != nil {
+			return *v
+		}
+		var ret LabelDescriptorValueType
+		return ret
+	}).(LabelDescriptorValueTypeOutput)
 }
 
 func (o LabelDescriptorValueTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1370,16 +1380,6 @@ func (o LabelDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o LabelDescriptorValueTypePtrOutput) Elem() LabelDescriptorValueTypeOutput {
-	return o.ApplyT(func(v *LabelDescriptorValueType) LabelDescriptorValueType {
-		var ret LabelDescriptorValueType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(LabelDescriptorValueTypeOutput)
 }
 
 // LabelDescriptorValueTypeInput is an input type that accepts LabelDescriptorValueTypeArgs and LabelDescriptorValueTypeOutput values.
@@ -1526,7 +1526,7 @@ func (o MetricDescriptorLaunchStageOutput) ToStringPtrOutputWithContext(ctx cont
 type MetricDescriptorLaunchStagePtrOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorLaunchStagePtrOutput) ElementType() reflect.Type {
-	return metricDescriptorLaunchStagePtrType
+	return reflect.TypeOf((**MetricDescriptorLaunchStage)(nil)).Elem()
 }
 
 func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOutput() MetricDescriptorLaunchStagePtrOutput {
@@ -1535,6 +1535,16 @@ func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOu
 
 func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorLaunchStagePtrOutput {
 	return o
+}
+
+func (o MetricDescriptorLaunchStagePtrOutput) Elem() MetricDescriptorLaunchStageOutput {
+	return o.ApplyT(func(v *MetricDescriptorLaunchStage) MetricDescriptorLaunchStage {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptorLaunchStage
+		return ret
+	}).(MetricDescriptorLaunchStageOutput)
 }
 
 func (o MetricDescriptorLaunchStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1549,16 +1559,6 @@ func (o MetricDescriptorLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MetricDescriptorLaunchStagePtrOutput) Elem() MetricDescriptorLaunchStageOutput {
-	return o.ApplyT(func(v *MetricDescriptorLaunchStage) MetricDescriptorLaunchStage {
-		var ret MetricDescriptorLaunchStage
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MetricDescriptorLaunchStageOutput)
 }
 
 // MetricDescriptorLaunchStageInput is an input type that accepts MetricDescriptorLaunchStageArgs and MetricDescriptorLaunchStageOutput values.
@@ -1697,7 +1697,7 @@ func (o MetricDescriptorMetricKindOutput) ToStringPtrOutputWithContext(ctx conte
 type MetricDescriptorMetricKindPtrOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorMetricKindPtrOutput) ElementType() reflect.Type {
-	return metricDescriptorMetricKindPtrType
+	return reflect.TypeOf((**MetricDescriptorMetricKind)(nil)).Elem()
 }
 
 func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutput() MetricDescriptorMetricKindPtrOutput {
@@ -1706,6 +1706,16 @@ func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutp
 
 func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutputWithContext(ctx context.Context) MetricDescriptorMetricKindPtrOutput {
 	return o
+}
+
+func (o MetricDescriptorMetricKindPtrOutput) Elem() MetricDescriptorMetricKindOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetricKind) MetricDescriptorMetricKind {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptorMetricKind
+		return ret
+	}).(MetricDescriptorMetricKindOutput)
 }
 
 func (o MetricDescriptorMetricKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1720,16 +1730,6 @@ func (o MetricDescriptorMetricKindPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MetricDescriptorMetricKindPtrOutput) Elem() MetricDescriptorMetricKindOutput {
-	return o.ApplyT(func(v *MetricDescriptorMetricKind) MetricDescriptorMetricKind {
-		var ret MetricDescriptorMetricKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MetricDescriptorMetricKindOutput)
 }
 
 // MetricDescriptorMetricKindInput is an input type that accepts MetricDescriptorMetricKindArgs and MetricDescriptorMetricKindOutput values.
@@ -1874,7 +1874,7 @@ func (o MetricDescriptorValueTypeOutput) ToStringPtrOutputWithContext(ctx contex
 type MetricDescriptorValueTypePtrOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorValueTypePtrOutput) ElementType() reflect.Type {
-	return metricDescriptorValueTypePtrType
+	return reflect.TypeOf((**MetricDescriptorValueType)(nil)).Elem()
 }
 
 func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutput() MetricDescriptorValueTypePtrOutput {
@@ -1883,6 +1883,16 @@ func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutput
 
 func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutputWithContext(ctx context.Context) MetricDescriptorValueTypePtrOutput {
 	return o
+}
+
+func (o MetricDescriptorValueTypePtrOutput) Elem() MetricDescriptorValueTypeOutput {
+	return o.ApplyT(func(v *MetricDescriptorValueType) MetricDescriptorValueType {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptorValueType
+		return ret
+	}).(MetricDescriptorValueTypeOutput)
 }
 
 func (o MetricDescriptorValueTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1897,16 +1907,6 @@ func (o MetricDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MetricDescriptorValueTypePtrOutput) Elem() MetricDescriptorValueTypeOutput {
-	return o.ApplyT(func(v *MetricDescriptorValueType) MetricDescriptorValueType {
-		var ret MetricDescriptorValueType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MetricDescriptorValueTypeOutput)
 }
 
 // MetricDescriptorValueTypeInput is an input type that accepts MetricDescriptorValueTypeArgs and MetricDescriptorValueTypeOutput values.
@@ -2051,7 +2051,7 @@ func (o MetricThresholdComparisonOutput) ToStringPtrOutputWithContext(ctx contex
 type MetricThresholdComparisonPtrOutput struct{ *pulumi.OutputState }
 
 func (MetricThresholdComparisonPtrOutput) ElementType() reflect.Type {
-	return metricThresholdComparisonPtrType
+	return reflect.TypeOf((**MetricThresholdComparison)(nil)).Elem()
 }
 
 func (o MetricThresholdComparisonPtrOutput) ToMetricThresholdComparisonPtrOutput() MetricThresholdComparisonPtrOutput {
@@ -2060,6 +2060,16 @@ func (o MetricThresholdComparisonPtrOutput) ToMetricThresholdComparisonPtrOutput
 
 func (o MetricThresholdComparisonPtrOutput) ToMetricThresholdComparisonPtrOutputWithContext(ctx context.Context) MetricThresholdComparisonPtrOutput {
 	return o
+}
+
+func (o MetricThresholdComparisonPtrOutput) Elem() MetricThresholdComparisonOutput {
+	return o.ApplyT(func(v *MetricThresholdComparison) MetricThresholdComparison {
+		if v != nil {
+			return *v
+		}
+		var ret MetricThresholdComparison
+		return ret
+	}).(MetricThresholdComparisonOutput)
 }
 
 func (o MetricThresholdComparisonPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2074,16 +2084,6 @@ func (o MetricThresholdComparisonPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MetricThresholdComparisonPtrOutput) Elem() MetricThresholdComparisonOutput {
-	return o.ApplyT(func(v *MetricThresholdComparison) MetricThresholdComparison {
-		var ret MetricThresholdComparison
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MetricThresholdComparisonOutput)
 }
 
 // MetricThresholdComparisonInput is an input type that accepts MetricThresholdComparisonArgs and MetricThresholdComparisonOutput values.
@@ -2220,7 +2220,7 @@ func (o NotificationChannelVerificationStatusOutput) ToStringPtrOutputWithContex
 type NotificationChannelVerificationStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (NotificationChannelVerificationStatusPtrOutput) ElementType() reflect.Type {
-	return notificationChannelVerificationStatusPtrType
+	return reflect.TypeOf((**NotificationChannelVerificationStatus)(nil)).Elem()
 }
 
 func (o NotificationChannelVerificationStatusPtrOutput) ToNotificationChannelVerificationStatusPtrOutput() NotificationChannelVerificationStatusPtrOutput {
@@ -2229,6 +2229,16 @@ func (o NotificationChannelVerificationStatusPtrOutput) ToNotificationChannelVer
 
 func (o NotificationChannelVerificationStatusPtrOutput) ToNotificationChannelVerificationStatusPtrOutputWithContext(ctx context.Context) NotificationChannelVerificationStatusPtrOutput {
 	return o
+}
+
+func (o NotificationChannelVerificationStatusPtrOutput) Elem() NotificationChannelVerificationStatusOutput {
+	return o.ApplyT(func(v *NotificationChannelVerificationStatus) NotificationChannelVerificationStatus {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationChannelVerificationStatus
+		return ret
+	}).(NotificationChannelVerificationStatusOutput)
 }
 
 func (o NotificationChannelVerificationStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2243,16 +2253,6 @@ func (o NotificationChannelVerificationStatusPtrOutput) ToStringPtrOutputWithCon
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NotificationChannelVerificationStatusPtrOutput) Elem() NotificationChannelVerificationStatusOutput {
-	return o.ApplyT(func(v *NotificationChannelVerificationStatus) NotificationChannelVerificationStatus {
-		var ret NotificationChannelVerificationStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NotificationChannelVerificationStatusOutput)
 }
 
 // NotificationChannelVerificationStatusInput is an input type that accepts NotificationChannelVerificationStatusArgs and NotificationChannelVerificationStatusOutput values.
@@ -2389,7 +2389,7 @@ func (o ResourceGroupResourceTypeOutput) ToStringPtrOutputWithContext(ctx contex
 type ResourceGroupResourceTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ResourceGroupResourceTypePtrOutput) ElementType() reflect.Type {
-	return resourceGroupResourceTypePtrType
+	return reflect.TypeOf((**ResourceGroupResourceType)(nil)).Elem()
 }
 
 func (o ResourceGroupResourceTypePtrOutput) ToResourceGroupResourceTypePtrOutput() ResourceGroupResourceTypePtrOutput {
@@ -2398,6 +2398,16 @@ func (o ResourceGroupResourceTypePtrOutput) ToResourceGroupResourceTypePtrOutput
 
 func (o ResourceGroupResourceTypePtrOutput) ToResourceGroupResourceTypePtrOutputWithContext(ctx context.Context) ResourceGroupResourceTypePtrOutput {
 	return o
+}
+
+func (o ResourceGroupResourceTypePtrOutput) Elem() ResourceGroupResourceTypeOutput {
+	return o.ApplyT(func(v *ResourceGroupResourceType) ResourceGroupResourceType {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceGroupResourceType
+		return ret
+	}).(ResourceGroupResourceTypeOutput)
 }
 
 func (o ResourceGroupResourceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2412,16 +2422,6 @@ func (o ResourceGroupResourceTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGroupResourceTypePtrOutput) Elem() ResourceGroupResourceTypeOutput {
-	return o.ApplyT(func(v *ResourceGroupResourceType) ResourceGroupResourceType {
-		var ret ResourceGroupResourceType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ResourceGroupResourceTypeOutput)
 }
 
 // ResourceGroupResourceTypeInput is an input type that accepts ResourceGroupResourceTypeArgs and ResourceGroupResourceTypeOutput values.
@@ -2568,7 +2568,7 @@ func (o ServiceLevelObjectiveCalendarPeriodOutput) ToStringPtrOutputWithContext(
 type ServiceLevelObjectiveCalendarPeriodPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceLevelObjectiveCalendarPeriodPtrOutput) ElementType() reflect.Type {
-	return serviceLevelObjectiveCalendarPeriodPtrType
+	return reflect.TypeOf((**ServiceLevelObjectiveCalendarPeriod)(nil)).Elem()
 }
 
 func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToServiceLevelObjectiveCalendarPeriodPtrOutput() ServiceLevelObjectiveCalendarPeriodPtrOutput {
@@ -2577,6 +2577,16 @@ func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToServiceLevelObjectiveCal
 
 func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(ctx context.Context) ServiceLevelObjectiveCalendarPeriodPtrOutput {
 	return o
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) Elem() ServiceLevelObjectiveCalendarPeriodOutput {
+	return o.ApplyT(func(v *ServiceLevelObjectiveCalendarPeriod) ServiceLevelObjectiveCalendarPeriod {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceLevelObjectiveCalendarPeriod
+		return ret
+	}).(ServiceLevelObjectiveCalendarPeriodOutput)
 }
 
 func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2591,16 +2601,6 @@ func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) Elem() ServiceLevelObjectiveCalendarPeriodOutput {
-	return o.ApplyT(func(v *ServiceLevelObjectiveCalendarPeriod) ServiceLevelObjectiveCalendarPeriod {
-		var ret ServiceLevelObjectiveCalendarPeriod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ServiceLevelObjectiveCalendarPeriodOutput)
 }
 
 // ServiceLevelObjectiveCalendarPeriodInput is an input type that accepts ServiceLevelObjectiveCalendarPeriodArgs and ServiceLevelObjectiveCalendarPeriodOutput values.
@@ -2740,7 +2740,7 @@ func (o UptimeCheckConfigSelectedRegionsItemOutput) ToStringPtrOutputWithContext
 type UptimeCheckConfigSelectedRegionsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigSelectedRegionsItemPtrOutput) ElementType() reflect.Type {
-	return uptimeCheckConfigSelectedRegionsItemPtrType
+	return reflect.TypeOf((**UptimeCheckConfigSelectedRegionsItem)(nil)).Elem()
 }
 
 func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToUptimeCheckConfigSelectedRegionsItemPtrOutput() UptimeCheckConfigSelectedRegionsItemPtrOutput {
@@ -2749,6 +2749,16 @@ func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToUptimeCheckConfigSelect
 
 func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToUptimeCheckConfigSelectedRegionsItemPtrOutputWithContext(ctx context.Context) UptimeCheckConfigSelectedRegionsItemPtrOutput {
 	return o
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) Elem() UptimeCheckConfigSelectedRegionsItemOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigSelectedRegionsItem) UptimeCheckConfigSelectedRegionsItem {
+		if v != nil {
+			return *v
+		}
+		var ret UptimeCheckConfigSelectedRegionsItem
+		return ret
+	}).(UptimeCheckConfigSelectedRegionsItemOutput)
 }
 
 func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2763,16 +2773,6 @@ func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToStringPtrOutputWithCont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) Elem() UptimeCheckConfigSelectedRegionsItemOutput {
-	return o.ApplyT(func(v *UptimeCheckConfigSelectedRegionsItem) UptimeCheckConfigSelectedRegionsItem {
-		var ret UptimeCheckConfigSelectedRegionsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(UptimeCheckConfigSelectedRegionsItemOutput)
 }
 
 // UptimeCheckConfigSelectedRegionsItemInput is an input type that accepts UptimeCheckConfigSelectedRegionsItemArgs and UptimeCheckConfigSelectedRegionsItemOutput values.
@@ -2853,8 +2853,8 @@ func (o UptimeCheckConfigSelectedRegionsItemArrayOutput) ToUptimeCheckConfigSele
 }
 
 func (o UptimeCheckConfigSelectedRegionsItemArrayOutput) Index(i pulumi.IntInput) UptimeCheckConfigSelectedRegionsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UptimeCheckConfigSelectedRegionsItemOutput {
-		return vs[0].([]UptimeCheckConfigSelectedRegionsItem)[vs[1].(int)].ToUptimeCheckConfigSelectedRegionsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UptimeCheckConfigSelectedRegionsItem {
+		return vs[0].([]UptimeCheckConfigSelectedRegionsItem)[vs[1].(int)]
 	}).(UptimeCheckConfigSelectedRegionsItemOutput)
 }
 

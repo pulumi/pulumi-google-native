@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,75 @@ type LookupRoleResult struct {
 	Stage string `pulumi:"stage"`
 	// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
 	Title string `pulumi:"title"`
+}
+
+func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pulumi.InvokeOption) LookupRoleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRoleResult, error) {
+			args := v.(LookupRoleArgs)
+			r, err := LookupRole(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRoleResultOutput)
+}
+
+type LookupRoleOutputArgs struct {
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	RoleId  pulumi.StringInput    `pulumi:"roleId"`
+}
+
+func (LookupRoleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleArgs)(nil)).Elem()
+}
+
+type LookupRoleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRoleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleResult)(nil)).Elem()
+}
+
+func (o LookupRoleResultOutput) ToLookupRoleResultOutput() LookupRoleResultOutput {
+	return o
+}
+
+func (o LookupRoleResultOutput) ToLookupRoleResultOutputWithContext(ctx context.Context) LookupRoleResultOutput {
+	return o
+}
+
+// The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+func (o LookupRoleResultOutput) Deleted() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRoleResult) bool { return v.Deleted }).(pulumi.BoolOutput)
+}
+
+// Optional. A human-readable description for the role.
+func (o LookupRoleResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Used to perform a consistent read-modify-write.
+func (o LookupRoleResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The names of the permissions this role grants when bound in an IAM policy.
+func (o LookupRoleResultOutput) IncludedPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRoleResult) []string { return v.IncludedPermissions }).(pulumi.StringArrayOutput)
+}
+
+// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+func (o LookupRoleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+func (o LookupRoleResultOutput) Stage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Stage }).(pulumi.StringOutput)
+}
+
+// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+func (o LookupRoleResultOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Title }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRoleResultOutput{})
 }

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
 {
 
+    /// <summary>
+    /// Product thumbnail/detail image.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRetailV2alphaImageResponse
     {

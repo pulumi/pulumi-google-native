@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudTasks.V2Beta3.Outputs
 {
 
+    /// <summary>
+    /// Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/).
+    /// </summary>
     [OutputType]
     public sealed class StackdriverLoggingConfigResponse
     {

@@ -130,9 +130,7 @@ func (i *PublicAdvertisedPrefix) ToPublicAdvertisedPrefixOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PublicAdvertisedPrefixOutput)
 }
 
-type PublicAdvertisedPrefixOutput struct {
-	*pulumi.OutputState
-}
+type PublicAdvertisedPrefixOutput struct{ *pulumi.OutputState }
 
 func (PublicAdvertisedPrefixOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PublicAdvertisedPrefix)(nil))

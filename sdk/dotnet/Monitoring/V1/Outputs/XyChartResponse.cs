@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// A chart that displays data on a 2D (X and Y axes) plane.
+    /// </summary>
     [OutputType]
     public sealed class XyChartResponse
     {

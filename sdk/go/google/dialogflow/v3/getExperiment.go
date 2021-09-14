@@ -4,6 +4,9 @@
 package v3
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,4 +59,122 @@ type LookupExperimentResult struct {
 	State string `pulumi:"state"`
 	// The history of updates to the experiment variants.
 	VariantsHistory []GoogleCloudDialogflowCxV3VariantsHistoryResponse `pulumi:"variantsHistory"`
+}
+
+func LookupExperimentOutput(ctx *pulumi.Context, args LookupExperimentOutputArgs, opts ...pulumi.InvokeOption) LookupExperimentResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupExperimentResult, error) {
+			args := v.(LookupExperimentArgs)
+			r, err := LookupExperiment(ctx, &args, opts...)
+			return *r, err
+		}).(LookupExperimentResultOutput)
+}
+
+type LookupExperimentOutputArgs struct {
+	AgentId       pulumi.StringInput    `pulumi:"agentId"`
+	EnvironmentId pulumi.StringInput    `pulumi:"environmentId"`
+	ExperimentId  pulumi.StringInput    `pulumi:"experimentId"`
+	Location      pulumi.StringInput    `pulumi:"location"`
+	Project       pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupExperimentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupExperimentArgs)(nil)).Elem()
+}
+
+type LookupExperimentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupExperimentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupExperimentResult)(nil)).Elem()
+}
+
+func (o LookupExperimentResultOutput) ToLookupExperimentResultOutput() LookupExperimentResultOutput {
+	return o
+}
+
+func (o LookupExperimentResultOutput) ToLookupExperimentResultOutputWithContext(ctx context.Context) LookupExperimentResultOutput {
+	return o
+}
+
+// Creation time of this experiment.
+func (o LookupExperimentResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExperimentResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The definition of the experiment.
+func (o LookupExperimentResultOutput) Definition() GoogleCloudDialogflowCxV3ExperimentDefinitionResponseOutput {
+	return o.ApplyT(func(v LookupExperimentResult) GoogleCloudDialogflowCxV3ExperimentDefinitionResponse {
+		return v.Definition
+	}).(GoogleCloudDialogflowCxV3ExperimentDefinitionResponseOutput)
+}
+
+// The human-readable description of the experiment.
+func (o LookupExperimentResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExperimentResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+func (o LookupExperimentResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExperimentResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// End time of this experiment.
+func (o LookupExperimentResultOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExperimentResult) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+func (o LookupExperimentResultOutput) ExperimentLength() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExperimentResult) string { return v.ExperimentLength }).(pulumi.StringOutput)
+}
+
+// Last update time of this experiment.
+func (o LookupExperimentResultOutput) LastUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExperimentResult) string { return v.LastUpdateTime }).(pulumi.StringOutput)
+}
+
+// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
+func (o LookupExperimentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExperimentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Inference result of the experiment.
+func (o LookupExperimentResultOutput) Result() GoogleCloudDialogflowCxV3ExperimentResultResponseOutput {
+	return o.ApplyT(func(v LookupExperimentResult) GoogleCloudDialogflowCxV3ExperimentResultResponse { return v.Result }).(GoogleCloudDialogflowCxV3ExperimentResultResponseOutput)
+}
+
+// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+func (o LookupExperimentResultOutput) RolloutConfig() GoogleCloudDialogflowCxV3RolloutConfigResponseOutput {
+	return o.ApplyT(func(v LookupExperimentResult) GoogleCloudDialogflowCxV3RolloutConfigResponse { return v.RolloutConfig }).(GoogleCloudDialogflowCxV3RolloutConfigResponseOutput)
+}
+
+// The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+func (o LookupExperimentResultOutput) RolloutFailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExperimentResult) string { return v.RolloutFailureReason }).(pulumi.StringOutput)
+}
+
+// State of the auto rollout process.
+func (o LookupExperimentResultOutput) RolloutState() GoogleCloudDialogflowCxV3RolloutStateResponseOutput {
+	return o.ApplyT(func(v LookupExperimentResult) GoogleCloudDialogflowCxV3RolloutStateResponse { return v.RolloutState }).(GoogleCloudDialogflowCxV3RolloutStateResponseOutput)
+}
+
+// Start time of this experiment.
+func (o LookupExperimentResultOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExperimentResult) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
+func (o LookupExperimentResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExperimentResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The history of updates to the experiment variants.
+func (o LookupExperimentResultOutput) VariantsHistory() GoogleCloudDialogflowCxV3VariantsHistoryResponseArrayOutput {
+	return o.ApplyT(func(v LookupExperimentResult) []GoogleCloudDialogflowCxV3VariantsHistoryResponse {
+		return v.VariantsHistory
+	}).(GoogleCloudDialogflowCxV3VariantsHistoryResponseArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupExperimentResultOutput{})
 }

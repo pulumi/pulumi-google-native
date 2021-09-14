@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents configurations for a test case.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1TestConfigResponse
     {

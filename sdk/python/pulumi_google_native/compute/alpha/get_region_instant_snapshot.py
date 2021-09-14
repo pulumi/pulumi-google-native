@@ -12,6 +12,7 @@ __all__ = [
     'GetRegionInstantSnapshotResult',
     'AwaitableGetRegionInstantSnapshotResult',
     'get_region_instant_snapshot',
+    'get_region_instant_snapshot_output',
 ]
 
 @pulumi.output_type
@@ -253,3 +254,14 @@ def get_region_instant_snapshot(instant_snapshot: Optional[str] = None,
         source_disk_id=__ret__.source_disk_id,
         status=__ret__.status,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_region_instant_snapshot)
+def get_region_instant_snapshot_output(instant_snapshot: Optional[pulumi.Input[str]] = None,
+                                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                                       region: Optional[pulumi.Input[str]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionInstantSnapshotResult]:
+    """
+    Returns the specified InstantSnapshot resource in the specified region.
+    """
+    ...

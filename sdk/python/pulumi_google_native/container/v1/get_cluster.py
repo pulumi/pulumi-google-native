@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterResult',
     'AwaitableGetClusterResult',
     'get_cluster',
+    'get_cluster_output',
 ]
 
 @pulumi.output_type
@@ -696,3 +697,14 @@ def get_cluster(cluster_id: Optional[str] = None,
         tpu_ipv4_cidr_block=__ret__.tpu_ipv4_cidr_block,
         vertical_pod_autoscaling=__ret__.vertical_pod_autoscaling,
         workload_identity_config=__ret__.workload_identity_config)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                       location: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    """
+    Gets the details of a specific cluster.
+    """
+    ...

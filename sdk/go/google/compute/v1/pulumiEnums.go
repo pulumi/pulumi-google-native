@@ -104,7 +104,7 @@ func (o AccessConfigNetworkTierOutput) ToStringPtrOutputWithContext(ctx context.
 type AccessConfigNetworkTierPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigNetworkTierPtrOutput) ElementType() reflect.Type {
-	return accessConfigNetworkTierPtrType
+	return reflect.TypeOf((**AccessConfigNetworkTier)(nil)).Elem()
 }
 
 func (o AccessConfigNetworkTierPtrOutput) ToAccessConfigNetworkTierPtrOutput() AccessConfigNetworkTierPtrOutput {
@@ -113,6 +113,16 @@ func (o AccessConfigNetworkTierPtrOutput) ToAccessConfigNetworkTierPtrOutput() A
 
 func (o AccessConfigNetworkTierPtrOutput) ToAccessConfigNetworkTierPtrOutputWithContext(ctx context.Context) AccessConfigNetworkTierPtrOutput {
 	return o
+}
+
+func (o AccessConfigNetworkTierPtrOutput) Elem() AccessConfigNetworkTierOutput {
+	return o.ApplyT(func(v *AccessConfigNetworkTier) AccessConfigNetworkTier {
+		if v != nil {
+			return *v
+		}
+		var ret AccessConfigNetworkTier
+		return ret
+	}).(AccessConfigNetworkTierOutput)
 }
 
 func (o AccessConfigNetworkTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -127,16 +137,6 @@ func (o AccessConfigNetworkTierPtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AccessConfigNetworkTierPtrOutput) Elem() AccessConfigNetworkTierOutput {
-	return o.ApplyT(func(v *AccessConfigNetworkTier) AccessConfigNetworkTier {
-		var ret AccessConfigNetworkTier
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AccessConfigNetworkTierOutput)
 }
 
 // AccessConfigNetworkTierInput is an input type that accepts AccessConfigNetworkTierArgs and AccessConfigNetworkTierOutput values.
@@ -269,7 +269,7 @@ func (o AccessConfigTypeOutput) ToStringPtrOutputWithContext(ctx context.Context
 type AccessConfigTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigTypePtrOutput) ElementType() reflect.Type {
-	return accessConfigTypePtrType
+	return reflect.TypeOf((**AccessConfigType)(nil)).Elem()
 }
 
 func (o AccessConfigTypePtrOutput) ToAccessConfigTypePtrOutput() AccessConfigTypePtrOutput {
@@ -278,6 +278,16 @@ func (o AccessConfigTypePtrOutput) ToAccessConfigTypePtrOutput() AccessConfigTyp
 
 func (o AccessConfigTypePtrOutput) ToAccessConfigTypePtrOutputWithContext(ctx context.Context) AccessConfigTypePtrOutput {
 	return o
+}
+
+func (o AccessConfigTypePtrOutput) Elem() AccessConfigTypeOutput {
+	return o.ApplyT(func(v *AccessConfigType) AccessConfigType {
+		if v != nil {
+			return *v
+		}
+		var ret AccessConfigType
+		return ret
+	}).(AccessConfigTypeOutput)
 }
 
 func (o AccessConfigTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -292,16 +302,6 @@ func (o AccessConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AccessConfigTypePtrOutput) Elem() AccessConfigTypeOutput {
-	return o.ApplyT(func(v *AccessConfigType) AccessConfigType {
-		var ret AccessConfigType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AccessConfigTypeOutput)
 }
 
 // AccessConfigTypeInput is an input type that accepts AccessConfigTypeArgs and AccessConfigTypeOutput values.
@@ -437,7 +437,7 @@ func (o AddressAddressTypeOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type AddressAddressTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AddressAddressTypePtrOutput) ElementType() reflect.Type {
-	return addressAddressTypePtrType
+	return reflect.TypeOf((**AddressAddressType)(nil)).Elem()
 }
 
 func (o AddressAddressTypePtrOutput) ToAddressAddressTypePtrOutput() AddressAddressTypePtrOutput {
@@ -446,6 +446,16 @@ func (o AddressAddressTypePtrOutput) ToAddressAddressTypePtrOutput() AddressAddr
 
 func (o AddressAddressTypePtrOutput) ToAddressAddressTypePtrOutputWithContext(ctx context.Context) AddressAddressTypePtrOutput {
 	return o
+}
+
+func (o AddressAddressTypePtrOutput) Elem() AddressAddressTypeOutput {
+	return o.ApplyT(func(v *AddressAddressType) AddressAddressType {
+		if v != nil {
+			return *v
+		}
+		var ret AddressAddressType
+		return ret
+	}).(AddressAddressTypeOutput)
 }
 
 func (o AddressAddressTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -460,16 +470,6 @@ func (o AddressAddressTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AddressAddressTypePtrOutput) Elem() AddressAddressTypeOutput {
-	return o.ApplyT(func(v *AddressAddressType) AddressAddressType {
-		var ret AddressAddressType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AddressAddressTypeOutput)
 }
 
 // AddressAddressTypeInput is an input type that accepts AddressAddressTypeArgs and AddressAddressTypeOutput values.
@@ -603,7 +603,7 @@ func (o AddressIpVersionOutput) ToStringPtrOutputWithContext(ctx context.Context
 type AddressIpVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (AddressIpVersionPtrOutput) ElementType() reflect.Type {
-	return addressIpVersionPtrType
+	return reflect.TypeOf((**AddressIpVersion)(nil)).Elem()
 }
 
 func (o AddressIpVersionPtrOutput) ToAddressIpVersionPtrOutput() AddressIpVersionPtrOutput {
@@ -612,6 +612,16 @@ func (o AddressIpVersionPtrOutput) ToAddressIpVersionPtrOutput() AddressIpVersio
 
 func (o AddressIpVersionPtrOutput) ToAddressIpVersionPtrOutputWithContext(ctx context.Context) AddressIpVersionPtrOutput {
 	return o
+}
+
+func (o AddressIpVersionPtrOutput) Elem() AddressIpVersionOutput {
+	return o.ApplyT(func(v *AddressIpVersion) AddressIpVersion {
+		if v != nil {
+			return *v
+		}
+		var ret AddressIpVersion
+		return ret
+	}).(AddressIpVersionOutput)
 }
 
 func (o AddressIpVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -626,16 +636,6 @@ func (o AddressIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AddressIpVersionPtrOutput) Elem() AddressIpVersionOutput {
-	return o.ApplyT(func(v *AddressIpVersion) AddressIpVersion {
-		var ret AddressIpVersion
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AddressIpVersionOutput)
 }
 
 // AddressIpVersionInput is an input type that accepts AddressIpVersionArgs and AddressIpVersionOutput values.
@@ -770,7 +770,7 @@ func (o AddressNetworkTierOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type AddressNetworkTierPtrOutput struct{ *pulumi.OutputState }
 
 func (AddressNetworkTierPtrOutput) ElementType() reflect.Type {
-	return addressNetworkTierPtrType
+	return reflect.TypeOf((**AddressNetworkTier)(nil)).Elem()
 }
 
 func (o AddressNetworkTierPtrOutput) ToAddressNetworkTierPtrOutput() AddressNetworkTierPtrOutput {
@@ -779,6 +779,16 @@ func (o AddressNetworkTierPtrOutput) ToAddressNetworkTierPtrOutput() AddressNetw
 
 func (o AddressNetworkTierPtrOutput) ToAddressNetworkTierPtrOutputWithContext(ctx context.Context) AddressNetworkTierPtrOutput {
 	return o
+}
+
+func (o AddressNetworkTierPtrOutput) Elem() AddressNetworkTierOutput {
+	return o.ApplyT(func(v *AddressNetworkTier) AddressNetworkTier {
+		if v != nil {
+			return *v
+		}
+		var ret AddressNetworkTier
+		return ret
+	}).(AddressNetworkTierOutput)
 }
 
 func (o AddressNetworkTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -793,16 +803,6 @@ func (o AddressNetworkTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AddressNetworkTierPtrOutput) Elem() AddressNetworkTierOutput {
-	return o.ApplyT(func(v *AddressNetworkTier) AddressNetworkTier {
-		var ret AddressNetworkTier
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AddressNetworkTierOutput)
 }
 
 // AddressNetworkTierInput is an input type that accepts AddressNetworkTierArgs and AddressNetworkTierOutput values.
@@ -947,7 +947,7 @@ func (o AddressPurposeOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 type AddressPurposePtrOutput struct{ *pulumi.OutputState }
 
 func (AddressPurposePtrOutput) ElementType() reflect.Type {
-	return addressPurposePtrType
+	return reflect.TypeOf((**AddressPurpose)(nil)).Elem()
 }
 
 func (o AddressPurposePtrOutput) ToAddressPurposePtrOutput() AddressPurposePtrOutput {
@@ -956,6 +956,16 @@ func (o AddressPurposePtrOutput) ToAddressPurposePtrOutput() AddressPurposePtrOu
 
 func (o AddressPurposePtrOutput) ToAddressPurposePtrOutputWithContext(ctx context.Context) AddressPurposePtrOutput {
 	return o
+}
+
+func (o AddressPurposePtrOutput) Elem() AddressPurposeOutput {
+	return o.ApplyT(func(v *AddressPurpose) AddressPurpose {
+		if v != nil {
+			return *v
+		}
+		var ret AddressPurpose
+		return ret
+	}).(AddressPurposeOutput)
 }
 
 func (o AddressPurposePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -970,16 +980,6 @@ func (o AddressPurposePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AddressPurposePtrOutput) Elem() AddressPurposeOutput {
-	return o.ApplyT(func(v *AddressPurpose) AddressPurpose {
-		var ret AddressPurpose
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AddressPurposeOutput)
 }
 
 // AddressPurposeInput is an input type that accepts AddressPurposeArgs and AddressPurposeOutput values.
@@ -1112,7 +1112,7 @@ func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskIn
 type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput struct{ *pulumi.OutputState }
 
 func (AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput) ElementType() reflect.Type {
-	return allocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrType
+	return reflect.TypeOf((**AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface)(nil)).Elem()
 }
 
 func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput) ToAllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput() AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput {
@@ -1121,6 +1121,16 @@ func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskIn
 
 func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput) ToAllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutputWithContext(ctx context.Context) AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput {
 	return o
+}
+
+func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput) Elem() AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceOutput {
+	return o.ApplyT(func(v *AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface) AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface {
+		if v != nil {
+			return *v
+		}
+		var ret AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface
+		return ret
+	}).(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceOutput)
 }
 
 func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1135,16 +1145,6 @@ func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskIn
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput) Elem() AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceOutput {
-	return o.ApplyT(func(v *AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface) AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface {
-		var ret AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceOutput)
 }
 
 // AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceInput is an input type that accepts AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceArgs and AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceOutput values.
@@ -1281,7 +1281,7 @@ func (o AttachedDiskInitializeParamsOnUpdateActionOutput) ToStringPtrOutputWithC
 type AttachedDiskInitializeParamsOnUpdateActionPtrOutput struct{ *pulumi.OutputState }
 
 func (AttachedDiskInitializeParamsOnUpdateActionPtrOutput) ElementType() reflect.Type {
-	return attachedDiskInitializeParamsOnUpdateActionPtrType
+	return reflect.TypeOf((**AttachedDiskInitializeParamsOnUpdateAction)(nil)).Elem()
 }
 
 func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) ToAttachedDiskInitializeParamsOnUpdateActionPtrOutput() AttachedDiskInitializeParamsOnUpdateActionPtrOutput {
@@ -1290,6 +1290,16 @@ func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) ToAttachedDiskIniti
 
 func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) ToAttachedDiskInitializeParamsOnUpdateActionPtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsOnUpdateActionPtrOutput {
 	return o
+}
+
+func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) Elem() AttachedDiskInitializeParamsOnUpdateActionOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParamsOnUpdateAction) AttachedDiskInitializeParamsOnUpdateAction {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedDiskInitializeParamsOnUpdateAction
+		return ret
+	}).(AttachedDiskInitializeParamsOnUpdateActionOutput)
 }
 
 func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1304,16 +1314,6 @@ func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) ToStringPtrOutputWi
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) Elem() AttachedDiskInitializeParamsOnUpdateActionOutput {
-	return o.ApplyT(func(v *AttachedDiskInitializeParamsOnUpdateAction) AttachedDiskInitializeParamsOnUpdateAction {
-		var ret AttachedDiskInitializeParamsOnUpdateAction
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AttachedDiskInitializeParamsOnUpdateActionOutput)
 }
 
 // AttachedDiskInitializeParamsOnUpdateActionInput is an input type that accepts AttachedDiskInitializeParamsOnUpdateActionArgs and AttachedDiskInitializeParamsOnUpdateActionOutput values.
@@ -1446,7 +1446,7 @@ func (o AttachedDiskInterfaceOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AttachedDiskInterfacePtrOutput struct{ *pulumi.OutputState }
 
 func (AttachedDiskInterfacePtrOutput) ElementType() reflect.Type {
-	return attachedDiskInterfacePtrType
+	return reflect.TypeOf((**AttachedDiskInterface)(nil)).Elem()
 }
 
 func (o AttachedDiskInterfacePtrOutput) ToAttachedDiskInterfacePtrOutput() AttachedDiskInterfacePtrOutput {
@@ -1455,6 +1455,16 @@ func (o AttachedDiskInterfacePtrOutput) ToAttachedDiskInterfacePtrOutput() Attac
 
 func (o AttachedDiskInterfacePtrOutput) ToAttachedDiskInterfacePtrOutputWithContext(ctx context.Context) AttachedDiskInterfacePtrOutput {
 	return o
+}
+
+func (o AttachedDiskInterfacePtrOutput) Elem() AttachedDiskInterfaceOutput {
+	return o.ApplyT(func(v *AttachedDiskInterface) AttachedDiskInterface {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedDiskInterface
+		return ret
+	}).(AttachedDiskInterfaceOutput)
 }
 
 func (o AttachedDiskInterfacePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1469,16 +1479,6 @@ func (o AttachedDiskInterfacePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AttachedDiskInterfacePtrOutput) Elem() AttachedDiskInterfaceOutput {
-	return o.ApplyT(func(v *AttachedDiskInterface) AttachedDiskInterface {
-		var ret AttachedDiskInterface
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AttachedDiskInterfaceOutput)
 }
 
 // AttachedDiskInterfaceInput is an input type that accepts AttachedDiskInterfaceArgs and AttachedDiskInterfaceOutput values.
@@ -1613,7 +1613,7 @@ func (o AttachedDiskModeOutput) ToStringPtrOutputWithContext(ctx context.Context
 type AttachedDiskModePtrOutput struct{ *pulumi.OutputState }
 
 func (AttachedDiskModePtrOutput) ElementType() reflect.Type {
-	return attachedDiskModePtrType
+	return reflect.TypeOf((**AttachedDiskMode)(nil)).Elem()
 }
 
 func (o AttachedDiskModePtrOutput) ToAttachedDiskModePtrOutput() AttachedDiskModePtrOutput {
@@ -1622,6 +1622,16 @@ func (o AttachedDiskModePtrOutput) ToAttachedDiskModePtrOutput() AttachedDiskMod
 
 func (o AttachedDiskModePtrOutput) ToAttachedDiskModePtrOutputWithContext(ctx context.Context) AttachedDiskModePtrOutput {
 	return o
+}
+
+func (o AttachedDiskModePtrOutput) Elem() AttachedDiskModeOutput {
+	return o.ApplyT(func(v *AttachedDiskMode) AttachedDiskMode {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedDiskMode
+		return ret
+	}).(AttachedDiskModeOutput)
 }
 
 func (o AttachedDiskModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1636,16 +1646,6 @@ func (o AttachedDiskModePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AttachedDiskModePtrOutput) Elem() AttachedDiskModeOutput {
-	return o.ApplyT(func(v *AttachedDiskMode) AttachedDiskMode {
-		var ret AttachedDiskMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AttachedDiskModeOutput)
 }
 
 // AttachedDiskModeInput is an input type that accepts AttachedDiskModeArgs and AttachedDiskModeOutput values.
@@ -1778,7 +1778,7 @@ func (o AttachedDiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Context
 type AttachedDiskTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AttachedDiskTypePtrOutput) ElementType() reflect.Type {
-	return attachedDiskTypePtrType
+	return reflect.TypeOf((**AttachedDiskType)(nil)).Elem()
 }
 
 func (o AttachedDiskTypePtrOutput) ToAttachedDiskTypePtrOutput() AttachedDiskTypePtrOutput {
@@ -1787,6 +1787,16 @@ func (o AttachedDiskTypePtrOutput) ToAttachedDiskTypePtrOutput() AttachedDiskTyp
 
 func (o AttachedDiskTypePtrOutput) ToAttachedDiskTypePtrOutputWithContext(ctx context.Context) AttachedDiskTypePtrOutput {
 	return o
+}
+
+func (o AttachedDiskTypePtrOutput) Elem() AttachedDiskTypeOutput {
+	return o.ApplyT(func(v *AttachedDiskType) AttachedDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedDiskType
+		return ret
+	}).(AttachedDiskTypeOutput)
 }
 
 func (o AttachedDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1801,16 +1811,6 @@ func (o AttachedDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AttachedDiskTypePtrOutput) Elem() AttachedDiskTypeOutput {
-	return o.ApplyT(func(v *AttachedDiskType) AttachedDiskType {
-		var ret AttachedDiskType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AttachedDiskTypeOutput)
 }
 
 // AttachedDiskTypeInput is an input type that accepts AttachedDiskTypeArgs and AttachedDiskTypeOutput values.
@@ -1949,7 +1949,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -1958,6 +1958,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1972,16 +1982,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -2122,7 +2122,7 @@ func (o AuthorizationLoggingOptionsPermissionTypeOutput) ToStringPtrOutputWithCo
 type AuthorizationLoggingOptionsPermissionTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationLoggingOptionsPermissionTypePtrOutput) ElementType() reflect.Type {
-	return authorizationLoggingOptionsPermissionTypePtrType
+	return reflect.TypeOf((**AuthorizationLoggingOptionsPermissionType)(nil)).Elem()
 }
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggingOptionsPermissionTypePtrOutput() AuthorizationLoggingOptionsPermissionTypePtrOutput {
@@ -2131,6 +2131,16 @@ func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggi
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggingOptionsPermissionTypePtrOutputWithContext(ctx context.Context) AuthorizationLoggingOptionsPermissionTypePtrOutput {
 	return o
+}
+
+func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) Elem() AuthorizationLoggingOptionsPermissionTypeOutput {
+	return o.ApplyT(func(v *AuthorizationLoggingOptionsPermissionType) AuthorizationLoggingOptionsPermissionType {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationLoggingOptionsPermissionType
+		return ret
+	}).(AuthorizationLoggingOptionsPermissionTypeOutput)
 }
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2145,16 +2155,6 @@ func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToStringPtrOutputWit
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) Elem() AuthorizationLoggingOptionsPermissionTypeOutput {
-	return o.ApplyT(func(v *AuthorizationLoggingOptionsPermissionType) AuthorizationLoggingOptionsPermissionType {
-		var ret AuthorizationLoggingOptionsPermissionType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuthorizationLoggingOptionsPermissionTypeOutput)
 }
 
 // AuthorizationLoggingOptionsPermissionTypeInput is an input type that accepts AuthorizationLoggingOptionsPermissionTypeArgs and AuthorizationLoggingOptionsPermissionTypeOutput values.
@@ -2289,7 +2289,7 @@ func (o AutoscalingPolicyCpuUtilizationPredictiveMethodOutput) ToStringPtrOutput
 type AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) ElementType() reflect.Type {
-	return autoscalingPolicyCpuUtilizationPredictiveMethodPtrType
+	return reflect.TypeOf((**AutoscalingPolicyCpuUtilizationPredictiveMethod)(nil)).Elem()
 }
 
 func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) ToAutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput() AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput {
@@ -2298,6 +2298,16 @@ func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) ToAutoscalingP
 
 func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) ToAutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutputWithContext(ctx context.Context) AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput {
 	return o
+}
+
+func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) Elem() AutoscalingPolicyCpuUtilizationPredictiveMethodOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyCpuUtilizationPredictiveMethod) AutoscalingPolicyCpuUtilizationPredictiveMethod {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingPolicyCpuUtilizationPredictiveMethod
+		return ret
+	}).(AutoscalingPolicyCpuUtilizationPredictiveMethodOutput)
 }
 
 func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2312,16 +2322,6 @@ func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) ToStringPtrOut
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) Elem() AutoscalingPolicyCpuUtilizationPredictiveMethodOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyCpuUtilizationPredictiveMethod) AutoscalingPolicyCpuUtilizationPredictiveMethod {
-		var ret AutoscalingPolicyCpuUtilizationPredictiveMethod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AutoscalingPolicyCpuUtilizationPredictiveMethodOutput)
 }
 
 // AutoscalingPolicyCpuUtilizationPredictiveMethodInput is an input type that accepts AutoscalingPolicyCpuUtilizationPredictiveMethodArgs and AutoscalingPolicyCpuUtilizationPredictiveMethodOutput values.
@@ -2458,7 +2458,7 @@ func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeOutput) ToS
 type AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) ElementType() reflect.Type {
-	return autoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrType
+	return reflect.TypeOf((**AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType)(nil)).Elem()
 }
 
 func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) ToAutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput() AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput {
@@ -2467,6 +2467,16 @@ func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) 
 
 func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) ToAutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutputWithContext(ctx context.Context) AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput {
 	return o
+}
+
+func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) Elem() AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType) AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType
+		return ret
+	}).(AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeOutput)
 }
 
 func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2481,16 +2491,6 @@ func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) Elem() AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType) AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType {
-		var ret AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeOutput)
 }
 
 // AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeInput is an input type that accepts AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeArgs and AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeOutput values.
@@ -2629,7 +2629,7 @@ func (o AutoscalingPolicyModeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AutoscalingPolicyModePtrOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyModePtrOutput) ElementType() reflect.Type {
-	return autoscalingPolicyModePtrType
+	return reflect.TypeOf((**AutoscalingPolicyMode)(nil)).Elem()
 }
 
 func (o AutoscalingPolicyModePtrOutput) ToAutoscalingPolicyModePtrOutput() AutoscalingPolicyModePtrOutput {
@@ -2638,6 +2638,16 @@ func (o AutoscalingPolicyModePtrOutput) ToAutoscalingPolicyModePtrOutput() Autos
 
 func (o AutoscalingPolicyModePtrOutput) ToAutoscalingPolicyModePtrOutputWithContext(ctx context.Context) AutoscalingPolicyModePtrOutput {
 	return o
+}
+
+func (o AutoscalingPolicyModePtrOutput) Elem() AutoscalingPolicyModeOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyMode) AutoscalingPolicyMode {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingPolicyMode
+		return ret
+	}).(AutoscalingPolicyModeOutput)
 }
 
 func (o AutoscalingPolicyModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2652,16 +2662,6 @@ func (o AutoscalingPolicyModePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AutoscalingPolicyModePtrOutput) Elem() AutoscalingPolicyModeOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyMode) AutoscalingPolicyMode {
-		var ret AutoscalingPolicyMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AutoscalingPolicyModeOutput)
 }
 
 // AutoscalingPolicyModeInput is an input type that accepts AutoscalingPolicyModeArgs and AutoscalingPolicyModeOutput values.
@@ -2798,7 +2798,7 @@ func (o BackendBalancingModeOutput) ToStringPtrOutputWithContext(ctx context.Con
 type BackendBalancingModePtrOutput struct{ *pulumi.OutputState }
 
 func (BackendBalancingModePtrOutput) ElementType() reflect.Type {
-	return backendBalancingModePtrType
+	return reflect.TypeOf((**BackendBalancingMode)(nil)).Elem()
 }
 
 func (o BackendBalancingModePtrOutput) ToBackendBalancingModePtrOutput() BackendBalancingModePtrOutput {
@@ -2807,6 +2807,16 @@ func (o BackendBalancingModePtrOutput) ToBackendBalancingModePtrOutput() Backend
 
 func (o BackendBalancingModePtrOutput) ToBackendBalancingModePtrOutputWithContext(ctx context.Context) BackendBalancingModePtrOutput {
 	return o
+}
+
+func (o BackendBalancingModePtrOutput) Elem() BackendBalancingModeOutput {
+	return o.ApplyT(func(v *BackendBalancingMode) BackendBalancingMode {
+		if v != nil {
+			return *v
+		}
+		var ret BackendBalancingMode
+		return ret
+	}).(BackendBalancingModeOutput)
 }
 
 func (o BackendBalancingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2821,16 +2831,6 @@ func (o BackendBalancingModePtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackendBalancingModePtrOutput) Elem() BackendBalancingModeOutput {
-	return o.ApplyT(func(v *BackendBalancingMode) BackendBalancingMode {
-		var ret BackendBalancingMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackendBalancingModeOutput)
 }
 
 // BackendBalancingModeInput is an input type that accepts BackendBalancingModeArgs and BackendBalancingModeOutput values.
@@ -2968,7 +2968,7 @@ func (o BackendBucketCdnPolicyCacheModeOutput) ToStringPtrOutputWithContext(ctx 
 type BackendBucketCdnPolicyCacheModePtrOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketCdnPolicyCacheModePtrOutput) ElementType() reflect.Type {
-	return backendBucketCdnPolicyCacheModePtrType
+	return reflect.TypeOf((**BackendBucketCdnPolicyCacheMode)(nil)).Elem()
 }
 
 func (o BackendBucketCdnPolicyCacheModePtrOutput) ToBackendBucketCdnPolicyCacheModePtrOutput() BackendBucketCdnPolicyCacheModePtrOutput {
@@ -2977,6 +2977,16 @@ func (o BackendBucketCdnPolicyCacheModePtrOutput) ToBackendBucketCdnPolicyCacheM
 
 func (o BackendBucketCdnPolicyCacheModePtrOutput) ToBackendBucketCdnPolicyCacheModePtrOutputWithContext(ctx context.Context) BackendBucketCdnPolicyCacheModePtrOutput {
 	return o
+}
+
+func (o BackendBucketCdnPolicyCacheModePtrOutput) Elem() BackendBucketCdnPolicyCacheModeOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicyCacheMode) BackendBucketCdnPolicyCacheMode {
+		if v != nil {
+			return *v
+		}
+		var ret BackendBucketCdnPolicyCacheMode
+		return ret
+	}).(BackendBucketCdnPolicyCacheModeOutput)
 }
 
 func (o BackendBucketCdnPolicyCacheModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2991,16 +3001,6 @@ func (o BackendBucketCdnPolicyCacheModePtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackendBucketCdnPolicyCacheModePtrOutput) Elem() BackendBucketCdnPolicyCacheModeOutput {
-	return o.ApplyT(func(v *BackendBucketCdnPolicyCacheMode) BackendBucketCdnPolicyCacheMode {
-		var ret BackendBucketCdnPolicyCacheMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackendBucketCdnPolicyCacheModeOutput)
 }
 
 // BackendBucketCdnPolicyCacheModeInput is an input type that accepts BackendBucketCdnPolicyCacheModeArgs and BackendBucketCdnPolicyCacheModeOutput values.
@@ -3138,7 +3138,7 @@ func (o BackendServiceCdnPolicyCacheModeOutput) ToStringPtrOutputWithContext(ctx
 type BackendServiceCdnPolicyCacheModePtrOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceCdnPolicyCacheModePtrOutput) ElementType() reflect.Type {
-	return backendServiceCdnPolicyCacheModePtrType
+	return reflect.TypeOf((**BackendServiceCdnPolicyCacheMode)(nil)).Elem()
 }
 
 func (o BackendServiceCdnPolicyCacheModePtrOutput) ToBackendServiceCdnPolicyCacheModePtrOutput() BackendServiceCdnPolicyCacheModePtrOutput {
@@ -3147,6 +3147,16 @@ func (o BackendServiceCdnPolicyCacheModePtrOutput) ToBackendServiceCdnPolicyCach
 
 func (o BackendServiceCdnPolicyCacheModePtrOutput) ToBackendServiceCdnPolicyCacheModePtrOutputWithContext(ctx context.Context) BackendServiceCdnPolicyCacheModePtrOutput {
 	return o
+}
+
+func (o BackendServiceCdnPolicyCacheModePtrOutput) Elem() BackendServiceCdnPolicyCacheModeOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicyCacheMode) BackendServiceCdnPolicyCacheMode {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceCdnPolicyCacheMode
+		return ret
+	}).(BackendServiceCdnPolicyCacheModeOutput)
 }
 
 func (o BackendServiceCdnPolicyCacheModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3161,16 +3171,6 @@ func (o BackendServiceCdnPolicyCacheModePtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackendServiceCdnPolicyCacheModePtrOutput) Elem() BackendServiceCdnPolicyCacheModeOutput {
-	return o.ApplyT(func(v *BackendServiceCdnPolicyCacheMode) BackendServiceCdnPolicyCacheMode {
-		var ret BackendServiceCdnPolicyCacheMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackendServiceCdnPolicyCacheModeOutput)
 }
 
 // BackendServiceCdnPolicyCacheModeInput is an input type that accepts BackendServiceCdnPolicyCacheModeArgs and BackendServiceCdnPolicyCacheModeOutput values.
@@ -3310,7 +3310,7 @@ func (o BackendServiceLoadBalancingSchemeOutput) ToStringPtrOutputWithContext(ct
 type BackendServiceLoadBalancingSchemePtrOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceLoadBalancingSchemePtrOutput) ElementType() reflect.Type {
-	return backendServiceLoadBalancingSchemePtrType
+	return reflect.TypeOf((**BackendServiceLoadBalancingScheme)(nil)).Elem()
 }
 
 func (o BackendServiceLoadBalancingSchemePtrOutput) ToBackendServiceLoadBalancingSchemePtrOutput() BackendServiceLoadBalancingSchemePtrOutput {
@@ -3319,6 +3319,16 @@ func (o BackendServiceLoadBalancingSchemePtrOutput) ToBackendServiceLoadBalancin
 
 func (o BackendServiceLoadBalancingSchemePtrOutput) ToBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx context.Context) BackendServiceLoadBalancingSchemePtrOutput {
 	return o
+}
+
+func (o BackendServiceLoadBalancingSchemePtrOutput) Elem() BackendServiceLoadBalancingSchemeOutput {
+	return o.ApplyT(func(v *BackendServiceLoadBalancingScheme) BackendServiceLoadBalancingScheme {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceLoadBalancingScheme
+		return ret
+	}).(BackendServiceLoadBalancingSchemeOutput)
 }
 
 func (o BackendServiceLoadBalancingSchemePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3333,16 +3343,6 @@ func (o BackendServiceLoadBalancingSchemePtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackendServiceLoadBalancingSchemePtrOutput) Elem() BackendServiceLoadBalancingSchemeOutput {
-	return o.ApplyT(func(v *BackendServiceLoadBalancingScheme) BackendServiceLoadBalancingScheme {
-		var ret BackendServiceLoadBalancingScheme
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackendServiceLoadBalancingSchemeOutput)
 }
 
 // BackendServiceLoadBalancingSchemeInput is an input type that accepts BackendServiceLoadBalancingSchemeArgs and BackendServiceLoadBalancingSchemeOutput values.
@@ -3486,7 +3486,7 @@ func (o BackendServiceLocalityLbPolicyOutput) ToStringPtrOutputWithContext(ctx c
 type BackendServiceLocalityLbPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceLocalityLbPolicyPtrOutput) ElementType() reflect.Type {
-	return backendServiceLocalityLbPolicyPtrType
+	return reflect.TypeOf((**BackendServiceLocalityLbPolicy)(nil)).Elem()
 }
 
 func (o BackendServiceLocalityLbPolicyPtrOutput) ToBackendServiceLocalityLbPolicyPtrOutput() BackendServiceLocalityLbPolicyPtrOutput {
@@ -3495,6 +3495,16 @@ func (o BackendServiceLocalityLbPolicyPtrOutput) ToBackendServiceLocalityLbPolic
 
 func (o BackendServiceLocalityLbPolicyPtrOutput) ToBackendServiceLocalityLbPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLbPolicyPtrOutput {
 	return o
+}
+
+func (o BackendServiceLocalityLbPolicyPtrOutput) Elem() BackendServiceLocalityLbPolicyOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLbPolicy) BackendServiceLocalityLbPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceLocalityLbPolicy
+		return ret
+	}).(BackendServiceLocalityLbPolicyOutput)
 }
 
 func (o BackendServiceLocalityLbPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3509,16 +3519,6 @@ func (o BackendServiceLocalityLbPolicyPtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackendServiceLocalityLbPolicyPtrOutput) Elem() BackendServiceLocalityLbPolicyOutput {
-	return o.ApplyT(func(v *BackendServiceLocalityLbPolicy) BackendServiceLocalityLbPolicy {
-		var ret BackendServiceLocalityLbPolicy
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackendServiceLocalityLbPolicyOutput)
 }
 
 // BackendServiceLocalityLbPolicyInput is an input type that accepts BackendServiceLocalityLbPolicyArgs and BackendServiceLocalityLbPolicyOutput values.
@@ -3661,7 +3661,7 @@ func (o BackendServiceProtocolOutput) ToStringPtrOutputWithContext(ctx context.C
 type BackendServiceProtocolPtrOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceProtocolPtrOutput) ElementType() reflect.Type {
-	return backendServiceProtocolPtrType
+	return reflect.TypeOf((**BackendServiceProtocol)(nil)).Elem()
 }
 
 func (o BackendServiceProtocolPtrOutput) ToBackendServiceProtocolPtrOutput() BackendServiceProtocolPtrOutput {
@@ -3670,6 +3670,16 @@ func (o BackendServiceProtocolPtrOutput) ToBackendServiceProtocolPtrOutput() Bac
 
 func (o BackendServiceProtocolPtrOutput) ToBackendServiceProtocolPtrOutputWithContext(ctx context.Context) BackendServiceProtocolPtrOutput {
 	return o
+}
+
+func (o BackendServiceProtocolPtrOutput) Elem() BackendServiceProtocolOutput {
+	return o.ApplyT(func(v *BackendServiceProtocol) BackendServiceProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceProtocol
+		return ret
+	}).(BackendServiceProtocolOutput)
 }
 
 func (o BackendServiceProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3684,16 +3694,6 @@ func (o BackendServiceProtocolPtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackendServiceProtocolPtrOutput) Elem() BackendServiceProtocolOutput {
-	return o.ApplyT(func(v *BackendServiceProtocol) BackendServiceProtocol {
-		var ret BackendServiceProtocol
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackendServiceProtocolOutput)
 }
 
 // BackendServiceProtocolInput is an input type that accepts BackendServiceProtocolArgs and BackendServiceProtocolOutput values.
@@ -3840,7 +3840,7 @@ func (o BackendServiceSessionAffinityOutput) ToStringPtrOutputWithContext(ctx co
 type BackendServiceSessionAffinityPtrOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceSessionAffinityPtrOutput) ElementType() reflect.Type {
-	return backendServiceSessionAffinityPtrType
+	return reflect.TypeOf((**BackendServiceSessionAffinity)(nil)).Elem()
 }
 
 func (o BackendServiceSessionAffinityPtrOutput) ToBackendServiceSessionAffinityPtrOutput() BackendServiceSessionAffinityPtrOutput {
@@ -3849,6 +3849,16 @@ func (o BackendServiceSessionAffinityPtrOutput) ToBackendServiceSessionAffinityP
 
 func (o BackendServiceSessionAffinityPtrOutput) ToBackendServiceSessionAffinityPtrOutputWithContext(ctx context.Context) BackendServiceSessionAffinityPtrOutput {
 	return o
+}
+
+func (o BackendServiceSessionAffinityPtrOutput) Elem() BackendServiceSessionAffinityOutput {
+	return o.ApplyT(func(v *BackendServiceSessionAffinity) BackendServiceSessionAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceSessionAffinity
+		return ret
+	}).(BackendServiceSessionAffinityOutput)
 }
 
 func (o BackendServiceSessionAffinityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -3863,16 +3873,6 @@ func (o BackendServiceSessionAffinityPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackendServiceSessionAffinityPtrOutput) Elem() BackendServiceSessionAffinityOutput {
-	return o.ApplyT(func(v *BackendServiceSessionAffinity) BackendServiceSessionAffinity {
-		var ret BackendServiceSessionAffinity
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackendServiceSessionAffinityOutput)
 }
 
 // BackendServiceSessionAffinityInput is an input type that accepts BackendServiceSessionAffinityArgs and BackendServiceSessionAffinityOutput values.
@@ -4019,7 +4019,7 @@ func (o ConditionIamOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type ConditionIamPtrOutput struct{ *pulumi.OutputState }
 
 func (ConditionIamPtrOutput) ElementType() reflect.Type {
-	return conditionIamPtrType
+	return reflect.TypeOf((**ConditionIam)(nil)).Elem()
 }
 
 func (o ConditionIamPtrOutput) ToConditionIamPtrOutput() ConditionIamPtrOutput {
@@ -4028,6 +4028,16 @@ func (o ConditionIamPtrOutput) ToConditionIamPtrOutput() ConditionIamPtrOutput {
 
 func (o ConditionIamPtrOutput) ToConditionIamPtrOutputWithContext(ctx context.Context) ConditionIamPtrOutput {
 	return o
+}
+
+func (o ConditionIamPtrOutput) Elem() ConditionIamOutput {
+	return o.ApplyT(func(v *ConditionIam) ConditionIam {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionIam
+		return ret
+	}).(ConditionIamOutput)
 }
 
 func (o ConditionIamPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -4042,16 +4052,6 @@ func (o ConditionIamPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ConditionIamPtrOutput) Elem() ConditionIamOutput {
-	return o.ApplyT(func(v *ConditionIam) ConditionIam {
-		var ret ConditionIam
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ConditionIamOutput)
 }
 
 // ConditionIamInput is an input type that accepts ConditionIamArgs and ConditionIamOutput values.
@@ -4194,7 +4194,7 @@ func (o ConditionOpOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 type ConditionOpPtrOutput struct{ *pulumi.OutputState }
 
 func (ConditionOpPtrOutput) ElementType() reflect.Type {
-	return conditionOpPtrType
+	return reflect.TypeOf((**ConditionOp)(nil)).Elem()
 }
 
 func (o ConditionOpPtrOutput) ToConditionOpPtrOutput() ConditionOpPtrOutput {
@@ -4203,6 +4203,16 @@ func (o ConditionOpPtrOutput) ToConditionOpPtrOutput() ConditionOpPtrOutput {
 
 func (o ConditionOpPtrOutput) ToConditionOpPtrOutputWithContext(ctx context.Context) ConditionOpPtrOutput {
 	return o
+}
+
+func (o ConditionOpPtrOutput) Elem() ConditionOpOutput {
+	return o.ApplyT(func(v *ConditionOp) ConditionOp {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionOp
+		return ret
+	}).(ConditionOpOutput)
 }
 
 func (o ConditionOpPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -4217,16 +4227,6 @@ func (o ConditionOpPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ConditionOpPtrOutput) Elem() ConditionOpOutput {
-	return o.ApplyT(func(v *ConditionOp) ConditionOp {
-		var ret ConditionOp
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ConditionOpOutput)
 }
 
 // ConditionOpInput is an input type that accepts ConditionOpArgs and ConditionOpOutput values.
@@ -4367,7 +4367,7 @@ func (o ConditionSysOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type ConditionSysPtrOutput struct{ *pulumi.OutputState }
 
 func (ConditionSysPtrOutput) ElementType() reflect.Type {
-	return conditionSysPtrType
+	return reflect.TypeOf((**ConditionSys)(nil)).Elem()
 }
 
 func (o ConditionSysPtrOutput) ToConditionSysPtrOutput() ConditionSysPtrOutput {
@@ -4376,6 +4376,16 @@ func (o ConditionSysPtrOutput) ToConditionSysPtrOutput() ConditionSysPtrOutput {
 
 func (o ConditionSysPtrOutput) ToConditionSysPtrOutputWithContext(ctx context.Context) ConditionSysPtrOutput {
 	return o
+}
+
+func (o ConditionSysPtrOutput) Elem() ConditionSysOutput {
+	return o.ApplyT(func(v *ConditionSys) ConditionSys {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionSys
+		return ret
+	}).(ConditionSysOutput)
 }
 
 func (o ConditionSysPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -4390,16 +4400,6 @@ func (o ConditionSysPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ConditionSysPtrOutput) Elem() ConditionSysOutput {
-	return o.ApplyT(func(v *ConditionSys) ConditionSys {
-		var ret ConditionSys
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ConditionSysOutput)
 }
 
 // ConditionSysInput is an input type that accepts ConditionSysArgs and ConditionSysOutput values.
@@ -4534,7 +4534,7 @@ func (o DeprecationStatusStateOutput) ToStringPtrOutputWithContext(ctx context.C
 type DeprecationStatusStatePtrOutput struct{ *pulumi.OutputState }
 
 func (DeprecationStatusStatePtrOutput) ElementType() reflect.Type {
-	return deprecationStatusStatePtrType
+	return reflect.TypeOf((**DeprecationStatusState)(nil)).Elem()
 }
 
 func (o DeprecationStatusStatePtrOutput) ToDeprecationStatusStatePtrOutput() DeprecationStatusStatePtrOutput {
@@ -4543,6 +4543,16 @@ func (o DeprecationStatusStatePtrOutput) ToDeprecationStatusStatePtrOutput() Dep
 
 func (o DeprecationStatusStatePtrOutput) ToDeprecationStatusStatePtrOutputWithContext(ctx context.Context) DeprecationStatusStatePtrOutput {
 	return o
+}
+
+func (o DeprecationStatusStatePtrOutput) Elem() DeprecationStatusStateOutput {
+	return o.ApplyT(func(v *DeprecationStatusState) DeprecationStatusState {
+		if v != nil {
+			return *v
+		}
+		var ret DeprecationStatusState
+		return ret
+	}).(DeprecationStatusStateOutput)
 }
 
 func (o DeprecationStatusStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -4557,16 +4567,6 @@ func (o DeprecationStatusStatePtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DeprecationStatusStatePtrOutput) Elem() DeprecationStatusStateOutput {
-	return o.ApplyT(func(v *DeprecationStatusState) DeprecationStatusState {
-		var ret DeprecationStatusState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DeprecationStatusStateOutput)
 }
 
 // DeprecationStatusStateInput is an input type that accepts DeprecationStatusStateArgs and DeprecationStatusStateOutput values.
@@ -4711,7 +4711,7 @@ func (o DiskInstantiationConfigInstantiateFromOutput) ToStringPtrOutputWithConte
 type DiskInstantiationConfigInstantiateFromPtrOutput struct{ *pulumi.OutputState }
 
 func (DiskInstantiationConfigInstantiateFromPtrOutput) ElementType() reflect.Type {
-	return diskInstantiationConfigInstantiateFromPtrType
+	return reflect.TypeOf((**DiskInstantiationConfigInstantiateFrom)(nil)).Elem()
 }
 
 func (o DiskInstantiationConfigInstantiateFromPtrOutput) ToDiskInstantiationConfigInstantiateFromPtrOutput() DiskInstantiationConfigInstantiateFromPtrOutput {
@@ -4720,6 +4720,16 @@ func (o DiskInstantiationConfigInstantiateFromPtrOutput) ToDiskInstantiationConf
 
 func (o DiskInstantiationConfigInstantiateFromPtrOutput) ToDiskInstantiationConfigInstantiateFromPtrOutputWithContext(ctx context.Context) DiskInstantiationConfigInstantiateFromPtrOutput {
 	return o
+}
+
+func (o DiskInstantiationConfigInstantiateFromPtrOutput) Elem() DiskInstantiationConfigInstantiateFromOutput {
+	return o.ApplyT(func(v *DiskInstantiationConfigInstantiateFrom) DiskInstantiationConfigInstantiateFrom {
+		if v != nil {
+			return *v
+		}
+		var ret DiskInstantiationConfigInstantiateFrom
+		return ret
+	}).(DiskInstantiationConfigInstantiateFromOutput)
 }
 
 func (o DiskInstantiationConfigInstantiateFromPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -4734,16 +4744,6 @@ func (o DiskInstantiationConfigInstantiateFromPtrOutput) ToStringPtrOutputWithCo
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DiskInstantiationConfigInstantiateFromPtrOutput) Elem() DiskInstantiationConfigInstantiateFromOutput {
-	return o.ApplyT(func(v *DiskInstantiationConfigInstantiateFrom) DiskInstantiationConfigInstantiateFrom {
-		var ret DiskInstantiationConfigInstantiateFrom
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DiskInstantiationConfigInstantiateFromOutput)
 }
 
 // DiskInstantiationConfigInstantiateFromInput is an input type that accepts DiskInstantiationConfigInstantiateFromArgs and DiskInstantiationConfigInstantiateFromOutput values.
@@ -4880,7 +4880,7 @@ func (o DistributionPolicyTargetShapeOutput) ToStringPtrOutputWithContext(ctx co
 type DistributionPolicyTargetShapePtrOutput struct{ *pulumi.OutputState }
 
 func (DistributionPolicyTargetShapePtrOutput) ElementType() reflect.Type {
-	return distributionPolicyTargetShapePtrType
+	return reflect.TypeOf((**DistributionPolicyTargetShape)(nil)).Elem()
 }
 
 func (o DistributionPolicyTargetShapePtrOutput) ToDistributionPolicyTargetShapePtrOutput() DistributionPolicyTargetShapePtrOutput {
@@ -4889,6 +4889,16 @@ func (o DistributionPolicyTargetShapePtrOutput) ToDistributionPolicyTargetShapeP
 
 func (o DistributionPolicyTargetShapePtrOutput) ToDistributionPolicyTargetShapePtrOutputWithContext(ctx context.Context) DistributionPolicyTargetShapePtrOutput {
 	return o
+}
+
+func (o DistributionPolicyTargetShapePtrOutput) Elem() DistributionPolicyTargetShapeOutput {
+	return o.ApplyT(func(v *DistributionPolicyTargetShape) DistributionPolicyTargetShape {
+		if v != nil {
+			return *v
+		}
+		var ret DistributionPolicyTargetShape
+		return ret
+	}).(DistributionPolicyTargetShapeOutput)
 }
 
 func (o DistributionPolicyTargetShapePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -4903,16 +4913,6 @@ func (o DistributionPolicyTargetShapePtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DistributionPolicyTargetShapePtrOutput) Elem() DistributionPolicyTargetShapeOutput {
-	return o.ApplyT(func(v *DistributionPolicyTargetShape) DistributionPolicyTargetShape {
-		var ret DistributionPolicyTargetShape
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DistributionPolicyTargetShapeOutput)
 }
 
 // DistributionPolicyTargetShapeInput is an input type that accepts DistributionPolicyTargetShapeArgs and DistributionPolicyTargetShapeOutput values.
@@ -5049,7 +5049,7 @@ func (o ExternalVpnGatewayRedundancyTypeOutput) ToStringPtrOutputWithContext(ctx
 type ExternalVpnGatewayRedundancyTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ExternalVpnGatewayRedundancyTypePtrOutput) ElementType() reflect.Type {
-	return externalVpnGatewayRedundancyTypePtrType
+	return reflect.TypeOf((**ExternalVpnGatewayRedundancyType)(nil)).Elem()
 }
 
 func (o ExternalVpnGatewayRedundancyTypePtrOutput) ToExternalVpnGatewayRedundancyTypePtrOutput() ExternalVpnGatewayRedundancyTypePtrOutput {
@@ -5058,6 +5058,16 @@ func (o ExternalVpnGatewayRedundancyTypePtrOutput) ToExternalVpnGatewayRedundanc
 
 func (o ExternalVpnGatewayRedundancyTypePtrOutput) ToExternalVpnGatewayRedundancyTypePtrOutputWithContext(ctx context.Context) ExternalVpnGatewayRedundancyTypePtrOutput {
 	return o
+}
+
+func (o ExternalVpnGatewayRedundancyTypePtrOutput) Elem() ExternalVpnGatewayRedundancyTypeOutput {
+	return o.ApplyT(func(v *ExternalVpnGatewayRedundancyType) ExternalVpnGatewayRedundancyType {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalVpnGatewayRedundancyType
+		return ret
+	}).(ExternalVpnGatewayRedundancyTypeOutput)
 }
 
 func (o ExternalVpnGatewayRedundancyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -5072,16 +5082,6 @@ func (o ExternalVpnGatewayRedundancyTypePtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ExternalVpnGatewayRedundancyTypePtrOutput) Elem() ExternalVpnGatewayRedundancyTypeOutput {
-	return o.ApplyT(func(v *ExternalVpnGatewayRedundancyType) ExternalVpnGatewayRedundancyType {
-		var ret ExternalVpnGatewayRedundancyType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ExternalVpnGatewayRedundancyTypeOutput)
 }
 
 // ExternalVpnGatewayRedundancyTypeInput is an input type that accepts ExternalVpnGatewayRedundancyTypeArgs and ExternalVpnGatewayRedundancyTypeOutput values.
@@ -5215,7 +5215,7 @@ func (o FileContentBufferFileTypeOutput) ToStringPtrOutputWithContext(ctx contex
 type FileContentBufferFileTypePtrOutput struct{ *pulumi.OutputState }
 
 func (FileContentBufferFileTypePtrOutput) ElementType() reflect.Type {
-	return fileContentBufferFileTypePtrType
+	return reflect.TypeOf((**FileContentBufferFileType)(nil)).Elem()
 }
 
 func (o FileContentBufferFileTypePtrOutput) ToFileContentBufferFileTypePtrOutput() FileContentBufferFileTypePtrOutput {
@@ -5224,6 +5224,16 @@ func (o FileContentBufferFileTypePtrOutput) ToFileContentBufferFileTypePtrOutput
 
 func (o FileContentBufferFileTypePtrOutput) ToFileContentBufferFileTypePtrOutputWithContext(ctx context.Context) FileContentBufferFileTypePtrOutput {
 	return o
+}
+
+func (o FileContentBufferFileTypePtrOutput) Elem() FileContentBufferFileTypeOutput {
+	return o.ApplyT(func(v *FileContentBufferFileType) FileContentBufferFileType {
+		if v != nil {
+			return *v
+		}
+		var ret FileContentBufferFileType
+		return ret
+	}).(FileContentBufferFileTypeOutput)
 }
 
 func (o FileContentBufferFileTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -5238,16 +5248,6 @@ func (o FileContentBufferFileTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FileContentBufferFileTypePtrOutput) Elem() FileContentBufferFileTypeOutput {
-	return o.ApplyT(func(v *FileContentBufferFileType) FileContentBufferFileType {
-		var ret FileContentBufferFileType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FileContentBufferFileTypeOutput)
 }
 
 // FileContentBufferFileTypeInput is an input type that accepts FileContentBufferFileTypeArgs and FileContentBufferFileTypeOutput values.
@@ -5382,7 +5382,7 @@ func (o FirewallDirectionOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type FirewallDirectionPtrOutput struct{ *pulumi.OutputState }
 
 func (FirewallDirectionPtrOutput) ElementType() reflect.Type {
-	return firewallDirectionPtrType
+	return reflect.TypeOf((**FirewallDirection)(nil)).Elem()
 }
 
 func (o FirewallDirectionPtrOutput) ToFirewallDirectionPtrOutput() FirewallDirectionPtrOutput {
@@ -5391,6 +5391,16 @@ func (o FirewallDirectionPtrOutput) ToFirewallDirectionPtrOutput() FirewallDirec
 
 func (o FirewallDirectionPtrOutput) ToFirewallDirectionPtrOutputWithContext(ctx context.Context) FirewallDirectionPtrOutput {
 	return o
+}
+
+func (o FirewallDirectionPtrOutput) Elem() FirewallDirectionOutput {
+	return o.ApplyT(func(v *FirewallDirection) FirewallDirection {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallDirection
+		return ret
+	}).(FirewallDirectionOutput)
 }
 
 func (o FirewallDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -5405,16 +5415,6 @@ func (o FirewallDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FirewallDirectionPtrOutput) Elem() FirewallDirectionOutput {
-	return o.ApplyT(func(v *FirewallDirection) FirewallDirection {
-		var ret FirewallDirection
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FirewallDirectionOutput)
 }
 
 // FirewallDirectionInput is an input type that accepts FirewallDirectionArgs and FirewallDirectionOutput values.
@@ -5547,7 +5547,7 @@ func (o FirewallLogConfigMetadataOutput) ToStringPtrOutputWithContext(ctx contex
 type FirewallLogConfigMetadataPtrOutput struct{ *pulumi.OutputState }
 
 func (FirewallLogConfigMetadataPtrOutput) ElementType() reflect.Type {
-	return firewallLogConfigMetadataPtrType
+	return reflect.TypeOf((**FirewallLogConfigMetadata)(nil)).Elem()
 }
 
 func (o FirewallLogConfigMetadataPtrOutput) ToFirewallLogConfigMetadataPtrOutput() FirewallLogConfigMetadataPtrOutput {
@@ -5556,6 +5556,16 @@ func (o FirewallLogConfigMetadataPtrOutput) ToFirewallLogConfigMetadataPtrOutput
 
 func (o FirewallLogConfigMetadataPtrOutput) ToFirewallLogConfigMetadataPtrOutputWithContext(ctx context.Context) FirewallLogConfigMetadataPtrOutput {
 	return o
+}
+
+func (o FirewallLogConfigMetadataPtrOutput) Elem() FirewallLogConfigMetadataOutput {
+	return o.ApplyT(func(v *FirewallLogConfigMetadata) FirewallLogConfigMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallLogConfigMetadata
+		return ret
+	}).(FirewallLogConfigMetadataOutput)
 }
 
 func (o FirewallLogConfigMetadataPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -5570,16 +5580,6 @@ func (o FirewallLogConfigMetadataPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FirewallLogConfigMetadataPtrOutput) Elem() FirewallLogConfigMetadataOutput {
-	return o.ApplyT(func(v *FirewallLogConfigMetadata) FirewallLogConfigMetadata {
-		var ret FirewallLogConfigMetadata
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FirewallLogConfigMetadataOutput)
 }
 
 // FirewallLogConfigMetadataInput is an input type that accepts FirewallLogConfigMetadataArgs and FirewallLogConfigMetadataOutput values.
@@ -5712,7 +5712,7 @@ func (o FirewallPolicyRuleDirectionOutput) ToStringPtrOutputWithContext(ctx cont
 type FirewallPolicyRuleDirectionPtrOutput struct{ *pulumi.OutputState }
 
 func (FirewallPolicyRuleDirectionPtrOutput) ElementType() reflect.Type {
-	return firewallPolicyRuleDirectionPtrType
+	return reflect.TypeOf((**FirewallPolicyRuleDirection)(nil)).Elem()
 }
 
 func (o FirewallPolicyRuleDirectionPtrOutput) ToFirewallPolicyRuleDirectionPtrOutput() FirewallPolicyRuleDirectionPtrOutput {
@@ -5721,6 +5721,16 @@ func (o FirewallPolicyRuleDirectionPtrOutput) ToFirewallPolicyRuleDirectionPtrOu
 
 func (o FirewallPolicyRuleDirectionPtrOutput) ToFirewallPolicyRuleDirectionPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleDirectionPtrOutput {
 	return o
+}
+
+func (o FirewallPolicyRuleDirectionPtrOutput) Elem() FirewallPolicyRuleDirectionOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleDirection) FirewallPolicyRuleDirection {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallPolicyRuleDirection
+		return ret
+	}).(FirewallPolicyRuleDirectionOutput)
 }
 
 func (o FirewallPolicyRuleDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -5735,16 +5745,6 @@ func (o FirewallPolicyRuleDirectionPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FirewallPolicyRuleDirectionPtrOutput) Elem() FirewallPolicyRuleDirectionOutput {
-	return o.ApplyT(func(v *FirewallPolicyRuleDirection) FirewallPolicyRuleDirection {
-		var ret FirewallPolicyRuleDirection
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FirewallPolicyRuleDirectionOutput)
 }
 
 // FirewallPolicyRuleDirectionInput is an input type that accepts FirewallPolicyRuleDirectionArgs and FirewallPolicyRuleDirectionOutput values.
@@ -5881,7 +5881,7 @@ func (o ForwardingRuleIpProtocolOutput) ToStringPtrOutputWithContext(ctx context
 type ForwardingRuleIpProtocolPtrOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleIpProtocolPtrOutput) ElementType() reflect.Type {
-	return forwardingRuleIpProtocolPtrType
+	return reflect.TypeOf((**ForwardingRuleIpProtocol)(nil)).Elem()
 }
 
 func (o ForwardingRuleIpProtocolPtrOutput) ToForwardingRuleIpProtocolPtrOutput() ForwardingRuleIpProtocolPtrOutput {
@@ -5890,6 +5890,16 @@ func (o ForwardingRuleIpProtocolPtrOutput) ToForwardingRuleIpProtocolPtrOutput()
 
 func (o ForwardingRuleIpProtocolPtrOutput) ToForwardingRuleIpProtocolPtrOutputWithContext(ctx context.Context) ForwardingRuleIpProtocolPtrOutput {
 	return o
+}
+
+func (o ForwardingRuleIpProtocolPtrOutput) Elem() ForwardingRuleIpProtocolOutput {
+	return o.ApplyT(func(v *ForwardingRuleIpProtocol) ForwardingRuleIpProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret ForwardingRuleIpProtocol
+		return ret
+	}).(ForwardingRuleIpProtocolOutput)
 }
 
 func (o ForwardingRuleIpProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -5904,16 +5914,6 @@ func (o ForwardingRuleIpProtocolPtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ForwardingRuleIpProtocolPtrOutput) Elem() ForwardingRuleIpProtocolOutput {
-	return o.ApplyT(func(v *ForwardingRuleIpProtocol) ForwardingRuleIpProtocol {
-		var ret ForwardingRuleIpProtocol
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ForwardingRuleIpProtocolOutput)
 }
 
 // ForwardingRuleIpProtocolInput is an input type that accepts ForwardingRuleIpProtocolArgs and ForwardingRuleIpProtocolOutput values.
@@ -6047,7 +6047,7 @@ func (o ForwardingRuleIpVersionOutput) ToStringPtrOutputWithContext(ctx context.
 type ForwardingRuleIpVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleIpVersionPtrOutput) ElementType() reflect.Type {
-	return forwardingRuleIpVersionPtrType
+	return reflect.TypeOf((**ForwardingRuleIpVersion)(nil)).Elem()
 }
 
 func (o ForwardingRuleIpVersionPtrOutput) ToForwardingRuleIpVersionPtrOutput() ForwardingRuleIpVersionPtrOutput {
@@ -6056,6 +6056,16 @@ func (o ForwardingRuleIpVersionPtrOutput) ToForwardingRuleIpVersionPtrOutput() F
 
 func (o ForwardingRuleIpVersionPtrOutput) ToForwardingRuleIpVersionPtrOutputWithContext(ctx context.Context) ForwardingRuleIpVersionPtrOutput {
 	return o
+}
+
+func (o ForwardingRuleIpVersionPtrOutput) Elem() ForwardingRuleIpVersionOutput {
+	return o.ApplyT(func(v *ForwardingRuleIpVersion) ForwardingRuleIpVersion {
+		if v != nil {
+			return *v
+		}
+		var ret ForwardingRuleIpVersion
+		return ret
+	}).(ForwardingRuleIpVersionOutput)
 }
 
 func (o ForwardingRuleIpVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -6070,16 +6080,6 @@ func (o ForwardingRuleIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ForwardingRuleIpVersionPtrOutput) Elem() ForwardingRuleIpVersionOutput {
-	return o.ApplyT(func(v *ForwardingRuleIpVersion) ForwardingRuleIpVersion {
-		var ret ForwardingRuleIpVersion
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ForwardingRuleIpVersionOutput)
 }
 
 // ForwardingRuleIpVersionInput is an input type that accepts ForwardingRuleIpVersionArgs and ForwardingRuleIpVersionOutput values.
@@ -6215,7 +6215,7 @@ func (o ForwardingRuleLoadBalancingSchemeOutput) ToStringPtrOutputWithContext(ct
 type ForwardingRuleLoadBalancingSchemePtrOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleLoadBalancingSchemePtrOutput) ElementType() reflect.Type {
-	return forwardingRuleLoadBalancingSchemePtrType
+	return reflect.TypeOf((**ForwardingRuleLoadBalancingScheme)(nil)).Elem()
 }
 
 func (o ForwardingRuleLoadBalancingSchemePtrOutput) ToForwardingRuleLoadBalancingSchemePtrOutput() ForwardingRuleLoadBalancingSchemePtrOutput {
@@ -6224,6 +6224,16 @@ func (o ForwardingRuleLoadBalancingSchemePtrOutput) ToForwardingRuleLoadBalancin
 
 func (o ForwardingRuleLoadBalancingSchemePtrOutput) ToForwardingRuleLoadBalancingSchemePtrOutputWithContext(ctx context.Context) ForwardingRuleLoadBalancingSchemePtrOutput {
 	return o
+}
+
+func (o ForwardingRuleLoadBalancingSchemePtrOutput) Elem() ForwardingRuleLoadBalancingSchemeOutput {
+	return o.ApplyT(func(v *ForwardingRuleLoadBalancingScheme) ForwardingRuleLoadBalancingScheme {
+		if v != nil {
+			return *v
+		}
+		var ret ForwardingRuleLoadBalancingScheme
+		return ret
+	}).(ForwardingRuleLoadBalancingSchemeOutput)
 }
 
 func (o ForwardingRuleLoadBalancingSchemePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -6238,16 +6248,6 @@ func (o ForwardingRuleLoadBalancingSchemePtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ForwardingRuleLoadBalancingSchemePtrOutput) Elem() ForwardingRuleLoadBalancingSchemeOutput {
-	return o.ApplyT(func(v *ForwardingRuleLoadBalancingScheme) ForwardingRuleLoadBalancingScheme {
-		var ret ForwardingRuleLoadBalancingScheme
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ForwardingRuleLoadBalancingSchemeOutput)
 }
 
 // ForwardingRuleLoadBalancingSchemeInput is an input type that accepts ForwardingRuleLoadBalancingSchemeArgs and ForwardingRuleLoadBalancingSchemeOutput values.
@@ -6382,7 +6382,7 @@ func (o ForwardingRuleNetworkTierOutput) ToStringPtrOutputWithContext(ctx contex
 type ForwardingRuleNetworkTierPtrOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleNetworkTierPtrOutput) ElementType() reflect.Type {
-	return forwardingRuleNetworkTierPtrType
+	return reflect.TypeOf((**ForwardingRuleNetworkTier)(nil)).Elem()
 }
 
 func (o ForwardingRuleNetworkTierPtrOutput) ToForwardingRuleNetworkTierPtrOutput() ForwardingRuleNetworkTierPtrOutput {
@@ -6391,6 +6391,16 @@ func (o ForwardingRuleNetworkTierPtrOutput) ToForwardingRuleNetworkTierPtrOutput
 
 func (o ForwardingRuleNetworkTierPtrOutput) ToForwardingRuleNetworkTierPtrOutputWithContext(ctx context.Context) ForwardingRuleNetworkTierPtrOutput {
 	return o
+}
+
+func (o ForwardingRuleNetworkTierPtrOutput) Elem() ForwardingRuleNetworkTierOutput {
+	return o.ApplyT(func(v *ForwardingRuleNetworkTier) ForwardingRuleNetworkTier {
+		if v != nil {
+			return *v
+		}
+		var ret ForwardingRuleNetworkTier
+		return ret
+	}).(ForwardingRuleNetworkTierOutput)
 }
 
 func (o ForwardingRuleNetworkTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -6405,16 +6415,6 @@ func (o ForwardingRuleNetworkTierPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ForwardingRuleNetworkTierPtrOutput) Elem() ForwardingRuleNetworkTierOutput {
-	return o.ApplyT(func(v *ForwardingRuleNetworkTier) ForwardingRuleNetworkTier {
-		var ret ForwardingRuleNetworkTier
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ForwardingRuleNetworkTierOutput)
 }
 
 // ForwardingRuleNetworkTierInput is an input type that accepts ForwardingRuleNetworkTierArgs and ForwardingRuleNetworkTierOutput values.
@@ -6553,7 +6553,7 @@ func (o ForwardingRulePscConnectionStatusOutput) ToStringPtrOutputWithContext(ct
 type ForwardingRulePscConnectionStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRulePscConnectionStatusPtrOutput) ElementType() reflect.Type {
-	return forwardingRulePscConnectionStatusPtrType
+	return reflect.TypeOf((**ForwardingRulePscConnectionStatus)(nil)).Elem()
 }
 
 func (o ForwardingRulePscConnectionStatusPtrOutput) ToForwardingRulePscConnectionStatusPtrOutput() ForwardingRulePscConnectionStatusPtrOutput {
@@ -6562,6 +6562,16 @@ func (o ForwardingRulePscConnectionStatusPtrOutput) ToForwardingRulePscConnectio
 
 func (o ForwardingRulePscConnectionStatusPtrOutput) ToForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) ForwardingRulePscConnectionStatusPtrOutput {
 	return o
+}
+
+func (o ForwardingRulePscConnectionStatusPtrOutput) Elem() ForwardingRulePscConnectionStatusOutput {
+	return o.ApplyT(func(v *ForwardingRulePscConnectionStatus) ForwardingRulePscConnectionStatus {
+		if v != nil {
+			return *v
+		}
+		var ret ForwardingRulePscConnectionStatus
+		return ret
+	}).(ForwardingRulePscConnectionStatusOutput)
 }
 
 func (o ForwardingRulePscConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -6576,16 +6586,6 @@ func (o ForwardingRulePscConnectionStatusPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ForwardingRulePscConnectionStatusPtrOutput) Elem() ForwardingRulePscConnectionStatusOutput {
-	return o.ApplyT(func(v *ForwardingRulePscConnectionStatus) ForwardingRulePscConnectionStatus {
-		var ret ForwardingRulePscConnectionStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ForwardingRulePscConnectionStatusOutput)
 }
 
 // ForwardingRulePscConnectionStatusInput is an input type that accepts ForwardingRulePscConnectionStatusArgs and ForwardingRulePscConnectionStatusOutput values.
@@ -6722,7 +6722,7 @@ func (o GRPCHealthCheckPortSpecificationOutput) ToStringPtrOutputWithContext(ctx
 type GRPCHealthCheckPortSpecificationPtrOutput struct{ *pulumi.OutputState }
 
 func (GRPCHealthCheckPortSpecificationPtrOutput) ElementType() reflect.Type {
-	return grpchealthCheckPortSpecificationPtrType
+	return reflect.TypeOf((**GRPCHealthCheckPortSpecification)(nil)).Elem()
 }
 
 func (o GRPCHealthCheckPortSpecificationPtrOutput) ToGRPCHealthCheckPortSpecificationPtrOutput() GRPCHealthCheckPortSpecificationPtrOutput {
@@ -6731,6 +6731,16 @@ func (o GRPCHealthCheckPortSpecificationPtrOutput) ToGRPCHealthCheckPortSpecific
 
 func (o GRPCHealthCheckPortSpecificationPtrOutput) ToGRPCHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) GRPCHealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o GRPCHealthCheckPortSpecificationPtrOutput) Elem() GRPCHealthCheckPortSpecificationOutput {
+	return o.ApplyT(func(v *GRPCHealthCheckPortSpecification) GRPCHealthCheckPortSpecification {
+		if v != nil {
+			return *v
+		}
+		var ret GRPCHealthCheckPortSpecification
+		return ret
+	}).(GRPCHealthCheckPortSpecificationOutput)
 }
 
 func (o GRPCHealthCheckPortSpecificationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -6745,16 +6755,6 @@ func (o GRPCHealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GRPCHealthCheckPortSpecificationPtrOutput) Elem() GRPCHealthCheckPortSpecificationOutput {
-	return o.ApplyT(func(v *GRPCHealthCheckPortSpecification) GRPCHealthCheckPortSpecification {
-		var ret GRPCHealthCheckPortSpecification
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GRPCHealthCheckPortSpecificationOutput)
 }
 
 // GRPCHealthCheckPortSpecificationInput is an input type that accepts GRPCHealthCheckPortSpecificationArgs and GRPCHealthCheckPortSpecificationOutput values.
@@ -6890,7 +6890,7 @@ func (o GlobalAddressAddressTypeOutput) ToStringPtrOutputWithContext(ctx context
 type GlobalAddressAddressTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalAddressAddressTypePtrOutput) ElementType() reflect.Type {
-	return globalAddressAddressTypePtrType
+	return reflect.TypeOf((**GlobalAddressAddressType)(nil)).Elem()
 }
 
 func (o GlobalAddressAddressTypePtrOutput) ToGlobalAddressAddressTypePtrOutput() GlobalAddressAddressTypePtrOutput {
@@ -6899,6 +6899,16 @@ func (o GlobalAddressAddressTypePtrOutput) ToGlobalAddressAddressTypePtrOutput()
 
 func (o GlobalAddressAddressTypePtrOutput) ToGlobalAddressAddressTypePtrOutputWithContext(ctx context.Context) GlobalAddressAddressTypePtrOutput {
 	return o
+}
+
+func (o GlobalAddressAddressTypePtrOutput) Elem() GlobalAddressAddressTypeOutput {
+	return o.ApplyT(func(v *GlobalAddressAddressType) GlobalAddressAddressType {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalAddressAddressType
+		return ret
+	}).(GlobalAddressAddressTypeOutput)
 }
 
 func (o GlobalAddressAddressTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -6913,16 +6923,6 @@ func (o GlobalAddressAddressTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalAddressAddressTypePtrOutput) Elem() GlobalAddressAddressTypeOutput {
-	return o.ApplyT(func(v *GlobalAddressAddressType) GlobalAddressAddressType {
-		var ret GlobalAddressAddressType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GlobalAddressAddressTypeOutput)
 }
 
 // GlobalAddressAddressTypeInput is an input type that accepts GlobalAddressAddressTypeArgs and GlobalAddressAddressTypeOutput values.
@@ -7056,7 +7056,7 @@ func (o GlobalAddressIpVersionOutput) ToStringPtrOutputWithContext(ctx context.C
 type GlobalAddressIpVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalAddressIpVersionPtrOutput) ElementType() reflect.Type {
-	return globalAddressIpVersionPtrType
+	return reflect.TypeOf((**GlobalAddressIpVersion)(nil)).Elem()
 }
 
 func (o GlobalAddressIpVersionPtrOutput) ToGlobalAddressIpVersionPtrOutput() GlobalAddressIpVersionPtrOutput {
@@ -7065,6 +7065,16 @@ func (o GlobalAddressIpVersionPtrOutput) ToGlobalAddressIpVersionPtrOutput() Glo
 
 func (o GlobalAddressIpVersionPtrOutput) ToGlobalAddressIpVersionPtrOutputWithContext(ctx context.Context) GlobalAddressIpVersionPtrOutput {
 	return o
+}
+
+func (o GlobalAddressIpVersionPtrOutput) Elem() GlobalAddressIpVersionOutput {
+	return o.ApplyT(func(v *GlobalAddressIpVersion) GlobalAddressIpVersion {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalAddressIpVersion
+		return ret
+	}).(GlobalAddressIpVersionOutput)
 }
 
 func (o GlobalAddressIpVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -7079,16 +7089,6 @@ func (o GlobalAddressIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalAddressIpVersionPtrOutput) Elem() GlobalAddressIpVersionOutput {
-	return o.ApplyT(func(v *GlobalAddressIpVersion) GlobalAddressIpVersion {
-		var ret GlobalAddressIpVersion
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GlobalAddressIpVersionOutput)
 }
 
 // GlobalAddressIpVersionInput is an input type that accepts GlobalAddressIpVersionArgs and GlobalAddressIpVersionOutput values.
@@ -7223,7 +7223,7 @@ func (o GlobalAddressNetworkTierOutput) ToStringPtrOutputWithContext(ctx context
 type GlobalAddressNetworkTierPtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalAddressNetworkTierPtrOutput) ElementType() reflect.Type {
-	return globalAddressNetworkTierPtrType
+	return reflect.TypeOf((**GlobalAddressNetworkTier)(nil)).Elem()
 }
 
 func (o GlobalAddressNetworkTierPtrOutput) ToGlobalAddressNetworkTierPtrOutput() GlobalAddressNetworkTierPtrOutput {
@@ -7232,6 +7232,16 @@ func (o GlobalAddressNetworkTierPtrOutput) ToGlobalAddressNetworkTierPtrOutput()
 
 func (o GlobalAddressNetworkTierPtrOutput) ToGlobalAddressNetworkTierPtrOutputWithContext(ctx context.Context) GlobalAddressNetworkTierPtrOutput {
 	return o
+}
+
+func (o GlobalAddressNetworkTierPtrOutput) Elem() GlobalAddressNetworkTierOutput {
+	return o.ApplyT(func(v *GlobalAddressNetworkTier) GlobalAddressNetworkTier {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalAddressNetworkTier
+		return ret
+	}).(GlobalAddressNetworkTierOutput)
 }
 
 func (o GlobalAddressNetworkTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -7246,16 +7256,6 @@ func (o GlobalAddressNetworkTierPtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalAddressNetworkTierPtrOutput) Elem() GlobalAddressNetworkTierOutput {
-	return o.ApplyT(func(v *GlobalAddressNetworkTier) GlobalAddressNetworkTier {
-		var ret GlobalAddressNetworkTier
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GlobalAddressNetworkTierOutput)
 }
 
 // GlobalAddressNetworkTierInput is an input type that accepts GlobalAddressNetworkTierArgs and GlobalAddressNetworkTierOutput values.
@@ -7400,7 +7400,7 @@ func (o GlobalAddressPurposeOutput) ToStringPtrOutputWithContext(ctx context.Con
 type GlobalAddressPurposePtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalAddressPurposePtrOutput) ElementType() reflect.Type {
-	return globalAddressPurposePtrType
+	return reflect.TypeOf((**GlobalAddressPurpose)(nil)).Elem()
 }
 
 func (o GlobalAddressPurposePtrOutput) ToGlobalAddressPurposePtrOutput() GlobalAddressPurposePtrOutput {
@@ -7409,6 +7409,16 @@ func (o GlobalAddressPurposePtrOutput) ToGlobalAddressPurposePtrOutput() GlobalA
 
 func (o GlobalAddressPurposePtrOutput) ToGlobalAddressPurposePtrOutputWithContext(ctx context.Context) GlobalAddressPurposePtrOutput {
 	return o
+}
+
+func (o GlobalAddressPurposePtrOutput) Elem() GlobalAddressPurposeOutput {
+	return o.ApplyT(func(v *GlobalAddressPurpose) GlobalAddressPurpose {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalAddressPurpose
+		return ret
+	}).(GlobalAddressPurposeOutput)
 }
 
 func (o GlobalAddressPurposePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -7423,16 +7433,6 @@ func (o GlobalAddressPurposePtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalAddressPurposePtrOutput) Elem() GlobalAddressPurposeOutput {
-	return o.ApplyT(func(v *GlobalAddressPurpose) GlobalAddressPurpose {
-		var ret GlobalAddressPurpose
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GlobalAddressPurposeOutput)
 }
 
 // GlobalAddressPurposeInput is an input type that accepts GlobalAddressPurposeArgs and GlobalAddressPurposeOutput values.
@@ -7569,7 +7569,7 @@ func (o GlobalForwardingRuleIpProtocolOutput) ToStringPtrOutputWithContext(ctx c
 type GlobalForwardingRuleIpProtocolPtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalForwardingRuleIpProtocolPtrOutput) ElementType() reflect.Type {
-	return globalForwardingRuleIpProtocolPtrType
+	return reflect.TypeOf((**GlobalForwardingRuleIpProtocol)(nil)).Elem()
 }
 
 func (o GlobalForwardingRuleIpProtocolPtrOutput) ToGlobalForwardingRuleIpProtocolPtrOutput() GlobalForwardingRuleIpProtocolPtrOutput {
@@ -7578,6 +7578,16 @@ func (o GlobalForwardingRuleIpProtocolPtrOutput) ToGlobalForwardingRuleIpProtoco
 
 func (o GlobalForwardingRuleIpProtocolPtrOutput) ToGlobalForwardingRuleIpProtocolPtrOutputWithContext(ctx context.Context) GlobalForwardingRuleIpProtocolPtrOutput {
 	return o
+}
+
+func (o GlobalForwardingRuleIpProtocolPtrOutput) Elem() GlobalForwardingRuleIpProtocolOutput {
+	return o.ApplyT(func(v *GlobalForwardingRuleIpProtocol) GlobalForwardingRuleIpProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalForwardingRuleIpProtocol
+		return ret
+	}).(GlobalForwardingRuleIpProtocolOutput)
 }
 
 func (o GlobalForwardingRuleIpProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -7592,16 +7602,6 @@ func (o GlobalForwardingRuleIpProtocolPtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalForwardingRuleIpProtocolPtrOutput) Elem() GlobalForwardingRuleIpProtocolOutput {
-	return o.ApplyT(func(v *GlobalForwardingRuleIpProtocol) GlobalForwardingRuleIpProtocol {
-		var ret GlobalForwardingRuleIpProtocol
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GlobalForwardingRuleIpProtocolOutput)
 }
 
 // GlobalForwardingRuleIpProtocolInput is an input type that accepts GlobalForwardingRuleIpProtocolArgs and GlobalForwardingRuleIpProtocolOutput values.
@@ -7735,7 +7735,7 @@ func (o GlobalForwardingRuleIpVersionOutput) ToStringPtrOutputWithContext(ctx co
 type GlobalForwardingRuleIpVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalForwardingRuleIpVersionPtrOutput) ElementType() reflect.Type {
-	return globalForwardingRuleIpVersionPtrType
+	return reflect.TypeOf((**GlobalForwardingRuleIpVersion)(nil)).Elem()
 }
 
 func (o GlobalForwardingRuleIpVersionPtrOutput) ToGlobalForwardingRuleIpVersionPtrOutput() GlobalForwardingRuleIpVersionPtrOutput {
@@ -7744,6 +7744,16 @@ func (o GlobalForwardingRuleIpVersionPtrOutput) ToGlobalForwardingRuleIpVersionP
 
 func (o GlobalForwardingRuleIpVersionPtrOutput) ToGlobalForwardingRuleIpVersionPtrOutputWithContext(ctx context.Context) GlobalForwardingRuleIpVersionPtrOutput {
 	return o
+}
+
+func (o GlobalForwardingRuleIpVersionPtrOutput) Elem() GlobalForwardingRuleIpVersionOutput {
+	return o.ApplyT(func(v *GlobalForwardingRuleIpVersion) GlobalForwardingRuleIpVersion {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalForwardingRuleIpVersion
+		return ret
+	}).(GlobalForwardingRuleIpVersionOutput)
 }
 
 func (o GlobalForwardingRuleIpVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -7758,16 +7768,6 @@ func (o GlobalForwardingRuleIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalForwardingRuleIpVersionPtrOutput) Elem() GlobalForwardingRuleIpVersionOutput {
-	return o.ApplyT(func(v *GlobalForwardingRuleIpVersion) GlobalForwardingRuleIpVersion {
-		var ret GlobalForwardingRuleIpVersion
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GlobalForwardingRuleIpVersionOutput)
 }
 
 // GlobalForwardingRuleIpVersionInput is an input type that accepts GlobalForwardingRuleIpVersionArgs and GlobalForwardingRuleIpVersionOutput values.
@@ -7903,7 +7903,7 @@ func (o GlobalForwardingRuleLoadBalancingSchemeOutput) ToStringPtrOutputWithCont
 type GlobalForwardingRuleLoadBalancingSchemePtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalForwardingRuleLoadBalancingSchemePtrOutput) ElementType() reflect.Type {
-	return globalForwardingRuleLoadBalancingSchemePtrType
+	return reflect.TypeOf((**GlobalForwardingRuleLoadBalancingScheme)(nil)).Elem()
 }
 
 func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) ToGlobalForwardingRuleLoadBalancingSchemePtrOutput() GlobalForwardingRuleLoadBalancingSchemePtrOutput {
@@ -7912,6 +7912,16 @@ func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) ToGlobalForwardingRule
 
 func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) ToGlobalForwardingRuleLoadBalancingSchemePtrOutputWithContext(ctx context.Context) GlobalForwardingRuleLoadBalancingSchemePtrOutput {
 	return o
+}
+
+func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) Elem() GlobalForwardingRuleLoadBalancingSchemeOutput {
+	return o.ApplyT(func(v *GlobalForwardingRuleLoadBalancingScheme) GlobalForwardingRuleLoadBalancingScheme {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalForwardingRuleLoadBalancingScheme
+		return ret
+	}).(GlobalForwardingRuleLoadBalancingSchemeOutput)
 }
 
 func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -7926,16 +7936,6 @@ func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) ToStringPtrOutputWithC
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) Elem() GlobalForwardingRuleLoadBalancingSchemeOutput {
-	return o.ApplyT(func(v *GlobalForwardingRuleLoadBalancingScheme) GlobalForwardingRuleLoadBalancingScheme {
-		var ret GlobalForwardingRuleLoadBalancingScheme
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GlobalForwardingRuleLoadBalancingSchemeOutput)
 }
 
 // GlobalForwardingRuleLoadBalancingSchemeInput is an input type that accepts GlobalForwardingRuleLoadBalancingSchemeArgs and GlobalForwardingRuleLoadBalancingSchemeOutput values.
@@ -8070,7 +8070,7 @@ func (o GlobalForwardingRuleNetworkTierOutput) ToStringPtrOutputWithContext(ctx 
 type GlobalForwardingRuleNetworkTierPtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalForwardingRuleNetworkTierPtrOutput) ElementType() reflect.Type {
-	return globalForwardingRuleNetworkTierPtrType
+	return reflect.TypeOf((**GlobalForwardingRuleNetworkTier)(nil)).Elem()
 }
 
 func (o GlobalForwardingRuleNetworkTierPtrOutput) ToGlobalForwardingRuleNetworkTierPtrOutput() GlobalForwardingRuleNetworkTierPtrOutput {
@@ -8079,6 +8079,16 @@ func (o GlobalForwardingRuleNetworkTierPtrOutput) ToGlobalForwardingRuleNetworkT
 
 func (o GlobalForwardingRuleNetworkTierPtrOutput) ToGlobalForwardingRuleNetworkTierPtrOutputWithContext(ctx context.Context) GlobalForwardingRuleNetworkTierPtrOutput {
 	return o
+}
+
+func (o GlobalForwardingRuleNetworkTierPtrOutput) Elem() GlobalForwardingRuleNetworkTierOutput {
+	return o.ApplyT(func(v *GlobalForwardingRuleNetworkTier) GlobalForwardingRuleNetworkTier {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalForwardingRuleNetworkTier
+		return ret
+	}).(GlobalForwardingRuleNetworkTierOutput)
 }
 
 func (o GlobalForwardingRuleNetworkTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -8093,16 +8103,6 @@ func (o GlobalForwardingRuleNetworkTierPtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalForwardingRuleNetworkTierPtrOutput) Elem() GlobalForwardingRuleNetworkTierOutput {
-	return o.ApplyT(func(v *GlobalForwardingRuleNetworkTier) GlobalForwardingRuleNetworkTier {
-		var ret GlobalForwardingRuleNetworkTier
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GlobalForwardingRuleNetworkTierOutput)
 }
 
 // GlobalForwardingRuleNetworkTierInput is an input type that accepts GlobalForwardingRuleNetworkTierArgs and GlobalForwardingRuleNetworkTierOutput values.
@@ -8241,7 +8241,7 @@ func (o GlobalForwardingRulePscConnectionStatusOutput) ToStringPtrOutputWithCont
 type GlobalForwardingRulePscConnectionStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalForwardingRulePscConnectionStatusPtrOutput) ElementType() reflect.Type {
-	return globalForwardingRulePscConnectionStatusPtrType
+	return reflect.TypeOf((**GlobalForwardingRulePscConnectionStatus)(nil)).Elem()
 }
 
 func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToGlobalForwardingRulePscConnectionStatusPtrOutput() GlobalForwardingRulePscConnectionStatusPtrOutput {
@@ -8250,6 +8250,16 @@ func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToGlobalForwardingRule
 
 func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) GlobalForwardingRulePscConnectionStatusPtrOutput {
 	return o
+}
+
+func (o GlobalForwardingRulePscConnectionStatusPtrOutput) Elem() GlobalForwardingRulePscConnectionStatusOutput {
+	return o.ApplyT(func(v *GlobalForwardingRulePscConnectionStatus) GlobalForwardingRulePscConnectionStatus {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalForwardingRulePscConnectionStatus
+		return ret
+	}).(GlobalForwardingRulePscConnectionStatusOutput)
 }
 
 func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -8264,16 +8274,6 @@ func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToStringPtrOutputWithC
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalForwardingRulePscConnectionStatusPtrOutput) Elem() GlobalForwardingRulePscConnectionStatusOutput {
-	return o.ApplyT(func(v *GlobalForwardingRulePscConnectionStatus) GlobalForwardingRulePscConnectionStatus {
-		var ret GlobalForwardingRulePscConnectionStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GlobalForwardingRulePscConnectionStatusOutput)
 }
 
 // GlobalForwardingRulePscConnectionStatusInput is an input type that accepts GlobalForwardingRulePscConnectionStatusArgs and GlobalForwardingRulePscConnectionStatusOutput values.
@@ -8416,7 +8416,7 @@ func (o GlobalNetworkEndpointGroupNetworkEndpointTypeOutput) ToStringPtrOutputWi
 type GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) ElementType() reflect.Type {
-	return globalNetworkEndpointGroupNetworkEndpointTypePtrType
+	return reflect.TypeOf((**GlobalNetworkEndpointGroupNetworkEndpointType)(nil)).Elem()
 }
 
 func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToGlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput() GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput {
@@ -8425,6 +8425,16 @@ func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToGlobalNetworkE
 
 func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToGlobalNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput {
 	return o
+}
+
+func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) Elem() GlobalNetworkEndpointGroupNetworkEndpointTypeOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroupNetworkEndpointType) GlobalNetworkEndpointGroupNetworkEndpointType {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalNetworkEndpointGroupNetworkEndpointType
+		return ret
+	}).(GlobalNetworkEndpointGroupNetworkEndpointTypeOutput)
 }
 
 func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -8439,16 +8449,6 @@ func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) Elem() GlobalNetworkEndpointGroupNetworkEndpointTypeOutput {
-	return o.ApplyT(func(v *GlobalNetworkEndpointGroupNetworkEndpointType) GlobalNetworkEndpointGroupNetworkEndpointType {
-		var ret GlobalNetworkEndpointGroupNetworkEndpointType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GlobalNetworkEndpointGroupNetworkEndpointTypeOutput)
 }
 
 // GlobalNetworkEndpointGroupNetworkEndpointTypeInput is an input type that accepts GlobalNetworkEndpointGroupNetworkEndpointTypeArgs and GlobalNetworkEndpointGroupNetworkEndpointTypeOutput values.
@@ -8587,7 +8587,7 @@ func (o GuestOsFeatureTypeOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type GuestOsFeatureTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GuestOsFeatureTypePtrOutput) ElementType() reflect.Type {
-	return guestOsFeatureTypePtrType
+	return reflect.TypeOf((**GuestOsFeatureType)(nil)).Elem()
 }
 
 func (o GuestOsFeatureTypePtrOutput) ToGuestOsFeatureTypePtrOutput() GuestOsFeatureTypePtrOutput {
@@ -8596,6 +8596,16 @@ func (o GuestOsFeatureTypePtrOutput) ToGuestOsFeatureTypePtrOutput() GuestOsFeat
 
 func (o GuestOsFeatureTypePtrOutput) ToGuestOsFeatureTypePtrOutputWithContext(ctx context.Context) GuestOsFeatureTypePtrOutput {
 	return o
+}
+
+func (o GuestOsFeatureTypePtrOutput) Elem() GuestOsFeatureTypeOutput {
+	return o.ApplyT(func(v *GuestOsFeatureType) GuestOsFeatureType {
+		if v != nil {
+			return *v
+		}
+		var ret GuestOsFeatureType
+		return ret
+	}).(GuestOsFeatureTypeOutput)
 }
 
 func (o GuestOsFeatureTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -8610,16 +8620,6 @@ func (o GuestOsFeatureTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GuestOsFeatureTypePtrOutput) Elem() GuestOsFeatureTypeOutput {
-	return o.ApplyT(func(v *GuestOsFeatureType) GuestOsFeatureType {
-		var ret GuestOsFeatureType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GuestOsFeatureTypeOutput)
 }
 
 // GuestOsFeatureTypeInput is an input type that accepts GuestOsFeatureTypeArgs and GuestOsFeatureTypeOutput values.
@@ -8756,7 +8756,7 @@ func (o HTTP2HealthCheckPortSpecificationOutput) ToStringPtrOutputWithContext(ct
 type HTTP2HealthCheckPortSpecificationPtrOutput struct{ *pulumi.OutputState }
 
 func (HTTP2HealthCheckPortSpecificationPtrOutput) ElementType() reflect.Type {
-	return http2healthCheckPortSpecificationPtrType
+	return reflect.TypeOf((**HTTP2HealthCheckPortSpecification)(nil)).Elem()
 }
 
 func (o HTTP2HealthCheckPortSpecificationPtrOutput) ToHTTP2HealthCheckPortSpecificationPtrOutput() HTTP2HealthCheckPortSpecificationPtrOutput {
@@ -8765,6 +8765,16 @@ func (o HTTP2HealthCheckPortSpecificationPtrOutput) ToHTTP2HealthCheckPortSpecif
 
 func (o HTTP2HealthCheckPortSpecificationPtrOutput) ToHTTP2HealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) HTTP2HealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o HTTP2HealthCheckPortSpecificationPtrOutput) Elem() HTTP2HealthCheckPortSpecificationOutput {
+	return o.ApplyT(func(v *HTTP2HealthCheckPortSpecification) HTTP2HealthCheckPortSpecification {
+		if v != nil {
+			return *v
+		}
+		var ret HTTP2HealthCheckPortSpecification
+		return ret
+	}).(HTTP2HealthCheckPortSpecificationOutput)
 }
 
 func (o HTTP2HealthCheckPortSpecificationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -8779,16 +8789,6 @@ func (o HTTP2HealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HTTP2HealthCheckPortSpecificationPtrOutput) Elem() HTTP2HealthCheckPortSpecificationOutput {
-	return o.ApplyT(func(v *HTTP2HealthCheckPortSpecification) HTTP2HealthCheckPortSpecification {
-		var ret HTTP2HealthCheckPortSpecification
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HTTP2HealthCheckPortSpecificationOutput)
 }
 
 // HTTP2HealthCheckPortSpecificationInput is an input type that accepts HTTP2HealthCheckPortSpecificationArgs and HTTP2HealthCheckPortSpecificationOutput values.
@@ -8921,7 +8921,7 @@ func (o HTTP2HealthCheckProxyHeaderOutput) ToStringPtrOutputWithContext(ctx cont
 type HTTP2HealthCheckProxyHeaderPtrOutput struct{ *pulumi.OutputState }
 
 func (HTTP2HealthCheckProxyHeaderPtrOutput) ElementType() reflect.Type {
-	return http2healthCheckProxyHeaderPtrType
+	return reflect.TypeOf((**HTTP2HealthCheckProxyHeader)(nil)).Elem()
 }
 
 func (o HTTP2HealthCheckProxyHeaderPtrOutput) ToHTTP2HealthCheckProxyHeaderPtrOutput() HTTP2HealthCheckProxyHeaderPtrOutput {
@@ -8930,6 +8930,16 @@ func (o HTTP2HealthCheckProxyHeaderPtrOutput) ToHTTP2HealthCheckProxyHeaderPtrOu
 
 func (o HTTP2HealthCheckProxyHeaderPtrOutput) ToHTTP2HealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTP2HealthCheckProxyHeaderPtrOutput {
 	return o
+}
+
+func (o HTTP2HealthCheckProxyHeaderPtrOutput) Elem() HTTP2HealthCheckProxyHeaderOutput {
+	return o.ApplyT(func(v *HTTP2HealthCheckProxyHeader) HTTP2HealthCheckProxyHeader {
+		if v != nil {
+			return *v
+		}
+		var ret HTTP2HealthCheckProxyHeader
+		return ret
+	}).(HTTP2HealthCheckProxyHeaderOutput)
 }
 
 func (o HTTP2HealthCheckProxyHeaderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -8944,16 +8954,6 @@ func (o HTTP2HealthCheckProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HTTP2HealthCheckProxyHeaderPtrOutput) Elem() HTTP2HealthCheckProxyHeaderOutput {
-	return o.ApplyT(func(v *HTTP2HealthCheckProxyHeader) HTTP2HealthCheckProxyHeader {
-		var ret HTTP2HealthCheckProxyHeader
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HTTP2HealthCheckProxyHeaderOutput)
 }
 
 // HTTP2HealthCheckProxyHeaderInput is an input type that accepts HTTP2HealthCheckProxyHeaderArgs and HTTP2HealthCheckProxyHeaderOutput values.
@@ -9090,7 +9090,7 @@ func (o HTTPHealthCheckPortSpecificationOutput) ToStringPtrOutputWithContext(ctx
 type HTTPHealthCheckPortSpecificationPtrOutput struct{ *pulumi.OutputState }
 
 func (HTTPHealthCheckPortSpecificationPtrOutput) ElementType() reflect.Type {
-	return httphealthCheckPortSpecificationPtrType
+	return reflect.TypeOf((**HTTPHealthCheckPortSpecification)(nil)).Elem()
 }
 
 func (o HTTPHealthCheckPortSpecificationPtrOutput) ToHTTPHealthCheckPortSpecificationPtrOutput() HTTPHealthCheckPortSpecificationPtrOutput {
@@ -9099,6 +9099,16 @@ func (o HTTPHealthCheckPortSpecificationPtrOutput) ToHTTPHealthCheckPortSpecific
 
 func (o HTTPHealthCheckPortSpecificationPtrOutput) ToHTTPHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) HTTPHealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o HTTPHealthCheckPortSpecificationPtrOutput) Elem() HTTPHealthCheckPortSpecificationOutput {
+	return o.ApplyT(func(v *HTTPHealthCheckPortSpecification) HTTPHealthCheckPortSpecification {
+		if v != nil {
+			return *v
+		}
+		var ret HTTPHealthCheckPortSpecification
+		return ret
+	}).(HTTPHealthCheckPortSpecificationOutput)
 }
 
 func (o HTTPHealthCheckPortSpecificationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -9113,16 +9123,6 @@ func (o HTTPHealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HTTPHealthCheckPortSpecificationPtrOutput) Elem() HTTPHealthCheckPortSpecificationOutput {
-	return o.ApplyT(func(v *HTTPHealthCheckPortSpecification) HTTPHealthCheckPortSpecification {
-		var ret HTTPHealthCheckPortSpecification
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HTTPHealthCheckPortSpecificationOutput)
 }
 
 // HTTPHealthCheckPortSpecificationInput is an input type that accepts HTTPHealthCheckPortSpecificationArgs and HTTPHealthCheckPortSpecificationOutput values.
@@ -9255,7 +9255,7 @@ func (o HTTPHealthCheckProxyHeaderOutput) ToStringPtrOutputWithContext(ctx conte
 type HTTPHealthCheckProxyHeaderPtrOutput struct{ *pulumi.OutputState }
 
 func (HTTPHealthCheckProxyHeaderPtrOutput) ElementType() reflect.Type {
-	return httphealthCheckProxyHeaderPtrType
+	return reflect.TypeOf((**HTTPHealthCheckProxyHeader)(nil)).Elem()
 }
 
 func (o HTTPHealthCheckProxyHeaderPtrOutput) ToHTTPHealthCheckProxyHeaderPtrOutput() HTTPHealthCheckProxyHeaderPtrOutput {
@@ -9264,6 +9264,16 @@ func (o HTTPHealthCheckProxyHeaderPtrOutput) ToHTTPHealthCheckProxyHeaderPtrOutp
 
 func (o HTTPHealthCheckProxyHeaderPtrOutput) ToHTTPHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTPHealthCheckProxyHeaderPtrOutput {
 	return o
+}
+
+func (o HTTPHealthCheckProxyHeaderPtrOutput) Elem() HTTPHealthCheckProxyHeaderOutput {
+	return o.ApplyT(func(v *HTTPHealthCheckProxyHeader) HTTPHealthCheckProxyHeader {
+		if v != nil {
+			return *v
+		}
+		var ret HTTPHealthCheckProxyHeader
+		return ret
+	}).(HTTPHealthCheckProxyHeaderOutput)
 }
 
 func (o HTTPHealthCheckProxyHeaderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -9278,16 +9288,6 @@ func (o HTTPHealthCheckProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HTTPHealthCheckProxyHeaderPtrOutput) Elem() HTTPHealthCheckProxyHeaderOutput {
-	return o.ApplyT(func(v *HTTPHealthCheckProxyHeader) HTTPHealthCheckProxyHeader {
-		var ret HTTPHealthCheckProxyHeader
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HTTPHealthCheckProxyHeaderOutput)
 }
 
 // HTTPHealthCheckProxyHeaderInput is an input type that accepts HTTPHealthCheckProxyHeaderArgs and HTTPHealthCheckProxyHeaderOutput values.
@@ -9424,7 +9424,7 @@ func (o HTTPSHealthCheckPortSpecificationOutput) ToStringPtrOutputWithContext(ct
 type HTTPSHealthCheckPortSpecificationPtrOutput struct{ *pulumi.OutputState }
 
 func (HTTPSHealthCheckPortSpecificationPtrOutput) ElementType() reflect.Type {
-	return httpshealthCheckPortSpecificationPtrType
+	return reflect.TypeOf((**HTTPSHealthCheckPortSpecification)(nil)).Elem()
 }
 
 func (o HTTPSHealthCheckPortSpecificationPtrOutput) ToHTTPSHealthCheckPortSpecificationPtrOutput() HTTPSHealthCheckPortSpecificationPtrOutput {
@@ -9433,6 +9433,16 @@ func (o HTTPSHealthCheckPortSpecificationPtrOutput) ToHTTPSHealthCheckPortSpecif
 
 func (o HTTPSHealthCheckPortSpecificationPtrOutput) ToHTTPSHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) HTTPSHealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o HTTPSHealthCheckPortSpecificationPtrOutput) Elem() HTTPSHealthCheckPortSpecificationOutput {
+	return o.ApplyT(func(v *HTTPSHealthCheckPortSpecification) HTTPSHealthCheckPortSpecification {
+		if v != nil {
+			return *v
+		}
+		var ret HTTPSHealthCheckPortSpecification
+		return ret
+	}).(HTTPSHealthCheckPortSpecificationOutput)
 }
 
 func (o HTTPSHealthCheckPortSpecificationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -9447,16 +9457,6 @@ func (o HTTPSHealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HTTPSHealthCheckPortSpecificationPtrOutput) Elem() HTTPSHealthCheckPortSpecificationOutput {
-	return o.ApplyT(func(v *HTTPSHealthCheckPortSpecification) HTTPSHealthCheckPortSpecification {
-		var ret HTTPSHealthCheckPortSpecification
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HTTPSHealthCheckPortSpecificationOutput)
 }
 
 // HTTPSHealthCheckPortSpecificationInput is an input type that accepts HTTPSHealthCheckPortSpecificationArgs and HTTPSHealthCheckPortSpecificationOutput values.
@@ -9589,7 +9589,7 @@ func (o HTTPSHealthCheckProxyHeaderOutput) ToStringPtrOutputWithContext(ctx cont
 type HTTPSHealthCheckProxyHeaderPtrOutput struct{ *pulumi.OutputState }
 
 func (HTTPSHealthCheckProxyHeaderPtrOutput) ElementType() reflect.Type {
-	return httpshealthCheckProxyHeaderPtrType
+	return reflect.TypeOf((**HTTPSHealthCheckProxyHeader)(nil)).Elem()
 }
 
 func (o HTTPSHealthCheckProxyHeaderPtrOutput) ToHTTPSHealthCheckProxyHeaderPtrOutput() HTTPSHealthCheckProxyHeaderPtrOutput {
@@ -9598,6 +9598,16 @@ func (o HTTPSHealthCheckProxyHeaderPtrOutput) ToHTTPSHealthCheckProxyHeaderPtrOu
 
 func (o HTTPSHealthCheckProxyHeaderPtrOutput) ToHTTPSHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTPSHealthCheckProxyHeaderPtrOutput {
 	return o
+}
+
+func (o HTTPSHealthCheckProxyHeaderPtrOutput) Elem() HTTPSHealthCheckProxyHeaderOutput {
+	return o.ApplyT(func(v *HTTPSHealthCheckProxyHeader) HTTPSHealthCheckProxyHeader {
+		if v != nil {
+			return *v
+		}
+		var ret HTTPSHealthCheckProxyHeader
+		return ret
+	}).(HTTPSHealthCheckProxyHeaderOutput)
 }
 
 func (o HTTPSHealthCheckProxyHeaderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -9612,16 +9622,6 @@ func (o HTTPSHealthCheckProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HTTPSHealthCheckProxyHeaderPtrOutput) Elem() HTTPSHealthCheckProxyHeaderOutput {
-	return o.ApplyT(func(v *HTTPSHealthCheckProxyHeader) HTTPSHealthCheckProxyHeader {
-		var ret HTTPSHealthCheckProxyHeader
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HTTPSHealthCheckProxyHeaderOutput)
 }
 
 // HTTPSHealthCheckProxyHeaderInput is an input type that accepts HTTPSHealthCheckProxyHeaderArgs and HTTPSHealthCheckProxyHeaderOutput values.
@@ -9759,7 +9759,7 @@ func (o HealthCheckTypeOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type HealthCheckTypePtrOutput struct{ *pulumi.OutputState }
 
 func (HealthCheckTypePtrOutput) ElementType() reflect.Type {
-	return healthCheckTypePtrType
+	return reflect.TypeOf((**HealthCheckType)(nil)).Elem()
 }
 
 func (o HealthCheckTypePtrOutput) ToHealthCheckTypePtrOutput() HealthCheckTypePtrOutput {
@@ -9768,6 +9768,16 @@ func (o HealthCheckTypePtrOutput) ToHealthCheckTypePtrOutput() HealthCheckTypePt
 
 func (o HealthCheckTypePtrOutput) ToHealthCheckTypePtrOutputWithContext(ctx context.Context) HealthCheckTypePtrOutput {
 	return o
+}
+
+func (o HealthCheckTypePtrOutput) Elem() HealthCheckTypeOutput {
+	return o.ApplyT(func(v *HealthCheckType) HealthCheckType {
+		if v != nil {
+			return *v
+		}
+		var ret HealthCheckType
+		return ret
+	}).(HealthCheckTypeOutput)
 }
 
 func (o HealthCheckTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -9782,16 +9792,6 @@ func (o HealthCheckTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HealthCheckTypePtrOutput) Elem() HealthCheckTypeOutput {
-	return o.ApplyT(func(v *HealthCheckType) HealthCheckType {
-		var ret HealthCheckType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HealthCheckTypeOutput)
 }
 
 // HealthCheckTypeInput is an input type that accepts HealthCheckTypeArgs and HealthCheckTypeOutput values.
@@ -9932,7 +9932,7 @@ func (o HttpRedirectActionRedirectResponseCodeOutput) ToStringPtrOutputWithConte
 type HttpRedirectActionRedirectResponseCodePtrOutput struct{ *pulumi.OutputState }
 
 func (HttpRedirectActionRedirectResponseCodePtrOutput) ElementType() reflect.Type {
-	return httpRedirectActionRedirectResponseCodePtrType
+	return reflect.TypeOf((**HttpRedirectActionRedirectResponseCode)(nil)).Elem()
 }
 
 func (o HttpRedirectActionRedirectResponseCodePtrOutput) ToHttpRedirectActionRedirectResponseCodePtrOutput() HttpRedirectActionRedirectResponseCodePtrOutput {
@@ -9941,6 +9941,16 @@ func (o HttpRedirectActionRedirectResponseCodePtrOutput) ToHttpRedirectActionRed
 
 func (o HttpRedirectActionRedirectResponseCodePtrOutput) ToHttpRedirectActionRedirectResponseCodePtrOutputWithContext(ctx context.Context) HttpRedirectActionRedirectResponseCodePtrOutput {
 	return o
+}
+
+func (o HttpRedirectActionRedirectResponseCodePtrOutput) Elem() HttpRedirectActionRedirectResponseCodeOutput {
+	return o.ApplyT(func(v *HttpRedirectActionRedirectResponseCode) HttpRedirectActionRedirectResponseCode {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRedirectActionRedirectResponseCode
+		return ret
+	}).(HttpRedirectActionRedirectResponseCodeOutput)
 }
 
 func (o HttpRedirectActionRedirectResponseCodePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -9955,16 +9965,6 @@ func (o HttpRedirectActionRedirectResponseCodePtrOutput) ToStringPtrOutputWithCo
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HttpRedirectActionRedirectResponseCodePtrOutput) Elem() HttpRedirectActionRedirectResponseCodeOutput {
-	return o.ApplyT(func(v *HttpRedirectActionRedirectResponseCode) HttpRedirectActionRedirectResponseCode {
-		var ret HttpRedirectActionRedirectResponseCode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HttpRedirectActionRedirectResponseCodeOutput)
 }
 
 // HttpRedirectActionRedirectResponseCodeInput is an input type that accepts HttpRedirectActionRedirectResponseCodeArgs and HttpRedirectActionRedirectResponseCodeOutput values.
@@ -10096,7 +10096,7 @@ func (o ImageRawDiskContainerTypeOutput) ToStringPtrOutputWithContext(ctx contex
 type ImageRawDiskContainerTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ImageRawDiskContainerTypePtrOutput) ElementType() reflect.Type {
-	return imageRawDiskContainerTypePtrType
+	return reflect.TypeOf((**ImageRawDiskContainerType)(nil)).Elem()
 }
 
 func (o ImageRawDiskContainerTypePtrOutput) ToImageRawDiskContainerTypePtrOutput() ImageRawDiskContainerTypePtrOutput {
@@ -10105,6 +10105,16 @@ func (o ImageRawDiskContainerTypePtrOutput) ToImageRawDiskContainerTypePtrOutput
 
 func (o ImageRawDiskContainerTypePtrOutput) ToImageRawDiskContainerTypePtrOutputWithContext(ctx context.Context) ImageRawDiskContainerTypePtrOutput {
 	return o
+}
+
+func (o ImageRawDiskContainerTypePtrOutput) Elem() ImageRawDiskContainerTypeOutput {
+	return o.ApplyT(func(v *ImageRawDiskContainerType) ImageRawDiskContainerType {
+		if v != nil {
+			return *v
+		}
+		var ret ImageRawDiskContainerType
+		return ret
+	}).(ImageRawDiskContainerTypeOutput)
 }
 
 func (o ImageRawDiskContainerTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -10119,16 +10129,6 @@ func (o ImageRawDiskContainerTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ImageRawDiskContainerTypePtrOutput) Elem() ImageRawDiskContainerTypeOutput {
-	return o.ApplyT(func(v *ImageRawDiskContainerType) ImageRawDiskContainerType {
-		var ret ImageRawDiskContainerType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ImageRawDiskContainerTypeOutput)
 }
 
 // ImageRawDiskContainerTypeInput is an input type that accepts ImageRawDiskContainerTypeArgs and ImageRawDiskContainerTypeOutput values.
@@ -10260,7 +10260,7 @@ func (o ImageSourceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type ImageSourceTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ImageSourceTypePtrOutput) ElementType() reflect.Type {
-	return imageSourceTypePtrType
+	return reflect.TypeOf((**ImageSourceType)(nil)).Elem()
 }
 
 func (o ImageSourceTypePtrOutput) ToImageSourceTypePtrOutput() ImageSourceTypePtrOutput {
@@ -10269,6 +10269,16 @@ func (o ImageSourceTypePtrOutput) ToImageSourceTypePtrOutput() ImageSourceTypePt
 
 func (o ImageSourceTypePtrOutput) ToImageSourceTypePtrOutputWithContext(ctx context.Context) ImageSourceTypePtrOutput {
 	return o
+}
+
+func (o ImageSourceTypePtrOutput) Elem() ImageSourceTypeOutput {
+	return o.ApplyT(func(v *ImageSourceType) ImageSourceType {
+		if v != nil {
+			return *v
+		}
+		var ret ImageSourceType
+		return ret
+	}).(ImageSourceTypeOutput)
 }
 
 func (o ImageSourceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -10283,16 +10293,6 @@ func (o ImageSourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ImageSourceTypePtrOutput) Elem() ImageSourceTypeOutput {
-	return o.ApplyT(func(v *ImageSourceType) ImageSourceType {
-		var ret ImageSourceType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ImageSourceTypeOutput)
 }
 
 // ImageSourceTypeInput is an input type that accepts ImageSourceTypeArgs and ImageSourceTypeOutput values.
@@ -10427,7 +10427,7 @@ func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput) ToStri
 type InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) ElementType() reflect.Type {
-	return instanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrType
+	return reflect.TypeOf((**InstanceGroupManagerUpdatePolicyInstanceRedistributionType)(nil)).Elem()
 }
 
 func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) ToInstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput() InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput {
@@ -10436,6 +10436,16 @@ func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) ToI
 
 func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) ToInstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) Elem() InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicyInstanceRedistributionType) InstanceGroupManagerUpdatePolicyInstanceRedistributionType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManagerUpdatePolicyInstanceRedistributionType
+		return ret
+	}).(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput)
 }
 
 func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -10450,16 +10460,6 @@ func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) ToS
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) Elem() InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicyInstanceRedistributionType) InstanceGroupManagerUpdatePolicyInstanceRedistributionType {
-		var ret InstanceGroupManagerUpdatePolicyInstanceRedistributionType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput)
 }
 
 // InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeInput is an input type that accepts InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeArgs and InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput values.
@@ -10598,7 +10598,7 @@ func (o InstanceGroupManagerUpdatePolicyMinimalActionOutput) ToStringPtrOutputWi
 type InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) ElementType() reflect.Type {
-	return instanceGroupManagerUpdatePolicyMinimalActionPtrType
+	return reflect.TypeOf((**InstanceGroupManagerUpdatePolicyMinimalAction)(nil)).Elem()
 }
 
 func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) ToInstanceGroupManagerUpdatePolicyMinimalActionPtrOutput() InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput {
@@ -10607,6 +10607,16 @@ func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) ToInstanceGroupM
 
 func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) ToInstanceGroupManagerUpdatePolicyMinimalActionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) Elem() InstanceGroupManagerUpdatePolicyMinimalActionOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicyMinimalAction) InstanceGroupManagerUpdatePolicyMinimalAction {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManagerUpdatePolicyMinimalAction
+		return ret
+	}).(InstanceGroupManagerUpdatePolicyMinimalActionOutput)
 }
 
 func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -10621,16 +10631,6 @@ func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) Elem() InstanceGroupManagerUpdatePolicyMinimalActionOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicyMinimalAction) InstanceGroupManagerUpdatePolicyMinimalAction {
-		var ret InstanceGroupManagerUpdatePolicyMinimalAction
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceGroupManagerUpdatePolicyMinimalActionOutput)
 }
 
 // InstanceGroupManagerUpdatePolicyMinimalActionInput is an input type that accepts InstanceGroupManagerUpdatePolicyMinimalActionArgs and InstanceGroupManagerUpdatePolicyMinimalActionOutput values.
@@ -10765,7 +10765,7 @@ func (o InstanceGroupManagerUpdatePolicyReplacementMethodOutput) ToStringPtrOutp
 type InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) ElementType() reflect.Type {
-	return instanceGroupManagerUpdatePolicyReplacementMethodPtrType
+	return reflect.TypeOf((**InstanceGroupManagerUpdatePolicyReplacementMethod)(nil)).Elem()
 }
 
 func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) ToInstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput() InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput {
@@ -10774,6 +10774,16 @@ func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) ToInstanceGr
 
 func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) ToInstanceGroupManagerUpdatePolicyReplacementMethodPtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) Elem() InstanceGroupManagerUpdatePolicyReplacementMethodOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicyReplacementMethod) InstanceGroupManagerUpdatePolicyReplacementMethod {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManagerUpdatePolicyReplacementMethod
+		return ret
+	}).(InstanceGroupManagerUpdatePolicyReplacementMethodOutput)
 }
 
 func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -10788,16 +10798,6 @@ func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) ToStringPtrO
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) Elem() InstanceGroupManagerUpdatePolicyReplacementMethodOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicyReplacementMethod) InstanceGroupManagerUpdatePolicyReplacementMethod {
-		var ret InstanceGroupManagerUpdatePolicyReplacementMethod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceGroupManagerUpdatePolicyReplacementMethodOutput)
 }
 
 // InstanceGroupManagerUpdatePolicyReplacementMethodInput is an input type that accepts InstanceGroupManagerUpdatePolicyReplacementMethodArgs and InstanceGroupManagerUpdatePolicyReplacementMethodOutput values.
@@ -10932,7 +10932,7 @@ func (o InstanceGroupManagerUpdatePolicyTypeOutput) ToStringPtrOutputWithContext
 type InstanceGroupManagerUpdatePolicyTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerUpdatePolicyTypePtrOutput) ElementType() reflect.Type {
-	return instanceGroupManagerUpdatePolicyTypePtrType
+	return reflect.TypeOf((**InstanceGroupManagerUpdatePolicyType)(nil)).Elem()
 }
 
 func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) ToInstanceGroupManagerUpdatePolicyTypePtrOutput() InstanceGroupManagerUpdatePolicyTypePtrOutput {
@@ -10941,6 +10941,16 @@ func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) ToInstanceGroupManagerUpd
 
 func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) ToInstanceGroupManagerUpdatePolicyTypePtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyTypePtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) Elem() InstanceGroupManagerUpdatePolicyTypeOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicyType) InstanceGroupManagerUpdatePolicyType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManagerUpdatePolicyType
+		return ret
+	}).(InstanceGroupManagerUpdatePolicyTypeOutput)
 }
 
 func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -10955,16 +10965,6 @@ func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) ToStringPtrOutputWithCont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) Elem() InstanceGroupManagerUpdatePolicyTypeOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicyType) InstanceGroupManagerUpdatePolicyType {
-		var ret InstanceGroupManagerUpdatePolicyType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceGroupManagerUpdatePolicyTypeOutput)
 }
 
 // InstanceGroupManagerUpdatePolicyTypeInput is an input type that accepts InstanceGroupManagerUpdatePolicyTypeArgs and InstanceGroupManagerUpdatePolicyTypeOutput values.
@@ -11101,7 +11101,7 @@ func (o InstancePrivateIpv6GoogleAccessOutput) ToStringPtrOutputWithContext(ctx 
 type InstancePrivateIpv6GoogleAccessPtrOutput struct{ *pulumi.OutputState }
 
 func (InstancePrivateIpv6GoogleAccessPtrOutput) ElementType() reflect.Type {
-	return instancePrivateIpv6GoogleAccessPtrType
+	return reflect.TypeOf((**InstancePrivateIpv6GoogleAccess)(nil)).Elem()
 }
 
 func (o InstancePrivateIpv6GoogleAccessPtrOutput) ToInstancePrivateIpv6GoogleAccessPtrOutput() InstancePrivateIpv6GoogleAccessPtrOutput {
@@ -11110,6 +11110,16 @@ func (o InstancePrivateIpv6GoogleAccessPtrOutput) ToInstancePrivateIpv6GoogleAcc
 
 func (o InstancePrivateIpv6GoogleAccessPtrOutput) ToInstancePrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) InstancePrivateIpv6GoogleAccessPtrOutput {
 	return o
+}
+
+func (o InstancePrivateIpv6GoogleAccessPtrOutput) Elem() InstancePrivateIpv6GoogleAccessOutput {
+	return o.ApplyT(func(v *InstancePrivateIpv6GoogleAccess) InstancePrivateIpv6GoogleAccess {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePrivateIpv6GoogleAccess
+		return ret
+	}).(InstancePrivateIpv6GoogleAccessOutput)
 }
 
 func (o InstancePrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -11124,16 +11134,6 @@ func (o InstancePrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstancePrivateIpv6GoogleAccessPtrOutput) Elem() InstancePrivateIpv6GoogleAccessOutput {
-	return o.ApplyT(func(v *InstancePrivateIpv6GoogleAccess) InstancePrivateIpv6GoogleAccess {
-		var ret InstancePrivateIpv6GoogleAccess
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstancePrivateIpv6GoogleAccessOutput)
 }
 
 // InstancePrivateIpv6GoogleAccessInput is an input type that accepts InstancePrivateIpv6GoogleAccessArgs and InstancePrivateIpv6GoogleAccessOutput values.
@@ -11270,7 +11270,7 @@ func (o InstancePropertiesPrivateIpv6GoogleAccessOutput) ToStringPtrOutputWithCo
 type InstancePropertiesPrivateIpv6GoogleAccessPtrOutput struct{ *pulumi.OutputState }
 
 func (InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) ElementType() reflect.Type {
-	return instancePropertiesPrivateIpv6GoogleAccessPtrType
+	return reflect.TypeOf((**InstancePropertiesPrivateIpv6GoogleAccess)(nil)).Elem()
 }
 
 func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) ToInstancePropertiesPrivateIpv6GoogleAccessPtrOutput() InstancePropertiesPrivateIpv6GoogleAccessPtrOutput {
@@ -11279,6 +11279,16 @@ func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) ToInstanceProperties
 
 func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) ToInstancePropertiesPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) InstancePropertiesPrivateIpv6GoogleAccessPtrOutput {
 	return o
+}
+
+func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) Elem() InstancePropertiesPrivateIpv6GoogleAccessOutput {
+	return o.ApplyT(func(v *InstancePropertiesPrivateIpv6GoogleAccess) InstancePropertiesPrivateIpv6GoogleAccess {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePropertiesPrivateIpv6GoogleAccess
+		return ret
+	}).(InstancePropertiesPrivateIpv6GoogleAccessOutput)
 }
 
 func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -11293,16 +11303,6 @@ func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWit
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) Elem() InstancePropertiesPrivateIpv6GoogleAccessOutput {
-	return o.ApplyT(func(v *InstancePropertiesPrivateIpv6GoogleAccess) InstancePropertiesPrivateIpv6GoogleAccess {
-		var ret InstancePropertiesPrivateIpv6GoogleAccess
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstancePropertiesPrivateIpv6GoogleAccessOutput)
 }
 
 // InstancePropertiesPrivateIpv6GoogleAccessInput is an input type that accepts InstancePropertiesPrivateIpv6GoogleAccessArgs and InstancePropertiesPrivateIpv6GoogleAccessOutput values.
@@ -11457,7 +11457,7 @@ func (o InterconnectAttachmentBandwidthOutput) ToStringPtrOutputWithContext(ctx 
 type InterconnectAttachmentBandwidthPtrOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentBandwidthPtrOutput) ElementType() reflect.Type {
-	return interconnectAttachmentBandwidthPtrType
+	return reflect.TypeOf((**InterconnectAttachmentBandwidth)(nil)).Elem()
 }
 
 func (o InterconnectAttachmentBandwidthPtrOutput) ToInterconnectAttachmentBandwidthPtrOutput() InterconnectAttachmentBandwidthPtrOutput {
@@ -11466,6 +11466,16 @@ func (o InterconnectAttachmentBandwidthPtrOutput) ToInterconnectAttachmentBandwi
 
 func (o InterconnectAttachmentBandwidthPtrOutput) ToInterconnectAttachmentBandwidthPtrOutputWithContext(ctx context.Context) InterconnectAttachmentBandwidthPtrOutput {
 	return o
+}
+
+func (o InterconnectAttachmentBandwidthPtrOutput) Elem() InterconnectAttachmentBandwidthOutput {
+	return o.ApplyT(func(v *InterconnectAttachmentBandwidth) InterconnectAttachmentBandwidth {
+		if v != nil {
+			return *v
+		}
+		var ret InterconnectAttachmentBandwidth
+		return ret
+	}).(InterconnectAttachmentBandwidthOutput)
 }
 
 func (o InterconnectAttachmentBandwidthPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -11480,16 +11490,6 @@ func (o InterconnectAttachmentBandwidthPtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InterconnectAttachmentBandwidthPtrOutput) Elem() InterconnectAttachmentBandwidthOutput {
-	return o.ApplyT(func(v *InterconnectAttachmentBandwidth) InterconnectAttachmentBandwidth {
-		var ret InterconnectAttachmentBandwidth
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InterconnectAttachmentBandwidthOutput)
 }
 
 // InterconnectAttachmentBandwidthInput is an input type that accepts InterconnectAttachmentBandwidthArgs and InterconnectAttachmentBandwidthOutput values.
@@ -11623,7 +11623,7 @@ func (o InterconnectAttachmentEdgeAvailabilityDomainOutput) ToStringPtrOutputWit
 type InterconnectAttachmentEdgeAvailabilityDomainPtrOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) ElementType() reflect.Type {
-	return interconnectAttachmentEdgeAvailabilityDomainPtrType
+	return reflect.TypeOf((**InterconnectAttachmentEdgeAvailabilityDomain)(nil)).Elem()
 }
 
 func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) ToInterconnectAttachmentEdgeAvailabilityDomainPtrOutput() InterconnectAttachmentEdgeAvailabilityDomainPtrOutput {
@@ -11632,6 +11632,16 @@ func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) ToInterconnectAtt
 
 func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) ToInterconnectAttachmentEdgeAvailabilityDomainPtrOutputWithContext(ctx context.Context) InterconnectAttachmentEdgeAvailabilityDomainPtrOutput {
 	return o
+}
+
+func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) Elem() InterconnectAttachmentEdgeAvailabilityDomainOutput {
+	return o.ApplyT(func(v *InterconnectAttachmentEdgeAvailabilityDomain) InterconnectAttachmentEdgeAvailabilityDomain {
+		if v != nil {
+			return *v
+		}
+		var ret InterconnectAttachmentEdgeAvailabilityDomain
+		return ret
+	}).(InterconnectAttachmentEdgeAvailabilityDomainOutput)
 }
 
 func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -11646,16 +11656,6 @@ func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) ToStringPtrOutput
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) Elem() InterconnectAttachmentEdgeAvailabilityDomainOutput {
-	return o.ApplyT(func(v *InterconnectAttachmentEdgeAvailabilityDomain) InterconnectAttachmentEdgeAvailabilityDomain {
-		var ret InterconnectAttachmentEdgeAvailabilityDomain
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InterconnectAttachmentEdgeAvailabilityDomainOutput)
 }
 
 // InterconnectAttachmentEdgeAvailabilityDomainInput is an input type that accepts InterconnectAttachmentEdgeAvailabilityDomainArgs and InterconnectAttachmentEdgeAvailabilityDomainOutput values.
@@ -11790,7 +11790,7 @@ func (o InterconnectAttachmentEncryptionOutput) ToStringPtrOutputWithContext(ctx
 type InterconnectAttachmentEncryptionPtrOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentEncryptionPtrOutput) ElementType() reflect.Type {
-	return interconnectAttachmentEncryptionPtrType
+	return reflect.TypeOf((**InterconnectAttachmentEncryption)(nil)).Elem()
 }
 
 func (o InterconnectAttachmentEncryptionPtrOutput) ToInterconnectAttachmentEncryptionPtrOutput() InterconnectAttachmentEncryptionPtrOutput {
@@ -11799,6 +11799,16 @@ func (o InterconnectAttachmentEncryptionPtrOutput) ToInterconnectAttachmentEncry
 
 func (o InterconnectAttachmentEncryptionPtrOutput) ToInterconnectAttachmentEncryptionPtrOutputWithContext(ctx context.Context) InterconnectAttachmentEncryptionPtrOutput {
 	return o
+}
+
+func (o InterconnectAttachmentEncryptionPtrOutput) Elem() InterconnectAttachmentEncryptionOutput {
+	return o.ApplyT(func(v *InterconnectAttachmentEncryption) InterconnectAttachmentEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret InterconnectAttachmentEncryption
+		return ret
+	}).(InterconnectAttachmentEncryptionOutput)
 }
 
 func (o InterconnectAttachmentEncryptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -11813,16 +11823,6 @@ func (o InterconnectAttachmentEncryptionPtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InterconnectAttachmentEncryptionPtrOutput) Elem() InterconnectAttachmentEncryptionOutput {
-	return o.ApplyT(func(v *InterconnectAttachmentEncryption) InterconnectAttachmentEncryption {
-		var ret InterconnectAttachmentEncryption
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InterconnectAttachmentEncryptionOutput)
 }
 
 // InterconnectAttachmentEncryptionInput is an input type that accepts InterconnectAttachmentEncryptionArgs and InterconnectAttachmentEncryptionOutput values.
@@ -11959,7 +11959,7 @@ func (o InterconnectAttachmentTypeOutput) ToStringPtrOutputWithContext(ctx conte
 type InterconnectAttachmentTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentTypePtrOutput) ElementType() reflect.Type {
-	return interconnectAttachmentTypePtrType
+	return reflect.TypeOf((**InterconnectAttachmentType)(nil)).Elem()
 }
 
 func (o InterconnectAttachmentTypePtrOutput) ToInterconnectAttachmentTypePtrOutput() InterconnectAttachmentTypePtrOutput {
@@ -11968,6 +11968,16 @@ func (o InterconnectAttachmentTypePtrOutput) ToInterconnectAttachmentTypePtrOutp
 
 func (o InterconnectAttachmentTypePtrOutput) ToInterconnectAttachmentTypePtrOutputWithContext(ctx context.Context) InterconnectAttachmentTypePtrOutput {
 	return o
+}
+
+func (o InterconnectAttachmentTypePtrOutput) Elem() InterconnectAttachmentTypeOutput {
+	return o.ApplyT(func(v *InterconnectAttachmentType) InterconnectAttachmentType {
+		if v != nil {
+			return *v
+		}
+		var ret InterconnectAttachmentType
+		return ret
+	}).(InterconnectAttachmentTypeOutput)
 }
 
 func (o InterconnectAttachmentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -11982,16 +11992,6 @@ func (o InterconnectAttachmentTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InterconnectAttachmentTypePtrOutput) Elem() InterconnectAttachmentTypeOutput {
-	return o.ApplyT(func(v *InterconnectAttachmentType) InterconnectAttachmentType {
-		var ret InterconnectAttachmentType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InterconnectAttachmentTypeOutput)
 }
 
 // InterconnectAttachmentTypeInput is an input type that accepts InterconnectAttachmentTypeArgs and InterconnectAttachmentTypeOutput values.
@@ -12128,7 +12128,7 @@ func (o InterconnectInterconnectTypeOutput) ToStringPtrOutputWithContext(ctx con
 type InterconnectInterconnectTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InterconnectInterconnectTypePtrOutput) ElementType() reflect.Type {
-	return interconnectInterconnectTypePtrType
+	return reflect.TypeOf((**InterconnectInterconnectType)(nil)).Elem()
 }
 
 func (o InterconnectInterconnectTypePtrOutput) ToInterconnectInterconnectTypePtrOutput() InterconnectInterconnectTypePtrOutput {
@@ -12137,6 +12137,16 @@ func (o InterconnectInterconnectTypePtrOutput) ToInterconnectInterconnectTypePtr
 
 func (o InterconnectInterconnectTypePtrOutput) ToInterconnectInterconnectTypePtrOutputWithContext(ctx context.Context) InterconnectInterconnectTypePtrOutput {
 	return o
+}
+
+func (o InterconnectInterconnectTypePtrOutput) Elem() InterconnectInterconnectTypeOutput {
+	return o.ApplyT(func(v *InterconnectInterconnectType) InterconnectInterconnectType {
+		if v != nil {
+			return *v
+		}
+		var ret InterconnectInterconnectType
+		return ret
+	}).(InterconnectInterconnectTypeOutput)
 }
 
 func (o InterconnectInterconnectTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -12151,16 +12161,6 @@ func (o InterconnectInterconnectTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InterconnectInterconnectTypePtrOutput) Elem() InterconnectInterconnectTypeOutput {
-	return o.ApplyT(func(v *InterconnectInterconnectType) InterconnectInterconnectType {
-		var ret InterconnectInterconnectType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InterconnectInterconnectTypeOutput)
 }
 
 // InterconnectInterconnectTypeInput is an input type that accepts InterconnectInterconnectTypeArgs and InterconnectInterconnectTypeOutput values.
@@ -12295,7 +12295,7 @@ func (o InterconnectLinkTypeOutput) ToStringPtrOutputWithContext(ctx context.Con
 type InterconnectLinkTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InterconnectLinkTypePtrOutput) ElementType() reflect.Type {
-	return interconnectLinkTypePtrType
+	return reflect.TypeOf((**InterconnectLinkType)(nil)).Elem()
 }
 
 func (o InterconnectLinkTypePtrOutput) ToInterconnectLinkTypePtrOutput() InterconnectLinkTypePtrOutput {
@@ -12304,6 +12304,16 @@ func (o InterconnectLinkTypePtrOutput) ToInterconnectLinkTypePtrOutput() Interco
 
 func (o InterconnectLinkTypePtrOutput) ToInterconnectLinkTypePtrOutputWithContext(ctx context.Context) InterconnectLinkTypePtrOutput {
 	return o
+}
+
+func (o InterconnectLinkTypePtrOutput) Elem() InterconnectLinkTypeOutput {
+	return o.ApplyT(func(v *InterconnectLinkType) InterconnectLinkType {
+		if v != nil {
+			return *v
+		}
+		var ret InterconnectLinkType
+		return ret
+	}).(InterconnectLinkTypeOutput)
 }
 
 func (o InterconnectLinkTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -12318,16 +12328,6 @@ func (o InterconnectLinkTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InterconnectLinkTypePtrOutput) Elem() InterconnectLinkTypeOutput {
-	return o.ApplyT(func(v *InterconnectLinkType) InterconnectLinkType {
-		var ret InterconnectLinkType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InterconnectLinkTypeOutput)
 }
 
 // InterconnectLinkTypeInput is an input type that accepts InterconnectLinkTypeArgs and InterconnectLinkTypeOutput values.
@@ -12464,7 +12464,7 @@ func (o LogConfigCloudAuditOptionsLogNameOutput) ToStringPtrOutputWithContext(ct
 type LogConfigCloudAuditOptionsLogNamePtrOutput struct{ *pulumi.OutputState }
 
 func (LogConfigCloudAuditOptionsLogNamePtrOutput) ElementType() reflect.Type {
-	return logConfigCloudAuditOptionsLogNamePtrType
+	return reflect.TypeOf((**LogConfigCloudAuditOptionsLogName)(nil)).Elem()
 }
 
 func (o LogConfigCloudAuditOptionsLogNamePtrOutput) ToLogConfigCloudAuditOptionsLogNamePtrOutput() LogConfigCloudAuditOptionsLogNamePtrOutput {
@@ -12473,6 +12473,16 @@ func (o LogConfigCloudAuditOptionsLogNamePtrOutput) ToLogConfigCloudAuditOptions
 
 func (o LogConfigCloudAuditOptionsLogNamePtrOutput) ToLogConfigCloudAuditOptionsLogNamePtrOutputWithContext(ctx context.Context) LogConfigCloudAuditOptionsLogNamePtrOutput {
 	return o
+}
+
+func (o LogConfigCloudAuditOptionsLogNamePtrOutput) Elem() LogConfigCloudAuditOptionsLogNameOutput {
+	return o.ApplyT(func(v *LogConfigCloudAuditOptionsLogName) LogConfigCloudAuditOptionsLogName {
+		if v != nil {
+			return *v
+		}
+		var ret LogConfigCloudAuditOptionsLogName
+		return ret
+	}).(LogConfigCloudAuditOptionsLogNameOutput)
 }
 
 func (o LogConfigCloudAuditOptionsLogNamePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -12487,16 +12497,6 @@ func (o LogConfigCloudAuditOptionsLogNamePtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o LogConfigCloudAuditOptionsLogNamePtrOutput) Elem() LogConfigCloudAuditOptionsLogNameOutput {
-	return o.ApplyT(func(v *LogConfigCloudAuditOptionsLogName) LogConfigCloudAuditOptionsLogName {
-		var ret LogConfigCloudAuditOptionsLogName
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(LogConfigCloudAuditOptionsLogNameOutput)
 }
 
 // LogConfigCloudAuditOptionsLogNameInput is an input type that accepts LogConfigCloudAuditOptionsLogNameArgs and LogConfigCloudAuditOptionsLogNameOutput values.
@@ -12631,7 +12631,7 @@ func (o LogConfigDataAccessOptionsLogModeOutput) ToStringPtrOutputWithContext(ct
 type LogConfigDataAccessOptionsLogModePtrOutput struct{ *pulumi.OutputState }
 
 func (LogConfigDataAccessOptionsLogModePtrOutput) ElementType() reflect.Type {
-	return logConfigDataAccessOptionsLogModePtrType
+	return reflect.TypeOf((**LogConfigDataAccessOptionsLogMode)(nil)).Elem()
 }
 
 func (o LogConfigDataAccessOptionsLogModePtrOutput) ToLogConfigDataAccessOptionsLogModePtrOutput() LogConfigDataAccessOptionsLogModePtrOutput {
@@ -12640,6 +12640,16 @@ func (o LogConfigDataAccessOptionsLogModePtrOutput) ToLogConfigDataAccessOptions
 
 func (o LogConfigDataAccessOptionsLogModePtrOutput) ToLogConfigDataAccessOptionsLogModePtrOutputWithContext(ctx context.Context) LogConfigDataAccessOptionsLogModePtrOutput {
 	return o
+}
+
+func (o LogConfigDataAccessOptionsLogModePtrOutput) Elem() LogConfigDataAccessOptionsLogModeOutput {
+	return o.ApplyT(func(v *LogConfigDataAccessOptionsLogMode) LogConfigDataAccessOptionsLogMode {
+		if v != nil {
+			return *v
+		}
+		var ret LogConfigDataAccessOptionsLogMode
+		return ret
+	}).(LogConfigDataAccessOptionsLogModeOutput)
 }
 
 func (o LogConfigDataAccessOptionsLogModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -12654,16 +12664,6 @@ func (o LogConfigDataAccessOptionsLogModePtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o LogConfigDataAccessOptionsLogModePtrOutput) Elem() LogConfigDataAccessOptionsLogModeOutput {
-	return o.ApplyT(func(v *LogConfigDataAccessOptionsLogMode) LogConfigDataAccessOptionsLogMode {
-		var ret LogConfigDataAccessOptionsLogMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(LogConfigDataAccessOptionsLogModeOutput)
 }
 
 // LogConfigDataAccessOptionsLogModeInput is an input type that accepts LogConfigDataAccessOptionsLogModeArgs and LogConfigDataAccessOptionsLogModeOutput values.
@@ -12800,7 +12800,7 @@ func (o MetadataFilterFilterMatchCriteriaOutput) ToStringPtrOutputWithContext(ct
 type MetadataFilterFilterMatchCriteriaPtrOutput struct{ *pulumi.OutputState }
 
 func (MetadataFilterFilterMatchCriteriaPtrOutput) ElementType() reflect.Type {
-	return metadataFilterFilterMatchCriteriaPtrType
+	return reflect.TypeOf((**MetadataFilterFilterMatchCriteria)(nil)).Elem()
 }
 
 func (o MetadataFilterFilterMatchCriteriaPtrOutput) ToMetadataFilterFilterMatchCriteriaPtrOutput() MetadataFilterFilterMatchCriteriaPtrOutput {
@@ -12809,6 +12809,16 @@ func (o MetadataFilterFilterMatchCriteriaPtrOutput) ToMetadataFilterFilterMatchC
 
 func (o MetadataFilterFilterMatchCriteriaPtrOutput) ToMetadataFilterFilterMatchCriteriaPtrOutputWithContext(ctx context.Context) MetadataFilterFilterMatchCriteriaPtrOutput {
 	return o
+}
+
+func (o MetadataFilterFilterMatchCriteriaPtrOutput) Elem() MetadataFilterFilterMatchCriteriaOutput {
+	return o.ApplyT(func(v *MetadataFilterFilterMatchCriteria) MetadataFilterFilterMatchCriteria {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataFilterFilterMatchCriteria
+		return ret
+	}).(MetadataFilterFilterMatchCriteriaOutput)
 }
 
 func (o MetadataFilterFilterMatchCriteriaPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -12823,16 +12833,6 @@ func (o MetadataFilterFilterMatchCriteriaPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MetadataFilterFilterMatchCriteriaPtrOutput) Elem() MetadataFilterFilterMatchCriteriaOutput {
-	return o.ApplyT(func(v *MetadataFilterFilterMatchCriteria) MetadataFilterFilterMatchCriteria {
-		var ret MetadataFilterFilterMatchCriteria
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MetadataFilterFilterMatchCriteriaOutput)
 }
 
 // MetadataFilterFilterMatchCriteriaInput is an input type that accepts MetadataFilterFilterMatchCriteriaArgs and MetadataFilterFilterMatchCriteriaOutput values.
@@ -12975,7 +12975,7 @@ func (o NetworkEndpointGroupNetworkEndpointTypeOutput) ToStringPtrOutputWithCont
 type NetworkEndpointGroupNetworkEndpointTypePtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkEndpointGroupNetworkEndpointTypePtrOutput) ElementType() reflect.Type {
-	return networkEndpointGroupNetworkEndpointTypePtrType
+	return reflect.TypeOf((**NetworkEndpointGroupNetworkEndpointType)(nil)).Elem()
 }
 
 func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) ToNetworkEndpointGroupNetworkEndpointTypePtrOutput() NetworkEndpointGroupNetworkEndpointTypePtrOutput {
@@ -12984,6 +12984,16 @@ func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) ToNetworkEndpointGroup
 
 func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) ToNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupNetworkEndpointTypePtrOutput {
 	return o
+}
+
+func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) Elem() NetworkEndpointGroupNetworkEndpointTypeOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupNetworkEndpointType) NetworkEndpointGroupNetworkEndpointType {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkEndpointGroupNetworkEndpointType
+		return ret
+	}).(NetworkEndpointGroupNetworkEndpointTypeOutput)
 }
 
 func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -12998,16 +13008,6 @@ func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) ToStringPtrOutputWithC
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) Elem() NetworkEndpointGroupNetworkEndpointTypeOutput {
-	return o.ApplyT(func(v *NetworkEndpointGroupNetworkEndpointType) NetworkEndpointGroupNetworkEndpointType {
-		var ret NetworkEndpointGroupNetworkEndpointType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NetworkEndpointGroupNetworkEndpointTypeOutput)
 }
 
 // NetworkEndpointGroupNetworkEndpointTypeInput is an input type that accepts NetworkEndpointGroupNetworkEndpointTypeArgs and NetworkEndpointGroupNetworkEndpointTypeOutput values.
@@ -13144,7 +13144,7 @@ func (o NetworkInterfaceNicTypeOutput) ToStringPtrOutputWithContext(ctx context.
 type NetworkInterfaceNicTypePtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkInterfaceNicTypePtrOutput) ElementType() reflect.Type {
-	return networkInterfaceNicTypePtrType
+	return reflect.TypeOf((**NetworkInterfaceNicType)(nil)).Elem()
 }
 
 func (o NetworkInterfaceNicTypePtrOutput) ToNetworkInterfaceNicTypePtrOutput() NetworkInterfaceNicTypePtrOutput {
@@ -13153,6 +13153,16 @@ func (o NetworkInterfaceNicTypePtrOutput) ToNetworkInterfaceNicTypePtrOutput() N
 
 func (o NetworkInterfaceNicTypePtrOutput) ToNetworkInterfaceNicTypePtrOutputWithContext(ctx context.Context) NetworkInterfaceNicTypePtrOutput {
 	return o
+}
+
+func (o NetworkInterfaceNicTypePtrOutput) Elem() NetworkInterfaceNicTypeOutput {
+	return o.ApplyT(func(v *NetworkInterfaceNicType) NetworkInterfaceNicType {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkInterfaceNicType
+		return ret
+	}).(NetworkInterfaceNicTypeOutput)
 }
 
 func (o NetworkInterfaceNicTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -13167,16 +13177,6 @@ func (o NetworkInterfaceNicTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NetworkInterfaceNicTypePtrOutput) Elem() NetworkInterfaceNicTypeOutput {
-	return o.ApplyT(func(v *NetworkInterfaceNicType) NetworkInterfaceNicType {
-		var ret NetworkInterfaceNicType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NetworkInterfaceNicTypeOutput)
 }
 
 // NetworkInterfaceNicTypeInput is an input type that accepts NetworkInterfaceNicTypeArgs and NetworkInterfaceNicTypeOutput values.
@@ -13312,7 +13312,7 @@ func (o NetworkInterfaceStackTypeOutput) ToStringPtrOutputWithContext(ctx contex
 type NetworkInterfaceStackTypePtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkInterfaceStackTypePtrOutput) ElementType() reflect.Type {
-	return networkInterfaceStackTypePtrType
+	return reflect.TypeOf((**NetworkInterfaceStackType)(nil)).Elem()
 }
 
 func (o NetworkInterfaceStackTypePtrOutput) ToNetworkInterfaceStackTypePtrOutput() NetworkInterfaceStackTypePtrOutput {
@@ -13321,6 +13321,16 @@ func (o NetworkInterfaceStackTypePtrOutput) ToNetworkInterfaceStackTypePtrOutput
 
 func (o NetworkInterfaceStackTypePtrOutput) ToNetworkInterfaceStackTypePtrOutputWithContext(ctx context.Context) NetworkInterfaceStackTypePtrOutput {
 	return o
+}
+
+func (o NetworkInterfaceStackTypePtrOutput) Elem() NetworkInterfaceStackTypeOutput {
+	return o.ApplyT(func(v *NetworkInterfaceStackType) NetworkInterfaceStackType {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkInterfaceStackType
+		return ret
+	}).(NetworkInterfaceStackTypeOutput)
 }
 
 func (o NetworkInterfaceStackTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -13335,16 +13345,6 @@ func (o NetworkInterfaceStackTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NetworkInterfaceStackTypePtrOutput) Elem() NetworkInterfaceStackTypeOutput {
-	return o.ApplyT(func(v *NetworkInterfaceStackType) NetworkInterfaceStackType {
-		var ret NetworkInterfaceStackType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NetworkInterfaceStackTypeOutput)
 }
 
 // NetworkInterfaceStackTypeInput is an input type that accepts NetworkInterfaceStackTypeArgs and NetworkInterfaceStackTypeOutput values.
@@ -13477,7 +13477,7 @@ func (o NetworkRoutingConfigRoutingModeOutput) ToStringPtrOutputWithContext(ctx 
 type NetworkRoutingConfigRoutingModePtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkRoutingConfigRoutingModePtrOutput) ElementType() reflect.Type {
-	return networkRoutingConfigRoutingModePtrType
+	return reflect.TypeOf((**NetworkRoutingConfigRoutingMode)(nil)).Elem()
 }
 
 func (o NetworkRoutingConfigRoutingModePtrOutput) ToNetworkRoutingConfigRoutingModePtrOutput() NetworkRoutingConfigRoutingModePtrOutput {
@@ -13486,6 +13486,16 @@ func (o NetworkRoutingConfigRoutingModePtrOutput) ToNetworkRoutingConfigRoutingM
 
 func (o NetworkRoutingConfigRoutingModePtrOutput) ToNetworkRoutingConfigRoutingModePtrOutputWithContext(ctx context.Context) NetworkRoutingConfigRoutingModePtrOutput {
 	return o
+}
+
+func (o NetworkRoutingConfigRoutingModePtrOutput) Elem() NetworkRoutingConfigRoutingModeOutput {
+	return o.ApplyT(func(v *NetworkRoutingConfigRoutingMode) NetworkRoutingConfigRoutingMode {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkRoutingConfigRoutingMode
+		return ret
+	}).(NetworkRoutingConfigRoutingModeOutput)
 }
 
 func (o NetworkRoutingConfigRoutingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -13500,16 +13510,6 @@ func (o NetworkRoutingConfigRoutingModePtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NetworkRoutingConfigRoutingModePtrOutput) Elem() NetworkRoutingConfigRoutingModeOutput {
-	return o.ApplyT(func(v *NetworkRoutingConfigRoutingMode) NetworkRoutingConfigRoutingMode {
-		var ret NetworkRoutingConfigRoutingMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NetworkRoutingConfigRoutingModeOutput)
 }
 
 // NetworkRoutingConfigRoutingModeInput is an input type that accepts NetworkRoutingConfigRoutingModeArgs and NetworkRoutingConfigRoutingModeOutput values.
@@ -13647,7 +13647,7 @@ func (o NodeGroupAutoscalingPolicyModeOutput) ToStringPtrOutputWithContext(ctx c
 type NodeGroupAutoscalingPolicyModePtrOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupAutoscalingPolicyModePtrOutput) ElementType() reflect.Type {
-	return nodeGroupAutoscalingPolicyModePtrType
+	return reflect.TypeOf((**NodeGroupAutoscalingPolicyMode)(nil)).Elem()
 }
 
 func (o NodeGroupAutoscalingPolicyModePtrOutput) ToNodeGroupAutoscalingPolicyModePtrOutput() NodeGroupAutoscalingPolicyModePtrOutput {
@@ -13656,6 +13656,16 @@ func (o NodeGroupAutoscalingPolicyModePtrOutput) ToNodeGroupAutoscalingPolicyMod
 
 func (o NodeGroupAutoscalingPolicyModePtrOutput) ToNodeGroupAutoscalingPolicyModePtrOutputWithContext(ctx context.Context) NodeGroupAutoscalingPolicyModePtrOutput {
 	return o
+}
+
+func (o NodeGroupAutoscalingPolicyModePtrOutput) Elem() NodeGroupAutoscalingPolicyModeOutput {
+	return o.ApplyT(func(v *NodeGroupAutoscalingPolicyMode) NodeGroupAutoscalingPolicyMode {
+		if v != nil {
+			return *v
+		}
+		var ret NodeGroupAutoscalingPolicyMode
+		return ret
+	}).(NodeGroupAutoscalingPolicyModeOutput)
 }
 
 func (o NodeGroupAutoscalingPolicyModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -13670,16 +13680,6 @@ func (o NodeGroupAutoscalingPolicyModePtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NodeGroupAutoscalingPolicyModePtrOutput) Elem() NodeGroupAutoscalingPolicyModeOutput {
-	return o.ApplyT(func(v *NodeGroupAutoscalingPolicyMode) NodeGroupAutoscalingPolicyMode {
-		var ret NodeGroupAutoscalingPolicyMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NodeGroupAutoscalingPolicyModeOutput)
 }
 
 // NodeGroupAutoscalingPolicyModeInput is an input type that accepts NodeGroupAutoscalingPolicyModeArgs and NodeGroupAutoscalingPolicyModeOutput values.
@@ -13817,7 +13817,7 @@ func (o NodeGroupMaintenancePolicyOutput) ToStringPtrOutputWithContext(ctx conte
 type NodeGroupMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupMaintenancePolicyPtrOutput) ElementType() reflect.Type {
-	return nodeGroupMaintenancePolicyPtrType
+	return reflect.TypeOf((**NodeGroupMaintenancePolicy)(nil)).Elem()
 }
 
 func (o NodeGroupMaintenancePolicyPtrOutput) ToNodeGroupMaintenancePolicyPtrOutput() NodeGroupMaintenancePolicyPtrOutput {
@@ -13826,6 +13826,16 @@ func (o NodeGroupMaintenancePolicyPtrOutput) ToNodeGroupMaintenancePolicyPtrOutp
 
 func (o NodeGroupMaintenancePolicyPtrOutput) ToNodeGroupMaintenancePolicyPtrOutputWithContext(ctx context.Context) NodeGroupMaintenancePolicyPtrOutput {
 	return o
+}
+
+func (o NodeGroupMaintenancePolicyPtrOutput) Elem() NodeGroupMaintenancePolicyOutput {
+	return o.ApplyT(func(v *NodeGroupMaintenancePolicy) NodeGroupMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodeGroupMaintenancePolicy
+		return ret
+	}).(NodeGroupMaintenancePolicyOutput)
 }
 
 func (o NodeGroupMaintenancePolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -13840,16 +13850,6 @@ func (o NodeGroupMaintenancePolicyPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NodeGroupMaintenancePolicyPtrOutput) Elem() NodeGroupMaintenancePolicyOutput {
-	return o.ApplyT(func(v *NodeGroupMaintenancePolicy) NodeGroupMaintenancePolicy {
-		var ret NodeGroupMaintenancePolicy
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NodeGroupMaintenancePolicyOutput)
 }
 
 // NodeGroupMaintenancePolicyInput is an input type that accepts NodeGroupMaintenancePolicyArgs and NodeGroupMaintenancePolicyOutput values.
@@ -13983,7 +13983,7 @@ func (o NodeGroupStatusOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type NodeGroupStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupStatusPtrOutput) ElementType() reflect.Type {
-	return nodeGroupStatusPtrType
+	return reflect.TypeOf((**NodeGroupStatus)(nil)).Elem()
 }
 
 func (o NodeGroupStatusPtrOutput) ToNodeGroupStatusPtrOutput() NodeGroupStatusPtrOutput {
@@ -13992,6 +13992,16 @@ func (o NodeGroupStatusPtrOutput) ToNodeGroupStatusPtrOutput() NodeGroupStatusPt
 
 func (o NodeGroupStatusPtrOutput) ToNodeGroupStatusPtrOutputWithContext(ctx context.Context) NodeGroupStatusPtrOutput {
 	return o
+}
+
+func (o NodeGroupStatusPtrOutput) Elem() NodeGroupStatusOutput {
+	return o.ApplyT(func(v *NodeGroupStatus) NodeGroupStatus {
+		if v != nil {
+			return *v
+		}
+		var ret NodeGroupStatus
+		return ret
+	}).(NodeGroupStatusOutput)
 }
 
 func (o NodeGroupStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -14006,16 +14016,6 @@ func (o NodeGroupStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NodeGroupStatusPtrOutput) Elem() NodeGroupStatusOutput {
-	return o.ApplyT(func(v *NodeGroupStatus) NodeGroupStatus {
-		var ret NodeGroupStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NodeGroupStatusOutput)
 }
 
 // NodeGroupStatusInput is an input type that accepts NodeGroupStatusArgs and NodeGroupStatusOutput values.
@@ -14149,7 +14149,7 @@ func (o NodeTemplateCpuOvercommitTypeOutput) ToStringPtrOutputWithContext(ctx co
 type NodeTemplateCpuOvercommitTypePtrOutput struct{ *pulumi.OutputState }
 
 func (NodeTemplateCpuOvercommitTypePtrOutput) ElementType() reflect.Type {
-	return nodeTemplateCpuOvercommitTypePtrType
+	return reflect.TypeOf((**NodeTemplateCpuOvercommitType)(nil)).Elem()
 }
 
 func (o NodeTemplateCpuOvercommitTypePtrOutput) ToNodeTemplateCpuOvercommitTypePtrOutput() NodeTemplateCpuOvercommitTypePtrOutput {
@@ -14158,6 +14158,16 @@ func (o NodeTemplateCpuOvercommitTypePtrOutput) ToNodeTemplateCpuOvercommitTypeP
 
 func (o NodeTemplateCpuOvercommitTypePtrOutput) ToNodeTemplateCpuOvercommitTypePtrOutputWithContext(ctx context.Context) NodeTemplateCpuOvercommitTypePtrOutput {
 	return o
+}
+
+func (o NodeTemplateCpuOvercommitTypePtrOutput) Elem() NodeTemplateCpuOvercommitTypeOutput {
+	return o.ApplyT(func(v *NodeTemplateCpuOvercommitType) NodeTemplateCpuOvercommitType {
+		if v != nil {
+			return *v
+		}
+		var ret NodeTemplateCpuOvercommitType
+		return ret
+	}).(NodeTemplateCpuOvercommitTypeOutput)
 }
 
 func (o NodeTemplateCpuOvercommitTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -14172,16 +14182,6 @@ func (o NodeTemplateCpuOvercommitTypePtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NodeTemplateCpuOvercommitTypePtrOutput) Elem() NodeTemplateCpuOvercommitTypeOutput {
-	return o.ApplyT(func(v *NodeTemplateCpuOvercommitType) NodeTemplateCpuOvercommitType {
-		var ret NodeTemplateCpuOvercommitType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NodeTemplateCpuOvercommitTypeOutput)
 }
 
 // NodeTemplateCpuOvercommitTypeInput is an input type that accepts NodeTemplateCpuOvercommitTypeArgs and NodeTemplateCpuOvercommitTypeOutput values.
@@ -14314,7 +14314,7 @@ func (o PacketMirroringEnableOutput) ToStringPtrOutputWithContext(ctx context.Co
 type PacketMirroringEnablePtrOutput struct{ *pulumi.OutputState }
 
 func (PacketMirroringEnablePtrOutput) ElementType() reflect.Type {
-	return packetMirroringEnablePtrType
+	return reflect.TypeOf((**PacketMirroringEnable)(nil)).Elem()
 }
 
 func (o PacketMirroringEnablePtrOutput) ToPacketMirroringEnablePtrOutput() PacketMirroringEnablePtrOutput {
@@ -14323,6 +14323,16 @@ func (o PacketMirroringEnablePtrOutput) ToPacketMirroringEnablePtrOutput() Packe
 
 func (o PacketMirroringEnablePtrOutput) ToPacketMirroringEnablePtrOutputWithContext(ctx context.Context) PacketMirroringEnablePtrOutput {
 	return o
+}
+
+func (o PacketMirroringEnablePtrOutput) Elem() PacketMirroringEnableOutput {
+	return o.ApplyT(func(v *PacketMirroringEnable) PacketMirroringEnable {
+		if v != nil {
+			return *v
+		}
+		var ret PacketMirroringEnable
+		return ret
+	}).(PacketMirroringEnableOutput)
 }
 
 func (o PacketMirroringEnablePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -14337,16 +14347,6 @@ func (o PacketMirroringEnablePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PacketMirroringEnablePtrOutput) Elem() PacketMirroringEnableOutput {
-	return o.ApplyT(func(v *PacketMirroringEnable) PacketMirroringEnable {
-		var ret PacketMirroringEnable
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PacketMirroringEnableOutput)
 }
 
 // PacketMirroringEnableInput is an input type that accepts PacketMirroringEnableArgs and PacketMirroringEnableOutput values.
@@ -14483,7 +14483,7 @@ func (o PacketMirroringFilterDirectionOutput) ToStringPtrOutputWithContext(ctx c
 type PacketMirroringFilterDirectionPtrOutput struct{ *pulumi.OutputState }
 
 func (PacketMirroringFilterDirectionPtrOutput) ElementType() reflect.Type {
-	return packetMirroringFilterDirectionPtrType
+	return reflect.TypeOf((**PacketMirroringFilterDirection)(nil)).Elem()
 }
 
 func (o PacketMirroringFilterDirectionPtrOutput) ToPacketMirroringFilterDirectionPtrOutput() PacketMirroringFilterDirectionPtrOutput {
@@ -14492,6 +14492,16 @@ func (o PacketMirroringFilterDirectionPtrOutput) ToPacketMirroringFilterDirectio
 
 func (o PacketMirroringFilterDirectionPtrOutput) ToPacketMirroringFilterDirectionPtrOutputWithContext(ctx context.Context) PacketMirroringFilterDirectionPtrOutput {
 	return o
+}
+
+func (o PacketMirroringFilterDirectionPtrOutput) Elem() PacketMirroringFilterDirectionOutput {
+	return o.ApplyT(func(v *PacketMirroringFilterDirection) PacketMirroringFilterDirection {
+		if v != nil {
+			return *v
+		}
+		var ret PacketMirroringFilterDirection
+		return ret
+	}).(PacketMirroringFilterDirectionOutput)
 }
 
 func (o PacketMirroringFilterDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -14506,16 +14516,6 @@ func (o PacketMirroringFilterDirectionPtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PacketMirroringFilterDirectionPtrOutput) Elem() PacketMirroringFilterDirectionOutput {
-	return o.ApplyT(func(v *PacketMirroringFilterDirection) PacketMirroringFilterDirection {
-		var ret PacketMirroringFilterDirection
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PacketMirroringFilterDirectionOutput)
 }
 
 // PacketMirroringFilterDirectionInput is an input type that accepts PacketMirroringFilterDirectionArgs and PacketMirroringFilterDirectionOutput values.
@@ -14653,7 +14653,7 @@ func (o PublicAdvertisedPrefixStatusOutput) ToStringPtrOutputWithContext(ctx con
 type PublicAdvertisedPrefixStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (PublicAdvertisedPrefixStatusPtrOutput) ElementType() reflect.Type {
-	return publicAdvertisedPrefixStatusPtrType
+	return reflect.TypeOf((**PublicAdvertisedPrefixStatus)(nil)).Elem()
 }
 
 func (o PublicAdvertisedPrefixStatusPtrOutput) ToPublicAdvertisedPrefixStatusPtrOutput() PublicAdvertisedPrefixStatusPtrOutput {
@@ -14662,6 +14662,16 @@ func (o PublicAdvertisedPrefixStatusPtrOutput) ToPublicAdvertisedPrefixStatusPtr
 
 func (o PublicAdvertisedPrefixStatusPtrOutput) ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusPtrOutput {
 	return o
+}
+
+func (o PublicAdvertisedPrefixStatusPtrOutput) Elem() PublicAdvertisedPrefixStatusOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefixStatus) PublicAdvertisedPrefixStatus {
+		if v != nil {
+			return *v
+		}
+		var ret PublicAdvertisedPrefixStatus
+		return ret
+	}).(PublicAdvertisedPrefixStatusOutput)
 }
 
 func (o PublicAdvertisedPrefixStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -14676,16 +14686,6 @@ func (o PublicAdvertisedPrefixStatusPtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PublicAdvertisedPrefixStatusPtrOutput) Elem() PublicAdvertisedPrefixStatusOutput {
-	return o.ApplyT(func(v *PublicAdvertisedPrefixStatus) PublicAdvertisedPrefixStatus {
-		var ret PublicAdvertisedPrefixStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PublicAdvertisedPrefixStatusOutput)
 }
 
 // PublicAdvertisedPrefixStatusInput is an input type that accepts PublicAdvertisedPrefixStatusArgs and PublicAdvertisedPrefixStatusOutput values.
@@ -14825,7 +14825,7 @@ func (o RegionBackendServiceLoadBalancingSchemeOutput) ToStringPtrOutputWithCont
 type RegionBackendServiceLoadBalancingSchemePtrOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceLoadBalancingSchemePtrOutput) ElementType() reflect.Type {
-	return regionBackendServiceLoadBalancingSchemePtrType
+	return reflect.TypeOf((**RegionBackendServiceLoadBalancingScheme)(nil)).Elem()
 }
 
 func (o RegionBackendServiceLoadBalancingSchemePtrOutput) ToRegionBackendServiceLoadBalancingSchemePtrOutput() RegionBackendServiceLoadBalancingSchemePtrOutput {
@@ -14834,6 +14834,16 @@ func (o RegionBackendServiceLoadBalancingSchemePtrOutput) ToRegionBackendService
 
 func (o RegionBackendServiceLoadBalancingSchemePtrOutput) ToRegionBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx context.Context) RegionBackendServiceLoadBalancingSchemePtrOutput {
 	return o
+}
+
+func (o RegionBackendServiceLoadBalancingSchemePtrOutput) Elem() RegionBackendServiceLoadBalancingSchemeOutput {
+	return o.ApplyT(func(v *RegionBackendServiceLoadBalancingScheme) RegionBackendServiceLoadBalancingScheme {
+		if v != nil {
+			return *v
+		}
+		var ret RegionBackendServiceLoadBalancingScheme
+		return ret
+	}).(RegionBackendServiceLoadBalancingSchemeOutput)
 }
 
 func (o RegionBackendServiceLoadBalancingSchemePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -14848,16 +14858,6 @@ func (o RegionBackendServiceLoadBalancingSchemePtrOutput) ToStringPtrOutputWithC
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionBackendServiceLoadBalancingSchemePtrOutput) Elem() RegionBackendServiceLoadBalancingSchemeOutput {
-	return o.ApplyT(func(v *RegionBackendServiceLoadBalancingScheme) RegionBackendServiceLoadBalancingScheme {
-		var ret RegionBackendServiceLoadBalancingScheme
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionBackendServiceLoadBalancingSchemeOutput)
 }
 
 // RegionBackendServiceLoadBalancingSchemeInput is an input type that accepts RegionBackendServiceLoadBalancingSchemeArgs and RegionBackendServiceLoadBalancingSchemeOutput values.
@@ -15001,7 +15001,7 @@ func (o RegionBackendServiceLocalityLbPolicyOutput) ToStringPtrOutputWithContext
 type RegionBackendServiceLocalityLbPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceLocalityLbPolicyPtrOutput) ElementType() reflect.Type {
-	return regionBackendServiceLocalityLbPolicyPtrType
+	return reflect.TypeOf((**RegionBackendServiceLocalityLbPolicy)(nil)).Elem()
 }
 
 func (o RegionBackendServiceLocalityLbPolicyPtrOutput) ToRegionBackendServiceLocalityLbPolicyPtrOutput() RegionBackendServiceLocalityLbPolicyPtrOutput {
@@ -15010,6 +15010,16 @@ func (o RegionBackendServiceLocalityLbPolicyPtrOutput) ToRegionBackendServiceLoc
 
 func (o RegionBackendServiceLocalityLbPolicyPtrOutput) ToRegionBackendServiceLocalityLbPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceLocalityLbPolicyPtrOutput {
 	return o
+}
+
+func (o RegionBackendServiceLocalityLbPolicyPtrOutput) Elem() RegionBackendServiceLocalityLbPolicyOutput {
+	return o.ApplyT(func(v *RegionBackendServiceLocalityLbPolicy) RegionBackendServiceLocalityLbPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret RegionBackendServiceLocalityLbPolicy
+		return ret
+	}).(RegionBackendServiceLocalityLbPolicyOutput)
 }
 
 func (o RegionBackendServiceLocalityLbPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -15024,16 +15034,6 @@ func (o RegionBackendServiceLocalityLbPolicyPtrOutput) ToStringPtrOutputWithCont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionBackendServiceLocalityLbPolicyPtrOutput) Elem() RegionBackendServiceLocalityLbPolicyOutput {
-	return o.ApplyT(func(v *RegionBackendServiceLocalityLbPolicy) RegionBackendServiceLocalityLbPolicy {
-		var ret RegionBackendServiceLocalityLbPolicy
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionBackendServiceLocalityLbPolicyOutput)
 }
 
 // RegionBackendServiceLocalityLbPolicyInput is an input type that accepts RegionBackendServiceLocalityLbPolicyArgs and RegionBackendServiceLocalityLbPolicyOutput values.
@@ -15176,7 +15176,7 @@ func (o RegionBackendServiceProtocolOutput) ToStringPtrOutputWithContext(ctx con
 type RegionBackendServiceProtocolPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceProtocolPtrOutput) ElementType() reflect.Type {
-	return regionBackendServiceProtocolPtrType
+	return reflect.TypeOf((**RegionBackendServiceProtocol)(nil)).Elem()
 }
 
 func (o RegionBackendServiceProtocolPtrOutput) ToRegionBackendServiceProtocolPtrOutput() RegionBackendServiceProtocolPtrOutput {
@@ -15185,6 +15185,16 @@ func (o RegionBackendServiceProtocolPtrOutput) ToRegionBackendServiceProtocolPtr
 
 func (o RegionBackendServiceProtocolPtrOutput) ToRegionBackendServiceProtocolPtrOutputWithContext(ctx context.Context) RegionBackendServiceProtocolPtrOutput {
 	return o
+}
+
+func (o RegionBackendServiceProtocolPtrOutput) Elem() RegionBackendServiceProtocolOutput {
+	return o.ApplyT(func(v *RegionBackendServiceProtocol) RegionBackendServiceProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret RegionBackendServiceProtocol
+		return ret
+	}).(RegionBackendServiceProtocolOutput)
 }
 
 func (o RegionBackendServiceProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -15199,16 +15209,6 @@ func (o RegionBackendServiceProtocolPtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionBackendServiceProtocolPtrOutput) Elem() RegionBackendServiceProtocolOutput {
-	return o.ApplyT(func(v *RegionBackendServiceProtocol) RegionBackendServiceProtocol {
-		var ret RegionBackendServiceProtocol
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionBackendServiceProtocolOutput)
 }
 
 // RegionBackendServiceProtocolInput is an input type that accepts RegionBackendServiceProtocolArgs and RegionBackendServiceProtocolOutput values.
@@ -15355,7 +15355,7 @@ func (o RegionBackendServiceSessionAffinityOutput) ToStringPtrOutputWithContext(
 type RegionBackendServiceSessionAffinityPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceSessionAffinityPtrOutput) ElementType() reflect.Type {
-	return regionBackendServiceSessionAffinityPtrType
+	return reflect.TypeOf((**RegionBackendServiceSessionAffinity)(nil)).Elem()
 }
 
 func (o RegionBackendServiceSessionAffinityPtrOutput) ToRegionBackendServiceSessionAffinityPtrOutput() RegionBackendServiceSessionAffinityPtrOutput {
@@ -15364,6 +15364,16 @@ func (o RegionBackendServiceSessionAffinityPtrOutput) ToRegionBackendServiceSess
 
 func (o RegionBackendServiceSessionAffinityPtrOutput) ToRegionBackendServiceSessionAffinityPtrOutputWithContext(ctx context.Context) RegionBackendServiceSessionAffinityPtrOutput {
 	return o
+}
+
+func (o RegionBackendServiceSessionAffinityPtrOutput) Elem() RegionBackendServiceSessionAffinityOutput {
+	return o.ApplyT(func(v *RegionBackendServiceSessionAffinity) RegionBackendServiceSessionAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret RegionBackendServiceSessionAffinity
+		return ret
+	}).(RegionBackendServiceSessionAffinityOutput)
 }
 
 func (o RegionBackendServiceSessionAffinityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -15378,16 +15388,6 @@ func (o RegionBackendServiceSessionAffinityPtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionBackendServiceSessionAffinityPtrOutput) Elem() RegionBackendServiceSessionAffinityOutput {
-	return o.ApplyT(func(v *RegionBackendServiceSessionAffinity) RegionBackendServiceSessionAffinity {
-		var ret RegionBackendServiceSessionAffinity
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionBackendServiceSessionAffinityOutput)
 }
 
 // RegionBackendServiceSessionAffinityInput is an input type that accepts RegionBackendServiceSessionAffinityArgs and RegionBackendServiceSessionAffinityOutput values.
@@ -15521,7 +15521,7 @@ func (o RegionCommitmentCategoryOutput) ToStringPtrOutputWithContext(ctx context
 type RegionCommitmentCategoryPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionCommitmentCategoryPtrOutput) ElementType() reflect.Type {
-	return regionCommitmentCategoryPtrType
+	return reflect.TypeOf((**RegionCommitmentCategory)(nil)).Elem()
 }
 
 func (o RegionCommitmentCategoryPtrOutput) ToRegionCommitmentCategoryPtrOutput() RegionCommitmentCategoryPtrOutput {
@@ -15530,6 +15530,16 @@ func (o RegionCommitmentCategoryPtrOutput) ToRegionCommitmentCategoryPtrOutput()
 
 func (o RegionCommitmentCategoryPtrOutput) ToRegionCommitmentCategoryPtrOutputWithContext(ctx context.Context) RegionCommitmentCategoryPtrOutput {
 	return o
+}
+
+func (o RegionCommitmentCategoryPtrOutput) Elem() RegionCommitmentCategoryOutput {
+	return o.ApplyT(func(v *RegionCommitmentCategory) RegionCommitmentCategory {
+		if v != nil {
+			return *v
+		}
+		var ret RegionCommitmentCategory
+		return ret
+	}).(RegionCommitmentCategoryOutput)
 }
 
 func (o RegionCommitmentCategoryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -15544,16 +15554,6 @@ func (o RegionCommitmentCategoryPtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionCommitmentCategoryPtrOutput) Elem() RegionCommitmentCategoryOutput {
-	return o.ApplyT(func(v *RegionCommitmentCategory) RegionCommitmentCategory {
-		var ret RegionCommitmentCategory
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionCommitmentCategoryOutput)
 }
 
 // RegionCommitmentCategoryInput is an input type that accepts RegionCommitmentCategoryArgs and RegionCommitmentCategoryOutput values.
@@ -15687,7 +15687,7 @@ func (o RegionCommitmentPlanOutput) ToStringPtrOutputWithContext(ctx context.Con
 type RegionCommitmentPlanPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionCommitmentPlanPtrOutput) ElementType() reflect.Type {
-	return regionCommitmentPlanPtrType
+	return reflect.TypeOf((**RegionCommitmentPlan)(nil)).Elem()
 }
 
 func (o RegionCommitmentPlanPtrOutput) ToRegionCommitmentPlanPtrOutput() RegionCommitmentPlanPtrOutput {
@@ -15696,6 +15696,16 @@ func (o RegionCommitmentPlanPtrOutput) ToRegionCommitmentPlanPtrOutput() RegionC
 
 func (o RegionCommitmentPlanPtrOutput) ToRegionCommitmentPlanPtrOutputWithContext(ctx context.Context) RegionCommitmentPlanPtrOutput {
 	return o
+}
+
+func (o RegionCommitmentPlanPtrOutput) Elem() RegionCommitmentPlanOutput {
+	return o.ApplyT(func(v *RegionCommitmentPlan) RegionCommitmentPlan {
+		if v != nil {
+			return *v
+		}
+		var ret RegionCommitmentPlan
+		return ret
+	}).(RegionCommitmentPlanOutput)
 }
 
 func (o RegionCommitmentPlanPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -15710,16 +15720,6 @@ func (o RegionCommitmentPlanPtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionCommitmentPlanPtrOutput) Elem() RegionCommitmentPlanOutput {
-	return o.ApplyT(func(v *RegionCommitmentPlan) RegionCommitmentPlan {
-		var ret RegionCommitmentPlan
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionCommitmentPlanOutput)
 }
 
 // RegionCommitmentPlanInput is an input type that accepts RegionCommitmentPlanArgs and RegionCommitmentPlanOutput values.
@@ -15858,7 +15858,7 @@ func (o RegionCommitmentTypeOutput) ToStringPtrOutputWithContext(ctx context.Con
 type RegionCommitmentTypePtrOutput struct{ *pulumi.OutputState }
 
 func (RegionCommitmentTypePtrOutput) ElementType() reflect.Type {
-	return regionCommitmentTypePtrType
+	return reflect.TypeOf((**RegionCommitmentType)(nil)).Elem()
 }
 
 func (o RegionCommitmentTypePtrOutput) ToRegionCommitmentTypePtrOutput() RegionCommitmentTypePtrOutput {
@@ -15867,6 +15867,16 @@ func (o RegionCommitmentTypePtrOutput) ToRegionCommitmentTypePtrOutput() RegionC
 
 func (o RegionCommitmentTypePtrOutput) ToRegionCommitmentTypePtrOutputWithContext(ctx context.Context) RegionCommitmentTypePtrOutput {
 	return o
+}
+
+func (o RegionCommitmentTypePtrOutput) Elem() RegionCommitmentTypeOutput {
+	return o.ApplyT(func(v *RegionCommitmentType) RegionCommitmentType {
+		if v != nil {
+			return *v
+		}
+		var ret RegionCommitmentType
+		return ret
+	}).(RegionCommitmentTypeOutput)
 }
 
 func (o RegionCommitmentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -15881,16 +15891,6 @@ func (o RegionCommitmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionCommitmentTypePtrOutput) Elem() RegionCommitmentTypeOutput {
-	return o.ApplyT(func(v *RegionCommitmentType) RegionCommitmentType {
-		var ret RegionCommitmentType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionCommitmentTypeOutput)
 }
 
 // RegionCommitmentTypeInput is an input type that accepts RegionCommitmentTypeArgs and RegionCommitmentTypeOutput values.
@@ -16025,7 +16025,7 @@ func (o RegionHealthCheckServiceHealthStatusAggregationPolicyOutput) ToStringPtr
 type RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) ElementType() reflect.Type {
-	return regionHealthCheckServiceHealthStatusAggregationPolicyPtrType
+	return reflect.TypeOf((**RegionHealthCheckServiceHealthStatusAggregationPolicy)(nil)).Elem()
 }
 
 func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) ToRegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput() RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput {
@@ -16034,6 +16034,16 @@ func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) ToRegion
 
 func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) ToRegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput {
 	return o
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) Elem() RegionHealthCheckServiceHealthStatusAggregationPolicyOutput {
+	return o.ApplyT(func(v *RegionHealthCheckServiceHealthStatusAggregationPolicy) RegionHealthCheckServiceHealthStatusAggregationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret RegionHealthCheckServiceHealthStatusAggregationPolicy
+		return ret
+	}).(RegionHealthCheckServiceHealthStatusAggregationPolicyOutput)
 }
 
 func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -16048,16 +16058,6 @@ func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) ToString
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) Elem() RegionHealthCheckServiceHealthStatusAggregationPolicyOutput {
-	return o.ApplyT(func(v *RegionHealthCheckServiceHealthStatusAggregationPolicy) RegionHealthCheckServiceHealthStatusAggregationPolicy {
-		var ret RegionHealthCheckServiceHealthStatusAggregationPolicy
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionHealthCheckServiceHealthStatusAggregationPolicyOutput)
 }
 
 // RegionHealthCheckServiceHealthStatusAggregationPolicyInput is an input type that accepts RegionHealthCheckServiceHealthStatusAggregationPolicyArgs and RegionHealthCheckServiceHealthStatusAggregationPolicyOutput values.
@@ -16195,7 +16195,7 @@ func (o RegionHealthCheckTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type RegionHealthCheckTypePtrOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckTypePtrOutput) ElementType() reflect.Type {
-	return regionHealthCheckTypePtrType
+	return reflect.TypeOf((**RegionHealthCheckType)(nil)).Elem()
 }
 
 func (o RegionHealthCheckTypePtrOutput) ToRegionHealthCheckTypePtrOutput() RegionHealthCheckTypePtrOutput {
@@ -16204,6 +16204,16 @@ func (o RegionHealthCheckTypePtrOutput) ToRegionHealthCheckTypePtrOutput() Regio
 
 func (o RegionHealthCheckTypePtrOutput) ToRegionHealthCheckTypePtrOutputWithContext(ctx context.Context) RegionHealthCheckTypePtrOutput {
 	return o
+}
+
+func (o RegionHealthCheckTypePtrOutput) Elem() RegionHealthCheckTypeOutput {
+	return o.ApplyT(func(v *RegionHealthCheckType) RegionHealthCheckType {
+		if v != nil {
+			return *v
+		}
+		var ret RegionHealthCheckType
+		return ret
+	}).(RegionHealthCheckTypeOutput)
 }
 
 func (o RegionHealthCheckTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -16218,16 +16228,6 @@ func (o RegionHealthCheckTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionHealthCheckTypePtrOutput) Elem() RegionHealthCheckTypeOutput {
-	return o.ApplyT(func(v *RegionHealthCheckType) RegionHealthCheckType {
-		var ret RegionHealthCheckType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionHealthCheckTypeOutput)
 }
 
 // RegionHealthCheckTypeInput is an input type that accepts RegionHealthCheckTypeArgs and RegionHealthCheckTypeOutput values.
@@ -16370,7 +16370,7 @@ func (o RegionNetworkEndpointGroupNetworkEndpointTypeOutput) ToStringPtrOutputWi
 type RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput struct{ *pulumi.OutputState }
 
 func (RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) ElementType() reflect.Type {
-	return regionNetworkEndpointGroupNetworkEndpointTypePtrType
+	return reflect.TypeOf((**RegionNetworkEndpointGroupNetworkEndpointType)(nil)).Elem()
 }
 
 func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToRegionNetworkEndpointGroupNetworkEndpointTypePtrOutput() RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput {
@@ -16379,6 +16379,16 @@ func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToRegionNetworkE
 
 func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToRegionNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput {
 	return o
+}
+
+func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) Elem() RegionNetworkEndpointGroupNetworkEndpointTypeOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupNetworkEndpointType) RegionNetworkEndpointGroupNetworkEndpointType {
+		if v != nil {
+			return *v
+		}
+		var ret RegionNetworkEndpointGroupNetworkEndpointType
+		return ret
+	}).(RegionNetworkEndpointGroupNetworkEndpointTypeOutput)
 }
 
 func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -16393,16 +16403,6 @@ func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) Elem() RegionNetworkEndpointGroupNetworkEndpointTypeOutput {
-	return o.ApplyT(func(v *RegionNetworkEndpointGroupNetworkEndpointType) RegionNetworkEndpointGroupNetworkEndpointType {
-		var ret RegionNetworkEndpointGroupNetworkEndpointType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionNetworkEndpointGroupNetworkEndpointTypeOutput)
 }
 
 // RegionNetworkEndpointGroupNetworkEndpointTypeInput is an input type that accepts RegionNetworkEndpointGroupNetworkEndpointTypeArgs and RegionNetworkEndpointGroupNetworkEndpointTypeOutput values.
@@ -16538,7 +16538,7 @@ func (o RegionSslCertificateTypeOutput) ToStringPtrOutputWithContext(ctx context
 type RegionSslCertificateTypePtrOutput struct{ *pulumi.OutputState }
 
 func (RegionSslCertificateTypePtrOutput) ElementType() reflect.Type {
-	return regionSslCertificateTypePtrType
+	return reflect.TypeOf((**RegionSslCertificateType)(nil)).Elem()
 }
 
 func (o RegionSslCertificateTypePtrOutput) ToRegionSslCertificateTypePtrOutput() RegionSslCertificateTypePtrOutput {
@@ -16547,6 +16547,16 @@ func (o RegionSslCertificateTypePtrOutput) ToRegionSslCertificateTypePtrOutput()
 
 func (o RegionSslCertificateTypePtrOutput) ToRegionSslCertificateTypePtrOutputWithContext(ctx context.Context) RegionSslCertificateTypePtrOutput {
 	return o
+}
+
+func (o RegionSslCertificateTypePtrOutput) Elem() RegionSslCertificateTypeOutput {
+	return o.ApplyT(func(v *RegionSslCertificateType) RegionSslCertificateType {
+		if v != nil {
+			return *v
+		}
+		var ret RegionSslCertificateType
+		return ret
+	}).(RegionSslCertificateTypeOutput)
 }
 
 func (o RegionSslCertificateTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -16561,16 +16571,6 @@ func (o RegionSslCertificateTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionSslCertificateTypePtrOutput) Elem() RegionSslCertificateTypeOutput {
-	return o.ApplyT(func(v *RegionSslCertificateType) RegionSslCertificateType {
-		var ret RegionSslCertificateType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionSslCertificateTypeOutput)
 }
 
 // RegionSslCertificateTypeInput is an input type that accepts RegionSslCertificateTypeArgs and RegionSslCertificateTypeOutput values.
@@ -16707,7 +16707,7 @@ func (o RegionTargetHttpsProxyQuicOverrideOutput) ToStringPtrOutputWithContext(c
 type RegionTargetHttpsProxyQuicOverridePtrOutput struct{ *pulumi.OutputState }
 
 func (RegionTargetHttpsProxyQuicOverridePtrOutput) ElementType() reflect.Type {
-	return regionTargetHttpsProxyQuicOverridePtrType
+	return reflect.TypeOf((**RegionTargetHttpsProxyQuicOverride)(nil)).Elem()
 }
 
 func (o RegionTargetHttpsProxyQuicOverridePtrOutput) ToRegionTargetHttpsProxyQuicOverridePtrOutput() RegionTargetHttpsProxyQuicOverridePtrOutput {
@@ -16716,6 +16716,16 @@ func (o RegionTargetHttpsProxyQuicOverridePtrOutput) ToRegionTargetHttpsProxyQui
 
 func (o RegionTargetHttpsProxyQuicOverridePtrOutput) ToRegionTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyQuicOverridePtrOutput {
 	return o
+}
+
+func (o RegionTargetHttpsProxyQuicOverridePtrOutput) Elem() RegionTargetHttpsProxyQuicOverrideOutput {
+	return o.ApplyT(func(v *RegionTargetHttpsProxyQuicOverride) RegionTargetHttpsProxyQuicOverride {
+		if v != nil {
+			return *v
+		}
+		var ret RegionTargetHttpsProxyQuicOverride
+		return ret
+	}).(RegionTargetHttpsProxyQuicOverrideOutput)
 }
 
 func (o RegionTargetHttpsProxyQuicOverridePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -16730,16 +16740,6 @@ func (o RegionTargetHttpsProxyQuicOverridePtrOutput) ToStringPtrOutputWithContex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegionTargetHttpsProxyQuicOverridePtrOutput) Elem() RegionTargetHttpsProxyQuicOverrideOutput {
-	return o.ApplyT(func(v *RegionTargetHttpsProxyQuicOverride) RegionTargetHttpsProxyQuicOverride {
-		var ret RegionTargetHttpsProxyQuicOverride
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegionTargetHttpsProxyQuicOverrideOutput)
 }
 
 // RegionTargetHttpsProxyQuicOverrideInput is an input type that accepts RegionTargetHttpsProxyQuicOverrideArgs and RegionTargetHttpsProxyQuicOverrideOutput values.
@@ -16877,7 +16877,7 @@ func (o ReservationAffinityConsumeReservationTypeOutput) ToStringPtrOutputWithCo
 type ReservationAffinityConsumeReservationTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ReservationAffinityConsumeReservationTypePtrOutput) ElementType() reflect.Type {
-	return reservationAffinityConsumeReservationTypePtrType
+	return reflect.TypeOf((**ReservationAffinityConsumeReservationType)(nil)).Elem()
 }
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput {
@@ -16886,6 +16886,16 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinit
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
+	return o.ApplyT(func(v *ReservationAffinityConsumeReservationType) ReservationAffinityConsumeReservationType {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationAffinityConsumeReservationType
+		return ret
+	}).(ReservationAffinityConsumeReservationTypeOutput)
 }
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -16900,16 +16910,6 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutputWit
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
-	return o.ApplyT(func(v *ReservationAffinityConsumeReservationType) ReservationAffinityConsumeReservationType {
-		var ret ReservationAffinityConsumeReservationType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ReservationAffinityConsumeReservationTypeOutput)
 }
 
 // ReservationAffinityConsumeReservationTypeInput is an input type that accepts ReservationAffinityConsumeReservationTypeArgs and ReservationAffinityConsumeReservationTypeOutput values.
@@ -17045,7 +17045,7 @@ func (o ResourceCommitmentTypeOutput) ToStringPtrOutputWithContext(ctx context.C
 type ResourceCommitmentTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ResourceCommitmentTypePtrOutput) ElementType() reflect.Type {
-	return resourceCommitmentTypePtrType
+	return reflect.TypeOf((**ResourceCommitmentType)(nil)).Elem()
 }
 
 func (o ResourceCommitmentTypePtrOutput) ToResourceCommitmentTypePtrOutput() ResourceCommitmentTypePtrOutput {
@@ -17054,6 +17054,16 @@ func (o ResourceCommitmentTypePtrOutput) ToResourceCommitmentTypePtrOutput() Res
 
 func (o ResourceCommitmentTypePtrOutput) ToResourceCommitmentTypePtrOutputWithContext(ctx context.Context) ResourceCommitmentTypePtrOutput {
 	return o
+}
+
+func (o ResourceCommitmentTypePtrOutput) Elem() ResourceCommitmentTypeOutput {
+	return o.ApplyT(func(v *ResourceCommitmentType) ResourceCommitmentType {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceCommitmentType
+		return ret
+	}).(ResourceCommitmentTypeOutput)
 }
 
 func (o ResourceCommitmentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -17068,16 +17078,6 @@ func (o ResourceCommitmentTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCommitmentTypePtrOutput) Elem() ResourceCommitmentTypeOutput {
-	return o.ApplyT(func(v *ResourceCommitmentType) ResourceCommitmentType {
-		var ret ResourceCommitmentType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ResourceCommitmentTypeOutput)
 }
 
 // ResourceCommitmentTypeInput is an input type that accepts ResourceCommitmentTypeArgs and ResourceCommitmentTypeOutput values.
@@ -17210,7 +17210,7 @@ func (o ResourcePolicyGroupPlacementPolicyCollocationOutput) ToStringPtrOutputWi
 type ResourcePolicyGroupPlacementPolicyCollocationPtrOutput struct{ *pulumi.OutputState }
 
 func (ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) ElementType() reflect.Type {
-	return resourcePolicyGroupPlacementPolicyCollocationPtrType
+	return reflect.TypeOf((**ResourcePolicyGroupPlacementPolicyCollocation)(nil)).Elem()
 }
 
 func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) ToResourcePolicyGroupPlacementPolicyCollocationPtrOutput() ResourcePolicyGroupPlacementPolicyCollocationPtrOutput {
@@ -17219,6 +17219,16 @@ func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) ToResourcePolicy
 
 func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) ToResourcePolicyGroupPlacementPolicyCollocationPtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyCollocationPtrOutput {
 	return o
+}
+
+func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) Elem() ResourcePolicyGroupPlacementPolicyCollocationOutput {
+	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicyCollocation) ResourcePolicyGroupPlacementPolicyCollocation {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePolicyGroupPlacementPolicyCollocation
+		return ret
+	}).(ResourcePolicyGroupPlacementPolicyCollocationOutput)
 }
 
 func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -17233,16 +17243,6 @@ func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) Elem() ResourcePolicyGroupPlacementPolicyCollocationOutput {
-	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicyCollocation) ResourcePolicyGroupPlacementPolicyCollocation {
-		var ret ResourcePolicyGroupPlacementPolicyCollocation
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ResourcePolicyGroupPlacementPolicyCollocationOutput)
 }
 
 // ResourcePolicyGroupPlacementPolicyCollocationInput is an input type that accepts ResourcePolicyGroupPlacementPolicyCollocationArgs and ResourcePolicyGroupPlacementPolicyCollocationOutput values.
@@ -17376,7 +17376,7 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteOut
 type ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput struct{ *pulumi.OutputState }
 
 func (ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput) ElementType() reflect.Type {
-	return resourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrType
+	return reflect.TypeOf((**ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete)(nil)).Elem()
 }
 
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput() ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput {
@@ -17385,6 +17385,16 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtr
 
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput {
 	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput) Elem() ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteOutput {
+	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete) ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete
+		return ret
+	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteOutput)
 }
 
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -17399,16 +17409,6 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtr
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput) Elem() ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteOutput {
-	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete) ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete {
-		var ret ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteOutput)
 }
 
 // ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteArgs and ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteOutput values.
@@ -17547,7 +17547,7 @@ func (o ResourcePolicyWeeklyCycleDayOfWeekDayOutput) ToStringPtrOutputWithContex
 type ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput struct{ *pulumi.OutputState }
 
 func (ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) ElementType() reflect.Type {
-	return resourcePolicyWeeklyCycleDayOfWeekDayPtrType
+	return reflect.TypeOf((**ResourcePolicyWeeklyCycleDayOfWeekDay)(nil)).Elem()
 }
 
 func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) ToResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput() ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput {
@@ -17556,6 +17556,16 @@ func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) ToResourcePolicyWeeklyCy
 
 func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) ToResourcePolicyWeeklyCycleDayOfWeekDayPtrOutputWithContext(ctx context.Context) ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput {
 	return o
+}
+
+func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) Elem() ResourcePolicyWeeklyCycleDayOfWeekDayOutput {
+	return o.ApplyT(func(v *ResourcePolicyWeeklyCycleDayOfWeekDay) ResourcePolicyWeeklyCycleDayOfWeekDay {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePolicyWeeklyCycleDayOfWeekDay
+		return ret
+	}).(ResourcePolicyWeeklyCycleDayOfWeekDayOutput)
 }
 
 func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -17570,16 +17580,6 @@ func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) ToStringPtrOutputWithCon
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) Elem() ResourcePolicyWeeklyCycleDayOfWeekDayOutput {
-	return o.ApplyT(func(v *ResourcePolicyWeeklyCycleDayOfWeekDay) ResourcePolicyWeeklyCycleDayOfWeekDay {
-		var ret ResourcePolicyWeeklyCycleDayOfWeekDay
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ResourcePolicyWeeklyCycleDayOfWeekDayOutput)
 }
 
 // ResourcePolicyWeeklyCycleDayOfWeekDayInput is an input type that accepts ResourcePolicyWeeklyCycleDayOfWeekDayArgs and ResourcePolicyWeeklyCycleDayOfWeekDayOutput values.
@@ -17712,7 +17712,7 @@ func (o RouterBgpAdvertiseModeOutput) ToStringPtrOutputWithContext(ctx context.C
 type RouterBgpAdvertiseModePtrOutput struct{ *pulumi.OutputState }
 
 func (RouterBgpAdvertiseModePtrOutput) ElementType() reflect.Type {
-	return routerBgpAdvertiseModePtrType
+	return reflect.TypeOf((**RouterBgpAdvertiseMode)(nil)).Elem()
 }
 
 func (o RouterBgpAdvertiseModePtrOutput) ToRouterBgpAdvertiseModePtrOutput() RouterBgpAdvertiseModePtrOutput {
@@ -17721,6 +17721,16 @@ func (o RouterBgpAdvertiseModePtrOutput) ToRouterBgpAdvertiseModePtrOutput() Rou
 
 func (o RouterBgpAdvertiseModePtrOutput) ToRouterBgpAdvertiseModePtrOutputWithContext(ctx context.Context) RouterBgpAdvertiseModePtrOutput {
 	return o
+}
+
+func (o RouterBgpAdvertiseModePtrOutput) Elem() RouterBgpAdvertiseModeOutput {
+	return o.ApplyT(func(v *RouterBgpAdvertiseMode) RouterBgpAdvertiseMode {
+		if v != nil {
+			return *v
+		}
+		var ret RouterBgpAdvertiseMode
+		return ret
+	}).(RouterBgpAdvertiseModeOutput)
 }
 
 func (o RouterBgpAdvertiseModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -17735,16 +17745,6 @@ func (o RouterBgpAdvertiseModePtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RouterBgpAdvertiseModePtrOutput) Elem() RouterBgpAdvertiseModeOutput {
-	return o.ApplyT(func(v *RouterBgpAdvertiseMode) RouterBgpAdvertiseMode {
-		var ret RouterBgpAdvertiseMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RouterBgpAdvertiseModeOutput)
 }
 
 // RouterBgpAdvertiseModeInput is an input type that accepts RouterBgpAdvertiseModeArgs and RouterBgpAdvertiseModeOutput values.
@@ -17876,7 +17876,7 @@ func (o RouterBgpAdvertisedGroupsItemOutput) ToStringPtrOutputWithContext(ctx co
 type RouterBgpAdvertisedGroupsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (RouterBgpAdvertisedGroupsItemPtrOutput) ElementType() reflect.Type {
-	return routerBgpAdvertisedGroupsItemPtrType
+	return reflect.TypeOf((**RouterBgpAdvertisedGroupsItem)(nil)).Elem()
 }
 
 func (o RouterBgpAdvertisedGroupsItemPtrOutput) ToRouterBgpAdvertisedGroupsItemPtrOutput() RouterBgpAdvertisedGroupsItemPtrOutput {
@@ -17885,6 +17885,16 @@ func (o RouterBgpAdvertisedGroupsItemPtrOutput) ToRouterBgpAdvertisedGroupsItemP
 
 func (o RouterBgpAdvertisedGroupsItemPtrOutput) ToRouterBgpAdvertisedGroupsItemPtrOutputWithContext(ctx context.Context) RouterBgpAdvertisedGroupsItemPtrOutput {
 	return o
+}
+
+func (o RouterBgpAdvertisedGroupsItemPtrOutput) Elem() RouterBgpAdvertisedGroupsItemOutput {
+	return o.ApplyT(func(v *RouterBgpAdvertisedGroupsItem) RouterBgpAdvertisedGroupsItem {
+		if v != nil {
+			return *v
+		}
+		var ret RouterBgpAdvertisedGroupsItem
+		return ret
+	}).(RouterBgpAdvertisedGroupsItemOutput)
 }
 
 func (o RouterBgpAdvertisedGroupsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -17899,16 +17909,6 @@ func (o RouterBgpAdvertisedGroupsItemPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RouterBgpAdvertisedGroupsItemPtrOutput) Elem() RouterBgpAdvertisedGroupsItemOutput {
-	return o.ApplyT(func(v *RouterBgpAdvertisedGroupsItem) RouterBgpAdvertisedGroupsItem {
-		var ret RouterBgpAdvertisedGroupsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RouterBgpAdvertisedGroupsItemOutput)
 }
 
 // RouterBgpAdvertisedGroupsItemInput is an input type that accepts RouterBgpAdvertisedGroupsItemArgs and RouterBgpAdvertisedGroupsItemOutput values.
@@ -17989,8 +17989,8 @@ func (o RouterBgpAdvertisedGroupsItemArrayOutput) ToRouterBgpAdvertisedGroupsIte
 }
 
 func (o RouterBgpAdvertisedGroupsItemArrayOutput) Index(i pulumi.IntInput) RouterBgpAdvertisedGroupsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterBgpAdvertisedGroupsItemOutput {
-		return vs[0].([]RouterBgpAdvertisedGroupsItem)[vs[1].(int)].ToRouterBgpAdvertisedGroupsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterBgpAdvertisedGroupsItem {
+		return vs[0].([]RouterBgpAdvertisedGroupsItem)[vs[1].(int)]
 	}).(RouterBgpAdvertisedGroupsItemOutput)
 }
 
@@ -18086,7 +18086,7 @@ func (o RouterBgpPeerAdvertiseModeOutput) ToStringPtrOutputWithContext(ctx conte
 type RouterBgpPeerAdvertiseModePtrOutput struct{ *pulumi.OutputState }
 
 func (RouterBgpPeerAdvertiseModePtrOutput) ElementType() reflect.Type {
-	return routerBgpPeerAdvertiseModePtrType
+	return reflect.TypeOf((**RouterBgpPeerAdvertiseMode)(nil)).Elem()
 }
 
 func (o RouterBgpPeerAdvertiseModePtrOutput) ToRouterBgpPeerAdvertiseModePtrOutput() RouterBgpPeerAdvertiseModePtrOutput {
@@ -18095,6 +18095,16 @@ func (o RouterBgpPeerAdvertiseModePtrOutput) ToRouterBgpPeerAdvertiseModePtrOutp
 
 func (o RouterBgpPeerAdvertiseModePtrOutput) ToRouterBgpPeerAdvertiseModePtrOutputWithContext(ctx context.Context) RouterBgpPeerAdvertiseModePtrOutput {
 	return o
+}
+
+func (o RouterBgpPeerAdvertiseModePtrOutput) Elem() RouterBgpPeerAdvertiseModeOutput {
+	return o.ApplyT(func(v *RouterBgpPeerAdvertiseMode) RouterBgpPeerAdvertiseMode {
+		if v != nil {
+			return *v
+		}
+		var ret RouterBgpPeerAdvertiseMode
+		return ret
+	}).(RouterBgpPeerAdvertiseModeOutput)
 }
 
 func (o RouterBgpPeerAdvertiseModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -18109,16 +18119,6 @@ func (o RouterBgpPeerAdvertiseModePtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RouterBgpPeerAdvertiseModePtrOutput) Elem() RouterBgpPeerAdvertiseModeOutput {
-	return o.ApplyT(func(v *RouterBgpPeerAdvertiseMode) RouterBgpPeerAdvertiseMode {
-		var ret RouterBgpPeerAdvertiseMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RouterBgpPeerAdvertiseModeOutput)
 }
 
 // RouterBgpPeerAdvertiseModeInput is an input type that accepts RouterBgpPeerAdvertiseModeArgs and RouterBgpPeerAdvertiseModeOutput values.
@@ -18250,7 +18250,7 @@ func (o RouterBgpPeerAdvertisedGroupsItemOutput) ToStringPtrOutputWithContext(ct
 type RouterBgpPeerAdvertisedGroupsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (RouterBgpPeerAdvertisedGroupsItemPtrOutput) ElementType() reflect.Type {
-	return routerBgpPeerAdvertisedGroupsItemPtrType
+	return reflect.TypeOf((**RouterBgpPeerAdvertisedGroupsItem)(nil)).Elem()
 }
 
 func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) ToRouterBgpPeerAdvertisedGroupsItemPtrOutput() RouterBgpPeerAdvertisedGroupsItemPtrOutput {
@@ -18259,6 +18259,16 @@ func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) ToRouterBgpPeerAdvertisedGro
 
 func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) ToRouterBgpPeerAdvertisedGroupsItemPtrOutputWithContext(ctx context.Context) RouterBgpPeerAdvertisedGroupsItemPtrOutput {
 	return o
+}
+
+func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) Elem() RouterBgpPeerAdvertisedGroupsItemOutput {
+	return o.ApplyT(func(v *RouterBgpPeerAdvertisedGroupsItem) RouterBgpPeerAdvertisedGroupsItem {
+		if v != nil {
+			return *v
+		}
+		var ret RouterBgpPeerAdvertisedGroupsItem
+		return ret
+	}).(RouterBgpPeerAdvertisedGroupsItemOutput)
 }
 
 func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -18273,16 +18283,6 @@ func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) Elem() RouterBgpPeerAdvertisedGroupsItemOutput {
-	return o.ApplyT(func(v *RouterBgpPeerAdvertisedGroupsItem) RouterBgpPeerAdvertisedGroupsItem {
-		var ret RouterBgpPeerAdvertisedGroupsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RouterBgpPeerAdvertisedGroupsItemOutput)
 }
 
 // RouterBgpPeerAdvertisedGroupsItemInput is an input type that accepts RouterBgpPeerAdvertisedGroupsItemArgs and RouterBgpPeerAdvertisedGroupsItemOutput values.
@@ -18363,8 +18363,8 @@ func (o RouterBgpPeerAdvertisedGroupsItemArrayOutput) ToRouterBgpPeerAdvertisedG
 }
 
 func (o RouterBgpPeerAdvertisedGroupsItemArrayOutput) Index(i pulumi.IntInput) RouterBgpPeerAdvertisedGroupsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterBgpPeerAdvertisedGroupsItemOutput {
-		return vs[0].([]RouterBgpPeerAdvertisedGroupsItem)[vs[1].(int)].ToRouterBgpPeerAdvertisedGroupsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterBgpPeerAdvertisedGroupsItem {
+		return vs[0].([]RouterBgpPeerAdvertisedGroupsItem)[vs[1].(int)]
 	}).(RouterBgpPeerAdvertisedGroupsItemOutput)
 }
 
@@ -18460,7 +18460,7 @@ func (o RouterBgpPeerEnableOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type RouterBgpPeerEnablePtrOutput struct{ *pulumi.OutputState }
 
 func (RouterBgpPeerEnablePtrOutput) ElementType() reflect.Type {
-	return routerBgpPeerEnablePtrType
+	return reflect.TypeOf((**RouterBgpPeerEnable)(nil)).Elem()
 }
 
 func (o RouterBgpPeerEnablePtrOutput) ToRouterBgpPeerEnablePtrOutput() RouterBgpPeerEnablePtrOutput {
@@ -18469,6 +18469,16 @@ func (o RouterBgpPeerEnablePtrOutput) ToRouterBgpPeerEnablePtrOutput() RouterBgp
 
 func (o RouterBgpPeerEnablePtrOutput) ToRouterBgpPeerEnablePtrOutputWithContext(ctx context.Context) RouterBgpPeerEnablePtrOutput {
 	return o
+}
+
+func (o RouterBgpPeerEnablePtrOutput) Elem() RouterBgpPeerEnableOutput {
+	return o.ApplyT(func(v *RouterBgpPeerEnable) RouterBgpPeerEnable {
+		if v != nil {
+			return *v
+		}
+		var ret RouterBgpPeerEnable
+		return ret
+	}).(RouterBgpPeerEnableOutput)
 }
 
 func (o RouterBgpPeerEnablePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -18483,16 +18493,6 @@ func (o RouterBgpPeerEnablePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RouterBgpPeerEnablePtrOutput) Elem() RouterBgpPeerEnableOutput {
-	return o.ApplyT(func(v *RouterBgpPeerEnable) RouterBgpPeerEnable {
-		var ret RouterBgpPeerEnable
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RouterBgpPeerEnableOutput)
 }
 
 // RouterBgpPeerEnableInput is an input type that accepts RouterBgpPeerEnableArgs and RouterBgpPeerEnableOutput values.
@@ -18629,7 +18629,7 @@ func (o RouterNatLogConfigFilterOutput) ToStringPtrOutputWithContext(ctx context
 type RouterNatLogConfigFilterPtrOutput struct{ *pulumi.OutputState }
 
 func (RouterNatLogConfigFilterPtrOutput) ElementType() reflect.Type {
-	return routerNatLogConfigFilterPtrType
+	return reflect.TypeOf((**RouterNatLogConfigFilter)(nil)).Elem()
 }
 
 func (o RouterNatLogConfigFilterPtrOutput) ToRouterNatLogConfigFilterPtrOutput() RouterNatLogConfigFilterPtrOutput {
@@ -18638,6 +18638,16 @@ func (o RouterNatLogConfigFilterPtrOutput) ToRouterNatLogConfigFilterPtrOutput()
 
 func (o RouterNatLogConfigFilterPtrOutput) ToRouterNatLogConfigFilterPtrOutputWithContext(ctx context.Context) RouterNatLogConfigFilterPtrOutput {
 	return o
+}
+
+func (o RouterNatLogConfigFilterPtrOutput) Elem() RouterNatLogConfigFilterOutput {
+	return o.ApplyT(func(v *RouterNatLogConfigFilter) RouterNatLogConfigFilter {
+		if v != nil {
+			return *v
+		}
+		var ret RouterNatLogConfigFilter
+		return ret
+	}).(RouterNatLogConfigFilterOutput)
 }
 
 func (o RouterNatLogConfigFilterPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -18652,16 +18662,6 @@ func (o RouterNatLogConfigFilterPtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RouterNatLogConfigFilterPtrOutput) Elem() RouterNatLogConfigFilterOutput {
-	return o.ApplyT(func(v *RouterNatLogConfigFilter) RouterNatLogConfigFilter {
-		var ret RouterNatLogConfigFilter
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RouterNatLogConfigFilterOutput)
 }
 
 // RouterNatLogConfigFilterInput is an input type that accepts RouterNatLogConfigFilterArgs and RouterNatLogConfigFilterOutput values.
@@ -18796,7 +18796,7 @@ func (o RouterNatNatIpAllocateOptionOutput) ToStringPtrOutputWithContext(ctx con
 type RouterNatNatIpAllocateOptionPtrOutput struct{ *pulumi.OutputState }
 
 func (RouterNatNatIpAllocateOptionPtrOutput) ElementType() reflect.Type {
-	return routerNatNatIpAllocateOptionPtrType
+	return reflect.TypeOf((**RouterNatNatIpAllocateOption)(nil)).Elem()
 }
 
 func (o RouterNatNatIpAllocateOptionPtrOutput) ToRouterNatNatIpAllocateOptionPtrOutput() RouterNatNatIpAllocateOptionPtrOutput {
@@ -18805,6 +18805,16 @@ func (o RouterNatNatIpAllocateOptionPtrOutput) ToRouterNatNatIpAllocateOptionPtr
 
 func (o RouterNatNatIpAllocateOptionPtrOutput) ToRouterNatNatIpAllocateOptionPtrOutputWithContext(ctx context.Context) RouterNatNatIpAllocateOptionPtrOutput {
 	return o
+}
+
+func (o RouterNatNatIpAllocateOptionPtrOutput) Elem() RouterNatNatIpAllocateOptionOutput {
+	return o.ApplyT(func(v *RouterNatNatIpAllocateOption) RouterNatNatIpAllocateOption {
+		if v != nil {
+			return *v
+		}
+		var ret RouterNatNatIpAllocateOption
+		return ret
+	}).(RouterNatNatIpAllocateOptionOutput)
 }
 
 func (o RouterNatNatIpAllocateOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -18819,16 +18829,6 @@ func (o RouterNatNatIpAllocateOptionPtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RouterNatNatIpAllocateOptionPtrOutput) Elem() RouterNatNatIpAllocateOptionOutput {
-	return o.ApplyT(func(v *RouterNatNatIpAllocateOption) RouterNatNatIpAllocateOption {
-		var ret RouterNatNatIpAllocateOption
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RouterNatNatIpAllocateOptionOutput)
 }
 
 // RouterNatNatIpAllocateOptionInput is an input type that accepts RouterNatNatIpAllocateOptionArgs and RouterNatNatIpAllocateOptionOutput values.
@@ -18965,7 +18965,7 @@ func (o RouterNatSourceSubnetworkIpRangesToNatOutput) ToStringPtrOutputWithConte
 type RouterNatSourceSubnetworkIpRangesToNatPtrOutput struct{ *pulumi.OutputState }
 
 func (RouterNatSourceSubnetworkIpRangesToNatPtrOutput) ElementType() reflect.Type {
-	return routerNatSourceSubnetworkIpRangesToNatPtrType
+	return reflect.TypeOf((**RouterNatSourceSubnetworkIpRangesToNat)(nil)).Elem()
 }
 
 func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) ToRouterNatSourceSubnetworkIpRangesToNatPtrOutput() RouterNatSourceSubnetworkIpRangesToNatPtrOutput {
@@ -18974,6 +18974,16 @@ func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) ToRouterNatSourceSubnet
 
 func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) ToRouterNatSourceSubnetworkIpRangesToNatPtrOutputWithContext(ctx context.Context) RouterNatSourceSubnetworkIpRangesToNatPtrOutput {
 	return o
+}
+
+func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) Elem() RouterNatSourceSubnetworkIpRangesToNatOutput {
+	return o.ApplyT(func(v *RouterNatSourceSubnetworkIpRangesToNat) RouterNatSourceSubnetworkIpRangesToNat {
+		if v != nil {
+			return *v
+		}
+		var ret RouterNatSourceSubnetworkIpRangesToNat
+		return ret
+	}).(RouterNatSourceSubnetworkIpRangesToNatOutput)
 }
 
 func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -18988,16 +18998,6 @@ func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) ToStringPtrOutputWithCo
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) Elem() RouterNatSourceSubnetworkIpRangesToNatOutput {
-	return o.ApplyT(func(v *RouterNatSourceSubnetworkIpRangesToNat) RouterNatSourceSubnetworkIpRangesToNat {
-		var ret RouterNatSourceSubnetworkIpRangesToNat
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RouterNatSourceSubnetworkIpRangesToNatOutput)
 }
 
 // RouterNatSourceSubnetworkIpRangesToNatInput is an input type that accepts RouterNatSourceSubnetworkIpRangesToNatArgs and RouterNatSourceSubnetworkIpRangesToNatOutput values.
@@ -19133,7 +19133,7 @@ func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput) ToStringPtrOutput
 type RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput struct{ *pulumi.OutputState }
 
 func (RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) ElementType() reflect.Type {
-	return routerNatSubnetworkToNatSourceIpRangesToNatItemPtrType
+	return reflect.TypeOf((**RouterNatSubnetworkToNatSourceIpRangesToNatItem)(nil)).Elem()
 }
 
 func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) ToRouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput() RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput {
@@ -19142,6 +19142,16 @@ func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) ToRouterNatSub
 
 func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) ToRouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutputWithContext(ctx context.Context) RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput {
 	return o
+}
+
+func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) Elem() RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput {
+	return o.ApplyT(func(v *RouterNatSubnetworkToNatSourceIpRangesToNatItem) RouterNatSubnetworkToNatSourceIpRangesToNatItem {
+		if v != nil {
+			return *v
+		}
+		var ret RouterNatSubnetworkToNatSourceIpRangesToNatItem
+		return ret
+	}).(RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput)
 }
 
 func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -19156,16 +19166,6 @@ func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) ToStringPtrOut
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) Elem() RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput {
-	return o.ApplyT(func(v *RouterNatSubnetworkToNatSourceIpRangesToNatItem) RouterNatSubnetworkToNatSourceIpRangesToNatItem {
-		var ret RouterNatSubnetworkToNatSourceIpRangesToNatItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput)
 }
 
 // RouterNatSubnetworkToNatSourceIpRangesToNatItemInput is an input type that accepts RouterNatSubnetworkToNatSourceIpRangesToNatItemArgs and RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput values.
@@ -19246,8 +19246,8 @@ func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput) ToRouterNatS
 }
 
 func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput) Index(i pulumi.IntInput) RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput {
-		return vs[0].([]RouterNatSubnetworkToNatSourceIpRangesToNatItem)[vs[1].(int)].ToRouterNatSubnetworkToNatSourceIpRangesToNatItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterNatSubnetworkToNatSourceIpRangesToNatItem {
+		return vs[0].([]RouterNatSubnetworkToNatSourceIpRangesToNatItem)[vs[1].(int)]
 	}).(RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput)
 }
 
@@ -19353,7 +19353,7 @@ func (o RuleActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 type RuleActionPtrOutput struct{ *pulumi.OutputState }
 
 func (RuleActionPtrOutput) ElementType() reflect.Type {
-	return ruleActionPtrType
+	return reflect.TypeOf((**RuleAction)(nil)).Elem()
 }
 
 func (o RuleActionPtrOutput) ToRuleActionPtrOutput() RuleActionPtrOutput {
@@ -19362,6 +19362,16 @@ func (o RuleActionPtrOutput) ToRuleActionPtrOutput() RuleActionPtrOutput {
 
 func (o RuleActionPtrOutput) ToRuleActionPtrOutputWithContext(ctx context.Context) RuleActionPtrOutput {
 	return o
+}
+
+func (o RuleActionPtrOutput) Elem() RuleActionOutput {
+	return o.ApplyT(func(v *RuleAction) RuleAction {
+		if v != nil {
+			return *v
+		}
+		var ret RuleAction
+		return ret
+	}).(RuleActionOutput)
 }
 
 func (o RuleActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -19376,16 +19386,6 @@ func (o RuleActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RuleActionPtrOutput) Elem() RuleActionOutput {
-	return o.ApplyT(func(v *RuleAction) RuleAction {
-		var ret RuleAction
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RuleActionOutput)
 }
 
 // RuleActionInput is an input type that accepts RuleActionArgs and RuleActionOutput values.
@@ -19522,7 +19522,7 @@ func (o SSLHealthCheckPortSpecificationOutput) ToStringPtrOutputWithContext(ctx 
 type SSLHealthCheckPortSpecificationPtrOutput struct{ *pulumi.OutputState }
 
 func (SSLHealthCheckPortSpecificationPtrOutput) ElementType() reflect.Type {
-	return sslhealthCheckPortSpecificationPtrType
+	return reflect.TypeOf((**SSLHealthCheckPortSpecification)(nil)).Elem()
 }
 
 func (o SSLHealthCheckPortSpecificationPtrOutput) ToSSLHealthCheckPortSpecificationPtrOutput() SSLHealthCheckPortSpecificationPtrOutput {
@@ -19531,6 +19531,16 @@ func (o SSLHealthCheckPortSpecificationPtrOutput) ToSSLHealthCheckPortSpecificat
 
 func (o SSLHealthCheckPortSpecificationPtrOutput) ToSSLHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) SSLHealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o SSLHealthCheckPortSpecificationPtrOutput) Elem() SSLHealthCheckPortSpecificationOutput {
+	return o.ApplyT(func(v *SSLHealthCheckPortSpecification) SSLHealthCheckPortSpecification {
+		if v != nil {
+			return *v
+		}
+		var ret SSLHealthCheckPortSpecification
+		return ret
+	}).(SSLHealthCheckPortSpecificationOutput)
 }
 
 func (o SSLHealthCheckPortSpecificationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -19545,16 +19555,6 @@ func (o SSLHealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SSLHealthCheckPortSpecificationPtrOutput) Elem() SSLHealthCheckPortSpecificationOutput {
-	return o.ApplyT(func(v *SSLHealthCheckPortSpecification) SSLHealthCheckPortSpecification {
-		var ret SSLHealthCheckPortSpecification
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SSLHealthCheckPortSpecificationOutput)
 }
 
 // SSLHealthCheckPortSpecificationInput is an input type that accepts SSLHealthCheckPortSpecificationArgs and SSLHealthCheckPortSpecificationOutput values.
@@ -19687,7 +19687,7 @@ func (o SSLHealthCheckProxyHeaderOutput) ToStringPtrOutputWithContext(ctx contex
 type SSLHealthCheckProxyHeaderPtrOutput struct{ *pulumi.OutputState }
 
 func (SSLHealthCheckProxyHeaderPtrOutput) ElementType() reflect.Type {
-	return sslhealthCheckProxyHeaderPtrType
+	return reflect.TypeOf((**SSLHealthCheckProxyHeader)(nil)).Elem()
 }
 
 func (o SSLHealthCheckProxyHeaderPtrOutput) ToSSLHealthCheckProxyHeaderPtrOutput() SSLHealthCheckProxyHeaderPtrOutput {
@@ -19696,6 +19696,16 @@ func (o SSLHealthCheckProxyHeaderPtrOutput) ToSSLHealthCheckProxyHeaderPtrOutput
 
 func (o SSLHealthCheckProxyHeaderPtrOutput) ToSSLHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) SSLHealthCheckProxyHeaderPtrOutput {
 	return o
+}
+
+func (o SSLHealthCheckProxyHeaderPtrOutput) Elem() SSLHealthCheckProxyHeaderOutput {
+	return o.ApplyT(func(v *SSLHealthCheckProxyHeader) SSLHealthCheckProxyHeader {
+		if v != nil {
+			return *v
+		}
+		var ret SSLHealthCheckProxyHeader
+		return ret
+	}).(SSLHealthCheckProxyHeaderOutput)
 }
 
 func (o SSLHealthCheckProxyHeaderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -19710,16 +19720,6 @@ func (o SSLHealthCheckProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SSLHealthCheckProxyHeaderPtrOutput) Elem() SSLHealthCheckProxyHeaderOutput {
-	return o.ApplyT(func(v *SSLHealthCheckProxyHeader) SSLHealthCheckProxyHeader {
-		var ret SSLHealthCheckProxyHeader
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SSLHealthCheckProxyHeaderOutput)
 }
 
 // SSLHealthCheckProxyHeaderInput is an input type that accepts SSLHealthCheckProxyHeaderArgs and SSLHealthCheckProxyHeaderOutput values.
@@ -19855,7 +19855,7 @@ func (o SchedulingNodeAffinityOperatorOutput) ToStringPtrOutputWithContext(ctx c
 type SchedulingNodeAffinityOperatorPtrOutput struct{ *pulumi.OutputState }
 
 func (SchedulingNodeAffinityOperatorPtrOutput) ElementType() reflect.Type {
-	return schedulingNodeAffinityOperatorPtrType
+	return reflect.TypeOf((**SchedulingNodeAffinityOperator)(nil)).Elem()
 }
 
 func (o SchedulingNodeAffinityOperatorPtrOutput) ToSchedulingNodeAffinityOperatorPtrOutput() SchedulingNodeAffinityOperatorPtrOutput {
@@ -19864,6 +19864,16 @@ func (o SchedulingNodeAffinityOperatorPtrOutput) ToSchedulingNodeAffinityOperato
 
 func (o SchedulingNodeAffinityOperatorPtrOutput) ToSchedulingNodeAffinityOperatorPtrOutputWithContext(ctx context.Context) SchedulingNodeAffinityOperatorPtrOutput {
 	return o
+}
+
+func (o SchedulingNodeAffinityOperatorPtrOutput) Elem() SchedulingNodeAffinityOperatorOutput {
+	return o.ApplyT(func(v *SchedulingNodeAffinityOperator) SchedulingNodeAffinityOperator {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulingNodeAffinityOperator
+		return ret
+	}).(SchedulingNodeAffinityOperatorOutput)
 }
 
 func (o SchedulingNodeAffinityOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -19878,16 +19888,6 @@ func (o SchedulingNodeAffinityOperatorPtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SchedulingNodeAffinityOperatorPtrOutput) Elem() SchedulingNodeAffinityOperatorOutput {
-	return o.ApplyT(func(v *SchedulingNodeAffinityOperator) SchedulingNodeAffinityOperator {
-		var ret SchedulingNodeAffinityOperator
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SchedulingNodeAffinityOperatorOutput)
 }
 
 // SchedulingNodeAffinityOperatorInput is an input type that accepts SchedulingNodeAffinityOperatorArgs and SchedulingNodeAffinityOperatorOutput values.
@@ -20022,7 +20022,7 @@ func (o SchedulingOnHostMaintenanceOutput) ToStringPtrOutputWithContext(ctx cont
 type SchedulingOnHostMaintenancePtrOutput struct{ *pulumi.OutputState }
 
 func (SchedulingOnHostMaintenancePtrOutput) ElementType() reflect.Type {
-	return schedulingOnHostMaintenancePtrType
+	return reflect.TypeOf((**SchedulingOnHostMaintenance)(nil)).Elem()
 }
 
 func (o SchedulingOnHostMaintenancePtrOutput) ToSchedulingOnHostMaintenancePtrOutput() SchedulingOnHostMaintenancePtrOutput {
@@ -20031,6 +20031,16 @@ func (o SchedulingOnHostMaintenancePtrOutput) ToSchedulingOnHostMaintenancePtrOu
 
 func (o SchedulingOnHostMaintenancePtrOutput) ToSchedulingOnHostMaintenancePtrOutputWithContext(ctx context.Context) SchedulingOnHostMaintenancePtrOutput {
 	return o
+}
+
+func (o SchedulingOnHostMaintenancePtrOutput) Elem() SchedulingOnHostMaintenanceOutput {
+	return o.ApplyT(func(v *SchedulingOnHostMaintenance) SchedulingOnHostMaintenance {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulingOnHostMaintenance
+		return ret
+	}).(SchedulingOnHostMaintenanceOutput)
 }
 
 func (o SchedulingOnHostMaintenancePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -20045,16 +20055,6 @@ func (o SchedulingOnHostMaintenancePtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SchedulingOnHostMaintenancePtrOutput) Elem() SchedulingOnHostMaintenanceOutput {
-	return o.ApplyT(func(v *SchedulingOnHostMaintenance) SchedulingOnHostMaintenance {
-		var ret SchedulingOnHostMaintenance
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SchedulingOnHostMaintenanceOutput)
 }
 
 // SchedulingOnHostMaintenanceInput is an input type that accepts SchedulingOnHostMaintenanceArgs and SchedulingOnHostMaintenanceOutput values.
@@ -20187,7 +20187,7 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibil
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput) ElementType() reflect.Type {
-	return securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrType
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility)(nil)).Elem()
 }
 
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput {
@@ -20196,6 +20196,16 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibil
 
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput) Elem() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility
+		return ret
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityOutput)
 }
 
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -20210,16 +20220,6 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibil
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput) Elem() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityOutput {
-	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility {
-		var ret SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityOutput)
 }
 
 // SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityArgs and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityOutput values.
@@ -20351,7 +20351,7 @@ func (o SecurityPolicyAdvancedOptionsConfigJsonParsingOutput) ToStringPtrOutputW
 type SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) ElementType() reflect.Type {
-	return securityPolicyAdvancedOptionsConfigJsonParsingPtrType
+	return reflect.TypeOf((**SecurityPolicyAdvancedOptionsConfigJsonParsing)(nil)).Elem()
 }
 
 func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) ToSecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput {
@@ -20360,6 +20360,16 @@ func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) ToSecurityPolic
 
 func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) ToSecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) Elem() SecurityPolicyAdvancedOptionsConfigJsonParsingOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfigJsonParsing) SecurityPolicyAdvancedOptionsConfigJsonParsing {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdvancedOptionsConfigJsonParsing
+		return ret
+	}).(SecurityPolicyAdvancedOptionsConfigJsonParsingOutput)
 }
 
 func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -20374,16 +20384,6 @@ func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) ToStringPtrOutp
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) Elem() SecurityPolicyAdvancedOptionsConfigJsonParsingOutput {
-	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfigJsonParsing) SecurityPolicyAdvancedOptionsConfigJsonParsing {
-		var ret SecurityPolicyAdvancedOptionsConfigJsonParsing
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SecurityPolicyAdvancedOptionsConfigJsonParsingOutput)
 }
 
 // SecurityPolicyAdvancedOptionsConfigJsonParsingInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigJsonParsingArgs and SecurityPolicyAdvancedOptionsConfigJsonParsingOutput values.
@@ -20515,7 +20515,7 @@ func (o SecurityPolicyAdvancedOptionsConfigLogLevelOutput) ToStringPtrOutputWith
 type SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) ElementType() reflect.Type {
-	return securityPolicyAdvancedOptionsConfigLogLevelPtrType
+	return reflect.TypeOf((**SecurityPolicyAdvancedOptionsConfigLogLevel)(nil)).Elem()
 }
 
 func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) ToSecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput() SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput {
@@ -20524,6 +20524,16 @@ func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) ToSecurityPolicyAd
 
 func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) ToSecurityPolicyAdvancedOptionsConfigLogLevelPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) Elem() SecurityPolicyAdvancedOptionsConfigLogLevelOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfigLogLevel) SecurityPolicyAdvancedOptionsConfigLogLevel {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdvancedOptionsConfigLogLevel
+		return ret
+	}).(SecurityPolicyAdvancedOptionsConfigLogLevelOutput)
 }
 
 func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -20538,16 +20548,6 @@ func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) ToStringPtrOutputW
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) Elem() SecurityPolicyAdvancedOptionsConfigLogLevelOutput {
-	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfigLogLevel) SecurityPolicyAdvancedOptionsConfigLogLevel {
-		var ret SecurityPolicyAdvancedOptionsConfigLogLevel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SecurityPolicyAdvancedOptionsConfigLogLevelOutput)
 }
 
 // SecurityPolicyAdvancedOptionsConfigLogLevelInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigLogLevelArgs and SecurityPolicyAdvancedOptionsConfigLogLevelOutput values.
@@ -20680,7 +20680,7 @@ func (o SecurityPolicyRuleMatcherVersionedExprOutput) ToStringPtrOutputWithConte
 type SecurityPolicyRuleMatcherVersionedExprPtrOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyRuleMatcherVersionedExprPtrOutput) ElementType() reflect.Type {
-	return securityPolicyRuleMatcherVersionedExprPtrType
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherVersionedExpr)(nil)).Elem()
 }
 
 func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) ToSecurityPolicyRuleMatcherVersionedExprPtrOutput() SecurityPolicyRuleMatcherVersionedExprPtrOutput {
@@ -20689,6 +20689,16 @@ func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) ToSecurityPolicyRuleMat
 
 func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) ToSecurityPolicyRuleMatcherVersionedExprPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherVersionedExprPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) Elem() SecurityPolicyRuleMatcherVersionedExprOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherVersionedExpr) SecurityPolicyRuleMatcherVersionedExpr {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleMatcherVersionedExpr
+		return ret
+	}).(SecurityPolicyRuleMatcherVersionedExprOutput)
 }
 
 func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -20703,16 +20713,6 @@ func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) ToStringPtrOutputWithCo
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) Elem() SecurityPolicyRuleMatcherVersionedExprOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcherVersionedExpr) SecurityPolicyRuleMatcherVersionedExpr {
-		var ret SecurityPolicyRuleMatcherVersionedExpr
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SecurityPolicyRuleMatcherVersionedExprOutput)
 }
 
 // SecurityPolicyRuleMatcherVersionedExprInput is an input type that accepts SecurityPolicyRuleMatcherVersionedExprArgs and SecurityPolicyRuleMatcherVersionedExprOutput values.
@@ -20847,7 +20847,7 @@ func (o ServerBindingTypeOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type ServerBindingTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ServerBindingTypePtrOutput) ElementType() reflect.Type {
-	return serverBindingTypePtrType
+	return reflect.TypeOf((**ServerBindingType)(nil)).Elem()
 }
 
 func (o ServerBindingTypePtrOutput) ToServerBindingTypePtrOutput() ServerBindingTypePtrOutput {
@@ -20856,6 +20856,16 @@ func (o ServerBindingTypePtrOutput) ToServerBindingTypePtrOutput() ServerBinding
 
 func (o ServerBindingTypePtrOutput) ToServerBindingTypePtrOutputWithContext(ctx context.Context) ServerBindingTypePtrOutput {
 	return o
+}
+
+func (o ServerBindingTypePtrOutput) Elem() ServerBindingTypeOutput {
+	return o.ApplyT(func(v *ServerBindingType) ServerBindingType {
+		if v != nil {
+			return *v
+		}
+		var ret ServerBindingType
+		return ret
+	}).(ServerBindingTypeOutput)
 }
 
 func (o ServerBindingTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -20870,16 +20880,6 @@ func (o ServerBindingTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServerBindingTypePtrOutput) Elem() ServerBindingTypeOutput {
-	return o.ApplyT(func(v *ServerBindingType) ServerBindingType {
-		var ret ServerBindingType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ServerBindingTypeOutput)
 }
 
 // ServerBindingTypeInput is an input type that accepts ServerBindingTypeArgs and ServerBindingTypeOutput values.
@@ -21013,7 +21013,7 @@ func (o ServiceAttachmentConnectionPreferenceOutput) ToStringPtrOutputWithContex
 type ServiceAttachmentConnectionPreferencePtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceAttachmentConnectionPreferencePtrOutput) ElementType() reflect.Type {
-	return serviceAttachmentConnectionPreferencePtrType
+	return reflect.TypeOf((**ServiceAttachmentConnectionPreference)(nil)).Elem()
 }
 
 func (o ServiceAttachmentConnectionPreferencePtrOutput) ToServiceAttachmentConnectionPreferencePtrOutput() ServiceAttachmentConnectionPreferencePtrOutput {
@@ -21022,6 +21022,16 @@ func (o ServiceAttachmentConnectionPreferencePtrOutput) ToServiceAttachmentConne
 
 func (o ServiceAttachmentConnectionPreferencePtrOutput) ToServiceAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) ServiceAttachmentConnectionPreferencePtrOutput {
 	return o
+}
+
+func (o ServiceAttachmentConnectionPreferencePtrOutput) Elem() ServiceAttachmentConnectionPreferenceOutput {
+	return o.ApplyT(func(v *ServiceAttachmentConnectionPreference) ServiceAttachmentConnectionPreference {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceAttachmentConnectionPreference
+		return ret
+	}).(ServiceAttachmentConnectionPreferenceOutput)
 }
 
 func (o ServiceAttachmentConnectionPreferencePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -21036,16 +21046,6 @@ func (o ServiceAttachmentConnectionPreferencePtrOutput) ToStringPtrOutputWithCon
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceAttachmentConnectionPreferencePtrOutput) Elem() ServiceAttachmentConnectionPreferenceOutput {
-	return o.ApplyT(func(v *ServiceAttachmentConnectionPreference) ServiceAttachmentConnectionPreference {
-		var ret ServiceAttachmentConnectionPreference
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ServiceAttachmentConnectionPreferenceOutput)
 }
 
 // ServiceAttachmentConnectionPreferenceInput is an input type that accepts ServiceAttachmentConnectionPreferenceArgs and ServiceAttachmentConnectionPreferenceOutput values.
@@ -21181,7 +21181,7 @@ func (o SslCertificateTypeOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type SslCertificateTypePtrOutput struct{ *pulumi.OutputState }
 
 func (SslCertificateTypePtrOutput) ElementType() reflect.Type {
-	return sslCertificateTypePtrType
+	return reflect.TypeOf((**SslCertificateType)(nil)).Elem()
 }
 
 func (o SslCertificateTypePtrOutput) ToSslCertificateTypePtrOutput() SslCertificateTypePtrOutput {
@@ -21190,6 +21190,16 @@ func (o SslCertificateTypePtrOutput) ToSslCertificateTypePtrOutput() SslCertific
 
 func (o SslCertificateTypePtrOutput) ToSslCertificateTypePtrOutputWithContext(ctx context.Context) SslCertificateTypePtrOutput {
 	return o
+}
+
+func (o SslCertificateTypePtrOutput) Elem() SslCertificateTypeOutput {
+	return o.ApplyT(func(v *SslCertificateType) SslCertificateType {
+		if v != nil {
+			return *v
+		}
+		var ret SslCertificateType
+		return ret
+	}).(SslCertificateTypeOutput)
 }
 
 func (o SslCertificateTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -21204,16 +21214,6 @@ func (o SslCertificateTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SslCertificateTypePtrOutput) Elem() SslCertificateTypeOutput {
-	return o.ApplyT(func(v *SslCertificateType) SslCertificateType {
-		var ret SslCertificateType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SslCertificateTypeOutput)
 }
 
 // SslCertificateTypeInput is an input type that accepts SslCertificateTypeArgs and SslCertificateTypeOutput values.
@@ -21350,7 +21350,7 @@ func (o SslPolicyMinTlsVersionOutput) ToStringPtrOutputWithContext(ctx context.C
 type SslPolicyMinTlsVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (SslPolicyMinTlsVersionPtrOutput) ElementType() reflect.Type {
-	return sslPolicyMinTlsVersionPtrType
+	return reflect.TypeOf((**SslPolicyMinTlsVersion)(nil)).Elem()
 }
 
 func (o SslPolicyMinTlsVersionPtrOutput) ToSslPolicyMinTlsVersionPtrOutput() SslPolicyMinTlsVersionPtrOutput {
@@ -21359,6 +21359,16 @@ func (o SslPolicyMinTlsVersionPtrOutput) ToSslPolicyMinTlsVersionPtrOutput() Ssl
 
 func (o SslPolicyMinTlsVersionPtrOutput) ToSslPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) SslPolicyMinTlsVersionPtrOutput {
 	return o
+}
+
+func (o SslPolicyMinTlsVersionPtrOutput) Elem() SslPolicyMinTlsVersionOutput {
+	return o.ApplyT(func(v *SslPolicyMinTlsVersion) SslPolicyMinTlsVersion {
+		if v != nil {
+			return *v
+		}
+		var ret SslPolicyMinTlsVersion
+		return ret
+	}).(SslPolicyMinTlsVersionOutput)
 }
 
 func (o SslPolicyMinTlsVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -21373,16 +21383,6 @@ func (o SslPolicyMinTlsVersionPtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SslPolicyMinTlsVersionPtrOutput) Elem() SslPolicyMinTlsVersionOutput {
-	return o.ApplyT(func(v *SslPolicyMinTlsVersion) SslPolicyMinTlsVersion {
-		var ret SslPolicyMinTlsVersion
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SslPolicyMinTlsVersionOutput)
 }
 
 // SslPolicyMinTlsVersionInput is an input type that accepts SslPolicyMinTlsVersionArgs and SslPolicyMinTlsVersionOutput values.
@@ -21521,7 +21521,7 @@ func (o SslPolicyProfileOutput) ToStringPtrOutputWithContext(ctx context.Context
 type SslPolicyProfilePtrOutput struct{ *pulumi.OutputState }
 
 func (SslPolicyProfilePtrOutput) ElementType() reflect.Type {
-	return sslPolicyProfilePtrType
+	return reflect.TypeOf((**SslPolicyProfile)(nil)).Elem()
 }
 
 func (o SslPolicyProfilePtrOutput) ToSslPolicyProfilePtrOutput() SslPolicyProfilePtrOutput {
@@ -21530,6 +21530,16 @@ func (o SslPolicyProfilePtrOutput) ToSslPolicyProfilePtrOutput() SslPolicyProfil
 
 func (o SslPolicyProfilePtrOutput) ToSslPolicyProfilePtrOutputWithContext(ctx context.Context) SslPolicyProfilePtrOutput {
 	return o
+}
+
+func (o SslPolicyProfilePtrOutput) Elem() SslPolicyProfileOutput {
+	return o.ApplyT(func(v *SslPolicyProfile) SslPolicyProfile {
+		if v != nil {
+			return *v
+		}
+		var ret SslPolicyProfile
+		return ret
+	}).(SslPolicyProfileOutput)
 }
 
 func (o SslPolicyProfilePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -21544,16 +21554,6 @@ func (o SslPolicyProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SslPolicyProfilePtrOutput) Elem() SslPolicyProfileOutput {
-	return o.ApplyT(func(v *SslPolicyProfile) SslPolicyProfile {
-		var ret SslPolicyProfile
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SslPolicyProfileOutput)
 }
 
 // SslPolicyProfileInput is an input type that accepts SslPolicyProfileArgs and SslPolicyProfileOutput values.
@@ -21688,7 +21688,7 @@ func (o SubnetworkIpv6AccessTypeOutput) ToStringPtrOutputWithContext(ctx context
 type SubnetworkIpv6AccessTypePtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIpv6AccessTypePtrOutput) ElementType() reflect.Type {
-	return subnetworkIpv6AccessTypePtrType
+	return reflect.TypeOf((**SubnetworkIpv6AccessType)(nil)).Elem()
 }
 
 func (o SubnetworkIpv6AccessTypePtrOutput) ToSubnetworkIpv6AccessTypePtrOutput() SubnetworkIpv6AccessTypePtrOutput {
@@ -21697,6 +21697,16 @@ func (o SubnetworkIpv6AccessTypePtrOutput) ToSubnetworkIpv6AccessTypePtrOutput()
 
 func (o SubnetworkIpv6AccessTypePtrOutput) ToSubnetworkIpv6AccessTypePtrOutputWithContext(ctx context.Context) SubnetworkIpv6AccessTypePtrOutput {
 	return o
+}
+
+func (o SubnetworkIpv6AccessTypePtrOutput) Elem() SubnetworkIpv6AccessTypeOutput {
+	return o.ApplyT(func(v *SubnetworkIpv6AccessType) SubnetworkIpv6AccessType {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkIpv6AccessType
+		return ret
+	}).(SubnetworkIpv6AccessTypeOutput)
 }
 
 func (o SubnetworkIpv6AccessTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -21711,16 +21721,6 @@ func (o SubnetworkIpv6AccessTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SubnetworkIpv6AccessTypePtrOutput) Elem() SubnetworkIpv6AccessTypeOutput {
-	return o.ApplyT(func(v *SubnetworkIpv6AccessType) SubnetworkIpv6AccessType {
-		var ret SubnetworkIpv6AccessType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SubnetworkIpv6AccessTypeOutput)
 }
 
 // SubnetworkIpv6AccessTypeInput is an input type that accepts SubnetworkIpv6AccessTypeArgs and SubnetworkIpv6AccessTypeOutput values.
@@ -21857,7 +21857,7 @@ func (o SubnetworkLogConfigAggregationIntervalOutput) ToStringPtrOutputWithConte
 type SubnetworkLogConfigAggregationIntervalPtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkLogConfigAggregationIntervalPtrOutput) ElementType() reflect.Type {
-	return subnetworkLogConfigAggregationIntervalPtrType
+	return reflect.TypeOf((**SubnetworkLogConfigAggregationInterval)(nil)).Elem()
 }
 
 func (o SubnetworkLogConfigAggregationIntervalPtrOutput) ToSubnetworkLogConfigAggregationIntervalPtrOutput() SubnetworkLogConfigAggregationIntervalPtrOutput {
@@ -21866,6 +21866,16 @@ func (o SubnetworkLogConfigAggregationIntervalPtrOutput) ToSubnetworkLogConfigAg
 
 func (o SubnetworkLogConfigAggregationIntervalPtrOutput) ToSubnetworkLogConfigAggregationIntervalPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigAggregationIntervalPtrOutput {
 	return o
+}
+
+func (o SubnetworkLogConfigAggregationIntervalPtrOutput) Elem() SubnetworkLogConfigAggregationIntervalOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfigAggregationInterval) SubnetworkLogConfigAggregationInterval {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkLogConfigAggregationInterval
+		return ret
+	}).(SubnetworkLogConfigAggregationIntervalOutput)
 }
 
 func (o SubnetworkLogConfigAggregationIntervalPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -21880,16 +21890,6 @@ func (o SubnetworkLogConfigAggregationIntervalPtrOutput) ToStringPtrOutputWithCo
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SubnetworkLogConfigAggregationIntervalPtrOutput) Elem() SubnetworkLogConfigAggregationIntervalOutput {
-	return o.ApplyT(func(v *SubnetworkLogConfigAggregationInterval) SubnetworkLogConfigAggregationInterval {
-		var ret SubnetworkLogConfigAggregationInterval
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SubnetworkLogConfigAggregationIntervalOutput)
 }
 
 // SubnetworkLogConfigAggregationIntervalInput is an input type that accepts SubnetworkLogConfigAggregationIntervalArgs and SubnetworkLogConfigAggregationIntervalOutput values.
@@ -22023,7 +22023,7 @@ func (o SubnetworkLogConfigMetadataOutput) ToStringPtrOutputWithContext(ctx cont
 type SubnetworkLogConfigMetadataPtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkLogConfigMetadataPtrOutput) ElementType() reflect.Type {
-	return subnetworkLogConfigMetadataPtrType
+	return reflect.TypeOf((**SubnetworkLogConfigMetadata)(nil)).Elem()
 }
 
 func (o SubnetworkLogConfigMetadataPtrOutput) ToSubnetworkLogConfigMetadataPtrOutput() SubnetworkLogConfigMetadataPtrOutput {
@@ -22032,6 +22032,16 @@ func (o SubnetworkLogConfigMetadataPtrOutput) ToSubnetworkLogConfigMetadataPtrOu
 
 func (o SubnetworkLogConfigMetadataPtrOutput) ToSubnetworkLogConfigMetadataPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigMetadataPtrOutput {
 	return o
+}
+
+func (o SubnetworkLogConfigMetadataPtrOutput) Elem() SubnetworkLogConfigMetadataOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfigMetadata) SubnetworkLogConfigMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkLogConfigMetadata
+		return ret
+	}).(SubnetworkLogConfigMetadataOutput)
 }
 
 func (o SubnetworkLogConfigMetadataPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -22046,16 +22056,6 @@ func (o SubnetworkLogConfigMetadataPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SubnetworkLogConfigMetadataPtrOutput) Elem() SubnetworkLogConfigMetadataOutput {
-	return o.ApplyT(func(v *SubnetworkLogConfigMetadata) SubnetworkLogConfigMetadata {
-		var ret SubnetworkLogConfigMetadata
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SubnetworkLogConfigMetadataOutput)
 }
 
 // SubnetworkLogConfigMetadataInput is an input type that accepts SubnetworkLogConfigMetadataArgs and SubnetworkLogConfigMetadataOutput values.
@@ -22192,7 +22192,7 @@ func (o SubnetworkPrivateIpv6GoogleAccessOutput) ToStringPtrOutputWithContext(ct
 type SubnetworkPrivateIpv6GoogleAccessPtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkPrivateIpv6GoogleAccessPtrOutput) ElementType() reflect.Type {
-	return subnetworkPrivateIpv6GoogleAccessPtrType
+	return reflect.TypeOf((**SubnetworkPrivateIpv6GoogleAccess)(nil)).Elem()
 }
 
 func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) ToSubnetworkPrivateIpv6GoogleAccessPtrOutput() SubnetworkPrivateIpv6GoogleAccessPtrOutput {
@@ -22201,6 +22201,16 @@ func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) ToSubnetworkPrivateIpv6Googl
 
 func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) ToSubnetworkPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) SubnetworkPrivateIpv6GoogleAccessPtrOutput {
 	return o
+}
+
+func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) Elem() SubnetworkPrivateIpv6GoogleAccessOutput {
+	return o.ApplyT(func(v *SubnetworkPrivateIpv6GoogleAccess) SubnetworkPrivateIpv6GoogleAccess {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkPrivateIpv6GoogleAccess
+		return ret
+	}).(SubnetworkPrivateIpv6GoogleAccessOutput)
 }
 
 func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -22215,16 +22225,6 @@ func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) Elem() SubnetworkPrivateIpv6GoogleAccessOutput {
-	return o.ApplyT(func(v *SubnetworkPrivateIpv6GoogleAccess) SubnetworkPrivateIpv6GoogleAccess {
-		var ret SubnetworkPrivateIpv6GoogleAccess
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SubnetworkPrivateIpv6GoogleAccessOutput)
 }
 
 // SubnetworkPrivateIpv6GoogleAccessInput is an input type that accepts SubnetworkPrivateIpv6GoogleAccessArgs and SubnetworkPrivateIpv6GoogleAccessOutput values.
@@ -22363,7 +22363,7 @@ func (o SubnetworkPurposeOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type SubnetworkPurposePtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkPurposePtrOutput) ElementType() reflect.Type {
-	return subnetworkPurposePtrType
+	return reflect.TypeOf((**SubnetworkPurpose)(nil)).Elem()
 }
 
 func (o SubnetworkPurposePtrOutput) ToSubnetworkPurposePtrOutput() SubnetworkPurposePtrOutput {
@@ -22372,6 +22372,16 @@ func (o SubnetworkPurposePtrOutput) ToSubnetworkPurposePtrOutput() SubnetworkPur
 
 func (o SubnetworkPurposePtrOutput) ToSubnetworkPurposePtrOutputWithContext(ctx context.Context) SubnetworkPurposePtrOutput {
 	return o
+}
+
+func (o SubnetworkPurposePtrOutput) Elem() SubnetworkPurposeOutput {
+	return o.ApplyT(func(v *SubnetworkPurpose) SubnetworkPurpose {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkPurpose
+		return ret
+	}).(SubnetworkPurposeOutput)
 }
 
 func (o SubnetworkPurposePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -22386,16 +22396,6 @@ func (o SubnetworkPurposePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SubnetworkPurposePtrOutput) Elem() SubnetworkPurposeOutput {
-	return o.ApplyT(func(v *SubnetworkPurpose) SubnetworkPurpose {
-		var ret SubnetworkPurpose
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SubnetworkPurposeOutput)
 }
 
 // SubnetworkPurposeInput is an input type that accepts SubnetworkPurposeArgs and SubnetworkPurposeOutput values.
@@ -22530,7 +22530,7 @@ func (o SubnetworkRoleOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 type SubnetworkRolePtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkRolePtrOutput) ElementType() reflect.Type {
-	return subnetworkRolePtrType
+	return reflect.TypeOf((**SubnetworkRole)(nil)).Elem()
 }
 
 func (o SubnetworkRolePtrOutput) ToSubnetworkRolePtrOutput() SubnetworkRolePtrOutput {
@@ -22539,6 +22539,16 @@ func (o SubnetworkRolePtrOutput) ToSubnetworkRolePtrOutput() SubnetworkRolePtrOu
 
 func (o SubnetworkRolePtrOutput) ToSubnetworkRolePtrOutputWithContext(ctx context.Context) SubnetworkRolePtrOutput {
 	return o
+}
+
+func (o SubnetworkRolePtrOutput) Elem() SubnetworkRoleOutput {
+	return o.ApplyT(func(v *SubnetworkRole) SubnetworkRole {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkRole
+		return ret
+	}).(SubnetworkRoleOutput)
 }
 
 func (o SubnetworkRolePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -22553,16 +22563,6 @@ func (o SubnetworkRolePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SubnetworkRolePtrOutput) Elem() SubnetworkRoleOutput {
-	return o.ApplyT(func(v *SubnetworkRole) SubnetworkRole {
-		var ret SubnetworkRole
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SubnetworkRoleOutput)
 }
 
 // SubnetworkRoleInput is an input type that accepts SubnetworkRoleArgs and SubnetworkRoleOutput values.
@@ -22698,7 +22698,7 @@ func (o SubnetworkStackTypeOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type SubnetworkStackTypePtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkStackTypePtrOutput) ElementType() reflect.Type {
-	return subnetworkStackTypePtrType
+	return reflect.TypeOf((**SubnetworkStackType)(nil)).Elem()
 }
 
 func (o SubnetworkStackTypePtrOutput) ToSubnetworkStackTypePtrOutput() SubnetworkStackTypePtrOutput {
@@ -22707,6 +22707,16 @@ func (o SubnetworkStackTypePtrOutput) ToSubnetworkStackTypePtrOutput() Subnetwor
 
 func (o SubnetworkStackTypePtrOutput) ToSubnetworkStackTypePtrOutputWithContext(ctx context.Context) SubnetworkStackTypePtrOutput {
 	return o
+}
+
+func (o SubnetworkStackTypePtrOutput) Elem() SubnetworkStackTypeOutput {
+	return o.ApplyT(func(v *SubnetworkStackType) SubnetworkStackType {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkStackType
+		return ret
+	}).(SubnetworkStackTypeOutput)
 }
 
 func (o SubnetworkStackTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -22721,16 +22731,6 @@ func (o SubnetworkStackTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SubnetworkStackTypePtrOutput) Elem() SubnetworkStackTypeOutput {
-	return o.ApplyT(func(v *SubnetworkStackType) SubnetworkStackType {
-		var ret SubnetworkStackType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SubnetworkStackTypeOutput)
 }
 
 // SubnetworkStackTypeInput is an input type that accepts SubnetworkStackTypeArgs and SubnetworkStackTypeOutput values.
@@ -22867,7 +22867,7 @@ func (o TCPHealthCheckPortSpecificationOutput) ToStringPtrOutputWithContext(ctx 
 type TCPHealthCheckPortSpecificationPtrOutput struct{ *pulumi.OutputState }
 
 func (TCPHealthCheckPortSpecificationPtrOutput) ElementType() reflect.Type {
-	return tcphealthCheckPortSpecificationPtrType
+	return reflect.TypeOf((**TCPHealthCheckPortSpecification)(nil)).Elem()
 }
 
 func (o TCPHealthCheckPortSpecificationPtrOutput) ToTCPHealthCheckPortSpecificationPtrOutput() TCPHealthCheckPortSpecificationPtrOutput {
@@ -22876,6 +22876,16 @@ func (o TCPHealthCheckPortSpecificationPtrOutput) ToTCPHealthCheckPortSpecificat
 
 func (o TCPHealthCheckPortSpecificationPtrOutput) ToTCPHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) TCPHealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o TCPHealthCheckPortSpecificationPtrOutput) Elem() TCPHealthCheckPortSpecificationOutput {
+	return o.ApplyT(func(v *TCPHealthCheckPortSpecification) TCPHealthCheckPortSpecification {
+		if v != nil {
+			return *v
+		}
+		var ret TCPHealthCheckPortSpecification
+		return ret
+	}).(TCPHealthCheckPortSpecificationOutput)
 }
 
 func (o TCPHealthCheckPortSpecificationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -22890,16 +22900,6 @@ func (o TCPHealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TCPHealthCheckPortSpecificationPtrOutput) Elem() TCPHealthCheckPortSpecificationOutput {
-	return o.ApplyT(func(v *TCPHealthCheckPortSpecification) TCPHealthCheckPortSpecification {
-		var ret TCPHealthCheckPortSpecification
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TCPHealthCheckPortSpecificationOutput)
 }
 
 // TCPHealthCheckPortSpecificationInput is an input type that accepts TCPHealthCheckPortSpecificationArgs and TCPHealthCheckPortSpecificationOutput values.
@@ -23032,7 +23032,7 @@ func (o TCPHealthCheckProxyHeaderOutput) ToStringPtrOutputWithContext(ctx contex
 type TCPHealthCheckProxyHeaderPtrOutput struct{ *pulumi.OutputState }
 
 func (TCPHealthCheckProxyHeaderPtrOutput) ElementType() reflect.Type {
-	return tcphealthCheckProxyHeaderPtrType
+	return reflect.TypeOf((**TCPHealthCheckProxyHeader)(nil)).Elem()
 }
 
 func (o TCPHealthCheckProxyHeaderPtrOutput) ToTCPHealthCheckProxyHeaderPtrOutput() TCPHealthCheckProxyHeaderPtrOutput {
@@ -23041,6 +23041,16 @@ func (o TCPHealthCheckProxyHeaderPtrOutput) ToTCPHealthCheckProxyHeaderPtrOutput
 
 func (o TCPHealthCheckProxyHeaderPtrOutput) ToTCPHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) TCPHealthCheckProxyHeaderPtrOutput {
 	return o
+}
+
+func (o TCPHealthCheckProxyHeaderPtrOutput) Elem() TCPHealthCheckProxyHeaderOutput {
+	return o.ApplyT(func(v *TCPHealthCheckProxyHeader) TCPHealthCheckProxyHeader {
+		if v != nil {
+			return *v
+		}
+		var ret TCPHealthCheckProxyHeader
+		return ret
+	}).(TCPHealthCheckProxyHeaderOutput)
 }
 
 func (o TCPHealthCheckProxyHeaderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -23055,16 +23065,6 @@ func (o TCPHealthCheckProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TCPHealthCheckProxyHeaderPtrOutput) Elem() TCPHealthCheckProxyHeaderOutput {
-	return o.ApplyT(func(v *TCPHealthCheckProxyHeader) TCPHealthCheckProxyHeader {
-		var ret TCPHealthCheckProxyHeader
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TCPHealthCheckProxyHeaderOutput)
 }
 
 // TCPHealthCheckProxyHeaderInput is an input type that accepts TCPHealthCheckProxyHeaderArgs and TCPHealthCheckProxyHeaderOutput values.
@@ -23201,7 +23201,7 @@ func (o TargetHttpsProxyQuicOverrideOutput) ToStringPtrOutputWithContext(ctx con
 type TargetHttpsProxyQuicOverridePtrOutput struct{ *pulumi.OutputState }
 
 func (TargetHttpsProxyQuicOverridePtrOutput) ElementType() reflect.Type {
-	return targetHttpsProxyQuicOverridePtrType
+	return reflect.TypeOf((**TargetHttpsProxyQuicOverride)(nil)).Elem()
 }
 
 func (o TargetHttpsProxyQuicOverridePtrOutput) ToTargetHttpsProxyQuicOverridePtrOutput() TargetHttpsProxyQuicOverridePtrOutput {
@@ -23210,6 +23210,16 @@ func (o TargetHttpsProxyQuicOverridePtrOutput) ToTargetHttpsProxyQuicOverridePtr
 
 func (o TargetHttpsProxyQuicOverridePtrOutput) ToTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx context.Context) TargetHttpsProxyQuicOverridePtrOutput {
 	return o
+}
+
+func (o TargetHttpsProxyQuicOverridePtrOutput) Elem() TargetHttpsProxyQuicOverrideOutput {
+	return o.ApplyT(func(v *TargetHttpsProxyQuicOverride) TargetHttpsProxyQuicOverride {
+		if v != nil {
+			return *v
+		}
+		var ret TargetHttpsProxyQuicOverride
+		return ret
+	}).(TargetHttpsProxyQuicOverrideOutput)
 }
 
 func (o TargetHttpsProxyQuicOverridePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -23224,16 +23234,6 @@ func (o TargetHttpsProxyQuicOverridePtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TargetHttpsProxyQuicOverridePtrOutput) Elem() TargetHttpsProxyQuicOverrideOutput {
-	return o.ApplyT(func(v *TargetHttpsProxyQuicOverride) TargetHttpsProxyQuicOverride {
-		var ret TargetHttpsProxyQuicOverride
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TargetHttpsProxyQuicOverrideOutput)
 }
 
 // TargetHttpsProxyQuicOverrideInput is an input type that accepts TargetHttpsProxyQuicOverrideArgs and TargetHttpsProxyQuicOverrideOutput values.
@@ -23366,7 +23366,7 @@ func (o TargetInstanceNatPolicyOutput) ToStringPtrOutputWithContext(ctx context.
 type TargetInstanceNatPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetInstanceNatPolicyPtrOutput) ElementType() reflect.Type {
-	return targetInstanceNatPolicyPtrType
+	return reflect.TypeOf((**TargetInstanceNatPolicy)(nil)).Elem()
 }
 
 func (o TargetInstanceNatPolicyPtrOutput) ToTargetInstanceNatPolicyPtrOutput() TargetInstanceNatPolicyPtrOutput {
@@ -23375,6 +23375,16 @@ func (o TargetInstanceNatPolicyPtrOutput) ToTargetInstanceNatPolicyPtrOutput() T
 
 func (o TargetInstanceNatPolicyPtrOutput) ToTargetInstanceNatPolicyPtrOutputWithContext(ctx context.Context) TargetInstanceNatPolicyPtrOutput {
 	return o
+}
+
+func (o TargetInstanceNatPolicyPtrOutput) Elem() TargetInstanceNatPolicyOutput {
+	return o.ApplyT(func(v *TargetInstanceNatPolicy) TargetInstanceNatPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TargetInstanceNatPolicy
+		return ret
+	}).(TargetInstanceNatPolicyOutput)
 }
 
 func (o TargetInstanceNatPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -23389,16 +23399,6 @@ func (o TargetInstanceNatPolicyPtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TargetInstanceNatPolicyPtrOutput) Elem() TargetInstanceNatPolicyOutput {
-	return o.ApplyT(func(v *TargetInstanceNatPolicy) TargetInstanceNatPolicy {
-		var ret TargetInstanceNatPolicy
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TargetInstanceNatPolicyOutput)
 }
 
 // TargetInstanceNatPolicyInput is an input type that accepts TargetInstanceNatPolicyArgs and TargetInstanceNatPolicyOutput values.
@@ -23545,7 +23545,7 @@ func (o TargetPoolSessionAffinityOutput) ToStringPtrOutputWithContext(ctx contex
 type TargetPoolSessionAffinityPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetPoolSessionAffinityPtrOutput) ElementType() reflect.Type {
-	return targetPoolSessionAffinityPtrType
+	return reflect.TypeOf((**TargetPoolSessionAffinity)(nil)).Elem()
 }
 
 func (o TargetPoolSessionAffinityPtrOutput) ToTargetPoolSessionAffinityPtrOutput() TargetPoolSessionAffinityPtrOutput {
@@ -23554,6 +23554,16 @@ func (o TargetPoolSessionAffinityPtrOutput) ToTargetPoolSessionAffinityPtrOutput
 
 func (o TargetPoolSessionAffinityPtrOutput) ToTargetPoolSessionAffinityPtrOutputWithContext(ctx context.Context) TargetPoolSessionAffinityPtrOutput {
 	return o
+}
+
+func (o TargetPoolSessionAffinityPtrOutput) Elem() TargetPoolSessionAffinityOutput {
+	return o.ApplyT(func(v *TargetPoolSessionAffinity) TargetPoolSessionAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret TargetPoolSessionAffinity
+		return ret
+	}).(TargetPoolSessionAffinityOutput)
 }
 
 func (o TargetPoolSessionAffinityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -23568,16 +23578,6 @@ func (o TargetPoolSessionAffinityPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TargetPoolSessionAffinityPtrOutput) Elem() TargetPoolSessionAffinityOutput {
-	return o.ApplyT(func(v *TargetPoolSessionAffinity) TargetPoolSessionAffinity {
-		var ret TargetPoolSessionAffinity
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TargetPoolSessionAffinityOutput)
 }
 
 // TargetPoolSessionAffinityInput is an input type that accepts TargetPoolSessionAffinityArgs and TargetPoolSessionAffinityOutput values.
@@ -23710,7 +23710,7 @@ func (o TargetSslProxyProxyHeaderOutput) ToStringPtrOutputWithContext(ctx contex
 type TargetSslProxyProxyHeaderPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetSslProxyProxyHeaderPtrOutput) ElementType() reflect.Type {
-	return targetSslProxyProxyHeaderPtrType
+	return reflect.TypeOf((**TargetSslProxyProxyHeader)(nil)).Elem()
 }
 
 func (o TargetSslProxyProxyHeaderPtrOutput) ToTargetSslProxyProxyHeaderPtrOutput() TargetSslProxyProxyHeaderPtrOutput {
@@ -23719,6 +23719,16 @@ func (o TargetSslProxyProxyHeaderPtrOutput) ToTargetSslProxyProxyHeaderPtrOutput
 
 func (o TargetSslProxyProxyHeaderPtrOutput) ToTargetSslProxyProxyHeaderPtrOutputWithContext(ctx context.Context) TargetSslProxyProxyHeaderPtrOutput {
 	return o
+}
+
+func (o TargetSslProxyProxyHeaderPtrOutput) Elem() TargetSslProxyProxyHeaderOutput {
+	return o.ApplyT(func(v *TargetSslProxyProxyHeader) TargetSslProxyProxyHeader {
+		if v != nil {
+			return *v
+		}
+		var ret TargetSslProxyProxyHeader
+		return ret
+	}).(TargetSslProxyProxyHeaderOutput)
 }
 
 func (o TargetSslProxyProxyHeaderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -23733,16 +23743,6 @@ func (o TargetSslProxyProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TargetSslProxyProxyHeaderPtrOutput) Elem() TargetSslProxyProxyHeaderOutput {
-	return o.ApplyT(func(v *TargetSslProxyProxyHeader) TargetSslProxyProxyHeader {
-		var ret TargetSslProxyProxyHeader
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TargetSslProxyProxyHeaderOutput)
 }
 
 // TargetSslProxyProxyHeaderInput is an input type that accepts TargetSslProxyProxyHeaderArgs and TargetSslProxyProxyHeaderOutput values.
@@ -23875,7 +23875,7 @@ func (o TargetTcpProxyProxyHeaderOutput) ToStringPtrOutputWithContext(ctx contex
 type TargetTcpProxyProxyHeaderPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetTcpProxyProxyHeaderPtrOutput) ElementType() reflect.Type {
-	return targetTcpProxyProxyHeaderPtrType
+	return reflect.TypeOf((**TargetTcpProxyProxyHeader)(nil)).Elem()
 }
 
 func (o TargetTcpProxyProxyHeaderPtrOutput) ToTargetTcpProxyProxyHeaderPtrOutput() TargetTcpProxyProxyHeaderPtrOutput {
@@ -23884,6 +23884,16 @@ func (o TargetTcpProxyProxyHeaderPtrOutput) ToTargetTcpProxyProxyHeaderPtrOutput
 
 func (o TargetTcpProxyProxyHeaderPtrOutput) ToTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx context.Context) TargetTcpProxyProxyHeaderPtrOutput {
 	return o
+}
+
+func (o TargetTcpProxyProxyHeaderPtrOutput) Elem() TargetTcpProxyProxyHeaderOutput {
+	return o.ApplyT(func(v *TargetTcpProxyProxyHeader) TargetTcpProxyProxyHeader {
+		if v != nil {
+			return *v
+		}
+		var ret TargetTcpProxyProxyHeader
+		return ret
+	}).(TargetTcpProxyProxyHeaderOutput)
 }
 
 func (o TargetTcpProxyProxyHeaderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -23898,16 +23908,6 @@ func (o TargetTcpProxyProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TargetTcpProxyProxyHeaderPtrOutput) Elem() TargetTcpProxyProxyHeaderOutput {
-	return o.ApplyT(func(v *TargetTcpProxyProxyHeader) TargetTcpProxyProxyHeader {
-		var ret TargetTcpProxyProxyHeader
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TargetTcpProxyProxyHeaderOutput)
 }
 
 // TargetTcpProxyProxyHeaderInput is an input type that accepts TargetTcpProxyProxyHeaderArgs and TargetTcpProxyProxyHeaderOutput values.

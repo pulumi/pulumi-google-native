@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Description-tagged IP ranges for the router to advertise.
+    /// </summary>
     [OutputType]
     public sealed class RouterAdvertisedIpRangeResponse
     {

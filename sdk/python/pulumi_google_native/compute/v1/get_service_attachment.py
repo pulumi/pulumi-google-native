@@ -13,6 +13,7 @@ __all__ = [
     'GetServiceAttachmentResult',
     'AwaitableGetServiceAttachmentResult',
     'get_service_attachment',
+    'get_service_attachment_output',
 ]
 
 @pulumi.output_type
@@ -254,3 +255,14 @@ def get_service_attachment(project: Optional[str] = None,
         region=__ret__.region,
         self_link=__ret__.self_link,
         target_service=__ret__.target_service)
+
+
+@_utilities.lift_output_func(get_service_attachment)
+def get_service_attachment_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  region: Optional[pulumi.Input[str]] = None,
+                                  service_attachment: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceAttachmentResult]:
+    """
+    Returns the specified ServiceAttachment resource in the given scope.
+    """
+    ...

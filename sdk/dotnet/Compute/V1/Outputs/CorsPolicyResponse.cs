@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+    /// </summary>
     [OutputType]
     public sealed class CorsPolicyResponse
     {

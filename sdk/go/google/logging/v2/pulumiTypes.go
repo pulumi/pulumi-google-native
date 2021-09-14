@@ -106,7 +106,7 @@ func (o BigQueryOptionsOutput) ToBigQueryOptionsPtrOutput() BigQueryOptionsPtrOu
 }
 
 func (o BigQueryOptionsOutput) ToBigQueryOptionsPtrOutputWithContext(ctx context.Context) BigQueryOptionsPtrOutput {
-	return o.ApplyT(func(v BigQueryOptions) *BigQueryOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryOptions) *BigQueryOptions {
 		return &v
 	}).(BigQueryOptionsPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o BigQueryOptionsPtrOutput) ToBigQueryOptionsPtrOutputWithContext(ctx cont
 }
 
 func (o BigQueryOptionsPtrOutput) Elem() BigQueryOptionsOutput {
-	return o.ApplyT(func(v *BigQueryOptions) BigQueryOptions { return *v }).(BigQueryOptionsOutput)
+	return o.ApplyT(func(v *BigQueryOptions) BigQueryOptions {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryOptions
+		return ret
+	}).(BigQueryOptionsOutput)
 }
 
 // Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
@@ -244,7 +250,7 @@ func (o BigQueryOptionsResponseOutput) ToBigQueryOptionsResponsePtrOutput() BigQ
 }
 
 func (o BigQueryOptionsResponseOutput) ToBigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) BigQueryOptionsResponsePtrOutput {
-	return o.ApplyT(func(v BigQueryOptionsResponse) *BigQueryOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryOptionsResponse) *BigQueryOptionsResponse {
 		return &v
 	}).(BigQueryOptionsResponsePtrOutput)
 }
@@ -274,7 +280,13 @@ func (o BigQueryOptionsResponsePtrOutput) ToBigQueryOptionsResponsePtrOutputWith
 }
 
 func (o BigQueryOptionsResponsePtrOutput) Elem() BigQueryOptionsResponseOutput {
-	return o.ApplyT(func(v *BigQueryOptionsResponse) BigQueryOptionsResponse { return *v }).(BigQueryOptionsResponseOutput)
+	return o.ApplyT(func(v *BigQueryOptionsResponse) BigQueryOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryOptionsResponse
+		return ret
+	}).(BigQueryOptionsResponseOutput)
 }
 
 // Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.

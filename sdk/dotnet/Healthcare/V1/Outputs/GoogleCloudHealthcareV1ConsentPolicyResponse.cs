@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a user's consent in terms of the resources that can be accessed and under what conditions.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudHealthcareV1ConsentPolicyResponse
     {

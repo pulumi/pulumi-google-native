@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Node Group Affinity for clusters using sole-tenant node groups.
+    /// </summary>
     [OutputType]
     public sealed class NodeGroupAffinityResponse
     {

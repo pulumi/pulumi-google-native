@@ -120,7 +120,7 @@ func (o EntryTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulum
 type EntryTypePtrOutput struct{ *pulumi.OutputState }
 
 func (EntryTypePtrOutput) ElementType() reflect.Type {
-	return entryTypePtrType
+	return reflect.TypeOf((**EntryType)(nil)).Elem()
 }
 
 func (o EntryTypePtrOutput) ToEntryTypePtrOutput() EntryTypePtrOutput {
@@ -129,6 +129,16 @@ func (o EntryTypePtrOutput) ToEntryTypePtrOutput() EntryTypePtrOutput {
 
 func (o EntryTypePtrOutput) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
 	return o
+}
+
+func (o EntryTypePtrOutput) Elem() EntryTypeOutput {
+	return o.ApplyT(func(v *EntryType) EntryType {
+		if v != nil {
+			return *v
+		}
+		var ret EntryType
+		return ret
+	}).(EntryTypeOutput)
 }
 
 func (o EntryTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -143,16 +153,6 @@ func (o EntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EntryTypePtrOutput) Elem() EntryTypeOutput {
-	return o.ApplyT(func(v *EntryType) EntryType {
-		var ret EntryType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EntryTypeOutput)
 }
 
 // EntryTypeInput is an input type that accepts EntryTypeArgs and EntryTypeOutput values.
@@ -287,7 +287,7 @@ func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput) ToSt
 type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrType
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType)(nil)).Elem()
 }
 
 func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
@@ -296,6 +296,16 @@ func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) T
 
 func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) Elem() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType
+		return ret
+	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput)
 }
 
 func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -310,16 +320,6 @@ func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) T
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) Elem() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType {
-		var ret GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput)
 }
 
 // GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeArgs and GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput values.
@@ -456,7 +456,7 @@ func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput) ToStri
 type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrType
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType)(nil)).Elem()
 }
 
 func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
@@ -465,6 +465,16 @@ func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ToG
 
 func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) Elem() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType
+		return ret
+	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput)
 }
 
 func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -479,16 +489,6 @@ func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ToS
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) Elem() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType {
-		var ret GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput)
 }
 
 // GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeInput is an input type that accepts GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeArgs and GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput values.
@@ -625,7 +625,7 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToStringPtrOutputWi
 type GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDatacatalogV1DatabaseTableSpecTypePtrType
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1DatabaseTableSpecType)(nil)).Elem()
 }
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
@@ -634,6 +634,16 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) Elem() GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DatabaseTableSpecType) GoogleCloudDatacatalogV1DatabaseTableSpecType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1DatabaseTableSpecType
+		return ret
+	}).(GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput)
 }
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -648,16 +658,6 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) Elem() GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DatabaseTableSpecType) GoogleCloudDatacatalogV1DatabaseTableSpecType {
-		var ret GoogleCloudDatacatalogV1DatabaseTableSpecType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput)
 }
 
 // GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput is an input type that accepts GoogleCloudDatacatalogV1DatabaseTableSpecTypeArgs and GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput values.
@@ -796,7 +796,7 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToStringPtrOutput
 type GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ElementType() reflect.Type {
-	return googleCloudDatacatalogV1RoutineSpecArgumentModePtrType
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1RoutineSpecArgumentMode)(nil)).Elem()
 }
 
 func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
@@ -805,6 +805,16 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToGoogleCloudD
 
 func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) Elem() GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecArgumentMode) GoogleCloudDatacatalogV1RoutineSpecArgumentMode {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1RoutineSpecArgumentMode
+		return ret
+	}).(GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput)
 }
 
 func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -819,16 +829,6 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToStringPtrOut
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) Elem() GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecArgumentMode) GoogleCloudDatacatalogV1RoutineSpecArgumentMode {
-		var ret GoogleCloudDatacatalogV1RoutineSpecArgumentMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput)
 }
 
 // GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgumentModeArgs and GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput values.
@@ -965,7 +965,7 @@ func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToStringPtrOutputW
 type GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDatacatalogV1RoutineSpecRoutineTypePtrType
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1RoutineSpecRoutineType)(nil)).Elem()
 }
 
 func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput() GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
@@ -974,6 +974,16 @@ func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) Elem() GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecRoutineType) GoogleCloudDatacatalogV1RoutineSpecRoutineType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1RoutineSpecRoutineType
+		return ret
+	}).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput)
 }
 
 func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -988,16 +998,6 @@ func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToStringPtrOutp
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) Elem() GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecRoutineType) GoogleCloudDatacatalogV1RoutineSpecRoutineType {
-		var ret GoogleCloudDatacatalogV1RoutineSpecRoutineType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput)
 }
 
 // GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecRoutineTypeArgs and GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput values.
@@ -1131,7 +1131,7 @@ func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringPtrOutputWithContext(ctx
 type TaxonomyActivatedPolicyTypesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyActivatedPolicyTypesItemPtrOutput) ElementType() reflect.Type {
-	return taxonomyActivatedPolicyTypesItemPtrType
+	return reflect.TypeOf((**TaxonomyActivatedPolicyTypesItem)(nil)).Elem()
 }
 
 func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput {
@@ -1140,6 +1140,16 @@ func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyType
 
 func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
 	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) Elem() TaxonomyActivatedPolicyTypesItemOutput {
+	return o.ApplyT(func(v *TaxonomyActivatedPolicyTypesItem) TaxonomyActivatedPolicyTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret TaxonomyActivatedPolicyTypesItem
+		return ret
+	}).(TaxonomyActivatedPolicyTypesItemOutput)
 }
 
 func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1154,16 +1164,6 @@ func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TaxonomyActivatedPolicyTypesItemPtrOutput) Elem() TaxonomyActivatedPolicyTypesItemOutput {
-	return o.ApplyT(func(v *TaxonomyActivatedPolicyTypesItem) TaxonomyActivatedPolicyTypesItem {
-		var ret TaxonomyActivatedPolicyTypesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TaxonomyActivatedPolicyTypesItemOutput)
 }
 
 // TaxonomyActivatedPolicyTypesItemInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArgs and TaxonomyActivatedPolicyTypesItemOutput values.
@@ -1244,8 +1244,8 @@ func (o TaxonomyActivatedPolicyTypesItemArrayOutput) ToTaxonomyActivatedPolicyTy
 }
 
 func (o TaxonomyActivatedPolicyTypesItemArrayOutput) Index(i pulumi.IntInput) TaxonomyActivatedPolicyTypesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaxonomyActivatedPolicyTypesItemOutput {
-		return vs[0].([]TaxonomyActivatedPolicyTypesItem)[vs[1].(int)].ToTaxonomyActivatedPolicyTypesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaxonomyActivatedPolicyTypesItem {
+		return vs[0].([]TaxonomyActivatedPolicyTypesItem)[vs[1].(int)]
 	}).(TaxonomyActivatedPolicyTypesItemOutput)
 }
 

@@ -4,6 +4,9 @@
 package v1alpha1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,150 @@ type LookupNoteResult struct {
 	Upgrade UpgradeNoteResponse `pulumi:"upgrade"`
 	// A package vulnerability type of note.
 	VulnerabilityType VulnerabilityTypeResponse `pulumi:"vulnerabilityType"`
+}
+
+func LookupNoteOutput(ctx *pulumi.Context, args LookupNoteOutputArgs, opts ...pulumi.InvokeOption) LookupNoteResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupNoteResult, error) {
+			args := v.(LookupNoteArgs)
+			r, err := LookupNote(ctx, &args, opts...)
+			return *r, err
+		}).(LookupNoteResultOutput)
+}
+
+type LookupNoteOutputArgs struct {
+	NoteId  pulumi.StringInput    `pulumi:"noteId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupNoteOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNoteArgs)(nil)).Elem()
+}
+
+type LookupNoteResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNoteResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNoteResult)(nil)).Elem()
+}
+
+func (o LookupNoteResultOutput) ToLookupNoteResultOutput() LookupNoteResultOutput {
+	return o
+}
+
+func (o LookupNoteResultOutput) ToLookupNoteResultOutputWithContext(ctx context.Context) LookupNoteResultOutput {
+	return o
+}
+
+// A note describing an attestation role.
+func (o LookupNoteResultOutput) AttestationAuthority() AttestationAuthorityResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) AttestationAuthorityResponse { return v.AttestationAuthority }).(AttestationAuthorityResponseOutput)
+}
+
+// A note describing a base image.
+func (o LookupNoteResultOutput) BaseImage() BasisResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) BasisResponse { return v.BaseImage }).(BasisResponseOutput)
+}
+
+// Build provenance type for a verifiable build.
+func (o LookupNoteResultOutput) BuildType() BuildTypeResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) BuildTypeResponse { return v.BuildType }).(BuildTypeResponseOutput)
+}
+
+// A note describing a compliance check.
+func (o LookupNoteResultOutput) Compliance() ComplianceNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) ComplianceNoteResponse { return v.Compliance }).(ComplianceNoteResponseOutput)
+}
+
+// The time this note was created. This field can be used as a filter in list requests.
+func (o LookupNoteResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNoteResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A note describing something that can be deployed.
+func (o LookupNoteResultOutput) Deployable() DeployableResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) DeployableResponse { return v.Deployable }).(DeployableResponseOutput)
+}
+
+// A note describing a provider/analysis type.
+func (o LookupNoteResultOutput) Discovery() DiscoveryResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) DiscoveryResponse { return v.Discovery }).(DiscoveryResponseOutput)
+}
+
+// A note describing a dsse attestation note.
+func (o LookupNoteResultOutput) DsseAttestation() DSSEAttestationNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) DSSEAttestationNoteResponse { return v.DsseAttestation }).(DSSEAttestationNoteResponseOutput)
+}
+
+// Time of expiration for this note, null if note does not expire.
+func (o LookupNoteResultOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNoteResult) string { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
+func (o LookupNoteResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNoteResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// A detailed description of this `Note`.
+func (o LookupNoteResultOutput) LongDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNoteResult) string { return v.LongDescription }).(pulumi.StringOutput)
+}
+
+// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
+func (o LookupNoteResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNoteResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A note describing a package hosted by various package managers.
+func (o LookupNoteResultOutput) Package() PackageResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) PackageResponse { return v.Package }).(PackageResponseOutput)
+}
+
+// URLs associated with this note
+func (o LookupNoteResultOutput) RelatedUrl() RelatedUrlResponseArrayOutput {
+	return o.ApplyT(func(v LookupNoteResult) []RelatedUrlResponse { return v.RelatedUrl }).(RelatedUrlResponseArrayOutput)
+}
+
+// A note describing a software bill of materials.
+func (o LookupNoteResultOutput) Sbom() DocumentNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) DocumentNoteResponse { return v.Sbom }).(DocumentNoteResponseOutput)
+}
+
+// A one sentence description of this `Note`.
+func (o LookupNoteResultOutput) ShortDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNoteResult) string { return v.ShortDescription }).(pulumi.StringOutput)
+}
+
+// A note describing an SPDX File.
+func (o LookupNoteResultOutput) SpdxFile() FileNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) FileNoteResponse { return v.SpdxFile }).(FileNoteResponseOutput)
+}
+
+// A note describing an SPDX Package.
+func (o LookupNoteResultOutput) SpdxPackage() PackageNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) PackageNoteResponse { return v.SpdxPackage }).(PackageNoteResponseOutput)
+}
+
+// A note describing a relationship between SPDX elements.
+func (o LookupNoteResultOutput) SpdxRelationship() RelationshipNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) RelationshipNoteResponse { return v.SpdxRelationship }).(RelationshipNoteResponseOutput)
+}
+
+// The time this note was last updated. This field can be used as a filter in list requests.
+func (o LookupNoteResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNoteResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// A note describing an upgrade.
+func (o LookupNoteResultOutput) Upgrade() UpgradeNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) UpgradeNoteResponse { return v.Upgrade }).(UpgradeNoteResponseOutput)
+}
+
+// A package vulnerability type of note.
+func (o LookupNoteResultOutput) VulnerabilityType() VulnerabilityTypeResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) VulnerabilityTypeResponse { return v.VulnerabilityType }).(VulnerabilityTypeResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNoteResultOutput{})
 }

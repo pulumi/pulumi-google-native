@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
+    /// </summary>
     [OutputType]
     public sealed class FixedOrPercentResponse
     {

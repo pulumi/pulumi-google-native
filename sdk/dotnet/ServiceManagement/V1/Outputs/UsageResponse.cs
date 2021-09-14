@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration controlling usage of a service.
+    /// </summary>
     [OutputType]
     public sealed class UsageResponse
     {

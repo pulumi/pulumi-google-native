@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SecretManager.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas
+    /// </summary>
     [OutputType]
     public sealed class UserManagedResponse
     {

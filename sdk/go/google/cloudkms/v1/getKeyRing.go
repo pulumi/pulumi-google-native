@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,4 +31,51 @@ type LookupKeyRingResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
 	Name string `pulumi:"name"`
+}
+
+func LookupKeyRingOutput(ctx *pulumi.Context, args LookupKeyRingOutputArgs, opts ...pulumi.InvokeOption) LookupKeyRingResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKeyRingResult, error) {
+			args := v.(LookupKeyRingArgs)
+			r, err := LookupKeyRing(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKeyRingResultOutput)
+}
+
+type LookupKeyRingOutputArgs struct {
+	KeyRingId pulumi.StringInput    `pulumi:"keyRingId"`
+	Location  pulumi.StringInput    `pulumi:"location"`
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupKeyRingOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeyRingArgs)(nil)).Elem()
+}
+
+type LookupKeyRingResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKeyRingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeyRingResult)(nil)).Elem()
+}
+
+func (o LookupKeyRingResultOutput) ToLookupKeyRingResultOutput() LookupKeyRingResultOutput {
+	return o
+}
+
+func (o LookupKeyRingResultOutput) ToLookupKeyRingResultOutputWithContext(ctx context.Context) LookupKeyRingResultOutput {
+	return o
+}
+
+// The time at which this KeyRing was created.
+func (o LookupKeyRingResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeyRingResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
+func (o LookupKeyRingResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeyRingResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKeyRingResultOutput{})
 }

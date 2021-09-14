@@ -141,9 +141,7 @@ func (i *Membership) ToMembershipOutputWithContext(ctx context.Context) Membersh
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipOutput)
 }
 
-type MembershipOutput struct {
-	*pulumi.OutputState
-}
+type MembershipOutput struct{ *pulumi.OutputState }
 
 func (MembershipOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Membership)(nil))

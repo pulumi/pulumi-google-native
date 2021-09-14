@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// An MSI package. MSI packages only support INSTALLED state.
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyResourcePackageResourceMSIResponse
     {

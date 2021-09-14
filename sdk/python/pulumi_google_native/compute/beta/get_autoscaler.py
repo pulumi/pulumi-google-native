@@ -13,6 +13,7 @@ __all__ = [
     'GetAutoscalerResult',
     'AwaitableGetAutoscalerResult',
     'get_autoscaler',
+    'get_autoscaler_output',
 ]
 
 @pulumi.output_type
@@ -215,3 +216,14 @@ def get_autoscaler(autoscaler: Optional[str] = None,
         status_details=__ret__.status_details,
         target=__ret__.target,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_autoscaler)
+def get_autoscaler_output(autoscaler: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          zone: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutoscalerResult]:
+    """
+    Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
+    """
+    ...

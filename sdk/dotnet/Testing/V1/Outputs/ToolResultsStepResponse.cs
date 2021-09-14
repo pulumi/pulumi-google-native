@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a tool results step resource. This has the results of a TestExecution.
+    /// </summary>
     [OutputType]
     public sealed class ToolResultsStepResponse
     {

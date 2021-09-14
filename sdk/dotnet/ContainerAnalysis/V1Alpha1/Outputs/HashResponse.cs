@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Container message for hash values.
+    /// </summary>
     [OutputType]
     public sealed class HashResponse
     {

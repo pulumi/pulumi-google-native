@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Histogram of k-anonymity equivalence classes.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2KAnonymityHistogramBucketResponse
     {

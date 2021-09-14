@@ -152,9 +152,7 @@ func (i *ConnectivityTest) ToConnectivityTestOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestOutput)
 }
 
-type ConnectivityTestOutput struct {
-	*pulumi.OutputState
-}
+type ConnectivityTestOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityTestOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConnectivityTest)(nil))

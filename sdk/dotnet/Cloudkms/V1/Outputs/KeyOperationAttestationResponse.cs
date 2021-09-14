@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Cloudkms.V1.Outputs
 {
 
+    /// <summary>
+    /// Contains an HSM-generated attestation about a key operation. For more information, see [Verifying attestations] (https://cloud.google.com/kms/docs/attest-key).
+    /// </summary>
     [OutputType]
     public sealed class KeyOperationAttestationResponse
     {

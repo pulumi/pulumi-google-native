@@ -13,6 +13,7 @@ __all__ = [
     'GetEntityTypeResult',
     'AwaitableGetEntityTypeResult',
     'get_entity_type',
+    'get_entity_type_output',
 ]
 
 @pulumi.output_type
@@ -154,3 +155,16 @@ def get_entity_type(agent_id: Optional[str] = None,
         kind=__ret__.kind,
         name=__ret__.name,
         redact=__ret__.redact)
+
+
+@_utilities.lift_output_func(get_entity_type)
+def get_entity_type_output(agent_id: Optional[pulumi.Input[str]] = None,
+                           entity_type_id: Optional[pulumi.Input[str]] = None,
+                           language_code: Optional[pulumi.Input[Optional[str]]] = None,
+                           location: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEntityTypeResult]:
+    """
+    Retrieves the specified entity type.
+    """
+    ...

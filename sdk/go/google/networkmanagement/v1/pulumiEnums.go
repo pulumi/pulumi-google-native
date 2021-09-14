@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -277,7 +277,7 @@ func (o EndpointNetworkTypeOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type EndpointNetworkTypePtrOutput struct{ *pulumi.OutputState }
 
 func (EndpointNetworkTypePtrOutput) ElementType() reflect.Type {
-	return endpointNetworkTypePtrType
+	return reflect.TypeOf((**EndpointNetworkType)(nil)).Elem()
 }
 
 func (o EndpointNetworkTypePtrOutput) ToEndpointNetworkTypePtrOutput() EndpointNetworkTypePtrOutput {
@@ -286,6 +286,16 @@ func (o EndpointNetworkTypePtrOutput) ToEndpointNetworkTypePtrOutput() EndpointN
 
 func (o EndpointNetworkTypePtrOutput) ToEndpointNetworkTypePtrOutputWithContext(ctx context.Context) EndpointNetworkTypePtrOutput {
 	return o
+}
+
+func (o EndpointNetworkTypePtrOutput) Elem() EndpointNetworkTypeOutput {
+	return o.ApplyT(func(v *EndpointNetworkType) EndpointNetworkType {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointNetworkType
+		return ret
+	}).(EndpointNetworkTypeOutput)
 }
 
 func (o EndpointNetworkTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o EndpointNetworkTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EndpointNetworkTypePtrOutput) Elem() EndpointNetworkTypeOutput {
-	return o.ApplyT(func(v *EndpointNetworkType) EndpointNetworkType {
-		var ret EndpointNetworkType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EndpointNetworkTypeOutput)
 }
 
 // EndpointNetworkTypeInput is an input type that accepts EndpointNetworkTypeArgs and EndpointNetworkTypeOutput values.

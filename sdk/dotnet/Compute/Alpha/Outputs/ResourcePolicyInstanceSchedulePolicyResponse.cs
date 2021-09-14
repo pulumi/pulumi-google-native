@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// An InstanceSchedulePolicy specifies when and how frequent certain operations are performed on the instance.
+    /// </summary>
     [OutputType]
     public sealed class ResourcePolicyInstanceSchedulePolicyResponse
     {

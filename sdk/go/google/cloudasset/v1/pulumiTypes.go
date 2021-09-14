@@ -118,7 +118,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -158,7 +158,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -309,7 +315,7 @@ func (o ExprResponseOutput) ToExprResponsePtrOutput() ExprResponsePtrOutput {
 }
 
 func (o ExprResponseOutput) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return o.ApplyT(func(v ExprResponse) *ExprResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExprResponse) *ExprResponse {
 		return &v
 	}).(ExprResponsePtrOutput)
 }
@@ -349,7 +355,13 @@ func (o ExprResponsePtrOutput) ToExprResponsePtrOutputWithContext(ctx context.Co
 }
 
 func (o ExprResponsePtrOutput) Elem() ExprResponseOutput {
-	return o.ApplyT(func(v *ExprResponse) ExprResponse { return *v }).(ExprResponseOutput)
+	return o.ApplyT(func(v *ExprResponse) ExprResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExprResponse
+		return ret
+	}).(ExprResponseOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -488,7 +500,7 @@ func (o FeedOutputConfigOutput) ToFeedOutputConfigPtrOutput() FeedOutputConfigPt
 }
 
 func (o FeedOutputConfigOutput) ToFeedOutputConfigPtrOutputWithContext(ctx context.Context) FeedOutputConfigPtrOutput {
-	return o.ApplyT(func(v FeedOutputConfig) *FeedOutputConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeedOutputConfig) *FeedOutputConfig {
 		return &v
 	}).(FeedOutputConfigPtrOutput)
 }
@@ -513,7 +525,13 @@ func (o FeedOutputConfigPtrOutput) ToFeedOutputConfigPtrOutputWithContext(ctx co
 }
 
 func (o FeedOutputConfigPtrOutput) Elem() FeedOutputConfigOutput {
-	return o.ApplyT(func(v *FeedOutputConfig) FeedOutputConfig { return *v }).(FeedOutputConfigOutput)
+	return o.ApplyT(func(v *FeedOutputConfig) FeedOutputConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FeedOutputConfig
+		return ret
+	}).(FeedOutputConfigOutput)
 }
 
 // Destination on Pub/Sub.
@@ -622,7 +640,7 @@ func (o FeedOutputConfigResponseOutput) ToFeedOutputConfigResponsePtrOutput() Fe
 }
 
 func (o FeedOutputConfigResponseOutput) ToFeedOutputConfigResponsePtrOutputWithContext(ctx context.Context) FeedOutputConfigResponsePtrOutput {
-	return o.ApplyT(func(v FeedOutputConfigResponse) *FeedOutputConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeedOutputConfigResponse) *FeedOutputConfigResponse {
 		return &v
 	}).(FeedOutputConfigResponsePtrOutput)
 }
@@ -647,7 +665,13 @@ func (o FeedOutputConfigResponsePtrOutput) ToFeedOutputConfigResponsePtrOutputWi
 }
 
 func (o FeedOutputConfigResponsePtrOutput) Elem() FeedOutputConfigResponseOutput {
-	return o.ApplyT(func(v *FeedOutputConfigResponse) FeedOutputConfigResponse { return *v }).(FeedOutputConfigResponseOutput)
+	return o.ApplyT(func(v *FeedOutputConfigResponse) FeedOutputConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FeedOutputConfigResponse
+		return ret
+	}).(FeedOutputConfigResponseOutput)
 }
 
 // Destination on Pub/Sub.
@@ -756,7 +780,7 @@ func (o PubsubDestinationOutput) ToPubsubDestinationPtrOutput() PubsubDestinatio
 }
 
 func (o PubsubDestinationOutput) ToPubsubDestinationPtrOutputWithContext(ctx context.Context) PubsubDestinationPtrOutput {
-	return o.ApplyT(func(v PubsubDestination) *PubsubDestination {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubDestination) *PubsubDestination {
 		return &v
 	}).(PubsubDestinationPtrOutput)
 }
@@ -781,7 +805,13 @@ func (o PubsubDestinationPtrOutput) ToPubsubDestinationPtrOutputWithContext(ctx 
 }
 
 func (o PubsubDestinationPtrOutput) Elem() PubsubDestinationOutput {
-	return o.ApplyT(func(v *PubsubDestination) PubsubDestination { return *v }).(PubsubDestinationOutput)
+	return o.ApplyT(func(v *PubsubDestination) PubsubDestination {
+		if v != nil {
+			return *v
+		}
+		var ret PubsubDestination
+		return ret
+	}).(PubsubDestinationOutput)
 }
 
 // The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
@@ -890,7 +920,7 @@ func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponsePtrOutput() 
 }
 
 func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
-	return o.ApplyT(func(v PubsubDestinationResponse) *PubsubDestinationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubDestinationResponse) *PubsubDestinationResponse {
 		return &v
 	}).(PubsubDestinationResponsePtrOutput)
 }
@@ -915,7 +945,13 @@ func (o PubsubDestinationResponsePtrOutput) ToPubsubDestinationResponsePtrOutput
 }
 
 func (o PubsubDestinationResponsePtrOutput) Elem() PubsubDestinationResponseOutput {
-	return o.ApplyT(func(v *PubsubDestinationResponse) PubsubDestinationResponse { return *v }).(PubsubDestinationResponseOutput)
+	return o.ApplyT(func(v *PubsubDestinationResponse) PubsubDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PubsubDestinationResponse
+		return ret
+	}).(PubsubDestinationResponseOutput)
 }
 
 // The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.

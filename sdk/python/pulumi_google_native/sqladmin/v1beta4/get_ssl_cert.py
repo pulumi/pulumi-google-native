@@ -12,6 +12,7 @@ __all__ = [
     'GetSslCertResult',
     'AwaitableGetSslCertResult',
     'get_ssl_cert',
+    'get_ssl_cert_output',
 ]
 
 @pulumi.output_type
@@ -162,3 +163,14 @@ def get_ssl_cert(instance: Optional[str] = None,
         kind=__ret__.kind,
         self_link=__ret__.self_link,
         sha1_fingerprint=__ret__.sha1_fingerprint)
+
+
+@_utilities.lift_output_func(get_ssl_cert)
+def get_ssl_cert_output(instance: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        sha1_fingerprint: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSslCertResult]:
+    """
+    Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.
+    """
+    ...

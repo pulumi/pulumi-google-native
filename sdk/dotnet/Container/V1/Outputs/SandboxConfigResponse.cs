@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// SandboxConfig contains configurations of the sandbox to use for the node.
+    /// </summary>
     [OutputType]
     public sealed class SandboxConfigResponse
     {

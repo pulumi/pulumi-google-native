@@ -170,9 +170,7 @@ func (i *TransferConfig) ToTransferConfigOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TransferConfigOutput)
 }
 
-type TransferConfigOutput struct {
-	*pulumi.OutputState
-}
+type TransferConfigOutput struct{ *pulumi.OutputState }
 
 func (TransferConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferConfig)(nil))

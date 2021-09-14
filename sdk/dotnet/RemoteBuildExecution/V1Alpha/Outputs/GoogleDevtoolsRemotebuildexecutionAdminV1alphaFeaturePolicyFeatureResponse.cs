@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// Defines whether a feature can be used or what values are accepted.
+    /// </summary>
     [OutputType]
     public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse
     {

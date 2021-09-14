@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration of preserved resources.
+    /// </summary>
     [OutputType]
     public sealed class StatefulPolicyPreservedStateResponse
     {

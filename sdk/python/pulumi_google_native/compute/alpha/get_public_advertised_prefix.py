@@ -13,6 +13,7 @@ __all__ = [
     'GetPublicAdvertisedPrefixResult',
     'AwaitableGetPublicAdvertisedPrefixResult',
     'get_public_advertised_prefix',
+    'get_public_advertised_prefix_output',
 ]
 
 @pulumi.output_type
@@ -200,3 +201,13 @@ def get_public_advertised_prefix(project: Optional[str] = None,
         self_link_with_id=__ret__.self_link_with_id,
         shared_secret=__ret__.shared_secret,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_public_advertised_prefix)
+def get_public_advertised_prefix_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                        public_advertised_prefix: Optional[pulumi.Input[str]] = None,
+                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPublicAdvertisedPrefixResult]:
+    """
+    Returns the specified PublicAdvertisedPrefix resource.
+    """
+    ...

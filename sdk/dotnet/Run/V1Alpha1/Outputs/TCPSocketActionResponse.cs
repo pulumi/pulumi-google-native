@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
+    /// </summary>
     [OutputType]
     public sealed class TCPSocketActionResponse
     {

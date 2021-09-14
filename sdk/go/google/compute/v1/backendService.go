@@ -244,9 +244,7 @@ func (i *BackendService) ToBackendServiceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceOutput)
 }
 
-type BackendServiceOutput struct {
-	*pulumi.OutputState
-}
+type BackendServiceOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BackendService)(nil))

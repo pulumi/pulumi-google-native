@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
 {
 
+    /// <summary>
+    /// Settings specific to keys that can be used by websites.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse
     {

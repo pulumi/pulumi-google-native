@@ -110,7 +110,7 @@ func (o AliasContextOutput) ToAliasContextPtrOutput() AliasContextPtrOutput {
 }
 
 func (o AliasContextOutput) ToAliasContextPtrOutputWithContext(ctx context.Context) AliasContextPtrOutput {
-	return o.ApplyT(func(v AliasContext) *AliasContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AliasContext) *AliasContext {
 		return &v
 	}).(AliasContextPtrOutput)
 }
@@ -140,7 +140,13 @@ func (o AliasContextPtrOutput) ToAliasContextPtrOutputWithContext(ctx context.Co
 }
 
 func (o AliasContextPtrOutput) Elem() AliasContextOutput {
-	return o.ApplyT(func(v *AliasContext) AliasContext { return *v }).(AliasContextOutput)
+	return o.ApplyT(func(v *AliasContext) AliasContext {
+		if v != nil {
+			return *v
+		}
+		var ret AliasContext
+		return ret
+	}).(AliasContextOutput)
 }
 
 // The alias kind.
@@ -263,7 +269,7 @@ func (o AliasContextResponseOutput) ToAliasContextResponsePtrOutput() AliasConte
 }
 
 func (o AliasContextResponseOutput) ToAliasContextResponsePtrOutputWithContext(ctx context.Context) AliasContextResponsePtrOutput {
-	return o.ApplyT(func(v AliasContextResponse) *AliasContextResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AliasContextResponse) *AliasContextResponse {
 		return &v
 	}).(AliasContextResponsePtrOutput)
 }
@@ -293,7 +299,13 @@ func (o AliasContextResponsePtrOutput) ToAliasContextResponsePtrOutputWithContex
 }
 
 func (o AliasContextResponsePtrOutput) Elem() AliasContextResponseOutput {
-	return o.ApplyT(func(v *AliasContextResponse) AliasContextResponse { return *v }).(AliasContextResponseOutput)
+	return o.ApplyT(func(v *AliasContextResponse) AliasContextResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AliasContextResponse
+		return ret
+	}).(AliasContextResponseOutput)
 }
 
 // The alias kind.
@@ -528,10 +540,11 @@ func (o ArtifactHashesOutput) ToArtifactHashesPtrOutput() ArtifactHashesPtrOutpu
 }
 
 func (o ArtifactHashesOutput) ToArtifactHashesPtrOutputWithContext(ctx context.Context) ArtifactHashesPtrOutput {
-	return o.ApplyT(func(v ArtifactHashes) *ArtifactHashes {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArtifactHashes) *ArtifactHashes {
 		return &v
 	}).(ArtifactHashesPtrOutput)
 }
+
 func (o ArtifactHashesOutput) Sha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ArtifactHashes) *string { return v.Sha256 }).(pulumi.StringPtrOutput)
 }
@@ -551,7 +564,13 @@ func (o ArtifactHashesPtrOutput) ToArtifactHashesPtrOutputWithContext(ctx contex
 }
 
 func (o ArtifactHashesPtrOutput) Elem() ArtifactHashesOutput {
-	return o.ApplyT(func(v *ArtifactHashes) ArtifactHashes { return *v }).(ArtifactHashesOutput)
+	return o.ApplyT(func(v *ArtifactHashes) ArtifactHashes {
+		if v != nil {
+			return *v
+		}
+		var ret ArtifactHashes
+		return ret
+	}).(ArtifactHashesOutput)
 }
 
 func (o ArtifactHashesPtrOutput) Sha256() pulumi.StringPtrOutput {
@@ -1016,10 +1035,11 @@ func (o AttestationOutput) ToAttestationPtrOutput() AttestationPtrOutput {
 }
 
 func (o AttestationOutput) ToAttestationPtrOutputWithContext(ctx context.Context) AttestationPtrOutput {
-	return o.ApplyT(func(v Attestation) *Attestation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Attestation) *Attestation {
 		return &v
 	}).(AttestationPtrOutput)
 }
+
 func (o AttestationOutput) GenericSignedAttestation() GenericSignedAttestationPtrOutput {
 	return o.ApplyT(func(v Attestation) *GenericSignedAttestation { return v.GenericSignedAttestation }).(GenericSignedAttestationPtrOutput)
 }
@@ -1044,7 +1064,13 @@ func (o AttestationPtrOutput) ToAttestationPtrOutputWithContext(ctx context.Cont
 }
 
 func (o AttestationPtrOutput) Elem() AttestationOutput {
-	return o.ApplyT(func(v *Attestation) Attestation { return *v }).(AttestationOutput)
+	return o.ApplyT(func(v *Attestation) Attestation {
+		if v != nil {
+			return *v
+		}
+		var ret Attestation
+		return ret
+	}).(AttestationOutput)
 }
 
 func (o AttestationPtrOutput) GenericSignedAttestation() GenericSignedAttestationPtrOutput {
@@ -1164,10 +1190,11 @@ func (o AttestationResponseOutput) ToAttestationResponsePtrOutput() AttestationR
 }
 
 func (o AttestationResponseOutput) ToAttestationResponsePtrOutputWithContext(ctx context.Context) AttestationResponsePtrOutput {
-	return o.ApplyT(func(v AttestationResponse) *AttestationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestationResponse) *AttestationResponse {
 		return &v
 	}).(AttestationResponsePtrOutput)
 }
+
 func (o AttestationResponseOutput) GenericSignedAttestation() GenericSignedAttestationResponseOutput {
 	return o.ApplyT(func(v AttestationResponse) GenericSignedAttestationResponse { return v.GenericSignedAttestation }).(GenericSignedAttestationResponseOutput)
 }
@@ -1192,7 +1219,13 @@ func (o AttestationResponsePtrOutput) ToAttestationResponsePtrOutputWithContext(
 }
 
 func (o AttestationResponsePtrOutput) Elem() AttestationResponseOutput {
-	return o.ApplyT(func(v *AttestationResponse) AttestationResponse { return *v }).(AttestationResponseOutput)
+	return o.ApplyT(func(v *AttestationResponse) AttestationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AttestationResponse
+		return ret
+	}).(AttestationResponseOutput)
 }
 
 func (o AttestationResponsePtrOutput) GenericSignedAttestation() GenericSignedAttestationResponsePtrOutput {
@@ -1310,7 +1343,7 @@ func (o AuthorityOutput) ToAuthorityPtrOutput() AuthorityPtrOutput {
 }
 
 func (o AuthorityOutput) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
-	return o.ApplyT(func(v Authority) *Authority {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Authority) *Authority {
 		return &v
 	}).(AuthorityPtrOutput)
 }
@@ -1335,7 +1368,13 @@ func (o AuthorityPtrOutput) ToAuthorityPtrOutputWithContext(ctx context.Context)
 }
 
 func (o AuthorityPtrOutput) Elem() AuthorityOutput {
-	return o.ApplyT(func(v *Authority) Authority { return *v }).(AuthorityOutput)
+	return o.ApplyT(func(v *Authority) Authority {
+		if v != nil {
+			return *v
+		}
+		var ret Authority
+		return ret
+	}).(AuthorityOutput)
 }
 
 // Hint hints at the purpose of the attestation authority.
@@ -1444,7 +1483,7 @@ func (o AuthorityResponseOutput) ToAuthorityResponsePtrOutput() AuthorityRespons
 }
 
 func (o AuthorityResponseOutput) ToAuthorityResponsePtrOutputWithContext(ctx context.Context) AuthorityResponsePtrOutput {
-	return o.ApplyT(func(v AuthorityResponse) *AuthorityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityResponse) *AuthorityResponse {
 		return &v
 	}).(AuthorityResponsePtrOutput)
 }
@@ -1469,7 +1508,13 @@ func (o AuthorityResponsePtrOutput) ToAuthorityResponsePtrOutputWithContext(ctx 
 }
 
 func (o AuthorityResponsePtrOutput) Elem() AuthorityResponseOutput {
-	return o.ApplyT(func(v *AuthorityResponse) AuthorityResponse { return *v }).(AuthorityResponseOutput)
+	return o.ApplyT(func(v *AuthorityResponse) AuthorityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityResponse
+		return ret
+	}).(AuthorityResponseOutput)
 }
 
 // Hint hints at the purpose of the attestation authority.
@@ -1582,7 +1627,7 @@ func (o BasisOutput) ToBasisPtrOutput() BasisPtrOutput {
 }
 
 func (o BasisOutput) ToBasisPtrOutputWithContext(ctx context.Context) BasisPtrOutput {
-	return o.ApplyT(func(v Basis) *Basis {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Basis) *Basis {
 		return &v
 	}).(BasisPtrOutput)
 }
@@ -1612,7 +1657,13 @@ func (o BasisPtrOutput) ToBasisPtrOutputWithContext(ctx context.Context) BasisPt
 }
 
 func (o BasisPtrOutput) Elem() BasisOutput {
-	return o.ApplyT(func(v *Basis) Basis { return *v }).(BasisOutput)
+	return o.ApplyT(func(v *Basis) Basis {
+		if v != nil {
+			return *v
+		}
+		var ret Basis
+		return ret
+	}).(BasisOutput)
 }
 
 // Immutable. The fingerprint of the base image.
@@ -1735,7 +1786,7 @@ func (o BasisResponseOutput) ToBasisResponsePtrOutput() BasisResponsePtrOutput {
 }
 
 func (o BasisResponseOutput) ToBasisResponsePtrOutputWithContext(ctx context.Context) BasisResponsePtrOutput {
-	return o.ApplyT(func(v BasisResponse) *BasisResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasisResponse) *BasisResponse {
 		return &v
 	}).(BasisResponsePtrOutput)
 }
@@ -1765,7 +1816,13 @@ func (o BasisResponsePtrOutput) ToBasisResponsePtrOutputWithContext(ctx context.
 }
 
 func (o BasisResponsePtrOutput) Elem() BasisResponseOutput {
-	return o.ApplyT(func(v *BasisResponse) BasisResponse { return *v }).(BasisResponseOutput)
+	return o.ApplyT(func(v *BasisResponse) BasisResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BasisResponse
+		return ret
+	}).(BasisResponseOutput)
 }
 
 // Immutable. The fingerprint of the base image.
@@ -2124,7 +2181,7 @@ func (o BuildOutput) ToBuildPtrOutput() BuildPtrOutput {
 }
 
 func (o BuildOutput) ToBuildPtrOutputWithContext(ctx context.Context) BuildPtrOutput {
-	return o.ApplyT(func(v Build) *Build {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Build) *Build {
 		return &v
 	}).(BuildPtrOutput)
 }
@@ -2154,7 +2211,13 @@ func (o BuildPtrOutput) ToBuildPtrOutputWithContext(ctx context.Context) BuildPt
 }
 
 func (o BuildPtrOutput) Elem() BuildOutput {
-	return o.ApplyT(func(v *Build) Build { return *v }).(BuildOutput)
+	return o.ApplyT(func(v *Build) Build {
+		if v != nil {
+			return *v
+		}
+		var ret Build
+		return ret
+	}).(BuildOutput)
 }
 
 // Immutable. Version of the builder which produced this build.
@@ -2321,7 +2384,7 @@ func (o BuildProvenanceOutput) ToBuildProvenancePtrOutput() BuildProvenancePtrOu
 }
 
 func (o BuildProvenanceOutput) ToBuildProvenancePtrOutputWithContext(ctx context.Context) BuildProvenancePtrOutput {
-	return o.ApplyT(func(v BuildProvenance) *BuildProvenance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildProvenance) *BuildProvenance {
 		return &v
 	}).(BuildProvenancePtrOutput)
 }
@@ -2406,7 +2469,13 @@ func (o BuildProvenancePtrOutput) ToBuildProvenancePtrOutputWithContext(ctx cont
 }
 
 func (o BuildProvenancePtrOutput) Elem() BuildProvenanceOutput {
-	return o.ApplyT(func(v *BuildProvenance) BuildProvenance { return *v }).(BuildProvenanceOutput)
+	return o.ApplyT(func(v *BuildProvenance) BuildProvenance {
+		if v != nil {
+			return *v
+		}
+		var ret BuildProvenance
+		return ret
+	}).(BuildProvenanceOutput)
 }
 
 // Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
@@ -2679,7 +2748,7 @@ func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponsePtrOutput() Buil
 }
 
 func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponsePtrOutputWithContext(ctx context.Context) BuildProvenanceResponsePtrOutput {
-	return o.ApplyT(func(v BuildProvenanceResponse) *BuildProvenanceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildProvenanceResponse) *BuildProvenanceResponse {
 		return &v
 	}).(BuildProvenanceResponsePtrOutput)
 }
@@ -2759,7 +2828,13 @@ func (o BuildProvenanceResponsePtrOutput) ToBuildProvenanceResponsePtrOutputWith
 }
 
 func (o BuildProvenanceResponsePtrOutput) Elem() BuildProvenanceResponseOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) BuildProvenanceResponse { return *v }).(BuildProvenanceResponseOutput)
+	return o.ApplyT(func(v *BuildProvenanceResponse) BuildProvenanceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildProvenanceResponse
+		return ret
+	}).(BuildProvenanceResponseOutput)
 }
 
 // Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
@@ -2982,7 +3057,7 @@ func (o BuildResponseOutput) ToBuildResponsePtrOutput() BuildResponsePtrOutput {
 }
 
 func (o BuildResponseOutput) ToBuildResponsePtrOutputWithContext(ctx context.Context) BuildResponsePtrOutput {
-	return o.ApplyT(func(v BuildResponse) *BuildResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildResponse) *BuildResponse {
 		return &v
 	}).(BuildResponsePtrOutput)
 }
@@ -3012,7 +3087,13 @@ func (o BuildResponsePtrOutput) ToBuildResponsePtrOutputWithContext(ctx context.
 }
 
 func (o BuildResponsePtrOutput) Elem() BuildResponseOutput {
-	return o.ApplyT(func(v *BuildResponse) BuildResponse { return *v }).(BuildResponseOutput)
+	return o.ApplyT(func(v *BuildResponse) BuildResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildResponse
+		return ret
+	}).(BuildResponseOutput)
 }
 
 // Immutable. Version of the builder which produced this build.
@@ -3143,7 +3224,7 @@ func (o BuildSignatureOutput) ToBuildSignaturePtrOutput() BuildSignaturePtrOutpu
 }
 
 func (o BuildSignatureOutput) ToBuildSignaturePtrOutputWithContext(ctx context.Context) BuildSignaturePtrOutput {
-	return o.ApplyT(func(v BuildSignature) *BuildSignature {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildSignature) *BuildSignature {
 		return &v
 	}).(BuildSignaturePtrOutput)
 }
@@ -3183,7 +3264,13 @@ func (o BuildSignaturePtrOutput) ToBuildSignaturePtrOutputWithContext(ctx contex
 }
 
 func (o BuildSignaturePtrOutput) Elem() BuildSignatureOutput {
-	return o.ApplyT(func(v *BuildSignature) BuildSignature { return *v }).(BuildSignatureOutput)
+	return o.ApplyT(func(v *BuildSignature) BuildSignature {
+		if v != nil {
+			return *v
+		}
+		var ret BuildSignature
+		return ret
+	}).(BuildSignatureOutput)
 }
 
 // An ID for the key used to sign. This could be either an ID for the key stored in `public_key` (such as the ID or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
@@ -3334,7 +3421,7 @@ func (o BuildSignatureResponseOutput) ToBuildSignatureResponsePtrOutput() BuildS
 }
 
 func (o BuildSignatureResponseOutput) ToBuildSignatureResponsePtrOutputWithContext(ctx context.Context) BuildSignatureResponsePtrOutput {
-	return o.ApplyT(func(v BuildSignatureResponse) *BuildSignatureResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildSignatureResponse) *BuildSignatureResponse {
 		return &v
 	}).(BuildSignatureResponsePtrOutput)
 }
@@ -3374,7 +3461,13 @@ func (o BuildSignatureResponsePtrOutput) ToBuildSignatureResponsePtrOutputWithCo
 }
 
 func (o BuildSignatureResponsePtrOutput) Elem() BuildSignatureResponseOutput {
-	return o.ApplyT(func(v *BuildSignatureResponse) BuildSignatureResponse { return *v }).(BuildSignatureResponseOutput)
+	return o.ApplyT(func(v *BuildSignatureResponse) BuildSignatureResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildSignatureResponse
+		return ret
+	}).(BuildSignatureResponseOutput)
 }
 
 // An ID for the key used to sign. This could be either an ID for the key stored in `public_key` (such as the ID or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
@@ -3511,10 +3604,11 @@ func (o ByProductsOutput) ToByProductsPtrOutput() ByProductsPtrOutput {
 }
 
 func (o ByProductsOutput) ToByProductsPtrOutputWithContext(ctx context.Context) ByProductsPtrOutput {
-	return o.ApplyT(func(v ByProducts) *ByProducts {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ByProducts) *ByProducts {
 		return &v
 	}).(ByProductsPtrOutput)
 }
+
 func (o ByProductsOutput) CustomValues() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ByProducts) map[string]string { return v.CustomValues }).(pulumi.StringMapOutput)
 }
@@ -3534,7 +3628,13 @@ func (o ByProductsPtrOutput) ToByProductsPtrOutputWithContext(ctx context.Contex
 }
 
 func (o ByProductsPtrOutput) Elem() ByProductsOutput {
-	return o.ApplyT(func(v *ByProducts) ByProducts { return *v }).(ByProductsOutput)
+	return o.ApplyT(func(v *ByProducts) ByProducts {
+		if v != nil {
+			return *v
+		}
+		var ret ByProducts
+		return ret
+	}).(ByProductsOutput)
 }
 
 func (o ByProductsPtrOutput) CustomValues() pulumi.StringMapOutput {
@@ -3640,10 +3740,11 @@ func (o ByProductsResponseOutput) ToByProductsResponsePtrOutput() ByProductsResp
 }
 
 func (o ByProductsResponseOutput) ToByProductsResponsePtrOutputWithContext(ctx context.Context) ByProductsResponsePtrOutput {
-	return o.ApplyT(func(v ByProductsResponse) *ByProductsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ByProductsResponse) *ByProductsResponse {
 		return &v
 	}).(ByProductsResponsePtrOutput)
 }
+
 func (o ByProductsResponseOutput) CustomValues() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ByProductsResponse) map[string]string { return v.CustomValues }).(pulumi.StringMapOutput)
 }
@@ -3663,7 +3764,13 @@ func (o ByProductsResponsePtrOutput) ToByProductsResponsePtrOutputWithContext(ct
 }
 
 func (o ByProductsResponsePtrOutput) Elem() ByProductsResponseOutput {
-	return o.ApplyT(func(v *ByProductsResponse) ByProductsResponse { return *v }).(ByProductsResponseOutput)
+	return o.ApplyT(func(v *ByProductsResponse) ByProductsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ByProductsResponse
+		return ret
+	}).(ByProductsResponseOutput)
 }
 
 func (o ByProductsResponsePtrOutput) CustomValues() pulumi.StringMapOutput {
@@ -3793,10 +3900,11 @@ func (o CVSSv3Output) ToCVSSv3PtrOutput() CVSSv3PtrOutput {
 }
 
 func (o CVSSv3Output) ToCVSSv3PtrOutputWithContext(ctx context.Context) CVSSv3PtrOutput {
-	return o.ApplyT(func(v CVSSv3) *CVSSv3 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSv3) *CVSSv3 {
 		return &v
 	}).(CVSSv3PtrOutput)
 }
+
 func (o CVSSv3Output) AttackComplexity() CVSSv3AttackComplexityPtrOutput {
 	return o.ApplyT(func(v CVSSv3) *CVSSv3AttackComplexity { return v.AttackComplexity }).(CVSSv3AttackComplexityPtrOutput)
 }
@@ -3858,7 +3966,13 @@ func (o CVSSv3PtrOutput) ToCVSSv3PtrOutputWithContext(ctx context.Context) CVSSv
 }
 
 func (o CVSSv3PtrOutput) Elem() CVSSv3Output {
-	return o.ApplyT(func(v *CVSSv3) CVSSv3 { return *v }).(CVSSv3Output)
+	return o.ApplyT(func(v *CVSSv3) CVSSv3 {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSv3
+		return ret
+	}).(CVSSv3Output)
 }
 
 func (o CVSSv3PtrOutput) AttackComplexity() CVSSv3AttackComplexityPtrOutput {
@@ -4080,10 +4194,11 @@ func (o CVSSv3ResponseOutput) ToCVSSv3ResponsePtrOutput() CVSSv3ResponsePtrOutpu
 }
 
 func (o CVSSv3ResponseOutput) ToCVSSv3ResponsePtrOutputWithContext(ctx context.Context) CVSSv3ResponsePtrOutput {
-	return o.ApplyT(func(v CVSSv3Response) *CVSSv3Response {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSv3Response) *CVSSv3Response {
 		return &v
 	}).(CVSSv3ResponsePtrOutput)
 }
+
 func (o CVSSv3ResponseOutput) AttackComplexity() pulumi.StringOutput {
 	return o.ApplyT(func(v CVSSv3Response) string { return v.AttackComplexity }).(pulumi.StringOutput)
 }
@@ -4145,7 +4260,13 @@ func (o CVSSv3ResponsePtrOutput) ToCVSSv3ResponsePtrOutputWithContext(ctx contex
 }
 
 func (o CVSSv3ResponsePtrOutput) Elem() CVSSv3ResponseOutput {
-	return o.ApplyT(func(v *CVSSv3Response) CVSSv3Response { return *v }).(CVSSv3ResponseOutput)
+	return o.ApplyT(func(v *CVSSv3Response) CVSSv3Response {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSv3Response
+		return ret
+	}).(CVSSv3ResponseOutput)
 }
 
 func (o CVSSv3ResponsePtrOutput) AttackComplexity() pulumi.StringPtrOutput {
@@ -4353,7 +4474,7 @@ func (o CloudRepoSourceContextOutput) ToCloudRepoSourceContextPtrOutput() CloudR
 }
 
 func (o CloudRepoSourceContextOutput) ToCloudRepoSourceContextPtrOutputWithContext(ctx context.Context) CloudRepoSourceContextPtrOutput {
-	return o.ApplyT(func(v CloudRepoSourceContext) *CloudRepoSourceContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRepoSourceContext) *CloudRepoSourceContext {
 		return &v
 	}).(CloudRepoSourceContextPtrOutput)
 }
@@ -4388,7 +4509,13 @@ func (o CloudRepoSourceContextPtrOutput) ToCloudRepoSourceContextPtrOutputWithCo
 }
 
 func (o CloudRepoSourceContextPtrOutput) Elem() CloudRepoSourceContextOutput {
-	return o.ApplyT(func(v *CloudRepoSourceContext) CloudRepoSourceContext { return *v }).(CloudRepoSourceContextOutput)
+	return o.ApplyT(func(v *CloudRepoSourceContext) CloudRepoSourceContext {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRepoSourceContext
+		return ret
+	}).(CloudRepoSourceContextOutput)
 }
 
 // An alias, which may be a branch or tag.
@@ -4525,7 +4652,7 @@ func (o CloudRepoSourceContextResponseOutput) ToCloudRepoSourceContextResponsePt
 }
 
 func (o CloudRepoSourceContextResponseOutput) ToCloudRepoSourceContextResponsePtrOutputWithContext(ctx context.Context) CloudRepoSourceContextResponsePtrOutput {
-	return o.ApplyT(func(v CloudRepoSourceContextResponse) *CloudRepoSourceContextResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRepoSourceContextResponse) *CloudRepoSourceContextResponse {
 		return &v
 	}).(CloudRepoSourceContextResponsePtrOutput)
 }
@@ -4560,7 +4687,13 @@ func (o CloudRepoSourceContextResponsePtrOutput) ToCloudRepoSourceContextRespons
 }
 
 func (o CloudRepoSourceContextResponsePtrOutput) Elem() CloudRepoSourceContextResponseOutput {
-	return o.ApplyT(func(v *CloudRepoSourceContextResponse) CloudRepoSourceContextResponse { return *v }).(CloudRepoSourceContextResponseOutput)
+	return o.ApplyT(func(v *CloudRepoSourceContextResponse) CloudRepoSourceContextResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRepoSourceContextResponse
+		return ret
+	}).(CloudRepoSourceContextResponseOutput)
 }
 
 // An alias, which may be a branch or tag.
@@ -4970,7 +5103,7 @@ func (o DeployableOutput) ToDeployablePtrOutput() DeployablePtrOutput {
 }
 
 func (o DeployableOutput) ToDeployablePtrOutputWithContext(ctx context.Context) DeployablePtrOutput {
-	return o.ApplyT(func(v Deployable) *Deployable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Deployable) *Deployable {
 		return &v
 	}).(DeployablePtrOutput)
 }
@@ -4995,7 +5128,13 @@ func (o DeployablePtrOutput) ToDeployablePtrOutputWithContext(ctx context.Contex
 }
 
 func (o DeployablePtrOutput) Elem() DeployableOutput {
-	return o.ApplyT(func(v *Deployable) Deployable { return *v }).(DeployableOutput)
+	return o.ApplyT(func(v *Deployable) Deployable {
+		if v != nil {
+			return *v
+		}
+		var ret Deployable
+		return ret
+	}).(DeployableOutput)
 }
 
 // Resource URI for the artifact being deployed.
@@ -5104,7 +5243,7 @@ func (o DeployableResponseOutput) ToDeployableResponsePtrOutput() DeployableResp
 }
 
 func (o DeployableResponseOutput) ToDeployableResponsePtrOutputWithContext(ctx context.Context) DeployableResponsePtrOutput {
-	return o.ApplyT(func(v DeployableResponse) *DeployableResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployableResponse) *DeployableResponse {
 		return &v
 	}).(DeployableResponsePtrOutput)
 }
@@ -5129,7 +5268,13 @@ func (o DeployableResponsePtrOutput) ToDeployableResponsePtrOutputWithContext(ct
 }
 
 func (o DeployableResponsePtrOutput) Elem() DeployableResponseOutput {
-	return o.ApplyT(func(v *DeployableResponse) DeployableResponse { return *v }).(DeployableResponseOutput)
+	return o.ApplyT(func(v *DeployableResponse) DeployableResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeployableResponse
+		return ret
+	}).(DeployableResponseOutput)
 }
 
 // Resource URI for the artifact being deployed.
@@ -5258,7 +5403,7 @@ func (o DeploymentOutput) ToDeploymentPtrOutput() DeploymentPtrOutput {
 }
 
 func (o DeploymentOutput) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
-	return o.ApplyT(func(v Deployment) *Deployment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Deployment) *Deployment {
 		return &v
 	}).(DeploymentPtrOutput)
 }
@@ -5308,7 +5453,13 @@ func (o DeploymentPtrOutput) ToDeploymentPtrOutputWithContext(ctx context.Contex
 }
 
 func (o DeploymentPtrOutput) Elem() DeploymentOutput {
-	return o.ApplyT(func(v *Deployment) Deployment { return *v }).(DeploymentOutput)
+	return o.ApplyT(func(v *Deployment) Deployment {
+		if v != nil {
+			return *v
+		}
+		var ret Deployment
+		return ret
+	}).(DeploymentOutput)
 }
 
 // Address of the runtime element hosting this deployment.
@@ -5491,7 +5642,7 @@ func (o DeploymentResponseOutput) ToDeploymentResponsePtrOutput() DeploymentResp
 }
 
 func (o DeploymentResponseOutput) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
-	return o.ApplyT(func(v DeploymentResponse) *DeploymentResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentResponse) *DeploymentResponse {
 		return &v
 	}).(DeploymentResponsePtrOutput)
 }
@@ -5546,7 +5697,13 @@ func (o DeploymentResponsePtrOutput) ToDeploymentResponsePtrOutputWithContext(ct
 }
 
 func (o DeploymentResponsePtrOutput) Elem() DeploymentResponseOutput {
-	return o.ApplyT(func(v *DeploymentResponse) DeploymentResponse { return *v }).(DeploymentResponseOutput)
+	return o.ApplyT(func(v *DeploymentResponse) DeploymentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentResponse
+		return ret
+	}).(DeploymentResponseOutput)
 }
 
 // Address of the runtime element hosting this deployment.
@@ -5719,7 +5876,7 @@ func (o DerivedOutput) ToDerivedPtrOutput() DerivedPtrOutput {
 }
 
 func (o DerivedOutput) ToDerivedPtrOutputWithContext(ctx context.Context) DerivedPtrOutput {
-	return o.ApplyT(func(v Derived) *Derived {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Derived) *Derived {
 		return &v
 	}).(DerivedPtrOutput)
 }
@@ -5749,7 +5906,13 @@ func (o DerivedPtrOutput) ToDerivedPtrOutputWithContext(ctx context.Context) Der
 }
 
 func (o DerivedPtrOutput) Elem() DerivedOutput {
-	return o.ApplyT(func(v *Derived) Derived { return *v }).(DerivedOutput)
+	return o.ApplyT(func(v *Derived) Derived {
+		if v != nil {
+			return *v
+		}
+		var ret Derived
+		return ret
+	}).(DerivedOutput)
 }
 
 // The fingerprint of the derived image.
@@ -5880,7 +6043,7 @@ func (o DerivedResponseOutput) ToDerivedResponsePtrOutput() DerivedResponsePtrOu
 }
 
 func (o DerivedResponseOutput) ToDerivedResponsePtrOutputWithContext(ctx context.Context) DerivedResponsePtrOutput {
-	return o.ApplyT(func(v DerivedResponse) *DerivedResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DerivedResponse) *DerivedResponse {
 		return &v
 	}).(DerivedResponsePtrOutput)
 }
@@ -5920,7 +6083,13 @@ func (o DerivedResponsePtrOutput) ToDerivedResponsePtrOutputWithContext(ctx cont
 }
 
 func (o DerivedResponsePtrOutput) Elem() DerivedResponseOutput {
-	return o.ApplyT(func(v *DerivedResponse) DerivedResponse { return *v }).(DerivedResponseOutput)
+	return o.ApplyT(func(v *DerivedResponse) DerivedResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DerivedResponse
+		return ret
+	}).(DerivedResponseOutput)
 }
 
 // This contains the base image URL for the derived image occurrence.
@@ -6457,7 +6626,7 @@ func (o DetailsOutput) ToDetailsPtrOutput() DetailsPtrOutput {
 }
 
 func (o DetailsOutput) ToDetailsPtrOutputWithContext(ctx context.Context) DetailsPtrOutput {
-	return o.ApplyT(func(v Details) *Details {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Details) *Details {
 		return &v
 	}).(DetailsPtrOutput)
 }
@@ -6482,7 +6651,13 @@ func (o DetailsPtrOutput) ToDetailsPtrOutputWithContext(ctx context.Context) Det
 }
 
 func (o DetailsPtrOutput) Elem() DetailsOutput {
-	return o.ApplyT(func(v *Details) Details { return *v }).(DetailsOutput)
+	return o.ApplyT(func(v *Details) Details {
+		if v != nil {
+			return *v
+		}
+		var ret Details
+		return ret
+	}).(DetailsOutput)
 }
 
 // Attestation for the resource.
@@ -6591,7 +6766,7 @@ func (o DetailsResponseOutput) ToDetailsResponsePtrOutput() DetailsResponsePtrOu
 }
 
 func (o DetailsResponseOutput) ToDetailsResponsePtrOutputWithContext(ctx context.Context) DetailsResponsePtrOutput {
-	return o.ApplyT(func(v DetailsResponse) *DetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DetailsResponse) *DetailsResponse {
 		return &v
 	}).(DetailsResponsePtrOutput)
 }
@@ -6616,7 +6791,13 @@ func (o DetailsResponsePtrOutput) ToDetailsResponsePtrOutputWithContext(ctx cont
 }
 
 func (o DetailsResponsePtrOutput) Elem() DetailsResponseOutput {
-	return o.ApplyT(func(v *DetailsResponse) DetailsResponse { return *v }).(DetailsResponseOutput)
+	return o.ApplyT(func(v *DetailsResponse) DetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DetailsResponse
+		return ret
+	}).(DetailsResponseOutput)
 }
 
 // Attestation for the resource.
@@ -6733,7 +6914,7 @@ func (o DiscoveredOutput) ToDiscoveredPtrOutput() DiscoveredPtrOutput {
 }
 
 func (o DiscoveredOutput) ToDiscoveredPtrOutputWithContext(ctx context.Context) DiscoveredPtrOutput {
-	return o.ApplyT(func(v Discovered) *Discovered {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Discovered) *Discovered {
 		return &v
 	}).(DiscoveredPtrOutput)
 }
@@ -6768,7 +6949,13 @@ func (o DiscoveredPtrOutput) ToDiscoveredPtrOutputWithContext(ctx context.Contex
 }
 
 func (o DiscoveredPtrOutput) Elem() DiscoveredOutput {
-	return o.ApplyT(func(v *Discovered) Discovered { return *v }).(DiscoveredOutput)
+	return o.ApplyT(func(v *Discovered) Discovered {
+		if v != nil {
+			return *v
+		}
+		var ret Discovered
+		return ret
+	}).(DiscoveredOutput)
 }
 
 // The status of discovery for the resource.
@@ -6905,7 +7092,7 @@ func (o DiscoveredResponseOutput) ToDiscoveredResponsePtrOutput() DiscoveredResp
 }
 
 func (o DiscoveredResponseOutput) ToDiscoveredResponsePtrOutputWithContext(ctx context.Context) DiscoveredResponsePtrOutput {
-	return o.ApplyT(func(v DiscoveredResponse) *DiscoveredResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscoveredResponse) *DiscoveredResponse {
 		return &v
 	}).(DiscoveredResponsePtrOutput)
 }
@@ -6940,7 +7127,13 @@ func (o DiscoveredResponsePtrOutput) ToDiscoveredResponsePtrOutputWithContext(ct
 }
 
 func (o DiscoveredResponsePtrOutput) Elem() DiscoveredResponseOutput {
-	return o.ApplyT(func(v *DiscoveredResponse) DiscoveredResponse { return *v }).(DiscoveredResponseOutput)
+	return o.ApplyT(func(v *DiscoveredResponse) DiscoveredResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveredResponse
+		return ret
+	}).(DiscoveredResponseOutput)
 }
 
 // The status of discovery for the resource.
@@ -7069,7 +7262,7 @@ func (o DiscoveryOutput) ToDiscoveryPtrOutput() DiscoveryPtrOutput {
 }
 
 func (o DiscoveryOutput) ToDiscoveryPtrOutputWithContext(ctx context.Context) DiscoveryPtrOutput {
-	return o.ApplyT(func(v Discovery) *Discovery {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Discovery) *Discovery {
 		return &v
 	}).(DiscoveryPtrOutput)
 }
@@ -7094,7 +7287,13 @@ func (o DiscoveryPtrOutput) ToDiscoveryPtrOutputWithContext(ctx context.Context)
 }
 
 func (o DiscoveryPtrOutput) Elem() DiscoveryOutput {
-	return o.ApplyT(func(v *Discovery) Discovery { return *v }).(DiscoveryOutput)
+	return o.ApplyT(func(v *Discovery) Discovery {
+		if v != nil {
+			return *v
+		}
+		var ret Discovery
+		return ret
+	}).(DiscoveryOutput)
 }
 
 // Immutable. The kind of analysis that is handled by this discovery.
@@ -7203,7 +7402,7 @@ func (o DiscoveryResponseOutput) ToDiscoveryResponsePtrOutput() DiscoveryRespons
 }
 
 func (o DiscoveryResponseOutput) ToDiscoveryResponsePtrOutputWithContext(ctx context.Context) DiscoveryResponsePtrOutput {
-	return o.ApplyT(func(v DiscoveryResponse) *DiscoveryResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscoveryResponse) *DiscoveryResponse {
 		return &v
 	}).(DiscoveryResponsePtrOutput)
 }
@@ -7228,7 +7427,13 @@ func (o DiscoveryResponsePtrOutput) ToDiscoveryResponsePtrOutputWithContext(ctx 
 }
 
 func (o DiscoveryResponsePtrOutput) Elem() DiscoveryResponseOutput {
-	return o.ApplyT(func(v *DiscoveryResponse) DiscoveryResponse { return *v }).(DiscoveryResponseOutput)
+	return o.ApplyT(func(v *DiscoveryResponse) DiscoveryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveryResponse
+		return ret
+	}).(DiscoveryResponseOutput)
 }
 
 // Immutable. The kind of analysis that is handled by this discovery.
@@ -7631,7 +7836,7 @@ func (o DocumentNoteOutput) ToDocumentNotePtrOutput() DocumentNotePtrOutput {
 }
 
 func (o DocumentNoteOutput) ToDocumentNotePtrOutputWithContext(ctx context.Context) DocumentNotePtrOutput {
-	return o.ApplyT(func(v DocumentNote) *DocumentNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentNote) *DocumentNote {
 		return &v
 	}).(DocumentNotePtrOutput)
 }
@@ -7661,7 +7866,13 @@ func (o DocumentNotePtrOutput) ToDocumentNotePtrOutputWithContext(ctx context.Co
 }
 
 func (o DocumentNotePtrOutput) Elem() DocumentNoteOutput {
-	return o.ApplyT(func(v *DocumentNote) DocumentNote { return *v }).(DocumentNoteOutput)
+	return o.ApplyT(func(v *DocumentNote) DocumentNote {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentNote
+		return ret
+	}).(DocumentNoteOutput)
 }
 
 // Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
@@ -7784,7 +7995,7 @@ func (o DocumentNoteResponseOutput) ToDocumentNoteResponsePtrOutput() DocumentNo
 }
 
 func (o DocumentNoteResponseOutput) ToDocumentNoteResponsePtrOutputWithContext(ctx context.Context) DocumentNoteResponsePtrOutput {
-	return o.ApplyT(func(v DocumentNoteResponse) *DocumentNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentNoteResponse) *DocumentNoteResponse {
 		return &v
 	}).(DocumentNoteResponsePtrOutput)
 }
@@ -7814,7 +8025,13 @@ func (o DocumentNoteResponsePtrOutput) ToDocumentNoteResponsePtrOutputWithContex
 }
 
 func (o DocumentNoteResponsePtrOutput) Elem() DocumentNoteResponseOutput {
-	return o.ApplyT(func(v *DocumentNoteResponse) DocumentNoteResponse { return *v }).(DocumentNoteResponseOutput)
+	return o.ApplyT(func(v *DocumentNoteResponse) DocumentNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentNoteResponse
+		return ret
+	}).(DocumentNoteResponseOutput)
 }
 
 // Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
@@ -7965,7 +8182,7 @@ func (o DocumentOccurrenceOutput) ToDocumentOccurrencePtrOutput() DocumentOccurr
 }
 
 func (o DocumentOccurrenceOutput) ToDocumentOccurrencePtrOutputWithContext(ctx context.Context) DocumentOccurrencePtrOutput {
-	return o.ApplyT(func(v DocumentOccurrence) *DocumentOccurrence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentOccurrence) *DocumentOccurrence {
 		return &v
 	}).(DocumentOccurrencePtrOutput)
 }
@@ -8030,7 +8247,13 @@ func (o DocumentOccurrencePtrOutput) ToDocumentOccurrencePtrOutputWithContext(ct
 }
 
 func (o DocumentOccurrencePtrOutput) Elem() DocumentOccurrenceOutput {
-	return o.ApplyT(func(v *DocumentOccurrence) DocumentOccurrence { return *v }).(DocumentOccurrenceOutput)
+	return o.ApplyT(func(v *DocumentOccurrence) DocumentOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentOccurrence
+		return ret
+	}).(DocumentOccurrenceOutput)
 }
 
 // Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
@@ -8247,7 +8470,7 @@ func (o DocumentOccurrenceResponseOutput) ToDocumentOccurrenceResponsePtrOutput(
 }
 
 func (o DocumentOccurrenceResponseOutput) ToDocumentOccurrenceResponsePtrOutputWithContext(ctx context.Context) DocumentOccurrenceResponsePtrOutput {
-	return o.ApplyT(func(v DocumentOccurrenceResponse) *DocumentOccurrenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentOccurrenceResponse) *DocumentOccurrenceResponse {
 		return &v
 	}).(DocumentOccurrenceResponsePtrOutput)
 }
@@ -8307,7 +8530,13 @@ func (o DocumentOccurrenceResponsePtrOutput) ToDocumentOccurrenceResponsePtrOutp
 }
 
 func (o DocumentOccurrenceResponsePtrOutput) Elem() DocumentOccurrenceResponseOutput {
-	return o.ApplyT(func(v *DocumentOccurrenceResponse) DocumentOccurrenceResponse { return *v }).(DocumentOccurrenceResponseOutput)
+	return o.ApplyT(func(v *DocumentOccurrenceResponse) DocumentOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentOccurrenceResponse
+		return ret
+	}).(DocumentOccurrenceResponseOutput)
 }
 
 // Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
@@ -8484,10 +8713,11 @@ func (o EnvironmentOutput) ToEnvironmentPtrOutput() EnvironmentPtrOutput {
 }
 
 func (o EnvironmentOutput) ToEnvironmentPtrOutputWithContext(ctx context.Context) EnvironmentPtrOutput {
-	return o.ApplyT(func(v Environment) *Environment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Environment) *Environment {
 		return &v
 	}).(EnvironmentPtrOutput)
 }
+
 func (o EnvironmentOutput) CustomValues() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Environment) map[string]string { return v.CustomValues }).(pulumi.StringMapOutput)
 }
@@ -8507,7 +8737,13 @@ func (o EnvironmentPtrOutput) ToEnvironmentPtrOutputWithContext(ctx context.Cont
 }
 
 func (o EnvironmentPtrOutput) Elem() EnvironmentOutput {
-	return o.ApplyT(func(v *Environment) Environment { return *v }).(EnvironmentOutput)
+	return o.ApplyT(func(v *Environment) Environment {
+		if v != nil {
+			return *v
+		}
+		var ret Environment
+		return ret
+	}).(EnvironmentOutput)
 }
 
 func (o EnvironmentPtrOutput) CustomValues() pulumi.StringMapOutput {
@@ -8613,10 +8849,11 @@ func (o EnvironmentResponseOutput) ToEnvironmentResponsePtrOutput() EnvironmentR
 }
 
 func (o EnvironmentResponseOutput) ToEnvironmentResponsePtrOutputWithContext(ctx context.Context) EnvironmentResponsePtrOutput {
-	return o.ApplyT(func(v EnvironmentResponse) *EnvironmentResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentResponse) *EnvironmentResponse {
 		return &v
 	}).(EnvironmentResponsePtrOutput)
 }
+
 func (o EnvironmentResponseOutput) CustomValues() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EnvironmentResponse) map[string]string { return v.CustomValues }).(pulumi.StringMapOutput)
 }
@@ -8636,7 +8873,13 @@ func (o EnvironmentResponsePtrOutput) ToEnvironmentResponsePtrOutputWithContext(
 }
 
 func (o EnvironmentResponsePtrOutput) Elem() EnvironmentResponseOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) EnvironmentResponse { return *v }).(EnvironmentResponseOutput)
+	return o.ApplyT(func(v *EnvironmentResponse) EnvironmentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentResponse
+		return ret
+	}).(EnvironmentResponseOutput)
 }
 
 func (o EnvironmentResponsePtrOutput) CustomValues() pulumi.StringMapOutput {
@@ -8756,7 +8999,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -8796,7 +9039,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -9279,7 +9528,7 @@ func (o FileNoteOutput) ToFileNotePtrOutput() FileNotePtrOutput {
 }
 
 func (o FileNoteOutput) ToFileNotePtrOutputWithContext(ctx context.Context) FileNotePtrOutput {
-	return o.ApplyT(func(v FileNote) *FileNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileNote) *FileNote {
 		return &v
 	}).(FileNotePtrOutput)
 }
@@ -9314,7 +9563,13 @@ func (o FileNotePtrOutput) ToFileNotePtrOutputWithContext(ctx context.Context) F
 }
 
 func (o FileNotePtrOutput) Elem() FileNoteOutput {
-	return o.ApplyT(func(v *FileNote) FileNote { return *v }).(FileNoteOutput)
+	return o.ApplyT(func(v *FileNote) FileNote {
+		if v != nil {
+			return *v
+		}
+		var ret FileNote
+		return ret
+	}).(FileNoteOutput)
 }
 
 // Provide a unique identifier to match analysis information on each specific file in a package
@@ -9451,7 +9706,7 @@ func (o FileNoteResponseOutput) ToFileNoteResponsePtrOutput() FileNoteResponsePt
 }
 
 func (o FileNoteResponseOutput) ToFileNoteResponsePtrOutputWithContext(ctx context.Context) FileNoteResponsePtrOutput {
-	return o.ApplyT(func(v FileNoteResponse) *FileNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileNoteResponse) *FileNoteResponse {
 		return &v
 	}).(FileNoteResponsePtrOutput)
 }
@@ -9486,7 +9741,13 @@ func (o FileNoteResponsePtrOutput) ToFileNoteResponsePtrOutputWithContext(ctx co
 }
 
 func (o FileNoteResponsePtrOutput) Elem() FileNoteResponseOutput {
-	return o.ApplyT(func(v *FileNoteResponse) FileNoteResponse { return *v }).(FileNoteResponseOutput)
+	return o.ApplyT(func(v *FileNoteResponse) FileNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FileNoteResponse
+		return ret
+	}).(FileNoteResponseOutput)
 }
 
 // Provide a unique identifier to match analysis information on each specific file in a package
@@ -9647,7 +9908,7 @@ func (o FileOccurrenceOutput) ToFileOccurrencePtrOutput() FileOccurrencePtrOutpu
 }
 
 func (o FileOccurrenceOutput) ToFileOccurrencePtrOutputWithContext(ctx context.Context) FileOccurrencePtrOutput {
-	return o.ApplyT(func(v FileOccurrence) *FileOccurrence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileOccurrence) *FileOccurrence {
 		return &v
 	}).(FileOccurrencePtrOutput)
 }
@@ -9712,7 +9973,13 @@ func (o FileOccurrencePtrOutput) ToFileOccurrencePtrOutputWithContext(ctx contex
 }
 
 func (o FileOccurrencePtrOutput) Elem() FileOccurrenceOutput {
-	return o.ApplyT(func(v *FileOccurrence) FileOccurrence { return *v }).(FileOccurrenceOutput)
+	return o.ApplyT(func(v *FileOccurrence) FileOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret FileOccurrence
+		return ret
+	}).(FileOccurrenceOutput)
 }
 
 // This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that may be needed to be communicated in some contexts
@@ -9929,7 +10196,7 @@ func (o FileOccurrenceResponseOutput) ToFileOccurrenceResponsePtrOutput() FileOc
 }
 
 func (o FileOccurrenceResponseOutput) ToFileOccurrenceResponsePtrOutputWithContext(ctx context.Context) FileOccurrenceResponsePtrOutput {
-	return o.ApplyT(func(v FileOccurrenceResponse) *FileOccurrenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileOccurrenceResponse) *FileOccurrenceResponse {
 		return &v
 	}).(FileOccurrenceResponsePtrOutput)
 }
@@ -9989,7 +10256,13 @@ func (o FileOccurrenceResponsePtrOutput) ToFileOccurrenceResponsePtrOutputWithCo
 }
 
 func (o FileOccurrenceResponsePtrOutput) Elem() FileOccurrenceResponseOutput {
-	return o.ApplyT(func(v *FileOccurrenceResponse) FileOccurrenceResponse { return *v }).(FileOccurrenceResponseOutput)
+	return o.ApplyT(func(v *FileOccurrenceResponse) FileOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FileOccurrenceResponse
+		return ret
+	}).(FileOccurrenceResponseOutput)
 }
 
 // This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that may be needed to be communicated in some contexts
@@ -10172,7 +10445,7 @@ func (o FingerprintOutput) ToFingerprintPtrOutput() FingerprintPtrOutput {
 }
 
 func (o FingerprintOutput) ToFingerprintPtrOutputWithContext(ctx context.Context) FingerprintPtrOutput {
-	return o.ApplyT(func(v Fingerprint) *Fingerprint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Fingerprint) *Fingerprint {
 		return &v
 	}).(FingerprintPtrOutput)
 }
@@ -10202,7 +10475,13 @@ func (o FingerprintPtrOutput) ToFingerprintPtrOutputWithContext(ctx context.Cont
 }
 
 func (o FingerprintPtrOutput) Elem() FingerprintOutput {
-	return o.ApplyT(func(v *Fingerprint) Fingerprint { return *v }).(FingerprintOutput)
+	return o.ApplyT(func(v *Fingerprint) Fingerprint {
+		if v != nil {
+			return *v
+		}
+		var ret Fingerprint
+		return ret
+	}).(FingerprintOutput)
 }
 
 // The layer ID of the final layer in the Docker image's v1 representation.
@@ -10329,7 +10608,7 @@ func (o FingerprintResponseOutput) ToFingerprintResponsePtrOutput() FingerprintR
 }
 
 func (o FingerprintResponseOutput) ToFingerprintResponsePtrOutputWithContext(ctx context.Context) FingerprintResponsePtrOutput {
-	return o.ApplyT(func(v FingerprintResponse) *FingerprintResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FingerprintResponse) *FingerprintResponse {
 		return &v
 	}).(FingerprintResponsePtrOutput)
 }
@@ -10364,7 +10643,13 @@ func (o FingerprintResponsePtrOutput) ToFingerprintResponsePtrOutputWithContext(
 }
 
 func (o FingerprintResponsePtrOutput) Elem() FingerprintResponseOutput {
-	return o.ApplyT(func(v *FingerprintResponse) FingerprintResponse { return *v }).(FingerprintResponseOutput)
+	return o.ApplyT(func(v *FingerprintResponse) FingerprintResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FingerprintResponse
+		return ret
+	}).(FingerprintResponseOutput)
 }
 
 // The layer ID of the final layer in the Docker image's v1 representation.
@@ -10501,7 +10786,7 @@ func (o GenericSignedAttestationOutput) ToGenericSignedAttestationPtrOutput() Ge
 }
 
 func (o GenericSignedAttestationOutput) ToGenericSignedAttestationPtrOutputWithContext(ctx context.Context) GenericSignedAttestationPtrOutput {
-	return o.ApplyT(func(v GenericSignedAttestation) *GenericSignedAttestation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenericSignedAttestation) *GenericSignedAttestation {
 		return &v
 	}).(GenericSignedAttestationPtrOutput)
 }
@@ -10536,7 +10821,13 @@ func (o GenericSignedAttestationPtrOutput) ToGenericSignedAttestationPtrOutputWi
 }
 
 func (o GenericSignedAttestationPtrOutput) Elem() GenericSignedAttestationOutput {
-	return o.ApplyT(func(v *GenericSignedAttestation) GenericSignedAttestation { return *v }).(GenericSignedAttestationOutput)
+	return o.ApplyT(func(v *GenericSignedAttestation) GenericSignedAttestation {
+		if v != nil {
+			return *v
+		}
+		var ret GenericSignedAttestation
+		return ret
+	}).(GenericSignedAttestationOutput)
 }
 
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
@@ -10673,7 +10964,7 @@ func (o GenericSignedAttestationResponseOutput) ToGenericSignedAttestationRespon
 }
 
 func (o GenericSignedAttestationResponseOutput) ToGenericSignedAttestationResponsePtrOutputWithContext(ctx context.Context) GenericSignedAttestationResponsePtrOutput {
-	return o.ApplyT(func(v GenericSignedAttestationResponse) *GenericSignedAttestationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenericSignedAttestationResponse) *GenericSignedAttestationResponse {
 		return &v
 	}).(GenericSignedAttestationResponsePtrOutput)
 }
@@ -10708,7 +10999,13 @@ func (o GenericSignedAttestationResponsePtrOutput) ToGenericSignedAttestationRes
 }
 
 func (o GenericSignedAttestationResponsePtrOutput) Elem() GenericSignedAttestationResponseOutput {
-	return o.ApplyT(func(v *GenericSignedAttestationResponse) GenericSignedAttestationResponse { return *v }).(GenericSignedAttestationResponseOutput)
+	return o.ApplyT(func(v *GenericSignedAttestationResponse) GenericSignedAttestationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GenericSignedAttestationResponse
+		return ret
+	}).(GenericSignedAttestationResponseOutput)
 }
 
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
@@ -10849,7 +11146,7 @@ func (o GerritSourceContextOutput) ToGerritSourceContextPtrOutput() GerritSource
 }
 
 func (o GerritSourceContextOutput) ToGerritSourceContextPtrOutputWithContext(ctx context.Context) GerritSourceContextPtrOutput {
-	return o.ApplyT(func(v GerritSourceContext) *GerritSourceContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GerritSourceContext) *GerritSourceContext {
 		return &v
 	}).(GerritSourceContextPtrOutput)
 }
@@ -10889,7 +11186,13 @@ func (o GerritSourceContextPtrOutput) ToGerritSourceContextPtrOutputWithContext(
 }
 
 func (o GerritSourceContextPtrOutput) Elem() GerritSourceContextOutput {
-	return o.ApplyT(func(v *GerritSourceContext) GerritSourceContext { return *v }).(GerritSourceContextOutput)
+	return o.ApplyT(func(v *GerritSourceContext) GerritSourceContext {
+		if v != nil {
+			return *v
+		}
+		var ret GerritSourceContext
+		return ret
+	}).(GerritSourceContextOutput)
 }
 
 // An alias, which may be a branch or tag.
@@ -11040,7 +11343,7 @@ func (o GerritSourceContextResponseOutput) ToGerritSourceContextResponsePtrOutpu
 }
 
 func (o GerritSourceContextResponseOutput) ToGerritSourceContextResponsePtrOutputWithContext(ctx context.Context) GerritSourceContextResponsePtrOutput {
-	return o.ApplyT(func(v GerritSourceContextResponse) *GerritSourceContextResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GerritSourceContextResponse) *GerritSourceContextResponse {
 		return &v
 	}).(GerritSourceContextResponsePtrOutput)
 }
@@ -11080,7 +11383,13 @@ func (o GerritSourceContextResponsePtrOutput) ToGerritSourceContextResponsePtrOu
 }
 
 func (o GerritSourceContextResponsePtrOutput) Elem() GerritSourceContextResponseOutput {
-	return o.ApplyT(func(v *GerritSourceContextResponse) GerritSourceContextResponse { return *v }).(GerritSourceContextResponseOutput)
+	return o.ApplyT(func(v *GerritSourceContextResponse) GerritSourceContextResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GerritSourceContextResponse
+		return ret
+	}).(GerritSourceContextResponseOutput)
 }
 
 // An alias, which may be a branch or tag.
@@ -11223,7 +11532,7 @@ func (o GitSourceContextOutput) ToGitSourceContextPtrOutput() GitSourceContextPt
 }
 
 func (o GitSourceContextOutput) ToGitSourceContextPtrOutputWithContext(ctx context.Context) GitSourceContextPtrOutput {
-	return o.ApplyT(func(v GitSourceContext) *GitSourceContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitSourceContext) *GitSourceContext {
 		return &v
 	}).(GitSourceContextPtrOutput)
 }
@@ -11253,7 +11562,13 @@ func (o GitSourceContextPtrOutput) ToGitSourceContextPtrOutputWithContext(ctx co
 }
 
 func (o GitSourceContextPtrOutput) Elem() GitSourceContextOutput {
-	return o.ApplyT(func(v *GitSourceContext) GitSourceContext { return *v }).(GitSourceContextOutput)
+	return o.ApplyT(func(v *GitSourceContext) GitSourceContext {
+		if v != nil {
+			return *v
+		}
+		var ret GitSourceContext
+		return ret
+	}).(GitSourceContextOutput)
 }
 
 // Git commit hash.
@@ -11376,7 +11691,7 @@ func (o GitSourceContextResponseOutput) ToGitSourceContextResponsePtrOutput() Gi
 }
 
 func (o GitSourceContextResponseOutput) ToGitSourceContextResponsePtrOutputWithContext(ctx context.Context) GitSourceContextResponsePtrOutput {
-	return o.ApplyT(func(v GitSourceContextResponse) *GitSourceContextResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitSourceContextResponse) *GitSourceContextResponse {
 		return &v
 	}).(GitSourceContextResponsePtrOutput)
 }
@@ -11406,7 +11721,13 @@ func (o GitSourceContextResponsePtrOutput) ToGitSourceContextResponsePtrOutputWi
 }
 
 func (o GitSourceContextResponsePtrOutput) Elem() GitSourceContextResponseOutput {
-	return o.ApplyT(func(v *GitSourceContextResponse) GitSourceContextResponse { return *v }).(GitSourceContextResponseOutput)
+	return o.ApplyT(func(v *GitSourceContextResponse) GitSourceContextResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GitSourceContextResponse
+		return ret
+	}).(GitSourceContextResponseOutput)
 }
 
 // Git commit hash.
@@ -11529,7 +11850,7 @@ func (o GrafeasV1beta1BuildDetailsOutput) ToGrafeasV1beta1BuildDetailsPtrOutput(
 }
 
 func (o GrafeasV1beta1BuildDetailsOutput) ToGrafeasV1beta1BuildDetailsPtrOutputWithContext(ctx context.Context) GrafeasV1beta1BuildDetailsPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1BuildDetails) *GrafeasV1beta1BuildDetails {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1BuildDetails) *GrafeasV1beta1BuildDetails {
 		return &v
 	}).(GrafeasV1beta1BuildDetailsPtrOutput)
 }
@@ -11559,7 +11880,13 @@ func (o GrafeasV1beta1BuildDetailsPtrOutput) ToGrafeasV1beta1BuildDetailsPtrOutp
 }
 
 func (o GrafeasV1beta1BuildDetailsPtrOutput) Elem() GrafeasV1beta1BuildDetailsOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1BuildDetails) GrafeasV1beta1BuildDetails { return *v }).(GrafeasV1beta1BuildDetailsOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1BuildDetails) GrafeasV1beta1BuildDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1BuildDetails
+		return ret
+	}).(GrafeasV1beta1BuildDetailsOutput)
 }
 
 // The actual provenance for the build.
@@ -11682,7 +12009,7 @@ func (o GrafeasV1beta1BuildDetailsResponseOutput) ToGrafeasV1beta1BuildDetailsRe
 }
 
 func (o GrafeasV1beta1BuildDetailsResponseOutput) ToGrafeasV1beta1BuildDetailsResponsePtrOutputWithContext(ctx context.Context) GrafeasV1beta1BuildDetailsResponsePtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1BuildDetailsResponse) *GrafeasV1beta1BuildDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1BuildDetailsResponse) *GrafeasV1beta1BuildDetailsResponse {
 		return &v
 	}).(GrafeasV1beta1BuildDetailsResponsePtrOutput)
 }
@@ -11712,7 +12039,13 @@ func (o GrafeasV1beta1BuildDetailsResponsePtrOutput) ToGrafeasV1beta1BuildDetail
 }
 
 func (o GrafeasV1beta1BuildDetailsResponsePtrOutput) Elem() GrafeasV1beta1BuildDetailsResponseOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1BuildDetailsResponse) GrafeasV1beta1BuildDetailsResponse { return *v }).(GrafeasV1beta1BuildDetailsResponseOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1BuildDetailsResponse) GrafeasV1beta1BuildDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1BuildDetailsResponse
+		return ret
+	}).(GrafeasV1beta1BuildDetailsResponseOutput)
 }
 
 // The actual provenance for the build.
@@ -11831,7 +12164,7 @@ func (o GrafeasV1beta1DeploymentDetailsOutput) ToGrafeasV1beta1DeploymentDetails
 }
 
 func (o GrafeasV1beta1DeploymentDetailsOutput) ToGrafeasV1beta1DeploymentDetailsPtrOutputWithContext(ctx context.Context) GrafeasV1beta1DeploymentDetailsPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1DeploymentDetails) *GrafeasV1beta1DeploymentDetails {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1DeploymentDetails) *GrafeasV1beta1DeploymentDetails {
 		return &v
 	}).(GrafeasV1beta1DeploymentDetailsPtrOutput)
 }
@@ -11856,7 +12189,13 @@ func (o GrafeasV1beta1DeploymentDetailsPtrOutput) ToGrafeasV1beta1DeploymentDeta
 }
 
 func (o GrafeasV1beta1DeploymentDetailsPtrOutput) Elem() GrafeasV1beta1DeploymentDetailsOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1DeploymentDetails) GrafeasV1beta1DeploymentDetails { return *v }).(GrafeasV1beta1DeploymentDetailsOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1DeploymentDetails) GrafeasV1beta1DeploymentDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1DeploymentDetails
+		return ret
+	}).(GrafeasV1beta1DeploymentDetailsOutput)
 }
 
 // Deployment history for the resource.
@@ -11965,7 +12304,7 @@ func (o GrafeasV1beta1DeploymentDetailsResponseOutput) ToGrafeasV1beta1Deploymen
 }
 
 func (o GrafeasV1beta1DeploymentDetailsResponseOutput) ToGrafeasV1beta1DeploymentDetailsResponsePtrOutputWithContext(ctx context.Context) GrafeasV1beta1DeploymentDetailsResponsePtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1DeploymentDetailsResponse) *GrafeasV1beta1DeploymentDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1DeploymentDetailsResponse) *GrafeasV1beta1DeploymentDetailsResponse {
 		return &v
 	}).(GrafeasV1beta1DeploymentDetailsResponsePtrOutput)
 }
@@ -11990,7 +12329,13 @@ func (o GrafeasV1beta1DeploymentDetailsResponsePtrOutput) ToGrafeasV1beta1Deploy
 }
 
 func (o GrafeasV1beta1DeploymentDetailsResponsePtrOutput) Elem() GrafeasV1beta1DeploymentDetailsResponseOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1DeploymentDetailsResponse) GrafeasV1beta1DeploymentDetailsResponse { return *v }).(GrafeasV1beta1DeploymentDetailsResponseOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1DeploymentDetailsResponse) GrafeasV1beta1DeploymentDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1DeploymentDetailsResponse
+		return ret
+	}).(GrafeasV1beta1DeploymentDetailsResponseOutput)
 }
 
 // Deployment history for the resource.
@@ -12099,7 +12444,7 @@ func (o GrafeasV1beta1DiscoveryDetailsOutput) ToGrafeasV1beta1DiscoveryDetailsPt
 }
 
 func (o GrafeasV1beta1DiscoveryDetailsOutput) ToGrafeasV1beta1DiscoveryDetailsPtrOutputWithContext(ctx context.Context) GrafeasV1beta1DiscoveryDetailsPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1DiscoveryDetails) *GrafeasV1beta1DiscoveryDetails {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1DiscoveryDetails) *GrafeasV1beta1DiscoveryDetails {
 		return &v
 	}).(GrafeasV1beta1DiscoveryDetailsPtrOutput)
 }
@@ -12124,7 +12469,13 @@ func (o GrafeasV1beta1DiscoveryDetailsPtrOutput) ToGrafeasV1beta1DiscoveryDetail
 }
 
 func (o GrafeasV1beta1DiscoveryDetailsPtrOutput) Elem() GrafeasV1beta1DiscoveryDetailsOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1DiscoveryDetails) GrafeasV1beta1DiscoveryDetails { return *v }).(GrafeasV1beta1DiscoveryDetailsOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1DiscoveryDetails) GrafeasV1beta1DiscoveryDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1DiscoveryDetails
+		return ret
+	}).(GrafeasV1beta1DiscoveryDetailsOutput)
 }
 
 // Analysis status for the discovered resource.
@@ -12233,7 +12584,7 @@ func (o GrafeasV1beta1DiscoveryDetailsResponseOutput) ToGrafeasV1beta1DiscoveryD
 }
 
 func (o GrafeasV1beta1DiscoveryDetailsResponseOutput) ToGrafeasV1beta1DiscoveryDetailsResponsePtrOutputWithContext(ctx context.Context) GrafeasV1beta1DiscoveryDetailsResponsePtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1DiscoveryDetailsResponse) *GrafeasV1beta1DiscoveryDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1DiscoveryDetailsResponse) *GrafeasV1beta1DiscoveryDetailsResponse {
 		return &v
 	}).(GrafeasV1beta1DiscoveryDetailsResponsePtrOutput)
 }
@@ -12258,7 +12609,13 @@ func (o GrafeasV1beta1DiscoveryDetailsResponsePtrOutput) ToGrafeasV1beta1Discove
 }
 
 func (o GrafeasV1beta1DiscoveryDetailsResponsePtrOutput) Elem() GrafeasV1beta1DiscoveryDetailsResponseOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1DiscoveryDetailsResponse) GrafeasV1beta1DiscoveryDetailsResponse { return *v }).(GrafeasV1beta1DiscoveryDetailsResponseOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1DiscoveryDetailsResponse) GrafeasV1beta1DiscoveryDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1DiscoveryDetailsResponse
+		return ret
+	}).(GrafeasV1beta1DiscoveryDetailsResponseOutput)
 }
 
 // Analysis status for the discovered resource.
@@ -12367,7 +12724,7 @@ func (o GrafeasV1beta1ImageDetailsOutput) ToGrafeasV1beta1ImageDetailsPtrOutput(
 }
 
 func (o GrafeasV1beta1ImageDetailsOutput) ToGrafeasV1beta1ImageDetailsPtrOutputWithContext(ctx context.Context) GrafeasV1beta1ImageDetailsPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1ImageDetails) *GrafeasV1beta1ImageDetails {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1ImageDetails) *GrafeasV1beta1ImageDetails {
 		return &v
 	}).(GrafeasV1beta1ImageDetailsPtrOutput)
 }
@@ -12392,7 +12749,13 @@ func (o GrafeasV1beta1ImageDetailsPtrOutput) ToGrafeasV1beta1ImageDetailsPtrOutp
 }
 
 func (o GrafeasV1beta1ImageDetailsPtrOutput) Elem() GrafeasV1beta1ImageDetailsOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1ImageDetails) GrafeasV1beta1ImageDetails { return *v }).(GrafeasV1beta1ImageDetailsOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1ImageDetails) GrafeasV1beta1ImageDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1ImageDetails
+		return ret
+	}).(GrafeasV1beta1ImageDetailsOutput)
 }
 
 // Immutable. The child image derived from the base image.
@@ -12501,7 +12864,7 @@ func (o GrafeasV1beta1ImageDetailsResponseOutput) ToGrafeasV1beta1ImageDetailsRe
 }
 
 func (o GrafeasV1beta1ImageDetailsResponseOutput) ToGrafeasV1beta1ImageDetailsResponsePtrOutputWithContext(ctx context.Context) GrafeasV1beta1ImageDetailsResponsePtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1ImageDetailsResponse) *GrafeasV1beta1ImageDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1ImageDetailsResponse) *GrafeasV1beta1ImageDetailsResponse {
 		return &v
 	}).(GrafeasV1beta1ImageDetailsResponsePtrOutput)
 }
@@ -12526,7 +12889,13 @@ func (o GrafeasV1beta1ImageDetailsResponsePtrOutput) ToGrafeasV1beta1ImageDetail
 }
 
 func (o GrafeasV1beta1ImageDetailsResponsePtrOutput) Elem() GrafeasV1beta1ImageDetailsResponseOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1ImageDetailsResponse) GrafeasV1beta1ImageDetailsResponse { return *v }).(GrafeasV1beta1ImageDetailsResponseOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1ImageDetailsResponse) GrafeasV1beta1ImageDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1ImageDetailsResponse
+		return ret
+	}).(GrafeasV1beta1ImageDetailsResponseOutput)
 }
 
 // Immutable. The child image derived from the base image.
@@ -12835,10 +13204,11 @@ func (o GrafeasV1beta1IntotoDetailsOutput) ToGrafeasV1beta1IntotoDetailsPtrOutpu
 }
 
 func (o GrafeasV1beta1IntotoDetailsOutput) ToGrafeasV1beta1IntotoDetailsPtrOutputWithContext(ctx context.Context) GrafeasV1beta1IntotoDetailsPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1IntotoDetails) *GrafeasV1beta1IntotoDetails {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1IntotoDetails) *GrafeasV1beta1IntotoDetails {
 		return &v
 	}).(GrafeasV1beta1IntotoDetailsPtrOutput)
 }
+
 func (o GrafeasV1beta1IntotoDetailsOutput) Signatures() GrafeasV1beta1IntotoSignatureArrayOutput {
 	return o.ApplyT(func(v GrafeasV1beta1IntotoDetails) []GrafeasV1beta1IntotoSignature { return v.Signatures }).(GrafeasV1beta1IntotoSignatureArrayOutput)
 }
@@ -12862,7 +13232,13 @@ func (o GrafeasV1beta1IntotoDetailsPtrOutput) ToGrafeasV1beta1IntotoDetailsPtrOu
 }
 
 func (o GrafeasV1beta1IntotoDetailsPtrOutput) Elem() GrafeasV1beta1IntotoDetailsOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1IntotoDetails) GrafeasV1beta1IntotoDetails { return *v }).(GrafeasV1beta1IntotoDetailsOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1IntotoDetails) GrafeasV1beta1IntotoDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1IntotoDetails
+		return ret
+	}).(GrafeasV1beta1IntotoDetailsOutput)
 }
 
 func (o GrafeasV1beta1IntotoDetailsPtrOutput) Signatures() GrafeasV1beta1IntotoSignatureArrayOutput {
@@ -12979,10 +13355,11 @@ func (o GrafeasV1beta1IntotoDetailsResponseOutput) ToGrafeasV1beta1IntotoDetails
 }
 
 func (o GrafeasV1beta1IntotoDetailsResponseOutput) ToGrafeasV1beta1IntotoDetailsResponsePtrOutputWithContext(ctx context.Context) GrafeasV1beta1IntotoDetailsResponsePtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1IntotoDetailsResponse) *GrafeasV1beta1IntotoDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1IntotoDetailsResponse) *GrafeasV1beta1IntotoDetailsResponse {
 		return &v
 	}).(GrafeasV1beta1IntotoDetailsResponsePtrOutput)
 }
+
 func (o GrafeasV1beta1IntotoDetailsResponseOutput) Signatures() GrafeasV1beta1IntotoSignatureResponseArrayOutput {
 	return o.ApplyT(func(v GrafeasV1beta1IntotoDetailsResponse) []GrafeasV1beta1IntotoSignatureResponse {
 		return v.Signatures
@@ -13008,7 +13385,13 @@ func (o GrafeasV1beta1IntotoDetailsResponsePtrOutput) ToGrafeasV1beta1IntotoDeta
 }
 
 func (o GrafeasV1beta1IntotoDetailsResponsePtrOutput) Elem() GrafeasV1beta1IntotoDetailsResponseOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1IntotoDetailsResponse) GrafeasV1beta1IntotoDetailsResponse { return *v }).(GrafeasV1beta1IntotoDetailsResponseOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1IntotoDetailsResponse) GrafeasV1beta1IntotoDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1IntotoDetailsResponse
+		return ret
+	}).(GrafeasV1beta1IntotoDetailsResponseOutput)
 }
 
 func (o GrafeasV1beta1IntotoDetailsResponsePtrOutput) Signatures() GrafeasV1beta1IntotoSignatureResponseArrayOutput {
@@ -13331,7 +13714,7 @@ func (o GrafeasV1beta1PackageDetailsOutput) ToGrafeasV1beta1PackageDetailsPtrOut
 }
 
 func (o GrafeasV1beta1PackageDetailsOutput) ToGrafeasV1beta1PackageDetailsPtrOutputWithContext(ctx context.Context) GrafeasV1beta1PackageDetailsPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1PackageDetails) *GrafeasV1beta1PackageDetails {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1PackageDetails) *GrafeasV1beta1PackageDetails {
 		return &v
 	}).(GrafeasV1beta1PackageDetailsPtrOutput)
 }
@@ -13356,7 +13739,13 @@ func (o GrafeasV1beta1PackageDetailsPtrOutput) ToGrafeasV1beta1PackageDetailsPtr
 }
 
 func (o GrafeasV1beta1PackageDetailsPtrOutput) Elem() GrafeasV1beta1PackageDetailsOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1PackageDetails) GrafeasV1beta1PackageDetails { return *v }).(GrafeasV1beta1PackageDetailsOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1PackageDetails) GrafeasV1beta1PackageDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1PackageDetails
+		return ret
+	}).(GrafeasV1beta1PackageDetailsOutput)
 }
 
 // Where the package was installed.
@@ -13465,7 +13854,7 @@ func (o GrafeasV1beta1PackageDetailsResponseOutput) ToGrafeasV1beta1PackageDetai
 }
 
 func (o GrafeasV1beta1PackageDetailsResponseOutput) ToGrafeasV1beta1PackageDetailsResponsePtrOutputWithContext(ctx context.Context) GrafeasV1beta1PackageDetailsResponsePtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1PackageDetailsResponse) *GrafeasV1beta1PackageDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1PackageDetailsResponse) *GrafeasV1beta1PackageDetailsResponse {
 		return &v
 	}).(GrafeasV1beta1PackageDetailsResponsePtrOutput)
 }
@@ -13490,7 +13879,13 @@ func (o GrafeasV1beta1PackageDetailsResponsePtrOutput) ToGrafeasV1beta1PackageDe
 }
 
 func (o GrafeasV1beta1PackageDetailsResponsePtrOutput) Elem() GrafeasV1beta1PackageDetailsResponseOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1PackageDetailsResponse) GrafeasV1beta1PackageDetailsResponse { return *v }).(GrafeasV1beta1PackageDetailsResponseOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1PackageDetailsResponse) GrafeasV1beta1PackageDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1PackageDetailsResponse
+		return ret
+	}).(GrafeasV1beta1PackageDetailsResponseOutput)
 }
 
 // Where the package was installed.
@@ -13607,7 +14002,7 @@ func (o GrafeasV1beta1VulnerabilityDetailsOutput) ToGrafeasV1beta1VulnerabilityD
 }
 
 func (o GrafeasV1beta1VulnerabilityDetailsOutput) ToGrafeasV1beta1VulnerabilityDetailsPtrOutputWithContext(ctx context.Context) GrafeasV1beta1VulnerabilityDetailsPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetails) *GrafeasV1beta1VulnerabilityDetails {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1VulnerabilityDetails) *GrafeasV1beta1VulnerabilityDetails {
 		return &v
 	}).(GrafeasV1beta1VulnerabilityDetailsPtrOutput)
 }
@@ -13644,7 +14039,13 @@ func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) ToGrafeasV1beta1Vulnerabili
 }
 
 func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) Elem() GrafeasV1beta1VulnerabilityDetailsOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetails) GrafeasV1beta1VulnerabilityDetails { return *v }).(GrafeasV1beta1VulnerabilityDetailsOutput)
+	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetails) GrafeasV1beta1VulnerabilityDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1VulnerabilityDetails
+		return ret
+	}).(GrafeasV1beta1VulnerabilityDetailsOutput)
 }
 
 // The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
@@ -13801,7 +14202,7 @@ func (o GrafeasV1beta1VulnerabilityDetailsResponseOutput) ToGrafeasV1beta1Vulner
 }
 
 func (o GrafeasV1beta1VulnerabilityDetailsResponseOutput) ToGrafeasV1beta1VulnerabilityDetailsResponsePtrOutputWithContext(ctx context.Context) GrafeasV1beta1VulnerabilityDetailsResponsePtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetailsResponse) *GrafeasV1beta1VulnerabilityDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1beta1VulnerabilityDetailsResponse) *GrafeasV1beta1VulnerabilityDetailsResponse {
 		return &v
 	}).(GrafeasV1beta1VulnerabilityDetailsResponsePtrOutput)
 }
@@ -13862,7 +14263,11 @@ func (o GrafeasV1beta1VulnerabilityDetailsResponsePtrOutput) ToGrafeasV1beta1Vul
 
 func (o GrafeasV1beta1VulnerabilityDetailsResponsePtrOutput) Elem() GrafeasV1beta1VulnerabilityDetailsResponseOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetailsResponse) GrafeasV1beta1VulnerabilityDetailsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1beta1VulnerabilityDetailsResponse
+		return ret
 	}).(GrafeasV1beta1VulnerabilityDetailsResponseOutput)
 }
 
@@ -14042,7 +14447,7 @@ func (o HintOutput) ToHintPtrOutput() HintPtrOutput {
 }
 
 func (o HintOutput) ToHintPtrOutputWithContext(ctx context.Context) HintPtrOutput {
-	return o.ApplyT(func(v Hint) *Hint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hint) *Hint {
 		return &v
 	}).(HintPtrOutput)
 }
@@ -14067,7 +14472,13 @@ func (o HintPtrOutput) ToHintPtrOutputWithContext(ctx context.Context) HintPtrOu
 }
 
 func (o HintPtrOutput) Elem() HintOutput {
-	return o.ApplyT(func(v *Hint) Hint { return *v }).(HintOutput)
+	return o.ApplyT(func(v *Hint) Hint {
+		if v != nil {
+			return *v
+		}
+		var ret Hint
+		return ret
+	}).(HintOutput)
 }
 
 // The human readable name of this attestation authority, for example "qa".
@@ -14176,7 +14587,7 @@ func (o HintResponseOutput) ToHintResponsePtrOutput() HintResponsePtrOutput {
 }
 
 func (o HintResponseOutput) ToHintResponsePtrOutputWithContext(ctx context.Context) HintResponsePtrOutput {
-	return o.ApplyT(func(v HintResponse) *HintResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HintResponse) *HintResponse {
 		return &v
 	}).(HintResponsePtrOutput)
 }
@@ -14201,7 +14612,13 @@ func (o HintResponsePtrOutput) ToHintResponsePtrOutputWithContext(ctx context.Co
 }
 
 func (o HintResponsePtrOutput) Elem() HintResponseOutput {
-	return o.ApplyT(func(v *HintResponse) HintResponse { return *v }).(HintResponseOutput)
+	return o.ApplyT(func(v *HintResponse) HintResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HintResponse
+		return ret
+	}).(HintResponseOutput)
 }
 
 // The human readable name of this attestation authority, for example "qa".
@@ -14328,7 +14745,7 @@ func (o InTotoOutput) ToInTotoPtrOutput() InTotoPtrOutput {
 }
 
 func (o InTotoOutput) ToInTotoPtrOutputWithContext(ctx context.Context) InTotoPtrOutput {
-	return o.ApplyT(func(v InToto) *InToto {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InToto) *InToto {
 		return &v
 	}).(InTotoPtrOutput)
 }
@@ -14377,7 +14794,13 @@ func (o InTotoPtrOutput) ToInTotoPtrOutputWithContext(ctx context.Context) InTot
 }
 
 func (o InTotoPtrOutput) Elem() InTotoOutput {
-	return o.ApplyT(func(v *InToto) InToto { return *v }).(InTotoOutput)
+	return o.ApplyT(func(v *InToto) InToto {
+		if v != nil {
+			return *v
+		}
+		var ret InToto
+		return ret
+	}).(InTotoOutput)
 }
 
 // This field contains the expected command used to perform the step.
@@ -14553,7 +14976,7 @@ func (o InTotoResponseOutput) ToInTotoResponsePtrOutput() InTotoResponsePtrOutpu
 }
 
 func (o InTotoResponseOutput) ToInTotoResponsePtrOutputWithContext(ctx context.Context) InTotoResponsePtrOutput {
-	return o.ApplyT(func(v InTotoResponse) *InTotoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InTotoResponse) *InTotoResponse {
 		return &v
 	}).(InTotoResponsePtrOutput)
 }
@@ -14602,7 +15025,13 @@ func (o InTotoResponsePtrOutput) ToInTotoResponsePtrOutputWithContext(ctx contex
 }
 
 func (o InTotoResponsePtrOutput) Elem() InTotoResponseOutput {
-	return o.ApplyT(func(v *InTotoResponse) InTotoResponse { return *v }).(InTotoResponseOutput)
+	return o.ApplyT(func(v *InTotoResponse) InTotoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InTotoResponse
+		return ret
+	}).(InTotoResponseOutput)
 }
 
 // This field contains the expected command used to perform the step.
@@ -14760,7 +15189,7 @@ func (o InstallationOutput) ToInstallationPtrOutput() InstallationPtrOutput {
 }
 
 func (o InstallationOutput) ToInstallationPtrOutputWithContext(ctx context.Context) InstallationPtrOutput {
-	return o.ApplyT(func(v Installation) *Installation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Installation) *Installation {
 		return &v
 	}).(InstallationPtrOutput)
 }
@@ -14785,7 +15214,13 @@ func (o InstallationPtrOutput) ToInstallationPtrOutputWithContext(ctx context.Co
 }
 
 func (o InstallationPtrOutput) Elem() InstallationOutput {
-	return o.ApplyT(func(v *Installation) Installation { return *v }).(InstallationOutput)
+	return o.ApplyT(func(v *Installation) Installation {
+		if v != nil {
+			return *v
+		}
+		var ret Installation
+		return ret
+	}).(InstallationOutput)
 }
 
 // All of the places within the filesystem versions of this package have been found.
@@ -14898,7 +15333,7 @@ func (o InstallationResponseOutput) ToInstallationResponsePtrOutput() Installati
 }
 
 func (o InstallationResponseOutput) ToInstallationResponsePtrOutputWithContext(ctx context.Context) InstallationResponsePtrOutput {
-	return o.ApplyT(func(v InstallationResponse) *InstallationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstallationResponse) *InstallationResponse {
 		return &v
 	}).(InstallationResponsePtrOutput)
 }
@@ -14928,7 +15363,13 @@ func (o InstallationResponsePtrOutput) ToInstallationResponsePtrOutputWithContex
 }
 
 func (o InstallationResponsePtrOutput) Elem() InstallationResponseOutput {
-	return o.ApplyT(func(v *InstallationResponse) InstallationResponse { return *v }).(InstallationResponseOutput)
+	return o.ApplyT(func(v *InstallationResponse) InstallationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InstallationResponse
+		return ret
+	}).(InstallationResponseOutput)
 }
 
 // All of the places within the filesystem versions of this package have been found.
@@ -15493,7 +15934,7 @@ func (o LinkOutput) ToLinkPtrOutput() LinkPtrOutput {
 }
 
 func (o LinkOutput) ToLinkPtrOutputWithContext(ctx context.Context) LinkPtrOutput {
-	return o.ApplyT(func(v Link) *Link {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Link) *Link {
 		return &v
 	}).(LinkPtrOutput)
 }
@@ -15538,7 +15979,13 @@ func (o LinkPtrOutput) ToLinkPtrOutputWithContext(ctx context.Context) LinkPtrOu
 }
 
 func (o LinkPtrOutput) Elem() LinkOutput {
-	return o.ApplyT(func(v *Link) Link { return *v }).(LinkOutput)
+	return o.ApplyT(func(v *Link) Link {
+		if v != nil {
+			return *v
+		}
+		var ret Link
+		return ret
+	}).(LinkOutput)
 }
 
 // ByProducts are data generated as part of a software supply chain step, but are not the actual result of the step.
@@ -15703,7 +16150,7 @@ func (o LinkResponseOutput) ToLinkResponsePtrOutput() LinkResponsePtrOutput {
 }
 
 func (o LinkResponseOutput) ToLinkResponsePtrOutputWithContext(ctx context.Context) LinkResponsePtrOutput {
-	return o.ApplyT(func(v LinkResponse) *LinkResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinkResponse) *LinkResponse {
 		return &v
 	}).(LinkResponsePtrOutput)
 }
@@ -15748,7 +16195,13 @@ func (o LinkResponsePtrOutput) ToLinkResponsePtrOutputWithContext(ctx context.Co
 }
 
 func (o LinkResponsePtrOutput) Elem() LinkResponseOutput {
-	return o.ApplyT(func(v *LinkResponse) LinkResponse { return *v }).(LinkResponseOutput)
+	return o.ApplyT(func(v *LinkResponse) LinkResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LinkResponse
+		return ret
+	}).(LinkResponseOutput)
 }
 
 // ByProducts are data generated as part of a software supply chain step, but are not the actual result of the step.
@@ -16137,7 +16590,7 @@ func (o PackageOutput) ToPackagePtrOutput() PackagePtrOutput {
 }
 
 func (o PackageOutput) ToPackagePtrOutputWithContext(ctx context.Context) PackagePtrOutput {
-	return o.ApplyT(func(v Package) *Package {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Package) *Package {
 		return &v
 	}).(PackagePtrOutput)
 }
@@ -16167,7 +16620,13 @@ func (o PackagePtrOutput) ToPackagePtrOutputWithContext(ctx context.Context) Pac
 }
 
 func (o PackagePtrOutput) Elem() PackageOutput {
-	return o.ApplyT(func(v *Package) Package { return *v }).(PackageOutput)
+	return o.ApplyT(func(v *Package) Package {
+		if v != nil {
+			return *v
+		}
+		var ret Package
+		return ret
+	}).(PackageOutput)
 }
 
 // The various channels by which a package is distributed.
@@ -16591,7 +17050,7 @@ func (o PackageNoteOutput) ToPackageNotePtrOutput() PackageNotePtrOutput {
 }
 
 func (o PackageNoteOutput) ToPackageNotePtrOutputWithContext(ctx context.Context) PackageNotePtrOutput {
-	return o.ApplyT(func(v PackageNote) *PackageNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageNote) *PackageNote {
 		return &v
 	}).(PackageNotePtrOutput)
 }
@@ -16691,7 +17150,13 @@ func (o PackageNotePtrOutput) ToPackageNotePtrOutputWithContext(ctx context.Cont
 }
 
 func (o PackageNotePtrOutput) Elem() PackageNoteOutput {
-	return o.ApplyT(func(v *PackageNote) PackageNote { return *v }).(PackageNoteOutput)
+	return o.ApplyT(func(v *PackageNote) PackageNote {
+		if v != nil {
+			return *v
+		}
+		var ret PackageNote
+		return ret
+	}).(PackageNoteOutput)
 }
 
 // Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
@@ -17010,7 +17475,7 @@ func (o PackageNoteResponseOutput) ToPackageNoteResponsePtrOutput() PackageNoteR
 }
 
 func (o PackageNoteResponseOutput) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return o.ApplyT(func(v PackageNoteResponse) *PackageNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageNoteResponse) *PackageNoteResponse {
 		return &v
 	}).(PackageNoteResponsePtrOutput)
 }
@@ -17110,7 +17575,13 @@ func (o PackageNoteResponsePtrOutput) ToPackageNoteResponsePtrOutputWithContext(
 }
 
 func (o PackageNoteResponsePtrOutput) Elem() PackageNoteResponseOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) PackageNoteResponse { return *v }).(PackageNoteResponseOutput)
+	return o.ApplyT(func(v *PackageNoteResponse) PackageNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PackageNoteResponse
+		return ret
+	}).(PackageNoteResponseOutput)
 }
 
 // Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
@@ -17389,7 +17860,7 @@ func (o PackageOccurrenceOutput) ToPackageOccurrencePtrOutput() PackageOccurrenc
 }
 
 func (o PackageOccurrenceOutput) ToPackageOccurrencePtrOutputWithContext(ctx context.Context) PackageOccurrencePtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *PackageOccurrence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageOccurrence) *PackageOccurrence {
 		return &v
 	}).(PackageOccurrencePtrOutput)
 }
@@ -17439,7 +17910,13 @@ func (o PackageOccurrencePtrOutput) ToPackageOccurrencePtrOutputWithContext(ctx 
 }
 
 func (o PackageOccurrencePtrOutput) Elem() PackageOccurrenceOutput {
-	return o.ApplyT(func(v *PackageOccurrence) PackageOccurrence { return *v }).(PackageOccurrenceOutput)
+	return o.ApplyT(func(v *PackageOccurrence) PackageOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret PackageOccurrence
+		return ret
+	}).(PackageOccurrenceOutput)
 }
 
 // A place for the SPDX file creator to record any general comments about the package being described
@@ -17614,7 +18091,7 @@ func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponsePtrOutput() 
 }
 
 func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) *PackageOccurrenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageOccurrenceResponse) *PackageOccurrenceResponse {
 		return &v
 	}).(PackageOccurrenceResponsePtrOutput)
 }
@@ -17659,7 +18136,13 @@ func (o PackageOccurrenceResponsePtrOutput) ToPackageOccurrenceResponsePtrOutput
 }
 
 func (o PackageOccurrenceResponsePtrOutput) Elem() PackageOccurrenceResponseOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) PackageOccurrenceResponse { return *v }).(PackageOccurrenceResponseOutput)
+	return o.ApplyT(func(v *PackageOccurrenceResponse) PackageOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PackageOccurrenceResponse
+		return ret
+	}).(PackageOccurrenceResponseOutput)
 }
 
 // A place for the SPDX file creator to record any general comments about the package being described
@@ -17812,7 +18295,7 @@ func (o PackageResponseOutput) ToPackageResponsePtrOutput() PackageResponsePtrOu
 }
 
 func (o PackageResponseOutput) ToPackageResponsePtrOutputWithContext(ctx context.Context) PackageResponsePtrOutput {
-	return o.ApplyT(func(v PackageResponse) *PackageResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageResponse) *PackageResponse {
 		return &v
 	}).(PackageResponsePtrOutput)
 }
@@ -17842,7 +18325,13 @@ func (o PackageResponsePtrOutput) ToPackageResponsePtrOutputWithContext(ctx cont
 }
 
 func (o PackageResponsePtrOutput) Elem() PackageResponseOutput {
-	return o.ApplyT(func(v *PackageResponse) PackageResponse { return *v }).(PackageResponseOutput)
+	return o.ApplyT(func(v *PackageResponse) PackageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PackageResponse
+		return ret
+	}).(PackageResponseOutput)
 }
 
 // The various channels by which a package is distributed.
@@ -17969,7 +18458,7 @@ func (o PgpSignedAttestationOutput) ToPgpSignedAttestationPtrOutput() PgpSignedA
 }
 
 func (o PgpSignedAttestationOutput) ToPgpSignedAttestationPtrOutputWithContext(ctx context.Context) PgpSignedAttestationPtrOutput {
-	return o.ApplyT(func(v PgpSignedAttestation) *PgpSignedAttestation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PgpSignedAttestation) *PgpSignedAttestation {
 		return &v
 	}).(PgpSignedAttestationPtrOutput)
 }
@@ -18004,7 +18493,13 @@ func (o PgpSignedAttestationPtrOutput) ToPgpSignedAttestationPtrOutputWithContex
 }
 
 func (o PgpSignedAttestationPtrOutput) Elem() PgpSignedAttestationOutput {
-	return o.ApplyT(func(v *PgpSignedAttestation) PgpSignedAttestation { return *v }).(PgpSignedAttestationOutput)
+	return o.ApplyT(func(v *PgpSignedAttestation) PgpSignedAttestation {
+		if v != nil {
+			return *v
+		}
+		var ret PgpSignedAttestation
+		return ret
+	}).(PgpSignedAttestationOutput)
 }
 
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
@@ -18141,7 +18636,7 @@ func (o PgpSignedAttestationResponseOutput) ToPgpSignedAttestationResponsePtrOut
 }
 
 func (o PgpSignedAttestationResponseOutput) ToPgpSignedAttestationResponsePtrOutputWithContext(ctx context.Context) PgpSignedAttestationResponsePtrOutput {
-	return o.ApplyT(func(v PgpSignedAttestationResponse) *PgpSignedAttestationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PgpSignedAttestationResponse) *PgpSignedAttestationResponse {
 		return &v
 	}).(PgpSignedAttestationResponsePtrOutput)
 }
@@ -18176,7 +18671,13 @@ func (o PgpSignedAttestationResponsePtrOutput) ToPgpSignedAttestationResponsePtr
 }
 
 func (o PgpSignedAttestationResponsePtrOutput) Elem() PgpSignedAttestationResponseOutput {
-	return o.ApplyT(func(v *PgpSignedAttestationResponse) PgpSignedAttestationResponse { return *v }).(PgpSignedAttestationResponseOutput)
+	return o.ApplyT(func(v *PgpSignedAttestationResponse) PgpSignedAttestationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PgpSignedAttestationResponse
+		return ret
+	}).(PgpSignedAttestationResponseOutput)
 }
 
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
@@ -18309,7 +18810,7 @@ func (o ProjectRepoIdOutput) ToProjectRepoIdPtrOutput() ProjectRepoIdPtrOutput {
 }
 
 func (o ProjectRepoIdOutput) ToProjectRepoIdPtrOutputWithContext(ctx context.Context) ProjectRepoIdPtrOutput {
-	return o.ApplyT(func(v ProjectRepoId) *ProjectRepoId {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectRepoId) *ProjectRepoId {
 		return &v
 	}).(ProjectRepoIdPtrOutput)
 }
@@ -18339,7 +18840,13 @@ func (o ProjectRepoIdPtrOutput) ToProjectRepoIdPtrOutputWithContext(ctx context.
 }
 
 func (o ProjectRepoIdPtrOutput) Elem() ProjectRepoIdOutput {
-	return o.ApplyT(func(v *ProjectRepoId) ProjectRepoId { return *v }).(ProjectRepoIdOutput)
+	return o.ApplyT(func(v *ProjectRepoId) ProjectRepoId {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectRepoId
+		return ret
+	}).(ProjectRepoIdOutput)
 }
 
 // The ID of the project.
@@ -18462,7 +18969,7 @@ func (o ProjectRepoIdResponseOutput) ToProjectRepoIdResponsePtrOutput() ProjectR
 }
 
 func (o ProjectRepoIdResponseOutput) ToProjectRepoIdResponsePtrOutputWithContext(ctx context.Context) ProjectRepoIdResponsePtrOutput {
-	return o.ApplyT(func(v ProjectRepoIdResponse) *ProjectRepoIdResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectRepoIdResponse) *ProjectRepoIdResponse {
 		return &v
 	}).(ProjectRepoIdResponsePtrOutput)
 }
@@ -18492,7 +18999,13 @@ func (o ProjectRepoIdResponsePtrOutput) ToProjectRepoIdResponsePtrOutputWithCont
 }
 
 func (o ProjectRepoIdResponsePtrOutput) Elem() ProjectRepoIdResponseOutput {
-	return o.ApplyT(func(v *ProjectRepoIdResponse) ProjectRepoIdResponse { return *v }).(ProjectRepoIdResponseOutput)
+	return o.ApplyT(func(v *ProjectRepoIdResponse) ProjectRepoIdResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectRepoIdResponse
+		return ret
+	}).(ProjectRepoIdResponseOutput)
 }
 
 // The ID of the project.
@@ -18825,7 +19338,7 @@ func (o RelationshipNoteOutput) ToRelationshipNotePtrOutput() RelationshipNotePt
 }
 
 func (o RelationshipNoteOutput) ToRelationshipNotePtrOutputWithContext(ctx context.Context) RelationshipNotePtrOutput {
-	return o.ApplyT(func(v RelationshipNote) *RelationshipNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipNote) *RelationshipNote {
 		return &v
 	}).(RelationshipNotePtrOutput)
 }
@@ -18845,7 +19358,13 @@ func (o RelationshipNotePtrOutput) ToRelationshipNotePtrOutputWithContext(ctx co
 }
 
 func (o RelationshipNotePtrOutput) Elem() RelationshipNoteOutput {
-	return o.ApplyT(func(v *RelationshipNote) RelationshipNote { return *v }).(RelationshipNoteOutput)
+	return o.ApplyT(func(v *RelationshipNote) RelationshipNote {
+		if v != nil {
+			return *v
+		}
+		var ret RelationshipNote
+		return ret
+	}).(RelationshipNoteOutput)
 }
 
 // RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
@@ -18940,7 +19459,7 @@ func (o RelationshipNoteResponseOutput) ToRelationshipNoteResponsePtrOutput() Re
 }
 
 func (o RelationshipNoteResponseOutput) ToRelationshipNoteResponsePtrOutputWithContext(ctx context.Context) RelationshipNoteResponsePtrOutput {
-	return o.ApplyT(func(v RelationshipNoteResponse) *RelationshipNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipNoteResponse) *RelationshipNoteResponse {
 		return &v
 	}).(RelationshipNoteResponsePtrOutput)
 }
@@ -18960,7 +19479,13 @@ func (o RelationshipNoteResponsePtrOutput) ToRelationshipNoteResponsePtrOutputWi
 }
 
 func (o RelationshipNoteResponsePtrOutput) Elem() RelationshipNoteResponseOutput {
-	return o.ApplyT(func(v *RelationshipNoteResponse) RelationshipNoteResponse { return *v }).(RelationshipNoteResponseOutput)
+	return o.ApplyT(func(v *RelationshipNoteResponse) RelationshipNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RelationshipNoteResponse
+		return ret
+	}).(RelationshipNoteResponseOutput)
 }
 
 // RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
@@ -19071,7 +19596,7 @@ func (o RelationshipOccurrenceOutput) ToRelationshipOccurrencePtrOutput() Relati
 }
 
 func (o RelationshipOccurrenceOutput) ToRelationshipOccurrencePtrOutputWithContext(ctx context.Context) RelationshipOccurrencePtrOutput {
-	return o.ApplyT(func(v RelationshipOccurrence) *RelationshipOccurrence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipOccurrence) *RelationshipOccurrence {
 		return &v
 	}).(RelationshipOccurrencePtrOutput)
 }
@@ -19111,7 +19636,13 @@ func (o RelationshipOccurrencePtrOutput) ToRelationshipOccurrencePtrOutputWithCo
 }
 
 func (o RelationshipOccurrencePtrOutput) Elem() RelationshipOccurrenceOutput {
-	return o.ApplyT(func(v *RelationshipOccurrence) RelationshipOccurrence { return *v }).(RelationshipOccurrenceOutput)
+	return o.ApplyT(func(v *RelationshipOccurrence) RelationshipOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret RelationshipOccurrence
+		return ret
+	}).(RelationshipOccurrenceOutput)
 }
 
 // A place for the SPDX file creator to record any general comments about the relationship
@@ -19262,7 +19793,7 @@ func (o RelationshipOccurrenceResponseOutput) ToRelationshipOccurrenceResponsePt
 }
 
 func (o RelationshipOccurrenceResponseOutput) ToRelationshipOccurrenceResponsePtrOutputWithContext(ctx context.Context) RelationshipOccurrenceResponsePtrOutput {
-	return o.ApplyT(func(v RelationshipOccurrenceResponse) *RelationshipOccurrenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipOccurrenceResponse) *RelationshipOccurrenceResponse {
 		return &v
 	}).(RelationshipOccurrenceResponsePtrOutput)
 }
@@ -19302,7 +19833,13 @@ func (o RelationshipOccurrenceResponsePtrOutput) ToRelationshipOccurrenceRespons
 }
 
 func (o RelationshipOccurrenceResponsePtrOutput) Elem() RelationshipOccurrenceResponseOutput {
-	return o.ApplyT(func(v *RelationshipOccurrenceResponse) RelationshipOccurrenceResponse { return *v }).(RelationshipOccurrenceResponseOutput)
+	return o.ApplyT(func(v *RelationshipOccurrenceResponse) RelationshipOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RelationshipOccurrenceResponse
+		return ret
+	}).(RelationshipOccurrenceResponseOutput)
 }
 
 // A place for the SPDX file creator to record any general comments about the relationship
@@ -19445,7 +19982,7 @@ func (o RepoIdOutput) ToRepoIdPtrOutput() RepoIdPtrOutput {
 }
 
 func (o RepoIdOutput) ToRepoIdPtrOutputWithContext(ctx context.Context) RepoIdPtrOutput {
-	return o.ApplyT(func(v RepoId) *RepoId {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoId) *RepoId {
 		return &v
 	}).(RepoIdPtrOutput)
 }
@@ -19475,7 +20012,13 @@ func (o RepoIdPtrOutput) ToRepoIdPtrOutputWithContext(ctx context.Context) RepoI
 }
 
 func (o RepoIdPtrOutput) Elem() RepoIdOutput {
-	return o.ApplyT(func(v *RepoId) RepoId { return *v }).(RepoIdOutput)
+	return o.ApplyT(func(v *RepoId) RepoId {
+		if v != nil {
+			return *v
+		}
+		var ret RepoId
+		return ret
+	}).(RepoIdOutput)
 }
 
 // A combination of a project ID and a repo name.
@@ -19598,7 +20141,7 @@ func (o RepoIdResponseOutput) ToRepoIdResponsePtrOutput() RepoIdResponsePtrOutpu
 }
 
 func (o RepoIdResponseOutput) ToRepoIdResponsePtrOutputWithContext(ctx context.Context) RepoIdResponsePtrOutput {
-	return o.ApplyT(func(v RepoIdResponse) *RepoIdResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoIdResponse) *RepoIdResponse {
 		return &v
 	}).(RepoIdResponsePtrOutput)
 }
@@ -19628,7 +20171,13 @@ func (o RepoIdResponsePtrOutput) ToRepoIdResponsePtrOutputWithContext(ctx contex
 }
 
 func (o RepoIdResponsePtrOutput) Elem() RepoIdResponseOutput {
-	return o.ApplyT(func(v *RepoIdResponse) RepoIdResponse { return *v }).(RepoIdResponseOutput)
+	return o.ApplyT(func(v *RepoIdResponse) RepoIdResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RepoIdResponse
+		return ret
+	}).(RepoIdResponseOutput)
 }
 
 // A combination of a project ID and a repo name.
@@ -19747,7 +20296,7 @@ func (o ResourceOutput) ToResourcePtrOutput() ResourcePtrOutput {
 }
 
 func (o ResourceOutput) ToResourcePtrOutputWithContext(ctx context.Context) ResourcePtrOutput {
-	return o.ApplyT(func(v Resource) *Resource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Resource) *Resource {
 		return &v
 	}).(ResourcePtrOutput)
 }
@@ -19772,7 +20321,13 @@ func (o ResourcePtrOutput) ToResourcePtrOutputWithContext(ctx context.Context) R
 }
 
 func (o ResourcePtrOutput) Elem() ResourceOutput {
-	return o.ApplyT(func(v *Resource) Resource { return *v }).(ResourceOutput)
+	return o.ApplyT(func(v *Resource) Resource {
+		if v != nil {
+			return *v
+		}
+		var ret Resource
+		return ret
+	}).(ResourceOutput)
 }
 
 // The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
@@ -19881,7 +20436,7 @@ func (o ResourceResponseOutput) ToResourceResponsePtrOutput() ResourceResponsePt
 }
 
 func (o ResourceResponseOutput) ToResourceResponsePtrOutputWithContext(ctx context.Context) ResourceResponsePtrOutput {
-	return o.ApplyT(func(v ResourceResponse) *ResourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceResponse) *ResourceResponse {
 		return &v
 	}).(ResourceResponsePtrOutput)
 }
@@ -19906,7 +20461,13 @@ func (o ResourceResponsePtrOutput) ToResourceResponsePtrOutputWithContext(ctx co
 }
 
 func (o ResourceResponsePtrOutput) Elem() ResourceResponseOutput {
-	return o.ApplyT(func(v *ResourceResponse) ResourceResponse { return *v }).(ResourceResponseOutput)
+	return o.ApplyT(func(v *ResourceResponse) ResourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceResponse
+		return ret
+	}).(ResourceResponseOutput)
 }
 
 // The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
@@ -20499,7 +21060,7 @@ func (o SourceOutput) ToSourcePtrOutput() SourcePtrOutput {
 }
 
 func (o SourceOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return o.ApplyT(func(v Source) *Source {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Source) *Source {
 		return &v
 	}).(SourcePtrOutput)
 }
@@ -20539,7 +21100,13 @@ func (o SourcePtrOutput) ToSourcePtrOutputWithContext(ctx context.Context) Sourc
 }
 
 func (o SourcePtrOutput) Elem() SourceOutput {
-	return o.ApplyT(func(v *Source) Source { return *v }).(SourceOutput)
+	return o.ApplyT(func(v *Source) Source {
+		if v != nil {
+			return *v
+		}
+		var ret Source
+		return ret
+	}).(SourceOutput)
 }
 
 // If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
@@ -20715,7 +21282,7 @@ func (o SourceContextOutput) ToSourceContextPtrOutput() SourceContextPtrOutput {
 }
 
 func (o SourceContextOutput) ToSourceContextPtrOutputWithContext(ctx context.Context) SourceContextPtrOutput {
-	return o.ApplyT(func(v SourceContext) *SourceContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceContext) *SourceContext {
 		return &v
 	}).(SourceContextPtrOutput)
 }
@@ -20755,7 +21322,13 @@ func (o SourceContextPtrOutput) ToSourceContextPtrOutputWithContext(ctx context.
 }
 
 func (o SourceContextPtrOutput) Elem() SourceContextOutput {
-	return o.ApplyT(func(v *SourceContext) SourceContext { return *v }).(SourceContextOutput)
+	return o.ApplyT(func(v *SourceContext) SourceContext {
+		if v != nil {
+			return *v
+		}
+		var ret SourceContext
+		return ret
+	}).(SourceContextOutput)
 }
 
 // A SourceContext referring to a revision in a Google Cloud Source Repo.
@@ -20951,7 +21524,7 @@ func (o SourceContextResponseOutput) ToSourceContextResponsePtrOutput() SourceCo
 }
 
 func (o SourceContextResponseOutput) ToSourceContextResponsePtrOutputWithContext(ctx context.Context) SourceContextResponsePtrOutput {
-	return o.ApplyT(func(v SourceContextResponse) *SourceContextResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceContextResponse) *SourceContextResponse {
 		return &v
 	}).(SourceContextResponsePtrOutput)
 }
@@ -20991,7 +21564,13 @@ func (o SourceContextResponsePtrOutput) ToSourceContextResponsePtrOutputWithCont
 }
 
 func (o SourceContextResponsePtrOutput) Elem() SourceContextResponseOutput {
-	return o.ApplyT(func(v *SourceContextResponse) SourceContextResponse { return *v }).(SourceContextResponseOutput)
+	return o.ApplyT(func(v *SourceContextResponse) SourceContextResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceContextResponse
+		return ret
+	}).(SourceContextResponseOutput)
 }
 
 // A SourceContext referring to a revision in a Google Cloud Source Repo.
@@ -21162,7 +21741,7 @@ func (o SourceResponseOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutpu
 }
 
 func (o SourceResponseOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return o.ApplyT(func(v SourceResponse) *SourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceResponse) *SourceResponse {
 		return &v
 	}).(SourceResponsePtrOutput)
 }
@@ -21202,7 +21781,13 @@ func (o SourceResponsePtrOutput) ToSourceResponsePtrOutputWithContext(ctx contex
 }
 
 func (o SourceResponsePtrOutput) Elem() SourceResponseOutput {
-	return o.ApplyT(func(v *SourceResponse) SourceResponse { return *v }).(SourceResponseOutput)
+	return o.ApplyT(func(v *SourceResponse) SourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceResponse
+		return ret
+	}).(SourceResponseOutput)
 }
 
 // If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
@@ -21349,7 +21934,7 @@ func (o StatusOutput) ToStatusPtrOutput() StatusPtrOutput {
 }
 
 func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return o.ApplyT(func(v Status) *Status {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Status) *Status {
 		return &v
 	}).(StatusPtrOutput)
 }
@@ -21384,7 +21969,13 @@ func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) Statu
 }
 
 func (o StatusPtrOutput) Elem() StatusOutput {
-	return o.ApplyT(func(v *Status) Status { return *v }).(StatusOutput)
+	return o.ApplyT(func(v *Status) Status {
+		if v != nil {
+			return *v
+		}
+		var ret Status
+		return ret
+	}).(StatusOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -21521,7 +22112,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -21556,7 +22147,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -21701,7 +22298,7 @@ func (o VersionOutput) ToVersionPtrOutput() VersionPtrOutput {
 }
 
 func (o VersionOutput) ToVersionPtrOutputWithContext(ctx context.Context) VersionPtrOutput {
-	return o.ApplyT(func(v Version) *Version {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Version) *Version {
 		return &v
 	}).(VersionPtrOutput)
 }
@@ -21746,7 +22343,13 @@ func (o VersionPtrOutput) ToVersionPtrOutputWithContext(ctx context.Context) Ver
 }
 
 func (o VersionPtrOutput) Elem() VersionOutput {
-	return o.ApplyT(func(v *Version) Version { return *v }).(VersionOutput)
+	return o.ApplyT(func(v *Version) Version {
+		if v != nil {
+			return *v
+		}
+		var ret Version
+		return ret
+	}).(VersionOutput)
 }
 
 // Used to correct mistakes in the version numbering scheme.
@@ -22006,7 +22609,7 @@ func (o VulnerabilityOutput) ToVulnerabilityPtrOutput() VulnerabilityPtrOutput {
 }
 
 func (o VulnerabilityOutput) ToVulnerabilityPtrOutputWithContext(ctx context.Context) VulnerabilityPtrOutput {
-	return o.ApplyT(func(v Vulnerability) *Vulnerability {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vulnerability) *Vulnerability {
 		return &v
 	}).(VulnerabilityPtrOutput)
 }
@@ -22056,7 +22659,13 @@ func (o VulnerabilityPtrOutput) ToVulnerabilityPtrOutputWithContext(ctx context.
 }
 
 func (o VulnerabilityPtrOutput) Elem() VulnerabilityOutput {
-	return o.ApplyT(func(v *Vulnerability) Vulnerability { return *v }).(VulnerabilityOutput)
+	return o.ApplyT(func(v *Vulnerability) Vulnerability {
+		if v != nil {
+			return *v
+		}
+		var ret Vulnerability
+		return ret
+	}).(VulnerabilityOutput)
 }
 
 // The CVSS score for this vulnerability.
@@ -22223,7 +22832,7 @@ func (o VulnerabilityLocationOutput) ToVulnerabilityLocationPtrOutput() Vulnerab
 }
 
 func (o VulnerabilityLocationOutput) ToVulnerabilityLocationPtrOutputWithContext(ctx context.Context) VulnerabilityLocationPtrOutput {
-	return o.ApplyT(func(v VulnerabilityLocation) *VulnerabilityLocation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityLocation) *VulnerabilityLocation {
 		return &v
 	}).(VulnerabilityLocationPtrOutput)
 }
@@ -22258,7 +22867,13 @@ func (o VulnerabilityLocationPtrOutput) ToVulnerabilityLocationPtrOutputWithCont
 }
 
 func (o VulnerabilityLocationPtrOutput) Elem() VulnerabilityLocationOutput {
-	return o.ApplyT(func(v *VulnerabilityLocation) VulnerabilityLocation { return *v }).(VulnerabilityLocationOutput)
+	return o.ApplyT(func(v *VulnerabilityLocation) VulnerabilityLocation {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityLocation
+		return ret
+	}).(VulnerabilityLocationOutput)
 }
 
 // The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
@@ -22480,7 +23095,7 @@ func (o VulnerabilityResponseOutput) ToVulnerabilityResponsePtrOutput() Vulnerab
 }
 
 func (o VulnerabilityResponseOutput) ToVulnerabilityResponsePtrOutputWithContext(ctx context.Context) VulnerabilityResponsePtrOutput {
-	return o.ApplyT(func(v VulnerabilityResponse) *VulnerabilityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityResponse) *VulnerabilityResponse {
 		return &v
 	}).(VulnerabilityResponsePtrOutput)
 }
@@ -22530,7 +23145,13 @@ func (o VulnerabilityResponsePtrOutput) ToVulnerabilityResponsePtrOutputWithCont
 }
 
 func (o VulnerabilityResponsePtrOutput) Elem() VulnerabilityResponseOutput {
-	return o.ApplyT(func(v *VulnerabilityResponse) VulnerabilityResponse { return *v }).(VulnerabilityResponseOutput)
+	return o.ApplyT(func(v *VulnerabilityResponse) VulnerabilityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityResponse
+		return ret
+	}).(VulnerabilityResponseOutput)
 }
 
 // The CVSS score for this vulnerability.

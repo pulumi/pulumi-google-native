@@ -132,9 +132,7 @@ func (i *Schedule) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
-type ScheduleOutput struct {
-	*pulumi.OutputState
-}
+type ScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScheduleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Schedule)(nil))

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Identifies which input file and track should be used.
+    /// </summary>
     [OutputType]
     public sealed class TextInputResponse
     {

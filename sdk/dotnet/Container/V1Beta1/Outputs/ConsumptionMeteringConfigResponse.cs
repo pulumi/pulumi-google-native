@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Parameters for controlling consumption metering.
+    /// </summary>
     [OutputType]
     public sealed class ConsumptionMeteringConfigResponse
     {

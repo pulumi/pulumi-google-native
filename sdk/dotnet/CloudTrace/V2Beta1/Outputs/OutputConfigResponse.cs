@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudTrace.V2Beta1.Outputs
 {
 
+    /// <summary>
+    /// OutputConfig contains a destination for writing trace data.
+    /// </summary>
     [OutputType]
     public sealed class OutputConfigResponse
     {

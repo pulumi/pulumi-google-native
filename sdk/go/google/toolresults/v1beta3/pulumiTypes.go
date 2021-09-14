@@ -118,7 +118,7 @@ func (o AndroidAppInfoOutput) ToAndroidAppInfoPtrOutput() AndroidAppInfoPtrOutpu
 }
 
 func (o AndroidAppInfoOutput) ToAndroidAppInfoPtrOutputWithContext(ctx context.Context) AndroidAppInfoPtrOutput {
-	return o.ApplyT(func(v AndroidAppInfo) *AndroidAppInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidAppInfo) *AndroidAppInfo {
 		return &v
 	}).(AndroidAppInfoPtrOutput)
 }
@@ -158,7 +158,13 @@ func (o AndroidAppInfoPtrOutput) ToAndroidAppInfoPtrOutputWithContext(ctx contex
 }
 
 func (o AndroidAppInfoPtrOutput) Elem() AndroidAppInfoOutput {
-	return o.ApplyT(func(v *AndroidAppInfo) AndroidAppInfo { return *v }).(AndroidAppInfoOutput)
+	return o.ApplyT(func(v *AndroidAppInfo) AndroidAppInfo {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidAppInfo
+		return ret
+	}).(AndroidAppInfoOutput)
 }
 
 // The name of the app. Optional
@@ -309,7 +315,7 @@ func (o AndroidAppInfoResponseOutput) ToAndroidAppInfoResponsePtrOutput() Androi
 }
 
 func (o AndroidAppInfoResponseOutput) ToAndroidAppInfoResponsePtrOutputWithContext(ctx context.Context) AndroidAppInfoResponsePtrOutput {
-	return o.ApplyT(func(v AndroidAppInfoResponse) *AndroidAppInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidAppInfoResponse) *AndroidAppInfoResponse {
 		return &v
 	}).(AndroidAppInfoResponsePtrOutput)
 }
@@ -349,7 +355,13 @@ func (o AndroidAppInfoResponsePtrOutput) ToAndroidAppInfoResponsePtrOutputWithCo
 }
 
 func (o AndroidAppInfoResponsePtrOutput) Elem() AndroidAppInfoResponseOutput {
-	return o.ApplyT(func(v *AndroidAppInfoResponse) AndroidAppInfoResponse { return *v }).(AndroidAppInfoResponseOutput)
+	return o.ApplyT(func(v *AndroidAppInfoResponse) AndroidAppInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidAppInfoResponse
+		return ret
+	}).(AndroidAppInfoResponseOutput)
 }
 
 // The name of the app. Optional
@@ -500,7 +512,7 @@ func (o AndroidInstrumentationTestOutput) ToAndroidInstrumentationTestPtrOutput(
 }
 
 func (o AndroidInstrumentationTestOutput) ToAndroidInstrumentationTestPtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestPtrOutput {
-	return o.ApplyT(func(v AndroidInstrumentationTest) *AndroidInstrumentationTest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidInstrumentationTest) *AndroidInstrumentationTest {
 		return &v
 	}).(AndroidInstrumentationTestPtrOutput)
 }
@@ -540,7 +552,13 @@ func (o AndroidInstrumentationTestPtrOutput) ToAndroidInstrumentationTestPtrOutp
 }
 
 func (o AndroidInstrumentationTestPtrOutput) Elem() AndroidInstrumentationTestOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTest) AndroidInstrumentationTest { return *v }).(AndroidInstrumentationTestOutput)
+	return o.ApplyT(func(v *AndroidInstrumentationTest) AndroidInstrumentationTest {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidInstrumentationTest
+		return ret
+	}).(AndroidInstrumentationTestOutput)
 }
 
 // The java package for the test to be executed. Required
@@ -691,7 +709,7 @@ func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestRe
 }
 
 func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponsePtrOutput {
-	return o.ApplyT(func(v AndroidInstrumentationTestResponse) *AndroidInstrumentationTestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidInstrumentationTestResponse) *AndroidInstrumentationTestResponse {
 		return &v
 	}).(AndroidInstrumentationTestResponsePtrOutput)
 }
@@ -731,7 +749,13 @@ func (o AndroidInstrumentationTestResponsePtrOutput) ToAndroidInstrumentationTes
 }
 
 func (o AndroidInstrumentationTestResponsePtrOutput) Elem() AndroidInstrumentationTestResponseOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) AndroidInstrumentationTestResponse { return *v }).(AndroidInstrumentationTestResponseOutput)
+	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) AndroidInstrumentationTestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidInstrumentationTestResponse
+		return ret
+	}).(AndroidInstrumentationTestResponseOutput)
 }
 
 // The java package for the test to be executed. Required
@@ -886,7 +910,7 @@ func (o AndroidRoboTestOutput) ToAndroidRoboTestPtrOutput() AndroidRoboTestPtrOu
 }
 
 func (o AndroidRoboTestOutput) ToAndroidRoboTestPtrOutputWithContext(ctx context.Context) AndroidRoboTestPtrOutput {
-	return o.ApplyT(func(v AndroidRoboTest) *AndroidRoboTest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidRoboTest) *AndroidRoboTest {
 		return &v
 	}).(AndroidRoboTestPtrOutput)
 }
@@ -931,7 +955,13 @@ func (o AndroidRoboTestPtrOutput) ToAndroidRoboTestPtrOutputWithContext(ctx cont
 }
 
 func (o AndroidRoboTestPtrOutput) Elem() AndroidRoboTestOutput {
-	return o.ApplyT(func(v *AndroidRoboTest) AndroidRoboTest { return *v }).(AndroidRoboTestOutput)
+	return o.ApplyT(func(v *AndroidRoboTest) AndroidRoboTest {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidRoboTest
+		return ret
+	}).(AndroidRoboTestOutput)
 }
 
 // The initial activity that should be used to start the app. Optional
@@ -1096,7 +1126,7 @@ func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponsePtrOutput() Andr
 }
 
 func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponsePtrOutputWithContext(ctx context.Context) AndroidRoboTestResponsePtrOutput {
-	return o.ApplyT(func(v AndroidRoboTestResponse) *AndroidRoboTestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidRoboTestResponse) *AndroidRoboTestResponse {
 		return &v
 	}).(AndroidRoboTestResponsePtrOutput)
 }
@@ -1141,7 +1171,13 @@ func (o AndroidRoboTestResponsePtrOutput) ToAndroidRoboTestResponsePtrOutputWith
 }
 
 func (o AndroidRoboTestResponsePtrOutput) Elem() AndroidRoboTestResponseOutput {
-	return o.ApplyT(func(v *AndroidRoboTestResponse) AndroidRoboTestResponse { return *v }).(AndroidRoboTestResponseOutput)
+	return o.ApplyT(func(v *AndroidRoboTestResponse) AndroidRoboTestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidRoboTestResponse
+		return ret
+	}).(AndroidRoboTestResponseOutput)
 }
 
 // The initial activity that should be used to start the app. Optional
@@ -1306,7 +1342,7 @@ func (o AndroidTestOutput) ToAndroidTestPtrOutput() AndroidTestPtrOutput {
 }
 
 func (o AndroidTestOutput) ToAndroidTestPtrOutputWithContext(ctx context.Context) AndroidTestPtrOutput {
-	return o.ApplyT(func(v AndroidTest) *AndroidTest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidTest) *AndroidTest {
 		return &v
 	}).(AndroidTestPtrOutput)
 }
@@ -1351,7 +1387,13 @@ func (o AndroidTestPtrOutput) ToAndroidTestPtrOutputWithContext(ctx context.Cont
 }
 
 func (o AndroidTestPtrOutput) Elem() AndroidTestOutput {
-	return o.ApplyT(func(v *AndroidTest) AndroidTest { return *v }).(AndroidTestOutput)
+	return o.ApplyT(func(v *AndroidTest) AndroidTest {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidTest
+		return ret
+	}).(AndroidTestOutput)
 }
 
 // Information about the application under test.
@@ -1496,7 +1538,7 @@ func (o AndroidTestLoopOutput) ToAndroidTestLoopPtrOutput() AndroidTestLoopPtrOu
 }
 
 func (o AndroidTestLoopOutput) ToAndroidTestLoopPtrOutputWithContext(ctx context.Context) AndroidTestLoopPtrOutput {
-	return o.ApplyT(func(v AndroidTestLoop) *AndroidTestLoop {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidTestLoop) *AndroidTestLoop {
 		return &v
 	}).(AndroidTestLoopPtrOutput)
 }
@@ -1516,7 +1558,13 @@ func (o AndroidTestLoopPtrOutput) ToAndroidTestLoopPtrOutputWithContext(ctx cont
 }
 
 func (o AndroidTestLoopPtrOutput) Elem() AndroidTestLoopOutput {
-	return o.ApplyT(func(v *AndroidTestLoop) AndroidTestLoop { return *v }).(AndroidTestLoopOutput)
+	return o.ApplyT(func(v *AndroidTestLoop) AndroidTestLoop {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidTestLoop
+		return ret
+	}).(AndroidTestLoopOutput)
 }
 
 // Test Loops are tests that can be launched by the app itself, determining when to run by listening for an intent.
@@ -1611,7 +1659,7 @@ func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponsePtrOutput() Andr
 }
 
 func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponsePtrOutputWithContext(ctx context.Context) AndroidTestLoopResponsePtrOutput {
-	return o.ApplyT(func(v AndroidTestLoopResponse) *AndroidTestLoopResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidTestLoopResponse) *AndroidTestLoopResponse {
 		return &v
 	}).(AndroidTestLoopResponsePtrOutput)
 }
@@ -1631,7 +1679,13 @@ func (o AndroidTestLoopResponsePtrOutput) ToAndroidTestLoopResponsePtrOutputWith
 }
 
 func (o AndroidTestLoopResponsePtrOutput) Elem() AndroidTestLoopResponseOutput {
-	return o.ApplyT(func(v *AndroidTestLoopResponse) AndroidTestLoopResponse { return *v }).(AndroidTestLoopResponseOutput)
+	return o.ApplyT(func(v *AndroidTestLoopResponse) AndroidTestLoopResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidTestLoopResponse
+		return ret
+	}).(AndroidTestLoopResponseOutput)
 }
 
 // An Android mobile test specification.
@@ -1746,7 +1800,7 @@ func (o AndroidTestResponseOutput) ToAndroidTestResponsePtrOutput() AndroidTestR
 }
 
 func (o AndroidTestResponseOutput) ToAndroidTestResponsePtrOutputWithContext(ctx context.Context) AndroidTestResponsePtrOutput {
-	return o.ApplyT(func(v AndroidTestResponse) *AndroidTestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidTestResponse) *AndroidTestResponse {
 		return &v
 	}).(AndroidTestResponsePtrOutput)
 }
@@ -1791,7 +1845,13 @@ func (o AndroidTestResponsePtrOutput) ToAndroidTestResponsePtrOutputWithContext(
 }
 
 func (o AndroidTestResponsePtrOutput) Elem() AndroidTestResponseOutput {
-	return o.ApplyT(func(v *AndroidTestResponse) AndroidTestResponse { return *v }).(AndroidTestResponseOutput)
+	return o.ApplyT(func(v *AndroidTestResponse) AndroidTestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidTestResponse
+		return ret
+	}).(AndroidTestResponseOutput)
 }
 
 // Information about the application under test.
@@ -1944,7 +2004,7 @@ func (o AnyOutput) ToAnyPtrOutput() AnyPtrOutput {
 }
 
 func (o AnyOutput) ToAnyPtrOutputWithContext(ctx context.Context) AnyPtrOutput {
-	return o.ApplyT(func(v Any) *Any {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Any) *Any {
 		return &v
 	}).(AnyPtrOutput)
 }
@@ -1974,7 +2034,13 @@ func (o AnyPtrOutput) ToAnyPtrOutputWithContext(ctx context.Context) AnyPtrOutpu
 }
 
 func (o AnyPtrOutput) Elem() AnyOutput {
-	return o.ApplyT(func(v *Any) Any { return *v }).(AnyOutput)
+	return o.ApplyT(func(v *Any) Any {
+		if v != nil {
+			return *v
+		}
+		var ret Any
+		return ret
+	}).(AnyOutput)
 }
 
 // A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics.
@@ -2159,10 +2225,11 @@ func (o BasicPerfSampleSeriesOutput) ToBasicPerfSampleSeriesPtrOutput() BasicPer
 }
 
 func (o BasicPerfSampleSeriesOutput) ToBasicPerfSampleSeriesPtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesPtrOutput {
-	return o.ApplyT(func(v BasicPerfSampleSeries) *BasicPerfSampleSeries {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicPerfSampleSeries) *BasicPerfSampleSeries {
 		return &v
 	}).(BasicPerfSampleSeriesPtrOutput)
 }
+
 func (o BasicPerfSampleSeriesOutput) PerfMetricType() BasicPerfSampleSeriesPerfMetricTypePtrOutput {
 	return o.ApplyT(func(v BasicPerfSampleSeries) *BasicPerfSampleSeriesPerfMetricType { return v.PerfMetricType }).(BasicPerfSampleSeriesPerfMetricTypePtrOutput)
 }
@@ -2190,7 +2257,13 @@ func (o BasicPerfSampleSeriesPtrOutput) ToBasicPerfSampleSeriesPtrOutputWithCont
 }
 
 func (o BasicPerfSampleSeriesPtrOutput) Elem() BasicPerfSampleSeriesOutput {
-	return o.ApplyT(func(v *BasicPerfSampleSeries) BasicPerfSampleSeries { return *v }).(BasicPerfSampleSeriesOutput)
+	return o.ApplyT(func(v *BasicPerfSampleSeries) BasicPerfSampleSeries {
+		if v != nil {
+			return *v
+		}
+		var ret BasicPerfSampleSeries
+		return ret
+	}).(BasicPerfSampleSeriesOutput)
 }
 
 func (o BasicPerfSampleSeriesPtrOutput) PerfMetricType() BasicPerfSampleSeriesPerfMetricTypePtrOutput {
@@ -2318,10 +2391,11 @@ func (o BasicPerfSampleSeriesResponseOutput) ToBasicPerfSampleSeriesResponsePtrO
 }
 
 func (o BasicPerfSampleSeriesResponseOutput) ToBasicPerfSampleSeriesResponsePtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesResponsePtrOutput {
-	return o.ApplyT(func(v BasicPerfSampleSeriesResponse) *BasicPerfSampleSeriesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicPerfSampleSeriesResponse) *BasicPerfSampleSeriesResponse {
 		return &v
 	}).(BasicPerfSampleSeriesResponsePtrOutput)
 }
+
 func (o BasicPerfSampleSeriesResponseOutput) PerfMetricType() pulumi.StringOutput {
 	return o.ApplyT(func(v BasicPerfSampleSeriesResponse) string { return v.PerfMetricType }).(pulumi.StringOutput)
 }
@@ -2349,7 +2423,13 @@ func (o BasicPerfSampleSeriesResponsePtrOutput) ToBasicPerfSampleSeriesResponseP
 }
 
 func (o BasicPerfSampleSeriesResponsePtrOutput) Elem() BasicPerfSampleSeriesResponseOutput {
-	return o.ApplyT(func(v *BasicPerfSampleSeriesResponse) BasicPerfSampleSeriesResponse { return *v }).(BasicPerfSampleSeriesResponseOutput)
+	return o.ApplyT(func(v *BasicPerfSampleSeriesResponse) BasicPerfSampleSeriesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BasicPerfSampleSeriesResponse
+		return ret
+	}).(BasicPerfSampleSeriesResponseOutput)
 }
 
 func (o BasicPerfSampleSeriesResponsePtrOutput) PerfMetricType() pulumi.StringPtrOutput {
@@ -2479,7 +2559,7 @@ func (o DurationOutput) ToDurationPtrOutput() DurationPtrOutput {
 }
 
 func (o DurationOutput) ToDurationPtrOutputWithContext(ctx context.Context) DurationPtrOutput {
-	return o.ApplyT(func(v Duration) *Duration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Duration) *Duration {
 		return &v
 	}).(DurationPtrOutput)
 }
@@ -2509,7 +2589,13 @@ func (o DurationPtrOutput) ToDurationPtrOutputWithContext(ctx context.Context) D
 }
 
 func (o DurationPtrOutput) Elem() DurationOutput {
-	return o.ApplyT(func(v *Duration) Duration { return *v }).(DurationOutput)
+	return o.ApplyT(func(v *Duration) Duration {
+		if v != nil {
+			return *v
+		}
+		var ret Duration
+		return ret
+	}).(DurationOutput)
 }
 
 // Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
@@ -2632,7 +2718,7 @@ func (o DurationResponseOutput) ToDurationResponsePtrOutput() DurationResponsePt
 }
 
 func (o DurationResponseOutput) ToDurationResponsePtrOutputWithContext(ctx context.Context) DurationResponsePtrOutput {
-	return o.ApplyT(func(v DurationResponse) *DurationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DurationResponse) *DurationResponse {
 		return &v
 	}).(DurationResponsePtrOutput)
 }
@@ -2662,7 +2748,13 @@ func (o DurationResponsePtrOutput) ToDurationResponsePtrOutputWithContext(ctx co
 }
 
 func (o DurationResponsePtrOutput) Elem() DurationResponseOutput {
-	return o.ApplyT(func(v *DurationResponse) DurationResponse { return *v }).(DurationResponseOutput)
+	return o.ApplyT(func(v *DurationResponse) DurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DurationResponse
+		return ret
+	}).(DurationResponseOutput)
 }
 
 // Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
@@ -2805,7 +2897,7 @@ func (o FailureDetailOutput) ToFailureDetailPtrOutput() FailureDetailPtrOutput {
 }
 
 func (o FailureDetailOutput) ToFailureDetailPtrOutputWithContext(ctx context.Context) FailureDetailPtrOutput {
-	return o.ApplyT(func(v FailureDetail) *FailureDetail {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FailureDetail) *FailureDetail {
 		return &v
 	}).(FailureDetailPtrOutput)
 }
@@ -2860,7 +2952,13 @@ func (o FailureDetailPtrOutput) ToFailureDetailPtrOutputWithContext(ctx context.
 }
 
 func (o FailureDetailPtrOutput) Elem() FailureDetailOutput {
-	return o.ApplyT(func(v *FailureDetail) FailureDetail { return *v }).(FailureDetailOutput)
+	return o.ApplyT(func(v *FailureDetail) FailureDetail {
+		if v != nil {
+			return *v
+		}
+		var ret FailureDetail
+		return ret
+	}).(FailureDetailOutput)
 }
 
 // If the failure was severe because the system (app) under test crashed.
@@ -3053,7 +3151,7 @@ func (o FailureDetailResponseOutput) ToFailureDetailResponsePtrOutput() FailureD
 }
 
 func (o FailureDetailResponseOutput) ToFailureDetailResponsePtrOutputWithContext(ctx context.Context) FailureDetailResponsePtrOutput {
-	return o.ApplyT(func(v FailureDetailResponse) *FailureDetailResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FailureDetailResponse) *FailureDetailResponse {
 		return &v
 	}).(FailureDetailResponsePtrOutput)
 }
@@ -3108,7 +3206,13 @@ func (o FailureDetailResponsePtrOutput) ToFailureDetailResponsePtrOutputWithCont
 }
 
 func (o FailureDetailResponsePtrOutput) Elem() FailureDetailResponseOutput {
-	return o.ApplyT(func(v *FailureDetailResponse) FailureDetailResponse { return *v }).(FailureDetailResponseOutput)
+	return o.ApplyT(func(v *FailureDetailResponse) FailureDetailResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FailureDetailResponse
+		return ret
+	}).(FailureDetailResponseOutput)
 }
 
 // If the failure was severe because the system (app) under test crashed.
@@ -3302,7 +3406,7 @@ func (o FileReferenceOutput) ToFileReferencePtrOutput() FileReferencePtrOutput {
 }
 
 func (o FileReferenceOutput) ToFileReferencePtrOutputWithContext(ctx context.Context) FileReferencePtrOutput {
-	return o.ApplyT(func(v FileReference) *FileReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileReference) *FileReference {
 		return &v
 	}).(FileReferencePtrOutput)
 }
@@ -3327,7 +3431,13 @@ func (o FileReferencePtrOutput) ToFileReferencePtrOutputWithContext(ctx context.
 }
 
 func (o FileReferencePtrOutput) Elem() FileReferenceOutput {
-	return o.ApplyT(func(v *FileReference) FileReference { return *v }).(FileReferenceOutput)
+	return o.ApplyT(func(v *FileReference) FileReference {
+		if v != nil {
+			return *v
+		}
+		var ret FileReference
+		return ret
+	}).(FileReferenceOutput)
 }
 
 // The URI of a file stored in Google Cloud Storage. For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in gsutil format: gs://mybucket/path/to/test.xml with version-specific info, gs://mybucket/path/to/test.xml#1360383693690000 An INVALID_ARGUMENT error will be returned if the URI format is not supported. - In response: always set - In create/update request: always set
@@ -3564,7 +3674,7 @@ func (o InconclusiveDetailOutput) ToInconclusiveDetailPtrOutput() InconclusiveDe
 }
 
 func (o InconclusiveDetailOutput) ToInconclusiveDetailPtrOutputWithContext(ctx context.Context) InconclusiveDetailPtrOutput {
-	return o.ApplyT(func(v InconclusiveDetail) *InconclusiveDetail {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InconclusiveDetail) *InconclusiveDetail {
 		return &v
 	}).(InconclusiveDetailPtrOutput)
 }
@@ -3599,7 +3709,13 @@ func (o InconclusiveDetailPtrOutput) ToInconclusiveDetailPtrOutputWithContext(ct
 }
 
 func (o InconclusiveDetailPtrOutput) Elem() InconclusiveDetailOutput {
-	return o.ApplyT(func(v *InconclusiveDetail) InconclusiveDetail { return *v }).(InconclusiveDetailOutput)
+	return o.ApplyT(func(v *InconclusiveDetail) InconclusiveDetail {
+		if v != nil {
+			return *v
+		}
+		var ret InconclusiveDetail
+		return ret
+	}).(InconclusiveDetailOutput)
 }
 
 // If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running.
@@ -3736,7 +3852,7 @@ func (o InconclusiveDetailResponseOutput) ToInconclusiveDetailResponsePtrOutput(
 }
 
 func (o InconclusiveDetailResponseOutput) ToInconclusiveDetailResponsePtrOutputWithContext(ctx context.Context) InconclusiveDetailResponsePtrOutput {
-	return o.ApplyT(func(v InconclusiveDetailResponse) *InconclusiveDetailResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InconclusiveDetailResponse) *InconclusiveDetailResponse {
 		return &v
 	}).(InconclusiveDetailResponsePtrOutput)
 }
@@ -3771,7 +3887,13 @@ func (o InconclusiveDetailResponsePtrOutput) ToInconclusiveDetailResponsePtrOutp
 }
 
 func (o InconclusiveDetailResponsePtrOutput) Elem() InconclusiveDetailResponseOutput {
-	return o.ApplyT(func(v *InconclusiveDetailResponse) InconclusiveDetailResponse { return *v }).(InconclusiveDetailResponseOutput)
+	return o.ApplyT(func(v *InconclusiveDetailResponse) InconclusiveDetailResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InconclusiveDetailResponse
+		return ret
+	}).(InconclusiveDetailResponseOutput)
 }
 
 // If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running.
@@ -4142,7 +4264,7 @@ func (o IosAppInfoOutput) ToIosAppInfoPtrOutput() IosAppInfoPtrOutput {
 }
 
 func (o IosAppInfoOutput) ToIosAppInfoPtrOutputWithContext(ctx context.Context) IosAppInfoPtrOutput {
-	return o.ApplyT(func(v IosAppInfo) *IosAppInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosAppInfo) *IosAppInfo {
 		return &v
 	}).(IosAppInfoPtrOutput)
 }
@@ -4167,7 +4289,13 @@ func (o IosAppInfoPtrOutput) ToIosAppInfoPtrOutputWithContext(ctx context.Contex
 }
 
 func (o IosAppInfoPtrOutput) Elem() IosAppInfoOutput {
-	return o.ApplyT(func(v *IosAppInfo) IosAppInfo { return *v }).(IosAppInfoOutput)
+	return o.ApplyT(func(v *IosAppInfo) IosAppInfo {
+		if v != nil {
+			return *v
+		}
+		var ret IosAppInfo
+		return ret
+	}).(IosAppInfoOutput)
 }
 
 // The name of the app. Required
@@ -4276,7 +4404,7 @@ func (o IosAppInfoResponseOutput) ToIosAppInfoResponsePtrOutput() IosAppInfoResp
 }
 
 func (o IosAppInfoResponseOutput) ToIosAppInfoResponsePtrOutputWithContext(ctx context.Context) IosAppInfoResponsePtrOutput {
-	return o.ApplyT(func(v IosAppInfoResponse) *IosAppInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosAppInfoResponse) *IosAppInfoResponse {
 		return &v
 	}).(IosAppInfoResponsePtrOutput)
 }
@@ -4301,7 +4429,13 @@ func (o IosAppInfoResponsePtrOutput) ToIosAppInfoResponsePtrOutputWithContext(ct
 }
 
 func (o IosAppInfoResponsePtrOutput) Elem() IosAppInfoResponseOutput {
-	return o.ApplyT(func(v *IosAppInfoResponse) IosAppInfoResponse { return *v }).(IosAppInfoResponseOutput)
+	return o.ApplyT(func(v *IosAppInfoResponse) IosAppInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IosAppInfoResponse
+		return ret
+	}).(IosAppInfoResponseOutput)
 }
 
 // The name of the app. Required
@@ -4406,7 +4540,7 @@ func (o IosRoboTestOutput) ToIosRoboTestPtrOutput() IosRoboTestPtrOutput {
 }
 
 func (o IosRoboTestOutput) ToIosRoboTestPtrOutputWithContext(ctx context.Context) IosRoboTestPtrOutput {
-	return o.ApplyT(func(v IosRoboTest) *IosRoboTest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosRoboTest) *IosRoboTest {
 		return &v
 	}).(IosRoboTestPtrOutput)
 }
@@ -4426,7 +4560,13 @@ func (o IosRoboTestPtrOutput) ToIosRoboTestPtrOutputWithContext(ctx context.Cont
 }
 
 func (o IosRoboTestPtrOutput) Elem() IosRoboTestOutput {
-	return o.ApplyT(func(v *IosRoboTest) IosRoboTest { return *v }).(IosRoboTestOutput)
+	return o.ApplyT(func(v *IosRoboTest) IosRoboTest {
+		if v != nil {
+			return *v
+		}
+		var ret IosRoboTest
+		return ret
+	}).(IosRoboTestOutput)
 }
 
 // A Robo test for an iOS application.
@@ -4521,7 +4661,7 @@ func (o IosRoboTestResponseOutput) ToIosRoboTestResponsePtrOutput() IosRoboTestR
 }
 
 func (o IosRoboTestResponseOutput) ToIosRoboTestResponsePtrOutputWithContext(ctx context.Context) IosRoboTestResponsePtrOutput {
-	return o.ApplyT(func(v IosRoboTestResponse) *IosRoboTestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosRoboTestResponse) *IosRoboTestResponse {
 		return &v
 	}).(IosRoboTestResponsePtrOutput)
 }
@@ -4541,7 +4681,13 @@ func (o IosRoboTestResponsePtrOutput) ToIosRoboTestResponsePtrOutputWithContext(
 }
 
 func (o IosRoboTestResponsePtrOutput) Elem() IosRoboTestResponseOutput {
-	return o.ApplyT(func(v *IosRoboTestResponse) IosRoboTestResponse { return *v }).(IosRoboTestResponseOutput)
+	return o.ApplyT(func(v *IosRoboTestResponse) IosRoboTestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IosRoboTestResponse
+		return ret
+	}).(IosRoboTestResponseOutput)
 }
 
 // A iOS mobile test specification
@@ -4656,7 +4802,7 @@ func (o IosTestOutput) ToIosTestPtrOutput() IosTestPtrOutput {
 }
 
 func (o IosTestOutput) ToIosTestPtrOutputWithContext(ctx context.Context) IosTestPtrOutput {
-	return o.ApplyT(func(v IosTest) *IosTest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosTest) *IosTest {
 		return &v
 	}).(IosTestPtrOutput)
 }
@@ -4701,7 +4847,13 @@ func (o IosTestPtrOutput) ToIosTestPtrOutputWithContext(ctx context.Context) Ios
 }
 
 func (o IosTestPtrOutput) Elem() IosTestOutput {
-	return o.ApplyT(func(v *IosTest) IosTest { return *v }).(IosTestOutput)
+	return o.ApplyT(func(v *IosTest) IosTest {
+		if v != nil {
+			return *v
+		}
+		var ret IosTest
+		return ret
+	}).(IosTestOutput)
 }
 
 // Information about the application under test.
@@ -4850,7 +5002,7 @@ func (o IosTestLoopOutput) ToIosTestLoopPtrOutput() IosTestLoopPtrOutput {
 }
 
 func (o IosTestLoopOutput) ToIosTestLoopPtrOutputWithContext(ctx context.Context) IosTestLoopPtrOutput {
-	return o.ApplyT(func(v IosTestLoop) *IosTestLoop {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosTestLoop) *IosTestLoop {
 		return &v
 	}).(IosTestLoopPtrOutput)
 }
@@ -4875,7 +5027,13 @@ func (o IosTestLoopPtrOutput) ToIosTestLoopPtrOutputWithContext(ctx context.Cont
 }
 
 func (o IosTestLoopPtrOutput) Elem() IosTestLoopOutput {
-	return o.ApplyT(func(v *IosTestLoop) IosTestLoop { return *v }).(IosTestLoopOutput)
+	return o.ApplyT(func(v *IosTestLoop) IosTestLoop {
+		if v != nil {
+			return *v
+		}
+		var ret IosTestLoop
+		return ret
+	}).(IosTestLoopOutput)
 }
 
 // Bundle ID of the app.
@@ -4984,7 +5142,7 @@ func (o IosTestLoopResponseOutput) ToIosTestLoopResponsePtrOutput() IosTestLoopR
 }
 
 func (o IosTestLoopResponseOutput) ToIosTestLoopResponsePtrOutputWithContext(ctx context.Context) IosTestLoopResponsePtrOutput {
-	return o.ApplyT(func(v IosTestLoopResponse) *IosTestLoopResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosTestLoopResponse) *IosTestLoopResponse {
 		return &v
 	}).(IosTestLoopResponsePtrOutput)
 }
@@ -5009,7 +5167,13 @@ func (o IosTestLoopResponsePtrOutput) ToIosTestLoopResponsePtrOutputWithContext(
 }
 
 func (o IosTestLoopResponsePtrOutput) Elem() IosTestLoopResponseOutput {
-	return o.ApplyT(func(v *IosTestLoopResponse) IosTestLoopResponse { return *v }).(IosTestLoopResponseOutput)
+	return o.ApplyT(func(v *IosTestLoopResponse) IosTestLoopResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IosTestLoopResponse
+		return ret
+	}).(IosTestLoopResponseOutput)
 }
 
 // Bundle ID of the app.
@@ -5134,7 +5298,7 @@ func (o IosTestResponseOutput) ToIosTestResponsePtrOutput() IosTestResponsePtrOu
 }
 
 func (o IosTestResponseOutput) ToIosTestResponsePtrOutputWithContext(ctx context.Context) IosTestResponsePtrOutput {
-	return o.ApplyT(func(v IosTestResponse) *IosTestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosTestResponse) *IosTestResponse {
 		return &v
 	}).(IosTestResponsePtrOutput)
 }
@@ -5179,7 +5343,13 @@ func (o IosTestResponsePtrOutput) ToIosTestResponsePtrOutputWithContext(ctx cont
 }
 
 func (o IosTestResponsePtrOutput) Elem() IosTestResponseOutput {
-	return o.ApplyT(func(v *IosTestResponse) IosTestResponse { return *v }).(IosTestResponseOutput)
+	return o.ApplyT(func(v *IosTestResponse) IosTestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IosTestResponse
+		return ret
+	}).(IosTestResponseOutput)
 }
 
 // Information about the application under test.
@@ -5332,7 +5502,7 @@ func (o IosXcTestOutput) ToIosXcTestPtrOutput() IosXcTestPtrOutput {
 }
 
 func (o IosXcTestOutput) ToIosXcTestPtrOutputWithContext(ctx context.Context) IosXcTestPtrOutput {
-	return o.ApplyT(func(v IosXcTest) *IosXcTest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosXcTest) *IosXcTest {
 		return &v
 	}).(IosXcTestPtrOutput)
 }
@@ -5362,7 +5532,13 @@ func (o IosXcTestPtrOutput) ToIosXcTestPtrOutputWithContext(ctx context.Context)
 }
 
 func (o IosXcTestPtrOutput) Elem() IosXcTestOutput {
-	return o.ApplyT(func(v *IosXcTest) IosXcTest { return *v }).(IosXcTestOutput)
+	return o.ApplyT(func(v *IosXcTest) IosXcTest {
+		if v != nil {
+			return *v
+		}
+		var ret IosXcTest
+		return ret
+	}).(IosXcTestOutput)
 }
 
 // Bundle ID of the app.
@@ -5485,7 +5661,7 @@ func (o IosXcTestResponseOutput) ToIosXcTestResponsePtrOutput() IosXcTestRespons
 }
 
 func (o IosXcTestResponseOutput) ToIosXcTestResponsePtrOutputWithContext(ctx context.Context) IosXcTestResponsePtrOutput {
-	return o.ApplyT(func(v IosXcTestResponse) *IosXcTestResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosXcTestResponse) *IosXcTestResponse {
 		return &v
 	}).(IosXcTestResponsePtrOutput)
 }
@@ -5515,7 +5691,13 @@ func (o IosXcTestResponsePtrOutput) ToIosXcTestResponsePtrOutputWithContext(ctx 
 }
 
 func (o IosXcTestResponsePtrOutput) Elem() IosXcTestResponseOutput {
-	return o.ApplyT(func(v *IosXcTestResponse) IosXcTestResponse { return *v }).(IosXcTestResponseOutput)
+	return o.ApplyT(func(v *IosXcTestResponse) IosXcTestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IosXcTestResponse
+		return ret
+	}).(IosXcTestResponseOutput)
 }
 
 // Bundle ID of the app.
@@ -5824,7 +6006,7 @@ func (o MultiStepOutput) ToMultiStepPtrOutput() MultiStepPtrOutput {
 }
 
 func (o MultiStepOutput) ToMultiStepPtrOutputWithContext(ctx context.Context) MultiStepPtrOutput {
-	return o.ApplyT(func(v MultiStep) *MultiStep {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiStep) *MultiStep {
 		return &v
 	}).(MultiStepPtrOutput)
 }
@@ -5859,7 +6041,13 @@ func (o MultiStepPtrOutput) ToMultiStepPtrOutputWithContext(ctx context.Context)
 }
 
 func (o MultiStepPtrOutput) Elem() MultiStepOutput {
-	return o.ApplyT(func(v *MultiStep) MultiStep { return *v }).(MultiStepOutput)
+	return o.ApplyT(func(v *MultiStep) MultiStep {
+		if v != nil {
+			return *v
+		}
+		var ret MultiStep
+		return ret
+	}).(MultiStepOutput)
 }
 
 // Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
@@ -5996,7 +6184,7 @@ func (o MultiStepResponseOutput) ToMultiStepResponsePtrOutput() MultiStepRespons
 }
 
 func (o MultiStepResponseOutput) ToMultiStepResponsePtrOutputWithContext(ctx context.Context) MultiStepResponsePtrOutput {
-	return o.ApplyT(func(v MultiStepResponse) *MultiStepResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiStepResponse) *MultiStepResponse {
 		return &v
 	}).(MultiStepResponsePtrOutput)
 }
@@ -6031,7 +6219,13 @@ func (o MultiStepResponsePtrOutput) ToMultiStepResponsePtrOutputWithContext(ctx 
 }
 
 func (o MultiStepResponsePtrOutput) Elem() MultiStepResponseOutput {
-	return o.ApplyT(func(v *MultiStepResponse) MultiStepResponse { return *v }).(MultiStepResponseOutput)
+	return o.ApplyT(func(v *MultiStepResponse) MultiStepResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MultiStepResponse
+		return ret
+	}).(MultiStepResponseOutput)
 }
 
 // Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
@@ -6176,7 +6370,7 @@ func (o OutcomeOutput) ToOutcomePtrOutput() OutcomePtrOutput {
 }
 
 func (o OutcomeOutput) ToOutcomePtrOutputWithContext(ctx context.Context) OutcomePtrOutput {
-	return o.ApplyT(func(v Outcome) *Outcome {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Outcome) *Outcome {
 		return &v
 	}).(OutcomePtrOutput)
 }
@@ -6221,7 +6415,13 @@ func (o OutcomePtrOutput) ToOutcomePtrOutputWithContext(ctx context.Context) Out
 }
 
 func (o OutcomePtrOutput) Elem() OutcomeOutput {
-	return o.ApplyT(func(v *Outcome) Outcome { return *v }).(OutcomeOutput)
+	return o.ApplyT(func(v *Outcome) Outcome {
+		if v != nil {
+			return *v
+		}
+		var ret Outcome
+		return ret
+	}).(OutcomeOutput)
 }
 
 // More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
@@ -6386,7 +6586,7 @@ func (o OutcomeResponseOutput) ToOutcomeResponsePtrOutput() OutcomeResponsePtrOu
 }
 
 func (o OutcomeResponseOutput) ToOutcomeResponsePtrOutputWithContext(ctx context.Context) OutcomeResponsePtrOutput {
-	return o.ApplyT(func(v OutcomeResponse) *OutcomeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OutcomeResponse) *OutcomeResponse {
 		return &v
 	}).(OutcomeResponsePtrOutput)
 }
@@ -6431,7 +6631,13 @@ func (o OutcomeResponsePtrOutput) ToOutcomeResponsePtrOutputWithContext(ctx cont
 }
 
 func (o OutcomeResponsePtrOutput) Elem() OutcomeResponseOutput {
-	return o.ApplyT(func(v *OutcomeResponse) OutcomeResponse { return *v }).(OutcomeResponseOutput)
+	return o.ApplyT(func(v *OutcomeResponse) OutcomeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OutcomeResponse
+		return ret
+	}).(OutcomeResponseOutput)
 }
 
 // More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
@@ -6584,7 +6790,7 @@ func (o PrimaryStepOutput) ToPrimaryStepPtrOutput() PrimaryStepPtrOutput {
 }
 
 func (o PrimaryStepOutput) ToPrimaryStepPtrOutputWithContext(ctx context.Context) PrimaryStepPtrOutput {
-	return o.ApplyT(func(v PrimaryStep) *PrimaryStep {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrimaryStep) *PrimaryStep {
 		return &v
 	}).(PrimaryStepPtrOutput)
 }
@@ -6614,7 +6820,13 @@ func (o PrimaryStepPtrOutput) ToPrimaryStepPtrOutputWithContext(ctx context.Cont
 }
 
 func (o PrimaryStepPtrOutput) Elem() PrimaryStepOutput {
-	return o.ApplyT(func(v *PrimaryStep) PrimaryStep { return *v }).(PrimaryStepOutput)
+	return o.ApplyT(func(v *PrimaryStep) PrimaryStep {
+		if v != nil {
+			return *v
+		}
+		var ret PrimaryStep
+		return ret
+	}).(PrimaryStepOutput)
 }
 
 // Step Id and outcome of each individual step.
@@ -6737,7 +6949,7 @@ func (o PrimaryStepResponseOutput) ToPrimaryStepResponsePtrOutput() PrimaryStepR
 }
 
 func (o PrimaryStepResponseOutput) ToPrimaryStepResponsePtrOutputWithContext(ctx context.Context) PrimaryStepResponsePtrOutput {
-	return o.ApplyT(func(v PrimaryStepResponse) *PrimaryStepResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrimaryStepResponse) *PrimaryStepResponse {
 		return &v
 	}).(PrimaryStepResponsePtrOutput)
 }
@@ -6767,7 +6979,13 @@ func (o PrimaryStepResponsePtrOutput) ToPrimaryStepResponsePtrOutputWithContext(
 }
 
 func (o PrimaryStepResponsePtrOutput) Elem() PrimaryStepResponseOutput {
-	return o.ApplyT(func(v *PrimaryStepResponse) PrimaryStepResponse { return *v }).(PrimaryStepResponseOutput)
+	return o.ApplyT(func(v *PrimaryStepResponse) PrimaryStepResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrimaryStepResponse
+		return ret
+	}).(PrimaryStepResponseOutput)
 }
 
 // Step Id and outcome of each individual step.
@@ -6894,7 +7112,7 @@ func (o SkippedDetailOutput) ToSkippedDetailPtrOutput() SkippedDetailPtrOutput {
 }
 
 func (o SkippedDetailOutput) ToSkippedDetailPtrOutputWithContext(ctx context.Context) SkippedDetailPtrOutput {
-	return o.ApplyT(func(v SkippedDetail) *SkippedDetail {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkippedDetail) *SkippedDetail {
 		return &v
 	}).(SkippedDetailPtrOutput)
 }
@@ -6929,7 +7147,13 @@ func (o SkippedDetailPtrOutput) ToSkippedDetailPtrOutputWithContext(ctx context.
 }
 
 func (o SkippedDetailPtrOutput) Elem() SkippedDetailOutput {
-	return o.ApplyT(func(v *SkippedDetail) SkippedDetail { return *v }).(SkippedDetailOutput)
+	return o.ApplyT(func(v *SkippedDetail) SkippedDetail {
+		if v != nil {
+			return *v
+		}
+		var ret SkippedDetail
+		return ret
+	}).(SkippedDetailOutput)
 }
 
 // If the App doesn't support the specific API level.
@@ -7066,7 +7290,7 @@ func (o SkippedDetailResponseOutput) ToSkippedDetailResponsePtrOutput() SkippedD
 }
 
 func (o SkippedDetailResponseOutput) ToSkippedDetailResponsePtrOutputWithContext(ctx context.Context) SkippedDetailResponsePtrOutput {
-	return o.ApplyT(func(v SkippedDetailResponse) *SkippedDetailResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkippedDetailResponse) *SkippedDetailResponse {
 		return &v
 	}).(SkippedDetailResponsePtrOutput)
 }
@@ -7101,7 +7325,13 @@ func (o SkippedDetailResponsePtrOutput) ToSkippedDetailResponsePtrOutputWithCont
 }
 
 func (o SkippedDetailResponsePtrOutput) Elem() SkippedDetailResponseOutput {
-	return o.ApplyT(func(v *SkippedDetailResponse) SkippedDetailResponse { return *v }).(SkippedDetailResponseOutput)
+	return o.ApplyT(func(v *SkippedDetailResponse) SkippedDetailResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkippedDetailResponse
+		return ret
+	}).(SkippedDetailResponseOutput)
 }
 
 // If the App doesn't support the specific API level.
@@ -7234,7 +7464,7 @@ func (o SpecificationOutput) ToSpecificationPtrOutput() SpecificationPtrOutput {
 }
 
 func (o SpecificationOutput) ToSpecificationPtrOutputWithContext(ctx context.Context) SpecificationPtrOutput {
-	return o.ApplyT(func(v Specification) *Specification {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Specification) *Specification {
 		return &v
 	}).(SpecificationPtrOutput)
 }
@@ -7264,7 +7494,13 @@ func (o SpecificationPtrOutput) ToSpecificationPtrOutputWithContext(ctx context.
 }
 
 func (o SpecificationPtrOutput) Elem() SpecificationOutput {
-	return o.ApplyT(func(v *Specification) Specification { return *v }).(SpecificationOutput)
+	return o.ApplyT(func(v *Specification) Specification {
+		if v != nil {
+			return *v
+		}
+		var ret Specification
+		return ret
+	}).(SpecificationOutput)
 }
 
 // An Android mobile test execution specification.
@@ -7387,7 +7623,7 @@ func (o SpecificationResponseOutput) ToSpecificationResponsePtrOutput() Specific
 }
 
 func (o SpecificationResponseOutput) ToSpecificationResponsePtrOutputWithContext(ctx context.Context) SpecificationResponsePtrOutput {
-	return o.ApplyT(func(v SpecificationResponse) *SpecificationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpecificationResponse) *SpecificationResponse {
 		return &v
 	}).(SpecificationResponsePtrOutput)
 }
@@ -7417,7 +7653,13 @@ func (o SpecificationResponsePtrOutput) ToSpecificationResponsePtrOutputWithCont
 }
 
 func (o SpecificationResponsePtrOutput) Elem() SpecificationResponseOutput {
-	return o.ApplyT(func(v *SpecificationResponse) SpecificationResponse { return *v }).(SpecificationResponseOutput)
+	return o.ApplyT(func(v *SpecificationResponse) SpecificationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SpecificationResponse
+		return ret
+	}).(SpecificationResponseOutput)
 }
 
 // An Android mobile test execution specification.
@@ -7936,7 +8178,7 @@ func (o SuccessDetailOutput) ToSuccessDetailPtrOutput() SuccessDetailPtrOutput {
 }
 
 func (o SuccessDetailOutput) ToSuccessDetailPtrOutputWithContext(ctx context.Context) SuccessDetailPtrOutput {
-	return o.ApplyT(func(v SuccessDetail) *SuccessDetail {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SuccessDetail) *SuccessDetail {
 		return &v
 	}).(SuccessDetailPtrOutput)
 }
@@ -7961,7 +8203,13 @@ func (o SuccessDetailPtrOutput) ToSuccessDetailPtrOutputWithContext(ctx context.
 }
 
 func (o SuccessDetailPtrOutput) Elem() SuccessDetailOutput {
-	return o.ApplyT(func(v *SuccessDetail) SuccessDetail { return *v }).(SuccessDetailOutput)
+	return o.ApplyT(func(v *SuccessDetail) SuccessDetail {
+		if v != nil {
+			return *v
+		}
+		var ret SuccessDetail
+		return ret
+	}).(SuccessDetailOutput)
 }
 
 // If a native process other than the app crashed.
@@ -8070,7 +8318,7 @@ func (o SuccessDetailResponseOutput) ToSuccessDetailResponsePtrOutput() SuccessD
 }
 
 func (o SuccessDetailResponseOutput) ToSuccessDetailResponsePtrOutputWithContext(ctx context.Context) SuccessDetailResponsePtrOutput {
-	return o.ApplyT(func(v SuccessDetailResponse) *SuccessDetailResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SuccessDetailResponse) *SuccessDetailResponse {
 		return &v
 	}).(SuccessDetailResponsePtrOutput)
 }
@@ -8095,7 +8343,13 @@ func (o SuccessDetailResponsePtrOutput) ToSuccessDetailResponsePtrOutputWithCont
 }
 
 func (o SuccessDetailResponsePtrOutput) Elem() SuccessDetailResponseOutput {
-	return o.ApplyT(func(v *SuccessDetailResponse) SuccessDetailResponse { return *v }).(SuccessDetailResponseOutput)
+	return o.ApplyT(func(v *SuccessDetailResponse) SuccessDetailResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SuccessDetailResponse
+		return ret
+	}).(SuccessDetailResponseOutput)
 }
 
 // If a native process other than the app crashed.
@@ -8212,7 +8466,7 @@ func (o TestCaseReferenceOutput) ToTestCaseReferencePtrOutput() TestCaseReferenc
 }
 
 func (o TestCaseReferenceOutput) ToTestCaseReferencePtrOutputWithContext(ctx context.Context) TestCaseReferencePtrOutput {
-	return o.ApplyT(func(v TestCaseReference) *TestCaseReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestCaseReference) *TestCaseReference {
 		return &v
 	}).(TestCaseReferencePtrOutput)
 }
@@ -8247,7 +8501,13 @@ func (o TestCaseReferencePtrOutput) ToTestCaseReferencePtrOutputWithContext(ctx 
 }
 
 func (o TestCaseReferencePtrOutput) Elem() TestCaseReferenceOutput {
-	return o.ApplyT(func(v *TestCaseReference) TestCaseReference { return *v }).(TestCaseReferenceOutput)
+	return o.ApplyT(func(v *TestCaseReference) TestCaseReference {
+		if v != nil {
+			return *v
+		}
+		var ret TestCaseReference
+		return ret
+	}).(TestCaseReferenceOutput)
 }
 
 // The name of the class.
@@ -8461,7 +8721,7 @@ func (o TestExecutionStepOutput) ToTestExecutionStepPtrOutput() TestExecutionSte
 }
 
 func (o TestExecutionStepOutput) ToTestExecutionStepPtrOutputWithContext(ctx context.Context) TestExecutionStepPtrOutput {
-	return o.ApplyT(func(v TestExecutionStep) *TestExecutionStep {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestExecutionStep) *TestExecutionStep {
 		return &v
 	}).(TestExecutionStepPtrOutput)
 }
@@ -8501,7 +8761,13 @@ func (o TestExecutionStepPtrOutput) ToTestExecutionStepPtrOutputWithContext(ctx 
 }
 
 func (o TestExecutionStepPtrOutput) Elem() TestExecutionStepOutput {
-	return o.ApplyT(func(v *TestExecutionStep) TestExecutionStep { return *v }).(TestExecutionStepOutput)
+	return o.ApplyT(func(v *TestExecutionStep) TestExecutionStep {
+		if v != nil {
+			return *v
+		}
+		var ret TestExecutionStep
+		return ret
+	}).(TestExecutionStepOutput)
 }
 
 // Issues observed during the test execution. For example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging. - In response: present if set by create or update - In create/update request: optional
@@ -8652,7 +8918,7 @@ func (o TestExecutionStepResponseOutput) ToTestExecutionStepResponsePtrOutput() 
 }
 
 func (o TestExecutionStepResponseOutput) ToTestExecutionStepResponsePtrOutputWithContext(ctx context.Context) TestExecutionStepResponsePtrOutput {
-	return o.ApplyT(func(v TestExecutionStepResponse) *TestExecutionStepResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestExecutionStepResponse) *TestExecutionStepResponse {
 		return &v
 	}).(TestExecutionStepResponsePtrOutput)
 }
@@ -8692,7 +8958,13 @@ func (o TestExecutionStepResponsePtrOutput) ToTestExecutionStepResponsePtrOutput
 }
 
 func (o TestExecutionStepResponsePtrOutput) Elem() TestExecutionStepResponseOutput {
-	return o.ApplyT(func(v *TestExecutionStepResponse) TestExecutionStepResponse { return *v }).(TestExecutionStepResponseOutput)
+	return o.ApplyT(func(v *TestExecutionStepResponse) TestExecutionStepResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TestExecutionStepResponse
+		return ret
+	}).(TestExecutionStepResponseOutput)
 }
 
 // Issues observed during the test execution. For example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging. - In response: present if set by create or update - In create/update request: optional
@@ -9429,7 +9701,7 @@ func (o TestTimingOutput) ToTestTimingPtrOutput() TestTimingPtrOutput {
 }
 
 func (o TestTimingOutput) ToTestTimingPtrOutputWithContext(ctx context.Context) TestTimingPtrOutput {
-	return o.ApplyT(func(v TestTiming) *TestTiming {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestTiming) *TestTiming {
 		return &v
 	}).(TestTimingPtrOutput)
 }
@@ -9454,7 +9726,13 @@ func (o TestTimingPtrOutput) ToTestTimingPtrOutputWithContext(ctx context.Contex
 }
 
 func (o TestTimingPtrOutput) Elem() TestTimingOutput {
-	return o.ApplyT(func(v *TestTiming) TestTiming { return *v }).(TestTimingOutput)
+	return o.ApplyT(func(v *TestTiming) TestTiming {
+		if v != nil {
+			return *v
+		}
+		var ret TestTiming
+		return ret
+	}).(TestTimingOutput)
 }
 
 // How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
@@ -9563,7 +9841,7 @@ func (o TestTimingResponseOutput) ToTestTimingResponsePtrOutput() TestTimingResp
 }
 
 func (o TestTimingResponseOutput) ToTestTimingResponsePtrOutputWithContext(ctx context.Context) TestTimingResponsePtrOutput {
-	return o.ApplyT(func(v TestTimingResponse) *TestTimingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestTimingResponse) *TestTimingResponse {
 		return &v
 	}).(TestTimingResponsePtrOutput)
 }
@@ -9588,7 +9866,13 @@ func (o TestTimingResponsePtrOutput) ToTestTimingResponsePtrOutputWithContext(ct
 }
 
 func (o TestTimingResponsePtrOutput) Elem() TestTimingResponseOutput {
-	return o.ApplyT(func(v *TestTimingResponse) TestTimingResponse { return *v }).(TestTimingResponseOutput)
+	return o.ApplyT(func(v *TestTimingResponse) TestTimingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TestTimingResponse
+		return ret
+	}).(TestTimingResponseOutput)
 }
 
 // How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
@@ -9701,7 +9985,7 @@ func (o TimestampOutput) ToTimestampPtrOutput() TimestampPtrOutput {
 }
 
 func (o TimestampOutput) ToTimestampPtrOutputWithContext(ctx context.Context) TimestampPtrOutput {
-	return o.ApplyT(func(v Timestamp) *Timestamp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Timestamp) *Timestamp {
 		return &v
 	}).(TimestampPtrOutput)
 }
@@ -9731,7 +10015,13 @@ func (o TimestampPtrOutput) ToTimestampPtrOutputWithContext(ctx context.Context)
 }
 
 func (o TimestampPtrOutput) Elem() TimestampOutput {
-	return o.ApplyT(func(v *Timestamp) Timestamp { return *v }).(TimestampOutput)
+	return o.ApplyT(func(v *Timestamp) Timestamp {
+		if v != nil {
+			return *v
+		}
+		var ret Timestamp
+		return ret
+	}).(TimestampOutput)
 }
 
 // Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.
@@ -9854,7 +10144,7 @@ func (o TimestampResponseOutput) ToTimestampResponsePtrOutput() TimestampRespons
 }
 
 func (o TimestampResponseOutput) ToTimestampResponsePtrOutputWithContext(ctx context.Context) TimestampResponsePtrOutput {
-	return o.ApplyT(func(v TimestampResponse) *TimestampResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimestampResponse) *TimestampResponse {
 		return &v
 	}).(TimestampResponsePtrOutput)
 }
@@ -9884,7 +10174,13 @@ func (o TimestampResponsePtrOutput) ToTimestampResponsePtrOutputWithContext(ctx 
 }
 
 func (o TimestampResponsePtrOutput) Elem() TimestampResponseOutput {
-	return o.ApplyT(func(v *TimestampResponse) TimestampResponse { return *v }).(TimestampResponseOutput)
+	return o.ApplyT(func(v *TimestampResponse) TimestampResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TimestampResponse
+		return ret
+	}).(TimestampResponseOutput)
 }
 
 // Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.
@@ -10015,7 +10311,7 @@ func (o ToolExecutionOutput) ToToolExecutionPtrOutput() ToolExecutionPtrOutput {
 }
 
 func (o ToolExecutionOutput) ToToolExecutionPtrOutputWithContext(ctx context.Context) ToolExecutionPtrOutput {
-	return o.ApplyT(func(v ToolExecution) *ToolExecution {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolExecution) *ToolExecution {
 		return &v
 	}).(ToolExecutionPtrOutput)
 }
@@ -10055,7 +10351,13 @@ func (o ToolExecutionPtrOutput) ToToolExecutionPtrOutputWithContext(ctx context.
 }
 
 func (o ToolExecutionPtrOutput) Elem() ToolExecutionOutput {
-	return o.ApplyT(func(v *ToolExecution) ToolExecution { return *v }).(ToolExecutionOutput)
+	return o.ApplyT(func(v *ToolExecution) ToolExecution {
+		if v != nil {
+			return *v
+		}
+		var ret ToolExecution
+		return ret
+	}).(ToolExecutionOutput)
 }
 
 // The full tokenized command line including the program name (equivalent to argv in a C program). - In response: present if set by create request - In create request: optional - In update request: never set
@@ -10206,7 +10508,7 @@ func (o ToolExecutionResponseOutput) ToToolExecutionResponsePtrOutput() ToolExec
 }
 
 func (o ToolExecutionResponseOutput) ToToolExecutionResponsePtrOutputWithContext(ctx context.Context) ToolExecutionResponsePtrOutput {
-	return o.ApplyT(func(v ToolExecutionResponse) *ToolExecutionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolExecutionResponse) *ToolExecutionResponse {
 		return &v
 	}).(ToolExecutionResponsePtrOutput)
 }
@@ -10246,7 +10548,13 @@ func (o ToolExecutionResponsePtrOutput) ToToolExecutionResponsePtrOutputWithCont
 }
 
 func (o ToolExecutionResponsePtrOutput) Elem() ToolExecutionResponseOutput {
-	return o.ApplyT(func(v *ToolExecutionResponse) ToolExecutionResponse { return *v }).(ToolExecutionResponseOutput)
+	return o.ApplyT(func(v *ToolExecutionResponse) ToolExecutionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ToolExecutionResponse
+		return ret
+	}).(ToolExecutionResponseOutput)
 }
 
 // The full tokenized command line including the program name (equivalent to argv in a C program). - In response: present if set by create request - In create request: optional - In update request: never set
@@ -10385,7 +10693,7 @@ func (o ToolExecutionStepOutput) ToToolExecutionStepPtrOutput() ToolExecutionSte
 }
 
 func (o ToolExecutionStepOutput) ToToolExecutionStepPtrOutputWithContext(ctx context.Context) ToolExecutionStepPtrOutput {
-	return o.ApplyT(func(v ToolExecutionStep) *ToolExecutionStep {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolExecutionStep) *ToolExecutionStep {
 		return &v
 	}).(ToolExecutionStepPtrOutput)
 }
@@ -10410,7 +10718,13 @@ func (o ToolExecutionStepPtrOutput) ToToolExecutionStepPtrOutputWithContext(ctx 
 }
 
 func (o ToolExecutionStepPtrOutput) Elem() ToolExecutionStepOutput {
-	return o.ApplyT(func(v *ToolExecutionStep) ToolExecutionStep { return *v }).(ToolExecutionStepOutput)
+	return o.ApplyT(func(v *ToolExecutionStep) ToolExecutionStep {
+		if v != nil {
+			return *v
+		}
+		var ret ToolExecutionStep
+		return ret
+	}).(ToolExecutionStepOutput)
 }
 
 // A Tool execution. - In response: present if set by create/update request - In create/update request: optional
@@ -10519,7 +10833,7 @@ func (o ToolExecutionStepResponseOutput) ToToolExecutionStepResponsePtrOutput() 
 }
 
 func (o ToolExecutionStepResponseOutput) ToToolExecutionStepResponsePtrOutputWithContext(ctx context.Context) ToolExecutionStepResponsePtrOutput {
-	return o.ApplyT(func(v ToolExecutionStepResponse) *ToolExecutionStepResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolExecutionStepResponse) *ToolExecutionStepResponse {
 		return &v
 	}).(ToolExecutionStepResponsePtrOutput)
 }
@@ -10544,7 +10858,13 @@ func (o ToolExecutionStepResponsePtrOutput) ToToolExecutionStepResponsePtrOutput
 }
 
 func (o ToolExecutionStepResponsePtrOutput) Elem() ToolExecutionStepResponseOutput {
-	return o.ApplyT(func(v *ToolExecutionStepResponse) ToolExecutionStepResponse { return *v }).(ToolExecutionStepResponseOutput)
+	return o.ApplyT(func(v *ToolExecutionStepResponse) ToolExecutionStepResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ToolExecutionStepResponse
+		return ret
+	}).(ToolExecutionStepResponseOutput)
 }
 
 // A Tool execution. - In response: present if set by create/update request - In create/update request: optional
@@ -10653,7 +10973,7 @@ func (o ToolExitCodeOutput) ToToolExitCodePtrOutput() ToolExitCodePtrOutput {
 }
 
 func (o ToolExitCodeOutput) ToToolExitCodePtrOutputWithContext(ctx context.Context) ToolExitCodePtrOutput {
-	return o.ApplyT(func(v ToolExitCode) *ToolExitCode {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolExitCode) *ToolExitCode {
 		return &v
 	}).(ToolExitCodePtrOutput)
 }
@@ -10678,7 +10998,13 @@ func (o ToolExitCodePtrOutput) ToToolExitCodePtrOutputWithContext(ctx context.Co
 }
 
 func (o ToolExitCodePtrOutput) Elem() ToolExitCodeOutput {
-	return o.ApplyT(func(v *ToolExitCode) ToolExitCode { return *v }).(ToolExitCodeOutput)
+	return o.ApplyT(func(v *ToolExitCode) ToolExitCode {
+		if v != nil {
+			return *v
+		}
+		var ret ToolExitCode
+		return ret
+	}).(ToolExitCodeOutput)
 }
 
 // Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set
@@ -10787,7 +11113,7 @@ func (o ToolExitCodeResponseOutput) ToToolExitCodeResponsePtrOutput() ToolExitCo
 }
 
 func (o ToolExitCodeResponseOutput) ToToolExitCodeResponsePtrOutputWithContext(ctx context.Context) ToolExitCodeResponsePtrOutput {
-	return o.ApplyT(func(v ToolExitCodeResponse) *ToolExitCodeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolExitCodeResponse) *ToolExitCodeResponse {
 		return &v
 	}).(ToolExitCodeResponsePtrOutput)
 }
@@ -10812,7 +11138,13 @@ func (o ToolExitCodeResponsePtrOutput) ToToolExitCodeResponsePtrOutputWithContex
 }
 
 func (o ToolExitCodeResponsePtrOutput) Elem() ToolExitCodeResponseOutput {
-	return o.ApplyT(func(v *ToolExitCodeResponse) ToolExitCodeResponse { return *v }).(ToolExitCodeResponseOutput)
+	return o.ApplyT(func(v *ToolExitCodeResponse) ToolExitCodeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ToolExitCodeResponse
+		return ret
+	}).(ToolExitCodeResponseOutput)
 }
 
 // Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set

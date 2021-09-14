@@ -158,9 +158,7 @@ func (i *AlertPolicy) ToAlertPolicyOutputWithContext(ctx context.Context) AlertP
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyOutput)
 }
 
-type AlertPolicyOutput struct {
-	*pulumi.OutputState
-}
+type AlertPolicyOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicy)(nil))

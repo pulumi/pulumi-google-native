@@ -120,9 +120,7 @@ func (i *ServicePerimeter) ToServicePerimeterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterOutput)
 }
 
-type ServicePerimeterOutput struct {
-	*pulumi.OutputState
-}
+type ServicePerimeterOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServicePerimeter)(nil))

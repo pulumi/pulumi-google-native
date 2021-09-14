@@ -103,9 +103,7 @@ func (i *Version) ToVersionOutputWithContext(ctx context.Context) VersionOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(VersionOutput)
 }
 
-type VersionOutput struct {
-	*pulumi.OutputState
-}
+type VersionOutput struct{ *pulumi.OutputState }
 
 func (VersionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Version)(nil))

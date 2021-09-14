@@ -121,9 +121,7 @@ func (i *CompositeType) ToCompositeTypeOutputWithContext(ctx context.Context) Co
 	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeOutput)
 }
 
-type CompositeTypeOutput struct {
-	*pulumi.OutputState
-}
+type CompositeTypeOutput struct{ *pulumi.OutputState }
 
 func (CompositeTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CompositeType)(nil))

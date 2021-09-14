@@ -110,9 +110,7 @@ func (i *OrganizationReplay) ToOrganizationReplayOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationReplayOutput)
 }
 
-type OrganizationReplayOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationReplayOutput struct{ *pulumi.OutputState }
 
 func (OrganizationReplayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationReplay)(nil))

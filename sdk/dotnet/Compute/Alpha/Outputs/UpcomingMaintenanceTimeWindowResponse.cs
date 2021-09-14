@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Represents a window of time using two timestamps: `earliest` and `latest`. This timestamp values are in RFC3339 text format.
+    /// </summary>
     [OutputType]
     public sealed class UpcomingMaintenanceTimeWindowResponse
     {

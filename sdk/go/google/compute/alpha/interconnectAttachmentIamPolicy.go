@@ -135,9 +135,7 @@ func (i *InterconnectAttachmentIamPolicy) ToInterconnectAttachmentIamPolicyOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentIamPolicyOutput)
 }
 
-type InterconnectAttachmentIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type InterconnectAttachmentIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InterconnectAttachmentIamPolicy)(nil))

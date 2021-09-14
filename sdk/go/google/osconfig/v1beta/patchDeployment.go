@@ -155,9 +155,7 @@ func (i *PatchDeployment) ToPatchDeploymentOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentOutput)
 }
 
-type PatchDeploymentOutput struct {
-	*pulumi.OutputState
-}
+type PatchDeploymentOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PatchDeployment)(nil))

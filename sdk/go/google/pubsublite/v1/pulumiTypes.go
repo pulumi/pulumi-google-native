@@ -110,7 +110,7 @@ func (o CapacityOutput) ToCapacityPtrOutput() CapacityPtrOutput {
 }
 
 func (o CapacityOutput) ToCapacityPtrOutputWithContext(ctx context.Context) CapacityPtrOutput {
-	return o.ApplyT(func(v Capacity) *Capacity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Capacity) *Capacity {
 		return &v
 	}).(CapacityPtrOutput)
 }
@@ -140,7 +140,13 @@ func (o CapacityPtrOutput) ToCapacityPtrOutputWithContext(ctx context.Context) C
 }
 
 func (o CapacityPtrOutput) Elem() CapacityOutput {
-	return o.ApplyT(func(v *Capacity) Capacity { return *v }).(CapacityOutput)
+	return o.ApplyT(func(v *Capacity) Capacity {
+		if v != nil {
+			return *v
+		}
+		var ret Capacity
+		return ret
+	}).(CapacityOutput)
 }
 
 // Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
@@ -263,7 +269,7 @@ func (o CapacityResponseOutput) ToCapacityResponsePtrOutput() CapacityResponsePt
 }
 
 func (o CapacityResponseOutput) ToCapacityResponsePtrOutputWithContext(ctx context.Context) CapacityResponsePtrOutput {
-	return o.ApplyT(func(v CapacityResponse) *CapacityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CapacityResponse) *CapacityResponse {
 		return &v
 	}).(CapacityResponsePtrOutput)
 }
@@ -293,7 +299,13 @@ func (o CapacityResponsePtrOutput) ToCapacityResponsePtrOutputWithContext(ctx co
 }
 
 func (o CapacityResponsePtrOutput) Elem() CapacityResponseOutput {
-	return o.ApplyT(func(v *CapacityResponse) CapacityResponse { return *v }).(CapacityResponseOutput)
+	return o.ApplyT(func(v *CapacityResponse) CapacityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CapacityResponse
+		return ret
+	}).(CapacityResponseOutput)
 }
 
 // Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
@@ -412,7 +424,7 @@ func (o DeliveryConfigOutput) ToDeliveryConfigPtrOutput() DeliveryConfigPtrOutpu
 }
 
 func (o DeliveryConfigOutput) ToDeliveryConfigPtrOutputWithContext(ctx context.Context) DeliveryConfigPtrOutput {
-	return o.ApplyT(func(v DeliveryConfig) *DeliveryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryConfig) *DeliveryConfig {
 		return &v
 	}).(DeliveryConfigPtrOutput)
 }
@@ -437,7 +449,13 @@ func (o DeliveryConfigPtrOutput) ToDeliveryConfigPtrOutputWithContext(ctx contex
 }
 
 func (o DeliveryConfigPtrOutput) Elem() DeliveryConfigOutput {
-	return o.ApplyT(func(v *DeliveryConfig) DeliveryConfig { return *v }).(DeliveryConfigOutput)
+	return o.ApplyT(func(v *DeliveryConfig) DeliveryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryConfig
+		return ret
+	}).(DeliveryConfigOutput)
 }
 
 // The DeliveryRequirement for this subscription.
@@ -546,7 +564,7 @@ func (o DeliveryConfigResponseOutput) ToDeliveryConfigResponsePtrOutput() Delive
 }
 
 func (o DeliveryConfigResponseOutput) ToDeliveryConfigResponsePtrOutputWithContext(ctx context.Context) DeliveryConfigResponsePtrOutput {
-	return o.ApplyT(func(v DeliveryConfigResponse) *DeliveryConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryConfigResponse) *DeliveryConfigResponse {
 		return &v
 	}).(DeliveryConfigResponsePtrOutput)
 }
@@ -571,7 +589,13 @@ func (o DeliveryConfigResponsePtrOutput) ToDeliveryConfigResponsePtrOutputWithCo
 }
 
 func (o DeliveryConfigResponsePtrOutput) Elem() DeliveryConfigResponseOutput {
-	return o.ApplyT(func(v *DeliveryConfigResponse) DeliveryConfigResponse { return *v }).(DeliveryConfigResponseOutput)
+	return o.ApplyT(func(v *DeliveryConfigResponse) DeliveryConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryConfigResponse
+		return ret
+	}).(DeliveryConfigResponseOutput)
 }
 
 // The DeliveryRequirement for this subscription.
@@ -684,7 +708,7 @@ func (o PartitionConfigOutput) ToPartitionConfigPtrOutput() PartitionConfigPtrOu
 }
 
 func (o PartitionConfigOutput) ToPartitionConfigPtrOutputWithContext(ctx context.Context) PartitionConfigPtrOutput {
-	return o.ApplyT(func(v PartitionConfig) *PartitionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PartitionConfig) *PartitionConfig {
 		return &v
 	}).(PartitionConfigPtrOutput)
 }
@@ -714,7 +738,13 @@ func (o PartitionConfigPtrOutput) ToPartitionConfigPtrOutputWithContext(ctx cont
 }
 
 func (o PartitionConfigPtrOutput) Elem() PartitionConfigOutput {
-	return o.ApplyT(func(v *PartitionConfig) PartitionConfig { return *v }).(PartitionConfigOutput)
+	return o.ApplyT(func(v *PartitionConfig) PartitionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PartitionConfig
+		return ret
+	}).(PartitionConfigOutput)
 }
 
 // The capacity configuration.
@@ -837,7 +867,7 @@ func (o PartitionConfigResponseOutput) ToPartitionConfigResponsePtrOutput() Part
 }
 
 func (o PartitionConfigResponseOutput) ToPartitionConfigResponsePtrOutputWithContext(ctx context.Context) PartitionConfigResponsePtrOutput {
-	return o.ApplyT(func(v PartitionConfigResponse) *PartitionConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PartitionConfigResponse) *PartitionConfigResponse {
 		return &v
 	}).(PartitionConfigResponsePtrOutput)
 }
@@ -867,7 +897,13 @@ func (o PartitionConfigResponsePtrOutput) ToPartitionConfigResponsePtrOutputWith
 }
 
 func (o PartitionConfigResponsePtrOutput) Elem() PartitionConfigResponseOutput {
-	return o.ApplyT(func(v *PartitionConfigResponse) PartitionConfigResponse { return *v }).(PartitionConfigResponseOutput)
+	return o.ApplyT(func(v *PartitionConfigResponse) PartitionConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PartitionConfigResponse
+		return ret
+	}).(PartitionConfigResponseOutput)
 }
 
 // The capacity configuration.
@@ -990,7 +1026,7 @@ func (o RetentionConfigOutput) ToRetentionConfigPtrOutput() RetentionConfigPtrOu
 }
 
 func (o RetentionConfigOutput) ToRetentionConfigPtrOutputWithContext(ctx context.Context) RetentionConfigPtrOutput {
-	return o.ApplyT(func(v RetentionConfig) *RetentionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetentionConfig) *RetentionConfig {
 		return &v
 	}).(RetentionConfigPtrOutput)
 }
@@ -1020,7 +1056,13 @@ func (o RetentionConfigPtrOutput) ToRetentionConfigPtrOutputWithContext(ctx cont
 }
 
 func (o RetentionConfigPtrOutput) Elem() RetentionConfigOutput {
-	return o.ApplyT(func(v *RetentionConfig) RetentionConfig { return *v }).(RetentionConfigOutput)
+	return o.ApplyT(func(v *RetentionConfig) RetentionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RetentionConfig
+		return ret
+	}).(RetentionConfigOutput)
 }
 
 // The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
@@ -1143,7 +1185,7 @@ func (o RetentionConfigResponseOutput) ToRetentionConfigResponsePtrOutput() Rete
 }
 
 func (o RetentionConfigResponseOutput) ToRetentionConfigResponsePtrOutputWithContext(ctx context.Context) RetentionConfigResponsePtrOutput {
-	return o.ApplyT(func(v RetentionConfigResponse) *RetentionConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetentionConfigResponse) *RetentionConfigResponse {
 		return &v
 	}).(RetentionConfigResponsePtrOutput)
 }
@@ -1173,7 +1215,13 @@ func (o RetentionConfigResponsePtrOutput) ToRetentionConfigResponsePtrOutputWith
 }
 
 func (o RetentionConfigResponsePtrOutput) Elem() RetentionConfigResponseOutput {
-	return o.ApplyT(func(v *RetentionConfigResponse) RetentionConfigResponse { return *v }).(RetentionConfigResponseOutput)
+	return o.ApplyT(func(v *RetentionConfigResponse) RetentionConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RetentionConfigResponse
+		return ret
+	}).(RetentionConfigResponseOutput)
 }
 
 // The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.

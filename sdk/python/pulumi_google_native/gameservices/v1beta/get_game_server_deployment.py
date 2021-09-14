@@ -12,6 +12,7 @@ __all__ = [
     'GetGameServerDeploymentResult',
     'AwaitableGetGameServerDeploymentResult',
     'get_game_server_deployment',
+    'get_game_server_deployment_output',
 ]
 
 @pulumi.output_type
@@ -123,3 +124,14 @@ def get_game_server_deployment(game_server_deployment_id: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_game_server_deployment)
+def get_game_server_deployment_output(game_server_deployment_id: Optional[pulumi.Input[str]] = None,
+                                      location: Optional[pulumi.Input[str]] = None,
+                                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGameServerDeploymentResult]:
+    """
+    Gets details of a single game server deployment.
+    """
+    ...

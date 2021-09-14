@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Encapsulates the full scoping used to reference a job.
+    /// </summary>
     [OutputType]
     public sealed class JobReferenceResponse
     {

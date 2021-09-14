@@ -13,6 +13,7 @@ __all__ = [
     'GetConversationProfileResult',
     'AwaitableGetConversationProfileResult',
     'get_conversation_profile',
+    'get_conversation_profile_output',
 ]
 
 @pulumi.output_type
@@ -228,3 +229,14 @@ def get_conversation_profile(conversation_profile_id: Optional[str] = None,
         stt_config=__ret__.stt_config,
         time_zone=__ret__.time_zone,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_conversation_profile)
+def get_conversation_profile_output(conversation_profile_id: Optional[pulumi.Input[str]] = None,
+                                    location: Optional[pulumi.Input[str]] = None,
+                                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConversationProfileResult]:
+    """
+    Retrieves the specified conversation profile.
+    """
+    ...

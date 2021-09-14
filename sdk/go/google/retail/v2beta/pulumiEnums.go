@@ -110,7 +110,7 @@ func (o ProductAvailabilityOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type ProductAvailabilityPtrOutput struct{ *pulumi.OutputState }
 
 func (ProductAvailabilityPtrOutput) ElementType() reflect.Type {
-	return productAvailabilityPtrType
+	return reflect.TypeOf((**ProductAvailability)(nil)).Elem()
 }
 
 func (o ProductAvailabilityPtrOutput) ToProductAvailabilityPtrOutput() ProductAvailabilityPtrOutput {
@@ -119,6 +119,16 @@ func (o ProductAvailabilityPtrOutput) ToProductAvailabilityPtrOutput() ProductAv
 
 func (o ProductAvailabilityPtrOutput) ToProductAvailabilityPtrOutputWithContext(ctx context.Context) ProductAvailabilityPtrOutput {
 	return o
+}
+
+func (o ProductAvailabilityPtrOutput) Elem() ProductAvailabilityOutput {
+	return o.ApplyT(func(v *ProductAvailability) ProductAvailability {
+		if v != nil {
+			return *v
+		}
+		var ret ProductAvailability
+		return ret
+	}).(ProductAvailabilityOutput)
 }
 
 func (o ProductAvailabilityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -133,16 +143,6 @@ func (o ProductAvailabilityPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ProductAvailabilityPtrOutput) Elem() ProductAvailabilityOutput {
-	return o.ApplyT(func(v *ProductAvailability) ProductAvailability {
-		var ret ProductAvailability
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ProductAvailabilityOutput)
 }
 
 // ProductAvailabilityInput is an input type that accepts ProductAvailabilityArgs and ProductAvailabilityOutput values.
@@ -281,7 +281,7 @@ func (o ProductTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 type ProductTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ProductTypePtrOutput) ElementType() reflect.Type {
-	return productTypePtrType
+	return reflect.TypeOf((**ProductType)(nil)).Elem()
 }
 
 func (o ProductTypePtrOutput) ToProductTypePtrOutput() ProductTypePtrOutput {
@@ -290,6 +290,16 @@ func (o ProductTypePtrOutput) ToProductTypePtrOutput() ProductTypePtrOutput {
 
 func (o ProductTypePtrOutput) ToProductTypePtrOutputWithContext(ctx context.Context) ProductTypePtrOutput {
 	return o
+}
+
+func (o ProductTypePtrOutput) Elem() ProductTypeOutput {
+	return o.ApplyT(func(v *ProductType) ProductType {
+		if v != nil {
+			return *v
+		}
+		var ret ProductType
+		return ret
+	}).(ProductTypeOutput)
 }
 
 func (o ProductTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -304,16 +314,6 @@ func (o ProductTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ProductTypePtrOutput) Elem() ProductTypeOutput {
-	return o.ApplyT(func(v *ProductType) ProductType {
-		var ret ProductType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ProductTypeOutput)
 }
 
 // ProductTypeInput is an input type that accepts ProductTypeArgs and ProductTypeOutput values.

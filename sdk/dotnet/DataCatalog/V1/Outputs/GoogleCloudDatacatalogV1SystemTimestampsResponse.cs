@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 {
 
+    /// <summary>
+    /// Timestamps associated with this resource in a particular system.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1SystemTimestampsResponse
     {

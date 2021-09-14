@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Credential info for the Cloud SQL.
+    /// </summary>
     [OutputType]
     public sealed class CloudSqlCredentialResponse
     {

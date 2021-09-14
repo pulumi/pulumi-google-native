@@ -12,6 +12,7 @@ __all__ = [
     'GetReferenceResult',
     'AwaitableGetReferenceResult',
     'get_reference',
+    'get_reference_output',
 ]
 
 @pulumi.output_type
@@ -97,3 +98,14 @@ def get_reference(environment_id: Optional[str] = None,
         name=__ret__.name,
         refers=__ret__.refers,
         resource_type=__ret__.resource_type)
+
+
+@_utilities.lift_output_func(get_reference)
+def get_reference_output(environment_id: Optional[pulumi.Input[str]] = None,
+                         organization_id: Optional[pulumi.Input[str]] = None,
+                         reference_id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReferenceResult]:
+    """
+    Gets a Reference resource.
+    """
+    ...

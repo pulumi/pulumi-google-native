@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
+    /// </summary>
     [OutputType]
     public sealed class TimeSeriesQueryResponse
     {

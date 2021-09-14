@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for the legacy Attribute Based Access Control authorization mode.
+    /// </summary>
     [OutputType]
     public sealed class LegacyAbacResponse
     {

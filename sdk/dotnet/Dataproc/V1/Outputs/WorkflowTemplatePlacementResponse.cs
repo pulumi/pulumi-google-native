@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
+    /// </summary>
     [OutputType]
     public sealed class WorkflowTemplatePlacementResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Outputs
 {
 
+    /// <summary>
+    /// Options allows customized resource handling by Deployment Manager.
+    /// </summary>
     [OutputType]
     public sealed class OptionsResponse
     {

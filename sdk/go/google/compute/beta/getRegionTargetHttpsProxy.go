@@ -4,6 +4,9 @@
 package beta
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,4 +59,121 @@ type LookupRegionTargetHttpsProxyResult struct {
 	SslPolicy string `pulumi:"sslPolicy"`
 	// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map
 	UrlMap string `pulumi:"urlMap"`
+}
+
+func LookupRegionTargetHttpsProxyOutput(ctx *pulumi.Context, args LookupRegionTargetHttpsProxyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionTargetHttpsProxyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRegionTargetHttpsProxyResult, error) {
+			args := v.(LookupRegionTargetHttpsProxyArgs)
+			r, err := LookupRegionTargetHttpsProxy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRegionTargetHttpsProxyResultOutput)
+}
+
+type LookupRegionTargetHttpsProxyOutputArgs struct {
+	Project          pulumi.StringPtrInput `pulumi:"project"`
+	Region           pulumi.StringInput    `pulumi:"region"`
+	TargetHttpsProxy pulumi.StringInput    `pulumi:"targetHttpsProxy"`
+}
+
+func (LookupRegionTargetHttpsProxyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegionTargetHttpsProxyArgs)(nil)).Elem()
+}
+
+type LookupRegionTargetHttpsProxyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRegionTargetHttpsProxyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegionTargetHttpsProxyResult)(nil)).Elem()
+}
+
+func (o LookupRegionTargetHttpsProxyResultOutput) ToLookupRegionTargetHttpsProxyResultOutput() LookupRegionTargetHttpsProxyResultOutput {
+	return o
+}
+
+func (o LookupRegionTargetHttpsProxyResultOutput) ToLookupRegionTargetHttpsProxyResultOutputWithContext(ctx context.Context) LookupRegionTargetHttpsProxyResultOutput {
+	return o
+}
+
+// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
+func (o LookupRegionTargetHttpsProxyResultOutput) AuthorizationPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.AuthorizationPolicy }).(pulumi.StringOutput)
+}
+
+// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+func (o LookupRegionTargetHttpsProxyResultOutput) CertificateMap() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.CertificateMap }).(pulumi.StringOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o LookupRegionTargetHttpsProxyResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o LookupRegionTargetHttpsProxyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+func (o LookupRegionTargetHttpsProxyResultOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/ locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list. httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
+func (o LookupRegionTargetHttpsProxyResultOutput) HttpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) []string { return v.HttpFilters }).(pulumi.StringArrayOutput)
+}
+
+// Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
+func (o LookupRegionTargetHttpsProxyResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o LookupRegionTargetHttpsProxyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED. When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them. The default is false.
+func (o LookupRegionTargetHttpsProxyResultOutput) ProxyBind() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) bool { return v.ProxyBind }).(pulumi.BoolOutput)
+}
+
+// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied.
+func (o LookupRegionTargetHttpsProxyResultOutput) QuicOverride() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.QuicOverride }).(pulumi.StringOutput)
+}
+
+// URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
+func (o LookupRegionTargetHttpsProxyResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o LookupRegionTargetHttpsProxyResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+func (o LookupRegionTargetHttpsProxyResultOutput) ServerTlsPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.ServerTlsPolicy }).(pulumi.StringOutput)
+}
+
+// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+func (o LookupRegionTargetHttpsProxyResultOutput) SslCertificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) []string { return v.SslCertificates }).(pulumi.StringArrayOutput)
+}
+
+// URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
+func (o LookupRegionTargetHttpsProxyResultOutput) SslPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.SslPolicy }).(pulumi.StringOutput)
+}
+
+// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map
+func (o LookupRegionTargetHttpsProxyResultOutput) UrlMap() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.UrlMap }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRegionTargetHttpsProxyResultOutput{})
 }

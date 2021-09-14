@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Product price range when there are a range of prices for different variations of the same product.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
     {

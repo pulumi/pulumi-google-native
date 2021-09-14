@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for running a transfer.
+    /// </summary>
     [OutputType]
     public sealed class TransferSpecResponse
     {

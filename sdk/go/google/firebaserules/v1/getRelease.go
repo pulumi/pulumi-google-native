@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,4 +34,60 @@ type LookupReleaseResult struct {
 	RulesetName string `pulumi:"rulesetName"`
 	// Time the release was updated.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupReleaseOutput(ctx *pulumi.Context, args LookupReleaseOutputArgs, opts ...pulumi.InvokeOption) LookupReleaseResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupReleaseResult, error) {
+			args := v.(LookupReleaseArgs)
+			r, err := LookupRelease(ctx, &args, opts...)
+			return *r, err
+		}).(LookupReleaseResultOutput)
+}
+
+type LookupReleaseOutputArgs struct {
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+	ReleaseId pulumi.StringInput    `pulumi:"releaseId"`
+}
+
+func (LookupReleaseOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupReleaseArgs)(nil)).Elem()
+}
+
+type LookupReleaseResultOutput struct{ *pulumi.OutputState }
+
+func (LookupReleaseResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupReleaseResult)(nil)).Elem()
+}
+
+func (o LookupReleaseResultOutput) ToLookupReleaseResultOutput() LookupReleaseResultOutput {
+	return o
+}
+
+func (o LookupReleaseResultOutput) ToLookupReleaseResultOutputWithContext(ctx context.Context) LookupReleaseResultOutput {
+	return o
+}
+
+// Time the release was created.
+func (o LookupReleaseResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReleaseResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Format: `projects/{project_id}/releases/{release_id}`
+func (o LookupReleaseResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReleaseResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+func (o LookupReleaseResultOutput) RulesetName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReleaseResult) string { return v.RulesetName }).(pulumi.StringOutput)
+}
+
+// Time the release was updated.
+func (o LookupReleaseResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReleaseResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupReleaseResultOutput{})
 }

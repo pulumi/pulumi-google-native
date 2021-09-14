@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
+    /// </summary>
     [OutputType]
     public sealed class MembershipRoleResponse
     {

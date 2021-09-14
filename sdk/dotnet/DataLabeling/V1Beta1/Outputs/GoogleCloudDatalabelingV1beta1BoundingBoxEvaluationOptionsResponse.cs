@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Options regarding evaluation between bounding boxes.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse
     {

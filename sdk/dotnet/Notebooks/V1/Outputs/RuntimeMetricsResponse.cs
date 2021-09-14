@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// Contains runtime daemon metrics, such as OS and kernels and sessions stats.
+    /// </summary>
     [OutputType]
     public sealed class RuntimeMetricsResponse
     {

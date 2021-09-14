@@ -114,7 +114,7 @@ func (o FeedContentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type FeedContentTypePtrOutput struct{ *pulumi.OutputState }
 
 func (FeedContentTypePtrOutput) ElementType() reflect.Type {
-	return feedContentTypePtrType
+	return reflect.TypeOf((**FeedContentType)(nil)).Elem()
 }
 
 func (o FeedContentTypePtrOutput) ToFeedContentTypePtrOutput() FeedContentTypePtrOutput {
@@ -123,6 +123,16 @@ func (o FeedContentTypePtrOutput) ToFeedContentTypePtrOutput() FeedContentTypePt
 
 func (o FeedContentTypePtrOutput) ToFeedContentTypePtrOutputWithContext(ctx context.Context) FeedContentTypePtrOutput {
 	return o
+}
+
+func (o FeedContentTypePtrOutput) Elem() FeedContentTypeOutput {
+	return o.ApplyT(func(v *FeedContentType) FeedContentType {
+		if v != nil {
+			return *v
+		}
+		var ret FeedContentType
+		return ret
+	}).(FeedContentTypeOutput)
 }
 
 func (o FeedContentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -137,16 +147,6 @@ func (o FeedContentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FeedContentTypePtrOutput) Elem() FeedContentTypeOutput {
-	return o.ApplyT(func(v *FeedContentType) FeedContentType {
-		var ret FeedContentType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FeedContentTypeOutput)
 }
 
 // FeedContentTypeInput is an input type that accepts FeedContentTypeArgs and FeedContentTypeOutput values.

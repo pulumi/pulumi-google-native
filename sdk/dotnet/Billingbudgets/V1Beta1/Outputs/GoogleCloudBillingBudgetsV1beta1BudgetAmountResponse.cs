@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The budgeted amount for each usage period.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse
     {

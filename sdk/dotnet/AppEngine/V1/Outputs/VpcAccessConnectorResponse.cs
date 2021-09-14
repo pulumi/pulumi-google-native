@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// VPC access connector specification.
+    /// </summary>
     [OutputType]
     public sealed class VpcAccessConnectorResponse
     {

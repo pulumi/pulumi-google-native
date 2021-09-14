@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The content of an HL7v2 message in a structured format.
+    /// </summary>
     [OutputType]
     public sealed class ParsedDataResponse
     {

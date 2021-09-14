@@ -4,6 +4,9 @@
 package v3
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,69 @@ type LookupEnvironmentResult struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs []GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse `pulumi:"versionConfigs"`
+}
+
+func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupEnvironmentResult, error) {
+			args := v.(LookupEnvironmentArgs)
+			r, err := LookupEnvironment(ctx, &args, opts...)
+			return *r, err
+		}).(LookupEnvironmentResultOutput)
+}
+
+type LookupEnvironmentOutputArgs struct {
+	AgentId       pulumi.StringInput    `pulumi:"agentId"`
+	EnvironmentId pulumi.StringInput    `pulumi:"environmentId"`
+	Location      pulumi.StringInput    `pulumi:"location"`
+	Project       pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupEnvironmentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentArgs)(nil)).Elem()
+}
+
+type LookupEnvironmentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEnvironmentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentResult)(nil)).Elem()
+}
+
+func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutput() LookupEnvironmentResultOutput {
+	return o
+}
+
+func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContext(ctx context.Context) LookupEnvironmentResultOutput {
+	return o
+}
+
+// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+func (o LookupEnvironmentResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+func (o LookupEnvironmentResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The name of the environment. Format: `projects//locations//agents//environments/`.
+func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Update time of this environment.
+func (o LookupEnvironmentResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+func (o LookupEnvironmentResultOutput) VersionConfigs() GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) []GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse {
+		return v.VersionConfigs
+	}).(GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEnvironmentResultOutput{})
 }

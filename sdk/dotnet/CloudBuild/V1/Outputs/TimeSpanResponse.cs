@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Start and end times for a build execution phase.
+    /// </summary>
     [OutputType]
     public sealed class TimeSpanResponse
     {

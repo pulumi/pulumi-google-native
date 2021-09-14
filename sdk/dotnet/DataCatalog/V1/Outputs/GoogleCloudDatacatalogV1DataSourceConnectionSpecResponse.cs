@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 {
 
+    /// <summary>
+    /// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse
     {

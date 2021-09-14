@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Resource level annotation.
+    /// </summary>
     [OutputType]
     public sealed class ResourceAnnotationResponse
     {

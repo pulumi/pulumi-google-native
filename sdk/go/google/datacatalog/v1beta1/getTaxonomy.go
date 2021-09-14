@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,73 @@ type LookupTaxonomyResult struct {
 	PolicyTagCount int `pulumi:"policyTagCount"`
 	// Timestamps about this taxonomy. Only create_time and update_time are used.
 	TaxonomyTimestamps GoogleCloudDatacatalogV1beta1SystemTimestampsResponse `pulumi:"taxonomyTimestamps"`
+}
+
+func LookupTaxonomyOutput(ctx *pulumi.Context, args LookupTaxonomyOutputArgs, opts ...pulumi.InvokeOption) LookupTaxonomyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTaxonomyResult, error) {
+			args := v.(LookupTaxonomyArgs)
+			r, err := LookupTaxonomy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTaxonomyResultOutput)
+}
+
+type LookupTaxonomyOutputArgs struct {
+	Location   pulumi.StringInput    `pulumi:"location"`
+	Project    pulumi.StringPtrInput `pulumi:"project"`
+	TaxonomyId pulumi.StringInput    `pulumi:"taxonomyId"`
+}
+
+func (LookupTaxonomyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTaxonomyArgs)(nil)).Elem()
+}
+
+type LookupTaxonomyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTaxonomyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTaxonomyResult)(nil)).Elem()
+}
+
+func (o LookupTaxonomyResultOutput) ToLookupTaxonomyResultOutput() LookupTaxonomyResultOutput {
+	return o
+}
+
+func (o LookupTaxonomyResultOutput) ToLookupTaxonomyResultOutputWithContext(ctx context.Context) LookupTaxonomyResultOutput {
+	return o
+}
+
+// Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
+func (o LookupTaxonomyResultOutput) ActivatedPolicyTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTaxonomyResult) []string { return v.ActivatedPolicyTypes }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
+func (o LookupTaxonomyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTaxonomyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+func (o LookupTaxonomyResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTaxonomyResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
+func (o LookupTaxonomyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTaxonomyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Number of policy tags contained in this taxonomy.
+func (o LookupTaxonomyResultOutput) PolicyTagCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupTaxonomyResult) int { return v.PolicyTagCount }).(pulumi.IntOutput)
+}
+
+// Timestamps about this taxonomy. Only create_time and update_time are used.
+func (o LookupTaxonomyResultOutput) TaxonomyTimestamps() GoogleCloudDatacatalogV1beta1SystemTimestampsResponseOutput {
+	return o.ApplyT(func(v LookupTaxonomyResult) GoogleCloudDatacatalogV1beta1SystemTimestampsResponse {
+		return v.TaxonomyTimestamps
+	}).(GoogleCloudDatacatalogV1beta1SystemTimestampsResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTaxonomyResultOutput{})
 }

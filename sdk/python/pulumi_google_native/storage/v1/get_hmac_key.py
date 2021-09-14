@@ -12,6 +12,7 @@ __all__ = [
     'GetHmacKeyResult',
     'AwaitableGetHmacKeyResult',
     'get_hmac_key',
+    'get_hmac_key_output',
 ]
 
 @pulumi.output_type
@@ -162,3 +163,14 @@ def get_hmac_key(access_id: Optional[str] = None,
         state=__ret__.state,
         time_created=__ret__.time_created,
         updated=__ret__.updated)
+
+
+@_utilities.lift_output_func(get_hmac_key)
+def get_hmac_key_output(access_id: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        user_project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHmacKeyResult]:
+    """
+    Retrieves an HMAC key's metadata
+    """
+    ...

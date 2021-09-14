@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Locations where the results of running the test are stored.
+    /// </summary>
     [OutputType]
     public sealed class ResultStorageResponse
     {

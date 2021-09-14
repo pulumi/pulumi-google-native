@@ -117,9 +117,7 @@ func (i *InspectTemplate) ToInspectTemplateOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InspectTemplateOutput)
 }
 
-type InspectTemplateOutput struct {
-	*pulumi.OutputState
-}
+type InspectTemplateOutput struct{ *pulumi.OutputState }
 
 func (InspectTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InspectTemplate)(nil))

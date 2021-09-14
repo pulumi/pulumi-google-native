@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Defines a name-pair value for a single label.
+    /// </summary>
     [OutputType]
     public sealed class MetadataLabelsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
+    /// <summary>
+    /// The inference result which includes an objective metric to optimize and the confidence interval.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1ExperimentResultResponse
     {

@@ -110,7 +110,7 @@ func (o GoogleCloudApigeeV1AddonsConfigOutput) ToGoogleCloudApigeeV1AddonsConfig
 }
 
 func (o GoogleCloudApigeeV1AddonsConfigOutput) ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1AddonsConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1AddonsConfig {
 		return &v
 	}).(GoogleCloudApigeeV1AddonsConfigPtrOutput)
 }
@@ -144,7 +144,13 @@ func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) ToGoogleCloudApigeeV1AddonsCon
 }
 
 func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) Elem() GoogleCloudApigeeV1AddonsConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfig) GoogleCloudApigeeV1AddonsConfig { return *v }).(GoogleCloudApigeeV1AddonsConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfig) GoogleCloudApigeeV1AddonsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1AddonsConfig
+		return ret
+	}).(GoogleCloudApigeeV1AddonsConfigOutput)
 }
 
 // Configuration for the Advanced API Ops add-on.
@@ -267,7 +273,7 @@ func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) ToGoogleCloudApigeeV1Addo
 }
 
 func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfigResponse) *GoogleCloudApigeeV1AddonsConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1AddonsConfigResponse) *GoogleCloudApigeeV1AddonsConfigResponse {
 		return &v
 	}).(GoogleCloudApigeeV1AddonsConfigResponsePtrOutput)
 }
@@ -301,7 +307,13 @@ func (o GoogleCloudApigeeV1AddonsConfigResponsePtrOutput) ToGoogleCloudApigeeV1A
 }
 
 func (o GoogleCloudApigeeV1AddonsConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1AddonsConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfigResponse) GoogleCloudApigeeV1AddonsConfigResponse { return *v }).(GoogleCloudApigeeV1AddonsConfigResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfigResponse) GoogleCloudApigeeV1AddonsConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1AddonsConfigResponse
+		return ret
+	}).(GoogleCloudApigeeV1AddonsConfigResponseOutput)
 }
 
 // Configuration for the Advanced API Ops add-on.
@@ -420,7 +432,7 @@ func (o GoogleCloudApigeeV1AdvancedApiOpsConfigOutput) ToGoogleCloudApigeeV1Adva
 }
 
 func (o GoogleCloudApigeeV1AdvancedApiOpsConfigOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1AdvancedApiOpsConfig) *GoogleCloudApigeeV1AdvancedApiOpsConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1AdvancedApiOpsConfig) *GoogleCloudApigeeV1AdvancedApiOpsConfig {
 		return &v
 	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput)
 }
@@ -445,7 +457,13 @@ func (o GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput) ToGoogleCloudApigeeV1A
 }
 
 func (o GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput) Elem() GoogleCloudApigeeV1AdvancedApiOpsConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1AdvancedApiOpsConfig) GoogleCloudApigeeV1AdvancedApiOpsConfig { return *v }).(GoogleCloudApigeeV1AdvancedApiOpsConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AdvancedApiOpsConfig) GoogleCloudApigeeV1AdvancedApiOpsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1AdvancedApiOpsConfig
+		return ret
+	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigOutput)
 }
 
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
@@ -554,7 +572,7 @@ func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) ToGoogleCloudApig
 }
 
 func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1AdvancedApiOpsConfigResponse) *GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1AdvancedApiOpsConfigResponse) *GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
 		return &v
 	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput)
 }
@@ -580,7 +598,11 @@ func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput) ToGoogleCloudA
 
 func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1AdvancedApiOpsConfigResponse) GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1AdvancedApiOpsConfigResponse
+		return ret
 	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput)
 }
 
@@ -870,7 +892,7 @@ func (o GoogleCloudApigeeV1AsyncQueryResultResponseOutput) ToGoogleCloudApigeeV1
 }
 
 func (o GoogleCloudApigeeV1AsyncQueryResultResponseOutput) ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1AsyncQueryResultResponse) *GoogleCloudApigeeV1AsyncQueryResultResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1AsyncQueryResultResponse) *GoogleCloudApigeeV1AsyncQueryResultResponse {
 		return &v
 	}).(GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput)
 }
@@ -901,7 +923,11 @@ func (o GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput) ToGoogleCloudApige
 
 func (o GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput) Elem() GoogleCloudApigeeV1AsyncQueryResultResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1AsyncQueryResultResponse) GoogleCloudApigeeV1AsyncQueryResultResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1AsyncQueryResultResponse
+		return ret
 	}).(GoogleCloudApigeeV1AsyncQueryResultResponseOutput)
 }
 
@@ -1247,7 +1273,7 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) ToGoogleCloudApig
 }
 
 func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabels) *GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1CanaryEvaluationMetricLabels) *GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
 		return &v
 	}).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput)
 }
@@ -1283,7 +1309,11 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) ToGoogleCloudA
 
 func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) Elem() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabels) GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1CanaryEvaluationMetricLabels
+		return ret
 	}).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput)
 }
 
@@ -1421,7 +1451,7 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) ToGoogleC
 }
 
 func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse {
 		return &v
 	}).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput)
 }
@@ -1457,7 +1487,11 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) ToGoog
 
 func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) Elem() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse
+		return ret
 	}).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput)
 }
 
@@ -1774,7 +1808,7 @@ func (o GoogleCloudApigeeV1CertificateResponseOutput) ToGoogleCloudApigeeV1Certi
 }
 
 func (o GoogleCloudApigeeV1CertificateResponseOutput) ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1CertificateResponse) *GoogleCloudApigeeV1CertificateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1CertificateResponse) *GoogleCloudApigeeV1CertificateResponse {
 		return &v
 	}).(GoogleCloudApigeeV1CertificateResponsePtrOutput)
 }
@@ -1801,7 +1835,13 @@ func (o GoogleCloudApigeeV1CertificateResponsePtrOutput) ToGoogleCloudApigeeV1Ce
 }
 
 func (o GoogleCloudApigeeV1CertificateResponsePtrOutput) Elem() GoogleCloudApigeeV1CertificateResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1CertificateResponse) GoogleCloudApigeeV1CertificateResponse { return *v }).(GoogleCloudApigeeV1CertificateResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1CertificateResponse) GoogleCloudApigeeV1CertificateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1CertificateResponse
+		return ret
+	}).(GoogleCloudApigeeV1CertificateResponseOutput)
 }
 
 // Chain of certificates under this name.
@@ -2308,7 +2348,7 @@ func (o GoogleCloudApigeeV1DatastoreConfigOutput) ToGoogleCloudApigeeV1Datastore
 }
 
 func (o GoogleCloudApigeeV1DatastoreConfigOutput) ToGoogleCloudApigeeV1DatastoreConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1DatastoreConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfig) *GoogleCloudApigeeV1DatastoreConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1DatastoreConfig) *GoogleCloudApigeeV1DatastoreConfig {
 		return &v
 	}).(GoogleCloudApigeeV1DatastoreConfigPtrOutput)
 }
@@ -2353,7 +2393,13 @@ func (o GoogleCloudApigeeV1DatastoreConfigPtrOutput) ToGoogleCloudApigeeV1Datast
 }
 
 func (o GoogleCloudApigeeV1DatastoreConfigPtrOutput) Elem() GoogleCloudApigeeV1DatastoreConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1DatastoreConfig) GoogleCloudApigeeV1DatastoreConfig { return *v }).(GoogleCloudApigeeV1DatastoreConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1DatastoreConfig) GoogleCloudApigeeV1DatastoreConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1DatastoreConfig
+		return ret
+	}).(GoogleCloudApigeeV1DatastoreConfigOutput)
 }
 
 // Name of the Cloud Storage bucket. Required for `gcs` target_type.
@@ -2518,7 +2564,7 @@ func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) ToGoogleCloudApigeeV1D
 }
 
 func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfigResponse) *GoogleCloudApigeeV1DatastoreConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1DatastoreConfigResponse) *GoogleCloudApigeeV1DatastoreConfigResponse {
 		return &v
 	}).(GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput)
 }
@@ -2564,7 +2610,11 @@ func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) ToGoogleCloudApigee
 
 func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1DatastoreConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1DatastoreConfigResponse) GoogleCloudApigeeV1DatastoreConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1DatastoreConfigResponse
+		return ret
 	}).(GoogleCloudApigeeV1DatastoreConfigResponseOutput)
 }
 
@@ -2718,7 +2768,7 @@ func (o GoogleCloudApigeeV1DateRangeOutput) ToGoogleCloudApigeeV1DateRangePtrOut
 }
 
 func (o GoogleCloudApigeeV1DateRangeOutput) ToGoogleCloudApigeeV1DateRangePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1DateRangePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1DateRange) *GoogleCloudApigeeV1DateRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1DateRange) *GoogleCloudApigeeV1DateRange {
 		return &v
 	}).(GoogleCloudApigeeV1DateRangePtrOutput)
 }
@@ -2748,7 +2798,13 @@ func (o GoogleCloudApigeeV1DateRangePtrOutput) ToGoogleCloudApigeeV1DateRangePtr
 }
 
 func (o GoogleCloudApigeeV1DateRangePtrOutput) Elem() GoogleCloudApigeeV1DateRangeOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1DateRange) GoogleCloudApigeeV1DateRange { return *v }).(GoogleCloudApigeeV1DateRangeOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1DateRange) GoogleCloudApigeeV1DateRange {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1DateRange
+		return ret
+	}).(GoogleCloudApigeeV1DateRangeOutput)
 }
 
 // End date (exclusive) of the data to export in the format `yyyy-mm-dd`. The date range ends at 00:00:00 UTC on the end date- which will not be in the output.
@@ -2875,7 +2931,7 @@ func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) ToGoogleCloudApigeeV1En
 }
 
 func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1EntityMetadataResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1EntityMetadataResponse) *GoogleCloudApigeeV1EntityMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1EntityMetadataResponse) *GoogleCloudApigeeV1EntityMetadataResponse {
 		return &v
 	}).(GoogleCloudApigeeV1EntityMetadataResponsePtrOutput)
 }
@@ -2911,7 +2967,11 @@ func (o GoogleCloudApigeeV1EntityMetadataResponsePtrOutput) ToGoogleCloudApigeeV
 
 func (o GoogleCloudApigeeV1EntityMetadataResponsePtrOutput) Elem() GoogleCloudApigeeV1EntityMetadataResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1EntityMetadataResponse) GoogleCloudApigeeV1EntityMetadataResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1EntityMetadataResponse
+		return ret
 	}).(GoogleCloudApigeeV1EntityMetadataResponseOutput)
 }
 
@@ -3416,7 +3476,7 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) ToGoogleCloudApigeeV1Gra
 }
 
 func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationGroup) *GoogleCloudApigeeV1GraphQLOperationGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1GraphQLOperationGroup) *GoogleCloudApigeeV1GraphQLOperationGroup {
 		return &v
 	}).(GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput)
 }
@@ -3448,7 +3508,13 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) ToGoogleCloudApigeeV1
 }
 
 func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) Elem() GoogleCloudApigeeV1GraphQLOperationGroupOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroup) GoogleCloudApigeeV1GraphQLOperationGroup { return *v }).(GoogleCloudApigeeV1GraphQLOperationGroupOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroup) GoogleCloudApigeeV1GraphQLOperationGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1GraphQLOperationGroup
+		return ret
+	}).(GoogleCloudApigeeV1GraphQLOperationGroupOutput)
 }
 
 // Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
@@ -3571,7 +3637,7 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) ToGoogleCloudApi
 }
 
 func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationGroupResponse) *GoogleCloudApigeeV1GraphQLOperationGroupResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1GraphQLOperationGroupResponse) *GoogleCloudApigeeV1GraphQLOperationGroupResponse {
 		return &v
 	}).(GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput)
 }
@@ -3604,7 +3670,11 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput) ToGoogleCloud
 
 func (o GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput) Elem() GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroupResponse) GoogleCloudApigeeV1GraphQLOperationGroupResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1GraphQLOperationGroupResponse
+		return ret
 	}).(GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput)
 }
 
@@ -3833,7 +3903,7 @@ func (o GoogleCloudApigeeV1MonetizationConfigOutput) ToGoogleCloudApigeeV1Moneti
 }
 
 func (o GoogleCloudApigeeV1MonetizationConfigOutput) ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1MonetizationConfig) *GoogleCloudApigeeV1MonetizationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1MonetizationConfig) *GoogleCloudApigeeV1MonetizationConfig {
 		return &v
 	}).(GoogleCloudApigeeV1MonetizationConfigPtrOutput)
 }
@@ -3858,7 +3928,13 @@ func (o GoogleCloudApigeeV1MonetizationConfigPtrOutput) ToGoogleCloudApigeeV1Mon
 }
 
 func (o GoogleCloudApigeeV1MonetizationConfigPtrOutput) Elem() GoogleCloudApigeeV1MonetizationConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1MonetizationConfig) GoogleCloudApigeeV1MonetizationConfig { return *v }).(GoogleCloudApigeeV1MonetizationConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1MonetizationConfig) GoogleCloudApigeeV1MonetizationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1MonetizationConfig
+		return ret
+	}).(GoogleCloudApigeeV1MonetizationConfigOutput)
 }
 
 // Flag that specifies whether the Monetization add-on is enabled.
@@ -3967,7 +4043,7 @@ func (o GoogleCloudApigeeV1MonetizationConfigResponseOutput) ToGoogleCloudApigee
 }
 
 func (o GoogleCloudApigeeV1MonetizationConfigResponseOutput) ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1MonetizationConfigResponse) *GoogleCloudApigeeV1MonetizationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1MonetizationConfigResponse) *GoogleCloudApigeeV1MonetizationConfigResponse {
 		return &v
 	}).(GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput)
 }
@@ -3993,7 +4069,11 @@ func (o GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput) ToGoogleCloudApi
 
 func (o GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1MonetizationConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1MonetizationConfigResponse) GoogleCloudApigeeV1MonetizationConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1MonetizationConfigResponse
+		return ret
 	}).(GoogleCloudApigeeV1MonetizationConfigResponseOutput)
 }
 
@@ -4474,7 +4554,7 @@ func (o GoogleCloudApigeeV1OperationGroupOutput) ToGoogleCloudApigeeV1OperationG
 }
 
 func (o GoogleCloudApigeeV1OperationGroupOutput) ToGoogleCloudApigeeV1OperationGroupPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationGroupPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1OperationGroup) *GoogleCloudApigeeV1OperationGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1OperationGroup) *GoogleCloudApigeeV1OperationGroup {
 		return &v
 	}).(GoogleCloudApigeeV1OperationGroupPtrOutput)
 }
@@ -4506,7 +4586,13 @@ func (o GoogleCloudApigeeV1OperationGroupPtrOutput) ToGoogleCloudApigeeV1Operati
 }
 
 func (o GoogleCloudApigeeV1OperationGroupPtrOutput) Elem() GoogleCloudApigeeV1OperationGroupOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1OperationGroup) GoogleCloudApigeeV1OperationGroup { return *v }).(GoogleCloudApigeeV1OperationGroupOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1OperationGroup) GoogleCloudApigeeV1OperationGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1OperationGroup
+		return ret
+	}).(GoogleCloudApigeeV1OperationGroupOutput)
 }
 
 // Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
@@ -4629,7 +4715,7 @@ func (o GoogleCloudApigeeV1OperationGroupResponseOutput) ToGoogleCloudApigeeV1Op
 }
 
 func (o GoogleCloudApigeeV1OperationGroupResponseOutput) ToGoogleCloudApigeeV1OperationGroupResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationGroupResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1OperationGroupResponse) *GoogleCloudApigeeV1OperationGroupResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1OperationGroupResponse) *GoogleCloudApigeeV1OperationGroupResponse {
 		return &v
 	}).(GoogleCloudApigeeV1OperationGroupResponsePtrOutput)
 }
@@ -4662,7 +4748,11 @@ func (o GoogleCloudApigeeV1OperationGroupResponsePtrOutput) ToGoogleCloudApigeeV
 
 func (o GoogleCloudApigeeV1OperationGroupResponsePtrOutput) Elem() GoogleCloudApigeeV1OperationGroupResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1OperationGroupResponse) GoogleCloudApigeeV1OperationGroupResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1OperationGroupResponse
+		return ret
 	}).(GoogleCloudApigeeV1OperationGroupResponseOutput)
 }
 
@@ -4891,7 +4981,7 @@ func (o GoogleCloudApigeeV1PropertiesOutput) ToGoogleCloudApigeeV1PropertiesPtrO
 }
 
 func (o GoogleCloudApigeeV1PropertiesOutput) ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1Properties) *GoogleCloudApigeeV1Properties {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1Properties) *GoogleCloudApigeeV1Properties {
 		return &v
 	}).(GoogleCloudApigeeV1PropertiesPtrOutput)
 }
@@ -4916,7 +5006,13 @@ func (o GoogleCloudApigeeV1PropertiesPtrOutput) ToGoogleCloudApigeeV1PropertiesP
 }
 
 func (o GoogleCloudApigeeV1PropertiesPtrOutput) Elem() GoogleCloudApigeeV1PropertiesOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1Properties) GoogleCloudApigeeV1Properties { return *v }).(GoogleCloudApigeeV1PropertiesOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1Properties) GoogleCloudApigeeV1Properties {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1Properties
+		return ret
+	}).(GoogleCloudApigeeV1PropertiesOutput)
 }
 
 // List of all properties in the object
@@ -5025,7 +5121,7 @@ func (o GoogleCloudApigeeV1PropertiesResponseOutput) ToGoogleCloudApigeeV1Proper
 }
 
 func (o GoogleCloudApigeeV1PropertiesResponseOutput) ToGoogleCloudApigeeV1PropertiesResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1PropertiesResponse) *GoogleCloudApigeeV1PropertiesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1PropertiesResponse) *GoogleCloudApigeeV1PropertiesResponse {
 		return &v
 	}).(GoogleCloudApigeeV1PropertiesResponsePtrOutput)
 }
@@ -5050,7 +5146,13 @@ func (o GoogleCloudApigeeV1PropertiesResponsePtrOutput) ToGoogleCloudApigeeV1Pro
 }
 
 func (o GoogleCloudApigeeV1PropertiesResponsePtrOutput) Elem() GoogleCloudApigeeV1PropertiesResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1PropertiesResponse) GoogleCloudApigeeV1PropertiesResponse { return *v }).(GoogleCloudApigeeV1PropertiesResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1PropertiesResponse) GoogleCloudApigeeV1PropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1PropertiesResponse
+		return ret
+	}).(GoogleCloudApigeeV1PropertiesResponseOutput)
 }
 
 // List of all properties in the object
@@ -5394,7 +5496,7 @@ func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) ToGoogleCloudApigeeV1Que
 }
 
 func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QueryMetadataResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1QueryMetadataResponse) *GoogleCloudApigeeV1QueryMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1QueryMetadataResponse) *GoogleCloudApigeeV1QueryMetadataResponse {
 		return &v
 	}).(GoogleCloudApigeeV1QueryMetadataResponsePtrOutput)
 }
@@ -5444,7 +5546,13 @@ func (o GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) ToGoogleCloudApigeeV1
 }
 
 func (o GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) Elem() GoogleCloudApigeeV1QueryMetadataResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1QueryMetadataResponse) GoogleCloudApigeeV1QueryMetadataResponse { return *v }).(GoogleCloudApigeeV1QueryMetadataResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1QueryMetadataResponse) GoogleCloudApigeeV1QueryMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1QueryMetadataResponse
+		return ret
+	}).(GoogleCloudApigeeV1QueryMetadataResponseOutput)
 }
 
 // Dimensions of the AsyncQuery.
@@ -5747,7 +5855,7 @@ func (o GoogleCloudApigeeV1QuotaOutput) ToGoogleCloudApigeeV1QuotaPtrOutput() Go
 }
 
 func (o GoogleCloudApigeeV1QuotaOutput) ToGoogleCloudApigeeV1QuotaPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QuotaPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1Quota) *GoogleCloudApigeeV1Quota {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1Quota) *GoogleCloudApigeeV1Quota {
 		return &v
 	}).(GoogleCloudApigeeV1QuotaPtrOutput)
 }
@@ -5782,7 +5890,13 @@ func (o GoogleCloudApigeeV1QuotaPtrOutput) ToGoogleCloudApigeeV1QuotaPtrOutputWi
 }
 
 func (o GoogleCloudApigeeV1QuotaPtrOutput) Elem() GoogleCloudApigeeV1QuotaOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1Quota) GoogleCloudApigeeV1Quota { return *v }).(GoogleCloudApigeeV1QuotaOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1Quota) GoogleCloudApigeeV1Quota {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1Quota
+		return ret
+	}).(GoogleCloudApigeeV1QuotaOutput)
 }
 
 // Time interval over which the number of request messages is calculated.
@@ -6702,7 +6816,7 @@ func (o GoogleCloudApigeeV1TlsInfoOutput) ToGoogleCloudApigeeV1TlsInfoPtrOutput(
 }
 
 func (o GoogleCloudApigeeV1TlsInfoOutput) ToGoogleCloudApigeeV1TlsInfoPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfo) *GoogleCloudApigeeV1TlsInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1TlsInfo) *GoogleCloudApigeeV1TlsInfo {
 		return &v
 	}).(GoogleCloudApigeeV1TlsInfoPtrOutput)
 }
@@ -6767,7 +6881,13 @@ func (o GoogleCloudApigeeV1TlsInfoPtrOutput) ToGoogleCloudApigeeV1TlsInfoPtrOutp
 }
 
 func (o GoogleCloudApigeeV1TlsInfoPtrOutput) Elem() GoogleCloudApigeeV1TlsInfoOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfo) GoogleCloudApigeeV1TlsInfo { return *v }).(GoogleCloudApigeeV1TlsInfoOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfo) GoogleCloudApigeeV1TlsInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1TlsInfo
+		return ret
+	}).(GoogleCloudApigeeV1TlsInfoOutput)
 }
 
 // The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
@@ -6957,7 +7077,7 @@ func (o GoogleCloudApigeeV1TlsInfoCommonNameOutput) ToGoogleCloudApigeeV1TlsInfo
 }
 
 func (o GoogleCloudApigeeV1TlsInfoCommonNameOutput) ToGoogleCloudApigeeV1TlsInfoCommonNamePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoCommonName) *GoogleCloudApigeeV1TlsInfoCommonName {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1TlsInfoCommonName) *GoogleCloudApigeeV1TlsInfoCommonName {
 		return &v
 	}).(GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput)
 }
@@ -6987,7 +7107,13 @@ func (o GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput) ToGoogleCloudApigeeV1TlsI
 }
 
 func (o GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput) Elem() GoogleCloudApigeeV1TlsInfoCommonNameOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoCommonName) GoogleCloudApigeeV1TlsInfoCommonName { return *v }).(GoogleCloudApigeeV1TlsInfoCommonNameOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoCommonName) GoogleCloudApigeeV1TlsInfoCommonName {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1TlsInfoCommonName
+		return ret
+	}).(GoogleCloudApigeeV1TlsInfoCommonNameOutput)
 }
 
 // The TLS Common Name string of the certificate.
@@ -7107,7 +7233,7 @@ func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) ToGoogleCloudApigeeV
 }
 
 func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoCommonNameResponse) *GoogleCloudApigeeV1TlsInfoCommonNameResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1TlsInfoCommonNameResponse) *GoogleCloudApigeeV1TlsInfoCommonNameResponse {
 		return &v
 	}).(GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput)
 }
@@ -7138,7 +7264,11 @@ func (o GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput) ToGoogleCloudApig
 
 func (o GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput) Elem() GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoCommonNameResponse) GoogleCloudApigeeV1TlsInfoCommonNameResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1TlsInfoCommonNameResponse
+		return ret
 	}).(GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput)
 }
 
@@ -7290,7 +7420,7 @@ func (o GoogleCloudApigeeV1TlsInfoResponseOutput) ToGoogleCloudApigeeV1TlsInfoRe
 }
 
 func (o GoogleCloudApigeeV1TlsInfoResponseOutput) ToGoogleCloudApigeeV1TlsInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) *GoogleCloudApigeeV1TlsInfoResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1TlsInfoResponse) *GoogleCloudApigeeV1TlsInfoResponse {
 		return &v
 	}).(GoogleCloudApigeeV1TlsInfoResponsePtrOutput)
 }
@@ -7357,7 +7487,13 @@ func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) ToGoogleCloudApigeeV1TlsInf
 }
 
 func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) Elem() GoogleCloudApigeeV1TlsInfoResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) GoogleCloudApigeeV1TlsInfoResponse { return *v }).(GoogleCloudApigeeV1TlsInfoResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) GoogleCloudApigeeV1TlsInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1TlsInfoResponse
+		return ret
+	}).(GoogleCloudApigeeV1TlsInfoResponseOutput)
 }
 
 // The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
@@ -7550,7 +7686,7 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigOutput) ToGoogleCloudApigeeV1Trace
 }
 
 func (o GoogleCloudApigeeV1TraceSamplingConfigOutput) ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1TraceSamplingConfig) *GoogleCloudApigeeV1TraceSamplingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1TraceSamplingConfig) *GoogleCloudApigeeV1TraceSamplingConfig {
 		return &v
 	}).(GoogleCloudApigeeV1TraceSamplingConfigPtrOutput)
 }
@@ -7582,7 +7718,13 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) ToGoogleCloudApigeeV1Tr
 }
 
 func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) Elem() GoogleCloudApigeeV1TraceSamplingConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfig) GoogleCloudApigeeV1TraceSamplingConfig { return *v }).(GoogleCloudApigeeV1TraceSamplingConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfig) GoogleCloudApigeeV1TraceSamplingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1TraceSamplingConfig
+		return ret
+	}).(GoogleCloudApigeeV1TraceSamplingConfigOutput)
 }
 
 // Sampler of distributed tracing. OFF is the default value.
@@ -7705,7 +7847,7 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) ToGoogleCloudApige
 }
 
 func (o GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1TraceSamplingConfigResponse) *GoogleCloudApigeeV1TraceSamplingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1TraceSamplingConfigResponse) *GoogleCloudApigeeV1TraceSamplingConfigResponse {
 		return &v
 	}).(GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput)
 }
@@ -7736,7 +7878,11 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput) ToGoogleCloudAp
 
 func (o GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1TraceSamplingConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfigResponse) GoogleCloudApigeeV1TraceSamplingConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1TraceSamplingConfigResponse
+		return ret
 	}).(GoogleCloudApigeeV1TraceSamplingConfigResponseOutput)
 }
 
@@ -8540,7 +8686,7 @@ func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutpu
 }
 
 func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
-	return o.ApplyT(func(v GoogleTypeExpr) *GoogleTypeExpr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
 		return &v
 	}).(GoogleTypeExprPtrOutput)
 }
@@ -8580,7 +8726,13 @@ func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx contex
 }
 
 func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
-	return o.ApplyT(func(v *GoogleTypeExpr) GoogleTypeExpr { return *v }).(GoogleTypeExprOutput)
+	return o.ApplyT(func(v *GoogleTypeExpr) GoogleTypeExpr {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeExpr
+		return ret
+	}).(GoogleTypeExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -8809,7 +8961,7 @@ func (o GoogleTypeMoneyOutput) ToGoogleTypeMoneyPtrOutput() GoogleTypeMoneyPtrOu
 }
 
 func (o GoogleTypeMoneyOutput) ToGoogleTypeMoneyPtrOutputWithContext(ctx context.Context) GoogleTypeMoneyPtrOutput {
-	return o.ApplyT(func(v GoogleTypeMoney) *GoogleTypeMoney {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeMoney) *GoogleTypeMoney {
 		return &v
 	}).(GoogleTypeMoneyPtrOutput)
 }
@@ -8844,7 +8996,13 @@ func (o GoogleTypeMoneyPtrOutput) ToGoogleTypeMoneyPtrOutputWithContext(ctx cont
 }
 
 func (o GoogleTypeMoneyPtrOutput) Elem() GoogleTypeMoneyOutput {
-	return o.ApplyT(func(v *GoogleTypeMoney) GoogleTypeMoney { return *v }).(GoogleTypeMoneyOutput)
+	return o.ApplyT(func(v *GoogleTypeMoney) GoogleTypeMoney {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeMoney
+		return ret
+	}).(GoogleTypeMoneyOutput)
 }
 
 // The three-letter currency code defined in ISO 4217.
@@ -8981,7 +9139,7 @@ func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponsePtrOutput() Goog
 }
 
 func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponsePtrOutputWithContext(ctx context.Context) GoogleTypeMoneyResponsePtrOutput {
-	return o.ApplyT(func(v GoogleTypeMoneyResponse) *GoogleTypeMoneyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeMoneyResponse) *GoogleTypeMoneyResponse {
 		return &v
 	}).(GoogleTypeMoneyResponsePtrOutput)
 }
@@ -9016,7 +9174,13 @@ func (o GoogleTypeMoneyResponsePtrOutput) ToGoogleTypeMoneyResponsePtrOutputWith
 }
 
 func (o GoogleTypeMoneyResponsePtrOutput) Elem() GoogleTypeMoneyResponseOutput {
-	return o.ApplyT(func(v *GoogleTypeMoneyResponse) GoogleTypeMoneyResponse { return *v }).(GoogleTypeMoneyResponseOutput)
+	return o.ApplyT(func(v *GoogleTypeMoneyResponse) GoogleTypeMoneyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeMoneyResponse
+		return ret
+	}).(GoogleTypeMoneyResponseOutput)
 }
 
 // The three-letter currency code defined in ISO 4217.

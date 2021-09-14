@@ -13,6 +13,7 @@ __all__ = [
     'GetFolderReplayResult',
     'AwaitableGetFolderReplayResult',
     'get_folder_replay',
+    'get_folder_replay_output',
 ]
 
 @pulumi.output_type
@@ -98,3 +99,14 @@ def get_folder_replay(folder_id: Optional[str] = None,
         name=__ret__.name,
         results_summary=__ret__.results_summary,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_folder_replay)
+def get_folder_replay_output(folder_id: Optional[pulumi.Input[str]] = None,
+                             location: Optional[pulumi.Input[str]] = None,
+                             replay_id: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderReplayResult]:
+    """
+    Gets the specified Replay. Each `Replay` is available for at least 7 days.
+    """
+    ...

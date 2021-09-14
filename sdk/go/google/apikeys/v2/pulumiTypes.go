@@ -324,7 +324,7 @@ func (o V2AndroidKeyRestrictionsOutput) ToV2AndroidKeyRestrictionsPtrOutput() V2
 }
 
 func (o V2AndroidKeyRestrictionsOutput) ToV2AndroidKeyRestrictionsPtrOutputWithContext(ctx context.Context) V2AndroidKeyRestrictionsPtrOutput {
-	return o.ApplyT(func(v V2AndroidKeyRestrictions) *V2AndroidKeyRestrictions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2AndroidKeyRestrictions) *V2AndroidKeyRestrictions {
 		return &v
 	}).(V2AndroidKeyRestrictionsPtrOutput)
 }
@@ -349,7 +349,13 @@ func (o V2AndroidKeyRestrictionsPtrOutput) ToV2AndroidKeyRestrictionsPtrOutputWi
 }
 
 func (o V2AndroidKeyRestrictionsPtrOutput) Elem() V2AndroidKeyRestrictionsOutput {
-	return o.ApplyT(func(v *V2AndroidKeyRestrictions) V2AndroidKeyRestrictions { return *v }).(V2AndroidKeyRestrictionsOutput)
+	return o.ApplyT(func(v *V2AndroidKeyRestrictions) V2AndroidKeyRestrictions {
+		if v != nil {
+			return *v
+		}
+		var ret V2AndroidKeyRestrictions
+		return ret
+	}).(V2AndroidKeyRestrictionsOutput)
 }
 
 // A list of Android applications that are allowed to make API calls with this key.
@@ -458,7 +464,7 @@ func (o V2AndroidKeyRestrictionsResponseOutput) ToV2AndroidKeyRestrictionsRespon
 }
 
 func (o V2AndroidKeyRestrictionsResponseOutput) ToV2AndroidKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2AndroidKeyRestrictionsResponsePtrOutput {
-	return o.ApplyT(func(v V2AndroidKeyRestrictionsResponse) *V2AndroidKeyRestrictionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2AndroidKeyRestrictionsResponse) *V2AndroidKeyRestrictionsResponse {
 		return &v
 	}).(V2AndroidKeyRestrictionsResponsePtrOutput)
 }
@@ -483,7 +489,13 @@ func (o V2AndroidKeyRestrictionsResponsePtrOutput) ToV2AndroidKeyRestrictionsRes
 }
 
 func (o V2AndroidKeyRestrictionsResponsePtrOutput) Elem() V2AndroidKeyRestrictionsResponseOutput {
-	return o.ApplyT(func(v *V2AndroidKeyRestrictionsResponse) V2AndroidKeyRestrictionsResponse { return *v }).(V2AndroidKeyRestrictionsResponseOutput)
+	return o.ApplyT(func(v *V2AndroidKeyRestrictionsResponse) V2AndroidKeyRestrictionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret V2AndroidKeyRestrictionsResponse
+		return ret
+	}).(V2AndroidKeyRestrictionsResponseOutput)
 }
 
 // A list of Android applications that are allowed to make API calls with this key.
@@ -810,7 +822,7 @@ func (o V2BrowserKeyRestrictionsOutput) ToV2BrowserKeyRestrictionsPtrOutput() V2
 }
 
 func (o V2BrowserKeyRestrictionsOutput) ToV2BrowserKeyRestrictionsPtrOutputWithContext(ctx context.Context) V2BrowserKeyRestrictionsPtrOutput {
-	return o.ApplyT(func(v V2BrowserKeyRestrictions) *V2BrowserKeyRestrictions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2BrowserKeyRestrictions) *V2BrowserKeyRestrictions {
 		return &v
 	}).(V2BrowserKeyRestrictionsPtrOutput)
 }
@@ -835,7 +847,13 @@ func (o V2BrowserKeyRestrictionsPtrOutput) ToV2BrowserKeyRestrictionsPtrOutputWi
 }
 
 func (o V2BrowserKeyRestrictionsPtrOutput) Elem() V2BrowserKeyRestrictionsOutput {
-	return o.ApplyT(func(v *V2BrowserKeyRestrictions) V2BrowserKeyRestrictions { return *v }).(V2BrowserKeyRestrictionsOutput)
+	return o.ApplyT(func(v *V2BrowserKeyRestrictions) V2BrowserKeyRestrictions {
+		if v != nil {
+			return *v
+		}
+		var ret V2BrowserKeyRestrictions
+		return ret
+	}).(V2BrowserKeyRestrictionsOutput)
 }
 
 // A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
@@ -944,7 +962,7 @@ func (o V2BrowserKeyRestrictionsResponseOutput) ToV2BrowserKeyRestrictionsRespon
 }
 
 func (o V2BrowserKeyRestrictionsResponseOutput) ToV2BrowserKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2BrowserKeyRestrictionsResponsePtrOutput {
-	return o.ApplyT(func(v V2BrowserKeyRestrictionsResponse) *V2BrowserKeyRestrictionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2BrowserKeyRestrictionsResponse) *V2BrowserKeyRestrictionsResponse {
 		return &v
 	}).(V2BrowserKeyRestrictionsResponsePtrOutput)
 }
@@ -969,7 +987,13 @@ func (o V2BrowserKeyRestrictionsResponsePtrOutput) ToV2BrowserKeyRestrictionsRes
 }
 
 func (o V2BrowserKeyRestrictionsResponsePtrOutput) Elem() V2BrowserKeyRestrictionsResponseOutput {
-	return o.ApplyT(func(v *V2BrowserKeyRestrictionsResponse) V2BrowserKeyRestrictionsResponse { return *v }).(V2BrowserKeyRestrictionsResponseOutput)
+	return o.ApplyT(func(v *V2BrowserKeyRestrictionsResponse) V2BrowserKeyRestrictionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret V2BrowserKeyRestrictionsResponse
+		return ret
+	}).(V2BrowserKeyRestrictionsResponseOutput)
 }
 
 // A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
@@ -1078,7 +1102,7 @@ func (o V2IosKeyRestrictionsOutput) ToV2IosKeyRestrictionsPtrOutput() V2IosKeyRe
 }
 
 func (o V2IosKeyRestrictionsOutput) ToV2IosKeyRestrictionsPtrOutputWithContext(ctx context.Context) V2IosKeyRestrictionsPtrOutput {
-	return o.ApplyT(func(v V2IosKeyRestrictions) *V2IosKeyRestrictions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2IosKeyRestrictions) *V2IosKeyRestrictions {
 		return &v
 	}).(V2IosKeyRestrictionsPtrOutput)
 }
@@ -1103,7 +1127,13 @@ func (o V2IosKeyRestrictionsPtrOutput) ToV2IosKeyRestrictionsPtrOutputWithContex
 }
 
 func (o V2IosKeyRestrictionsPtrOutput) Elem() V2IosKeyRestrictionsOutput {
-	return o.ApplyT(func(v *V2IosKeyRestrictions) V2IosKeyRestrictions { return *v }).(V2IosKeyRestrictionsOutput)
+	return o.ApplyT(func(v *V2IosKeyRestrictions) V2IosKeyRestrictions {
+		if v != nil {
+			return *v
+		}
+		var ret V2IosKeyRestrictions
+		return ret
+	}).(V2IosKeyRestrictionsOutput)
 }
 
 // A list of bundle IDs that are allowed when making API calls with this key.
@@ -1212,7 +1242,7 @@ func (o V2IosKeyRestrictionsResponseOutput) ToV2IosKeyRestrictionsResponsePtrOut
 }
 
 func (o V2IosKeyRestrictionsResponseOutput) ToV2IosKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2IosKeyRestrictionsResponsePtrOutput {
-	return o.ApplyT(func(v V2IosKeyRestrictionsResponse) *V2IosKeyRestrictionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2IosKeyRestrictionsResponse) *V2IosKeyRestrictionsResponse {
 		return &v
 	}).(V2IosKeyRestrictionsResponsePtrOutput)
 }
@@ -1237,7 +1267,13 @@ func (o V2IosKeyRestrictionsResponsePtrOutput) ToV2IosKeyRestrictionsResponsePtr
 }
 
 func (o V2IosKeyRestrictionsResponsePtrOutput) Elem() V2IosKeyRestrictionsResponseOutput {
-	return o.ApplyT(func(v *V2IosKeyRestrictionsResponse) V2IosKeyRestrictionsResponse { return *v }).(V2IosKeyRestrictionsResponseOutput)
+	return o.ApplyT(func(v *V2IosKeyRestrictionsResponse) V2IosKeyRestrictionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret V2IosKeyRestrictionsResponse
+		return ret
+	}).(V2IosKeyRestrictionsResponseOutput)
 }
 
 // A list of bundle IDs that are allowed when making API calls with this key.
@@ -1362,7 +1398,7 @@ func (o V2RestrictionsOutput) ToV2RestrictionsPtrOutput() V2RestrictionsPtrOutpu
 }
 
 func (o V2RestrictionsOutput) ToV2RestrictionsPtrOutputWithContext(ctx context.Context) V2RestrictionsPtrOutput {
-	return o.ApplyT(func(v V2Restrictions) *V2Restrictions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2Restrictions) *V2Restrictions {
 		return &v
 	}).(V2RestrictionsPtrOutput)
 }
@@ -1407,7 +1443,13 @@ func (o V2RestrictionsPtrOutput) ToV2RestrictionsPtrOutputWithContext(ctx contex
 }
 
 func (o V2RestrictionsPtrOutput) Elem() V2RestrictionsOutput {
-	return o.ApplyT(func(v *V2Restrictions) V2Restrictions { return *v }).(V2RestrictionsOutput)
+	return o.ApplyT(func(v *V2Restrictions) V2Restrictions {
+		if v != nil {
+			return *v
+		}
+		var ret V2Restrictions
+		return ret
+	}).(V2RestrictionsOutput)
 }
 
 // The Android apps that are allowed to use the key.
@@ -1572,7 +1614,7 @@ func (o V2RestrictionsResponseOutput) ToV2RestrictionsResponsePtrOutput() V2Rest
 }
 
 func (o V2RestrictionsResponseOutput) ToV2RestrictionsResponsePtrOutputWithContext(ctx context.Context) V2RestrictionsResponsePtrOutput {
-	return o.ApplyT(func(v V2RestrictionsResponse) *V2RestrictionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2RestrictionsResponse) *V2RestrictionsResponse {
 		return &v
 	}).(V2RestrictionsResponsePtrOutput)
 }
@@ -1617,7 +1659,13 @@ func (o V2RestrictionsResponsePtrOutput) ToV2RestrictionsResponsePtrOutputWithCo
 }
 
 func (o V2RestrictionsResponsePtrOutput) Elem() V2RestrictionsResponseOutput {
-	return o.ApplyT(func(v *V2RestrictionsResponse) V2RestrictionsResponse { return *v }).(V2RestrictionsResponseOutput)
+	return o.ApplyT(func(v *V2RestrictionsResponse) V2RestrictionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret V2RestrictionsResponse
+		return ret
+	}).(V2RestrictionsResponseOutput)
 }
 
 // The Android apps that are allowed to use the key.
@@ -1766,7 +1814,7 @@ func (o V2ServerKeyRestrictionsOutput) ToV2ServerKeyRestrictionsPtrOutput() V2Se
 }
 
 func (o V2ServerKeyRestrictionsOutput) ToV2ServerKeyRestrictionsPtrOutputWithContext(ctx context.Context) V2ServerKeyRestrictionsPtrOutput {
-	return o.ApplyT(func(v V2ServerKeyRestrictions) *V2ServerKeyRestrictions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2ServerKeyRestrictions) *V2ServerKeyRestrictions {
 		return &v
 	}).(V2ServerKeyRestrictionsPtrOutput)
 }
@@ -1791,7 +1839,13 @@ func (o V2ServerKeyRestrictionsPtrOutput) ToV2ServerKeyRestrictionsPtrOutputWith
 }
 
 func (o V2ServerKeyRestrictionsPtrOutput) Elem() V2ServerKeyRestrictionsOutput {
-	return o.ApplyT(func(v *V2ServerKeyRestrictions) V2ServerKeyRestrictions { return *v }).(V2ServerKeyRestrictionsOutput)
+	return o.ApplyT(func(v *V2ServerKeyRestrictions) V2ServerKeyRestrictions {
+		if v != nil {
+			return *v
+		}
+		var ret V2ServerKeyRestrictions
+		return ret
+	}).(V2ServerKeyRestrictionsOutput)
 }
 
 // A list of the caller IP addresses that are allowed to make API calls with this key.
@@ -1900,7 +1954,7 @@ func (o V2ServerKeyRestrictionsResponseOutput) ToV2ServerKeyRestrictionsResponse
 }
 
 func (o V2ServerKeyRestrictionsResponseOutput) ToV2ServerKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2ServerKeyRestrictionsResponsePtrOutput {
-	return o.ApplyT(func(v V2ServerKeyRestrictionsResponse) *V2ServerKeyRestrictionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2ServerKeyRestrictionsResponse) *V2ServerKeyRestrictionsResponse {
 		return &v
 	}).(V2ServerKeyRestrictionsResponsePtrOutput)
 }
@@ -1925,7 +1979,13 @@ func (o V2ServerKeyRestrictionsResponsePtrOutput) ToV2ServerKeyRestrictionsRespo
 }
 
 func (o V2ServerKeyRestrictionsResponsePtrOutput) Elem() V2ServerKeyRestrictionsResponseOutput {
-	return o.ApplyT(func(v *V2ServerKeyRestrictionsResponse) V2ServerKeyRestrictionsResponse { return *v }).(V2ServerKeyRestrictionsResponseOutput)
+	return o.ApplyT(func(v *V2ServerKeyRestrictionsResponse) V2ServerKeyRestrictionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret V2ServerKeyRestrictionsResponse
+		return ret
+	}).(V2ServerKeyRestrictionsResponseOutput)
 }
 
 // A list of the caller IP addresses that are allowed to make API calls with this key.

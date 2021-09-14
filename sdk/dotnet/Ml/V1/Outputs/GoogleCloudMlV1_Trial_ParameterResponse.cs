@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// A message representing a parameter to be tuned. Contains the name of the parameter and the suggested value to use for this trial.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1_Trial_ParameterResponse
     {

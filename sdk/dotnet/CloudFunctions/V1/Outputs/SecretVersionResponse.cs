@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudFunctions.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for a single version.
+    /// </summary>
     [OutputType]
     public sealed class SecretVersionResponse
     {

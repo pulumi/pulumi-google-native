@@ -13,6 +13,7 @@ __all__ = [
     'GetIntentResult',
     'AwaitableGetIntentResult',
     'get_intent',
+    'get_intent_output',
 ]
 
 @pulumi.output_type
@@ -154,3 +155,16 @@ def get_intent(agent_id: Optional[str] = None,
         parameters=__ret__.parameters,
         priority=__ret__.priority,
         training_phrases=__ret__.training_phrases)
+
+
+@_utilities.lift_output_func(get_intent)
+def get_intent_output(agent_id: Optional[pulumi.Input[str]] = None,
+                      intent_id: Optional[pulumi.Input[str]] = None,
+                      language_code: Optional[pulumi.Input[Optional[str]]] = None,
+                      location: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIntentResult]:
+    """
+    Retrieves the specified intent.
+    """
+    ...

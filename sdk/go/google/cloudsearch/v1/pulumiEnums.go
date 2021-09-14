@@ -105,7 +105,7 @@ func (o CompositeFilterLogicOperatorOutput) ToStringPtrOutputWithContext(ctx con
 type CompositeFilterLogicOperatorPtrOutput struct{ *pulumi.OutputState }
 
 func (CompositeFilterLogicOperatorPtrOutput) ElementType() reflect.Type {
-	return compositeFilterLogicOperatorPtrType
+	return reflect.TypeOf((**CompositeFilterLogicOperator)(nil)).Elem()
 }
 
 func (o CompositeFilterLogicOperatorPtrOutput) ToCompositeFilterLogicOperatorPtrOutput() CompositeFilterLogicOperatorPtrOutput {
@@ -114,6 +114,16 @@ func (o CompositeFilterLogicOperatorPtrOutput) ToCompositeFilterLogicOperatorPtr
 
 func (o CompositeFilterLogicOperatorPtrOutput) ToCompositeFilterLogicOperatorPtrOutputWithContext(ctx context.Context) CompositeFilterLogicOperatorPtrOutput {
 	return o
+}
+
+func (o CompositeFilterLogicOperatorPtrOutput) Elem() CompositeFilterLogicOperatorOutput {
+	return o.ApplyT(func(v *CompositeFilterLogicOperator) CompositeFilterLogicOperator {
+		if v != nil {
+			return *v
+		}
+		var ret CompositeFilterLogicOperator
+		return ret
+	}).(CompositeFilterLogicOperatorOutput)
 }
 
 func (o CompositeFilterLogicOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -128,16 +138,6 @@ func (o CompositeFilterLogicOperatorPtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CompositeFilterLogicOperatorPtrOutput) Elem() CompositeFilterLogicOperatorOutput {
-	return o.ApplyT(func(v *CompositeFilterLogicOperator) CompositeFilterLogicOperator {
-		var ret CompositeFilterLogicOperator
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CompositeFilterLogicOperatorOutput)
 }
 
 // CompositeFilterLogicOperatorInput is an input type that accepts CompositeFilterLogicOperatorArgs and CompositeFilterLogicOperatorOutput values.
@@ -270,7 +270,7 @@ func (o SortOptionsSortOrderOutput) ToStringPtrOutputWithContext(ctx context.Con
 type SortOptionsSortOrderPtrOutput struct{ *pulumi.OutputState }
 
 func (SortOptionsSortOrderPtrOutput) ElementType() reflect.Type {
-	return sortOptionsSortOrderPtrType
+	return reflect.TypeOf((**SortOptionsSortOrder)(nil)).Elem()
 }
 
 func (o SortOptionsSortOrderPtrOutput) ToSortOptionsSortOrderPtrOutput() SortOptionsSortOrderPtrOutput {
@@ -279,6 +279,16 @@ func (o SortOptionsSortOrderPtrOutput) ToSortOptionsSortOrderPtrOutput() SortOpt
 
 func (o SortOptionsSortOrderPtrOutput) ToSortOptionsSortOrderPtrOutputWithContext(ctx context.Context) SortOptionsSortOrderPtrOutput {
 	return o
+}
+
+func (o SortOptionsSortOrderPtrOutput) Elem() SortOptionsSortOrderOutput {
+	return o.ApplyT(func(v *SortOptionsSortOrder) SortOptionsSortOrder {
+		if v != nil {
+			return *v
+		}
+		var ret SortOptionsSortOrder
+		return ret
+	}).(SortOptionsSortOrderOutput)
 }
 
 func (o SortOptionsSortOrderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -293,16 +303,6 @@ func (o SortOptionsSortOrderPtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SortOptionsSortOrderPtrOutput) Elem() SortOptionsSortOrderOutput {
-	return o.ApplyT(func(v *SortOptionsSortOrder) SortOptionsSortOrder {
-		var ret SortOptionsSortOrder
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SortOptionsSortOrderOutput)
 }
 
 // SortOptionsSortOrderInput is an input type that accepts SortOptionsSortOrderArgs and SortOptionsSortOrderOutput values.
@@ -444,7 +444,7 @@ func (o SourcePredefinedSourceOutput) ToStringPtrOutputWithContext(ctx context.C
 type SourcePredefinedSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (SourcePredefinedSourcePtrOutput) ElementType() reflect.Type {
-	return sourcePredefinedSourcePtrType
+	return reflect.TypeOf((**SourcePredefinedSource)(nil)).Elem()
 }
 
 func (o SourcePredefinedSourcePtrOutput) ToSourcePredefinedSourcePtrOutput() SourcePredefinedSourcePtrOutput {
@@ -453,6 +453,16 @@ func (o SourcePredefinedSourcePtrOutput) ToSourcePredefinedSourcePtrOutput() Sou
 
 func (o SourcePredefinedSourcePtrOutput) ToSourcePredefinedSourcePtrOutputWithContext(ctx context.Context) SourcePredefinedSourcePtrOutput {
 	return o
+}
+
+func (o SourcePredefinedSourcePtrOutput) Elem() SourcePredefinedSourceOutput {
+	return o.ApplyT(func(v *SourcePredefinedSource) SourcePredefinedSource {
+		if v != nil {
+			return *v
+		}
+		var ret SourcePredefinedSource
+		return ret
+	}).(SourcePredefinedSourceOutput)
 }
 
 func (o SourcePredefinedSourcePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -467,16 +477,6 @@ func (o SourcePredefinedSourcePtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SourcePredefinedSourcePtrOutput) Elem() SourcePredefinedSourceOutput {
-	return o.ApplyT(func(v *SourcePredefinedSource) SourcePredefinedSource {
-		var ret SourcePredefinedSource
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SourcePredefinedSourceOutput)
 }
 
 // SourcePredefinedSourceInput is an input type that accepts SourcePredefinedSourceArgs and SourcePredefinedSourceOutput values.
@@ -610,7 +610,7 @@ func (o SourceScoringConfigSourceImportanceOutput) ToStringPtrOutputWithContext(
 type SourceScoringConfigSourceImportancePtrOutput struct{ *pulumi.OutputState }
 
 func (SourceScoringConfigSourceImportancePtrOutput) ElementType() reflect.Type {
-	return sourceScoringConfigSourceImportancePtrType
+	return reflect.TypeOf((**SourceScoringConfigSourceImportance)(nil)).Elem()
 }
 
 func (o SourceScoringConfigSourceImportancePtrOutput) ToSourceScoringConfigSourceImportancePtrOutput() SourceScoringConfigSourceImportancePtrOutput {
@@ -619,6 +619,16 @@ func (o SourceScoringConfigSourceImportancePtrOutput) ToSourceScoringConfigSourc
 
 func (o SourceScoringConfigSourceImportancePtrOutput) ToSourceScoringConfigSourceImportancePtrOutputWithContext(ctx context.Context) SourceScoringConfigSourceImportancePtrOutput {
 	return o
+}
+
+func (o SourceScoringConfigSourceImportancePtrOutput) Elem() SourceScoringConfigSourceImportanceOutput {
+	return o.ApplyT(func(v *SourceScoringConfigSourceImportance) SourceScoringConfigSourceImportance {
+		if v != nil {
+			return *v
+		}
+		var ret SourceScoringConfigSourceImportance
+		return ret
+	}).(SourceScoringConfigSourceImportanceOutput)
 }
 
 func (o SourceScoringConfigSourceImportancePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -633,16 +643,6 @@ func (o SourceScoringConfigSourceImportancePtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SourceScoringConfigSourceImportancePtrOutput) Elem() SourceScoringConfigSourceImportanceOutput {
-	return o.ApplyT(func(v *SourceScoringConfigSourceImportance) SourceScoringConfigSourceImportance {
-		var ret SourceScoringConfigSourceImportance
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SourceScoringConfigSourceImportanceOutput)
 }
 
 // SourceScoringConfigSourceImportanceInput is an input type that accepts SourceScoringConfigSourceImportanceArgs and SourceScoringConfigSourceImportanceOutput values.

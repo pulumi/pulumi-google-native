@@ -12,6 +12,7 @@ __all__ = [
     'GetTargetGrpcProxyResult',
     'AwaitableGetTargetGrpcProxyResult',
     'get_target_grpc_proxy',
+    'get_target_grpc_proxy_output',
 ]
 
 @pulumi.output_type
@@ -160,3 +161,13 @@ def get_target_grpc_proxy(project: Optional[str] = None,
         self_link_with_id=__ret__.self_link_with_id,
         url_map=__ret__.url_map,
         validate_for_proxyless=__ret__.validate_for_proxyless)
+
+
+@_utilities.lift_output_func(get_target_grpc_proxy)
+def get_target_grpc_proxy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 target_grpc_proxy: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetGrpcProxyResult]:
+    """
+    Returns the specified TargetGrpcProxy resource in the given scope.
+    """
+    ...

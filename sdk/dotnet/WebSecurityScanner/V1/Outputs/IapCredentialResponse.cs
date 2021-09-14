@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.WebSecurityScanner.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes authentication configuration for Identity-Aware-Proxy (IAP).
+    /// </summary>
     [OutputType]
     public sealed class IapCredentialResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.VPCAccess.V1.Outputs
 {
 
+    /// <summary>
+    /// The subnet in which to house the connector
+    /// </summary>
     [OutputType]
     public sealed class SubnetResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for returning group information from authenticators.
+    /// </summary>
     [OutputType]
     public sealed class AuthenticatorGroupsConfigResponse
     {
