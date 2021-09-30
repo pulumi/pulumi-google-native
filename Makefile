@@ -76,6 +76,7 @@ generate_go::
 	$(WORKING_DIR)/bin/$(CODEGEN) go ${VERSION}
 
 build_go::
+	cd sdk/ && go build github.com/pulumi/pulumi-google-native/sdk/go/google/...
 
 clean::
 	rm -rf sdk/nodejs && mkdir sdk/nodejs && touch sdk/nodejs/go.mod

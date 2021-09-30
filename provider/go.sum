@@ -730,6 +730,10 @@ github.com/pulumi/pulumi/pkg/v3 v3.7.1 h1:wq4tieVs+4oIMBqH7NpbNt8G6nCQAoe989ZHJM
 github.com/pulumi/pulumi/pkg/v3 v3.7.1/go.mod h1:2Y+Q5wUVGmJ2T3jyBxXEe1C0MjNwWn0dwG4blLB3om8=
 github.com/pulumi/pulumi/pkg/v3 v3.12.0 h1:pkfMQpCK2kQhRzqijiLtM/Y/wJOqSO2JQQJZhKGZoQE=
 github.com/pulumi/pulumi/pkg/v3 v3.12.0/go.mod h1:OKKvB7W0q739IaDSlai/bpNBTc7+5/sTUwysYjZ1we8=
+github.com/pulumi/pulumi/pkg/v3 v3.13.2 h1:VZX/r7MTFYVIKYPOViq00wwmeI7g1QcPBQc6EHqYWfM=
+github.com/pulumi/pulumi/pkg/v3 v3.13.2/go.mod h1:HAxhHJ8tjAgClpx1P09tRmggsPWXLM3lM72dXNeSmfA=
+github.com/pulumi/pulumi/pkg/v3 v3.13.3-0.20210930031156-f21eda521f88 h1:nsFE6oSFt8H7oLdKD2X7wosFyPhRd12QvJrlD+T0fkk=
+github.com/pulumi/pulumi/pkg/v3 v3.13.3-0.20210930031156-f21eda521f88/go.mod h1:HAxhHJ8tjAgClpx1P09tRmggsPWXLM3lM72dXNeSmfA=
 github.com/pulumi/pulumi/sdk/v3 v3.3.1/go.mod h1:GBHyQ7awNQSRmiKp/p8kIKrGrMOZeA/k2czoM/GOqds=
 github.com/pulumi/pulumi/sdk/v3 v3.7.0 h1:0Sm4k6QNLTm7QQmn9t31tVG7d9fuyvFOnogffgvbluE=
 github.com/pulumi/pulumi/sdk/v3 v3.7.0/go.mod h1:GBHyQ7awNQSRmiKp/p8kIKrGrMOZeA/k2czoM/GOqds=
@@ -737,6 +741,8 @@ github.com/pulumi/pulumi/sdk/v3 v3.7.1 h1:c1NFry9JdkfV8ijjsT9CHmY0le5jcusxYzx6JK
 github.com/pulumi/pulumi/sdk/v3 v3.7.1/go.mod h1:GBHyQ7awNQSRmiKp/p8kIKrGrMOZeA/k2czoM/GOqds=
 github.com/pulumi/pulumi/sdk/v3 v3.12.0 h1:kxvjRHE0G33jJiAHroh5kt7PFUwmFhbLcsUKEw6EcmI=
 github.com/pulumi/pulumi/sdk/v3 v3.12.0/go.mod h1:bxxmONw/K6M4KHRKWTwP/u77JbqDFnt96p0nSsrsHnQ=
+github.com/pulumi/pulumi/sdk/v3 v3.13.2 h1:WACuLmogYmUubf3jKcnkN9ACJ5G+3PLSPkCI86DpY9k=
+github.com/pulumi/pulumi/sdk/v3 v3.13.2/go.mod h1:aT7YmFdR6/T7tp2tMIZ68WRD1Xyv5a6Y4BhsuaCNpW0=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=
@@ -751,6 +757,8 @@ github.com/ryanuber/go-glob v1.0.0 h1:iQh3xXAumdQ+4Ufa5b25cRpC5TYKlno6hsv6Cb3pkB
 github.com/ryanuber/go-glob v1.0.0/go.mod h1:807d1WSdnB0XRJzKNil9Om6lcp/3a0v4qIHxIXzX/Yc=
 github.com/sabhiram/go-gitignore v0.0.0-20180611051255-d3107576ba94 h1:G04eS0JkAIVZfaJLjla9dNxkJCPiKIGZlw9AfOhzOD0=
 github.com/sabhiram/go-gitignore v0.0.0-20180611051255-d3107576ba94/go.mod h1:b18R55ulyQ/h3RaWyloPyER7fWQVZvimKKhnI5OfrJQ=
+github.com/santhosh-tekuri/jsonschema/v5 v5.0.0 h1:TToq11gyfNlrMFZiYujSekIsPd9AmsA2Bj/iv+s4JHE=
+github.com/santhosh-tekuri/jsonschema/v5 v5.0.0/go.mod h1:FKdcjfQW6rpZSnxxUvEA5H/cDPdvJ/SZJQLWWXWGrZ0=
 github.com/sergi/go-diff v1.0.0/go.mod h1:0CfEIISq7TuYL3j771MWULgwwjU+GofnZX9QAmXWZgo=
 github.com/sergi/go-diff v1.1.0 h1:we8PVUC3FE2uYfodKH/nBHMSetSfHDR6scGdBi+erh0=
 github.com/sergi/go-diff v1.1.0/go.mod h1:STckp+ISIX8hZLjrqAeVduY0gWCT9IjLuqbuNXdaHfM=
@@ -1341,6 +1349,8 @@ honnef.co/go/tools v0.0.1-2020.1.4/go.mod h1:X/FiERA/W4tHapMX5mGpAtMSVEeEUOyHaw9
 nhooyr.io/websocket v1.8.6/go.mod h1:B70DZP8IakI65RVQ51MsWP/8jndNma26DVA/nFSCgW0=
 nhooyr.io/websocket v1.8.7 h1:usjR2uOr/zjjkVMy0lW+PPohFok7PCow5sDjLgX4P4g=
 nhooyr.io/websocket v1.8.7/go.mod h1:B70DZP8IakI65RVQ51MsWP/8jndNma26DVA/nFSCgW0=
+pgregory.net/rapid v0.4.7 h1:MTNRktPuv5FNqOO151TM9mDTa+XHcX6ypYeISDVD14g=
+pgregory.net/rapid v0.4.7/go.mod h1:UYpPVyjFHzYBGHIxLFoupi8vwk6rXNzRY9OMvVxFIOU=
 rsc.io/binaryregexp v0.2.0 h1:HfqmD5MEmC0zvwBuF187nq9mdnXjXsSivRiXN7SmRkE=
 rsc.io/binaryregexp v0.2.0/go.mod h1:qTv7/COck+e2FymRvadv62gMdZztPaShugOCi3I+8D8=
 rsc.io/quote/v3 v3.1.0 h1:9JKUTTIUgS6kzR9mK1YuGKv6Nl+DijDNIc0ghT58FaY=

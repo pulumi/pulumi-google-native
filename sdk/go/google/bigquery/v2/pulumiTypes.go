@@ -16685,7 +16685,7 @@ func (o QueryParameterTypePtrOutput) Type() pulumi.StringPtrOutput {
 
 type QueryParameterTypeResponse struct {
 	// [Optional] The type of the array's elements, if this is an array.
-	ArrayType QueryParameterTypeResponse `pulumi:"arrayType"`
+	ArrayType *QueryParameterTypeResponse `pulumi:"arrayType"`
 	// [Optional] The types of the fields of this struct, in order, if this is a struct.
 	StructTypes []QueryParameterTypeStructTypesItemResponse `pulumi:"structTypes"`
 	// [Required] The top level type of this field.
@@ -16705,7 +16705,7 @@ type QueryParameterTypeResponseInput interface {
 
 type QueryParameterTypeResponseArgs struct {
 	// [Optional] The type of the array's elements, if this is an array.
-	ArrayType QueryParameterTypeResponseInput `pulumi:"arrayType"`
+	ArrayType QueryParameterTypeResponsePtrInput `pulumi:"arrayType"`
 	// [Optional] The types of the fields of this struct, in order, if this is a struct.
 	StructTypes QueryParameterTypeStructTypesItemResponseArrayInput `pulumi:"structTypes"`
 	// [Required] The top level type of this field.
@@ -16724,6 +16724,47 @@ func (i QueryParameterTypeResponseArgs) ToQueryParameterTypeResponseOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeResponseOutput)
 }
 
+func (i QueryParameterTypeResponseArgs) ToQueryParameterTypeResponsePtrOutput() QueryParameterTypeResponsePtrOutput {
+	return i.ToQueryParameterTypeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i QueryParameterTypeResponseArgs) ToQueryParameterTypeResponsePtrOutputWithContext(ctx context.Context) QueryParameterTypeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeResponseOutput).ToQueryParameterTypeResponsePtrOutputWithContext(ctx)
+}
+
+// QueryParameterTypeResponsePtrInput is an input type that accepts QueryParameterTypeResponseArgs, QueryParameterTypeResponsePtr and QueryParameterTypeResponsePtrOutput values.
+// You can construct a concrete instance of `QueryParameterTypeResponsePtrInput` via:
+//
+//          QueryParameterTypeResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type QueryParameterTypeResponsePtrInput interface {
+	pulumi.Input
+
+	ToQueryParameterTypeResponsePtrOutput() QueryParameterTypeResponsePtrOutput
+	ToQueryParameterTypeResponsePtrOutputWithContext(context.Context) QueryParameterTypeResponsePtrOutput
+}
+
+type queryParameterTypeResponsePtrType QueryParameterTypeResponseArgs
+
+func QueryParameterTypeResponsePtr(v *QueryParameterTypeResponseArgs) QueryParameterTypeResponsePtrInput {
+	return (*queryParameterTypeResponsePtrType)(v)
+}
+
+func (*queryParameterTypeResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryParameterTypeResponse)(nil)).Elem()
+}
+
+func (i *queryParameterTypeResponsePtrType) ToQueryParameterTypeResponsePtrOutput() QueryParameterTypeResponsePtrOutput {
+	return i.ToQueryParameterTypeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *queryParameterTypeResponsePtrType) ToQueryParameterTypeResponsePtrOutputWithContext(ctx context.Context) QueryParameterTypeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeResponsePtrOutput)
+}
+
 type QueryParameterTypeResponseOutput struct{ *pulumi.OutputState }
 
 func (QueryParameterTypeResponseOutput) ElementType() reflect.Type {
@@ -16738,9 +16779,19 @@ func (o QueryParameterTypeResponseOutput) ToQueryParameterTypeResponseOutputWith
 	return o
 }
 
+func (o QueryParameterTypeResponseOutput) ToQueryParameterTypeResponsePtrOutput() QueryParameterTypeResponsePtrOutput {
+	return o.ToQueryParameterTypeResponsePtrOutputWithContext(context.Background())
+}
+
+func (o QueryParameterTypeResponseOutput) ToQueryParameterTypeResponsePtrOutputWithContext(ctx context.Context) QueryParameterTypeResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryParameterTypeResponse) *QueryParameterTypeResponse {
+		return &v
+	}).(QueryParameterTypeResponsePtrOutput)
+}
+
 // [Optional] The type of the array's elements, if this is an array.
-func (o QueryParameterTypeResponseOutput) ArrayType() QueryParameterTypeResponseOutput {
-	return o.ApplyT(func(v QueryParameterTypeResponse) QueryParameterTypeResponse { return v.ArrayType }).(QueryParameterTypeResponseOutput)
+func (o QueryParameterTypeResponseOutput) ArrayType() QueryParameterTypeResponsePtrOutput {
+	return o.ApplyT(func(v QueryParameterTypeResponse) *QueryParameterTypeResponse { return v.ArrayType }).(QueryParameterTypeResponsePtrOutput)
 }
 
 // [Optional] The types of the fields of this struct, in order, if this is a struct.
@@ -16751,6 +16802,60 @@ func (o QueryParameterTypeResponseOutput) StructTypes() QueryParameterTypeStruct
 // [Required] The top level type of this field.
 func (o QueryParameterTypeResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryParameterTypeResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type QueryParameterTypeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (QueryParameterTypeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryParameterTypeResponse)(nil)).Elem()
+}
+
+func (o QueryParameterTypeResponsePtrOutput) ToQueryParameterTypeResponsePtrOutput() QueryParameterTypeResponsePtrOutput {
+	return o
+}
+
+func (o QueryParameterTypeResponsePtrOutput) ToQueryParameterTypeResponsePtrOutputWithContext(ctx context.Context) QueryParameterTypeResponsePtrOutput {
+	return o
+}
+
+func (o QueryParameterTypeResponsePtrOutput) Elem() QueryParameterTypeResponseOutput {
+	return o.ApplyT(func(v *QueryParameterTypeResponse) QueryParameterTypeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret QueryParameterTypeResponse
+		return ret
+	}).(QueryParameterTypeResponseOutput)
+}
+
+// [Optional] The type of the array's elements, if this is an array.
+func (o QueryParameterTypeResponsePtrOutput) ArrayType() QueryParameterTypeResponsePtrOutput {
+	return o.ApplyT(func(v *QueryParameterTypeResponse) *QueryParameterTypeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ArrayType
+	}).(QueryParameterTypeResponsePtrOutput)
+}
+
+// [Optional] The types of the fields of this struct, in order, if this is a struct.
+func (o QueryParameterTypeResponsePtrOutput) StructTypes() QueryParameterTypeStructTypesItemResponseArrayOutput {
+	return o.ApplyT(func(v *QueryParameterTypeResponse) []QueryParameterTypeStructTypesItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StructTypes
+	}).(QueryParameterTypeStructTypesItemResponseArrayOutput)
+}
+
+// [Required] The top level type of this field.
+func (o QueryParameterTypeResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueryParameterTypeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type QueryParameterTypeStructTypesItem struct {
@@ -19617,7 +19722,7 @@ func (o StandardSqlDataTypePtrOutput) TypeKind() StandardSqlDataTypeTypeKindPtrO
 // The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
 type StandardSqlDataTypeResponse struct {
 	// The type of the array's elements, if type_kind = "ARRAY".
-	ArrayElementType StandardSqlDataTypeResponse `pulumi:"arrayElementType"`
+	ArrayElementType *StandardSqlDataTypeResponse `pulumi:"arrayElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType StandardSqlStructTypeResponse `pulumi:"structType"`
 	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
@@ -19638,7 +19743,7 @@ type StandardSqlDataTypeResponseInput interface {
 // The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
 type StandardSqlDataTypeResponseArgs struct {
 	// The type of the array's elements, if type_kind = "ARRAY".
-	ArrayElementType StandardSqlDataTypeResponseInput `pulumi:"arrayElementType"`
+	ArrayElementType StandardSqlDataTypeResponsePtrInput `pulumi:"arrayElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType StandardSqlStructTypeResponseInput `pulumi:"structType"`
 	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
@@ -19724,8 +19829,8 @@ func (o StandardSqlDataTypeResponseOutput) ToStandardSqlDataTypeResponsePtrOutpu
 }
 
 // The type of the array's elements, if type_kind = "ARRAY".
-func (o StandardSqlDataTypeResponseOutput) ArrayElementType() StandardSqlDataTypeResponseOutput {
-	return o.ApplyT(func(v StandardSqlDataTypeResponse) StandardSqlDataTypeResponse { return v.ArrayElementType }).(StandardSqlDataTypeResponseOutput)
+func (o StandardSqlDataTypeResponseOutput) ArrayElementType() StandardSqlDataTypeResponsePtrOutput {
+	return o.ApplyT(func(v StandardSqlDataTypeResponse) *StandardSqlDataTypeResponse { return v.ArrayElementType }).(StandardSqlDataTypeResponsePtrOutput)
 }
 
 // The fields of this struct, in order, if type_kind = "STRUCT".
@@ -19768,7 +19873,7 @@ func (o StandardSqlDataTypeResponsePtrOutput) ArrayElementType() StandardSqlData
 		if v == nil {
 			return nil
 		}
-		return &v.ArrayElementType
+		return v.ArrayElementType
 	}).(StandardSqlDataTypeResponsePtrOutput)
 }
 
@@ -23492,6 +23597,7 @@ func init() {
 	pulumi.RegisterOutputType(QueryParameterTypeOutput{})
 	pulumi.RegisterOutputType(QueryParameterTypePtrOutput{})
 	pulumi.RegisterOutputType(QueryParameterTypeResponseOutput{})
+	pulumi.RegisterOutputType(QueryParameterTypeResponsePtrOutput{})
 	pulumi.RegisterOutputType(QueryParameterTypeStructTypesItemOutput{})
 	pulumi.RegisterOutputType(QueryParameterTypeStructTypesItemArrayOutput{})
 	pulumi.RegisterOutputType(QueryParameterTypeStructTypesItemResponseOutput{})

@@ -3,7 +3,7 @@
 import * as google from "@pulumi/google-native";
 
 // TODO: Determine this dynamically once https://github.com/pulumi/pulumi-google-native/issues/166 is done.
-const engineVersion = "1.20.8-gke.2100";
+const engineVersion = "1.20.9-gke.1001";
 
 const nodeConfig: google.types.input.container.v1.NodeConfigArgs = {
     machineType: "n1-standard-2",
