@@ -20360,7 +20360,7 @@ func (o HTTP2HealthCheckResponsePtrOutput) Response() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type HTTPHealthCheck struct {
+type HTTPHealthCheckType struct {
 	// The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
 	Host *string `pulumi:"host"`
 	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
@@ -20377,18 +20377,18 @@ type HTTPHealthCheck struct {
 	Response *string `pulumi:"response"`
 }
 
-// HTTPHealthCheckInput is an input type that accepts HTTPHealthCheckArgs and HTTPHealthCheckOutput values.
-// You can construct a concrete instance of `HTTPHealthCheckInput` via:
+// HTTPHealthCheckTypeInput is an input type that accepts HTTPHealthCheckTypeArgs and HTTPHealthCheckTypeOutput values.
+// You can construct a concrete instance of `HTTPHealthCheckTypeInput` via:
 //
-//          HTTPHealthCheckArgs{...}
-type HTTPHealthCheckInput interface {
+//          HTTPHealthCheckTypeArgs{...}
+type HTTPHealthCheckTypeInput interface {
 	pulumi.Input
 
-	ToHTTPHealthCheckOutput() HTTPHealthCheckOutput
-	ToHTTPHealthCheckOutputWithContext(context.Context) HTTPHealthCheckOutput
+	ToHTTPHealthCheckTypeOutput() HTTPHealthCheckTypeOutput
+	ToHTTPHealthCheckTypeOutputWithContext(context.Context) HTTPHealthCheckTypeOutput
 }
 
-type HTTPHealthCheckArgs struct {
+type HTTPHealthCheckTypeArgs struct {
 	// The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
@@ -20405,145 +20405,145 @@ type HTTPHealthCheckArgs struct {
 	Response pulumi.StringPtrInput `pulumi:"response"`
 }
 
-func (HTTPHealthCheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HTTPHealthCheck)(nil)).Elem()
+func (HTTPHealthCheckTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPHealthCheckType)(nil)).Elem()
 }
 
-func (i HTTPHealthCheckArgs) ToHTTPHealthCheckOutput() HTTPHealthCheckOutput {
-	return i.ToHTTPHealthCheckOutputWithContext(context.Background())
+func (i HTTPHealthCheckTypeArgs) ToHTTPHealthCheckTypeOutput() HTTPHealthCheckTypeOutput {
+	return i.ToHTTPHealthCheckTypeOutputWithContext(context.Background())
 }
 
-func (i HTTPHealthCheckArgs) ToHTTPHealthCheckOutputWithContext(ctx context.Context) HTTPHealthCheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HTTPHealthCheckOutput)
+func (i HTTPHealthCheckTypeArgs) ToHTTPHealthCheckTypeOutputWithContext(ctx context.Context) HTTPHealthCheckTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPHealthCheckTypeOutput)
 }
 
-func (i HTTPHealthCheckArgs) ToHTTPHealthCheckPtrOutput() HTTPHealthCheckPtrOutput {
-	return i.ToHTTPHealthCheckPtrOutputWithContext(context.Background())
+func (i HTTPHealthCheckTypeArgs) ToHTTPHealthCheckTypePtrOutput() HTTPHealthCheckTypePtrOutput {
+	return i.ToHTTPHealthCheckTypePtrOutputWithContext(context.Background())
 }
 
-func (i HTTPHealthCheckArgs) ToHTTPHealthCheckPtrOutputWithContext(ctx context.Context) HTTPHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HTTPHealthCheckOutput).ToHTTPHealthCheckPtrOutputWithContext(ctx)
+func (i HTTPHealthCheckTypeArgs) ToHTTPHealthCheckTypePtrOutputWithContext(ctx context.Context) HTTPHealthCheckTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPHealthCheckTypeOutput).ToHTTPHealthCheckTypePtrOutputWithContext(ctx)
 }
 
-// HTTPHealthCheckPtrInput is an input type that accepts HTTPHealthCheckArgs, HTTPHealthCheckPtr and HTTPHealthCheckPtrOutput values.
-// You can construct a concrete instance of `HTTPHealthCheckPtrInput` via:
+// HTTPHealthCheckTypePtrInput is an input type that accepts HTTPHealthCheckTypeArgs, HTTPHealthCheckTypePtr and HTTPHealthCheckTypePtrOutput values.
+// You can construct a concrete instance of `HTTPHealthCheckTypePtrInput` via:
 //
-//          HTTPHealthCheckArgs{...}
+//          HTTPHealthCheckTypeArgs{...}
 //
 //  or:
 //
 //          nil
-type HTTPHealthCheckPtrInput interface {
+type HTTPHealthCheckTypePtrInput interface {
 	pulumi.Input
 
-	ToHTTPHealthCheckPtrOutput() HTTPHealthCheckPtrOutput
-	ToHTTPHealthCheckPtrOutputWithContext(context.Context) HTTPHealthCheckPtrOutput
+	ToHTTPHealthCheckTypePtrOutput() HTTPHealthCheckTypePtrOutput
+	ToHTTPHealthCheckTypePtrOutputWithContext(context.Context) HTTPHealthCheckTypePtrOutput
 }
 
-type httphealthCheckPtrType HTTPHealthCheckArgs
+type httphealthCheckTypePtrType HTTPHealthCheckTypeArgs
 
-func HTTPHealthCheckPtr(v *HTTPHealthCheckArgs) HTTPHealthCheckPtrInput {
-	return (*httphealthCheckPtrType)(v)
+func HTTPHealthCheckTypePtr(v *HTTPHealthCheckTypeArgs) HTTPHealthCheckTypePtrInput {
+	return (*httphealthCheckTypePtrType)(v)
 }
 
-func (*httphealthCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HTTPHealthCheck)(nil)).Elem()
+func (*httphealthCheckTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HTTPHealthCheckType)(nil)).Elem()
 }
 
-func (i *httphealthCheckPtrType) ToHTTPHealthCheckPtrOutput() HTTPHealthCheckPtrOutput {
-	return i.ToHTTPHealthCheckPtrOutputWithContext(context.Background())
+func (i *httphealthCheckTypePtrType) ToHTTPHealthCheckTypePtrOutput() HTTPHealthCheckTypePtrOutput {
+	return i.ToHTTPHealthCheckTypePtrOutputWithContext(context.Background())
 }
 
-func (i *httphealthCheckPtrType) ToHTTPHealthCheckPtrOutputWithContext(ctx context.Context) HTTPHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HTTPHealthCheckPtrOutput)
+func (i *httphealthCheckTypePtrType) ToHTTPHealthCheckTypePtrOutputWithContext(ctx context.Context) HTTPHealthCheckTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPHealthCheckTypePtrOutput)
 }
 
-type HTTPHealthCheckOutput struct{ *pulumi.OutputState }
+type HTTPHealthCheckTypeOutput struct{ *pulumi.OutputState }
 
-func (HTTPHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HTTPHealthCheck)(nil)).Elem()
+func (HTTPHealthCheckTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPHealthCheckType)(nil)).Elem()
 }
 
-func (o HTTPHealthCheckOutput) ToHTTPHealthCheckOutput() HTTPHealthCheckOutput {
+func (o HTTPHealthCheckTypeOutput) ToHTTPHealthCheckTypeOutput() HTTPHealthCheckTypeOutput {
 	return o
 }
 
-func (o HTTPHealthCheckOutput) ToHTTPHealthCheckOutputWithContext(ctx context.Context) HTTPHealthCheckOutput {
+func (o HTTPHealthCheckTypeOutput) ToHTTPHealthCheckTypeOutputWithContext(ctx context.Context) HTTPHealthCheckTypeOutput {
 	return o
 }
 
-func (o HTTPHealthCheckOutput) ToHTTPHealthCheckPtrOutput() HTTPHealthCheckPtrOutput {
-	return o.ToHTTPHealthCheckPtrOutputWithContext(context.Background())
+func (o HTTPHealthCheckTypeOutput) ToHTTPHealthCheckTypePtrOutput() HTTPHealthCheckTypePtrOutput {
+	return o.ToHTTPHealthCheckTypePtrOutputWithContext(context.Background())
 }
 
-func (o HTTPHealthCheckOutput) ToHTTPHealthCheckPtrOutputWithContext(ctx context.Context) HTTPHealthCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HTTPHealthCheck) *HTTPHealthCheck {
+func (o HTTPHealthCheckTypeOutput) ToHTTPHealthCheckTypePtrOutputWithContext(ctx context.Context) HTTPHealthCheckTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HTTPHealthCheckType) *HTTPHealthCheckType {
 		return &v
-	}).(HTTPHealthCheckPtrOutput)
+	}).(HTTPHealthCheckTypePtrOutput)
 }
 
 // The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
-func (o HTTPHealthCheckOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HTTPHealthCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
+func (o HTTPHealthCheckTypeOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPHealthCheckType) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
 // The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
-func (o HTTPHealthCheckOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v HTTPHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o HTTPHealthCheckTypeOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HTTPHealthCheckType) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
-func (o HTTPHealthCheckOutput) PortName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HTTPHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
+func (o HTTPHealthCheckTypeOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPHealthCheckType) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
 // Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
-func (o HTTPHealthCheckOutput) PortSpecification() HTTPHealthCheckPortSpecificationPtrOutput {
-	return o.ApplyT(func(v HTTPHealthCheck) *HTTPHealthCheckPortSpecification { return v.PortSpecification }).(HTTPHealthCheckPortSpecificationPtrOutput)
+func (o HTTPHealthCheckTypeOutput) PortSpecification() HTTPHealthCheckPortSpecificationPtrOutput {
+	return o.ApplyT(func(v HTTPHealthCheckType) *HTTPHealthCheckPortSpecification { return v.PortSpecification }).(HTTPHealthCheckPortSpecificationPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-func (o HTTPHealthCheckOutput) ProxyHeader() HTTPHealthCheckProxyHeaderPtrOutput {
-	return o.ApplyT(func(v HTTPHealthCheck) *HTTPHealthCheckProxyHeader { return v.ProxyHeader }).(HTTPHealthCheckProxyHeaderPtrOutput)
+func (o HTTPHealthCheckTypeOutput) ProxyHeader() HTTPHealthCheckProxyHeaderPtrOutput {
+	return o.ApplyT(func(v HTTPHealthCheckType) *HTTPHealthCheckProxyHeader { return v.ProxyHeader }).(HTTPHealthCheckProxyHeaderPtrOutput)
 }
 
 // The request path of the HTTP health check request. The default value is /.
-func (o HTTPHealthCheckOutput) RequestPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HTTPHealthCheck) *string { return v.RequestPath }).(pulumi.StringPtrOutput)
+func (o HTTPHealthCheckTypeOutput) RequestPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPHealthCheckType) *string { return v.RequestPath }).(pulumi.StringPtrOutput)
 }
 
 // The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
-func (o HTTPHealthCheckOutput) Response() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HTTPHealthCheck) *string { return v.Response }).(pulumi.StringPtrOutput)
+func (o HTTPHealthCheckTypeOutput) Response() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPHealthCheckType) *string { return v.Response }).(pulumi.StringPtrOutput)
 }
 
-type HTTPHealthCheckPtrOutput struct{ *pulumi.OutputState }
+type HTTPHealthCheckTypePtrOutput struct{ *pulumi.OutputState }
 
-func (HTTPHealthCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HTTPHealthCheck)(nil)).Elem()
+func (HTTPHealthCheckTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HTTPHealthCheckType)(nil)).Elem()
 }
 
-func (o HTTPHealthCheckPtrOutput) ToHTTPHealthCheckPtrOutput() HTTPHealthCheckPtrOutput {
+func (o HTTPHealthCheckTypePtrOutput) ToHTTPHealthCheckTypePtrOutput() HTTPHealthCheckTypePtrOutput {
 	return o
 }
 
-func (o HTTPHealthCheckPtrOutput) ToHTTPHealthCheckPtrOutputWithContext(ctx context.Context) HTTPHealthCheckPtrOutput {
+func (o HTTPHealthCheckTypePtrOutput) ToHTTPHealthCheckTypePtrOutputWithContext(ctx context.Context) HTTPHealthCheckTypePtrOutput {
 	return o
 }
 
-func (o HTTPHealthCheckPtrOutput) Elem() HTTPHealthCheckOutput {
-	return o.ApplyT(func(v *HTTPHealthCheck) HTTPHealthCheck {
+func (o HTTPHealthCheckTypePtrOutput) Elem() HTTPHealthCheckTypeOutput {
+	return o.ApplyT(func(v *HTTPHealthCheckType) HTTPHealthCheckType {
 		if v != nil {
 			return *v
 		}
-		var ret HTTPHealthCheck
+		var ret HTTPHealthCheckType
 		return ret
-	}).(HTTPHealthCheckOutput)
+	}).(HTTPHealthCheckTypeOutput)
 }
 
 // The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
-func (o HTTPHealthCheckPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HTTPHealthCheck) *string {
+func (o HTTPHealthCheckTypePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPHealthCheckType) *string {
 		if v == nil {
 			return nil
 		}
@@ -20552,8 +20552,8 @@ func (o HTTPHealthCheckPtrOutput) Host() pulumi.StringPtrOutput {
 }
 
 // The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
-func (o HTTPHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *HTTPHealthCheck) *int {
+func (o HTTPHealthCheckTypePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HTTPHealthCheckType) *int {
 		if v == nil {
 			return nil
 		}
@@ -20562,8 +20562,8 @@ func (o HTTPHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 }
 
 // Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
-func (o HTTPHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HTTPHealthCheck) *string {
+func (o HTTPHealthCheckTypePtrOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPHealthCheckType) *string {
 		if v == nil {
 			return nil
 		}
@@ -20572,8 +20572,8 @@ func (o HTTPHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 }
 
 // Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
-func (o HTTPHealthCheckPtrOutput) PortSpecification() HTTPHealthCheckPortSpecificationPtrOutput {
-	return o.ApplyT(func(v *HTTPHealthCheck) *HTTPHealthCheckPortSpecification {
+func (o HTTPHealthCheckTypePtrOutput) PortSpecification() HTTPHealthCheckPortSpecificationPtrOutput {
+	return o.ApplyT(func(v *HTTPHealthCheckType) *HTTPHealthCheckPortSpecification {
 		if v == nil {
 			return nil
 		}
@@ -20582,8 +20582,8 @@ func (o HTTPHealthCheckPtrOutput) PortSpecification() HTTPHealthCheckPortSpecifi
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-func (o HTTPHealthCheckPtrOutput) ProxyHeader() HTTPHealthCheckProxyHeaderPtrOutput {
-	return o.ApplyT(func(v *HTTPHealthCheck) *HTTPHealthCheckProxyHeader {
+func (o HTTPHealthCheckTypePtrOutput) ProxyHeader() HTTPHealthCheckProxyHeaderPtrOutput {
+	return o.ApplyT(func(v *HTTPHealthCheckType) *HTTPHealthCheckProxyHeader {
 		if v == nil {
 			return nil
 		}
@@ -20592,8 +20592,8 @@ func (o HTTPHealthCheckPtrOutput) ProxyHeader() HTTPHealthCheckProxyHeaderPtrOut
 }
 
 // The request path of the HTTP health check request. The default value is /.
-func (o HTTPHealthCheckPtrOutput) RequestPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HTTPHealthCheck) *string {
+func (o HTTPHealthCheckTypePtrOutput) RequestPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPHealthCheckType) *string {
 		if v == nil {
 			return nil
 		}
@@ -20602,8 +20602,8 @@ func (o HTTPHealthCheckPtrOutput) RequestPath() pulumi.StringPtrOutput {
 }
 
 // The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
-func (o HTTPHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HTTPHealthCheck) *string {
+func (o HTTPHealthCheckTypePtrOutput) Response() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPHealthCheckType) *string {
 		if v == nil {
 			return nil
 		}
@@ -20862,7 +20862,7 @@ func (o HTTPHealthCheckResponsePtrOutput) Response() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type HTTPSHealthCheck struct {
+type HTTPSHealthCheckType struct {
 	// The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
 	Host *string `pulumi:"host"`
 	// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
@@ -20879,18 +20879,18 @@ type HTTPSHealthCheck struct {
 	Response *string `pulumi:"response"`
 }
 
-// HTTPSHealthCheckInput is an input type that accepts HTTPSHealthCheckArgs and HTTPSHealthCheckOutput values.
-// You can construct a concrete instance of `HTTPSHealthCheckInput` via:
+// HTTPSHealthCheckTypeInput is an input type that accepts HTTPSHealthCheckTypeArgs and HTTPSHealthCheckTypeOutput values.
+// You can construct a concrete instance of `HTTPSHealthCheckTypeInput` via:
 //
-//          HTTPSHealthCheckArgs{...}
-type HTTPSHealthCheckInput interface {
+//          HTTPSHealthCheckTypeArgs{...}
+type HTTPSHealthCheckTypeInput interface {
 	pulumi.Input
 
-	ToHTTPSHealthCheckOutput() HTTPSHealthCheckOutput
-	ToHTTPSHealthCheckOutputWithContext(context.Context) HTTPSHealthCheckOutput
+	ToHTTPSHealthCheckTypeOutput() HTTPSHealthCheckTypeOutput
+	ToHTTPSHealthCheckTypeOutputWithContext(context.Context) HTTPSHealthCheckTypeOutput
 }
 
-type HTTPSHealthCheckArgs struct {
+type HTTPSHealthCheckTypeArgs struct {
 	// The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
@@ -20907,145 +20907,145 @@ type HTTPSHealthCheckArgs struct {
 	Response pulumi.StringPtrInput `pulumi:"response"`
 }
 
-func (HTTPSHealthCheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HTTPSHealthCheck)(nil)).Elem()
+func (HTTPSHealthCheckTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPSHealthCheckType)(nil)).Elem()
 }
 
-func (i HTTPSHealthCheckArgs) ToHTTPSHealthCheckOutput() HTTPSHealthCheckOutput {
-	return i.ToHTTPSHealthCheckOutputWithContext(context.Background())
+func (i HTTPSHealthCheckTypeArgs) ToHTTPSHealthCheckTypeOutput() HTTPSHealthCheckTypeOutput {
+	return i.ToHTTPSHealthCheckTypeOutputWithContext(context.Background())
 }
 
-func (i HTTPSHealthCheckArgs) ToHTTPSHealthCheckOutputWithContext(ctx context.Context) HTTPSHealthCheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HTTPSHealthCheckOutput)
+func (i HTTPSHealthCheckTypeArgs) ToHTTPSHealthCheckTypeOutputWithContext(ctx context.Context) HTTPSHealthCheckTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPSHealthCheckTypeOutput)
 }
 
-func (i HTTPSHealthCheckArgs) ToHTTPSHealthCheckPtrOutput() HTTPSHealthCheckPtrOutput {
-	return i.ToHTTPSHealthCheckPtrOutputWithContext(context.Background())
+func (i HTTPSHealthCheckTypeArgs) ToHTTPSHealthCheckTypePtrOutput() HTTPSHealthCheckTypePtrOutput {
+	return i.ToHTTPSHealthCheckTypePtrOutputWithContext(context.Background())
 }
 
-func (i HTTPSHealthCheckArgs) ToHTTPSHealthCheckPtrOutputWithContext(ctx context.Context) HTTPSHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HTTPSHealthCheckOutput).ToHTTPSHealthCheckPtrOutputWithContext(ctx)
+func (i HTTPSHealthCheckTypeArgs) ToHTTPSHealthCheckTypePtrOutputWithContext(ctx context.Context) HTTPSHealthCheckTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPSHealthCheckTypeOutput).ToHTTPSHealthCheckTypePtrOutputWithContext(ctx)
 }
 
-// HTTPSHealthCheckPtrInput is an input type that accepts HTTPSHealthCheckArgs, HTTPSHealthCheckPtr and HTTPSHealthCheckPtrOutput values.
-// You can construct a concrete instance of `HTTPSHealthCheckPtrInput` via:
+// HTTPSHealthCheckTypePtrInput is an input type that accepts HTTPSHealthCheckTypeArgs, HTTPSHealthCheckTypePtr and HTTPSHealthCheckTypePtrOutput values.
+// You can construct a concrete instance of `HTTPSHealthCheckTypePtrInput` via:
 //
-//          HTTPSHealthCheckArgs{...}
+//          HTTPSHealthCheckTypeArgs{...}
 //
 //  or:
 //
 //          nil
-type HTTPSHealthCheckPtrInput interface {
+type HTTPSHealthCheckTypePtrInput interface {
 	pulumi.Input
 
-	ToHTTPSHealthCheckPtrOutput() HTTPSHealthCheckPtrOutput
-	ToHTTPSHealthCheckPtrOutputWithContext(context.Context) HTTPSHealthCheckPtrOutput
+	ToHTTPSHealthCheckTypePtrOutput() HTTPSHealthCheckTypePtrOutput
+	ToHTTPSHealthCheckTypePtrOutputWithContext(context.Context) HTTPSHealthCheckTypePtrOutput
 }
 
-type httpshealthCheckPtrType HTTPSHealthCheckArgs
+type httpshealthCheckTypePtrType HTTPSHealthCheckTypeArgs
 
-func HTTPSHealthCheckPtr(v *HTTPSHealthCheckArgs) HTTPSHealthCheckPtrInput {
-	return (*httpshealthCheckPtrType)(v)
+func HTTPSHealthCheckTypePtr(v *HTTPSHealthCheckTypeArgs) HTTPSHealthCheckTypePtrInput {
+	return (*httpshealthCheckTypePtrType)(v)
 }
 
-func (*httpshealthCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HTTPSHealthCheck)(nil)).Elem()
+func (*httpshealthCheckTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HTTPSHealthCheckType)(nil)).Elem()
 }
 
-func (i *httpshealthCheckPtrType) ToHTTPSHealthCheckPtrOutput() HTTPSHealthCheckPtrOutput {
-	return i.ToHTTPSHealthCheckPtrOutputWithContext(context.Background())
+func (i *httpshealthCheckTypePtrType) ToHTTPSHealthCheckTypePtrOutput() HTTPSHealthCheckTypePtrOutput {
+	return i.ToHTTPSHealthCheckTypePtrOutputWithContext(context.Background())
 }
 
-func (i *httpshealthCheckPtrType) ToHTTPSHealthCheckPtrOutputWithContext(ctx context.Context) HTTPSHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HTTPSHealthCheckPtrOutput)
+func (i *httpshealthCheckTypePtrType) ToHTTPSHealthCheckTypePtrOutputWithContext(ctx context.Context) HTTPSHealthCheckTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPSHealthCheckTypePtrOutput)
 }
 
-type HTTPSHealthCheckOutput struct{ *pulumi.OutputState }
+type HTTPSHealthCheckTypeOutput struct{ *pulumi.OutputState }
 
-func (HTTPSHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HTTPSHealthCheck)(nil)).Elem()
+func (HTTPSHealthCheckTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPSHealthCheckType)(nil)).Elem()
 }
 
-func (o HTTPSHealthCheckOutput) ToHTTPSHealthCheckOutput() HTTPSHealthCheckOutput {
+func (o HTTPSHealthCheckTypeOutput) ToHTTPSHealthCheckTypeOutput() HTTPSHealthCheckTypeOutput {
 	return o
 }
 
-func (o HTTPSHealthCheckOutput) ToHTTPSHealthCheckOutputWithContext(ctx context.Context) HTTPSHealthCheckOutput {
+func (o HTTPSHealthCheckTypeOutput) ToHTTPSHealthCheckTypeOutputWithContext(ctx context.Context) HTTPSHealthCheckTypeOutput {
 	return o
 }
 
-func (o HTTPSHealthCheckOutput) ToHTTPSHealthCheckPtrOutput() HTTPSHealthCheckPtrOutput {
-	return o.ToHTTPSHealthCheckPtrOutputWithContext(context.Background())
+func (o HTTPSHealthCheckTypeOutput) ToHTTPSHealthCheckTypePtrOutput() HTTPSHealthCheckTypePtrOutput {
+	return o.ToHTTPSHealthCheckTypePtrOutputWithContext(context.Background())
 }
 
-func (o HTTPSHealthCheckOutput) ToHTTPSHealthCheckPtrOutputWithContext(ctx context.Context) HTTPSHealthCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HTTPSHealthCheck) *HTTPSHealthCheck {
+func (o HTTPSHealthCheckTypeOutput) ToHTTPSHealthCheckTypePtrOutputWithContext(ctx context.Context) HTTPSHealthCheckTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HTTPSHealthCheckType) *HTTPSHealthCheckType {
 		return &v
-	}).(HTTPSHealthCheckPtrOutput)
+	}).(HTTPSHealthCheckTypePtrOutput)
 }
 
 // The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
-func (o HTTPSHealthCheckOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HTTPSHealthCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
+func (o HTTPSHealthCheckTypeOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPSHealthCheckType) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
 // The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
-func (o HTTPSHealthCheckOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v HTTPSHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o HTTPSHealthCheckTypeOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HTTPSHealthCheckType) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
-func (o HTTPSHealthCheckOutput) PortName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HTTPSHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
+func (o HTTPSHealthCheckTypeOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPSHealthCheckType) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
 // Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
-func (o HTTPSHealthCheckOutput) PortSpecification() HTTPSHealthCheckPortSpecificationPtrOutput {
-	return o.ApplyT(func(v HTTPSHealthCheck) *HTTPSHealthCheckPortSpecification { return v.PortSpecification }).(HTTPSHealthCheckPortSpecificationPtrOutput)
+func (o HTTPSHealthCheckTypeOutput) PortSpecification() HTTPSHealthCheckPortSpecificationPtrOutput {
+	return o.ApplyT(func(v HTTPSHealthCheckType) *HTTPSHealthCheckPortSpecification { return v.PortSpecification }).(HTTPSHealthCheckPortSpecificationPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-func (o HTTPSHealthCheckOutput) ProxyHeader() HTTPSHealthCheckProxyHeaderPtrOutput {
-	return o.ApplyT(func(v HTTPSHealthCheck) *HTTPSHealthCheckProxyHeader { return v.ProxyHeader }).(HTTPSHealthCheckProxyHeaderPtrOutput)
+func (o HTTPSHealthCheckTypeOutput) ProxyHeader() HTTPSHealthCheckProxyHeaderPtrOutput {
+	return o.ApplyT(func(v HTTPSHealthCheckType) *HTTPSHealthCheckProxyHeader { return v.ProxyHeader }).(HTTPSHealthCheckProxyHeaderPtrOutput)
 }
 
 // The request path of the HTTPS health check request. The default value is /.
-func (o HTTPSHealthCheckOutput) RequestPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HTTPSHealthCheck) *string { return v.RequestPath }).(pulumi.StringPtrOutput)
+func (o HTTPSHealthCheckTypeOutput) RequestPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPSHealthCheckType) *string { return v.RequestPath }).(pulumi.StringPtrOutput)
 }
 
 // The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
-func (o HTTPSHealthCheckOutput) Response() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HTTPSHealthCheck) *string { return v.Response }).(pulumi.StringPtrOutput)
+func (o HTTPSHealthCheckTypeOutput) Response() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPSHealthCheckType) *string { return v.Response }).(pulumi.StringPtrOutput)
 }
 
-type HTTPSHealthCheckPtrOutput struct{ *pulumi.OutputState }
+type HTTPSHealthCheckTypePtrOutput struct{ *pulumi.OutputState }
 
-func (HTTPSHealthCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HTTPSHealthCheck)(nil)).Elem()
+func (HTTPSHealthCheckTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HTTPSHealthCheckType)(nil)).Elem()
 }
 
-func (o HTTPSHealthCheckPtrOutput) ToHTTPSHealthCheckPtrOutput() HTTPSHealthCheckPtrOutput {
+func (o HTTPSHealthCheckTypePtrOutput) ToHTTPSHealthCheckTypePtrOutput() HTTPSHealthCheckTypePtrOutput {
 	return o
 }
 
-func (o HTTPSHealthCheckPtrOutput) ToHTTPSHealthCheckPtrOutputWithContext(ctx context.Context) HTTPSHealthCheckPtrOutput {
+func (o HTTPSHealthCheckTypePtrOutput) ToHTTPSHealthCheckTypePtrOutputWithContext(ctx context.Context) HTTPSHealthCheckTypePtrOutput {
 	return o
 }
 
-func (o HTTPSHealthCheckPtrOutput) Elem() HTTPSHealthCheckOutput {
-	return o.ApplyT(func(v *HTTPSHealthCheck) HTTPSHealthCheck {
+func (o HTTPSHealthCheckTypePtrOutput) Elem() HTTPSHealthCheckTypeOutput {
+	return o.ApplyT(func(v *HTTPSHealthCheckType) HTTPSHealthCheckType {
 		if v != nil {
 			return *v
 		}
-		var ret HTTPSHealthCheck
+		var ret HTTPSHealthCheckType
 		return ret
-	}).(HTTPSHealthCheckOutput)
+	}).(HTTPSHealthCheckTypeOutput)
 }
 
 // The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
-func (o HTTPSHealthCheckPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HTTPSHealthCheck) *string {
+func (o HTTPSHealthCheckTypePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPSHealthCheckType) *string {
 		if v == nil {
 			return nil
 		}
@@ -21054,8 +21054,8 @@ func (o HTTPSHealthCheckPtrOutput) Host() pulumi.StringPtrOutput {
 }
 
 // The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
-func (o HTTPSHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *HTTPSHealthCheck) *int {
+func (o HTTPSHealthCheckTypePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HTTPSHealthCheckType) *int {
 		if v == nil {
 			return nil
 		}
@@ -21064,8 +21064,8 @@ func (o HTTPSHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 }
 
 // Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
-func (o HTTPSHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HTTPSHealthCheck) *string {
+func (o HTTPSHealthCheckTypePtrOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPSHealthCheckType) *string {
 		if v == nil {
 			return nil
 		}
@@ -21074,8 +21074,8 @@ func (o HTTPSHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 }
 
 // Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
-func (o HTTPSHealthCheckPtrOutput) PortSpecification() HTTPSHealthCheckPortSpecificationPtrOutput {
-	return o.ApplyT(func(v *HTTPSHealthCheck) *HTTPSHealthCheckPortSpecification {
+func (o HTTPSHealthCheckTypePtrOutput) PortSpecification() HTTPSHealthCheckPortSpecificationPtrOutput {
+	return o.ApplyT(func(v *HTTPSHealthCheckType) *HTTPSHealthCheckPortSpecification {
 		if v == nil {
 			return nil
 		}
@@ -21084,8 +21084,8 @@ func (o HTTPSHealthCheckPtrOutput) PortSpecification() HTTPSHealthCheckPortSpeci
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-func (o HTTPSHealthCheckPtrOutput) ProxyHeader() HTTPSHealthCheckProxyHeaderPtrOutput {
-	return o.ApplyT(func(v *HTTPSHealthCheck) *HTTPSHealthCheckProxyHeader {
+func (o HTTPSHealthCheckTypePtrOutput) ProxyHeader() HTTPSHealthCheckProxyHeaderPtrOutput {
+	return o.ApplyT(func(v *HTTPSHealthCheckType) *HTTPSHealthCheckProxyHeader {
 		if v == nil {
 			return nil
 		}
@@ -21094,8 +21094,8 @@ func (o HTTPSHealthCheckPtrOutput) ProxyHeader() HTTPSHealthCheckProxyHeaderPtrO
 }
 
 // The request path of the HTTPS health check request. The default value is /.
-func (o HTTPSHealthCheckPtrOutput) RequestPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HTTPSHealthCheck) *string {
+func (o HTTPSHealthCheckTypePtrOutput) RequestPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPSHealthCheckType) *string {
 		if v == nil {
 			return nil
 		}
@@ -21104,8 +21104,8 @@ func (o HTTPSHealthCheckPtrOutput) RequestPath() pulumi.StringPtrOutput {
 }
 
 // The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
-func (o HTTPSHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HTTPSHealthCheck) *string {
+func (o HTTPSHealthCheckTypePtrOutput) Response() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPSHealthCheckType) *string {
 		if v == nil {
 			return nil
 		}
@@ -63489,12 +63489,12 @@ func init() {
 	pulumi.RegisterOutputType(HTTP2HealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(HTTP2HealthCheckResponseOutput{})
 	pulumi.RegisterOutputType(HTTP2HealthCheckResponsePtrOutput{})
-	pulumi.RegisterOutputType(HTTPHealthCheckOutput{})
-	pulumi.RegisterOutputType(HTTPHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(HTTPHealthCheckTypeOutput{})
+	pulumi.RegisterOutputType(HTTPHealthCheckTypePtrOutput{})
 	pulumi.RegisterOutputType(HTTPHealthCheckResponseOutput{})
 	pulumi.RegisterOutputType(HTTPHealthCheckResponsePtrOutput{})
-	pulumi.RegisterOutputType(HTTPSHealthCheckOutput{})
-	pulumi.RegisterOutputType(HTTPSHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(HTTPSHealthCheckTypeOutput{})
+	pulumi.RegisterOutputType(HTTPSHealthCheckTypePtrOutput{})
 	pulumi.RegisterOutputType(HTTPSHealthCheckResponseOutput{})
 	pulumi.RegisterOutputType(HTTPSHealthCheckResponsePtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckLogConfigOutput{})

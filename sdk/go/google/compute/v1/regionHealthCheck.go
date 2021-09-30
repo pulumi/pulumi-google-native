@@ -95,10 +95,10 @@ type regionHealthCheckArgs struct {
 	Description     *string          `pulumi:"description"`
 	GrpcHealthCheck *GRPCHealthCheck `pulumi:"grpcHealthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
-	HealthyThreshold *int              `pulumi:"healthyThreshold"`
-	Http2HealthCheck *HTTP2HealthCheck `pulumi:"http2HealthCheck"`
-	HttpHealthCheck  *HTTPHealthCheck  `pulumi:"httpHealthCheck"`
-	HttpsHealthCheck *HTTPSHealthCheck `pulumi:"httpsHealthCheck"`
+	HealthyThreshold *int                  `pulumi:"healthyThreshold"`
+	Http2HealthCheck *HTTP2HealthCheck     `pulumi:"http2HealthCheck"`
+	HttpHealthCheck  *HTTPHealthCheckType  `pulumi:"httpHealthCheck"`
+	HttpsHealthCheck *HTTPSHealthCheckType `pulumi:"httpsHealthCheck"`
 	// Type of the resource.
 	Kind *string `pulumi:"kind"`
 	// Configure logging on this health check.
@@ -128,8 +128,8 @@ type RegionHealthCheckArgs struct {
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
 	Http2HealthCheck HTTP2HealthCheckPtrInput
-	HttpHealthCheck  HTTPHealthCheckPtrInput
-	HttpsHealthCheck HTTPSHealthCheckPtrInput
+	HttpHealthCheck  HTTPHealthCheckTypePtrInput
+	HttpsHealthCheck HTTPSHealthCheckTypePtrInput
 	// Type of the resource.
 	Kind pulumi.StringPtrInput
 	// Configure logging on this health check.
