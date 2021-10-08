@@ -70,3 +70,13 @@ export interface GetWorkflowResult {
      */
     readonly updateTime: string;
 }
+
+export function getWorkflowOutput(args: GetWorkflowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowResult> {
+    return pulumi.output(args).apply(a => getWorkflow(a, opts))
+}
+
+export interface GetWorkflowOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    workflowId: pulumi.Input<string>;
+}

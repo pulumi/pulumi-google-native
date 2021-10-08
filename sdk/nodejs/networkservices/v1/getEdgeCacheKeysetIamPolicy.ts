@@ -49,3 +49,14 @@ export interface GetEdgeCacheKeysetIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getEdgeCacheKeysetIamPolicyOutput(args: GetEdgeCacheKeysetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEdgeCacheKeysetIamPolicyResult> {
+    return pulumi.output(args).apply(a => getEdgeCacheKeysetIamPolicy(a, opts))
+}
+
+export interface GetEdgeCacheKeysetIamPolicyOutputArgs {
+    edgeCacheKeysetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

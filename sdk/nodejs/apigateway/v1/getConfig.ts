@@ -79,3 +79,15 @@ export interface GetConfigResult {
      */
     readonly updateTime: string;
 }
+
+export function getConfigOutput(args: GetConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigResult> {
+    return pulumi.output(args).apply(a => getConfig(a, opts))
+}
+
+export interface GetConfigOutputArgs {
+    apiId: pulumi.Input<string>;
+    configId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}

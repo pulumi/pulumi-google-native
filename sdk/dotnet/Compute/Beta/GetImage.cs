@@ -89,6 +89,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<string> Licenses;
         /// <summary>
+        /// A flag for marketplace VM disk created from the image, which is designed for marketplace VM disk to prevent the proprietary data on the disk from being accessed unwantedly. The flag will be inherited by the disk created from the image. The disk with locked flag set to true will be prohibited from performing the operations below: - R/W or R/O disk attach - Disk detach, if disk is created via create-on-create - Create images - Create snapshots - Create disk clone (create disk from the current disk) The image with the locked field set to true will be prohibited from performing the operations below: - Create images from the current image - Update the locked field for the current image The instance with at least one disk with locked flag set to true will be prohibited from performing the operations below: - Secondary disk attach - Create instant snapshot - Create machine images - Create instance template - Delete the instance with --keep-disk parameter set to true 
+        /// </summary>
+        public readonly bool Locked;
+        /// <summary>
         /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         public readonly string Name;
@@ -193,6 +197,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             ImmutableArray<string> licenses,
 
+            bool locked,
+
             string name,
 
             Outputs.ImageRawDiskResponse rawDisk,
@@ -244,6 +250,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Labels = labels;
             LicenseCodes = licenseCodes;
             Licenses = licenses;
+            Locked = locked;
             Name = name;
             RawDisk = rawDisk;
             RolloutOverride = rolloutOverride;

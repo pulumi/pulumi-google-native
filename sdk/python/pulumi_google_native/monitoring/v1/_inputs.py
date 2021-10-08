@@ -27,12 +27,15 @@ __all__ = [
     'RowArgs',
     'ScorecardArgs',
     'SparkChartViewArgs',
+    'TableDataSetArgs',
+    'TableDisplayOptionsArgs',
     'TextArgs',
     'ThresholdArgs',
     'TileArgs',
     'TimeSeriesFilterRatioArgs',
     'TimeSeriesFilterArgs',
     'TimeSeriesQueryArgs',
+    'TimeSeriesTableArgs',
     'WidgetArgs',
     'XyChartArgs',
 ]
@@ -746,6 +749,101 @@ class SparkChartViewArgs:
 
 
 @pulumi.input_type
+class TableDataSetArgs:
+    def __init__(__self__, *,
+                 time_series_query: pulumi.Input['TimeSeriesQueryArgs'],
+                 min_alignment_period: Optional[pulumi.Input[str]] = None,
+                 table_display_options: Optional[pulumi.Input['TableDisplayOptionsArgs']] = None,
+                 table_template: Optional[pulumi.Input[str]] = None):
+        """
+        Groups a time series query definition with table options.
+        :param pulumi.Input['TimeSeriesQueryArgs'] time_series_query: Fields for querying time series data from the Stackdriver metrics API.
+        :param pulumi.Input[str] min_alignment_period: Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+        :param pulumi.Input['TableDisplayOptionsArgs'] table_display_options: Optional. Table display options for configuring how the table is rendered.
+        :param pulumi.Input[str] table_template: Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
+        """
+        pulumi.set(__self__, "time_series_query", time_series_query)
+        if min_alignment_period is not None:
+            pulumi.set(__self__, "min_alignment_period", min_alignment_period)
+        if table_display_options is not None:
+            pulumi.set(__self__, "table_display_options", table_display_options)
+        if table_template is not None:
+            pulumi.set(__self__, "table_template", table_template)
+
+    @property
+    @pulumi.getter(name="timeSeriesQuery")
+    def time_series_query(self) -> pulumi.Input['TimeSeriesQueryArgs']:
+        """
+        Fields for querying time series data from the Stackdriver metrics API.
+        """
+        return pulumi.get(self, "time_series_query")
+
+    @time_series_query.setter
+    def time_series_query(self, value: pulumi.Input['TimeSeriesQueryArgs']):
+        pulumi.set(self, "time_series_query", value)
+
+    @property
+    @pulumi.getter(name="minAlignmentPeriod")
+    def min_alignment_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+        """
+        return pulumi.get(self, "min_alignment_period")
+
+    @min_alignment_period.setter
+    def min_alignment_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_alignment_period", value)
+
+    @property
+    @pulumi.getter(name="tableDisplayOptions")
+    def table_display_options(self) -> Optional[pulumi.Input['TableDisplayOptionsArgs']]:
+        """
+        Optional. Table display options for configuring how the table is rendered.
+        """
+        return pulumi.get(self, "table_display_options")
+
+    @table_display_options.setter
+    def table_display_options(self, value: Optional[pulumi.Input['TableDisplayOptionsArgs']]):
+        pulumi.set(self, "table_display_options", value)
+
+    @property
+    @pulumi.getter(name="tableTemplate")
+    def table_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
+        """
+        return pulumi.get(self, "table_template")
+
+    @table_template.setter
+    def table_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_template", value)
+
+
+@pulumi.input_type
+class TableDisplayOptionsArgs:
+    def __init__(__self__, *,
+                 shown_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Table display options that can be reused.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] shown_columns: Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
+        """
+        if shown_columns is not None:
+            pulumi.set(__self__, "shown_columns", shown_columns)
+
+    @property
+    @pulumi.getter(name="shownColumns")
+    def shown_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
+        """
+        return pulumi.get(self, "shown_columns")
+
+    @shown_columns.setter
+    def shown_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "shown_columns", value)
+
+
+@pulumi.input_type
 class TextArgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
@@ -1177,12 +1275,36 @@ class TimeSeriesQueryArgs:
 
 
 @pulumi.input_type
+class TimeSeriesTableArgs:
+    def __init__(__self__, *,
+                 data_sets: pulumi.Input[Sequence[pulumi.Input['TableDataSetArgs']]]):
+        """
+        A table that displays time series data.
+        :param pulumi.Input[Sequence[pulumi.Input['TableDataSetArgs']]] data_sets: The data displayed in this table.
+        """
+        pulumi.set(__self__, "data_sets", data_sets)
+
+    @property
+    @pulumi.getter(name="dataSets")
+    def data_sets(self) -> pulumi.Input[Sequence[pulumi.Input['TableDataSetArgs']]]:
+        """
+        The data displayed in this table.
+        """
+        return pulumi.get(self, "data_sets")
+
+    @data_sets.setter
+    def data_sets(self, value: pulumi.Input[Sequence[pulumi.Input['TableDataSetArgs']]]):
+        pulumi.set(self, "data_sets", value)
+
+
+@pulumi.input_type
 class WidgetArgs:
     def __init__(__self__, *,
                  alert_chart: Optional[pulumi.Input['AlertChartArgs']] = None,
                  blank: Optional[pulumi.Input['EmptyArgs']] = None,
                  scorecard: Optional[pulumi.Input['ScorecardArgs']] = None,
                  text: Optional[pulumi.Input['TextArgs']] = None,
+                 time_series_table: Optional[pulumi.Input['TimeSeriesTableArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  xy_chart: Optional[pulumi.Input['XyChartArgs']] = None):
         """
@@ -1191,6 +1313,7 @@ class WidgetArgs:
         :param pulumi.Input['EmptyArgs'] blank: A blank space.
         :param pulumi.Input['ScorecardArgs'] scorecard: A scorecard summarizing time series data.
         :param pulumi.Input['TextArgs'] text: A raw string or markdown displaying textual content.
+        :param pulumi.Input['TimeSeriesTableArgs'] time_series_table: A widget that displays time series data in a tabular format.
         :param pulumi.Input[str] title: Optional. The title of the widget.
         :param pulumi.Input['XyChartArgs'] xy_chart: A chart of time series data.
         """
@@ -1202,6 +1325,8 @@ class WidgetArgs:
             pulumi.set(__self__, "scorecard", scorecard)
         if text is not None:
             pulumi.set(__self__, "text", text)
+        if time_series_table is not None:
+            pulumi.set(__self__, "time_series_table", time_series_table)
         if title is not None:
             pulumi.set(__self__, "title", title)
         if xy_chart is not None:
@@ -1254,6 +1379,18 @@ class WidgetArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input['TextArgs']]):
         pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter(name="timeSeriesTable")
+    def time_series_table(self) -> Optional[pulumi.Input['TimeSeriesTableArgs']]:
+        """
+        A widget that displays time series data in a tabular format.
+        """
+        return pulumi.get(self, "time_series_table")
+
+    @time_series_table.setter
+    def time_series_table(self, value: Optional[pulumi.Input['TimeSeriesTableArgs']]):
+        pulumi.set(self, "time_series_table", value)
 
     @property
     @pulumi.getter

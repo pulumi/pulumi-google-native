@@ -95,3 +95,15 @@ export interface GetExperimentResult {
      */
     readonly variantsHistory: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3VariantsHistoryResponse[];
 }
+
+export function getExperimentOutput(args: GetExperimentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExperimentResult> {
+    return pulumi.output(args).apply(a => getExperiment(a, opts))
+}
+
+export interface GetExperimentOutputArgs {
+    agentId: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
+    experimentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

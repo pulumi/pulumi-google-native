@@ -49,3 +49,14 @@ export interface GetCaPoolIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getCaPoolIamPolicyOutput(args: GetCaPoolIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaPoolIamPolicyResult> {
+    return pulumi.output(args).apply(a => getCaPoolIamPolicy(a, opts))
+}
+
+export interface GetCaPoolIamPolicyOutputArgs {
+    caPoolId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

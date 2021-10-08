@@ -152,6 +152,14 @@ export interface GetBackendServiceResult {
      */
     readonly selfLinkWithId: string;
     /**
+     * URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+     */
+    readonly serviceBindings: string[];
+    /**
+     * URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. If used with a backend service, must reference a global policy. If used with a regional backend service, must reference a regional policy.
+     */
+    readonly serviceLbPolicy: string;
+    /**
      * Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     readonly sessionAffinity: string;
@@ -160,4 +168,13 @@ export interface GetBackendServiceResult {
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
      */
     readonly timeoutSec: number;
+}
+
+export function getBackendServiceOutput(args: GetBackendServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServiceResult> {
+    return pulumi.output(args).apply(a => getBackendService(a, opts))
+}
+
+export interface GetBackendServiceOutputArgs {
+    backendService: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

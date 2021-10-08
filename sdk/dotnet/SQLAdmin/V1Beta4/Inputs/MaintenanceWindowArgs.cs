@@ -28,13 +28,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<int>? Hour { get; set; }
 
         /// <summary>
-        /// This is always *sql#maintenanceWindow*.
+        /// This is always **sql#maintenanceWindow**.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
+        /// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
         /// </summary>
         [Input("updateTrack")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.MaintenanceWindowUpdateTrack>? UpdateTrack { get; set; }

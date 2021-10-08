@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Output("datasetReference")]
         public Output<Outputs.DatasetReferenceResponse> DatasetReference { get; private set; } = null!;
 
+        /// <summary>
+        /// The default collation of the dataset.
+        /// </summary>
+        [Output("defaultCollation")]
+        public Output<string> DefaultCollation { get; private set; } = null!;
+
         [Output("defaultEncryptionConfiguration")]
         public Output<Outputs.EncryptionConfigurationResponse> DefaultEncryptionConfiguration { get; private set; } = null!;
 

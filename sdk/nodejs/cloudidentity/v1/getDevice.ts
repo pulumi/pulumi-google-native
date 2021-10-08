@@ -105,7 +105,7 @@ export interface GetDeviceResult {
      */
     readonly model: string;
     /**
-     * [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
+     * [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}`, where device is the unique id assigned to the Device.
      */
     readonly name: string;
     /**
@@ -140,4 +140,13 @@ export interface GetDeviceResult {
      * WiFi MAC addresses of device.
      */
     readonly wifiMacAddresses: string[];
+}
+
+export function getDeviceOutput(args: GetDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceResult> {
+    return pulumi.output(args).apply(a => getDevice(a, opts))
+}
+
+export interface GetDeviceOutputArgs {
+    customer?: pulumi.Input<string>;
+    deviceId: pulumi.Input<string>;
 }

@@ -86,6 +86,7 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            inputs["actionOnFailedPrimaryWorkers"] = args ? args.actionOnFailedPrimaryWorkers : undefined;
             inputs["clusterName"] = args ? args.clusterName : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -117,6 +118,7 @@ export class Cluster extends pulumi.CustomResource {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    actionOnFailedPrimaryWorkers?: pulumi.Input<string>;
     /**
      * The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
      */

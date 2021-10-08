@@ -20,7 +20,7 @@ export const RepositoryFormat = {
      */
     Npm: "NPM",
     /**
-     * PyPI package format.
+     * PyPI package format. Deprecated, use PYTHON instead.
      */
     Pypi: "PYPI",
     /**

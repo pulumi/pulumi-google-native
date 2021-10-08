@@ -150,6 +150,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         public readonly string SessionAffinity;
+        public readonly Outputs.SubsettingResponse Subsetting;
         /// <summary>
         /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         /// </summary>
@@ -217,6 +218,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string sessionAffinity,
 
+            Outputs.SubsettingResponse subsetting,
+
             int timeoutSec)
         {
             AffinityCookieTtlSec = affinityCookieTtlSec;
@@ -249,6 +252,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             SecuritySettings = securitySettings;
             SelfLink = selfLink;
             SessionAffinity = sessionAffinity;
+            Subsetting = subsetting;
             TimeoutSec = timeoutSec;
         }
     }

@@ -48,7 +48,7 @@ type LookupConversationResult struct {
 	LanguageCode string `pulumi:"languageCode"`
 	// The conversation's latest analysis, if one exists.
 	LatestAnalysis GoogleCloudContactcenterinsightsV1AnalysisResponse `pulumi:"latestAnalysis"`
-	// Immutable. The conversation medium.
+	// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 	Medium string `pulumi:"medium"`
 	// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
 	Name string `pulumi:"name"`
@@ -156,7 +156,7 @@ func (o LookupConversationResultOutput) LatestAnalysis() GoogleCloudContactcente
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResponseOutput)
 }
 
-// Immutable. The conversation medium.
+// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 func (o LookupConversationResultOutput) Medium() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConversationResult) string { return v.Medium }).(pulumi.StringOutput)
 }

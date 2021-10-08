@@ -18,7 +18,7 @@ type Schedule struct {
 
 	// Time the schedule was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+	// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
 	CronSchedule pulumi.StringOutput `pulumi:"cronSchedule"`
 	// A brief description of this environment.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -79,7 +79,7 @@ func (ScheduleState) ElementType() reflect.Type {
 }
 
 type scheduleArgs struct {
-	// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+	// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// A brief description of this environment.
 	Description *string `pulumi:"description"`
@@ -95,7 +95,7 @@ type scheduleArgs struct {
 
 // The set of arguments for constructing a Schedule resource.
 type ScheduleArgs struct {
-	// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+	// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
 	CronSchedule pulumi.StringPtrInput
 	// A brief description of this environment.
 	Description pulumi.StringPtrInput

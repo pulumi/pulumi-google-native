@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetImageResult:
-    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, name=None, raw_disk=None, rollout_override=None, satisfies_pzs=None, self_link=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None, user_licenses=None):
+    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, locked=None, name=None, raw_disk=None, rollout_override=None, satisfies_pzs=None, self_link=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None, user_licenses=None):
         if archive_size_bytes and not isinstance(archive_size_bytes, str):
             raise TypeError("Expected argument 'archive_size_bytes' to be a str")
         pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
@@ -58,6 +58,9 @@ class GetImageResult:
         if licenses and not isinstance(licenses, list):
             raise TypeError("Expected argument 'licenses' to be a list")
         pulumi.set(__self__, "licenses", licenses)
+        if locked and not isinstance(locked, bool):
+            raise TypeError("Expected argument 'locked' to be a bool")
+        pulumi.set(__self__, "locked", locked)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -219,6 +222,14 @@ class GetImageResult:
         Any applicable license URI.
         """
         return pulumi.get(self, "licenses")
+
+    @property
+    @pulumi.getter
+    def locked(self) -> bool:
+        """
+        A flag for marketplace VM disk created from the image, which is designed for marketplace VM disk to prevent the proprietary data on the disk from being accessed unwantedly. The flag will be inherited by the disk created from the image. The disk with locked flag set to true will be prohibited from performing the operations below: - R/W or R/O disk attach - Disk detach, if disk is created via create-on-create - Create images - Create snapshots - Create disk clone (create disk from the current disk) The image with the locked field set to true will be prohibited from performing the operations below: - Create images from the current image - Update the locked field for the current image The instance with at least one disk with locked flag set to true will be prohibited from performing the operations below: - Secondary disk attach - Create instant snapshot - Create machine images - Create instance template - Delete the instance with --keep-disk parameter set to true 
+        """
+        return pulumi.get(self, "locked")
 
     @property
     @pulumi.getter
@@ -392,6 +403,7 @@ class AwaitableGetImageResult(GetImageResult):
             labels=self.labels,
             license_codes=self.license_codes,
             licenses=self.licenses,
+            locked=self.locked,
             name=self.name,
             raw_disk=self.raw_disk,
             rollout_override=self.rollout_override,
@@ -442,6 +454,7 @@ def get_image(image: Optional[str] = None,
         labels=__ret__.labels,
         license_codes=__ret__.license_codes,
         licenses=__ret__.licenses,
+        locked=__ret__.locked,
         name=__ret__.name,
         raw_disk=__ret__.raw_disk,
         rollout_override=__ret__.rollout_override,

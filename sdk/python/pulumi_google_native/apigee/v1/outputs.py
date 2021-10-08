@@ -20,6 +20,7 @@ __all__ = [
     'GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse',
     'GoogleCloudApigeeV1CertInfoResponse',
     'GoogleCloudApigeeV1CertificateResponse',
+    'GoogleCloudApigeeV1ConnectorsPlatformConfigResponse',
     'GoogleCloudApigeeV1CredentialResponse',
     'GoogleCloudApigeeV1CustomReportMetricResponse',
     'GoogleCloudApigeeV1DatastoreConfigResponse',
@@ -27,6 +28,7 @@ __all__ = [
     'GoogleCloudApigeeV1GraphQLOperationConfigResponse',
     'GoogleCloudApigeeV1GraphQLOperationGroupResponse',
     'GoogleCloudApigeeV1GraphQLOperationResponse',
+    'GoogleCloudApigeeV1IntegrationConfigResponse',
     'GoogleCloudApigeeV1MonetizationConfigResponse',
     'GoogleCloudApigeeV1OperationConfigResponse',
     'GoogleCloudApigeeV1OperationGroupResponse',
@@ -58,6 +60,10 @@ class GoogleCloudApigeeV1AddonsConfigResponse(dict):
         suggest = None
         if key == "advancedApiOpsConfig":
             suggest = "advanced_api_ops_config"
+        elif key == "connectorsPlatformConfig":
+            suggest = "connectors_platform_config"
+        elif key == "integrationConfig":
+            suggest = "integration_config"
         elif key == "monetizationConfig":
             suggest = "monetization_config"
 
@@ -74,13 +80,19 @@ class GoogleCloudApigeeV1AddonsConfigResponse(dict):
 
     def __init__(__self__, *,
                  advanced_api_ops_config: 'outputs.GoogleCloudApigeeV1AdvancedApiOpsConfigResponse',
+                 connectors_platform_config: 'outputs.GoogleCloudApigeeV1ConnectorsPlatformConfigResponse',
+                 integration_config: 'outputs.GoogleCloudApigeeV1IntegrationConfigResponse',
                  monetization_config: 'outputs.GoogleCloudApigeeV1MonetizationConfigResponse'):
         """
         Add-on configurations for the Apigee organization.
         :param 'GoogleCloudApigeeV1AdvancedApiOpsConfigResponse' advanced_api_ops_config: Configuration for the Advanced API Ops add-on.
+        :param 'GoogleCloudApigeeV1ConnectorsPlatformConfigResponse' connectors_platform_config: Configuration for the Connectors Platform add-on.
+        :param 'GoogleCloudApigeeV1IntegrationConfigResponse' integration_config: Configuration for the Integration add-on.
         :param 'GoogleCloudApigeeV1MonetizationConfigResponse' monetization_config: Configuration for the Monetization add-on.
         """
         pulumi.set(__self__, "advanced_api_ops_config", advanced_api_ops_config)
+        pulumi.set(__self__, "connectors_platform_config", connectors_platform_config)
+        pulumi.set(__self__, "integration_config", integration_config)
         pulumi.set(__self__, "monetization_config", monetization_config)
 
     @property
@@ -90,6 +102,22 @@ class GoogleCloudApigeeV1AddonsConfigResponse(dict):
         Configuration for the Advanced API Ops add-on.
         """
         return pulumi.get(self, "advanced_api_ops_config")
+
+    @property
+    @pulumi.getter(name="connectorsPlatformConfig")
+    def connectors_platform_config(self) -> 'outputs.GoogleCloudApigeeV1ConnectorsPlatformConfigResponse':
+        """
+        Configuration for the Connectors Platform add-on.
+        """
+        return pulumi.get(self, "connectors_platform_config")
+
+    @property
+    @pulumi.getter(name="integrationConfig")
+    def integration_config(self) -> 'outputs.GoogleCloudApigeeV1IntegrationConfigResponse':
+        """
+        Configuration for the Integration add-on.
+        """
+        return pulumi.get(self, "integration_config")
 
     @property
     @pulumi.getter(name="monetizationConfig")
@@ -514,6 +542,56 @@ class GoogleCloudApigeeV1CertificateResponse(dict):
         Chain of certificates under this name.
         """
         return pulumi.get(self, "cert_info")
+
+
+@pulumi.output_type
+class GoogleCloudApigeeV1ConnectorsPlatformConfigResponse(dict):
+    """
+    Configuration for the Connectors Platform add-on.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expiresAt":
+            suggest = "expires_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1ConnectorsPlatformConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1ConnectorsPlatformConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1ConnectorsPlatformConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 expires_at: str):
+        """
+        Configuration for the Connectors Platform add-on.
+        :param bool enabled: Flag that specifies whether the Connectors Platform add-on is enabled.
+        :param str expires_at: Time at which the Connectors Platform add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "expires_at", expires_at)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Flag that specifies whether the Connectors Platform add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> str:
+        """
+        Time at which the Connectors Platform add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
+        """
+        return pulumi.get(self, "expires_at")
 
 
 @pulumi.output_type
@@ -993,6 +1071,28 @@ class GoogleCloudApigeeV1GraphQLOperationResponse(dict):
         GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
         """
         return pulumi.get(self, "operation_types")
+
+
+@pulumi.output_type
+class GoogleCloudApigeeV1IntegrationConfigResponse(dict):
+    """
+    Configuration for the Integration add-on.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the Integration add-on.
+        :param bool enabled: Flag that specifies whether the Integration add-on is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Flag that specifies whether the Integration add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

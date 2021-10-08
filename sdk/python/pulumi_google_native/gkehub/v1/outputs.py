@@ -24,7 +24,9 @@ __all__ = [
     'KubernetesMetadataResponse',
     'MembershipEndpointResponse',
     'MembershipStateResponse',
+    'MultiCloudClusterResponse',
     'MultiClusterIngressFeatureSpecResponse',
+    'OnPremClusterResponse',
 ]
 
 @pulumi.output_type
@@ -599,6 +601,10 @@ class MembershipEndpointResponse(dict):
             suggest = "gke_cluster"
         elif key == "kubernetesMetadata":
             suggest = "kubernetes_metadata"
+        elif key == "multiCloudCluster":
+            suggest = "multi_cloud_cluster"
+        elif key == "onPremCluster":
+            suggest = "on_prem_cluster"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MembershipEndpointResponse. Access the value via the '{suggest}' property getter instead.")
@@ -613,20 +619,26 @@ class MembershipEndpointResponse(dict):
 
     def __init__(__self__, *,
                  gke_cluster: 'outputs.GkeClusterResponse',
-                 kubernetes_metadata: 'outputs.KubernetesMetadataResponse'):
+                 kubernetes_metadata: 'outputs.KubernetesMetadataResponse',
+                 multi_cloud_cluster: 'outputs.MultiCloudClusterResponse',
+                 on_prem_cluster: 'outputs.OnPremClusterResponse'):
         """
         MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
-        :param 'GkeClusterResponse' gke_cluster: Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+        :param 'GkeClusterResponse' gke_cluster: Optional. Specific information for a GKE-on-GCP cluster.
         :param 'KubernetesMetadataResponse' kubernetes_metadata: Useful Kubernetes-specific metadata.
+        :param 'MultiCloudClusterResponse' multi_cloud_cluster: Optional. Specific information for a GKE Multi-Cloud cluster.
+        :param 'OnPremClusterResponse' on_prem_cluster: Optional. Specific information for a GKE On-Prem cluster.
         """
         pulumi.set(__self__, "gke_cluster", gke_cluster)
         pulumi.set(__self__, "kubernetes_metadata", kubernetes_metadata)
+        pulumi.set(__self__, "multi_cloud_cluster", multi_cloud_cluster)
+        pulumi.set(__self__, "on_prem_cluster", on_prem_cluster)
 
     @property
     @pulumi.getter(name="gkeCluster")
     def gke_cluster(self) -> 'outputs.GkeClusterResponse':
         """
-        Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+        Optional. Specific information for a GKE-on-GCP cluster.
         """
         return pulumi.get(self, "gke_cluster")
 
@@ -637,6 +649,22 @@ class MembershipEndpointResponse(dict):
         Useful Kubernetes-specific metadata.
         """
         return pulumi.get(self, "kubernetes_metadata")
+
+    @property
+    @pulumi.getter(name="multiCloudCluster")
+    def multi_cloud_cluster(self) -> 'outputs.MultiCloudClusterResponse':
+        """
+        Optional. Specific information for a GKE Multi-Cloud cluster.
+        """
+        return pulumi.get(self, "multi_cloud_cluster")
+
+    @property
+    @pulumi.getter(name="onPremCluster")
+    def on_prem_cluster(self) -> 'outputs.OnPremClusterResponse':
+        """
+        Optional. Specific information for a GKE On-Prem cluster.
+        """
+        return pulumi.get(self, "on_prem_cluster")
 
 
 @pulumi.output_type
@@ -659,6 +687,58 @@ class MembershipStateResponse(dict):
         The current state of the Membership resource.
         """
         return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class MultiCloudClusterResponse(dict):
+    """
+    MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterMissing":
+            suggest = "cluster_missing"
+        elif key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiCloudClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiCloudClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiCloudClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_missing: bool,
+                 resource_link: str):
+        """
+        MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+        :param bool cluster_missing: If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+        :param str resource_link: Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+        """
+        pulumi.set(__self__, "cluster_missing", cluster_missing)
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="clusterMissing")
+    def cluster_missing(self) -> bool:
+        """
+        If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+        """
+        return pulumi.get(self, "cluster_missing")
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+        """
+        return pulumi.get(self, "resource_link")
 
 
 @pulumi.output_type
@@ -698,5 +778,70 @@ class MultiClusterIngressFeatureSpecResponse(dict):
         Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
         return pulumi.get(self, "config_membership")
+
+
+@pulumi.output_type
+class OnPremClusterResponse(dict):
+    """
+    OnPremCluster contains information specific to GKE On-Prem clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminCluster":
+            suggest = "admin_cluster"
+        elif key == "clusterMissing":
+            suggest = "cluster_missing"
+        elif key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OnPremClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OnPremClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OnPremClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_cluster: bool,
+                 cluster_missing: bool,
+                 resource_link: str):
+        """
+        OnPremCluster contains information specific to GKE On-Prem clusters.
+        :param bool admin_cluster: Immutable. Whether the cluster is an admin cluster.
+        :param bool cluster_missing: If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+        :param str resource_link: Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        """
+        pulumi.set(__self__, "admin_cluster", admin_cluster)
+        pulumi.set(__self__, "cluster_missing", cluster_missing)
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="adminCluster")
+    def admin_cluster(self) -> bool:
+        """
+        Immutable. Whether the cluster is an admin cluster.
+        """
+        return pulumi.get(self, "admin_cluster")
+
+    @property
+    @pulumi.getter(name="clusterMissing")
+    def cluster_missing(self) -> bool:
+        """
+        If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+        """
+        return pulumi.get(self, "cluster_missing")
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        """
+        return pulumi.get(self, "resource_link")
 
 

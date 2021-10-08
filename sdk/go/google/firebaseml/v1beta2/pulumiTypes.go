@@ -961,6 +961,18 @@ func (o TfLiteModelResponsePtrOutput) SizeBytes() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelStateTypeInput)(nil)).Elem(), ModelStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelStateTypePtrInput)(nil)).Elem(), ModelStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelStateResponseInput)(nil)).Elem(), ModelStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelStateResponsePtrInput)(nil)).Elem(), ModelStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OperationResponseInput)(nil)).Elem(), OperationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OperationResponseArrayInput)(nil)).Elem(), OperationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TfLiteModelInput)(nil)).Elem(), TfLiteModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TfLiteModelPtrInput)(nil)).Elem(), TfLiteModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TfLiteModelResponseInput)(nil)).Elem(), TfLiteModelResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TfLiteModelResponsePtrInput)(nil)).Elem(), TfLiteModelResponseArgs{})
 	pulumi.RegisterOutputType(ModelStateTypeOutput{})
 	pulumi.RegisterOutputType(ModelStateTypePtrOutput{})
 	pulumi.RegisterOutputType(ModelStateResponseOutput{})

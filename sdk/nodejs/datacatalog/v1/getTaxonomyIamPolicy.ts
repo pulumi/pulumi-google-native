@@ -43,3 +43,13 @@ export interface GetTaxonomyIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getTaxonomyIamPolicyOutput(args: GetTaxonomyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaxonomyIamPolicyResult> {
+    return pulumi.output(args).apply(a => getTaxonomyIamPolicy(a, opts))
+}
+
+export interface GetTaxonomyIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    taxonomyId: pulumi.Input<string>;
+}

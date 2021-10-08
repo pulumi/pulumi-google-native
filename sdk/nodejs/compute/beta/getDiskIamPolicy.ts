@@ -57,3 +57,14 @@ export interface GetDiskIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getDiskIamPolicyOutput(args: GetDiskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskIamPolicyResult> {
+    return pulumi.output(args).apply(a => getDiskIamPolicy(a, opts))
+}
+
+export interface GetDiskIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
+}

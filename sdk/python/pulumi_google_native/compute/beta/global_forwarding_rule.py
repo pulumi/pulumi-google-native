@@ -37,6 +37,7 @@ class GlobalForwardingRuleArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
+                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
         """
@@ -59,6 +60,7 @@ class GlobalForwardingRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: The ports field is only supported when the forwarding rule references a backend_service directly. Only packets addressed to the [specified list of ports]((https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)) are forwarded to backends. You can only use one of ports and port_range, or allPorts. The three are mutually exclusive. You can specify a list of up to five ports, which can be non-contiguous. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]] service_directory_registrations: Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
         """
         if all_ports is not None:
@@ -103,6 +105,8 @@ class GlobalForwardingRuleArgs:
             pulumi.set(__self__, "service_directory_registrations", service_directory_registrations)
         if service_label is not None:
             pulumi.set(__self__, "service_label", service_label)
+        if source_ip_ranges is not None:
+            pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if target is not None:
@@ -352,6 +356,18 @@ class GlobalForwardingRuleArgs:
         pulumi.set(self, "service_label", value)
 
     @property
+    @pulumi.getter(name="sourceIpRanges")
+    def source_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        """
+        return pulumi.get(self, "source_ip_ranges")
+
+    @source_ip_ranges.setter
+    def source_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_ip_ranges", value)
+
+    @property
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
@@ -399,6 +415,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
+                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -425,6 +442,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: The ports field is only supported when the forwarding rule references a backend_service directly. Only packets addressed to the [specified list of ports]((https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)) are forwarded to backends. You can only use one of ports and port_range, or allPorts. The three are mutually exclusive. You can specify a list of up to five ports, which can be non-contiguous. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]] service_directory_registrations: Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
         """
         ...
@@ -472,6 +490,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
+                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -507,6 +526,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["service_directory_registrations"] = service_directory_registrations
             __props__.__dict__["service_label"] = service_label
+            __props__.__dict__["source_ip_ranges"] = source_ip_ranges
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["target"] = target
             __props__.__dict__["creation_timestamp"] = None
@@ -566,6 +586,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["service_directory_registrations"] = None
         __props__.__dict__["service_label"] = None
         __props__.__dict__["service_name"] = None
+        __props__.__dict__["source_ip_ranges"] = None
         __props__.__dict__["subnetwork"] = None
         __props__.__dict__["target"] = None
         return GlobalForwardingRule(resource_name, opts=opts, __props__=__props__)
@@ -782,6 +803,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
         The internal fully qualified service name for this Forwarding Rule. This field is only used for internal load balancing.
         """
         return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="sourceIpRanges")
+    def source_ip_ranges(self) -> pulumi.Output[Sequence[str]]:
+        """
+        If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        """
+        return pulumi.get(self, "source_ip_ranges")
 
     @property
     @pulumi.getter

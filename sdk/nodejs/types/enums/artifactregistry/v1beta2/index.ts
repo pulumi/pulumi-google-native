@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const MavenRepositoryConfigVersionPolicy = {
+    /**
+     * VERSION_POLICY_UNSPECIFIED - the version policy is not defined. When the version policy is not defined, no validation is performed for the versions.
+     */
+    VersionPolicyUnspecified: "VERSION_POLICY_UNSPECIFIED",
+    /**
+     * RELEASE - repository will accept only Release versions.
+     */
+    Release: "RELEASE",
+    /**
+     * SNAPSHOT - repository will accept only Snapshot versions.
+     */
+    Snapshot: "SNAPSHOT",
+} as const;
+
+/**
+ * Version policy defines the versions that the registry will accept.
+ */
+export type MavenRepositoryConfigVersionPolicy = (typeof MavenRepositoryConfigVersionPolicy)[keyof typeof MavenRepositoryConfigVersionPolicy];
+
 export const RepositoryFormat = {
     /**
      * Unspecified package format.
@@ -20,7 +40,7 @@ export const RepositoryFormat = {
      */
     Npm: "NPM",
     /**
-     * PyPI package format.
+     * PyPI package format. Deprecated, use PYTHON instead.
      */
     Pypi: "PYPI",
     /**

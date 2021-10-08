@@ -61,3 +61,12 @@ export interface GetDataSourceResult {
      */
     readonly shortName: string;
 }
+
+export function getDataSourceOutput(args: GetDataSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataSourceResult> {
+    return pulumi.output(args).apply(a => getDataSource(a, opts))
+}
+
+export interface GetDataSourceOutputArgs {
+    datasourceId: pulumi.Input<string>;
+    debugOptionsEnableDebugging?: pulumi.Input<string>;
+}

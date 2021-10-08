@@ -51,3 +51,15 @@ export interface GetDatasetFhirStoreIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getDatasetFhirStoreIamPolicyOutput(args: GetDatasetFhirStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetFhirStoreIamPolicyResult> {
+    return pulumi.output(args).apply(a => getDatasetFhirStoreIamPolicy(a, opts))
+}
+
+export interface GetDatasetFhirStoreIamPolicyOutputArgs {
+    datasetId: pulumi.Input<string>;
+    fhirStoreId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

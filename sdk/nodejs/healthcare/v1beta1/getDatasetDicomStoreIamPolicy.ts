@@ -51,3 +51,15 @@ export interface GetDatasetDicomStoreIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getDatasetDicomStoreIamPolicyOutput(args: GetDatasetDicomStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetDicomStoreIamPolicyResult> {
+    return pulumi.output(args).apply(a => getDatasetDicomStoreIamPolicy(a, opts))
+}
+
+export interface GetDatasetDicomStoreIamPolicyOutputArgs {
+    datasetId: pulumi.Input<string>;
+    dicomStoreId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

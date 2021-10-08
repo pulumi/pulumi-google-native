@@ -192,23 +192,40 @@ class GoogleCloudContactcenterinsightsV1GcsSourceArgs:
 @pulumi.input_type
 class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs:
     def __init__(__self__, *,
-                 medium: pulumi.Input['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium']):
+                 filter: Optional[pulumi.Input[str]] = None,
+                 medium: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium']] = None):
         """
         Configs for the input data used to create the issue model.
-        :param pulumi.Input['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium'] medium: Medium of conversations used in training data.
+        :param pulumi.Input[str] filter: A filter to reduce the conversations used for training the model to a specific subset.
+        :param pulumi.Input['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium'] medium: Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
         """
-        pulumi.set(__self__, "medium", medium)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
 
     @property
     @pulumi.getter
-    def medium(self) -> pulumi.Input['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium']:
+    def filter(self) -> Optional[pulumi.Input[str]]:
         """
-        Medium of conversations used in training data.
+        A filter to reduce the conversations used for training the model to a specific subset.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def medium(self) -> Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium']]:
+        """
+        Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
         """
         return pulumi.get(self, "medium")
 
     @medium.setter
-    def medium(self, value: pulumi.Input['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium']):
+    def medium(self, value: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium']]):
         pulumi.set(self, "medium", value)
 
 

@@ -51,3 +51,13 @@ export interface GetServiceResult {
      */
     readonly status: outputs.run.v1.ServiceStatusResponse;
 }
+
+export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+export interface GetServiceOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
+}

@@ -49,3 +49,14 @@ export interface GetMigrationJobIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getMigrationJobIamPolicyOutput(args: GetMigrationJobIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMigrationJobIamPolicyResult> {
+    return pulumi.output(args).apply(a => getMigrationJobIamPolicy(a, opts))
+}
+
+export interface GetMigrationJobIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    migrationJobId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

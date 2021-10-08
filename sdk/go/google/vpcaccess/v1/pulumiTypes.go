@@ -329,6 +329,10 @@ func (o SubnetResponsePtrOutput) Project() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetInput)(nil)).Elem(), SubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetPtrInput)(nil)).Elem(), SubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetResponseInput)(nil)).Elem(), SubnetResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetResponsePtrInput)(nil)).Elem(), SubnetResponseArgs{})
 	pulumi.RegisterOutputType(SubnetOutput{})
 	pulumi.RegisterOutputType(SubnetPtrOutput{})
 	pulumi.RegisterOutputType(SubnetResponseOutput{})

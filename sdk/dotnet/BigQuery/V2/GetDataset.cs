@@ -48,6 +48,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// [Required] A reference that identifies the dataset.
         /// </summary>
         public readonly Outputs.DatasetReferenceResponse DatasetReference;
+        /// <summary>
+        /// The default collation of the dataset.
+        /// </summary>
+        public readonly string DefaultCollation;
         public readonly Outputs.EncryptionConfigurationResponse DefaultEncryptionConfiguration;
         /// <summary>
         /// [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
@@ -106,6 +110,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             Outputs.DatasetReferenceResponse datasetReference,
 
+            string defaultCollation,
+
             Outputs.EncryptionConfigurationResponse defaultEncryptionConfiguration,
 
             string defaultPartitionExpirationMs,
@@ -135,6 +141,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             Access = access;
             CreationTime = creationTime;
             DatasetReference = datasetReference;
+            DefaultCollation = defaultCollation;
             DefaultEncryptionConfiguration = defaultEncryptionConfiguration;
             DefaultPartitionExpirationMs = defaultPartitionExpirationMs;
             DefaultTableExpirationMs = defaultTableExpirationMs;

@@ -84,4 +84,19 @@ export interface GetRoutineResult {
      * The type of routine.
      */
     readonly routineType: string;
+    /**
+     * Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+     */
+    readonly strictMode: boolean;
+}
+
+export function getRoutineOutput(args: GetRoutineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoutineResult> {
+    return pulumi.output(args).apply(a => getRoutine(a, opts))
+}
+
+export interface GetRoutineOutputArgs {
+    datasetId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    readMask?: pulumi.Input<string>;
+    routineId: pulumi.Input<string>;
 }

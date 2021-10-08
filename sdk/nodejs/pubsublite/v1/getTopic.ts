@@ -39,7 +39,21 @@ export interface GetTopicResult {
      */
     readonly partitionConfig: outputs.pubsublite.v1.PartitionConfigResponse;
     /**
+     * The settings for this topic's Reservation usage.
+     */
+    readonly reservationConfig: outputs.pubsublite.v1.ReservationConfigResponse;
+    /**
      * The settings for this topic's message retention.
      */
     readonly retentionConfig: outputs.pubsublite.v1.RetentionConfigResponse;
+}
+
+export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
+    return pulumi.output(args).apply(a => getTopic(a, opts))
+}
+
+export interface GetTopicOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    topicId: pulumi.Input<string>;
 }

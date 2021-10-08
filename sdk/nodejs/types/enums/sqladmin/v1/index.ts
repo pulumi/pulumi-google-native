@@ -126,7 +126,7 @@ export const InstanceBackendType = {
 } as const;
 
 /**
- *  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
+ * The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
  */
 export type InstanceBackendType = (typeof InstanceBackendType)[keyof typeof InstanceBackendType];
 
@@ -206,7 +206,7 @@ export const InstanceDatabaseVersion = {
 } as const;
 
 /**
- * The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+ * The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
  */
 export type InstanceDatabaseVersion = (typeof InstanceDatabaseVersion)[keyof typeof InstanceDatabaseVersion];
 
@@ -230,7 +230,7 @@ export const InstanceInstanceType = {
 } as const;
 
 /**
- * The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
+ * The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
  */
 export type InstanceInstanceType = (typeof InstanceInstanceType)[keyof typeof InstanceInstanceType];
 
@@ -270,7 +270,7 @@ export const InstanceState = {
 } as const;
 
 /**
- * The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+ * The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
  */
 export type InstanceState = (typeof InstanceState)[keyof typeof InstanceState];
 
@@ -343,7 +343,7 @@ export const MaintenanceWindowUpdateTrack = {
 } as const;
 
 /**
- * Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+ * Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
  */
 export type MaintenanceWindowUpdateTrack = (typeof MaintenanceWindowUpdateTrack)[keyof typeof MaintenanceWindowUpdateTrack];
 
@@ -367,7 +367,7 @@ export const SettingsActivationPolicy = {
 } as const;
 
 /**
- * The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+ * The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
  */
 export type SettingsActivationPolicy = (typeof SettingsActivationPolicy)[keyof typeof SettingsActivationPolicy];
 
@@ -387,7 +387,7 @@ export const SettingsAvailabilityType = {
 } as const;
 
 /**
- * Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+ * Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
  */
 export type SettingsAvailabilityType = (typeof SettingsAvailabilityType)[keyof typeof SettingsAvailabilityType];
 
@@ -411,7 +411,7 @@ export const SettingsDataDiskType = {
 } as const;
 
 /**
- * The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+ * The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
  */
 export type SettingsDataDiskType = (typeof SettingsDataDiskType)[keyof typeof SettingsDataDiskType];
 
@@ -451,6 +451,6 @@ export const SqlOutOfDiskReportSqlOutOfDiskState = {
 } as const;
 
 /**
- * This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+ * This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
  */
 export type SqlOutOfDiskReportSqlOutOfDiskState = (typeof SqlOutOfDiskReportSqlOutOfDiskState)[keyof typeof SqlOutOfDiskReportSqlOutOfDiskState];

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     public partial class AttributeDefinition : Pulumi.CustomResource
     {
         /// <summary>
-        /// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        /// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
         /// </summary>
         [Output("allowedValues")]
         public Output<ImmutableArray<string>> AllowedValues { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         private InputList<string>? _allowedValues;
 
         /// <summary>
-        /// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        /// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
         /// </summary>
         public InputList<string> AllowedValues
         {

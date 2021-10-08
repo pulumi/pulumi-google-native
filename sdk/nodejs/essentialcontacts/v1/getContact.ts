@@ -52,3 +52,12 @@ export interface GetContactResult {
      */
     readonly validationState: string;
 }
+
+export function getContactOutput(args: GetContactOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContactResult> {
+    return pulumi.output(args).apply(a => getContact(a, opts))
+}
+
+export interface GetContactOutputArgs {
+    contactId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

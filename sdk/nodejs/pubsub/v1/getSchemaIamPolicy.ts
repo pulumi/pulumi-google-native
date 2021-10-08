@@ -43,3 +43,13 @@ export interface GetSchemaIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getSchemaIamPolicyOutput(args: GetSchemaIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemaIamPolicyResult> {
+    return pulumi.output(args).apply(a => getSchemaIamPolicy(a, opts))
+}
+
+export interface GetSchemaIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    schemaId: pulumi.Input<string>;
+}

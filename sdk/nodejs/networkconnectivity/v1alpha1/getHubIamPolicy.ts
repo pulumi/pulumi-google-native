@@ -47,3 +47,13 @@ export interface GetHubIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getHubIamPolicyOutput(args: GetHubIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHubIamPolicyResult> {
+    return pulumi.output(args).apply(a => getHubIamPolicy(a, opts))
+}
+
+export interface GetHubIamPolicyOutputArgs {
+    hubId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -16,9 +16,15 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Outputs
     [OutputType]
     public sealed class MultiClusterRoutingUseAnyResponse
     {
+        /// <summary>
+        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+        /// </summary>
+        public readonly ImmutableArray<string> ClusterIds;
+
         [OutputConstructor]
-        private MultiClusterRoutingUseAnyResponse()
+        private MultiClusterRoutingUseAnyResponse(ImmutableArray<string> clusterIds)
         {
+            ClusterIds = clusterIds;
         }
     }
 }

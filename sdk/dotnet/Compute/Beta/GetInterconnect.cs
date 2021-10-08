@@ -121,6 +121,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly int RequestedLinkCount;
         /// <summary>
+        /// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
@@ -173,6 +177,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             int requestedLinkCount,
 
+            bool satisfiesPzs,
+
             string selfLink,
 
             string state)
@@ -198,6 +204,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             PeerIpAddress = peerIpAddress;
             ProvisionedLinkCount = provisionedLinkCount;
             RequestedLinkCount = requestedLinkCount;
+            SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             State = state;
         }

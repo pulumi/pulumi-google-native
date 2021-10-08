@@ -40,6 +40,10 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly allowConflictingSubnetworks!: pulumi.Output<boolean>;
     /**
+     * AS path.
+     */
+    public /*out*/ readonly asPaths!: pulumi.Output<outputs.compute.alpha.RouteAsPathResponse[]>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -104,6 +108,10 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
+     * The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
+     */
+    public /*out*/ readonly routeType!: pulumi.Output<string>;
+    /**
      * Server-defined fully-qualified URL for this resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -147,15 +155,18 @@ export class Route extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["asPaths"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["nextHopInterconnectAttachment"] = undefined /*out*/;
             inputs["nextHopPeering"] = undefined /*out*/;
+            inputs["routeType"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["selfLinkWithId"] = undefined /*out*/;
             inputs["warnings"] = undefined /*out*/;
         } else {
             inputs["allowConflictingSubnetworks"] = undefined /*out*/;
+            inputs["asPaths"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["destRange"] = undefined /*out*/;
@@ -172,6 +183,7 @@ export class Route extends pulumi.CustomResource {
             inputs["nextHopPeering"] = undefined /*out*/;
             inputs["nextHopVpnTunnel"] = undefined /*out*/;
             inputs["priority"] = undefined /*out*/;
+            inputs["routeType"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["selfLinkWithId"] = undefined /*out*/;
             inputs["tags"] = undefined /*out*/;

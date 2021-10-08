@@ -175,3 +175,13 @@ export interface GetInterconnectAttachmentResult {
      */
     readonly vlanTag8021q: number;
 }
+
+export function getInterconnectAttachmentOutput(args: GetInterconnectAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterconnectAttachmentResult> {
+    return pulumi.output(args).apply(a => getInterconnectAttachment(a, opts))
+}
+
+export interface GetInterconnectAttachmentOutputArgs {
+    interconnectAttachment: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

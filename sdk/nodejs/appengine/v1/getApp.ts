@@ -80,3 +80,11 @@ export interface GetAppResult {
      */
     readonly servingStatus: string;
 }
+
+export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {
+    return pulumi.output(args).apply(a => getApp(a, opts))
+}
+
+export interface GetAppOutputArgs {
+    appId: pulumi.Input<string>;
+}

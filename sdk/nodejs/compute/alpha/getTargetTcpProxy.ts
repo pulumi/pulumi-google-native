@@ -60,3 +60,12 @@ export interface GetTargetTcpProxyResult {
      */
     readonly service: string;
 }
+
+export function getTargetTcpProxyOutput(args: GetTargetTcpProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetTcpProxyResult> {
+    return pulumi.output(args).apply(a => getTargetTcpProxy(a, opts))
+}
+
+export interface GetTargetTcpProxyOutputArgs {
+    project?: pulumi.Input<string>;
+    targetTcpProxy: pulumi.Input<string>;
+}

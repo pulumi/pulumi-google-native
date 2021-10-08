@@ -12,6 +12,7 @@ from ._enums import *
 __all__ = [
     'BindingArgs',
     'ExprArgs',
+    'MavenRepositoryConfigArgs',
 ]
 
 @pulumi.input_type
@@ -140,5 +141,45 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class MavenRepositoryConfigArgs:
+    def __init__(__self__, *,
+                 allow_snapshot_overwrites: Optional[pulumi.Input[bool]] = None,
+                 version_policy: Optional[pulumi.Input['MavenRepositoryConfigVersionPolicy']] = None):
+        """
+        MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
+        :param pulumi.Input[bool] allow_snapshot_overwrites: The repository with this flag will allow publishing the same snapshot versions.
+        :param pulumi.Input['MavenRepositoryConfigVersionPolicy'] version_policy: Version policy defines the versions that the registry will accept.
+        """
+        if allow_snapshot_overwrites is not None:
+            pulumi.set(__self__, "allow_snapshot_overwrites", allow_snapshot_overwrites)
+        if version_policy is not None:
+            pulumi.set(__self__, "version_policy", version_policy)
+
+    @property
+    @pulumi.getter(name="allowSnapshotOverwrites")
+    def allow_snapshot_overwrites(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The repository with this flag will allow publishing the same snapshot versions.
+        """
+        return pulumi.get(self, "allow_snapshot_overwrites")
+
+    @allow_snapshot_overwrites.setter
+    def allow_snapshot_overwrites(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_snapshot_overwrites", value)
+
+    @property
+    @pulumi.getter(name="versionPolicy")
+    def version_policy(self) -> Optional[pulumi.Input['MavenRepositoryConfigVersionPolicy']]:
+        """
+        Version policy defines the versions that the registry will accept.
+        """
+        return pulumi.get(self, "version_policy")
+
+    @version_policy.setter
+    def version_policy(self, value: Optional[pulumi.Input['MavenRepositoryConfigVersionPolicy']]):
+        pulumi.set(self, "version_policy", value)
 
 

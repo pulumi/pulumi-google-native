@@ -45,3 +45,14 @@ export interface GetNamespaceServiceIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getNamespaceServiceIamPolicyOutput(args: GetNamespaceServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceServiceIamPolicyResult> {
+    return pulumi.output(args).apply(a => getNamespaceServiceIamPolicy(a, opts))
+}
+
+export interface GetNamespaceServiceIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
+}

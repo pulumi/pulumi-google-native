@@ -90,3 +90,12 @@ export interface GetApiProductResult {
      */
     readonly scopes: string[];
 }
+
+export function getApiProductOutput(args: GetApiProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiProductResult> {
+    return pulumi.output(args).apply(a => getApiProduct(a, opts))
+}
+
+export interface GetApiProductOutputArgs {
+    apiproductId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

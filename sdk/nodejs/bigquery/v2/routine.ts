@@ -88,6 +88,10 @@ export class Routine extends pulumi.CustomResource {
      * The type of routine.
      */
     public readonly routineType!: pulumi.Output<string>;
+    /**
+     * Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+     */
+    public readonly strictMode!: pulumi.Output<boolean>;
 
     /**
      * Create a Routine resource with the given unique name, arguments, and options.
@@ -124,6 +128,7 @@ export class Routine extends pulumi.CustomResource {
             inputs["returnType"] = args ? args.returnType : undefined;
             inputs["routineReference"] = args ? args.routineReference : undefined;
             inputs["routineType"] = args ? args.routineType : undefined;
+            inputs["strictMode"] = args ? args.strictMode : undefined;
             inputs["creationTime"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["lastModifiedTime"] = undefined /*out*/;
@@ -141,6 +146,7 @@ export class Routine extends pulumi.CustomResource {
             inputs["returnType"] = undefined /*out*/;
             inputs["routineReference"] = undefined /*out*/;
             inputs["routineType"] = undefined /*out*/;
+            inputs["strictMode"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -195,4 +201,8 @@ export interface RoutineArgs {
      * The type of routine.
      */
     routineType: pulumi.Input<enums.bigquery.v2.RoutineRoutineType>;
+    /**
+     * Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+     */
+    strictMode?: pulumi.Input<boolean>;
 }

@@ -73,3 +73,14 @@ export interface GetTrialResult {
      */
     readonly trialInfeasible: boolean;
 }
+
+export function getTrialOutput(args: GetTrialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrialResult> {
+    return pulumi.output(args).apply(a => getTrial(a, opts))
+}
+
+export interface GetTrialOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    studyId: pulumi.Input<string>;
+    trialId: pulumi.Input<string>;
+}

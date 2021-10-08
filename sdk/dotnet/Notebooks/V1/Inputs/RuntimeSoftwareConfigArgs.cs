@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<bool>? IdleShutdown { get; set; }
 
         /// <summary>
-        /// Time in minutes to wait before shuting down runtime. Default: 180 minutes
+        /// Time in minutes to wait before shutting down runtime. Default: 180 minutes
         /// </summary>
         [Input("idleShutdownTimeout")]
         public Input<int>? IdleShutdownTimeout { get; set; }

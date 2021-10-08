@@ -83,10 +83,6 @@ export interface GetRatePlanResult {
      */
     readonly name: string;
     /**
-     * Flag that specifies the billing account type, prepaid or postpaid.
-     */
-    readonly paymentFundingModel: string;
-    /**
      * Details of the revenue sharing model.
      */
     readonly revenueShareRates: outputs.apigee.v1.GoogleCloudApigeeV1RevenueShareRangeResponse[];
@@ -106,4 +102,14 @@ export interface GetRatePlanResult {
      * Current state of the rate plan (draft or published).
      */
     readonly state: string;
+}
+
+export function getRatePlanOutput(args: GetRatePlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRatePlanResult> {
+    return pulumi.output(args).apply(a => getRatePlan(a, opts))
+}
+
+export interface GetRatePlanOutputArgs {
+    apiproductId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    rateplanId: pulumi.Input<string>;
 }

@@ -10,6 +10,175 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Version policy defines the versions that the registry will accept.
+type MavenRepositoryConfigVersionPolicy string
+
+const (
+	// VERSION_POLICY_UNSPECIFIED - the version policy is not defined. When the version policy is not defined, no validation is performed for the versions.
+	MavenRepositoryConfigVersionPolicyVersionPolicyUnspecified = MavenRepositoryConfigVersionPolicy("VERSION_POLICY_UNSPECIFIED")
+	// RELEASE - repository will accept only Release versions.
+	MavenRepositoryConfigVersionPolicyRelease = MavenRepositoryConfigVersionPolicy("RELEASE")
+	// SNAPSHOT - repository will accept only Snapshot versions.
+	MavenRepositoryConfigVersionPolicySnapshot = MavenRepositoryConfigVersionPolicy("SNAPSHOT")
+)
+
+func (MavenRepositoryConfigVersionPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenRepositoryConfigVersionPolicy)(nil)).Elem()
+}
+
+func (e MavenRepositoryConfigVersionPolicy) ToMavenRepositoryConfigVersionPolicyOutput() MavenRepositoryConfigVersionPolicyOutput {
+	return pulumi.ToOutput(e).(MavenRepositoryConfigVersionPolicyOutput)
+}
+
+func (e MavenRepositoryConfigVersionPolicy) ToMavenRepositoryConfigVersionPolicyOutputWithContext(ctx context.Context) MavenRepositoryConfigVersionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MavenRepositoryConfigVersionPolicyOutput)
+}
+
+func (e MavenRepositoryConfigVersionPolicy) ToMavenRepositoryConfigVersionPolicyPtrOutput() MavenRepositoryConfigVersionPolicyPtrOutput {
+	return e.ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e MavenRepositoryConfigVersionPolicy) ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigVersionPolicyPtrOutput {
+	return MavenRepositoryConfigVersionPolicy(e).ToMavenRepositoryConfigVersionPolicyOutputWithContext(ctx).ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(ctx)
+}
+
+func (e MavenRepositoryConfigVersionPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MavenRepositoryConfigVersionPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MavenRepositoryConfigVersionPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MavenRepositoryConfigVersionPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MavenRepositoryConfigVersionPolicyOutput struct{ *pulumi.OutputState }
+
+func (MavenRepositoryConfigVersionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenRepositoryConfigVersionPolicy)(nil)).Elem()
+}
+
+func (o MavenRepositoryConfigVersionPolicyOutput) ToMavenRepositoryConfigVersionPolicyOutput() MavenRepositoryConfigVersionPolicyOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigVersionPolicyOutput) ToMavenRepositoryConfigVersionPolicyOutputWithContext(ctx context.Context) MavenRepositoryConfigVersionPolicyOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigVersionPolicyOutput) ToMavenRepositoryConfigVersionPolicyPtrOutput() MavenRepositoryConfigVersionPolicyPtrOutput {
+	return o.ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o MavenRepositoryConfigVersionPolicyOutput) ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigVersionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MavenRepositoryConfigVersionPolicy) *MavenRepositoryConfigVersionPolicy {
+		return &v
+	}).(MavenRepositoryConfigVersionPolicyPtrOutput)
+}
+
+func (o MavenRepositoryConfigVersionPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MavenRepositoryConfigVersionPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MavenRepositoryConfigVersionPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MavenRepositoryConfigVersionPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MavenRepositoryConfigVersionPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MavenRepositoryConfigVersionPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MavenRepositoryConfigVersionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (MavenRepositoryConfigVersionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MavenRepositoryConfigVersionPolicy)(nil)).Elem()
+}
+
+func (o MavenRepositoryConfigVersionPolicyPtrOutput) ToMavenRepositoryConfigVersionPolicyPtrOutput() MavenRepositoryConfigVersionPolicyPtrOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigVersionPolicyPtrOutput) ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigVersionPolicyPtrOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigVersionPolicyPtrOutput) Elem() MavenRepositoryConfigVersionPolicyOutput {
+	return o.ApplyT(func(v *MavenRepositoryConfigVersionPolicy) MavenRepositoryConfigVersionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret MavenRepositoryConfigVersionPolicy
+		return ret
+	}).(MavenRepositoryConfigVersionPolicyOutput)
+}
+
+func (o MavenRepositoryConfigVersionPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MavenRepositoryConfigVersionPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MavenRepositoryConfigVersionPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MavenRepositoryConfigVersionPolicyInput is an input type that accepts MavenRepositoryConfigVersionPolicyArgs and MavenRepositoryConfigVersionPolicyOutput values.
+// You can construct a concrete instance of `MavenRepositoryConfigVersionPolicyInput` via:
+//
+//          MavenRepositoryConfigVersionPolicyArgs{...}
+type MavenRepositoryConfigVersionPolicyInput interface {
+	pulumi.Input
+
+	ToMavenRepositoryConfigVersionPolicyOutput() MavenRepositoryConfigVersionPolicyOutput
+	ToMavenRepositoryConfigVersionPolicyOutputWithContext(context.Context) MavenRepositoryConfigVersionPolicyOutput
+}
+
+var mavenRepositoryConfigVersionPolicyPtrType = reflect.TypeOf((**MavenRepositoryConfigVersionPolicy)(nil)).Elem()
+
+type MavenRepositoryConfigVersionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToMavenRepositoryConfigVersionPolicyPtrOutput() MavenRepositoryConfigVersionPolicyPtrOutput
+	ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(context.Context) MavenRepositoryConfigVersionPolicyPtrOutput
+}
+
+type mavenRepositoryConfigVersionPolicyPtr string
+
+func MavenRepositoryConfigVersionPolicyPtr(v string) MavenRepositoryConfigVersionPolicyPtrInput {
+	return (*mavenRepositoryConfigVersionPolicyPtr)(&v)
+}
+
+func (*mavenRepositoryConfigVersionPolicyPtr) ElementType() reflect.Type {
+	return mavenRepositoryConfigVersionPolicyPtrType
+}
+
+func (in *mavenRepositoryConfigVersionPolicyPtr) ToMavenRepositoryConfigVersionPolicyPtrOutput() MavenRepositoryConfigVersionPolicyPtrOutput {
+	return pulumi.ToOutput(in).(MavenRepositoryConfigVersionPolicyPtrOutput)
+}
+
+func (in *mavenRepositoryConfigVersionPolicyPtr) ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigVersionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MavenRepositoryConfigVersionPolicyPtrOutput)
+}
+
 // The format of packages that are stored in the repository.
 type RepositoryFormat string
 
@@ -22,7 +191,7 @@ const (
 	RepositoryFormatMaven = RepositoryFormat("MAVEN")
 	// NPM package format.
 	RepositoryFormatNpm = RepositoryFormat("NPM")
-	// PyPI package format.
+	// PyPI package format. Deprecated, use PYTHON instead.
 	RepositoryFormatPypi = RepositoryFormat("PYPI")
 	// APT package format.
 	RepositoryFormatApt = RepositoryFormat("APT")
@@ -190,6 +359,8 @@ func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterOutputType(MavenRepositoryConfigVersionPolicyOutput{})
+	pulumi.RegisterOutputType(MavenRepositoryConfigVersionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryFormatOutput{})
 	pulumi.RegisterOutputType(RepositoryFormatPtrOutput{})
 }

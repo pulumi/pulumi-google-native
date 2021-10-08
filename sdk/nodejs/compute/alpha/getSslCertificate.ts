@@ -85,3 +85,12 @@ export interface GetSslCertificateResult {
      */
     readonly type: string;
 }
+
+export function getSslCertificateOutput(args: GetSslCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslCertificateResult> {
+    return pulumi.output(args).apply(a => getSslCertificate(a, opts))
+}
+
+export interface GetSslCertificateOutputArgs {
+    project?: pulumi.Input<string>;
+    sslCertificate: pulumi.Input<string>;
+}

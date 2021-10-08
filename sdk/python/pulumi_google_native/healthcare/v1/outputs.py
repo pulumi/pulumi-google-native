@@ -770,16 +770,19 @@ class ParserConfigResponse(dict):
     def __init__(__self__, *,
                  allow_null_header: bool,
                  schema: 'outputs.SchemaPackageResponse',
-                 segment_terminator: str):
+                 segment_terminator: str,
+                 version: str):
         """
         The configuration for the parser. It determines how the server parses the messages.
         :param bool allow_null_header: Determines whether messages with no header are allowed.
         :param 'SchemaPackageResponse' schema: Schemas used to parse messages in this store, if schematized parsing is desired.
         :param str segment_terminator: Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
+        :param str version: Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
         """
         pulumi.set(__self__, "allow_null_header", allow_null_header)
         pulumi.set(__self__, "schema", schema)
         pulumi.set(__self__, "segment_terminator", segment_terminator)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="allowNullHeader")
@@ -804,6 +807,14 @@ class ParserConfigResponse(dict):
         Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
         """
         return pulumi.get(self, "segment_terminator")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -903,6 +914,8 @@ class SchemaPackageResponse(dict):
             suggest = "ignore_min_occurs"
         elif key == "schematizedParsingType":
             suggest = "schematized_parsing_type"
+        elif key == "unexpectedSegmentHandling":
+            suggest = "unexpected_segment_handling"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SchemaPackageResponse. Access the value via the '{suggest}' property getter instead.")
@@ -919,18 +932,21 @@ class SchemaPackageResponse(dict):
                  ignore_min_occurs: bool,
                  schemas: Sequence['outputs.Hl7SchemaConfigResponse'],
                  schematized_parsing_type: str,
-                 types: Sequence['outputs.Hl7TypesConfigResponse']):
+                 types: Sequence['outputs.Hl7TypesConfigResponse'],
+                 unexpected_segment_handling: str):
         """
         A schema package contains a set of schemas and type definitions.
         :param bool ignore_min_occurs: Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
         :param Sequence['Hl7SchemaConfigResponse'] schemas: Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
         :param str schematized_parsing_type: Determines how messages that fail to parse are handled.
         :param Sequence['Hl7TypesConfigResponse'] types: Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
+        :param str unexpected_segment_handling: Determines how unexpected segments (segments not matched to the schema) are handled.
         """
         pulumi.set(__self__, "ignore_min_occurs", ignore_min_occurs)
         pulumi.set(__self__, "schemas", schemas)
         pulumi.set(__self__, "schematized_parsing_type", schematized_parsing_type)
         pulumi.set(__self__, "types", types)
+        pulumi.set(__self__, "unexpected_segment_handling", unexpected_segment_handling)
 
     @property
     @pulumi.getter(name="ignoreMinOccurs")
@@ -963,6 +979,14 @@ class SchemaPackageResponse(dict):
         Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
         """
         return pulumi.get(self, "types")
+
+    @property
+    @pulumi.getter(name="unexpectedSegmentHandling")
+    def unexpected_segment_handling(self) -> str:
+        """
+        Determines how unexpected segments (segments not matched to the schema) are handled.
+        """
+        return pulumi.get(self, "unexpected_segment_handling")
 
 
 @pulumi.output_type

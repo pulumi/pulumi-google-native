@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         private InputList<Inputs.BigTableIODetailsArgs>? _bigTableDetails;
 
         /// <summary>
-        /// Identification of a Cloud BigTable source used in the Dataflow job.
+        /// Identification of a Cloud Bigtable source used in the Dataflow job.
         /// </summary>
         public InputList<Inputs.BigTableIODetailsArgs> BigTableDetails
         {
@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         private InputList<Inputs.PubSubIODetailsArgs>? _pubsubDetails;
 
         /// <summary>
-        /// Identification of a PubSub source used in the Dataflow job.
+        /// Identification of a Pub/Sub source used in the Dataflow job.
         /// </summary>
         public InputList<Inputs.PubSubIODetailsArgs> PubsubDetails
         {

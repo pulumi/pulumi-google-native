@@ -36,3 +36,12 @@ export interface GetTenantResult {
      */
     readonly name: string;
 }
+
+export function getTenantOutput(args: GetTenantOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTenantResult> {
+    return pulumi.output(args).apply(a => getTenant(a, opts))
+}
+
+export interface GetTenantOutputArgs {
+    project?: pulumi.Input<string>;
+    tenantId: pulumi.Input<string>;
+}

@@ -49,3 +49,14 @@ export interface GetDatasetIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getDatasetIamPolicyOutput(args: GetDatasetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetIamPolicyResult> {
+    return pulumi.output(args).apply(a => getDatasetIamPolicy(a, opts))
+}
+
+export interface GetDatasetIamPolicyOutputArgs {
+    datasetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

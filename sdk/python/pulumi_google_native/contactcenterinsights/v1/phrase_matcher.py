@@ -243,6 +243,7 @@ class PhraseMatcher(pulumi.CustomResource):
             __props__.__dict__["activation_update_time"] = None
             __props__.__dict__["revision_create_time"] = None
             __props__.__dict__["revision_id"] = None
+            __props__.__dict__["update_time"] = None
         super(PhraseMatcher, __self__).__init__(
             'google-native:contactcenterinsights/v1:PhraseMatcher',
             resource_name,
@@ -274,6 +275,7 @@ class PhraseMatcher(pulumi.CustomResource):
         __props__.__dict__["revision_id"] = None
         __props__.__dict__["role_match"] = None
         __props__.__dict__["type"] = None
+        __props__.__dict__["update_time"] = None
         __props__.__dict__["version_tag"] = None
         return PhraseMatcher(resource_name, opts=opts, __props__=__props__)
 
@@ -348,6 +350,14 @@ class PhraseMatcher(pulumi.CustomResource):
         The type of this phrase matcher.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The most recent time at which the phrase matcher was updated.
+        """
+        return pulumi.get(self, "update_time")
 
     @property
     @pulumi.getter(name="versionTag")

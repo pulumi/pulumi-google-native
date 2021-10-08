@@ -79,6 +79,7 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	ActionOnFailedPrimaryWorkers *string `pulumi:"actionOnFailedPrimaryWorkers"`
 	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
 	ClusterName string `pulumi:"clusterName"`
 	// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
@@ -93,6 +94,7 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	ActionOnFailedPrimaryWorkers pulumi.StringPtrInput
 	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
 	ClusterName pulumi.StringInput
 	// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.

@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
 {
     /// <summary>
+    /// Version policy defines the versions that the registry will accept.
+    /// </summary>
+    [EnumType]
+    public readonly struct MavenRepositoryConfigVersionPolicy : IEquatable<MavenRepositoryConfigVersionPolicy>
+    {
+        private readonly string _value;
+
+        private MavenRepositoryConfigVersionPolicy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// VERSION_POLICY_UNSPECIFIED - the version policy is not defined. When the version policy is not defined, no validation is performed for the versions.
+        /// </summary>
+        public static MavenRepositoryConfigVersionPolicy VersionPolicyUnspecified { get; } = new MavenRepositoryConfigVersionPolicy("VERSION_POLICY_UNSPECIFIED");
+        /// <summary>
+        /// RELEASE - repository will accept only Release versions.
+        /// </summary>
+        public static MavenRepositoryConfigVersionPolicy Release { get; } = new MavenRepositoryConfigVersionPolicy("RELEASE");
+        /// <summary>
+        /// SNAPSHOT - repository will accept only Snapshot versions.
+        /// </summary>
+        public static MavenRepositoryConfigVersionPolicy Snapshot { get; } = new MavenRepositoryConfigVersionPolicy("SNAPSHOT");
+
+        public static bool operator ==(MavenRepositoryConfigVersionPolicy left, MavenRepositoryConfigVersionPolicy right) => left.Equals(right);
+        public static bool operator !=(MavenRepositoryConfigVersionPolicy left, MavenRepositoryConfigVersionPolicy right) => !left.Equals(right);
+
+        public static explicit operator string(MavenRepositoryConfigVersionPolicy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MavenRepositoryConfigVersionPolicy other && Equals(other);
+        public bool Equals(MavenRepositoryConfigVersionPolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The format of packages that are stored in the repository.
     /// </summary>
     [EnumType]
@@ -37,7 +78,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         /// </summary>
         public static RepositoryFormat Npm { get; } = new RepositoryFormat("NPM");
         /// <summary>
-        /// PyPI package format.
+        /// PyPI package format. Deprecated, use PYTHON instead.
         /// </summary>
         public static RepositoryFormat Pypi { get; } = new RepositoryFormat("PYPI");
         /// <summary>

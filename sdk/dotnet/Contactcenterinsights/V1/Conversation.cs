@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public Output<Outputs.GoogleCloudContactcenterinsightsV1AnalysisResponse> LatestAnalysis { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The conversation medium.
+        /// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         /// </summary>
         [Output("medium")]
         public Output<string> Medium { get; private set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Immutable. The conversation medium.
+        /// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         /// </summary>
         [Input("medium")]
         public Input<Pulumi.GoogleNative.Contactcenterinsights.V1.ConversationMedium>? Medium { get; set; }

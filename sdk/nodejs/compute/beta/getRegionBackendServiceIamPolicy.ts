@@ -57,3 +57,14 @@ export interface GetRegionBackendServiceIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getRegionBackendServiceIamPolicyOutput(args: GetRegionBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionBackendServiceIamPolicyResult> {
+    return pulumi.output(args).apply(a => getRegionBackendServiceIamPolicy(a, opts))
+}
+
+export interface GetRegionBackendServiceIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

@@ -58,3 +58,13 @@ export interface GetRepositoryResult {
      */
     readonly updateTime: string;
 }
+
+export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {
+    return pulumi.output(args).apply(a => getRepository(a, opts))
+}
+
+export interface GetRepositoryOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    repositoryId: pulumi.Input<string>;
+}

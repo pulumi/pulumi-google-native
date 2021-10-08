@@ -47,3 +47,13 @@ export interface GetConnectivityTestIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getConnectivityTestIamPolicyOutput(args: GetConnectivityTestIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectivityTestIamPolicyResult> {
+    return pulumi.output(args).apply(a => getConnectivityTestIamPolicy(a, opts))
+}
+
+export interface GetConnectivityTestIamPolicyOutputArgs {
+    connectivityTestId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

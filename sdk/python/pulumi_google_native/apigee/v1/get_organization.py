@@ -155,6 +155,9 @@ class GetOrganizationResult:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        Display name for the Apigee organization. Unused, but reserved for future use.
+        """
         return pulumi.get(self, "display_name")
 
     @property

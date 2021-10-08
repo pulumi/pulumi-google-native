@@ -49,3 +49,14 @@ export interface GetTriggerIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getTriggerIamPolicyOutput(args: GetTriggerIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggerIamPolicyResult> {
+    return pulumi.output(args).apply(a => getTriggerIamPolicy(a, opts))
+}
+
+export interface GetTriggerIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    triggerId: pulumi.Input<string>;
+}

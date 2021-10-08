@@ -30,6 +30,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly int AdvertisedRoutePriority;
         /// <summary>
+        /// BFD configuration for the BGP peering.
+        /// </summary>
+        public readonly Outputs.RouterBgpPeerBfdResponse Bfd;
+        /// <summary>
         /// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
         /// </summary>
         public readonly string Enable;
@@ -57,6 +61,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
         /// </summary>
         public readonly string PeerIpAddress;
+        /// <summary>
+        /// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
+        /// </summary>
+        public readonly string RouterApplianceInstance;
 
         [OutputConstructor]
         private RouterBgpPeerResponse(
@@ -67,6 +75,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             ImmutableArray<Outputs.RouterAdvertisedIpRangeResponse> advertisedIpRanges,
 
             int advertisedRoutePriority,
+
+            Outputs.RouterBgpPeerBfdResponse bfd,
 
             string enable,
 
@@ -80,12 +90,15 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             int peerAsn,
 
-            string peerIpAddress)
+            string peerIpAddress,
+
+            string routerApplianceInstance)
         {
             AdvertiseMode = advertiseMode;
             AdvertisedGroups = advertisedGroups;
             AdvertisedIpRanges = advertisedIpRanges;
             AdvertisedRoutePriority = advertisedRoutePriority;
+            Bfd = bfd;
             Enable = enable;
             InterfaceName = interfaceName;
             IpAddress = ipAddress;
@@ -93,6 +106,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Name = name;
             PeerAsn = peerAsn;
             PeerIpAddress = peerIpAddress;
+            RouterApplianceInstance = routerApplianceInstance;
         }
     }
 }

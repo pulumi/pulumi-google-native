@@ -39,6 +39,7 @@ class OrganizationArgs:
         :param pulumi.Input['OrganizationBillingType'] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] customer_name: Not used by Apigee.
         :param pulumi.Input[str] description: Description of the Apigee organization.
+        :param pulumi.Input[str] display_name: Display name for the Apigee organization. Unused, but reserved for future use.
         :param pulumi.Input['GoogleCloudApigeeV1PropertiesArgs'] properties: Properties defined in the Apigee organization profile.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
         :param pulumi.Input['OrganizationType'] type: Not used by Apigee.
@@ -175,6 +176,9 @@ class OrganizationArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name for the Apigee organization. Unused, but reserved for future use.
+        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -250,6 +254,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input['OrganizationBillingType'] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] customer_name: Not used by Apigee.
         :param pulumi.Input[str] description: Description of the Apigee organization.
+        :param pulumi.Input[str] display_name: Display name for the Apigee organization. Unused, but reserved for future use.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']] properties: Properties defined in the Apigee organization profile.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
         :param pulumi.Input['OrganizationRuntimeType'] runtime_type: Runtime type of the Apigee organization based on the Apigee subscription purchased.
@@ -451,6 +456,9 @@ class Organization(pulumi.CustomResource):
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
+        """
+        Display name for the Apigee organization. Unused, but reserved for future use.
+        """
         return pulumi.get(self, "display_name")
 
     @property

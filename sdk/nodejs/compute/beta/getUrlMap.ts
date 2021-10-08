@@ -85,3 +85,12 @@ export interface GetUrlMapResult {
      */
     readonly tests: outputs.compute.beta.UrlMapTestResponse[];
 }
+
+export function getUrlMapOutput(args: GetUrlMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUrlMapResult> {
+    return pulumi.output(args).apply(a => getUrlMap(a, opts))
+}
+
+export interface GetUrlMapOutputArgs {
+    project?: pulumi.Input<string>;
+    urlMap: pulumi.Input<string>;
+}

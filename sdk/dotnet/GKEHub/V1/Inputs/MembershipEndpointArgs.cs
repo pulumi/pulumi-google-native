@@ -16,10 +16,22 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
     public sealed class MembershipEndpointArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+        /// Optional. Specific information for a GKE-on-GCP cluster.
         /// </summary>
         [Input("gkeCluster")]
         public Input<Inputs.GkeClusterArgs>? GkeCluster { get; set; }
+
+        /// <summary>
+        /// Optional. Specific information for a GKE Multi-Cloud cluster.
+        /// </summary>
+        [Input("multiCloudCluster")]
+        public Input<Inputs.MultiCloudClusterArgs>? MultiCloudCluster { get; set; }
+
+        /// <summary>
+        /// Optional. Specific information for a GKE On-Prem cluster.
+        /// </summary>
+        [Input("onPremCluster")]
+        public Input<Inputs.OnPremClusterArgs>? OnPremCluster { get; set; }
 
         public MembershipEndpointArgs()
         {

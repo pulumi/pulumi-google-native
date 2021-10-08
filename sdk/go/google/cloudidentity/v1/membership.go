@@ -18,7 +18,7 @@ type Membership struct {
 
 	// The time when the `Membership` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The `EntityKey` of the member.
 	PreferredMemberKey EntityKeyResponseOutput `pulumi:"preferredMemberKey"`

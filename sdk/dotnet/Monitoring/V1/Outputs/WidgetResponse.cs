@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly Outputs.TextResponse Text;
         /// <summary>
+        /// A widget that displays time series data in a tabular format.
+        /// </summary>
+        public readonly Outputs.TimeSeriesTableResponse TimeSeriesTable;
+        /// <summary>
         /// Optional. The title of the widget.
         /// </summary>
         public readonly string Title;
@@ -51,6 +55,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             Outputs.TextResponse text,
 
+            Outputs.TimeSeriesTableResponse timeSeriesTable,
+
             string title,
 
             Outputs.XyChartResponse xyChart)
@@ -59,6 +65,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
             Blank = blank;
             Scorecard = scorecard;
             Text = text;
+            TimeSeriesTable = timeSeriesTable;
             Title = title;
             XyChart = xyChart;
         }

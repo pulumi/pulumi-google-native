@@ -47,3 +47,13 @@ export interface GetReplayResult {
      */
     readonly state: string;
 }
+
+export function getReplayOutput(args: GetReplayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplayResult> {
+    return pulumi.output(args).apply(a => getReplay(a, opts))
+}
+
+export interface GetReplayOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    replayId: pulumi.Input<string>;
+}

@@ -53,3 +53,15 @@ export interface GetFeedbackMessageResult {
     readonly operatorFeedbackMetadata: outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse;
     readonly requesterFeedbackMetadata: outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse;
 }
+
+export function getFeedbackMessageOutput(args: GetFeedbackMessageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeedbackMessageResult> {
+    return pulumi.output(args).apply(a => getFeedbackMessage(a, opts))
+}
+
+export interface GetFeedbackMessageOutputArgs {
+    annotatedDatasetId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    feedbackMessageId: pulumi.Input<string>;
+    feedbackThreadId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -47,7 +47,7 @@ class FunctionArgs:
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[int] available_memory_mb: The amount of memory in MB available for a function. Defaults to 256MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_environment_variables: Build environment variables that shall be available during build time.
-        :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+        :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
@@ -58,15 +58,15 @@ class FunctionArgs:
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         :param pulumi.Input[int] min_instances: A lower bound for the number function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
-        :param pulumi.Input[str] network: The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
-        :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+        :param pulumi.Input[str] network: The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         :param pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]] secret_environment_variables: Secret environment variables configuration.
         :param pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]] secret_volumes: Secret volumes configuration.
         :param pulumi.Input[str] service_account_email: The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
-        :param pulumi.Input[str] source_archive_url: The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
+        :param pulumi.Input[str] source_archive_url: The Google Cloud Storage URL, starting with `gs://`, pointing to the zip archive which contains the function.
         :param pulumi.Input['SourceRepositoryArgs'] source_repository: **Beta Feature** The source repository where a function is hosted.
         :param pulumi.Input[str] source_token: Input only. An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
-        :param pulumi.Input[str] source_upload_url: The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods {Create, Update} The signature is stripped from the Function object on read methods {Get, List}
+        :param pulumi.Input[str] source_upload_url: The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods (Create, Update) The signature is stripped from the Function object on read methods (Get, List)
         :param pulumi.Input[str] timeout: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         :param pulumi.Input['FunctionVpcConnectorEgressSettings'] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it.
@@ -154,7 +154,7 @@ class FunctionArgs:
     @pulumi.getter(name="buildWorkerPool")
     def build_worker_pool(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+        Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         """
         return pulumi.get(self, "build_worker_pool")
 
@@ -295,7 +295,7 @@ class FunctionArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         """
         return pulumi.get(self, "network")
 
@@ -316,7 +316,7 @@ class FunctionArgs:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[str]]:
         """
-        The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+        The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         """
         return pulumi.get(self, "runtime")
 
@@ -364,7 +364,7 @@ class FunctionArgs:
     @pulumi.getter(name="sourceArchiveUrl")
     def source_archive_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
+        The Google Cloud Storage URL, starting with `gs://`, pointing to the zip archive which contains the function.
         """
         return pulumi.get(self, "source_archive_url")
 
@@ -400,7 +400,7 @@ class FunctionArgs:
     @pulumi.getter(name="sourceUploadUrl")
     def source_upload_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods {Create, Update} The signature is stripped from the Function object on read methods {Get, List}
+        The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods (Create, Update) The signature is stripped from the Function object on read methods (Get, List)
         """
         return pulumi.get(self, "source_upload_url")
 
@@ -485,7 +485,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] available_memory_mb: The amount of memory in MB available for a function. Defaults to 256MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_environment_variables: Build environment variables that shall be available during build time.
-        :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+        :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
@@ -496,15 +496,15 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         :param pulumi.Input[int] min_instances: A lower bound for the number function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
-        :param pulumi.Input[str] network: The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
-        :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+        :param pulumi.Input[str] network: The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretEnvVarArgs']]]] secret_environment_variables: Secret environment variables configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretVolumeArgs']]]] secret_volumes: Secret volumes configuration.
         :param pulumi.Input[str] service_account_email: The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
-        :param pulumi.Input[str] source_archive_url: The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
+        :param pulumi.Input[str] source_archive_url: The Google Cloud Storage URL, starting with `gs://`, pointing to the zip archive which contains the function.
         :param pulumi.Input[pulumi.InputType['SourceRepositoryArgs']] source_repository: **Beta Feature** The source repository where a function is hosted.
         :param pulumi.Input[str] source_token: Input only. An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
-        :param pulumi.Input[str] source_upload_url: The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods {Create, Update} The signature is stripped from the Function object on read methods {Get, List}
+        :param pulumi.Input[str] source_upload_url: The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods (Create, Update) The signature is stripped from the Function object on read methods (Get, List)
         :param pulumi.Input[str] timeout: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         :param pulumi.Input['FunctionVpcConnectorEgressSettings'] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it.
@@ -686,7 +686,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="buildName")
     def build_name(self) -> pulumi.Output[str]:
         """
-        The Cloud Build Name of the function deployment. projects//locations//builds/.
+        The Cloud Build Name of the function deployment. `projects//locations//builds/`.
         """
         return pulumi.get(self, "build_name")
 
@@ -694,7 +694,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="buildWorkerPool")
     def build_worker_pool(self) -> pulumi.Output[str]:
         """
-        Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+        Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         """
         return pulumi.get(self, "build_worker_pool")
 
@@ -782,7 +782,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[str]:
         """
-        The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         """
         return pulumi.get(self, "network")
 
@@ -790,7 +790,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def runtime(self) -> pulumi.Output[str]:
         """
-        The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+        The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         """
         return pulumi.get(self, "runtime")
 
@@ -822,7 +822,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="sourceArchiveUrl")
     def source_archive_url(self) -> pulumi.Output[str]:
         """
-        The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
+        The Google Cloud Storage URL, starting with `gs://`, pointing to the zip archive which contains the function.
         """
         return pulumi.get(self, "source_archive_url")
 
@@ -846,7 +846,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="sourceUploadUrl")
     def source_upload_url(self) -> pulumi.Output[str]:
         """
-        The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods {Create, Update} The signature is stripped from the Function object on read methods {Get, List}
+        The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods (Create, Update) The signature is stripped from the Function object on read methods (Get, List)
         """
         return pulumi.get(self, "source_upload_url")
 

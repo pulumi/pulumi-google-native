@@ -51,12 +51,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _guestOsFeatures = value;
         }
 
-        /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        /// </summary>
-        [Input("interface")]
-        public Input<Pulumi.GoogleNative.Compute.Alpha.AttachedDiskInitializeParamsInterface>? Interface { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 

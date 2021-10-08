@@ -47,7 +47,7 @@ export interface GetSecuritySettingResult {
      */
     readonly inspectTemplate: string;
     /**
-     * Resource name of the settings. Format: `projects//locations//securitySettings/`.
+     * Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
      */
     readonly name: string;
     /**
@@ -66,4 +66,14 @@ export interface GetSecuritySettingResult {
      * Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
      */
     readonly retentionWindowDays: number;
+}
+
+export function getSecuritySettingOutput(args: GetSecuritySettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecuritySettingResult> {
+    return pulumi.output(args).apply(a => getSecuritySetting(a, opts))
+}
+
+export interface GetSecuritySettingOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    securitySettingId: pulumi.Input<string>;
 }

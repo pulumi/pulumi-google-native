@@ -55,3 +55,13 @@ export interface GetInspectTemplateResult {
      */
     readonly updateTime: string;
 }
+
+export function getInspectTemplateOutput(args: GetInspectTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInspectTemplateResult> {
+    return pulumi.output(args).apply(a => getInspectTemplate(a, opts))
+}
+
+export interface GetInspectTemplateOutputArgs {
+    inspectTemplateId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

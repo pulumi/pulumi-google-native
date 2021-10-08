@@ -41,6 +41,7 @@ class ClusterArgs:
                  master: Optional[pulumi.Input['MasterArgs']] = None,
                  master_auth: Optional[pulumi.Input['MasterAuthArgs']] = None,
                  master_authorized_networks_config: Optional[pulumi.Input['MasterAuthorizedNetworksConfigArgs']] = None,
+                 mesh_certificates: Optional[pulumi.Input['MeshCertificatesArgs']] = None,
                  monitoring_config: Optional[pulumi.Input['MonitoringConfigArgs']] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -89,6 +90,7 @@ class ClusterArgs:
         :param pulumi.Input['MasterArgs'] master: Configuration for master components.
         :param pulumi.Input['MasterAuthArgs'] master_auth: The authentication information for accessing the master endpoint. If unspecified, the defaults are used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random password will be generated, and a client certificate will be issued.
         :param pulumi.Input['MasterAuthorizedNetworksConfigArgs'] master_authorized_networks_config: The configuration options for master authorized networks feature.
+        :param pulumi.Input['MeshCertificatesArgs'] mesh_certificates: Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
         :param pulumi.Input['MonitoringConfigArgs'] monitoring_config: Monitoring configuration for the cluster.
         :param pulumi.Input[str] monitoring_service: The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         :param pulumi.Input[str] name: The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
@@ -161,6 +163,8 @@ class ClusterArgs:
             pulumi.set(__self__, "master_auth", master_auth)
         if master_authorized_networks_config is not None:
             pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
+        if mesh_certificates is not None:
+            pulumi.set(__self__, "mesh_certificates", mesh_certificates)
         if monitoring_config is not None:
             pulumi.set(__self__, "monitoring_config", monitoring_config)
         if monitoring_service is not None:
@@ -504,6 +508,18 @@ class ClusterArgs:
         pulumi.set(self, "master_authorized_networks_config", value)
 
     @property
+    @pulumi.getter(name="meshCertificates")
+    def mesh_certificates(self) -> Optional[pulumi.Input['MeshCertificatesArgs']]:
+        """
+        Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        """
+        return pulumi.get(self, "mesh_certificates")
+
+    @mesh_certificates.setter
+    def mesh_certificates(self, value: Optional[pulumi.Input['MeshCertificatesArgs']]):
+        pulumi.set(self, "mesh_certificates", value)
+
+    @property
     @pulumi.getter(name="monitoringConfig")
     def monitoring_config(self) -> Optional[pulumi.Input['MonitoringConfigArgs']]:
         """
@@ -795,6 +811,7 @@ class Cluster(pulumi.CustomResource):
                  master: Optional[pulumi.Input[pulumi.InputType['MasterArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['MasterAuthArgs']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['MasterAuthorizedNetworksConfigArgs']]] = None,
+                 mesh_certificates: Optional[pulumi.Input[pulumi.InputType['MeshCertificatesArgs']]] = None,
                  monitoring_config: Optional[pulumi.Input[pulumi.InputType['MonitoringConfigArgs']]] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -847,6 +864,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MasterArgs']] master: Configuration for master components.
         :param pulumi.Input[pulumi.InputType['MasterAuthArgs']] master_auth: The authentication information for accessing the master endpoint. If unspecified, the defaults are used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random password will be generated, and a client certificate will be issued.
         :param pulumi.Input[pulumi.InputType['MasterAuthorizedNetworksConfigArgs']] master_authorized_networks_config: The configuration options for master authorized networks feature.
+        :param pulumi.Input[pulumi.InputType['MeshCertificatesArgs']] mesh_certificates: Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
         :param pulumi.Input[pulumi.InputType['MonitoringConfigArgs']] monitoring_config: Monitoring configuration for the cluster.
         :param pulumi.Input[str] monitoring_service: The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         :param pulumi.Input[str] name: The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
@@ -918,6 +936,7 @@ class Cluster(pulumi.CustomResource):
                  master: Optional[pulumi.Input[pulumi.InputType['MasterArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['MasterAuthArgs']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['MasterAuthorizedNetworksConfigArgs']]] = None,
+                 mesh_certificates: Optional[pulumi.Input[pulumi.InputType['MeshCertificatesArgs']]] = None,
                  monitoring_config: Optional[pulumi.Input[pulumi.InputType['MonitoringConfigArgs']]] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -977,6 +996,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["master"] = master
             __props__.__dict__["master_auth"] = master_auth
             __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
+            __props__.__dict__["mesh_certificates"] = mesh_certificates
             __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["monitoring_service"] = monitoring_service
             __props__.__dict__["name"] = name
@@ -1063,6 +1083,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["master"] = None
         __props__.__dict__["master_auth"] = None
         __props__.__dict__["master_authorized_networks_config"] = None
+        __props__.__dict__["mesh_certificates"] = None
         __props__.__dict__["monitoring_config"] = None
         __props__.__dict__["monitoring_service"] = None
         __props__.__dict__["name"] = None
@@ -1337,6 +1358,14 @@ class Cluster(pulumi.CustomResource):
         The configuration options for master authorized networks feature.
         """
         return pulumi.get(self, "master_authorized_networks_config")
+
+    @property
+    @pulumi.getter(name="meshCertificates")
+    def mesh_certificates(self) -> pulumi.Output['outputs.MeshCertificatesResponse']:
+        """
+        Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        """
+        return pulumi.get(self, "mesh_certificates")
 
     @property
     @pulumi.getter(name="monitoringConfig")

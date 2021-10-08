@@ -44,3 +44,12 @@ export interface GetSourceResult {
      */
     readonly name: string;
 }
+
+export function getSourceOutput(args: GetSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSourceResult> {
+    return pulumi.output(args).apply(a => getSource(a, opts))
+}
+
+export interface GetSourceOutputArgs {
+    organizationId: pulumi.Input<string>;
+    sourceId: pulumi.Input<string>;
+}

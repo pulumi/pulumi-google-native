@@ -42,6 +42,8 @@ type Routine struct {
 	RoutineReference RoutineReferenceResponseOutput `pulumi:"routineReference"`
 	// The type of routine.
 	RoutineType pulumi.StringOutput `pulumi:"routineType"`
+	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+	StrictMode pulumi.BoolOutput `pulumi:"strictMode"`
 }
 
 // NewRoutine registers a new resource with the given unique name, arguments, and options.
@@ -117,6 +119,8 @@ type routineArgs struct {
 	RoutineReference RoutineReference `pulumi:"routineReference"`
 	// The type of routine.
 	RoutineType RoutineRoutineType `pulumi:"routineType"`
+	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+	StrictMode *bool `pulumi:"strictMode"`
 }
 
 // The set of arguments for constructing a Routine resource.
@@ -143,6 +147,8 @@ type RoutineArgs struct {
 	RoutineReference RoutineReferenceInput
 	// The type of routine.
 	RoutineType RoutineRoutineTypeInput
+	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+	StrictMode pulumi.BoolPtrInput
 }
 
 func (RoutineArgs) ElementType() reflect.Type {

@@ -520,6 +520,13 @@ func (o StackTraceResponsePtrOutput) Elements() StackTraceElementResponseArrayOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ErrorResponseInput)(nil)).Elem(), ErrorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErrorResponsePtrInput)(nil)).Elem(), ErrorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PositionResponseInput)(nil)).Elem(), PositionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackTraceElementResponseInput)(nil)).Elem(), StackTraceElementResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackTraceElementResponseArrayInput)(nil)).Elem(), StackTraceElementResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackTraceResponseInput)(nil)).Elem(), StackTraceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackTraceResponsePtrInput)(nil)).Elem(), StackTraceResponseArgs{})
 	pulumi.RegisterOutputType(ErrorResponseOutput{})
 	pulumi.RegisterOutputType(ErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(PositionResponseOutput{})

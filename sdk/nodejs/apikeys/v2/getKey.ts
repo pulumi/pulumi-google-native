@@ -67,3 +67,13 @@ export interface GetKeyResult {
      */
     readonly updateTime: string;
 }
+
+export function getKeyOutput(args: GetKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyResult> {
+    return pulumi.output(args).apply(a => getKey(a, opts))
+}
+
+export interface GetKeyOutputArgs {
+    keyId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

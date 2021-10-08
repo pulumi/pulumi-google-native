@@ -69,3 +69,13 @@ export interface GetResourcePolicyResult {
      */
     readonly status: string;
 }
+
+export function getResourcePolicyOutput(args: GetResourcePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcePolicyResult> {
+    return pulumi.output(args).apply(a => getResourcePolicy(a, opts))
+}
+
+export interface GetResourcePolicyOutputArgs {
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    resourcePolicy: pulumi.Input<string>;
+}

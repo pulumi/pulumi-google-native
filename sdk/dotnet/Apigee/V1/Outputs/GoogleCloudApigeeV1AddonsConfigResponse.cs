@@ -21,6 +21,14 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1AdvancedApiOpsConfigResponse AdvancedApiOpsConfig;
         /// <summary>
+        /// Configuration for the Connectors Platform add-on.
+        /// </summary>
+        public readonly Outputs.GoogleCloudApigeeV1ConnectorsPlatformConfigResponse ConnectorsPlatformConfig;
+        /// <summary>
+        /// Configuration for the Integration add-on.
+        /// </summary>
+        public readonly Outputs.GoogleCloudApigeeV1IntegrationConfigResponse IntegrationConfig;
+        /// <summary>
         /// Configuration for the Monetization add-on.
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1MonetizationConfigResponse MonetizationConfig;
@@ -29,9 +37,15 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         private GoogleCloudApigeeV1AddonsConfigResponse(
             Outputs.GoogleCloudApigeeV1AdvancedApiOpsConfigResponse advancedApiOpsConfig,
 
+            Outputs.GoogleCloudApigeeV1ConnectorsPlatformConfigResponse connectorsPlatformConfig,
+
+            Outputs.GoogleCloudApigeeV1IntegrationConfigResponse integrationConfig,
+
             Outputs.GoogleCloudApigeeV1MonetizationConfigResponse monetizationConfig)
         {
             AdvancedApiOpsConfig = advancedApiOpsConfig;
+            ConnectorsPlatformConfig = connectorsPlatformConfig;
+            IntegrationConfig = integrationConfig;
             MonetizationConfig = monetizationConfig;
         }
     }

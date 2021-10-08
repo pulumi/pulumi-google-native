@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
     public sealed class GetTagResult
     {
         /// <summary>
-        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
+        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
         /// </summary>
         public readonly string Name;
         /// <summary>

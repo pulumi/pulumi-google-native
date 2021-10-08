@@ -33,9 +33,9 @@ type LookupFunctionResult struct {
 	BuildEnvironmentVariables map[string]string `pulumi:"buildEnvironmentVariables"`
 	// The Cloud Build ID of the latest successful deployment of the function.
 	BuildId string `pulumi:"buildId"`
-	// The Cloud Build Name of the function deployment. projects//locations//builds/.
+	// The Cloud Build Name of the function deployment. `projects//locations//builds/`.
 	BuildName string `pulumi:"buildName"`
-	// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+	// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
 	BuildWorkerPool string `pulumi:"buildWorkerPool"`
 	// User-provided description of a function.
 	Description string `pulumi:"description"`
@@ -57,9 +57,9 @@ type LookupFunctionResult struct {
 	MinInstances int `pulumi:"minInstances"`
 	// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
 	Name string `pulumi:"name"`
-	// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+	// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
 	Network string `pulumi:"network"`
-	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime string `pulumi:"runtime"`
 	// Secret environment variables configuration.
 	SecretEnvironmentVariables []SecretEnvVarResponse `pulumi:"secretEnvironmentVariables"`
@@ -67,13 +67,13 @@ type LookupFunctionResult struct {
 	SecretVolumes []SecretVolumeResponse `pulumi:"secretVolumes"`
 	// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
-	// The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
+	// The Google Cloud Storage URL, starting with `gs://`, pointing to the zip archive which contains the function.
 	SourceArchiveUrl string `pulumi:"sourceArchiveUrl"`
 	// **Beta Feature** The source repository where a function is hosted.
 	SourceRepository SourceRepositoryResponse `pulumi:"sourceRepository"`
 	// Input only. An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
 	SourceToken string `pulumi:"sourceToken"`
-	// The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods {Create, Update} The signature is stripped from the Function object on read methods {Get, List}
+	// The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods (Create, Update) The signature is stripped from the Function object on read methods (Get, List)
 	SourceUploadUrl string `pulumi:"sourceUploadUrl"`
 	// Status of the function deployment.
 	Status string `pulumi:"status"`
@@ -137,12 +137,12 @@ func (o LookupFunctionResultOutput) BuildId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildId }).(pulumi.StringOutput)
 }
 
-// The Cloud Build Name of the function deployment. projects//locations//builds/.
+// The Cloud Build Name of the function deployment. `projects//locations//builds/`.
 func (o LookupFunctionResultOutput) BuildName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildName }).(pulumi.StringOutput)
 }
 
-// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
 func (o LookupFunctionResultOutput) BuildWorkerPool() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildWorkerPool }).(pulumi.StringOutput)
 }
@@ -197,12 +197,12 @@ func (o LookupFunctionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
 func (o LookupFunctionResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 func (o LookupFunctionResultOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Runtime }).(pulumi.StringOutput)
 }
@@ -222,7 +222,7 @@ func (o LookupFunctionResultOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
-// The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
+// The Google Cloud Storage URL, starting with `gs://`, pointing to the zip archive which contains the function.
 func (o LookupFunctionResultOutput) SourceArchiveUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.SourceArchiveUrl }).(pulumi.StringOutput)
 }
@@ -237,7 +237,7 @@ func (o LookupFunctionResultOutput) SourceToken() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.SourceToken }).(pulumi.StringOutput)
 }
 
-// The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods {Create, Update} The signature is stripped from the Function object on read methods {Get, List}
+// The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods (Create, Update) The signature is stripped from the Function object on read methods (Get, List)
 func (o LookupFunctionResultOutput) SourceUploadUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.SourceUploadUrl }).(pulumi.StringOutput)
 }

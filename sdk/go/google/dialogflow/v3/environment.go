@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an Environment in the specified Agent.
+// Creates an Environment in the specified Agent. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`: Environment
 type Environment struct {
 	pulumi.CustomResourceState
 
@@ -21,6 +21,8 @@ type Environment struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The test cases config for continuous tests of this environment.
+	TestCasesConfig GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput `pulumi:"testCasesConfig"`
 	// Update time of this environment.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
@@ -84,6 +86,8 @@ type environmentArgs struct {
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
+	// The test cases config for continuous tests of this environment.
+	TestCasesConfig *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig `pulumi:"testCasesConfig"`
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs []GoogleCloudDialogflowCxV3EnvironmentVersionConfig `pulumi:"versionConfigs"`
 }
@@ -99,6 +103,8 @@ type EnvironmentArgs struct {
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
+	// The test cases config for continuous tests of this environment.
+	TestCasesConfig GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrInput
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayInput
 }

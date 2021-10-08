@@ -52,3 +52,12 @@ export interface GetOrganizationContactResult {
      */
     readonly validationState: string;
 }
+
+export function getOrganizationContactOutput(args: GetOrganizationContactOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationContactResult> {
+    return pulumi.output(args).apply(a => getOrganizationContact(a, opts))
+}
+
+export interface GetOrganizationContactOutputArgs {
+    contactId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

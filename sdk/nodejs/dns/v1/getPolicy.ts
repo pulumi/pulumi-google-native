@@ -56,3 +56,13 @@ export interface GetPolicyResult {
      */
     readonly networks: outputs.dns.v1.PolicyNetworkResponse[];
 }
+
+export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
+    return pulumi.output(args).apply(a => getPolicy(a, opts))
+}
+
+export interface GetPolicyOutputArgs {
+    clientOperationId?: pulumi.Input<string>;
+    policy: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

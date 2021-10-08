@@ -29,6 +29,10 @@ export interface GetRouteArgs {
 
 export interface GetRouteResult {
     /**
+     * AS path.
+     */
+    readonly asPaths: outputs.compute.beta.RouteAsPathResponse[];
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
@@ -89,6 +93,10 @@ export interface GetRouteResult {
      */
     readonly priority: number;
     /**
+     * The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
+     */
+    readonly routeType: string;
+    /**
      * Server-defined fully-qualified URL for this resource.
      */
     readonly selfLink: string;
@@ -100,4 +108,13 @@ export interface GetRouteResult {
      * If potential misconfigurations are detected for this route, this field will be populated with warning messages.
      */
     readonly warnings: outputs.compute.beta.RouteWarningsItemResponse[];
+}
+
+export function getRouteOutput(args: GetRouteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteResult> {
+    return pulumi.output(args).apply(a => getRoute(a, opts))
+}
+
+export interface GetRouteOutputArgs {
+    project?: pulumi.Input<string>;
+    route: pulumi.Input<string>;
 }

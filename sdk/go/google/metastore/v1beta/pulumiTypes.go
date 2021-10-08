@@ -1356,6 +1356,286 @@ func (o DatabaseDumpResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies how metastore metadata should be integrated with the Dataplex service.
+type DataplexConfig struct {
+	// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+	LakeResources map[string]string `pulumi:"lakeResources"`
+}
+
+// DataplexConfigInput is an input type that accepts DataplexConfigArgs and DataplexConfigOutput values.
+// You can construct a concrete instance of `DataplexConfigInput` via:
+//
+//          DataplexConfigArgs{...}
+type DataplexConfigInput interface {
+	pulumi.Input
+
+	ToDataplexConfigOutput() DataplexConfigOutput
+	ToDataplexConfigOutputWithContext(context.Context) DataplexConfigOutput
+}
+
+// Specifies how metastore metadata should be integrated with the Dataplex service.
+type DataplexConfigArgs struct {
+	// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+	LakeResources pulumi.StringMapInput `pulumi:"lakeResources"`
+}
+
+func (DataplexConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataplexConfig)(nil)).Elem()
+}
+
+func (i DataplexConfigArgs) ToDataplexConfigOutput() DataplexConfigOutput {
+	return i.ToDataplexConfigOutputWithContext(context.Background())
+}
+
+func (i DataplexConfigArgs) ToDataplexConfigOutputWithContext(ctx context.Context) DataplexConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataplexConfigOutput)
+}
+
+func (i DataplexConfigArgs) ToDataplexConfigPtrOutput() DataplexConfigPtrOutput {
+	return i.ToDataplexConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataplexConfigArgs) ToDataplexConfigPtrOutputWithContext(ctx context.Context) DataplexConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataplexConfigOutput).ToDataplexConfigPtrOutputWithContext(ctx)
+}
+
+// DataplexConfigPtrInput is an input type that accepts DataplexConfigArgs, DataplexConfigPtr and DataplexConfigPtrOutput values.
+// You can construct a concrete instance of `DataplexConfigPtrInput` via:
+//
+//          DataplexConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DataplexConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataplexConfigPtrOutput() DataplexConfigPtrOutput
+	ToDataplexConfigPtrOutputWithContext(context.Context) DataplexConfigPtrOutput
+}
+
+type dataplexConfigPtrType DataplexConfigArgs
+
+func DataplexConfigPtr(v *DataplexConfigArgs) DataplexConfigPtrInput {
+	return (*dataplexConfigPtrType)(v)
+}
+
+func (*dataplexConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataplexConfig)(nil)).Elem()
+}
+
+func (i *dataplexConfigPtrType) ToDataplexConfigPtrOutput() DataplexConfigPtrOutput {
+	return i.ToDataplexConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataplexConfigPtrType) ToDataplexConfigPtrOutputWithContext(ctx context.Context) DataplexConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataplexConfigPtrOutput)
+}
+
+// Specifies how metastore metadata should be integrated with the Dataplex service.
+type DataplexConfigOutput struct{ *pulumi.OutputState }
+
+func (DataplexConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataplexConfig)(nil)).Elem()
+}
+
+func (o DataplexConfigOutput) ToDataplexConfigOutput() DataplexConfigOutput {
+	return o
+}
+
+func (o DataplexConfigOutput) ToDataplexConfigOutputWithContext(ctx context.Context) DataplexConfigOutput {
+	return o
+}
+
+func (o DataplexConfigOutput) ToDataplexConfigPtrOutput() DataplexConfigPtrOutput {
+	return o.ToDataplexConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataplexConfigOutput) ToDataplexConfigPtrOutputWithContext(ctx context.Context) DataplexConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataplexConfig) *DataplexConfig {
+		return &v
+	}).(DataplexConfigPtrOutput)
+}
+
+// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+func (o DataplexConfigOutput) LakeResources() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DataplexConfig) map[string]string { return v.LakeResources }).(pulumi.StringMapOutput)
+}
+
+type DataplexConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataplexConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataplexConfig)(nil)).Elem()
+}
+
+func (o DataplexConfigPtrOutput) ToDataplexConfigPtrOutput() DataplexConfigPtrOutput {
+	return o
+}
+
+func (o DataplexConfigPtrOutput) ToDataplexConfigPtrOutputWithContext(ctx context.Context) DataplexConfigPtrOutput {
+	return o
+}
+
+func (o DataplexConfigPtrOutput) Elem() DataplexConfigOutput {
+	return o.ApplyT(func(v *DataplexConfig) DataplexConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataplexConfig
+		return ret
+	}).(DataplexConfigOutput)
+}
+
+// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+func (o DataplexConfigPtrOutput) LakeResources() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DataplexConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.LakeResources
+	}).(pulumi.StringMapOutput)
+}
+
+// Specifies how metastore metadata should be integrated with the Dataplex service.
+type DataplexConfigResponse struct {
+	// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+	LakeResources map[string]string `pulumi:"lakeResources"`
+}
+
+// DataplexConfigResponseInput is an input type that accepts DataplexConfigResponseArgs and DataplexConfigResponseOutput values.
+// You can construct a concrete instance of `DataplexConfigResponseInput` via:
+//
+//          DataplexConfigResponseArgs{...}
+type DataplexConfigResponseInput interface {
+	pulumi.Input
+
+	ToDataplexConfigResponseOutput() DataplexConfigResponseOutput
+	ToDataplexConfigResponseOutputWithContext(context.Context) DataplexConfigResponseOutput
+}
+
+// Specifies how metastore metadata should be integrated with the Dataplex service.
+type DataplexConfigResponseArgs struct {
+	// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+	LakeResources pulumi.StringMapInput `pulumi:"lakeResources"`
+}
+
+func (DataplexConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataplexConfigResponse)(nil)).Elem()
+}
+
+func (i DataplexConfigResponseArgs) ToDataplexConfigResponseOutput() DataplexConfigResponseOutput {
+	return i.ToDataplexConfigResponseOutputWithContext(context.Background())
+}
+
+func (i DataplexConfigResponseArgs) ToDataplexConfigResponseOutputWithContext(ctx context.Context) DataplexConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataplexConfigResponseOutput)
+}
+
+func (i DataplexConfigResponseArgs) ToDataplexConfigResponsePtrOutput() DataplexConfigResponsePtrOutput {
+	return i.ToDataplexConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DataplexConfigResponseArgs) ToDataplexConfigResponsePtrOutputWithContext(ctx context.Context) DataplexConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataplexConfigResponseOutput).ToDataplexConfigResponsePtrOutputWithContext(ctx)
+}
+
+// DataplexConfigResponsePtrInput is an input type that accepts DataplexConfigResponseArgs, DataplexConfigResponsePtr and DataplexConfigResponsePtrOutput values.
+// You can construct a concrete instance of `DataplexConfigResponsePtrInput` via:
+//
+//          DataplexConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DataplexConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToDataplexConfigResponsePtrOutput() DataplexConfigResponsePtrOutput
+	ToDataplexConfigResponsePtrOutputWithContext(context.Context) DataplexConfigResponsePtrOutput
+}
+
+type dataplexConfigResponsePtrType DataplexConfigResponseArgs
+
+func DataplexConfigResponsePtr(v *DataplexConfigResponseArgs) DataplexConfigResponsePtrInput {
+	return (*dataplexConfigResponsePtrType)(v)
+}
+
+func (*dataplexConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataplexConfigResponse)(nil)).Elem()
+}
+
+func (i *dataplexConfigResponsePtrType) ToDataplexConfigResponsePtrOutput() DataplexConfigResponsePtrOutput {
+	return i.ToDataplexConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *dataplexConfigResponsePtrType) ToDataplexConfigResponsePtrOutputWithContext(ctx context.Context) DataplexConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataplexConfigResponsePtrOutput)
+}
+
+// Specifies how metastore metadata should be integrated with the Dataplex service.
+type DataplexConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DataplexConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataplexConfigResponse)(nil)).Elem()
+}
+
+func (o DataplexConfigResponseOutput) ToDataplexConfigResponseOutput() DataplexConfigResponseOutput {
+	return o
+}
+
+func (o DataplexConfigResponseOutput) ToDataplexConfigResponseOutputWithContext(ctx context.Context) DataplexConfigResponseOutput {
+	return o
+}
+
+func (o DataplexConfigResponseOutput) ToDataplexConfigResponsePtrOutput() DataplexConfigResponsePtrOutput {
+	return o.ToDataplexConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DataplexConfigResponseOutput) ToDataplexConfigResponsePtrOutputWithContext(ctx context.Context) DataplexConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataplexConfigResponse) *DataplexConfigResponse {
+		return &v
+	}).(DataplexConfigResponsePtrOutput)
+}
+
+// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+func (o DataplexConfigResponseOutput) LakeResources() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DataplexConfigResponse) map[string]string { return v.LakeResources }).(pulumi.StringMapOutput)
+}
+
+type DataplexConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataplexConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataplexConfigResponse)(nil)).Elem()
+}
+
+func (o DataplexConfigResponsePtrOutput) ToDataplexConfigResponsePtrOutput() DataplexConfigResponsePtrOutput {
+	return o
+}
+
+func (o DataplexConfigResponsePtrOutput) ToDataplexConfigResponsePtrOutputWithContext(ctx context.Context) DataplexConfigResponsePtrOutput {
+	return o
+}
+
+func (o DataplexConfigResponsePtrOutput) Elem() DataplexConfigResponseOutput {
+	return o.ApplyT(func(v *DataplexConfigResponse) DataplexConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataplexConfigResponse
+		return ret
+	}).(DataplexConfigResponseOutput)
+}
+
+// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+func (o DataplexConfigResponsePtrOutput) LakeResources() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DataplexConfigResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.LakeResources
+	}).(pulumi.StringMapOutput)
+}
+
 // Encryption settings for the service.
 type EncryptionConfig struct {
 	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
@@ -1919,6 +2199,8 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 type HiveMetastoreConfig struct {
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
+	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+	EndpointProtocol *HiveMetastoreConfigEndpointProtocol `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 	KerberosConfig *KerberosConfig `pulumi:"kerberosConfig"`
 	// Immutable. The Hive metastore schema version.
@@ -1940,6 +2222,8 @@ type HiveMetastoreConfigInput interface {
 type HiveMetastoreConfigArgs struct {
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
 	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
+	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+	EndpointProtocol HiveMetastoreConfigEndpointProtocolPtrInput `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 	KerberosConfig KerberosConfigPtrInput `pulumi:"kerberosConfig"`
 	// Immutable. The Hive metastore schema version.
@@ -2029,6 +2313,11 @@ func (o HiveMetastoreConfigOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveMetastoreConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+func (o HiveMetastoreConfigOutput) EndpointProtocol() HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return o.ApplyT(func(v HiveMetastoreConfig) *HiveMetastoreConfigEndpointProtocol { return v.EndpointProtocol }).(HiveMetastoreConfigEndpointProtocolPtrOutput)
+}
+
 // Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 func (o HiveMetastoreConfigOutput) KerberosConfig() KerberosConfigPtrOutput {
 	return o.ApplyT(func(v HiveMetastoreConfig) *KerberosConfig { return v.KerberosConfig }).(KerberosConfigPtrOutput)
@@ -2073,6 +2362,16 @@ func (o HiveMetastoreConfigPtrOutput) ConfigOverrides() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+func (o HiveMetastoreConfigPtrOutput) EndpointProtocol() HiveMetastoreConfigEndpointProtocolPtrOutput {
+	return o.ApplyT(func(v *HiveMetastoreConfig) *HiveMetastoreConfigEndpointProtocol {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointProtocol
+	}).(HiveMetastoreConfigEndpointProtocolPtrOutput)
+}
+
 // Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 func (o HiveMetastoreConfigPtrOutput) KerberosConfig() KerberosConfigPtrOutput {
 	return o.ApplyT(func(v *HiveMetastoreConfig) *KerberosConfig {
@@ -2097,6 +2396,8 @@ func (o HiveMetastoreConfigPtrOutput) Version() pulumi.StringPtrOutput {
 type HiveMetastoreConfigResponse struct {
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
+	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+	EndpointProtocol string `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 	KerberosConfig KerberosConfigResponse `pulumi:"kerberosConfig"`
 	// Immutable. The Hive metastore schema version.
@@ -2118,6 +2419,8 @@ type HiveMetastoreConfigResponseInput interface {
 type HiveMetastoreConfigResponseArgs struct {
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
 	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
+	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+	EndpointProtocol pulumi.StringInput `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 	KerberosConfig KerberosConfigResponseInput `pulumi:"kerberosConfig"`
 	// Immutable. The Hive metastore schema version.
@@ -2207,6 +2510,11 @@ func (o HiveMetastoreConfigResponseOutput) ConfigOverrides() pulumi.StringMapOut
 	return o.ApplyT(func(v HiveMetastoreConfigResponse) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+func (o HiveMetastoreConfigResponseOutput) EndpointProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveMetastoreConfigResponse) string { return v.EndpointProtocol }).(pulumi.StringOutput)
+}
+
 // Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 func (o HiveMetastoreConfigResponseOutput) KerberosConfig() KerberosConfigResponseOutput {
 	return o.ApplyT(func(v HiveMetastoreConfigResponse) KerberosConfigResponse { return v.KerberosConfig }).(KerberosConfigResponseOutput)
@@ -2249,6 +2557,16 @@ func (o HiveMetastoreConfigResponsePtrOutput) ConfigOverrides() pulumi.StringMap
 		}
 		return v.ConfigOverrides
 	}).(pulumi.StringMapOutput)
+}
+
+// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+func (o HiveMetastoreConfigResponsePtrOutput) EndpointProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveMetastoreConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointProtocol
+	}).(pulumi.StringPtrOutput)
 }
 
 // Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
@@ -3085,6 +3403,8 @@ func (o MetadataExportResponseArrayOutput) Index(i pulumi.IntInput) MetadataExpo
 type MetadataIntegration struct {
 	// The integration config for the Data Catalog service.
 	DataCatalogConfig *DataCatalogConfig `pulumi:"dataCatalogConfig"`
+	// The integration config for the Dataplex service.
+	DataplexConfig *DataplexConfig `pulumi:"dataplexConfig"`
 }
 
 // MetadataIntegrationInput is an input type that accepts MetadataIntegrationArgs and MetadataIntegrationOutput values.
@@ -3102,6 +3422,8 @@ type MetadataIntegrationInput interface {
 type MetadataIntegrationArgs struct {
 	// The integration config for the Data Catalog service.
 	DataCatalogConfig DataCatalogConfigPtrInput `pulumi:"dataCatalogConfig"`
+	// The integration config for the Dataplex service.
+	DataplexConfig DataplexConfigPtrInput `pulumi:"dataplexConfig"`
 }
 
 func (MetadataIntegrationArgs) ElementType() reflect.Type {
@@ -3187,6 +3509,11 @@ func (o MetadataIntegrationOutput) DataCatalogConfig() DataCatalogConfigPtrOutpu
 	return o.ApplyT(func(v MetadataIntegration) *DataCatalogConfig { return v.DataCatalogConfig }).(DataCatalogConfigPtrOutput)
 }
 
+// The integration config for the Dataplex service.
+func (o MetadataIntegrationOutput) DataplexConfig() DataplexConfigPtrOutput {
+	return o.ApplyT(func(v MetadataIntegration) *DataplexConfig { return v.DataplexConfig }).(DataplexConfigPtrOutput)
+}
+
 type MetadataIntegrationPtrOutput struct{ *pulumi.OutputState }
 
 func (MetadataIntegrationPtrOutput) ElementType() reflect.Type {
@@ -3221,10 +3548,22 @@ func (o MetadataIntegrationPtrOutput) DataCatalogConfig() DataCatalogConfigPtrOu
 	}).(DataCatalogConfigPtrOutput)
 }
 
+// The integration config for the Dataplex service.
+func (o MetadataIntegrationPtrOutput) DataplexConfig() DataplexConfigPtrOutput {
+	return o.ApplyT(func(v *MetadataIntegration) *DataplexConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataplexConfig
+	}).(DataplexConfigPtrOutput)
+}
+
 // Specifies how metastore metadata should be integrated with external services.
 type MetadataIntegrationResponse struct {
 	// The integration config for the Data Catalog service.
 	DataCatalogConfig DataCatalogConfigResponse `pulumi:"dataCatalogConfig"`
+	// The integration config for the Dataplex service.
+	DataplexConfig DataplexConfigResponse `pulumi:"dataplexConfig"`
 }
 
 // MetadataIntegrationResponseInput is an input type that accepts MetadataIntegrationResponseArgs and MetadataIntegrationResponseOutput values.
@@ -3242,6 +3581,8 @@ type MetadataIntegrationResponseInput interface {
 type MetadataIntegrationResponseArgs struct {
 	// The integration config for the Data Catalog service.
 	DataCatalogConfig DataCatalogConfigResponseInput `pulumi:"dataCatalogConfig"`
+	// The integration config for the Dataplex service.
+	DataplexConfig DataplexConfigResponseInput `pulumi:"dataplexConfig"`
 }
 
 func (MetadataIntegrationResponseArgs) ElementType() reflect.Type {
@@ -3327,6 +3668,11 @@ func (o MetadataIntegrationResponseOutput) DataCatalogConfig() DataCatalogConfig
 	return o.ApplyT(func(v MetadataIntegrationResponse) DataCatalogConfigResponse { return v.DataCatalogConfig }).(DataCatalogConfigResponseOutput)
 }
 
+// The integration config for the Dataplex service.
+func (o MetadataIntegrationResponseOutput) DataplexConfig() DataplexConfigResponseOutput {
+	return o.ApplyT(func(v MetadataIntegrationResponse) DataplexConfigResponse { return v.DataplexConfig }).(DataplexConfigResponseOutput)
+}
+
 type MetadataIntegrationResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (MetadataIntegrationResponsePtrOutput) ElementType() reflect.Type {
@@ -3359,6 +3705,16 @@ func (o MetadataIntegrationResponsePtrOutput) DataCatalogConfig() DataCatalogCon
 		}
 		return &v.DataCatalogConfig
 	}).(DataCatalogConfigResponsePtrOutput)
+}
+
+// The integration config for the Dataplex service.
+func (o MetadataIntegrationResponsePtrOutput) DataplexConfig() DataplexConfigResponsePtrOutput {
+	return o.ApplyT(func(v *MetadataIntegrationResponse) *DataplexConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.DataplexConfig
+	}).(DataplexConfigResponsePtrOutput)
 }
 
 // The metadata management activities of the metastore service.
@@ -3959,7 +4315,7 @@ type ServiceResponse struct {
 	HiveMetastoreConfig HiveMetastoreConfigResponse `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
 	Labels map[string]string `pulumi:"labels"`
-	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration MetadataIntegrationResponse `pulumi:"metadataIntegration"`
@@ -4010,7 +4366,7 @@ type ServiceResponseArgs struct {
 	HiveMetastoreConfig HiveMetastoreConfigResponseInput `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow MaintenanceWindowResponseInput `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration MetadataIntegrationResponseInput `pulumi:"metadataIntegration"`
@@ -4144,7 +4500,7 @@ func (o ServiceResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 func (o ServiceResponseOutput) MaintenanceWindow() MaintenanceWindowResponseOutput {
 	return o.ApplyT(func(v ServiceResponse) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
 }
@@ -4288,7 +4644,7 @@ func (o ServiceResponsePtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 func (o ServiceResponsePtrOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
 	return o.ApplyT(func(v *ServiceResponse) *MaintenanceWindowResponse {
 		if v == nil {
@@ -4409,6 +4765,65 @@ func (o ServiceResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigInput)(nil)).Elem(), DataCatalogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigPtrInput)(nil)).Elem(), DataCatalogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigResponseInput)(nil)).Elem(), DataCatalogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigResponsePtrInput)(nil)).Elem(), DataCatalogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpInput)(nil)).Elem(), DatabaseDumpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpPtrInput)(nil)).Elem(), DatabaseDumpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpResponseInput)(nil)).Elem(), DatabaseDumpResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpResponsePtrInput)(nil)).Elem(), DatabaseDumpResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataplexConfigInput)(nil)).Elem(), DataplexConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataplexConfigPtrInput)(nil)).Elem(), DataplexConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataplexConfigResponseInput)(nil)).Elem(), DataplexConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataplexConfigResponsePtrInput)(nil)).Elem(), DataplexConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponseInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponsePtrInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigInput)(nil)).Elem(), HiveMetastoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigPtrInput)(nil)).Elem(), HiveMetastoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigResponseInput)(nil)).Elem(), HiveMetastoreConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigResponsePtrInput)(nil)).Elem(), HiveMetastoreConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigInput)(nil)).Elem(), KerberosConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigPtrInput)(nil)).Elem(), KerberosConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigResponseInput)(nil)).Elem(), KerberosConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigResponsePtrInput)(nil)).Elem(), KerberosConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponseInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponsePtrInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataExportResponseInput)(nil)).Elem(), MetadataExportResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataExportResponseArrayInput)(nil)).Elem(), MetadataExportResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationInput)(nil)).Elem(), MetadataIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationPtrInput)(nil)).Elem(), MetadataIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationResponseInput)(nil)).Elem(), MetadataIntegrationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationResponsePtrInput)(nil)).Elem(), MetadataIntegrationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataManagementActivityResponseInput)(nil)).Elem(), MetadataManagementActivityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataManagementActivityResponsePtrInput)(nil)).Elem(), MetadataManagementActivityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreResponseInput)(nil)).Elem(), RestoreResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreResponseArrayInput)(nil)).Elem(), RestoreResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretPtrInput)(nil)).Elem(), SecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretResponseInput)(nil)).Elem(), SecretResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretResponsePtrInput)(nil)).Elem(), SecretResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceResponseInput)(nil)).Elem(), ServiceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceResponsePtrInput)(nil)).Elem(), ServiceResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -4429,6 +4844,10 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseDumpPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataplexConfigOutput{})
+	pulumi.RegisterOutputType(DataplexConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataplexConfigResponseOutput{})
+	pulumi.RegisterOutputType(DataplexConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})

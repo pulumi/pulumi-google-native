@@ -43,6 +43,10 @@ export class Execution extends pulumi.CustomResource {
      */
     public readonly argument!: pulumi.Output<string>;
     /**
+     * The call logging level associated to this execution.
+     */
+    public readonly callLogLevel!: pulumi.Output<string>;
+    /**
      * Marks the end of execution, successful or not.
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
@@ -86,6 +90,7 @@ export class Execution extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workflowId'");
             }
             inputs["argument"] = args ? args.argument : undefined;
+            inputs["callLogLevel"] = args ? args.callLogLevel : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["workflowId"] = args ? args.workflowId : undefined;
@@ -98,6 +103,7 @@ export class Execution extends pulumi.CustomResource {
             inputs["workflowRevisionId"] = undefined /*out*/;
         } else {
             inputs["argument"] = undefined /*out*/;
+            inputs["callLogLevel"] = undefined /*out*/;
             inputs["endTime"] = undefined /*out*/;
             inputs["error"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -121,6 +127,10 @@ export interface ExecutionArgs {
      * Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
      */
     argument?: pulumi.Input<string>;
+    /**
+     * The call logging level associated to this execution.
+     */
+    callLogLevel?: pulumi.Input<enums.workflowexecutions.v1.ExecutionCallLogLevel>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     workflowId: pulumi.Input<string>;

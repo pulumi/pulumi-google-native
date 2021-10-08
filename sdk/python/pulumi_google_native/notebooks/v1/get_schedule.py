@@ -62,7 +62,7 @@ class GetScheduleResult:
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> str:
         """
-        Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+        Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
         """
         return pulumi.get(self, "cron_schedule")
 

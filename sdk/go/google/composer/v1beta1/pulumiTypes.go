@@ -1509,13 +1509,13 @@ func (o EnvironmentConfigResponsePtrOutput) WorkloadsConfig() WorkloadsConfigRes
 
 // Configuration for controlling how IPs are allocated in the GKE cluster.
 type IPAllocationPolicy struct {
-	// Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+	// Optional. The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
 	ClusterIpv4CidrBlock *string `pulumi:"clusterIpv4CidrBlock"`
-	// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
-	// Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+	// Optional. The IP address range of the services IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
 	ServicesIpv4CidrBlock *string `pulumi:"servicesIpv4CidrBlock"`
-	// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
 	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 	UseIpAliases *bool `pulumi:"useIpAliases"`
@@ -1534,13 +1534,13 @@ type IPAllocationPolicyInput interface {
 
 // Configuration for controlling how IPs are allocated in the GKE cluster.
 type IPAllocationPolicyArgs struct {
-	// Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+	// Optional. The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
 	ClusterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
-	// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
-	// Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+	// Optional. The IP address range of the services IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
 	ServicesIpv4CidrBlock pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
-	// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
 	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 	UseIpAliases pulumi.BoolPtrInput `pulumi:"useIpAliases"`
@@ -1624,22 +1624,22 @@ func (o IPAllocationPolicyOutput) ToIPAllocationPolicyPtrOutputWithContext(ctx c
 	}).(IPAllocationPolicyPtrOutput)
 }
 
-// Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+// Optional. The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
 func (o IPAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+// Optional. The IP address range of the services IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
 func (o IPAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
@@ -1673,7 +1673,7 @@ func (o IPAllocationPolicyPtrOutput) Elem() IPAllocationPolicyOutput {
 	}).(IPAllocationPolicyOutput)
 }
 
-// Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+// Optional. The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
 func (o IPAllocationPolicyPtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
 		if v == nil {
@@ -1683,7 +1683,7 @@ func (o IPAllocationPolicyPtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
 		if v == nil {
@@ -1693,7 +1693,7 @@ func (o IPAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+// Optional. The IP address range of the services IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
 func (o IPAllocationPolicyPtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
 		if v == nil {
@@ -1703,7 +1703,7 @@ func (o IPAllocationPolicyPtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
 		if v == nil {
@@ -1725,13 +1725,13 @@ func (o IPAllocationPolicyPtrOutput) UseIpAliases() pulumi.BoolPtrOutput {
 
 // Configuration for controlling how IPs are allocated in the GKE cluster.
 type IPAllocationPolicyResponse struct {
-	// Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+	// Optional. The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
 	ClusterIpv4CidrBlock string `pulumi:"clusterIpv4CidrBlock"`
-	// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ClusterSecondaryRangeName string `pulumi:"clusterSecondaryRangeName"`
-	// Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+	// Optional. The IP address range of the services IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
 	ServicesIpv4CidrBlock string `pulumi:"servicesIpv4CidrBlock"`
-	// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ServicesSecondaryRangeName string `pulumi:"servicesSecondaryRangeName"`
 	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 	UseIpAliases bool `pulumi:"useIpAliases"`
@@ -1750,13 +1750,13 @@ type IPAllocationPolicyResponseInput interface {
 
 // Configuration for controlling how IPs are allocated in the GKE cluster.
 type IPAllocationPolicyResponseArgs struct {
-	// Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+	// Optional. The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
 	ClusterIpv4CidrBlock pulumi.StringInput `pulumi:"clusterIpv4CidrBlock"`
-	// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ClusterSecondaryRangeName pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
-	// Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+	// Optional. The IP address range of the services IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
 	ServicesIpv4CidrBlock pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
-	// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ServicesSecondaryRangeName pulumi.StringInput `pulumi:"servicesSecondaryRangeName"`
 	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 	UseIpAliases pulumi.BoolInput `pulumi:"useIpAliases"`
@@ -1840,22 +1840,22 @@ func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponsePtrOutputW
 	}).(IPAllocationPolicyResponsePtrOutput)
 }
 
-// Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+// Optional. The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
 func (o IPAllocationPolicyResponseOutput) ClusterIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ClusterIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
-// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyResponseOutput) ClusterSecondaryRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ClusterSecondaryRangeName }).(pulumi.StringOutput)
 }
 
-// Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+// Optional. The IP address range of the services IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
 func (o IPAllocationPolicyResponseOutput) ServicesIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ServicesIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
-// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyResponseOutput) ServicesSecondaryRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ServicesSecondaryRangeName }).(pulumi.StringOutput)
 }
@@ -1889,7 +1889,7 @@ func (o IPAllocationPolicyResponsePtrOutput) Elem() IPAllocationPolicyResponseOu
 	}).(IPAllocationPolicyResponseOutput)
 }
 
-// Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+// Optional. The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
 func (o IPAllocationPolicyResponsePtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
 		if v == nil {
@@ -1899,7 +1899,7 @@ func (o IPAllocationPolicyResponsePtrOutput) ClusterIpv4CidrBlock() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyResponsePtrOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
 		if v == nil {
@@ -1909,7 +1909,7 @@ func (o IPAllocationPolicyResponsePtrOutput) ClusterSecondaryRangeName() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+// Optional. The IP address range of the services IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
 func (o IPAllocationPolicyResponsePtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
 		if v == nil {
@@ -1919,7 +1919,7 @@ func (o IPAllocationPolicyResponsePtrOutput) ServicesIpv4CidrBlock() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyResponsePtrOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
 		if v == nil {
@@ -6369,6 +6369,70 @@ func (o WorkloadsConfigResponsePtrOutput) Worker() WorkerResourceResponsePtrOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeInput)(nil)).Elem(), AllowedIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeArrayInput)(nil)).Elem(), AllowedIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeResponseInput)(nil)).Elem(), AllowedIpRangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeResponseArrayInput)(nil)).Elem(), AllowedIpRangeResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigInput)(nil)).Elem(), DatabaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigPtrInput)(nil)).Elem(), DatabaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigResponseInput)(nil)).Elem(), DatabaseConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigResponsePtrInput)(nil)).Elem(), DatabaseConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponseInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponsePtrInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigInput)(nil)).Elem(), EnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigPtrInput)(nil)).Elem(), EnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigResponseInput)(nil)).Elem(), EnvironmentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigResponsePtrInput)(nil)).Elem(), EnvironmentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyInput)(nil)).Elem(), IPAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyPtrInput)(nil)).Elem(), IPAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyResponseInput)(nil)).Elem(), IPAllocationPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyResponsePtrInput)(nil)).Elem(), IPAllocationPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponseInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponsePtrInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponseInput)(nil)).Elem(), NodeConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponsePtrInput)(nil)).Elem(), NodeConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigInput)(nil)).Elem(), PrivateClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigPtrInput)(nil)).Elem(), PrivateClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigResponseInput)(nil)).Elem(), PrivateClusterConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigResponsePtrInput)(nil)).Elem(), PrivateClusterConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigInput)(nil)).Elem(), PrivateEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigPtrInput)(nil)).Elem(), PrivateEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigResponseInput)(nil)).Elem(), PrivateEnvironmentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigResponsePtrInput)(nil)).Elem(), PrivateEnvironmentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourceInput)(nil)).Elem(), SchedulerResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourcePtrInput)(nil)).Elem(), SchedulerResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourceResponseInput)(nil)).Elem(), SchedulerResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourceResponsePtrInput)(nil)).Elem(), SchedulerResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigInput)(nil)).Elem(), SoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigPtrInput)(nil)).Elem(), SoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigResponseInput)(nil)).Elem(), SoftwareConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigResponsePtrInput)(nil)).Elem(), SoftwareConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigInput)(nil)).Elem(), WebServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigPtrInput)(nil)).Elem(), WebServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigResponseInput)(nil)).Elem(), WebServerConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigResponsePtrInput)(nil)).Elem(), WebServerConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlInput)(nil)).Elem(), WebServerNetworkAccessControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlPtrInput)(nil)).Elem(), WebServerNetworkAccessControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlResponseInput)(nil)).Elem(), WebServerNetworkAccessControlResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlResponsePtrInput)(nil)).Elem(), WebServerNetworkAccessControlResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerResourceInput)(nil)).Elem(), WebServerResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerResourcePtrInput)(nil)).Elem(), WebServerResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerResourceResponseInput)(nil)).Elem(), WebServerResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerResourceResponsePtrInput)(nil)).Elem(), WebServerResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerResourceInput)(nil)).Elem(), WorkerResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerResourcePtrInput)(nil)).Elem(), WorkerResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerResourceResponseInput)(nil)).Elem(), WorkerResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerResourceResponsePtrInput)(nil)).Elem(), WorkerResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadsConfigInput)(nil)).Elem(), WorkloadsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadsConfigPtrInput)(nil)).Elem(), WorkloadsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadsConfigResponseInput)(nil)).Elem(), WorkloadsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadsConfigResponsePtrInput)(nil)).Elem(), WorkloadsConfigResponseArgs{})
 	pulumi.RegisterOutputType(AllowedIpRangeOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeResponseOutput{})

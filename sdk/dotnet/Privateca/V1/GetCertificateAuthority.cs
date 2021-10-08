@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        /// Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         /// </summary>
         public readonly string Lifetime;
         /// <summary>

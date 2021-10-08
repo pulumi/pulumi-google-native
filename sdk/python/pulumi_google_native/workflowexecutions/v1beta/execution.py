@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 
 __all__ = ['ExecutionArgs', 'Execution']
 
@@ -16,15 +17,19 @@ class ExecutionArgs:
     def __init__(__self__, *,
                  workflow_id: pulumi.Input[str],
                  argument: Optional[pulumi.Input[str]] = None,
+                 call_log_level: Optional[pulumi.Input['ExecutionCallLogLevel']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Execution resource.
         :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
+        :param pulumi.Input['ExecutionCallLogLevel'] call_log_level: The call logging level associated to this execution.
         """
         pulumi.set(__self__, "workflow_id", workflow_id)
         if argument is not None:
             pulumi.set(__self__, "argument", argument)
+        if call_log_level is not None:
+            pulumi.set(__self__, "call_log_level", call_log_level)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
@@ -52,6 +57,18 @@ class ExecutionArgs:
         pulumi.set(self, "argument", value)
 
     @property
+    @pulumi.getter(name="callLogLevel")
+    def call_log_level(self) -> Optional[pulumi.Input['ExecutionCallLogLevel']]:
+        """
+        The call logging level associated to this execution.
+        """
+        return pulumi.get(self, "call_log_level")
+
+    @call_log_level.setter
+    def call_log_level(self, value: Optional[pulumi.Input['ExecutionCallLogLevel']]):
+        pulumi.set(self, "call_log_level", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
@@ -76,6 +93,7 @@ class Execution(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argument: Optional[pulumi.Input[str]] = None,
+                 call_log_level: Optional[pulumi.Input['ExecutionCallLogLevel']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None,
@@ -89,6 +107,7 @@ class Execution(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
+        :param pulumi.Input['ExecutionCallLogLevel'] call_log_level: The call logging level associated to this execution.
         """
         ...
     @overload
@@ -118,6 +137,7 @@ class Execution(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argument: Optional[pulumi.Input[str]] = None,
+                 call_log_level: Optional[pulumi.Input['ExecutionCallLogLevel']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None,
@@ -134,6 +154,7 @@ class Execution(pulumi.CustomResource):
             __props__ = ExecutionArgs.__new__(ExecutionArgs)
 
             __props__.__dict__["argument"] = argument
+            __props__.__dict__["call_log_level"] = call_log_level
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             if workflow_id is None and not opts.urn:
@@ -169,6 +190,7 @@ class Execution(pulumi.CustomResource):
         __props__ = ExecutionArgs.__new__(ExecutionArgs)
 
         __props__.__dict__["argument"] = None
+        __props__.__dict__["call_log_level"] = None
         __props__.__dict__["end_time"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["name"] = None
@@ -185,6 +207,14 @@ class Execution(pulumi.CustomResource):
         Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
         """
         return pulumi.get(self, "argument")
+
+    @property
+    @pulumi.getter(name="callLogLevel")
+    def call_log_level(self) -> pulumi.Output[str]:
+        """
+        The call logging level associated to this execution.
+        """
+        return pulumi.get(self, "call_log_level")
 
     @property
     @pulumi.getter(name="endTime")

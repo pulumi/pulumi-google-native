@@ -71,3 +71,11 @@ export interface GetGroupResult {
      */
     readonly updateTime: string;
 }
+
+export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
+    return pulumi.output(args).apply(a => getGroup(a, opts))
+}
+
+export interface GetGroupOutputArgs {
+    groupId: pulumi.Input<string>;
+}

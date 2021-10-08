@@ -12,7 +12,7 @@
           "description": "See any Cloud Identity Groups that you can access, including group members and their emails"
         },
         "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "See, edit, configure, and delete your Google Cloud Platform data"
+          "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
         }
       }
     }
@@ -824,6 +824,39 @@
             "https://www.googleapis.com/auth/cloud-platform"
           ]
         },
+        "getSecuritySettings": {
+          "description": "Get Security Settings",
+          "flatPath": "v1beta1/groups/{groupsId}/securitySettings",
+          "httpMethod": "GET",
+          "id": "cloudidentity.groups.getSecuritySettings",
+          "parameterOrder": [
+            "name"
+          ],
+          "parameters": {
+            "name": {
+              "description": "Required. The security settings to retrieve. Format: `groups/{group_id}/securitySettings`",
+              "location": "path",
+              "pattern": "^groups/[^/]+/securitySettings$",
+              "required": true,
+              "type": "string"
+            },
+            "readMask": {
+              "description": "Field-level read mask of which fields to return. \"*\" returns all fields. If not specified, all fields will be returned. May only contain the following field: `member_restriction`.",
+              "format": "google-fieldmask",
+              "location": "query",
+              "type": "string"
+            }
+          },
+          "path": "v1beta1/{+name}",
+          "response": {
+            "$ref": "SecuritySettings"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-identity.groups",
+            "https://www.googleapis.com/auth/cloud-identity.groups.readonly",
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
+        },
         "list": {
           "description": "Lists the `Group` resources under a customer or namespace.",
           "flatPath": "v1beta1/groups",
@@ -918,7 +951,7 @@
               "type": "string"
             },
             "updateMask": {
-              "description": "Required. The names of fields to update. May only contain the following fields: `display_name`, `description`, `labels`, `dynamic_group_metadata`, `posix_groups`.",
+              "description": "Required. The names of fields to update. May only contain the following field names: `display_name`, `description`, `labels`, `dynamic_group_metadata`, `posix_groups`.",
               "format": "google-fieldmask",
               "location": "query",
               "type": "string"
@@ -980,6 +1013,41 @@
           "scopes": [
             "https://www.googleapis.com/auth/cloud-identity.groups",
             "https://www.googleapis.com/auth/cloud-identity.groups.readonly",
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
+        },
+        "updateSecuritySettings": {
+          "description": "Update Security Settings",
+          "flatPath": "v1beta1/groups/{groupsId}/securitySettings",
+          "httpMethod": "PATCH",
+          "id": "cloudidentity.groups.updateSecuritySettings",
+          "parameterOrder": [
+            "name"
+          ],
+          "parameters": {
+            "name": {
+              "description": "Output only. The resource name of the security settings. Shall be of the form `groups/{group_id}/securitySettings`.",
+              "location": "path",
+              "pattern": "^groups/[^/]+/securitySettings$",
+              "required": true,
+              "type": "string"
+            },
+            "updateMask": {
+              "description": "Required. The fully-qualified names of fields to update. May only contain the following field: `member_restriction.query`.",
+              "format": "google-fieldmask",
+              "location": "query",
+              "type": "string"
+            }
+          },
+          "path": "v1beta1/{+name}",
+          "request": {
+            "$ref": "SecuritySettings"
+          },
+          "response": {
+            "$ref": "Operation"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-identity.groups",
             "https://www.googleapis.com/auth/cloud-platform"
           ]
         }
@@ -1336,7 +1404,7 @@
       }
     }
   },
-  "revision": "20210803",
+  "revision": "20211005",
   "rootUrl": "https://cloudidentity.googleapis.com/",
   "schemas": {
     "AndroidAttributes": {
@@ -1943,7 +2011,7 @@
       "id": "DynamicGroupQuery",
       "properties": {
         "query": {
-          "description": "Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' \u0026\u0026 loc.building_id=='bar')`",
+          "description": "Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' \u0026\u0026 loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`",
           "type": "string"
         },
         "resourceType": {
@@ -1969,12 +2037,14 @@
           "enum": [
             "STATUS_UNSPECIFIED",
             "UP_TO_DATE",
-            "UPDATING_MEMBERSHIPS"
+            "UPDATING_MEMBERSHIPS",
+            "INVALID_QUERY"
           ],
           "enumDescriptions": [
             "Default.",
             "The dynamic group is up-to-date.",
-            "The dynamic group has just been created and memberships are being updated."
+            "The dynamic group has just been created and memberships are being updated.",
+            "Group is in an unrecoverable state and its memberships can't be updated."
           ],
           "type": "string"
         },
@@ -2069,6 +2139,12 @@
       },
       "type": "object"
     },
+    "GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata": {
+      "description": "Metadata for ApproveDeviceUser LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata",
+      "properties": {},
+      "type": "object"
+    },
     "GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse": {
       "description": "Response message for approving the device to access user data.",
       "id": "GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse",
@@ -2078,6 +2154,12 @@
           "description": "Resultant DeviceUser object for the action."
         }
       },
+      "type": "object"
+    },
+    "GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata": {
+      "description": "Metadata for BlockDeviceUser LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata",
+      "properties": {},
       "type": "object"
     },
     "GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse": {
@@ -2091,6 +2173,12 @@
       },
       "type": "object"
     },
+    "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata": {
+      "description": "Metadata for CancelWipeDevice LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata",
+      "properties": {},
+      "type": "object"
+    },
     "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse": {
       "description": "Response message for cancelling an unfinished device wipe.",
       "id": "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse",
@@ -2100,6 +2188,12 @@
           "description": "Resultant Device object for the action. Note that asset tags will not be returned in the device object."
         }
       },
+      "type": "object"
+    },
+    "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata": {
+      "description": "Metadata for CancelWipeDeviceUser LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata",
+      "properties": {},
       "type": "object"
     },
     "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse": {
@@ -2200,7 +2294,7 @@
           "type": "string"
         },
         "name": {
-          "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id corresponds to the partner storing the data. For partners belonging to the \"BeyondCorp Alliance\", this is the partner ID specified to you by Google. For all other callers, this is a string of the form: `{customer_id}-suffix`, where `customer_id` is your customer ID. The *suffix* is any string the caller specifies. This string will be displayed verbatim in the administration console. This suffix is used in setting up Custom Access Levels in Context-Aware Access. Your organization's customer ID can be obtained from the URL: `GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the response contains the customer ID starting with the letter 'C'. The customer ID to be used in this API is the string after the letter 'C' (not including 'C')",
+          "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device}/deviceUsers/{device_user}/clientState/{partner}`, where partner corresponds to the partner storing the data. For partners belonging to the \"BeyondCorp Alliance\", this is the partner ID specified to you by Google. For all other callers, this is a string of the form: `{customer}-suffix`, where `customer` is your customer ID. The *suffix* is any string the caller specifies. This string will be displayed verbatim in the administration console. This suffix is used in setting up Custom Access Levels in Context-Aware Access. Your organization's customer ID can be obtained from the URL: `GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the response contains the customer ID starting with the letter 'C'. The customer ID to be used in this API is the string after the letter 'C' (not including 'C')",
           "readOnly": true,
           "type": "string"
         },
@@ -2226,6 +2320,12 @@
       },
       "type": "object"
     },
+    "GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata": {
+      "description": "Metadata for CreateDevice LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata",
+      "properties": {},
+      "type": "object"
+    },
     "GoogleAppsCloudidentityDevicesV1CustomAttributeValue": {
       "description": "Additional custom attribute values may be one of these types",
       "id": "GoogleAppsCloudidentityDevicesV1CustomAttributeValue",
@@ -2244,6 +2344,18 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata": {
+      "description": "Metadata for DeleteDevice LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata": {
+      "description": "Metadata for DeleteDeviceUser LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata",
+      "properties": {},
       "type": "object"
     },
     "GoogleAppsCloudidentityDevicesV1Device": {
@@ -2406,7 +2518,7 @@
           "type": "string"
         },
         "name": {
-          "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.",
+          "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}`, where device is the unique id assigned to the Device.",
           "readOnly": true,
           "type": "string"
         },
@@ -2532,7 +2644,7 @@
           "type": "string"
         },
         "name": {
-          "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the DeviceUser in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where `device_user_id` uniquely identifies a user's use of a device.",
+          "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the DeviceUser in format: `devices/{device}/deviceUsers/{device_user}`, where `device_user` uniquely identifies a user's use of a device.",
           "readOnly": true,
           "type": "string"
         },
@@ -2562,6 +2674,36 @@
       },
       "type": "object"
     },
+    "GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata": {
+      "description": "Metadata for ListEndpointApps LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata": {
+      "description": "Metadata for SignoutDeviceUser LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata": {
+      "description": "Metadata for UpdateClientState LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata": {
+      "description": "Metadata for UpdateDevice LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata": {
+      "description": "Metadata for WipeDevice LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata",
+      "properties": {},
+      "type": "object"
+    },
     "GoogleAppsCloudidentityDevicesV1WipeDeviceResponse": {
       "description": "Response message for wiping all data on the device.",
       "id": "GoogleAppsCloudidentityDevicesV1WipeDeviceResponse",
@@ -2571,6 +2713,12 @@
           "description": "Resultant Device object for the action. Note that asset tags will not be returned in the device object."
         }
       },
+      "type": "object"
+    },
+    "GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata": {
+      "description": "Metadata for WipeDeviceUser LRO.",
+      "id": "GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata",
+      "properties": {},
       "type": "object"
     },
     "GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse": {
@@ -2903,6 +3051,21 @@
       },
       "type": "object"
     },
+    "MemberRestriction": {
+      "description": "The definition of MemberRestriction",
+      "id": "MemberRestriction",
+      "properties": {
+        "evaluation": {
+          "$ref": "RestrictionEvaluation",
+          "description": "The evaluated state of this restriction on a group."
+        },
+        "query": {
+          "description": "Member Restriction as defined by CEL expression. Supported restrictions are: `member.customer_id` and `member.type`. Valid values for `member.type` are `1`, `2` and `3`. They correspond to USER, SERVICE_ACCOUNT, and GROUP respectively. The value for `member.customer_id` only supports `groupCustomerId()` currently which means the customer id of the group will be used for restriction. Supported operators are `\u0026\u0026`, `||` and `==`, corresponding to AND, OR, and EQUAL. Examples: Allow only service accounts of given customer to be members. `member.type == 2 \u0026\u0026 member.customer_id == groupCustomerId()` Allow only users or groups to be members. `member.type == 1 || member.type == 3`",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Membership": {
       "description": "A membership within the Cloud Identity Groups API. A `Membership` defines a relationship between a `Group` and an entity belonging to that `Group`, referred to as a \"member\".",
       "id": "Membership",
@@ -2991,6 +3154,36 @@
         },
         "name": {
           "description": "The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.",
+          "type": "string"
+        },
+        "restrictionEvaluations": {
+          "$ref": "RestrictionEvaluations",
+          "description": "Evaluations of restrictions applied to parent group on this membership."
+        }
+      },
+      "type": "object"
+    },
+    "MembershipRoleRestrictionEvaluation": {
+      "description": "The evaluated state of this restriction.",
+      "id": "MembershipRoleRestrictionEvaluation",
+      "properties": {
+        "state": {
+          "description": "Output only. The current state of the restriction",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "COMPLIANT",
+            "FORWARD_COMPLIANT",
+            "NON_COMPLIANT",
+            "EVALUATING"
+          ],
+          "enumDescriptions": [
+            "Default. Should not be used.",
+            "The member adheres to the parent group’s restriction.",
+            "The group-group membership might be currently violating some parent group's restriction but in future, it will never allow any new member in the child group which can violate parent group's restriction.",
+            "The member violates the parent group’s restriction.",
+            "The state of the membership is under evaluation."
+          ],
+          "readOnly": true,
           "type": "string"
         }
       },
@@ -3090,6 +3283,43 @@
       },
       "type": "object"
     },
+    "RestrictionEvaluation": {
+      "description": "The evaluated state of this restriction.",
+      "id": "RestrictionEvaluation",
+      "properties": {
+        "state": {
+          "description": "Output only. The current state of the restriction",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "EVALUATING",
+            "COMPLIANT",
+            "FORWARD_COMPLIANT",
+            "NON_COMPLIANT"
+          ],
+          "enumDescriptions": [
+            "Default. Should not be used.",
+            "The restriction state is currently being evaluated.",
+            "All transitive members are adhering to restriction.",
+            "Some transitive members violate the restriction. No new violating members can be added.",
+            "Some transitive members violate the restriction. New violating direct members will be denied while indirect members may be added."
+          ],
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "RestrictionEvaluations": {
+      "description": "Evaluations of restrictions applied to parent group on this membership.",
+      "id": "RestrictionEvaluations",
+      "properties": {
+        "memberRestrictionEvaluation": {
+          "$ref": "MembershipRoleRestrictionEvaluation",
+          "description": "Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation."
+        }
+      },
+      "type": "object"
+    },
     "SearchGroupsResponse": {
       "description": "The response message for GroupsService.SearchGroups.",
       "id": "SearchGroupsResponse",
@@ -3139,6 +3369,22 @@
         },
         "nextPageToken": {
           "description": "Token to retrieve the next page of results, or empty if there are no more results.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SecuritySettings": {
+      "description": "The definiion of security settings.",
+      "id": "SecuritySettings",
+      "properties": {
+        "memberRestriction": {
+          "$ref": "MemberRestriction",
+          "description": "The Member Restriction value"
+        },
+        "name": {
+          "description": "Output only. The resource name of the security settings. Shall be of the form `groups/{group_id}/securitySettings`.",
+          "readOnly": true,
           "type": "string"
         }
       },

@@ -45,3 +45,12 @@ export interface GetAttestorResult {
      */
     readonly userOwnedGrafeasNote: outputs.binaryauthorization.v1.UserOwnedGrafeasNoteResponse;
 }
+
+export function getAttestorOutput(args: GetAttestorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttestorResult> {
+    return pulumi.output(args).apply(a => getAttestor(a, opts))
+}
+
+export interface GetAttestorOutputArgs {
+    attestorId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

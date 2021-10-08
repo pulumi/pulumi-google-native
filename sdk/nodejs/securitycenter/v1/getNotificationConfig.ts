@@ -49,3 +49,12 @@ export interface GetNotificationConfigResult {
      */
     readonly streamingConfig: outputs.securitycenter.v1.StreamingConfigResponse;
 }
+
+export function getNotificationConfigOutput(args: GetNotificationConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationConfigResult> {
+    return pulumi.output(args).apply(a => getNotificationConfig(a, opts))
+}
+
+export interface GetNotificationConfigOutputArgs {
+    notificationConfigId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

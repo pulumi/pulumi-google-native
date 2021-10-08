@@ -44,3 +44,12 @@ export interface GetBrandResult {
      */
     readonly supportEmail: string;
 }
+
+export function getBrandOutput(args: GetBrandOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBrandResult> {
+    return pulumi.output(args).apply(a => getBrand(a, opts))
+}
+
+export interface GetBrandOutputArgs {
+    brandId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

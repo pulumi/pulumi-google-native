@@ -47,3 +47,13 @@ export interface GetJobIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getJobIamPolicyOutput(args: GetJobIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobIamPolicyResult> {
+    return pulumi.output(args).apply(a => getJobIamPolicy(a, opts))
+}
+
+export interface GetJobIamPolicyOutputArgs {
+    jobId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

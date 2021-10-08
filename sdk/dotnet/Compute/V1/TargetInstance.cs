@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> NatPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+        /// </summary>
+        [Output("network")]
+        public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
@@ -131,6 +137,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("natPolicy")]
         public Input<Pulumi.GoogleNative.Compute.V1.TargetInstanceNatPolicy>? NatPolicy { get; set; }
+
+        /// <summary>
+        /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

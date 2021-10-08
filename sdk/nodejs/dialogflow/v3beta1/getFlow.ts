@@ -63,3 +63,15 @@ export interface GetFlowResult {
      */
     readonly transitionRoutes: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TransitionRouteResponse[];
 }
+
+export function getFlowOutput(args: GetFlowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowResult> {
+    return pulumi.output(args).apply(a => getFlow(a, opts))
+}
+
+export interface GetFlowOutputArgs {
+    agentId: pulumi.Input<string>;
+    flowId: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

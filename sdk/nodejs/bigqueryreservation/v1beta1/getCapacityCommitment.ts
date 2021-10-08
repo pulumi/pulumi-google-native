@@ -63,3 +63,13 @@ export interface GetCapacityCommitmentResult {
      */
     readonly state: string;
 }
+
+export function getCapacityCommitmentOutput(args: GetCapacityCommitmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapacityCommitmentResult> {
+    return pulumi.output(args).apply(a => getCapacityCommitment(a, opts))
+}
+
+export interface GetCapacityCommitmentOutputArgs {
+    capacityCommitmentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

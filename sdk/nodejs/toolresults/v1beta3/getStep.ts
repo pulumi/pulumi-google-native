@@ -93,3 +93,14 @@ export interface GetStepResult {
      */
     readonly toolExecutionStep: outputs.toolresults.v1beta3.ToolExecutionStepResponse;
 }
+
+export function getStepOutput(args: GetStepOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStepResult> {
+    return pulumi.output(args).apply(a => getStep(a, opts))
+}
+
+export interface GetStepOutputArgs {
+    executionId: pulumi.Input<string>;
+    historyId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    stepId: pulumi.Input<string>;
+}

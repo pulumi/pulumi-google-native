@@ -47,3 +47,13 @@ export interface GetServiceAccountIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getServiceAccountIamPolicyOutput(args: GetServiceAccountIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceAccountIamPolicyResult> {
+    return pulumi.output(args).apply(a => getServiceAccountIamPolicy(a, opts))
+}
+
+export interface GetServiceAccountIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    serviceAccountId: pulumi.Input<string>;
+}

@@ -115,6 +115,14 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         /// </summary>
         public static DsRecordAlgorithm AlgorithmUnspecified { get; } = new DsRecordAlgorithm("ALGORITHM_UNSPECIFIED");
         /// <summary>
+        /// RSA/MD5. Cannot be used for new deployments.
+        /// </summary>
+        public static DsRecordAlgorithm Rsamd5 { get; } = new DsRecordAlgorithm("RSAMD5");
+        /// <summary>
+        /// Diffie-Hellman. Cannot be used for new deployments.
+        /// </summary>
+        public static DsRecordAlgorithm Dh { get; } = new DsRecordAlgorithm("DH");
+        /// <summary>
         /// DSA/SHA1. Not recommended for new deployments.
         /// </summary>
         public static DsRecordAlgorithm Dsa { get; } = new DsRecordAlgorithm("DSA");
@@ -162,6 +170,18 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         /// Ed448.
         /// </summary>
         public static DsRecordAlgorithm Ed448 { get; } = new DsRecordAlgorithm("ED448");
+        /// <summary>
+        /// Reserved for Indirect Keys. Cannot be used for new deployments.
+        /// </summary>
+        public static DsRecordAlgorithm Indirect { get; } = new DsRecordAlgorithm("INDIRECT");
+        /// <summary>
+        /// Private algorithm. Cannot be used for new deployments.
+        /// </summary>
+        public static DsRecordAlgorithm Privatedns { get; } = new DsRecordAlgorithm("PRIVATEDNS");
+        /// <summary>
+        /// Private algorithm OID. Cannot be used for new deployments.
+        /// </summary>
+        public static DsRecordAlgorithm Privateoid { get; } = new DsRecordAlgorithm("PRIVATEOID");
 
         public static bool operator ==(DsRecordAlgorithm left, DsRecordAlgorithm right) => left.Equals(right);
         public static bool operator !=(DsRecordAlgorithm left, DsRecordAlgorithm right) => !left.Equals(right);

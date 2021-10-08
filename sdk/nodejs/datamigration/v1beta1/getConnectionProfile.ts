@@ -71,3 +71,13 @@ export interface GetConnectionProfileResult {
      */
     readonly updateTime: string;
 }
+
+export function getConnectionProfileOutput(args: GetConnectionProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionProfileResult> {
+    return pulumi.output(args).apply(a => getConnectionProfile(a, opts))
+}
+
+export interface GetConnectionProfileOutputArgs {
+    connectionProfileId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

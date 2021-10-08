@@ -36,3 +36,12 @@ export interface GetConfigResult {
      */
     readonly name: string;
 }
+
+export function getConfigOutput(args: GetConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigResult> {
+    return pulumi.output(args).apply(a => getConfig(a, opts))
+}
+
+export interface GetConfigOutputArgs {
+    configId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

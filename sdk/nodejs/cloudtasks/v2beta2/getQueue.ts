@@ -73,3 +73,14 @@ export interface GetQueueResult {
      */
     readonly tombstoneTtl: string;
 }
+
+export function getQueueOutput(args: GetQueueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueueResult> {
+    return pulumi.output(args).apply(a => getQueue(a, opts))
+}
+
+export interface GetQueueOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    queueId: pulumi.Input<string>;
+    readMask?: pulumi.Input<string>;
+}

@@ -800,6 +800,18 @@ func (o NfsExportOptionsResponseArrayOutput) Index(i pulumi.IntInput) NfsExportO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FileShareConfigInput)(nil)).Elem(), FileShareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileShareConfigArrayInput)(nil)).Elem(), FileShareConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileShareConfigResponseInput)(nil)).Elem(), FileShareConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileShareConfigResponseArrayInput)(nil)).Elem(), FileShareConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigArrayInput)(nil)).Elem(), NetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponseInput)(nil)).Elem(), NetworkConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponseArrayInput)(nil)).Elem(), NetworkConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsInput)(nil)).Elem(), NfsExportOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsArrayInput)(nil)).Elem(), NfsExportOptionsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsResponseInput)(nil)).Elem(), NfsExportOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsResponseArrayInput)(nil)).Elem(), NfsExportOptionsResponseArray{})
 	pulumi.RegisterOutputType(FileShareConfigOutput{})
 	pulumi.RegisterOutputType(FileShareConfigArrayOutput{})
 	pulumi.RegisterOutputType(FileShareConfigResponseOutput{})

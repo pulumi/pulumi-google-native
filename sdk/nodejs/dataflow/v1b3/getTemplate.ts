@@ -49,3 +49,14 @@ export interface GetTemplateResult {
      */
     readonly templateType: string;
 }
+
+export function getTemplateOutput(args: GetTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateResult> {
+    return pulumi.output(args).apply(a => getTemplate(a, opts))
+}
+
+export interface GetTemplateOutputArgs {
+    gcsPath: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}

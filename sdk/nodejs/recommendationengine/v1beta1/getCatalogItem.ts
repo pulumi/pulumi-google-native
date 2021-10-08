@@ -61,3 +61,14 @@ export interface GetCatalogItemResult {
      */
     readonly title: string;
 }
+
+export function getCatalogItemOutput(args: GetCatalogItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogItemResult> {
+    return pulumi.output(args).apply(a => getCatalogItem(a, opts))
+}
+
+export interface GetCatalogItemOutputArgs {
+    catalogId: pulumi.Input<string>;
+    catalogItemId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

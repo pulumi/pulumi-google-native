@@ -191,6 +191,14 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// TPU v3.
         /// </summary>
         public static GoogleCloudMlV1__AcceleratorConfigType TpuV3 { get; } = new GoogleCloudMlV1__AcceleratorConfigType("TPU_V3");
+        /// <summary>
+        /// TPU v2 POD.
+        /// </summary>
+        public static GoogleCloudMlV1__AcceleratorConfigType TpuV2Pod { get; } = new GoogleCloudMlV1__AcceleratorConfigType("TPU_V2_POD");
+        /// <summary>
+        /// TPU v3 POD.
+        /// </summary>
+        public static GoogleCloudMlV1__AcceleratorConfigType TpuV3Pod { get; } = new GoogleCloudMlV1__AcceleratorConfigType("TPU_V3_POD");
 
         public static bool operator ==(GoogleCloudMlV1__AcceleratorConfigType left, GoogleCloudMlV1__AcceleratorConfigType right) => left.Equals(right);
         public static bool operator !=(GoogleCloudMlV1__AcceleratorConfigType left, GoogleCloudMlV1__AcceleratorConfigType right) => !left.Equals(right);

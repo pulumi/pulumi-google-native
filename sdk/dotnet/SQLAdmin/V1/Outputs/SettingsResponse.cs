@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
     public sealed class SettingsResponse
     {
         /// <summary>
-        /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+        /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
         /// </summary>
         public readonly string ActivationPolicy;
         /// <summary>
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly Outputs.SqlActiveDirectoryConfigResponse ActiveDirectoryConfig;
         /// <summary>
-        /// Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+        /// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         /// </summary>
         public readonly string AvailabilityType;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly string DataDiskSizeGb;
         /// <summary>
-        /// The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+        /// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
         /// </summary>
         public readonly string DataDiskType;
         /// <summary>
@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+        /// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
         /// </summary>
         public readonly Outputs.LocationPreferenceResponse LocationPreference;
         /// <summary>
@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
         /// </summary>
         public readonly string SettingsVersion;
+        /// <summary>
+        /// SQL Server specific audit configuration.
+        /// </summary>
+        public readonly Outputs.SqlServerAuditConfigResponse SqlServerAuditConfig;
         /// <summary>
         /// Configuration to increase storage size automatically. The default value is true.
         /// </summary>
@@ -143,6 +147,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 
             string settingsVersion,
 
+            Outputs.SqlServerAuditConfigResponse sqlServerAuditConfig,
+
             bool storageAutoResize,
 
             string storageAutoResizeLimit,
@@ -169,6 +175,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
             MaintenanceWindow = maintenanceWindow;
             PricingPlan = pricingPlan;
             SettingsVersion = settingsVersion;
+            SqlServerAuditConfig = sqlServerAuditConfig;
             StorageAutoResize = storageAutoResize;
             StorageAutoResizeLimit = storageAutoResizeLimit;
             Tier = tier;

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, connection_draining=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, connection_draining=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, subsetting=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -109,6 +109,9 @@ class GetBackendServiceResult:
         if session_affinity and not isinstance(session_affinity, str):
             raise TypeError("Expected argument 'session_affinity' to be a str")
         pulumi.set(__self__, "session_affinity", session_affinity)
+        if subsetting and not isinstance(subsetting, dict):
+            raise TypeError("Expected argument 'subsetting' to be a dict")
+        pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec and not isinstance(timeout_sec, int):
             raise TypeError("Expected argument 'timeout_sec' to be a int")
         pulumi.set(__self__, "timeout_sec", timeout_sec)
@@ -348,6 +351,11 @@ class GetBackendServiceResult:
         return pulumi.get(self, "session_affinity")
 
     @property
+    @pulumi.getter
+    def subsetting(self) -> 'outputs.SubsettingResponse':
+        return pulumi.get(self, "subsetting")
+
+    @property
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> int:
         """
@@ -392,6 +400,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             security_settings=self.security_settings,
             self_link=self.self_link,
             session_affinity=self.session_affinity,
+            subsetting=self.subsetting,
             timeout_sec=self.timeout_sec)
 
 
@@ -441,6 +450,7 @@ def get_backend_service(backend_service: Optional[str] = None,
         security_settings=__ret__.security_settings,
         self_link=__ret__.self_link,
         session_affinity=__ret__.session_affinity,
+        subsetting=__ret__.subsetting,
         timeout_sec=__ret__.timeout_sec)
 
 

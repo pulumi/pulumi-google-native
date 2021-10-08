@@ -58,3 +58,11 @@ export interface GetTagKeyResult {
      */
     readonly updateTime: string;
 }
+
+export function getTagKeyOutput(args: GetTagKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagKeyResult> {
+    return pulumi.output(args).apply(a => getTagKey(a, opts))
+}
+
+export interface GetTagKeyOutputArgs {
+    tagKeyId: pulumi.Input<string>;
+}

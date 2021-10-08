@@ -15,6 +15,18 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
     /// </summary>
     public sealed class MultiClusterRoutingUseAnyArgs : Pulumi.ResourceArgs
     {
+        [Input("clusterIds")]
+        private InputList<string>? _clusterIds;
+
+        /// <summary>
+        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+        /// </summary>
+        public InputList<string> ClusterIds
+        {
+            get => _clusterIds ?? (_clusterIds = new InputList<string>());
+            set => _clusterIds = value;
+        }
+
         public MultiClusterRoutingUseAnyArgs()
         {
         }

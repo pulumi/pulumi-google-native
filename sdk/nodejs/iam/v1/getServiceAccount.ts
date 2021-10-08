@@ -60,3 +60,12 @@ export interface GetServiceAccountResult {
      */
     readonly uniqueId: string;
 }
+
+export function getServiceAccountOutput(args: GetServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceAccountResult> {
+    return pulumi.output(args).apply(a => getServiceAccount(a, opts))
+}
+
+export interface GetServiceAccountOutputArgs {
+    project?: pulumi.Input<string>;
+    serviceAccountId: pulumi.Input<string>;
+}

@@ -53,6 +53,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly fileShares!: pulumi.Output<outputs.file.v1beta1.FileShareConfigResponse[]>;
     /**
+     * KMS key name used for data encryption.
+     */
+    public readonly kmsKeyName!: pulumi.Output<string>;
+    /**
      * Resource labels to represent user provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -77,6 +81,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly statusMessage!: pulumi.Output<string>;
     /**
+     * field indicates all the reasons the instance is in "SUSPENDED" state.
+     */
+    public /*out*/ readonly suspensionReasons!: pulumi.Output<string[]>;
+    /**
      * The service tier of the instance.
      */
     public readonly tier!: pulumi.Output<string>;
@@ -99,6 +107,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["etag"] = args ? args.etag : undefined;
             inputs["fileShares"] = args ? args.fileShares : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["networks"] = args ? args.networks : undefined;
@@ -109,17 +118,20 @@ export class Instance extends pulumi.CustomResource {
             inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["statusMessage"] = undefined /*out*/;
+            inputs["suspensionReasons"] = undefined /*out*/;
         } else {
             inputs["createTime"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["fileShares"] = undefined /*out*/;
+            inputs["kmsKeyName"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["networks"] = undefined /*out*/;
             inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["statusMessage"] = undefined /*out*/;
+            inputs["suspensionReasons"] = undefined /*out*/;
             inputs["tier"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -146,6 +158,10 @@ export interface InstanceArgs {
      */
     fileShares?: pulumi.Input<pulumi.Input<inputs.file.v1beta1.FileShareConfigArgs>[]>;
     instanceId: pulumi.Input<string>;
+    /**
+     * KMS key name used for data encryption.
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
      */

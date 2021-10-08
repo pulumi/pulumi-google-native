@@ -30,6 +30,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("maxUnavailable")]
         public Input<Inputs.FixedOrPercentArgs>? MaxUnavailable { get; set; }
 
+        [Input("updateInstances")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerAutoHealingPolicyUpdateInstances>? UpdateInstances { get; set; }
+
         public InstanceGroupManagerAutoHealingPolicyArgs()
         {
         }

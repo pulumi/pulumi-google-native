@@ -15,6 +15,8 @@ import (
 type RegionInstanceGroupManager struct {
 	pulumi.CustomResourceState
 
+	// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+	AllInstancesConfig InstanceGroupManagerAllInstancesConfigResponseOutput `pulumi:"allInstancesConfig"`
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyResponseArrayOutput `pulumi:"autoHealingPolicies"`
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
@@ -51,7 +53,7 @@ type RegionInstanceGroupManager struct {
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
-	// Stanby policy for stopped and suspended instances.
+	// Standby policy for stopped and suspended instances.
 	StandbyPolicy InstanceGroupManagerStandbyPolicyResponseOutput `pulumi:"standbyPolicy"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyResponseOutput `pulumi:"statefulPolicy"`
@@ -115,6 +117,8 @@ func (RegionInstanceGroupManagerState) ElementType() reflect.Type {
 }
 
 type regionInstanceGroupManagerArgs struct {
+	// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+	AllInstancesConfig *InstanceGroupManagerAllInstancesConfig `pulumi:"allInstancesConfig"`
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies []InstanceGroupManagerAutoHealingPolicy `pulumi:"autoHealingPolicies"`
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
@@ -138,7 +142,7 @@ type regionInstanceGroupManagerArgs struct {
 	RequestId  *string     `pulumi:"requestId"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	// Stanby policy for stopped and suspended instances.
+	// Standby policy for stopped and suspended instances.
 	StandbyPolicy *InstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy *StatefulPolicy `pulumi:"statefulPolicy"`
@@ -158,6 +162,8 @@ type regionInstanceGroupManagerArgs struct {
 
 // The set of arguments for constructing a RegionInstanceGroupManager resource.
 type RegionInstanceGroupManagerArgs struct {
+	// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+	AllInstancesConfig InstanceGroupManagerAllInstancesConfigPtrInput
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyArrayInput
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
@@ -181,7 +187,7 @@ type RegionInstanceGroupManagerArgs struct {
 	RequestId  pulumi.StringPtrInput
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount pulumi.StringPtrInput
-	// Stanby policy for stopped and suspended instances.
+	// Standby policy for stopped and suspended instances.
 	StandbyPolicy InstanceGroupManagerStandbyPolicyPtrInput
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyPtrInput

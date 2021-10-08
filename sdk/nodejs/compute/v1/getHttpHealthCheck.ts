@@ -76,3 +76,12 @@ export interface GetHttpHealthCheckResult {
      */
     readonly unhealthyThreshold: number;
 }
+
+export function getHttpHealthCheckOutput(args: GetHttpHealthCheckOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHttpHealthCheckResult> {
+    return pulumi.output(args).apply(a => getHttpHealthCheck(a, opts))
+}
+
+export interface GetHttpHealthCheckOutputArgs {
+    httpHealthCheck: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

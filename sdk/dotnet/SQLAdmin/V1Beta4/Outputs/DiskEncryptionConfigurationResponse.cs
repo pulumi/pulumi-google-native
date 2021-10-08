@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
     public sealed class DiskEncryptionConfigurationResponse
     {
         /// <summary>
-        /// This is always *sql#diskEncryptionConfiguration*.
+        /// This is always **sql#diskEncryptionConfiguration**.
         /// </summary>
         public readonly string Kind;
         /// <summary>

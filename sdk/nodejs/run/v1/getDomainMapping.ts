@@ -51,3 +51,13 @@ export interface GetDomainMappingResult {
      */
     readonly status: outputs.run.v1.DomainMappingStatusResponse;
 }
+
+export function getDomainMappingOutput(args: GetDomainMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainMappingResult> {
+    return pulumi.output(args).apply(a => getDomainMapping(a, opts))
+}
+
+export interface GetDomainMappingOutputArgs {
+    domainmappingId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

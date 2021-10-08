@@ -59,3 +59,13 @@ export interface GetTargetServerResult {
      */
     readonly sSLInfo: outputs.apigee.v1.GoogleCloudApigeeV1TlsInfoResponse;
 }
+
+export function getTargetServerOutput(args: GetTargetServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetServerResult> {
+    return pulumi.output(args).apply(a => getTargetServer(a, opts))
+}
+
+export interface GetTargetServerOutputArgs {
+    environmentId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    targetserverId: pulumi.Input<string>;
+}

@@ -139,3 +139,11 @@ export interface GetDeviceResult {
      */
     readonly wifiMacAddresses: string[];
 }
+
+export function getDeviceOutput(args: GetDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceResult> {
+    return pulumi.output(args).apply(a => getDevice(a, opts))
+}
+
+export interface GetDeviceOutputArgs {
+    deviceId: pulumi.Input<string>;
+}

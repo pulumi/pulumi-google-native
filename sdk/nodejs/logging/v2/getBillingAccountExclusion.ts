@@ -52,3 +52,12 @@ export interface GetBillingAccountExclusionResult {
      */
     readonly updateTime: string;
 }
+
+export function getBillingAccountExclusionOutput(args: GetBillingAccountExclusionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingAccountExclusionResult> {
+    return pulumi.output(args).apply(a => getBillingAccountExclusion(a, opts))
+}
+
+export interface GetBillingAccountExclusionOutputArgs {
+    billingAccountId: pulumi.Input<string>;
+    exclusionId: pulumi.Input<string>;
+}

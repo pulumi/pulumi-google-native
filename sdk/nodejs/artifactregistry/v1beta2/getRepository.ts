@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -50,6 +51,10 @@ export interface GetRepositoryResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * Maven repository config contains repository level configuration for the repositories of maven type.
+     */
+    readonly mavenConfig: outputs.artifactregistry.v1beta2.MavenRepositoryConfigResponse;
+    /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
      */
     readonly name: string;
@@ -57,4 +62,14 @@ export interface GetRepositoryResult {
      * The time when the repository was last updated.
      */
     readonly updateTime: string;
+}
+
+export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {
+    return pulumi.output(args).apply(a => getRepository(a, opts))
+}
+
+export interface GetRepositoryOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    repositoryId: pulumi.Input<string>;
 }

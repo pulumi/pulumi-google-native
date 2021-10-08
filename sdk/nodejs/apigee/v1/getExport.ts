@@ -66,3 +66,13 @@ export interface GetExportResult {
      */
     readonly updated: string;
 }
+
+export function getExportOutput(args: GetExportOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExportResult> {
+    return pulumi.output(args).apply(a => getExport(a, opts))
+}
+
+export interface GetExportOutputArgs {
+    environmentId: pulumi.Input<string>;
+    exportId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

@@ -39,7 +39,7 @@ type LookupSslCertResult struct {
 	ExpirationTime string `pulumi:"expirationTime"`
 	// Name of the database instance.
 	Instance string `pulumi:"instance"`
-	// This is always sql#sslCert.
+	// This is always **sql#sslCert**.
 	Kind string `pulumi:"kind"`
 	// The URI of this resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -110,7 +110,7 @@ func (o LookupSslCertResultOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSslCertResult) string { return v.Instance }).(pulumi.StringOutput)
 }
 
-// This is always sql#sslCert.
+// This is always **sql#sslCert**.
 func (o LookupSslCertResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSslCertResult) string { return v.Kind }).(pulumi.StringOutput)
 }

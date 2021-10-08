@@ -101,3 +101,12 @@ export interface GetGlobalNetworkEndpointGroupResult {
      */
     readonly zone: string;
 }
+
+export function getGlobalNetworkEndpointGroupOutput(args: GetGlobalNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalNetworkEndpointGroupResult> {
+    return pulumi.output(args).apply(a => getGlobalNetworkEndpointGroup(a, opts))
+}
+
+export interface GetGlobalNetworkEndpointGroupOutputArgs {
+    networkEndpointGroup: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

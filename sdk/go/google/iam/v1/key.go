@@ -16,6 +16,8 @@ import (
 type Key struct {
 	pulumi.CustomResourceState
 
+	// The key status.
+	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// Specifies the algorithm (and possibly key size) for the key.
 	KeyAlgorithm pulumi.StringOutput `pulumi:"keyAlgorithm"`
 	// The key origin.

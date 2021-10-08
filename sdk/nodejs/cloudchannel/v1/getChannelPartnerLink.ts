@@ -63,3 +63,13 @@ export interface GetChannelPartnerLinkResult {
      */
     readonly updateTime: string;
 }
+
+export function getChannelPartnerLinkOutput(args: GetChannelPartnerLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChannelPartnerLinkResult> {
+    return pulumi.output(args).apply(a => getChannelPartnerLink(a, opts))
+}
+
+export interface GetChannelPartnerLinkOutputArgs {
+    accountId: pulumi.Input<string>;
+    channelPartnerLinkId: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}

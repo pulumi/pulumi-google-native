@@ -57,3 +57,12 @@ export interface GetDatastoreResult {
      */
     readonly targetType: string;
 }
+
+export function getDatastoreOutput(args: GetDatastoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoreResult> {
+    return pulumi.output(args).apply(a => getDatastore(a, opts))
+}
+
+export interface GetDatastoreOutputArgs {
+    datastoreId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

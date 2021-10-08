@@ -123,3 +123,13 @@ export interface GetInstanceGroupManagerResult {
      */
     readonly zone: string;
 }
+
+export function getInstanceGroupManagerOutput(args: GetInstanceGroupManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceGroupManagerResult> {
+    return pulumi.output(args).apply(a => getInstanceGroupManager(a, opts))
+}
+
+export interface GetInstanceGroupManagerOutputArgs {
+    instanceGroupManager: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
+}

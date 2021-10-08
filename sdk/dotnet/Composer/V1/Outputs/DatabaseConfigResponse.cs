@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
 {
 
     /// <summary>
-    /// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+    /// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
     /// </summary>
     [OutputType]
     public sealed class DatabaseConfigResponse

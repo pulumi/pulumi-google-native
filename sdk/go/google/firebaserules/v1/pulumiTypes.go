@@ -667,6 +667,16 @@ func (o SourceResponsePtrOutput) Files() FileResponseArrayOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FileInput)(nil)).Elem(), FileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileArrayInput)(nil)).Elem(), FileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileResponseInput)(nil)).Elem(), FileResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileResponseArrayInput)(nil)).Elem(), FileResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataResponseInput)(nil)).Elem(), MetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataResponsePtrInput)(nil)).Elem(), MetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), SourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponseInput)(nil)).Elem(), SourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponsePtrInput)(nil)).Elem(), SourceResponseArgs{})
 	pulumi.RegisterOutputType(FileOutput{})
 	pulumi.RegisterOutputType(FileArrayOutput{})
 	pulumi.RegisterOutputType(FileResponseOutput{})

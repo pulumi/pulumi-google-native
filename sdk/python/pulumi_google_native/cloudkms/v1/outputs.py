@@ -260,6 +260,8 @@ class CryptoKeyVersionResponse(dict):
             suggest = "import_time"
         elif key == "protectionLevel":
             suggest = "protection_level"
+        elif key == "reimportEligible":
+            suggest = "reimport_eligible"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CryptoKeyVersionResponse. Access the value via the '{suggest}' property getter instead.")
@@ -285,6 +287,7 @@ class CryptoKeyVersionResponse(dict):
                  import_time: str,
                  name: str,
                  protection_level: str,
+                 reimport_eligible: bool,
                  state: str):
         """
         A CryptoKeyVersion represents an individual cryptographic key, and the associated key material. An ENABLED version can be used for cryptographic operations. For security reasons, the raw cryptographic key material represented by a CryptoKeyVersion can never be viewed or exported. It can only be used to encrypt, decrypt, or sign data when an authorized user or application invokes Cloud KMS.
@@ -295,11 +298,12 @@ class CryptoKeyVersionResponse(dict):
         :param str destroy_time: The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
         :param 'ExternalProtectionLevelOptionsResponse' external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
         :param str generate_time: The time this CryptoKeyVersion's key material was generated.
-        :param str import_failure_reason: The root cause of an import failure. Only present if state is IMPORT_FAILED.
-        :param str import_job: The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
-        :param str import_time: The time at which this CryptoKeyVersion's key material was imported.
+        :param str import_failure_reason: The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
+        :param str import_job: The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
+        :param str import_time: The time at which this CryptoKeyVersion's key material was most recently imported.
         :param str name: The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         :param str protection_level: The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
+        :param bool reimport_eligible: Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
         :param str state: The current state of the CryptoKeyVersion.
         """
         pulumi.set(__self__, "algorithm", algorithm)
@@ -314,6 +318,7 @@ class CryptoKeyVersionResponse(dict):
         pulumi.set(__self__, "import_time", import_time)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "protection_level", protection_level)
+        pulumi.set(__self__, "reimport_eligible", reimport_eligible)
         pulumi.set(__self__, "state", state)
 
     @property
@@ -376,7 +381,7 @@ class CryptoKeyVersionResponse(dict):
     @pulumi.getter(name="importFailureReason")
     def import_failure_reason(self) -> str:
         """
-        The root cause of an import failure. Only present if state is IMPORT_FAILED.
+        The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
         """
         return pulumi.get(self, "import_failure_reason")
 
@@ -384,7 +389,7 @@ class CryptoKeyVersionResponse(dict):
     @pulumi.getter(name="importJob")
     def import_job(self) -> str:
         """
-        The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+        The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
         """
         return pulumi.get(self, "import_job")
 
@@ -392,7 +397,7 @@ class CryptoKeyVersionResponse(dict):
     @pulumi.getter(name="importTime")
     def import_time(self) -> str:
         """
-        The time at which this CryptoKeyVersion's key material was imported.
+        The time at which this CryptoKeyVersion's key material was most recently imported.
         """
         return pulumi.get(self, "import_time")
 
@@ -411,6 +416,14 @@ class CryptoKeyVersionResponse(dict):
         The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
         """
         return pulumi.get(self, "protection_level")
+
+    @property
+    @pulumi.getter(name="reimportEligible")
+    def reimport_eligible(self) -> bool:
+        """
+        Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+        """
+        return pulumi.get(self, "reimport_eligible")
 
     @property
     @pulumi.getter

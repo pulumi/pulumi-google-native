@@ -358,6 +358,10 @@ type DsRecordAlgorithm string
 const (
 	// The algorithm is unspecified.
 	DsRecordAlgorithmAlgorithmUnspecified = DsRecordAlgorithm("ALGORITHM_UNSPECIFIED")
+	// RSA/MD5. Cannot be used for new deployments.
+	DsRecordAlgorithmRsamd5 = DsRecordAlgorithm("RSAMD5")
+	// Diffie-Hellman. Cannot be used for new deployments.
+	DsRecordAlgorithmDh = DsRecordAlgorithm("DH")
 	// DSA/SHA1. Not recommended for new deployments.
 	DsRecordAlgorithmDsa = DsRecordAlgorithm("DSA")
 	// ECC. Not recommended for new deployments.
@@ -382,6 +386,12 @@ const (
 	DsRecordAlgorithmEd25519 = DsRecordAlgorithm("ED25519")
 	// Ed448.
 	DsRecordAlgorithmEd448 = DsRecordAlgorithm("ED448")
+	// Reserved for Indirect Keys. Cannot be used for new deployments.
+	DsRecordAlgorithmIndirect = DsRecordAlgorithm("INDIRECT")
+	// Private algorithm. Cannot be used for new deployments.
+	DsRecordAlgorithmPrivatedns = DsRecordAlgorithm("PRIVATEDNS")
+	// Private algorithm OID. Cannot be used for new deployments.
+	DsRecordAlgorithmPrivateoid = DsRecordAlgorithm("PRIVATEOID")
 )
 
 func (DsRecordAlgorithm) ElementType() reflect.Type {

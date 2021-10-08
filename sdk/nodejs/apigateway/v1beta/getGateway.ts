@@ -62,3 +62,13 @@ export interface GetGatewayResult {
      */
     readonly updateTime: string;
 }
+
+export function getGatewayOutput(args: GetGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayResult> {
+    return pulumi.output(args).apply(a => getGateway(a, opts))
+}
+
+export interface GetGatewayOutputArgs {
+    gatewayId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

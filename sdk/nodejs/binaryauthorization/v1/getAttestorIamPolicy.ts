@@ -43,3 +43,13 @@ export interface GetAttestorIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getAttestorIamPolicyOutput(args: GetAttestorIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttestorIamPolicyResult> {
+    return pulumi.output(args).apply(a => getAttestorIamPolicy(a, opts))
+}
+
+export interface GetAttestorIamPolicyOutputArgs {
+    attestorId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

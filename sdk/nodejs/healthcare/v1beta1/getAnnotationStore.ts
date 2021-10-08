@@ -40,3 +40,14 @@ export interface GetAnnotationStoreResult {
      */
     readonly name: string;
 }
+
+export function getAnnotationStoreOutput(args: GetAnnotationStoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAnnotationStoreResult> {
+    return pulumi.output(args).apply(a => getAnnotationStore(a, opts))
+}
+
+export interface GetAnnotationStoreOutputArgs {
+    annotationStoreId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

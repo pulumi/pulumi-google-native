@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
-        /// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+        /// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// Shielded Instance options.
         /// </summary>
         public readonly Outputs.ShieldedInstanceConfigResponse ShieldedInstanceConfig;
+        /// <summary>
+        /// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+        /// </summary>
+        public readonly bool Spot;
         /// <summary>
         /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
         /// </summary>
@@ -157,6 +161,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
 
+            bool spot,
+
             ImmutableArray<string> tags,
 
             ImmutableArray<Outputs.NodeTaintResponse> taints,
@@ -184,6 +190,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             SandboxConfig = sandboxConfig;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
+            Spot = spot;
             Tags = tags;
             Taints = taints;
             WorkloadMetadataConfig = workloadMetadataConfig;

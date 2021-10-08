@@ -3438,6 +3438,8 @@ type ParserConfig struct {
 	Schema *SchemaPackage `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator *string `pulumi:"segmentTerminator"`
+	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	Version *ParserConfigVersion `pulumi:"version"`
 }
 
 // ParserConfigInput is an input type that accepts ParserConfigArgs and ParserConfigOutput values.
@@ -3459,6 +3461,8 @@ type ParserConfigArgs struct {
 	Schema SchemaPackagePtrInput `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator pulumi.StringPtrInput `pulumi:"segmentTerminator"`
+	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	Version ParserConfigVersionPtrInput `pulumi:"version"`
 }
 
 func (ParserConfigArgs) ElementType() reflect.Type {
@@ -3554,6 +3558,11 @@ func (o ParserConfigOutput) SegmentTerminator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParserConfig) *string { return v.SegmentTerminator }).(pulumi.StringPtrOutput)
 }
 
+// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+func (o ParserConfigOutput) Version() ParserConfigVersionPtrOutput {
+	return o.ApplyT(func(v ParserConfig) *ParserConfigVersion { return v.Version }).(ParserConfigVersionPtrOutput)
+}
+
 type ParserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ParserConfigPtrOutput) ElementType() reflect.Type {
@@ -3608,6 +3617,16 @@ func (o ParserConfigPtrOutput) SegmentTerminator() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+func (o ParserConfigPtrOutput) Version() ParserConfigVersionPtrOutput {
+	return o.ApplyT(func(v *ParserConfig) *ParserConfigVersion {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(ParserConfigVersionPtrOutput)
+}
+
 // The configuration for the parser. It determines how the server parses the messages.
 type ParserConfigResponse struct {
 	// Determines whether messages with no header are allowed.
@@ -3616,6 +3635,8 @@ type ParserConfigResponse struct {
 	Schema SchemaPackageResponse `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator string `pulumi:"segmentTerminator"`
+	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	Version string `pulumi:"version"`
 }
 
 // ParserConfigResponseInput is an input type that accepts ParserConfigResponseArgs and ParserConfigResponseOutput values.
@@ -3637,6 +3658,8 @@ type ParserConfigResponseArgs struct {
 	Schema SchemaPackageResponseInput `pulumi:"schema"`
 	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator pulumi.StringInput `pulumi:"segmentTerminator"`
+	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (ParserConfigResponseArgs) ElementType() reflect.Type {
@@ -3732,6 +3755,11 @@ func (o ParserConfigResponseOutput) SegmentTerminator() pulumi.StringOutput {
 	return o.ApplyT(func(v ParserConfigResponse) string { return v.SegmentTerminator }).(pulumi.StringOutput)
 }
 
+// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+func (o ParserConfigResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ParserConfigResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
 type ParserConfigResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (ParserConfigResponsePtrOutput) ElementType() reflect.Type {
@@ -3783,6 +3811,16 @@ func (o ParserConfigResponsePtrOutput) SegmentTerminator() pulumi.StringPtrOutpu
 			return nil
 		}
 		return &v.SegmentTerminator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+func (o ParserConfigResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParserConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4237,6 +4275,8 @@ type SchemaPackage struct {
 	SchematizedParsingType *SchemaPackageSchematizedParsingType `pulumi:"schematizedParsingType"`
 	// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
 	Types []Hl7TypesConfig `pulumi:"types"`
+	// Determines how unexpected segments (segments not matched to the schema) are handled.
+	UnexpectedSegmentHandling *SchemaPackageUnexpectedSegmentHandling `pulumi:"unexpectedSegmentHandling"`
 }
 
 // SchemaPackageInput is an input type that accepts SchemaPackageArgs and SchemaPackageOutput values.
@@ -4260,6 +4300,8 @@ type SchemaPackageArgs struct {
 	SchematizedParsingType SchemaPackageSchematizedParsingTypePtrInput `pulumi:"schematizedParsingType"`
 	// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
 	Types Hl7TypesConfigArrayInput `pulumi:"types"`
+	// Determines how unexpected segments (segments not matched to the schema) are handled.
+	UnexpectedSegmentHandling SchemaPackageUnexpectedSegmentHandlingPtrInput `pulumi:"unexpectedSegmentHandling"`
 }
 
 func (SchemaPackageArgs) ElementType() reflect.Type {
@@ -4360,6 +4402,11 @@ func (o SchemaPackageOutput) Types() Hl7TypesConfigArrayOutput {
 	return o.ApplyT(func(v SchemaPackage) []Hl7TypesConfig { return v.Types }).(Hl7TypesConfigArrayOutput)
 }
 
+// Determines how unexpected segments (segments not matched to the schema) are handled.
+func (o SchemaPackageOutput) UnexpectedSegmentHandling() SchemaPackageUnexpectedSegmentHandlingPtrOutput {
+	return o.ApplyT(func(v SchemaPackage) *SchemaPackageUnexpectedSegmentHandling { return v.UnexpectedSegmentHandling }).(SchemaPackageUnexpectedSegmentHandlingPtrOutput)
+}
+
 type SchemaPackagePtrOutput struct{ *pulumi.OutputState }
 
 func (SchemaPackagePtrOutput) ElementType() reflect.Type {
@@ -4424,6 +4471,16 @@ func (o SchemaPackagePtrOutput) Types() Hl7TypesConfigArrayOutput {
 	}).(Hl7TypesConfigArrayOutput)
 }
 
+// Determines how unexpected segments (segments not matched to the schema) are handled.
+func (o SchemaPackagePtrOutput) UnexpectedSegmentHandling() SchemaPackageUnexpectedSegmentHandlingPtrOutput {
+	return o.ApplyT(func(v *SchemaPackage) *SchemaPackageUnexpectedSegmentHandling {
+		if v == nil {
+			return nil
+		}
+		return v.UnexpectedSegmentHandling
+	}).(SchemaPackageUnexpectedSegmentHandlingPtrOutput)
+}
+
 // A schema package contains a set of schemas and type definitions.
 type SchemaPackageResponse struct {
 	// Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
@@ -4434,6 +4491,8 @@ type SchemaPackageResponse struct {
 	SchematizedParsingType string `pulumi:"schematizedParsingType"`
 	// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
 	Types []Hl7TypesConfigResponse `pulumi:"types"`
+	// Determines how unexpected segments (segments not matched to the schema) are handled.
+	UnexpectedSegmentHandling string `pulumi:"unexpectedSegmentHandling"`
 }
 
 // SchemaPackageResponseInput is an input type that accepts SchemaPackageResponseArgs and SchemaPackageResponseOutput values.
@@ -4457,6 +4516,8 @@ type SchemaPackageResponseArgs struct {
 	SchematizedParsingType pulumi.StringInput `pulumi:"schematizedParsingType"`
 	// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
 	Types Hl7TypesConfigResponseArrayInput `pulumi:"types"`
+	// Determines how unexpected segments (segments not matched to the schema) are handled.
+	UnexpectedSegmentHandling pulumi.StringInput `pulumi:"unexpectedSegmentHandling"`
 }
 
 func (SchemaPackageResponseArgs) ElementType() reflect.Type {
@@ -4557,6 +4618,11 @@ func (o SchemaPackageResponseOutput) Types() Hl7TypesConfigResponseArrayOutput {
 	return o.ApplyT(func(v SchemaPackageResponse) []Hl7TypesConfigResponse { return v.Types }).(Hl7TypesConfigResponseArrayOutput)
 }
 
+// Determines how unexpected segments (segments not matched to the schema) are handled.
+func (o SchemaPackageResponseOutput) UnexpectedSegmentHandling() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaPackageResponse) string { return v.UnexpectedSegmentHandling }).(pulumi.StringOutput)
+}
+
 type SchemaPackageResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (SchemaPackageResponsePtrOutput) ElementType() reflect.Type {
@@ -4619,6 +4685,16 @@ func (o SchemaPackageResponsePtrOutput) Types() Hl7TypesConfigResponseArrayOutpu
 		}
 		return v.Types
 	}).(Hl7TypesConfigResponseArrayOutput)
+}
+
+// Determines how unexpected segments (segments not matched to the schema) are handled.
+func (o SchemaPackageResponsePtrOutput) UnexpectedSegmentHandling() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaPackageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UnexpectedSegmentHandling
+	}).(pulumi.StringPtrOutput)
 }
 
 // The content of an HL7v2 message in a structured format as specified by a schema.
@@ -6126,6 +6202,97 @@ func (o VersionSourceResponseArrayOutput) Index(i pulumi.IntInput) VersionSource
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AttributeInput)(nil)).Elem(), AttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttributeArrayInput)(nil)).Elem(), AttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttributeResponseInput)(nil)).Elem(), AttributeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttributeResponseArrayInput)(nil)).Elem(), AttributeResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldInput)(nil)).Elem(), FieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldArrayInput)(nil)).Elem(), FieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldResponseInput)(nil)).Elem(), FieldResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldResponseArrayInput)(nil)).Elem(), FieldResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1ConsentPolicyInput)(nil)).Elem(), GoogleCloudHealthcareV1ConsentPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1ConsentPolicyArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1ConsentPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1ConsentPolicyResponseInput)(nil)).Elem(), GoogleCloudHealthcareV1ConsentPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1ConsentPolicyResponseArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1ConsentPolicyResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationPtrInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationResponseInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7SchemaConfigInput)(nil)).Elem(), Hl7SchemaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7SchemaConfigArrayInput)(nil)).Elem(), Hl7SchemaConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7SchemaConfigResponseInput)(nil)).Elem(), Hl7SchemaConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7SchemaConfigResponseArrayInput)(nil)).Elem(), Hl7SchemaConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7TypesConfigInput)(nil)).Elem(), Hl7TypesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7TypesConfigArrayInput)(nil)).Elem(), Hl7TypesConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7TypesConfigResponseInput)(nil)).Elem(), Hl7TypesConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7TypesConfigResponseArrayInput)(nil)).Elem(), Hl7TypesConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7V2NotificationConfigInput)(nil)).Elem(), Hl7V2NotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7V2NotificationConfigArrayInput)(nil)).Elem(), Hl7V2NotificationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7V2NotificationConfigResponseInput)(nil)).Elem(), Hl7V2NotificationConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7V2NotificationConfigResponseArrayInput)(nil)).Elem(), Hl7V2NotificationConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageInput)(nil)).Elem(), ImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImagePtrInput)(nil)).Elem(), ImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageArrayInput)(nil)).Elem(), ImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageResponseInput)(nil)).Elem(), ImageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageResponsePtrInput)(nil)).Elem(), ImageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageResponseArrayInput)(nil)).Elem(), ImageResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigInput)(nil)).Elem(), NotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPtrInput)(nil)).Elem(), NotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigResponseInput)(nil)).Elem(), NotificationConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigResponsePtrInput)(nil)).Elem(), NotificationConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParsedDataResponseInput)(nil)).Elem(), ParsedDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParsedDataResponsePtrInput)(nil)).Elem(), ParsedDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigInput)(nil)).Elem(), ParserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigPtrInput)(nil)).Elem(), ParserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigResponseInput)(nil)).Elem(), ParserConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigResponsePtrInput)(nil)).Elem(), ParserConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdInput)(nil)).Elem(), PatientIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdArrayInput)(nil)).Elem(), PatientIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdResponseInput)(nil)).Elem(), PatientIdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdResponseArrayInput)(nil)).Elem(), PatientIdResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigInput)(nil)).Elem(), SchemaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigPtrInput)(nil)).Elem(), SchemaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigResponseInput)(nil)).Elem(), SchemaConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackageInput)(nil)).Elem(), SchemaPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackagePtrInput)(nil)).Elem(), SchemaPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackageResponseInput)(nil)).Elem(), SchemaPackageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackageResponsePtrInput)(nil)).Elem(), SchemaPackageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchematizedDataInput)(nil)).Elem(), SchematizedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchematizedDataPtrInput)(nil)).Elem(), SchematizedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchematizedDataResponseInput)(nil)).Elem(), SchematizedDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchematizedDataResponsePtrInput)(nil)).Elem(), SchematizedDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentResponseInput)(nil)).Elem(), SegmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentResponseArrayInput)(nil)).Elem(), SegmentResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SignatureInput)(nil)).Elem(), SignatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SignaturePtrInput)(nil)).Elem(), SignatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SignatureResponseInput)(nil)).Elem(), SignatureResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SignatureResponsePtrInput)(nil)).Elem(), SignatureResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamConfigInput)(nil)).Elem(), StreamConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamConfigArrayInput)(nil)).Elem(), StreamConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamConfigResponseInput)(nil)).Elem(), StreamConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamConfigResponseArrayInput)(nil)).Elem(), StreamConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TypeInput)(nil)).Elem(), TypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TypeArrayInput)(nil)).Elem(), TypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TypeResponseInput)(nil)).Elem(), TypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TypeResponseArrayInput)(nil)).Elem(), TypeResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VersionSourceInput)(nil)).Elem(), VersionSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VersionSourceArrayInput)(nil)).Elem(), VersionSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VersionSourceResponseInput)(nil)).Elem(), VersionSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VersionSourceResponseArrayInput)(nil)).Elem(), VersionSourceResponseArray{})
 	pulumi.RegisterOutputType(AttributeOutput{})
 	pulumi.RegisterOutputType(AttributeArrayOutput{})
 	pulumi.RegisterOutputType(AttributeResponseOutput{})

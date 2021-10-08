@@ -1206,6 +1206,20 @@ func (o GoogleTypeExprResponseOutput) Title() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecResponseInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecResponsePtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprInput)(nil)).Elem(), GoogleTypeExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprPtrInput)(nil)).Elem(), GoogleTypeExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprResponseInput)(nil)).Elem(), GoogleTypeExprResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput{})

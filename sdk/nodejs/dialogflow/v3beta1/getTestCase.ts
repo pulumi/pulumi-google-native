@@ -65,3 +65,14 @@ export interface GetTestCaseResult {
      */
     readonly testConfig: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TestConfigResponse;
 }
+
+export function getTestCaseOutput(args: GetTestCaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestCaseResult> {
+    return pulumi.output(args).apply(a => getTestCase(a, opts))
+}
+
+export interface GetTestCaseOutputArgs {
+    agentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    testCaseId: pulumi.Input<string>;
+}

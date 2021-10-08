@@ -59,3 +59,13 @@ export interface GetGlossaryResult {
      */
     readonly submitTime: string;
 }
+
+export function getGlossaryOutput(args: GetGlossaryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlossaryResult> {
+    return pulumi.output(args).apply(a => getGlossary(a, opts))
+}
+
+export interface GetGlossaryOutputArgs {
+    glossaryId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

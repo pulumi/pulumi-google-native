@@ -95,3 +95,13 @@ export interface GetServiceAttachmentResult {
      */
     readonly targetService: string;
 }
+
+export function getServiceAttachmentOutput(args: GetServiceAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceAttachmentResult> {
+    return pulumi.output(args).apply(a => getServiceAttachment(a, opts))
+}
+
+export interface GetServiceAttachmentOutputArgs {
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    serviceAttachment: pulumi.Input<string>;
+}

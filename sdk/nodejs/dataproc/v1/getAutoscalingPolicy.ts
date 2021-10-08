@@ -44,3 +44,13 @@ export interface GetAutoscalingPolicyResult {
      */
     readonly workerConfig: outputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfigResponse;
 }
+
+export function getAutoscalingPolicyOutput(args: GetAutoscalingPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoscalingPolicyResult> {
+    return pulumi.output(args).apply(a => getAutoscalingPolicy(a, opts))
+}
+
+export interface GetAutoscalingPolicyOutputArgs {
+    autoscalingPolicyId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

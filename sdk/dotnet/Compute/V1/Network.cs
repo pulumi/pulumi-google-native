@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+        /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
         /// </summary>
         [Output("mtu")]
         public Output<int> Mtu { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+        /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }

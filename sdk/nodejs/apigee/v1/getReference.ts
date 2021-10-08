@@ -46,3 +46,13 @@ export interface GetReferenceResult {
      */
     readonly resourceType: string;
 }
+
+export function getReferenceOutput(args: GetReferenceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceResult> {
+    return pulumi.output(args).apply(a => getReference(a, opts))
+}
+
+export interface GetReferenceOutputArgs {
+    environmentId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    referenceId: pulumi.Input<string>;
+}

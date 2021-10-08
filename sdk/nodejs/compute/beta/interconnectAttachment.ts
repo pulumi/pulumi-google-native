@@ -132,6 +132,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly router!: pulumi.Output<string>;
     /**
+     * Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+     */
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -191,6 +195,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["operationalStatus"] = undefined /*out*/;
             inputs["privateInterconnectInfo"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         } else {
@@ -218,6 +223,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["privateInterconnectInfo"] = undefined /*out*/;
             inputs["region"] = undefined /*out*/;
             inputs["router"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;

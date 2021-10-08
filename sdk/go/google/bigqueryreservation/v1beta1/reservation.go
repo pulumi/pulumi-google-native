@@ -16,7 +16,7 @@ type Reservation struct {
 
 	// Creation time of the reservation.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
-	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
 	IgnoreIdleSlots pulumi.BoolOutput `pulumi:"ignoreIdleSlots"`
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -65,7 +65,7 @@ func (ReservationState) ElementType() reflect.Type {
 }
 
 type reservationArgs struct {
-	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
 	IgnoreIdleSlots *bool   `pulumi:"ignoreIdleSlots"`
 	Location        *string `pulumi:"location"`
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
@@ -78,7 +78,7 @@ type reservationArgs struct {
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
-	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
 	IgnoreIdleSlots pulumi.BoolPtrInput
 	Location        pulumi.StringPtrInput
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.

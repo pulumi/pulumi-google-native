@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetTableResult:
-    def __init__(__self__, clustering=None, creation_time=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, model=None, num_bytes=None, num_long_term_bytes=None, num_physical_bytes=None, num_rows=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
+    def __init__(__self__, clustering=None, creation_time=None, default_collation=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, model=None, num_bytes=None, num_long_term_bytes=None, num_physical_bytes=None, num_rows=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
         if clustering and not isinstance(clustering, dict):
             raise TypeError("Expected argument 'clustering' to be a dict")
         pulumi.set(__self__, "clustering", clustering)
         if creation_time and not isinstance(creation_time, str):
             raise TypeError("Expected argument 'creation_time' to be a str")
         pulumi.set(__self__, "creation_time", creation_time)
+        if default_collation and not isinstance(default_collation, str):
+            raise TypeError("Expected argument 'default_collation' to be a str")
+        pulumi.set(__self__, "default_collation", default_collation)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -119,6 +122,14 @@ class GetTableResult:
         The time when this table was created, in milliseconds since the epoch.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="defaultCollation")
+    def default_collation(self) -> str:
+        """
+        The default collation of the table.
+        """
+        return pulumi.get(self, "default_collation")
 
     @property
     @pulumi.getter
@@ -337,6 +348,7 @@ class AwaitableGetTableResult(GetTableResult):
         return GetTableResult(
             clustering=self.clustering,
             creation_time=self.creation_time,
+            default_collation=self.default_collation,
             description=self.description,
             encryption_configuration=self.encryption_configuration,
             etag=self.etag,
@@ -387,6 +399,7 @@ def get_table(dataset_id: Optional[str] = None,
     return AwaitableGetTableResult(
         clustering=__ret__.clustering,
         creation_time=__ret__.creation_time,
+        default_collation=__ret__.default_collation,
         description=__ret__.description,
         encryption_configuration=__ret__.encryption_configuration,
         etag=__ret__.etag,

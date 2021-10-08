@@ -122,3 +122,13 @@ export interface GetVpnTunnelResult {
      */
     readonly vpnGatewayInterface: number;
 }
+
+export function getVpnTunnelOutput(args: GetVpnTunnelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpnTunnelResult> {
+    return pulumi.output(args).apply(a => getVpnTunnel(a, opts))
+}
+
+export interface GetVpnTunnelOutputArgs {
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    vpnTunnel: pulumi.Input<string>;
+}

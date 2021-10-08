@@ -144,7 +144,7 @@ def get_github_enterprise_config(config_id: Optional[str] = None,
                                  project_id: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGithubEnterpriseConfigResult:
     """
-    Retrieve a GitHubEnterpriseConfig. This API is experimental.
+    Retrieve a GitHubEnterpriseConfig.
     """
     __args__ = dict()
     __args__['configId'] = config_id
@@ -178,6 +178,6 @@ def get_github_enterprise_config_output(config_id: Optional[pulumi.Input[Optiona
                                         project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGithubEnterpriseConfigResult]:
     """
-    Retrieve a GitHubEnterpriseConfig. This API is experimental.
+    Retrieve a GitHubEnterpriseConfig.
     """
     ...

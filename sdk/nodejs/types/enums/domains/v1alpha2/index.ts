@@ -56,6 +56,14 @@ export const DsRecordAlgorithm = {
      */
     AlgorithmUnspecified: "ALGORITHM_UNSPECIFIED",
     /**
+     * RSA/MD5. Cannot be used for new deployments.
+     */
+    Rsamd5: "RSAMD5",
+    /**
+     * Diffie-Hellman. Cannot be used for new deployments.
+     */
+    Dh: "DH",
+    /**
      * DSA/SHA1. Not recommended for new deployments.
      */
     Dsa: "DSA",
@@ -103,6 +111,18 @@ export const DsRecordAlgorithm = {
      * Ed448.
      */
     Ed448: "ED448",
+    /**
+     * Reserved for Indirect Keys. Cannot be used for new deployments.
+     */
+    Indirect: "INDIRECT",
+    /**
+     * Private algorithm. Cannot be used for new deployments.
+     */
+    Privatedns: "PRIVATEDNS",
+    /**
+     * Private algorithm OID. Cannot be used for new deployments.
+     */
+    Privateoid: "PRIVATEOID",
 } as const;
 
 /**

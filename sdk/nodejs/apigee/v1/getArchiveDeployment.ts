@@ -54,3 +54,13 @@ export interface GetArchiveDeploymentResult {
      */
     readonly updatedAt: string;
 }
+
+export function getArchiveDeploymentOutput(args: GetArchiveDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetArchiveDeploymentResult> {
+    return pulumi.output(args).apply(a => getArchiveDeployment(a, opts))
+}
+
+export interface GetArchiveDeploymentOutputArgs {
+    archiveDeploymentId: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

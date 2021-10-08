@@ -582,6 +582,14 @@ func (o LogExclusionResponseArrayOutput) Index(i pulumi.IntInput) LogExclusionRe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryOptionsInput)(nil)).Elem(), BigQueryOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryOptionsPtrInput)(nil)).Elem(), BigQueryOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryOptionsResponseInput)(nil)).Elem(), BigQueryOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryOptionsResponsePtrInput)(nil)).Elem(), BigQueryOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogExclusionInput)(nil)).Elem(), LogExclusionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogExclusionArrayInput)(nil)).Elem(), LogExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogExclusionResponseInput)(nil)).Elem(), LogExclusionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogExclusionResponseArrayInput)(nil)).Elem(), LogExclusionResponseArray{})
 	pulumi.RegisterOutputType(BigQueryOptionsOutput{})
 	pulumi.RegisterOutputType(BigQueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(BigQueryOptionsResponseOutput{})

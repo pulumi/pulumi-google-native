@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:pubsublite/v1:Reservation":
+		r = &Reservation{}
 	case "google-native:pubsublite/v1:Subscription":
 		r = &Subscription{}
 	case "google-native:pubsublite/v1:Topic":

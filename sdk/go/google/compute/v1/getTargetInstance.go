@@ -39,6 +39,8 @@ type LookupTargetInstanceResult struct {
 	Name string `pulumi:"name"`
 	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
 	NatPolicy string `pulumi:"natPolicy"`
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+	Network string `pulumi:"network"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -106,6 +108,11 @@ func (o LookupTargetInstanceResultOutput) Name() pulumi.StringOutput {
 // NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
 func (o LookupTargetInstanceResultOutput) NatPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.NatPolicy }).(pulumi.StringOutput)
+}
+
+// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+func (o LookupTargetInstanceResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.Network }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

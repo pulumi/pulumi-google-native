@@ -42,3 +42,13 @@ export interface GetDebugTokenResult {
      */
     readonly token: string;
 }
+
+export function getDebugTokenOutput(args: GetDebugTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDebugTokenResult> {
+    return pulumi.output(args).apply(a => getDebugToken(a, opts))
+}
+
+export interface GetDebugTokenOutputArgs {
+    appId: pulumi.Input<string>;
+    debugTokenId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

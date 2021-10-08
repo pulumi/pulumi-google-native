@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
     /// <summary>
-    /// This reservation type allows to pre allocate specific instance configuration.
+    /// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
     /// </summary>
     public sealed class AllocationSpecificSKUReservationArgs : Pulumi.ResourceArgs
     {

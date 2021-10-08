@@ -45,3 +45,14 @@ export interface GetRegionClusterIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getRegionClusterIamPolicyOutput(args: GetRegionClusterIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionClusterIamPolicyResult> {
+    return pulumi.output(args).apply(a => getRegionClusterIamPolicy(a, opts))
+}
+
+export interface GetRegionClusterIamPolicyOutputArgs {
+    clusterId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    regionId: pulumi.Input<string>;
+}

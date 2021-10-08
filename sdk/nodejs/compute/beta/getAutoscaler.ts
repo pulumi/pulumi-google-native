@@ -83,3 +83,13 @@ export interface GetAutoscalerResult {
      */
     readonly zone: string;
 }
+
+export function getAutoscalerOutput(args: GetAutoscalerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoscalerResult> {
+    return pulumi.output(args).apply(a => getAutoscaler(a, opts))
+}
+
+export interface GetAutoscalerOutputArgs {
+    autoscaler: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
+}

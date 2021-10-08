@@ -64,7 +64,7 @@ type LookupDeviceResult struct {
 	Meid string `pulumi:"meid"`
 	// Model name of device. Example: Pixel 3.
 	Model string `pulumi:"model"`
-	// [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
+	// [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}`, where device is the unique id assigned to the Device.
 	Name string `pulumi:"name"`
 	// Mobile or network operator of device, if available.
 	NetworkOperator string `pulumi:"networkOperator"`
@@ -213,7 +213,7 @@ func (o LookupDeviceResultOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Model }).(pulumi.StringOutput)
 }
 
-// [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
+// [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}`, where device is the unique id assigned to the Device.
 func (o LookupDeviceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -15,7 +15,7 @@ import (
 type Workload struct {
 	pulumi.CustomResourceState
 
-	// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	// Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
 	// Immutable. Compliance Regime associated with this workload.
 	ComplianceRegime pulumi.StringOutput `pulumi:"complianceRegime"`
@@ -46,9 +46,6 @@ func NewWorkload(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BillingAccount == nil {
-		return nil, errors.New("invalid value for required argument 'BillingAccount'")
-	}
 	if args.ComplianceRegime == nil {
 		return nil, errors.New("invalid value for required argument 'ComplianceRegime'")
 	}
@@ -90,8 +87,8 @@ func (WorkloadState) ElementType() reflect.Type {
 }
 
 type workloadArgs struct {
-	// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
-	BillingAccount string `pulumi:"billingAccount"`
+	// Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	BillingAccount *string `pulumi:"billingAccount"`
 	// Immutable. Compliance Regime associated with this workload.
 	ComplianceRegime WorkloadComplianceRegime `pulumi:"complianceRegime"`
 	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
@@ -115,8 +112,8 @@ type workloadArgs struct {
 
 // The set of arguments for constructing a Workload resource.
 type WorkloadArgs struct {
-	// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
-	BillingAccount pulumi.StringInput
+	// Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	BillingAccount pulumi.StringPtrInput
 	// Immutable. Compliance Regime associated with this workload.
 	ComplianceRegime WorkloadComplianceRegimeInput
 	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload

@@ -160,6 +160,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
+        /// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+        /// </summary>
+        public readonly ImmutableArray<string> ServiceBindings;
+        /// <summary>
+        /// URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. If used with a backend service, must reference a global policy. If used with a regional backend service, must reference a regional policy.
+        /// </summary>
+        public readonly string ServiceLbPolicy;
+        /// <summary>
         /// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         public readonly string SessionAffinity;
@@ -237,6 +245,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string selfLinkWithId,
 
+            ImmutableArray<string> serviceBindings,
+
+            string serviceLbPolicy,
+
             string sessionAffinity,
 
             Outputs.SubsettingResponse subsetting,
@@ -276,6 +288,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             SecuritySettings = securitySettings;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
+            ServiceBindings = serviceBindings;
+            ServiceLbPolicy = serviceLbPolicy;
             SessionAffinity = sessionAffinity;
             Subsetting = subsetting;
             TimeoutSec = timeoutSec;

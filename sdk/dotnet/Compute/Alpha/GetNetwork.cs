@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+        /// </summary>
+        public readonly bool EnableUlaInternalIpv6;
+        /// <summary>
         /// URL of the firewall policy the network is associated with.
         /// </summary>
         public readonly string FirewallPolicy;
@@ -57,17 +61,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string GatewayIPv4;
         /// <summary>
+        /// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+        /// </summary>
+        public readonly string InternalIpv6Range;
+        /// <summary>
         /// Type of the resource. Always compute#network for networks.
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+        /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
         /// </summary>
         public readonly int Mtu;
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         /// </summary>
         public readonly string Name;
+        public readonly string NetworkFirewallPolicyEnforcementOrder;
         /// <summary>
         /// A list of network peerings for the resource.
         /// </summary>
@@ -97,15 +106,21 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string description,
 
+            bool enableUlaInternalIpv6,
+
             string firewallPolicy,
 
             string gatewayIPv4,
+
+            string internalIpv6Range,
 
             string kind,
 
             int mtu,
 
             string name,
+
+            string networkFirewallPolicyEnforcementOrder,
 
             ImmutableArray<Outputs.NetworkPeeringResponse> peerings,
 
@@ -120,11 +135,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             AutoCreateSubnetworks = autoCreateSubnetworks;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            EnableUlaInternalIpv6 = enableUlaInternalIpv6;
             FirewallPolicy = firewallPolicy;
             GatewayIPv4 = gatewayIPv4;
+            InternalIpv6Range = internalIpv6Range;
             Kind = kind;
             Mtu = mtu;
             Name = name;
+            NetworkFirewallPolicyEnforcementOrder = networkFirewallPolicyEnforcementOrder;
             Peerings = peerings;
             RoutingConfig = routingConfig;
             SelfLink = selfLink;

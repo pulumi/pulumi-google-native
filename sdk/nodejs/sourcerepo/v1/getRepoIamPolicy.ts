@@ -47,3 +47,13 @@ export interface GetRepoIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getRepoIamPolicyOutput(args: GetRepoIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepoIamPolicyResult> {
+    return pulumi.output(args).apply(a => getRepoIamPolicy(a, opts))
+}
+
+export interface GetRepoIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    repoId: pulumi.Input<string>;
+}

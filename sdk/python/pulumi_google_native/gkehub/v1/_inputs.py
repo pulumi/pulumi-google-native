@@ -18,7 +18,9 @@ __all__ = [
     'ExprArgs',
     'GkeClusterArgs',
     'MembershipEndpointArgs',
+    'MultiCloudClusterArgs',
     'MultiClusterIngressFeatureSpecArgs',
+    'OnPremClusterArgs',
 ]
 
 @pulumi.input_type
@@ -320,25 +322,81 @@ class GkeClusterArgs:
 @pulumi.input_type
 class MembershipEndpointArgs:
     def __init__(__self__, *,
-                 gke_cluster: Optional[pulumi.Input['GkeClusterArgs']] = None):
+                 gke_cluster: Optional[pulumi.Input['GkeClusterArgs']] = None,
+                 multi_cloud_cluster: Optional[pulumi.Input['MultiCloudClusterArgs']] = None,
+                 on_prem_cluster: Optional[pulumi.Input['OnPremClusterArgs']] = None):
         """
         MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
-        :param pulumi.Input['GkeClusterArgs'] gke_cluster: Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+        :param pulumi.Input['GkeClusterArgs'] gke_cluster: Optional. Specific information for a GKE-on-GCP cluster.
+        :param pulumi.Input['MultiCloudClusterArgs'] multi_cloud_cluster: Optional. Specific information for a GKE Multi-Cloud cluster.
+        :param pulumi.Input['OnPremClusterArgs'] on_prem_cluster: Optional. Specific information for a GKE On-Prem cluster.
         """
         if gke_cluster is not None:
             pulumi.set(__self__, "gke_cluster", gke_cluster)
+        if multi_cloud_cluster is not None:
+            pulumi.set(__self__, "multi_cloud_cluster", multi_cloud_cluster)
+        if on_prem_cluster is not None:
+            pulumi.set(__self__, "on_prem_cluster", on_prem_cluster)
 
     @property
     @pulumi.getter(name="gkeCluster")
     def gke_cluster(self) -> Optional[pulumi.Input['GkeClusterArgs']]:
         """
-        Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+        Optional. Specific information for a GKE-on-GCP cluster.
         """
         return pulumi.get(self, "gke_cluster")
 
     @gke_cluster.setter
     def gke_cluster(self, value: Optional[pulumi.Input['GkeClusterArgs']]):
         pulumi.set(self, "gke_cluster", value)
+
+    @property
+    @pulumi.getter(name="multiCloudCluster")
+    def multi_cloud_cluster(self) -> Optional[pulumi.Input['MultiCloudClusterArgs']]:
+        """
+        Optional. Specific information for a GKE Multi-Cloud cluster.
+        """
+        return pulumi.get(self, "multi_cloud_cluster")
+
+    @multi_cloud_cluster.setter
+    def multi_cloud_cluster(self, value: Optional[pulumi.Input['MultiCloudClusterArgs']]):
+        pulumi.set(self, "multi_cloud_cluster", value)
+
+    @property
+    @pulumi.getter(name="onPremCluster")
+    def on_prem_cluster(self) -> Optional[pulumi.Input['OnPremClusterArgs']]:
+        """
+        Optional. Specific information for a GKE On-Prem cluster.
+        """
+        return pulumi.get(self, "on_prem_cluster")
+
+    @on_prem_cluster.setter
+    def on_prem_cluster(self, value: Optional[pulumi.Input['OnPremClusterArgs']]):
+        pulumi.set(self, "on_prem_cluster", value)
+
+
+@pulumi.input_type
+class MultiCloudClusterArgs:
+    def __init__(__self__, *,
+                 resource_link: Optional[pulumi.Input[str]] = None):
+        """
+        MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+        :param pulumi.Input[str] resource_link: Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+        """
+        if resource_link is not None:
+            pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+        """
+        return pulumi.get(self, "resource_link")
+
+    @resource_link.setter
+    def resource_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_link", value)
 
 
 @pulumi.input_type
@@ -363,5 +421,45 @@ class MultiClusterIngressFeatureSpecArgs:
     @config_membership.setter
     def config_membership(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "config_membership", value)
+
+
+@pulumi.input_type
+class OnPremClusterArgs:
+    def __init__(__self__, *,
+                 admin_cluster: Optional[pulumi.Input[bool]] = None,
+                 resource_link: Optional[pulumi.Input[str]] = None):
+        """
+        OnPremCluster contains information specific to GKE On-Prem clusters.
+        :param pulumi.Input[bool] admin_cluster: Immutable. Whether the cluster is an admin cluster.
+        :param pulumi.Input[str] resource_link: Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        """
+        if admin_cluster is not None:
+            pulumi.set(__self__, "admin_cluster", admin_cluster)
+        if resource_link is not None:
+            pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="adminCluster")
+    def admin_cluster(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Immutable. Whether the cluster is an admin cluster.
+        """
+        return pulumi.get(self, "admin_cluster")
+
+    @admin_cluster.setter
+    def admin_cluster(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "admin_cluster", value)
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        """
+        return pulumi.get(self, "resource_link")
+
+    @resource_link.setter
+    def resource_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_link", value)
 
 

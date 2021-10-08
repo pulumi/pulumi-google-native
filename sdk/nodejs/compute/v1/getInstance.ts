@@ -170,3 +170,13 @@ export interface GetInstanceResult {
      */
     readonly zone: string;
 }
+
+export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
+    return pulumi.output(args).apply(a => getInstance(a, opts))
+}
+
+export interface GetInstanceOutputArgs {
+    instance: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
+}

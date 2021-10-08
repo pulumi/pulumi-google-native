@@ -53,3 +53,16 @@ export interface GetServiceDatabaseTableIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getServiceDatabaseTableIamPolicyOutput(args: GetServiceDatabaseTableIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceDatabaseTableIamPolicyResult> {
+    return pulumi.output(args).apply(a => getServiceDatabaseTableIamPolicy(a, opts))
+}
+
+export interface GetServiceDatabaseTableIamPolicyOutputArgs {
+    databaseId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
+    tableId: pulumi.Input<string>;
+}

@@ -46,3 +46,11 @@ export interface GetFolderResult {
      */
     readonly parent: string;
 }
+
+export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
+    return pulumi.output(args).apply(a => getFolder(a, opts))
+}
+
+export interface GetFolderOutputArgs {
+    folderId: pulumi.Input<string>;
+}

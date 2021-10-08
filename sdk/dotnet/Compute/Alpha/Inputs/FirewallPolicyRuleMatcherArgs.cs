@@ -15,6 +15,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// </summary>
     public sealed class FirewallPolicyRuleMatcherArgs : Pulumi.ResourceArgs
     {
+        [Input("destAddressGroups")]
+        private InputList<string>? _destAddressGroups;
+
+        /// <summary>
+        /// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+        /// </summary>
+        public InputList<string> DestAddressGroups
+        {
+            get => _destAddressGroups ?? (_destAddressGroups = new InputList<string>());
+            set => _destAddressGroups = value;
+        }
+
         [Input("destIpRanges")]
         private InputList<string>? _destIpRanges;
 
@@ -37,6 +49,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         {
             get => _layer4Configs ?? (_layer4Configs = new InputList<Inputs.FirewallPolicyRuleMatcherLayer4ConfigArgs>());
             set => _layer4Configs = value;
+        }
+
+        [Input("srcAddressGroups")]
+        private InputList<string>? _srcAddressGroups;
+
+        /// <summary>
+        /// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+        /// </summary>
+        public InputList<string> SrcAddressGroups
+        {
+            get => _srcAddressGroups ?? (_srcAddressGroups = new InputList<string>());
+            set => _srcAddressGroups = value;
         }
 
         [Input("srcIpRanges")]

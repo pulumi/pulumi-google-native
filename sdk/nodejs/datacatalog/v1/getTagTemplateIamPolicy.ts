@@ -43,3 +43,13 @@ export interface GetTagTemplateIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getTagTemplateIamPolicyOutput(args: GetTagTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagTemplateIamPolicyResult> {
+    return pulumi.output(args).apply(a => getTagTemplateIamPolicy(a, opts))
+}
+
+export interface GetTagTemplateIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    tagTemplateId: pulumi.Input<string>;
+}

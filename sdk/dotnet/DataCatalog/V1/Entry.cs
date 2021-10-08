@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<string> LinkedResource { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. 
+        /// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

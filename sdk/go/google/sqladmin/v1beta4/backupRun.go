@@ -24,27 +24,27 @@ type BackupRun struct {
 	DiskEncryptionConfiguration DiskEncryptionConfigurationResponseOutput `pulumi:"diskEncryptionConfiguration"`
 	// Encryption status specific to a backup.
 	DiskEncryptionStatus DiskEncryptionStatusResponseOutput `pulumi:"diskEncryptionStatus"`
-	// The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	EnqueuedTime pulumi.StringOutput `pulumi:"enqueuedTime"`
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
 	Error OperationErrorResponseOutput `pulumi:"error"`
 	// Name of the database instance.
 	Instance pulumi.StringOutput `pulumi:"instance"`
-	// This is always *sql#backupRun*.
+	// This is always **sql#backupRun**.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Location of the backups.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The URI of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// The status of this run.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	WindowStartTime pulumi.StringOutput `pulumi:"windowStartTime"`
 }
 
@@ -98,9 +98,9 @@ type backupRunArgs struct {
 	DiskEncryptionConfiguration *DiskEncryptionConfiguration `pulumi:"diskEncryptionConfiguration"`
 	// Encryption status specific to a backup.
 	DiskEncryptionStatus *DiskEncryptionStatus `pulumi:"diskEncryptionStatus"`
-	// The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	EndTime *string `pulumi:"endTime"`
-	// The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	EnqueuedTime *string `pulumi:"enqueuedTime"`
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
 	Error *OperationError `pulumi:"error"`
@@ -108,20 +108,20 @@ type backupRunArgs struct {
 	Id *string `pulumi:"id"`
 	// Name of the database instance.
 	Instance string `pulumi:"instance"`
-	// This is always *sql#backupRun*.
+	// This is always **sql#backupRun**.
 	Kind *string `pulumi:"kind"`
 	// Location of the backups.
 	Location *string `pulumi:"location"`
 	Project  *string `pulumi:"project"`
 	// The URI of this resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	StartTime *string `pulumi:"startTime"`
 	// The status of this run.
 	Status *BackupRunStatus `pulumi:"status"`
 	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type *BackupRunType `pulumi:"type"`
-	// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	WindowStartTime *string `pulumi:"windowStartTime"`
 }
 
@@ -135,9 +135,9 @@ type BackupRunArgs struct {
 	DiskEncryptionConfiguration DiskEncryptionConfigurationPtrInput
 	// Encryption status specific to a backup.
 	DiskEncryptionStatus DiskEncryptionStatusPtrInput
-	// The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	EndTime pulumi.StringPtrInput
-	// The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	EnqueuedTime pulumi.StringPtrInput
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
 	Error OperationErrorPtrInput
@@ -145,20 +145,20 @@ type BackupRunArgs struct {
 	Id pulumi.StringPtrInput
 	// Name of the database instance.
 	Instance pulumi.StringInput
-	// This is always *sql#backupRun*.
+	// This is always **sql#backupRun**.
 	Kind pulumi.StringPtrInput
 	// Location of the backups.
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
 	// The URI of this resource.
 	SelfLink pulumi.StringPtrInput
-	// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	StartTime pulumi.StringPtrInput
 	// The status of this run.
 	Status BackupRunStatusPtrInput
 	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type BackupRunTypePtrInput
-	// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
 	WindowStartTime pulumi.StringPtrInput
 }
 

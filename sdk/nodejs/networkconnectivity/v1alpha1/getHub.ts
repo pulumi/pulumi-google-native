@@ -56,3 +56,12 @@ export interface GetHubResult {
      */
     readonly updateTime: string;
 }
+
+export function getHubOutput(args: GetHubOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHubResult> {
+    return pulumi.output(args).apply(a => getHub(a, opts))
+}
+
+export interface GetHubOutputArgs {
+    hubId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

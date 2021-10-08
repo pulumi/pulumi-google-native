@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
     public partial class Tag : Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
+        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
+        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

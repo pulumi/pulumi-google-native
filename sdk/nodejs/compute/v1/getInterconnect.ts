@@ -105,6 +105,10 @@ export interface GetInterconnectResult {
      */
     readonly requestedLinkCount: number;
     /**
+     * Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+     */
+    readonly satisfiesPzs: boolean;
+    /**
      * Server-defined URL for the resource.
      */
     readonly selfLink: string;
@@ -112,4 +116,13 @@ export interface GetInterconnectResult {
      * The current state of Interconnect functionality, which can take one of the following values: - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect. 
      */
     readonly state: string;
+}
+
+export function getInterconnectOutput(args: GetInterconnectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterconnectResult> {
+    return pulumi.output(args).apply(a => getInterconnect(a, opts))
+}
+
+export interface GetInterconnectOutputArgs {
+    interconnect: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

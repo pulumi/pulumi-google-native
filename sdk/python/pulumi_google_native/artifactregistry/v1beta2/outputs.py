@@ -13,6 +13,7 @@ from ._enums import *
 __all__ = [
     'BindingResponse',
     'ExprResponse',
+    'MavenRepositoryConfigResponse',
 ]
 
 @pulumi.output_type
@@ -112,5 +113,57 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class MavenRepositoryConfigResponse(dict):
+    """
+    MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowSnapshotOverwrites":
+            suggest = "allow_snapshot_overwrites"
+        elif key == "versionPolicy":
+            suggest = "version_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MavenRepositoryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MavenRepositoryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MavenRepositoryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_snapshot_overwrites: bool,
+                 version_policy: str):
+        """
+        MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
+        :param bool allow_snapshot_overwrites: The repository with this flag will allow publishing the same snapshot versions.
+        :param str version_policy: Version policy defines the versions that the registry will accept.
+        """
+        pulumi.set(__self__, "allow_snapshot_overwrites", allow_snapshot_overwrites)
+        pulumi.set(__self__, "version_policy", version_policy)
+
+    @property
+    @pulumi.getter(name="allowSnapshotOverwrites")
+    def allow_snapshot_overwrites(self) -> bool:
+        """
+        The repository with this flag will allow publishing the same snapshot versions.
+        """
+        return pulumi.get(self, "allow_snapshot_overwrites")
+
+    @property
+    @pulumi.getter(name="versionPolicy")
+    def version_policy(self) -> str:
+        """
+        Version policy defines the versions that the registry will accept.
+        """
+        return pulumi.get(self, "version_policy")
 
 

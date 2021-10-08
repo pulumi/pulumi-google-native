@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Create an association between a GCP project and a GitHub Enterprise server. This API is experimental.
+// Create an association between a GCP project and a GitHub Enterprise server.
 type GithubEnterpriseConfig struct {
 	pulumi.CustomResourceState
 
@@ -81,6 +81,7 @@ type githubEnterpriseConfigArgs struct {
 	AppId string `pulumi:"appId"`
 	// Name to display for this config.
 	DisplayName *string `pulumi:"displayName"`
+	GheConfigId *string `pulumi:"gheConfigId"`
 	// The URL of the github enterprise host the configuration is for.
 	HostUrl  *string `pulumi:"hostUrl"`
 	Location *string `pulumi:"location"`
@@ -104,6 +105,7 @@ type GithubEnterpriseConfigArgs struct {
 	AppId pulumi.StringInput
 	// Name to display for this config.
 	DisplayName pulumi.StringPtrInput
+	GheConfigId pulumi.StringPtrInput
 	// The URL of the github enterprise host the configuration is for.
 	HostUrl  pulumi.StringPtrInput
 	Location pulumi.StringPtrInput

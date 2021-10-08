@@ -57,3 +57,14 @@ export interface GetNodeGroupIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getNodeGroupIamPolicyOutput(args: GetNodeGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeGroupIamPolicyResult> {
+    return pulumi.output(args).apply(a => getNodeGroupIamPolicy(a, opts))
+}
+
+export interface GetNodeGroupIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
+}

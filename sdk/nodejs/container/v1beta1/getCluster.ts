@@ -155,6 +155,10 @@ export interface GetClusterResult {
      */
     readonly masterAuthorizedNetworksConfig: outputs.container.v1beta1.MasterAuthorizedNetworksConfigResponse;
     /**
+     * Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+     */
+    readonly meshCertificates: outputs.container.v1beta1.MeshCertificatesResponse;
+    /**
      * Monitoring configuration for the cluster.
      */
     readonly monitoringConfig: outputs.container.v1beta1.MonitoringConfigResponse;
@@ -254,4 +258,14 @@ export interface GetClusterResult {
      * Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
      */
     readonly workloadIdentityConfig: outputs.container.v1beta1.WorkloadIdentityConfigResponse;
+}
+
+export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+export interface GetClusterOutputArgs {
+    clusterId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

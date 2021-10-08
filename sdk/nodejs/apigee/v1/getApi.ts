@@ -49,3 +49,12 @@ export interface GetApiResult {
      */
     readonly revision: string[];
 }
+
+export function getApiOutput(args: GetApiOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiResult> {
+    return pulumi.output(args).apply(a => getApi(a, opts))
+}
+
+export interface GetApiOutputArgs {
+    apiId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

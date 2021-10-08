@@ -31,7 +31,7 @@ class RepositoryFormat(str, Enum):
     """
     PYPI = "PYPI"
     """
-    PyPI package format.
+    PyPI package format. Deprecated, use PYTHON instead.
     """
     APT = "APT"
     """

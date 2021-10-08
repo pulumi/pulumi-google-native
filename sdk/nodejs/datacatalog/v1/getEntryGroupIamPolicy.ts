@@ -43,3 +43,13 @@ export interface GetEntryGroupIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getEntryGroupIamPolicyOutput(args: GetEntryGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntryGroupIamPolicyResult> {
+    return pulumi.output(args).apply(a => getEntryGroupIamPolicy(a, opts))
+}
+
+export interface GetEntryGroupIamPolicyOutputArgs {
+    entryGroupId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

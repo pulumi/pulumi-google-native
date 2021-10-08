@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
     public sealed class AlertStrategyResponse
     {
         /// <summary>
+        /// If an alert policy that was active has no data for this long, any open incidents will close
+        /// </summary>
+        public readonly string AutoClose;
+        /// <summary>
         /// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
         /// </summary>
         public readonly Outputs.NotificationRateLimitResponse NotificationRateLimit;
 
         [OutputConstructor]
-        private AlertStrategyResponse(Outputs.NotificationRateLimitResponse notificationRateLimit)
+        private AlertStrategyResponse(
+            string autoClose,
+
+            Outputs.NotificationRateLimitResponse notificationRateLimit)
         {
+            AutoClose = autoClose;
             NotificationRateLimit = notificationRateLimit;
         }
     }

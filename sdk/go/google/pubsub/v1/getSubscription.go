@@ -34,7 +34,7 @@ type LookupSubscriptionResult struct {
 	Detached bool `pulumi:"detached"`
 	// If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
 	EnableMessageOrdering bool `pulumi:"enableMessageOrdering"`
-	// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day.
+	// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
 	ExpirationPolicy ExpirationPolicyResponse `pulumi:"expirationPolicy"`
 	// An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
 	Filter string `pulumi:"filter"`
@@ -108,7 +108,7 @@ func (o LookupSubscriptionResultOutput) EnableMessageOrdering() pulumi.BoolOutpu
 	return o.ApplyT(func(v LookupSubscriptionResult) bool { return v.EnableMessageOrdering }).(pulumi.BoolOutput)
 }
 
-// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day.
+// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
 func (o LookupSubscriptionResultOutput) ExpirationPolicy() ExpirationPolicyResponseOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) ExpirationPolicyResponse { return v.ExpirationPolicy }).(ExpirationPolicyResponseOutput)
 }

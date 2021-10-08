@@ -59,7 +59,7 @@ class GetTagTemplateResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. 
+        The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
 

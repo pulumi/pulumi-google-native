@@ -62,6 +62,9 @@ export interface GetOrganizationResult {
      * Description of the Apigee organization.
      */
     readonly description: string;
+    /**
+     * Display name for the Apigee organization. Unused, but reserved for future use.
+     */
     readonly displayName: string;
     /**
      * List of environments in the Apigee organization.
@@ -103,4 +106,12 @@ export interface GetOrganizationResult {
      * Not used by Apigee.
      */
     readonly type: string;
+}
+
+export function getOrganizationOutput(args: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
+    return pulumi.output(args).apply(a => getOrganization(a, opts))
+}
+
+export interface GetOrganizationOutputArgs {
+    organizationId: pulumi.Input<string>;
 }

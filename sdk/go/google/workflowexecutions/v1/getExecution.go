@@ -31,6 +31,8 @@ type LookupExecutionArgs struct {
 type LookupExecutionResult struct {
 	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
 	Argument string `pulumi:"argument"`
+	// The call logging level associated to this execution.
+	CallLogLevel string `pulumi:"callLogLevel"`
 	// Marks the end of execution, successful or not.
 	EndTime string `pulumi:"endTime"`
 	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
@@ -85,6 +87,11 @@ func (o LookupExecutionResultOutput) ToLookupExecutionResultOutputWithContext(ct
 // Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
 func (o LookupExecutionResultOutput) Argument() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExecutionResult) string { return v.Argument }).(pulumi.StringOutput)
+}
+
+// The call logging level associated to this execution.
+func (o LookupExecutionResultOutput) CallLogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExecutionResult) string { return v.CallLogLevel }).(pulumi.StringOutput)
 }
 
 // Marks the end of execution, successful or not.

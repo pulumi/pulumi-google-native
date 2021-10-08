@@ -45,6 +45,8 @@ type LookupPhraseMatcherResult struct {
 	RoleMatch string `pulumi:"roleMatch"`
 	// The type of this phrase matcher.
 	Type string `pulumi:"type"`
+	// The most recent time at which the phrase matcher was updated.
+	UpdateTime string `pulumi:"updateTime"`
 	// The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
 	VersionTag string `pulumi:"versionTag"`
 }
@@ -127,6 +129,11 @@ func (o LookupPhraseMatcherResultOutput) RoleMatch() pulumi.StringOutput {
 // The type of this phrase matcher.
 func (o LookupPhraseMatcherResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPhraseMatcherResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The most recent time at which the phrase matcher was updated.
+func (o LookupPhraseMatcherResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPhraseMatcherResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 // The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.

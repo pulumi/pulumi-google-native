@@ -14,7 +14,11 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
+    'EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse',
+    'EndpointMatcherMetadataLabelMatcherResponse',
+    'EndpointMatcherResponse',
     'ExprResponse',
+    'TrafficPortSelectorResponse',
 ]
 
 @pulumi.output_type
@@ -164,6 +168,149 @@ class BindingResponse(dict):
 
 
 @pulumi.output_type
+class EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse(dict):
+    """
+    Defines a name-pair value for a single label.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "labelName":
+            suggest = "label_name"
+        elif key == "labelValue":
+            suggest = "label_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 label_name: str,
+                 label_value: str):
+        """
+        Defines a name-pair value for a single label.
+        :param str label_name: Label name presented as key in xDS Node Metadata.
+        :param str label_value: Label value presented as value corresponding to the above key, in xDS Node Metadata.
+        """
+        pulumi.set(__self__, "label_name", label_name)
+        pulumi.set(__self__, "label_value", label_value)
+
+    @property
+    @pulumi.getter(name="labelName")
+    def label_name(self) -> str:
+        """
+        Label name presented as key in xDS Node Metadata.
+        """
+        return pulumi.get(self, "label_name")
+
+    @property
+    @pulumi.getter(name="labelValue")
+    def label_value(self) -> str:
+        """
+        Label value presented as value corresponding to the above key, in xDS Node Metadata.
+        """
+        return pulumi.get(self, "label_value")
+
+
+@pulumi.output_type
+class EndpointMatcherMetadataLabelMatcherResponse(dict):
+    """
+    The matcher that is based on node metadata presented by xDS clients.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metadataLabelMatchCriteria":
+            suggest = "metadata_label_match_criteria"
+        elif key == "metadataLabels":
+            suggest = "metadata_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointMatcherMetadataLabelMatcherResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointMatcherMetadataLabelMatcherResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointMatcherMetadataLabelMatcherResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metadata_label_match_criteria: str,
+                 metadata_labels: Sequence['outputs.EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse']):
+        """
+        The matcher that is based on node metadata presented by xDS clients.
+        :param str metadata_label_match_criteria: Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+        :param Sequence['EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse'] metadata_labels: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+        """
+        pulumi.set(__self__, "metadata_label_match_criteria", metadata_label_match_criteria)
+        pulumi.set(__self__, "metadata_labels", metadata_labels)
+
+    @property
+    @pulumi.getter(name="metadataLabelMatchCriteria")
+    def metadata_label_match_criteria(self) -> str:
+        """
+        Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+        """
+        return pulumi.get(self, "metadata_label_match_criteria")
+
+    @property
+    @pulumi.getter(name="metadataLabels")
+    def metadata_labels(self) -> Sequence['outputs.EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse']:
+        """
+        The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+        """
+        return pulumi.get(self, "metadata_labels")
+
+
+@pulumi.output_type
+class EndpointMatcherResponse(dict):
+    """
+    A definition of a matcher that selects endpoints to which the policies should be applied.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metadataLabelMatcher":
+            suggest = "metadata_label_matcher"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointMatcherResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointMatcherResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointMatcherResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metadata_label_matcher: 'outputs.EndpointMatcherMetadataLabelMatcherResponse'):
+        """
+        A definition of a matcher that selects endpoints to which the policies should be applied.
+        :param 'EndpointMatcherMetadataLabelMatcherResponse' metadata_label_matcher: The matcher is based on node metadata presented by xDS clients.
+        """
+        pulumi.set(__self__, "metadata_label_matcher", metadata_label_matcher)
+
+    @property
+    @pulumi.getter(name="metadataLabelMatcher")
+    def metadata_label_matcher(self) -> 'outputs.EndpointMatcherMetadataLabelMatcherResponse':
+        """
+        The matcher is based on node metadata presented by xDS clients.
+        """
+        return pulumi.get(self, "metadata_label_matcher")
+
+
+@pulumi.output_type
 class ExprResponse(dict):
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -216,5 +363,27 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class TrafficPortSelectorResponse(dict):
+    """
+    Specification of a port-based selector.
+    """
+    def __init__(__self__, *,
+                 ports: Sequence[str]):
+        """
+        Specification of a port-based selector.
+        :param Sequence[str] ports: Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+        """
+        pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Sequence[str]:
+        """
+        Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+        """
+        return pulumi.get(self, "ports")
 
 

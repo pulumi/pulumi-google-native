@@ -525,7 +525,336 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
+type MavenRepositoryConfig struct {
+	// The repository with this flag will allow publishing the same snapshot versions.
+	AllowSnapshotOverwrites *bool `pulumi:"allowSnapshotOverwrites"`
+	// Version policy defines the versions that the registry will accept.
+	VersionPolicy *MavenRepositoryConfigVersionPolicy `pulumi:"versionPolicy"`
+}
+
+// MavenRepositoryConfigInput is an input type that accepts MavenRepositoryConfigArgs and MavenRepositoryConfigOutput values.
+// You can construct a concrete instance of `MavenRepositoryConfigInput` via:
+//
+//          MavenRepositoryConfigArgs{...}
+type MavenRepositoryConfigInput interface {
+	pulumi.Input
+
+	ToMavenRepositoryConfigOutput() MavenRepositoryConfigOutput
+	ToMavenRepositoryConfigOutputWithContext(context.Context) MavenRepositoryConfigOutput
+}
+
+// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
+type MavenRepositoryConfigArgs struct {
+	// The repository with this flag will allow publishing the same snapshot versions.
+	AllowSnapshotOverwrites pulumi.BoolPtrInput `pulumi:"allowSnapshotOverwrites"`
+	// Version policy defines the versions that the registry will accept.
+	VersionPolicy MavenRepositoryConfigVersionPolicyPtrInput `pulumi:"versionPolicy"`
+}
+
+func (MavenRepositoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenRepositoryConfig)(nil)).Elem()
+}
+
+func (i MavenRepositoryConfigArgs) ToMavenRepositoryConfigOutput() MavenRepositoryConfigOutput {
+	return i.ToMavenRepositoryConfigOutputWithContext(context.Background())
+}
+
+func (i MavenRepositoryConfigArgs) ToMavenRepositoryConfigOutputWithContext(ctx context.Context) MavenRepositoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigOutput)
+}
+
+func (i MavenRepositoryConfigArgs) ToMavenRepositoryConfigPtrOutput() MavenRepositoryConfigPtrOutput {
+	return i.ToMavenRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MavenRepositoryConfigArgs) ToMavenRepositoryConfigPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigOutput).ToMavenRepositoryConfigPtrOutputWithContext(ctx)
+}
+
+// MavenRepositoryConfigPtrInput is an input type that accepts MavenRepositoryConfigArgs, MavenRepositoryConfigPtr and MavenRepositoryConfigPtrOutput values.
+// You can construct a concrete instance of `MavenRepositoryConfigPtrInput` via:
+//
+//          MavenRepositoryConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type MavenRepositoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToMavenRepositoryConfigPtrOutput() MavenRepositoryConfigPtrOutput
+	ToMavenRepositoryConfigPtrOutputWithContext(context.Context) MavenRepositoryConfigPtrOutput
+}
+
+type mavenRepositoryConfigPtrType MavenRepositoryConfigArgs
+
+func MavenRepositoryConfigPtr(v *MavenRepositoryConfigArgs) MavenRepositoryConfigPtrInput {
+	return (*mavenRepositoryConfigPtrType)(v)
+}
+
+func (*mavenRepositoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MavenRepositoryConfig)(nil)).Elem()
+}
+
+func (i *mavenRepositoryConfigPtrType) ToMavenRepositoryConfigPtrOutput() MavenRepositoryConfigPtrOutput {
+	return i.ToMavenRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *mavenRepositoryConfigPtrType) ToMavenRepositoryConfigPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigPtrOutput)
+}
+
+// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
+type MavenRepositoryConfigOutput struct{ *pulumi.OutputState }
+
+func (MavenRepositoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenRepositoryConfig)(nil)).Elem()
+}
+
+func (o MavenRepositoryConfigOutput) ToMavenRepositoryConfigOutput() MavenRepositoryConfigOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigOutput) ToMavenRepositoryConfigOutputWithContext(ctx context.Context) MavenRepositoryConfigOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigOutput) ToMavenRepositoryConfigPtrOutput() MavenRepositoryConfigPtrOutput {
+	return o.ToMavenRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MavenRepositoryConfigOutput) ToMavenRepositoryConfigPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MavenRepositoryConfig) *MavenRepositoryConfig {
+		return &v
+	}).(MavenRepositoryConfigPtrOutput)
+}
+
+// The repository with this flag will allow publishing the same snapshot versions.
+func (o MavenRepositoryConfigOutput) AllowSnapshotOverwrites() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MavenRepositoryConfig) *bool { return v.AllowSnapshotOverwrites }).(pulumi.BoolPtrOutput)
+}
+
+// Version policy defines the versions that the registry will accept.
+func (o MavenRepositoryConfigOutput) VersionPolicy() MavenRepositoryConfigVersionPolicyPtrOutput {
+	return o.ApplyT(func(v MavenRepositoryConfig) *MavenRepositoryConfigVersionPolicy { return v.VersionPolicy }).(MavenRepositoryConfigVersionPolicyPtrOutput)
+}
+
+type MavenRepositoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MavenRepositoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MavenRepositoryConfig)(nil)).Elem()
+}
+
+func (o MavenRepositoryConfigPtrOutput) ToMavenRepositoryConfigPtrOutput() MavenRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigPtrOutput) ToMavenRepositoryConfigPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigPtrOutput) Elem() MavenRepositoryConfigOutput {
+	return o.ApplyT(func(v *MavenRepositoryConfig) MavenRepositoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MavenRepositoryConfig
+		return ret
+	}).(MavenRepositoryConfigOutput)
+}
+
+// The repository with this flag will allow publishing the same snapshot versions.
+func (o MavenRepositoryConfigPtrOutput) AllowSnapshotOverwrites() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MavenRepositoryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSnapshotOverwrites
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Version policy defines the versions that the registry will accept.
+func (o MavenRepositoryConfigPtrOutput) VersionPolicy() MavenRepositoryConfigVersionPolicyPtrOutput {
+	return o.ApplyT(func(v *MavenRepositoryConfig) *MavenRepositoryConfigVersionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.VersionPolicy
+	}).(MavenRepositoryConfigVersionPolicyPtrOutput)
+}
+
+// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
+type MavenRepositoryConfigResponse struct {
+	// The repository with this flag will allow publishing the same snapshot versions.
+	AllowSnapshotOverwrites bool `pulumi:"allowSnapshotOverwrites"`
+	// Version policy defines the versions that the registry will accept.
+	VersionPolicy string `pulumi:"versionPolicy"`
+}
+
+// MavenRepositoryConfigResponseInput is an input type that accepts MavenRepositoryConfigResponseArgs and MavenRepositoryConfigResponseOutput values.
+// You can construct a concrete instance of `MavenRepositoryConfigResponseInput` via:
+//
+//          MavenRepositoryConfigResponseArgs{...}
+type MavenRepositoryConfigResponseInput interface {
+	pulumi.Input
+
+	ToMavenRepositoryConfigResponseOutput() MavenRepositoryConfigResponseOutput
+	ToMavenRepositoryConfigResponseOutputWithContext(context.Context) MavenRepositoryConfigResponseOutput
+}
+
+// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
+type MavenRepositoryConfigResponseArgs struct {
+	// The repository with this flag will allow publishing the same snapshot versions.
+	AllowSnapshotOverwrites pulumi.BoolInput `pulumi:"allowSnapshotOverwrites"`
+	// Version policy defines the versions that the registry will accept.
+	VersionPolicy pulumi.StringInput `pulumi:"versionPolicy"`
+}
+
+func (MavenRepositoryConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenRepositoryConfigResponse)(nil)).Elem()
+}
+
+func (i MavenRepositoryConfigResponseArgs) ToMavenRepositoryConfigResponseOutput() MavenRepositoryConfigResponseOutput {
+	return i.ToMavenRepositoryConfigResponseOutputWithContext(context.Background())
+}
+
+func (i MavenRepositoryConfigResponseArgs) ToMavenRepositoryConfigResponseOutputWithContext(ctx context.Context) MavenRepositoryConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigResponseOutput)
+}
+
+func (i MavenRepositoryConfigResponseArgs) ToMavenRepositoryConfigResponsePtrOutput() MavenRepositoryConfigResponsePtrOutput {
+	return i.ToMavenRepositoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MavenRepositoryConfigResponseArgs) ToMavenRepositoryConfigResponsePtrOutputWithContext(ctx context.Context) MavenRepositoryConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigResponseOutput).ToMavenRepositoryConfigResponsePtrOutputWithContext(ctx)
+}
+
+// MavenRepositoryConfigResponsePtrInput is an input type that accepts MavenRepositoryConfigResponseArgs, MavenRepositoryConfigResponsePtr and MavenRepositoryConfigResponsePtrOutput values.
+// You can construct a concrete instance of `MavenRepositoryConfigResponsePtrInput` via:
+//
+//          MavenRepositoryConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MavenRepositoryConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToMavenRepositoryConfigResponsePtrOutput() MavenRepositoryConfigResponsePtrOutput
+	ToMavenRepositoryConfigResponsePtrOutputWithContext(context.Context) MavenRepositoryConfigResponsePtrOutput
+}
+
+type mavenRepositoryConfigResponsePtrType MavenRepositoryConfigResponseArgs
+
+func MavenRepositoryConfigResponsePtr(v *MavenRepositoryConfigResponseArgs) MavenRepositoryConfigResponsePtrInput {
+	return (*mavenRepositoryConfigResponsePtrType)(v)
+}
+
+func (*mavenRepositoryConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MavenRepositoryConfigResponse)(nil)).Elem()
+}
+
+func (i *mavenRepositoryConfigResponsePtrType) ToMavenRepositoryConfigResponsePtrOutput() MavenRepositoryConfigResponsePtrOutput {
+	return i.ToMavenRepositoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *mavenRepositoryConfigResponsePtrType) ToMavenRepositoryConfigResponsePtrOutputWithContext(ctx context.Context) MavenRepositoryConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigResponsePtrOutput)
+}
+
+// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
+type MavenRepositoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (MavenRepositoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenRepositoryConfigResponse)(nil)).Elem()
+}
+
+func (o MavenRepositoryConfigResponseOutput) ToMavenRepositoryConfigResponseOutput() MavenRepositoryConfigResponseOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigResponseOutput) ToMavenRepositoryConfigResponseOutputWithContext(ctx context.Context) MavenRepositoryConfigResponseOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigResponseOutput) ToMavenRepositoryConfigResponsePtrOutput() MavenRepositoryConfigResponsePtrOutput {
+	return o.ToMavenRepositoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MavenRepositoryConfigResponseOutput) ToMavenRepositoryConfigResponsePtrOutputWithContext(ctx context.Context) MavenRepositoryConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MavenRepositoryConfigResponse) *MavenRepositoryConfigResponse {
+		return &v
+	}).(MavenRepositoryConfigResponsePtrOutput)
+}
+
+// The repository with this flag will allow publishing the same snapshot versions.
+func (o MavenRepositoryConfigResponseOutput) AllowSnapshotOverwrites() pulumi.BoolOutput {
+	return o.ApplyT(func(v MavenRepositoryConfigResponse) bool { return v.AllowSnapshotOverwrites }).(pulumi.BoolOutput)
+}
+
+// Version policy defines the versions that the registry will accept.
+func (o MavenRepositoryConfigResponseOutput) VersionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v MavenRepositoryConfigResponse) string { return v.VersionPolicy }).(pulumi.StringOutput)
+}
+
+type MavenRepositoryConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MavenRepositoryConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MavenRepositoryConfigResponse)(nil)).Elem()
+}
+
+func (o MavenRepositoryConfigResponsePtrOutput) ToMavenRepositoryConfigResponsePtrOutput() MavenRepositoryConfigResponsePtrOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigResponsePtrOutput) ToMavenRepositoryConfigResponsePtrOutputWithContext(ctx context.Context) MavenRepositoryConfigResponsePtrOutput {
+	return o
+}
+
+func (o MavenRepositoryConfigResponsePtrOutput) Elem() MavenRepositoryConfigResponseOutput {
+	return o.ApplyT(func(v *MavenRepositoryConfigResponse) MavenRepositoryConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MavenRepositoryConfigResponse
+		return ret
+	}).(MavenRepositoryConfigResponseOutput)
+}
+
+// The repository with this flag will allow publishing the same snapshot versions.
+func (o MavenRepositoryConfigResponsePtrOutput) AllowSnapshotOverwrites() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MavenRepositoryConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AllowSnapshotOverwrites
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Version policy defines the versions that the registry will accept.
+func (o MavenRepositoryConfigResponsePtrOutput) VersionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MavenRepositoryConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VersionPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigInput)(nil)).Elem(), MavenRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigPtrInput)(nil)).Elem(), MavenRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigResponseInput)(nil)).Elem(), MavenRepositoryConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigResponsePtrInput)(nil)).Elem(), MavenRepositoryConfigResponseArgs{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -533,4 +862,8 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(MavenRepositoryConfigOutput{})
+	pulumi.RegisterOutputType(MavenRepositoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(MavenRepositoryConfigResponseOutput{})
+	pulumi.RegisterOutputType(MavenRepositoryConfigResponsePtrOutput{})
 }

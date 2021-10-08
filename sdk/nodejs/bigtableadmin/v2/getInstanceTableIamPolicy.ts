@@ -47,3 +47,13 @@ export interface GetInstanceTableIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getInstanceTableIamPolicyOutput(args: GetInstanceTableIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTableIamPolicyResult> {
+    return pulumi.output(args).apply(a => getInstanceTableIamPolicy(a, opts))
+}
+
+export interface GetInstanceTableIamPolicyOutputArgs {
+    instanceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    tableId: pulumi.Input<string>;
+}

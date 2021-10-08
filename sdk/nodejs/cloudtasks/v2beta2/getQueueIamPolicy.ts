@@ -43,3 +43,13 @@ export interface GetQueueIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getQueueIamPolicyOutput(args: GetQueueIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueueIamPolicyResult> {
+    return pulumi.output(args).apply(a => getQueueIamPolicy(a, opts))
+}
+
+export interface GetQueueIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    queueId: pulumi.Input<string>;
+}

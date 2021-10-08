@@ -59,3 +59,13 @@ export interface GetWaiterResult {
      */
     readonly timeout: string;
 }
+
+export function getWaiterOutput(args: GetWaiterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWaiterResult> {
+    return pulumi.output(args).apply(a => getWaiter(a, opts))
+}
+
+export interface GetWaiterOutputArgs {
+    configId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    waiterId: pulumi.Input<string>;
+}

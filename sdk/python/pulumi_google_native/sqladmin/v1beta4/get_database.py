@@ -72,7 +72,7 @@ class GetDatabaseResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#database*.
+        This is always **sql#database**.
         """
         return pulumi.get(self, "kind")
 

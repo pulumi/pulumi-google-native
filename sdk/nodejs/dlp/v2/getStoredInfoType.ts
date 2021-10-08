@@ -43,3 +43,13 @@ export interface GetStoredInfoTypeResult {
      */
     readonly pendingVersions: outputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeVersionResponse[];
 }
+
+export function getStoredInfoTypeOutput(args: GetStoredInfoTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStoredInfoTypeResult> {
+    return pulumi.output(args).apply(a => getStoredInfoType(a, opts))
+}
+
+export interface GetStoredInfoTypeOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    storedInfoTypeId: pulumi.Input<string>;
+}

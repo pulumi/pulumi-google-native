@@ -23,6 +23,7 @@ __all__ = [
     'GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse',
     'GoogleCloudContactcenterinsightsV1ConversationParticipantResponse',
     'GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse',
+    'GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse',
     'GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse',
     'GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse',
     'GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse',
@@ -804,6 +805,8 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(dict):
         suggest = None
         if key == "dialogflowParticipantName":
             suggest = "dialogflow_participant_name"
+        elif key == "obfuscatedExternalUserId":
+            suggest = "obfuscated_external_user_id"
         elif key == "userId":
             suggest = "user_id"
 
@@ -820,15 +823,18 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(dict):
 
     def __init__(__self__, *,
                  dialogflow_participant_name: str,
+                 obfuscated_external_user_id: str,
                  role: str,
                  user_id: str):
         """
         The call participant speaking for a given utterance.
         :param str dialogflow_participant_name: The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+        :param str obfuscated_external_user_id: Obfuscated user ID from Dialogflow.
         :param str role: The role of the participant.
         :param str user_id: A user-specified ID representing the participant.
         """
         pulumi.set(__self__, "dialogflow_participant_name", dialogflow_participant_name)
+        pulumi.set(__self__, "obfuscated_external_user_id", obfuscated_external_user_id)
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "user_id", user_id)
 
@@ -839,6 +845,14 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(dict):
         The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
         """
         return pulumi.get(self, "dialogflow_participant_name")
+
+    @property
+    @pulumi.getter(name="obfuscatedExternalUserId")
+    def obfuscated_external_user_id(self) -> str:
+        """
+        Obfuscated user ID from Dialogflow.
+        """
+        return pulumi.get(self, "obfuscated_external_user_id")
 
     @property
     @pulumi.getter
@@ -897,6 +911,45 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse(dict):
+    """
+    Metadata from Dialogflow relating to the current transcript segment.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "smartReplyAllowlistCovered":
+            suggest = "smart_reply_allowlist_covered"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 smart_reply_allowlist_covered: bool):
+        """
+        Metadata from Dialogflow relating to the current transcript segment.
+        :param bool smart_reply_allowlist_covered: Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist.
+        """
+        pulumi.set(__self__, "smart_reply_allowlist_covered", smart_reply_allowlist_covered)
+
+    @property
+    @pulumi.getter(name="smartReplyAllowlistCovered")
+    def smart_reply_allowlist_covered(self) -> bool:
+        """
+        Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist.
+        """
+        return pulumi.get(self, "smart_reply_allowlist_covered")
+
+
+@pulumi.output_type
 class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse(dict):
     """
     A segment of a full transcript.
@@ -906,8 +959,12 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentR
         suggest = None
         if key == "channelTag":
             suggest = "channel_tag"
+        elif key == "dialogflowSegmentMetadata":
+            suggest = "dialogflow_segment_metadata"
         elif key == "languageCode":
             suggest = "language_code"
+        elif key == "messageTime":
+            suggest = "message_time"
         elif key == "segmentParticipant":
             suggest = "segment_participant"
 
@@ -925,23 +982,32 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentR
     def __init__(__self__, *,
                  channel_tag: int,
                  confidence: float,
+                 dialogflow_segment_metadata: 'outputs.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse',
                  language_code: str,
+                 message_time: str,
                  segment_participant: 'outputs.GoogleCloudContactcenterinsightsV1ConversationParticipantResponse',
+                 sentiment: 'outputs.GoogleCloudContactcenterinsightsV1SentimentDataResponse',
                  text: str,
                  words: Sequence['outputs.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse']):
         """
         A segment of a full transcript.
         :param int channel_tag: For conversations derived from multi-channel audio, this is the channel number corresponding to the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of 0 indicates that the audio is mono.
         :param float confidence: A confidence estimate between 0.0 and 1.0 of the fidelity of this segment. A default value of 0.0 indicates that the value is unset.
+        :param 'GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse' dialogflow_segment_metadata: CCAI metadata relating to the current transcript segment.
         :param str language_code: The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
+        :param str message_time: The time that the message occurred, if provided.
         :param 'GoogleCloudContactcenterinsightsV1ConversationParticipantResponse' segment_participant: The participant of this segment.
+        :param 'GoogleCloudContactcenterinsightsV1SentimentDataResponse' sentiment: The sentiment for this transcript segment.
         :param str text: The text of this segment.
         :param Sequence['GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse'] words: A list of the word-specific information for each word in the segment.
         """
         pulumi.set(__self__, "channel_tag", channel_tag)
         pulumi.set(__self__, "confidence", confidence)
+        pulumi.set(__self__, "dialogflow_segment_metadata", dialogflow_segment_metadata)
         pulumi.set(__self__, "language_code", language_code)
+        pulumi.set(__self__, "message_time", message_time)
         pulumi.set(__self__, "segment_participant", segment_participant)
+        pulumi.set(__self__, "sentiment", sentiment)
         pulumi.set(__self__, "text", text)
         pulumi.set(__self__, "words", words)
 
@@ -962,6 +1028,14 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentR
         return pulumi.get(self, "confidence")
 
     @property
+    @pulumi.getter(name="dialogflowSegmentMetadata")
+    def dialogflow_segment_metadata(self) -> 'outputs.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse':
+        """
+        CCAI metadata relating to the current transcript segment.
+        """
+        return pulumi.get(self, "dialogflow_segment_metadata")
+
+    @property
     @pulumi.getter(name="languageCode")
     def language_code(self) -> str:
         """
@@ -970,12 +1044,28 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentR
         return pulumi.get(self, "language_code")
 
     @property
+    @pulumi.getter(name="messageTime")
+    def message_time(self) -> str:
+        """
+        The time that the message occurred, if provided.
+        """
+        return pulumi.get(self, "message_time")
+
+    @property
     @pulumi.getter(name="segmentParticipant")
     def segment_participant(self) -> 'outputs.GoogleCloudContactcenterinsightsV1ConversationParticipantResponse':
         """
         The participant of this segment.
         """
         return pulumi.get(self, "segment_participant")
+
+    @property
+    @pulumi.getter
+    def sentiment(self) -> 'outputs.GoogleCloudContactcenterinsightsV1SentimentDataResponse':
+        """
+        The sentiment for this transcript segment.
+        """
+        return pulumi.get(self, "sentiment")
 
     @property
     @pulumi.getter
@@ -1486,16 +1576,44 @@ class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse(dict):
     """
     Information about the issue.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1IssueAssignmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1IssueAssignmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1IssueAssignmentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 display_name: str,
                  issue: str,
                  score: float):
         """
         Information about the issue.
+        :param str display_name: Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since then.
         :param str issue: Resource name of the assigned issue.
         :param float score: Score indicating the likelihood of the issue assignment. currently bounded on [0,1].
         """
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "issue", issue)
         pulumi.set(__self__, "score", score)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since then.
+        """
+        return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
@@ -1537,21 +1655,32 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 filter: str,
                  medium: str,
                  training_conversations_count: str):
         """
         Configs for the input data used to create the issue model.
-        :param str medium: Medium of conversations used in training data.
+        :param str filter: A filter to reduce the conversations used for training the model to a specific subset.
+        :param str medium: Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
         :param str training_conversations_count: Number of conversations used in training. Output only.
         """
+        pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "medium", medium)
         pulumi.set(__self__, "training_conversations_count", training_conversations_count)
 
     @property
     @pulumi.getter
+    def filter(self) -> str:
+        """
+        A filter to reduce the conversations used for training the model to a specific subset.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
     def medium(self) -> str:
         """
-        Medium of conversations used in training data.
+        Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
         """
         return pulumi.get(self, "medium")
 

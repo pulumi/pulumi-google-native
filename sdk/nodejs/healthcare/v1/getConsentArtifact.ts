@@ -67,3 +67,15 @@ export interface GetConsentArtifactResult {
      */
     readonly witnessSignature: outputs.healthcare.v1.SignatureResponse;
 }
+
+export function getConsentArtifactOutput(args: GetConsentArtifactOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsentArtifactResult> {
+    return pulumi.output(args).apply(a => getConsentArtifact(a, opts))
+}
+
+export interface GetConsentArtifactOutputArgs {
+    consentArtifactId: pulumi.Input<string>;
+    consentStoreId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

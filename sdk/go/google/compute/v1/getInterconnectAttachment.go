@@ -71,6 +71,8 @@ type LookupInterconnectAttachmentResult struct {
 	Region string `pulumi:"region"`
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router string `pulumi:"router"`
+	// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
@@ -226,6 +228,11 @@ func (o LookupInterconnectAttachmentResultOutput) Region() pulumi.StringOutput {
 // URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 func (o LookupInterconnectAttachmentResultOutput) Router() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.Router }).(pulumi.StringOutput)
+}
+
+// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+func (o LookupInterconnectAttachmentResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInterconnectAttachmentResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // Server-defined URL for the resource.

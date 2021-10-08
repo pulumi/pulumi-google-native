@@ -17441,7 +17441,9 @@ type PackageIssue struct {
 	AffectedLocation *VulnerabilityLocation `pulumi:"affectedLocation"`
 	// The location of the available fix for vulnerability.
 	FixedLocation *VulnerabilityLocation `pulumi:"fixedLocation"`
-	SeverityName  *string                `pulumi:"severityName"`
+	// The type of package (e.g. OS, MAVEN, GO).
+	PackageType  *string `pulumi:"packageType"`
+	SeverityName *string `pulumi:"severityName"`
 }
 
 // PackageIssueInput is an input type that accepts PackageIssueArgs and PackageIssueOutput values.
@@ -17461,7 +17463,9 @@ type PackageIssueArgs struct {
 	AffectedLocation VulnerabilityLocationPtrInput `pulumi:"affectedLocation"`
 	// The location of the available fix for vulnerability.
 	FixedLocation VulnerabilityLocationPtrInput `pulumi:"fixedLocation"`
-	SeverityName  pulumi.StringPtrInput         `pulumi:"severityName"`
+	// The type of package (e.g. OS, MAVEN, GO).
+	PackageType  pulumi.StringPtrInput `pulumi:"packageType"`
+	SeverityName pulumi.StringPtrInput `pulumi:"severityName"`
 }
 
 func (PackageIssueArgs) ElementType() reflect.Type {
@@ -17526,6 +17530,11 @@ func (o PackageIssueOutput) FixedLocation() VulnerabilityLocationPtrOutput {
 	return o.ApplyT(func(v PackageIssue) *VulnerabilityLocation { return v.FixedLocation }).(VulnerabilityLocationPtrOutput)
 }
 
+// The type of package (e.g. OS, MAVEN, GO).
+func (o PackageIssueOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageIssue) *string { return v.PackageType }).(pulumi.StringPtrOutput)
+}
+
 func (o PackageIssueOutput) SeverityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PackageIssue) *string { return v.SeverityName }).(pulumi.StringPtrOutput)
 }
@@ -17554,9 +17563,13 @@ func (o PackageIssueArrayOutput) Index(i pulumi.IntInput) PackageIssueOutput {
 type PackageIssueResponse struct {
 	// The location of the vulnerability.
 	AffectedLocation VulnerabilityLocationResponse `pulumi:"affectedLocation"`
+	// The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when distro or language system has not yet assigned a severity for this vulnerability.
+	EffectiveSeverity string `pulumi:"effectiveSeverity"`
 	// The location of the available fix for vulnerability.
 	FixedLocation VulnerabilityLocationResponse `pulumi:"fixedLocation"`
-	SeverityName  string                        `pulumi:"severityName"`
+	// The type of package (e.g. OS, MAVEN, GO).
+	PackageType  string `pulumi:"packageType"`
+	SeverityName string `pulumi:"severityName"`
 }
 
 // PackageIssueResponseInput is an input type that accepts PackageIssueResponseArgs and PackageIssueResponseOutput values.
@@ -17574,9 +17587,13 @@ type PackageIssueResponseInput interface {
 type PackageIssueResponseArgs struct {
 	// The location of the vulnerability.
 	AffectedLocation VulnerabilityLocationResponseInput `pulumi:"affectedLocation"`
+	// The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when distro or language system has not yet assigned a severity for this vulnerability.
+	EffectiveSeverity pulumi.StringInput `pulumi:"effectiveSeverity"`
 	// The location of the available fix for vulnerability.
 	FixedLocation VulnerabilityLocationResponseInput `pulumi:"fixedLocation"`
-	SeverityName  pulumi.StringInput                 `pulumi:"severityName"`
+	// The type of package (e.g. OS, MAVEN, GO).
+	PackageType  pulumi.StringInput `pulumi:"packageType"`
+	SeverityName pulumi.StringInput `pulumi:"severityName"`
 }
 
 func (PackageIssueResponseArgs) ElementType() reflect.Type {
@@ -17636,9 +17653,19 @@ func (o PackageIssueResponseOutput) AffectedLocation() VulnerabilityLocationResp
 	return o.ApplyT(func(v PackageIssueResponse) VulnerabilityLocationResponse { return v.AffectedLocation }).(VulnerabilityLocationResponseOutput)
 }
 
+// The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when distro or language system has not yet assigned a severity for this vulnerability.
+func (o PackageIssueResponseOutput) EffectiveSeverity() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageIssueResponse) string { return v.EffectiveSeverity }).(pulumi.StringOutput)
+}
+
 // The location of the available fix for vulnerability.
 func (o PackageIssueResponseOutput) FixedLocation() VulnerabilityLocationResponseOutput {
 	return o.ApplyT(func(v PackageIssueResponse) VulnerabilityLocationResponse { return v.FixedLocation }).(VulnerabilityLocationResponseOutput)
+}
+
+// The type of package (e.g. OS, MAVEN, GO).
+func (o PackageIssueResponseOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageIssueResponse) string { return v.PackageType }).(pulumi.StringOutput)
 }
 
 func (o PackageIssueResponseOutput) SeverityName() pulumi.StringOutput {
@@ -19484,13 +19511,13 @@ func (o PgpSignedAttestationResponsePtrOutput) Signature() pulumi.StringPtrOutpu
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type Recipe struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
-	Arguments []string `pulumi:"arguments"`
+	Arguments []map[string]string `pulumi:"arguments"`
 	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
 	DefinedInMaterial *string `pulumi:"definedInMaterial"`
 	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
 	EntryPoint *string `pulumi:"entryPoint"`
 	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
-	Environment map[string]string `pulumi:"environment"`
+	Environment []map[string]string `pulumi:"environment"`
 	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 	Type *string `pulumi:"type"`
 }
@@ -19509,13 +19536,13 @@ type RecipeInput interface {
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type RecipeArgs struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
-	Arguments pulumi.StringArrayInput `pulumi:"arguments"`
+	Arguments pulumi.StringMapArrayInput `pulumi:"arguments"`
 	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
 	DefinedInMaterial pulumi.StringPtrInput `pulumi:"definedInMaterial"`
 	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
 	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
 	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
-	Environment pulumi.StringMapInput `pulumi:"environment"`
+	Environment pulumi.StringMapArrayInput `pulumi:"environment"`
 	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -19599,8 +19626,8 @@ func (o RecipeOutput) ToRecipePtrOutputWithContext(ctx context.Context) RecipePt
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
-func (o RecipeOutput) Arguments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Recipe) []string { return v.Arguments }).(pulumi.StringArrayOutput)
+func (o RecipeOutput) Arguments() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v Recipe) []map[string]string { return v.Arguments }).(pulumi.StringMapArrayOutput)
 }
 
 // Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
@@ -19614,8 +19641,8 @@ func (o RecipeOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
-func (o RecipeOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Recipe) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+func (o RecipeOutput) Environment() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v Recipe) []map[string]string { return v.Environment }).(pulumi.StringMapArrayOutput)
 }
 
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
@@ -19648,13 +19675,13 @@ func (o RecipePtrOutput) Elem() RecipeOutput {
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
-func (o RecipePtrOutput) Arguments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Recipe) []string {
+func (o RecipePtrOutput) Arguments() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *Recipe) []map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Arguments
-	}).(pulumi.StringArrayOutput)
+	}).(pulumi.StringMapArrayOutput)
 }
 
 // Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
@@ -19678,13 +19705,13 @@ func (o RecipePtrOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
-func (o RecipePtrOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Recipe) map[string]string {
+func (o RecipePtrOutput) Environment() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *Recipe) []map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Environment
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.StringMapArrayOutput)
 }
 
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
@@ -19700,13 +19727,13 @@ func (o RecipePtrOutput) Type() pulumi.StringPtrOutput {
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type RecipeResponse struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
-	Arguments []string `pulumi:"arguments"`
+	Arguments []map[string]string `pulumi:"arguments"`
 	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
 	DefinedInMaterial string `pulumi:"definedInMaterial"`
 	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
 	EntryPoint string `pulumi:"entryPoint"`
 	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
-	Environment map[string]string `pulumi:"environment"`
+	Environment []map[string]string `pulumi:"environment"`
 	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 	Type string `pulumi:"type"`
 }
@@ -19725,13 +19752,13 @@ type RecipeResponseInput interface {
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type RecipeResponseArgs struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
-	Arguments pulumi.StringArrayInput `pulumi:"arguments"`
+	Arguments pulumi.StringMapArrayInput `pulumi:"arguments"`
 	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
 	DefinedInMaterial pulumi.StringInput `pulumi:"definedInMaterial"`
 	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
 	EntryPoint pulumi.StringInput `pulumi:"entryPoint"`
 	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
-	Environment pulumi.StringMapInput `pulumi:"environment"`
+	Environment pulumi.StringMapArrayInput `pulumi:"environment"`
 	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -19815,8 +19842,8 @@ func (o RecipeResponseOutput) ToRecipeResponsePtrOutputWithContext(ctx context.C
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
-func (o RecipeResponseOutput) Arguments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RecipeResponse) []string { return v.Arguments }).(pulumi.StringArrayOutput)
+func (o RecipeResponseOutput) Arguments() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v RecipeResponse) []map[string]string { return v.Arguments }).(pulumi.StringMapArrayOutput)
 }
 
 // Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
@@ -19830,8 +19857,8 @@ func (o RecipeResponseOutput) EntryPoint() pulumi.StringOutput {
 }
 
 // Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
-func (o RecipeResponseOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v RecipeResponse) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+func (o RecipeResponseOutput) Environment() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v RecipeResponse) []map[string]string { return v.Environment }).(pulumi.StringMapArrayOutput)
 }
 
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
@@ -19864,13 +19891,13 @@ func (o RecipeResponsePtrOutput) Elem() RecipeResponseOutput {
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
-func (o RecipeResponsePtrOutput) Arguments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RecipeResponse) []string {
+func (o RecipeResponsePtrOutput) Arguments() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *RecipeResponse) []map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Arguments
-	}).(pulumi.StringArrayOutput)
+	}).(pulumi.StringMapArrayOutput)
 }
 
 // Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
@@ -19894,13 +19921,13 @@ func (o RecipeResponsePtrOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
-func (o RecipeResponsePtrOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *RecipeResponse) map[string]string {
+func (o RecipeResponsePtrOutput) Environment() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *RecipeResponse) []map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Environment
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.StringMapArrayOutput)
 }
 
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
@@ -24575,11 +24602,11 @@ func (o VersionResponsePtrOutput) Revision() pulumi.StringPtrOutput {
 
 // Used by Occurrence to point to where the vulnerability exists and how to fix it.
 type VulnerabilityDetails struct {
-	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
 	EffectiveSeverity *VulnerabilityDetailsEffectiveSeverity `pulumi:"effectiveSeverity"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue []PackageIssue `pulumi:"packageIssue"`
-	// The type of package; whether native or non native(ruby gems, node.js packages etc)
+	// The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
 	Type *string `pulumi:"type"`
 }
 
@@ -24596,11 +24623,11 @@ type VulnerabilityDetailsInput interface {
 
 // Used by Occurrence to point to where the vulnerability exists and how to fix it.
 type VulnerabilityDetailsArgs struct {
-	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
 	EffectiveSeverity VulnerabilityDetailsEffectiveSeverityPtrInput `pulumi:"effectiveSeverity"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue PackageIssueArrayInput `pulumi:"packageIssue"`
-	// The type of package; whether native or non native(ruby gems, node.js packages etc)
+	// The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -24682,7 +24709,7 @@ func (o VulnerabilityDetailsOutput) ToVulnerabilityDetailsPtrOutputWithContext(c
 	}).(VulnerabilityDetailsPtrOutput)
 }
 
-// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
 func (o VulnerabilityDetailsOutput) EffectiveSeverity() VulnerabilityDetailsEffectiveSeverityPtrOutput {
 	return o.ApplyT(func(v VulnerabilityDetails) *VulnerabilityDetailsEffectiveSeverity { return v.EffectiveSeverity }).(VulnerabilityDetailsEffectiveSeverityPtrOutput)
 }
@@ -24692,7 +24719,7 @@ func (o VulnerabilityDetailsOutput) PackageIssue() PackageIssueArrayOutput {
 	return o.ApplyT(func(v VulnerabilityDetails) []PackageIssue { return v.PackageIssue }).(PackageIssueArrayOutput)
 }
 
-// The type of package; whether native or non native(ruby gems, node.js packages etc)
+// The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
 func (o VulnerabilityDetailsOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VulnerabilityDetails) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -24721,7 +24748,7 @@ func (o VulnerabilityDetailsPtrOutput) Elem() VulnerabilityDetailsOutput {
 	}).(VulnerabilityDetailsOutput)
 }
 
-// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
 func (o VulnerabilityDetailsPtrOutput) EffectiveSeverity() VulnerabilityDetailsEffectiveSeverityPtrOutput {
 	return o.ApplyT(func(v *VulnerabilityDetails) *VulnerabilityDetailsEffectiveSeverity {
 		if v == nil {
@@ -24741,7 +24768,7 @@ func (o VulnerabilityDetailsPtrOutput) PackageIssue() PackageIssueArrayOutput {
 	}).(PackageIssueArrayOutput)
 }
 
-// The type of package; whether native or non native(ruby gems, node.js packages etc)
+// The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
 func (o VulnerabilityDetailsPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VulnerabilityDetails) *string {
 		if v == nil {
@@ -24755,13 +24782,13 @@ func (o VulnerabilityDetailsPtrOutput) Type() pulumi.StringPtrOutput {
 type VulnerabilityDetailsResponse struct {
 	// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore float64 `pulumi:"cvssScore"`
-	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
 	EffectiveSeverity string `pulumi:"effectiveSeverity"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue []PackageIssueResponse `pulumi:"packageIssue"`
 	// The note provider assigned Severity of the vulnerability.
 	Severity string `pulumi:"severity"`
-	// The type of package; whether native or non native(ruby gems, node.js packages etc)
+	// The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
 	Type string `pulumi:"type"`
 }
 
@@ -24780,13 +24807,13 @@ type VulnerabilityDetailsResponseInput interface {
 type VulnerabilityDetailsResponseArgs struct {
 	// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore pulumi.Float64Input `pulumi:"cvssScore"`
-	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
 	EffectiveSeverity pulumi.StringInput `pulumi:"effectiveSeverity"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue PackageIssueResponseArrayInput `pulumi:"packageIssue"`
 	// The note provider assigned Severity of the vulnerability.
 	Severity pulumi.StringInput `pulumi:"severity"`
-	// The type of package; whether native or non native(ruby gems, node.js packages etc)
+	// The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -24873,7 +24900,7 @@ func (o VulnerabilityDetailsResponseOutput) CvssScore() pulumi.Float64Output {
 	return o.ApplyT(func(v VulnerabilityDetailsResponse) float64 { return v.CvssScore }).(pulumi.Float64Output)
 }
 
-// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
 func (o VulnerabilityDetailsResponseOutput) EffectiveSeverity() pulumi.StringOutput {
 	return o.ApplyT(func(v VulnerabilityDetailsResponse) string { return v.EffectiveSeverity }).(pulumi.StringOutput)
 }
@@ -24888,7 +24915,7 @@ func (o VulnerabilityDetailsResponseOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v VulnerabilityDetailsResponse) string { return v.Severity }).(pulumi.StringOutput)
 }
 
-// The type of package; whether native or non native(ruby gems, node.js packages etc)
+// The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
 func (o VulnerabilityDetailsResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VulnerabilityDetailsResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -24927,7 +24954,7 @@ func (o VulnerabilityDetailsResponsePtrOutput) CvssScore() pulumi.Float64PtrOutp
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
 func (o VulnerabilityDetailsResponsePtrOutput) EffectiveSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VulnerabilityDetailsResponse) *string {
 		if v == nil {
@@ -24957,7 +24984,7 @@ func (o VulnerabilityDetailsResponsePtrOutput) Severity() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of package; whether native or non native(ruby gems, node.js packages etc)
+// The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
 func (o VulnerabilityDetailsResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VulnerabilityDetailsResponse) *string {
 		if v == nil {
@@ -25575,6 +25602,300 @@ func (o VulnerabilityTypeResponsePtrOutput) Severity() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactInput)(nil)).Elem(), ArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactArrayInput)(nil)).Elem(), ArtifactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactResponseInput)(nil)).Elem(), ArtifactResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactResponseArrayInput)(nil)).Elem(), ArtifactResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationInput)(nil)).Elem(), AttestationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationPtrInput)(nil)).Elem(), AttestationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationAuthorityInput)(nil)).Elem(), AttestationAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationAuthorityPtrInput)(nil)).Elem(), AttestationAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationAuthorityHintInput)(nil)).Elem(), AttestationAuthorityHintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationAuthorityHintPtrInput)(nil)).Elem(), AttestationAuthorityHintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationAuthorityHintResponseInput)(nil)).Elem(), AttestationAuthorityHintResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationAuthorityHintResponsePtrInput)(nil)).Elem(), AttestationAuthorityHintResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationAuthorityResponseInput)(nil)).Elem(), AttestationAuthorityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationAuthorityResponsePtrInput)(nil)).Elem(), AttestationAuthorityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationResponseInput)(nil)).Elem(), AttestationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestationResponsePtrInput)(nil)).Elem(), AttestationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasisInput)(nil)).Elem(), BasisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasisPtrInput)(nil)).Elem(), BasisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasisResponseInput)(nil)).Elem(), BasisResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasisResponsePtrInput)(nil)).Elem(), BasisResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildDetailsInput)(nil)).Elem(), BuildDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildDetailsPtrInput)(nil)).Elem(), BuildDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildDetailsResponseInput)(nil)).Elem(), BuildDetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildDetailsResponsePtrInput)(nil)).Elem(), BuildDetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildProvenanceInput)(nil)).Elem(), BuildProvenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildProvenancePtrInput)(nil)).Elem(), BuildProvenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildProvenanceResponseInput)(nil)).Elem(), BuildProvenanceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildProvenanceResponsePtrInput)(nil)).Elem(), BuildProvenanceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildSignatureInput)(nil)).Elem(), BuildSignatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildSignaturePtrInput)(nil)).Elem(), BuildSignatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildSignatureResponseInput)(nil)).Elem(), BuildSignatureResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildSignatureResponsePtrInput)(nil)).Elem(), BuildSignatureResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildTypeInput)(nil)).Elem(), BuildTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildTypePtrInput)(nil)).Elem(), BuildTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildTypeResponseInput)(nil)).Elem(), BuildTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildTypeResponsePtrInput)(nil)).Elem(), BuildTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuilderConfigInput)(nil)).Elem(), BuilderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuilderConfigPtrInput)(nil)).Elem(), BuilderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuilderConfigResponseInput)(nil)).Elem(), BuilderConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BuilderConfigResponsePtrInput)(nil)).Elem(), BuilderConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CisBenchmarkInput)(nil)).Elem(), CisBenchmarkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CisBenchmarkPtrInput)(nil)).Elem(), CisBenchmarkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CisBenchmarkResponseInput)(nil)).Elem(), CisBenchmarkResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CisBenchmarkResponsePtrInput)(nil)).Elem(), CisBenchmarkResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommandInput)(nil)).Elem(), CommandArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommandArrayInput)(nil)).Elem(), CommandArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommandResponseInput)(nil)).Elem(), CommandResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommandResponseArrayInput)(nil)).Elem(), CommandResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompletenessInput)(nil)).Elem(), CompletenessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompletenessPtrInput)(nil)).Elem(), CompletenessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompletenessResponseInput)(nil)).Elem(), CompletenessResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompletenessResponsePtrInput)(nil)).Elem(), CompletenessResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceNoteInput)(nil)).Elem(), ComplianceNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceNotePtrInput)(nil)).Elem(), ComplianceNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceNoteResponseInput)(nil)).Elem(), ComplianceNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceNoteResponsePtrInput)(nil)).Elem(), ComplianceNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceOccurrenceInput)(nil)).Elem(), ComplianceOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceOccurrencePtrInput)(nil)).Elem(), ComplianceOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceOccurrenceResponseInput)(nil)).Elem(), ComplianceOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceOccurrenceResponsePtrInput)(nil)).Elem(), ComplianceOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceVersionInput)(nil)).Elem(), ComplianceVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceVersionArrayInput)(nil)).Elem(), ComplianceVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceVersionResponseInput)(nil)).Elem(), ComplianceVersionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceVersionResponseArrayInput)(nil)).Elem(), ComplianceVersionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationNoteInput)(nil)).Elem(), DSSEAttestationNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationNotePtrInput)(nil)).Elem(), DSSEAttestationNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationNoteResponseInput)(nil)).Elem(), DSSEAttestationNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationNoteResponsePtrInput)(nil)).Elem(), DSSEAttestationNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationOccurrenceInput)(nil)).Elem(), DSSEAttestationOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationOccurrencePtrInput)(nil)).Elem(), DSSEAttestationOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationOccurrenceResponseInput)(nil)).Elem(), DSSEAttestationOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEAttestationOccurrenceResponsePtrInput)(nil)).Elem(), DSSEAttestationOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEHintInput)(nil)).Elem(), DSSEHintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEHintPtrInput)(nil)).Elem(), DSSEHintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEHintResponseInput)(nil)).Elem(), DSSEHintResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSSEHintResponsePtrInput)(nil)).Elem(), DSSEHintResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployableInput)(nil)).Elem(), DeployableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployablePtrInput)(nil)).Elem(), DeployableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployableResponseInput)(nil)).Elem(), DeployableResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployableResponsePtrInput)(nil)).Elem(), DeployableResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentInput)(nil)).Elem(), DeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentPtrInput)(nil)).Elem(), DeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentResponseInput)(nil)).Elem(), DeploymentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentResponsePtrInput)(nil)).Elem(), DeploymentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DerivedInput)(nil)).Elem(), DerivedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DerivedPtrInput)(nil)).Elem(), DerivedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DerivedResponseInput)(nil)).Elem(), DerivedResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DerivedResponsePtrInput)(nil)).Elem(), DerivedResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetailInput)(nil)).Elem(), DetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetailArrayInput)(nil)).Elem(), DetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetailResponseInput)(nil)).Elem(), DetailResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetailResponseArrayInput)(nil)).Elem(), DetailResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveredInput)(nil)).Elem(), DiscoveredArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveredPtrInput)(nil)).Elem(), DiscoveredArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveredResponseInput)(nil)).Elem(), DiscoveredResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveredResponsePtrInput)(nil)).Elem(), DiscoveredResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryInput)(nil)).Elem(), DiscoveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryPtrInput)(nil)).Elem(), DiscoveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryResponseInput)(nil)).Elem(), DiscoveryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryResponsePtrInput)(nil)).Elem(), DiscoveryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionInput)(nil)).Elem(), DistributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionArrayInput)(nil)).Elem(), DistributionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionResponseInput)(nil)).Elem(), DistributionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionResponseArrayInput)(nil)).Elem(), DistributionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentNoteInput)(nil)).Elem(), DocumentNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentNotePtrInput)(nil)).Elem(), DocumentNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentNoteResponseInput)(nil)).Elem(), DocumentNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentNoteResponsePtrInput)(nil)).Elem(), DocumentNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentOccurrenceInput)(nil)).Elem(), DocumentOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentOccurrencePtrInput)(nil)).Elem(), DocumentOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentOccurrenceResponseInput)(nil)).Elem(), DocumentOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentOccurrenceResponsePtrInput)(nil)).Elem(), DocumentOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeInput)(nil)).Elem(), EnvelopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopePtrInput)(nil)).Elem(), EnvelopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeResponseInput)(nil)).Elem(), EnvelopeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeResponsePtrInput)(nil)).Elem(), EnvelopeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeSignatureInput)(nil)).Elem(), EnvelopeSignatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeSignatureArrayInput)(nil)).Elem(), EnvelopeSignatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeSignatureResponseInput)(nil)).Elem(), EnvelopeSignatureResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeSignatureResponseArrayInput)(nil)).Elem(), EnvelopeSignatureResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalRefInput)(nil)).Elem(), ExternalRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalRefArrayInput)(nil)).Elem(), ExternalRefArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalRefResponseInput)(nil)).Elem(), ExternalRefResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalRefResponseArrayInput)(nil)).Elem(), ExternalRefResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileNoteInput)(nil)).Elem(), FileNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileNotePtrInput)(nil)).Elem(), FileNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileNoteResponseInput)(nil)).Elem(), FileNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileNoteResponsePtrInput)(nil)).Elem(), FileNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileOccurrenceInput)(nil)).Elem(), FileOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileOccurrencePtrInput)(nil)).Elem(), FileOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileOccurrenceResponseInput)(nil)).Elem(), FileOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileOccurrenceResponsePtrInput)(nil)).Elem(), FileOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FingerprintInput)(nil)).Elem(), FingerprintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FingerprintPtrInput)(nil)).Elem(), FingerprintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FingerprintResponseInput)(nil)).Elem(), FingerprintResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FingerprintResponsePtrInput)(nil)).Elem(), FingerprintResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1AliasContextInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1AliasContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1AliasContextPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1AliasContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1RepoIdInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1RepoIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1RepoIdPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1RepoIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SourceContextInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SourceContextPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SourceContextArrayInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SourceContextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HashInput)(nil)).Elem(), HashArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HashPtrInput)(nil)).Elem(), HashArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HashResponseInput)(nil)).Elem(), HashResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HashResponsePtrInput)(nil)).Elem(), HashResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InTotoProvenanceInput)(nil)).Elem(), InTotoProvenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InTotoProvenancePtrInput)(nil)).Elem(), InTotoProvenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InTotoProvenanceResponseInput)(nil)).Elem(), InTotoProvenanceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InTotoProvenanceResponsePtrInput)(nil)).Elem(), InTotoProvenanceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementInput)(nil)).Elem(), InTotoStatementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementPtrInput)(nil)).Elem(), InTotoStatementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementResponseInput)(nil)).Elem(), InTotoStatementResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementResponsePtrInput)(nil)).Elem(), InTotoStatementResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstallationInput)(nil)).Elem(), InstallationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstallationPtrInput)(nil)).Elem(), InstallationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstallationResponseInput)(nil)).Elem(), InstallationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstallationResponsePtrInput)(nil)).Elem(), InstallationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LayerInput)(nil)).Elem(), LayerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LayerArrayInput)(nil)).Elem(), LayerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LayerResponseInput)(nil)).Elem(), LayerResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LayerResponseArrayInput)(nil)).Elem(), LayerResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationInput)(nil)).Elem(), LocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationArrayInput)(nil)).Elem(), LocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationResponseInput)(nil)).Elem(), LocationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationResponseArrayInput)(nil)).Elem(), LocationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataInput)(nil)).Elem(), MetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataPtrInput)(nil)).Elem(), MetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataResponseInput)(nil)).Elem(), MetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataResponsePtrInput)(nil)).Elem(), MetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NonCompliantFileInput)(nil)).Elem(), NonCompliantFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NonCompliantFileArrayInput)(nil)).Elem(), NonCompliantFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NonCompliantFileResponseInput)(nil)).Elem(), NonCompliantFileResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NonCompliantFileResponseArrayInput)(nil)).Elem(), NonCompliantFileResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInput)(nil)).Elem(), PackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackagePtrInput)(nil)).Elem(), PackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueInput)(nil)).Elem(), PackageIssueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueArrayInput)(nil)).Elem(), PackageIssueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueResponseInput)(nil)).Elem(), PackageIssueResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueResponseArrayInput)(nil)).Elem(), PackageIssueResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteInput)(nil)).Elem(), PackageNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageNotePtrInput)(nil)).Elem(), PackageNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteResponseInput)(nil)).Elem(), PackageNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteResponsePtrInput)(nil)).Elem(), PackageNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceInput)(nil)).Elem(), PackageOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrencePtrInput)(nil)).Elem(), PackageOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceResponseInput)(nil)).Elem(), PackageOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceResponsePtrInput)(nil)).Elem(), PackageOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageResponseInput)(nil)).Elem(), PackageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageResponsePtrInput)(nil)).Elem(), PackageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationInput)(nil)).Elem(), PgpSignedAttestationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationPtrInput)(nil)).Elem(), PgpSignedAttestationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationResponseInput)(nil)).Elem(), PgpSignedAttestationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationResponsePtrInput)(nil)).Elem(), PgpSignedAttestationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecipeInput)(nil)).Elem(), RecipeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecipePtrInput)(nil)).Elem(), RecipeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecipeResponseInput)(nil)).Elem(), RecipeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecipeResponsePtrInput)(nil)).Elem(), RecipeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelatedUrlInput)(nil)).Elem(), RelatedUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelatedUrlArrayInput)(nil)).Elem(), RelatedUrlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelatedUrlResponseInput)(nil)).Elem(), RelatedUrlResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelatedUrlResponseArrayInput)(nil)).Elem(), RelatedUrlResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipNoteInput)(nil)).Elem(), RelationshipNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipNotePtrInput)(nil)).Elem(), RelationshipNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipNoteResponseInput)(nil)).Elem(), RelationshipNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipNoteResponsePtrInput)(nil)).Elem(), RelationshipNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipOccurrenceInput)(nil)).Elem(), RelationshipOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipOccurrencePtrInput)(nil)).Elem(), RelationshipOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipOccurrenceResponseInput)(nil)).Elem(), RelationshipOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipOccurrenceResponsePtrInput)(nil)).Elem(), RelationshipOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourceInput)(nil)).Elem(), RepoSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourcePtrInput)(nil)).Elem(), RepoSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourceResponseInput)(nil)).Elem(), RepoSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourceResponsePtrInput)(nil)).Elem(), RepoSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceInput)(nil)).Elem(), ResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePtrInput)(nil)).Elem(), ResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceResponseInput)(nil)).Elem(), ResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceResponsePtrInput)(nil)).Elem(), ResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), SourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponseInput)(nil)).Elem(), SourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponsePtrInput)(nil)).Elem(), SourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusInput)(nil)).Elem(), StatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusPtrInput)(nil)).Elem(), StatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceInput)(nil)).Elem(), StorageSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourcePtrInput)(nil)).Elem(), StorageSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceResponseInput)(nil)).Elem(), StorageSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceResponsePtrInput)(nil)).Elem(), StorageSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectInput)(nil)).Elem(), SubjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectArrayInput)(nil)).Elem(), SubjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectResponseInput)(nil)).Elem(), SubjectResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectResponseArrayInput)(nil)).Elem(), SubjectResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionInput)(nil)).Elem(), UpgradeDistributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionPtrInput)(nil)).Elem(), UpgradeDistributionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionArrayInput)(nil)).Elem(), UpgradeDistributionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionResponseInput)(nil)).Elem(), UpgradeDistributionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionResponsePtrInput)(nil)).Elem(), UpgradeDistributionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDistributionResponseArrayInput)(nil)).Elem(), UpgradeDistributionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeNoteInput)(nil)).Elem(), UpgradeNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeNotePtrInput)(nil)).Elem(), UpgradeNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeNoteResponseInput)(nil)).Elem(), UpgradeNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeNoteResponsePtrInput)(nil)).Elem(), UpgradeNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeOccurrenceInput)(nil)).Elem(), UpgradeOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeOccurrencePtrInput)(nil)).Elem(), UpgradeOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeOccurrenceResponseInput)(nil)).Elem(), UpgradeOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeOccurrenceResponsePtrInput)(nil)).Elem(), UpgradeOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VersionInput)(nil)).Elem(), VersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VersionPtrInput)(nil)).Elem(), VersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VersionResponseInput)(nil)).Elem(), VersionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VersionResponsePtrInput)(nil)).Elem(), VersionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityDetailsInput)(nil)).Elem(), VulnerabilityDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityDetailsPtrInput)(nil)).Elem(), VulnerabilityDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityDetailsResponseInput)(nil)).Elem(), VulnerabilityDetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityDetailsResponsePtrInput)(nil)).Elem(), VulnerabilityDetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityLocationInput)(nil)).Elem(), VulnerabilityLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityLocationPtrInput)(nil)).Elem(), VulnerabilityLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityLocationResponseInput)(nil)).Elem(), VulnerabilityLocationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityTypeInput)(nil)).Elem(), VulnerabilityTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityTypePtrInput)(nil)).Elem(), VulnerabilityTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityTypeResponseInput)(nil)).Elem(), VulnerabilityTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityTypeResponsePtrInput)(nil)).Elem(), VulnerabilityTypeResponseArgs{})
 	pulumi.RegisterOutputType(ArtifactOutput{})
 	pulumi.RegisterOutputType(ArtifactArrayOutput{})
 	pulumi.RegisterOutputType(ArtifactResponseOutput{})

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 {
 
     /// <summary>
-    /// Logging configure.
+    /// Logging configuration.
     /// </summary>
     [OutputType]
     public sealed class LoggingConfigResponse

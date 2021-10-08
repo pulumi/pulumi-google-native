@@ -77,6 +77,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Port;
         /// <summary>
+        /// Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
+        /// </summary>
+        public readonly string RuntimeVersion;
+        /// <summary>
         /// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
         /// </summary>
         public readonly string State;
@@ -103,6 +107,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string port,
 
+            string runtimeVersion,
+
             string state)
         {
             CreatedAt = createdAt;
@@ -115,6 +121,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             Name = name;
             PeeringCidrRange = peeringCidrRange;
             Port = port;
+            RuntimeVersion = runtimeVersion;
             State = state;
         }
     }

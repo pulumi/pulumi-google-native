@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+        /// Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         /// </summary>
         [Output("diskEncryptionKey")]
         public Output<Outputs.CustomerEncryptionKeyResponse> DiskEncryptionKey { get; private set; } = null!;
@@ -44,12 +44,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("guestOsFeatures")]
         public Output<ImmutableArray<Outputs.GuestOsFeatureResponse>> GuestOsFeatures { get; private set; } = null!;
-
-        /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        /// </summary>
-        [Output("interface")]
-        public Output<string> Interface { get; private set; } = null!;
 
         /// <summary>
         /// Type of the resource. Always compute#disk for disks.
@@ -98,6 +92,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("locationHint")]
         public Output<string> LocationHint { get; private set; } = null!;
+
+        /// <summary>
+        /// The field indicates if the disk is created from a locked source image. Attachment of a disk created from a locked source image will cause the following operations to become irreversibly prohibited: - R/W or R/O disk attachment to any other instance - Disk detachment. And the disk can only be deleted when the instance is deleted - Creation of images or snapshots - Disk cloning Furthermore, the instance with at least one disk with locked flag set to true will be prohibited from performing the operations below: - Further attachment of secondary disks. - Detachment of any disks - Create machine images - Create instance template - Delete the instance with --keep-disk parameter set to true for locked disks - Attach a locked disk with --auto-delete parameter set to false 
+        /// </summary>
+        [Output("locked")]
+        public Output<bool> Locked { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether or not the disk can be read/write attached to more than one instance.
@@ -319,7 +319,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+        /// Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         /// </summary>
         [Input("diskEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
@@ -341,12 +341,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             get => _guestOsFeatures ?? (_guestOsFeatures = new InputList<Inputs.GuestOsFeatureArgs>());
             set => _guestOsFeatures = value;
         }
-
-        /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        /// </summary>
-        [Input("interface")]
-        public Input<Pulumi.GoogleNative.Compute.Alpha.DiskInterface>? Interface { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

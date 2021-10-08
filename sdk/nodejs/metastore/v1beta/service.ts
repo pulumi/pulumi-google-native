@@ -60,7 +60,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+     * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
      */
     public readonly maintenanceWindow!: pulumi.Output<outputs.metastore.v1beta.MaintenanceWindowResponse>;
     /**
@@ -189,7 +189,7 @@ export interface ServiceArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+     * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
      */
     maintenanceWindow?: pulumi.Input<inputs.metastore.v1beta.MaintenanceWindowArgs>;
     /**

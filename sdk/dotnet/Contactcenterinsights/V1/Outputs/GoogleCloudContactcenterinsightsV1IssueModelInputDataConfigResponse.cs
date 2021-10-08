@@ -17,7 +17,11 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
     public sealed class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse
     {
         /// <summary>
-        /// Medium of conversations used in training data.
+        /// A filter to reduce the conversations used for training the model to a specific subset.
+        /// </summary>
+        public readonly string Filter;
+        /// <summary>
+        /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
         /// </summary>
         public readonly string Medium;
         /// <summary>
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse(
+            string filter,
+
             string medium,
 
             string trainingConversationsCount)
         {
+            Filter = filter;
             Medium = medium;
             TrainingConversationsCount = trainingConversationsCount;
         }

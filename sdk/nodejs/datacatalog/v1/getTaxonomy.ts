@@ -43,7 +43,7 @@ export interface GetTaxonomyResult {
      */
     readonly displayName: string;
     /**
-     * Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs. 
+     * Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
      */
     readonly name: string;
     /**
@@ -54,4 +54,14 @@ export interface GetTaxonomyResult {
      * Creation and modification timestamps of this taxonomy.
      */
     readonly taxonomyTimestamps: outputs.datacatalog.v1.GoogleCloudDatacatalogV1SystemTimestampsResponse;
+}
+
+export function getTaxonomyOutput(args: GetTaxonomyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaxonomyResult> {
+    return pulumi.output(args).apply(a => getTaxonomy(a, opts))
+}
+
+export interface GetTaxonomyOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    taxonomyId: pulumi.Input<string>;
 }

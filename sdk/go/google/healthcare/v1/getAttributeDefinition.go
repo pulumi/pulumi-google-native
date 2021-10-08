@@ -29,7 +29,7 @@ type LookupAttributeDefinitionArgs struct {
 }
 
 type LookupAttributeDefinitionResult struct {
-	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues []string `pulumi:"allowedValues"`
 	// The category of the attribute. The value of this field cannot be changed after creation.
 	Category string `pulumi:"category"`
@@ -78,7 +78,7 @@ func (o LookupAttributeDefinitionResultOutput) ToLookupAttributeDefinitionResult
 	return o
 }
 
-// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
 func (o LookupAttributeDefinitionResultOutput) AllowedValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAttributeDefinitionResult) []string { return v.AllowedValues }).(pulumi.StringArrayOutput)
 }

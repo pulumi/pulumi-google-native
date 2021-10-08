@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
         /// </summary>
         public readonly string AcceleratorType;
+        /// <summary>
+        /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        /// </summary>
+        public readonly string GpuPartitionSize;
 
         [OutputConstructor]
         private AcceleratorConfigResponse(
             string acceleratorCount,
 
-            string acceleratorType)
+            string acceleratorType,
+
+            string gpuPartitionSize)
         {
             AcceleratorCount = acceleratorCount;
             AcceleratorType = acceleratorType;
+            GpuPartitionSize = gpuPartitionSize;
         }
     }
 }

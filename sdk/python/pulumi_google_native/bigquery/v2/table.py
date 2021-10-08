@@ -402,6 +402,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["time_partitioning"] = time_partitioning
             __props__.__dict__["view"] = view
             __props__.__dict__["creation_time"] = None
+            __props__.__dict__["default_collation"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["last_modified_time"] = None
@@ -438,6 +439,7 @@ class Table(pulumi.CustomResource):
 
         __props__.__dict__["clustering"] = None
         __props__.__dict__["creation_time"] = None
+        __props__.__dict__["default_collation"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["encryption_configuration"] = None
         __props__.__dict__["etag"] = None
@@ -481,6 +483,14 @@ class Table(pulumi.CustomResource):
         The time when this table was created, in milliseconds since the epoch.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="defaultCollation")
+    def default_collation(self) -> pulumi.Output[str]:
+        """
+        The default collation of the table.
+        """
+        return pulumi.get(self, "default_collation")
 
     @property
     @pulumi.getter

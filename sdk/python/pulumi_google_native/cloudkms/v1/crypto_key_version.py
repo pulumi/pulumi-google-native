@@ -188,6 +188,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
             __props__.__dict__["import_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["protection_level"] = None
+            __props__.__dict__["reimport_eligible"] = None
         super(CryptoKeyVersion, __self__).__init__(
             'google-native:cloudkms/v1:CryptoKeyVersion',
             resource_name,
@@ -222,6 +223,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         __props__.__dict__["import_time"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["protection_level"] = None
+        __props__.__dict__["reimport_eligible"] = None
         __props__.__dict__["state"] = None
         return CryptoKeyVersion(resource_name, opts=opts, __props__=__props__)
 
@@ -285,7 +287,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
     @pulumi.getter(name="importFailureReason")
     def import_failure_reason(self) -> pulumi.Output[str]:
         """
-        The root cause of an import failure. Only present if state is IMPORT_FAILED.
+        The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
         """
         return pulumi.get(self, "import_failure_reason")
 
@@ -293,7 +295,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
     @pulumi.getter(name="importJob")
     def import_job(self) -> pulumi.Output[str]:
         """
-        The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+        The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
         """
         return pulumi.get(self, "import_job")
 
@@ -301,7 +303,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
     @pulumi.getter(name="importTime")
     def import_time(self) -> pulumi.Output[str]:
         """
-        The time at which this CryptoKeyVersion's key material was imported.
+        The time at which this CryptoKeyVersion's key material was most recently imported.
         """
         return pulumi.get(self, "import_time")
 
@@ -320,6 +322,14 @@ class CryptoKeyVersion(pulumi.CustomResource):
         The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
         """
         return pulumi.get(self, "protection_level")
+
+    @property
+    @pulumi.getter(name="reimportEligible")
+    def reimport_eligible(self) -> pulumi.Output[bool]:
+        """
+        Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+        """
+        return pulumi.get(self, "reimport_eligible")
 
     @property
     @pulumi.getter

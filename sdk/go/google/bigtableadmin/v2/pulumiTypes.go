@@ -1618,6 +1618,8 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
 type MultiClusterRoutingUseAny struct {
+	// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+	ClusterIds []string `pulumi:"clusterIds"`
 }
 
 // MultiClusterRoutingUseAnyInput is an input type that accepts MultiClusterRoutingUseAnyArgs and MultiClusterRoutingUseAnyOutput values.
@@ -1633,6 +1635,8 @@ type MultiClusterRoutingUseAnyInput interface {
 
 // Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
 type MultiClusterRoutingUseAnyArgs struct {
+	// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+	ClusterIds pulumi.StringArrayInput `pulumi:"clusterIds"`
 }
 
 func (MultiClusterRoutingUseAnyArgs) ElementType() reflect.Type {
@@ -1713,6 +1717,11 @@ func (o MultiClusterRoutingUseAnyOutput) ToMultiClusterRoutingUseAnyPtrOutputWit
 	}).(MultiClusterRoutingUseAnyPtrOutput)
 }
 
+// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+func (o MultiClusterRoutingUseAnyOutput) ClusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MultiClusterRoutingUseAny) []string { return v.ClusterIds }).(pulumi.StringArrayOutput)
+}
+
 type MultiClusterRoutingUseAnyPtrOutput struct{ *pulumi.OutputState }
 
 func (MultiClusterRoutingUseAnyPtrOutput) ElementType() reflect.Type {
@@ -1737,8 +1746,20 @@ func (o MultiClusterRoutingUseAnyPtrOutput) Elem() MultiClusterRoutingUseAnyOutp
 	}).(MultiClusterRoutingUseAnyOutput)
 }
 
+// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+func (o MultiClusterRoutingUseAnyPtrOutput) ClusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MultiClusterRoutingUseAny) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterIds
+	}).(pulumi.StringArrayOutput)
+}
+
 // Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
 type MultiClusterRoutingUseAnyResponse struct {
+	// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+	ClusterIds []string `pulumi:"clusterIds"`
 }
 
 // MultiClusterRoutingUseAnyResponseInput is an input type that accepts MultiClusterRoutingUseAnyResponseArgs and MultiClusterRoutingUseAnyResponseOutput values.
@@ -1754,6 +1775,8 @@ type MultiClusterRoutingUseAnyResponseInput interface {
 
 // Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
 type MultiClusterRoutingUseAnyResponseArgs struct {
+	// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+	ClusterIds pulumi.StringArrayInput `pulumi:"clusterIds"`
 }
 
 func (MultiClusterRoutingUseAnyResponseArgs) ElementType() reflect.Type {
@@ -1834,6 +1857,11 @@ func (o MultiClusterRoutingUseAnyResponseOutput) ToMultiClusterRoutingUseAnyResp
 	}).(MultiClusterRoutingUseAnyResponsePtrOutput)
 }
 
+// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+func (o MultiClusterRoutingUseAnyResponseOutput) ClusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MultiClusterRoutingUseAnyResponse) []string { return v.ClusterIds }).(pulumi.StringArrayOutput)
+}
+
 type MultiClusterRoutingUseAnyResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (MultiClusterRoutingUseAnyResponsePtrOutput) ElementType() reflect.Type {
@@ -1856,6 +1884,16 @@ func (o MultiClusterRoutingUseAnyResponsePtrOutput) Elem() MultiClusterRoutingUs
 		var ret MultiClusterRoutingUseAnyResponse
 		return ret
 	}).(MultiClusterRoutingUseAnyResponseOutput)
+}
+
+// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+func (o MultiClusterRoutingUseAnyResponsePtrOutput) ClusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MultiClusterRoutingUseAnyResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterIds
+	}).(pulumi.StringArrayOutput)
 }
 
 // Information about a table restore.
@@ -2614,6 +2652,43 @@ func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupInfoResponseInput)(nil)).Elem(), BackupInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupInfoResponsePtrInput)(nil)).Elem(), BackupInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponseInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponsePtrInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionInfoResponseInput)(nil)).Elem(), EncryptionInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionInfoResponsePtrInput)(nil)).Elem(), EncryptionInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterRoutingUseAnyInput)(nil)).Elem(), MultiClusterRoutingUseAnyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterRoutingUseAnyPtrInput)(nil)).Elem(), MultiClusterRoutingUseAnyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterRoutingUseAnyResponseInput)(nil)).Elem(), MultiClusterRoutingUseAnyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterRoutingUseAnyResponsePtrInput)(nil)).Elem(), MultiClusterRoutingUseAnyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreInfoResponseInput)(nil)).Elem(), RestoreInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreInfoResponsePtrInput)(nil)).Elem(), RestoreInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleClusterRoutingInput)(nil)).Elem(), SingleClusterRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleClusterRoutingPtrInput)(nil)).Elem(), SingleClusterRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleClusterRoutingResponseInput)(nil)).Elem(), SingleClusterRoutingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleClusterRoutingResponsePtrInput)(nil)).Elem(), SingleClusterRoutingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplitInput)(nil)).Elem(), SplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplitArrayInput)(nil)).Elem(), SplitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})

@@ -252,15 +252,15 @@ export const RatePlanConsumptionPricingType = {
      */
     FixedPerUnit: "FIXED_PER_UNIT",
     /**
-     * Variable rate charged based on the total volume of API calls. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 150 x $1.5 = $225 * Total price for 250 calls: 250 x $1 = $250. **Note**: Not supported by Apigee at this time.
+     * Variable rate charged for each API call based on price tiers. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 100 x $2 + 50 x $1.5 = $275 * Total price for 250 calls: 100 x $2 + 100 x $1.5 + 50 x $1 = $400. **Note**: Not supported by Apigee at this time.
      */
     Banded: "BANDED",
     /**
-     * Variable rate charged for each API call based on price tiers. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 100 x $2 + 50 x $1.5 = $275 * Total price for 250 calls: 100 x $2 + 100 x $1.5 + 50 x $1 = $400. **Note**: Not supported by Apigee at this time.
+     * **Note**: Not supported by Apigee at this time.
      */
     Tiered: "TIERED",
     /**
-     * Flat rate charged for a bundle of API calls whether or not the entire bundle is used. Example: * 1-100 calls cost $75 flat fee * 101-200 calls cost $100 flat free * 201-300 calls cost $150 flat fee * Total price for 1 call: $75 * Total price for 50 calls: $75 * Total price for 150 calls: $100 * Total price for 250 calls: $150. **Note**: Not supported by Apigee at this time.
+     * **Note**: Not supported by Apigee at this time.
      */
     Stairstep: "STAIRSTEP",
 } as const;
@@ -269,26 +269,6 @@ export const RatePlanConsumptionPricingType = {
  * Pricing model used for consumption-based charges.
  */
 export type RatePlanConsumptionPricingType = (typeof RatePlanConsumptionPricingType)[keyof typeof RatePlanConsumptionPricingType];
-
-export const RatePlanPaymentFundingModel = {
-    /**
-     * Billing account type not specified.
-     */
-    PaymentFundingModelUnspecified: "PAYMENT_FUNDING_MODEL_UNSPECIFIED",
-    /**
-     * Prepaid billing account type. Developer pays in advance for the use of your API products. Funds are deducted from their prepaid account balance. **Note**: Not supported by Apigee at this time.
-     */
-    Prepaid: "PREPAID",
-    /**
-     * Postpaid billing account type. Developer is billed through an invoice after using your API products.
-     */
-    Postpaid: "POSTPAID",
-} as const;
-
-/**
- * Flag that specifies the billing account type, prepaid or postpaid.
- */
-export type RatePlanPaymentFundingModel = (typeof RatePlanPaymentFundingModel)[keyof typeof RatePlanPaymentFundingModel];
 
 export const RatePlanRevenueShareType = {
     /**

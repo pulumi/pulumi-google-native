@@ -4172,6 +4172,455 @@ func (o SparkChartViewResponseOutput) SparkChartType() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkChartViewResponse) string { return v.SparkChartType }).(pulumi.StringOutput)
 }
 
+// Groups a time series query definition with table options.
+type TableDataSet struct {
+	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+	MinAlignmentPeriod *string `pulumi:"minAlignmentPeriod"`
+	// Optional. Table display options for configuring how the table is rendered.
+	TableDisplayOptions *TableDisplayOptions `pulumi:"tableDisplayOptions"`
+	// Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
+	TableTemplate *string `pulumi:"tableTemplate"`
+	// Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQuery `pulumi:"timeSeriesQuery"`
+}
+
+// TableDataSetInput is an input type that accepts TableDataSetArgs and TableDataSetOutput values.
+// You can construct a concrete instance of `TableDataSetInput` via:
+//
+//          TableDataSetArgs{...}
+type TableDataSetInput interface {
+	pulumi.Input
+
+	ToTableDataSetOutput() TableDataSetOutput
+	ToTableDataSetOutputWithContext(context.Context) TableDataSetOutput
+}
+
+// Groups a time series query definition with table options.
+type TableDataSetArgs struct {
+	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+	MinAlignmentPeriod pulumi.StringPtrInput `pulumi:"minAlignmentPeriod"`
+	// Optional. Table display options for configuring how the table is rendered.
+	TableDisplayOptions TableDisplayOptionsPtrInput `pulumi:"tableDisplayOptions"`
+	// Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
+	TableTemplate pulumi.StringPtrInput `pulumi:"tableTemplate"`
+	// Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQueryInput `pulumi:"timeSeriesQuery"`
+}
+
+func (TableDataSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDataSet)(nil)).Elem()
+}
+
+func (i TableDataSetArgs) ToTableDataSetOutput() TableDataSetOutput {
+	return i.ToTableDataSetOutputWithContext(context.Background())
+}
+
+func (i TableDataSetArgs) ToTableDataSetOutputWithContext(ctx context.Context) TableDataSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDataSetOutput)
+}
+
+// TableDataSetArrayInput is an input type that accepts TableDataSetArray and TableDataSetArrayOutput values.
+// You can construct a concrete instance of `TableDataSetArrayInput` via:
+//
+//          TableDataSetArray{ TableDataSetArgs{...} }
+type TableDataSetArrayInput interface {
+	pulumi.Input
+
+	ToTableDataSetArrayOutput() TableDataSetArrayOutput
+	ToTableDataSetArrayOutputWithContext(context.Context) TableDataSetArrayOutput
+}
+
+type TableDataSetArray []TableDataSetInput
+
+func (TableDataSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableDataSet)(nil)).Elem()
+}
+
+func (i TableDataSetArray) ToTableDataSetArrayOutput() TableDataSetArrayOutput {
+	return i.ToTableDataSetArrayOutputWithContext(context.Background())
+}
+
+func (i TableDataSetArray) ToTableDataSetArrayOutputWithContext(ctx context.Context) TableDataSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDataSetArrayOutput)
+}
+
+// Groups a time series query definition with table options.
+type TableDataSetOutput struct{ *pulumi.OutputState }
+
+func (TableDataSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDataSet)(nil)).Elem()
+}
+
+func (o TableDataSetOutput) ToTableDataSetOutput() TableDataSetOutput {
+	return o
+}
+
+func (o TableDataSetOutput) ToTableDataSetOutputWithContext(ctx context.Context) TableDataSetOutput {
+	return o
+}
+
+// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+func (o TableDataSetOutput) MinAlignmentPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableDataSet) *string { return v.MinAlignmentPeriod }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Table display options for configuring how the table is rendered.
+func (o TableDataSetOutput) TableDisplayOptions() TableDisplayOptionsPtrOutput {
+	return o.ApplyT(func(v TableDataSet) *TableDisplayOptions { return v.TableDisplayOptions }).(TableDisplayOptionsPtrOutput)
+}
+
+// Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
+func (o TableDataSetOutput) TableTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableDataSet) *string { return v.TableTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Fields for querying time series data from the Stackdriver metrics API.
+func (o TableDataSetOutput) TimeSeriesQuery() TimeSeriesQueryOutput {
+	return o.ApplyT(func(v TableDataSet) TimeSeriesQuery { return v.TimeSeriesQuery }).(TimeSeriesQueryOutput)
+}
+
+type TableDataSetArrayOutput struct{ *pulumi.OutputState }
+
+func (TableDataSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableDataSet)(nil)).Elem()
+}
+
+func (o TableDataSetArrayOutput) ToTableDataSetArrayOutput() TableDataSetArrayOutput {
+	return o
+}
+
+func (o TableDataSetArrayOutput) ToTableDataSetArrayOutputWithContext(ctx context.Context) TableDataSetArrayOutput {
+	return o
+}
+
+func (o TableDataSetArrayOutput) Index(i pulumi.IntInput) TableDataSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableDataSet {
+		return vs[0].([]TableDataSet)[vs[1].(int)]
+	}).(TableDataSetOutput)
+}
+
+// Groups a time series query definition with table options.
+type TableDataSetResponse struct {
+	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+	MinAlignmentPeriod string `pulumi:"minAlignmentPeriod"`
+	// Optional. Table display options for configuring how the table is rendered.
+	TableDisplayOptions TableDisplayOptionsResponse `pulumi:"tableDisplayOptions"`
+	// Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
+	TableTemplate string `pulumi:"tableTemplate"`
+	// Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQueryResponse `pulumi:"timeSeriesQuery"`
+}
+
+// TableDataSetResponseInput is an input type that accepts TableDataSetResponseArgs and TableDataSetResponseOutput values.
+// You can construct a concrete instance of `TableDataSetResponseInput` via:
+//
+//          TableDataSetResponseArgs{...}
+type TableDataSetResponseInput interface {
+	pulumi.Input
+
+	ToTableDataSetResponseOutput() TableDataSetResponseOutput
+	ToTableDataSetResponseOutputWithContext(context.Context) TableDataSetResponseOutput
+}
+
+// Groups a time series query definition with table options.
+type TableDataSetResponseArgs struct {
+	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+	MinAlignmentPeriod pulumi.StringInput `pulumi:"minAlignmentPeriod"`
+	// Optional. Table display options for configuring how the table is rendered.
+	TableDisplayOptions TableDisplayOptionsResponseInput `pulumi:"tableDisplayOptions"`
+	// Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
+	TableTemplate pulumi.StringInput `pulumi:"tableTemplate"`
+	// Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQueryResponseInput `pulumi:"timeSeriesQuery"`
+}
+
+func (TableDataSetResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDataSetResponse)(nil)).Elem()
+}
+
+func (i TableDataSetResponseArgs) ToTableDataSetResponseOutput() TableDataSetResponseOutput {
+	return i.ToTableDataSetResponseOutputWithContext(context.Background())
+}
+
+func (i TableDataSetResponseArgs) ToTableDataSetResponseOutputWithContext(ctx context.Context) TableDataSetResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDataSetResponseOutput)
+}
+
+// TableDataSetResponseArrayInput is an input type that accepts TableDataSetResponseArray and TableDataSetResponseArrayOutput values.
+// You can construct a concrete instance of `TableDataSetResponseArrayInput` via:
+//
+//          TableDataSetResponseArray{ TableDataSetResponseArgs{...} }
+type TableDataSetResponseArrayInput interface {
+	pulumi.Input
+
+	ToTableDataSetResponseArrayOutput() TableDataSetResponseArrayOutput
+	ToTableDataSetResponseArrayOutputWithContext(context.Context) TableDataSetResponseArrayOutput
+}
+
+type TableDataSetResponseArray []TableDataSetResponseInput
+
+func (TableDataSetResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableDataSetResponse)(nil)).Elem()
+}
+
+func (i TableDataSetResponseArray) ToTableDataSetResponseArrayOutput() TableDataSetResponseArrayOutput {
+	return i.ToTableDataSetResponseArrayOutputWithContext(context.Background())
+}
+
+func (i TableDataSetResponseArray) ToTableDataSetResponseArrayOutputWithContext(ctx context.Context) TableDataSetResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDataSetResponseArrayOutput)
+}
+
+// Groups a time series query definition with table options.
+type TableDataSetResponseOutput struct{ *pulumi.OutputState }
+
+func (TableDataSetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDataSetResponse)(nil)).Elem()
+}
+
+func (o TableDataSetResponseOutput) ToTableDataSetResponseOutput() TableDataSetResponseOutput {
+	return o
+}
+
+func (o TableDataSetResponseOutput) ToTableDataSetResponseOutputWithContext(ctx context.Context) TableDataSetResponseOutput {
+	return o
+}
+
+// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+func (o TableDataSetResponseOutput) MinAlignmentPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v TableDataSetResponse) string { return v.MinAlignmentPeriod }).(pulumi.StringOutput)
+}
+
+// Optional. Table display options for configuring how the table is rendered.
+func (o TableDataSetResponseOutput) TableDisplayOptions() TableDisplayOptionsResponseOutput {
+	return o.ApplyT(func(v TableDataSetResponse) TableDisplayOptionsResponse { return v.TableDisplayOptions }).(TableDisplayOptionsResponseOutput)
+}
+
+// Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
+func (o TableDataSetResponseOutput) TableTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v TableDataSetResponse) string { return v.TableTemplate }).(pulumi.StringOutput)
+}
+
+// Fields for querying time series data from the Stackdriver metrics API.
+func (o TableDataSetResponseOutput) TimeSeriesQuery() TimeSeriesQueryResponseOutput {
+	return o.ApplyT(func(v TableDataSetResponse) TimeSeriesQueryResponse { return v.TimeSeriesQuery }).(TimeSeriesQueryResponseOutput)
+}
+
+type TableDataSetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TableDataSetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableDataSetResponse)(nil)).Elem()
+}
+
+func (o TableDataSetResponseArrayOutput) ToTableDataSetResponseArrayOutput() TableDataSetResponseArrayOutput {
+	return o
+}
+
+func (o TableDataSetResponseArrayOutput) ToTableDataSetResponseArrayOutputWithContext(ctx context.Context) TableDataSetResponseArrayOutput {
+	return o
+}
+
+func (o TableDataSetResponseArrayOutput) Index(i pulumi.IntInput) TableDataSetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableDataSetResponse {
+		return vs[0].([]TableDataSetResponse)[vs[1].(int)]
+	}).(TableDataSetResponseOutput)
+}
+
+// Table display options that can be reused.
+type TableDisplayOptions struct {
+	// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
+	ShownColumns []string `pulumi:"shownColumns"`
+}
+
+// TableDisplayOptionsInput is an input type that accepts TableDisplayOptionsArgs and TableDisplayOptionsOutput values.
+// You can construct a concrete instance of `TableDisplayOptionsInput` via:
+//
+//          TableDisplayOptionsArgs{...}
+type TableDisplayOptionsInput interface {
+	pulumi.Input
+
+	ToTableDisplayOptionsOutput() TableDisplayOptionsOutput
+	ToTableDisplayOptionsOutputWithContext(context.Context) TableDisplayOptionsOutput
+}
+
+// Table display options that can be reused.
+type TableDisplayOptionsArgs struct {
+	// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
+	ShownColumns pulumi.StringArrayInput `pulumi:"shownColumns"`
+}
+
+func (TableDisplayOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDisplayOptions)(nil)).Elem()
+}
+
+func (i TableDisplayOptionsArgs) ToTableDisplayOptionsOutput() TableDisplayOptionsOutput {
+	return i.ToTableDisplayOptionsOutputWithContext(context.Background())
+}
+
+func (i TableDisplayOptionsArgs) ToTableDisplayOptionsOutputWithContext(ctx context.Context) TableDisplayOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDisplayOptionsOutput)
+}
+
+func (i TableDisplayOptionsArgs) ToTableDisplayOptionsPtrOutput() TableDisplayOptionsPtrOutput {
+	return i.ToTableDisplayOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TableDisplayOptionsArgs) ToTableDisplayOptionsPtrOutputWithContext(ctx context.Context) TableDisplayOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDisplayOptionsOutput).ToTableDisplayOptionsPtrOutputWithContext(ctx)
+}
+
+// TableDisplayOptionsPtrInput is an input type that accepts TableDisplayOptionsArgs, TableDisplayOptionsPtr and TableDisplayOptionsPtrOutput values.
+// You can construct a concrete instance of `TableDisplayOptionsPtrInput` via:
+//
+//          TableDisplayOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type TableDisplayOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTableDisplayOptionsPtrOutput() TableDisplayOptionsPtrOutput
+	ToTableDisplayOptionsPtrOutputWithContext(context.Context) TableDisplayOptionsPtrOutput
+}
+
+type tableDisplayOptionsPtrType TableDisplayOptionsArgs
+
+func TableDisplayOptionsPtr(v *TableDisplayOptionsArgs) TableDisplayOptionsPtrInput {
+	return (*tableDisplayOptionsPtrType)(v)
+}
+
+func (*tableDisplayOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableDisplayOptions)(nil)).Elem()
+}
+
+func (i *tableDisplayOptionsPtrType) ToTableDisplayOptionsPtrOutput() TableDisplayOptionsPtrOutput {
+	return i.ToTableDisplayOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableDisplayOptionsPtrType) ToTableDisplayOptionsPtrOutputWithContext(ctx context.Context) TableDisplayOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDisplayOptionsPtrOutput)
+}
+
+// Table display options that can be reused.
+type TableDisplayOptionsOutput struct{ *pulumi.OutputState }
+
+func (TableDisplayOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDisplayOptions)(nil)).Elem()
+}
+
+func (o TableDisplayOptionsOutput) ToTableDisplayOptionsOutput() TableDisplayOptionsOutput {
+	return o
+}
+
+func (o TableDisplayOptionsOutput) ToTableDisplayOptionsOutputWithContext(ctx context.Context) TableDisplayOptionsOutput {
+	return o
+}
+
+func (o TableDisplayOptionsOutput) ToTableDisplayOptionsPtrOutput() TableDisplayOptionsPtrOutput {
+	return o.ToTableDisplayOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TableDisplayOptionsOutput) ToTableDisplayOptionsPtrOutputWithContext(ctx context.Context) TableDisplayOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableDisplayOptions) *TableDisplayOptions {
+		return &v
+	}).(TableDisplayOptionsPtrOutput)
+}
+
+// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
+func (o TableDisplayOptionsOutput) ShownColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableDisplayOptions) []string { return v.ShownColumns }).(pulumi.StringArrayOutput)
+}
+
+type TableDisplayOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableDisplayOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableDisplayOptions)(nil)).Elem()
+}
+
+func (o TableDisplayOptionsPtrOutput) ToTableDisplayOptionsPtrOutput() TableDisplayOptionsPtrOutput {
+	return o
+}
+
+func (o TableDisplayOptionsPtrOutput) ToTableDisplayOptionsPtrOutputWithContext(ctx context.Context) TableDisplayOptionsPtrOutput {
+	return o
+}
+
+func (o TableDisplayOptionsPtrOutput) Elem() TableDisplayOptionsOutput {
+	return o.ApplyT(func(v *TableDisplayOptions) TableDisplayOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TableDisplayOptions
+		return ret
+	}).(TableDisplayOptionsOutput)
+}
+
+// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
+func (o TableDisplayOptionsPtrOutput) ShownColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TableDisplayOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ShownColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Table display options that can be reused.
+type TableDisplayOptionsResponse struct {
+	// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
+	ShownColumns []string `pulumi:"shownColumns"`
+}
+
+// TableDisplayOptionsResponseInput is an input type that accepts TableDisplayOptionsResponseArgs and TableDisplayOptionsResponseOutput values.
+// You can construct a concrete instance of `TableDisplayOptionsResponseInput` via:
+//
+//          TableDisplayOptionsResponseArgs{...}
+type TableDisplayOptionsResponseInput interface {
+	pulumi.Input
+
+	ToTableDisplayOptionsResponseOutput() TableDisplayOptionsResponseOutput
+	ToTableDisplayOptionsResponseOutputWithContext(context.Context) TableDisplayOptionsResponseOutput
+}
+
+// Table display options that can be reused.
+type TableDisplayOptionsResponseArgs struct {
+	// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
+	ShownColumns pulumi.StringArrayInput `pulumi:"shownColumns"`
+}
+
+func (TableDisplayOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDisplayOptionsResponse)(nil)).Elem()
+}
+
+func (i TableDisplayOptionsResponseArgs) ToTableDisplayOptionsResponseOutput() TableDisplayOptionsResponseOutput {
+	return i.ToTableDisplayOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i TableDisplayOptionsResponseArgs) ToTableDisplayOptionsResponseOutputWithContext(ctx context.Context) TableDisplayOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDisplayOptionsResponseOutput)
+}
+
+// Table display options that can be reused.
+type TableDisplayOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (TableDisplayOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDisplayOptionsResponse)(nil)).Elem()
+}
+
+func (o TableDisplayOptionsResponseOutput) ToTableDisplayOptionsResponseOutput() TableDisplayOptionsResponseOutput {
+	return o
+}
+
+func (o TableDisplayOptionsResponseOutput) ToTableDisplayOptionsResponseOutputWithContext(ctx context.Context) TableDisplayOptionsResponseOutput {
+	return o
+}
+
+// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
+func (o TableDisplayOptionsResponseOutput) ShownColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableDisplayOptionsResponse) []string { return v.ShownColumns }).(pulumi.StringArrayOutput)
+}
+
 // A widget that displays textual content.
 type Text struct {
 	// The text content to be displayed.
@@ -5776,6 +6225,201 @@ func (o TimeSeriesQueryResponseOutput) UnitOverride() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeSeriesQueryResponse) string { return v.UnitOverride }).(pulumi.StringOutput)
 }
 
+// A table that displays time series data.
+type TimeSeriesTable struct {
+	// The data displayed in this table.
+	DataSets []TableDataSet `pulumi:"dataSets"`
+}
+
+// TimeSeriesTableInput is an input type that accepts TimeSeriesTableArgs and TimeSeriesTableOutput values.
+// You can construct a concrete instance of `TimeSeriesTableInput` via:
+//
+//          TimeSeriesTableArgs{...}
+type TimeSeriesTableInput interface {
+	pulumi.Input
+
+	ToTimeSeriesTableOutput() TimeSeriesTableOutput
+	ToTimeSeriesTableOutputWithContext(context.Context) TimeSeriesTableOutput
+}
+
+// A table that displays time series data.
+type TimeSeriesTableArgs struct {
+	// The data displayed in this table.
+	DataSets TableDataSetArrayInput `pulumi:"dataSets"`
+}
+
+func (TimeSeriesTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesTable)(nil)).Elem()
+}
+
+func (i TimeSeriesTableArgs) ToTimeSeriesTableOutput() TimeSeriesTableOutput {
+	return i.ToTimeSeriesTableOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesTableArgs) ToTimeSeriesTableOutputWithContext(ctx context.Context) TimeSeriesTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesTableOutput)
+}
+
+func (i TimeSeriesTableArgs) ToTimeSeriesTablePtrOutput() TimeSeriesTablePtrOutput {
+	return i.ToTimeSeriesTablePtrOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesTableArgs) ToTimeSeriesTablePtrOutputWithContext(ctx context.Context) TimeSeriesTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesTableOutput).ToTimeSeriesTablePtrOutputWithContext(ctx)
+}
+
+// TimeSeriesTablePtrInput is an input type that accepts TimeSeriesTableArgs, TimeSeriesTablePtr and TimeSeriesTablePtrOutput values.
+// You can construct a concrete instance of `TimeSeriesTablePtrInput` via:
+//
+//          TimeSeriesTableArgs{...}
+//
+//  or:
+//
+//          nil
+type TimeSeriesTablePtrInput interface {
+	pulumi.Input
+
+	ToTimeSeriesTablePtrOutput() TimeSeriesTablePtrOutput
+	ToTimeSeriesTablePtrOutputWithContext(context.Context) TimeSeriesTablePtrOutput
+}
+
+type timeSeriesTablePtrType TimeSeriesTableArgs
+
+func TimeSeriesTablePtr(v *TimeSeriesTableArgs) TimeSeriesTablePtrInput {
+	return (*timeSeriesTablePtrType)(v)
+}
+
+func (*timeSeriesTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeSeriesTable)(nil)).Elem()
+}
+
+func (i *timeSeriesTablePtrType) ToTimeSeriesTablePtrOutput() TimeSeriesTablePtrOutput {
+	return i.ToTimeSeriesTablePtrOutputWithContext(context.Background())
+}
+
+func (i *timeSeriesTablePtrType) ToTimeSeriesTablePtrOutputWithContext(ctx context.Context) TimeSeriesTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesTablePtrOutput)
+}
+
+// A table that displays time series data.
+type TimeSeriesTableOutput struct{ *pulumi.OutputState }
+
+func (TimeSeriesTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesTable)(nil)).Elem()
+}
+
+func (o TimeSeriesTableOutput) ToTimeSeriesTableOutput() TimeSeriesTableOutput {
+	return o
+}
+
+func (o TimeSeriesTableOutput) ToTimeSeriesTableOutputWithContext(ctx context.Context) TimeSeriesTableOutput {
+	return o
+}
+
+func (o TimeSeriesTableOutput) ToTimeSeriesTablePtrOutput() TimeSeriesTablePtrOutput {
+	return o.ToTimeSeriesTablePtrOutputWithContext(context.Background())
+}
+
+func (o TimeSeriesTableOutput) ToTimeSeriesTablePtrOutputWithContext(ctx context.Context) TimeSeriesTablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesTable) *TimeSeriesTable {
+		return &v
+	}).(TimeSeriesTablePtrOutput)
+}
+
+// The data displayed in this table.
+func (o TimeSeriesTableOutput) DataSets() TableDataSetArrayOutput {
+	return o.ApplyT(func(v TimeSeriesTable) []TableDataSet { return v.DataSets }).(TableDataSetArrayOutput)
+}
+
+type TimeSeriesTablePtrOutput struct{ *pulumi.OutputState }
+
+func (TimeSeriesTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeSeriesTable)(nil)).Elem()
+}
+
+func (o TimeSeriesTablePtrOutput) ToTimeSeriesTablePtrOutput() TimeSeriesTablePtrOutput {
+	return o
+}
+
+func (o TimeSeriesTablePtrOutput) ToTimeSeriesTablePtrOutputWithContext(ctx context.Context) TimeSeriesTablePtrOutput {
+	return o
+}
+
+func (o TimeSeriesTablePtrOutput) Elem() TimeSeriesTableOutput {
+	return o.ApplyT(func(v *TimeSeriesTable) TimeSeriesTable {
+		if v != nil {
+			return *v
+		}
+		var ret TimeSeriesTable
+		return ret
+	}).(TimeSeriesTableOutput)
+}
+
+// The data displayed in this table.
+func (o TimeSeriesTablePtrOutput) DataSets() TableDataSetArrayOutput {
+	return o.ApplyT(func(v *TimeSeriesTable) []TableDataSet {
+		if v == nil {
+			return nil
+		}
+		return v.DataSets
+	}).(TableDataSetArrayOutput)
+}
+
+// A table that displays time series data.
+type TimeSeriesTableResponse struct {
+	// The data displayed in this table.
+	DataSets []TableDataSetResponse `pulumi:"dataSets"`
+}
+
+// TimeSeriesTableResponseInput is an input type that accepts TimeSeriesTableResponseArgs and TimeSeriesTableResponseOutput values.
+// You can construct a concrete instance of `TimeSeriesTableResponseInput` via:
+//
+//          TimeSeriesTableResponseArgs{...}
+type TimeSeriesTableResponseInput interface {
+	pulumi.Input
+
+	ToTimeSeriesTableResponseOutput() TimeSeriesTableResponseOutput
+	ToTimeSeriesTableResponseOutputWithContext(context.Context) TimeSeriesTableResponseOutput
+}
+
+// A table that displays time series data.
+type TimeSeriesTableResponseArgs struct {
+	// The data displayed in this table.
+	DataSets TableDataSetResponseArrayInput `pulumi:"dataSets"`
+}
+
+func (TimeSeriesTableResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesTableResponse)(nil)).Elem()
+}
+
+func (i TimeSeriesTableResponseArgs) ToTimeSeriesTableResponseOutput() TimeSeriesTableResponseOutput {
+	return i.ToTimeSeriesTableResponseOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesTableResponseArgs) ToTimeSeriesTableResponseOutputWithContext(ctx context.Context) TimeSeriesTableResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesTableResponseOutput)
+}
+
+// A table that displays time series data.
+type TimeSeriesTableResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeSeriesTableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesTableResponse)(nil)).Elem()
+}
+
+func (o TimeSeriesTableResponseOutput) ToTimeSeriesTableResponseOutput() TimeSeriesTableResponseOutput {
+	return o
+}
+
+func (o TimeSeriesTableResponseOutput) ToTimeSeriesTableResponseOutputWithContext(ctx context.Context) TimeSeriesTableResponseOutput {
+	return o
+}
+
+// The data displayed in this table.
+func (o TimeSeriesTableResponseOutput) DataSets() TableDataSetResponseArrayOutput {
+	return o.ApplyT(func(v TimeSeriesTableResponse) []TableDataSetResponse { return v.DataSets }).(TableDataSetResponseArrayOutput)
+}
+
 // Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
 type Widget struct {
 	// A chart of alert policy data.
@@ -5786,6 +6430,8 @@ type Widget struct {
 	Scorecard *Scorecard `pulumi:"scorecard"`
 	// A raw string or markdown displaying textual content.
 	Text *Text `pulumi:"text"`
+	// A widget that displays time series data in a tabular format.
+	TimeSeriesTable *TimeSeriesTable `pulumi:"timeSeriesTable"`
 	// Optional. The title of the widget.
 	Title *string `pulumi:"title"`
 	// A chart of time series data.
@@ -5813,6 +6459,8 @@ type WidgetArgs struct {
 	Scorecard ScorecardPtrInput `pulumi:"scorecard"`
 	// A raw string or markdown displaying textual content.
 	Text TextPtrInput `pulumi:"text"`
+	// A widget that displays time series data in a tabular format.
+	TimeSeriesTable TimeSeriesTablePtrInput `pulumi:"timeSeriesTable"`
 	// Optional. The title of the widget.
 	Title pulumi.StringPtrInput `pulumi:"title"`
 	// A chart of time series data.
@@ -5942,6 +6590,11 @@ func (o WidgetOutput) Text() TextPtrOutput {
 	return o.ApplyT(func(v Widget) *Text { return v.Text }).(TextPtrOutput)
 }
 
+// A widget that displays time series data in a tabular format.
+func (o WidgetOutput) TimeSeriesTable() TimeSeriesTablePtrOutput {
+	return o.ApplyT(func(v Widget) *TimeSeriesTable { return v.TimeSeriesTable }).(TimeSeriesTablePtrOutput)
+}
+
 // Optional. The title of the widget.
 func (o WidgetOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Widget) *string { return v.Title }).(pulumi.StringPtrOutput)
@@ -6016,6 +6669,16 @@ func (o WidgetPtrOutput) Text() TextPtrOutput {
 	}).(TextPtrOutput)
 }
 
+// A widget that displays time series data in a tabular format.
+func (o WidgetPtrOutput) TimeSeriesTable() TimeSeriesTablePtrOutput {
+	return o.ApplyT(func(v *Widget) *TimeSeriesTable {
+		if v == nil {
+			return nil
+		}
+		return v.TimeSeriesTable
+	}).(TimeSeriesTablePtrOutput)
+}
+
 // Optional. The title of the widget.
 func (o WidgetPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Widget) *string {
@@ -6066,6 +6729,8 @@ type WidgetResponse struct {
 	Scorecard ScorecardResponse `pulumi:"scorecard"`
 	// A raw string or markdown displaying textual content.
 	Text TextResponse `pulumi:"text"`
+	// A widget that displays time series data in a tabular format.
+	TimeSeriesTable TimeSeriesTableResponse `pulumi:"timeSeriesTable"`
 	// Optional. The title of the widget.
 	Title string `pulumi:"title"`
 	// A chart of time series data.
@@ -6093,6 +6758,8 @@ type WidgetResponseArgs struct {
 	Scorecard ScorecardResponseInput `pulumi:"scorecard"`
 	// A raw string or markdown displaying textual content.
 	Text TextResponseInput `pulumi:"text"`
+	// A widget that displays time series data in a tabular format.
+	TimeSeriesTable TimeSeriesTableResponseInput `pulumi:"timeSeriesTable"`
 	// Optional. The title of the widget.
 	Title pulumi.StringInput `pulumi:"title"`
 	// A chart of time series data.
@@ -6169,6 +6836,11 @@ func (o WidgetResponseOutput) Scorecard() ScorecardResponseOutput {
 // A raw string or markdown displaying textual content.
 func (o WidgetResponseOutput) Text() TextResponseOutput {
 	return o.ApplyT(func(v WidgetResponse) TextResponse { return v.Text }).(TextResponseOutput)
+}
+
+// A widget that displays time series data in a tabular format.
+func (o WidgetResponseOutput) TimeSeriesTable() TimeSeriesTableResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) TimeSeriesTableResponse { return v.TimeSeriesTable }).(TimeSeriesTableResponseOutput)
 }
 
 // Optional. The title of the widget.
@@ -6565,6 +7237,102 @@ func (o XyChartResponseOutput) YAxis() AxisResponseOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationInput)(nil)).Elem(), AggregationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPtrInput)(nil)).Elem(), AggregationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationResponseInput)(nil)).Elem(), AggregationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertChartInput)(nil)).Elem(), AlertChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertChartPtrInput)(nil)).Elem(), AlertChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertChartResponseInput)(nil)).Elem(), AlertChartResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AxisInput)(nil)).Elem(), AxisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AxisPtrInput)(nil)).Elem(), AxisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AxisResponseInput)(nil)).Elem(), AxisResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChartOptionsInput)(nil)).Elem(), ChartOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChartOptionsPtrInput)(nil)).Elem(), ChartOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChartOptionsResponseInput)(nil)).Elem(), ChartOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnInput)(nil)).Elem(), ColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnArrayInput)(nil)).Elem(), ColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnLayoutInput)(nil)).Elem(), ColumnLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnLayoutPtrInput)(nil)).Elem(), ColumnLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnLayoutResponseInput)(nil)).Elem(), ColumnLayoutResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnLayoutResponsePtrInput)(nil)).Elem(), ColumnLayoutResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnResponseInput)(nil)).Elem(), ColumnResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnResponseArrayInput)(nil)).Elem(), ColumnResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataSetInput)(nil)).Elem(), DataSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataSetArrayInput)(nil)).Elem(), DataSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataSetResponseInput)(nil)).Elem(), DataSetResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataSetResponseArrayInput)(nil)).Elem(), DataSetResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmptyInput)(nil)).Elem(), EmptyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmptyPtrInput)(nil)).Elem(), EmptyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmptyResponseInput)(nil)).Elem(), EmptyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GaugeViewInput)(nil)).Elem(), GaugeViewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GaugeViewPtrInput)(nil)).Elem(), GaugeViewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GaugeViewResponseInput)(nil)).Elem(), GaugeViewResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GridLayoutInput)(nil)).Elem(), GridLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GridLayoutPtrInput)(nil)).Elem(), GridLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GridLayoutResponseInput)(nil)).Elem(), GridLayoutResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GridLayoutResponsePtrInput)(nil)).Elem(), GridLayoutResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MosaicLayoutInput)(nil)).Elem(), MosaicLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MosaicLayoutPtrInput)(nil)).Elem(), MosaicLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MosaicLayoutResponseInput)(nil)).Elem(), MosaicLayoutResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MosaicLayoutResponsePtrInput)(nil)).Elem(), MosaicLayoutResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PickTimeSeriesFilterInput)(nil)).Elem(), PickTimeSeriesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PickTimeSeriesFilterPtrInput)(nil)).Elem(), PickTimeSeriesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PickTimeSeriesFilterResponseInput)(nil)).Elem(), PickTimeSeriesFilterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RatioPartInput)(nil)).Elem(), RatioPartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RatioPartPtrInput)(nil)).Elem(), RatioPartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RatioPartResponseInput)(nil)).Elem(), RatioPartResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowInput)(nil)).Elem(), RowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowArrayInput)(nil)).Elem(), RowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowLayoutInput)(nil)).Elem(), RowLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowLayoutPtrInput)(nil)).Elem(), RowLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowLayoutResponseInput)(nil)).Elem(), RowLayoutResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowLayoutResponsePtrInput)(nil)).Elem(), RowLayoutResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowResponseInput)(nil)).Elem(), RowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowResponseArrayInput)(nil)).Elem(), RowResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardInput)(nil)).Elem(), ScorecardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardPtrInput)(nil)).Elem(), ScorecardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardResponseInput)(nil)).Elem(), ScorecardResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkChartViewInput)(nil)).Elem(), SparkChartViewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkChartViewPtrInput)(nil)).Elem(), SparkChartViewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkChartViewResponseInput)(nil)).Elem(), SparkChartViewResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDataSetInput)(nil)).Elem(), TableDataSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDataSetArrayInput)(nil)).Elem(), TableDataSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDataSetResponseInput)(nil)).Elem(), TableDataSetResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDataSetResponseArrayInput)(nil)).Elem(), TableDataSetResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDisplayOptionsInput)(nil)).Elem(), TableDisplayOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDisplayOptionsPtrInput)(nil)).Elem(), TableDisplayOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDisplayOptionsResponseInput)(nil)).Elem(), TableDisplayOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextInput)(nil)).Elem(), TextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextPtrInput)(nil)).Elem(), TextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextResponseInput)(nil)).Elem(), TextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdInput)(nil)).Elem(), ThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdArrayInput)(nil)).Elem(), ThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdResponseInput)(nil)).Elem(), ThresholdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdResponseArrayInput)(nil)).Elem(), ThresholdResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TileInput)(nil)).Elem(), TileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TileArrayInput)(nil)).Elem(), TileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TileResponseInput)(nil)).Elem(), TileResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TileResponseArrayInput)(nil)).Elem(), TileResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesFilterInput)(nil)).Elem(), TimeSeriesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesFilterPtrInput)(nil)).Elem(), TimeSeriesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesFilterRatioInput)(nil)).Elem(), TimeSeriesFilterRatioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesFilterRatioPtrInput)(nil)).Elem(), TimeSeriesFilterRatioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesFilterRatioResponseInput)(nil)).Elem(), TimeSeriesFilterRatioResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesFilterResponseInput)(nil)).Elem(), TimeSeriesFilterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesQueryInput)(nil)).Elem(), TimeSeriesQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesQueryPtrInput)(nil)).Elem(), TimeSeriesQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesQueryResponseInput)(nil)).Elem(), TimeSeriesQueryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesTableInput)(nil)).Elem(), TimeSeriesTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesTablePtrInput)(nil)).Elem(), TimeSeriesTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesTableResponseInput)(nil)).Elem(), TimeSeriesTableResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetInput)(nil)).Elem(), WidgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetPtrInput)(nil)).Elem(), WidgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetArrayInput)(nil)).Elem(), WidgetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetResponseInput)(nil)).Elem(), WidgetResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetResponseArrayInput)(nil)).Elem(), WidgetResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*XyChartInput)(nil)).Elem(), XyChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*XyChartPtrInput)(nil)).Elem(), XyChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*XyChartResponseInput)(nil)).Elem(), XyChartResponseArgs{})
 	pulumi.RegisterOutputType(AggregationOutput{})
 	pulumi.RegisterOutputType(AggregationPtrOutput{})
 	pulumi.RegisterOutputType(AggregationResponseOutput{})
@@ -6623,6 +7391,13 @@ func init() {
 	pulumi.RegisterOutputType(SparkChartViewOutput{})
 	pulumi.RegisterOutputType(SparkChartViewPtrOutput{})
 	pulumi.RegisterOutputType(SparkChartViewResponseOutput{})
+	pulumi.RegisterOutputType(TableDataSetOutput{})
+	pulumi.RegisterOutputType(TableDataSetArrayOutput{})
+	pulumi.RegisterOutputType(TableDataSetResponseOutput{})
+	pulumi.RegisterOutputType(TableDataSetResponseArrayOutput{})
+	pulumi.RegisterOutputType(TableDisplayOptionsOutput{})
+	pulumi.RegisterOutputType(TableDisplayOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableDisplayOptionsResponseOutput{})
 	pulumi.RegisterOutputType(TextOutput{})
 	pulumi.RegisterOutputType(TextPtrOutput{})
 	pulumi.RegisterOutputType(TextResponseOutput{})
@@ -6643,6 +7418,9 @@ func init() {
 	pulumi.RegisterOutputType(TimeSeriesQueryOutput{})
 	pulumi.RegisterOutputType(TimeSeriesQueryPtrOutput{})
 	pulumi.RegisterOutputType(TimeSeriesQueryResponseOutput{})
+	pulumi.RegisterOutputType(TimeSeriesTableOutput{})
+	pulumi.RegisterOutputType(TimeSeriesTablePtrOutput{})
+	pulumi.RegisterOutputType(TimeSeriesTableResponseOutput{})
 	pulumi.RegisterOutputType(WidgetOutput{})
 	pulumi.RegisterOutputType(WidgetPtrOutput{})
 	pulumi.RegisterOutputType(WidgetArrayOutput{})

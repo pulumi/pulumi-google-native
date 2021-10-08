@@ -15,7 +15,7 @@ import (
 type AttributeDefinition struct {
 	pulumi.CustomResourceState
 
-	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues pulumi.StringArrayOutput `pulumi:"allowedValues"`
 	// The category of the attribute. The value of this field cannot be changed after creation.
 	Category pulumi.StringOutput `pulumi:"category"`
@@ -83,7 +83,7 @@ func (AttributeDefinitionState) ElementType() reflect.Type {
 }
 
 type attributeDefinitionArgs struct {
-	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues         []string `pulumi:"allowedValues"`
 	AttributeDefinitionId string   `pulumi:"attributeDefinitionId"`
 	// The category of the attribute. The value of this field cannot be changed after creation.
@@ -104,7 +104,7 @@ type attributeDefinitionArgs struct {
 
 // The set of arguments for constructing a AttributeDefinition resource.
 type AttributeDefinitionArgs struct {
-	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues         pulumi.StringArrayInput
 	AttributeDefinitionId pulumi.StringInput
 	// The category of the attribute. The value of this field cannot be changed after creation.

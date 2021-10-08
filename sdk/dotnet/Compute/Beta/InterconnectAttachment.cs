@@ -160,6 +160,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Router { get; private set; } = null!;
 
         /// <summary>
+        /// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]

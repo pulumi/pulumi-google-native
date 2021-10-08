@@ -358,7 +358,7 @@ const (
 	ConsentStateEnumStateUnspecified = ConsentStateEnum("STATE_UNSPECIFIED")
 	// The Consent is active and is considered when evaluating a user's consent on resources.
 	ConsentStateEnumActive = ConsentStateEnum("ACTIVE")
-	// When a Consent is updated, the current version is archived and a new one is created with its state set to the updated Consent's previous state.
+	// The archived state is currently not being used.
 	ConsentStateEnumArchived = ConsentStateEnum("ARCHIVED")
 	// A revoked Consent is not considered when evaluating a user's consent on resources.
 	ConsentStateEnumRevoked = ConsentStateEnum("REVOKED")
@@ -867,6 +867,175 @@ func (in *googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr) ToG
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
 }
 
+// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+type ParserConfigVersion string
+
+const (
+	// Unspecified parser version, equivalent to V1.
+	ParserConfigVersionParserVersionUnspecified = ParserConfigVersion("PARSER_VERSION_UNSPECIFIED")
+	// The `parsed_data` includes every given non-empty message field except the Field Separator (MSH-1) field. As a result, the parsed MSH segment starts with the MSH-2 field and the field numbers are off-by-one with respect to the HL7 standard.
+	ParserConfigVersionV1 = ParserConfigVersion("V1")
+	// The `parsed_data` includes every given non-empty message field.
+	ParserConfigVersionV2 = ParserConfigVersion("V2")
+)
+
+func (ParserConfigVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserConfigVersion)(nil)).Elem()
+}
+
+func (e ParserConfigVersion) ToParserConfigVersionOutput() ParserConfigVersionOutput {
+	return pulumi.ToOutput(e).(ParserConfigVersionOutput)
+}
+
+func (e ParserConfigVersion) ToParserConfigVersionOutputWithContext(ctx context.Context) ParserConfigVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ParserConfigVersionOutput)
+}
+
+func (e ParserConfigVersion) ToParserConfigVersionPtrOutput() ParserConfigVersionPtrOutput {
+	return e.ToParserConfigVersionPtrOutputWithContext(context.Background())
+}
+
+func (e ParserConfigVersion) ToParserConfigVersionPtrOutputWithContext(ctx context.Context) ParserConfigVersionPtrOutput {
+	return ParserConfigVersion(e).ToParserConfigVersionOutputWithContext(ctx).ToParserConfigVersionPtrOutputWithContext(ctx)
+}
+
+func (e ParserConfigVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ParserConfigVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ParserConfigVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ParserConfigVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ParserConfigVersionOutput struct{ *pulumi.OutputState }
+
+func (ParserConfigVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParserConfigVersion)(nil)).Elem()
+}
+
+func (o ParserConfigVersionOutput) ToParserConfigVersionOutput() ParserConfigVersionOutput {
+	return o
+}
+
+func (o ParserConfigVersionOutput) ToParserConfigVersionOutputWithContext(ctx context.Context) ParserConfigVersionOutput {
+	return o
+}
+
+func (o ParserConfigVersionOutput) ToParserConfigVersionPtrOutput() ParserConfigVersionPtrOutput {
+	return o.ToParserConfigVersionPtrOutputWithContext(context.Background())
+}
+
+func (o ParserConfigVersionOutput) ToParserConfigVersionPtrOutputWithContext(ctx context.Context) ParserConfigVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParserConfigVersion) *ParserConfigVersion {
+		return &v
+	}).(ParserConfigVersionPtrOutput)
+}
+
+func (o ParserConfigVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ParserConfigVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ParserConfigVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ParserConfigVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ParserConfigVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ParserConfigVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ParserConfigVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (ParserConfigVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParserConfigVersion)(nil)).Elem()
+}
+
+func (o ParserConfigVersionPtrOutput) ToParserConfigVersionPtrOutput() ParserConfigVersionPtrOutput {
+	return o
+}
+
+func (o ParserConfigVersionPtrOutput) ToParserConfigVersionPtrOutputWithContext(ctx context.Context) ParserConfigVersionPtrOutput {
+	return o
+}
+
+func (o ParserConfigVersionPtrOutput) Elem() ParserConfigVersionOutput {
+	return o.ApplyT(func(v *ParserConfigVersion) ParserConfigVersion {
+		if v != nil {
+			return *v
+		}
+		var ret ParserConfigVersion
+		return ret
+	}).(ParserConfigVersionOutput)
+}
+
+func (o ParserConfigVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ParserConfigVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ParserConfigVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ParserConfigVersionInput is an input type that accepts ParserConfigVersionArgs and ParserConfigVersionOutput values.
+// You can construct a concrete instance of `ParserConfigVersionInput` via:
+//
+//          ParserConfigVersionArgs{...}
+type ParserConfigVersionInput interface {
+	pulumi.Input
+
+	ToParserConfigVersionOutput() ParserConfigVersionOutput
+	ToParserConfigVersionOutputWithContext(context.Context) ParserConfigVersionOutput
+}
+
+var parserConfigVersionPtrType = reflect.TypeOf((**ParserConfigVersion)(nil)).Elem()
+
+type ParserConfigVersionPtrInput interface {
+	pulumi.Input
+
+	ToParserConfigVersionPtrOutput() ParserConfigVersionPtrOutput
+	ToParserConfigVersionPtrOutputWithContext(context.Context) ParserConfigVersionPtrOutput
+}
+
+type parserConfigVersionPtr string
+
+func ParserConfigVersionPtr(v string) ParserConfigVersionPtrInput {
+	return (*parserConfigVersionPtr)(&v)
+}
+
+func (*parserConfigVersionPtr) ElementType() reflect.Type {
+	return parserConfigVersionPtrType
+}
+
+func (in *parserConfigVersionPtr) ToParserConfigVersionPtrOutput() ParserConfigVersionPtrOutput {
+	return pulumi.ToOutput(in).(ParserConfigVersionPtrOutput)
+}
+
+func (in *parserConfigVersionPtr) ToParserConfigVersionPtrOutputWithContext(ctx context.Context) ParserConfigVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ParserConfigVersionPtrOutput)
+}
+
 // Specifies the output schema type. Schema type is required.
 type SchemaConfigSchemaType string
 
@@ -1203,6 +1372,177 @@ func (in *schemaPackageSchematizedParsingTypePtr) ToSchemaPackageSchematizedPars
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaPackageSchematizedParsingTypePtrOutput)
 }
 
+// Determines how unexpected segments (segments not matched to the schema) are handled.
+type SchemaPackageUnexpectedSegmentHandling string
+
+const (
+	// Unspecified handling mode, equivalent to FAIL.
+	SchemaPackageUnexpectedSegmentHandlingUnexpectedSegmentHandlingModeUnspecified = SchemaPackageUnexpectedSegmentHandling("UNEXPECTED_SEGMENT_HANDLING_MODE_UNSPECIFIED")
+	// Unexpected segments fail to parse and return an error.
+	SchemaPackageUnexpectedSegmentHandlingFail = SchemaPackageUnexpectedSegmentHandling("FAIL")
+	// Unexpected segments do not fail, but are omitted from the output.
+	SchemaPackageUnexpectedSegmentHandlingSkip = SchemaPackageUnexpectedSegmentHandling("SKIP")
+	// Unexpected segments do not fail, but are parsed in place and added to the current group. If a segment has a type definition, it is used, otherwise it is parsed as VARIES.
+	SchemaPackageUnexpectedSegmentHandlingParse = SchemaPackageUnexpectedSegmentHandling("PARSE")
+)
+
+func (SchemaPackageUnexpectedSegmentHandling) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaPackageUnexpectedSegmentHandling)(nil)).Elem()
+}
+
+func (e SchemaPackageUnexpectedSegmentHandling) ToSchemaPackageUnexpectedSegmentHandlingOutput() SchemaPackageUnexpectedSegmentHandlingOutput {
+	return pulumi.ToOutput(e).(SchemaPackageUnexpectedSegmentHandlingOutput)
+}
+
+func (e SchemaPackageUnexpectedSegmentHandling) ToSchemaPackageUnexpectedSegmentHandlingOutputWithContext(ctx context.Context) SchemaPackageUnexpectedSegmentHandlingOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SchemaPackageUnexpectedSegmentHandlingOutput)
+}
+
+func (e SchemaPackageUnexpectedSegmentHandling) ToSchemaPackageUnexpectedSegmentHandlingPtrOutput() SchemaPackageUnexpectedSegmentHandlingPtrOutput {
+	return e.ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(context.Background())
+}
+
+func (e SchemaPackageUnexpectedSegmentHandling) ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(ctx context.Context) SchemaPackageUnexpectedSegmentHandlingPtrOutput {
+	return SchemaPackageUnexpectedSegmentHandling(e).ToSchemaPackageUnexpectedSegmentHandlingOutputWithContext(ctx).ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(ctx)
+}
+
+func (e SchemaPackageUnexpectedSegmentHandling) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchemaPackageUnexpectedSegmentHandling) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchemaPackageUnexpectedSegmentHandling) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SchemaPackageUnexpectedSegmentHandling) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SchemaPackageUnexpectedSegmentHandlingOutput struct{ *pulumi.OutputState }
+
+func (SchemaPackageUnexpectedSegmentHandlingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaPackageUnexpectedSegmentHandling)(nil)).Elem()
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToSchemaPackageUnexpectedSegmentHandlingOutput() SchemaPackageUnexpectedSegmentHandlingOutput {
+	return o
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToSchemaPackageUnexpectedSegmentHandlingOutputWithContext(ctx context.Context) SchemaPackageUnexpectedSegmentHandlingOutput {
+	return o
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToSchemaPackageUnexpectedSegmentHandlingPtrOutput() SchemaPackageUnexpectedSegmentHandlingPtrOutput {
+	return o.ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(ctx context.Context) SchemaPackageUnexpectedSegmentHandlingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaPackageUnexpectedSegmentHandling) *SchemaPackageUnexpectedSegmentHandling {
+		return &v
+	}).(SchemaPackageUnexpectedSegmentHandlingPtrOutput)
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaPackageUnexpectedSegmentHandling) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaPackageUnexpectedSegmentHandling) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchemaPackageUnexpectedSegmentHandlingPtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaPackageUnexpectedSegmentHandlingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaPackageUnexpectedSegmentHandling)(nil)).Elem()
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToSchemaPackageUnexpectedSegmentHandlingPtrOutput() SchemaPackageUnexpectedSegmentHandlingPtrOutput {
+	return o
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(ctx context.Context) SchemaPackageUnexpectedSegmentHandlingPtrOutput {
+	return o
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) Elem() SchemaPackageUnexpectedSegmentHandlingOutput {
+	return o.ApplyT(func(v *SchemaPackageUnexpectedSegmentHandling) SchemaPackageUnexpectedSegmentHandling {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaPackageUnexpectedSegmentHandling
+		return ret
+	}).(SchemaPackageUnexpectedSegmentHandlingOutput)
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchemaPackageUnexpectedSegmentHandling) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SchemaPackageUnexpectedSegmentHandlingInput is an input type that accepts SchemaPackageUnexpectedSegmentHandlingArgs and SchemaPackageUnexpectedSegmentHandlingOutput values.
+// You can construct a concrete instance of `SchemaPackageUnexpectedSegmentHandlingInput` via:
+//
+//          SchemaPackageUnexpectedSegmentHandlingArgs{...}
+type SchemaPackageUnexpectedSegmentHandlingInput interface {
+	pulumi.Input
+
+	ToSchemaPackageUnexpectedSegmentHandlingOutput() SchemaPackageUnexpectedSegmentHandlingOutput
+	ToSchemaPackageUnexpectedSegmentHandlingOutputWithContext(context.Context) SchemaPackageUnexpectedSegmentHandlingOutput
+}
+
+var schemaPackageUnexpectedSegmentHandlingPtrType = reflect.TypeOf((**SchemaPackageUnexpectedSegmentHandling)(nil)).Elem()
+
+type SchemaPackageUnexpectedSegmentHandlingPtrInput interface {
+	pulumi.Input
+
+	ToSchemaPackageUnexpectedSegmentHandlingPtrOutput() SchemaPackageUnexpectedSegmentHandlingPtrOutput
+	ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(context.Context) SchemaPackageUnexpectedSegmentHandlingPtrOutput
+}
+
+type schemaPackageUnexpectedSegmentHandlingPtr string
+
+func SchemaPackageUnexpectedSegmentHandlingPtr(v string) SchemaPackageUnexpectedSegmentHandlingPtrInput {
+	return (*schemaPackageUnexpectedSegmentHandlingPtr)(&v)
+}
+
+func (*schemaPackageUnexpectedSegmentHandlingPtr) ElementType() reflect.Type {
+	return schemaPackageUnexpectedSegmentHandlingPtrType
+}
+
+func (in *schemaPackageUnexpectedSegmentHandlingPtr) ToSchemaPackageUnexpectedSegmentHandlingPtrOutput() SchemaPackageUnexpectedSegmentHandlingPtrOutput {
+	return pulumi.ToOutput(in).(SchemaPackageUnexpectedSegmentHandlingPtrOutput)
+}
+
+func (in *schemaPackageUnexpectedSegmentHandlingPtr) ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(ctx context.Context) SchemaPackageUnexpectedSegmentHandlingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SchemaPackageUnexpectedSegmentHandlingPtrOutput)
+}
+
 // If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
 type TypePrimitive string
 
@@ -1385,10 +1725,14 @@ func init() {
 	pulumi.RegisterOutputType(FhirStoreVersionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput{})
+	pulumi.RegisterOutputType(ParserConfigVersionOutput{})
+	pulumi.RegisterOutputType(ParserConfigVersionPtrOutput{})
 	pulumi.RegisterOutputType(SchemaConfigSchemaTypeOutput{})
 	pulumi.RegisterOutputType(SchemaConfigSchemaTypePtrOutput{})
 	pulumi.RegisterOutputType(SchemaPackageSchematizedParsingTypeOutput{})
 	pulumi.RegisterOutputType(SchemaPackageSchematizedParsingTypePtrOutput{})
+	pulumi.RegisterOutputType(SchemaPackageUnexpectedSegmentHandlingOutput{})
+	pulumi.RegisterOutputType(SchemaPackageUnexpectedSegmentHandlingPtrOutput{})
 	pulumi.RegisterOutputType(TypePrimitiveOutput{})
 	pulumi.RegisterOutputType(TypePrimitivePtrOutput{})
 }

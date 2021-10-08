@@ -228,7 +228,7 @@ func (o AllowedIpRangeResponseArrayOutput) Index(i pulumi.IntInput) AllowedIpRan
 	}).(AllowedIpRangeResponseOutput)
 }
 
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type DatabaseConfig struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 	MachineType *string `pulumi:"machineType"`
@@ -245,7 +245,7 @@ type DatabaseConfigInput interface {
 	ToDatabaseConfigOutputWithContext(context.Context) DatabaseConfigOutput
 }
 
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type DatabaseConfigArgs struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
@@ -304,7 +304,7 @@ func (i *databaseConfigPtrType) ToDatabaseConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigPtrOutput)
 }
 
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type DatabaseConfigOutput struct{ *pulumi.OutputState }
 
 func (DatabaseConfigOutput) ElementType() reflect.Type {
@@ -368,7 +368,7 @@ func (o DatabaseConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type DatabaseConfigResponse struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 	MachineType string `pulumi:"machineType"`
@@ -385,7 +385,7 @@ type DatabaseConfigResponseInput interface {
 	ToDatabaseConfigResponseOutputWithContext(context.Context) DatabaseConfigResponseOutput
 }
 
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type DatabaseConfigResponseArgs struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
@@ -444,7 +444,7 @@ func (i *databaseConfigResponsePtrType) ToDatabaseConfigResponsePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigResponsePtrOutput)
 }
 
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type DatabaseConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (DatabaseConfigResponseOutput) ElementType() reflect.Type {
@@ -508,7 +508,7 @@ func (o DatabaseConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The encryption options for the Cloud Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type EncryptionConfig struct {
 	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -525,7 +525,7 @@ type EncryptionConfigInput interface {
 	ToEncryptionConfigOutputWithContext(context.Context) EncryptionConfigOutput
 }
 
-// The encryption options for the Cloud Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type EncryptionConfigArgs struct {
 	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
@@ -584,7 +584,7 @@ func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
 }
 
-// The encryption options for the Cloud Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type EncryptionConfigOutput struct{ *pulumi.OutputState }
 
 func (EncryptionConfigOutput) ElementType() reflect.Type {
@@ -648,7 +648,7 @@ func (o EncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The encryption options for the Cloud Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type EncryptionConfigResponse struct {
 	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -665,7 +665,7 @@ type EncryptionConfigResponseInput interface {
 	ToEncryptionConfigResponseOutputWithContext(context.Context) EncryptionConfigResponseOutput
 }
 
-// The encryption options for the Cloud Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type EncryptionConfigResponseArgs struct {
 	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
@@ -724,7 +724,7 @@ func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponsePtrOutput)
 }
 
-// The encryption options for the Cloud Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type EncryptionConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (EncryptionConfigResponseOutput) ElementType() reflect.Type {
@@ -790,13 +790,13 @@ func (o EncryptionConfigResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 
 // Configuration information for an environment.
 type EnvironmentConfig struct {
-	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig *DatabaseConfig `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
-	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	NodeCount *int `pulumi:"nodeCount"`
 	// The configuration used for the Private IP Cloud Composer environment.
 	PrivateEnvironmentConfig *PrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
@@ -804,7 +804,7 @@ type EnvironmentConfig struct {
 	SoftwareConfig *SoftwareConfig `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance.
 	WebServerConfig *WebServerConfig `pulumi:"webServerConfig"`
-	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerNetworkAccessControl *WebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControl"`
 }
 
@@ -821,13 +821,13 @@ type EnvironmentConfigInput interface {
 
 // Configuration information for an environment.
 type EnvironmentConfigArgs struct {
-	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig DatabaseConfigPtrInput `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigPtrInput `pulumi:"nodeConfig"`
-	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
 	// The configuration used for the Private IP Cloud Composer environment.
 	PrivateEnvironmentConfig PrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
@@ -835,7 +835,7 @@ type EnvironmentConfigArgs struct {
 	SoftwareConfig SoftwareConfigPtrInput `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance.
 	WebServerConfig WebServerConfigPtrInput `pulumi:"webServerConfig"`
-	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerNetworkAccessControl WebServerNetworkAccessControlPtrInput `pulumi:"webServerNetworkAccessControl"`
 }
 
@@ -917,12 +917,12 @@ func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx con
 	}).(EnvironmentConfigPtrOutput)
 }
 
-// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *DatabaseConfig { return v.DatabaseConfig }).(DatabaseConfigPtrOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EncryptionConfig { return v.EncryptionConfig }).(EncryptionConfigPtrOutput)
 }
@@ -932,7 +932,7 @@ func (o EnvironmentConfigOutput) NodeConfig() NodeConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *NodeConfig { return v.NodeConfig }).(NodeConfigPtrOutput)
 }
 
-// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
@@ -952,7 +952,7 @@ func (o EnvironmentConfigOutput) WebServerConfig() WebServerConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *WebServerConfig { return v.WebServerConfig }).(WebServerConfigPtrOutput)
 }
 
-// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigOutput) WebServerNetworkAccessControl() WebServerNetworkAccessControlPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *WebServerNetworkAccessControl { return v.WebServerNetworkAccessControl }).(WebServerNetworkAccessControlPtrOutput)
 }
@@ -981,7 +981,7 @@ func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
 	}).(EnvironmentConfigOutput)
 }
 
-// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPtrOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *DatabaseConfig {
 		if v == nil {
@@ -991,7 +991,7 @@ func (o EnvironmentConfigPtrOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	}).(DatabaseConfigPtrOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPtrOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EncryptionConfig {
 		if v == nil {
@@ -1011,7 +1011,7 @@ func (o EnvironmentConfigPtrOutput) NodeConfig() NodeConfigPtrOutput {
 	}).(NodeConfigPtrOutput)
 }
 
-// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPtrOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *int {
 		if v == nil {
@@ -1051,7 +1051,7 @@ func (o EnvironmentConfigPtrOutput) WebServerConfig() WebServerConfigPtrOutput {
 	}).(WebServerConfigPtrOutput)
 }
 
-// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPtrOutput) WebServerNetworkAccessControl() WebServerNetworkAccessControlPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *WebServerNetworkAccessControl {
 		if v == nil {
@@ -1067,15 +1067,15 @@ type EnvironmentConfigResponse struct {
 	AirflowUri string `pulumi:"airflowUri"`
 	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
 	DagGcsPrefix string `pulumi:"dagGcsPrefix"`
-	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig DatabaseConfigResponse `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// The Kubernetes Engine cluster used to run this environment.
 	GkeCluster string `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigResponse `pulumi:"nodeConfig"`
-	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	NodeCount int `pulumi:"nodeCount"`
 	// The configuration used for the Private IP Cloud Composer environment.
 	PrivateEnvironmentConfig PrivateEnvironmentConfigResponse `pulumi:"privateEnvironmentConfig"`
@@ -1083,7 +1083,7 @@ type EnvironmentConfigResponse struct {
 	SoftwareConfig SoftwareConfigResponse `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance.
 	WebServerConfig WebServerConfigResponse `pulumi:"webServerConfig"`
-	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerNetworkAccessControl WebServerNetworkAccessControlResponse `pulumi:"webServerNetworkAccessControl"`
 }
 
@@ -1104,15 +1104,15 @@ type EnvironmentConfigResponseArgs struct {
 	AirflowUri pulumi.StringInput `pulumi:"airflowUri"`
 	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
 	DagGcsPrefix pulumi.StringInput `pulumi:"dagGcsPrefix"`
-	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig DatabaseConfigResponseInput `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	EncryptionConfig EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
 	// The Kubernetes Engine cluster used to run this environment.
 	GkeCluster pulumi.StringInput `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigResponseInput `pulumi:"nodeConfig"`
-	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
 	// The configuration used for the Private IP Cloud Composer environment.
 	PrivateEnvironmentConfig PrivateEnvironmentConfigResponseInput `pulumi:"privateEnvironmentConfig"`
@@ -1120,7 +1120,7 @@ type EnvironmentConfigResponseArgs struct {
 	SoftwareConfig SoftwareConfigResponseInput `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance.
 	WebServerConfig WebServerConfigResponseInput `pulumi:"webServerConfig"`
-	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerNetworkAccessControl WebServerNetworkAccessControlResponseInput `pulumi:"webServerNetworkAccessControl"`
 }
 
@@ -1212,12 +1212,12 @@ func (o EnvironmentConfigResponseOutput) DagGcsPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) string { return v.DagGcsPrefix }).(pulumi.StringOutput)
 }
 
-// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigResponseOutput) DatabaseConfig() DatabaseConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) DatabaseConfigResponse { return v.DatabaseConfig }).(DatabaseConfigResponseOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigResponseOutput) EncryptionConfig() EncryptionConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) EncryptionConfigResponse { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
 }
@@ -1232,7 +1232,7 @@ func (o EnvironmentConfigResponseOutput) NodeConfig() NodeConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) NodeConfigResponse { return v.NodeConfig }).(NodeConfigResponseOutput)
 }
 
-// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigResponseOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) int { return v.NodeCount }).(pulumi.IntOutput)
 }
@@ -1252,7 +1252,7 @@ func (o EnvironmentConfigResponseOutput) WebServerConfig() WebServerConfigRespon
 	return o.ApplyT(func(v EnvironmentConfigResponse) WebServerConfigResponse { return v.WebServerConfig }).(WebServerConfigResponseOutput)
 }
 
-// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigResponseOutput) WebServerNetworkAccessControl() WebServerNetworkAccessControlResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) WebServerNetworkAccessControlResponse {
 		return v.WebServerNetworkAccessControl
@@ -1303,7 +1303,7 @@ func (o EnvironmentConfigResponsePtrOutput) DagGcsPrefix() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigResponsePtrOutput) DatabaseConfig() DatabaseConfigResponsePtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigResponse) *DatabaseConfigResponse {
 		if v == nil {
@@ -1313,7 +1313,7 @@ func (o EnvironmentConfigResponsePtrOutput) DatabaseConfig() DatabaseConfigRespo
 	}).(DatabaseConfigResponsePtrOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigResponsePtrOutput) EncryptionConfig() EncryptionConfigResponsePtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigResponse) *EncryptionConfigResponse {
 		if v == nil {
@@ -1343,7 +1343,7 @@ func (o EnvironmentConfigResponsePtrOutput) NodeConfig() NodeConfigResponsePtrOu
 	}).(NodeConfigResponsePtrOutput)
 }
 
-// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigResponsePtrOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigResponse) *int {
 		if v == nil {
@@ -1383,7 +1383,7 @@ func (o EnvironmentConfigResponsePtrOutput) WebServerConfig() WebServerConfigRes
 	}).(WebServerConfigResponsePtrOutput)
 }
 
-// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigResponsePtrOutput) WebServerNetworkAccessControl() WebServerNetworkAccessControlResponsePtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigResponse) *WebServerNetworkAccessControlResponse {
 		if v == nil {
@@ -1395,15 +1395,15 @@ func (o EnvironmentConfigResponsePtrOutput) WebServerNetworkAccessControl() WebS
 
 // Configuration for controlling how IPs are allocated in the GKE cluster running the Apache Airflow software.
 type IPAllocationPolicy struct {
-	// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+	// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ClusterIpv4CidrBlock *string `pulumi:"clusterIpv4CidrBlock"`
-	// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. This field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
-	// Optional. The IP address range of the services IP addresses in this GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+	// Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ServicesIpv4CidrBlock *string `pulumi:"servicesIpv4CidrBlock"`
-	// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. This field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
-	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created.
+	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 	UseIpAliases *bool `pulumi:"useIpAliases"`
 }
 
@@ -1420,15 +1420,15 @@ type IPAllocationPolicyInput interface {
 
 // Configuration for controlling how IPs are allocated in the GKE cluster running the Apache Airflow software.
 type IPAllocationPolicyArgs struct {
-	// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+	// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ClusterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
-	// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. This field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
-	// Optional. The IP address range of the services IP addresses in this GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+	// Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ServicesIpv4CidrBlock pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
-	// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. This field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
-	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created.
+	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 	UseIpAliases pulumi.BoolPtrInput `pulumi:"useIpAliases"`
 }
 
@@ -1510,27 +1510,27 @@ func (o IPAllocationPolicyOutput) ToIPAllocationPolicyPtrOutputWithContext(ctx c
 	}).(IPAllocationPolicyPtrOutput)
 }
 
-// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. This field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The IP address range of the services IP addresses in this GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+// Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. This field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created.
+// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 func (o IPAllocationPolicyOutput) UseIpAliases() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *bool { return v.UseIpAliases }).(pulumi.BoolPtrOutput)
 }
@@ -1559,7 +1559,7 @@ func (o IPAllocationPolicyPtrOutput) Elem() IPAllocationPolicyOutput {
 	}).(IPAllocationPolicyOutput)
 }
 
-// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyPtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
 		if v == nil {
@@ -1569,7 +1569,7 @@ func (o IPAllocationPolicyPtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. This field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
 		if v == nil {
@@ -1579,7 +1579,7 @@ func (o IPAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The IP address range of the services IP addresses in this GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+// Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyPtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
 		if v == nil {
@@ -1589,7 +1589,7 @@ func (o IPAllocationPolicyPtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. This field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
 		if v == nil {
@@ -1599,7 +1599,7 @@ func (o IPAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created.
+// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 func (o IPAllocationPolicyPtrOutput) UseIpAliases() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *bool {
 		if v == nil {
@@ -1611,15 +1611,15 @@ func (o IPAllocationPolicyPtrOutput) UseIpAliases() pulumi.BoolPtrOutput {
 
 // Configuration for controlling how IPs are allocated in the GKE cluster running the Apache Airflow software.
 type IPAllocationPolicyResponse struct {
-	// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+	// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ClusterIpv4CidrBlock string `pulumi:"clusterIpv4CidrBlock"`
-	// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. This field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ClusterSecondaryRangeName string `pulumi:"clusterSecondaryRangeName"`
-	// Optional. The IP address range of the services IP addresses in this GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+	// Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ServicesIpv4CidrBlock string `pulumi:"servicesIpv4CidrBlock"`
-	// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. This field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ServicesSecondaryRangeName string `pulumi:"servicesSecondaryRangeName"`
-	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created.
+	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 	UseIpAliases bool `pulumi:"useIpAliases"`
 }
 
@@ -1636,15 +1636,15 @@ type IPAllocationPolicyResponseInput interface {
 
 // Configuration for controlling how IPs are allocated in the GKE cluster running the Apache Airflow software.
 type IPAllocationPolicyResponseArgs struct {
-	// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+	// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ClusterIpv4CidrBlock pulumi.StringInput `pulumi:"clusterIpv4CidrBlock"`
-	// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. This field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ClusterSecondaryRangeName pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
-	// Optional. The IP address range of the services IP addresses in this GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+	// Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ServicesIpv4CidrBlock pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
-	// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. This field is applicable only when `use_ip_aliases` is true.
+	// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 	ServicesSecondaryRangeName pulumi.StringInput `pulumi:"servicesSecondaryRangeName"`
-	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created.
+	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 	UseIpAliases pulumi.BoolInput `pulumi:"useIpAliases"`
 }
 
@@ -1726,27 +1726,27 @@ func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponsePtrOutputW
 	}).(IPAllocationPolicyResponsePtrOutput)
 }
 
-// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponseOutput) ClusterIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ClusterIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
-// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. This field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyResponseOutput) ClusterSecondaryRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ClusterSecondaryRangeName }).(pulumi.StringOutput)
 }
 
-// Optional. The IP address range of the services IP addresses in this GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+// Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponseOutput) ServicesIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ServicesIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
-// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. This field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyResponseOutput) ServicesSecondaryRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ServicesSecondaryRangeName }).(pulumi.StringOutput)
 }
 
-// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created.
+// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 func (o IPAllocationPolicyResponseOutput) UseIpAliases() pulumi.BoolOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
 }
@@ -1775,7 +1775,7 @@ func (o IPAllocationPolicyResponsePtrOutput) Elem() IPAllocationPolicyResponseOu
 	}).(IPAllocationPolicyResponseOutput)
 }
 
-// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponsePtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
 		if v == nil {
@@ -1785,7 +1785,7 @@ func (o IPAllocationPolicyResponsePtrOutput) ClusterIpv4CidrBlock() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. This field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyResponsePtrOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
 		if v == nil {
@@ -1795,7 +1795,7 @@ func (o IPAllocationPolicyResponsePtrOutput) ClusterSecondaryRangeName() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The IP address range of the services IP addresses in this GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+// Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponsePtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
 		if v == nil {
@@ -1805,7 +1805,7 @@ func (o IPAllocationPolicyResponsePtrOutput) ServicesIpv4CidrBlock() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. This field is applicable only when `use_ip_aliases` is true.
+// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
 func (o IPAllocationPolicyResponsePtrOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
 		if v == nil {
@@ -1815,7 +1815,7 @@ func (o IPAllocationPolicyResponsePtrOutput) ServicesSecondaryRangeName() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created.
+// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 func (o IPAllocationPolicyResponsePtrOutput) UseIpAliases() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicyResponse) *bool {
 		if v == nil {
@@ -1827,23 +1827,23 @@ func (o IPAllocationPolicyResponsePtrOutput) UseIpAliases() pulumi.BoolPtrOutput
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfig struct {
-	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated.
+	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
 	IpAllocationPolicy *IPAllocationPolicy `pulumi:"ipAllocationPolicy"`
-	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field.
+	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Location *string `pulumi:"location"`
-	// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
+	// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType *string `pulumi:"machineType"`
 	// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
 	Network *string `pulumi:"network"`
-	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -1860,23 +1860,23 @@ type NodeConfigInput interface {
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfigArgs struct {
-	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated.
+	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
 	IpAllocationPolicy IPAllocationPolicyPtrInput `pulumi:"ipAllocationPolicy"`
-	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field.
+	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
+	// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
-	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -1958,7 +1958,7 @@ func (o NodeConfigOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) 
 	}).(NodeConfigPtrOutput)
 }
 
-// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated.
+// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
@@ -1968,12 +1968,12 @@ func (o NodeConfigOutput) IpAllocationPolicy() IPAllocationPolicyPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *IPAllocationPolicy { return v.IpAllocationPolicy }).(IPAllocationPolicyPtrOutput)
 }
 
-// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field.
+// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
+// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -1983,7 +1983,7 @@ func (o NodeConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
@@ -1998,7 +1998,7 @@ func (o NodeConfigOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -2027,7 +2027,7 @@ func (o NodeConfigPtrOutput) Elem() NodeConfigOutput {
 	}).(NodeConfigOutput)
 }
 
-// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated.
+// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *int {
 		if v == nil {
@@ -2047,7 +2047,7 @@ func (o NodeConfigPtrOutput) IpAllocationPolicy() IPAllocationPolicyPtrOutput {
 	}).(IPAllocationPolicyPtrOutput)
 }
 
-// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field.
+// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *string {
 		if v == nil {
@@ -2057,7 +2057,7 @@ func (o NodeConfigPtrOutput) Location() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
+// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *string {
 		if v == nil {
@@ -2077,7 +2077,7 @@ func (o NodeConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodeConfig) []string {
 		if v == nil {
@@ -2107,7 +2107,7 @@ func (o NodeConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodeConfig) []string {
 		if v == nil {
@@ -2119,23 +2119,23 @@ func (o NodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfigResponse struct {
-	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated.
+	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
 	IpAllocationPolicy IPAllocationPolicyResponse `pulumi:"ipAllocationPolicy"`
-	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field.
+	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Location string `pulumi:"location"`
-	// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
+	// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType string `pulumi:"machineType"`
 	// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
 	Network string `pulumi:"network"`
-	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork string `pulumi:"subnetwork"`
-	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -2152,23 +2152,23 @@ type NodeConfigResponseInput interface {
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfigResponseArgs struct {
-	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated.
+	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
 	// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
 	IpAllocationPolicy IPAllocationPolicyResponseInput `pulumi:"ipAllocationPolicy"`
-	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field.
+	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
+	// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
 	Network pulumi.StringInput `pulumi:"network"`
-	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
-	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -2250,7 +2250,7 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutputWithContext(ctx c
 	}).(NodeConfigResponsePtrOutput)
 }
 
-// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated.
+// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponseOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfigResponse) int { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
@@ -2260,12 +2260,12 @@ func (o NodeConfigResponseOutput) IpAllocationPolicy() IPAllocationPolicyRespons
 	return o.ApplyT(func(v NodeConfigResponse) IPAllocationPolicyResponse { return v.IpAllocationPolicy }).(IPAllocationPolicyResponseOutput)
 }
 
-// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field.
+// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
+// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
@@ -2275,7 +2275,7 @@ func (o NodeConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponseOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeConfigResponse) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
@@ -2290,7 +2290,7 @@ func (o NodeConfigResponseOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
-// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeConfigResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -2319,7 +2319,7 @@ func (o NodeConfigResponsePtrOutput) Elem() NodeConfigResponseOutput {
 	}).(NodeConfigResponseOutput)
 }
 
-// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated.
+// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponsePtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) *int {
 		if v == nil {
@@ -2339,7 +2339,7 @@ func (o NodeConfigResponsePtrOutput) IpAllocationPolicy() IPAllocationPolicyResp
 	}).(IPAllocationPolicyResponsePtrOutput)
 }
 
-// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field.
+// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponsePtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) *string {
 		if v == nil {
@@ -2349,7 +2349,7 @@ func (o NodeConfigResponsePtrOutput) Location() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
+// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) *string {
 		if v == nil {
@@ -2369,7 +2369,7 @@ func (o NodeConfigResponsePtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponsePtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) []string {
 		if v == nil {
@@ -2399,7 +2399,7 @@ func (o NodeConfigResponsePtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponsePtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) []string {
 		if v == nil {
@@ -2750,11 +2750,11 @@ func (o PrivateClusterConfigResponsePtrOutput) MasterIpv4ReservedRange() pulumi.
 type PrivateEnvironmentConfig struct {
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
 	CloudSqlIpv4CidrBlock *string `pulumi:"cloudSqlIpv4CidrBlock"`
-	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	EnablePrivateEnvironment *bool `pulumi:"enablePrivateEnvironment"`
 	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 	PrivateClusterConfig *PrivateClusterConfig `pulumi:"privateClusterConfig"`
-	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerIpv4CidrBlock *string `pulumi:"webServerIpv4CidrBlock"`
 }
 
@@ -2773,11 +2773,11 @@ type PrivateEnvironmentConfigInput interface {
 type PrivateEnvironmentConfigArgs struct {
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
 	CloudSqlIpv4CidrBlock pulumi.StringPtrInput `pulumi:"cloudSqlIpv4CidrBlock"`
-	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	EnablePrivateEnvironment pulumi.BoolPtrInput `pulumi:"enablePrivateEnvironment"`
 	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 	PrivateClusterConfig PrivateClusterConfigPtrInput `pulumi:"privateClusterConfig"`
-	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerIpv4CidrBlock pulumi.StringPtrInput `pulumi:"webServerIpv4CidrBlock"`
 }
 
@@ -2864,7 +2864,7 @@ func (o PrivateEnvironmentConfigOutput) CloudSqlIpv4CidrBlock() pulumi.StringPtr
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *bool { return v.EnablePrivateEnvironment }).(pulumi.BoolPtrOutput)
 }
@@ -2874,7 +2874,7 @@ func (o PrivateEnvironmentConfigOutput) PrivateClusterConfig() PrivateClusterCon
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *PrivateClusterConfig { return v.PrivateClusterConfig }).(PrivateClusterConfigPtrOutput)
 }
 
-// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigOutput) WebServerIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *string { return v.WebServerIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
@@ -2913,7 +2913,7 @@ func (o PrivateEnvironmentConfigPtrOutput) CloudSqlIpv4CidrBlock() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigPtrOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PrivateEnvironmentConfig) *bool {
 		if v == nil {
@@ -2933,7 +2933,7 @@ func (o PrivateEnvironmentConfigPtrOutput) PrivateClusterConfig() PrivateCluster
 	}).(PrivateClusterConfigPtrOutput)
 }
 
-// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigPtrOutput) WebServerIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateEnvironmentConfig) *string {
 		if v == nil {
@@ -2947,13 +2947,13 @@ func (o PrivateEnvironmentConfigPtrOutput) WebServerIpv4CidrBlock() pulumi.Strin
 type PrivateEnvironmentConfigResponse struct {
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
 	CloudSqlIpv4CidrBlock string `pulumi:"cloudSqlIpv4CidrBlock"`
-	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	EnablePrivateEnvironment bool `pulumi:"enablePrivateEnvironment"`
 	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 	PrivateClusterConfig PrivateClusterConfigResponse `pulumi:"privateClusterConfig"`
-	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerIpv4CidrBlock string `pulumi:"webServerIpv4CidrBlock"`
-	// The IP range reserved for the tenant project's App Engine VMs.
+	// The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerIpv4ReservedRange string `pulumi:"webServerIpv4ReservedRange"`
 }
 
@@ -2972,13 +2972,13 @@ type PrivateEnvironmentConfigResponseInput interface {
 type PrivateEnvironmentConfigResponseArgs struct {
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
 	CloudSqlIpv4CidrBlock pulumi.StringInput `pulumi:"cloudSqlIpv4CidrBlock"`
-	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	EnablePrivateEnvironment pulumi.BoolInput `pulumi:"enablePrivateEnvironment"`
 	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 	PrivateClusterConfig PrivateClusterConfigResponseInput `pulumi:"privateClusterConfig"`
-	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerIpv4CidrBlock pulumi.StringInput `pulumi:"webServerIpv4CidrBlock"`
-	// The IP range reserved for the tenant project's App Engine VMs.
+	// The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerIpv4ReservedRange pulumi.StringInput `pulumi:"webServerIpv4ReservedRange"`
 }
 
@@ -3065,7 +3065,7 @@ func (o PrivateEnvironmentConfigResponseOutput) CloudSqlIpv4CidrBlock() pulumi.S
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
-// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigResponseOutput) EnablePrivateEnvironment() pulumi.BoolOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) bool { return v.EnablePrivateEnvironment }).(pulumi.BoolOutput)
 }
@@ -3075,12 +3075,12 @@ func (o PrivateEnvironmentConfigResponseOutput) PrivateClusterConfig() PrivateCl
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) PrivateClusterConfigResponse { return v.PrivateClusterConfig }).(PrivateClusterConfigResponseOutput)
 }
 
-// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigResponseOutput) WebServerIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.WebServerIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
-// The IP range reserved for the tenant project's App Engine VMs.
+// The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigResponseOutput) WebServerIpv4ReservedRange() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.WebServerIpv4ReservedRange }).(pulumi.StringOutput)
 }
@@ -3119,7 +3119,7 @@ func (o PrivateEnvironmentConfigResponsePtrOutput) CloudSqlIpv4CidrBlock() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigResponsePtrOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *bool {
 		if v == nil {
@@ -3139,7 +3139,7 @@ func (o PrivateEnvironmentConfigResponsePtrOutput) PrivateClusterConfig() Privat
 	}).(PrivateClusterConfigResponsePtrOutput)
 }
 
-// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigResponsePtrOutput) WebServerIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *string {
 		if v == nil {
@@ -3149,7 +3149,7 @@ func (o PrivateEnvironmentConfigResponsePtrOutput) WebServerIpv4CidrBlock() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IP range reserved for the tenant project's App Engine VMs.
+// The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigResponsePtrOutput) WebServerIpv4ReservedRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *string {
 		if v == nil {
@@ -3169,8 +3169,10 @@ type SoftwareConfig struct {
 	ImageVersion *string `pulumi:"imageVersion"`
 	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 	PypiPackages map[string]string `pulumi:"pypiPackages"`
-	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
+	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 	PythonVersion *string `pulumi:"pythonVersion"`
+	// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+	SchedulerCount *int `pulumi:"schedulerCount"`
 }
 
 // SoftwareConfigInput is an input type that accepts SoftwareConfigArgs and SoftwareConfigOutput values.
@@ -3194,8 +3196,10 @@ type SoftwareConfigArgs struct {
 	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
 	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 	PypiPackages pulumi.StringMapInput `pulumi:"pypiPackages"`
-	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
+	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
+	// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+	SchedulerCount pulumi.IntPtrInput `pulumi:"schedulerCount"`
 }
 
 func (SoftwareConfigArgs) ElementType() reflect.Type {
@@ -3296,9 +3300,14 @@ func (o SoftwareConfigOutput) PypiPackages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
 }
 
-// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
+// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 func (o SoftwareConfigOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SoftwareConfig) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+func (o SoftwareConfigOutput) SchedulerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SoftwareConfig) *int { return v.SchedulerCount }).(pulumi.IntPtrOutput)
 }
 
 type SoftwareConfigPtrOutput struct{ *pulumi.OutputState }
@@ -3365,7 +3374,7 @@ func (o SoftwareConfigPtrOutput) PypiPackages() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
+// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 func (o SoftwareConfigPtrOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareConfig) *string {
 		if v == nil {
@@ -3373,6 +3382,16 @@ func (o SoftwareConfigPtrOutput) PythonVersion() pulumi.StringPtrOutput {
 		}
 		return v.PythonVersion
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+func (o SoftwareConfigPtrOutput) SchedulerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SoftwareConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SchedulerCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // Specifies the selection and configuration of software inside the environment.
@@ -3385,8 +3404,10 @@ type SoftwareConfigResponse struct {
 	ImageVersion string `pulumi:"imageVersion"`
 	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 	PypiPackages map[string]string `pulumi:"pypiPackages"`
-	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
+	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 	PythonVersion string `pulumi:"pythonVersion"`
+	// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+	SchedulerCount int `pulumi:"schedulerCount"`
 }
 
 // SoftwareConfigResponseInput is an input type that accepts SoftwareConfigResponseArgs and SoftwareConfigResponseOutput values.
@@ -3410,8 +3431,10 @@ type SoftwareConfigResponseArgs struct {
 	ImageVersion pulumi.StringInput `pulumi:"imageVersion"`
 	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 	PypiPackages pulumi.StringMapInput `pulumi:"pypiPackages"`
-	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
+	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 	PythonVersion pulumi.StringInput `pulumi:"pythonVersion"`
+	// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+	SchedulerCount pulumi.IntInput `pulumi:"schedulerCount"`
 }
 
 func (SoftwareConfigResponseArgs) ElementType() reflect.Type {
@@ -3512,9 +3535,14 @@ func (o SoftwareConfigResponseOutput) PypiPackages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
 }
 
-// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
+// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 func (o SoftwareConfigResponseOutput) PythonVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) string { return v.PythonVersion }).(pulumi.StringOutput)
+}
+
+// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+func (o SoftwareConfigResponseOutput) SchedulerCount() pulumi.IntOutput {
+	return o.ApplyT(func(v SoftwareConfigResponse) int { return v.SchedulerCount }).(pulumi.IntOutput)
 }
 
 type SoftwareConfigResponsePtrOutput struct{ *pulumi.OutputState }
@@ -3581,7 +3609,7 @@ func (o SoftwareConfigResponsePtrOutput) PypiPackages() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
+// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 func (o SoftwareConfigResponsePtrOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareConfigResponse) *string {
 		if v == nil {
@@ -3591,7 +3619,17 @@ func (o SoftwareConfigResponsePtrOutput) PythonVersion() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The configuration settings for the Airflow web server App Engine instance.
+// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+func (o SoftwareConfigResponsePtrOutput) SchedulerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SoftwareConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SchedulerCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
 type WebServerConfig struct {
 	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 	MachineType *string `pulumi:"machineType"`
@@ -3608,7 +3646,7 @@ type WebServerConfigInput interface {
 	ToWebServerConfigOutputWithContext(context.Context) WebServerConfigOutput
 }
 
-// The configuration settings for the Airflow web server App Engine instance.
+// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
 type WebServerConfigArgs struct {
 	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
@@ -3667,7 +3705,7 @@ func (i *webServerConfigPtrType) ToWebServerConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerConfigPtrOutput)
 }
 
-// The configuration settings for the Airflow web server App Engine instance.
+// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
 type WebServerConfigOutput struct{ *pulumi.OutputState }
 
 func (WebServerConfigOutput) ElementType() reflect.Type {
@@ -3731,7 +3769,7 @@ func (o WebServerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The configuration settings for the Airflow web server App Engine instance.
+// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
 type WebServerConfigResponse struct {
 	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 	MachineType string `pulumi:"machineType"`
@@ -3748,7 +3786,7 @@ type WebServerConfigResponseInput interface {
 	ToWebServerConfigResponseOutputWithContext(context.Context) WebServerConfigResponseOutput
 }
 
-// The configuration settings for the Airflow web server App Engine instance.
+// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
 type WebServerConfigResponseArgs struct {
 	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
@@ -3807,7 +3845,7 @@ func (i *webServerConfigResponsePtrType) ToWebServerConfigResponsePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerConfigResponsePtrOutput)
 }
 
-// The configuration settings for the Airflow web server App Engine instance.
+// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
 type WebServerConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (WebServerConfigResponseOutput) ElementType() reflect.Type {
@@ -3871,7 +3909,7 @@ func (o WebServerConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Network-level access control policy for the Airflow web server.
+// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type WebServerNetworkAccessControl struct {
 	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges []AllowedIpRange `pulumi:"allowedIpRanges"`
@@ -3888,7 +3926,7 @@ type WebServerNetworkAccessControlInput interface {
 	ToWebServerNetworkAccessControlOutputWithContext(context.Context) WebServerNetworkAccessControlOutput
 }
 
-// Network-level access control policy for the Airflow web server.
+// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type WebServerNetworkAccessControlArgs struct {
 	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges AllowedIpRangeArrayInput `pulumi:"allowedIpRanges"`
@@ -3947,7 +3985,7 @@ func (i *webServerNetworkAccessControlPtrType) ToWebServerNetworkAccessControlPt
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerNetworkAccessControlPtrOutput)
 }
 
-// Network-level access control policy for the Airflow web server.
+// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type WebServerNetworkAccessControlOutput struct{ *pulumi.OutputState }
 
 func (WebServerNetworkAccessControlOutput) ElementType() reflect.Type {
@@ -4011,7 +4049,7 @@ func (o WebServerNetworkAccessControlPtrOutput) AllowedIpRanges() AllowedIpRange
 	}).(AllowedIpRangeArrayOutput)
 }
 
-// Network-level access control policy for the Airflow web server.
+// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type WebServerNetworkAccessControlResponse struct {
 	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges []AllowedIpRangeResponse `pulumi:"allowedIpRanges"`
@@ -4028,7 +4066,7 @@ type WebServerNetworkAccessControlResponseInput interface {
 	ToWebServerNetworkAccessControlResponseOutputWithContext(context.Context) WebServerNetworkAccessControlResponseOutput
 }
 
-// Network-level access control policy for the Airflow web server.
+// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type WebServerNetworkAccessControlResponseArgs struct {
 	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges AllowedIpRangeResponseArrayInput `pulumi:"allowedIpRanges"`
@@ -4087,7 +4125,7 @@ func (i *webServerNetworkAccessControlResponsePtrType) ToWebServerNetworkAccessC
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerNetworkAccessControlResponsePtrOutput)
 }
 
-// Network-level access control policy for the Airflow web server.
+// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type WebServerNetworkAccessControlResponseOutput struct{ *pulumi.OutputState }
 
 func (WebServerNetworkAccessControlResponseOutput) ElementType() reflect.Type {
@@ -4152,6 +4190,50 @@ func (o WebServerNetworkAccessControlResponsePtrOutput) AllowedIpRanges() Allowe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeInput)(nil)).Elem(), AllowedIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeArrayInput)(nil)).Elem(), AllowedIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeResponseInput)(nil)).Elem(), AllowedIpRangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeResponseArrayInput)(nil)).Elem(), AllowedIpRangeResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigInput)(nil)).Elem(), DatabaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigPtrInput)(nil)).Elem(), DatabaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigResponseInput)(nil)).Elem(), DatabaseConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigResponsePtrInput)(nil)).Elem(), DatabaseConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponseInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponsePtrInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigInput)(nil)).Elem(), EnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigPtrInput)(nil)).Elem(), EnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigResponseInput)(nil)).Elem(), EnvironmentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigResponsePtrInput)(nil)).Elem(), EnvironmentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyInput)(nil)).Elem(), IPAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyPtrInput)(nil)).Elem(), IPAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyResponseInput)(nil)).Elem(), IPAllocationPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyResponsePtrInput)(nil)).Elem(), IPAllocationPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponseInput)(nil)).Elem(), NodeConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponsePtrInput)(nil)).Elem(), NodeConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigInput)(nil)).Elem(), PrivateClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigPtrInput)(nil)).Elem(), PrivateClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigResponseInput)(nil)).Elem(), PrivateClusterConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigResponsePtrInput)(nil)).Elem(), PrivateClusterConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigInput)(nil)).Elem(), PrivateEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigPtrInput)(nil)).Elem(), PrivateEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigResponseInput)(nil)).Elem(), PrivateEnvironmentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigResponsePtrInput)(nil)).Elem(), PrivateEnvironmentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigInput)(nil)).Elem(), SoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigPtrInput)(nil)).Elem(), SoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigResponseInput)(nil)).Elem(), SoftwareConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigResponsePtrInput)(nil)).Elem(), SoftwareConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigInput)(nil)).Elem(), WebServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigPtrInput)(nil)).Elem(), WebServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigResponseInput)(nil)).Elem(), WebServerConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigResponsePtrInput)(nil)).Elem(), WebServerConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlInput)(nil)).Elem(), WebServerNetworkAccessControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlPtrInput)(nil)).Elem(), WebServerNetworkAccessControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlResponseInput)(nil)).Elem(), WebServerNetworkAccessControlResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlResponsePtrInput)(nil)).Elem(), WebServerNetworkAccessControlResponseArgs{})
 	pulumi.RegisterOutputType(AllowedIpRangeOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeResponseOutput{})

@@ -77,3 +77,12 @@ export interface GetUptimeCheckConfigResult {
      */
     readonly timeout: string;
 }
+
+export function getUptimeCheckConfigOutput(args: GetUptimeCheckConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUptimeCheckConfigResult> {
+    return pulumi.output(args).apply(a => getUptimeCheckConfig(a, opts))
+}
+
+export interface GetUptimeCheckConfigOutputArgs {
+    project?: pulumi.Input<string>;
+    uptimeCheckConfigId: pulumi.Input<string>;
+}

@@ -46,6 +46,8 @@ type LookupInstanceResult struct {
 	PeeringCidrRange string `pulumi:"peeringCidrRange"`
 	// Port number of the exposed Apigee endpoint.
 	Port string `pulumi:"port"`
+	// Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
+	RuntimeVersion string `pulumi:"runtimeVersion"`
 	// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
 	State string `pulumi:"state"`
 }
@@ -130,6 +132,11 @@ func (o LookupInstanceResultOutput) PeeringCidrRange() pulumi.StringOutput {
 // Port number of the exposed Apigee endpoint.
 func (o LookupInstanceResultOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
+func (o LookupInstanceResultOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.RuntimeVersion }).(pulumi.StringOutput)
 }
 
 // State of the instance. Values other than `ACTIVE` means the resource is not ready to use.

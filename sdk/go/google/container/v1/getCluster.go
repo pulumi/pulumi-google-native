@@ -85,6 +85,8 @@ type LookupClusterResult struct {
 	MasterAuth MasterAuthResponse `pulumi:"masterAuth"`
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigResponse `pulumi:"masterAuthorizedNetworksConfig"`
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	MeshCertificates MeshCertificatesResponse `pulumi:"meshCertificates"`
 	// Monitoring configuration for the cluster.
 	MonitoringConfig MonitoringConfigResponse `pulumi:"monitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
@@ -307,6 +309,11 @@ func (o LookupClusterResultOutput) MasterAuthorizedNetworksConfig() MasterAuthor
 	return o.ApplyT(func(v LookupClusterResult) MasterAuthorizedNetworksConfigResponse {
 		return v.MasterAuthorizedNetworksConfig
 	}).(MasterAuthorizedNetworksConfigResponseOutput)
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+func (o LookupClusterResultOutput) MeshCertificates() MeshCertificatesResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) MeshCertificatesResponse { return v.MeshCertificates }).(MeshCertificatesResponseOutput)
 }
 
 // Monitoring configuration for the cluster.

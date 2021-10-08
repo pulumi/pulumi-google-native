@@ -410,11 +410,38 @@ class MultiClusterRoutingUseAnyResponse(dict):
     """
     Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
     """
-    def __init__(__self__):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterIds":
+            suggest = "cluster_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiClusterRoutingUseAnyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiClusterRoutingUseAnyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiClusterRoutingUseAnyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_ids: Sequence[str]):
         """
         Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
+        :param Sequence[str] cluster_ids: The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
         """
-        pass
+        pulumi.set(__self__, "cluster_ids", cluster_ids)
+
+    @property
+    @pulumi.getter(name="clusterIds")
+    def cluster_ids(self) -> Sequence[str]:
+        """
+        The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+        """
+        return pulumi.get(self, "cluster_ids")
 
 
 @pulumi.output_type

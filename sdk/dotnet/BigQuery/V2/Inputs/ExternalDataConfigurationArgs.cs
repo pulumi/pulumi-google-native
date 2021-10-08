@@ -19,6 +19,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<bool>? Autodetect { get; set; }
 
         /// <summary>
+        /// Additional properties to set if sourceFormat is set to Avro.
+        /// </summary>
+        [Input("avroOptions")]
+        public Input<Inputs.AvroOptionsArgs>? AvroOptions { get; set; }
+
+        /// <summary>
         /// [Optional] Additional options if sourceFormat is set to BIGTABLE.
         /// </summary>
         [Input("bigtableOptions")]

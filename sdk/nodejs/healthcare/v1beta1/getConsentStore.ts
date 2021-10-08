@@ -48,3 +48,14 @@ export interface GetConsentStoreResult {
      */
     readonly name: string;
 }
+
+export function getConsentStoreOutput(args: GetConsentStoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsentStoreResult> {
+    return pulumi.output(args).apply(a => getConsentStore(a, opts))
+}
+
+export interface GetConsentStoreOutputArgs {
+    consentStoreId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

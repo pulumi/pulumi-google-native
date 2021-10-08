@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
 {
 
     /// <summary>
-    /// Logging configure.
+    /// Logging configuration.
     /// </summary>
     public sealed class LoggingConfigArgs : Pulumi.ResourceArgs
     {

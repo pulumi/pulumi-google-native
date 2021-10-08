@@ -78,3 +78,13 @@ export interface GetNodeGroupResult {
      */
     readonly zone: string;
 }
+
+export function getNodeGroupOutput(args: GetNodeGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeGroupResult> {
+    return pulumi.output(args).apply(a => getNodeGroup(a, opts))
+}
+
+export interface GetNodeGroupOutputArgs {
+    nodeGroup: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
+}

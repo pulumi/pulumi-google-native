@@ -42,3 +42,13 @@ export interface GetKnowledgeBaseResult {
      */
     readonly name: string;
 }
+
+export function getKnowledgeBaseOutput(args: GetKnowledgeBaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKnowledgeBaseResult> {
+    return pulumi.output(args).apply(a => getKnowledgeBase(a, opts))
+}
+
+export interface GetKnowledgeBaseOutputArgs {
+    knowledgeBaseId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

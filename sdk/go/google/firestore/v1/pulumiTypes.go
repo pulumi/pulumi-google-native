@@ -249,6 +249,10 @@ func (o GoogleFirestoreAdminV1IndexFieldResponseArrayOutput) Index(i pulumi.IntI
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldArrayInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldResponseInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldResponseArrayInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldResponseArray{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldArrayOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldResponseOutput{})

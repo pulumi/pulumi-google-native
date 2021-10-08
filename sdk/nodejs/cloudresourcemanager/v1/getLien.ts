@@ -50,3 +50,11 @@ export interface GetLienResult {
      */
     readonly restrictions: string[];
 }
+
+export function getLienOutput(args: GetLienOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLienResult> {
+    return pulumi.output(args).apply(a => getLien(a, opts))
+}
+
+export interface GetLienOutputArgs {
+    lienId: pulumi.Input<string>;
+}

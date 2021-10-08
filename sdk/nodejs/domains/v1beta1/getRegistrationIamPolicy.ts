@@ -49,3 +49,14 @@ export interface GetRegistrationIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getRegistrationIamPolicyOutput(args: GetRegistrationIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistrationIamPolicyResult> {
+    return pulumi.output(args).apply(a => getRegistrationIamPolicy(a, opts))
+}
+
+export interface GetRegistrationIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    registrationId: pulumi.Input<string>;
+}

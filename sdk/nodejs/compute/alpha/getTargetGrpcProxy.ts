@@ -64,3 +64,12 @@ export interface GetTargetGrpcProxyResult {
      */
     readonly validateForProxyless: boolean;
 }
+
+export function getTargetGrpcProxyOutput(args: GetTargetGrpcProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetGrpcProxyResult> {
+    return pulumi.output(args).apply(a => getTargetGrpcProxy(a, opts))
+}
+
+export interface GetTargetGrpcProxyOutputArgs {
+    project?: pulumi.Input<string>;
+    targetGrpcProxy: pulumi.Input<string>;
+}

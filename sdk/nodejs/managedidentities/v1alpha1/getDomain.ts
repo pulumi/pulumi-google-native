@@ -81,3 +81,12 @@ export interface GetDomainResult {
      */
     readonly updateTime: string;
 }
+
+export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
+    return pulumi.output(args).apply(a => getDomain(a, opts))
+}
+
+export interface GetDomainOutputArgs {
+    domainId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

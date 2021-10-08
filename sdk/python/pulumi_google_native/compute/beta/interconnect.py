@@ -309,6 +309,7 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["operational_status"] = None
             __props__.__dict__["peer_ip_address"] = None
             __props__.__dict__["provisioned_link_count"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["state"] = None
         super(Interconnect, __self__).__init__(
@@ -354,6 +355,7 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["peer_ip_address"] = None
         __props__.__dict__["provisioned_link_count"] = None
         __props__.__dict__["requested_link_count"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["state"] = None
         return Interconnect(resource_name, opts=opts, __props__=__props__)
@@ -525,6 +527,14 @@ class Interconnect(pulumi.CustomResource):
         Target number of physical links in the link bundle, as requested by the customer.
         """
         return pulumi.get(self, "requested_link_count")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter(name="selfLink")

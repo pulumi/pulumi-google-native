@@ -211,7 +211,7 @@ class SslCert(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        This is always sql#sslCert.
+        This is always **sql#sslCert**.
         """
         return pulumi.get(self, "kind")
 

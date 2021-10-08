@@ -83,3 +83,13 @@ export interface GetOsPolicyAssignmentResult {
      */
     readonly uid: string;
 }
+
+export function getOsPolicyAssignmentOutput(args: GetOsPolicyAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOsPolicyAssignmentResult> {
+    return pulumi.output(args).apply(a => getOsPolicyAssignment(a, opts))
+}
+
+export interface GetOsPolicyAssignmentOutputArgs {
+    location: pulumi.Input<string>;
+    osPolicyAssignmentId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

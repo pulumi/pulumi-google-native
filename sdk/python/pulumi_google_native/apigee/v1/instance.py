@@ -207,6 +207,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["host"] = None
             __props__.__dict__["last_modified_at"] = None
             __props__.__dict__["port"] = None
+            __props__.__dict__["runtime_version"] = None
             __props__.__dict__["state"] = None
         super(Instance, __self__).__init__(
             'google-native:apigee/v1:Instance',
@@ -240,6 +241,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["peering_cidr_range"] = None
         __props__.__dict__["port"] = None
+        __props__.__dict__["runtime_version"] = None
         __props__.__dict__["state"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
 
@@ -322,6 +324,14 @@ class Instance(pulumi.CustomResource):
         Port number of the exposed Apigee endpoint.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> pulumi.Output[str]:
+        """
+        Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
+        """
+        return pulumi.get(self, "runtime_version")
 
     @property
     @pulumi.getter

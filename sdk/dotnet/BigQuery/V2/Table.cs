@@ -29,6 +29,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> CreationTime { get; private set; } = null!;
 
         /// <summary>
+        /// The default collation of the table.
+        /// </summary>
+        [Output("defaultCollation")]
+        public Output<string> DefaultCollation { get; private set; } = null!;
+
+        /// <summary>
         /// [Optional] A user-friendly description of this table.
         /// </summary>
         [Output("description")]

@@ -234,7 +234,7 @@ class PolicyTag(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs. 
+        Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.
         """
         return pulumi.get(self, "name")
 

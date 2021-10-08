@@ -57,3 +57,14 @@ export interface GetResourcePolicyIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getResourcePolicyIamPolicyOutput(args: GetResourcePolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcePolicyIamPolicyResult> {
+    return pulumi.output(args).apply(a => getResourcePolicyIamPolicy(a, opts))
+}
+
+export interface GetResourcePolicyIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

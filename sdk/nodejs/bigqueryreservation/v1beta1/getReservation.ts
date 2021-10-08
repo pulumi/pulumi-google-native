@@ -34,7 +34,7 @@ export interface GetReservationResult {
      */
     readonly creationTime: string;
     /**
-     * If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+     * If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
      */
     readonly ignoreIdleSlots: boolean;
     /**
@@ -49,4 +49,14 @@ export interface GetReservationResult {
      * Last update time of the reservation.
      */
     readonly updateTime: string;
+}
+
+export function getReservationOutput(args: GetReservationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservationResult> {
+    return pulumi.output(args).apply(a => getReservation(a, opts))
+}
+
+export interface GetReservationOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    reservationId: pulumi.Input<string>;
 }

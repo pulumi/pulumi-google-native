@@ -17,6 +17,7 @@ __all__ = ['RegionInstanceGroupManagerArgs', 'RegionInstanceGroupManager']
 class RegionInstanceGroupManagerArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str],
+                 all_instances_config: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']] = None,
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,7 @@ class RegionInstanceGroupManagerArgs:
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None):
         """
         The set of arguments for constructing a RegionInstanceGroupManager resource.
+        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Specifies the instances configs overrides that should be applied for all instances in the MIG.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
         :param pulumi.Input[str] base_instance_name: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -49,7 +51,7 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
-        :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: Stanby policy for stopped and suspended instances.
+        :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: Standby policy for stopped and suspended instances.
         :param pulumi.Input['StatefulPolicyArgs'] stateful_policy: Stateful configuration for this Instanced Group Manager
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
@@ -59,6 +61,8 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         """
         pulumi.set(__self__, "region", region)
+        if all_instances_config is not None:
+            pulumi.set(__self__, "all_instances_config", all_instances_config)
         if auto_healing_policies is not None:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
         if base_instance_name is not None:
@@ -108,6 +112,18 @@ class RegionInstanceGroupManagerArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="allInstancesConfig")
+    def all_instances_config(self) -> Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]:
+        """
+        Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        """
+        return pulumi.get(self, "all_instances_config")
+
+    @all_instances_config.setter
+    def all_instances_config(self, value: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]):
+        pulumi.set(self, "all_instances_config", value)
 
     @property
     @pulumi.getter(name="autoHealingPolicies")
@@ -251,7 +267,7 @@ class RegionInstanceGroupManagerArgs:
     @pulumi.getter(name="standbyPolicy")
     def standby_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerStandbyPolicyArgs']]:
         """
-        Stanby policy for stopped and suspended instances.
+        Standby policy for stopped and suspended instances.
         """
         return pulumi.get(self, "standby_policy")
 
@@ -349,6 +365,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 all_instances_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']]] = None,
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -376,6 +393,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: Specifies the instances configs overrides that should be applied for all instances in the MIG.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
         :param pulumi.Input[str] base_instance_name: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -386,7 +404,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerStandbyPolicyArgs']] standby_policy: Stanby policy for stopped and suspended instances.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerStandbyPolicyArgs']] standby_policy: Standby policy for stopped and suspended instances.
         :param pulumi.Input[pulumi.InputType['StatefulPolicyArgs']] stateful_policy: Stateful configuration for this Instanced Group Manager
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
@@ -419,6 +437,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 all_instances_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']]] = None,
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -452,6 +471,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionInstanceGroupManagerArgs.__new__(RegionInstanceGroupManagerArgs)
 
+            __props__.__dict__["all_instances_config"] = all_instances_config
             __props__.__dict__["auto_healing_policies"] = auto_healing_policies
             __props__.__dict__["base_instance_name"] = base_instance_name
             __props__.__dict__["description"] = description
@@ -506,6 +526,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         __props__ = RegionInstanceGroupManagerArgs.__new__(RegionInstanceGroupManagerArgs)
 
+        __props__.__dict__["all_instances_config"] = None
         __props__.__dict__["auto_healing_policies"] = None
         __props__.__dict__["base_instance_name"] = None
         __props__.__dict__["creation_timestamp"] = None
@@ -535,6 +556,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["versions"] = None
         __props__.__dict__["zone"] = None
         return RegionInstanceGroupManager(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allInstancesConfig")
+    def all_instances_config(self) -> pulumi.Output['outputs.InstanceGroupManagerAllInstancesConfigResponse']:
+        """
+        Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        """
+        return pulumi.get(self, "all_instances_config")
 
     @property
     @pulumi.getter(name="autoHealingPolicies")
@@ -684,7 +713,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="standbyPolicy")
     def standby_policy(self) -> pulumi.Output['outputs.InstanceGroupManagerStandbyPolicyResponse']:
         """
-        Stanby policy for stopped and suspended instances.
+        Standby policy for stopped and suspended instances.
         """
         return pulumi.get(self, "standby_policy")
 

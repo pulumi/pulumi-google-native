@@ -682,6 +682,830 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+// A definition of a matcher that selects endpoints to which the policies should be applied.
+type EndpointMatcher struct {
+	// The matcher is based on node metadata presented by xDS clients.
+	MetadataLabelMatcher *EndpointMatcherMetadataLabelMatcher `pulumi:"metadataLabelMatcher"`
+}
+
+// EndpointMatcherInput is an input type that accepts EndpointMatcherArgs and EndpointMatcherOutput values.
+// You can construct a concrete instance of `EndpointMatcherInput` via:
+//
+//          EndpointMatcherArgs{...}
+type EndpointMatcherInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherOutput() EndpointMatcherOutput
+	ToEndpointMatcherOutputWithContext(context.Context) EndpointMatcherOutput
+}
+
+// A definition of a matcher that selects endpoints to which the policies should be applied.
+type EndpointMatcherArgs struct {
+	// The matcher is based on node metadata presented by xDS clients.
+	MetadataLabelMatcher EndpointMatcherMetadataLabelMatcherPtrInput `pulumi:"metadataLabelMatcher"`
+}
+
+func (EndpointMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcher)(nil)).Elem()
+}
+
+func (i EndpointMatcherArgs) ToEndpointMatcherOutput() EndpointMatcherOutput {
+	return i.ToEndpointMatcherOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherArgs) ToEndpointMatcherOutputWithContext(ctx context.Context) EndpointMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherOutput)
+}
+
+func (i EndpointMatcherArgs) ToEndpointMatcherPtrOutput() EndpointMatcherPtrOutput {
+	return i.ToEndpointMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherArgs) ToEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherOutput).ToEndpointMatcherPtrOutputWithContext(ctx)
+}
+
+// EndpointMatcherPtrInput is an input type that accepts EndpointMatcherArgs, EndpointMatcherPtr and EndpointMatcherPtrOutput values.
+// You can construct a concrete instance of `EndpointMatcherPtrInput` via:
+//
+//          EndpointMatcherArgs{...}
+//
+//  or:
+//
+//          nil
+type EndpointMatcherPtrInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherPtrOutput() EndpointMatcherPtrOutput
+	ToEndpointMatcherPtrOutputWithContext(context.Context) EndpointMatcherPtrOutput
+}
+
+type endpointMatcherPtrType EndpointMatcherArgs
+
+func EndpointMatcherPtr(v *EndpointMatcherArgs) EndpointMatcherPtrInput {
+	return (*endpointMatcherPtrType)(v)
+}
+
+func (*endpointMatcherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointMatcher)(nil)).Elem()
+}
+
+func (i *endpointMatcherPtrType) ToEndpointMatcherPtrOutput() EndpointMatcherPtrOutput {
+	return i.ToEndpointMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i *endpointMatcherPtrType) ToEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherPtrOutput)
+}
+
+// A definition of a matcher that selects endpoints to which the policies should be applied.
+type EndpointMatcherOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcher)(nil)).Elem()
+}
+
+func (o EndpointMatcherOutput) ToEndpointMatcherOutput() EndpointMatcherOutput {
+	return o
+}
+
+func (o EndpointMatcherOutput) ToEndpointMatcherOutputWithContext(ctx context.Context) EndpointMatcherOutput {
+	return o
+}
+
+func (o EndpointMatcherOutput) ToEndpointMatcherPtrOutput() EndpointMatcherPtrOutput {
+	return o.ToEndpointMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o EndpointMatcherOutput) ToEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointMatcher) *EndpointMatcher {
+		return &v
+	}).(EndpointMatcherPtrOutput)
+}
+
+// The matcher is based on node metadata presented by xDS clients.
+func (o EndpointMatcherOutput) MetadataLabelMatcher() EndpointMatcherMetadataLabelMatcherPtrOutput {
+	return o.ApplyT(func(v EndpointMatcher) *EndpointMatcherMetadataLabelMatcher { return v.MetadataLabelMatcher }).(EndpointMatcherMetadataLabelMatcherPtrOutput)
+}
+
+type EndpointMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointMatcher)(nil)).Elem()
+}
+
+func (o EndpointMatcherPtrOutput) ToEndpointMatcherPtrOutput() EndpointMatcherPtrOutput {
+	return o
+}
+
+func (o EndpointMatcherPtrOutput) ToEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherPtrOutput {
+	return o
+}
+
+func (o EndpointMatcherPtrOutput) Elem() EndpointMatcherOutput {
+	return o.ApplyT(func(v *EndpointMatcher) EndpointMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointMatcher
+		return ret
+	}).(EndpointMatcherOutput)
+}
+
+// The matcher is based on node metadata presented by xDS clients.
+func (o EndpointMatcherPtrOutput) MetadataLabelMatcher() EndpointMatcherMetadataLabelMatcherPtrOutput {
+	return o.ApplyT(func(v *EndpointMatcher) *EndpointMatcherMetadataLabelMatcher {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataLabelMatcher
+	}).(EndpointMatcherMetadataLabelMatcherPtrOutput)
+}
+
+// The matcher that is based on node metadata presented by xDS clients.
+type EndpointMatcherMetadataLabelMatcher struct {
+	// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+	MetadataLabelMatchCriteria *EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria `pulumi:"metadataLabelMatchCriteria"`
+	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+	MetadataLabels []EndpointMatcherMetadataLabelMatcherMetadataLabels `pulumi:"metadataLabels"`
+}
+
+// EndpointMatcherMetadataLabelMatcherInput is an input type that accepts EndpointMatcherMetadataLabelMatcherArgs and EndpointMatcherMetadataLabelMatcherOutput values.
+// You can construct a concrete instance of `EndpointMatcherMetadataLabelMatcherInput` via:
+//
+//          EndpointMatcherMetadataLabelMatcherArgs{...}
+type EndpointMatcherMetadataLabelMatcherInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherMetadataLabelMatcherOutput() EndpointMatcherMetadataLabelMatcherOutput
+	ToEndpointMatcherMetadataLabelMatcherOutputWithContext(context.Context) EndpointMatcherMetadataLabelMatcherOutput
+}
+
+// The matcher that is based on node metadata presented by xDS clients.
+type EndpointMatcherMetadataLabelMatcherArgs struct {
+	// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+	MetadataLabelMatchCriteria EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrInput `pulumi:"metadataLabelMatchCriteria"`
+	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+	MetadataLabels EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayInput `pulumi:"metadataLabels"`
+}
+
+func (EndpointMatcherMetadataLabelMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcherMetadataLabelMatcher)(nil)).Elem()
+}
+
+func (i EndpointMatcherMetadataLabelMatcherArgs) ToEndpointMatcherMetadataLabelMatcherOutput() EndpointMatcherMetadataLabelMatcherOutput {
+	return i.ToEndpointMatcherMetadataLabelMatcherOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherMetadataLabelMatcherArgs) ToEndpointMatcherMetadataLabelMatcherOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherOutput)
+}
+
+func (i EndpointMatcherMetadataLabelMatcherArgs) ToEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointMatcherMetadataLabelMatcherPtrOutput {
+	return i.ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherMetadataLabelMatcherArgs) ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherOutput).ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx)
+}
+
+// EndpointMatcherMetadataLabelMatcherPtrInput is an input type that accepts EndpointMatcherMetadataLabelMatcherArgs, EndpointMatcherMetadataLabelMatcherPtr and EndpointMatcherMetadataLabelMatcherPtrOutput values.
+// You can construct a concrete instance of `EndpointMatcherMetadataLabelMatcherPtrInput` via:
+//
+//          EndpointMatcherMetadataLabelMatcherArgs{...}
+//
+//  or:
+//
+//          nil
+type EndpointMatcherMetadataLabelMatcherPtrInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointMatcherMetadataLabelMatcherPtrOutput
+	ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(context.Context) EndpointMatcherMetadataLabelMatcherPtrOutput
+}
+
+type endpointMatcherMetadataLabelMatcherPtrType EndpointMatcherMetadataLabelMatcherArgs
+
+func EndpointMatcherMetadataLabelMatcherPtr(v *EndpointMatcherMetadataLabelMatcherArgs) EndpointMatcherMetadataLabelMatcherPtrInput {
+	return (*endpointMatcherMetadataLabelMatcherPtrType)(v)
+}
+
+func (*endpointMatcherMetadataLabelMatcherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointMatcherMetadataLabelMatcher)(nil)).Elem()
+}
+
+func (i *endpointMatcherMetadataLabelMatcherPtrType) ToEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointMatcherMetadataLabelMatcherPtrOutput {
+	return i.ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i *endpointMatcherMetadataLabelMatcherPtrType) ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherPtrOutput)
+}
+
+// The matcher that is based on node metadata presented by xDS clients.
+type EndpointMatcherMetadataLabelMatcherOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherMetadataLabelMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcherMetadataLabelMatcher)(nil)).Elem()
+}
+
+func (o EndpointMatcherMetadataLabelMatcherOutput) ToEndpointMatcherMetadataLabelMatcherOutput() EndpointMatcherMetadataLabelMatcherOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherOutput) ToEndpointMatcherMetadataLabelMatcherOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherOutput) ToEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointMatcherMetadataLabelMatcherPtrOutput {
+	return o.ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o EndpointMatcherMetadataLabelMatcherOutput) ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointMatcherMetadataLabelMatcher) *EndpointMatcherMetadataLabelMatcher {
+		return &v
+	}).(EndpointMatcherMetadataLabelMatcherPtrOutput)
+}
+
+// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+func (o EndpointMatcherMetadataLabelMatcherOutput) MetadataLabelMatchCriteria() EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput {
+	return o.ApplyT(func(v EndpointMatcherMetadataLabelMatcher) *EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria {
+		return v.MetadataLabelMatchCriteria
+	}).(EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput)
+}
+
+// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+func (o EndpointMatcherMetadataLabelMatcherOutput) MetadataLabels() EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput {
+	return o.ApplyT(func(v EndpointMatcherMetadataLabelMatcher) []EndpointMatcherMetadataLabelMatcherMetadataLabels {
+		return v.MetadataLabels
+	}).(EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput)
+}
+
+type EndpointMatcherMetadataLabelMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherMetadataLabelMatcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointMatcherMetadataLabelMatcher)(nil)).Elem()
+}
+
+func (o EndpointMatcherMetadataLabelMatcherPtrOutput) ToEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointMatcherMetadataLabelMatcherPtrOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherPtrOutput) ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherPtrOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherPtrOutput) Elem() EndpointMatcherMetadataLabelMatcherOutput {
+	return o.ApplyT(func(v *EndpointMatcherMetadataLabelMatcher) EndpointMatcherMetadataLabelMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointMatcherMetadataLabelMatcher
+		return ret
+	}).(EndpointMatcherMetadataLabelMatcherOutput)
+}
+
+// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+func (o EndpointMatcherMetadataLabelMatcherPtrOutput) MetadataLabelMatchCriteria() EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput {
+	return o.ApplyT(func(v *EndpointMatcherMetadataLabelMatcher) *EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataLabelMatchCriteria
+	}).(EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput)
+}
+
+// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+func (o EndpointMatcherMetadataLabelMatcherPtrOutput) MetadataLabels() EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput {
+	return o.ApplyT(func(v *EndpointMatcherMetadataLabelMatcher) []EndpointMatcherMetadataLabelMatcherMetadataLabels {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataLabels
+	}).(EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput)
+}
+
+// Defines a name-pair value for a single label.
+type EndpointMatcherMetadataLabelMatcherMetadataLabels struct {
+	// Label name presented as key in xDS Node Metadata.
+	LabelName string `pulumi:"labelName"`
+	// Label value presented as value corresponding to the above key, in xDS Node Metadata.
+	LabelValue string `pulumi:"labelValue"`
+}
+
+// EndpointMatcherMetadataLabelMatcherMetadataLabelsInput is an input type that accepts EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs and EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput values.
+// You can construct a concrete instance of `EndpointMatcherMetadataLabelMatcherMetadataLabelsInput` via:
+//
+//          EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs{...}
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherMetadataLabelMatcherMetadataLabelsOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput
+	ToEndpointMatcherMetadataLabelMatcherMetadataLabelsOutputWithContext(context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput
+}
+
+// Defines a name-pair value for a single label.
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs struct {
+	// Label name presented as key in xDS Node Metadata.
+	LabelName pulumi.StringInput `pulumi:"labelName"`
+	// Label value presented as value corresponding to the above key, in xDS Node Metadata.
+	LabelValue pulumi.StringInput `pulumi:"labelValue"`
+}
+
+func (EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabels)(nil)).Elem()
+}
+
+func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput {
+	return i.ToEndpointMatcherMetadataLabelMatcherMetadataLabelsOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput)
+}
+
+// EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayInput is an input type that accepts EndpointMatcherMetadataLabelMatcherMetadataLabelsArray and EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput values.
+// You can construct a concrete instance of `EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayInput` via:
+//
+//          EndpointMatcherMetadataLabelMatcherMetadataLabelsArray{ EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs{...} }
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput
+	ToEndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutputWithContext(context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput
+}
+
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsArray []EndpointMatcherMetadataLabelMatcherMetadataLabelsInput
+
+func (EndpointMatcherMetadataLabelMatcherMetadataLabelsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointMatcherMetadataLabelMatcherMetadataLabels)(nil)).Elem()
+}
+
+func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsArray) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput {
+	return i.ToEndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsArray) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput)
+}
+
+// Defines a name-pair value for a single label.
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabels)(nil)).Elem()
+}
+
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput {
+	return o
+}
+
+// Label name presented as key in xDS Node Metadata.
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput) LabelName() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointMatcherMetadataLabelMatcherMetadataLabels) string { return v.LabelName }).(pulumi.StringOutput)
+}
+
+// Label value presented as value corresponding to the above key, in xDS Node Metadata.
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput) LabelValue() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointMatcherMetadataLabelMatcherMetadataLabels) string { return v.LabelValue }).(pulumi.StringOutput)
+}
+
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointMatcherMetadataLabelMatcherMetadataLabels)(nil)).Elem()
+}
+
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput) Index(i pulumi.IntInput) EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointMatcherMetadataLabelMatcherMetadataLabels {
+		return vs[0].([]EndpointMatcherMetadataLabelMatcherMetadataLabels)[vs[1].(int)]
+	}).(EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput)
+}
+
+// Defines a name-pair value for a single label.
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse struct {
+	// Label name presented as key in xDS Node Metadata.
+	LabelName string `pulumi:"labelName"`
+	// Label value presented as value corresponding to the above key, in xDS Node Metadata.
+	LabelValue string `pulumi:"labelValue"`
+}
+
+// EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseInput is an input type that accepts EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArgs and EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput values.
+// You can construct a concrete instance of `EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseInput` via:
+//
+//          EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArgs{...}
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput
+	ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutputWithContext(context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput
+}
+
+// Defines a name-pair value for a single label.
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArgs struct {
+	// Label name presented as key in xDS Node Metadata.
+	LabelName pulumi.StringInput `pulumi:"labelName"`
+	// Label value presented as value corresponding to the above key, in xDS Node Metadata.
+	LabelValue pulumi.StringInput `pulumi:"labelValue"`
+}
+
+func (EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse)(nil)).Elem()
+}
+
+func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArgs) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput {
+	return i.ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArgs) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput)
+}
+
+// EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayInput is an input type that accepts EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArray and EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput values.
+// You can construct a concrete instance of `EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayInput` via:
+//
+//          EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArray{ EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArgs{...} }
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput
+	ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutputWithContext(context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput
+}
+
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArray []EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseInput
+
+func (EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse)(nil)).Elem()
+}
+
+func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArray) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput {
+	return i.ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArray) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput)
+}
+
+// Defines a name-pair value for a single label.
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse)(nil)).Elem()
+}
+
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput {
+	return o
+}
+
+// Label name presented as key in xDS Node Metadata.
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput) LabelName() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse) string { return v.LabelName }).(pulumi.StringOutput)
+}
+
+// Label value presented as value corresponding to the above key, in xDS Node Metadata.
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput) LabelValue() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse) string { return v.LabelValue }).(pulumi.StringOutput)
+}
+
+type EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse)(nil)).Elem()
+}
+
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput() EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput) Index(i pulumi.IntInput) EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse {
+		return vs[0].([]EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse)[vs[1].(int)]
+	}).(EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput)
+}
+
+// The matcher that is based on node metadata presented by xDS clients.
+type EndpointMatcherMetadataLabelMatcherResponse struct {
+	// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+	MetadataLabelMatchCriteria string `pulumi:"metadataLabelMatchCriteria"`
+	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+	MetadataLabels []EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse `pulumi:"metadataLabels"`
+}
+
+// EndpointMatcherMetadataLabelMatcherResponseInput is an input type that accepts EndpointMatcherMetadataLabelMatcherResponseArgs and EndpointMatcherMetadataLabelMatcherResponseOutput values.
+// You can construct a concrete instance of `EndpointMatcherMetadataLabelMatcherResponseInput` via:
+//
+//          EndpointMatcherMetadataLabelMatcherResponseArgs{...}
+type EndpointMatcherMetadataLabelMatcherResponseInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherMetadataLabelMatcherResponseOutput() EndpointMatcherMetadataLabelMatcherResponseOutput
+	ToEndpointMatcherMetadataLabelMatcherResponseOutputWithContext(context.Context) EndpointMatcherMetadataLabelMatcherResponseOutput
+}
+
+// The matcher that is based on node metadata presented by xDS clients.
+type EndpointMatcherMetadataLabelMatcherResponseArgs struct {
+	// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+	MetadataLabelMatchCriteria pulumi.StringInput `pulumi:"metadataLabelMatchCriteria"`
+	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+	MetadataLabels EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayInput `pulumi:"metadataLabels"`
+}
+
+func (EndpointMatcherMetadataLabelMatcherResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherResponse)(nil)).Elem()
+}
+
+func (i EndpointMatcherMetadataLabelMatcherResponseArgs) ToEndpointMatcherMetadataLabelMatcherResponseOutput() EndpointMatcherMetadataLabelMatcherResponseOutput {
+	return i.ToEndpointMatcherMetadataLabelMatcherResponseOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherMetadataLabelMatcherResponseArgs) ToEndpointMatcherMetadataLabelMatcherResponseOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherResponseOutput)
+}
+
+func (i EndpointMatcherMetadataLabelMatcherResponseArgs) ToEndpointMatcherMetadataLabelMatcherResponsePtrOutput() EndpointMatcherMetadataLabelMatcherResponsePtrOutput {
+	return i.ToEndpointMatcherMetadataLabelMatcherResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherMetadataLabelMatcherResponseArgs) ToEndpointMatcherMetadataLabelMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherResponseOutput).ToEndpointMatcherMetadataLabelMatcherResponsePtrOutputWithContext(ctx)
+}
+
+// EndpointMatcherMetadataLabelMatcherResponsePtrInput is an input type that accepts EndpointMatcherMetadataLabelMatcherResponseArgs, EndpointMatcherMetadataLabelMatcherResponsePtr and EndpointMatcherMetadataLabelMatcherResponsePtrOutput values.
+// You can construct a concrete instance of `EndpointMatcherMetadataLabelMatcherResponsePtrInput` via:
+//
+//          EndpointMatcherMetadataLabelMatcherResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type EndpointMatcherMetadataLabelMatcherResponsePtrInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherMetadataLabelMatcherResponsePtrOutput() EndpointMatcherMetadataLabelMatcherResponsePtrOutput
+	ToEndpointMatcherMetadataLabelMatcherResponsePtrOutputWithContext(context.Context) EndpointMatcherMetadataLabelMatcherResponsePtrOutput
+}
+
+type endpointMatcherMetadataLabelMatcherResponsePtrType EndpointMatcherMetadataLabelMatcherResponseArgs
+
+func EndpointMatcherMetadataLabelMatcherResponsePtr(v *EndpointMatcherMetadataLabelMatcherResponseArgs) EndpointMatcherMetadataLabelMatcherResponsePtrInput {
+	return (*endpointMatcherMetadataLabelMatcherResponsePtrType)(v)
+}
+
+func (*endpointMatcherMetadataLabelMatcherResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointMatcherMetadataLabelMatcherResponse)(nil)).Elem()
+}
+
+func (i *endpointMatcherMetadataLabelMatcherResponsePtrType) ToEndpointMatcherMetadataLabelMatcherResponsePtrOutput() EndpointMatcherMetadataLabelMatcherResponsePtrOutput {
+	return i.ToEndpointMatcherMetadataLabelMatcherResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *endpointMatcherMetadataLabelMatcherResponsePtrType) ToEndpointMatcherMetadataLabelMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherResponsePtrOutput)
+}
+
+// The matcher that is based on node metadata presented by xDS clients.
+type EndpointMatcherMetadataLabelMatcherResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherMetadataLabelMatcherResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherResponse)(nil)).Elem()
+}
+
+func (o EndpointMatcherMetadataLabelMatcherResponseOutput) ToEndpointMatcherMetadataLabelMatcherResponseOutput() EndpointMatcherMetadataLabelMatcherResponseOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherResponseOutput) ToEndpointMatcherMetadataLabelMatcherResponseOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherResponseOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherResponseOutput) ToEndpointMatcherMetadataLabelMatcherResponsePtrOutput() EndpointMatcherMetadataLabelMatcherResponsePtrOutput {
+	return o.ToEndpointMatcherMetadataLabelMatcherResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EndpointMatcherMetadataLabelMatcherResponseOutput) ToEndpointMatcherMetadataLabelMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointMatcherMetadataLabelMatcherResponse) *EndpointMatcherMetadataLabelMatcherResponse {
+		return &v
+	}).(EndpointMatcherMetadataLabelMatcherResponsePtrOutput)
+}
+
+// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+func (o EndpointMatcherMetadataLabelMatcherResponseOutput) MetadataLabelMatchCriteria() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointMatcherMetadataLabelMatcherResponse) string { return v.MetadataLabelMatchCriteria }).(pulumi.StringOutput)
+}
+
+// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+func (o EndpointMatcherMetadataLabelMatcherResponseOutput) MetadataLabels() EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput {
+	return o.ApplyT(func(v EndpointMatcherMetadataLabelMatcherResponse) []EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse {
+		return v.MetadataLabels
+	}).(EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput)
+}
+
+type EndpointMatcherMetadataLabelMatcherResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherMetadataLabelMatcherResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointMatcherMetadataLabelMatcherResponse)(nil)).Elem()
+}
+
+func (o EndpointMatcherMetadataLabelMatcherResponsePtrOutput) ToEndpointMatcherMetadataLabelMatcherResponsePtrOutput() EndpointMatcherMetadataLabelMatcherResponsePtrOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherResponsePtrOutput) ToEndpointMatcherMetadataLabelMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherResponsePtrOutput {
+	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherResponsePtrOutput) Elem() EndpointMatcherMetadataLabelMatcherResponseOutput {
+	return o.ApplyT(func(v *EndpointMatcherMetadataLabelMatcherResponse) EndpointMatcherMetadataLabelMatcherResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointMatcherMetadataLabelMatcherResponse
+		return ret
+	}).(EndpointMatcherMetadataLabelMatcherResponseOutput)
+}
+
+// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+func (o EndpointMatcherMetadataLabelMatcherResponsePtrOutput) MetadataLabelMatchCriteria() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointMatcherMetadataLabelMatcherResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetadataLabelMatchCriteria
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+func (o EndpointMatcherMetadataLabelMatcherResponsePtrOutput) MetadataLabels() EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput {
+	return o.ApplyT(func(v *EndpointMatcherMetadataLabelMatcherResponse) []EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataLabels
+	}).(EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput)
+}
+
+// A definition of a matcher that selects endpoints to which the policies should be applied.
+type EndpointMatcherResponse struct {
+	// The matcher is based on node metadata presented by xDS clients.
+	MetadataLabelMatcher EndpointMatcherMetadataLabelMatcherResponse `pulumi:"metadataLabelMatcher"`
+}
+
+// EndpointMatcherResponseInput is an input type that accepts EndpointMatcherResponseArgs and EndpointMatcherResponseOutput values.
+// You can construct a concrete instance of `EndpointMatcherResponseInput` via:
+//
+//          EndpointMatcherResponseArgs{...}
+type EndpointMatcherResponseInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherResponseOutput() EndpointMatcherResponseOutput
+	ToEndpointMatcherResponseOutputWithContext(context.Context) EndpointMatcherResponseOutput
+}
+
+// A definition of a matcher that selects endpoints to which the policies should be applied.
+type EndpointMatcherResponseArgs struct {
+	// The matcher is based on node metadata presented by xDS clients.
+	MetadataLabelMatcher EndpointMatcherMetadataLabelMatcherResponseInput `pulumi:"metadataLabelMatcher"`
+}
+
+func (EndpointMatcherResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcherResponse)(nil)).Elem()
+}
+
+func (i EndpointMatcherResponseArgs) ToEndpointMatcherResponseOutput() EndpointMatcherResponseOutput {
+	return i.ToEndpointMatcherResponseOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherResponseArgs) ToEndpointMatcherResponseOutputWithContext(ctx context.Context) EndpointMatcherResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherResponseOutput)
+}
+
+func (i EndpointMatcherResponseArgs) ToEndpointMatcherResponsePtrOutput() EndpointMatcherResponsePtrOutput {
+	return i.ToEndpointMatcherResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EndpointMatcherResponseArgs) ToEndpointMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherResponseOutput).ToEndpointMatcherResponsePtrOutputWithContext(ctx)
+}
+
+// EndpointMatcherResponsePtrInput is an input type that accepts EndpointMatcherResponseArgs, EndpointMatcherResponsePtr and EndpointMatcherResponsePtrOutput values.
+// You can construct a concrete instance of `EndpointMatcherResponsePtrInput` via:
+//
+//          EndpointMatcherResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type EndpointMatcherResponsePtrInput interface {
+	pulumi.Input
+
+	ToEndpointMatcherResponsePtrOutput() EndpointMatcherResponsePtrOutput
+	ToEndpointMatcherResponsePtrOutputWithContext(context.Context) EndpointMatcherResponsePtrOutput
+}
+
+type endpointMatcherResponsePtrType EndpointMatcherResponseArgs
+
+func EndpointMatcherResponsePtr(v *EndpointMatcherResponseArgs) EndpointMatcherResponsePtrInput {
+	return (*endpointMatcherResponsePtrType)(v)
+}
+
+func (*endpointMatcherResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointMatcherResponse)(nil)).Elem()
+}
+
+func (i *endpointMatcherResponsePtrType) ToEndpointMatcherResponsePtrOutput() EndpointMatcherResponsePtrOutput {
+	return i.ToEndpointMatcherResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *endpointMatcherResponsePtrType) ToEndpointMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherResponsePtrOutput)
+}
+
+// A definition of a matcher that selects endpoints to which the policies should be applied.
+type EndpointMatcherResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointMatcherResponse)(nil)).Elem()
+}
+
+func (o EndpointMatcherResponseOutput) ToEndpointMatcherResponseOutput() EndpointMatcherResponseOutput {
+	return o
+}
+
+func (o EndpointMatcherResponseOutput) ToEndpointMatcherResponseOutputWithContext(ctx context.Context) EndpointMatcherResponseOutput {
+	return o
+}
+
+func (o EndpointMatcherResponseOutput) ToEndpointMatcherResponsePtrOutput() EndpointMatcherResponsePtrOutput {
+	return o.ToEndpointMatcherResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EndpointMatcherResponseOutput) ToEndpointMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointMatcherResponse) *EndpointMatcherResponse {
+		return &v
+	}).(EndpointMatcherResponsePtrOutput)
+}
+
+// The matcher is based on node metadata presented by xDS clients.
+func (o EndpointMatcherResponseOutput) MetadataLabelMatcher() EndpointMatcherMetadataLabelMatcherResponseOutput {
+	return o.ApplyT(func(v EndpointMatcherResponse) EndpointMatcherMetadataLabelMatcherResponse {
+		return v.MetadataLabelMatcher
+	}).(EndpointMatcherMetadataLabelMatcherResponseOutput)
+}
+
+type EndpointMatcherResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointMatcherResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointMatcherResponse)(nil)).Elem()
+}
+
+func (o EndpointMatcherResponsePtrOutput) ToEndpointMatcherResponsePtrOutput() EndpointMatcherResponsePtrOutput {
+	return o
+}
+
+func (o EndpointMatcherResponsePtrOutput) ToEndpointMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherResponsePtrOutput {
+	return o
+}
+
+func (o EndpointMatcherResponsePtrOutput) Elem() EndpointMatcherResponseOutput {
+	return o.ApplyT(func(v *EndpointMatcherResponse) EndpointMatcherResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointMatcherResponse
+		return ret
+	}).(EndpointMatcherResponseOutput)
+}
+
+// The matcher is based on node metadata presented by xDS clients.
+func (o EndpointMatcherResponsePtrOutput) MetadataLabelMatcher() EndpointMatcherMetadataLabelMatcherResponsePtrOutput {
+	return o.ApplyT(func(v *EndpointMatcherResponse) *EndpointMatcherMetadataLabelMatcherResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MetadataLabelMatcher
+	}).(EndpointMatcherMetadataLabelMatcherResponsePtrOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -961,7 +1785,318 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Specification of a port-based selector.
+type TrafficPortSelector struct {
+	// Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+	Ports []string `pulumi:"ports"`
+}
+
+// TrafficPortSelectorInput is an input type that accepts TrafficPortSelectorArgs and TrafficPortSelectorOutput values.
+// You can construct a concrete instance of `TrafficPortSelectorInput` via:
+//
+//          TrafficPortSelectorArgs{...}
+type TrafficPortSelectorInput interface {
+	pulumi.Input
+
+	ToTrafficPortSelectorOutput() TrafficPortSelectorOutput
+	ToTrafficPortSelectorOutputWithContext(context.Context) TrafficPortSelectorOutput
+}
+
+// Specification of a port-based selector.
+type TrafficPortSelectorArgs struct {
+	// Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (TrafficPortSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficPortSelector)(nil)).Elem()
+}
+
+func (i TrafficPortSelectorArgs) ToTrafficPortSelectorOutput() TrafficPortSelectorOutput {
+	return i.ToTrafficPortSelectorOutputWithContext(context.Background())
+}
+
+func (i TrafficPortSelectorArgs) ToTrafficPortSelectorOutputWithContext(ctx context.Context) TrafficPortSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficPortSelectorOutput)
+}
+
+func (i TrafficPortSelectorArgs) ToTrafficPortSelectorPtrOutput() TrafficPortSelectorPtrOutput {
+	return i.ToTrafficPortSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i TrafficPortSelectorArgs) ToTrafficPortSelectorPtrOutputWithContext(ctx context.Context) TrafficPortSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficPortSelectorOutput).ToTrafficPortSelectorPtrOutputWithContext(ctx)
+}
+
+// TrafficPortSelectorPtrInput is an input type that accepts TrafficPortSelectorArgs, TrafficPortSelectorPtr and TrafficPortSelectorPtrOutput values.
+// You can construct a concrete instance of `TrafficPortSelectorPtrInput` via:
+//
+//          TrafficPortSelectorArgs{...}
+//
+//  or:
+//
+//          nil
+type TrafficPortSelectorPtrInput interface {
+	pulumi.Input
+
+	ToTrafficPortSelectorPtrOutput() TrafficPortSelectorPtrOutput
+	ToTrafficPortSelectorPtrOutputWithContext(context.Context) TrafficPortSelectorPtrOutput
+}
+
+type trafficPortSelectorPtrType TrafficPortSelectorArgs
+
+func TrafficPortSelectorPtr(v *TrafficPortSelectorArgs) TrafficPortSelectorPtrInput {
+	return (*trafficPortSelectorPtrType)(v)
+}
+
+func (*trafficPortSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrafficPortSelector)(nil)).Elem()
+}
+
+func (i *trafficPortSelectorPtrType) ToTrafficPortSelectorPtrOutput() TrafficPortSelectorPtrOutput {
+	return i.ToTrafficPortSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *trafficPortSelectorPtrType) ToTrafficPortSelectorPtrOutputWithContext(ctx context.Context) TrafficPortSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficPortSelectorPtrOutput)
+}
+
+// Specification of a port-based selector.
+type TrafficPortSelectorOutput struct{ *pulumi.OutputState }
+
+func (TrafficPortSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficPortSelector)(nil)).Elem()
+}
+
+func (o TrafficPortSelectorOutput) ToTrafficPortSelectorOutput() TrafficPortSelectorOutput {
+	return o
+}
+
+func (o TrafficPortSelectorOutput) ToTrafficPortSelectorOutputWithContext(ctx context.Context) TrafficPortSelectorOutput {
+	return o
+}
+
+func (o TrafficPortSelectorOutput) ToTrafficPortSelectorPtrOutput() TrafficPortSelectorPtrOutput {
+	return o.ToTrafficPortSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o TrafficPortSelectorOutput) ToTrafficPortSelectorPtrOutputWithContext(ctx context.Context) TrafficPortSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrafficPortSelector) *TrafficPortSelector {
+		return &v
+	}).(TrafficPortSelectorPtrOutput)
+}
+
+// Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+func (o TrafficPortSelectorOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TrafficPortSelector) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type TrafficPortSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (TrafficPortSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrafficPortSelector)(nil)).Elem()
+}
+
+func (o TrafficPortSelectorPtrOutput) ToTrafficPortSelectorPtrOutput() TrafficPortSelectorPtrOutput {
+	return o
+}
+
+func (o TrafficPortSelectorPtrOutput) ToTrafficPortSelectorPtrOutputWithContext(ctx context.Context) TrafficPortSelectorPtrOutput {
+	return o
+}
+
+func (o TrafficPortSelectorPtrOutput) Elem() TrafficPortSelectorOutput {
+	return o.ApplyT(func(v *TrafficPortSelector) TrafficPortSelector {
+		if v != nil {
+			return *v
+		}
+		var ret TrafficPortSelector
+		return ret
+	}).(TrafficPortSelectorOutput)
+}
+
+// Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+func (o TrafficPortSelectorPtrOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TrafficPortSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ports
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specification of a port-based selector.
+type TrafficPortSelectorResponse struct {
+	// Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+	Ports []string `pulumi:"ports"`
+}
+
+// TrafficPortSelectorResponseInput is an input type that accepts TrafficPortSelectorResponseArgs and TrafficPortSelectorResponseOutput values.
+// You can construct a concrete instance of `TrafficPortSelectorResponseInput` via:
+//
+//          TrafficPortSelectorResponseArgs{...}
+type TrafficPortSelectorResponseInput interface {
+	pulumi.Input
+
+	ToTrafficPortSelectorResponseOutput() TrafficPortSelectorResponseOutput
+	ToTrafficPortSelectorResponseOutputWithContext(context.Context) TrafficPortSelectorResponseOutput
+}
+
+// Specification of a port-based selector.
+type TrafficPortSelectorResponseArgs struct {
+	// Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (TrafficPortSelectorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficPortSelectorResponse)(nil)).Elem()
+}
+
+func (i TrafficPortSelectorResponseArgs) ToTrafficPortSelectorResponseOutput() TrafficPortSelectorResponseOutput {
+	return i.ToTrafficPortSelectorResponseOutputWithContext(context.Background())
+}
+
+func (i TrafficPortSelectorResponseArgs) ToTrafficPortSelectorResponseOutputWithContext(ctx context.Context) TrafficPortSelectorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficPortSelectorResponseOutput)
+}
+
+func (i TrafficPortSelectorResponseArgs) ToTrafficPortSelectorResponsePtrOutput() TrafficPortSelectorResponsePtrOutput {
+	return i.ToTrafficPortSelectorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TrafficPortSelectorResponseArgs) ToTrafficPortSelectorResponsePtrOutputWithContext(ctx context.Context) TrafficPortSelectorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficPortSelectorResponseOutput).ToTrafficPortSelectorResponsePtrOutputWithContext(ctx)
+}
+
+// TrafficPortSelectorResponsePtrInput is an input type that accepts TrafficPortSelectorResponseArgs, TrafficPortSelectorResponsePtr and TrafficPortSelectorResponsePtrOutput values.
+// You can construct a concrete instance of `TrafficPortSelectorResponsePtrInput` via:
+//
+//          TrafficPortSelectorResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TrafficPortSelectorResponsePtrInput interface {
+	pulumi.Input
+
+	ToTrafficPortSelectorResponsePtrOutput() TrafficPortSelectorResponsePtrOutput
+	ToTrafficPortSelectorResponsePtrOutputWithContext(context.Context) TrafficPortSelectorResponsePtrOutput
+}
+
+type trafficPortSelectorResponsePtrType TrafficPortSelectorResponseArgs
+
+func TrafficPortSelectorResponsePtr(v *TrafficPortSelectorResponseArgs) TrafficPortSelectorResponsePtrInput {
+	return (*trafficPortSelectorResponsePtrType)(v)
+}
+
+func (*trafficPortSelectorResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrafficPortSelectorResponse)(nil)).Elem()
+}
+
+func (i *trafficPortSelectorResponsePtrType) ToTrafficPortSelectorResponsePtrOutput() TrafficPortSelectorResponsePtrOutput {
+	return i.ToTrafficPortSelectorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *trafficPortSelectorResponsePtrType) ToTrafficPortSelectorResponsePtrOutputWithContext(ctx context.Context) TrafficPortSelectorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficPortSelectorResponsePtrOutput)
+}
+
+// Specification of a port-based selector.
+type TrafficPortSelectorResponseOutput struct{ *pulumi.OutputState }
+
+func (TrafficPortSelectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficPortSelectorResponse)(nil)).Elem()
+}
+
+func (o TrafficPortSelectorResponseOutput) ToTrafficPortSelectorResponseOutput() TrafficPortSelectorResponseOutput {
+	return o
+}
+
+func (o TrafficPortSelectorResponseOutput) ToTrafficPortSelectorResponseOutputWithContext(ctx context.Context) TrafficPortSelectorResponseOutput {
+	return o
+}
+
+func (o TrafficPortSelectorResponseOutput) ToTrafficPortSelectorResponsePtrOutput() TrafficPortSelectorResponsePtrOutput {
+	return o.ToTrafficPortSelectorResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TrafficPortSelectorResponseOutput) ToTrafficPortSelectorResponsePtrOutputWithContext(ctx context.Context) TrafficPortSelectorResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrafficPortSelectorResponse) *TrafficPortSelectorResponse {
+		return &v
+	}).(TrafficPortSelectorResponsePtrOutput)
+}
+
+// Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+func (o TrafficPortSelectorResponseOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TrafficPortSelectorResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type TrafficPortSelectorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TrafficPortSelectorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrafficPortSelectorResponse)(nil)).Elem()
+}
+
+func (o TrafficPortSelectorResponsePtrOutput) ToTrafficPortSelectorResponsePtrOutput() TrafficPortSelectorResponsePtrOutput {
+	return o
+}
+
+func (o TrafficPortSelectorResponsePtrOutput) ToTrafficPortSelectorResponsePtrOutputWithContext(ctx context.Context) TrafficPortSelectorResponsePtrOutput {
+	return o
+}
+
+func (o TrafficPortSelectorResponsePtrOutput) Elem() TrafficPortSelectorResponseOutput {
+	return o.ApplyT(func(v *TrafficPortSelectorResponse) TrafficPortSelectorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TrafficPortSelectorResponse
+		return ret
+	}).(TrafficPortSelectorResponseOutput)
+}
+
+// Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+func (o TrafficPortSelectorResponsePtrOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TrafficPortSelectorResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ports
+	}).(pulumi.StringArrayOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherInput)(nil)).Elem(), EndpointMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherPtrInput)(nil)).Elem(), EndpointMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherPtrInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabelsInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherMetadataLabelsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherResponseInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherResponsePtrInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherResponseInput)(nil)).Elem(), EndpointMatcherResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherResponsePtrInput)(nil)).Elem(), EndpointMatcherResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficPortSelectorInput)(nil)).Elem(), TrafficPortSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficPortSelectorPtrInput)(nil)).Elem(), TrafficPortSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficPortSelectorResponseInput)(nil)).Elem(), TrafficPortSelectorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficPortSelectorResponsePtrInput)(nil)).Elem(), TrafficPortSelectorResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -974,7 +2109,23 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherPtrOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherPtrOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherResponseOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherResponsePtrOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherResponseOutput{})
+	pulumi.RegisterOutputType(EndpointMatcherResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(TrafficPortSelectorOutput{})
+	pulumi.RegisterOutputType(TrafficPortSelectorPtrOutput{})
+	pulumi.RegisterOutputType(TrafficPortSelectorResponseOutput{})
+	pulumi.RegisterOutputType(TrafficPortSelectorResponsePtrOutput{})
 }

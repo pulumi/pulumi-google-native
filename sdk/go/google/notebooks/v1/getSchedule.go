@@ -29,7 +29,7 @@ type LookupScheduleArgs struct {
 type LookupScheduleResult struct {
 	// Time the schedule was created.
 	CreateTime string `pulumi:"createTime"`
-	// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+	// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
 	CronSchedule string `pulumi:"cronSchedule"`
 	// A brief description of this environment.
 	Description string `pulumi:"description"`
@@ -86,7 +86,7 @@ func (o LookupScheduleResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
 func (o LookupScheduleResultOutput) CronSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.CronSchedule }).(pulumi.StringOutput)
 }

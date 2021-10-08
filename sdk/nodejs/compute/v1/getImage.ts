@@ -149,3 +149,12 @@ export interface GetImageResult {
      */
     readonly storageLocations: string[];
 }
+
+export function getImageOutput(args: GetImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
+    return pulumi.output(args).apply(a => getImage(a, opts))
+}
+
+export interface GetImageOutputArgs {
+    image: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

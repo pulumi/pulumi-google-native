@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly string Instance;
         /// <summary>
-        /// This is always *sql#database*.
+        /// This is always **sql#database**.
         /// </summary>
         public readonly string Kind;
         /// <summary>

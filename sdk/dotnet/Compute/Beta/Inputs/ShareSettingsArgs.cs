@@ -15,6 +15,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// </summary>
     public sealed class ShareSettingsArgs : Pulumi.ResourceArgs
     {
+        [Input("projectMap")]
+        private InputMap<string>? _projectMap;
+
+        /// <summary>
+        /// A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+        /// </summary>
+        public InputMap<string> ProjectMap
+        {
+            get => _projectMap ?? (_projectMap = new InputMap<string>());
+            set => _projectMap = value;
+        }
+
         [Input("projects")]
         private InputList<string>? _projects;
 

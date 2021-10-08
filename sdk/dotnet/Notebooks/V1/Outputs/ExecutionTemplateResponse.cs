@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly Outputs.DataprocParametersResponse DataprocParameters;
         /// <summary>
-        /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
         /// </summary>
         public readonly string InputNotebookFile;
         /// <summary>
@@ -41,11 +41,11 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+        /// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
         /// </summary>
         public readonly string MasterType;
         /// <summary>
-        /// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+        /// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
         /// </summary>
         public readonly string OutputNotebookFolder;
         /// <summary>
@@ -60,6 +60,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
         /// </summary>
         public readonly string ServiceAccount;
+        /// <summary>
+        /// Parameters used in Vertex AI JobType executions.
+        /// </summary>
+        public readonly Outputs.VertexAIParametersResponse VertexAiParameters;
 
         [OutputConstructor]
         private ExecutionTemplateResponse(
@@ -83,7 +87,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             string paramsYamlFile,
 
-            string serviceAccount)
+            string serviceAccount,
+
+            Outputs.VertexAIParametersResponse vertexAiParameters)
         {
             AcceleratorConfig = acceleratorConfig;
             ContainerImageUri = containerImageUri;
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             Parameters = parameters;
             ParamsYamlFile = paramsYamlFile;
             ServiceAccount = serviceAccount;
+            VertexAiParameters = vertexAiParameters;
         }
     }
 }

@@ -46,7 +46,7 @@ type LookupCertificateAuthorityResult struct {
 	KeySpec KeyVersionSpecResponse `pulumi:"keySpec"`
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+	// Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
 	Lifetime string `pulumi:"lifetime"`
 	// The resource name for this CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 	Name string `pulumi:"name"`
@@ -145,7 +145,7 @@ func (o LookupCertificateAuthorityResultOutput) Labels() pulumi.StringMapOutput 
 	return o.ApplyT(func(v LookupCertificateAuthorityResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+// Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
 func (o LookupCertificateAuthorityResultOutput) Lifetime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateAuthorityResult) string { return v.Lifetime }).(pulumi.StringOutput)
 }

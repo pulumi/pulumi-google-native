@@ -81,7 +81,7 @@ export interface GetEntryResult {
      */
     readonly linkedResource: string;
     /**
-     * The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. 
+     * The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
      */
     readonly name: string;
     /**
@@ -112,4 +112,15 @@ export interface GetEntryResult {
      * Custom entry type that doesn't match any of the values allowed for input and listed in the `EntryType` enum. When creating an entry, first check the type values in the enum. If there are no appropriate types for the new entry, provide a custom value, for example, `my_special_type`. The `user_specified_type` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
      */
     readonly userSpecifiedType: string;
+}
+
+export function getEntryOutput(args: GetEntryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntryResult> {
+    return pulumi.output(args).apply(a => getEntry(a, opts))
+}
+
+export interface GetEntryOutputArgs {
+    entryGroupId: pulumi.Input<string>;
+    entryId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

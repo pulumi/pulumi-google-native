@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+        /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
         /// </summary>
         [Output("maintenanceWindow")]
         public Output<Outputs.MaintenanceWindowResponse> MaintenanceWindow { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+        /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.MaintenanceWindowArgs>? MaintenanceWindow { get; set; }

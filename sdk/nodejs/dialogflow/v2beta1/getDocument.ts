@@ -73,3 +73,14 @@ export interface GetDocumentResult {
      */
     readonly rawContent: string;
 }
+
+export function getDocumentOutput(args: GetDocumentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDocumentResult> {
+    return pulumi.output(args).apply(a => getDocument(a, opts))
+}
+
+export interface GetDocumentOutputArgs {
+    documentId: pulumi.Input<string>;
+    knowledgeBaseId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

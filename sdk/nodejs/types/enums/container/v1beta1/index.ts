@@ -212,6 +212,10 @@ export const MonitoringComponentConfigEnableComponentsItem = {
      * system components
      */
     SystemComponents: "SYSTEM_COMPONENTS",
+    /**
+     * workloads
+     */
+    Workloads: "WORKLOADS",
 } as const;
 
 export type MonitoringComponentConfigEnableComponentsItem = (typeof MonitoringComponentConfigEnableComponentsItem)[keyof typeof MonitoringComponentConfigEnableComponentsItem];

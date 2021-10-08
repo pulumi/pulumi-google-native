@@ -88,6 +88,10 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly licenses!: pulumi.Output<string[]>;
     /**
+     * A flag for marketplace VM disk created from the image, which is designed for marketplace VM disk to prevent the proprietary data on the disk from being accessed unwantedly. The flag will be inherited by the disk created from the image. The disk with locked flag set to true will be prohibited from performing the operations below: - R/W or R/O disk attach - Disk detach, if disk is created via create-on-create - Create images - Create snapshots - Create disk clone (create disk from the current disk) The image with the locked field set to true will be prohibited from performing the operations below: - Create images from the current image - Update the locked field for the current image The instance with at least one disk with locked flag set to true will be prohibited from performing the operations below: - Secondary disk attach - Create instant snapshot - Create machine images - Create instance template - Delete the instance with --keep-disk parameter set to true 
+     */
+    public readonly locked!: pulumi.Output<boolean>;
+    /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
@@ -186,6 +190,7 @@ export class Image extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["licenseCodes"] = args ? args.licenseCodes : undefined;
             inputs["licenses"] = args ? args.licenses : undefined;
+            inputs["locked"] = args ? args.locked : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["rawDisk"] = args ? args.rawDisk : undefined;
@@ -224,6 +229,7 @@ export class Image extends pulumi.CustomResource {
             inputs["labels"] = undefined /*out*/;
             inputs["licenseCodes"] = undefined /*out*/;
             inputs["licenses"] = undefined /*out*/;
+            inputs["locked"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["rawDisk"] = undefined /*out*/;
             inputs["rolloutOverride"] = undefined /*out*/;
@@ -296,6 +302,10 @@ export interface ImageArgs {
      * Any applicable license URI.
      */
     licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A flag for marketplace VM disk created from the image, which is designed for marketplace VM disk to prevent the proprietary data on the disk from being accessed unwantedly. The flag will be inherited by the disk created from the image. The disk with locked flag set to true will be prohibited from performing the operations below: - R/W or R/O disk attach - Disk detach, if disk is created via create-on-create - Create images - Create snapshots - Create disk clone (create disk from the current disk) The image with the locked field set to true will be prohibited from performing the operations below: - Create images from the current image - Update the locked field for the current image The instance with at least one disk with locked flag set to true will be prohibited from performing the operations below: - Secondary disk attach - Create instant snapshot - Create machine images - Create instance template - Delete the instance with --keep-disk parameter set to true 
+     */
+    locked?: pulumi.Input<boolean>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */

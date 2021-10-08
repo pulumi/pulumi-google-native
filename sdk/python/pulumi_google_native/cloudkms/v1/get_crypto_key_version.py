@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCryptoKeyVersionResult:
-    def __init__(__self__, algorithm=None, attestation=None, create_time=None, destroy_event_time=None, destroy_time=None, external_protection_level_options=None, generate_time=None, import_failure_reason=None, import_job=None, import_time=None, name=None, protection_level=None, state=None):
+    def __init__(__self__, algorithm=None, attestation=None, create_time=None, destroy_event_time=None, destroy_time=None, external_protection_level_options=None, generate_time=None, import_failure_reason=None, import_job=None, import_time=None, name=None, protection_level=None, reimport_eligible=None, state=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -55,6 +55,9 @@ class GetCryptoKeyVersionResult:
         if protection_level and not isinstance(protection_level, str):
             raise TypeError("Expected argument 'protection_level' to be a str")
         pulumi.set(__self__, "protection_level", protection_level)
+        if reimport_eligible and not isinstance(reimport_eligible, bool):
+            raise TypeError("Expected argument 'reimport_eligible' to be a bool")
+        pulumi.set(__self__, "reimport_eligible", reimport_eligible)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -119,7 +122,7 @@ class GetCryptoKeyVersionResult:
     @pulumi.getter(name="importFailureReason")
     def import_failure_reason(self) -> str:
         """
-        The root cause of an import failure. Only present if state is IMPORT_FAILED.
+        The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
         """
         return pulumi.get(self, "import_failure_reason")
 
@@ -127,7 +130,7 @@ class GetCryptoKeyVersionResult:
     @pulumi.getter(name="importJob")
     def import_job(self) -> str:
         """
-        The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+        The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
         """
         return pulumi.get(self, "import_job")
 
@@ -135,7 +138,7 @@ class GetCryptoKeyVersionResult:
     @pulumi.getter(name="importTime")
     def import_time(self) -> str:
         """
-        The time at which this CryptoKeyVersion's key material was imported.
+        The time at which this CryptoKeyVersion's key material was most recently imported.
         """
         return pulumi.get(self, "import_time")
 
@@ -154,6 +157,14 @@ class GetCryptoKeyVersionResult:
         The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
         """
         return pulumi.get(self, "protection_level")
+
+    @property
+    @pulumi.getter(name="reimportEligible")
+    def reimport_eligible(self) -> bool:
+        """
+        Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+        """
+        return pulumi.get(self, "reimport_eligible")
 
     @property
     @pulumi.getter
@@ -182,6 +193,7 @@ class AwaitableGetCryptoKeyVersionResult(GetCryptoKeyVersionResult):
             import_time=self.import_time,
             name=self.name,
             protection_level=self.protection_level,
+            reimport_eligible=self.reimport_eligible,
             state=self.state)
 
 
@@ -219,6 +231,7 @@ def get_crypto_key_version(crypto_key_id: Optional[str] = None,
         import_time=__ret__.import_time,
         name=__ret__.name,
         protection_level=__ret__.protection_level,
+        reimport_eligible=__ret__.reimport_eligible,
         state=__ret__.state)
 
 

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatasetResult:
-    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, satisfies_pzs=None, self_link=None):
+    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, satisfies_pzs=None, self_link=None):
         if access and not isinstance(access, list):
             raise TypeError("Expected argument 'access' to be a list")
         pulumi.set(__self__, "access", access)
@@ -28,6 +28,9 @@ class GetDatasetResult:
         if dataset_reference and not isinstance(dataset_reference, dict):
             raise TypeError("Expected argument 'dataset_reference' to be a dict")
         pulumi.set(__self__, "dataset_reference", dataset_reference)
+        if default_collation and not isinstance(default_collation, str):
+            raise TypeError("Expected argument 'default_collation' to be a str")
+        pulumi.set(__self__, "default_collation", default_collation)
         if default_encryption_configuration and not isinstance(default_encryption_configuration, dict):
             raise TypeError("Expected argument 'default_encryption_configuration' to be a dict")
         pulumi.set(__self__, "default_encryption_configuration", default_encryption_configuration)
@@ -91,6 +94,14 @@ class GetDatasetResult:
         [Required] A reference that identifies the dataset.
         """
         return pulumi.get(self, "dataset_reference")
+
+    @property
+    @pulumi.getter(name="defaultCollation")
+    def default_collation(self) -> str:
+        """
+        The default collation of the dataset.
+        """
+        return pulumi.get(self, "default_collation")
 
     @property
     @pulumi.getter(name="defaultEncryptionConfiguration")
@@ -203,6 +214,7 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             access=self.access,
             creation_time=self.creation_time,
             dataset_reference=self.dataset_reference,
+            default_collation=self.default_collation,
             default_encryption_configuration=self.default_encryption_configuration,
             default_partition_expiration_ms=self.default_partition_expiration_ms,
             default_table_expiration_ms=self.default_table_expiration_ms,
@@ -237,6 +249,7 @@ def get_dataset(dataset_id: Optional[str] = None,
         access=__ret__.access,
         creation_time=__ret__.creation_time,
         dataset_reference=__ret__.dataset_reference,
+        default_collation=__ret__.default_collation,
         default_encryption_configuration=__ret__.default_encryption_configuration,
         default_partition_expiration_ms=__ret__.default_partition_expiration_ms,
         default_table_expiration_ms=__ret__.default_table_expiration_ms,

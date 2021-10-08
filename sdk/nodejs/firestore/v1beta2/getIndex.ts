@@ -49,3 +49,14 @@ export interface GetIndexResult {
      */
     readonly state: string;
 }
+
+export function getIndexOutput(args: GetIndexOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndexResult> {
+    return pulumi.output(args).apply(a => getIndex(a, opts))
+}
+
+export interface GetIndexOutputArgs {
+    collectionGroupId: pulumi.Input<string>;
+    databaseId: pulumi.Input<string>;
+    indexId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

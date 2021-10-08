@@ -28,7 +28,7 @@ type SslCert struct {
 	ExpirationTime pulumi.StringOutput `pulumi:"expirationTime"`
 	// Name of the database instance.
 	Instance pulumi.StringOutput `pulumi:"instance"`
-	// This is always sql#sslCert.
+	// This is always **sql#sslCert**.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The URI of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`

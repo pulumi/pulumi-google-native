@@ -51,7 +51,7 @@ export interface GetExecutionResult {
      */
     readonly jobUri: string;
     /**
-     * The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+     * The resource name of the execute. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
      */
     readonly name: string;
     /**
@@ -66,4 +66,14 @@ export interface GetExecutionResult {
      * Time the Execution was last updated.
      */
     readonly updateTime: string;
+}
+
+export function getExecutionOutput(args: GetExecutionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionResult> {
+    return pulumi.output(args).apply(a => getExecution(a, opts))
+}
+
+export interface GetExecutionOutputArgs {
+    executionId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

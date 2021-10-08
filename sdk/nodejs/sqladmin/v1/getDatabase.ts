@@ -60,3 +60,13 @@ export interface GetDatabaseResult {
     readonly selfLink: string;
     readonly sqlserverDatabaseDetails: outputs.sqladmin.v1.SqlServerDatabaseDetailsResponse;
 }
+
+export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
+    return pulumi.output(args).apply(a => getDatabase(a, opts))
+}
+
+export interface GetDatabaseOutputArgs {
+    database: pulumi.Input<string>;
+    instance: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

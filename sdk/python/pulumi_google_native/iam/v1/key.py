@@ -140,6 +140,7 @@ class Key(pulumi.CustomResource):
             if service_account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_id'")
             __props__.__dict__["service_account_id"] = service_account_id
+            __props__.__dict__["disabled"] = None
             __props__.__dict__["key_origin"] = None
             __props__.__dict__["key_type"] = None
             __props__.__dict__["name"] = None
@@ -169,6 +170,7 @@ class Key(pulumi.CustomResource):
 
         __props__ = KeyArgs.__new__(KeyArgs)
 
+        __props__.__dict__["disabled"] = None
         __props__.__dict__["key_algorithm"] = None
         __props__.__dict__["key_origin"] = None
         __props__.__dict__["key_type"] = None
@@ -179,6 +181,14 @@ class Key(pulumi.CustomResource):
         __props__.__dict__["valid_after_time"] = None
         __props__.__dict__["valid_before_time"] = None
         return Key(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[bool]:
+        """
+        The key status.
+        """
+        return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="keyAlgorithm")

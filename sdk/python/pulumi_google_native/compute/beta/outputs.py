@@ -160,6 +160,7 @@ __all__ = [
     'ResourcePolicyWeeklyCycleDayOfWeekResponse',
     'ResourcePolicyWeeklyCycleResponse',
     'RolloutPolicyResponse',
+    'RouteAsPathResponse',
     'RouteWarningsItemDataItemResponse',
     'RouteWarningsItemResponse',
     'RouterAdvertisedIpRangeResponse',
@@ -169,6 +170,8 @@ __all__ = [
     'RouterInterfaceResponse',
     'RouterNatLogConfigResponse',
     'RouterNatResponse',
+    'RouterNatRuleActionResponse',
+    'RouterNatRuleResponse',
     'RouterNatSubnetworkToNatResponse',
     'RuleResponse',
     'SSLHealthCheckResponse',
@@ -679,7 +682,7 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponse(dict):
 @pulumi.output_type
 class AllocationSpecificSKUReservationResponse(dict):
     """
-    This reservation type allows to pre allocate specific instance configuration.
+    This reservation type allows to pre allocate specific instance configuration. Next ID: 5
     """
     @staticmethod
     def __key_warning(key: str):
@@ -705,7 +708,7 @@ class AllocationSpecificSKUReservationResponse(dict):
                  in_use_count: str,
                  instance_properties: 'outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse'):
         """
-        This reservation type allows to pre allocate specific instance configuration.
+        This reservation type allows to pre allocate specific instance configuration. Next ID: 5
         :param str count: Specifies the number of resources that are allocated.
         :param str in_use_count: Indicates how many instances are in use.
         :param 'AllocationSpecificSKUAllocationReservedInstancePropertiesResponse' instance_properties: The instance properties for the reservation.
@@ -991,6 +994,7 @@ class AttachedDiskResponse(dict):
                  interface: str,
                  kind: str,
                  licenses: Sequence[str],
+                 locked: bool,
                  mode: str,
                  shielded_instance_initial_state: 'outputs.InitialStateConfigResponse',
                  source: str,
@@ -1009,6 +1013,7 @@ class AttachedDiskResponse(dict):
         :param str interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
         :param str kind: Type of the resource. Always compute#attachedDisk for attached disks.
         :param Sequence[str] licenses: Any valid publicly visible licenses.
+        :param bool locked: Whether to indicate the attached disk is locked. The locked disk is not allowed to be detached from the instance, or to be used as the source of the snapshot creation, and the image creation. The instance with at least one locked attached disk is not allow to be used as source of machine image creation, instant snapshot creation, and not allowed to be deleted with --keep-disk parameter set to true for locked disks.
         :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
         :param 'InitialStateConfigResponse' shielded_instance_initial_state: shielded vm initial state stored on disk
         :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
@@ -1026,6 +1031,7 @@ class AttachedDiskResponse(dict):
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "licenses", licenses)
+        pulumi.set(__self__, "locked", locked)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "shielded_instance_initial_state", shielded_instance_initial_state)
         pulumi.set(__self__, "source", source)
@@ -1119,6 +1125,14 @@ class AttachedDiskResponse(dict):
         Any valid publicly visible licenses.
         """
         return pulumi.get(self, "licenses")
+
+    @property
+    @pulumi.getter
+    def locked(self) -> bool:
+        """
+        Whether to indicate the attached disk is locked. The locked disk is not allowed to be detached from the instance, or to be used as the source of the snapshot creation, and the image creation. The instance with at least one locked attached disk is not allow to be used as source of machine image creation, instant snapshot creation, and not allowed to be deleted with --keep-disk parameter set to true for locked disks.
+        """
+        return pulumi.get(self, "locked")
 
     @property
     @pulumi.getter
@@ -2144,7 +2158,7 @@ class BackendResponse(dict):
                  max_utilization: float):
         """
         Message containing information of one individual backend.
-        :param str balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+        :param str balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
         :param float capacity_scaler: A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
         :param str description: An optional description of this resource. Provide this property when you create the resource.
         :param bool failover: This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService.
@@ -2174,7 +2188,7 @@ class BackendResponse(dict):
     @pulumi.getter(name="balancingMode")
     def balancing_mode(self) -> str:
         """
-        Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+        Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -2557,8 +2571,8 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
         """
         Connection Tracking configuration for this BackendService.
         :param str connection_persistence_on_unhealthy_backends: Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
-        :param bool enable_strong_affinity: Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
-        :param int idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+        :param bool enable_strong_affinity: Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+        :param int idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
         :param str tracking_mode: Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
         """
         pulumi.set(__self__, "connection_persistence_on_unhealthy_backends", connection_persistence_on_unhealthy_backends)
@@ -2578,7 +2592,7 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
     @pulumi.getter(name="enableStrongAffinity")
     def enable_strong_affinity(self) -> bool:
         """
-        Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+        Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
         """
         return pulumi.get(self, "enable_strong_affinity")
 
@@ -2586,7 +2600,7 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
     @pulumi.getter(name="idleTimeoutSec")
     def idle_timeout_sec(self) -> int:
         """
-        Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+        Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
         """
         return pulumi.get(self, "idle_timeout_sec")
 
@@ -3496,10 +3510,10 @@ class CustomerEncryptionKeyResponse(dict):
                  rsa_encrypted_key: str,
                  sha256: str):
         """
-        :param str kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
-        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
-        :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
-        :param str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
+        :param str kms_key_name: The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key 
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/ 
+        :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=" 
+        :param str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
         :param str sha256: [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -3512,7 +3526,7 @@ class CustomerEncryptionKeyResponse(dict):
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> str:
         """
-        The name of the encryption key that is stored in Google Cloud KMS.
+        The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key 
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -3520,7 +3534,7 @@ class CustomerEncryptionKeyResponse(dict):
     @pulumi.getter(name="kmsKeyServiceAccount")
     def kms_key_service_account(self) -> str:
         """
-        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/ 
         """
         return pulumi.get(self, "kms_key_service_account")
 
@@ -3528,7 +3542,7 @@ class CustomerEncryptionKeyResponse(dict):
     @pulumi.getter(name="rawKey")
     def raw_key(self) -> str:
         """
-        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=" 
         """
         return pulumi.get(self, "raw_key")
 
@@ -3536,7 +3550,7 @@ class CustomerEncryptionKeyResponse(dict):
     @pulumi.getter(name="rsaEncryptedKey")
     def rsa_encrypted_key(self) -> str:
         """
-        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
         """
         return pulumi.get(self, "rsa_encrypted_key")
 
@@ -6898,7 +6912,7 @@ class InstancePropertiesResponse(dict):
         :param 'MetadataResponse' metadata: The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
         :param str min_cpu_platform: Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
         :param Sequence['NetworkInterfaceResponse'] network_interfaces: An array of network access configurations for this interface.
-        :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
+        :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance.(will be deprecated soon)
         :param str private_ipv6_google_access: The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         :param 'ReservationAffinityResponse' reservation_affinity: Specifies the reservations that instances can consume from.
         :param Sequence[str] resource_policies: Resource policies (names, not ULRs) applied to instances created from these properties.
@@ -7035,7 +7049,7 @@ class InstancePropertiesResponse(dict):
     @pulumi.getter(name="postKeyRevocationActionType")
     def post_key_revocation_action_type(self) -> str:
         """
-        PostKeyRevocationActionType of the instance.
+        PostKeyRevocationActionType of the instance.(will be deprecated soon)
         """
         return pulumi.get(self, "post_key_revocation_action_type")
 
@@ -10909,6 +10923,54 @@ class RolloutPolicyResponse(dict):
 
 
 @pulumi.output_type
+class RouteAsPathResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "asLists":
+            suggest = "as_lists"
+        elif key == "pathSegmentType":
+            suggest = "path_segment_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteAsPathResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteAsPathResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteAsPathResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 as_lists: Sequence[int],
+                 path_segment_type: str):
+        """
+        :param Sequence[int] as_lists: The AS numbers of the AS Path.
+        :param str path_segment_type: The type of the AS Path, which can be one of the following values: - 'AS_SET': unordered set of autonomous systems that the route in has traversed - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed 
+        """
+        pulumi.set(__self__, "as_lists", as_lists)
+        pulumi.set(__self__, "path_segment_type", path_segment_type)
+
+    @property
+    @pulumi.getter(name="asLists")
+    def as_lists(self) -> Sequence[int]:
+        """
+        The AS numbers of the AS Path.
+        """
+        return pulumi.get(self, "as_lists")
+
+    @property
+    @pulumi.getter(name="pathSegmentType")
+    def path_segment_type(self) -> str:
+        """
+        The type of the AS Path, which can be one of the following values: - 'AS_SET': unordered set of autonomous systems that the route in has traversed - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed 
+        """
+        return pulumi.get(self, "path_segment_type")
+
+
+@pulumi.output_type
 class RouteWarningsItemDataItemResponse(dict):
     def __init__(__self__, *,
                  key: str,
@@ -11039,10 +11101,10 @@ class RouterBgpPeerBfdResponse(dict):
                  multiplier: int,
                  session_initialization_mode: str):
         """
-        :param int min_receive_interval: The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. Not currently available publicly. If set, this value must be between 100 and 30000. The default is 300.
-        :param int min_transmit_interval: The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. Not currently available publicly. If set, this value must be between 100 and 30000. The default is 300.
-        :param int multiplier: The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. Not currently available publicly. If set, the value must be a value between 2 and 16. The default is 3.
-        :param str session_initialization_mode: The BFD session initialization mode for this BGP peer. Not currently available publicly. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+        :param int min_receive_interval: The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+        :param int min_transmit_interval: The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+        :param int multiplier: The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
+        :param str session_initialization_mode: The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
         """
         pulumi.set(__self__, "min_receive_interval", min_receive_interval)
         pulumi.set(__self__, "min_transmit_interval", min_transmit_interval)
@@ -11053,7 +11115,7 @@ class RouterBgpPeerBfdResponse(dict):
     @pulumi.getter(name="minReceiveInterval")
     def min_receive_interval(self) -> int:
         """
-        The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. Not currently available publicly. If set, this value must be between 100 and 30000. The default is 300.
+        The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
         """
         return pulumi.get(self, "min_receive_interval")
 
@@ -11061,7 +11123,7 @@ class RouterBgpPeerBfdResponse(dict):
     @pulumi.getter(name="minTransmitInterval")
     def min_transmit_interval(self) -> int:
         """
-        The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. Not currently available publicly. If set, this value must be between 100 and 30000. The default is 300.
+        The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
         """
         return pulumi.get(self, "min_transmit_interval")
 
@@ -11069,7 +11131,7 @@ class RouterBgpPeerBfdResponse(dict):
     @pulumi.getter
     def multiplier(self) -> int:
         """
-        The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. Not currently available publicly. If set, the value must be a value between 2 and 16. The default is 3.
+        The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
         """
         return pulumi.get(self, "multiplier")
 
@@ -11077,7 +11139,7 @@ class RouterBgpPeerBfdResponse(dict):
     @pulumi.getter(name="sessionInitializationMode")
     def session_initialization_mode(self) -> str:
         """
-        The BFD session initialization mode for this BGP peer. Not currently available publicly. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+        The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
         """
         return pulumi.get(self, "session_initialization_mode")
 
@@ -11138,7 +11200,7 @@ class RouterBgpPeerResponse(dict):
         :param Sequence[str] advertised_groups: User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         :param Sequence['RouterAdvertisedIpRangeResponse'] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
         :param int advertised_route_priority: The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
-        :param 'RouterBgpPeerBfdResponse' bfd: BFD configuration for the BGP peering. Not currently available publicly.
+        :param 'RouterBgpPeerBfdResponse' bfd: BFD configuration for the BGP peering.
         :param str enable: The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
         :param str interface_name: Name of the interface the BGP peer is associated with.
         :param str ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
@@ -11198,7 +11260,7 @@ class RouterBgpPeerResponse(dict):
     @pulumi.getter
     def bfd(self) -> 'outputs.RouterBgpPeerBfdResponse':
         """
-        BFD configuration for the BGP peering. Not currently available publicly.
+        BFD configuration for the BGP peering.
         """
         return pulumi.get(self, "bfd")
 
@@ -11533,6 +11595,8 @@ class RouterNatResponse(dict):
             suggest = "source_subnetwork_ip_ranges_to_nat"
         elif key == "tcpEstablishedIdleTimeoutSec":
             suggest = "tcp_established_idle_timeout_sec"
+        elif key == "tcpTimeWaitTimeoutSec":
+            suggest = "tcp_time_wait_timeout_sec"
         elif key == "tcpTransitoryIdleTimeoutSec":
             suggest = "tcp_transitory_idle_timeout_sec"
         elif key == "udpIdleTimeoutSec":
@@ -11558,9 +11622,11 @@ class RouterNatResponse(dict):
                  name: str,
                  nat_ip_allocate_option: str,
                  nat_ips: Sequence[str],
+                 rules: Sequence['outputs.RouterNatRuleResponse'],
                  source_subnetwork_ip_ranges_to_nat: str,
                  subnetworks: Sequence['outputs.RouterNatSubnetworkToNatResponse'],
                  tcp_established_idle_timeout_sec: int,
+                 tcp_time_wait_timeout_sec: int,
                  tcp_transitory_idle_timeout_sec: int,
                  udp_idle_timeout_sec: int):
         """
@@ -11572,9 +11638,11 @@ class RouterNatResponse(dict):
         :param str name: Unique name of this Nat service. The name must be 1-63 characters long and comply with RFC1035.
         :param str nat_ip_allocate_option: Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty. 
         :param Sequence[str] nat_ips: A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid static external IP addresses assigned to the project.
+        :param Sequence['RouterNatRuleResponse'] rules: A list of rules associated with this NAT.
         :param str source_subnetwork_ip_ranges_to_nat: Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
         :param Sequence['RouterNatSubnetworkToNatResponse'] subnetworks: A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
         :param int tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
+        :param int tcp_time_wait_timeout_sec: Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
         :param int tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
         :param int udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
@@ -11586,9 +11654,11 @@ class RouterNatResponse(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "nat_ip_allocate_option", nat_ip_allocate_option)
         pulumi.set(__self__, "nat_ips", nat_ips)
+        pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
         pulumi.set(__self__, "subnetworks", subnetworks)
         pulumi.set(__self__, "tcp_established_idle_timeout_sec", tcp_established_idle_timeout_sec)
+        pulumi.set(__self__, "tcp_time_wait_timeout_sec", tcp_time_wait_timeout_sec)
         pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
         pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
 
@@ -11654,6 +11724,14 @@ class RouterNatResponse(dict):
         return pulumi.get(self, "nat_ips")
 
     @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.RouterNatRuleResponse']:
+        """
+        A list of rules associated with this NAT.
+        """
+        return pulumi.get(self, "rules")
+
+    @property
     @pulumi.getter(name="sourceSubnetworkIpRangesToNat")
     def source_subnetwork_ip_ranges_to_nat(self) -> str:
         """
@@ -11678,6 +11756,14 @@ class RouterNatResponse(dict):
         return pulumi.get(self, "tcp_established_idle_timeout_sec")
 
     @property
+    @pulumi.getter(name="tcpTimeWaitTimeoutSec")
+    def tcp_time_wait_timeout_sec(self) -> int:
+        """
+        Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
+        """
+        return pulumi.get(self, "tcp_time_wait_timeout_sec")
+
+    @property
     @pulumi.getter(name="tcpTransitoryIdleTimeoutSec")
     def tcp_transitory_idle_timeout_sec(self) -> int:
         """
@@ -11692,6 +11778,122 @@ class RouterNatResponse(dict):
         Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
         return pulumi.get(self, "udp_idle_timeout_sec")
+
+
+@pulumi.output_type
+class RouterNatRuleActionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceNatActiveIps":
+            suggest = "source_nat_active_ips"
+        elif key == "sourceNatDrainIps":
+            suggest = "source_nat_drain_ips"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterNatRuleActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterNatRuleActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterNatRuleActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_nat_active_ips: Sequence[str],
+                 source_nat_drain_ips: Sequence[str]):
+        """
+        :param Sequence[str] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+        :param Sequence[str] source_nat_drain_ips: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+        """
+        pulumi.set(__self__, "source_nat_active_ips", source_nat_active_ips)
+        pulumi.set(__self__, "source_nat_drain_ips", source_nat_drain_ips)
+
+    @property
+    @pulumi.getter(name="sourceNatActiveIps")
+    def source_nat_active_ips(self) -> Sequence[str]:
+        """
+        A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+        """
+        return pulumi.get(self, "source_nat_active_ips")
+
+    @property
+    @pulumi.getter(name="sourceNatDrainIps")
+    def source_nat_drain_ips(self) -> Sequence[str]:
+        """
+        A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+        """
+        return pulumi.get(self, "source_nat_drain_ips")
+
+
+@pulumi.output_type
+class RouterNatRuleResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleNumber":
+            suggest = "rule_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterNatRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterNatRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterNatRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: 'outputs.RouterNatRuleActionResponse',
+                 description: str,
+                 match: str,
+                 rule_number: int):
+        """
+        :param 'RouterNatRuleActionResponse' action: The action to be enforced for traffic that matches this rule.
+        :param str description: An optional description of this rule.
+        :param str match: CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+        :param int rule_number: An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "rule_number", rule_number)
+
+    @property
+    @pulumi.getter
+    def action(self) -> 'outputs.RouterNatRuleActionResponse':
+        """
+        The action to be enforced for traffic that matches this rule.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        An optional description of this rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def match(self) -> str:
+        """
+        CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter(name="ruleNumber")
+    def rule_number(self) -> int:
+        """
+        An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+        """
+        return pulumi.get(self, "rule_number")
 
 
 @pulumi.output_type
@@ -12232,6 +12434,8 @@ class SchedulingResponse(dict):
             suggest = "automatic_restart"
         elif key == "hostErrorTimeoutSeconds":
             suggest = "host_error_timeout_seconds"
+        elif key == "instanceTerminationAction":
+            suggest = "instance_termination_action"
         elif key == "locationHint":
             suggest = "location_hint"
         elif key == "maintenanceFreezeDurationHours":
@@ -12244,6 +12448,8 @@ class SchedulingResponse(dict):
             suggest = "node_affinities"
         elif key == "onHostMaintenance":
             suggest = "on_host_maintenance"
+        elif key == "provisioningModel":
+            suggest = "provisioning_model"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SchedulingResponse. Access the value via the '{suggest}' property getter instead.")
@@ -12259,17 +12465,20 @@ class SchedulingResponse(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  host_error_timeout_seconds: int,
+                 instance_termination_action: str,
                  location_hint: str,
                  maintenance_freeze_duration_hours: int,
                  maintenance_interval: str,
                  min_node_cpus: int,
                  node_affinities: Sequence['outputs.SchedulingNodeAffinityResponse'],
                  on_host_maintenance: str,
-                 preemptible: bool):
+                 preemptible: bool,
+                 provisioning_model: str):
         """
         Sets the scheduling options for an Instance. NextID: 21
         :param bool automatic_restart: Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
         :param int host_error_timeout_seconds: Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        :param str instance_termination_action: Specifies the termination action for the instance.
         :param str location_hint: An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
         :param int maintenance_freeze_duration_hours: Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
         :param str maintenance_interval: For more information about maintenance intervals, see Setting maintenance intervals.
@@ -12277,9 +12486,11 @@ class SchedulingResponse(dict):
         :param Sequence['SchedulingNodeAffinityResponse'] node_affinities: A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
         :param str on_host_maintenance: Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
         :param bool preemptible: Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
+        :param str provisioning_model: Specifies the provisioning model of the instance.
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
+        pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         pulumi.set(__self__, "location_hint", location_hint)
         pulumi.set(__self__, "maintenance_freeze_duration_hours", maintenance_freeze_duration_hours)
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
@@ -12287,6 +12498,7 @@ class SchedulingResponse(dict):
         pulumi.set(__self__, "node_affinities", node_affinities)
         pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         pulumi.set(__self__, "preemptible", preemptible)
+        pulumi.set(__self__, "provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -12303,6 +12515,14 @@ class SchedulingResponse(dict):
         Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         """
         return pulumi.get(self, "host_error_timeout_seconds")
+
+    @property
+    @pulumi.getter(name="instanceTerminationAction")
+    def instance_termination_action(self) -> str:
+        """
+        Specifies the termination action for the instance.
+        """
+        return pulumi.get(self, "instance_termination_action")
 
     @property
     @pulumi.getter(name="locationHint")
@@ -12359,6 +12579,14 @@ class SchedulingResponse(dict):
         Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
         """
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> str:
+        """
+        Specifies the provisioning model of the instance.
+        """
+        return pulumi.get(self, "provisioning_model")
 
 
 @pulumi.output_type
@@ -12854,8 +13082,8 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         :param int ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param str conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
-        :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+        :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
         :param str exceed_action: When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' rate_limit_threshold: Threshold at which to begin ratelimiting.
         """
@@ -12895,7 +13123,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> str:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -12903,7 +13131,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="enforceOnKeyName")
     def enforce_on_key_name(self) -> str:
         """
-        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
         """
         return pulumi.get(self, "enforce_on_key_name")
 
@@ -13420,7 +13648,9 @@ class ShareSettingsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "shareType":
+        if key == "projectMap":
+            suggest = "project_map"
+        elif key == "shareType":
             suggest = "share_type"
 
         if suggest:
@@ -13435,15 +13665,26 @@ class ShareSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 project_map: Mapping[str, str],
                  projects: Sequence[str],
                  share_type: str):
         """
         The share setting for reservations and sole tenancy node groups.
+        :param Mapping[str, str] project_map: A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
         :param Sequence[str] projects: A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         :param str share_type: Type of sharing for this shared-reservation
         """
+        pulumi.set(__self__, "project_map", project_map)
         pulumi.set(__self__, "projects", projects)
         pulumi.set(__self__, "share_type", share_type)
+
+    @property
+    @pulumi.getter(name="projectMap")
+    def project_map(self) -> Mapping[str, str]:
+        """
+        A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+        """
+        return pulumi.get(self, "project_map")
 
     @property
     @pulumi.getter
@@ -13816,7 +14057,7 @@ class SourceInstancePropertiesResponse(dict):
         :param 'MetadataResponse' metadata: The metadata key/value pairs to assign to instances that are created from this machine image. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
         :param str min_cpu_platform: Minimum cpu/platform to be used by instances created from this machine image. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
         :param Sequence['NetworkInterfaceResponse'] network_interfaces: An array of network access configurations for this interface.
-        :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
+        :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance. (will be deprecated soon)
         :param 'SchedulingResponse' scheduling: Specifies the scheduling options for the instances that are created from this machine image.
         :param Sequence['ServiceAccountResponse'] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from this machine image. Use metadata queries to obtain the access tokens for these instances.
         :param 'TagsResponse' tags: A list of tags to apply to the instances that are created from this machine image. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
@@ -13920,7 +14161,7 @@ class SourceInstancePropertiesResponse(dict):
     @pulumi.getter(name="postKeyRevocationActionType")
     def post_key_revocation_action_type(self) -> str:
         """
-        PostKeyRevocationActionType of the instance.
+        PostKeyRevocationActionType of the instance. (will be deprecated soon)
         """
         return pulumi.get(self, "post_key_revocation_action_type")
 

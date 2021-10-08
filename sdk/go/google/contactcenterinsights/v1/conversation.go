@@ -34,7 +34,7 @@ type Conversation struct {
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
 	// The conversation's latest analysis, if one exists.
 	LatestAnalysis GoogleCloudContactcenterinsightsV1AnalysisResponseOutput `pulumi:"latestAnalysis"`
-	// Immutable. The conversation medium.
+	// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 	Medium pulumi.StringOutput `pulumi:"medium"`
 	// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -105,7 +105,7 @@ type conversationArgs struct {
 	// A user-specified language code for the conversation.
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     *string `pulumi:"location"`
-	// Immutable. The conversation medium.
+	// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 	Medium *ConversationMedium `pulumi:"medium"`
 	// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
 	Name    *string `pulumi:"name"`
@@ -132,7 +132,7 @@ type ConversationArgs struct {
 	// A user-specified language code for the conversation.
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringPtrInput
-	// Immutable. The conversation medium.
+	// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 	Medium ConversationMediumPtrInput
 	// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
 	Name    pulumi.StringPtrInput

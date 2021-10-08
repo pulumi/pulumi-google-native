@@ -28,6 +28,10 @@ export interface GetInstanceArgs {
 
 export interface GetInstanceResult {
     /**
+     * A server-assigned timestamp representing when this Instance was created.
+     */
+    readonly createTime: string;
+    /**
      * The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
      */
     readonly displayName: string;
@@ -47,4 +51,13 @@ export interface GetInstanceResult {
      * The type of the instance. Defaults to `PRODUCTION`.
      */
     readonly type: string;
+}
+
+export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
+    return pulumi.output(args).apply(a => getInstance(a, opts))
+}
+
+export interface GetInstanceOutputArgs {
+    instanceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

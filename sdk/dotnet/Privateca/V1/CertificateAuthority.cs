@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        /// Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         /// </summary>
         [Output("lifetime")]
         public Output<string> Lifetime { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
         }
 
         /// <summary>
-        /// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        /// Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         /// </summary>
         [Input("lifetime", required: true)]
         public Input<string> Lifetime { get; set; } = null!;

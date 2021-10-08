@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<string>? CloudSqlIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+        /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("enablePrivateEnvironment")]
         public Input<bool>? EnablePrivateEnvironment { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<Inputs.PrivateClusterConfigArgs>? PrivateClusterConfig { get; set; }
 
         /// <summary>
-        /// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+        /// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("webServerIpv4CidrBlock")]
         public Input<string>? WebServerIpv4CidrBlock { get; set; }

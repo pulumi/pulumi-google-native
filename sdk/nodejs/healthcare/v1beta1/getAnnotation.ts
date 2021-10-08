@@ -59,3 +59,15 @@ export interface GetAnnotationResult {
      */
     readonly textAnnotation: outputs.healthcare.v1beta1.SensitiveTextAnnotationResponse;
 }
+
+export function getAnnotationOutput(args: GetAnnotationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAnnotationResult> {
+    return pulumi.output(args).apply(a => getAnnotation(a, opts))
+}
+
+export interface GetAnnotationOutputArgs {
+    annotationId: pulumi.Input<string>;
+    annotationStoreId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

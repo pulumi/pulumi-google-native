@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Create an association between a GCP project and a GitHub Enterprise server. This API is experimental.
+ * Create an association between a GCP project and a GitHub Enterprise server.
  */
 export class GithubEnterpriseConfig extends pulumi.CustomResource {
     /**
@@ -88,6 +88,7 @@ export class GithubEnterpriseConfig extends pulumi.CustomResource {
             }
             inputs["appId"] = args ? args.appId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["gheConfigId"] = args ? args.gheConfigId : undefined;
             inputs["hostUrl"] = args ? args.hostUrl : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -128,6 +129,7 @@ export interface GithubEnterpriseConfigArgs {
      * Name to display for this config.
      */
     displayName?: pulumi.Input<string>;
+    gheConfigId?: pulumi.Input<string>;
     /**
      * The URL of the github enterprise host the configuration is for.
      */

@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+        /// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         /// </summary>
         public readonly ImmutableArray<string> Materials;
         /// <summary>
-        /// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
+        /// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
         /// </summary>
         public readonly string Name;
         /// <summary>

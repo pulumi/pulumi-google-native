@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./execution";
 export * from "./getExecution";
 
+// Export enums:
+export * from "../../types/enums/workflowexecutions/v1beta";
+
 // Import resources to register:
 import { Execution } from "./execution";
 

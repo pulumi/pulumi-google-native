@@ -51,6 +51,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
             set => _types = value;
         }
 
+        /// <summary>
+        /// Determines how unexpected segments (segments not matched to the schema) are handled.
+        /// </summary>
+        [Input("unexpectedSegmentHandling")]
+        public Input<Pulumi.GoogleNative.Healthcare.V1.SchemaPackageUnexpectedSegmentHandling>? UnexpectedSegmentHandling { get; set; }
+
         public SchemaPackageArgs()
         {
         }

@@ -53,3 +53,14 @@ export interface GetServiceResult {
      */
     readonly updateTime: string;
 }
+
+export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+export interface GetServiceOutputArgs {
+    location: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
+}

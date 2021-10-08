@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public readonly string Action;
         /// <summary>
-        /// An optional string description of this rule. This field has a maximum length of 100 characters.
+        /// An optional string description of this rule. This field has a maximum length of 400 characters.
         /// </summary>
         public readonly string Description;
         /// <summary>

@@ -61,3 +61,12 @@ export interface GetKeyResult {
      */
     readonly webSettings: outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse;
 }
+
+export function getKeyOutput(args: GetKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyResult> {
+    return pulumi.output(args).apply(a => getKey(a, opts))
+}
+
+export interface GetKeyOutputArgs {
+    keyId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

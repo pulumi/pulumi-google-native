@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRoutineResult:
-    def __init__(__self__, arguments=None, creation_time=None, definition_body=None, description=None, determinism_level=None, etag=None, imported_libraries=None, language=None, last_modified_time=None, return_table_type=None, return_type=None, routine_reference=None, routine_type=None):
+    def __init__(__self__, arguments=None, creation_time=None, definition_body=None, description=None, determinism_level=None, etag=None, imported_libraries=None, language=None, last_modified_time=None, return_table_type=None, return_type=None, routine_reference=None, routine_type=None, strict_mode=None):
         if arguments and not isinstance(arguments, list):
             raise TypeError("Expected argument 'arguments' to be a list")
         pulumi.set(__self__, "arguments", arguments)
@@ -58,6 +58,9 @@ class GetRoutineResult:
         if routine_type and not isinstance(routine_type, str):
             raise TypeError("Expected argument 'routine_type' to be a str")
         pulumi.set(__self__, "routine_type", routine_type)
+        if strict_mode and not isinstance(strict_mode, bool):
+            raise TypeError("Expected argument 'strict_mode' to be a bool")
+        pulumi.set(__self__, "strict_mode", strict_mode)
 
     @property
     @pulumi.getter
@@ -163,6 +166,14 @@ class GetRoutineResult:
         """
         return pulumi.get(self, "routine_type")
 
+    @property
+    @pulumi.getter(name="strictMode")
+    def strict_mode(self) -> bool:
+        """
+        Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+        """
+        return pulumi.get(self, "strict_mode")
+
 
 class AwaitableGetRoutineResult(GetRoutineResult):
     # pylint: disable=using-constant-test
@@ -182,7 +193,8 @@ class AwaitableGetRoutineResult(GetRoutineResult):
             return_table_type=self.return_table_type,
             return_type=self.return_type,
             routine_reference=self.routine_reference,
-            routine_type=self.routine_type)
+            routine_type=self.routine_type,
+            strict_mode=self.strict_mode)
 
 
 def get_routine(dataset_id: Optional[str] = None,
@@ -217,7 +229,8 @@ def get_routine(dataset_id: Optional[str] = None,
         return_table_type=__ret__.return_table_type,
         return_type=__ret__.return_type,
         routine_reference=__ret__.routine_reference,
-        routine_type=__ret__.routine_type)
+        routine_type=__ret__.routine_type,
+        strict_mode=__ret__.strict_mode)
 
 
 @_utilities.lift_output_func(get_routine)

@@ -49,3 +49,14 @@ export interface GetServerTlsPolicyIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getServerTlsPolicyIamPolicyOutput(args: GetServerTlsPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerTlsPolicyIamPolicyResult> {
+    return pulumi.output(args).apply(a => getServerTlsPolicyIamPolicy(a, opts))
+}
+
+export interface GetServerTlsPolicyIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    serverTlsPolicyId: pulumi.Input<string>;
+}

@@ -81,3 +81,12 @@ export interface GetTestMatrixResult {
      */
     readonly timestamp: string;
 }
+
+export function getTestMatrixOutput(args: GetTestMatrixOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestMatrixResult> {
+    return pulumi.output(args).apply(a => getTestMatrix(a, opts))
+}
+
+export interface GetTestMatrixOutputArgs {
+    project?: pulumi.Input<string>;
+    testMatrixId: pulumi.Input<string>;
+}

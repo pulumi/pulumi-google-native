@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<int>? HostErrorTimeoutSeconds { get; set; }
 
         /// <summary>
+        /// Specifies the termination action for the instance.
+        /// </summary>
+        [Input("instanceTerminationAction")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SchedulingInstanceTerminationAction>? InstanceTerminationAction { get; set; }
+
+        /// <summary>
         /// Defines whether the instance is tolerant of higher cpu latency. This can only be set during instance creation, or when the instance is not currently running. It must not be set if the preemptible option is also set.
         /// </summary>
         [Input("latencyTolerant")]

@@ -67,3 +67,13 @@ export interface GetCanaryEvaluationResult {
      */
     readonly verdict: string;
 }
+
+export function getCanaryEvaluationOutput(args: GetCanaryEvaluationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCanaryEvaluationResult> {
+    return pulumi.output(args).apply(a => getCanaryEvaluation(a, opts))
+}
+
+export interface GetCanaryEvaluationOutputArgs {
+    canaryevaluationId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

@@ -56,7 +56,7 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
-     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
      */
     public readonly mtu!: pulumi.Output<number>;
     /**
@@ -137,7 +137,7 @@ export interface NetworkArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
      */
     mtu?: pulumi.Input<number>;
     /**

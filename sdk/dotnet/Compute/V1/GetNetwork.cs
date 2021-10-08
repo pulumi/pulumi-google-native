@@ -57,7 +57,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+        /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
         /// </summary>
         public readonly int Mtu;
         /// <summary>

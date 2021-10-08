@@ -77,3 +77,12 @@ export interface GetAlertPolicyResult {
      */
     readonly validity: outputs.monitoring.v3.StatusResponse;
 }
+
+export function getAlertPolicyOutput(args: GetAlertPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertPolicyResult> {
+    return pulumi.output(args).apply(a => getAlertPolicy(a, opts))
+}
+
+export interface GetAlertPolicyOutputArgs {
+    alertPolicyId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

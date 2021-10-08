@@ -63,7 +63,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         public readonly ImmutableArray<Outputs.NetworkInterfaceResponse> NetworkInterfaces;
         public readonly Outputs.NetworkPerformanceConfigResponse NetworkPerformanceConfig;
         /// <summary>
-        /// PostKeyRevocationActionType of the instance.
+        /// PostKeyRevocationActionType of the instance.(will be deprecated soon)
         /// </summary>
         public readonly string PostKeyRevocationActionType;
         /// <summary>

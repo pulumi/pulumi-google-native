@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static CryptoKeyVersionState Disabled { get; } = new CryptoKeyVersionState("DISABLED");
         /// <summary>
-        /// This version is destroyed, and the key material is no longer stored.
+        /// This version is destroyed, and the key material is no longer stored. This version may only become ENABLED again if this version is reimport_eligible and the original key material is reimported with a call to KeyManagementService.ImportCryptoKeyVersion.
         /// </summary>
         public static CryptoKeyVersionState Destroyed { get; } = new CryptoKeyVersionState("DESTROYED");
         /// <summary>
@@ -231,6 +231,18 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// RSAES-OAEP 4096 bit key with a SHA512 digest.
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm RsaDecryptOaep4096Sha512 { get; } = new CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_4096_SHA512");
+        /// <summary>
+        /// RSAES-OAEP 2048 bit key with a SHA1 digest.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm RsaDecryptOaep2048Sha1 { get; } = new CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_2048_SHA1");
+        /// <summary>
+        /// RSAES-OAEP 3072 bit key with a SHA1 digest.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm RsaDecryptOaep3072Sha1 { get; } = new CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_3072_SHA1");
+        /// <summary>
+        /// RSAES-OAEP 4096 bit key with a SHA1 digest.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm RsaDecryptOaep4096Sha1 { get; } = new CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_4096_SHA1");
         /// <summary>
         /// ECDSA on the NIST P-256 curve with a SHA256 digest.
         /// </summary>

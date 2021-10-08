@@ -59,3 +59,13 @@ export interface GetFeedResult {
      */
     readonly relationshipTypes: string[];
 }
+
+export function getFeedOutput(args: GetFeedOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeedResult> {
+    return pulumi.output(args).apply(a => getFeed(a, opts))
+}
+
+export interface GetFeedOutputArgs {
+    feedId: pulumi.Input<string>;
+    v1Id: pulumi.Input<string>;
+    v1Id1: pulumi.Input<string>;
+}

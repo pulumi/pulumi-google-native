@@ -71,3 +71,13 @@ export interface GetJobTriggerResult {
      */
     readonly updateTime: string;
 }
+
+export function getJobTriggerOutput(args: GetJobTriggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobTriggerResult> {
+    return pulumi.output(args).apply(a => getJobTrigger(a, opts))
+}
+
+export interface GetJobTriggerOutputArgs {
+    jobTriggerId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

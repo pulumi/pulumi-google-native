@@ -40,6 +40,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetInstanceGroupManagerResult
     {
         /// <summary>
+        /// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerAllInstancesConfigResponse AllInstancesConfig;
+        /// <summary>
         /// The autohealing policy for this managed instance group. You can specify only one value.
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceGroupManagerAutoHealingPolicyResponse> AutoHealingPolicies;
@@ -112,7 +116,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string ServiceAccount;
         /// <summary>
-        /// Stanby policy for stopped and suspended instances.
+        /// Standby policy for stopped and suspended instances.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerStandbyPolicyResponse StandbyPolicy;
         /// <summary>
@@ -154,6 +158,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [OutputConstructor]
         private GetInstanceGroupManagerResult(
+            Outputs.InstanceGroupManagerAllInstancesConfigResponse allInstancesConfig,
+
             ImmutableArray<Outputs.InstanceGroupManagerAutoHealingPolicyResponse> autoHealingPolicies,
 
             string baseInstanceName,
@@ -210,6 +216,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string zone)
         {
+            AllInstancesConfig = allInstancesConfig;
             AutoHealingPolicies = autoHealingPolicies;
             BaseInstanceName = baseInstanceName;
             CreationTimestamp = creationTimestamp;

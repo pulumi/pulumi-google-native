@@ -87,3 +87,15 @@ export interface GetAppResult {
      */
     readonly status: string;
 }
+
+export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {
+    return pulumi.output(args).apply(a => getApp(a, opts))
+}
+
+export interface GetAppOutputArgs {
+    appId: pulumi.Input<string>;
+    developerId: pulumi.Input<string>;
+    entity?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    query?: pulumi.Input<string>;
+}

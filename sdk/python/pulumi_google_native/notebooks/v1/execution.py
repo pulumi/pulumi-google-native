@@ -117,7 +117,7 @@ class Execution(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a new Scheduled Notebook in a given project and location.
+        Creates a new Execution in a given project and location.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -133,7 +133,7 @@ class Execution(pulumi.CustomResource):
                  args: ExecutionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new Scheduled Notebook in a given project and location.
+        Creates a new Execution in a given project and location.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -260,7 +260,7 @@ class Execution(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+        The resource name of the execute. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
         """
         return pulumi.get(self, "name")
 

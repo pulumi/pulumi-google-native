@@ -99,3 +99,15 @@ export interface GetDeviceResult {
      */
     readonly state: outputs.cloudiot.v1.DeviceStateResponse;
 }
+
+export function getDeviceOutput(args: GetDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceResult> {
+    return pulumi.output(args).apply(a => getDevice(a, opts))
+}
+
+export interface GetDeviceOutputArgs {
+    deviceId: pulumi.Input<string>;
+    fieldMask?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    registryId: pulumi.Input<string>;
+}

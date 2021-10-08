@@ -164,6 +164,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly Outputs.MasterAuthorizedNetworksConfigResponse MasterAuthorizedNetworksConfig;
         /// <summary>
+        /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        /// </summary>
+        public readonly Outputs.MeshCertificatesResponse MeshCertificates;
+        /// <summary>
         /// Monitoring configuration for the cluster.
         /// </summary>
         public readonly Outputs.MonitoringConfigResponse MonitoringConfig;
@@ -328,6 +332,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             Outputs.MasterAuthorizedNetworksConfigResponse masterAuthorizedNetworksConfig,
 
+            Outputs.MeshCertificatesResponse meshCertificates,
+
             Outputs.MonitoringConfigResponse monitoringConfig,
 
             string monitoringService,
@@ -409,6 +415,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             Master = master;
             MasterAuth = masterAuth;
             MasterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
+            MeshCertificates = meshCertificates;
             MonitoringConfig = monitoringConfig;
             MonitoringService = monitoringService;
             Name = name;

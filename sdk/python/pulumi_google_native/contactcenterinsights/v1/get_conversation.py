@@ -158,7 +158,7 @@ class GetConversationResult:
     @pulumi.getter
     def medium(self) -> str:
         """
-        Immutable. The conversation medium.
+        Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         """
         return pulumi.get(self, "medium")
 

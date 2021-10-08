@@ -59,3 +59,12 @@ export interface GetSecurityPolicyResult {
      */
     readonly selfLink: string;
 }
+
+export function getSecurityPolicyOutput(args: GetSecurityPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityPolicyResult> {
+    return pulumi.output(args).apply(a => getSecurityPolicy(a, opts))
+}
+
+export interface GetSecurityPolicyOutputArgs {
+    project?: pulumi.Input<string>;
+    securityPolicy: pulumi.Input<string>;
+}

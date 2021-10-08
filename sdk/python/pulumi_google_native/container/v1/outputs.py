@@ -31,6 +31,7 @@ __all__ = [
     'DefaultSnatStatusResponse',
     'DnsCacheConfigResponse',
     'GcePersistentDiskCsiDriverConfigResponse',
+    'GcpFilestoreCsiDriverConfigResponse',
     'HorizontalPodAutoscalingResponse',
     'HttpLoadBalancingResponse',
     'IPAllocationPolicyResponse',
@@ -44,6 +45,7 @@ __all__ = [
     'MasterAuthResponse',
     'MasterAuthorizedNetworksConfigResponse',
     'MaxPodsConstraintResponse',
+    'MeshCertificatesResponse',
     'MonitoringComponentConfigResponse',
     'MonitoringConfigResponse',
     'NetworkConfigResponse',
@@ -89,6 +91,8 @@ class AcceleratorConfigResponse(dict):
             suggest = "accelerator_count"
         elif key == "acceleratorType":
             suggest = "accelerator_type"
+        elif key == "gpuPartitionSize":
+            suggest = "gpu_partition_size"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AcceleratorConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -103,14 +107,17 @@ class AcceleratorConfigResponse(dict):
 
     def __init__(__self__, *,
                  accelerator_count: str,
-                 accelerator_type: str):
+                 accelerator_type: str,
+                 gpu_partition_size: str):
         """
         AcceleratorConfig represents a Hardware Accelerator request.
         :param str accelerator_count: The number of the accelerator cards exposed to an instance.
         :param str accelerator_type: The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
+        :param str gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         """
         pulumi.set(__self__, "accelerator_count", accelerator_count)
         pulumi.set(__self__, "accelerator_type", accelerator_type)
+        pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
 
     @property
     @pulumi.getter(name="acceleratorCount")
@@ -127,6 +134,14 @@ class AcceleratorConfigResponse(dict):
         The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
         """
         return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> str:
+        """
+        Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        """
+        return pulumi.get(self, "gpu_partition_size")
 
 
 @pulumi.output_type
@@ -145,6 +160,8 @@ class AddonsConfigResponse(dict):
             suggest = "dns_cache_config"
         elif key == "gcePersistentDiskCsiDriverConfig":
             suggest = "gce_persistent_disk_csi_driver_config"
+        elif key == "gcpFilestoreCsiDriverConfig":
+            suggest = "gcp_filestore_csi_driver_config"
         elif key == "horizontalPodAutoscaling":
             suggest = "horizontal_pod_autoscaling"
         elif key == "httpLoadBalancing":
@@ -170,6 +187,7 @@ class AddonsConfigResponse(dict):
                  config_connector_config: 'outputs.ConfigConnectorConfigResponse',
                  dns_cache_config: 'outputs.DnsCacheConfigResponse',
                  gce_persistent_disk_csi_driver_config: 'outputs.GcePersistentDiskCsiDriverConfigResponse',
+                 gcp_filestore_csi_driver_config: 'outputs.GcpFilestoreCsiDriverConfigResponse',
                  horizontal_pod_autoscaling: 'outputs.HorizontalPodAutoscalingResponse',
                  http_load_balancing: 'outputs.HttpLoadBalancingResponse',
                  kubernetes_dashboard: 'outputs.KubernetesDashboardResponse',
@@ -180,6 +198,7 @@ class AddonsConfigResponse(dict):
         :param 'ConfigConnectorConfigResponse' config_connector_config: Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted GCP services through the Kubernetes API
         :param 'DnsCacheConfigResponse' dns_cache_config: Configuration for NodeLocalDNS, a dns cache running on cluster nodes
         :param 'GcePersistentDiskCsiDriverConfigResponse' gce_persistent_disk_csi_driver_config: Configuration for the Compute Engine Persistent Disk CSI driver.
+        :param 'GcpFilestoreCsiDriverConfigResponse' gcp_filestore_csi_driver_config: Configuration for the GCP Filestore CSI driver.
         :param 'HorizontalPodAutoscalingResponse' horizontal_pod_autoscaling: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         :param 'HttpLoadBalancingResponse' http_load_balancing: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
         :param 'KubernetesDashboardResponse' kubernetes_dashboard: Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
@@ -189,6 +208,7 @@ class AddonsConfigResponse(dict):
         pulumi.set(__self__, "config_connector_config", config_connector_config)
         pulumi.set(__self__, "dns_cache_config", dns_cache_config)
         pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
+        pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
         pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         pulumi.set(__self__, "http_load_balancing", http_load_balancing)
         pulumi.set(__self__, "kubernetes_dashboard", kubernetes_dashboard)
@@ -225,6 +245,14 @@ class AddonsConfigResponse(dict):
         Configuration for the Compute Engine Persistent Disk CSI driver.
         """
         return pulumi.get(self, "gce_persistent_disk_csi_driver_config")
+
+    @property
+    @pulumi.getter(name="gcpFilestoreCsiDriverConfig")
+    def gcp_filestore_csi_driver_config(self) -> 'outputs.GcpFilestoreCsiDriverConfigResponse':
+        """
+        Configuration for the GCP Filestore CSI driver.
+        """
+        return pulumi.get(self, "gcp_filestore_csi_driver_config")
 
     @property
     @pulumi.getter(name="horizontalPodAutoscaling")
@@ -1061,6 +1089,28 @@ class GcePersistentDiskCsiDriverConfigResponse(dict):
 
 
 @pulumi.output_type
+class GcpFilestoreCsiDriverConfigResponse(dict):
+    """
+    Configuration for the GCP Filestore CSI driver.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the GCP Filestore CSI driver.
+        :param bool enabled: Whether the GCP Filestore CSI driver is enabled for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the GCP Filestore CSI driver is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class HorizontalPodAutoscalingResponse(dict):
     """
     Configuration options for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -1709,6 +1759,18 @@ class MaxPodsConstraintResponse(dict):
 
 
 @pulumi.output_type
+class MeshCertificatesResponse(dict):
+    """
+    Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+    """
+    def __init__(__self__):
+        """
+        Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        """
+        pass
+
+
+@pulumi.output_type
 class MonitoringComponentConfigResponse(dict):
     """
     MonitoringComponentConfig is cluster monitoring component configuration.
@@ -2043,7 +2105,7 @@ class NodeConfigResponse(dict):
         :param 'LinuxNodeConfigResponse' linux_node_config: Parameters that can be configured on Linux nodes.
         :param int local_ssd_count: The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
         :param str machine_type: The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types) If unspecified, the default machine type is `e2-medium`.
-        :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-os-login" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+        :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-os-login" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
         :param str min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
         :param str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
@@ -2172,7 +2234,7 @@ class NodeConfigResponse(dict):
     @pulumi.getter
     def metadata(self) -> Mapping[str, str]:
         """
-        The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-os-login" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+        The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-os-login" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
         """
         return pulumi.get(self, "metadata")
 
@@ -2493,8 +2555,8 @@ class NodePoolAutoscalingResponse(dict):
         NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
         :param bool autoprovisioned: Can this node pool be deleted automatically.
         :param bool enabled: Is autoscaling enabled for this node pool.
-        :param int max_node_count: Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
-        :param int min_node_count: Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        :param int max_node_count: Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+        :param int min_node_count: Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
         """
         pulumi.set(__self__, "autoprovisioned", autoprovisioned)
         pulumi.set(__self__, "enabled", enabled)
@@ -2521,7 +2583,7 @@ class NodePoolAutoscalingResponse(dict):
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> int:
         """
-        Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+        Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
         """
         return pulumi.get(self, "max_node_count")
 
@@ -2529,7 +2591,7 @@ class NodePoolAutoscalingResponse(dict):
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> int:
         """
-        Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
         """
         return pulumi.get(self, "min_node_count")
 

@@ -742,7 +742,7 @@ class RuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: Additional restrictions that must be met. All conditions must pass for the rule to match.
         :param pulumi.Input[str] description: Human-readable description of the rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] in_: If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-        :param pulumi.Input[Sequence[pulumi.Input['LogConfigArgs']]] log_config: The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+        :param pulumi.Input[Sequence[pulumi.Input['LogConfigArgs']]] log_config: The config returned to callers of CheckPolicy for any entries that match the LOG action.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] not_in: If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
         """
@@ -813,7 +813,7 @@ class RuleArgs:
     @pulumi.getter(name="logConfig")
     def log_config(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LogConfigArgs']]]]:
         """
-        The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+        The config returned to callers of CheckPolicy for any entries that match the LOG action.
         """
         return pulumi.get(self, "log_config")
 

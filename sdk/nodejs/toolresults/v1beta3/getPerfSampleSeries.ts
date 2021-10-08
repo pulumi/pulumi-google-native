@@ -59,3 +59,15 @@ export interface GetPerfSampleSeriesResult {
      */
     readonly stepId: string;
 }
+
+export function getPerfSampleSeriesOutput(args: GetPerfSampleSeriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPerfSampleSeriesResult> {
+    return pulumi.output(args).apply(a => getPerfSampleSeries(a, opts))
+}
+
+export interface GetPerfSampleSeriesOutputArgs {
+    executionId: pulumi.Input<string>;
+    historyId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    sampleSeriesId: pulumi.Input<string>;
+    stepId: pulumi.Input<string>;
+}

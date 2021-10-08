@@ -1388,7 +1388,7 @@ func (o DatabaseFlagsResponseArrayOutput) Index(i pulumi.IntInput) DatabaseFlags
 type DenyMaintenancePeriod struct {
 	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
 	EndDate *string `pulumi:"endDate"`
-	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
 	StartDate *string `pulumi:"startDate"`
 	// Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
 	Time *string `pulumi:"time"`
@@ -1409,7 +1409,7 @@ type DenyMaintenancePeriodInput interface {
 type DenyMaintenancePeriodArgs struct {
 	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
 	EndDate pulumi.StringPtrInput `pulumi:"endDate"`
-	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
 	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
 	// Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
 	Time pulumi.StringPtrInput `pulumi:"time"`
@@ -1472,7 +1472,7 @@ func (o DenyMaintenancePeriodOutput) EndDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DenyMaintenancePeriod) *string { return v.EndDate }).(pulumi.StringPtrOutput)
 }
 
-// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
 func (o DenyMaintenancePeriodOutput) StartDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DenyMaintenancePeriod) *string { return v.StartDate }).(pulumi.StringPtrOutput)
 }
@@ -1506,7 +1506,7 @@ func (o DenyMaintenancePeriodArrayOutput) Index(i pulumi.IntInput) DenyMaintenan
 type DenyMaintenancePeriodResponse struct {
 	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
 	EndDate string `pulumi:"endDate"`
-	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
 	StartDate string `pulumi:"startDate"`
 	// Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
 	Time string `pulumi:"time"`
@@ -1527,7 +1527,7 @@ type DenyMaintenancePeriodResponseInput interface {
 type DenyMaintenancePeriodResponseArgs struct {
 	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
 	EndDate pulumi.StringInput `pulumi:"endDate"`
-	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
 	StartDate pulumi.StringInput `pulumi:"startDate"`
 	// Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
 	Time pulumi.StringInput `pulumi:"time"`
@@ -1590,7 +1590,7 @@ func (o DenyMaintenancePeriodResponseOutput) EndDate() pulumi.StringOutput {
 	return o.ApplyT(func(v DenyMaintenancePeriodResponse) string { return v.EndDate }).(pulumi.StringOutput)
 }
 
-// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
 func (o DenyMaintenancePeriodResponseOutput) StartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v DenyMaintenancePeriodResponse) string { return v.StartDate }).(pulumi.StringOutput)
 }
@@ -4432,7 +4432,7 @@ type MaintenanceWindow struct {
 	Hour *int `pulumi:"hour"`
 	// This is always **sql#maintenanceWindow**.
 	Kind *string `pulumi:"kind"`
-	// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+	// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 	UpdateTrack *MaintenanceWindowUpdateTrack `pulumi:"updateTrack"`
 }
 
@@ -4455,7 +4455,7 @@ type MaintenanceWindowArgs struct {
 	Hour pulumi.IntPtrInput `pulumi:"hour"`
 	// This is always **sql#maintenanceWindow**.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+	// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 	UpdateTrack MaintenanceWindowUpdateTrackPtrInput `pulumi:"updateTrack"`
 }
 
@@ -4552,7 +4552,7 @@ func (o MaintenanceWindowOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindow) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 func (o MaintenanceWindowOutput) UpdateTrack() MaintenanceWindowUpdateTrackPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindow) *MaintenanceWindowUpdateTrack { return v.UpdateTrack }).(MaintenanceWindowUpdateTrackPtrOutput)
 }
@@ -4611,7 +4611,7 @@ func (o MaintenanceWindowPtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 func (o MaintenanceWindowPtrOutput) UpdateTrack() MaintenanceWindowUpdateTrackPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindow) *MaintenanceWindowUpdateTrack {
 		if v == nil {
@@ -4629,7 +4629,7 @@ type MaintenanceWindowResponse struct {
 	Hour int `pulumi:"hour"`
 	// This is always **sql#maintenanceWindow**.
 	Kind string `pulumi:"kind"`
-	// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+	// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 	UpdateTrack string `pulumi:"updateTrack"`
 }
 
@@ -4652,7 +4652,7 @@ type MaintenanceWindowResponseArgs struct {
 	Hour pulumi.IntInput `pulumi:"hour"`
 	// This is always **sql#maintenanceWindow**.
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+	// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 	UpdateTrack pulumi.StringInput `pulumi:"updateTrack"`
 }
 
@@ -4749,7 +4749,7 @@ func (o MaintenanceWindowResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 func (o MaintenanceWindowResponseOutput) UpdateTrack() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.UpdateTrack }).(pulumi.StringOutput)
 }
@@ -4808,7 +4808,7 @@ func (o MaintenanceWindowResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 func (o MaintenanceWindowResponsePtrOutput) UpdateTrack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
 		if v == nil {
@@ -5490,7 +5490,7 @@ type OnPremisesConfiguration struct {
 	DumpFilePath *string `pulumi:"dumpFilePath"`
 	// The host and port of the on-premises instance in host:port format
 	HostPort *string `pulumi:"hostPort"`
-	// This is always *sql#onPremisesConfiguration*.
+	// This is always **sql#onPremisesConfiguration**.
 	Kind *string `pulumi:"kind"`
 	// The password for connecting to on-premises instance.
 	Password *string `pulumi:"password"`
@@ -5523,7 +5523,7 @@ type OnPremisesConfigurationArgs struct {
 	DumpFilePath pulumi.StringPtrInput `pulumi:"dumpFilePath"`
 	// The host and port of the on-premises instance in host:port format
 	HostPort pulumi.StringPtrInput `pulumi:"hostPort"`
-	// This is always *sql#onPremisesConfiguration*.
+	// This is always **sql#onPremisesConfiguration**.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The password for connecting to on-premises instance.
 	Password pulumi.StringPtrInput `pulumi:"password"`
@@ -5636,7 +5636,7 @@ func (o OnPremisesConfigurationOutput) HostPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OnPremisesConfiguration) *string { return v.HostPort }).(pulumi.StringPtrOutput)
 }
 
-// This is always *sql#onPremisesConfiguration*.
+// This is always **sql#onPremisesConfiguration**.
 func (o OnPremisesConfigurationOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OnPremisesConfiguration) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -5730,7 +5730,7 @@ func (o OnPremisesConfigurationPtrOutput) HostPort() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is always *sql#onPremisesConfiguration*.
+// This is always **sql#onPremisesConfiguration**.
 func (o OnPremisesConfigurationPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OnPremisesConfiguration) *string {
 		if v == nil {
@@ -5782,7 +5782,7 @@ type OnPremisesConfigurationResponse struct {
 	DumpFilePath string `pulumi:"dumpFilePath"`
 	// The host and port of the on-premises instance in host:port format
 	HostPort string `pulumi:"hostPort"`
-	// This is always *sql#onPremisesConfiguration*.
+	// This is always **sql#onPremisesConfiguration**.
 	Kind string `pulumi:"kind"`
 	// The password for connecting to on-premises instance.
 	Password string `pulumi:"password"`
@@ -5815,7 +5815,7 @@ type OnPremisesConfigurationResponseArgs struct {
 	DumpFilePath pulumi.StringInput `pulumi:"dumpFilePath"`
 	// The host and port of the on-premises instance in host:port format
 	HostPort pulumi.StringInput `pulumi:"hostPort"`
-	// This is always *sql#onPremisesConfiguration*.
+	// This is always **sql#onPremisesConfiguration**.
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// The password for connecting to on-premises instance.
 	Password pulumi.StringInput `pulumi:"password"`
@@ -5928,7 +5928,7 @@ func (o OnPremisesConfigurationResponseOutput) HostPort() pulumi.StringOutput {
 	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.HostPort }).(pulumi.StringOutput)
 }
 
-// This is always *sql#onPremisesConfiguration*.
+// This is always **sql#onPremisesConfiguration**.
 func (o OnPremisesConfigurationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -6022,7 +6022,7 @@ func (o OnPremisesConfigurationResponsePtrOutput) HostPort() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is always *sql#onPremisesConfiguration*.
+// This is always **sql#onPremisesConfiguration**.
 func (o OnPremisesConfigurationResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OnPremisesConfigurationResponse) *string {
 		if v == nil {
@@ -6420,11 +6420,11 @@ func (o OperationErrorResponsePtrOutput) Message() pulumi.StringPtrOutput {
 
 // Read-replica configuration for connecting to the primary instance.
 type ReplicaConfiguration struct {
-	// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+	// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 	FailoverTarget *bool `pulumi:"failoverTarget"`
-	// This is always *sql#replicaConfiguration*.
+	// This is always **sql#replicaConfiguration**.
 	Kind *string `pulumi:"kind"`
-	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata.The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
 	MysqlReplicaConfiguration *MySqlReplicaConfiguration `pulumi:"mysqlReplicaConfiguration"`
 }
 
@@ -6441,11 +6441,11 @@ type ReplicaConfigurationInput interface {
 
 // Read-replica configuration for connecting to the primary instance.
 type ReplicaConfigurationArgs struct {
-	// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+	// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 	FailoverTarget pulumi.BoolPtrInput `pulumi:"failoverTarget"`
-	// This is always *sql#replicaConfiguration*.
+	// This is always **sql#replicaConfiguration**.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata.The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
 	MysqlReplicaConfiguration MySqlReplicaConfigurationPtrInput `pulumi:"mysqlReplicaConfiguration"`
 }
 
@@ -6527,17 +6527,17 @@ func (o ReplicaConfigurationOutput) ToReplicaConfigurationPtrOutputWithContext(c
 	}).(ReplicaConfigurationPtrOutput)
 }
 
-// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 func (o ReplicaConfigurationOutput) FailoverTarget() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReplicaConfiguration) *bool { return v.FailoverTarget }).(pulumi.BoolPtrOutput)
 }
 
-// This is always *sql#replicaConfiguration*.
+// This is always **sql#replicaConfiguration**.
 func (o ReplicaConfigurationOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicaConfiguration) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata.The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
 func (o ReplicaConfigurationOutput) MysqlReplicaConfiguration() MySqlReplicaConfigurationPtrOutput {
 	return o.ApplyT(func(v ReplicaConfiguration) *MySqlReplicaConfiguration { return v.MysqlReplicaConfiguration }).(MySqlReplicaConfigurationPtrOutput)
 }
@@ -6566,7 +6566,7 @@ func (o ReplicaConfigurationPtrOutput) Elem() ReplicaConfigurationOutput {
 	}).(ReplicaConfigurationOutput)
 }
 
-// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 func (o ReplicaConfigurationPtrOutput) FailoverTarget() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReplicaConfiguration) *bool {
 		if v == nil {
@@ -6576,7 +6576,7 @@ func (o ReplicaConfigurationPtrOutput) FailoverTarget() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This is always *sql#replicaConfiguration*.
+// This is always **sql#replicaConfiguration**.
 func (o ReplicaConfigurationPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicaConfiguration) *string {
 		if v == nil {
@@ -6586,7 +6586,7 @@ func (o ReplicaConfigurationPtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata.The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
 func (o ReplicaConfigurationPtrOutput) MysqlReplicaConfiguration() MySqlReplicaConfigurationPtrOutput {
 	return o.ApplyT(func(v *ReplicaConfiguration) *MySqlReplicaConfiguration {
 		if v == nil {
@@ -6598,11 +6598,11 @@ func (o ReplicaConfigurationPtrOutput) MysqlReplicaConfiguration() MySqlReplicaC
 
 // Read-replica configuration for connecting to the primary instance.
 type ReplicaConfigurationResponse struct {
-	// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+	// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 	FailoverTarget bool `pulumi:"failoverTarget"`
-	// This is always *sql#replicaConfiguration*.
+	// This is always **sql#replicaConfiguration**.
 	Kind string `pulumi:"kind"`
-	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata.The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
 	MysqlReplicaConfiguration MySqlReplicaConfigurationResponse `pulumi:"mysqlReplicaConfiguration"`
 }
 
@@ -6619,11 +6619,11 @@ type ReplicaConfigurationResponseInput interface {
 
 // Read-replica configuration for connecting to the primary instance.
 type ReplicaConfigurationResponseArgs struct {
-	// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+	// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 	FailoverTarget pulumi.BoolInput `pulumi:"failoverTarget"`
-	// This is always *sql#replicaConfiguration*.
+	// This is always **sql#replicaConfiguration**.
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata.The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
 	MysqlReplicaConfiguration MySqlReplicaConfigurationResponseInput `pulumi:"mysqlReplicaConfiguration"`
 }
 
@@ -6705,17 +6705,17 @@ func (o ReplicaConfigurationResponseOutput) ToReplicaConfigurationResponsePtrOut
 	}).(ReplicaConfigurationResponsePtrOutput)
 }
 
-// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 func (o ReplicaConfigurationResponseOutput) FailoverTarget() pulumi.BoolOutput {
 	return o.ApplyT(func(v ReplicaConfigurationResponse) bool { return v.FailoverTarget }).(pulumi.BoolOutput)
 }
 
-// This is always *sql#replicaConfiguration*.
+// This is always **sql#replicaConfiguration**.
 func (o ReplicaConfigurationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicaConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata.The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
 func (o ReplicaConfigurationResponseOutput) MysqlReplicaConfiguration() MySqlReplicaConfigurationResponseOutput {
 	return o.ApplyT(func(v ReplicaConfigurationResponse) MySqlReplicaConfigurationResponse {
 		return v.MysqlReplicaConfiguration
@@ -6746,7 +6746,7 @@ func (o ReplicaConfigurationResponsePtrOutput) Elem() ReplicaConfigurationRespon
 	}).(ReplicaConfigurationResponseOutput)
 }
 
-// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
 func (o ReplicaConfigurationResponsePtrOutput) FailoverTarget() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReplicaConfigurationResponse) *bool {
 		if v == nil {
@@ -6756,7 +6756,7 @@ func (o ReplicaConfigurationResponsePtrOutput) FailoverTarget() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This is always *sql#replicaConfiguration*.
+// This is always **sql#replicaConfiguration**.
 func (o ReplicaConfigurationResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicaConfigurationResponse) *string {
 		if v == nil {
@@ -6766,7 +6766,7 @@ func (o ReplicaConfigurationResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata.The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
 func (o ReplicaConfigurationResponsePtrOutput) MysqlReplicaConfiguration() MySqlReplicaConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *ReplicaConfigurationResponse) *MySqlReplicaConfigurationResponse {
 		if v == nil {
@@ -6778,11 +6778,11 @@ func (o ReplicaConfigurationResponsePtrOutput) MysqlReplicaConfiguration() MySql
 
 // Database instance settings.
 type Settings struct {
-	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
 	ActivationPolicy *SettingsActivationPolicy `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig *SqlActiveDirectoryConfig `pulumi:"activeDirectoryConfig"`
-	// Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+	// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 	AvailabilityType *SettingsAvailabilityType `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
 	BackupConfiguration *BackupConfiguration `pulumi:"backupConfiguration"`
@@ -6792,7 +6792,7 @@ type Settings struct {
 	CrashSafeReplicationEnabled *bool `pulumi:"crashSafeReplicationEnabled"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb *string `pulumi:"dataDiskSizeGb"`
-	// The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+	// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
 	DataDiskType *SettingsDataDiskType `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags []DatabaseFlags `pulumi:"databaseFlags"`
@@ -6806,7 +6806,7 @@ type Settings struct {
 	IpConfiguration *IpConfiguration `pulumi:"ipConfiguration"`
 	// This is always **sql#settings**.
 	Kind *string `pulumi:"kind"`
-	// The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+	// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
 	LocationPreference *LocationPreference `pulumi:"locationPreference"`
 	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
@@ -6814,6 +6814,8 @@ type Settings struct {
 	PricingPlan *SettingsPricingPlan `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion *string `pulumi:"settingsVersion"`
+	// SQL Server specific audit configuration.
+	SqlServerAuditConfig *SqlServerAuditConfig `pulumi:"sqlServerAuditConfig"`
 	// Configuration to increase storage size automatically. The default value is true.
 	StorageAutoResize *bool `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -6837,11 +6839,11 @@ type SettingsInput interface {
 
 // Database instance settings.
 type SettingsArgs struct {
-	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
 	ActivationPolicy SettingsActivationPolicyPtrInput `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig SqlActiveDirectoryConfigPtrInput `pulumi:"activeDirectoryConfig"`
-	// Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+	// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 	AvailabilityType SettingsAvailabilityTypePtrInput `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
 	BackupConfiguration BackupConfigurationPtrInput `pulumi:"backupConfiguration"`
@@ -6851,7 +6853,7 @@ type SettingsArgs struct {
 	CrashSafeReplicationEnabled pulumi.BoolPtrInput `pulumi:"crashSafeReplicationEnabled"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb pulumi.StringPtrInput `pulumi:"dataDiskSizeGb"`
-	// The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+	// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
 	DataDiskType SettingsDataDiskTypePtrInput `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags DatabaseFlagsArrayInput `pulumi:"databaseFlags"`
@@ -6865,7 +6867,7 @@ type SettingsArgs struct {
 	IpConfiguration IpConfigurationPtrInput `pulumi:"ipConfiguration"`
 	// This is always **sql#settings**.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+	// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
 	LocationPreference LocationPreferencePtrInput `pulumi:"locationPreference"`
 	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 	MaintenanceWindow MaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
@@ -6873,6 +6875,8 @@ type SettingsArgs struct {
 	PricingPlan SettingsPricingPlanPtrInput `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion pulumi.StringPtrInput `pulumi:"settingsVersion"`
+	// SQL Server specific audit configuration.
+	SqlServerAuditConfig SqlServerAuditConfigPtrInput `pulumi:"sqlServerAuditConfig"`
 	// Configuration to increase storage size automatically. The default value is true.
 	StorageAutoResize pulumi.BoolPtrInput `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -6961,7 +6965,7 @@ func (o SettingsOutput) ToSettingsPtrOutputWithContext(ctx context.Context) Sett
 	}).(SettingsPtrOutput)
 }
 
-// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
 func (o SettingsOutput) ActivationPolicy() SettingsActivationPolicyPtrOutput {
 	return o.ApplyT(func(v Settings) *SettingsActivationPolicy { return v.ActivationPolicy }).(SettingsActivationPolicyPtrOutput)
 }
@@ -6971,7 +6975,7 @@ func (o SettingsOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigPtrOutpu
 	return o.ApplyT(func(v Settings) *SqlActiveDirectoryConfig { return v.ActiveDirectoryConfig }).(SqlActiveDirectoryConfigPtrOutput)
 }
 
-// Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 func (o SettingsOutput) AvailabilityType() SettingsAvailabilityTypePtrOutput {
 	return o.ApplyT(func(v Settings) *SettingsAvailabilityType { return v.AvailabilityType }).(SettingsAvailabilityTypePtrOutput)
 }
@@ -6996,7 +7000,7 @@ func (o SettingsOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.DataDiskSizeGb }).(pulumi.StringPtrOutput)
 }
 
-// The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
 func (o SettingsOutput) DataDiskType() SettingsDataDiskTypePtrOutput {
 	return o.ApplyT(func(v Settings) *SettingsDataDiskType { return v.DataDiskType }).(SettingsDataDiskTypePtrOutput)
 }
@@ -7031,7 +7035,7 @@ func (o SettingsOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
 func (o SettingsOutput) LocationPreference() LocationPreferencePtrOutput {
 	return o.ApplyT(func(v Settings) *LocationPreference { return v.LocationPreference }).(LocationPreferencePtrOutput)
 }
@@ -7049,6 +7053,11 @@ func (o SettingsOutput) PricingPlan() SettingsPricingPlanPtrOutput {
 // The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 func (o SettingsOutput) SettingsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.SettingsVersion }).(pulumi.StringPtrOutput)
+}
+
+// SQL Server specific audit configuration.
+func (o SettingsOutput) SqlServerAuditConfig() SqlServerAuditConfigPtrOutput {
+	return o.ApplyT(func(v Settings) *SqlServerAuditConfig { return v.SqlServerAuditConfig }).(SqlServerAuditConfigPtrOutput)
 }
 
 // Configuration to increase storage size automatically. The default value is true.
@@ -7095,7 +7104,7 @@ func (o SettingsPtrOutput) Elem() SettingsOutput {
 	}).(SettingsOutput)
 }
 
-// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
 func (o SettingsPtrOutput) ActivationPolicy() SettingsActivationPolicyPtrOutput {
 	return o.ApplyT(func(v *Settings) *SettingsActivationPolicy {
 		if v == nil {
@@ -7115,7 +7124,7 @@ func (o SettingsPtrOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigPtrOu
 	}).(SqlActiveDirectoryConfigPtrOutput)
 }
 
-// Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 func (o SettingsPtrOutput) AvailabilityType() SettingsAvailabilityTypePtrOutput {
 	return o.ApplyT(func(v *Settings) *SettingsAvailabilityType {
 		if v == nil {
@@ -7165,7 +7174,7 @@ func (o SettingsPtrOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
 func (o SettingsPtrOutput) DataDiskType() SettingsDataDiskTypePtrOutput {
 	return o.ApplyT(func(v *Settings) *SettingsDataDiskType {
 		if v == nil {
@@ -7235,7 +7244,7 @@ func (o SettingsPtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
 func (o SettingsPtrOutput) LocationPreference() LocationPreferencePtrOutput {
 	return o.ApplyT(func(v *Settings) *LocationPreference {
 		if v == nil {
@@ -7273,6 +7282,16 @@ func (o SettingsPtrOutput) SettingsVersion() pulumi.StringPtrOutput {
 		}
 		return v.SettingsVersion
 	}).(pulumi.StringPtrOutput)
+}
+
+// SQL Server specific audit configuration.
+func (o SettingsPtrOutput) SqlServerAuditConfig() SqlServerAuditConfigPtrOutput {
+	return o.ApplyT(func(v *Settings) *SqlServerAuditConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServerAuditConfig
+	}).(SqlServerAuditConfigPtrOutput)
 }
 
 // Configuration to increase storage size automatically. The default value is true.
@@ -7317,11 +7336,11 @@ func (o SettingsPtrOutput) UserLabels() pulumi.StringMapOutput {
 
 // Database instance settings.
 type SettingsResponse struct {
-	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
 	ActivationPolicy string `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig SqlActiveDirectoryConfigResponse `pulumi:"activeDirectoryConfig"`
-	// Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+	// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 	AvailabilityType string `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
 	BackupConfiguration BackupConfigurationResponse `pulumi:"backupConfiguration"`
@@ -7331,7 +7350,7 @@ type SettingsResponse struct {
 	CrashSafeReplicationEnabled bool `pulumi:"crashSafeReplicationEnabled"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb string `pulumi:"dataDiskSizeGb"`
-	// The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+	// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
 	DataDiskType string `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags []DatabaseFlagsResponse `pulumi:"databaseFlags"`
@@ -7345,7 +7364,7 @@ type SettingsResponse struct {
 	IpConfiguration IpConfigurationResponse `pulumi:"ipConfiguration"`
 	// This is always **sql#settings**.
 	Kind string `pulumi:"kind"`
-	// The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+	// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
 	LocationPreference LocationPreferenceResponse `pulumi:"locationPreference"`
 	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
@@ -7353,6 +7372,8 @@ type SettingsResponse struct {
 	PricingPlan string `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion string `pulumi:"settingsVersion"`
+	// SQL Server specific audit configuration.
+	SqlServerAuditConfig SqlServerAuditConfigResponse `pulumi:"sqlServerAuditConfig"`
 	// Configuration to increase storage size automatically. The default value is true.
 	StorageAutoResize bool `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -7376,11 +7397,11 @@ type SettingsResponseInput interface {
 
 // Database instance settings.
 type SettingsResponseArgs struct {
-	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
 	ActivationPolicy pulumi.StringInput `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig SqlActiveDirectoryConfigResponseInput `pulumi:"activeDirectoryConfig"`
-	// Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+	// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 	AvailabilityType pulumi.StringInput `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
 	BackupConfiguration BackupConfigurationResponseInput `pulumi:"backupConfiguration"`
@@ -7390,7 +7411,7 @@ type SettingsResponseArgs struct {
 	CrashSafeReplicationEnabled pulumi.BoolInput `pulumi:"crashSafeReplicationEnabled"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb pulumi.StringInput `pulumi:"dataDiskSizeGb"`
-	// The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+	// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
 	DataDiskType pulumi.StringInput `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags DatabaseFlagsResponseArrayInput `pulumi:"databaseFlags"`
@@ -7404,7 +7425,7 @@ type SettingsResponseArgs struct {
 	IpConfiguration IpConfigurationResponseInput `pulumi:"ipConfiguration"`
 	// This is always **sql#settings**.
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+	// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
 	LocationPreference LocationPreferenceResponseInput `pulumi:"locationPreference"`
 	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 	MaintenanceWindow MaintenanceWindowResponseInput `pulumi:"maintenanceWindow"`
@@ -7412,6 +7433,8 @@ type SettingsResponseArgs struct {
 	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion pulumi.StringInput `pulumi:"settingsVersion"`
+	// SQL Server specific audit configuration.
+	SqlServerAuditConfig SqlServerAuditConfigResponseInput `pulumi:"sqlServerAuditConfig"`
 	// Configuration to increase storage size automatically. The default value is true.
 	StorageAutoResize pulumi.BoolInput `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -7500,7 +7523,7 @@ func (o SettingsResponseOutput) ToSettingsResponsePtrOutputWithContext(ctx conte
 	}).(SettingsResponsePtrOutput)
 }
 
-// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
 func (o SettingsResponseOutput) ActivationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.ActivationPolicy }).(pulumi.StringOutput)
 }
@@ -7510,7 +7533,7 @@ func (o SettingsResponseOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfig
 	return o.ApplyT(func(v SettingsResponse) SqlActiveDirectoryConfigResponse { return v.ActiveDirectoryConfig }).(SqlActiveDirectoryConfigResponseOutput)
 }
 
-// Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 func (o SettingsResponseOutput) AvailabilityType() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.AvailabilityType }).(pulumi.StringOutput)
 }
@@ -7535,7 +7558,7 @@ func (o SettingsResponseOutput) DataDiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.DataDiskSizeGb }).(pulumi.StringOutput)
 }
 
-// The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
 func (o SettingsResponseOutput) DataDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.DataDiskType }).(pulumi.StringOutput)
 }
@@ -7570,7 +7593,7 @@ func (o SettingsResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
 func (o SettingsResponseOutput) LocationPreference() LocationPreferenceResponseOutput {
 	return o.ApplyT(func(v SettingsResponse) LocationPreferenceResponse { return v.LocationPreference }).(LocationPreferenceResponseOutput)
 }
@@ -7588,6 +7611,11 @@ func (o SettingsResponseOutput) PricingPlan() pulumi.StringOutput {
 // The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 func (o SettingsResponseOutput) SettingsVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.SettingsVersion }).(pulumi.StringOutput)
+}
+
+// SQL Server specific audit configuration.
+func (o SettingsResponseOutput) SqlServerAuditConfig() SqlServerAuditConfigResponseOutput {
+	return o.ApplyT(func(v SettingsResponse) SqlServerAuditConfigResponse { return v.SqlServerAuditConfig }).(SqlServerAuditConfigResponseOutput)
 }
 
 // Configuration to increase storage size automatically. The default value is true.
@@ -7634,7 +7662,7 @@ func (o SettingsResponsePtrOutput) Elem() SettingsResponseOutput {
 	}).(SettingsResponseOutput)
 }
 
-// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
 func (o SettingsResponsePtrOutput) ActivationPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingsResponse) *string {
 		if v == nil {
@@ -7654,7 +7682,7 @@ func (o SettingsResponsePtrOutput) ActiveDirectoryConfig() SqlActiveDirectoryCon
 	}).(SqlActiveDirectoryConfigResponsePtrOutput)
 }
 
-// Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 func (o SettingsResponsePtrOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingsResponse) *string {
 		if v == nil {
@@ -7704,7 +7732,7 @@ func (o SettingsResponsePtrOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
 func (o SettingsResponsePtrOutput) DataDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingsResponse) *string {
 		if v == nil {
@@ -7774,7 +7802,7 @@ func (o SettingsResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
 func (o SettingsResponsePtrOutput) LocationPreference() LocationPreferenceResponsePtrOutput {
 	return o.ApplyT(func(v *SettingsResponse) *LocationPreferenceResponse {
 		if v == nil {
@@ -7812,6 +7840,16 @@ func (o SettingsResponsePtrOutput) SettingsVersion() pulumi.StringPtrOutput {
 		}
 		return &v.SettingsVersion
 	}).(pulumi.StringPtrOutput)
+}
+
+// SQL Server specific audit configuration.
+func (o SettingsResponsePtrOutput) SqlServerAuditConfig() SqlServerAuditConfigResponsePtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *SqlServerAuditConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SqlServerAuditConfig
+	}).(SqlServerAuditConfigResponsePtrOutput)
 }
 
 // Configuration to increase storage size automatically. The default value is true.
@@ -8174,9 +8212,9 @@ func (o SqlActiveDirectoryConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput
 
 // This message wraps up the information written by out-of-disk detection job.
 type SqlOutOfDiskReport struct {
-	// The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
+	// The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
 	SqlMinRecommendedIncreaseSizeGb *int `pulumi:"sqlMinRecommendedIncreaseSizeGb"`
-	// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+	// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
 	SqlOutOfDiskState *SqlOutOfDiskReportSqlOutOfDiskState `pulumi:"sqlOutOfDiskState"`
 }
 
@@ -8193,9 +8231,9 @@ type SqlOutOfDiskReportInput interface {
 
 // This message wraps up the information written by out-of-disk detection job.
 type SqlOutOfDiskReportArgs struct {
-	// The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
+	// The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
 	SqlMinRecommendedIncreaseSizeGb pulumi.IntPtrInput `pulumi:"sqlMinRecommendedIncreaseSizeGb"`
-	// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+	// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
 	SqlOutOfDiskState SqlOutOfDiskReportSqlOutOfDiskStatePtrInput `pulumi:"sqlOutOfDiskState"`
 }
 
@@ -8277,12 +8315,12 @@ func (o SqlOutOfDiskReportOutput) ToSqlOutOfDiskReportPtrOutputWithContext(ctx c
 	}).(SqlOutOfDiskReportPtrOutput)
 }
 
-// The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
+// The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
 func (o SqlOutOfDiskReportOutput) SqlMinRecommendedIncreaseSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SqlOutOfDiskReport) *int { return v.SqlMinRecommendedIncreaseSizeGb }).(pulumi.IntPtrOutput)
 }
 
-// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
 func (o SqlOutOfDiskReportOutput) SqlOutOfDiskState() SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput {
 	return o.ApplyT(func(v SqlOutOfDiskReport) *SqlOutOfDiskReportSqlOutOfDiskState { return v.SqlOutOfDiskState }).(SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput)
 }
@@ -8311,7 +8349,7 @@ func (o SqlOutOfDiskReportPtrOutput) Elem() SqlOutOfDiskReportOutput {
 	}).(SqlOutOfDiskReportOutput)
 }
 
-// The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
+// The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
 func (o SqlOutOfDiskReportPtrOutput) SqlMinRecommendedIncreaseSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SqlOutOfDiskReport) *int {
 		if v == nil {
@@ -8321,7 +8359,7 @@ func (o SqlOutOfDiskReportPtrOutput) SqlMinRecommendedIncreaseSizeGb() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
-// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
 func (o SqlOutOfDiskReportPtrOutput) SqlOutOfDiskState() SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput {
 	return o.ApplyT(func(v *SqlOutOfDiskReport) *SqlOutOfDiskReportSqlOutOfDiskState {
 		if v == nil {
@@ -8333,9 +8371,9 @@ func (o SqlOutOfDiskReportPtrOutput) SqlOutOfDiskState() SqlOutOfDiskReportSqlOu
 
 // This message wraps up the information written by out-of-disk detection job.
 type SqlOutOfDiskReportResponse struct {
-	// The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
+	// The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
 	SqlMinRecommendedIncreaseSizeGb int `pulumi:"sqlMinRecommendedIncreaseSizeGb"`
-	// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+	// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
 	SqlOutOfDiskState string `pulumi:"sqlOutOfDiskState"`
 }
 
@@ -8352,9 +8390,9 @@ type SqlOutOfDiskReportResponseInput interface {
 
 // This message wraps up the information written by out-of-disk detection job.
 type SqlOutOfDiskReportResponseArgs struct {
-	// The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
+	// The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
 	SqlMinRecommendedIncreaseSizeGb pulumi.IntInput `pulumi:"sqlMinRecommendedIncreaseSizeGb"`
-	// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+	// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
 	SqlOutOfDiskState pulumi.StringInput `pulumi:"sqlOutOfDiskState"`
 }
 
@@ -8436,12 +8474,12 @@ func (o SqlOutOfDiskReportResponseOutput) ToSqlOutOfDiskReportResponsePtrOutputW
 	}).(SqlOutOfDiskReportResponsePtrOutput)
 }
 
-// The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
+// The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
 func (o SqlOutOfDiskReportResponseOutput) SqlMinRecommendedIncreaseSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v SqlOutOfDiskReportResponse) int { return v.SqlMinRecommendedIncreaseSizeGb }).(pulumi.IntOutput)
 }
 
-// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
 func (o SqlOutOfDiskReportResponseOutput) SqlOutOfDiskState() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlOutOfDiskReportResponse) string { return v.SqlOutOfDiskState }).(pulumi.StringOutput)
 }
@@ -8470,7 +8508,7 @@ func (o SqlOutOfDiskReportResponsePtrOutput) Elem() SqlOutOfDiskReportResponseOu
 	}).(SqlOutOfDiskReportResponseOutput)
 }
 
-// The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
+// The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
 func (o SqlOutOfDiskReportResponsePtrOutput) SqlMinRecommendedIncreaseSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SqlOutOfDiskReportResponse) *int {
 		if v == nil {
@@ -8480,7 +8518,7 @@ func (o SqlOutOfDiskReportResponsePtrOutput) SqlMinRecommendedIncreaseSizeGb() p
 	}).(pulumi.IntPtrOutput)
 }
 
-// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
 func (o SqlOutOfDiskReportResponsePtrOutput) SqlOutOfDiskState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlOutOfDiskReportResponse) *string {
 		if v == nil {
@@ -8876,6 +8914,324 @@ func (o SqlScheduledMaintenanceResponsePtrOutput) StartTime() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// SQL Server specific audit configuration.
+type SqlServerAuditConfig struct {
+	// The name of the destination bucket (e.g., gs://mybucket).
+	Bucket *string `pulumi:"bucket"`
+	// This is always sql#sqlServerAuditConfig
+	Kind *string `pulumi:"kind"`
+}
+
+// SqlServerAuditConfigInput is an input type that accepts SqlServerAuditConfigArgs and SqlServerAuditConfigOutput values.
+// You can construct a concrete instance of `SqlServerAuditConfigInput` via:
+//
+//          SqlServerAuditConfigArgs{...}
+type SqlServerAuditConfigInput interface {
+	pulumi.Input
+
+	ToSqlServerAuditConfigOutput() SqlServerAuditConfigOutput
+	ToSqlServerAuditConfigOutputWithContext(context.Context) SqlServerAuditConfigOutput
+}
+
+// SQL Server specific audit configuration.
+type SqlServerAuditConfigArgs struct {
+	// The name of the destination bucket (e.g., gs://mybucket).
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+	// This is always sql#sqlServerAuditConfig
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (SqlServerAuditConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAuditConfig)(nil)).Elem()
+}
+
+func (i SqlServerAuditConfigArgs) ToSqlServerAuditConfigOutput() SqlServerAuditConfigOutput {
+	return i.ToSqlServerAuditConfigOutputWithContext(context.Background())
+}
+
+func (i SqlServerAuditConfigArgs) ToSqlServerAuditConfigOutputWithContext(ctx context.Context) SqlServerAuditConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAuditConfigOutput)
+}
+
+func (i SqlServerAuditConfigArgs) ToSqlServerAuditConfigPtrOutput() SqlServerAuditConfigPtrOutput {
+	return i.ToSqlServerAuditConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerAuditConfigArgs) ToSqlServerAuditConfigPtrOutputWithContext(ctx context.Context) SqlServerAuditConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAuditConfigOutput).ToSqlServerAuditConfigPtrOutputWithContext(ctx)
+}
+
+// SqlServerAuditConfigPtrInput is an input type that accepts SqlServerAuditConfigArgs, SqlServerAuditConfigPtr and SqlServerAuditConfigPtrOutput values.
+// You can construct a concrete instance of `SqlServerAuditConfigPtrInput` via:
+//
+//          SqlServerAuditConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type SqlServerAuditConfigPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerAuditConfigPtrOutput() SqlServerAuditConfigPtrOutput
+	ToSqlServerAuditConfigPtrOutputWithContext(context.Context) SqlServerAuditConfigPtrOutput
+}
+
+type sqlServerAuditConfigPtrType SqlServerAuditConfigArgs
+
+func SqlServerAuditConfigPtr(v *SqlServerAuditConfigArgs) SqlServerAuditConfigPtrInput {
+	return (*sqlServerAuditConfigPtrType)(v)
+}
+
+func (*sqlServerAuditConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerAuditConfig)(nil)).Elem()
+}
+
+func (i *sqlServerAuditConfigPtrType) ToSqlServerAuditConfigPtrOutput() SqlServerAuditConfigPtrOutput {
+	return i.ToSqlServerAuditConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerAuditConfigPtrType) ToSqlServerAuditConfigPtrOutputWithContext(ctx context.Context) SqlServerAuditConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAuditConfigPtrOutput)
+}
+
+// SQL Server specific audit configuration.
+type SqlServerAuditConfigOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAuditConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAuditConfig)(nil)).Elem()
+}
+
+func (o SqlServerAuditConfigOutput) ToSqlServerAuditConfigOutput() SqlServerAuditConfigOutput {
+	return o
+}
+
+func (o SqlServerAuditConfigOutput) ToSqlServerAuditConfigOutputWithContext(ctx context.Context) SqlServerAuditConfigOutput {
+	return o
+}
+
+func (o SqlServerAuditConfigOutput) ToSqlServerAuditConfigPtrOutput() SqlServerAuditConfigPtrOutput {
+	return o.ToSqlServerAuditConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerAuditConfigOutput) ToSqlServerAuditConfigPtrOutputWithContext(ctx context.Context) SqlServerAuditConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerAuditConfig) *SqlServerAuditConfig {
+		return &v
+	}).(SqlServerAuditConfigPtrOutput)
+}
+
+// The name of the destination bucket (e.g., gs://mybucket).
+func (o SqlServerAuditConfigOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerAuditConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// This is always sql#sqlServerAuditConfig
+func (o SqlServerAuditConfigOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerAuditConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type SqlServerAuditConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAuditConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerAuditConfig)(nil)).Elem()
+}
+
+func (o SqlServerAuditConfigPtrOutput) ToSqlServerAuditConfigPtrOutput() SqlServerAuditConfigPtrOutput {
+	return o
+}
+
+func (o SqlServerAuditConfigPtrOutput) ToSqlServerAuditConfigPtrOutputWithContext(ctx context.Context) SqlServerAuditConfigPtrOutput {
+	return o
+}
+
+func (o SqlServerAuditConfigPtrOutput) Elem() SqlServerAuditConfigOutput {
+	return o.ApplyT(func(v *SqlServerAuditConfig) SqlServerAuditConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerAuditConfig
+		return ret
+	}).(SqlServerAuditConfigOutput)
+}
+
+// The name of the destination bucket (e.g., gs://mybucket).
+func (o SqlServerAuditConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerAuditConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is always sql#sqlServerAuditConfig
+func (o SqlServerAuditConfigPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerAuditConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL Server specific audit configuration.
+type SqlServerAuditConfigResponse struct {
+	// The name of the destination bucket (e.g., gs://mybucket).
+	Bucket string `pulumi:"bucket"`
+	// This is always sql#sqlServerAuditConfig
+	Kind string `pulumi:"kind"`
+}
+
+// SqlServerAuditConfigResponseInput is an input type that accepts SqlServerAuditConfigResponseArgs and SqlServerAuditConfigResponseOutput values.
+// You can construct a concrete instance of `SqlServerAuditConfigResponseInput` via:
+//
+//          SqlServerAuditConfigResponseArgs{...}
+type SqlServerAuditConfigResponseInput interface {
+	pulumi.Input
+
+	ToSqlServerAuditConfigResponseOutput() SqlServerAuditConfigResponseOutput
+	ToSqlServerAuditConfigResponseOutputWithContext(context.Context) SqlServerAuditConfigResponseOutput
+}
+
+// SQL Server specific audit configuration.
+type SqlServerAuditConfigResponseArgs struct {
+	// The name of the destination bucket (e.g., gs://mybucket).
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// This is always sql#sqlServerAuditConfig
+	Kind pulumi.StringInput `pulumi:"kind"`
+}
+
+func (SqlServerAuditConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAuditConfigResponse)(nil)).Elem()
+}
+
+func (i SqlServerAuditConfigResponseArgs) ToSqlServerAuditConfigResponseOutput() SqlServerAuditConfigResponseOutput {
+	return i.ToSqlServerAuditConfigResponseOutputWithContext(context.Background())
+}
+
+func (i SqlServerAuditConfigResponseArgs) ToSqlServerAuditConfigResponseOutputWithContext(ctx context.Context) SqlServerAuditConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAuditConfigResponseOutput)
+}
+
+func (i SqlServerAuditConfigResponseArgs) ToSqlServerAuditConfigResponsePtrOutput() SqlServerAuditConfigResponsePtrOutput {
+	return i.ToSqlServerAuditConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerAuditConfigResponseArgs) ToSqlServerAuditConfigResponsePtrOutputWithContext(ctx context.Context) SqlServerAuditConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAuditConfigResponseOutput).ToSqlServerAuditConfigResponsePtrOutputWithContext(ctx)
+}
+
+// SqlServerAuditConfigResponsePtrInput is an input type that accepts SqlServerAuditConfigResponseArgs, SqlServerAuditConfigResponsePtr and SqlServerAuditConfigResponsePtrOutput values.
+// You can construct a concrete instance of `SqlServerAuditConfigResponsePtrInput` via:
+//
+//          SqlServerAuditConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SqlServerAuditConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToSqlServerAuditConfigResponsePtrOutput() SqlServerAuditConfigResponsePtrOutput
+	ToSqlServerAuditConfigResponsePtrOutputWithContext(context.Context) SqlServerAuditConfigResponsePtrOutput
+}
+
+type sqlServerAuditConfigResponsePtrType SqlServerAuditConfigResponseArgs
+
+func SqlServerAuditConfigResponsePtr(v *SqlServerAuditConfigResponseArgs) SqlServerAuditConfigResponsePtrInput {
+	return (*sqlServerAuditConfigResponsePtrType)(v)
+}
+
+func (*sqlServerAuditConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerAuditConfigResponse)(nil)).Elem()
+}
+
+func (i *sqlServerAuditConfigResponsePtrType) ToSqlServerAuditConfigResponsePtrOutput() SqlServerAuditConfigResponsePtrOutput {
+	return i.ToSqlServerAuditConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerAuditConfigResponsePtrType) ToSqlServerAuditConfigResponsePtrOutputWithContext(ctx context.Context) SqlServerAuditConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAuditConfigResponsePtrOutput)
+}
+
+// SQL Server specific audit configuration.
+type SqlServerAuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAuditConfigResponse)(nil)).Elem()
+}
+
+func (o SqlServerAuditConfigResponseOutput) ToSqlServerAuditConfigResponseOutput() SqlServerAuditConfigResponseOutput {
+	return o
+}
+
+func (o SqlServerAuditConfigResponseOutput) ToSqlServerAuditConfigResponseOutputWithContext(ctx context.Context) SqlServerAuditConfigResponseOutput {
+	return o
+}
+
+func (o SqlServerAuditConfigResponseOutput) ToSqlServerAuditConfigResponsePtrOutput() SqlServerAuditConfigResponsePtrOutput {
+	return o.ToSqlServerAuditConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerAuditConfigResponseOutput) ToSqlServerAuditConfigResponsePtrOutputWithContext(ctx context.Context) SqlServerAuditConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerAuditConfigResponse) *SqlServerAuditConfigResponse {
+		return &v
+	}).(SqlServerAuditConfigResponsePtrOutput)
+}
+
+// The name of the destination bucket (e.g., gs://mybucket).
+func (o SqlServerAuditConfigResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAuditConfigResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// This is always sql#sqlServerAuditConfig
+func (o SqlServerAuditConfigResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAuditConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type SqlServerAuditConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAuditConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerAuditConfigResponse)(nil)).Elem()
+}
+
+func (o SqlServerAuditConfigResponsePtrOutput) ToSqlServerAuditConfigResponsePtrOutput() SqlServerAuditConfigResponsePtrOutput {
+	return o
+}
+
+func (o SqlServerAuditConfigResponsePtrOutput) ToSqlServerAuditConfigResponsePtrOutputWithContext(ctx context.Context) SqlServerAuditConfigResponsePtrOutput {
+	return o
+}
+
+func (o SqlServerAuditConfigResponsePtrOutput) Elem() SqlServerAuditConfigResponseOutput {
+	return o.ApplyT(func(v *SqlServerAuditConfigResponse) SqlServerAuditConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerAuditConfigResponse
+		return ret
+	}).(SqlServerAuditConfigResponseOutput)
+}
+
+// The name of the destination bucket (e.g., gs://mybucket).
+func (o SqlServerAuditConfigResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerAuditConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is always sql#sqlServerAuditConfig
+func (o SqlServerAuditConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerAuditConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a Sql Server database on the Cloud SQL instance.
 type SqlServerDatabaseDetails struct {
 	// The version of SQL Server with which the database is to be made compatible
@@ -9208,7 +9564,7 @@ type SslCertType struct {
 	ExpirationTime *string `pulumi:"expirationTime"`
 	// Name of the database instance.
 	Instance *string `pulumi:"instance"`
-	// This is always sql#sslCert.
+	// This is always **sql#sslCert**.
 	Kind *string `pulumi:"kind"`
 	// The URI of this resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -9241,7 +9597,7 @@ type SslCertTypeArgs struct {
 	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
 	// Name of the database instance.
 	Instance pulumi.StringPtrInput `pulumi:"instance"`
-	// This is always sql#sslCert.
+	// This is always **sql#sslCert**.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The URI of this resource.
 	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
@@ -9357,7 +9713,7 @@ func (o SslCertTypeOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SslCertType) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
-// This is always sql#sslCert.
+// This is always **sql#sslCert**.
 func (o SslCertTypeOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SslCertType) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -9456,7 +9812,7 @@ func (o SslCertTypePtrOutput) Instance() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is always sql#sslCert.
+// This is always **sql#sslCert**.
 func (o SslCertTypePtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
@@ -9500,7 +9856,7 @@ type SslCertResponse struct {
 	ExpirationTime string `pulumi:"expirationTime"`
 	// Name of the database instance.
 	Instance string `pulumi:"instance"`
-	// This is always sql#sslCert.
+	// This is always **sql#sslCert**.
 	Kind string `pulumi:"kind"`
 	// The URI of this resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -9533,7 +9889,7 @@ type SslCertResponseArgs struct {
 	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
 	// Name of the database instance.
 	Instance pulumi.StringInput `pulumi:"instance"`
-	// This is always sql#sslCert.
+	// This is always **sql#sslCert**.
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// The URI of this resource.
 	SelfLink pulumi.StringInput `pulumi:"selfLink"`
@@ -9649,7 +10005,7 @@ func (o SslCertResponseOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v SslCertResponse) string { return v.Instance }).(pulumi.StringOutput)
 }
 
-// This is always sql#sslCert.
+// This is always **sql#sslCert**.
 func (o SslCertResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v SslCertResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -9748,7 +10104,7 @@ func (o SslCertResponsePtrOutput) Instance() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is always sql#sslCert.
+// This is always **sql#sslCert**.
 func (o SslCertResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SslCertResponse) *string {
 		if v == nil {
@@ -9779,6 +10135,106 @@ func (o SslCertResponsePtrOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryInput)(nil)).Elem(), AclEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryArrayInput)(nil)).Elem(), AclEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryResponseInput)(nil)).Elem(), AclEntryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryResponseArrayInput)(nil)).Elem(), AclEntryResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupConfigurationInput)(nil)).Elem(), BackupConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupConfigurationPtrInput)(nil)).Elem(), BackupConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupConfigurationResponseInput)(nil)).Elem(), BackupConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupConfigurationResponsePtrInput)(nil)).Elem(), BackupConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupRetentionSettingsInput)(nil)).Elem(), BackupRetentionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupRetentionSettingsPtrInput)(nil)).Elem(), BackupRetentionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupRetentionSettingsResponseInput)(nil)).Elem(), BackupRetentionSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupRetentionSettingsResponsePtrInput)(nil)).Elem(), BackupRetentionSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFlagsInput)(nil)).Elem(), DatabaseFlagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFlagsArrayInput)(nil)).Elem(), DatabaseFlagsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFlagsResponseInput)(nil)).Elem(), DatabaseFlagsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseFlagsResponseArrayInput)(nil)).Elem(), DatabaseFlagsResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyMaintenancePeriodInput)(nil)).Elem(), DenyMaintenancePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyMaintenancePeriodArrayInput)(nil)).Elem(), DenyMaintenancePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyMaintenancePeriodResponseInput)(nil)).Elem(), DenyMaintenancePeriodResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyMaintenancePeriodResponseArrayInput)(nil)).Elem(), DenyMaintenancePeriodResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskEncryptionConfigurationInput)(nil)).Elem(), DiskEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskEncryptionConfigurationPtrInput)(nil)).Elem(), DiskEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskEncryptionConfigurationResponseInput)(nil)).Elem(), DiskEncryptionConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskEncryptionConfigurationResponsePtrInput)(nil)).Elem(), DiskEncryptionConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskEncryptionStatusInput)(nil)).Elem(), DiskEncryptionStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskEncryptionStatusPtrInput)(nil)).Elem(), DiskEncryptionStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskEncryptionStatusResponseInput)(nil)).Elem(), DiskEncryptionStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskEncryptionStatusResponsePtrInput)(nil)).Elem(), DiskEncryptionStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigInput)(nil)).Elem(), InsightsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigPtrInput)(nil)).Elem(), InsightsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigResponseInput)(nil)).Elem(), InsightsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigResponsePtrInput)(nil)).Elem(), InsightsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFailoverReplicaInput)(nil)).Elem(), InstanceFailoverReplicaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFailoverReplicaPtrInput)(nil)).Elem(), InstanceFailoverReplicaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFailoverReplicaResponseInput)(nil)).Elem(), InstanceFailoverReplicaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFailoverReplicaResponsePtrInput)(nil)).Elem(), InstanceFailoverReplicaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReferenceInput)(nil)).Elem(), InstanceReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReferencePtrInput)(nil)).Elem(), InstanceReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReferenceResponseInput)(nil)).Elem(), InstanceReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReferenceResponsePtrInput)(nil)).Elem(), InstanceReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpConfigurationInput)(nil)).Elem(), IpConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpConfigurationPtrInput)(nil)).Elem(), IpConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpConfigurationResponseInput)(nil)).Elem(), IpConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpConfigurationResponsePtrInput)(nil)).Elem(), IpConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpMappingInput)(nil)).Elem(), IpMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpMappingArrayInput)(nil)).Elem(), IpMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpMappingResponseInput)(nil)).Elem(), IpMappingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpMappingResponseArrayInput)(nil)).Elem(), IpMappingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPreferenceInput)(nil)).Elem(), LocationPreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPreferencePtrInput)(nil)).Elem(), LocationPreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPreferenceResponseInput)(nil)).Elem(), LocationPreferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPreferenceResponsePtrInput)(nil)).Elem(), LocationPreferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponseInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponsePtrInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MySqlReplicaConfigurationInput)(nil)).Elem(), MySqlReplicaConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MySqlReplicaConfigurationPtrInput)(nil)).Elem(), MySqlReplicaConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MySqlReplicaConfigurationResponseInput)(nil)).Elem(), MySqlReplicaConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MySqlReplicaConfigurationResponsePtrInput)(nil)).Elem(), MySqlReplicaConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnPremisesConfigurationInput)(nil)).Elem(), OnPremisesConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnPremisesConfigurationPtrInput)(nil)).Elem(), OnPremisesConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnPremisesConfigurationResponseInput)(nil)).Elem(), OnPremisesConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnPremisesConfigurationResponsePtrInput)(nil)).Elem(), OnPremisesConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorInput)(nil)).Elem(), OperationErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorPtrInput)(nil)).Elem(), OperationErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorResponseInput)(nil)).Elem(), OperationErrorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorResponsePtrInput)(nil)).Elem(), OperationErrorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaConfigurationInput)(nil)).Elem(), ReplicaConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaConfigurationPtrInput)(nil)).Elem(), ReplicaConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaConfigurationResponseInput)(nil)).Elem(), ReplicaConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaConfigurationResponsePtrInput)(nil)).Elem(), ReplicaConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsInput)(nil)).Elem(), SettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsPtrInput)(nil)).Elem(), SettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsResponseInput)(nil)).Elem(), SettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsResponsePtrInput)(nil)).Elem(), SettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlActiveDirectoryConfigInput)(nil)).Elem(), SqlActiveDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlActiveDirectoryConfigPtrInput)(nil)).Elem(), SqlActiveDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlActiveDirectoryConfigResponseInput)(nil)).Elem(), SqlActiveDirectoryConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlActiveDirectoryConfigResponsePtrInput)(nil)).Elem(), SqlActiveDirectoryConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlOutOfDiskReportInput)(nil)).Elem(), SqlOutOfDiskReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlOutOfDiskReportPtrInput)(nil)).Elem(), SqlOutOfDiskReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlOutOfDiskReportResponseInput)(nil)).Elem(), SqlOutOfDiskReportResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlOutOfDiskReportResponsePtrInput)(nil)).Elem(), SqlOutOfDiskReportResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlScheduledMaintenanceInput)(nil)).Elem(), SqlScheduledMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlScheduledMaintenancePtrInput)(nil)).Elem(), SqlScheduledMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlScheduledMaintenanceResponseInput)(nil)).Elem(), SqlScheduledMaintenanceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlScheduledMaintenanceResponsePtrInput)(nil)).Elem(), SqlScheduledMaintenanceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerAuditConfigInput)(nil)).Elem(), SqlServerAuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerAuditConfigPtrInput)(nil)).Elem(), SqlServerAuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerAuditConfigResponseInput)(nil)).Elem(), SqlServerAuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerAuditConfigResponsePtrInput)(nil)).Elem(), SqlServerAuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerDatabaseDetailsInput)(nil)).Elem(), SqlServerDatabaseDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerDatabaseDetailsPtrInput)(nil)).Elem(), SqlServerDatabaseDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerDatabaseDetailsResponseInput)(nil)).Elem(), SqlServerDatabaseDetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerDatabaseDetailsResponsePtrInput)(nil)).Elem(), SqlServerDatabaseDetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertTypeInput)(nil)).Elem(), SslCertTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertTypePtrInput)(nil)).Elem(), SslCertTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertResponseInput)(nil)).Elem(), SslCertResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertResponsePtrInput)(nil)).Elem(), SslCertResponseArgs{})
 	pulumi.RegisterOutputType(AclEntryOutput{})
 	pulumi.RegisterOutputType(AclEntryArrayOutput{})
 	pulumi.RegisterOutputType(AclEntryResponseOutput{})
@@ -9867,6 +10323,10 @@ func init() {
 	pulumi.RegisterOutputType(SqlScheduledMaintenancePtrOutput{})
 	pulumi.RegisterOutputType(SqlScheduledMaintenanceResponseOutput{})
 	pulumi.RegisterOutputType(SqlScheduledMaintenanceResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlServerAuditConfigOutput{})
+	pulumi.RegisterOutputType(SqlServerAuditConfigPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerAuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerAuditConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseDetailsOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseDetailsPtrOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseDetailsResponseOutput{})

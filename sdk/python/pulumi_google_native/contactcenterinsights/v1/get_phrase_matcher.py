@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetPhraseMatcherResult:
-    def __init__(__self__, activation_update_time=None, active=None, display_name=None, name=None, phrase_match_rule_groups=None, revision_create_time=None, revision_id=None, role_match=None, type=None, version_tag=None):
+    def __init__(__self__, activation_update_time=None, active=None, display_name=None, name=None, phrase_match_rule_groups=None, revision_create_time=None, revision_id=None, role_match=None, type=None, update_time=None, version_tag=None):
         if activation_update_time and not isinstance(activation_update_time, str):
             raise TypeError("Expected argument 'activation_update_time' to be a str")
         pulumi.set(__self__, "activation_update_time", activation_update_time)
@@ -46,6 +46,9 @@ class GetPhraseMatcherResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
         if version_tag and not isinstance(version_tag, str):
             raise TypeError("Expected argument 'version_tag' to be a str")
         pulumi.set(__self__, "version_tag", version_tag)
@@ -123,6 +126,14 @@ class GetPhraseMatcherResult:
         return pulumi.get(self, "type")
 
     @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The most recent time at which the phrase matcher was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
     @pulumi.getter(name="versionTag")
     def version_tag(self) -> str:
         """
@@ -146,6 +157,7 @@ class AwaitableGetPhraseMatcherResult(GetPhraseMatcherResult):
             revision_id=self.revision_id,
             role_match=self.role_match,
             type=self.type,
+            update_time=self.update_time,
             version_tag=self.version_tag)
 
 
@@ -176,6 +188,7 @@ def get_phrase_matcher(location: Optional[str] = None,
         revision_id=__ret__.revision_id,
         role_match=__ret__.role_match,
         type=__ret__.type,
+        update_time=__ret__.update_time,
         version_tag=__ret__.version_tag)
 
 

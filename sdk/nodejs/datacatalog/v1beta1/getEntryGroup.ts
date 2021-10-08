@@ -49,3 +49,14 @@ export interface GetEntryGroupResult {
      */
     readonly name: string;
 }
+
+export function getEntryGroupOutput(args: GetEntryGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntryGroupResult> {
+    return pulumi.output(args).apply(a => getEntryGroup(a, opts))
+}
+
+export interface GetEntryGroupOutputArgs {
+    entryGroupId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    readMask?: pulumi.Input<string>;
+}

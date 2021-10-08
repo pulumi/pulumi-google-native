@@ -73,3 +73,12 @@ export interface GetPatchDeploymentResult {
      */
     readonly updateTime: string;
 }
+
+export function getPatchDeploymentOutput(args: GetPatchDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPatchDeploymentResult> {
+    return pulumi.output(args).apply(a => getPatchDeployment(a, opts))
+}
+
+export interface GetPatchDeploymentOutputArgs {
+    patchDeploymentId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

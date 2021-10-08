@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
     /// <summary>
-    /// Creates a Version in the specified Flow.
+    /// Creates a Version in the specified Flow. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: CreateVersionOperationMetadata - `response`: Version
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:Version")]
     public partial class Version : Pulumi.CustomResource

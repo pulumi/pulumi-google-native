@@ -36,7 +36,7 @@ export class AttributeDefinition extends pulumi.CustomResource {
     }
 
     /**
-     * Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+     * Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
      */
     public readonly allowedValues!: pulumi.Output<string[]>;
     /**
@@ -117,7 +117,7 @@ export class AttributeDefinition extends pulumi.CustomResource {
  */
 export interface AttributeDefinitionArgs {
     /**
-     * Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+     * Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
      */
     allowedValues: pulumi.Input<pulumi.Input<string>[]>;
     attributeDefinitionId: pulumi.Input<string>;

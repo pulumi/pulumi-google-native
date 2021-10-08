@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Domain{}
 	case "google-native:managedidentities/v1:DomainIamPolicy":
 		r = &DomainIamPolicy{}
+	case "google-native:managedidentities/v1:Peering":
+		r = &Peering{}
+	case "google-native:managedidentities/v1:PeeringIamPolicy":
+		r = &PeeringIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public readonly string Type;
         /// <summary>
+        /// The most recent time at which the phrase matcher was updated.
+        /// </summary>
+        public readonly string UpdateTime;
+        /// <summary>
         /// The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
         /// </summary>
         public readonly string VersionTag;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 
             string type,
 
+            string updateTime,
+
             string versionTag)
         {
             ActivationUpdateTime = activationUpdateTime;
@@ -111,6 +117,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
             RevisionId = revisionId;
             RoleMatch = roleMatch;
             Type = type;
+            UpdateTime = updateTime;
             VersionTag = versionTag;
         }
     }

@@ -63,3 +63,13 @@ export interface GetClusterResult {
      */
     readonly statusHistory: outputs.dataproc.v1beta2.ClusterStatusResponse[];
 }
+
+export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+export interface GetClusterOutputArgs {
+    clusterName: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

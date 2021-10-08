@@ -26,6 +26,8 @@ type TargetInstance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
 	NatPolicy pulumi.StringOutput `pulumi:"natPolicy"`
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+	Network pulumi.StringOutput `pulumi:"network"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -79,9 +81,11 @@ type targetInstanceArgs struct {
 	Name *string `pulumi:"name"`
 	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
 	NatPolicy *TargetInstanceNatPolicy `pulumi:"natPolicy"`
-	Project   *string                  `pulumi:"project"`
-	RequestId *string                  `pulumi:"requestId"`
-	Zone      *string                  `pulumi:"zone"`
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+	Network   *string `pulumi:"network"`
+	Project   *string `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
+	Zone      *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a TargetInstance resource.
@@ -94,6 +98,8 @@ type TargetInstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
 	NatPolicy TargetInstanceNatPolicyPtrInput
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+	Network   pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	Zone      pulumi.StringPtrInput

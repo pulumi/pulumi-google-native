@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         public Output<string> Model { get; private set; } = null!;
 
         /// <summary>
-        /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
+        /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}`, where device is the unique id assigned to the Device.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

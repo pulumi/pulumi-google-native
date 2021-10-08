@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
-        /// An optional string description of this rule. This field has a maximum length of 100 characters.
+        /// An optional string description of this rule. This field has a maximum length of 400 characters.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Input<string> AppId { get; set; } = null!;
 
         /// <summary>
-        /// An optional string description of this rule. This field has a maximum length of 100 characters.
+        /// An optional string description of this rule. This field has a maximum length of 400 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

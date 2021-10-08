@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs. 
+        /// Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

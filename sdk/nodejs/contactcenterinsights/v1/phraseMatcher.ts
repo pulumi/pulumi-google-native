@@ -72,6 +72,10 @@ export class PhraseMatcher extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
+     * The most recent time at which the phrase matcher was updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
      * The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
      */
     public readonly versionTag!: pulumi.Output<string>;
@@ -102,6 +106,7 @@ export class PhraseMatcher extends pulumi.CustomResource {
             inputs["activationUpdateTime"] = undefined /*out*/;
             inputs["revisionCreateTime"] = undefined /*out*/;
             inputs["revisionId"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["activationUpdateTime"] = undefined /*out*/;
             inputs["active"] = undefined /*out*/;
@@ -112,6 +117,7 @@ export class PhraseMatcher extends pulumi.CustomResource {
             inputs["revisionId"] = undefined /*out*/;
             inputs["roleMatch"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
             inputs["versionTag"] = undefined /*out*/;
         }
         if (!opts.version) {

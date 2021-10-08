@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetRouteResult
     {
         /// <summary>
+        /// AS path.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RouteAsPathResponse> AsPaths;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -97,6 +101,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly int Priority;
         /// <summary>
+        /// The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
+        /// </summary>
+        public readonly string RouteType;
+        /// <summary>
         /// Server-defined fully-qualified URL for this resource.
         /// </summary>
         public readonly string SelfLink;
@@ -111,6 +119,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [OutputConstructor]
         private GetRouteResult(
+            ImmutableArray<Outputs.RouteAsPathResponse> asPaths,
+
             string creationTimestamp,
 
             string description,
@@ -141,12 +151,15 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             int priority,
 
+            string routeType,
+
             string selfLink,
 
             ImmutableArray<string> tags,
 
             ImmutableArray<Outputs.RouteWarningsItemResponse> warnings)
         {
+            AsPaths = asPaths;
             CreationTimestamp = creationTimestamp;
             Description = description;
             DestRange = destRange;
@@ -162,6 +175,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             NextHopPeering = nextHopPeering;
             NextHopVpnTunnel = nextHopVpnTunnel;
             Priority = priority;
+            RouteType = routeType;
             SelfLink = selfLink;
             Tags = tags;
             Warnings = warnings;

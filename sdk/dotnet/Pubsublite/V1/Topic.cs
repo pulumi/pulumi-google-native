@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         public Output<Outputs.PartitionConfigResponse> PartitionConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The settings for this topic's Reservation usage.
+        /// </summary>
+        [Output("reservationConfig")]
+        public Output<Outputs.ReservationConfigResponse> ReservationConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The settings for this topic's message retention.
         /// </summary>
         [Output("retentionConfig")]
@@ -95,6 +101,12 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The settings for this topic's Reservation usage.
+        /// </summary>
+        [Input("reservationConfig")]
+        public Input<Inputs.ReservationConfigArgs>? ReservationConfig { get; set; }
 
         /// <summary>
         /// The settings for this topic's message retention.

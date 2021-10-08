@@ -34,6 +34,7 @@ __all__ = [
     'DnsCacheConfigResponse',
     'EphemeralStorageConfigResponse',
     'GcePersistentDiskCsiDriverConfigResponse',
+    'GcpFilestoreCsiDriverConfigResponse',
     'HorizontalPodAutoscalingResponse',
     'HttpLoadBalancingResponse',
     'IPAllocationPolicyResponse',
@@ -51,6 +52,7 @@ __all__ = [
     'MasterAuthorizedNetworksConfigResponse',
     'MasterResponse',
     'MaxPodsConstraintResponse',
+    'MeshCertificatesResponse',
     'MonitoringComponentConfigResponse',
     'MonitoringConfigResponse',
     'NetworkConfigResponse',
@@ -171,6 +173,8 @@ class AddonsConfigResponse(dict):
             suggest = "dns_cache_config"
         elif key == "gcePersistentDiskCsiDriverConfig":
             suggest = "gce_persistent_disk_csi_driver_config"
+        elif key == "gcpFilestoreCsiDriverConfig":
+            suggest = "gcp_filestore_csi_driver_config"
         elif key == "horizontalPodAutoscaling":
             suggest = "horizontal_pod_autoscaling"
         elif key == "httpLoadBalancing":
@@ -200,6 +204,7 @@ class AddonsConfigResponse(dict):
                  config_connector_config: 'outputs.ConfigConnectorConfigResponse',
                  dns_cache_config: 'outputs.DnsCacheConfigResponse',
                  gce_persistent_disk_csi_driver_config: 'outputs.GcePersistentDiskCsiDriverConfigResponse',
+                 gcp_filestore_csi_driver_config: 'outputs.GcpFilestoreCsiDriverConfigResponse',
                  horizontal_pod_autoscaling: 'outputs.HorizontalPodAutoscalingResponse',
                  http_load_balancing: 'outputs.HttpLoadBalancingResponse',
                  istio_config: 'outputs.IstioConfigResponse',
@@ -212,6 +217,7 @@ class AddonsConfigResponse(dict):
         :param 'ConfigConnectorConfigResponse' config_connector_config: Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted GCP services through the Kubernetes API
         :param 'DnsCacheConfigResponse' dns_cache_config: Configuration for NodeLocalDNS, a dns cache running on cluster nodes
         :param 'GcePersistentDiskCsiDriverConfigResponse' gce_persistent_disk_csi_driver_config: Configuration for the Compute Engine Persistent Disk CSI driver.
+        :param 'GcpFilestoreCsiDriverConfigResponse' gcp_filestore_csi_driver_config: Configuration for the GCP Filestore CSI driver.
         :param 'HorizontalPodAutoscalingResponse' horizontal_pod_autoscaling: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         :param 'HttpLoadBalancingResponse' http_load_balancing: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
         :param 'IstioConfigResponse' istio_config: Configuration for Istio, an open platform to connect, manage, and secure microservices.
@@ -223,6 +229,7 @@ class AddonsConfigResponse(dict):
         pulumi.set(__self__, "config_connector_config", config_connector_config)
         pulumi.set(__self__, "dns_cache_config", dns_cache_config)
         pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
+        pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
         pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         pulumi.set(__self__, "http_load_balancing", http_load_balancing)
         pulumi.set(__self__, "istio_config", istio_config)
@@ -261,6 +268,14 @@ class AddonsConfigResponse(dict):
         Configuration for the Compute Engine Persistent Disk CSI driver.
         """
         return pulumi.get(self, "gce_persistent_disk_csi_driver_config")
+
+    @property
+    @pulumi.getter(name="gcpFilestoreCsiDriverConfig")
+    def gcp_filestore_csi_driver_config(self) -> 'outputs.GcpFilestoreCsiDriverConfigResponse':
+        """
+        Configuration for the GCP Filestore CSI driver.
+        """
+        return pulumi.get(self, "gcp_filestore_csi_driver_config")
 
     @property
     @pulumi.getter(name="horizontalPodAutoscaling")
@@ -1239,6 +1254,28 @@ class GcePersistentDiskCsiDriverConfigResponse(dict):
 
 
 @pulumi.output_type
+class GcpFilestoreCsiDriverConfigResponse(dict):
+    """
+    Configuration for the GCP Filestore CSI driver.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the GCP Filestore CSI driver.
+        :param bool enabled: Whether the GCP Filestore CSI driver is enabled for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the GCP Filestore CSI driver is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class HorizontalPodAutoscalingResponse(dict):
     """
     Configuration options for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -1972,6 +2009,45 @@ class MaxPodsConstraintResponse(dict):
 
 
 @pulumi.output_type
+class MeshCertificatesResponse(dict):
+    """
+    Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableCertificates":
+            suggest = "enable_certificates"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MeshCertificatesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MeshCertificatesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MeshCertificatesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_certificates: bool):
+        """
+        Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        :param bool enable_certificates: enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+        """
+        pulumi.set(__self__, "enable_certificates", enable_certificates)
+
+    @property
+    @pulumi.getter(name="enableCertificates")
+    def enable_certificates(self) -> bool:
+        """
+        enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+        """
+        return pulumi.get(self, "enable_certificates")
+
+
+@pulumi.output_type
 class MonitoringComponentConfigResponse(dict):
     """
     MonitoringComponentConfig is cluster monitoring component configuration.
@@ -2331,6 +2407,7 @@ class NodeConfigResponse(dict):
                  sandbox_config: 'outputs.SandboxConfigResponse',
                  service_account: str,
                  shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
+                 spot: bool,
                  tags: Sequence[str],
                  taints: Sequence['outputs.NodeTaintResponse'],
                  workload_metadata_config: 'outputs.WorkloadMetadataConfigResponse'):
@@ -2348,7 +2425,7 @@ class NodeConfigResponse(dict):
         :param 'LinuxNodeConfigResponse' linux_node_config: Parameters that can be configured on Linux nodes.
         :param int local_ssd_count: The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
         :param str machine_type: The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
-        :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+        :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
         :param str min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
         :param str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
@@ -2357,6 +2434,7 @@ class NodeConfigResponse(dict):
         :param 'SandboxConfigResponse' sandbox_config: Sandbox configuration for this node.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
+        :param bool spot: Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
         :param Sequence['NodeTaintResponse'] taints: List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
         :param 'WorkloadMetadataConfigResponse' workload_metadata_config: The workload metadata configuration for this node.
@@ -2382,6 +2460,7 @@ class NodeConfigResponse(dict):
         pulumi.set(__self__, "sandbox_config", sandbox_config)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        pulumi.set(__self__, "spot", spot)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
@@ -2486,7 +2565,7 @@ class NodeConfigResponse(dict):
     @pulumi.getter
     def metadata(self) -> Mapping[str, str]:
         """
-        The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+        The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
         """
         return pulumi.get(self, "metadata")
 
@@ -2553,6 +2632,14 @@ class NodeConfigResponse(dict):
         Shielded Instance options.
         """
         return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter
+    def spot(self) -> bool:
+        """
+        Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+        """
+        return pulumi.get(self, "spot")
 
     @property
     @pulumi.getter
@@ -2807,8 +2894,8 @@ class NodePoolAutoscalingResponse(dict):
         NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
         :param bool autoprovisioned: Can this node pool be deleted automatically.
         :param bool enabled: Is autoscaling enabled for this node pool.
-        :param int max_node_count: Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
-        :param int min_node_count: Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        :param int max_node_count: Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+        :param int min_node_count: Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
         """
         pulumi.set(__self__, "autoprovisioned", autoprovisioned)
         pulumi.set(__self__, "enabled", enabled)
@@ -2835,7 +2922,7 @@ class NodePoolAutoscalingResponse(dict):
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> int:
         """
-        Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+        Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
         """
         return pulumi.get(self, "max_node_count")
 
@@ -2843,7 +2930,7 @@ class NodePoolAutoscalingResponse(dict):
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> int:
         """
-        Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
         """
         return pulumi.get(self, "min_node_count")
 

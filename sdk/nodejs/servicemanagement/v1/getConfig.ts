@@ -135,3 +135,13 @@ export interface GetConfigResult {
      */
     readonly usage: outputs.servicemanagement.v1.UsageResponse;
 }
+
+export function getConfigOutput(args: GetConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigResult> {
+    return pulumi.output(args).apply(a => getConfig(a, opts))
+}
+
+export interface GetConfigOutputArgs {
+    configId: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}

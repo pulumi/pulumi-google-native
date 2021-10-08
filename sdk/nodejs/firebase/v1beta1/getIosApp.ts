@@ -52,3 +52,12 @@ export interface GetIosAppResult {
      */
     readonly project: string;
 }
+
+export function getIosAppOutput(args: GetIosAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIosAppResult> {
+    return pulumi.output(args).apply(a => getIosApp(a, opts))
+}
+
+export interface GetIosAppOutputArgs {
+    iosAppId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

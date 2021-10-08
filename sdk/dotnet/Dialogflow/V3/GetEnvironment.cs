@@ -55,6 +55,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The test cases config for continuous tests of this environment.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse TestCasesConfig;
+        /// <summary>
         /// Update time of this environment.
         /// </summary>
         public readonly string UpdateTime;
@@ -71,6 +75,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
             string name,
 
+            Outputs.GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse testCasesConfig,
+
             string updateTime,
 
             ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse> versionConfigs)
@@ -78,6 +84,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             Description = description;
             DisplayName = displayName;
             Name = name;
+            TestCasesConfig = testCasesConfig;
             UpdateTime = updateTime;
             VersionConfigs = versionConfigs;
         }

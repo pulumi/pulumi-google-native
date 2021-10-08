@@ -78,3 +78,13 @@ export interface GetTargetVpnGatewayResult {
      */
     readonly tunnels: string[];
 }
+
+export function getTargetVpnGatewayOutput(args: GetTargetVpnGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetVpnGatewayResult> {
+    return pulumi.output(args).apply(a => getTargetVpnGateway(a, opts))
+}
+
+export interface GetTargetVpnGatewayOutputArgs {
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    targetVpnGateway: pulumi.Input<string>;
+}

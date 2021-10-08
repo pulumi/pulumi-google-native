@@ -47,6 +47,10 @@ export interface GetInstanceResult {
      */
     readonly fileShares: outputs.file.v1beta1.FileShareConfigResponse[];
     /**
+     * KMS key name used for data encryption.
+     */
+    readonly kmsKeyName: string;
+    /**
      * Resource labels to represent user provided metadata.
      */
     readonly labels: {[key: string]: string};
@@ -71,7 +75,21 @@ export interface GetInstanceResult {
      */
     readonly statusMessage: string;
     /**
+     * field indicates all the reasons the instance is in "SUSPENDED" state.
+     */
+    readonly suspensionReasons: string[];
+    /**
      * The service tier of the instance.
      */
     readonly tier: string;
+}
+
+export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
+    return pulumi.output(args).apply(a => getInstance(a, opts))
+}
+
+export interface GetInstanceOutputArgs {
+    instanceId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

@@ -48,6 +48,10 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         /// </summary>
         public readonly Outputs.PartitionConfigResponse PartitionConfig;
         /// <summary>
+        /// The settings for this topic's Reservation usage.
+        /// </summary>
+        public readonly Outputs.ReservationConfigResponse ReservationConfig;
+        /// <summary>
         /// The settings for this topic's message retention.
         /// </summary>
         public readonly Outputs.RetentionConfigResponse RetentionConfig;
@@ -58,10 +62,13 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
 
             Outputs.PartitionConfigResponse partitionConfig,
 
+            Outputs.ReservationConfigResponse reservationConfig,
+
             Outputs.RetentionConfigResponse retentionConfig)
         {
             Name = name;
             PartitionConfig = partitionConfig;
+            ReservationConfig = reservationConfig;
             RetentionConfig = retentionConfig;
         }
     }

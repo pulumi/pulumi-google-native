@@ -8,9 +8,13 @@ import * as utilities from "../../utilities";
 export * from "./edgeCacheKeysetIamPolicy";
 export * from "./edgeCacheOriginIamPolicy";
 export * from "./edgeCacheServiceIamPolicy";
+export * from "./endpointPolicy";
+export * from "./endpointPolicyIamPolicy";
 export * from "./getEdgeCacheKeysetIamPolicy";
 export * from "./getEdgeCacheOriginIamPolicy";
 export * from "./getEdgeCacheServiceIamPolicy";
+export * from "./getEndpointPolicy";
+export * from "./getEndpointPolicyIamPolicy";
 
 // Export enums:
 export * from "../../types/enums/networkservices/v1";
@@ -19,6 +23,8 @@ export * from "../../types/enums/networkservices/v1";
 import { EdgeCacheKeysetIamPolicy } from "./edgeCacheKeysetIamPolicy";
 import { EdgeCacheOriginIamPolicy } from "./edgeCacheOriginIamPolicy";
 import { EdgeCacheServiceIamPolicy } from "./edgeCacheServiceIamPolicy";
+import { EndpointPolicy } from "./endpointPolicy";
+import { EndpointPolicyIamPolicy } from "./endpointPolicyIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -30,6 +36,10 @@ const _module = {
                 return new EdgeCacheOriginIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:EdgeCacheServiceIamPolicy":
                 return new EdgeCacheServiceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:EndpointPolicy":
+                return new EndpointPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:EndpointPolicyIamPolicy":
+                return new EndpointPolicyIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

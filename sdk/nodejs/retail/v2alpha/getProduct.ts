@@ -79,7 +79,7 @@ export interface GetProductResult {
      */
     readonly description: string;
     /**
-     * The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+     * The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
      */
     readonly expireTime: string;
     /**
@@ -103,7 +103,7 @@ export interface GetProductResult {
      */
     readonly materials: string[];
     /**
-     * Immutable. Full resource name of the product, such as `projects/*&#47;locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
+     * Immutable. Full resource name of the product, such as `projects/*&#47;locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
      */
     readonly name: string;
     /**
@@ -162,4 +162,16 @@ export interface GetProductResult {
      * Product variants grouped together on primary product which share similar product attributes. It's automatically grouped by primary_product_id for all the product variants. Only populated for Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
      */
     readonly variants: outputs.retail.v2alpha.GoogleCloudRetailV2alphaProductResponse[];
+}
+
+export function getProductOutput(args: GetProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductResult> {
+    return pulumi.output(args).apply(a => getProduct(a, opts))
+}
+
+export interface GetProductOutputArgs {
+    branchId: pulumi.Input<string>;
+    catalogId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    productId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

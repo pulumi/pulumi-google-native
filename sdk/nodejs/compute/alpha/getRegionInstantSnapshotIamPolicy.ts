@@ -57,3 +57,14 @@ export interface GetRegionInstantSnapshotIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getRegionInstantSnapshotIamPolicyOutput(args: GetRegionInstantSnapshotIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstantSnapshotIamPolicyResult> {
+    return pulumi.output(args).apply(a => getRegionInstantSnapshotIamPolicy(a, opts))
+}
+
+export interface GetRegionInstantSnapshotIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

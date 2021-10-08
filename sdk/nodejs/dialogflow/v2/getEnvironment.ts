@@ -59,3 +59,13 @@ export interface GetEnvironmentResult {
      */
     readonly updateTime: string;
 }
+
+export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
+    return pulumi.output(args).apply(a => getEnvironment(a, opts))
+}
+
+export interface GetEnvironmentOutputArgs {
+    environmentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

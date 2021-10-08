@@ -55,3 +55,13 @@ export interface GetBackendBucketIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getBackendBucketIamPolicyOutput(args: GetBackendBucketIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendBucketIamPolicyResult> {
+    return pulumi.output(args).apply(a => getBackendBucketIamPolicy(a, opts))
+}
+
+export interface GetBackendBucketIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

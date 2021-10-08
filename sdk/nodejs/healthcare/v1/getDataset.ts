@@ -38,3 +38,13 @@ export interface GetDatasetResult {
      */
     readonly timeZone: string;
 }
+
+export function getDatasetOutput(args: GetDatasetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetResult> {
+    return pulumi.output(args).apply(a => getDataset(a, opts))
+}
+
+export interface GetDatasetOutputArgs {
+    datasetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

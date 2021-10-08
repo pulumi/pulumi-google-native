@@ -83,3 +83,13 @@ export interface GetAgentResult {
      */
     readonly timeZone: string;
 }
+
+export function getAgentOutput(args: GetAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentResult> {
+    return pulumi.output(args).apply(a => getAgent(a, opts))
+}
+
+export interface GetAgentOutputArgs {
+    agentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

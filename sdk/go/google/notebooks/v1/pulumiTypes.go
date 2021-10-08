@@ -1266,17 +1266,17 @@ type DiskResponse struct {
 	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
 	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 	Index string `pulumi:"index"`
-	// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+	// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
 	Interface string `pulumi:"interface"`
 	// Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind string `pulumi:"kind"`
 	// A list of publicly visible licenses. Reserved for Google's use. A License represents billing and aggregate usage data for public and marketplace images.
 	Licenses []string `pulumi:"licenses"`
-	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
 	Mode string `pulumi:"mode"`
 	// Indicates a valid partial or full URL to an existing Persistent Disk resource.
 	Source string `pulumi:"source"`
-	// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
+	// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: * PERSISTENT * SCRATCH
 	Type string `pulumi:"type"`
 }
 
@@ -1305,17 +1305,17 @@ type DiskResponseArgs struct {
 	GuestOsFeatures GuestOsFeatureResponseArrayInput `pulumi:"guestOsFeatures"`
 	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 	Index pulumi.StringInput `pulumi:"index"`
-	// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+	// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
 	Interface pulumi.StringInput `pulumi:"interface"`
 	// Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// A list of publicly visible licenses. Reserved for Google's use. A License represents billing and aggregate usage data for public and marketplace images.
 	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
-	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// Indicates a valid partial or full URL to an existing Persistent Disk resource.
 	Source pulumi.StringInput `pulumi:"source"`
-	// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
+	// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: * PERSISTENT * SCRATCH
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1401,7 +1401,7 @@ func (o DiskResponseOutput) Index() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Index }).(pulumi.StringOutput)
 }
 
-// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
 func (o DiskResponseOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Interface }).(pulumi.StringOutput)
 }
@@ -1416,7 +1416,7 @@ func (o DiskResponseOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DiskResponse) []string { return v.Licenses }).(pulumi.StringArrayOutput)
 }
 
-// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
 func (o DiskResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -1426,7 +1426,7 @@ func (o DiskResponseOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Source }).(pulumi.StringOutput)
 }
 
-// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
+// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: * PERSISTENT * SCRATCH
 func (o DiskResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1743,7 +1743,7 @@ type ExecutionResponse struct {
 	ExecutionTemplate ExecutionTemplateResponse `pulumi:"executionTemplate"`
 	// The URI of the external job used to execute the notebook.
 	JobUri string `pulumi:"jobUri"`
-	// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+	// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
 	Name string `pulumi:"name"`
 	// Output notebook file generated by this execution
 	OutputNotebookFile string `pulumi:"outputNotebookFile"`
@@ -1776,7 +1776,7 @@ type ExecutionResponseArgs struct {
 	ExecutionTemplate ExecutionTemplateResponseInput `pulumi:"executionTemplate"`
 	// The URI of the external job used to execute the notebook.
 	JobUri pulumi.StringInput `pulumi:"jobUri"`
-	// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+	// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
 	Name pulumi.StringInput `pulumi:"name"`
 	// Output notebook file generated by this execution
 	OutputNotebookFile pulumi.StringInput `pulumi:"outputNotebookFile"`
@@ -1863,7 +1863,7 @@ func (o ExecutionResponseOutput) JobUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionResponse) string { return v.JobUri }).(pulumi.StringOutput)
 }
 
-// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
 func (o ExecutionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1911,15 +1911,15 @@ type ExecutionTemplate struct {
 	ContainerImageUri *string `pulumi:"containerImageUri"`
 	// Parameters used in Dataproc JobType executions.
 	DataprocParameters *DataprocParameters `pulumi:"dataprocParameters"`
-	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 	InputNotebookFile *string `pulumi:"inputNotebookFile"`
 	// The type of Job to be used on this execution.
 	JobType *ExecutionTemplateJobType `pulumi:"jobType"`
 	// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
 	Labels map[string]string `pulumi:"labels"`
-	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
 	MasterType *string `pulumi:"masterType"`
-	// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+	// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
 	OutputNotebookFolder *string `pulumi:"outputNotebookFolder"`
 	// Parameters used within the 'input_notebook_file' notebook.
 	Parameters *string `pulumi:"parameters"`
@@ -1927,6 +1927,8 @@ type ExecutionTemplate struct {
 	ParamsYamlFile *string `pulumi:"paramsYamlFile"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Parameters used in Vertex AI JobType executions.
+	VertexAiParameters *VertexAIParameters `pulumi:"vertexAiParameters"`
 }
 
 // ExecutionTemplateInput is an input type that accepts ExecutionTemplateArgs and ExecutionTemplateOutput values.
@@ -1948,15 +1950,15 @@ type ExecutionTemplateArgs struct {
 	ContainerImageUri pulumi.StringPtrInput `pulumi:"containerImageUri"`
 	// Parameters used in Dataproc JobType executions.
 	DataprocParameters DataprocParametersPtrInput `pulumi:"dataprocParameters"`
-	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 	InputNotebookFile pulumi.StringPtrInput `pulumi:"inputNotebookFile"`
 	// The type of Job to be used on this execution.
 	JobType ExecutionTemplateJobTypePtrInput `pulumi:"jobType"`
 	// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
 	MasterType pulumi.StringPtrInput `pulumi:"masterType"`
-	// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+	// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
 	OutputNotebookFolder pulumi.StringPtrInput `pulumi:"outputNotebookFolder"`
 	// Parameters used within the 'input_notebook_file' notebook.
 	Parameters pulumi.StringPtrInput `pulumi:"parameters"`
@@ -1964,6 +1966,8 @@ type ExecutionTemplateArgs struct {
 	ParamsYamlFile pulumi.StringPtrInput `pulumi:"paramsYamlFile"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Parameters used in Vertex AI JobType executions.
+	VertexAiParameters VertexAIParametersPtrInput `pulumi:"vertexAiParameters"`
 }
 
 func (ExecutionTemplateArgs) ElementType() reflect.Type {
@@ -2059,7 +2063,7 @@ func (o ExecutionTemplateOutput) DataprocParameters() DataprocParametersPtrOutpu
 	return o.ApplyT(func(v ExecutionTemplate) *DataprocParameters { return v.DataprocParameters }).(DataprocParametersPtrOutput)
 }
 
-// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 func (o ExecutionTemplateOutput) InputNotebookFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionTemplate) *string { return v.InputNotebookFile }).(pulumi.StringPtrOutput)
 }
@@ -2074,12 +2078,12 @@ func (o ExecutionTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ExecutionTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
 func (o ExecutionTemplateOutput) MasterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionTemplate) *string { return v.MasterType }).(pulumi.StringPtrOutput)
 }
 
-// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
 func (o ExecutionTemplateOutput) OutputNotebookFolder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionTemplate) *string { return v.OutputNotebookFolder }).(pulumi.StringPtrOutput)
 }
@@ -2097,6 +2101,11 @@ func (o ExecutionTemplateOutput) ParamsYamlFile() pulumi.StringPtrOutput {
 // The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 func (o ExecutionTemplateOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Parameters used in Vertex AI JobType executions.
+func (o ExecutionTemplateOutput) VertexAiParameters() VertexAIParametersPtrOutput {
+	return o.ApplyT(func(v ExecutionTemplate) *VertexAIParameters { return v.VertexAiParameters }).(VertexAIParametersPtrOutput)
 }
 
 type ExecutionTemplatePtrOutput struct{ *pulumi.OutputState }
@@ -2153,7 +2162,7 @@ func (o ExecutionTemplatePtrOutput) DataprocParameters() DataprocParametersPtrOu
 	}).(DataprocParametersPtrOutput)
 }
 
-// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 func (o ExecutionTemplatePtrOutput) InputNotebookFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplate) *string {
 		if v == nil {
@@ -2183,7 +2192,7 @@ func (o ExecutionTemplatePtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
 func (o ExecutionTemplatePtrOutput) MasterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplate) *string {
 		if v == nil {
@@ -2193,7 +2202,7 @@ func (o ExecutionTemplatePtrOutput) MasterType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
 func (o ExecutionTemplatePtrOutput) OutputNotebookFolder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplate) *string {
 		if v == nil {
@@ -2233,6 +2242,16 @@ func (o ExecutionTemplatePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Parameters used in Vertex AI JobType executions.
+func (o ExecutionTemplatePtrOutput) VertexAiParameters() VertexAIParametersPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplate) *VertexAIParameters {
+		if v == nil {
+			return nil
+		}
+		return v.VertexAiParameters
+	}).(VertexAIParametersPtrOutput)
+}
+
 // The description a notebook execution workload.
 type ExecutionTemplateResponse struct {
 	// Configuration (count and accelerator type) for hardware running notebook execution.
@@ -2241,15 +2260,15 @@ type ExecutionTemplateResponse struct {
 	ContainerImageUri string `pulumi:"containerImageUri"`
 	// Parameters used in Dataproc JobType executions.
 	DataprocParameters DataprocParametersResponse `pulumi:"dataprocParameters"`
-	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 	InputNotebookFile string `pulumi:"inputNotebookFile"`
 	// The type of Job to be used on this execution.
 	JobType string `pulumi:"jobType"`
 	// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
 	Labels map[string]string `pulumi:"labels"`
-	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
 	MasterType string `pulumi:"masterType"`
-	// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+	// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
 	OutputNotebookFolder string `pulumi:"outputNotebookFolder"`
 	// Parameters used within the 'input_notebook_file' notebook.
 	Parameters string `pulumi:"parameters"`
@@ -2257,6 +2276,8 @@ type ExecutionTemplateResponse struct {
 	ParamsYamlFile string `pulumi:"paramsYamlFile"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
+	// Parameters used in Vertex AI JobType executions.
+	VertexAiParameters VertexAIParametersResponse `pulumi:"vertexAiParameters"`
 }
 
 // ExecutionTemplateResponseInput is an input type that accepts ExecutionTemplateResponseArgs and ExecutionTemplateResponseOutput values.
@@ -2278,15 +2299,15 @@ type ExecutionTemplateResponseArgs struct {
 	ContainerImageUri pulumi.StringInput `pulumi:"containerImageUri"`
 	// Parameters used in Dataproc JobType executions.
 	DataprocParameters DataprocParametersResponseInput `pulumi:"dataprocParameters"`
-	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 	InputNotebookFile pulumi.StringInput `pulumi:"inputNotebookFile"`
 	// The type of Job to be used on this execution.
 	JobType pulumi.StringInput `pulumi:"jobType"`
 	// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
 	MasterType pulumi.StringInput `pulumi:"masterType"`
-	// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+	// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
 	OutputNotebookFolder pulumi.StringInput `pulumi:"outputNotebookFolder"`
 	// Parameters used within the 'input_notebook_file' notebook.
 	Parameters pulumi.StringInput `pulumi:"parameters"`
@@ -2294,6 +2315,8 @@ type ExecutionTemplateResponseArgs struct {
 	ParamsYamlFile pulumi.StringInput `pulumi:"paramsYamlFile"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	// Parameters used in Vertex AI JobType executions.
+	VertexAiParameters VertexAIParametersResponseInput `pulumi:"vertexAiParameters"`
 }
 
 func (ExecutionTemplateResponseArgs) ElementType() reflect.Type {
@@ -2389,7 +2412,7 @@ func (o ExecutionTemplateResponseOutput) DataprocParameters() DataprocParameters
 	return o.ApplyT(func(v ExecutionTemplateResponse) DataprocParametersResponse { return v.DataprocParameters }).(DataprocParametersResponseOutput)
 }
 
-// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 func (o ExecutionTemplateResponseOutput) InputNotebookFile() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.InputNotebookFile }).(pulumi.StringOutput)
 }
@@ -2404,12 +2427,12 @@ func (o ExecutionTemplateResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ExecutionTemplateResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
 func (o ExecutionTemplateResponseOutput) MasterType() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.MasterType }).(pulumi.StringOutput)
 }
 
-// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
 func (o ExecutionTemplateResponseOutput) OutputNotebookFolder() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.OutputNotebookFolder }).(pulumi.StringOutput)
 }
@@ -2427,6 +2450,11 @@ func (o ExecutionTemplateResponseOutput) ParamsYamlFile() pulumi.StringOutput {
 // The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 func (o ExecutionTemplateResponseOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Parameters used in Vertex AI JobType executions.
+func (o ExecutionTemplateResponseOutput) VertexAiParameters() VertexAIParametersResponseOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) VertexAIParametersResponse { return v.VertexAiParameters }).(VertexAIParametersResponseOutput)
 }
 
 type ExecutionTemplateResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2483,7 +2511,7 @@ func (o ExecutionTemplateResponsePtrOutput) DataprocParameters() DataprocParamet
 	}).(DataprocParametersResponsePtrOutput)
 }
 
-// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 func (o ExecutionTemplateResponsePtrOutput) InputNotebookFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
 		if v == nil {
@@ -2513,7 +2541,7 @@ func (o ExecutionTemplateResponsePtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
 func (o ExecutionTemplateResponsePtrOutput) MasterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
 		if v == nil {
@@ -2523,7 +2551,7 @@ func (o ExecutionTemplateResponsePtrOutput) MasterType() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
 func (o ExecutionTemplateResponsePtrOutput) OutputNotebookFolder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
 		if v == nil {
@@ -2561,6 +2589,16 @@ func (o ExecutionTemplateResponsePtrOutput) ServiceAccount() pulumi.StringPtrOut
 		}
 		return &v.ServiceAccount
 	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters used in Vertex AI JobType executions.
+func (o ExecutionTemplateResponsePtrOutput) VertexAiParameters() VertexAIParametersResponsePtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *VertexAIParametersResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.VertexAiParameters
+	}).(VertexAIParametersResponsePtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -2844,7 +2882,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // Guest OS features for boot disk.
 type GuestOsFeatureResponse struct {
-	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
 	Type string `pulumi:"type"`
 }
 
@@ -2861,7 +2899,7 @@ type GuestOsFeatureResponseInput interface {
 
 // Guest OS features for boot disk.
 type GuestOsFeatureResponseArgs struct {
-	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2917,7 +2955,7 @@ func (o GuestOsFeatureResponseOutput) ToGuestOsFeatureResponseOutputWithContext(
 	return o
 }
 
-// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
 func (o GuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2942,17 +2980,17 @@ func (o GuestOsFeatureResponseArrayOutput) Index(i pulumi.IntInput) GuestOsFeatu
 	}).(GuestOsFeatureResponseOutput)
 }
 
-// An Local attached disk resource.
+// A Local attached disk resource.
 type LocalDisk struct {
 	// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams *LocalDiskInitializeParams `pulumi:"initializeParams"`
-	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
 	Interface *string `pulumi:"interface"`
-	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
 	Mode *string `pulumi:"mode"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource.
 	Source *string `pulumi:"source"`
-	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
 	Type *string `pulumi:"type"`
 }
 
@@ -2967,17 +3005,17 @@ type LocalDiskInput interface {
 	ToLocalDiskOutputWithContext(context.Context) LocalDiskOutput
 }
 
-// An Local attached disk resource.
+// A Local attached disk resource.
 type LocalDiskArgs struct {
 	// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams LocalDiskInitializeParamsPtrInput `pulumi:"initializeParams"`
-	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
-	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource.
 	Source pulumi.StringPtrInput `pulumi:"source"`
-	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -3034,7 +3072,7 @@ func (i *localDiskPtrType) ToLocalDiskPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(LocalDiskPtrOutput)
 }
 
-// An Local attached disk resource.
+// A Local attached disk resource.
 type LocalDiskOutput struct{ *pulumi.OutputState }
 
 func (LocalDiskOutput) ElementType() reflect.Type {
@@ -3064,12 +3102,12 @@ func (o LocalDiskOutput) InitializeParams() LocalDiskInitializeParamsPtrOutput {
 	return o.ApplyT(func(v LocalDisk) *LocalDiskInitializeParams { return v.InitializeParams }).(LocalDiskInitializeParamsPtrOutput)
 }
 
-// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
 func (o LocalDiskOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocalDisk) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
 
-// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
 func (o LocalDiskOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocalDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -3079,7 +3117,7 @@ func (o LocalDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocalDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
 func (o LocalDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocalDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -3118,7 +3156,7 @@ func (o LocalDiskPtrOutput) InitializeParams() LocalDiskInitializeParamsPtrOutpu
 	}).(LocalDiskInitializeParamsPtrOutput)
 }
 
-// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
 func (o LocalDiskPtrOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalDisk) *string {
 		if v == nil {
@@ -3128,7 +3166,7 @@ func (o LocalDiskPtrOutput) Interface() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
 func (o LocalDiskPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalDisk) *string {
 		if v == nil {
@@ -3148,7 +3186,7 @@ func (o LocalDiskPtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
 func (o LocalDiskPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalDisk) *string {
 		if v == nil {
@@ -3590,7 +3628,7 @@ func (o LocalDiskInitializeParamsResponsePtrOutput) Labels() pulumi.StringMapOut
 	}).(pulumi.StringMapOutput)
 }
 
-// An Local attached disk resource.
+// A Local attached disk resource.
 type LocalDiskResponse struct {
 	// Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
 	AutoDelete bool `pulumi:"autoDelete"`
@@ -3604,17 +3642,17 @@ type LocalDiskResponse struct {
 	Index int `pulumi:"index"`
 	// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams LocalDiskInitializeParamsResponse `pulumi:"initializeParams"`
-	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
 	Interface string `pulumi:"interface"`
 	// Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind string `pulumi:"kind"`
 	// Any valid publicly visible licenses.
 	Licenses []string `pulumi:"licenses"`
-	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
 	Mode string `pulumi:"mode"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource.
 	Source string `pulumi:"source"`
-	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
 	Type string `pulumi:"type"`
 }
 
@@ -3629,7 +3667,7 @@ type LocalDiskResponseInput interface {
 	ToLocalDiskResponseOutputWithContext(context.Context) LocalDiskResponseOutput
 }
 
-// An Local attached disk resource.
+// A Local attached disk resource.
 type LocalDiskResponseArgs struct {
 	// Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
 	AutoDelete pulumi.BoolInput `pulumi:"autoDelete"`
@@ -3643,17 +3681,17 @@ type LocalDiskResponseArgs struct {
 	Index pulumi.IntInput `pulumi:"index"`
 	// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams LocalDiskInitializeParamsResponseInput `pulumi:"initializeParams"`
-	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
 	Interface pulumi.StringInput `pulumi:"interface"`
 	// Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// Any valid publicly visible licenses.
 	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
-	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource.
 	Source pulumi.StringInput `pulumi:"source"`
-	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3710,7 +3748,7 @@ func (i *localDiskResponsePtrType) ToLocalDiskResponsePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(LocalDiskResponsePtrOutput)
 }
 
-// An Local attached disk resource.
+// A Local attached disk resource.
 type LocalDiskResponseOutput struct{ *pulumi.OutputState }
 
 func (LocalDiskResponseOutput) ElementType() reflect.Type {
@@ -3765,7 +3803,7 @@ func (o LocalDiskResponseOutput) InitializeParams() LocalDiskInitializeParamsRes
 	return o.ApplyT(func(v LocalDiskResponse) LocalDiskInitializeParamsResponse { return v.InitializeParams }).(LocalDiskInitializeParamsResponseOutput)
 }
 
-// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
 func (o LocalDiskResponseOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalDiskResponse) string { return v.Interface }).(pulumi.StringOutput)
 }
@@ -3780,7 +3818,7 @@ func (o LocalDiskResponseOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LocalDiskResponse) []string { return v.Licenses }).(pulumi.StringArrayOutput)
 }
 
-// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
 func (o LocalDiskResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalDiskResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -3790,7 +3828,7 @@ func (o LocalDiskResponseOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalDiskResponse) string { return v.Source }).(pulumi.StringOutput)
 }
 
-// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
 func (o LocalDiskResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalDiskResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3879,7 +3917,7 @@ func (o LocalDiskResponsePtrOutput) InitializeParams() LocalDiskInitializeParams
 	}).(LocalDiskInitializeParamsResponsePtrOutput)
 }
 
-// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
 func (o LocalDiskResponsePtrOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) *string {
 		if v == nil {
@@ -3909,7 +3947,7 @@ func (o LocalDiskResponsePtrOutput) Licenses() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
 func (o LocalDiskResponsePtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) *string {
 		if v == nil {
@@ -3929,7 +3967,7 @@ func (o LocalDiskResponsePtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
 func (o LocalDiskResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) *string {
 		if v == nil {
@@ -5556,7 +5594,7 @@ type RuntimeSoftwareConfig struct {
 	EnableHealthMonitoring *bool `pulumi:"enableHealthMonitoring"`
 	// Runtime will automatically shutdown after idle_shutdown_time. Default: True
 	IdleShutdown *bool `pulumi:"idleShutdown"`
-	// Time in minutes to wait before shuting down runtime. Default: 180 minutes
+	// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 	IdleShutdownTimeout *int `pulumi:"idleShutdownTimeout"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
@@ -5585,7 +5623,7 @@ type RuntimeSoftwareConfigArgs struct {
 	EnableHealthMonitoring pulumi.BoolPtrInput `pulumi:"enableHealthMonitoring"`
 	// Runtime will automatically shutdown after idle_shutdown_time. Default: True
 	IdleShutdown pulumi.BoolPtrInput `pulumi:"idleShutdown"`
-	// Time in minutes to wait before shuting down runtime. Default: 180 minutes
+	// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 	IdleShutdownTimeout pulumi.IntPtrInput `pulumi:"idleShutdownTimeout"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver pulumi.BoolPtrInput `pulumi:"installGpuDriver"`
@@ -5688,7 +5726,7 @@ func (o RuntimeSoftwareConfigOutput) IdleShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.IdleShutdown }).(pulumi.BoolPtrOutput)
 }
 
-// Time in minutes to wait before shuting down runtime. Default: 180 minutes
+// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 func (o RuntimeSoftwareConfigOutput) IdleShutdownTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *int { return v.IdleShutdownTimeout }).(pulumi.IntPtrOutput)
 }
@@ -5762,7 +5800,7 @@ func (o RuntimeSoftwareConfigPtrOutput) IdleShutdown() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Time in minutes to wait before shuting down runtime. Default: 180 minutes
+// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 func (o RuntimeSoftwareConfigPtrOutput) IdleShutdownTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuntimeSoftwareConfig) *int {
 		if v == nil {
@@ -5810,7 +5848,7 @@ type RuntimeSoftwareConfigResponse struct {
 	EnableHealthMonitoring bool `pulumi:"enableHealthMonitoring"`
 	// Runtime will automatically shutdown after idle_shutdown_time. Default: True
 	IdleShutdown bool `pulumi:"idleShutdown"`
-	// Time in minutes to wait before shuting down runtime. Default: 180 minutes
+	// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 	IdleShutdownTimeout int `pulumi:"idleShutdownTimeout"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver bool `pulumi:"installGpuDriver"`
@@ -5839,7 +5877,7 @@ type RuntimeSoftwareConfigResponseArgs struct {
 	EnableHealthMonitoring pulumi.BoolInput `pulumi:"enableHealthMonitoring"`
 	// Runtime will automatically shutdown after idle_shutdown_time. Default: True
 	IdleShutdown pulumi.BoolInput `pulumi:"idleShutdown"`
-	// Time in minutes to wait before shuting down runtime. Default: 180 minutes
+	// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 	IdleShutdownTimeout pulumi.IntInput `pulumi:"idleShutdownTimeout"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver pulumi.BoolInput `pulumi:"installGpuDriver"`
@@ -5942,7 +5980,7 @@ func (o RuntimeSoftwareConfigResponseOutput) IdleShutdown() pulumi.BoolOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) bool { return v.IdleShutdown }).(pulumi.BoolOutput)
 }
 
-// Time in minutes to wait before shuting down runtime. Default: 180 minutes
+// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 func (o RuntimeSoftwareConfigResponseOutput) IdleShutdownTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) int { return v.IdleShutdownTimeout }).(pulumi.IntOutput)
 }
@@ -6016,7 +6054,7 @@ func (o RuntimeSoftwareConfigResponsePtrOutput) IdleShutdown() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Time in minutes to wait before shuting down runtime. Default: 180 minutes
+// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 func (o RuntimeSoftwareConfigResponsePtrOutput) IdleShutdownTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuntimeSoftwareConfigResponse) *int {
 		if v == nil {
@@ -6056,7 +6094,7 @@ func (o RuntimeSoftwareConfigResponsePtrOutput) PostStartupScript() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 type SchedulerAcceleratorConfig struct {
 	// Count of cores of this accelerator.
 	CoreCount *string `pulumi:"coreCount"`
@@ -6075,7 +6113,7 @@ type SchedulerAcceleratorConfigInput interface {
 	ToSchedulerAcceleratorConfigOutputWithContext(context.Context) SchedulerAcceleratorConfigOutput
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 type SchedulerAcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.StringPtrInput `pulumi:"coreCount"`
@@ -6136,7 +6174,7 @@ func (i *schedulerAcceleratorConfigPtrType) ToSchedulerAcceleratorConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerAcceleratorConfigPtrOutput)
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 type SchedulerAcceleratorConfigOutput struct{ *pulumi.OutputState }
 
 func (SchedulerAcceleratorConfigOutput) ElementType() reflect.Type {
@@ -6215,7 +6253,7 @@ func (o SchedulerAcceleratorConfigPtrOutput) Type() SchedulerAcceleratorConfigTy
 	}).(SchedulerAcceleratorConfigTypePtrOutput)
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 type SchedulerAcceleratorConfigResponse struct {
 	// Count of cores of this accelerator.
 	CoreCount string `pulumi:"coreCount"`
@@ -6234,7 +6272,7 @@ type SchedulerAcceleratorConfigResponseInput interface {
 	ToSchedulerAcceleratorConfigResponseOutputWithContext(context.Context) SchedulerAcceleratorConfigResponseOutput
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 type SchedulerAcceleratorConfigResponseArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.StringInput `pulumi:"coreCount"`
@@ -6295,7 +6333,7 @@ func (i *schedulerAcceleratorConfigResponsePtrType) ToSchedulerAcceleratorConfig
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerAcceleratorConfigResponsePtrOutput)
 }
 
-// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 type SchedulerAcceleratorConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (SchedulerAcceleratorConfigResponseOutput) ElementType() reflect.Type {
@@ -7090,6 +7128,286 @@ func (o UpgradeHistoryEntryResponseArrayOutput) Index(i pulumi.IntInput) Upgrade
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpgradeHistoryEntryResponse {
 		return vs[0].([]UpgradeHistoryEntryResponse)[vs[1].(int)]
 	}).(UpgradeHistoryEntryResponseOutput)
+}
+
+// Parameters used in Vertex AI JobType executions.
+type VertexAIParameters struct {
+	// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
+	Network *string `pulumi:"network"`
+}
+
+// VertexAIParametersInput is an input type that accepts VertexAIParametersArgs and VertexAIParametersOutput values.
+// You can construct a concrete instance of `VertexAIParametersInput` via:
+//
+//          VertexAIParametersArgs{...}
+type VertexAIParametersInput interface {
+	pulumi.Input
+
+	ToVertexAIParametersOutput() VertexAIParametersOutput
+	ToVertexAIParametersOutputWithContext(context.Context) VertexAIParametersOutput
+}
+
+// Parameters used in Vertex AI JobType executions.
+type VertexAIParametersArgs struct {
+	// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+}
+
+func (VertexAIParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VertexAIParameters)(nil)).Elem()
+}
+
+func (i VertexAIParametersArgs) ToVertexAIParametersOutput() VertexAIParametersOutput {
+	return i.ToVertexAIParametersOutputWithContext(context.Background())
+}
+
+func (i VertexAIParametersArgs) ToVertexAIParametersOutputWithContext(ctx context.Context) VertexAIParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VertexAIParametersOutput)
+}
+
+func (i VertexAIParametersArgs) ToVertexAIParametersPtrOutput() VertexAIParametersPtrOutput {
+	return i.ToVertexAIParametersPtrOutputWithContext(context.Background())
+}
+
+func (i VertexAIParametersArgs) ToVertexAIParametersPtrOutputWithContext(ctx context.Context) VertexAIParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VertexAIParametersOutput).ToVertexAIParametersPtrOutputWithContext(ctx)
+}
+
+// VertexAIParametersPtrInput is an input type that accepts VertexAIParametersArgs, VertexAIParametersPtr and VertexAIParametersPtrOutput values.
+// You can construct a concrete instance of `VertexAIParametersPtrInput` via:
+//
+//          VertexAIParametersArgs{...}
+//
+//  or:
+//
+//          nil
+type VertexAIParametersPtrInput interface {
+	pulumi.Input
+
+	ToVertexAIParametersPtrOutput() VertexAIParametersPtrOutput
+	ToVertexAIParametersPtrOutputWithContext(context.Context) VertexAIParametersPtrOutput
+}
+
+type vertexAIParametersPtrType VertexAIParametersArgs
+
+func VertexAIParametersPtr(v *VertexAIParametersArgs) VertexAIParametersPtrInput {
+	return (*vertexAIParametersPtrType)(v)
+}
+
+func (*vertexAIParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VertexAIParameters)(nil)).Elem()
+}
+
+func (i *vertexAIParametersPtrType) ToVertexAIParametersPtrOutput() VertexAIParametersPtrOutput {
+	return i.ToVertexAIParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *vertexAIParametersPtrType) ToVertexAIParametersPtrOutputWithContext(ctx context.Context) VertexAIParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VertexAIParametersPtrOutput)
+}
+
+// Parameters used in Vertex AI JobType executions.
+type VertexAIParametersOutput struct{ *pulumi.OutputState }
+
+func (VertexAIParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VertexAIParameters)(nil)).Elem()
+}
+
+func (o VertexAIParametersOutput) ToVertexAIParametersOutput() VertexAIParametersOutput {
+	return o
+}
+
+func (o VertexAIParametersOutput) ToVertexAIParametersOutputWithContext(ctx context.Context) VertexAIParametersOutput {
+	return o
+}
+
+func (o VertexAIParametersOutput) ToVertexAIParametersPtrOutput() VertexAIParametersPtrOutput {
+	return o.ToVertexAIParametersPtrOutputWithContext(context.Background())
+}
+
+func (o VertexAIParametersOutput) ToVertexAIParametersPtrOutputWithContext(ctx context.Context) VertexAIParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VertexAIParameters) *VertexAIParameters {
+		return &v
+	}).(VertexAIParametersPtrOutput)
+}
+
+// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
+func (o VertexAIParametersOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VertexAIParameters) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+type VertexAIParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (VertexAIParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VertexAIParameters)(nil)).Elem()
+}
+
+func (o VertexAIParametersPtrOutput) ToVertexAIParametersPtrOutput() VertexAIParametersPtrOutput {
+	return o
+}
+
+func (o VertexAIParametersPtrOutput) ToVertexAIParametersPtrOutputWithContext(ctx context.Context) VertexAIParametersPtrOutput {
+	return o
+}
+
+func (o VertexAIParametersPtrOutput) Elem() VertexAIParametersOutput {
+	return o.ApplyT(func(v *VertexAIParameters) VertexAIParameters {
+		if v != nil {
+			return *v
+		}
+		var ret VertexAIParameters
+		return ret
+	}).(VertexAIParametersOutput)
+}
+
+// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
+func (o VertexAIParametersPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VertexAIParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters used in Vertex AI JobType executions.
+type VertexAIParametersResponse struct {
+	// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
+	Network string `pulumi:"network"`
+}
+
+// VertexAIParametersResponseInput is an input type that accepts VertexAIParametersResponseArgs and VertexAIParametersResponseOutput values.
+// You can construct a concrete instance of `VertexAIParametersResponseInput` via:
+//
+//          VertexAIParametersResponseArgs{...}
+type VertexAIParametersResponseInput interface {
+	pulumi.Input
+
+	ToVertexAIParametersResponseOutput() VertexAIParametersResponseOutput
+	ToVertexAIParametersResponseOutputWithContext(context.Context) VertexAIParametersResponseOutput
+}
+
+// Parameters used in Vertex AI JobType executions.
+type VertexAIParametersResponseArgs struct {
+	// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (VertexAIParametersResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VertexAIParametersResponse)(nil)).Elem()
+}
+
+func (i VertexAIParametersResponseArgs) ToVertexAIParametersResponseOutput() VertexAIParametersResponseOutput {
+	return i.ToVertexAIParametersResponseOutputWithContext(context.Background())
+}
+
+func (i VertexAIParametersResponseArgs) ToVertexAIParametersResponseOutputWithContext(ctx context.Context) VertexAIParametersResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VertexAIParametersResponseOutput)
+}
+
+func (i VertexAIParametersResponseArgs) ToVertexAIParametersResponsePtrOutput() VertexAIParametersResponsePtrOutput {
+	return i.ToVertexAIParametersResponsePtrOutputWithContext(context.Background())
+}
+
+func (i VertexAIParametersResponseArgs) ToVertexAIParametersResponsePtrOutputWithContext(ctx context.Context) VertexAIParametersResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VertexAIParametersResponseOutput).ToVertexAIParametersResponsePtrOutputWithContext(ctx)
+}
+
+// VertexAIParametersResponsePtrInput is an input type that accepts VertexAIParametersResponseArgs, VertexAIParametersResponsePtr and VertexAIParametersResponsePtrOutput values.
+// You can construct a concrete instance of `VertexAIParametersResponsePtrInput` via:
+//
+//          VertexAIParametersResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type VertexAIParametersResponsePtrInput interface {
+	pulumi.Input
+
+	ToVertexAIParametersResponsePtrOutput() VertexAIParametersResponsePtrOutput
+	ToVertexAIParametersResponsePtrOutputWithContext(context.Context) VertexAIParametersResponsePtrOutput
+}
+
+type vertexAIParametersResponsePtrType VertexAIParametersResponseArgs
+
+func VertexAIParametersResponsePtr(v *VertexAIParametersResponseArgs) VertexAIParametersResponsePtrInput {
+	return (*vertexAIParametersResponsePtrType)(v)
+}
+
+func (*vertexAIParametersResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VertexAIParametersResponse)(nil)).Elem()
+}
+
+func (i *vertexAIParametersResponsePtrType) ToVertexAIParametersResponsePtrOutput() VertexAIParametersResponsePtrOutput {
+	return i.ToVertexAIParametersResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *vertexAIParametersResponsePtrType) ToVertexAIParametersResponsePtrOutputWithContext(ctx context.Context) VertexAIParametersResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VertexAIParametersResponsePtrOutput)
+}
+
+// Parameters used in Vertex AI JobType executions.
+type VertexAIParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (VertexAIParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VertexAIParametersResponse)(nil)).Elem()
+}
+
+func (o VertexAIParametersResponseOutput) ToVertexAIParametersResponseOutput() VertexAIParametersResponseOutput {
+	return o
+}
+
+func (o VertexAIParametersResponseOutput) ToVertexAIParametersResponseOutputWithContext(ctx context.Context) VertexAIParametersResponseOutput {
+	return o
+}
+
+func (o VertexAIParametersResponseOutput) ToVertexAIParametersResponsePtrOutput() VertexAIParametersResponsePtrOutput {
+	return o.ToVertexAIParametersResponsePtrOutputWithContext(context.Background())
+}
+
+func (o VertexAIParametersResponseOutput) ToVertexAIParametersResponsePtrOutputWithContext(ctx context.Context) VertexAIParametersResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VertexAIParametersResponse) *VertexAIParametersResponse {
+		return &v
+	}).(VertexAIParametersResponsePtrOutput)
+}
+
+// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
+func (o VertexAIParametersResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v VertexAIParametersResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type VertexAIParametersResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VertexAIParametersResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VertexAIParametersResponse)(nil)).Elem()
+}
+
+func (o VertexAIParametersResponsePtrOutput) ToVertexAIParametersResponsePtrOutput() VertexAIParametersResponsePtrOutput {
+	return o
+}
+
+func (o VertexAIParametersResponsePtrOutput) ToVertexAIParametersResponsePtrOutputWithContext(ctx context.Context) VertexAIParametersResponsePtrOutput {
+	return o
+}
+
+func (o VertexAIParametersResponsePtrOutput) Elem() VertexAIParametersResponseOutput {
+	return o.ApplyT(func(v *VertexAIParametersResponse) VertexAIParametersResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VertexAIParametersResponse
+		return ret
+	}).(VertexAIParametersResponseOutput)
+}
+
+// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
+func (o VertexAIParametersResponsePtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VertexAIParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
 }
 
 // Runtime using Virtual Machine for computing.
@@ -8543,6 +8861,101 @@ func (o VmImageResponsePtrOutput) Project() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigInput)(nil)).Elem(), AcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigPtrInput)(nil)).Elem(), AcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigResponseInput)(nil)).Elem(), AcceleratorConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigResponsePtrInput)(nil)).Elem(), AcceleratorConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerImageInput)(nil)).Elem(), ContainerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerImagePtrInput)(nil)).Elem(), ContainerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerImageArrayInput)(nil)).Elem(), ContainerImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerImageResponseInput)(nil)).Elem(), ContainerImageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerImageResponsePtrInput)(nil)).Elem(), ContainerImageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerImageResponseArrayInput)(nil)).Elem(), ContainerImageResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocParametersInput)(nil)).Elem(), DataprocParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocParametersPtrInput)(nil)).Elem(), DataprocParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocParametersResponseInput)(nil)).Elem(), DataprocParametersResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocParametersResponsePtrInput)(nil)).Elem(), DataprocParametersResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskResponseInput)(nil)).Elem(), DiskResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskResponseArrayInput)(nil)).Elem(), DiskResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponseInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponsePtrInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionResponseInput)(nil)).Elem(), ExecutionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionResponseArrayInput)(nil)).Elem(), ExecutionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionTemplateInput)(nil)).Elem(), ExecutionTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionTemplatePtrInput)(nil)).Elem(), ExecutionTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionTemplateResponseInput)(nil)).Elem(), ExecutionTemplateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionTemplateResponsePtrInput)(nil)).Elem(), ExecutionTemplateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsFeatureResponseInput)(nil)).Elem(), GuestOsFeatureResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsFeatureResponseArrayInput)(nil)).Elem(), GuestOsFeatureResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskInput)(nil)).Elem(), LocalDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskPtrInput)(nil)).Elem(), LocalDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskInitializeParamsInput)(nil)).Elem(), LocalDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskInitializeParamsPtrInput)(nil)).Elem(), LocalDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskInitializeParamsResponseInput)(nil)).Elem(), LocalDiskInitializeParamsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskInitializeParamsResponsePtrInput)(nil)).Elem(), LocalDiskInitializeParamsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskResponseInput)(nil)).Elem(), LocalDiskResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskResponsePtrInput)(nil)).Elem(), LocalDiskResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityInput)(nil)).Elem(), ReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityPtrInput)(nil)).Elem(), ReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityResponseInput)(nil)).Elem(), ReservationAffinityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityResponsePtrInput)(nil)).Elem(), ReservationAffinityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAcceleratorConfigInput)(nil)).Elem(), RuntimeAcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAcceleratorConfigPtrInput)(nil)).Elem(), RuntimeAcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAcceleratorConfigResponseInput)(nil)).Elem(), RuntimeAcceleratorConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAcceleratorConfigResponsePtrInput)(nil)).Elem(), RuntimeAcceleratorConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAccessConfigInput)(nil)).Elem(), RuntimeAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAccessConfigPtrInput)(nil)).Elem(), RuntimeAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAccessConfigResponseInput)(nil)).Elem(), RuntimeAccessConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAccessConfigResponsePtrInput)(nil)).Elem(), RuntimeAccessConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeGuestOsFeatureResponseInput)(nil)).Elem(), RuntimeGuestOsFeatureResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeGuestOsFeatureResponseArrayInput)(nil)).Elem(), RuntimeGuestOsFeatureResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetricsResponseInput)(nil)).Elem(), RuntimeMetricsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetricsResponsePtrInput)(nil)).Elem(), RuntimeMetricsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeShieldedInstanceConfigInput)(nil)).Elem(), RuntimeShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeShieldedInstanceConfigPtrInput)(nil)).Elem(), RuntimeShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeShieldedInstanceConfigResponseInput)(nil)).Elem(), RuntimeShieldedInstanceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeShieldedInstanceConfigResponsePtrInput)(nil)).Elem(), RuntimeShieldedInstanceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigInput)(nil)).Elem(), RuntimeSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigPtrInput)(nil)).Elem(), RuntimeSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigResponseInput)(nil)).Elem(), RuntimeSoftwareConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigResponsePtrInput)(nil)).Elem(), RuntimeSoftwareConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerAcceleratorConfigInput)(nil)).Elem(), SchedulerAcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerAcceleratorConfigPtrInput)(nil)).Elem(), SchedulerAcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerAcceleratorConfigResponseInput)(nil)).Elem(), SchedulerAcceleratorConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerAcceleratorConfigResponsePtrInput)(nil)).Elem(), SchedulerAcceleratorConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigResponseInput)(nil)).Elem(), ShieldedInstanceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigResponsePtrInput)(nil)).Elem(), ShieldedInstanceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeHistoryEntryInput)(nil)).Elem(), UpgradeHistoryEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeHistoryEntryArrayInput)(nil)).Elem(), UpgradeHistoryEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeHistoryEntryResponseInput)(nil)).Elem(), UpgradeHistoryEntryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeHistoryEntryResponseArrayInput)(nil)).Elem(), UpgradeHistoryEntryResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VertexAIParametersInput)(nil)).Elem(), VertexAIParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VertexAIParametersPtrInput)(nil)).Elem(), VertexAIParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VertexAIParametersResponseInput)(nil)).Elem(), VertexAIParametersResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VertexAIParametersResponsePtrInput)(nil)).Elem(), VertexAIParametersResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineInput)(nil)).Elem(), VirtualMachineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePtrInput)(nil)).Elem(), VirtualMachineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineConfigInput)(nil)).Elem(), VirtualMachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineConfigPtrInput)(nil)).Elem(), VirtualMachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineConfigResponseInput)(nil)).Elem(), VirtualMachineConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineConfigResponsePtrInput)(nil)).Elem(), VirtualMachineConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineResponseInput)(nil)).Elem(), VirtualMachineResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineResponsePtrInput)(nil)).Elem(), VirtualMachineResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmImageInput)(nil)).Elem(), VmImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmImagePtrInput)(nil)).Elem(), VmImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmImageResponseInput)(nil)).Elem(), VmImageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmImageResponsePtrInput)(nil)).Elem(), VmImageResponseArgs{})
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigPtrOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigResponseOutput{})
@@ -8622,6 +9035,10 @@ func init() {
 	pulumi.RegisterOutputType(UpgradeHistoryEntryArrayOutput{})
 	pulumi.RegisterOutputType(UpgradeHistoryEntryResponseOutput{})
 	pulumi.RegisterOutputType(UpgradeHistoryEntryResponseArrayOutput{})
+	pulumi.RegisterOutputType(VertexAIParametersOutput{})
+	pulumi.RegisterOutputType(VertexAIParametersPtrOutput{})
+	pulumi.RegisterOutputType(VertexAIParametersResponseOutput{})
+	pulumi.RegisterOutputType(VertexAIParametersResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineConfigOutput{})

@@ -37,6 +37,10 @@ export class Key extends pulumi.CustomResource {
     }
 
     /**
+     * The key status.
+     */
+    public /*out*/ readonly disabled!: pulumi.Output<boolean>;
+    /**
      * Specifies the algorithm (and possibly key size) for the key.
      */
     public readonly keyAlgorithm!: pulumi.Output<string>;
@@ -91,6 +95,7 @@ export class Key extends pulumi.CustomResource {
             inputs["privateKeyType"] = args ? args.privateKeyType : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            inputs["disabled"] = undefined /*out*/;
             inputs["keyOrigin"] = undefined /*out*/;
             inputs["keyType"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -99,6 +104,7 @@ export class Key extends pulumi.CustomResource {
             inputs["validAfterTime"] = undefined /*out*/;
             inputs["validBeforeTime"] = undefined /*out*/;
         } else {
+            inputs["disabled"] = undefined /*out*/;
             inputs["keyAlgorithm"] = undefined /*out*/;
             inputs["keyOrigin"] = undefined /*out*/;
             inputs["keyType"] = undefined /*out*/;

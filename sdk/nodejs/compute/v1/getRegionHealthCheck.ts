@@ -85,3 +85,13 @@ export interface GetRegionHealthCheckResult {
      */
     readonly unhealthyThreshold: number;
 }
+
+export function getRegionHealthCheckOutput(args: GetRegionHealthCheckOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionHealthCheckResult> {
+    return pulumi.output(args).apply(a => getRegionHealthCheck(a, opts))
+}
+
+export interface GetRegionHealthCheckOutputArgs {
+    healthCheck: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

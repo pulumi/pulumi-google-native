@@ -39,7 +39,7 @@ type LookupServiceResult struct {
 	HiveMetastoreConfig HiveMetastoreConfigResponse `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
 	Labels map[string]string `pulumi:"labels"`
-	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration MetadataIntegrationResponse `pulumi:"metadataIntegration"`
@@ -128,7 +128,7 @@ func (o LookupServiceResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 func (o LookupServiceResultOutput) MaintenanceWindow() MaintenanceWindowResponseOutput {
 	return o.ApplyT(func(v LookupServiceResult) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
 }

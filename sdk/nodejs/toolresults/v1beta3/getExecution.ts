@@ -63,3 +63,13 @@ export interface GetExecutionResult {
      */
     readonly testExecutionMatrixId: string;
 }
+
+export function getExecutionOutput(args: GetExecutionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionResult> {
+    return pulumi.output(args).apply(a => getExecution(a, opts))
+}
+
+export interface GetExecutionOutputArgs {
+    executionId: pulumi.Input<string>;
+    historyId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

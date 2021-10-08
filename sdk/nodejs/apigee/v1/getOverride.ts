@@ -43,3 +43,13 @@ export interface GetOverrideResult {
      */
     readonly samplingConfig: outputs.apigee.v1.GoogleCloudApigeeV1TraceSamplingConfigResponse;
 }
+
+export function getOverrideOutput(args: GetOverrideOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOverrideResult> {
+    return pulumi.output(args).apply(a => getOverride(a, opts))
+}
+
+export interface GetOverrideOutputArgs {
+    environmentId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    overrideId: pulumi.Input<string>;
+}

@@ -358,7 +358,7 @@ const (
 	ConsentStateEnumStateUnspecified = ConsentStateEnum("STATE_UNSPECIFIED")
 	// The Consent is active and is considered when evaluating a user's consent on resources.
 	ConsentStateEnumActive = ConsentStateEnum("ACTIVE")
-	// When a Consent is updated, the current version is archived and a new one is created with its state set to the updated Consent's previous state.
+	// The archived state is currently not being used.
 	ConsentStateEnumArchived = ConsentStateEnum("ARCHIVED")
 	// A revoked Consent is not considered when evaluating a user's consent on resources.
 	ConsentStateEnumRevoked = ConsentStateEnum("REVOKED")

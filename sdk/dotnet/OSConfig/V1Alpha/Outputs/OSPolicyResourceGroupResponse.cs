@@ -21,10 +21,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.OSPolicyInventoryFilterResponse> InventoryFilters;
         /// <summary>
-        /// Used to specify the OS filter for a resource group
-        /// </summary>
-        public readonly Outputs.OSPolicyOSFilterResponse OsFilter;
-        /// <summary>
         /// List of resources configured for this resource group. The resources are executed in the exact order specified here.
         /// </summary>
         public readonly ImmutableArray<Outputs.OSPolicyResourceResponse> Resources;
@@ -33,12 +29,9 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
         private OSPolicyResourceGroupResponse(
             ImmutableArray<Outputs.OSPolicyInventoryFilterResponse> inventoryFilters,
 
-            Outputs.OSPolicyOSFilterResponse osFilter,
-
             ImmutableArray<Outputs.OSPolicyResourceResponse> resources)
         {
             InventoryFilters = inventoryFilters;
-            OsFilter = osFilter;
             Resources = resources;
         }
     }

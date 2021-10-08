@@ -42,3 +42,11 @@ export interface GetBillingAccountResult {
      */
     readonly open: boolean;
 }
+
+export function getBillingAccountOutput(args: GetBillingAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingAccountResult> {
+    return pulumi.output(args).apply(a => getBillingAccount(a, opts))
+}
+
+export interface GetBillingAccountOutputArgs {
+    billingAccountId: pulumi.Input<string>;
+}

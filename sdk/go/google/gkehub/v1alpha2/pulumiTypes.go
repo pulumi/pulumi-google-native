@@ -2209,10 +2209,14 @@ func (o KubernetesResourceResponsePtrOutput) ResourceOptions() ResourceOptionsRe
 
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpoint struct {
-	// Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+	// Optional. Specific information for a GKE-on-GCP cluster.
 	GkeCluster *GkeCluster `pulumi:"gkeCluster"`
 	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
 	KubernetesResource *KubernetesResource `pulumi:"kubernetesResource"`
+	// Optional. Specific information for a GKE Multi-Cloud cluster.
+	MultiCloudCluster *MultiCloudCluster `pulumi:"multiCloudCluster"`
+	// Optional. Specific information for a GKE On-Prem cluster.
+	OnPremCluster *OnPremCluster `pulumi:"onPremCluster"`
 }
 
 // MembershipEndpointInput is an input type that accepts MembershipEndpointArgs and MembershipEndpointOutput values.
@@ -2228,10 +2232,14 @@ type MembershipEndpointInput interface {
 
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpointArgs struct {
-	// Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+	// Optional. Specific information for a GKE-on-GCP cluster.
 	GkeCluster GkeClusterPtrInput `pulumi:"gkeCluster"`
 	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
 	KubernetesResource KubernetesResourcePtrInput `pulumi:"kubernetesResource"`
+	// Optional. Specific information for a GKE Multi-Cloud cluster.
+	MultiCloudCluster MultiCloudClusterPtrInput `pulumi:"multiCloudCluster"`
+	// Optional. Specific information for a GKE On-Prem cluster.
+	OnPremCluster OnPremClusterPtrInput `pulumi:"onPremCluster"`
 }
 
 func (MembershipEndpointArgs) ElementType() reflect.Type {
@@ -2312,7 +2320,7 @@ func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutputWithContext(ctx c
 	}).(MembershipEndpointPtrOutput)
 }
 
-// Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+// Optional. Specific information for a GKE-on-GCP cluster.
 func (o MembershipEndpointOutput) GkeCluster() GkeClusterPtrOutput {
 	return o.ApplyT(func(v MembershipEndpoint) *GkeCluster { return v.GkeCluster }).(GkeClusterPtrOutput)
 }
@@ -2320,6 +2328,16 @@ func (o MembershipEndpointOutput) GkeCluster() GkeClusterPtrOutput {
 // Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
 func (o MembershipEndpointOutput) KubernetesResource() KubernetesResourcePtrOutput {
 	return o.ApplyT(func(v MembershipEndpoint) *KubernetesResource { return v.KubernetesResource }).(KubernetesResourcePtrOutput)
+}
+
+// Optional. Specific information for a GKE Multi-Cloud cluster.
+func (o MembershipEndpointOutput) MultiCloudCluster() MultiCloudClusterPtrOutput {
+	return o.ApplyT(func(v MembershipEndpoint) *MultiCloudCluster { return v.MultiCloudCluster }).(MultiCloudClusterPtrOutput)
+}
+
+// Optional. Specific information for a GKE On-Prem cluster.
+func (o MembershipEndpointOutput) OnPremCluster() OnPremClusterPtrOutput {
+	return o.ApplyT(func(v MembershipEndpoint) *OnPremCluster { return v.OnPremCluster }).(OnPremClusterPtrOutput)
 }
 
 type MembershipEndpointPtrOutput struct{ *pulumi.OutputState }
@@ -2346,7 +2364,7 @@ func (o MembershipEndpointPtrOutput) Elem() MembershipEndpointOutput {
 	}).(MembershipEndpointOutput)
 }
 
-// Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+// Optional. Specific information for a GKE-on-GCP cluster.
 func (o MembershipEndpointPtrOutput) GkeCluster() GkeClusterPtrOutput {
 	return o.ApplyT(func(v *MembershipEndpoint) *GkeCluster {
 		if v == nil {
@@ -2366,14 +2384,38 @@ func (o MembershipEndpointPtrOutput) KubernetesResource() KubernetesResourcePtrO
 	}).(KubernetesResourcePtrOutput)
 }
 
+// Optional. Specific information for a GKE Multi-Cloud cluster.
+func (o MembershipEndpointPtrOutput) MultiCloudCluster() MultiCloudClusterPtrOutput {
+	return o.ApplyT(func(v *MembershipEndpoint) *MultiCloudCluster {
+		if v == nil {
+			return nil
+		}
+		return v.MultiCloudCluster
+	}).(MultiCloudClusterPtrOutput)
+}
+
+// Optional. Specific information for a GKE On-Prem cluster.
+func (o MembershipEndpointPtrOutput) OnPremCluster() OnPremClusterPtrOutput {
+	return o.ApplyT(func(v *MembershipEndpoint) *OnPremCluster {
+		if v == nil {
+			return nil
+		}
+		return v.OnPremCluster
+	}).(OnPremClusterPtrOutput)
+}
+
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpointResponse struct {
-	// Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+	// Optional. Specific information for a GKE-on-GCP cluster.
 	GkeCluster GkeClusterResponse `pulumi:"gkeCluster"`
 	// Useful Kubernetes-specific metadata.
 	KubernetesMetadata KubernetesMetadataResponse `pulumi:"kubernetesMetadata"`
 	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
 	KubernetesResource KubernetesResourceResponse `pulumi:"kubernetesResource"`
+	// Optional. Specific information for a GKE Multi-Cloud cluster.
+	MultiCloudCluster MultiCloudClusterResponse `pulumi:"multiCloudCluster"`
+	// Optional. Specific information for a GKE On-Prem cluster.
+	OnPremCluster OnPremClusterResponse `pulumi:"onPremCluster"`
 }
 
 // MembershipEndpointResponseInput is an input type that accepts MembershipEndpointResponseArgs and MembershipEndpointResponseOutput values.
@@ -2389,12 +2431,16 @@ type MembershipEndpointResponseInput interface {
 
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpointResponseArgs struct {
-	// Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+	// Optional. Specific information for a GKE-on-GCP cluster.
 	GkeCluster GkeClusterResponseInput `pulumi:"gkeCluster"`
 	// Useful Kubernetes-specific metadata.
 	KubernetesMetadata KubernetesMetadataResponseInput `pulumi:"kubernetesMetadata"`
 	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
 	KubernetesResource KubernetesResourceResponseInput `pulumi:"kubernetesResource"`
+	// Optional. Specific information for a GKE Multi-Cloud cluster.
+	MultiCloudCluster MultiCloudClusterResponseInput `pulumi:"multiCloudCluster"`
+	// Optional. Specific information for a GKE On-Prem cluster.
+	OnPremCluster OnPremClusterResponseInput `pulumi:"onPremCluster"`
 }
 
 func (MembershipEndpointResponseArgs) ElementType() reflect.Type {
@@ -2475,7 +2521,7 @@ func (o MembershipEndpointResponseOutput) ToMembershipEndpointResponsePtrOutputW
 	}).(MembershipEndpointResponsePtrOutput)
 }
 
-// Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+// Optional. Specific information for a GKE-on-GCP cluster.
 func (o MembershipEndpointResponseOutput) GkeCluster() GkeClusterResponseOutput {
 	return o.ApplyT(func(v MembershipEndpointResponse) GkeClusterResponse { return v.GkeCluster }).(GkeClusterResponseOutput)
 }
@@ -2488,6 +2534,16 @@ func (o MembershipEndpointResponseOutput) KubernetesMetadata() KubernetesMetadat
 // Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
 func (o MembershipEndpointResponseOutput) KubernetesResource() KubernetesResourceResponseOutput {
 	return o.ApplyT(func(v MembershipEndpointResponse) KubernetesResourceResponse { return v.KubernetesResource }).(KubernetesResourceResponseOutput)
+}
+
+// Optional. Specific information for a GKE Multi-Cloud cluster.
+func (o MembershipEndpointResponseOutput) MultiCloudCluster() MultiCloudClusterResponseOutput {
+	return o.ApplyT(func(v MembershipEndpointResponse) MultiCloudClusterResponse { return v.MultiCloudCluster }).(MultiCloudClusterResponseOutput)
+}
+
+// Optional. Specific information for a GKE On-Prem cluster.
+func (o MembershipEndpointResponseOutput) OnPremCluster() OnPremClusterResponseOutput {
+	return o.ApplyT(func(v MembershipEndpointResponse) OnPremClusterResponse { return v.OnPremCluster }).(OnPremClusterResponseOutput)
 }
 
 type MembershipEndpointResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2514,7 +2570,7 @@ func (o MembershipEndpointResponsePtrOutput) Elem() MembershipEndpointResponseOu
 	}).(MembershipEndpointResponseOutput)
 }
 
-// Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+// Optional. Specific information for a GKE-on-GCP cluster.
 func (o MembershipEndpointResponsePtrOutput) GkeCluster() GkeClusterResponsePtrOutput {
 	return o.ApplyT(func(v *MembershipEndpointResponse) *GkeClusterResponse {
 		if v == nil {
@@ -2542,6 +2598,26 @@ func (o MembershipEndpointResponsePtrOutput) KubernetesResource() KubernetesReso
 		}
 		return &v.KubernetesResource
 	}).(KubernetesResourceResponsePtrOutput)
+}
+
+// Optional. Specific information for a GKE Multi-Cloud cluster.
+func (o MembershipEndpointResponsePtrOutput) MultiCloudCluster() MultiCloudClusterResponsePtrOutput {
+	return o.ApplyT(func(v *MembershipEndpointResponse) *MultiCloudClusterResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MultiCloudCluster
+	}).(MultiCloudClusterResponsePtrOutput)
+}
+
+// Optional. Specific information for a GKE On-Prem cluster.
+func (o MembershipEndpointResponsePtrOutput) OnPremCluster() OnPremClusterResponsePtrOutput {
+	return o.ApplyT(func(v *MembershipEndpointResponse) *OnPremClusterResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.OnPremCluster
+	}).(OnPremClusterResponsePtrOutput)
 }
 
 // MembershipState describes the state of a Membership resource.
@@ -2681,6 +2757,642 @@ func (o MembershipStateResponsePtrOutput) Code() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+type MultiCloudCluster struct {
+	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+	ResourceLink *string `pulumi:"resourceLink"`
+}
+
+// MultiCloudClusterInput is an input type that accepts MultiCloudClusterArgs and MultiCloudClusterOutput values.
+// You can construct a concrete instance of `MultiCloudClusterInput` via:
+//
+//          MultiCloudClusterArgs{...}
+type MultiCloudClusterInput interface {
+	pulumi.Input
+
+	ToMultiCloudClusterOutput() MultiCloudClusterOutput
+	ToMultiCloudClusterOutputWithContext(context.Context) MultiCloudClusterOutput
+}
+
+// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+type MultiCloudClusterArgs struct {
+	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+	ResourceLink pulumi.StringPtrInput `pulumi:"resourceLink"`
+}
+
+func (MultiCloudClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiCloudCluster)(nil)).Elem()
+}
+
+func (i MultiCloudClusterArgs) ToMultiCloudClusterOutput() MultiCloudClusterOutput {
+	return i.ToMultiCloudClusterOutputWithContext(context.Background())
+}
+
+func (i MultiCloudClusterArgs) ToMultiCloudClusterOutputWithContext(ctx context.Context) MultiCloudClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiCloudClusterOutput)
+}
+
+func (i MultiCloudClusterArgs) ToMultiCloudClusterPtrOutput() MultiCloudClusterPtrOutput {
+	return i.ToMultiCloudClusterPtrOutputWithContext(context.Background())
+}
+
+func (i MultiCloudClusterArgs) ToMultiCloudClusterPtrOutputWithContext(ctx context.Context) MultiCloudClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiCloudClusterOutput).ToMultiCloudClusterPtrOutputWithContext(ctx)
+}
+
+// MultiCloudClusterPtrInput is an input type that accepts MultiCloudClusterArgs, MultiCloudClusterPtr and MultiCloudClusterPtrOutput values.
+// You can construct a concrete instance of `MultiCloudClusterPtrInput` via:
+//
+//          MultiCloudClusterArgs{...}
+//
+//  or:
+//
+//          nil
+type MultiCloudClusterPtrInput interface {
+	pulumi.Input
+
+	ToMultiCloudClusterPtrOutput() MultiCloudClusterPtrOutput
+	ToMultiCloudClusterPtrOutputWithContext(context.Context) MultiCloudClusterPtrOutput
+}
+
+type multiCloudClusterPtrType MultiCloudClusterArgs
+
+func MultiCloudClusterPtr(v *MultiCloudClusterArgs) MultiCloudClusterPtrInput {
+	return (*multiCloudClusterPtrType)(v)
+}
+
+func (*multiCloudClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiCloudCluster)(nil)).Elem()
+}
+
+func (i *multiCloudClusterPtrType) ToMultiCloudClusterPtrOutput() MultiCloudClusterPtrOutput {
+	return i.ToMultiCloudClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *multiCloudClusterPtrType) ToMultiCloudClusterPtrOutputWithContext(ctx context.Context) MultiCloudClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiCloudClusterPtrOutput)
+}
+
+// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+type MultiCloudClusterOutput struct{ *pulumi.OutputState }
+
+func (MultiCloudClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiCloudCluster)(nil)).Elem()
+}
+
+func (o MultiCloudClusterOutput) ToMultiCloudClusterOutput() MultiCloudClusterOutput {
+	return o
+}
+
+func (o MultiCloudClusterOutput) ToMultiCloudClusterOutputWithContext(ctx context.Context) MultiCloudClusterOutput {
+	return o
+}
+
+func (o MultiCloudClusterOutput) ToMultiCloudClusterPtrOutput() MultiCloudClusterPtrOutput {
+	return o.ToMultiCloudClusterPtrOutputWithContext(context.Background())
+}
+
+func (o MultiCloudClusterOutput) ToMultiCloudClusterPtrOutputWithContext(ctx context.Context) MultiCloudClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiCloudCluster) *MultiCloudCluster {
+		return &v
+	}).(MultiCloudClusterPtrOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+func (o MultiCloudClusterOutput) ResourceLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiCloudCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
+}
+
+type MultiCloudClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiCloudClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiCloudCluster)(nil)).Elem()
+}
+
+func (o MultiCloudClusterPtrOutput) ToMultiCloudClusterPtrOutput() MultiCloudClusterPtrOutput {
+	return o
+}
+
+func (o MultiCloudClusterPtrOutput) ToMultiCloudClusterPtrOutputWithContext(ctx context.Context) MultiCloudClusterPtrOutput {
+	return o
+}
+
+func (o MultiCloudClusterPtrOutput) Elem() MultiCloudClusterOutput {
+	return o.ApplyT(func(v *MultiCloudCluster) MultiCloudCluster {
+		if v != nil {
+			return *v
+		}
+		var ret MultiCloudCluster
+		return ret
+	}).(MultiCloudClusterOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+func (o MultiCloudClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiCloudCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+type MultiCloudClusterResponse struct {
+	// If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+	ClusterMissing bool `pulumi:"clusterMissing"`
+	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+	ResourceLink string `pulumi:"resourceLink"`
+}
+
+// MultiCloudClusterResponseInput is an input type that accepts MultiCloudClusterResponseArgs and MultiCloudClusterResponseOutput values.
+// You can construct a concrete instance of `MultiCloudClusterResponseInput` via:
+//
+//          MultiCloudClusterResponseArgs{...}
+type MultiCloudClusterResponseInput interface {
+	pulumi.Input
+
+	ToMultiCloudClusterResponseOutput() MultiCloudClusterResponseOutput
+	ToMultiCloudClusterResponseOutputWithContext(context.Context) MultiCloudClusterResponseOutput
+}
+
+// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+type MultiCloudClusterResponseArgs struct {
+	// If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+	ClusterMissing pulumi.BoolInput `pulumi:"clusterMissing"`
+	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+	ResourceLink pulumi.StringInput `pulumi:"resourceLink"`
+}
+
+func (MultiCloudClusterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiCloudClusterResponse)(nil)).Elem()
+}
+
+func (i MultiCloudClusterResponseArgs) ToMultiCloudClusterResponseOutput() MultiCloudClusterResponseOutput {
+	return i.ToMultiCloudClusterResponseOutputWithContext(context.Background())
+}
+
+func (i MultiCloudClusterResponseArgs) ToMultiCloudClusterResponseOutputWithContext(ctx context.Context) MultiCloudClusterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiCloudClusterResponseOutput)
+}
+
+func (i MultiCloudClusterResponseArgs) ToMultiCloudClusterResponsePtrOutput() MultiCloudClusterResponsePtrOutput {
+	return i.ToMultiCloudClusterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MultiCloudClusterResponseArgs) ToMultiCloudClusterResponsePtrOutputWithContext(ctx context.Context) MultiCloudClusterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiCloudClusterResponseOutput).ToMultiCloudClusterResponsePtrOutputWithContext(ctx)
+}
+
+// MultiCloudClusterResponsePtrInput is an input type that accepts MultiCloudClusterResponseArgs, MultiCloudClusterResponsePtr and MultiCloudClusterResponsePtrOutput values.
+// You can construct a concrete instance of `MultiCloudClusterResponsePtrInput` via:
+//
+//          MultiCloudClusterResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MultiCloudClusterResponsePtrInput interface {
+	pulumi.Input
+
+	ToMultiCloudClusterResponsePtrOutput() MultiCloudClusterResponsePtrOutput
+	ToMultiCloudClusterResponsePtrOutputWithContext(context.Context) MultiCloudClusterResponsePtrOutput
+}
+
+type multiCloudClusterResponsePtrType MultiCloudClusterResponseArgs
+
+func MultiCloudClusterResponsePtr(v *MultiCloudClusterResponseArgs) MultiCloudClusterResponsePtrInput {
+	return (*multiCloudClusterResponsePtrType)(v)
+}
+
+func (*multiCloudClusterResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiCloudClusterResponse)(nil)).Elem()
+}
+
+func (i *multiCloudClusterResponsePtrType) ToMultiCloudClusterResponsePtrOutput() MultiCloudClusterResponsePtrOutput {
+	return i.ToMultiCloudClusterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *multiCloudClusterResponsePtrType) ToMultiCloudClusterResponsePtrOutputWithContext(ctx context.Context) MultiCloudClusterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiCloudClusterResponsePtrOutput)
+}
+
+// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+type MultiCloudClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (MultiCloudClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiCloudClusterResponse)(nil)).Elem()
+}
+
+func (o MultiCloudClusterResponseOutput) ToMultiCloudClusterResponseOutput() MultiCloudClusterResponseOutput {
+	return o
+}
+
+func (o MultiCloudClusterResponseOutput) ToMultiCloudClusterResponseOutputWithContext(ctx context.Context) MultiCloudClusterResponseOutput {
+	return o
+}
+
+func (o MultiCloudClusterResponseOutput) ToMultiCloudClusterResponsePtrOutput() MultiCloudClusterResponsePtrOutput {
+	return o.ToMultiCloudClusterResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MultiCloudClusterResponseOutput) ToMultiCloudClusterResponsePtrOutputWithContext(ctx context.Context) MultiCloudClusterResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiCloudClusterResponse) *MultiCloudClusterResponse {
+		return &v
+	}).(MultiCloudClusterResponsePtrOutput)
+}
+
+// If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+func (o MultiCloudClusterResponseOutput) ClusterMissing() pulumi.BoolOutput {
+	return o.ApplyT(func(v MultiCloudClusterResponse) bool { return v.ClusterMissing }).(pulumi.BoolOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+func (o MultiCloudClusterResponseOutput) ResourceLink() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiCloudClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
+}
+
+type MultiCloudClusterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MultiCloudClusterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiCloudClusterResponse)(nil)).Elem()
+}
+
+func (o MultiCloudClusterResponsePtrOutput) ToMultiCloudClusterResponsePtrOutput() MultiCloudClusterResponsePtrOutput {
+	return o
+}
+
+func (o MultiCloudClusterResponsePtrOutput) ToMultiCloudClusterResponsePtrOutputWithContext(ctx context.Context) MultiCloudClusterResponsePtrOutput {
+	return o
+}
+
+func (o MultiCloudClusterResponsePtrOutput) Elem() MultiCloudClusterResponseOutput {
+	return o.ApplyT(func(v *MultiCloudClusterResponse) MultiCloudClusterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MultiCloudClusterResponse
+		return ret
+	}).(MultiCloudClusterResponseOutput)
+}
+
+// If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+func (o MultiCloudClusterResponsePtrOutput) ClusterMissing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MultiCloudClusterResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterMissing
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+func (o MultiCloudClusterResponsePtrOutput) ResourceLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiCloudClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// OnPremCluster contains information specific to GKE On-Prem clusters.
+type OnPremCluster struct {
+	// Immutable. Whether the cluster is an admin cluster.
+	AdminCluster *bool `pulumi:"adminCluster"`
+	// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+	ResourceLink *string `pulumi:"resourceLink"`
+}
+
+// OnPremClusterInput is an input type that accepts OnPremClusterArgs and OnPremClusterOutput values.
+// You can construct a concrete instance of `OnPremClusterInput` via:
+//
+//          OnPremClusterArgs{...}
+type OnPremClusterInput interface {
+	pulumi.Input
+
+	ToOnPremClusterOutput() OnPremClusterOutput
+	ToOnPremClusterOutputWithContext(context.Context) OnPremClusterOutput
+}
+
+// OnPremCluster contains information specific to GKE On-Prem clusters.
+type OnPremClusterArgs struct {
+	// Immutable. Whether the cluster is an admin cluster.
+	AdminCluster pulumi.BoolPtrInput `pulumi:"adminCluster"`
+	// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+	ResourceLink pulumi.StringPtrInput `pulumi:"resourceLink"`
+}
+
+func (OnPremClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnPremCluster)(nil)).Elem()
+}
+
+func (i OnPremClusterArgs) ToOnPremClusterOutput() OnPremClusterOutput {
+	return i.ToOnPremClusterOutputWithContext(context.Background())
+}
+
+func (i OnPremClusterArgs) ToOnPremClusterOutputWithContext(ctx context.Context) OnPremClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnPremClusterOutput)
+}
+
+func (i OnPremClusterArgs) ToOnPremClusterPtrOutput() OnPremClusterPtrOutput {
+	return i.ToOnPremClusterPtrOutputWithContext(context.Background())
+}
+
+func (i OnPremClusterArgs) ToOnPremClusterPtrOutputWithContext(ctx context.Context) OnPremClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnPremClusterOutput).ToOnPremClusterPtrOutputWithContext(ctx)
+}
+
+// OnPremClusterPtrInput is an input type that accepts OnPremClusterArgs, OnPremClusterPtr and OnPremClusterPtrOutput values.
+// You can construct a concrete instance of `OnPremClusterPtrInput` via:
+//
+//          OnPremClusterArgs{...}
+//
+//  or:
+//
+//          nil
+type OnPremClusterPtrInput interface {
+	pulumi.Input
+
+	ToOnPremClusterPtrOutput() OnPremClusterPtrOutput
+	ToOnPremClusterPtrOutputWithContext(context.Context) OnPremClusterPtrOutput
+}
+
+type onPremClusterPtrType OnPremClusterArgs
+
+func OnPremClusterPtr(v *OnPremClusterArgs) OnPremClusterPtrInput {
+	return (*onPremClusterPtrType)(v)
+}
+
+func (*onPremClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnPremCluster)(nil)).Elem()
+}
+
+func (i *onPremClusterPtrType) ToOnPremClusterPtrOutput() OnPremClusterPtrOutput {
+	return i.ToOnPremClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *onPremClusterPtrType) ToOnPremClusterPtrOutputWithContext(ctx context.Context) OnPremClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnPremClusterPtrOutput)
+}
+
+// OnPremCluster contains information specific to GKE On-Prem clusters.
+type OnPremClusterOutput struct{ *pulumi.OutputState }
+
+func (OnPremClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnPremCluster)(nil)).Elem()
+}
+
+func (o OnPremClusterOutput) ToOnPremClusterOutput() OnPremClusterOutput {
+	return o
+}
+
+func (o OnPremClusterOutput) ToOnPremClusterOutputWithContext(ctx context.Context) OnPremClusterOutput {
+	return o
+}
+
+func (o OnPremClusterOutput) ToOnPremClusterPtrOutput() OnPremClusterPtrOutput {
+	return o.ToOnPremClusterPtrOutputWithContext(context.Background())
+}
+
+func (o OnPremClusterOutput) ToOnPremClusterPtrOutputWithContext(ctx context.Context) OnPremClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnPremCluster) *OnPremCluster {
+		return &v
+	}).(OnPremClusterPtrOutput)
+}
+
+// Immutable. Whether the cluster is an admin cluster.
+func (o OnPremClusterOutput) AdminCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OnPremCluster) *bool { return v.AdminCluster }).(pulumi.BoolPtrOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+func (o OnPremClusterOutput) ResourceLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OnPremCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
+}
+
+type OnPremClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (OnPremClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnPremCluster)(nil)).Elem()
+}
+
+func (o OnPremClusterPtrOutput) ToOnPremClusterPtrOutput() OnPremClusterPtrOutput {
+	return o
+}
+
+func (o OnPremClusterPtrOutput) ToOnPremClusterPtrOutputWithContext(ctx context.Context) OnPremClusterPtrOutput {
+	return o
+}
+
+func (o OnPremClusterPtrOutput) Elem() OnPremClusterOutput {
+	return o.ApplyT(func(v *OnPremCluster) OnPremCluster {
+		if v != nil {
+			return *v
+		}
+		var ret OnPremCluster
+		return ret
+	}).(OnPremClusterOutput)
+}
+
+// Immutable. Whether the cluster is an admin cluster.
+func (o OnPremClusterPtrOutput) AdminCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OnPremCluster) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AdminCluster
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+func (o OnPremClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnPremCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// OnPremCluster contains information specific to GKE On-Prem clusters.
+type OnPremClusterResponse struct {
+	// Immutable. Whether the cluster is an admin cluster.
+	AdminCluster bool `pulumi:"adminCluster"`
+	// If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+	ClusterMissing bool `pulumi:"clusterMissing"`
+	// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+	ResourceLink string `pulumi:"resourceLink"`
+}
+
+// OnPremClusterResponseInput is an input type that accepts OnPremClusterResponseArgs and OnPremClusterResponseOutput values.
+// You can construct a concrete instance of `OnPremClusterResponseInput` via:
+//
+//          OnPremClusterResponseArgs{...}
+type OnPremClusterResponseInput interface {
+	pulumi.Input
+
+	ToOnPremClusterResponseOutput() OnPremClusterResponseOutput
+	ToOnPremClusterResponseOutputWithContext(context.Context) OnPremClusterResponseOutput
+}
+
+// OnPremCluster contains information specific to GKE On-Prem clusters.
+type OnPremClusterResponseArgs struct {
+	// Immutable. Whether the cluster is an admin cluster.
+	AdminCluster pulumi.BoolInput `pulumi:"adminCluster"`
+	// If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+	ClusterMissing pulumi.BoolInput `pulumi:"clusterMissing"`
+	// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+	ResourceLink pulumi.StringInput `pulumi:"resourceLink"`
+}
+
+func (OnPremClusterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnPremClusterResponse)(nil)).Elem()
+}
+
+func (i OnPremClusterResponseArgs) ToOnPremClusterResponseOutput() OnPremClusterResponseOutput {
+	return i.ToOnPremClusterResponseOutputWithContext(context.Background())
+}
+
+func (i OnPremClusterResponseArgs) ToOnPremClusterResponseOutputWithContext(ctx context.Context) OnPremClusterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnPremClusterResponseOutput)
+}
+
+func (i OnPremClusterResponseArgs) ToOnPremClusterResponsePtrOutput() OnPremClusterResponsePtrOutput {
+	return i.ToOnPremClusterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i OnPremClusterResponseArgs) ToOnPremClusterResponsePtrOutputWithContext(ctx context.Context) OnPremClusterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnPremClusterResponseOutput).ToOnPremClusterResponsePtrOutputWithContext(ctx)
+}
+
+// OnPremClusterResponsePtrInput is an input type that accepts OnPremClusterResponseArgs, OnPremClusterResponsePtr and OnPremClusterResponsePtrOutput values.
+// You can construct a concrete instance of `OnPremClusterResponsePtrInput` via:
+//
+//          OnPremClusterResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type OnPremClusterResponsePtrInput interface {
+	pulumi.Input
+
+	ToOnPremClusterResponsePtrOutput() OnPremClusterResponsePtrOutput
+	ToOnPremClusterResponsePtrOutputWithContext(context.Context) OnPremClusterResponsePtrOutput
+}
+
+type onPremClusterResponsePtrType OnPremClusterResponseArgs
+
+func OnPremClusterResponsePtr(v *OnPremClusterResponseArgs) OnPremClusterResponsePtrInput {
+	return (*onPremClusterResponsePtrType)(v)
+}
+
+func (*onPremClusterResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnPremClusterResponse)(nil)).Elem()
+}
+
+func (i *onPremClusterResponsePtrType) ToOnPremClusterResponsePtrOutput() OnPremClusterResponsePtrOutput {
+	return i.ToOnPremClusterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *onPremClusterResponsePtrType) ToOnPremClusterResponsePtrOutputWithContext(ctx context.Context) OnPremClusterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnPremClusterResponsePtrOutput)
+}
+
+// OnPremCluster contains information specific to GKE On-Prem clusters.
+type OnPremClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (OnPremClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnPremClusterResponse)(nil)).Elem()
+}
+
+func (o OnPremClusterResponseOutput) ToOnPremClusterResponseOutput() OnPremClusterResponseOutput {
+	return o
+}
+
+func (o OnPremClusterResponseOutput) ToOnPremClusterResponseOutputWithContext(ctx context.Context) OnPremClusterResponseOutput {
+	return o
+}
+
+func (o OnPremClusterResponseOutput) ToOnPremClusterResponsePtrOutput() OnPremClusterResponsePtrOutput {
+	return o.ToOnPremClusterResponsePtrOutputWithContext(context.Background())
+}
+
+func (o OnPremClusterResponseOutput) ToOnPremClusterResponsePtrOutputWithContext(ctx context.Context) OnPremClusterResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnPremClusterResponse) *OnPremClusterResponse {
+		return &v
+	}).(OnPremClusterResponsePtrOutput)
+}
+
+// Immutable. Whether the cluster is an admin cluster.
+func (o OnPremClusterResponseOutput) AdminCluster() pulumi.BoolOutput {
+	return o.ApplyT(func(v OnPremClusterResponse) bool { return v.AdminCluster }).(pulumi.BoolOutput)
+}
+
+// If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+func (o OnPremClusterResponseOutput) ClusterMissing() pulumi.BoolOutput {
+	return o.ApplyT(func(v OnPremClusterResponse) bool { return v.ClusterMissing }).(pulumi.BoolOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+func (o OnPremClusterResponseOutput) ResourceLink() pulumi.StringOutput {
+	return o.ApplyT(func(v OnPremClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
+}
+
+type OnPremClusterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OnPremClusterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnPremClusterResponse)(nil)).Elem()
+}
+
+func (o OnPremClusterResponsePtrOutput) ToOnPremClusterResponsePtrOutput() OnPremClusterResponsePtrOutput {
+	return o
+}
+
+func (o OnPremClusterResponsePtrOutput) ToOnPremClusterResponsePtrOutputWithContext(ctx context.Context) OnPremClusterResponsePtrOutput {
+	return o
+}
+
+func (o OnPremClusterResponsePtrOutput) Elem() OnPremClusterResponseOutput {
+	return o.ApplyT(func(v *OnPremClusterResponse) OnPremClusterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OnPremClusterResponse
+		return ret
+	}).(OnPremClusterResponseOutput)
+}
+
+// Immutable. Whether the cluster is an admin cluster.
+func (o OnPremClusterResponsePtrOutput) AdminCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OnPremClusterResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AdminCluster
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+func (o OnPremClusterResponsePtrOutput) ClusterMissing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OnPremClusterResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterMissing
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+func (o OnPremClusterResponsePtrOutput) ResourceLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnPremClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceLink
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3112,6 +3824,55 @@ func (o ResourceOptionsResponsePtrOutput) V1beta1Crd() pulumi.BoolPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityInput)(nil)).Elem(), AuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityPtrInput)(nil)).Elem(), AuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityResponseInput)(nil)).Elem(), AuthorityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityResponsePtrInput)(nil)).Elem(), AuthorityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterInput)(nil)).Elem(), GkeClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterPtrInput)(nil)).Elem(), GkeClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterResponseInput)(nil)).Elem(), GkeClusterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterResponsePtrInput)(nil)).Elem(), GkeClusterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesMetadataResponseInput)(nil)).Elem(), KubernetesMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesMetadataResponsePtrInput)(nil)).Elem(), KubernetesMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourceInput)(nil)).Elem(), KubernetesResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourcePtrInput)(nil)).Elem(), KubernetesResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourceResponseInput)(nil)).Elem(), KubernetesResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourceResponsePtrInput)(nil)).Elem(), KubernetesResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointInput)(nil)).Elem(), MembershipEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointPtrInput)(nil)).Elem(), MembershipEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointResponseInput)(nil)).Elem(), MembershipEndpointResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointResponsePtrInput)(nil)).Elem(), MembershipEndpointResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipStateResponseInput)(nil)).Elem(), MembershipStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipStateResponsePtrInput)(nil)).Elem(), MembershipStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiCloudClusterInput)(nil)).Elem(), MultiCloudClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiCloudClusterPtrInput)(nil)).Elem(), MultiCloudClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiCloudClusterResponseInput)(nil)).Elem(), MultiCloudClusterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiCloudClusterResponsePtrInput)(nil)).Elem(), MultiCloudClusterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterInput)(nil)).Elem(), OnPremClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterPtrInput)(nil)).Elem(), OnPremClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterResponseInput)(nil)).Elem(), OnPremClusterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterResponsePtrInput)(nil)).Elem(), OnPremClusterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceManifestResponseInput)(nil)).Elem(), ResourceManifestResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceManifestResponseArrayInput)(nil)).Elem(), ResourceManifestResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsInput)(nil)).Elem(), ResourceOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsPtrInput)(nil)).Elem(), ResourceOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsResponseInput)(nil)).Elem(), ResourceOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsResponsePtrInput)(nil)).Elem(), ResourceOptionsResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -3147,6 +3908,14 @@ func init() {
 	pulumi.RegisterOutputType(MembershipEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(MembershipStateResponseOutput{})
 	pulumi.RegisterOutputType(MembershipStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(MultiCloudClusterOutput{})
+	pulumi.RegisterOutputType(MultiCloudClusterPtrOutput{})
+	pulumi.RegisterOutputType(MultiCloudClusterResponseOutput{})
+	pulumi.RegisterOutputType(MultiCloudClusterResponsePtrOutput{})
+	pulumi.RegisterOutputType(OnPremClusterOutput{})
+	pulumi.RegisterOutputType(OnPremClusterPtrOutput{})
+	pulumi.RegisterOutputType(OnPremClusterResponseOutput{})
+	pulumi.RegisterOutputType(OnPremClusterResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceManifestResponseOutput{})
 	pulumi.RegisterOutputType(ResourceManifestResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourceOptionsOutput{})

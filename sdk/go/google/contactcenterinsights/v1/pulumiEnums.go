@@ -10,11 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Immutable. The conversation medium.
+// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 type ConversationMedium string
 
 const (
-	// Default value.
+	// Default value, if unspecified will default to PHONE_CALL.
 	ConversationMediumMediumUnspecified = ConversationMedium("MEDIUM_UNSPECIFIED")
 	// The format for conversations that took place over the phone.
 	ConversationMediumPhoneCall = ConversationMedium("PHONE_CALL")
@@ -179,11 +179,11 @@ func (in *conversationMediumPtr) ToConversationMediumPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ConversationMediumPtrOutput)
 }
 
-// Required. Medium of conversations used in training data.
+// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
 type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium string
 
 const (
-	// Default value.
+	// Default value, if unspecified will default to PHONE_CALL.
 	GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumMediumUnspecified = GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium("MEDIUM_UNSPECIFIED")
 	// The format for conversations that took place over the phone.
 	GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPhoneCall = GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium("PHONE_CALL")

@@ -54,3 +54,13 @@ export interface GetGameServerDeploymentResult {
      */
     readonly updateTime: string;
 }
+
+export function getGameServerDeploymentOutput(args: GetGameServerDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGameServerDeploymentResult> {
+    return pulumi.output(args).apply(a => getGameServerDeployment(a, opts))
+}
+
+export interface GetGameServerDeploymentOutputArgs {
+    gameServerDeploymentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

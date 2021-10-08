@@ -95,3 +95,13 @@ export interface GetRegionNetworkEndpointGroupResult {
      */
     readonly zone: string;
 }
+
+export function getRegionNetworkEndpointGroupOutput(args: GetRegionNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionNetworkEndpointGroupResult> {
+    return pulumi.output(args).apply(a => getRegionNetworkEndpointGroup(a, opts))
+}
+
+export interface GetRegionNetworkEndpointGroupOutputArgs {
+    networkEndpointGroup: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

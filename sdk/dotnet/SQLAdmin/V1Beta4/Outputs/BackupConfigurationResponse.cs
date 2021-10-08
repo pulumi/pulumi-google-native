@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// This is always *sql#backupConfiguration*.
+        /// This is always **sql#backupConfiguration**.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly bool ReplicationLogArchivingEnabled;
         /// <summary>
-        /// Start time for the daily backup configuration in UTC timezone in the 24 hour format - *HH:MM*.
+        /// Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
         /// </summary>
         public readonly string StartTime;
         /// <summary>

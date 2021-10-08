@@ -67,3 +67,13 @@ export interface GetRuntimeResult {
      */
     readonly virtualMachine: outputs.notebooks.v1.VirtualMachineResponse;
 }
+
+export function getRuntimeOutput(args: GetRuntimeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuntimeResult> {
+    return pulumi.output(args).apply(a => getRuntime(a, opts))
+}
+
+export interface GetRuntimeOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    runtimeId: pulumi.Input<string>;
+}

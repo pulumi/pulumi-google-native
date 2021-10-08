@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates an Environment in the specified Agent.
+ * Creates an Environment in the specified Agent. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`: Environment
  */
 export class Environment extends pulumi.CustomResource {
     /**
@@ -48,6 +48,10 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The test cases config for continuous tests of this environment.
+     */
+    public readonly testCasesConfig!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse>;
+    /**
      * Update time of this environment.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -82,12 +86,14 @@ export class Environment extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["testCasesConfig"] = args ? args.testCasesConfig : undefined;
             inputs["versionConfigs"] = args ? args.versionConfigs : undefined;
             inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["description"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["testCasesConfig"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
             inputs["versionConfigs"] = undefined /*out*/;
         }
@@ -117,6 +123,10 @@ export interface EnvironmentArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * The test cases config for continuous tests of this environment.
+     */
+    testCasesConfig?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs>;
     /**
      * A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */

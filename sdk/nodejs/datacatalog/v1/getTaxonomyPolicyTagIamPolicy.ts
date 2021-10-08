@@ -45,3 +45,14 @@ export interface GetTaxonomyPolicyTagIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getTaxonomyPolicyTagIamPolicyOutput(args: GetTaxonomyPolicyTagIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaxonomyPolicyTagIamPolicyResult> {
+    return pulumi.output(args).apply(a => getTaxonomyPolicyTagIamPolicy(a, opts))
+}
+
+export interface GetTaxonomyPolicyTagIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    policyTagId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    taxonomyId: pulumi.Input<string>;
+}

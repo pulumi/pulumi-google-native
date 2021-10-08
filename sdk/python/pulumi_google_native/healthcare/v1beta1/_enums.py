@@ -73,7 +73,7 @@ class ConsentState(str, Enum):
     """
     ARCHIVED = "ARCHIVED"
     """
-    When a Consent is updated, the current version is archived and a new one is created with its state set to the updated Consent's previous state.
+    The archived state is currently not being used.
     """
     REVOKED = "REVOKED"
     """

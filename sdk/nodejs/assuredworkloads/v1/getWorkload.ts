@@ -31,7 +31,7 @@ export interface GetWorkloadArgs {
 
 export interface GetWorkloadResult {
     /**
-     * Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+     * Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
      */
     readonly billingAccount: string;
     /**
@@ -74,4 +74,14 @@ export interface GetWorkloadResult {
      * The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      */
     readonly resources: outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse[];
+}
+
+export function getWorkloadOutput(args: GetWorkloadOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadResult> {
+    return pulumi.output(args).apply(a => getWorkload(a, opts))
+}
+
+export interface GetWorkloadOutputArgs {
+    location: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    workloadId: pulumi.Input<string>;
 }

@@ -83,3 +83,13 @@ export interface GetPacketMirroringResult {
      */
     readonly selfLinkWithId: string;
 }
+
+export function getPacketMirroringOutput(args: GetPacketMirroringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPacketMirroringResult> {
+    return pulumi.output(args).apply(a => getPacketMirroring(a, opts))
+}
+
+export interface GetPacketMirroringOutputArgs {
+    packetMirroring: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

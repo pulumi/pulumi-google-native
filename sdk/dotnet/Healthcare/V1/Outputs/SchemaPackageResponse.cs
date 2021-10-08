@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
         /// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
         /// </summary>
         public readonly ImmutableArray<Outputs.Hl7TypesConfigResponse> Types;
+        /// <summary>
+        /// Determines how unexpected segments (segments not matched to the schema) are handled.
+        /// </summary>
+        public readonly string UnexpectedSegmentHandling;
 
         [OutputConstructor]
         private SchemaPackageResponse(
@@ -41,12 +45,15 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 
             string schematizedParsingType,
 
-            ImmutableArray<Outputs.Hl7TypesConfigResponse> types)
+            ImmutableArray<Outputs.Hl7TypesConfigResponse> types,
+
+            string unexpectedSegmentHandling)
         {
             IgnoreMinOccurs = ignoreMinOccurs;
             Schemas = schemas;
             SchematizedParsingType = schematizedParsingType;
             Types = types;
+            UnexpectedSegmentHandling = unexpectedSegmentHandling;
         }
     }
 }

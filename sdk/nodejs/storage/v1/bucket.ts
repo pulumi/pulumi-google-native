@@ -48,6 +48,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly cors!: pulumi.Output<outputs.storage.v1.BucketCorsItemResponse[]>;
     /**
+     * The bucket's custom placement configuration for Custom Dual Regions.
+     */
+    public readonly customPlacementConfig!: pulumi.Output<outputs.storage.v1.BucketCustomPlacementConfigResponse>;
+    /**
      * The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
      */
     public readonly defaultEventBasedHold!: pulumi.Output<boolean>;
@@ -112,6 +116,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly retentionPolicy!: pulumi.Output<outputs.storage.v1.BucketRetentionPolicyResponse>;
     /**
+     * The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
+     */
+    public readonly rpo!: pulumi.Output<string>;
+    /**
      * Reserved for future use.
      */
     public readonly satisfiesPZS!: pulumi.Output<boolean>;
@@ -139,10 +147,6 @@ export class Bucket extends pulumi.CustomResource {
      * The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
      */
     public readonly website!: pulumi.Output<outputs.storage.v1.BucketWebsiteResponse>;
-    /**
-     * The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
-     */
-    public readonly zoneAffinity!: pulumi.Output<string[]>;
 
     /**
      * Create a Bucket resource with the given unique name, arguments, and options.
@@ -158,6 +162,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["acl"] = args ? args.acl : undefined;
             inputs["billing"] = args ? args.billing : undefined;
             inputs["cors"] = args ? args.cors : undefined;
+            inputs["customPlacementConfig"] = args ? args.customPlacementConfig : undefined;
             inputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
             inputs["defaultObjectAcl"] = args ? args.defaultObjectAcl : undefined;
             inputs["encryption"] = args ? args.encryption : undefined;
@@ -180,6 +185,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["projection"] = args ? args.projection : undefined;
             inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
+            inputs["rpo"] = args ? args.rpo : undefined;
             inputs["satisfiesPZS"] = args ? args.satisfiesPZS : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
@@ -188,11 +194,11 @@ export class Bucket extends pulumi.CustomResource {
             inputs["userProject"] = args ? args.userProject : undefined;
             inputs["versioning"] = args ? args.versioning : undefined;
             inputs["website"] = args ? args.website : undefined;
-            inputs["zoneAffinity"] = args ? args.zoneAffinity : undefined;
         } else {
             inputs["acl"] = undefined /*out*/;
             inputs["billing"] = undefined /*out*/;
             inputs["cors"] = undefined /*out*/;
+            inputs["customPlacementConfig"] = undefined /*out*/;
             inputs["defaultEventBasedHold"] = undefined /*out*/;
             inputs["defaultObjectAcl"] = undefined /*out*/;
             inputs["encryption"] = undefined /*out*/;
@@ -209,6 +215,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["owner"] = undefined /*out*/;
             inputs["projectNumber"] = undefined /*out*/;
             inputs["retentionPolicy"] = undefined /*out*/;
+            inputs["rpo"] = undefined /*out*/;
             inputs["satisfiesPZS"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["storageClass"] = undefined /*out*/;
@@ -216,7 +223,6 @@ export class Bucket extends pulumi.CustomResource {
             inputs["updated"] = undefined /*out*/;
             inputs["versioning"] = undefined /*out*/;
             inputs["website"] = undefined /*out*/;
-            inputs["zoneAffinity"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -241,6 +247,10 @@ export interface BucketArgs {
      * The bucket's Cross-Origin Resource Sharing (CORS) configuration.
      */
     cors?: pulumi.Input<pulumi.Input<inputs.storage.v1.BucketCorsItemArgs>[]>;
+    /**
+     * The bucket's custom placement configuration for Custom Dual Regions.
+     */
+    customPlacementConfig?: pulumi.Input<inputs.storage.v1.BucketCustomPlacementConfigArgs>;
     /**
      * The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
      */
@@ -315,6 +325,10 @@ export interface BucketArgs {
      */
     retentionPolicy?: pulumi.Input<inputs.storage.v1.BucketRetentionPolicyArgs>;
     /**
+     * The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
+     */
+    rpo?: pulumi.Input<string>;
+    /**
      * Reserved for future use.
      */
     satisfiesPZS?: pulumi.Input<boolean>;
@@ -343,8 +357,4 @@ export interface BucketArgs {
      * The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
      */
     website?: pulumi.Input<inputs.storage.v1.BucketWebsiteArgs>;
-    /**
-     * The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
-     */
-    zoneAffinity?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -68,6 +68,8 @@ type LookupInterconnectResult struct {
 	ProvisionedLinkCount int `pulumi:"provisionedLinkCount"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount int `pulumi:"requestedLinkCount"`
+	// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// The current state of Interconnect functionality, which can take one of the following values: - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
@@ -209,6 +211,11 @@ func (o LookupInterconnectResultOutput) ProvisionedLinkCount() pulumi.IntOutput 
 // Target number of physical links in the link bundle, as requested by the customer.
 func (o LookupInterconnectResultOutput) RequestedLinkCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInterconnectResult) int { return v.RequestedLinkCount }).(pulumi.IntOutput)
+}
+
+// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+func (o LookupInterconnectResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInterconnectResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // Server-defined URL for the resource.

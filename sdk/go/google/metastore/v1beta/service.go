@@ -27,7 +27,7 @@ type Service struct {
 	HiveMetastoreConfig HiveMetastoreConfigResponseOutput `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow MaintenanceWindowResponseOutput `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration MetadataIntegrationResponseOutput `pulumi:"metadataIntegration"`
@@ -102,7 +102,7 @@ type serviceArgs struct {
 	// User-defined labels for the metastore service.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration *MetadataIntegration `pulumi:"metadataIntegration"`
@@ -130,7 +130,7 @@ type ServiceArgs struct {
 	// User-defined labels for the metastore service.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow MaintenanceWindowPtrInput
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration MetadataIntegrationPtrInput

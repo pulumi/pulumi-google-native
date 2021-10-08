@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetRepositoryResult',
@@ -17,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRepositoryResult:
-    def __init__(__self__, create_time=None, description=None, format=None, kms_key_name=None, labels=None, name=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, format=None, kms_key_name=None, labels=None, maven_config=None, name=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -33,6 +34,9 @@ class GetRepositoryResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if maven_config and not isinstance(maven_config, dict):
+            raise TypeError("Expected argument 'maven_config' to be a dict")
+        pulumi.set(__self__, "maven_config", maven_config)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -81,6 +85,14 @@ class GetRepositoryResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="mavenConfig")
+    def maven_config(self) -> 'outputs.MavenRepositoryConfigResponse':
+        """
+        Maven repository config contains repository level configuration for the repositories of maven type.
+        """
+        return pulumi.get(self, "maven_config")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -108,6 +120,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             format=self.format,
             kms_key_name=self.kms_key_name,
             labels=self.labels,
+            maven_config=self.maven_config,
             name=self.name,
             update_time=self.update_time)
 
@@ -135,6 +148,7 @@ def get_repository(location: Optional[str] = None,
         format=__ret__.format,
         kms_key_name=__ret__.kms_key_name,
         labels=__ret__.labels,
+        maven_config=__ret__.maven_config,
         name=__ret__.name,
         update_time=__ret__.update_time)
 

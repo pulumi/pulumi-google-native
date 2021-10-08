@@ -71,3 +71,13 @@ export interface GetWorkerPoolResult {
      */
     readonly updateTime: string;
 }
+
+export function getWorkerPoolOutput(args: GetWorkerPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkerPoolResult> {
+    return pulumi.output(args).apply(a => getWorkerPool(a, opts))
+}
+
+export interface GetWorkerPoolOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    workerPoolId: pulumi.Input<string>;
+}

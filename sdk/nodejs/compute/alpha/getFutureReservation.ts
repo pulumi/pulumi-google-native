@@ -76,3 +76,13 @@ export interface GetFutureReservationResult {
      */
     readonly zone: string;
 }
+
+export function getFutureReservationOutput(args: GetFutureReservationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFutureReservationResult> {
+    return pulumi.output(args).apply(a => getFutureReservation(a, opts))
+}
+
+export interface GetFutureReservationOutputArgs {
+    futureReservation: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
+}

@@ -53,3 +53,14 @@ export interface GetHl7V2StoreResult {
      */
     readonly rejectDuplicateMessage: boolean;
 }
+
+export function getHl7V2StoreOutput(args: GetHl7V2StoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHl7V2StoreResult> {
+    return pulumi.output(args).apply(a => getHl7V2Store(a, opts))
+}
+
+export interface GetHl7V2StoreOutputArgs {
+    datasetId: pulumi.Input<string>;
+    hl7V2StoreId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -99,7 +99,7 @@ class GetGroupResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
+        The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group}`.
         """
         return pulumi.get(self, "name")
 
@@ -107,7 +107,7 @@ class GetGroupResult:
     @pulumi.getter
     def parent(self) -> str:
         """
-        Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn').
+        Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source}` for external- identity-mapped groups or `customers/{customer}` for Google Groups. The `customer` must begin with "C" (for example, 'C046psxkn').
         """
         return pulumi.get(self, "parent")
 

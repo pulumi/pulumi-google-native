@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceGroupManagerResult:
-    def __init__(__self__, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, name=None, named_ports=None, region=None, self_link=None, self_link_with_id=None, service_account=None, standby_policy=None, stateful_policy=None, status=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policy=None, versions=None, zone=None):
+    def __init__(__self__, all_instances_config=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, name=None, named_ports=None, region=None, self_link=None, self_link_with_id=None, service_account=None, standby_policy=None, stateful_policy=None, status=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policy=None, versions=None, zone=None):
+        if all_instances_config and not isinstance(all_instances_config, dict):
+            raise TypeError("Expected argument 'all_instances_config' to be a dict")
+        pulumi.set(__self__, "all_instances_config", all_instances_config)
         if auto_healing_policies and not isinstance(auto_healing_policies, list):
             raise TypeError("Expected argument 'auto_healing_policies' to be a list")
         pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
@@ -103,6 +106,14 @@ class GetInstanceGroupManagerResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="allInstancesConfig")
+    def all_instances_config(self) -> 'outputs.InstanceGroupManagerAllInstancesConfigResponse':
+        """
+        Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        """
+        return pulumi.get(self, "all_instances_config")
 
     @property
     @pulumi.getter(name="autoHealingPolicies")
@@ -252,7 +263,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter(name="standbyPolicy")
     def standby_policy(self) -> 'outputs.InstanceGroupManagerStandbyPolicyResponse':
         """
-        Stanby policy for stopped and suspended instances.
+        Standby policy for stopped and suspended instances.
         """
         return pulumi.get(self, "standby_policy")
 
@@ -335,6 +346,7 @@ class AwaitableGetInstanceGroupManagerResult(GetInstanceGroupManagerResult):
         if False:
             yield self
         return GetInstanceGroupManagerResult(
+            all_instances_config=self.all_instances_config,
             auto_healing_policies=self.auto_healing_policies,
             base_instance_name=self.base_instance_name,
             creation_timestamp=self.creation_timestamp,
@@ -383,6 +395,7 @@ def get_instance_group_manager(instance_group_manager: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getInstanceGroupManager', __args__, opts=opts, typ=GetInstanceGroupManagerResult).value
 
     return AwaitableGetInstanceGroupManagerResult(
+        all_instances_config=__ret__.all_instances_config,
         auto_healing_policies=__ret__.auto_healing_policies,
         base_instance_name=__ret__.base_instance_name,
         creation_timestamp=__ret__.creation_timestamp,

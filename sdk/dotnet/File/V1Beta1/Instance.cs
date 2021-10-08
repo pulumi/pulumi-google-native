@@ -41,6 +41,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         public Output<ImmutableArray<Outputs.FileShareConfigResponse>> FileShares { get; private set; } = null!;
 
         /// <summary>
+        /// KMS key name used for data encryption.
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string> KmsKeyName { get; private set; } = null!;
+
+        /// <summary>
         /// Resource labels to represent user provided metadata.
         /// </summary>
         [Output("labels")]
@@ -75,6 +81,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         [Output("statusMessage")]
         public Output<string> StatusMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// field indicates all the reasons the instance is in "SUSPENDED" state.
+        /// </summary>
+        [Output("suspensionReasons")]
+        public Output<ImmutableArray<string>> SuspensionReasons { get; private set; } = null!;
 
         /// <summary>
         /// The service tier of the instance.
@@ -153,6 +165,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// KMS key name used for data encryption.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

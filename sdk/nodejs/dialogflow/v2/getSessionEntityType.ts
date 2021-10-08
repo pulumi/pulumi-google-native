@@ -49,3 +49,16 @@ export interface GetSessionEntityTypeResult {
      */
     readonly name: string;
 }
+
+export function getSessionEntityTypeOutput(args: GetSessionEntityTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSessionEntityTypeResult> {
+    return pulumi.output(args).apply(a => getSessionEntityType(a, opts))
+}
+
+export interface GetSessionEntityTypeOutputArgs {
+    entityTypeId: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    sessionId: pulumi.Input<string>;
+    userId: pulumi.Input<string>;
+}

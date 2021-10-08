@@ -34,7 +34,7 @@ type CertificateAuthority struct {
 	KeySpec KeyVersionSpecResponseOutput `pulumi:"keySpec"`
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+	// Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
 	Lifetime pulumi.StringOutput `pulumi:"lifetime"`
 	// The resource name for this CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -119,7 +119,7 @@ type certificateAuthorityArgs struct {
 	KeySpec KeyVersionSpec `pulumi:"keySpec"`
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+	// Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
 	Lifetime  string  `pulumi:"lifetime"`
 	Location  *string `pulumi:"location"`
 	Project   *string `pulumi:"project"`
@@ -142,7 +142,7 @@ type CertificateAuthorityArgs struct {
 	KeySpec KeyVersionSpecInput
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapInput
-	// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+	// Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
 	Lifetime  pulumi.StringInput
 	Location  pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput

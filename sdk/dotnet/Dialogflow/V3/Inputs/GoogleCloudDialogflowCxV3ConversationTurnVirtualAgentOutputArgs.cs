@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         private InputMap<string>? _diagnosticInfo;
 
         /// <summary>
-        /// Input only. The diagnostic info output for the turn.
+        /// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
         /// </summary>
         public InputMap<string> DiagnosticInfo
         {

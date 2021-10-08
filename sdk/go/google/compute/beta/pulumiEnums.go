@@ -2868,7 +2868,7 @@ func (in *autoscalingPolicyModePtr) ToAutoscalingPolicyModePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscalingPolicyModePtrOutput)
 }
 
-// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 type BackendBalancingMode string
 
 const (
@@ -4049,6 +4049,8 @@ type BackendServiceLoadBalancingScheme string
 const (
 	// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
 	BackendServiceLoadBalancingSchemeExternal = BackendServiceLoadBalancingScheme("EXTERNAL")
+	// Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+	BackendServiceLoadBalancingSchemeExternalManaged = BackendServiceLoadBalancingScheme("EXTERNAL_MANAGED")
 	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
 	BackendServiceLoadBalancingSchemeInternal = BackendServiceLoadBalancingScheme("INTERNAL")
 	// Signifies that this will be used for Internal HTTP(S) Load Balancing.
@@ -5618,172 +5620,6 @@ func (in *diskInstantiationConfigInstantiateFromPtr) ToDiskInstantiationConfigIn
 	return pulumi.ToOutputWithContext(ctx, in).(DiskInstantiationConfigInstantiateFromPtrOutput)
 }
 
-// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-type DiskInterface string
-
-const (
-	DiskInterfaceNvme        = DiskInterface("NVME")
-	DiskInterfaceScsi        = DiskInterface("SCSI")
-	DiskInterfaceUnspecified = DiskInterface("UNSPECIFIED")
-)
-
-func (DiskInterface) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskInterface)(nil)).Elem()
-}
-
-func (e DiskInterface) ToDiskInterfaceOutput() DiskInterfaceOutput {
-	return pulumi.ToOutput(e).(DiskInterfaceOutput)
-}
-
-func (e DiskInterface) ToDiskInterfaceOutputWithContext(ctx context.Context) DiskInterfaceOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(DiskInterfaceOutput)
-}
-
-func (e DiskInterface) ToDiskInterfacePtrOutput() DiskInterfacePtrOutput {
-	return e.ToDiskInterfacePtrOutputWithContext(context.Background())
-}
-
-func (e DiskInterface) ToDiskInterfacePtrOutputWithContext(ctx context.Context) DiskInterfacePtrOutput {
-	return DiskInterface(e).ToDiskInterfaceOutputWithContext(ctx).ToDiskInterfacePtrOutputWithContext(ctx)
-}
-
-func (e DiskInterface) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DiskInterface) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DiskInterface) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e DiskInterface) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type DiskInterfaceOutput struct{ *pulumi.OutputState }
-
-func (DiskInterfaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskInterface)(nil)).Elem()
-}
-
-func (o DiskInterfaceOutput) ToDiskInterfaceOutput() DiskInterfaceOutput {
-	return o
-}
-
-func (o DiskInterfaceOutput) ToDiskInterfaceOutputWithContext(ctx context.Context) DiskInterfaceOutput {
-	return o
-}
-
-func (o DiskInterfaceOutput) ToDiskInterfacePtrOutput() DiskInterfacePtrOutput {
-	return o.ToDiskInterfacePtrOutputWithContext(context.Background())
-}
-
-func (o DiskInterfaceOutput) ToDiskInterfacePtrOutputWithContext(ctx context.Context) DiskInterfacePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskInterface) *DiskInterface {
-		return &v
-	}).(DiskInterfacePtrOutput)
-}
-
-func (o DiskInterfaceOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o DiskInterfaceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskInterface) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o DiskInterfaceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DiskInterfaceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskInterface) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type DiskInterfacePtrOutput struct{ *pulumi.OutputState }
-
-func (DiskInterfacePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiskInterface)(nil)).Elem()
-}
-
-func (o DiskInterfacePtrOutput) ToDiskInterfacePtrOutput() DiskInterfacePtrOutput {
-	return o
-}
-
-func (o DiskInterfacePtrOutput) ToDiskInterfacePtrOutputWithContext(ctx context.Context) DiskInterfacePtrOutput {
-	return o
-}
-
-func (o DiskInterfacePtrOutput) Elem() DiskInterfaceOutput {
-	return o.ApplyT(func(v *DiskInterface) DiskInterface {
-		if v != nil {
-			return *v
-		}
-		var ret DiskInterface
-		return ret
-	}).(DiskInterfaceOutput)
-}
-
-func (o DiskInterfacePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DiskInterfacePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiskInterface) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// DiskInterfaceInput is an input type that accepts DiskInterfaceArgs and DiskInterfaceOutput values.
-// You can construct a concrete instance of `DiskInterfaceInput` via:
-//
-//          DiskInterfaceArgs{...}
-type DiskInterfaceInput interface {
-	pulumi.Input
-
-	ToDiskInterfaceOutput() DiskInterfaceOutput
-	ToDiskInterfaceOutputWithContext(context.Context) DiskInterfaceOutput
-}
-
-var diskInterfacePtrType = reflect.TypeOf((**DiskInterface)(nil)).Elem()
-
-type DiskInterfacePtrInput interface {
-	pulumi.Input
-
-	ToDiskInterfacePtrOutput() DiskInterfacePtrOutput
-	ToDiskInterfacePtrOutputWithContext(context.Context) DiskInterfacePtrOutput
-}
-
-type diskInterfacePtr string
-
-func DiskInterfacePtr(v string) DiskInterfacePtrInput {
-	return (*diskInterfacePtr)(&v)
-}
-
-func (*diskInterfacePtr) ElementType() reflect.Type {
-	return diskInterfacePtrType
-}
-
-func (in *diskInterfacePtr) ToDiskInterfacePtrOutput() DiskInterfacePtrOutput {
-	return pulumi.ToOutput(in).(DiskInterfacePtrOutput)
-}
-
-func (in *diskInterfacePtr) ToDiskInterfacePtrOutputWithContext(ctx context.Context) DiskInterfacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(DiskInterfacePtrOutput)
-}
-
 // The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
 type DistributionPolicyTargetShape string
 
@@ -7126,6 +6962,7 @@ type ForwardingRuleLoadBalancingScheme string
 
 const (
 	ForwardingRuleLoadBalancingSchemeExternal            = ForwardingRuleLoadBalancingScheme("EXTERNAL")
+	ForwardingRuleLoadBalancingSchemeExternalManaged     = ForwardingRuleLoadBalancingScheme("EXTERNAL_MANAGED")
 	ForwardingRuleLoadBalancingSchemeInternal            = ForwardingRuleLoadBalancingScheme("INTERNAL")
 	ForwardingRuleLoadBalancingSchemeInternalManaged     = ForwardingRuleLoadBalancingScheme("INTERNAL_MANAGED")
 	ForwardingRuleLoadBalancingSchemeInternalSelfManaged = ForwardingRuleLoadBalancingScheme("INTERNAL_SELF_MANAGED")
@@ -8815,6 +8652,7 @@ type GlobalForwardingRuleLoadBalancingScheme string
 
 const (
 	GlobalForwardingRuleLoadBalancingSchemeExternal            = GlobalForwardingRuleLoadBalancingScheme("EXTERNAL")
+	GlobalForwardingRuleLoadBalancingSchemeExternalManaged     = GlobalForwardingRuleLoadBalancingScheme("EXTERNAL_MANAGED")
 	GlobalForwardingRuleLoadBalancingSchemeInternal            = GlobalForwardingRuleLoadBalancingScheme("INTERNAL")
 	GlobalForwardingRuleLoadBalancingSchemeInternalManaged     = GlobalForwardingRuleLoadBalancingScheme("INTERNAL_MANAGED")
 	GlobalForwardingRuleLoadBalancingSchemeInternalSelfManaged = GlobalForwardingRuleLoadBalancingScheme("INTERNAL_SELF_MANAGED")
@@ -12683,7 +12521,7 @@ func (in *instancePrivateIpv6GoogleAccessPtr) ToInstancePrivateIpv6GoogleAccessP
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePrivateIpv6GoogleAccessPtrOutput)
 }
 
-// PostKeyRevocationActionType of the instance.
+// PostKeyRevocationActionType of the instance.(will be deprecated soon)
 type InstancePropertiesPostKeyRevocationActionType string
 
 const (
@@ -16066,7 +15904,7 @@ func (in *nodeTemplateCpuOvercommitTypePtr) ToNodeTemplateCpuOvercommitTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(NodeTemplateCpuOvercommitTypePtrOutput)
 }
 
-// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (GCS). They filter requests before the request is served from Google’s cache.
+// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
 type OrganizationSecurityPolicyType string
 
 const (
@@ -16909,6 +16747,8 @@ type RegionBackendServiceLoadBalancingScheme string
 const (
 	// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
 	RegionBackendServiceLoadBalancingSchemeExternal = RegionBackendServiceLoadBalancingScheme("EXTERNAL")
+	// Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+	RegionBackendServiceLoadBalancingSchemeExternalManaged = RegionBackendServiceLoadBalancingScheme("EXTERNAL_MANAGED")
 	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
 	RegionBackendServiceLoadBalancingSchemeInternal = RegionBackendServiceLoadBalancingScheme("INTERNAL")
 	// Signifies that this will be used for Internal HTTP(S) Load Balancing.
@@ -17949,6 +17789,7 @@ const (
 	RegionCommitmentTypeGeneralPurposeE2     = RegionCommitmentType("GENERAL_PURPOSE_E2")
 	RegionCommitmentTypeGeneralPurposeN2     = RegionCommitmentType("GENERAL_PURPOSE_N2")
 	RegionCommitmentTypeGeneralPurposeN2d    = RegionCommitmentType("GENERAL_PURPOSE_N2D")
+	RegionCommitmentTypeGeneralPurposeT2d    = RegionCommitmentType("GENERAL_PURPOSE_T2D")
 	RegionCommitmentTypeMemoryOptimized      = RegionCommitmentType("MEMORY_OPTIMIZED")
 	RegionCommitmentTypeTypeUnspecified      = RegionCommitmentType("TYPE_UNSPECIFIED")
 )
@@ -18108,172 +17949,6 @@ func (in *regionCommitmentTypePtr) ToRegionCommitmentTypePtrOutput() RegionCommi
 
 func (in *regionCommitmentTypePtr) ToRegionCommitmentTypePtrOutputWithContext(ctx context.Context) RegionCommitmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionCommitmentTypePtrOutput)
-}
-
-// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-type RegionDiskInterface string
-
-const (
-	RegionDiskInterfaceNvme        = RegionDiskInterface("NVME")
-	RegionDiskInterfaceScsi        = RegionDiskInterface("SCSI")
-	RegionDiskInterfaceUnspecified = RegionDiskInterface("UNSPECIFIED")
-)
-
-func (RegionDiskInterface) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskInterface)(nil)).Elem()
-}
-
-func (e RegionDiskInterface) ToRegionDiskInterfaceOutput() RegionDiskInterfaceOutput {
-	return pulumi.ToOutput(e).(RegionDiskInterfaceOutput)
-}
-
-func (e RegionDiskInterface) ToRegionDiskInterfaceOutputWithContext(ctx context.Context) RegionDiskInterfaceOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(RegionDiskInterfaceOutput)
-}
-
-func (e RegionDiskInterface) ToRegionDiskInterfacePtrOutput() RegionDiskInterfacePtrOutput {
-	return e.ToRegionDiskInterfacePtrOutputWithContext(context.Background())
-}
-
-func (e RegionDiskInterface) ToRegionDiskInterfacePtrOutputWithContext(ctx context.Context) RegionDiskInterfacePtrOutput {
-	return RegionDiskInterface(e).ToRegionDiskInterfaceOutputWithContext(ctx).ToRegionDiskInterfacePtrOutputWithContext(ctx)
-}
-
-func (e RegionDiskInterface) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RegionDiskInterface) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RegionDiskInterface) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e RegionDiskInterface) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type RegionDiskInterfaceOutput struct{ *pulumi.OutputState }
-
-func (RegionDiskInterfaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskInterface)(nil)).Elem()
-}
-
-func (o RegionDiskInterfaceOutput) ToRegionDiskInterfaceOutput() RegionDiskInterfaceOutput {
-	return o
-}
-
-func (o RegionDiskInterfaceOutput) ToRegionDiskInterfaceOutputWithContext(ctx context.Context) RegionDiskInterfaceOutput {
-	return o
-}
-
-func (o RegionDiskInterfaceOutput) ToRegionDiskInterfacePtrOutput() RegionDiskInterfacePtrOutput {
-	return o.ToRegionDiskInterfacePtrOutputWithContext(context.Background())
-}
-
-func (o RegionDiskInterfaceOutput) ToRegionDiskInterfacePtrOutputWithContext(ctx context.Context) RegionDiskInterfacePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDiskInterface) *RegionDiskInterface {
-		return &v
-	}).(RegionDiskInterfacePtrOutput)
-}
-
-func (o RegionDiskInterfaceOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o RegionDiskInterfaceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionDiskInterface) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o RegionDiskInterfaceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RegionDiskInterfaceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionDiskInterface) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type RegionDiskInterfacePtrOutput struct{ *pulumi.OutputState }
-
-func (RegionDiskInterfacePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionDiskInterface)(nil)).Elem()
-}
-
-func (o RegionDiskInterfacePtrOutput) ToRegionDiskInterfacePtrOutput() RegionDiskInterfacePtrOutput {
-	return o
-}
-
-func (o RegionDiskInterfacePtrOutput) ToRegionDiskInterfacePtrOutputWithContext(ctx context.Context) RegionDiskInterfacePtrOutput {
-	return o
-}
-
-func (o RegionDiskInterfacePtrOutput) Elem() RegionDiskInterfaceOutput {
-	return o.ApplyT(func(v *RegionDiskInterface) RegionDiskInterface {
-		if v != nil {
-			return *v
-		}
-		var ret RegionDiskInterface
-		return ret
-	}).(RegionDiskInterfaceOutput)
-}
-
-func (o RegionDiskInterfacePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RegionDiskInterfacePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionDiskInterface) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// RegionDiskInterfaceInput is an input type that accepts RegionDiskInterfaceArgs and RegionDiskInterfaceOutput values.
-// You can construct a concrete instance of `RegionDiskInterfaceInput` via:
-//
-//          RegionDiskInterfaceArgs{...}
-type RegionDiskInterfaceInput interface {
-	pulumi.Input
-
-	ToRegionDiskInterfaceOutput() RegionDiskInterfaceOutput
-	ToRegionDiskInterfaceOutputWithContext(context.Context) RegionDiskInterfaceOutput
-}
-
-var regionDiskInterfacePtrType = reflect.TypeOf((**RegionDiskInterface)(nil)).Elem()
-
-type RegionDiskInterfacePtrInput interface {
-	pulumi.Input
-
-	ToRegionDiskInterfacePtrOutput() RegionDiskInterfacePtrOutput
-	ToRegionDiskInterfacePtrOutputWithContext(context.Context) RegionDiskInterfacePtrOutput
-}
-
-type regionDiskInterfacePtr string
-
-func RegionDiskInterfacePtr(v string) RegionDiskInterfacePtrInput {
-	return (*regionDiskInterfacePtr)(&v)
-}
-
-func (*regionDiskInterfacePtr) ElementType() reflect.Type {
-	return regionDiskInterfacePtrType
-}
-
-func (in *regionDiskInterfacePtr) ToRegionDiskInterfacePtrOutput() RegionDiskInterfacePtrOutput {
-	return pulumi.ToOutput(in).(RegionDiskInterfacePtrOutput)
-}
-
-func (in *regionDiskInterfacePtr) ToRegionDiskInterfacePtrOutputWithContext(ctx context.Context) RegionDiskInterfacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(RegionDiskInterfacePtrOutput)
 }
 
 // Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
@@ -20882,7 +20557,7 @@ func (o RouterBgpPeerAdvertisedGroupsItemArrayOutput) Index(i pulumi.IntInput) R
 	}).(RouterBgpPeerAdvertisedGroupsItemOutput)
 }
 
-// The BFD session initialization mode for this BGP peer. Not currently available publicly. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
 type RouterBgpPeerBfdSessionInitializationMode string
 
 const (
@@ -22440,6 +22115,175 @@ func (in *sslhealthCheckProxyHeaderPtr) ToSSLHealthCheckProxyHeaderPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(SSLHealthCheckProxyHeaderPtrOutput)
 }
 
+// Specifies the termination action for the instance.
+type SchedulingInstanceTerminationAction string
+
+const (
+	// Delete the VM.
+	SchedulingInstanceTerminationActionDelete = SchedulingInstanceTerminationAction("DELETE")
+	// Default value. This value is unused.
+	SchedulingInstanceTerminationActionInstanceTerminationActionUnspecified = SchedulingInstanceTerminationAction("INSTANCE_TERMINATION_ACTION_UNSPECIFIED")
+	// Stop the VM without storing in-memory content. default action.
+	SchedulingInstanceTerminationActionStop = SchedulingInstanceTerminationAction("STOP")
+)
+
+func (SchedulingInstanceTerminationAction) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingInstanceTerminationAction)(nil)).Elem()
+}
+
+func (e SchedulingInstanceTerminationAction) ToSchedulingInstanceTerminationActionOutput() SchedulingInstanceTerminationActionOutput {
+	return pulumi.ToOutput(e).(SchedulingInstanceTerminationActionOutput)
+}
+
+func (e SchedulingInstanceTerminationAction) ToSchedulingInstanceTerminationActionOutputWithContext(ctx context.Context) SchedulingInstanceTerminationActionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SchedulingInstanceTerminationActionOutput)
+}
+
+func (e SchedulingInstanceTerminationAction) ToSchedulingInstanceTerminationActionPtrOutput() SchedulingInstanceTerminationActionPtrOutput {
+	return e.ToSchedulingInstanceTerminationActionPtrOutputWithContext(context.Background())
+}
+
+func (e SchedulingInstanceTerminationAction) ToSchedulingInstanceTerminationActionPtrOutputWithContext(ctx context.Context) SchedulingInstanceTerminationActionPtrOutput {
+	return SchedulingInstanceTerminationAction(e).ToSchedulingInstanceTerminationActionOutputWithContext(ctx).ToSchedulingInstanceTerminationActionPtrOutputWithContext(ctx)
+}
+
+func (e SchedulingInstanceTerminationAction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchedulingInstanceTerminationAction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchedulingInstanceTerminationAction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SchedulingInstanceTerminationAction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SchedulingInstanceTerminationActionOutput struct{ *pulumi.OutputState }
+
+func (SchedulingInstanceTerminationActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingInstanceTerminationAction)(nil)).Elem()
+}
+
+func (o SchedulingInstanceTerminationActionOutput) ToSchedulingInstanceTerminationActionOutput() SchedulingInstanceTerminationActionOutput {
+	return o
+}
+
+func (o SchedulingInstanceTerminationActionOutput) ToSchedulingInstanceTerminationActionOutputWithContext(ctx context.Context) SchedulingInstanceTerminationActionOutput {
+	return o
+}
+
+func (o SchedulingInstanceTerminationActionOutput) ToSchedulingInstanceTerminationActionPtrOutput() SchedulingInstanceTerminationActionPtrOutput {
+	return o.ToSchedulingInstanceTerminationActionPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingInstanceTerminationActionOutput) ToSchedulingInstanceTerminationActionPtrOutputWithContext(ctx context.Context) SchedulingInstanceTerminationActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulingInstanceTerminationAction) *SchedulingInstanceTerminationAction {
+		return &v
+	}).(SchedulingInstanceTerminationActionPtrOutput)
+}
+
+func (o SchedulingInstanceTerminationActionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SchedulingInstanceTerminationActionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchedulingInstanceTerminationAction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SchedulingInstanceTerminationActionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingInstanceTerminationActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchedulingInstanceTerminationAction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchedulingInstanceTerminationActionPtrOutput struct{ *pulumi.OutputState }
+
+func (SchedulingInstanceTerminationActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulingInstanceTerminationAction)(nil)).Elem()
+}
+
+func (o SchedulingInstanceTerminationActionPtrOutput) ToSchedulingInstanceTerminationActionPtrOutput() SchedulingInstanceTerminationActionPtrOutput {
+	return o
+}
+
+func (o SchedulingInstanceTerminationActionPtrOutput) ToSchedulingInstanceTerminationActionPtrOutputWithContext(ctx context.Context) SchedulingInstanceTerminationActionPtrOutput {
+	return o
+}
+
+func (o SchedulingInstanceTerminationActionPtrOutput) Elem() SchedulingInstanceTerminationActionOutput {
+	return o.ApplyT(func(v *SchedulingInstanceTerminationAction) SchedulingInstanceTerminationAction {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulingInstanceTerminationAction
+		return ret
+	}).(SchedulingInstanceTerminationActionOutput)
+}
+
+func (o SchedulingInstanceTerminationActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingInstanceTerminationActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchedulingInstanceTerminationAction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SchedulingInstanceTerminationActionInput is an input type that accepts SchedulingInstanceTerminationActionArgs and SchedulingInstanceTerminationActionOutput values.
+// You can construct a concrete instance of `SchedulingInstanceTerminationActionInput` via:
+//
+//          SchedulingInstanceTerminationActionArgs{...}
+type SchedulingInstanceTerminationActionInput interface {
+	pulumi.Input
+
+	ToSchedulingInstanceTerminationActionOutput() SchedulingInstanceTerminationActionOutput
+	ToSchedulingInstanceTerminationActionOutputWithContext(context.Context) SchedulingInstanceTerminationActionOutput
+}
+
+var schedulingInstanceTerminationActionPtrType = reflect.TypeOf((**SchedulingInstanceTerminationAction)(nil)).Elem()
+
+type SchedulingInstanceTerminationActionPtrInput interface {
+	pulumi.Input
+
+	ToSchedulingInstanceTerminationActionPtrOutput() SchedulingInstanceTerminationActionPtrOutput
+	ToSchedulingInstanceTerminationActionPtrOutputWithContext(context.Context) SchedulingInstanceTerminationActionPtrOutput
+}
+
+type schedulingInstanceTerminationActionPtr string
+
+func SchedulingInstanceTerminationActionPtr(v string) SchedulingInstanceTerminationActionPtrInput {
+	return (*schedulingInstanceTerminationActionPtr)(&v)
+}
+
+func (*schedulingInstanceTerminationActionPtr) ElementType() reflect.Type {
+	return schedulingInstanceTerminationActionPtrType
+}
+
+func (in *schedulingInstanceTerminationActionPtr) ToSchedulingInstanceTerminationActionPtrOutput() SchedulingInstanceTerminationActionPtrOutput {
+	return pulumi.ToOutput(in).(SchedulingInstanceTerminationActionPtrOutput)
+}
+
+func (in *schedulingInstanceTerminationActionPtr) ToSchedulingInstanceTerminationActionPtrOutputWithContext(ctx context.Context) SchedulingInstanceTerminationActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SchedulingInstanceTerminationActionPtrOutput)
+}
+
 // For more information about maintenance intervals, see Setting maintenance intervals.
 type SchedulingMaintenanceInterval string
 
@@ -22938,6 +22782,171 @@ func (in *schedulingOnHostMaintenancePtr) ToSchedulingOnHostMaintenancePtrOutput
 
 func (in *schedulingOnHostMaintenancePtr) ToSchedulingOnHostMaintenancePtrOutputWithContext(ctx context.Context) SchedulingOnHostMaintenancePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingOnHostMaintenancePtrOutput)
+}
+
+// Specifies the provisioning model of the instance.
+type SchedulingProvisioningModel string
+
+const (
+	// Heavily discounted, no guaranteed runtime.
+	SchedulingProvisioningModelSpot = SchedulingProvisioningModel("SPOT")
+)
+
+func (SchedulingProvisioningModel) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingProvisioningModel)(nil)).Elem()
+}
+
+func (e SchedulingProvisioningModel) ToSchedulingProvisioningModelOutput() SchedulingProvisioningModelOutput {
+	return pulumi.ToOutput(e).(SchedulingProvisioningModelOutput)
+}
+
+func (e SchedulingProvisioningModel) ToSchedulingProvisioningModelOutputWithContext(ctx context.Context) SchedulingProvisioningModelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SchedulingProvisioningModelOutput)
+}
+
+func (e SchedulingProvisioningModel) ToSchedulingProvisioningModelPtrOutput() SchedulingProvisioningModelPtrOutput {
+	return e.ToSchedulingProvisioningModelPtrOutputWithContext(context.Background())
+}
+
+func (e SchedulingProvisioningModel) ToSchedulingProvisioningModelPtrOutputWithContext(ctx context.Context) SchedulingProvisioningModelPtrOutput {
+	return SchedulingProvisioningModel(e).ToSchedulingProvisioningModelOutputWithContext(ctx).ToSchedulingProvisioningModelPtrOutputWithContext(ctx)
+}
+
+func (e SchedulingProvisioningModel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchedulingProvisioningModel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchedulingProvisioningModel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SchedulingProvisioningModel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SchedulingProvisioningModelOutput struct{ *pulumi.OutputState }
+
+func (SchedulingProvisioningModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingProvisioningModel)(nil)).Elem()
+}
+
+func (o SchedulingProvisioningModelOutput) ToSchedulingProvisioningModelOutput() SchedulingProvisioningModelOutput {
+	return o
+}
+
+func (o SchedulingProvisioningModelOutput) ToSchedulingProvisioningModelOutputWithContext(ctx context.Context) SchedulingProvisioningModelOutput {
+	return o
+}
+
+func (o SchedulingProvisioningModelOutput) ToSchedulingProvisioningModelPtrOutput() SchedulingProvisioningModelPtrOutput {
+	return o.ToSchedulingProvisioningModelPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingProvisioningModelOutput) ToSchedulingProvisioningModelPtrOutputWithContext(ctx context.Context) SchedulingProvisioningModelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulingProvisioningModel) *SchedulingProvisioningModel {
+		return &v
+	}).(SchedulingProvisioningModelPtrOutput)
+}
+
+func (o SchedulingProvisioningModelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SchedulingProvisioningModelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchedulingProvisioningModel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SchedulingProvisioningModelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingProvisioningModelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchedulingProvisioningModel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchedulingProvisioningModelPtrOutput struct{ *pulumi.OutputState }
+
+func (SchedulingProvisioningModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulingProvisioningModel)(nil)).Elem()
+}
+
+func (o SchedulingProvisioningModelPtrOutput) ToSchedulingProvisioningModelPtrOutput() SchedulingProvisioningModelPtrOutput {
+	return o
+}
+
+func (o SchedulingProvisioningModelPtrOutput) ToSchedulingProvisioningModelPtrOutputWithContext(ctx context.Context) SchedulingProvisioningModelPtrOutput {
+	return o
+}
+
+func (o SchedulingProvisioningModelPtrOutput) Elem() SchedulingProvisioningModelOutput {
+	return o.ApplyT(func(v *SchedulingProvisioningModel) SchedulingProvisioningModel {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulingProvisioningModel
+		return ret
+	}).(SchedulingProvisioningModelOutput)
+}
+
+func (o SchedulingProvisioningModelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingProvisioningModelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchedulingProvisioningModel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SchedulingProvisioningModelInput is an input type that accepts SchedulingProvisioningModelArgs and SchedulingProvisioningModelOutput values.
+// You can construct a concrete instance of `SchedulingProvisioningModelInput` via:
+//
+//          SchedulingProvisioningModelArgs{...}
+type SchedulingProvisioningModelInput interface {
+	pulumi.Input
+
+	ToSchedulingProvisioningModelOutput() SchedulingProvisioningModelOutput
+	ToSchedulingProvisioningModelOutputWithContext(context.Context) SchedulingProvisioningModelOutput
+}
+
+var schedulingProvisioningModelPtrType = reflect.TypeOf((**SchedulingProvisioningModel)(nil)).Elem()
+
+type SchedulingProvisioningModelPtrInput interface {
+	pulumi.Input
+
+	ToSchedulingProvisioningModelPtrOutput() SchedulingProvisioningModelPtrOutput
+	ToSchedulingProvisioningModelPtrOutputWithContext(context.Context) SchedulingProvisioningModelPtrOutput
+}
+
+type schedulingProvisioningModelPtr string
+
+func SchedulingProvisioningModelPtr(v string) SchedulingProvisioningModelPtrInput {
+	return (*schedulingProvisioningModelPtr)(&v)
+}
+
+func (*schedulingProvisioningModelPtr) ElementType() reflect.Type {
+	return schedulingProvisioningModelPtrType
+}
+
+func (in *schedulingProvisioningModelPtr) ToSchedulingProvisioningModelPtrOutput() SchedulingProvisioningModelPtrOutput {
+	return pulumi.ToOutput(in).(SchedulingProvisioningModelPtrOutput)
+}
+
+func (in *schedulingProvisioningModelPtr) ToSchedulingProvisioningModelPtrOutputWithContext(ctx context.Context) SchedulingProvisioningModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SchedulingProvisioningModelPtrOutput)
 }
 
 // Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
@@ -23764,7 +23773,7 @@ func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcher
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKey string
 
 const (
@@ -24097,7 +24106,7 @@ func (in *securityPolicyRuleRedirectOptionsTypePtr) ToSecurityPolicyRuleRedirect
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleRedirectOptionsTypePtrOutput)
 }
 
-// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (GCS). They filter requests before the request is served from Google’s cache.
+// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
 type SecurityPolicyType string
 
 const (
@@ -25277,7 +25286,7 @@ func (in *sslPolicyProfilePtr) ToSslPolicyProfilePtrOutputWithContext(ctx contex
 type SubnetworkIpv6AccessType string
 
 const (
-	// VMs in this subnet can have external IPv6.
+	// VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.
 	SubnetworkIpv6AccessTypeExternal = SubnetworkIpv6AccessType("EXTERNAL")
 	// IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet.
 	SubnetworkIpv6AccessTypeUnspecifiedIpv6AccessType = SubnetworkIpv6AccessType("UNSPECIFIED_IPV6_ACCESS_TYPE")
@@ -26455,7 +26464,7 @@ func (in *subnetworkStackTypePtr) ToSubnetworkStackTypePtrOutputWithContext(ctx 
 type SubsettingPolicy string
 
 const (
-	// Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is adjusted based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
+	// Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
 	SubsettingPolicyConsistentHashSubsetting = SubsettingPolicy("CONSISTENT_HASH_SUBSETTING")
 	// No Subsetting. Clients may open connections and send traffic to all backends of this backend service. This can lead to performance issues if there is substantial imbalance in the count of clients and backends.
 	SubsettingPolicyNone = SubsettingPolicy("NONE")
@@ -27862,8 +27871,6 @@ func init() {
 	pulumi.RegisterOutputType(DeprecationStatusStatePtrOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigInstantiateFromOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigInstantiateFromPtrOutput{})
-	pulumi.RegisterOutputType(DiskInterfaceOutput{})
-	pulumi.RegisterOutputType(DiskInterfacePtrOutput{})
 	pulumi.RegisterOutputType(DistributionPolicyTargetShapeOutput{})
 	pulumi.RegisterOutputType(DistributionPolicyTargetShapePtrOutput{})
 	pulumi.RegisterOutputType(ExternalVpnGatewayRedundancyTypeOutput{})
@@ -28010,8 +28017,6 @@ func init() {
 	pulumi.RegisterOutputType(RegionCommitmentPlanPtrOutput{})
 	pulumi.RegisterOutputType(RegionCommitmentTypeOutput{})
 	pulumi.RegisterOutputType(RegionCommitmentTypePtrOutput{})
-	pulumi.RegisterOutputType(RegionDiskInterfaceOutput{})
-	pulumi.RegisterOutputType(RegionDiskInterfacePtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckServiceHealthStatusAggregationPolicyOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckTypeOutput{})
@@ -28063,12 +28068,16 @@ func init() {
 	pulumi.RegisterOutputType(SSLHealthCheckPortSpecificationPtrOutput{})
 	pulumi.RegisterOutputType(SSLHealthCheckProxyHeaderOutput{})
 	pulumi.RegisterOutputType(SSLHealthCheckProxyHeaderPtrOutput{})
+	pulumi.RegisterOutputType(SchedulingInstanceTerminationActionOutput{})
+	pulumi.RegisterOutputType(SchedulingInstanceTerminationActionPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingMaintenanceIntervalOutput{})
 	pulumi.RegisterOutputType(SchedulingMaintenanceIntervalPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOperatorOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOperatorPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingOnHostMaintenanceOutput{})
 	pulumi.RegisterOutputType(SchedulingOnHostMaintenancePtrOutput{})
+	pulumi.RegisterOutputType(SchedulingProvisioningModelOutput{})
+	pulumi.RegisterOutputType(SchedulingProvisioningModelPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonParsingOutput{})

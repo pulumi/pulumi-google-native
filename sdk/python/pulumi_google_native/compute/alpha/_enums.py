@@ -13,7 +13,6 @@ __all__ = [
     'AddressPurpose',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface',
     'AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval',
-    'AttachedDiskInitializeParamsInterface',
     'AttachedDiskInitializeParamsOnUpdateAction',
     'AttachedDiskInterface',
     'AttachedDiskMode',
@@ -42,7 +41,6 @@ __all__ = [
     'ConditionSys',
     'DeprecationStatusState',
     'DiskInstantiationConfigInstantiateFrom',
-    'DiskInterface',
     'DistributionPolicyTargetShape',
     'ExternalVpnGatewayRedundancyType',
     'FileContentBufferFileType',
@@ -80,6 +78,7 @@ __all__ = [
     'HttpRedirectActionRedirectResponseCode',
     'ImageRawDiskContainerType',
     'ImageSourceType',
+    'InstanceGroupManagerAutoHealingPolicyUpdateInstances',
     'InstanceGroupManagerFailoverAction',
     'InstanceGroupManagerUpdatePolicyInstanceRedistributionType',
     'InstanceGroupManagerUpdatePolicyMinimalAction',
@@ -105,6 +104,7 @@ __all__ = [
     'NetworkInterfaceNicType',
     'NetworkInterfaceStackType',
     'NetworkInterfaceSubInterfaceIpAllocationMode',
+    'NetworkNetworkFirewallPolicyEnforcementOrder',
     'NetworkPerformanceConfigExternalIpEgressBandwidthTier',
     'NetworkPerformanceConfigTotalEgressBandwidthTier',
     'NetworkRoutingConfigRoutingMode',
@@ -124,7 +124,6 @@ __all__ = [
     'RegionCommitmentCategory',
     'RegionCommitmentPlan',
     'RegionCommitmentType',
-    'RegionDiskInterface',
     'RegionHealthCheckServiceHealthStatusAggregationPolicy',
     'RegionHealthCheckType',
     'RegionInstanceGroupManagerFailoverAction',
@@ -158,6 +157,7 @@ __all__ = [
     'RuleAction',
     'SSLHealthCheckPortSpecification',
     'SSLHealthCheckProxyHeader',
+    'SchedulingInstanceTerminationAction',
     'SchedulingMaintenanceInterval',
     'SchedulingNodeAffinityOperator',
     'SchedulingOnHostMaintenance',
@@ -342,15 +342,6 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterv
     """
 
 
-class AttachedDiskInitializeParamsInterface(str, Enum):
-    """
-    Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-    """
-    NVME = "NVME"
-    SCSI = "SCSI"
-    UNSPECIFIED = "UNSPECIFIED"
-
-
 class AttachedDiskInitializeParamsOnUpdateAction(str, Enum):
     """
     Specifies which action to take on instance update with this disk. Default is to use the existing disk.
@@ -523,7 +514,7 @@ class AutoscalingPolicyMode(str, Enum):
 
 class BackendBalancingMode(str, Enum):
     """
-    Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+    Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
     """
     CONNECTION = "CONNECTION"
     """
@@ -921,15 +912,6 @@ class DiskInstantiationConfigInstantiateFrom(str, Enum):
     """
     Use the same source image family used for creation of the source instance's corresponding disk. The request will fail if the source image of the source disk does not belong to any image family. Applicable to: boot disk, additional read-write disks.
     """
-
-
-class DiskInterface(str, Enum):
-    """
-    Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-    """
-    NVME = "NVME"
-    SCSI = "SCSI"
-    UNSPECIFIED = "UNSPECIFIED"
 
 
 class DistributionPolicyTargetShape(str, Enum):
@@ -1524,6 +1506,17 @@ class ImageSourceType(str, Enum):
     RAW = "RAW"
 
 
+class InstanceGroupManagerAutoHealingPolicyUpdateInstances(str, Enum):
+    ALWAYS = "ALWAYS"
+    """
+    Autohealer always updates instances with a new version for both PROACTIVE and OPPORTUNISTIC updates.
+    """
+    FOLLOW_UPDATE_POLICY = "FOLLOW_UPDATE_POLICY"
+    """
+    (Default) Autohealer updates instance with new version according to update policy constraints: - OPPORTUNISTIC: autohealing does not perform updates. - PROACTIVE: autohealing performs updates according to maxSurge and maxUnavailable constraints. 
+    """
+
+
 class InstanceGroupManagerFailoverAction(str, Enum):
     """
     The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
@@ -1656,7 +1649,7 @@ class InstancePrivateIpv6GoogleAccess(str, Enum):
 
 class InstancePropertiesPostKeyRevocationActionType(str, Enum):
     """
-    PostKeyRevocationActionType of the instance.
+    PostKeyRevocationActionType of the instance.(will be deprecated soon)
     """
     NOOP = "NOOP"
     """
@@ -1974,6 +1967,11 @@ class NetworkInterfaceSubInterfaceIpAllocationMode(str, Enum):
     UNSPECIFIED = "UNSPECIFIED"
 
 
+class NetworkNetworkFirewallPolicyEnforcementOrder(str, Enum):
+    AFTER_CLASSIC_FIREWALL = "AFTER_CLASSIC_FIREWALL"
+    BEFORE_CLASSIC_FIREWALL = "BEFORE_CLASSIC_FIREWALL"
+
+
 class NetworkPerformanceConfigExternalIpEgressBandwidthTier(str, Enum):
     DEFAULT = "DEFAULT"
     TIER1 = "TIER_1"
@@ -2048,7 +2046,7 @@ class NodeTemplateCpuOvercommitType(str, Enum):
 
 class OrganizationSecurityPolicyType(str, Enum):
     """
-    The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (GCS). They filter requests before the request is served from Google’s cache.
+    The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
@@ -2270,17 +2268,9 @@ class RegionCommitmentType(str, Enum):
     GENERAL_PURPOSE_E2 = "GENERAL_PURPOSE_E2"
     GENERAL_PURPOSE_N2 = "GENERAL_PURPOSE_N2"
     GENERAL_PURPOSE_N2D = "GENERAL_PURPOSE_N2D"
+    GENERAL_PURPOSE_T2D = "GENERAL_PURPOSE_T2D"
     MEMORY_OPTIMIZED = "MEMORY_OPTIMIZED"
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
-
-
-class RegionDiskInterface(str, Enum):
-    """
-    Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-    """
-    NVME = "NVME"
-    SCSI = "SCSI"
-    UNSPECIFIED = "UNSPECIFIED"
 
 
 class RegionHealthCheckServiceHealthStatusAggregationPolicy(str, Enum):
@@ -2369,7 +2359,7 @@ class RegionNetworkEndpointGroupType(str, Enum):
 
 class RegionSecurityPolicyType(str, Enum):
     """
-    The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (GCS). They filter requests before the request is served from Google’s cache.
+    The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
@@ -2602,7 +2592,7 @@ class RouterBgpPeerBfdPacketMode(str, Enum):
 
 class RouterBgpPeerBfdSessionInitializationMode(str, Enum):
     """
-    The BFD session initialization mode for this BGP peer. Not currently available publicly. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+    The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
     """
     ACTIVE = "ACTIVE"
     DISABLED = "DISABLED"
@@ -2738,6 +2728,24 @@ class SSLHealthCheckProxyHeader(str, Enum):
     PROXY_V1 = "PROXY_V1"
 
 
+class SchedulingInstanceTerminationAction(str, Enum):
+    """
+    Specifies the termination action for the instance.
+    """
+    DELETE = "DELETE"
+    """
+    Delete the VM.
+    """
+    INSTANCE_TERMINATION_ACTION_UNSPECIFIED = "INSTANCE_TERMINATION_ACTION_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    STOP = "STOP"
+    """
+    Stop the VM without storing in-memory content. default action.
+    """
+
+
 class SchedulingMaintenanceInterval(str, Enum):
     """
     For more information about maintenance intervals, see Setting maintenance intervals.
@@ -2831,7 +2839,7 @@ class SecurityPolicyRuleMatcherVersionedExpr(str, Enum):
 
 class SecurityPolicyRuleRateLimitOptionsEnforceOnKey(str, Enum):
     """
-    Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
+    Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
     """
     ALL = "ALL"
     ALL_IPS = "ALL_IPS"
@@ -2850,7 +2858,7 @@ class SecurityPolicyRuleRedirectOptionsType(str, Enum):
 
 class SecurityPolicyType(str, Enum):
     """
-    The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (GCS). They filter requests before the request is served from Google’s cache.
+    The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
@@ -2993,11 +3001,11 @@ class SubnetworkIpv6AccessType(str, Enum):
     """
     EXTERNAL = "EXTERNAL"
     """
-    VMs in this subnet can have external IPv6.
+    VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.
     """
     INTERNAL = "INTERNAL"
     """
-    VMs in this subnet can have internal IPv6.
+    VMs on this subnet will be assigned IPv6 addresses that are only accessible over the VPC network.
     """
     UNSPECIFIED_IPV6_ACCESS_TYPE = "UNSPECIFIED_IPV6_ACCESS_TYPE"
     """
@@ -3122,7 +3130,7 @@ class SubnetworkStackType(str, Enum):
 class SubsettingPolicy(str, Enum):
     CONSISTENT_HASH_SUBSETTING = "CONSISTENT_HASH_SUBSETTING"
     """
-    Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is adjusted based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
+    Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
     """
     NONE = "NONE"
     """

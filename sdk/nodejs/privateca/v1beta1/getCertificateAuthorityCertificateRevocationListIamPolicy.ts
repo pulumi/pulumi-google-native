@@ -51,3 +51,15 @@ export interface GetCertificateAuthorityCertificateRevocationListIamPolicyResult
      */
     readonly version: number;
 }
+
+export function getCertificateAuthorityCertificateRevocationListIamPolicyOutput(args: GetCertificateAuthorityCertificateRevocationListIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateAuthorityCertificateRevocationListIamPolicyResult> {
+    return pulumi.output(args).apply(a => getCertificateAuthorityCertificateRevocationListIamPolicy(a, opts))
+}
+
+export interface GetCertificateAuthorityCertificateRevocationListIamPolicyOutputArgs {
+    certificateAuthorityId: pulumi.Input<string>;
+    certificateRevocationListId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

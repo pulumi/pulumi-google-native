@@ -49,7 +49,7 @@ export interface GetNetworkResult {
      */
     readonly kind: string;
     /**
-     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
      */
     readonly mtu: number;
     /**
@@ -72,4 +72,13 @@ export interface GetNetworkResult {
      * Server-defined fully-qualified URLs for all subnetworks in this VPC network.
      */
     readonly subnetworks: string[];
+}
+
+export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
+    return pulumi.output(args).apply(a => getNetwork(a, opts))
+}
+
+export interface GetNetworkOutputArgs {
+    network: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

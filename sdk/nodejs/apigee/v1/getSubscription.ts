@@ -54,3 +54,13 @@ export interface GetSubscriptionResult {
      */
     readonly startTime: string;
 }
+
+export function getSubscriptionOutput(args: GetSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionResult> {
+    return pulumi.output(args).apply(a => getSubscription(a, opts))
+}
+
+export interface GetSubscriptionOutputArgs {
+    developerId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    subscriptionId: pulumi.Input<string>;
+}

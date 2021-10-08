@@ -92,3 +92,14 @@ export interface GetDefaultObjectAccessControlResult {
      */
     readonly selfLink: string;
 }
+
+export function getDefaultObjectAccessControlOutput(args: GetDefaultObjectAccessControlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDefaultObjectAccessControlResult> {
+    return pulumi.output(args).apply(a => getDefaultObjectAccessControl(a, opts))
+}
+
+export interface GetDefaultObjectAccessControlOutputArgs {
+    bucket: pulumi.Input<string>;
+    entity: pulumi.Input<string>;
+    provisionalUserProject?: pulumi.Input<string>;
+    userProject?: pulumi.Input<string>;
+}

@@ -12,7 +12,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     public static class GetGithubEnterpriseConfig
     {
         /// <summary>
-        /// Retrieve a GitHubEnterpriseConfig. This API is experimental.
+        /// Retrieve a GitHubEnterpriseConfig.
         /// </summary>
         public static Task<GetGithubEnterpriseConfigResult> InvokeAsync(GetGithubEnterpriseConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGithubEnterpriseConfigResult>("google-native:cloudbuild/v1:getGithubEnterpriseConfig", args ?? new GetGithubEnterpriseConfigArgs(), options.WithVersion());

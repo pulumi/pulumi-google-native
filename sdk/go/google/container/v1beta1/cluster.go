@@ -76,6 +76,8 @@ type Cluster struct {
 	MasterAuth MasterAuthResponseOutput `pulumi:"masterAuth"`
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigResponseOutput `pulumi:"masterAuthorizedNetworksConfig"`
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	MeshCertificates MeshCertificatesResponseOutput `pulumi:"meshCertificates"`
 	// Monitoring configuration for the cluster.
 	MonitoringConfig MonitoringConfigResponseOutput `pulumi:"monitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
@@ -216,6 +218,8 @@ type clusterArgs struct {
 	MasterAuth *MasterAuth `pulumi:"masterAuth"`
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig *MasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfig"`
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	MeshCertificates *MeshCertificates `pulumi:"meshCertificates"`
 	// Monitoring configuration for the cluster.
 	MonitoringConfig *MonitoringConfig `pulumi:"monitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
@@ -312,6 +316,8 @@ type ClusterArgs struct {
 	MasterAuth MasterAuthPtrInput
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigPtrInput
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	MeshCertificates MeshCertificatesPtrInput
 	// Monitoring configuration for the cluster.
 	MonitoringConfig MonitoringConfigPtrInput
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.

@@ -120,6 +120,10 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly requestedLinkCount!: pulumi.Output<number>;
     /**
+     * Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+     */
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -162,6 +166,7 @@ export class Interconnect extends pulumi.CustomResource {
             inputs["operationalStatus"] = undefined /*out*/;
             inputs["peerIpAddress"] = undefined /*out*/;
             inputs["provisionedLinkCount"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         } else {
@@ -186,6 +191,7 @@ export class Interconnect extends pulumi.CustomResource {
             inputs["peerIpAddress"] = undefined /*out*/;
             inputs["provisionedLinkCount"] = undefined /*out*/;
             inputs["requestedLinkCount"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }

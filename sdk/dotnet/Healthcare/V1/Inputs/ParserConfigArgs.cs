@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         [Input("segmentTerminator")]
         public Input<string>? SegmentTerminator { get; set; }
 
+        /// <summary>
+        /// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+        /// </summary>
+        [Input("version")]
+        public Input<Pulumi.GoogleNative.Healthcare.V1.ParserConfigVersion>? Version { get; set; }
+
         public ParserConfigArgs()
         {
         }

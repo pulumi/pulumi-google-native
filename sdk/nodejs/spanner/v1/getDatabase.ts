@@ -67,3 +67,13 @@ export interface GetDatabaseResult {
      */
     readonly versionRetentionPeriod: string;
 }
+
+export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
+    return pulumi.output(args).apply(a => getDatabase(a, opts))
+}
+
+export interface GetDatabaseOutputArgs {
+    databaseId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

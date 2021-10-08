@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         private InputList<string>? _additionalExperiments;
 
         /// <summary>
-        /// Additional experiment flags for the job.
+        /// Additional experiment flags for the job, specified with the `--experiments` option.
         /// </summary>
         public InputList<string> AdditionalExperiments
         {

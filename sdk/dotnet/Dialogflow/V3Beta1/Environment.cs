@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
     /// <summary>
-    /// Creates an Environment in the specified Agent.
+    /// Creates an Environment in the specified Agent. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`: Environment
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:Environment")]
     public partial class Environment : Pulumi.CustomResource
@@ -32,6 +32,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The test cases config for continuous tests of this environment.
+        /// </summary>
+        [Output("testCasesConfig")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse> TestCasesConfig { get; private set; } = null!;
 
         /// <summary>
         /// Update time of this environment.
@@ -116,6 +122,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The test cases config for continuous tests of this environment.
+        /// </summary>
+        [Input("testCasesConfig")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs>? TestCasesConfig { get; set; }
 
         [Input("versionConfigs", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs>? _versionConfigs;

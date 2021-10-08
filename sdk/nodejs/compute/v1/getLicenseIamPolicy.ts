@@ -55,3 +55,13 @@ export interface GetLicenseIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getLicenseIamPolicyOutput(args: GetLicenseIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLicenseIamPolicyResult> {
+    return pulumi.output(args).apply(a => getLicenseIamPolicy(a, opts))
+}
+
+export interface GetLicenseIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

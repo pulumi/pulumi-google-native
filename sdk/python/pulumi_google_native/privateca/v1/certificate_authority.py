@@ -32,7 +32,7 @@ class CertificateAuthorityArgs:
         The set of arguments for constructing a CertificateAuthority resource.
         :param pulumi.Input['CertificateConfigArgs'] config: Immutable. The config used to create a self-signed X.509 certificate or CSR.
         :param pulumi.Input['KeyVersionSpecArgs'] key_spec: Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
-        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        :param pulumi.Input[str] lifetime: Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         :param pulumi.Input['CertificateAuthorityType'] type: Immutable. The Type of this CertificateAuthority.
         :param pulumi.Input[str] gcs_bucket: Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
@@ -103,7 +103,7 @@ class CertificateAuthorityArgs:
     @pulumi.getter
     def lifetime(self) -> pulumi.Input[str]:
         """
-        The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         """
         return pulumi.get(self, "lifetime")
 
@@ -215,7 +215,7 @@ class CertificateAuthority(pulumi.CustomResource):
         :param pulumi.Input[str] gcs_bucket: Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
         :param pulumi.Input[pulumi.InputType['KeyVersionSpecArgs']] key_spec: Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
-        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        :param pulumi.Input[str] lifetime: Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         :param pulumi.Input[pulumi.InputType['SubordinateConfigArgs']] subordinate_config: Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
         :param pulumi.Input['CertificateAuthorityType'] type: Immutable. The Type of this CertificateAuthority.
         """
@@ -419,7 +419,7 @@ class CertificateAuthority(pulumi.CustomResource):
     @pulumi.getter
     def lifetime(self) -> pulumi.Output[str]:
         """
-        The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         """
         return pulumi.get(self, "lifetime")
 

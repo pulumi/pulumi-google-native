@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Privateca.V1.Outputs
     public sealed class RsaKeyTypeResponse
     {
         /// <summary>
-        /// Optional. The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
+        /// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
         /// </summary>
         public readonly string MaxModulusSize;
         /// <summary>
-        /// Optional. The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
+        /// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
         /// </summary>
         public readonly string MinModulusSize;
 

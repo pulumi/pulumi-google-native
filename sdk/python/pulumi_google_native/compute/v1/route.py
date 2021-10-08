@@ -337,9 +337,11 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["as_paths"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["next_hop_peering"] = None
+            __props__.__dict__["route_type"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["warnings"] = None
         super(Route, __self__).__init__(
@@ -364,6 +366,7 @@ class Route(pulumi.CustomResource):
 
         __props__ = RouteArgs.__new__(RouteArgs)
 
+        __props__.__dict__["as_paths"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["dest_range"] = None
@@ -378,10 +381,19 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["next_hop_peering"] = None
         __props__.__dict__["next_hop_vpn_tunnel"] = None
         __props__.__dict__["priority"] = None
+        __props__.__dict__["route_type"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["tags"] = None
         __props__.__dict__["warnings"] = None
         return Route(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="asPaths")
+    def as_paths(self) -> pulumi.Output[Sequence['outputs.RouteAsPathResponse']]:
+        """
+        AS path.
+        """
+        return pulumi.get(self, "as_paths")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -494,6 +506,14 @@ class Route(pulumi.CustomResource):
         The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
         """
         return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="routeType")
+    def route_type(self) -> pulumi.Output[str]:
+        """
+        The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
+        """
+        return pulumi.get(self, "route_type")
 
     @property
     @pulumi.getter(name="selfLink")

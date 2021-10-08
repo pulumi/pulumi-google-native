@@ -72,7 +72,7 @@ export const CryptoKeyVersionState = {
      */
     Disabled: "DISABLED",
     /**
-     * This version is destroyed, and the key material is no longer stored.
+     * This version is destroyed, and the key material is no longer stored. This version may only become ENABLED again if this version is reimport_eligible and the original key material is reimported with a call to KeyManagementService.ImportCryptoKeyVersion.
      */
     Destroyed: "DESTROYED",
     /**
@@ -151,6 +151,18 @@ export const CryptoKeyVersionTemplateAlgorithm = {
      * RSAES-OAEP 4096 bit key with a SHA512 digest.
      */
     RsaDecryptOaep4096Sha512: "RSA_DECRYPT_OAEP_4096_SHA512",
+    /**
+     * RSAES-OAEP 2048 bit key with a SHA1 digest.
+     */
+    RsaDecryptOaep2048Sha1: "RSA_DECRYPT_OAEP_2048_SHA1",
+    /**
+     * RSAES-OAEP 3072 bit key with a SHA1 digest.
+     */
+    RsaDecryptOaep3072Sha1: "RSA_DECRYPT_OAEP_3072_SHA1",
+    /**
+     * RSAES-OAEP 4096 bit key with a SHA1 digest.
+     */
+    RsaDecryptOaep4096Sha1: "RSA_DECRYPT_OAEP_4096_SHA1",
     /**
      * ECDSA on the NIST P-256 curve with a SHA256 digest.
      */

@@ -16,7 +16,6 @@ __all__ = [
     'OrganizationType',
     'RatePlanBillingPeriod',
     'RatePlanConsumptionPricingType',
-    'RatePlanPaymentFundingModel',
     'RatePlanRevenueShareType',
     'RatePlanState',
     'TargetServerProtocol',
@@ -257,33 +256,15 @@ class RatePlanConsumptionPricingType(str, Enum):
     """
     BANDED = "BANDED"
     """
-    Variable rate charged based on the total volume of API calls. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 150 x $1.5 = $225 * Total price for 250 calls: 250 x $1 = $250. **Note**: Not supported by Apigee at this time.
+    Variable rate charged for each API call based on price tiers. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 100 x $2 + 50 x $1.5 = $275 * Total price for 250 calls: 100 x $2 + 100 x $1.5 + 50 x $1 = $400. **Note**: Not supported by Apigee at this time.
     """
     TIERED = "TIERED"
     """
-    Variable rate charged for each API call based on price tiers. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 100 x $2 + 50 x $1.5 = $275 * Total price for 250 calls: 100 x $2 + 100 x $1.5 + 50 x $1 = $400. **Note**: Not supported by Apigee at this time.
+    **Note**: Not supported by Apigee at this time.
     """
     STAIRSTEP = "STAIRSTEP"
     """
-    Flat rate charged for a bundle of API calls whether or not the entire bundle is used. Example: * 1-100 calls cost $75 flat fee * 101-200 calls cost $100 flat free * 201-300 calls cost $150 flat fee * Total price for 1 call: $75 * Total price for 50 calls: $75 * Total price for 150 calls: $100 * Total price for 250 calls: $150. **Note**: Not supported by Apigee at this time.
-    """
-
-
-class RatePlanPaymentFundingModel(str, Enum):
-    """
-    Flag that specifies the billing account type, prepaid or postpaid.
-    """
-    PAYMENT_FUNDING_MODEL_UNSPECIFIED = "PAYMENT_FUNDING_MODEL_UNSPECIFIED"
-    """
-    Billing account type not specified.
-    """
-    PREPAID = "PREPAID"
-    """
-    Prepaid billing account type. Developer pays in advance for the use of your API products. Funds are deducted from their prepaid account balance. **Note**: Not supported by Apigee at this time.
-    """
-    POSTPAID = "POSTPAID"
-    """
-    Postpaid billing account type. Developer is billed through an invoice after using your API products.
+    **Note**: Not supported by Apigee at this time.
     """
 
 

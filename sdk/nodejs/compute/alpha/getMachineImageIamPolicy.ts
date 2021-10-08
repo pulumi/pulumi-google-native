@@ -55,3 +55,13 @@ export interface GetMachineImageIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getMachineImageIamPolicyOutput(args: GetMachineImageIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineImageIamPolicyResult> {
+    return pulumi.output(args).apply(a => getMachineImageIamPolicy(a, opts))
+}
+
+export interface GetMachineImageIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

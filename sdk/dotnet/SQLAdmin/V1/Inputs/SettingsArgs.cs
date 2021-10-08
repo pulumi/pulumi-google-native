@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     public sealed class SettingsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+        /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
         /// </summary>
         [Input("activationPolicy")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1.SettingsActivationPolicy>? ActivationPolicy { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public Input<Inputs.SqlActiveDirectoryConfigArgs>? ActiveDirectoryConfig { get; set; }
 
         /// <summary>
-        /// Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+        /// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         /// </summary>
         [Input("availabilityType")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1.SettingsAvailabilityType>? AvailabilityType { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public Input<string>? DataDiskSizeGb { get; set; }
 
         /// <summary>
-        /// The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+        /// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
         /// </summary>
         [Input("dataDiskType")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1.SettingsDataDiskType>? DataDiskType { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+        /// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
         /// </summary>
         [Input("locationPreference")]
         public Input<Inputs.LocationPreferenceArgs>? LocationPreference { get; set; }
@@ -134,6 +134,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         /// </summary>
         [Input("settingsVersion")]
         public Input<string>? SettingsVersion { get; set; }
+
+        /// <summary>
+        /// SQL Server specific audit configuration.
+        /// </summary>
+        [Input("sqlServerAuditConfig")]
+        public Input<Inputs.SqlServerAuditConfigArgs>? SqlServerAuditConfig { get; set; }
 
         /// <summary>
         /// Configuration to increase storage size automatically. The default value is true.

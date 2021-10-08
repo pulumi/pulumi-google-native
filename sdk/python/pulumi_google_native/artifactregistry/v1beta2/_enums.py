@@ -5,8 +5,27 @@
 from enum import Enum
 
 __all__ = [
+    'MavenRepositoryConfigVersionPolicy',
     'RepositoryFormat',
 ]
+
+
+class MavenRepositoryConfigVersionPolicy(str, Enum):
+    """
+    Version policy defines the versions that the registry will accept.
+    """
+    VERSION_POLICY_UNSPECIFIED = "VERSION_POLICY_UNSPECIFIED"
+    """
+    VERSION_POLICY_UNSPECIFIED - the version policy is not defined. When the version policy is not defined, no validation is performed for the versions.
+    """
+    RELEASE = "RELEASE"
+    """
+    RELEASE - repository will accept only Release versions.
+    """
+    SNAPSHOT = "SNAPSHOT"
+    """
+    SNAPSHOT - repository will accept only Snapshot versions.
+    """
 
 
 class RepositoryFormat(str, Enum):
@@ -31,7 +50,7 @@ class RepositoryFormat(str, Enum):
     """
     PYPI = "PYPI"
     """
-    PyPI package format.
+    PyPI package format. Deprecated, use PYTHON instead.
     """
     APT = "APT"
     """

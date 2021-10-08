@@ -478,6 +478,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["operational_status"] = None
             __props__.__dict__["private_interconnect_info"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["state"] = None
         super(InterconnectAttachment, __self__).__init__(
@@ -526,6 +527,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["private_interconnect_info"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["router"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
@@ -723,6 +725,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
         """
         return pulumi.get(self, "router")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter(name="selfLink")

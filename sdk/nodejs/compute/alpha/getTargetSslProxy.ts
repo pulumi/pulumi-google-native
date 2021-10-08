@@ -68,3 +68,12 @@ export interface GetTargetSslProxyResult {
      */
     readonly sslPolicy: string;
 }
+
+export function getTargetSslProxyOutput(args: GetTargetSslProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetSslProxyResult> {
+    return pulumi.output(args).apply(a => getTargetSslProxy(a, opts))
+}
+
+export interface GetTargetSslProxyOutputArgs {
+    project?: pulumi.Input<string>;
+    targetSslProxy: pulumi.Input<string>;
+}

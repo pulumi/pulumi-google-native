@@ -48,3 +48,12 @@ export interface GetSiteResult {
      */
     readonly type: string;
 }
+
+export function getSiteOutput(args: GetSiteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSiteResult> {
+    return pulumi.output(args).apply(a => getSite(a, opts))
+}
+
+export interface GetSiteOutputArgs {
+    project?: pulumi.Input<string>;
+    siteId: pulumi.Input<string>;
+}

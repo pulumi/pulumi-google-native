@@ -45,3 +45,14 @@ export interface GetRegionAutoscalingPolicyIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getRegionAutoscalingPolicyIamPolicyOutput(args: GetRegionAutoscalingPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionAutoscalingPolicyIamPolicyResult> {
+    return pulumi.output(args).apply(a => getRegionAutoscalingPolicyIamPolicy(a, opts))
+}
+
+export interface GetRegionAutoscalingPolicyIamPolicyOutputArgs {
+    autoscalingPolicyId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    regionId: pulumi.Input<string>;
+}

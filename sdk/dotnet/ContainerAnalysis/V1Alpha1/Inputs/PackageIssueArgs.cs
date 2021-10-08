@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         [Input("fixedLocation")]
         public Input<Inputs.VulnerabilityLocationArgs>? FixedLocation { get; set; }
 
+        /// <summary>
+        /// The type of package (e.g. OS, MAVEN, GO).
+        /// </summary>
+        [Input("packageType")]
+        public Input<string>? PackageType { get; set; }
+
         [Input("severityName")]
         public Input<string>? SeverityName { get; set; }
 

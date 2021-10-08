@@ -27,7 +27,8 @@ class RoutineArgs:
                  language: Optional[pulumi.Input['RoutineLanguage']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  return_table_type: Optional[pulumi.Input['StandardSqlTableTypeArgs']] = None,
-                 return_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None):
+                 return_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None,
+                 strict_mode: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Routine resource.
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
@@ -40,6 +41,7 @@ class RoutineArgs:
         :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL".
         :param pulumi.Input['StandardSqlTableTypeArgs'] return_table_type: Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
         :param pulumi.Input['StandardSqlDataTypeArgs'] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        :param pulumi.Input[bool] strict_mode: Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "definition_body", definition_body)
@@ -61,6 +63,8 @@ class RoutineArgs:
             pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
             pulumi.set(__self__, "return_type", return_type)
+        if strict_mode is not None:
+            pulumi.set(__self__, "strict_mode", strict_mode)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -200,6 +204,18 @@ class RoutineArgs:
     def return_type(self, value: Optional[pulumi.Input['StandardSqlDataTypeArgs']]):
         pulumi.set(self, "return_type", value)
 
+    @property
+    @pulumi.getter(name="strictMode")
+    def strict_mode(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+        """
+        return pulumi.get(self, "strict_mode")
+
+    @strict_mode.setter
+    def strict_mode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_mode", value)
+
 
 class Routine(pulumi.CustomResource):
     @overload
@@ -218,6 +234,7 @@ class Routine(pulumi.CustomResource):
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
                  routine_type: Optional[pulumi.Input['RoutineRoutineType']] = None,
+                 strict_mode: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new routine in the dataset.
@@ -235,6 +252,7 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         :param pulumi.Input[pulumi.InputType['RoutineReferenceArgs']] routine_reference: Reference describing the ID of this routine.
         :param pulumi.Input['RoutineRoutineType'] routine_type: The type of routine.
+        :param pulumi.Input[bool] strict_mode: Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
         """
         ...
     @overload
@@ -273,6 +291,7 @@ class Routine(pulumi.CustomResource):
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
                  routine_type: Optional[pulumi.Input['RoutineRoutineType']] = None,
+                 strict_mode: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -305,6 +324,7 @@ class Routine(pulumi.CustomResource):
             if routine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'routine_type'")
             __props__.__dict__["routine_type"] = routine_type
+            __props__.__dict__["strict_mode"] = strict_mode
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["last_modified_time"] = None
@@ -343,6 +363,7 @@ class Routine(pulumi.CustomResource):
         __props__.__dict__["return_type"] = None
         __props__.__dict__["routine_reference"] = None
         __props__.__dict__["routine_type"] = None
+        __props__.__dict__["strict_mode"] = None
         return Routine(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -448,4 +469,12 @@ class Routine(pulumi.CustomResource):
         The type of routine.
         """
         return pulumi.get(self, "routine_type")
+
+    @property
+    @pulumi.getter(name="strictMode")
+    def strict_mode(self) -> pulumi.Output[bool]:
+        """
+        Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+        """
+        return pulumi.get(self, "strict_mode")
 

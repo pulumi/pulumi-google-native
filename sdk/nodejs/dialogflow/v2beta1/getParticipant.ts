@@ -44,3 +44,14 @@ export interface GetParticipantResult {
      */
     readonly role: string;
 }
+
+export function getParticipantOutput(args: GetParticipantOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetParticipantResult> {
+    return pulumi.output(args).apply(a => getParticipant(a, opts))
+}
+
+export interface GetParticipantOutputArgs {
+    conversationId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    participantId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

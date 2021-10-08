@@ -50,3 +50,14 @@ export interface GetResponsePolicyRuleResult {
      */
     readonly ruleName: string;
 }
+
+export function getResponsePolicyRuleOutput(args: GetResponsePolicyRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResponsePolicyRuleResult> {
+    return pulumi.output(args).apply(a => getResponsePolicyRule(a, opts))
+}
+
+export interface GetResponsePolicyRuleOutputArgs {
+    clientOperationId?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    responsePolicy: pulumi.Input<string>;
+    responsePolicyRule: pulumi.Input<string>;
+}

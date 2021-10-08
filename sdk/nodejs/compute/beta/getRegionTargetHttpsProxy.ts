@@ -94,3 +94,13 @@ export interface GetRegionTargetHttpsProxyResult {
      */
     readonly urlMap: string;
 }
+
+export function getRegionTargetHttpsProxyOutput(args: GetRegionTargetHttpsProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionTargetHttpsProxyResult> {
+    return pulumi.output(args).apply(a => getRegionTargetHttpsProxy(a, opts))
+}
+
+export interface GetRegionTargetHttpsProxyOutputArgs {
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    targetHttpsProxy: pulumi.Input<string>;
+}

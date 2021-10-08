@@ -57,3 +57,14 @@ export interface GetReservationIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getReservationIamPolicyOutput(args: GetReservationIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservationIamPolicyResult> {
+    return pulumi.output(args).apply(a => getReservationIamPolicy(a, opts))
+}
+
+export interface GetReservationIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
+}

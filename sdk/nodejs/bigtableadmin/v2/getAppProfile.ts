@@ -51,3 +51,13 @@ export interface GetAppProfileResult {
      */
     readonly singleClusterRouting: outputs.bigtableadmin.v2.SingleClusterRoutingResponse;
 }
+
+export function getAppProfileOutput(args: GetAppProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppProfileResult> {
+    return pulumi.output(args).apply(a => getAppProfile(a, opts))
+}
+
+export interface GetAppProfileOutputArgs {
+    appProfileId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

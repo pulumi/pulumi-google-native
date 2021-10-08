@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
     public sealed class JobMetadataResponse
     {
         /// <summary>
-        /// Identification of a Cloud BigTable source used in the Dataflow job.
+        /// Identification of a Cloud Bigtable source used in the Dataflow job.
         /// </summary>
         public readonly ImmutableArray<Outputs.BigTableIODetailsResponse> BigTableDetails;
         /// <summary>
@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.FileIODetailsResponse> FileDetails;
         /// <summary>
-        /// Identification of a PubSub source used in the Dataflow job.
+        /// Identification of a Pub/Sub source used in the Dataflow job.
         /// </summary>
         public readonly ImmutableArray<Outputs.PubSubIODetailsResponse> PubsubDetails;
         /// <summary>

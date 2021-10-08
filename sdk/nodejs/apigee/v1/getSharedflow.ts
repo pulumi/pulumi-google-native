@@ -45,3 +45,12 @@ export interface GetSharedflowResult {
      */
     readonly revision: string[];
 }
+
+export function getSharedflowOutput(args: GetSharedflowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedflowResult> {
+    return pulumi.output(args).apply(a => getSharedflow(a, opts))
+}
+
+export interface GetSharedflowOutputArgs {
+    organizationId: pulumi.Input<string>;
+    sharedflowId: pulumi.Input<string>;
+}

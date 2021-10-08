@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<string> In;
         /// <summary>
-        /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+        /// The config returned to callers of CheckPolicy for any entries that match the LOG action.
         /// </summary>
         public readonly ImmutableArray<Outputs.LogConfigResponse> LogConfig;
         /// <summary>

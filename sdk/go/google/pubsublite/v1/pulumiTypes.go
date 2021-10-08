@@ -926,6 +926,286 @@ func (o PartitionConfigResponsePtrOutput) Count() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The settings for this topic's Reservation usage.
+type ReservationConfig struct {
+	// The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+	ThroughputReservation *string `pulumi:"throughputReservation"`
+}
+
+// ReservationConfigInput is an input type that accepts ReservationConfigArgs and ReservationConfigOutput values.
+// You can construct a concrete instance of `ReservationConfigInput` via:
+//
+//          ReservationConfigArgs{...}
+type ReservationConfigInput interface {
+	pulumi.Input
+
+	ToReservationConfigOutput() ReservationConfigOutput
+	ToReservationConfigOutputWithContext(context.Context) ReservationConfigOutput
+}
+
+// The settings for this topic's Reservation usage.
+type ReservationConfigArgs struct {
+	// The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+	ThroughputReservation pulumi.StringPtrInput `pulumi:"throughputReservation"`
+}
+
+func (ReservationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationConfig)(nil)).Elem()
+}
+
+func (i ReservationConfigArgs) ToReservationConfigOutput() ReservationConfigOutput {
+	return i.ToReservationConfigOutputWithContext(context.Background())
+}
+
+func (i ReservationConfigArgs) ToReservationConfigOutputWithContext(ctx context.Context) ReservationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationConfigOutput)
+}
+
+func (i ReservationConfigArgs) ToReservationConfigPtrOutput() ReservationConfigPtrOutput {
+	return i.ToReservationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ReservationConfigArgs) ToReservationConfigPtrOutputWithContext(ctx context.Context) ReservationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationConfigOutput).ToReservationConfigPtrOutputWithContext(ctx)
+}
+
+// ReservationConfigPtrInput is an input type that accepts ReservationConfigArgs, ReservationConfigPtr and ReservationConfigPtrOutput values.
+// You can construct a concrete instance of `ReservationConfigPtrInput` via:
+//
+//          ReservationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ReservationConfigPtrInput interface {
+	pulumi.Input
+
+	ToReservationConfigPtrOutput() ReservationConfigPtrOutput
+	ToReservationConfigPtrOutputWithContext(context.Context) ReservationConfigPtrOutput
+}
+
+type reservationConfigPtrType ReservationConfigArgs
+
+func ReservationConfigPtr(v *ReservationConfigArgs) ReservationConfigPtrInput {
+	return (*reservationConfigPtrType)(v)
+}
+
+func (*reservationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationConfig)(nil)).Elem()
+}
+
+func (i *reservationConfigPtrType) ToReservationConfigPtrOutput() ReservationConfigPtrOutput {
+	return i.ToReservationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *reservationConfigPtrType) ToReservationConfigPtrOutputWithContext(ctx context.Context) ReservationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationConfigPtrOutput)
+}
+
+// The settings for this topic's Reservation usage.
+type ReservationConfigOutput struct{ *pulumi.OutputState }
+
+func (ReservationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationConfig)(nil)).Elem()
+}
+
+func (o ReservationConfigOutput) ToReservationConfigOutput() ReservationConfigOutput {
+	return o
+}
+
+func (o ReservationConfigOutput) ToReservationConfigOutputWithContext(ctx context.Context) ReservationConfigOutput {
+	return o
+}
+
+func (o ReservationConfigOutput) ToReservationConfigPtrOutput() ReservationConfigPtrOutput {
+	return o.ToReservationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ReservationConfigOutput) ToReservationConfigPtrOutputWithContext(ctx context.Context) ReservationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationConfig) *ReservationConfig {
+		return &v
+	}).(ReservationConfigPtrOutput)
+}
+
+// The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+func (o ReservationConfigOutput) ThroughputReservation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReservationConfig) *string { return v.ThroughputReservation }).(pulumi.StringPtrOutput)
+}
+
+type ReservationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ReservationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationConfig)(nil)).Elem()
+}
+
+func (o ReservationConfigPtrOutput) ToReservationConfigPtrOutput() ReservationConfigPtrOutput {
+	return o
+}
+
+func (o ReservationConfigPtrOutput) ToReservationConfigPtrOutputWithContext(ctx context.Context) ReservationConfigPtrOutput {
+	return o
+}
+
+func (o ReservationConfigPtrOutput) Elem() ReservationConfigOutput {
+	return o.ApplyT(func(v *ReservationConfig) ReservationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationConfig
+		return ret
+	}).(ReservationConfigOutput)
+}
+
+// The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+func (o ReservationConfigPtrOutput) ThroughputReservation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReservationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThroughputReservation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The settings for this topic's Reservation usage.
+type ReservationConfigResponse struct {
+	// The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+	ThroughputReservation string `pulumi:"throughputReservation"`
+}
+
+// ReservationConfigResponseInput is an input type that accepts ReservationConfigResponseArgs and ReservationConfigResponseOutput values.
+// You can construct a concrete instance of `ReservationConfigResponseInput` via:
+//
+//          ReservationConfigResponseArgs{...}
+type ReservationConfigResponseInput interface {
+	pulumi.Input
+
+	ToReservationConfigResponseOutput() ReservationConfigResponseOutput
+	ToReservationConfigResponseOutputWithContext(context.Context) ReservationConfigResponseOutput
+}
+
+// The settings for this topic's Reservation usage.
+type ReservationConfigResponseArgs struct {
+	// The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+	ThroughputReservation pulumi.StringInput `pulumi:"throughputReservation"`
+}
+
+func (ReservationConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationConfigResponse)(nil)).Elem()
+}
+
+func (i ReservationConfigResponseArgs) ToReservationConfigResponseOutput() ReservationConfigResponseOutput {
+	return i.ToReservationConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ReservationConfigResponseArgs) ToReservationConfigResponseOutputWithContext(ctx context.Context) ReservationConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationConfigResponseOutput)
+}
+
+func (i ReservationConfigResponseArgs) ToReservationConfigResponsePtrOutput() ReservationConfigResponsePtrOutput {
+	return i.ToReservationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ReservationConfigResponseArgs) ToReservationConfigResponsePtrOutputWithContext(ctx context.Context) ReservationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationConfigResponseOutput).ToReservationConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ReservationConfigResponsePtrInput is an input type that accepts ReservationConfigResponseArgs, ReservationConfigResponsePtr and ReservationConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ReservationConfigResponsePtrInput` via:
+//
+//          ReservationConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ReservationConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToReservationConfigResponsePtrOutput() ReservationConfigResponsePtrOutput
+	ToReservationConfigResponsePtrOutputWithContext(context.Context) ReservationConfigResponsePtrOutput
+}
+
+type reservationConfigResponsePtrType ReservationConfigResponseArgs
+
+func ReservationConfigResponsePtr(v *ReservationConfigResponseArgs) ReservationConfigResponsePtrInput {
+	return (*reservationConfigResponsePtrType)(v)
+}
+
+func (*reservationConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationConfigResponse)(nil)).Elem()
+}
+
+func (i *reservationConfigResponsePtrType) ToReservationConfigResponsePtrOutput() ReservationConfigResponsePtrOutput {
+	return i.ToReservationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *reservationConfigResponsePtrType) ToReservationConfigResponsePtrOutputWithContext(ctx context.Context) ReservationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationConfigResponsePtrOutput)
+}
+
+// The settings for this topic's Reservation usage.
+type ReservationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ReservationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationConfigResponse)(nil)).Elem()
+}
+
+func (o ReservationConfigResponseOutput) ToReservationConfigResponseOutput() ReservationConfigResponseOutput {
+	return o
+}
+
+func (o ReservationConfigResponseOutput) ToReservationConfigResponseOutputWithContext(ctx context.Context) ReservationConfigResponseOutput {
+	return o
+}
+
+func (o ReservationConfigResponseOutput) ToReservationConfigResponsePtrOutput() ReservationConfigResponsePtrOutput {
+	return o.ToReservationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ReservationConfigResponseOutput) ToReservationConfigResponsePtrOutputWithContext(ctx context.Context) ReservationConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationConfigResponse) *ReservationConfigResponse {
+		return &v
+	}).(ReservationConfigResponsePtrOutput)
+}
+
+// The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+func (o ReservationConfigResponseOutput) ThroughputReservation() pulumi.StringOutput {
+	return o.ApplyT(func(v ReservationConfigResponse) string { return v.ThroughputReservation }).(pulumi.StringOutput)
+}
+
+type ReservationConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ReservationConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationConfigResponse)(nil)).Elem()
+}
+
+func (o ReservationConfigResponsePtrOutput) ToReservationConfigResponsePtrOutput() ReservationConfigResponsePtrOutput {
+	return o
+}
+
+func (o ReservationConfigResponsePtrOutput) ToReservationConfigResponsePtrOutputWithContext(ctx context.Context) ReservationConfigResponsePtrOutput {
+	return o
+}
+
+func (o ReservationConfigResponsePtrOutput) Elem() ReservationConfigResponseOutput {
+	return o.ApplyT(func(v *ReservationConfigResponse) ReservationConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationConfigResponse
+		return ret
+	}).(ReservationConfigResponseOutput)
+}
+
+// The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+func (o ReservationConfigResponsePtrOutput) ThroughputReservation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReservationConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ThroughputReservation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The settings for a topic's message retention.
 type RetentionConfig struct {
 	// The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
@@ -1245,6 +1525,26 @@ func (o RetentionConfigResponsePtrOutput) Period() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CapacityInput)(nil)).Elem(), CapacityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CapacityPtrInput)(nil)).Elem(), CapacityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CapacityResponseInput)(nil)).Elem(), CapacityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CapacityResponsePtrInput)(nil)).Elem(), CapacityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryConfigInput)(nil)).Elem(), DeliveryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryConfigPtrInput)(nil)).Elem(), DeliveryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryConfigResponseInput)(nil)).Elem(), DeliveryConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryConfigResponsePtrInput)(nil)).Elem(), DeliveryConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PartitionConfigInput)(nil)).Elem(), PartitionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PartitionConfigPtrInput)(nil)).Elem(), PartitionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PartitionConfigResponseInput)(nil)).Elem(), PartitionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PartitionConfigResponsePtrInput)(nil)).Elem(), PartitionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationConfigInput)(nil)).Elem(), ReservationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationConfigPtrInput)(nil)).Elem(), ReservationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationConfigResponseInput)(nil)).Elem(), ReservationConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationConfigResponsePtrInput)(nil)).Elem(), ReservationConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RetentionConfigInput)(nil)).Elem(), RetentionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RetentionConfigPtrInput)(nil)).Elem(), RetentionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RetentionConfigResponseInput)(nil)).Elem(), RetentionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RetentionConfigResponsePtrInput)(nil)).Elem(), RetentionConfigResponseArgs{})
 	pulumi.RegisterOutputType(CapacityOutput{})
 	pulumi.RegisterOutputType(CapacityPtrOutput{})
 	pulumi.RegisterOutputType(CapacityResponseOutput{})
@@ -1257,6 +1557,10 @@ func init() {
 	pulumi.RegisterOutputType(PartitionConfigPtrOutput{})
 	pulumi.RegisterOutputType(PartitionConfigResponseOutput{})
 	pulumi.RegisterOutputType(PartitionConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(ReservationConfigOutput{})
+	pulumi.RegisterOutputType(ReservationConfigPtrOutput{})
+	pulumi.RegisterOutputType(ReservationConfigResponseOutput{})
+	pulumi.RegisterOutputType(ReservationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(RetentionConfigOutput{})
 	pulumi.RegisterOutputType(RetentionConfigPtrOutput{})
 	pulumi.RegisterOutputType(RetentionConfigResponseOutput{})

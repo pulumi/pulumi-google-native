@@ -59,3 +59,13 @@ export interface GetAuthorizationPolicyResult {
      */
     readonly updateTime: string;
 }
+
+export function getAuthorizationPolicyOutput(args: GetAuthorizationPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorizationPolicyResult> {
+    return pulumi.output(args).apply(a => getAuthorizationPolicy(a, opts))
+}
+
+export interface GetAuthorizationPolicyOutputArgs {
+    authorizationPolicyId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

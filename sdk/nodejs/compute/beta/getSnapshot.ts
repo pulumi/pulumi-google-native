@@ -129,3 +129,12 @@ export interface GetSnapshotResult {
      */
     readonly userLicenses: string[];
 }
+
+export function getSnapshotOutput(args: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
+    return pulumi.output(args).apply(a => getSnapshot(a, opts))
+}
+
+export interface GetSnapshotOutputArgs {
+    project?: pulumi.Input<string>;
+    snapshot: pulumi.Input<string>;
+}

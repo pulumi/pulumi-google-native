@@ -37,6 +37,8 @@ type LookupRepositoryResult struct {
 	KmsKeyName string `pulumi:"kmsKeyName"`
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
 	Labels map[string]string `pulumi:"labels"`
+	// Maven repository config contains repository level configuration for the repositories of maven type.
+	MavenConfig MavenRepositoryConfigResponse `pulumi:"mavenConfig"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name string `pulumi:"name"`
 	// The time when the repository was last updated.
@@ -99,6 +101,11 @@ func (o LookupRepositoryResultOutput) KmsKeyName() pulumi.StringOutput {
 // Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
 func (o LookupRepositoryResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Maven repository config contains repository level configuration for the repositories of maven type.
+func (o LookupRepositoryResultOutput) MavenConfig() MavenRepositoryConfigResponseOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) MavenRepositoryConfigResponse { return v.MavenConfig }).(MavenRepositoryConfigResponseOutput)
 }
 
 // The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".

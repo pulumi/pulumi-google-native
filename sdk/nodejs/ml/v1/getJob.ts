@@ -77,3 +77,12 @@ export interface GetJobResult {
      */
     readonly trainingOutput: outputs.ml.v1.GoogleCloudMlV1__TrainingOutputResponse;
 }
+
+export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
+    return pulumi.output(args).apply(a => getJob(a, opts))
+}
+
+export interface GetJobOutputArgs {
+    jobId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

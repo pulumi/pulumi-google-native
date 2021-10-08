@@ -79,3 +79,13 @@ export interface GetRegistrationResult {
      */
     readonly supportedPrivacy: string[];
 }
+
+export function getRegistrationOutput(args: GetRegistrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistrationResult> {
+    return pulumi.output(args).apply(a => getRegistration(a, opts))
+}
+
+export interface GetRegistrationOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    registrationId: pulumi.Input<string>;
+}

@@ -55,7 +55,7 @@ export interface GetServiceResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+     * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
      */
     readonly maintenanceWindow: outputs.metastore.v1alpha.MaintenanceWindowResponse;
     /**
@@ -102,4 +102,14 @@ export interface GetServiceResult {
      * The time when the metastore service was last updated.
      */
     readonly updateTime: string;
+}
+
+export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+export interface GetServiceOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
 }

@@ -203,6 +203,8 @@ const (
 	WorkloadComplianceRegimeHitrust = WorkloadComplianceRegime("HITRUST")
 	// Assured Workloads For EU Regions and Support controls
 	WorkloadComplianceRegimeEuRegionsAndSupport = WorkloadComplianceRegime("EU_REGIONS_AND_SUPPORT")
+	// Assured Workloads For Canada Regions and Support controls
+	WorkloadComplianceRegimeCaRegionsAndSupport = WorkloadComplianceRegime("CA_REGIONS_AND_SUPPORT")
 )
 
 func (WorkloadComplianceRegime) ElementType() reflect.Type {

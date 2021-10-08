@@ -56,11 +56,11 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly Outputs.DiskEncryptionStatusResponse DiskEncryptionStatus;
         /// <summary>
-        /// The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         public readonly string EnqueuedTime;
         /// <summary>
@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly string Instance;
         /// <summary>
-        /// This is always *sql#backupRun*.
+        /// This is always **sql#backupRun**.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         public readonly string StartTime;
         /// <summary>
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         /// </summary>
         public readonly string WindowStartTime;
 

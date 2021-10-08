@@ -28,13 +28,13 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Maximum number of nodes in the NodePool. Must be &gt;= min_node_count. There has to be enough quota to scale up the cluster.
+        /// Maximum number of nodes for one location in the NodePool. Must be &gt;= min_node_count. There has to be enough quota to scale up the cluster.
         /// </summary>
         [Input("maxNodeCount")]
         public Input<int>? MaxNodeCount { get; set; }
 
         /// <summary>
-        /// Minimum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= max_node_count.
+        /// Minimum number of nodes for one location in the NodePool. Must be &gt;= 1 and &lt;= max_node_count.
         /// </summary>
         [Input("minNodeCount")]
         public Input<int>? MinNodeCount { get; set; }

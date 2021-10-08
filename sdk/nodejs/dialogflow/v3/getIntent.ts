@@ -67,3 +67,15 @@ export interface GetIntentResult {
      */
     readonly trainingPhrases: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse[];
 }
+
+export function getIntentOutput(args: GetIntentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntentResult> {
+    return pulumi.output(args).apply(a => getIntent(a, opts))
+}
+
+export interface GetIntentOutputArgs {
+    agentId: pulumi.Input<string>;
+    intentId: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

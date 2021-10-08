@@ -57,3 +57,12 @@ export interface GetMembershipResult {
      */
     readonly updateTime: string;
 }
+
+export function getMembershipOutput(args: GetMembershipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMembershipResult> {
+    return pulumi.output(args).apply(a => getMembership(a, opts))
+}
+
+export interface GetMembershipOutputArgs {
+    groupId: pulumi.Input<string>;
+    membershipId: pulumi.Input<string>;
+}

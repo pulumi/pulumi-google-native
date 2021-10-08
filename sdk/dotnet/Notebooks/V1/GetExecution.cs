@@ -60,7 +60,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly string JobUri;
         /// <summary>
-        /// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+        /// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>

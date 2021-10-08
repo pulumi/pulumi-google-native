@@ -43,3 +43,13 @@ export interface GetDomainIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getDomainIamPolicyOutput(args: GetDomainIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainIamPolicyResult> {
+    return pulumi.output(args).apply(a => getDomainIamPolicy(a, opts))
+}
+
+export interface GetDomainIamPolicyOutputArgs {
+    domainId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -39,6 +39,10 @@ export interface GetExecutionResult {
      */
     readonly argument: string;
     /**
+     * The call logging level associated to this execution.
+     */
+    readonly callLogLevel: string;
+    /**
      * Marks the end of execution, successful or not.
      */
     readonly endTime: string;
@@ -66,4 +70,16 @@ export interface GetExecutionResult {
      * Revision of the workflow this execution is using.
      */
     readonly workflowRevisionId: string;
+}
+
+export function getExecutionOutput(args: GetExecutionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionResult> {
+    return pulumi.output(args).apply(a => getExecution(a, opts))
+}
+
+export interface GetExecutionOutputArgs {
+    executionId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+    workflowId: pulumi.Input<string>;
 }

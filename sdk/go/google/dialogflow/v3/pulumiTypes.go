@@ -1364,7 +1364,7 @@ func (o GoogleCloudDialogflowCxV3ConversationTurnUserInputResponseOutput) IsWebh
 type GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput struct {
 	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage *GoogleCloudDialogflowCxV3Page `pulumi:"currentPage"`
-	// Input only. The diagnostic info output for the turn.
+	// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
 	DiagnosticInfo map[string]string `pulumi:"diagnosticInfo"`
 	// The session parameters available to the bot at this point.
 	SessionParameters map[string]string `pulumi:"sessionParameters"`
@@ -1391,7 +1391,7 @@ type GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputInput interface 
 type GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs struct {
 	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage GoogleCloudDialogflowCxV3PagePtrInput `pulumi:"currentPage"`
-	// Input only. The diagnostic info output for the turn.
+	// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
 	DiagnosticInfo pulumi.StringMapInput `pulumi:"diagnosticInfo"`
 	// The session parameters available to the bot at this point.
 	SessionParameters pulumi.StringMapInput `pulumi:"sessionParameters"`
@@ -1488,7 +1488,7 @@ func (o GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputOutput) Curre
 	}).(GoogleCloudDialogflowCxV3PagePtrOutput)
 }
 
-// Input only. The diagnostic info output for the turn.
+// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
 func (o GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputOutput) DiagnosticInfo() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput) map[string]string {
 		return v.DiagnosticInfo
@@ -1555,7 +1555,7 @@ func (o GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputPtrOutput) Cu
 	}).(GoogleCloudDialogflowCxV3PagePtrOutput)
 }
 
-// Input only. The diagnostic info output for the turn.
+// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
 func (o GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputPtrOutput) DiagnosticInfo() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput) map[string]string {
 		if v == nil {
@@ -1609,7 +1609,7 @@ func (o GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputPtrOutput) Tr
 type GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponse struct {
 	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage GoogleCloudDialogflowCxV3PageResponse `pulumi:"currentPage"`
-	// Input only. The diagnostic info output for the turn.
+	// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
 	DiagnosticInfo map[string]string `pulumi:"diagnosticInfo"`
 	// If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
 	Differences []GoogleCloudDialogflowCxV3TestRunDifferenceResponse `pulumi:"differences"`
@@ -1638,7 +1638,7 @@ type GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponseInput in
 type GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponseArgs struct {
 	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage GoogleCloudDialogflowCxV3PageResponseInput `pulumi:"currentPage"`
-	// Input only. The diagnostic info output for the turn.
+	// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
 	DiagnosticInfo pulumi.StringMapInput `pulumi:"diagnosticInfo"`
 	// If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
 	Differences GoogleCloudDialogflowCxV3TestRunDifferenceResponseArrayInput `pulumi:"differences"`
@@ -1686,7 +1686,7 @@ func (o GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponseOutpu
 	}).(GoogleCloudDialogflowCxV3PageResponseOutput)
 }
 
-// Input only. The diagnostic info output for the turn.
+// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
 func (o GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponseOutput) DiagnosticInfo() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponse) map[string]string {
 		return v.DiagnosticInfo
@@ -2367,6 +2367,364 @@ func (o GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseArrayOutput) In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse {
 		return vs[0].([]GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse)[vs[1].(int)]
 	}).(GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseOutput)
+}
+
+// The configuration for continuous tests.
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig struct {
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	EnableContinuousRun *bool `pulumi:"enableContinuousRun"`
+	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
+	EnablePredeploymentRun *bool `pulumi:"enablePredeploymentRun"`
+	// A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
+	TestCases []string `pulumi:"testCases"`
+}
+
+// GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs and GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigInput` via:
+//
+//          GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs{...}
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput
+	ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutputWithContext(context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput
+}
+
+// The configuration for continuous tests.
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs struct {
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	EnableContinuousRun pulumi.BoolPtrInput `pulumi:"enableContinuousRun"`
+	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
+	EnablePredeploymentRun pulumi.BoolPtrInput `pulumi:"enablePredeploymentRun"`
+	// A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
+	TestCases pulumi.StringArrayInput `pulumi:"testCases"`
+}
+
+func (GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput {
+	return i.ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput).ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs, GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtr and GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput
+	ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput
+}
+
+type googleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrType GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs
+
+func GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtr(v *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrInput {
+	return (*googleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrType) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrType) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput)
+}
+
+// The configuration for continuous tests.
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig) *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
+		return &v
+	}).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput)
+}
+
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput) EnableContinuousRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig) *bool { return v.EnableContinuousRun }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput) EnablePredeploymentRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig) *bool { return v.EnablePredeploymentRun }).(pulumi.BoolPtrOutput)
+}
+
+// A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput) TestCases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig) []string { return v.TestCases }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput) Elem() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
+		return ret
+	}).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput)
+}
+
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput) EnableContinuousRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableContinuousRun
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput) EnablePredeploymentRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePredeploymentRun
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput) TestCases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TestCases
+	}).(pulumi.StringArrayOutput)
+}
+
+// The configuration for continuous tests.
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse struct {
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	EnableContinuousRun bool `pulumi:"enableContinuousRun"`
+	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
+	EnablePredeploymentRun bool `pulumi:"enablePredeploymentRun"`
+	// A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
+	TestCases []string `pulumi:"testCases"`
+}
+
+// GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs and GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseInput` via:
+//
+//          GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs{...}
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput
+	ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput
+}
+
+// The configuration for continuous tests.
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs struct {
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	EnableContinuousRun pulumi.BoolInput `pulumi:"enableContinuousRun"`
+	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
+	EnablePredeploymentRun pulumi.BoolInput `pulumi:"enablePredeploymentRun"`
+	// A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
+	TestCases pulumi.StringArrayInput `pulumi:"testCases"`
+}
+
+func (GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput {
+	return i.ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput).ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs, GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtr and GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput
+	ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput
+}
+
+type googleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrType GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs
+
+func GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtr(v *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrInput {
+	return (*googleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrType) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrType) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput)
+}
+
+// The configuration for continuous tests.
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse) *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse {
+		return &v
+	}).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput)
+}
+
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput) EnableContinuousRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse) bool { return v.EnableContinuousRun }).(pulumi.BoolOutput)
+}
+
+// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput) EnablePredeploymentRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse) bool {
+		return v.EnablePredeploymentRun
+	}).(pulumi.BoolOutput)
+}
+
+// A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput) TestCases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse) []string { return v.TestCases }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput) ToGoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput) Elem() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse
+		return ret
+	}).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput)
+}
+
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput) EnableContinuousRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableContinuousRun
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput) EnablePredeploymentRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnablePredeploymentRun
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
+func (o GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput) TestCases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TestCases
+	}).(pulumi.StringArrayOutput)
 }
 
 // Configuration for the version.
@@ -15762,6 +16120,220 @@ func (o GoogleRpcStatusResponseOutput) Message() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3AdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3AdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3AudioInputInput)(nil)).Elem(), GoogleCloudDialogflowCxV3AudioInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3AudioInputPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3AudioInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3AudioInputResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3AudioInputResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ConversationTurnInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ConversationTurnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ConversationTurnArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ConversationTurnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ConversationTurnResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ConversationTurnResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ConversationTurnResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ConversationTurnResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ConversationTurnUserInputInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ConversationTurnUserInputPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ConversationTurnUserInputResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ConversationTurnUserInputResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3DtmfInputInput)(nil)).Elem(), GoogleCloudDialogflowCxV3DtmfInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3DtmfInputPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3DtmfInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3DtmfInputResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3DtmfInputResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EntityTypeEntityInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EntityTypeEntityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EntityTypeEntityArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EntityTypeEntityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EntityTypeEntityResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EntityTypeEntityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EntityTypeEntityResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EntityTypeEntityResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentVersionConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentVersionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EventHandlerInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EventHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EventHandlerArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EventHandlerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EventHandlerResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EventHandlerResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EventHandlerResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EventHandlerResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EventInputInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EventInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EventInputPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EventInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EventInputResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EventInputResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentDefinitionInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentDefinitionPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentDefinitionResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentDefinitionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentDefinitionResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentDefinitionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultMetricInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultMetricArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultMetricResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultMetricResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultMetricResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultMetricResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FormInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FormArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FormPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FormArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FormParameterInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FormParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FormParameterArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FormParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FormParameterFillBehaviorInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FormParameterFillBehaviorResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FormParameterFillBehaviorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FormParameterResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FormParameterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FormParameterResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FormParameterResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FormResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FormResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FormResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FormResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentSetParameterActionInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3InputAudioConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3InputAudioConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3InputAudioConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3InputAudioConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3InputAudioConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3InputAudioConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentInputTypeInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentInputTypePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentInputResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentInputResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentParameterInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentParameterArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentParameterResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentParameterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentParameterResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentParameterResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentTrainingPhraseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentTrainingPhraseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentTrainingPhraseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentTrainingPhrasePartInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentTrainingPhraseResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentTrainingPhraseResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentTrainingPhraseResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentTrainingPhraseResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3NluSettingsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3NluSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3NluSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3NluSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3NluSettingsResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3NluSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3NluSettingsResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3NluSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3PageInput)(nil)).Elem(), GoogleCloudDialogflowCxV3PageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3PagePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3PageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3PageResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3PageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3QueryInputInput)(nil)).Elem(), GoogleCloudDialogflowCxV3QueryInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3QueryInputPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3QueryInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3QueryInputResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3QueryInputResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessagePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageEndInteractionResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageEndInteractionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageMixedAudioResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageMixedAudioResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessagePlayAudioInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessagePlayAudioPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTextInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTextPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTextArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageTextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTextResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageTextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3ResponseMessageTextResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3ResponseMessageTextResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigRolloutStepInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutStateInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutStatePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutStateResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutStateResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SpeechToTextSettingsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SpeechToTextSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SpeechToTextSettingsResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SpeechToTextSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SpeechToTextSettingsResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SpeechToTextSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestCaseResultInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestCaseResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestCaseResultPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestCaseResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestCaseResultResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestCaseResultResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestCaseResultResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestCaseResultResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestRunDifferenceResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestRunDifferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestRunDifferenceResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestRunDifferenceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TextInputInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TextInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TextInputPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TextInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TextInputResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TextInputResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TransitionRouteInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TransitionRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TransitionRouteArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TransitionRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TransitionRouteResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TransitionRouteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TransitionRouteResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TransitionRouteResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VariantsHistoryInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VariantsHistoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VariantsHistoryArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VariantsHistoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VariantsHistoryResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VariantsHistoryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VariantsHistoryResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VariantsHistoryResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VersionVariantsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VersionVariantsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VersionVariantsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VersionVariantsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VersionVariantsResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VersionVariantsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VersionVariantsResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VersionVariantsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VersionVariantsVariantInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VersionVariantsVariantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VersionVariantsVariantArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VersionVariantsVariantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VersionVariantsVariantResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VersionVariantsVariantResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VersionVariantsVariantResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VersionVariantsVariantResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookGenericWebServiceInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusInput)(nil)).Elem(), GoogleRpcStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusPtrInput)(nil)).Elem(), GoogleRpcStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusResponseInput)(nil)).Elem(), GoogleRpcStatusResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AdvancedSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput{})
@@ -15794,6 +16366,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentVersionConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseOutput{})

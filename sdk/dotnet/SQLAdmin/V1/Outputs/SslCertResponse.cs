@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly string Instance;
         /// <summary>
-        /// This is always sql#sslCert.
+        /// This is always **sql#sslCert**.
         /// </summary>
         public readonly string Kind;
         /// <summary>

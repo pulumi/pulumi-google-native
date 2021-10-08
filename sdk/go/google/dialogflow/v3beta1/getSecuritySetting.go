@@ -35,7 +35,7 @@ type LookupSecuritySettingResult struct {
 	InsightsExportSettings GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponse `pulumi:"insightsExportSettings"`
 	// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
 	InspectTemplate string `pulumi:"inspectTemplate"`
-	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
+	// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
 	Name string `pulumi:"name"`
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes []string `pulumi:"purgeDataTypes"`
@@ -102,7 +102,7 @@ func (o LookupSecuritySettingResultOutput) InspectTemplate() pulumi.StringOutput
 	return o.ApplyT(func(v LookupSecuritySettingResult) string { return v.InspectTemplate }).(pulumi.StringOutput)
 }
 
-// Resource name of the settings. Format: `projects//locations//securitySettings/`.
+// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
 func (o LookupSecuritySettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecuritySettingResult) string { return v.Name }).(pulumi.StringOutput)
 }

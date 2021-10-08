@@ -103,3 +103,13 @@ export interface GetCertificateAuthorityResult {
      */
     readonly updateTime: string;
 }
+
+export function getCertificateAuthorityOutput(args: GetCertificateAuthorityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateAuthorityResult> {
+    return pulumi.output(args).apply(a => getCertificateAuthority(a, opts))
+}
+
+export interface GetCertificateAuthorityOutputArgs {
+    certificateAuthorityId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

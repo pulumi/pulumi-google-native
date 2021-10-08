@@ -85,7 +85,7 @@ class CryptoKeyVersionState(str, Enum):
     """
     DESTROYED = "DESTROYED"
     """
-    This version is destroyed, and the key material is no longer stored.
+    This version is destroyed, and the key material is no longer stored. This version may only become ENABLED again if this version is reimport_eligible and the original key material is reimported with a call to KeyManagementService.ImportCryptoKeyVersion.
     """
     DESTROY_SCHEDULED = "DESTROY_SCHEDULED"
     """
@@ -160,6 +160,18 @@ class CryptoKeyVersionTemplateAlgorithm(str, Enum):
     RSA_DECRYPT_OAEP4096_SHA512 = "RSA_DECRYPT_OAEP_4096_SHA512"
     """
     RSAES-OAEP 4096 bit key with a SHA512 digest.
+    """
+    RSA_DECRYPT_OAEP2048_SHA1 = "RSA_DECRYPT_OAEP_2048_SHA1"
+    """
+    RSAES-OAEP 2048 bit key with a SHA1 digest.
+    """
+    RSA_DECRYPT_OAEP3072_SHA1 = "RSA_DECRYPT_OAEP_3072_SHA1"
+    """
+    RSAES-OAEP 3072 bit key with a SHA1 digest.
+    """
+    RSA_DECRYPT_OAEP4096_SHA1 = "RSA_DECRYPT_OAEP_4096_SHA1"
+    """
+    RSAES-OAEP 4096 bit key with a SHA1 digest.
     """
     EC_SIGN_P256_SHA256 = "EC_SIGN_P256_SHA256"
     """

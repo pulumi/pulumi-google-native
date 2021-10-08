@@ -95,3 +95,13 @@ export interface GetTransferConfigResult {
      */
     readonly updateTime: string;
 }
+
+export function getTransferConfigOutput(args: GetTransferConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferConfigResult> {
+    return pulumi.output(args).apply(a => getTransferConfig(a, opts))
+}
+
+export interface GetTransferConfigOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    transferConfigId: pulumi.Input<string>;
+}

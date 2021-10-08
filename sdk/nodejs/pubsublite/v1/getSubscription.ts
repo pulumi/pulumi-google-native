@@ -43,3 +43,13 @@ export interface GetSubscriptionResult {
      */
     readonly topic: string;
 }
+
+export function getSubscriptionOutput(args: GetSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionResult> {
+    return pulumi.output(args).apply(a => getSubscription(a, opts))
+}
+
+export interface GetSubscriptionOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    subscriptionId: pulumi.Input<string>;
+}

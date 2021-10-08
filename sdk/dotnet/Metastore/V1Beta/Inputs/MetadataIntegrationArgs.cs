@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
         [Input("dataCatalogConfig")]
         public Input<Inputs.DataCatalogConfigArgs>? DataCatalogConfig { get; set; }
 
+        /// <summary>
+        /// The integration config for the Dataplex service.
+        /// </summary>
+        [Input("dataplexConfig")]
+        public Input<Inputs.DataplexConfigArgs>? DataplexConfig { get; set; }
+
         public MetadataIntegrationArgs()
         {
         }

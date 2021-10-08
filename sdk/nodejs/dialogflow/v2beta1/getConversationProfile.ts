@@ -87,3 +87,13 @@ export interface GetConversationProfileResult {
      */
     readonly updateTime: string;
 }
+
+export function getConversationProfileOutput(args: GetConversationProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConversationProfileResult> {
+    return pulumi.output(args).apply(a => getConversationProfile(a, opts))
+}
+
+export interface GetConversationProfileOutputArgs {
+    conversationProfileId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

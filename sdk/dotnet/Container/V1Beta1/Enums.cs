@@ -436,6 +436,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// system components
         /// </summary>
         public static MonitoringComponentConfigEnableComponentsItem SystemComponents { get; } = new MonitoringComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS");
+        /// <summary>
+        /// workloads
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem Workloads { get; } = new MonitoringComponentConfigEnableComponentsItem("WORKLOADS");
 
         public static bool operator ==(MonitoringComponentConfigEnableComponentsItem left, MonitoringComponentConfigEnableComponentsItem right) => left.Equals(right);
         public static bool operator !=(MonitoringComponentConfigEnableComponentsItem left, MonitoringComponentConfigEnableComponentsItem right) => !left.Equals(right);

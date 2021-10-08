@@ -23,7 +23,7 @@ type SecuritySetting struct {
 	InsightsExportSettings GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput `pulumi:"insightsExportSettings"`
 	// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
 	InspectTemplate pulumi.StringOutput `pulumi:"inspectTemplate"`
-	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
+	// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes pulumi.StringArrayOutput `pulumi:"purgeDataTypes"`
@@ -86,7 +86,7 @@ type securitySettingArgs struct {
 	// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
 	InspectTemplate *string `pulumi:"inspectTemplate"`
 	Location        *string `pulumi:"location"`
-	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
+	// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// List of types of data to remove when retention settings triggers purge.
@@ -110,7 +110,7 @@ type SecuritySettingArgs struct {
 	// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
 	InspectTemplate pulumi.StringPtrInput
 	Location        pulumi.StringPtrInput
-	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
+	// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// List of types of data to remove when retention settings triggers purge.

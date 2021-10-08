@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly bool IsPubliclyReadable;
         /// <summary>
-        /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. 
+        /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         public readonly string Name;
 

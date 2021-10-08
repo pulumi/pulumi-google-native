@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, display_name=None, labels=None, name=None, state=None, type=None):
+    def __init__(__self__, create_time=None, display_name=None, labels=None, name=None, state=None, type=None):
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -33,6 +36,14 @@ class GetInstanceResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        A server-assigned timestamp representing when this Instance was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="displayName")
@@ -81,6 +92,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         if False:
             yield self
         return GetInstanceResult(
+            create_time=self.create_time,
             display_name=self.display_name,
             labels=self.labels,
             name=self.name,
@@ -104,6 +116,7 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigtableadmin/v2:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
+        create_time=__ret__.create_time,
         display_name=__ret__.display_name,
         labels=__ret__.labels,
         name=__ret__.name,

@@ -700,6 +700,280 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 	}).(AuditLogConfigResponseOutput)
 }
 
+type AvroOptions struct {
+	// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+	UseAvroLogicalTypes *bool `pulumi:"useAvroLogicalTypes"`
+}
+
+// AvroOptionsInput is an input type that accepts AvroOptionsArgs and AvroOptionsOutput values.
+// You can construct a concrete instance of `AvroOptionsInput` via:
+//
+//          AvroOptionsArgs{...}
+type AvroOptionsInput interface {
+	pulumi.Input
+
+	ToAvroOptionsOutput() AvroOptionsOutput
+	ToAvroOptionsOutputWithContext(context.Context) AvroOptionsOutput
+}
+
+type AvroOptionsArgs struct {
+	// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+	UseAvroLogicalTypes pulumi.BoolPtrInput `pulumi:"useAvroLogicalTypes"`
+}
+
+func (AvroOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvroOptions)(nil)).Elem()
+}
+
+func (i AvroOptionsArgs) ToAvroOptionsOutput() AvroOptionsOutput {
+	return i.ToAvroOptionsOutputWithContext(context.Background())
+}
+
+func (i AvroOptionsArgs) ToAvroOptionsOutputWithContext(ctx context.Context) AvroOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvroOptionsOutput)
+}
+
+func (i AvroOptionsArgs) ToAvroOptionsPtrOutput() AvroOptionsPtrOutput {
+	return i.ToAvroOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AvroOptionsArgs) ToAvroOptionsPtrOutputWithContext(ctx context.Context) AvroOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvroOptionsOutput).ToAvroOptionsPtrOutputWithContext(ctx)
+}
+
+// AvroOptionsPtrInput is an input type that accepts AvroOptionsArgs, AvroOptionsPtr and AvroOptionsPtrOutput values.
+// You can construct a concrete instance of `AvroOptionsPtrInput` via:
+//
+//          AvroOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type AvroOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAvroOptionsPtrOutput() AvroOptionsPtrOutput
+	ToAvroOptionsPtrOutputWithContext(context.Context) AvroOptionsPtrOutput
+}
+
+type avroOptionsPtrType AvroOptionsArgs
+
+func AvroOptionsPtr(v *AvroOptionsArgs) AvroOptionsPtrInput {
+	return (*avroOptionsPtrType)(v)
+}
+
+func (*avroOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvroOptions)(nil)).Elem()
+}
+
+func (i *avroOptionsPtrType) ToAvroOptionsPtrOutput() AvroOptionsPtrOutput {
+	return i.ToAvroOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *avroOptionsPtrType) ToAvroOptionsPtrOutputWithContext(ctx context.Context) AvroOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvroOptionsPtrOutput)
+}
+
+type AvroOptionsOutput struct{ *pulumi.OutputState }
+
+func (AvroOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvroOptions)(nil)).Elem()
+}
+
+func (o AvroOptionsOutput) ToAvroOptionsOutput() AvroOptionsOutput {
+	return o
+}
+
+func (o AvroOptionsOutput) ToAvroOptionsOutputWithContext(ctx context.Context) AvroOptionsOutput {
+	return o
+}
+
+func (o AvroOptionsOutput) ToAvroOptionsPtrOutput() AvroOptionsPtrOutput {
+	return o.ToAvroOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AvroOptionsOutput) ToAvroOptionsPtrOutputWithContext(ctx context.Context) AvroOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvroOptions) *AvroOptions {
+		return &v
+	}).(AvroOptionsPtrOutput)
+}
+
+// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+func (o AvroOptionsOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvroOptions) *bool { return v.UseAvroLogicalTypes }).(pulumi.BoolPtrOutput)
+}
+
+type AvroOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AvroOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvroOptions)(nil)).Elem()
+}
+
+func (o AvroOptionsPtrOutput) ToAvroOptionsPtrOutput() AvroOptionsPtrOutput {
+	return o
+}
+
+func (o AvroOptionsPtrOutput) ToAvroOptionsPtrOutputWithContext(ctx context.Context) AvroOptionsPtrOutput {
+	return o
+}
+
+func (o AvroOptionsPtrOutput) Elem() AvroOptionsOutput {
+	return o.ApplyT(func(v *AvroOptions) AvroOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AvroOptions
+		return ret
+	}).(AvroOptionsOutput)
+}
+
+// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+func (o AvroOptionsPtrOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvroOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAvroLogicalTypes
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AvroOptionsResponse struct {
+	// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+	UseAvroLogicalTypes bool `pulumi:"useAvroLogicalTypes"`
+}
+
+// AvroOptionsResponseInput is an input type that accepts AvroOptionsResponseArgs and AvroOptionsResponseOutput values.
+// You can construct a concrete instance of `AvroOptionsResponseInput` via:
+//
+//          AvroOptionsResponseArgs{...}
+type AvroOptionsResponseInput interface {
+	pulumi.Input
+
+	ToAvroOptionsResponseOutput() AvroOptionsResponseOutput
+	ToAvroOptionsResponseOutputWithContext(context.Context) AvroOptionsResponseOutput
+}
+
+type AvroOptionsResponseArgs struct {
+	// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+	UseAvroLogicalTypes pulumi.BoolInput `pulumi:"useAvroLogicalTypes"`
+}
+
+func (AvroOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvroOptionsResponse)(nil)).Elem()
+}
+
+func (i AvroOptionsResponseArgs) ToAvroOptionsResponseOutput() AvroOptionsResponseOutput {
+	return i.ToAvroOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i AvroOptionsResponseArgs) ToAvroOptionsResponseOutputWithContext(ctx context.Context) AvroOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvroOptionsResponseOutput)
+}
+
+func (i AvroOptionsResponseArgs) ToAvroOptionsResponsePtrOutput() AvroOptionsResponsePtrOutput {
+	return i.ToAvroOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AvroOptionsResponseArgs) ToAvroOptionsResponsePtrOutputWithContext(ctx context.Context) AvroOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvroOptionsResponseOutput).ToAvroOptionsResponsePtrOutputWithContext(ctx)
+}
+
+// AvroOptionsResponsePtrInput is an input type that accepts AvroOptionsResponseArgs, AvroOptionsResponsePtr and AvroOptionsResponsePtrOutput values.
+// You can construct a concrete instance of `AvroOptionsResponsePtrInput` via:
+//
+//          AvroOptionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AvroOptionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToAvroOptionsResponsePtrOutput() AvroOptionsResponsePtrOutput
+	ToAvroOptionsResponsePtrOutputWithContext(context.Context) AvroOptionsResponsePtrOutput
+}
+
+type avroOptionsResponsePtrType AvroOptionsResponseArgs
+
+func AvroOptionsResponsePtr(v *AvroOptionsResponseArgs) AvroOptionsResponsePtrInput {
+	return (*avroOptionsResponsePtrType)(v)
+}
+
+func (*avroOptionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvroOptionsResponse)(nil)).Elem()
+}
+
+func (i *avroOptionsResponsePtrType) ToAvroOptionsResponsePtrOutput() AvroOptionsResponsePtrOutput {
+	return i.ToAvroOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *avroOptionsResponsePtrType) ToAvroOptionsResponsePtrOutputWithContext(ctx context.Context) AvroOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvroOptionsResponsePtrOutput)
+}
+
+type AvroOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (AvroOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvroOptionsResponse)(nil)).Elem()
+}
+
+func (o AvroOptionsResponseOutput) ToAvroOptionsResponseOutput() AvroOptionsResponseOutput {
+	return o
+}
+
+func (o AvroOptionsResponseOutput) ToAvroOptionsResponseOutputWithContext(ctx context.Context) AvroOptionsResponseOutput {
+	return o
+}
+
+func (o AvroOptionsResponseOutput) ToAvroOptionsResponsePtrOutput() AvroOptionsResponsePtrOutput {
+	return o.ToAvroOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AvroOptionsResponseOutput) ToAvroOptionsResponsePtrOutputWithContext(ctx context.Context) AvroOptionsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvroOptionsResponse) *AvroOptionsResponse {
+		return &v
+	}).(AvroOptionsResponsePtrOutput)
+}
+
+// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+func (o AvroOptionsResponseOutput) UseAvroLogicalTypes() pulumi.BoolOutput {
+	return o.ApplyT(func(v AvroOptionsResponse) bool { return v.UseAvroLogicalTypes }).(pulumi.BoolOutput)
+}
+
+type AvroOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AvroOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvroOptionsResponse)(nil)).Elem()
+}
+
+func (o AvroOptionsResponsePtrOutput) ToAvroOptionsResponsePtrOutput() AvroOptionsResponsePtrOutput {
+	return o
+}
+
+func (o AvroOptionsResponsePtrOutput) ToAvroOptionsResponsePtrOutputWithContext(ctx context.Context) AvroOptionsResponsePtrOutput {
+	return o
+}
+
+func (o AvroOptionsResponsePtrOutput) Elem() AvroOptionsResponseOutput {
+	return o.ApplyT(func(v *AvroOptionsResponse) AvroOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AvroOptionsResponse
+		return ret
+	}).(AvroOptionsResponseOutput)
+}
+
+// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+func (o AvroOptionsResponsePtrOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvroOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UseAvroLogicalTypes
+	}).(pulumi.BoolPtrOutput)
+}
+
 type BiEngineReasonResponse struct {
 	// High-level BI Engine reason for partial or disabled acceleration.
 	Code string `pulumi:"code"`
@@ -5163,6 +5437,8 @@ func (o DatasetReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 type DestinationTableProperties struct {
 	// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
 	Description *string `pulumi:"description"`
+	// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+	ExpirationTimestampMillis *string `pulumi:"expirationTimestampMillis"`
 	// [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
 	FriendlyName *string `pulumi:"friendlyName"`
 	// [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
@@ -5183,6 +5459,8 @@ type DestinationTablePropertiesInput interface {
 type DestinationTablePropertiesArgs struct {
 	// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+	ExpirationTimestampMillis pulumi.StringPtrInput `pulumi:"expirationTimestampMillis"`
 	// [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
 	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
 	// [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
@@ -5271,6 +5549,11 @@ func (o DestinationTablePropertiesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationTableProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+func (o DestinationTablePropertiesOutput) ExpirationTimestampMillis() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationTableProperties) *string { return v.ExpirationTimestampMillis }).(pulumi.StringPtrOutput)
+}
+
 // [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
 func (o DestinationTablePropertiesOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationTableProperties) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
@@ -5315,6 +5598,16 @@ func (o DestinationTablePropertiesPtrOutput) Description() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+func (o DestinationTablePropertiesPtrOutput) ExpirationTimestampMillis() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationTableProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationTimestampMillis
+	}).(pulumi.StringPtrOutput)
+}
+
 // [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
 func (o DestinationTablePropertiesPtrOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationTableProperties) *string {
@@ -5338,6 +5631,8 @@ func (o DestinationTablePropertiesPtrOutput) Labels() pulumi.StringMapOutput {
 type DestinationTablePropertiesResponse struct {
 	// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
 	Description string `pulumi:"description"`
+	// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+	ExpirationTimestampMillis string `pulumi:"expirationTimestampMillis"`
 	// [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
 	FriendlyName string `pulumi:"friendlyName"`
 	// [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
@@ -5358,6 +5653,8 @@ type DestinationTablePropertiesResponseInput interface {
 type DestinationTablePropertiesResponseArgs struct {
 	// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
 	Description pulumi.StringInput `pulumi:"description"`
+	// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+	ExpirationTimestampMillis pulumi.StringInput `pulumi:"expirationTimestampMillis"`
 	// [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
 	FriendlyName pulumi.StringInput `pulumi:"friendlyName"`
 	// [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
@@ -5446,6 +5743,11 @@ func (o DestinationTablePropertiesResponseOutput) Description() pulumi.StringOut
 	return o.ApplyT(func(v DestinationTablePropertiesResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+func (o DestinationTablePropertiesResponseOutput) ExpirationTimestampMillis() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationTablePropertiesResponse) string { return v.ExpirationTimestampMillis }).(pulumi.StringOutput)
+}
+
 // [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
 func (o DestinationTablePropertiesResponseOutput) FriendlyName() pulumi.StringOutput {
 	return o.ApplyT(func(v DestinationTablePropertiesResponse) string { return v.FriendlyName }).(pulumi.StringOutput)
@@ -5487,6 +5789,16 @@ func (o DestinationTablePropertiesResponsePtrOutput) Description() pulumi.String
 			return nil
 		}
 		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+func (o DestinationTablePropertiesResponsePtrOutput) ExpirationTimestampMillis() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationTablePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpirationTimestampMillis
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6935,6 +7247,8 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 type ExternalDataConfiguration struct {
 	// Try to detect schema and format options automatically. Any option specified explicitly will be honored.
 	Autodetect *bool `pulumi:"autodetect"`
+	// Additional properties to set if sourceFormat is set to Avro.
+	AvroOptions *AvroOptions `pulumi:"avroOptions"`
 	// [Optional] Additional options if sourceFormat is set to BIGTABLE.
 	BigtableOptions *BigtableOptions `pulumi:"bigtableOptions"`
 	// [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
@@ -6977,6 +7291,8 @@ type ExternalDataConfigurationInput interface {
 type ExternalDataConfigurationArgs struct {
 	// Try to detect schema and format options automatically. Any option specified explicitly will be honored.
 	Autodetect pulumi.BoolPtrInput `pulumi:"autodetect"`
+	// Additional properties to set if sourceFormat is set to Avro.
+	AvroOptions AvroOptionsPtrInput `pulumi:"avroOptions"`
 	// [Optional] Additional options if sourceFormat is set to BIGTABLE.
 	BigtableOptions BigtableOptionsPtrInput `pulumi:"bigtableOptions"`
 	// [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
@@ -7087,6 +7403,11 @@ func (o ExternalDataConfigurationOutput) Autodetect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ExternalDataConfiguration) *bool { return v.Autodetect }).(pulumi.BoolPtrOutput)
 }
 
+// Additional properties to set if sourceFormat is set to Avro.
+func (o ExternalDataConfigurationOutput) AvroOptions() AvroOptionsPtrOutput {
+	return o.ApplyT(func(v ExternalDataConfiguration) *AvroOptions { return v.AvroOptions }).(AvroOptionsPtrOutput)
+}
+
 // [Optional] Additional options if sourceFormat is set to BIGTABLE.
 func (o ExternalDataConfigurationOutput) BigtableOptions() BigtableOptionsPtrOutput {
 	return o.ApplyT(func(v ExternalDataConfiguration) *BigtableOptions { return v.BigtableOptions }).(BigtableOptionsPtrOutput)
@@ -7184,6 +7505,16 @@ func (o ExternalDataConfigurationPtrOutput) Autodetect() pulumi.BoolPtrOutput {
 		}
 		return v.Autodetect
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Additional properties to set if sourceFormat is set to Avro.
+func (o ExternalDataConfigurationPtrOutput) AvroOptions() AvroOptionsPtrOutput {
+	return o.ApplyT(func(v *ExternalDataConfiguration) *AvroOptions {
+		if v == nil {
+			return nil
+		}
+		return v.AvroOptions
+	}).(AvroOptionsPtrOutput)
 }
 
 // [Optional] Additional options if sourceFormat is set to BIGTABLE.
@@ -7319,6 +7650,8 @@ func (o ExternalDataConfigurationPtrOutput) SourceUris() pulumi.StringArrayOutpu
 type ExternalDataConfigurationResponse struct {
 	// Try to detect schema and format options automatically. Any option specified explicitly will be honored.
 	Autodetect bool `pulumi:"autodetect"`
+	// Additional properties to set if sourceFormat is set to Avro.
+	AvroOptions AvroOptionsResponse `pulumi:"avroOptions"`
 	// [Optional] Additional options if sourceFormat is set to BIGTABLE.
 	BigtableOptions BigtableOptionsResponse `pulumi:"bigtableOptions"`
 	// [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
@@ -7361,6 +7694,8 @@ type ExternalDataConfigurationResponseInput interface {
 type ExternalDataConfigurationResponseArgs struct {
 	// Try to detect schema and format options automatically. Any option specified explicitly will be honored.
 	Autodetect pulumi.BoolInput `pulumi:"autodetect"`
+	// Additional properties to set if sourceFormat is set to Avro.
+	AvroOptions AvroOptionsResponseInput `pulumi:"avroOptions"`
 	// [Optional] Additional options if sourceFormat is set to BIGTABLE.
 	BigtableOptions BigtableOptionsResponseInput `pulumi:"bigtableOptions"`
 	// [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
@@ -7471,6 +7806,11 @@ func (o ExternalDataConfigurationResponseOutput) Autodetect() pulumi.BoolOutput 
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) bool { return v.Autodetect }).(pulumi.BoolOutput)
 }
 
+// Additional properties to set if sourceFormat is set to Avro.
+func (o ExternalDataConfigurationResponseOutput) AvroOptions() AvroOptionsResponseOutput {
+	return o.ApplyT(func(v ExternalDataConfigurationResponse) AvroOptionsResponse { return v.AvroOptions }).(AvroOptionsResponseOutput)
+}
+
 // [Optional] Additional options if sourceFormat is set to BIGTABLE.
 func (o ExternalDataConfigurationResponseOutput) BigtableOptions() BigtableOptionsResponseOutput {
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) BigtableOptionsResponse { return v.BigtableOptions }).(BigtableOptionsResponseOutput)
@@ -7570,6 +7910,16 @@ func (o ExternalDataConfigurationResponsePtrOutput) Autodetect() pulumi.BoolPtrO
 		}
 		return &v.Autodetect
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Additional properties to set if sourceFormat is set to Avro.
+func (o ExternalDataConfigurationResponsePtrOutput) AvroOptions() AvroOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *ExternalDataConfigurationResponse) *AvroOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AvroOptions
+	}).(AvroOptionsResponsePtrOutput)
 }
 
 // [Optional] Additional options if sourceFormat is set to BIGTABLE.
@@ -9246,7 +9596,7 @@ type JobConfigurationLoad struct {
 	SourceUris []string `pulumi:"sourceUris"`
 	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
 	TimePartitioning *TimePartitioning `pulumi:"timePartitioning"`
-	// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+	// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 	UseAvroLogicalTypes *bool `pulumi:"useAvroLogicalTypes"`
 	// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
 	WriteDisposition *string `pulumi:"writeDisposition"`
@@ -9316,7 +9666,7 @@ type JobConfigurationLoadArgs struct {
 	SourceUris pulumi.StringArrayInput `pulumi:"sourceUris"`
 	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
 	TimePartitioning TimePartitioningPtrInput `pulumi:"timePartitioning"`
-	// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+	// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 	UseAvroLogicalTypes pulumi.BoolPtrInput `pulumi:"useAvroLogicalTypes"`
 	// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
 	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
@@ -9529,7 +9879,7 @@ func (o JobConfigurationLoadOutput) TimePartitioning() TimePartitioningPtrOutput
 	return o.ApplyT(func(v JobConfigurationLoad) *TimePartitioning { return v.TimePartitioning }).(TimePartitioningPtrOutput)
 }
 
-// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 func (o JobConfigurationLoadOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobConfigurationLoad) *bool { return v.UseAvroLogicalTypes }).(pulumi.BoolPtrOutput)
 }
@@ -9823,7 +10173,7 @@ func (o JobConfigurationLoadPtrOutput) TimePartitioning() TimePartitioningPtrOut
 	}).(TimePartitioningPtrOutput)
 }
 
-// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 func (o JobConfigurationLoadPtrOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobConfigurationLoad) *bool {
 		if v == nil {
@@ -9896,7 +10246,7 @@ type JobConfigurationLoadResponse struct {
 	SourceUris []string `pulumi:"sourceUris"`
 	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
 	TimePartitioning TimePartitioningResponse `pulumi:"timePartitioning"`
-	// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+	// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 	UseAvroLogicalTypes bool `pulumi:"useAvroLogicalTypes"`
 	// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
 	WriteDisposition string `pulumi:"writeDisposition"`
@@ -9966,7 +10316,7 @@ type JobConfigurationLoadResponseArgs struct {
 	SourceUris pulumi.StringArrayInput `pulumi:"sourceUris"`
 	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
 	TimePartitioning TimePartitioningResponseInput `pulumi:"timePartitioning"`
-	// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+	// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 	UseAvroLogicalTypes pulumi.BoolInput `pulumi:"useAvroLogicalTypes"`
 	// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
 	WriteDisposition pulumi.StringInput `pulumi:"writeDisposition"`
@@ -10183,7 +10533,7 @@ func (o JobConfigurationLoadResponseOutput) TimePartitioning() TimePartitioningR
 	return o.ApplyT(func(v JobConfigurationLoadResponse) TimePartitioningResponse { return v.TimePartitioning }).(TimePartitioningResponseOutput)
 }
 
-// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 func (o JobConfigurationLoadResponseOutput) UseAvroLogicalTypes() pulumi.BoolOutput {
 	return o.ApplyT(func(v JobConfigurationLoadResponse) bool { return v.UseAvroLogicalTypes }).(pulumi.BoolOutput)
 }
@@ -10477,7 +10827,7 @@ func (o JobConfigurationLoadResponsePtrOutput) TimePartitioning() TimePartitioni
 	}).(TimePartitioningResponsePtrOutput)
 }
 
-// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 func (o JobConfigurationLoadResponsePtrOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobConfigurationLoadResponse) *bool {
 		if v == nil {
@@ -23428,6 +23778,268 @@ func (o ViewDefinitionResponsePtrOutput) UserDefinedFunctionResources() UserDefi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentInput)(nil)).Elem(), ArgumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentArrayInput)(nil)).Elem(), ArgumentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentResponseInput)(nil)).Elem(), ArgumentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentResponseArrayInput)(nil)).Elem(), ArgumentResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AvroOptionsInput)(nil)).Elem(), AvroOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AvroOptionsPtrInput)(nil)).Elem(), AvroOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AvroOptionsResponseInput)(nil)).Elem(), AvroOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AvroOptionsResponsePtrInput)(nil)).Elem(), AvroOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BiEngineReasonResponseInput)(nil)).Elem(), BiEngineReasonResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BiEngineReasonResponseArrayInput)(nil)).Elem(), BiEngineReasonResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BiEngineStatisticsResponseInput)(nil)).Elem(), BiEngineStatisticsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BiEngineStatisticsResponsePtrInput)(nil)).Elem(), BiEngineStatisticsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryModelTrainingResponseInput)(nil)).Elem(), BigQueryModelTrainingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryModelTrainingResponsePtrInput)(nil)).Elem(), BigQueryModelTrainingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnInput)(nil)).Elem(), BigtableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnArrayInput)(nil)).Elem(), BigtableColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnFamilyInput)(nil)).Elem(), BigtableColumnFamilyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnFamilyArrayInput)(nil)).Elem(), BigtableColumnFamilyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnFamilyResponseInput)(nil)).Elem(), BigtableColumnFamilyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnFamilyResponseArrayInput)(nil)).Elem(), BigtableColumnFamilyResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnResponseInput)(nil)).Elem(), BigtableColumnResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableColumnResponseArrayInput)(nil)).Elem(), BigtableColumnResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableOptionsInput)(nil)).Elem(), BigtableOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableOptionsPtrInput)(nil)).Elem(), BigtableOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableOptionsResponseInput)(nil)).Elem(), BigtableOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigtableOptionsResponsePtrInput)(nil)).Elem(), BigtableOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BqmlIterationResultInput)(nil)).Elem(), BqmlIterationResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BqmlIterationResultArrayInput)(nil)).Elem(), BqmlIterationResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BqmlIterationResultResponseInput)(nil)).Elem(), BqmlIterationResultResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BqmlIterationResultResponseArrayInput)(nil)).Elem(), BqmlIterationResultResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunInput)(nil)).Elem(), BqmlTrainingRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunArrayInput)(nil)).Elem(), BqmlTrainingRunArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunResponseInput)(nil)).Elem(), BqmlTrainingRunResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunResponseArrayInput)(nil)).Elem(), BqmlTrainingRunResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunTrainingOptionsInput)(nil)).Elem(), BqmlTrainingRunTrainingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunTrainingOptionsPtrInput)(nil)).Elem(), BqmlTrainingRunTrainingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BqmlTrainingRunTrainingOptionsResponseInput)(nil)).Elem(), BqmlTrainingRunTrainingOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusteringInput)(nil)).Elem(), ClusteringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusteringPtrInput)(nil)).Elem(), ClusteringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusteringResponseInput)(nil)).Elem(), ClusteringResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusteringResponsePtrInput)(nil)).Elem(), ClusteringResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPropertyInput)(nil)).Elem(), ConnectionPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPropertyArrayInput)(nil)).Elem(), ConnectionPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPropertyResponseInput)(nil)).Elem(), ConnectionPropertyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPropertyResponseArrayInput)(nil)).Elem(), ConnectionPropertyResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CsvOptionsInput)(nil)).Elem(), CsvOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CsvOptionsPtrInput)(nil)).Elem(), CsvOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CsvOptionsResponseInput)(nil)).Elem(), CsvOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CsvOptionsResponsePtrInput)(nil)).Elem(), CsvOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryInput)(nil)).Elem(), DatasetAccessEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryPtrInput)(nil)).Elem(), DatasetAccessEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryResponseInput)(nil)).Elem(), DatasetAccessEntryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemArrayInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemResponseInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemResponseArrayInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessItemInput)(nil)).Elem(), DatasetAccessItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessItemArrayInput)(nil)).Elem(), DatasetAccessItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessItemResponseInput)(nil)).Elem(), DatasetAccessItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessItemResponseArrayInput)(nil)).Elem(), DatasetAccessItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetReferenceInput)(nil)).Elem(), DatasetReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetReferencePtrInput)(nil)).Elem(), DatasetReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetReferenceResponseInput)(nil)).Elem(), DatasetReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetReferenceResponsePtrInput)(nil)).Elem(), DatasetReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationTablePropertiesInput)(nil)).Elem(), DestinationTablePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationTablePropertiesPtrInput)(nil)).Elem(), DestinationTablePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationTablePropertiesResponseInput)(nil)).Elem(), DestinationTablePropertiesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationTablePropertiesResponsePtrInput)(nil)).Elem(), DestinationTablePropertiesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DmlStatisticsResponseInput)(nil)).Elem(), DmlStatisticsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DmlStatisticsResponsePtrInput)(nil)).Elem(), DmlStatisticsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigurationInput)(nil)).Elem(), EncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigurationPtrInput)(nil)).Elem(), EncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigurationResponseInput)(nil)).Elem(), EncryptionConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigurationResponsePtrInput)(nil)).Elem(), EncryptionConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErrorProtoResponseInput)(nil)).Elem(), ErrorProtoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErrorProtoResponsePtrInput)(nil)).Elem(), ErrorProtoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErrorProtoResponseArrayInput)(nil)).Elem(), ErrorProtoResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExplainQueryStageResponseInput)(nil)).Elem(), ExplainQueryStageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExplainQueryStageResponseArrayInput)(nil)).Elem(), ExplainQueryStageResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExplainQueryStepResponseInput)(nil)).Elem(), ExplainQueryStepResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExplainQueryStepResponseArrayInput)(nil)).Elem(), ExplainQueryStepResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationInput)(nil)).Elem(), ExternalDataConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationPtrInput)(nil)).Elem(), ExternalDataConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationResponseInput)(nil)).Elem(), ExternalDataConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationResponsePtrInput)(nil)).Elem(), ExternalDataConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleSheetsOptionsInput)(nil)).Elem(), GoogleSheetsOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleSheetsOptionsPtrInput)(nil)).Elem(), GoogleSheetsOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleSheetsOptionsResponseInput)(nil)).Elem(), GoogleSheetsOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleSheetsOptionsResponsePtrInput)(nil)).Elem(), GoogleSheetsOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsInput)(nil)).Elem(), HivePartitioningOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsPtrInput)(nil)).Elem(), HivePartitioningOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsResponseInput)(nil)).Elem(), HivePartitioningOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsResponsePtrInput)(nil)).Elem(), HivePartitioningOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationInput)(nil)).Elem(), JobConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationPtrInput)(nil)).Elem(), JobConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationExtractInput)(nil)).Elem(), JobConfigurationExtractArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationExtractPtrInput)(nil)).Elem(), JobConfigurationExtractArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationExtractResponseInput)(nil)).Elem(), JobConfigurationExtractResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationExtractResponsePtrInput)(nil)).Elem(), JobConfigurationExtractResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadInput)(nil)).Elem(), JobConfigurationLoadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadPtrInput)(nil)).Elem(), JobConfigurationLoadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadResponseInput)(nil)).Elem(), JobConfigurationLoadResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadResponsePtrInput)(nil)).Elem(), JobConfigurationLoadResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationQueryInput)(nil)).Elem(), JobConfigurationQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationQueryPtrInput)(nil)).Elem(), JobConfigurationQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationQueryResponseInput)(nil)).Elem(), JobConfigurationQueryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationQueryResponsePtrInput)(nil)).Elem(), JobConfigurationQueryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationResponseInput)(nil)).Elem(), JobConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationResponsePtrInput)(nil)).Elem(), JobConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationTableCopyInput)(nil)).Elem(), JobConfigurationTableCopyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationTableCopyPtrInput)(nil)).Elem(), JobConfigurationTableCopyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationTableCopyResponseInput)(nil)).Elem(), JobConfigurationTableCopyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationTableCopyResponsePtrInput)(nil)).Elem(), JobConfigurationTableCopyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobReferenceInput)(nil)).Elem(), JobReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobReferencePtrInput)(nil)).Elem(), JobReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobReferenceResponseInput)(nil)).Elem(), JobReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobReferenceResponsePtrInput)(nil)).Elem(), JobReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics2ReservationUsageItemResponseInput)(nil)).Elem(), JobStatistics2ReservationUsageItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics2ReservationUsageItemResponseArrayInput)(nil)).Elem(), JobStatistics2ReservationUsageItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics2ResponseInput)(nil)).Elem(), JobStatistics2ResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics2ResponsePtrInput)(nil)).Elem(), JobStatistics2ResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics3ResponseInput)(nil)).Elem(), JobStatistics3ResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics3ResponsePtrInput)(nil)).Elem(), JobStatistics3ResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics4ResponseInput)(nil)).Elem(), JobStatistics4ResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatistics4ResponsePtrInput)(nil)).Elem(), JobStatistics4ResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatisticsReservationUsageItemResponseInput)(nil)).Elem(), JobStatisticsReservationUsageItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatisticsReservationUsageItemResponseArrayInput)(nil)).Elem(), JobStatisticsReservationUsageItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatisticsResponseInput)(nil)).Elem(), JobStatisticsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatisticsResponsePtrInput)(nil)).Elem(), JobStatisticsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusResponseInput)(nil)).Elem(), JobStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusResponsePtrInput)(nil)).Elem(), JobStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionInput)(nil)).Elem(), MaterializedViewDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionPtrInput)(nil)).Elem(), MaterializedViewDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionResponseInput)(nil)).Elem(), MaterializedViewDefinitionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionResponsePtrInput)(nil)).Elem(), MaterializedViewDefinitionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionInput)(nil)).Elem(), ModelDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionPtrInput)(nil)).Elem(), ModelDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionModelOptionsInput)(nil)).Elem(), ModelDefinitionModelOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionModelOptionsPtrInput)(nil)).Elem(), ModelDefinitionModelOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionModelOptionsResponseInput)(nil)).Elem(), ModelDefinitionModelOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionModelOptionsResponsePtrInput)(nil)).Elem(), ModelDefinitionModelOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionResponseInput)(nil)).Elem(), ModelDefinitionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionResponsePtrInput)(nil)).Elem(), ModelDefinitionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelReferenceInput)(nil)).Elem(), ModelReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelReferencePtrInput)(nil)).Elem(), ModelReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelReferenceResponseInput)(nil)).Elem(), ModelReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelReferenceResponsePtrInput)(nil)).Elem(), ModelReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParquetOptionsInput)(nil)).Elem(), ParquetOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParquetOptionsPtrInput)(nil)).Elem(), ParquetOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParquetOptionsResponseInput)(nil)).Elem(), ParquetOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParquetOptionsResponsePtrInput)(nil)).Elem(), ParquetOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterInput)(nil)).Elem(), QueryParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterArrayInput)(nil)).Elem(), QueryParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterResponseInput)(nil)).Elem(), QueryParameterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterResponseArrayInput)(nil)).Elem(), QueryParameterResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeInput)(nil)).Elem(), QueryParameterTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypePtrInput)(nil)).Elem(), QueryParameterTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeResponseInput)(nil)).Elem(), QueryParameterTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeResponsePtrInput)(nil)).Elem(), QueryParameterTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeStructTypesItemInput)(nil)).Elem(), QueryParameterTypeStructTypesItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeStructTypesItemArrayInput)(nil)).Elem(), QueryParameterTypeStructTypesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeStructTypesItemResponseInput)(nil)).Elem(), QueryParameterTypeStructTypesItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterTypeStructTypesItemResponseArrayInput)(nil)).Elem(), QueryParameterTypeStructTypesItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValueInput)(nil)).Elem(), QueryParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValuePtrInput)(nil)).Elem(), QueryParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValueArrayInput)(nil)).Elem(), QueryParameterValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValueResponseInput)(nil)).Elem(), QueryParameterValueResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValueResponseArrayInput)(nil)).Elem(), QueryParameterValueResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryTimelineSampleResponseInput)(nil)).Elem(), QueryTimelineSampleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryTimelineSampleResponseArrayInput)(nil)).Elem(), QueryTimelineSampleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningInput)(nil)).Elem(), RangePartitioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningPtrInput)(nil)).Elem(), RangePartitioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningRangeInput)(nil)).Elem(), RangePartitioningRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningRangePtrInput)(nil)).Elem(), RangePartitioningRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningRangeResponseInput)(nil)).Elem(), RangePartitioningRangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningRangeResponsePtrInput)(nil)).Elem(), RangePartitioningRangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningResponseInput)(nil)).Elem(), RangePartitioningResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningResponsePtrInput)(nil)).Elem(), RangePartitioningResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferenceInput)(nil)).Elem(), RoutineReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferencePtrInput)(nil)).Elem(), RoutineReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferenceResponseInput)(nil)).Elem(), RoutineReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferenceResponsePtrInput)(nil)).Elem(), RoutineReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferenceResponseArrayInput)(nil)).Elem(), RoutineReferenceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowAccessPolicyReferenceResponseInput)(nil)).Elem(), RowAccessPolicyReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowAccessPolicyReferenceResponsePtrInput)(nil)).Elem(), RowAccessPolicyReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowLevelSecurityStatisticsResponseInput)(nil)).Elem(), RowLevelSecurityStatisticsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RowLevelSecurityStatisticsResponsePtrInput)(nil)).Elem(), RowLevelSecurityStatisticsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScriptStackFrameResponseInput)(nil)).Elem(), ScriptStackFrameResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScriptStackFrameResponseArrayInput)(nil)).Elem(), ScriptStackFrameResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScriptStatisticsResponseInput)(nil)).Elem(), ScriptStatisticsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScriptStatisticsResponsePtrInput)(nil)).Elem(), ScriptStatisticsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionInfoResponseInput)(nil)).Elem(), SessionInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionInfoResponsePtrInput)(nil)).Elem(), SessionInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotDefinitionResponseInput)(nil)).Elem(), SnapshotDefinitionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotDefinitionResponsePtrInput)(nil)).Elem(), SnapshotDefinitionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeInput)(nil)).Elem(), StandardSqlDataTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypePtrInput)(nil)).Elem(), StandardSqlDataTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeResponseInput)(nil)).Elem(), StandardSqlDataTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeResponsePtrInput)(nil)).Elem(), StandardSqlDataTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlFieldInput)(nil)).Elem(), StandardSqlFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlFieldArrayInput)(nil)).Elem(), StandardSqlFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlFieldResponseInput)(nil)).Elem(), StandardSqlFieldResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlFieldResponseArrayInput)(nil)).Elem(), StandardSqlFieldResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlStructTypeInput)(nil)).Elem(), StandardSqlStructTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlStructTypePtrInput)(nil)).Elem(), StandardSqlStructTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlStructTypeResponseInput)(nil)).Elem(), StandardSqlStructTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlStructTypeResponsePtrInput)(nil)).Elem(), StandardSqlStructTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlTableTypeInput)(nil)).Elem(), StandardSqlTableTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlTableTypePtrInput)(nil)).Elem(), StandardSqlTableTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlTableTypeResponseInput)(nil)).Elem(), StandardSqlTableTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlTableTypeResponsePtrInput)(nil)).Elem(), StandardSqlTableTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamingbufferResponseInput)(nil)).Elem(), StreamingbufferResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamingbufferResponsePtrInput)(nil)).Elem(), StreamingbufferResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaInput)(nil)).Elem(), TableFieldSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaArrayInput)(nil)).Elem(), TableFieldSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaCategoriesInput)(nil)).Elem(), TableFieldSchemaCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaCategoriesPtrInput)(nil)).Elem(), TableFieldSchemaCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaCategoriesResponseInput)(nil)).Elem(), TableFieldSchemaCategoriesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaPolicyTagsInput)(nil)).Elem(), TableFieldSchemaPolicyTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaPolicyTagsPtrInput)(nil)).Elem(), TableFieldSchemaPolicyTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaPolicyTagsResponseInput)(nil)).Elem(), TableFieldSchemaPolicyTagsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaResponseInput)(nil)).Elem(), TableFieldSchemaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaResponseArrayInput)(nil)).Elem(), TableFieldSchemaResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceInput)(nil)).Elem(), TableReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableReferencePtrInput)(nil)).Elem(), TableReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceArrayInput)(nil)).Elem(), TableReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceResponseInput)(nil)).Elem(), TableReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceResponsePtrInput)(nil)).Elem(), TableReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableReferenceResponseArrayInput)(nil)).Elem(), TableReferenceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableSchemaInput)(nil)).Elem(), TableSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableSchemaPtrInput)(nil)).Elem(), TableSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableSchemaResponseInput)(nil)).Elem(), TableSchemaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableSchemaResponsePtrInput)(nil)).Elem(), TableSchemaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningInput)(nil)).Elem(), TimePartitioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningPtrInput)(nil)).Elem(), TimePartitioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningResponseInput)(nil)).Elem(), TimePartitioningResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningResponsePtrInput)(nil)).Elem(), TimePartitioningResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransactionInfoResponseInput)(nil)).Elem(), TransactionInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransactionInfoResponsePtrInput)(nil)).Elem(), TransactionInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserDefinedFunctionResourceInput)(nil)).Elem(), UserDefinedFunctionResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserDefinedFunctionResourceArrayInput)(nil)).Elem(), UserDefinedFunctionResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserDefinedFunctionResourceResponseInput)(nil)).Elem(), UserDefinedFunctionResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserDefinedFunctionResourceResponseArrayInput)(nil)).Elem(), UserDefinedFunctionResourceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewDefinitionInput)(nil)).Elem(), ViewDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewDefinitionPtrInput)(nil)).Elem(), ViewDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewDefinitionResponseInput)(nil)).Elem(), ViewDefinitionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewDefinitionResponsePtrInput)(nil)).Elem(), ViewDefinitionResponseArgs{})
 	pulumi.RegisterOutputType(ArgumentOutput{})
 	pulumi.RegisterOutputType(ArgumentArrayOutput{})
 	pulumi.RegisterOutputType(ArgumentResponseOutput{})
@@ -23440,6 +24052,10 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(AvroOptionsOutput{})
+	pulumi.RegisterOutputType(AvroOptionsPtrOutput{})
+	pulumi.RegisterOutputType(AvroOptionsResponseOutput{})
+	pulumi.RegisterOutputType(AvroOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BiEngineReasonResponseOutput{})
 	pulumi.RegisterOutputType(BiEngineReasonResponseArrayOutput{})
 	pulumi.RegisterOutputType(BiEngineStatisticsResponseOutput{})

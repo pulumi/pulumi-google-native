@@ -63,3 +63,15 @@ export interface GetServiceLevelObjectiveResult {
      */
     readonly userLabels: {[key: string]: string};
 }
+
+export function getServiceLevelObjectiveOutput(args: GetServiceLevelObjectiveOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceLevelObjectiveResult> {
+    return pulumi.output(args).apply(a => getServiceLevelObjective(a, opts))
+}
+
+export interface GetServiceLevelObjectiveOutputArgs {
+    serviceId: pulumi.Input<string>;
+    serviceLevelObjectiveId: pulumi.Input<string>;
+    v3Id: pulumi.Input<string>;
+    v3Id1: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}

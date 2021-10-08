@@ -20,16 +20,21 @@ type Network struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+	EnableUlaInternalIpv6 pulumi.BoolOutput `pulumi:"enableUlaInternalIpv6"`
 	// URL of the firewall policy the network is associated with.
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
 	// The gateway address for default routing out of the network, selected by GCP.
 	GatewayIPv4 pulumi.StringOutput `pulumi:"gatewayIPv4"`
+	// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+	InternalIpv6Range pulumi.StringOutput `pulumi:"internalIpv6Range"`
 	// Type of the resource. Always compute#network for networks.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
 	Mtu pulumi.IntOutput `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name                                  pulumi.StringOutput `pulumi:"name"`
+	NetworkFirewallPolicyEnforcementOrder pulumi.StringOutput `pulumi:"networkFirewallPolicyEnforcementOrder"`
 	// A list of network peerings for the resource.
 	Peerings NetworkPeeringResponseArrayOutput `pulumi:"peerings"`
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
@@ -85,12 +90,17 @@ type networkArgs struct {
 	AutoCreateSubnetworks *bool `pulumi:"autoCreateSubnetworks"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description *string `pulumi:"description"`
-	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+	// Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+	EnableUlaInternalIpv6 *bool `pulumi:"enableUlaInternalIpv6"`
+	// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+	InternalIpv6Range *string `pulumi:"internalIpv6Range"`
+	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
 	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
-	Name      *string `pulumi:"name"`
-	Project   *string `pulumi:"project"`
-	RequestId *string `pulumi:"requestId"`
+	Name                                  *string                                       `pulumi:"name"`
+	NetworkFirewallPolicyEnforcementOrder *NetworkNetworkFirewallPolicyEnforcementOrder `pulumi:"networkFirewallPolicyEnforcementOrder"`
+	Project                               *string                                       `pulumi:"project"`
+	RequestId                             *string                                       `pulumi:"requestId"`
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
 	RoutingConfig *NetworkRoutingConfig `pulumi:"routingConfig"`
 }
@@ -101,12 +111,17 @@ type NetworkArgs struct {
 	AutoCreateSubnetworks pulumi.BoolPtrInput
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringPtrInput
-	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+	// Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+	EnableUlaInternalIpv6 pulumi.BoolPtrInput
+	// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+	InternalIpv6Range pulumi.StringPtrInput
+	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
 	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
-	RequestId pulumi.StringPtrInput
+	Name                                  pulumi.StringPtrInput
+	NetworkFirewallPolicyEnforcementOrder NetworkNetworkFirewallPolicyEnforcementOrderPtrInput
+	Project                               pulumi.StringPtrInput
+	RequestId                             pulumi.StringPtrInput
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
 	RoutingConfig NetworkRoutingConfigPtrInput
 }

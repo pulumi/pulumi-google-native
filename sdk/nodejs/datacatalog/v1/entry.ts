@@ -85,7 +85,7 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly linkedResource!: pulumi.Output<string>;
     /**
-     * The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. 
+     * The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**

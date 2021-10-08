@@ -47,3 +47,13 @@ export interface GetConnectionIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getConnectionIamPolicyOutput(args: GetConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionIamPolicyResult> {
+    return pulumi.output(args).apply(a => getConnectionIamPolicy(a, opts))
+}
+
+export interface GetConnectionIamPolicyOutputArgs {
+    connectionId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -65,3 +65,12 @@ export interface GetExternalVpnGatewayResult {
      */
     readonly selfLink: string;
 }
+
+export function getExternalVpnGatewayOutput(args: GetExternalVpnGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalVpnGatewayResult> {
+    return pulumi.output(args).apply(a => getExternalVpnGateway(a, opts))
+}
+
+export interface GetExternalVpnGatewayOutputArgs {
+    externalVpnGateway: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

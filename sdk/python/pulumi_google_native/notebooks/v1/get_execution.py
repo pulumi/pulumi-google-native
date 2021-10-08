@@ -91,7 +91,7 @@ class GetExecutionResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+        The resource name of the execute. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
         """
         return pulumi.get(self, "name")
 

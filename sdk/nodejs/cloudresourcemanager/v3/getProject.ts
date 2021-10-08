@@ -67,3 +67,11 @@ export interface GetProjectResult {
      */
     readonly updateTime: string;
 }
+
+export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
+    return pulumi.output(args).apply(a => getProject(a, opts))
+}
+
+export interface GetProjectOutputArgs {
+    project?: pulumi.Input<string>;
+}

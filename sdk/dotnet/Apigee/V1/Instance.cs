@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
+        /// Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
+        /// </summary>
+        [Output("runtimeVersion")]
+        public Output<string> RuntimeVersion { get; private set; } = null!;
+
+        /// <summary>
         /// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
         /// </summary>
         [Output("state")]

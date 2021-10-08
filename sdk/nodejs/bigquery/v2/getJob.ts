@@ -63,3 +63,13 @@ export interface GetJobResult {
      */
     readonly userEmail: string;
 }
+
+export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
+    return pulumi.output(args).apply(a => getJob(a, opts))
+}
+
+export interface GetJobOutputArgs {
+    jobId: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

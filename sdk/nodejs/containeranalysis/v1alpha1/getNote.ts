@@ -117,3 +117,12 @@ export interface GetNoteResult {
      */
     readonly vulnerabilityType: outputs.containeranalysis.v1alpha1.VulnerabilityTypeResponse;
 }
+
+export function getNoteOutput(args: GetNoteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNoteResult> {
+    return pulumi.output(args).apply(a => getNote(a, opts))
+}
+
+export interface GetNoteOutputArgs {
+    noteId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

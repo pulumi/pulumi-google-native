@@ -18,8 +18,10 @@ __all__ = [
     'EnvVarSourceArgs',
     'EnvVarArgs',
     'ExecActionArgs',
+    'GoogleRpcStatusArgs',
     'HTTPGetActionArgs',
     'HTTPHeaderArgs',
+    'InstanceAttemptResultArgs',
     'InstanceSpecArgs',
     'InstanceStatusArgs',
     'InstanceTemplateSpecArgs',
@@ -750,6 +752,62 @@ class ExecActionArgs:
 
 
 @pulumi.input_type
+class GoogleRpcStatusArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+        """
+        A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+@pulumi.input_type
 class HTTPGetActionArgs:
     def __init__(__self__, *,
                  host: Optional[pulumi.Input[str]] = None,
@@ -862,6 +920,46 @@ class HTTPHeaderArgs:
 
 
 @pulumi.input_type
+class InstanceAttemptResultArgs:
+    def __init__(__self__, *,
+                 exit_code: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input['GoogleRpcStatusArgs']] = None):
+        """
+        Result of an instance attempt.
+        :param pulumi.Input[int] exit_code: Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
+        :param pulumi.Input['GoogleRpcStatusArgs'] status: Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+        """
+        if exit_code is not None:
+            pulumi.set(__self__, "exit_code", exit_code)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="exitCode")
+    def exit_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
+        """
+        return pulumi.get(self, "exit_code")
+
+    @exit_code.setter
+    def exit_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "exit_code", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input['GoogleRpcStatusArgs']]:
+        """
+        Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input['GoogleRpcStatusArgs']]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
 class InstanceSpecArgs:
     def __init__(__self__, *,
                  active_deadline_seconds: Optional[pulumi.Input[str]] = None,
@@ -971,6 +1069,7 @@ class InstanceStatusArgs:
                  index: pulumi.Input[int],
                  completion_time: Optional[pulumi.Input[str]] = None,
                  failed: Optional[pulumi.Input[int]] = None,
+                 last_attempt_result: Optional[pulumi.Input['InstanceAttemptResultArgs']] = None,
                  last_exit_code: Optional[pulumi.Input[int]] = None,
                  restarted: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
@@ -980,6 +1079,7 @@ class InstanceStatusArgs:
         :param pulumi.Input[int] index: Index of the instance, unique per Job, and beginning at 0.
         :param pulumi.Input[str] completion_time: Optional. Represents time when the instance was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
         :param pulumi.Input[int] failed: Optional. The number of times this instance exited with code > 0; +optional
+        :param pulumi.Input['InstanceAttemptResultArgs'] last_attempt_result: Optional. Result of the last attempt of this instance. +optional
         :param pulumi.Input[int] last_exit_code: Optional. Last exit code seen for this instance. +optional
         :param pulumi.Input[int] restarted: Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
         :param pulumi.Input[str] start_time: Optional. Represents time when the instance was created by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
@@ -990,6 +1090,8 @@ class InstanceStatusArgs:
             pulumi.set(__self__, "completion_time", completion_time)
         if failed is not None:
             pulumi.set(__self__, "failed", failed)
+        if last_attempt_result is not None:
+            pulumi.set(__self__, "last_attempt_result", last_attempt_result)
         if last_exit_code is not None:
             pulumi.set(__self__, "last_exit_code", last_exit_code)
         if restarted is not None:
@@ -1034,6 +1136,18 @@ class InstanceStatusArgs:
     @failed.setter
     def failed(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "failed", value)
+
+    @property
+    @pulumi.getter(name="lastAttemptResult")
+    def last_attempt_result(self) -> Optional[pulumi.Input['InstanceAttemptResultArgs']]:
+        """
+        Optional. Result of the last attempt of this instance. +optional
+        """
+        return pulumi.get(self, "last_attempt_result")
+
+    @last_attempt_result.setter
+    def last_attempt_result(self, value: Optional[pulumi.Input['InstanceAttemptResultArgs']]):
+        pulumi.set(self, "last_attempt_result", value)
 
     @property
     @pulumi.getter(name="lastExitCode")

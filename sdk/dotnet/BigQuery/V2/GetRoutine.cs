@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// The type of routine.
         /// </summary>
         public readonly string RoutineType;
+        /// <summary>
+        /// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+        /// </summary>
+        public readonly bool StrictMode;
 
         [OutputConstructor]
         private GetRoutineResult(
@@ -121,7 +125,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             Outputs.RoutineReferenceResponse routineReference,
 
-            string routineType)
+            string routineType,
+
+            bool strictMode)
         {
             Arguments = arguments;
             CreationTime = creationTime;
@@ -136,6 +142,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             ReturnType = returnType;
             RoutineReference = routineReference;
             RoutineType = routineType;
+            StrictMode = strictMode;
         }
     }
 }

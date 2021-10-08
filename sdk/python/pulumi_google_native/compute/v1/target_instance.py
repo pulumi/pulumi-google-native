@@ -18,6 +18,7 @@ class TargetInstanceArgs:
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_policy: Optional[pulumi.Input['TargetInstanceNatPolicy']] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -27,6 +28,7 @@ class TargetInstanceArgs:
         :param pulumi.Input[str] instance: A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance 
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['TargetInstanceNatPolicy'] nat_policy: NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+        :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -36,6 +38,8 @@ class TargetInstanceArgs:
             pulumi.set(__self__, "name", name)
         if nat_policy is not None:
             pulumi.set(__self__, "nat_policy", nat_policy)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
@@ -93,6 +97,18 @@ class TargetInstanceArgs:
 
     @property
     @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
 
@@ -128,6 +144,7 @@ class TargetInstance(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_policy: Optional[pulumi.Input['TargetInstanceNatPolicy']] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -141,6 +158,7 @@ class TargetInstance(pulumi.CustomResource):
         :param pulumi.Input[str] instance: A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance 
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['TargetInstanceNatPolicy'] nat_policy: NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+        :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         """
         ...
     @overload
@@ -170,6 +188,7 @@ class TargetInstance(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_policy: Optional[pulumi.Input['TargetInstanceNatPolicy']] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -189,6 +208,7 @@ class TargetInstance(pulumi.CustomResource):
             __props__.__dict__["instance"] = instance
             __props__.__dict__["name"] = name
             __props__.__dict__["nat_policy"] = nat_policy
+            __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["zone"] = zone
@@ -223,6 +243,7 @@ class TargetInstance(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["nat_policy"] = None
+        __props__.__dict__["network"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["zone"] = None
         return TargetInstance(resource_name, opts=opts, __props__=__props__)
@@ -274,6 +295,14 @@ class TargetInstance(pulumi.CustomResource):
         NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
         """
         return pulumi.get(self, "nat_policy")
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[str]:
+        """
+        The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+        """
+        return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="selfLink")

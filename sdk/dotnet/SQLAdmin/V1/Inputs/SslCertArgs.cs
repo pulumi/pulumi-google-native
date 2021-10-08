@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public Input<string>? Instance { get; set; }
 
         /// <summary>
-        /// This is always sql#sslCert.
+        /// This is always **sql#sslCert**.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

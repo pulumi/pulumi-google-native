@@ -45,3 +45,14 @@ export interface GetAliasResult {
      */
     readonly type: string;
 }
+
+export function getAliasOutput(args: GetAliasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAliasResult> {
+    return pulumi.output(args).apply(a => getAlias(a, opts))
+}
+
+export interface GetAliasOutputArgs {
+    aliasId: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
+    keystoreId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2RedactConfigArgs>? RedactConfig { get; set; }
 
         /// <summary>
-        /// Replace
+        /// Replace with a specified value.
         /// </summary>
         [Input("replaceConfig")]
         public Input<Inputs.GooglePrivacyDlpV2ReplaceValueConfigArgs>? ReplaceConfig { get; set; }

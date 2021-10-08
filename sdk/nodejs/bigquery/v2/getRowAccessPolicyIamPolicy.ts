@@ -49,3 +49,14 @@ export interface GetRowAccessPolicyIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getRowAccessPolicyIamPolicyOutput(args: GetRowAccessPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRowAccessPolicyIamPolicyResult> {
+    return pulumi.output(args).apply(a => getRowAccessPolicyIamPolicy(a, opts))
+}
+
+export interface GetRowAccessPolicyIamPolicyOutputArgs {
+    datasetId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    rowAccessPolicyId: pulumi.Input<string>;
+    tableId: pulumi.Input<string>;
+}

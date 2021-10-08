@@ -55,3 +55,13 @@ export interface GetSnapshotIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getSnapshotIamPolicyOutput(args: GetSnapshotIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotIamPolicyResult> {
+    return pulumi.output(args).apply(a => getSnapshotIamPolicy(a, opts))
+}
+
+export interface GetSnapshotIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

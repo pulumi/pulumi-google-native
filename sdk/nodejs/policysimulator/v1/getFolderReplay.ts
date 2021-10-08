@@ -47,3 +47,13 @@ export interface GetFolderReplayResult {
      */
     readonly state: string;
 }
+
+export function getFolderReplayOutput(args: GetFolderReplayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderReplayResult> {
+    return pulumi.output(args).apply(a => getFolderReplay(a, opts))
+}
+
+export interface GetFolderReplayOutputArgs {
+    folderId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    replayId: pulumi.Input<string>;
+}

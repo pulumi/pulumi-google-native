@@ -34,7 +34,7 @@ export interface GetAttributeDefinitionArgs {
 
 export interface GetAttributeDefinitionResult {
     /**
-     * Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+     * Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
      */
     readonly allowedValues: string[];
     /**
@@ -57,4 +57,16 @@ export interface GetAttributeDefinitionResult {
      * Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
      */
     readonly name: string;
+}
+
+export function getAttributeDefinitionOutput(args: GetAttributeDefinitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttributeDefinitionResult> {
+    return pulumi.output(args).apply(a => getAttributeDefinition(a, opts))
+}
+
+export interface GetAttributeDefinitionOutputArgs {
+    attributeDefinitionId: pulumi.Input<string>;
+    consentStoreId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

@@ -662,7 +662,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+    /// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
     /// </summary>
     [EnumType]
     public readonly struct BackendBalancingMode : IEquatable<BackendBalancingMode>
@@ -941,6 +941,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
         /// </summary>
         public static BackendServiceLoadBalancingScheme External { get; } = new BackendServiceLoadBalancingScheme("EXTERNAL");
+        /// <summary>
+        /// Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+        /// </summary>
+        public static BackendServiceLoadBalancingScheme ExternalManaged { get; } = new BackendServiceLoadBalancingScheme("EXTERNAL_MANAGED");
         /// <summary>
         /// Signifies that this will be used for Internal TCP/UDP Load Balancing.
         /// </summary>
@@ -1394,38 +1398,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-    /// </summary>
-    [EnumType]
-    public readonly struct DiskInterface : IEquatable<DiskInterface>
-    {
-        private readonly string _value;
-
-        private DiskInterface(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static DiskInterface Nvme { get; } = new DiskInterface("NVME");
-        public static DiskInterface Scsi { get; } = new DiskInterface("SCSI");
-        public static DiskInterface Unspecified { get; } = new DiskInterface("UNSPECIFIED");
-
-        public static bool operator ==(DiskInterface left, DiskInterface right) => left.Equals(right);
-        public static bool operator !=(DiskInterface left, DiskInterface right) => !left.Equals(right);
-
-        public static explicit operator string(DiskInterface value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is DiskInterface other && Equals(other);
-        public bool Equals(DiskInterface other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
     /// </summary>
     [EnumType]
@@ -1720,6 +1692,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         public static ForwardingRuleLoadBalancingScheme External { get; } = new ForwardingRuleLoadBalancingScheme("EXTERNAL");
+        public static ForwardingRuleLoadBalancingScheme ExternalManaged { get; } = new ForwardingRuleLoadBalancingScheme("EXTERNAL_MANAGED");
         public static ForwardingRuleLoadBalancingScheme Internal { get; } = new ForwardingRuleLoadBalancingScheme("INTERNAL");
         public static ForwardingRuleLoadBalancingScheme InternalManaged { get; } = new ForwardingRuleLoadBalancingScheme("INTERNAL_MANAGED");
         public static ForwardingRuleLoadBalancingScheme InternalSelfManaged { get; } = new ForwardingRuleLoadBalancingScheme("INTERNAL_SELF_MANAGED");
@@ -2107,6 +2080,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         public static GlobalForwardingRuleLoadBalancingScheme External { get; } = new GlobalForwardingRuleLoadBalancingScheme("EXTERNAL");
+        public static GlobalForwardingRuleLoadBalancingScheme ExternalManaged { get; } = new GlobalForwardingRuleLoadBalancingScheme("EXTERNAL_MANAGED");
         public static GlobalForwardingRuleLoadBalancingScheme Internal { get; } = new GlobalForwardingRuleLoadBalancingScheme("INTERNAL");
         public static GlobalForwardingRuleLoadBalancingScheme InternalManaged { get; } = new GlobalForwardingRuleLoadBalancingScheme("INTERNAL_MANAGED");
         public static GlobalForwardingRuleLoadBalancingScheme InternalSelfManaged { get; } = new GlobalForwardingRuleLoadBalancingScheme("INTERNAL_SELF_MANAGED");
@@ -2977,7 +2951,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// PostKeyRevocationActionType of the instance.
+    /// PostKeyRevocationActionType of the instance.(will be deprecated soon)
     /// </summary>
     [EnumType]
     public readonly struct InstancePropertiesPostKeyRevocationActionType : IEquatable<InstancePropertiesPostKeyRevocationActionType>
@@ -3784,7 +3758,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (GCS). They filter requests before the request is served from Google’s cache.
+    /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
     /// </summary>
     [EnumType]
     public readonly struct OrganizationSecurityPolicyType : IEquatable<OrganizationSecurityPolicyType>
@@ -3977,6 +3951,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
         /// </summary>
         public static RegionBackendServiceLoadBalancingScheme External { get; } = new RegionBackendServiceLoadBalancingScheme("EXTERNAL");
+        /// <summary>
+        /// Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+        /// </summary>
+        public static RegionBackendServiceLoadBalancingScheme ExternalManaged { get; } = new RegionBackendServiceLoadBalancingScheme("EXTERNAL_MANAGED");
         /// <summary>
         /// Signifies that this will be used for Internal TCP/UDP Load Balancing.
         /// </summary>
@@ -4259,6 +4237,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public static RegionCommitmentType GeneralPurposeE2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_E2");
         public static RegionCommitmentType GeneralPurposeN2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2");
         public static RegionCommitmentType GeneralPurposeN2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2D");
+        public static RegionCommitmentType GeneralPurposeT2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_T2D");
         public static RegionCommitmentType MemoryOptimized { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED");
         public static RegionCommitmentType TypeUnspecified { get; } = new RegionCommitmentType("TYPE_UNSPECIFIED");
 
@@ -4270,38 +4249,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RegionCommitmentType other && Equals(other);
         public bool Equals(RegionCommitmentType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-    /// </summary>
-    [EnumType]
-    public readonly struct RegionDiskInterface : IEquatable<RegionDiskInterface>
-    {
-        private readonly string _value;
-
-        private RegionDiskInterface(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static RegionDiskInterface Nvme { get; } = new RegionDiskInterface("NVME");
-        public static RegionDiskInterface Scsi { get; } = new RegionDiskInterface("SCSI");
-        public static RegionDiskInterface Unspecified { get; } = new RegionDiskInterface("UNSPECIFIED");
-
-        public static bool operator ==(RegionDiskInterface left, RegionDiskInterface right) => left.Equals(right);
-        public static bool operator !=(RegionDiskInterface left, RegionDiskInterface right) => !left.Equals(right);
-
-        public static explicit operator string(RegionDiskInterface value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RegionDiskInterface other && Equals(other);
-        public bool Equals(RegionDiskInterface other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4852,7 +4799,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The BFD session initialization mode for this BGP peer. Not currently available publicly. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+    /// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
     /// </summary>
     [EnumType]
     public readonly struct RouterBgpPeerBfdSessionInitializationMode : IEquatable<RouterBgpPeerBfdSessionInitializationMode>
@@ -5197,6 +5144,47 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
+    /// Specifies the termination action for the instance.
+    /// </summary>
+    [EnumType]
+    public readonly struct SchedulingInstanceTerminationAction : IEquatable<SchedulingInstanceTerminationAction>
+    {
+        private readonly string _value;
+
+        private SchedulingInstanceTerminationAction(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Delete the VM.
+        /// </summary>
+        public static SchedulingInstanceTerminationAction Delete { get; } = new SchedulingInstanceTerminationAction("DELETE");
+        /// <summary>
+        /// Default value. This value is unused.
+        /// </summary>
+        public static SchedulingInstanceTerminationAction InstanceTerminationActionUnspecified { get; } = new SchedulingInstanceTerminationAction("INSTANCE_TERMINATION_ACTION_UNSPECIFIED");
+        /// <summary>
+        /// Stop the VM without storing in-memory content. default action.
+        /// </summary>
+        public static SchedulingInstanceTerminationAction Stop { get; } = new SchedulingInstanceTerminationAction("STOP");
+
+        public static bool operator ==(SchedulingInstanceTerminationAction left, SchedulingInstanceTerminationAction right) => left.Equals(right);
+        public static bool operator !=(SchedulingInstanceTerminationAction left, SchedulingInstanceTerminationAction right) => !left.Equals(right);
+
+        public static explicit operator string(SchedulingInstanceTerminationAction value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SchedulingInstanceTerminationAction other && Equals(other);
+        public bool Equals(SchedulingInstanceTerminationAction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// For more information about maintenance intervals, see Setting maintenance intervals.
     /// </summary>
     [EnumType]
@@ -5297,6 +5285,39 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SchedulingOnHostMaintenance other && Equals(other);
         public bool Equals(SchedulingOnHostMaintenance other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies the provisioning model of the instance.
+    /// </summary>
+    [EnumType]
+    public readonly struct SchedulingProvisioningModel : IEquatable<SchedulingProvisioningModel>
+    {
+        private readonly string _value;
+
+        private SchedulingProvisioningModel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Heavily discounted, no guaranteed runtime.
+        /// </summary>
+        public static SchedulingProvisioningModel Spot { get; } = new SchedulingProvisioningModel("SPOT");
+
+        public static bool operator ==(SchedulingProvisioningModel left, SchedulingProvisioningModel right) => left.Equals(right);
+        public static bool operator !=(SchedulingProvisioningModel left, SchedulingProvisioningModel right) => !left.Equals(right);
+
+        public static explicit operator string(SchedulingProvisioningModel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SchedulingProvisioningModel other && Equals(other);
+        public bool Equals(SchedulingProvisioningModel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -5457,7 +5478,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKey : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKey>
@@ -5522,7 +5543,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (GCS). They filter requests before the request is served from Google’s cache.
+    /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyType : IEquatable<SecurityPolicyType>
@@ -5799,7 +5820,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         /// <summary>
-        /// VMs in this subnet can have external IPv6.
+        /// VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.
         /// </summary>
         public static SubnetworkIpv6AccessType External { get; } = new SubnetworkIpv6AccessType("EXTERNAL");
         /// <summary>
@@ -6065,7 +6086,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         /// <summary>
-        /// Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is adjusted based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
+        /// Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
         /// </summary>
         public static SubsettingPolicy ConsistentHashSubsetting { get; } = new SubsettingPolicy("CONSISTENT_HASH_SUBSETTING");
         /// <summary>

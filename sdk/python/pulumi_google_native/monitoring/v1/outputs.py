@@ -28,12 +28,15 @@ __all__ = [
     'RowResponse',
     'ScorecardResponse',
     'SparkChartViewResponse',
+    'TableDataSetResponse',
+    'TableDisplayOptionsResponse',
     'TextResponse',
     'ThresholdResponse',
     'TileResponse',
     'TimeSeriesFilterRatioResponse',
     'TimeSeriesFilterResponse',
     'TimeSeriesQueryResponse',
+    'TimeSeriesTableResponse',
     'WidgetResponse',
     'XyChartResponse',
 ]
@@ -749,6 +752,123 @@ class SparkChartViewResponse(dict):
 
 
 @pulumi.output_type
+class TableDataSetResponse(dict):
+    """
+    Groups a time series query definition with table options.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minAlignmentPeriod":
+            suggest = "min_alignment_period"
+        elif key == "tableDisplayOptions":
+            suggest = "table_display_options"
+        elif key == "tableTemplate":
+            suggest = "table_template"
+        elif key == "timeSeriesQuery":
+            suggest = "time_series_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableDataSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableDataSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableDataSetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 min_alignment_period: str,
+                 table_display_options: 'outputs.TableDisplayOptionsResponse',
+                 table_template: str,
+                 time_series_query: 'outputs.TimeSeriesQueryResponse'):
+        """
+        Groups a time series query definition with table options.
+        :param str min_alignment_period: Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+        :param 'TableDisplayOptionsResponse' table_display_options: Optional. Table display options for configuring how the table is rendered.
+        :param str table_template: Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
+        :param 'TimeSeriesQueryResponse' time_series_query: Fields for querying time series data from the Stackdriver metrics API.
+        """
+        pulumi.set(__self__, "min_alignment_period", min_alignment_period)
+        pulumi.set(__self__, "table_display_options", table_display_options)
+        pulumi.set(__self__, "table_template", table_template)
+        pulumi.set(__self__, "time_series_query", time_series_query)
+
+    @property
+    @pulumi.getter(name="minAlignmentPeriod")
+    def min_alignment_period(self) -> str:
+        """
+        Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+        """
+        return pulumi.get(self, "min_alignment_period")
+
+    @property
+    @pulumi.getter(name="tableDisplayOptions")
+    def table_display_options(self) -> 'outputs.TableDisplayOptionsResponse':
+        """
+        Optional. Table display options for configuring how the table is rendered.
+        """
+        return pulumi.get(self, "table_display_options")
+
+    @property
+    @pulumi.getter(name="tableTemplate")
+    def table_template(self) -> str:
+        """
+        Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
+        """
+        return pulumi.get(self, "table_template")
+
+    @property
+    @pulumi.getter(name="timeSeriesQuery")
+    def time_series_query(self) -> 'outputs.TimeSeriesQueryResponse':
+        """
+        Fields for querying time series data from the Stackdriver metrics API.
+        """
+        return pulumi.get(self, "time_series_query")
+
+
+@pulumi.output_type
+class TableDisplayOptionsResponse(dict):
+    """
+    Table display options that can be reused.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shownColumns":
+            suggest = "shown_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableDisplayOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableDisplayOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableDisplayOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 shown_columns: Sequence[str]):
+        """
+        Table display options that can be reused.
+        :param Sequence[str] shown_columns: Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
+        """
+        pulumi.set(__self__, "shown_columns", shown_columns)
+
+    @property
+    @pulumi.getter(name="shownColumns")
+    def shown_columns(self) -> Sequence[str]:
+        """
+        Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
+        """
+        return pulumi.get(self, "shown_columns")
+
+
+@pulumi.output_type
 class TextResponse(dict):
     """
     A widget that displays textual content.
@@ -1176,6 +1296,45 @@ class TimeSeriesQueryResponse(dict):
 
 
 @pulumi.output_type
+class TimeSeriesTableResponse(dict):
+    """
+    A table that displays time series data.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataSets":
+            suggest = "data_sets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimeSeriesTableResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimeSeriesTableResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimeSeriesTableResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_sets: Sequence['outputs.TableDataSetResponse']):
+        """
+        A table that displays time series data.
+        :param Sequence['TableDataSetResponse'] data_sets: The data displayed in this table.
+        """
+        pulumi.set(__self__, "data_sets", data_sets)
+
+    @property
+    @pulumi.getter(name="dataSets")
+    def data_sets(self) -> Sequence['outputs.TableDataSetResponse']:
+        """
+        The data displayed in this table.
+        """
+        return pulumi.get(self, "data_sets")
+
+
+@pulumi.output_type
 class WidgetResponse(dict):
     """
     Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
@@ -1185,6 +1344,8 @@ class WidgetResponse(dict):
         suggest = None
         if key == "alertChart":
             suggest = "alert_chart"
+        elif key == "timeSeriesTable":
+            suggest = "time_series_table"
         elif key == "xyChart":
             suggest = "xy_chart"
 
@@ -1204,6 +1365,7 @@ class WidgetResponse(dict):
                  blank: 'outputs.EmptyResponse',
                  scorecard: 'outputs.ScorecardResponse',
                  text: 'outputs.TextResponse',
+                 time_series_table: 'outputs.TimeSeriesTableResponse',
                  title: str,
                  xy_chart: 'outputs.XyChartResponse'):
         """
@@ -1212,6 +1374,7 @@ class WidgetResponse(dict):
         :param 'EmptyResponse' blank: A blank space.
         :param 'ScorecardResponse' scorecard: A scorecard summarizing time series data.
         :param 'TextResponse' text: A raw string or markdown displaying textual content.
+        :param 'TimeSeriesTableResponse' time_series_table: A widget that displays time series data in a tabular format.
         :param str title: Optional. The title of the widget.
         :param 'XyChartResponse' xy_chart: A chart of time series data.
         """
@@ -1219,6 +1382,7 @@ class WidgetResponse(dict):
         pulumi.set(__self__, "blank", blank)
         pulumi.set(__self__, "scorecard", scorecard)
         pulumi.set(__self__, "text", text)
+        pulumi.set(__self__, "time_series_table", time_series_table)
         pulumi.set(__self__, "title", title)
         pulumi.set(__self__, "xy_chart", xy_chart)
 
@@ -1253,6 +1417,14 @@ class WidgetResponse(dict):
         A raw string or markdown displaying textual content.
         """
         return pulumi.get(self, "text")
+
+    @property
+    @pulumi.getter(name="timeSeriesTable")
+    def time_series_table(self) -> 'outputs.TimeSeriesTableResponse':
+        """
+        A widget that displays time series data in a tabular format.
+        """
+        return pulumi.get(self, "time_series_table")
 
     @property
     @pulumi.getter

@@ -55,3 +55,13 @@ export interface GetClusterResult {
      */
     readonly state: string;
 }
+
+export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+export interface GetClusterOutputArgs {
+    clusterId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

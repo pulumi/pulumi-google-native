@@ -35,6 +35,8 @@ type LookupInstanceResult struct {
 	Etag string `pulumi:"etag"`
 	// File system shares on the instance. For this version, only a single file share is supported.
 	FileShares []FileShareConfigResponse `pulumi:"fileShares"`
+	// KMS key name used for data encryption.
+	KmsKeyName string `pulumi:"kmsKeyName"`
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
@@ -47,6 +49,8 @@ type LookupInstanceResult struct {
 	State string `pulumi:"state"`
 	// Additional information about the instance state, if available.
 	StatusMessage string `pulumi:"statusMessage"`
+	// field indicates all the reasons the instance is in "SUSPENDED" state.
+	SuspensionReasons []string `pulumi:"suspensionReasons"`
 	// The service tier of the instance.
 	Tier string `pulumi:"tier"`
 }
@@ -104,6 +108,11 @@ func (o LookupInstanceResultOutput) FileShares() FileShareConfigResponseArrayOut
 	return o.ApplyT(func(v LookupInstanceResult) []FileShareConfigResponse { return v.FileShares }).(FileShareConfigResponseArrayOutput)
 }
 
+// KMS key name used for data encryption.
+func (o LookupInstanceResultOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
 // Resource labels to represent user provided metadata.
 func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -132,6 +141,11 @@ func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
 // Additional information about the instance state, if available.
 func (o LookupInstanceResultOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// field indicates all the reasons the instance is in "SUSPENDED" state.
+func (o LookupInstanceResultOutput) SuspensionReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.SuspensionReasons }).(pulumi.StringArrayOutput)
 }
 
 // The service tier of the instance.

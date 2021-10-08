@@ -1091,6 +1091,20 @@ func (o WeeklyMaintenanceWindowResponseArrayOutput) Index(i pulumi.IntInput) Wee
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyInput)(nil)).Elem(), MaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyPtrInput)(nil)).Elem(), MaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyResponseInput)(nil)).Elem(), MaintenancePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyResponsePtrInput)(nil)).Elem(), MaintenancePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceScheduleResponseInput)(nil)).Elem(), MaintenanceScheduleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceScheduleResponsePtrInput)(nil)).Elem(), MaintenanceScheduleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayInput)(nil)).Elem(), TimeOfDayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayResponseInput)(nil)).Elem(), TimeOfDayResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsCertificateResponseInput)(nil)).Elem(), TlsCertificateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsCertificateResponseArrayInput)(nil)).Elem(), TlsCertificateResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowInput)(nil)).Elem(), WeeklyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowArrayInput)(nil)).Elem(), WeeklyMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowResponseInput)(nil)).Elem(), WeeklyMaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowResponseArrayInput)(nil)).Elem(), WeeklyMaintenanceWindowResponseArray{})
 	pulumi.RegisterOutputType(MaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyResponseOutput{})

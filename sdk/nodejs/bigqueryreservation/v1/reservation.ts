@@ -39,7 +39,7 @@ export class Reservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
-     * If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified above at most.
+     * If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
      */
     public readonly ignoreIdleSlots!: pulumi.Output<boolean>;
     /**
@@ -93,7 +93,7 @@ export class Reservation extends pulumi.CustomResource {
  */
 export interface ReservationArgs {
     /**
-     * If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified above at most.
+     * If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
      */
     ignoreIdleSlots?: pulumi.Input<boolean>;
     location?: pulumi.Input<string>;

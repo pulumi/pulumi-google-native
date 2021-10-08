@@ -45,3 +45,12 @@ export interface GetRulesetResult {
      */
     readonly source: outputs.firebaserules.v1.SourceResponse;
 }
+
+export function getRulesetOutput(args: GetRulesetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesetResult> {
+    return pulumi.output(args).apply(a => getRuleset(a, opts))
+}
+
+export interface GetRulesetOutputArgs {
+    project?: pulumi.Input<string>;
+    rulesetId: pulumi.Input<string>;
+}

@@ -19,6 +19,8 @@ type Topic struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The settings for this topic's partitions.
 	PartitionConfig PartitionConfigResponseOutput `pulumi:"partitionConfig"`
+	// The settings for this topic's Reservation usage.
+	ReservationConfig ReservationConfigResponseOutput `pulumi:"reservationConfig"`
 	// The settings for this topic's message retention.
 	RetentionConfig RetentionConfigResponseOutput `pulumi:"retentionConfig"`
 }
@@ -71,6 +73,8 @@ type topicArgs struct {
 	// The settings for this topic's partitions.
 	PartitionConfig *PartitionConfig `pulumi:"partitionConfig"`
 	Project         *string          `pulumi:"project"`
+	// The settings for this topic's Reservation usage.
+	ReservationConfig *ReservationConfig `pulumi:"reservationConfig"`
 	// The settings for this topic's message retention.
 	RetentionConfig *RetentionConfig `pulumi:"retentionConfig"`
 	TopicId         string           `pulumi:"topicId"`
@@ -84,6 +88,8 @@ type TopicArgs struct {
 	// The settings for this topic's partitions.
 	PartitionConfig PartitionConfigPtrInput
 	Project         pulumi.StringPtrInput
+	// The settings for this topic's Reservation usage.
+	ReservationConfig ReservationConfigPtrInput
 	// The settings for this topic's message retention.
 	RetentionConfig RetentionConfigPtrInput
 	TopicId         pulumi.StringInput

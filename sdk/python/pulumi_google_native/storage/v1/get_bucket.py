@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBucketResult:
-    def __init__(__self__, acl=None, billing=None, cors=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, iam_configuration=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, owner=None, project_number=None, retention_policy=None, satisfies_pzs=None, self_link=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None, zone_affinity=None):
+    def __init__(__self__, acl=None, billing=None, cors=None, custom_placement_config=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, iam_configuration=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, owner=None, project_number=None, retention_policy=None, rpo=None, satisfies_pzs=None, self_link=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None):
         if acl and not isinstance(acl, list):
             raise TypeError("Expected argument 'acl' to be a list")
         pulumi.set(__self__, "acl", acl)
@@ -28,6 +28,9 @@ class GetBucketResult:
         if cors and not isinstance(cors, list):
             raise TypeError("Expected argument 'cors' to be a list")
         pulumi.set(__self__, "cors", cors)
+        if custom_placement_config and not isinstance(custom_placement_config, dict):
+            raise TypeError("Expected argument 'custom_placement_config' to be a dict")
+        pulumi.set(__self__, "custom_placement_config", custom_placement_config)
         if default_event_based_hold and not isinstance(default_event_based_hold, bool):
             raise TypeError("Expected argument 'default_event_based_hold' to be a bool")
         pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
@@ -76,6 +79,9 @@ class GetBucketResult:
         if retention_policy and not isinstance(retention_policy, dict):
             raise TypeError("Expected argument 'retention_policy' to be a dict")
         pulumi.set(__self__, "retention_policy", retention_policy)
+        if rpo and not isinstance(rpo, str):
+            raise TypeError("Expected argument 'rpo' to be a str")
+        pulumi.set(__self__, "rpo", rpo)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -97,9 +103,6 @@ class GetBucketResult:
         if website and not isinstance(website, dict):
             raise TypeError("Expected argument 'website' to be a dict")
         pulumi.set(__self__, "website", website)
-        if zone_affinity and not isinstance(zone_affinity, list):
-            raise TypeError("Expected argument 'zone_affinity' to be a list")
-        pulumi.set(__self__, "zone_affinity", zone_affinity)
 
     @property
     @pulumi.getter
@@ -124,6 +127,14 @@ class GetBucketResult:
         The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         """
         return pulumi.get(self, "cors")
+
+    @property
+    @pulumi.getter(name="customPlacementConfig")
+    def custom_placement_config(self) -> 'outputs.BucketCustomPlacementConfigResponse':
+        """
+        The bucket's custom placement configuration for Custom Dual Regions.
+        """
+        return pulumi.get(self, "custom_placement_config")
 
     @property
     @pulumi.getter(name="defaultEventBasedHold")
@@ -254,6 +265,14 @@ class GetBucketResult:
         return pulumi.get(self, "retention_policy")
 
     @property
+    @pulumi.getter
+    def rpo(self) -> str:
+        """
+        The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
+        """
+        return pulumi.get(self, "rpo")
+
+    @property
     @pulumi.getter(name="satisfiesPZS")
     def satisfies_pzs(self) -> bool:
         """
@@ -309,14 +328,6 @@ class GetBucketResult:
         """
         return pulumi.get(self, "website")
 
-    @property
-    @pulumi.getter(name="zoneAffinity")
-    def zone_affinity(self) -> Sequence[str]:
-        """
-        The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
-        """
-        return pulumi.get(self, "zone_affinity")
-
 
 class AwaitableGetBucketResult(GetBucketResult):
     # pylint: disable=using-constant-test
@@ -327,6 +338,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             acl=self.acl,
             billing=self.billing,
             cors=self.cors,
+            custom_placement_config=self.custom_placement_config,
             default_event_based_hold=self.default_event_based_hold,
             default_object_acl=self.default_object_acl,
             encryption=self.encryption,
@@ -343,14 +355,14 @@ class AwaitableGetBucketResult(GetBucketResult):
             owner=self.owner,
             project_number=self.project_number,
             retention_policy=self.retention_policy,
+            rpo=self.rpo,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             storage_class=self.storage_class,
             time_created=self.time_created,
             updated=self.updated,
             versioning=self.versioning,
-            website=self.website,
-            zone_affinity=self.zone_affinity)
+            website=self.website)
 
 
 def get_bucket(bucket: Optional[str] = None,
@@ -380,6 +392,7 @@ def get_bucket(bucket: Optional[str] = None,
         acl=__ret__.acl,
         billing=__ret__.billing,
         cors=__ret__.cors,
+        custom_placement_config=__ret__.custom_placement_config,
         default_event_based_hold=__ret__.default_event_based_hold,
         default_object_acl=__ret__.default_object_acl,
         encryption=__ret__.encryption,
@@ -396,14 +409,14 @@ def get_bucket(bucket: Optional[str] = None,
         owner=__ret__.owner,
         project_number=__ret__.project_number,
         retention_policy=__ret__.retention_policy,
+        rpo=__ret__.rpo,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
         storage_class=__ret__.storage_class,
         time_created=__ret__.time_created,
         updated=__ret__.updated,
         versioning=__ret__.versioning,
-        website=__ret__.website,
-        zone_affinity=__ret__.zone_affinity)
+        website=__ret__.website)
 
 
 @_utilities.lift_output_func(get_bucket)

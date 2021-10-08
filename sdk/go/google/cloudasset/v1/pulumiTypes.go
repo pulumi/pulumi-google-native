@@ -965,6 +965,18 @@ func (o PubsubDestinationResponsePtrOutput) Topic() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponsePtrInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeedOutputConfigInput)(nil)).Elem(), FeedOutputConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeedOutputConfigPtrInput)(nil)).Elem(), FeedOutputConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeedOutputConfigResponseInput)(nil)).Elem(), FeedOutputConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeedOutputConfigResponsePtrInput)(nil)).Elem(), FeedOutputConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationInput)(nil)).Elem(), PubsubDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationPtrInput)(nil)).Elem(), PubsubDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationResponseInput)(nil)).Elem(), PubsubDestinationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationResponsePtrInput)(nil)).Elem(), PubsubDestinationResponseArgs{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})

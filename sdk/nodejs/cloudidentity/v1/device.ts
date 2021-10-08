@@ -113,7 +113,7 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly model!: pulumi.Output<string>;
     /**
-     * [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
+     * [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}`, where device is the unique id assigned to the Device.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**

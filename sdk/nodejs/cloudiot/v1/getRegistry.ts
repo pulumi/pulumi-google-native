@@ -59,3 +59,13 @@ export interface GetRegistryResult {
      */
     readonly stateNotificationConfig: outputs.cloudiot.v1.StateNotificationConfigResponse;
 }
+
+export function getRegistryOutput(args: GetRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryResult> {
+    return pulumi.output(args).apply(a => getRegistry(a, opts))
+}
+
+export interface GetRegistryOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    registryId: pulumi.Input<string>;
+}

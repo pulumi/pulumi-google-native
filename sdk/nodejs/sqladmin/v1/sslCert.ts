@@ -60,7 +60,7 @@ export class SslCert extends pulumi.CustomResource {
      */
     public readonly instance!: pulumi.Output<string>;
     /**
-     * This is always sql#sslCert.
+     * This is always **sql#sslCert**.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**

@@ -45,3 +45,14 @@ export interface GetDicomStoreResult {
      */
     readonly notificationConfig: outputs.healthcare.v1.NotificationConfigResponse;
 }
+
+export function getDicomStoreOutput(args: GetDicomStoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDicomStoreResult> {
+    return pulumi.output(args).apply(a => getDicomStore(a, opts))
+}
+
+export interface GetDicomStoreOutputArgs {
+    datasetId: pulumi.Input<string>;
+    dicomStoreId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

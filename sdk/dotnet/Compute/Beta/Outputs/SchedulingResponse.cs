@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly int HostErrorTimeoutSeconds;
         /// <summary>
+        /// Specifies the termination action for the instance.
+        /// </summary>
+        public readonly string InstanceTerminationAction;
+        /// <summary>
         /// An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
         /// </summary>
         public readonly string LocationHint;
@@ -52,12 +56,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
         /// </summary>
         public readonly bool Preemptible;
+        /// <summary>
+        /// Specifies the provisioning model of the instance.
+        /// </summary>
+        public readonly string ProvisioningModel;
 
         [OutputConstructor]
         private SchedulingResponse(
             bool automaticRestart,
 
             int hostErrorTimeoutSeconds,
+
+            string instanceTerminationAction,
 
             string locationHint,
 
@@ -71,10 +81,13 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string onHostMaintenance,
 
-            bool preemptible)
+            bool preemptible,
+
+            string provisioningModel)
         {
             AutomaticRestart = automaticRestart;
             HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
+            InstanceTerminationAction = instanceTerminationAction;
             LocationHint = locationHint;
             MaintenanceFreezeDurationHours = maintenanceFreezeDurationHours;
             MaintenanceInterval = maintenanceInterval;
@@ -82,6 +95,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
             Preemptible = preemptible;
+            ProvisioningModel = provisioningModel;
         }
     }
 }

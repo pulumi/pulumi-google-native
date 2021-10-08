@@ -51,3 +51,13 @@ export interface GetCaPoolResult {
      */
     readonly tier: string;
 }
+
+export function getCaPoolOutput(args: GetCaPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaPoolResult> {
+    return pulumi.output(args).apply(a => getCaPool(a, opts))
+}
+
+export interface GetCaPoolOutputArgs {
+    caPoolId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

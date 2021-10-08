@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> InspectTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        /// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        /// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

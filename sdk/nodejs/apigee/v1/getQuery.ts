@@ -83,3 +83,13 @@ export interface GetQueryResult {
      */
     readonly updated: string;
 }
+
+export function getQueryOutput(args: GetQueryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueryResult> {
+    return pulumi.output(args).apply(a => getQuery(a, opts))
+}
+
+export interface GetQueryOutputArgs {
+    environmentId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    queryId: pulumi.Input<string>;
+}
