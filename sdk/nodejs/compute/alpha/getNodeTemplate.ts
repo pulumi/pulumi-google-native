@@ -89,3 +89,13 @@ export interface GetNodeTemplateResult {
      */
     readonly statusMessage: string;
 }
+
+export function getNodeTemplateOutput(args: GetNodeTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTemplateResult> {
+    return pulumi.output(args).apply(a => getNodeTemplate(a, opts))
+}
+
+export interface GetNodeTemplateOutputArgs {
+    nodeTemplate: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

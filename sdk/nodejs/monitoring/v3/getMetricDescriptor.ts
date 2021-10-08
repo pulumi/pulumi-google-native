@@ -73,3 +73,12 @@ export interface GetMetricDescriptorResult {
      */
     readonly valueType: string;
 }
+
+export function getMetricDescriptorOutput(args: GetMetricDescriptorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetricDescriptorResult> {
+    return pulumi.output(args).apply(a => getMetricDescriptor(a, opts))
+}
+
+export interface GetMetricDescriptorOutputArgs {
+    metricDescriptorId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

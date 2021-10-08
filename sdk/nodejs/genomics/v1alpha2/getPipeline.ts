@@ -59,3 +59,11 @@ export interface GetPipelineResult {
      */
     readonly resources: outputs.genomics.v1alpha2.PipelineResourcesResponse;
 }
+
+export function getPipelineOutput(args: GetPipelineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPipelineResult> {
+    return pulumi.output(args).apply(a => getPipeline(a, opts))
+}
+
+export interface GetPipelineOutputArgs {
+    pipelineId: pulumi.Input<string>;
+}

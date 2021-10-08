@@ -69,3 +69,12 @@ export interface GetEvaluationJobResult {
      */
     readonly state: string;
 }
+
+export function getEvaluationJobOutput(args: GetEvaluationJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEvaluationJobResult> {
+    return pulumi.output(args).apply(a => getEvaluationJob(a, opts))
+}
+
+export interface GetEvaluationJobOutputArgs {
+    evaluationJobId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

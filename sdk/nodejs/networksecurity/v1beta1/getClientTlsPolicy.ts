@@ -63,3 +63,13 @@ export interface GetClientTlsPolicyResult {
      */
     readonly updateTime: string;
 }
+
+export function getClientTlsPolicyOutput(args: GetClientTlsPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientTlsPolicyResult> {
+    return pulumi.output(args).apply(a => getClientTlsPolicy(a, opts))
+}
+
+export interface GetClientTlsPolicyOutputArgs {
+    clientTlsPolicyId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

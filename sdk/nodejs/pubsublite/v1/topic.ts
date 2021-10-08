@@ -44,6 +44,10 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly partitionConfig!: pulumi.Output<outputs.pubsublite.v1.PartitionConfigResponse>;
     /**
+     * The settings for this topic's Reservation usage.
+     */
+    public readonly reservationConfig!: pulumi.Output<outputs.pubsublite.v1.ReservationConfigResponse>;
+    /**
      * The settings for this topic's message retention.
      */
     public readonly retentionConfig!: pulumi.Output<outputs.pubsublite.v1.RetentionConfigResponse>;
@@ -66,11 +70,13 @@ export class Topic extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["partitionConfig"] = args ? args.partitionConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["reservationConfig"] = args ? args.reservationConfig : undefined;
             inputs["retentionConfig"] = args ? args.retentionConfig : undefined;
             inputs["topicId"] = args ? args.topicId : undefined;
         } else {
             inputs["name"] = undefined /*out*/;
             inputs["partitionConfig"] = undefined /*out*/;
+            inputs["reservationConfig"] = undefined /*out*/;
             inputs["retentionConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -94,6 +100,10 @@ export interface TopicArgs {
      */
     partitionConfig?: pulumi.Input<inputs.pubsublite.v1.PartitionConfigArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * The settings for this topic's Reservation usage.
+     */
+    reservationConfig?: pulumi.Input<inputs.pubsublite.v1.ReservationConfigArgs>;
     /**
      * The settings for this topic's message retention.
      */

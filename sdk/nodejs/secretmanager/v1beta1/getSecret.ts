@@ -45,3 +45,12 @@ export interface GetSecretResult {
      */
     readonly replication: outputs.secretmanager.v1beta1.ReplicationResponse;
 }
+
+export function getSecretOutput(args: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
+    return pulumi.output(args).apply(a => getSecret(a, opts))
+}
+
+export interface GetSecretOutputArgs {
+    project?: pulumi.Input<string>;
+    secretId: pulumi.Input<string>;
+}

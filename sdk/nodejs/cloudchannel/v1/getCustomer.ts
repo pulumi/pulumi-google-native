@@ -79,3 +79,13 @@ export interface GetCustomerResult {
      */
     readonly updateTime: string;
 }
+
+export function getCustomerOutput(args: GetCustomerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomerResult> {
+    return pulumi.output(args).apply(a => getCustomer(a, opts))
+}
+
+export interface GetCustomerOutputArgs {
+    accountId: pulumi.Input<string>;
+    channelPartnerLinkId: pulumi.Input<string>;
+    customerId: pulumi.Input<string>;
+}

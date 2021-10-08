@@ -54,3 +54,14 @@ export interface GetChangeResult {
      */
     readonly status: string;
 }
+
+export function getChangeOutput(args: GetChangeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChangeResult> {
+    return pulumi.output(args).apply(a => getChange(a, opts))
+}
+
+export interface GetChangeOutputArgs {
+    changeId: pulumi.Input<string>;
+    clientOperationId?: pulumi.Input<string>;
+    managedZone: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

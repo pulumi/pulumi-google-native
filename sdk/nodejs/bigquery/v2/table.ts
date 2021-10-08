@@ -45,6 +45,10 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
+     * The default collation of the table.
+     */
+    public /*out*/ readonly defaultCollation!: pulumi.Output<string>;
+    /**
      * [Optional] A user-friendly description of this table.
      */
     public readonly description!: pulumi.Output<string>;
@@ -181,6 +185,7 @@ export class Table extends pulumi.CustomResource {
             inputs["timePartitioning"] = args ? args.timePartitioning : undefined;
             inputs["view"] = args ? args.view : undefined;
             inputs["creationTime"] = undefined /*out*/;
+            inputs["defaultCollation"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["lastModifiedTime"] = undefined /*out*/;
@@ -196,6 +201,7 @@ export class Table extends pulumi.CustomResource {
         } else {
             inputs["clustering"] = undefined /*out*/;
             inputs["creationTime"] = undefined /*out*/;
+            inputs["defaultCollation"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["encryptionConfiguration"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;

@@ -8,7 +8,7 @@ import * as utilities from "../../utilities";
 /**
  * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
  */
-export function getRegionInPlaceSnapshotIamPolicy(args: GetRegionInPlaceSnapshotIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInPlaceSnapshotIamPolicyResult> {
+export function getInstantSnapshotIamPolicy(args: GetInstantSnapshotIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstantSnapshotIamPolicyResult> {
     if (!opts) {
         opts = {}
     }
@@ -16,22 +16,22 @@ export function getRegionInPlaceSnapshotIamPolicy(args: GetRegionInPlaceSnapshot
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("google-native:compute/alpha:getRegionInPlaceSnapshotIamPolicy", {
+    return pulumi.runtime.invoke("google-native:compute/alpha:getInstantSnapshotIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
-        "region": args.region,
         "resource": args.resource,
+        "zone": args.zone,
     }, opts);
 }
 
-export interface GetRegionInPlaceSnapshotIamPolicyArgs {
+export interface GetInstantSnapshotIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
     project?: string;
-    region: string;
     resource: string;
+    zone: string;
 }
 
-export interface GetRegionInPlaceSnapshotIamPolicyResult {
+export interface GetInstantSnapshotIamPolicyResult {
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
@@ -56,4 +56,15 @@ export interface GetRegionInPlaceSnapshotIamPolicyResult {
      * Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
      */
     readonly version: number;
+}
+
+export function getInstantSnapshotIamPolicyOutput(args: GetInstantSnapshotIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstantSnapshotIamPolicyResult> {
+    return pulumi.output(args).apply(a => getInstantSnapshotIamPolicy(a, opts))
+}
+
+export interface GetInstantSnapshotIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
 }

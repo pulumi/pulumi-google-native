@@ -71,3 +71,13 @@ export interface GetDlpJobResult {
      */
     readonly type: string;
 }
+
+export function getDlpJobOutput(args: GetDlpJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDlpJobResult> {
+    return pulumi.output(args).apply(a => getDlpJob(a, opts))
+}
+
+export interface GetDlpJobOutputArgs {
+    dlpJobId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

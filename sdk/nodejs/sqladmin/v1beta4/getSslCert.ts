@@ -42,11 +42,11 @@ export interface GetSslCertResult {
      */
     readonly commonName: string;
     /**
-     * The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
+     * The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
      */
     readonly createTime: string;
     /**
-     * The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     * The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
      */
     readonly expirationTime: string;
     /**
@@ -54,7 +54,7 @@ export interface GetSslCertResult {
      */
     readonly instance: string;
     /**
-     * This is always *sql#sslCert*.
+     * This is always **sql#sslCert**.
      */
     readonly kind: string;
     /**
@@ -65,4 +65,14 @@ export interface GetSslCertResult {
      * Sha1 Fingerprint.
      */
     readonly sha1Fingerprint: string;
+}
+
+export function getSslCertOutput(args: GetSslCertOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslCertResult> {
+    return pulumi.output(args).apply(a => getSslCert(a, opts))
+}
+
+export interface GetSslCertOutputArgs {
+    instance: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    sha1Fingerprint: pulumi.Input<string>;
 }

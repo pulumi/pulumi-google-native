@@ -64,3 +64,14 @@ export interface GetNotificationResult {
      */
     readonly topic: string;
 }
+
+export function getNotificationOutput(args: GetNotificationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationResult> {
+    return pulumi.output(args).apply(a => getNotification(a, opts))
+}
+
+export interface GetNotificationOutputArgs {
+    bucket: pulumi.Input<string>;
+    notification: pulumi.Input<string>;
+    provisionalUserProject?: pulumi.Input<string>;
+    userProject?: pulumi.Input<string>;
+}

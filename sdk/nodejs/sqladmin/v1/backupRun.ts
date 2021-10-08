@@ -53,11 +53,11 @@ export class BackupRun extends pulumi.CustomResource {
      */
     public readonly diskEncryptionStatus!: pulumi.Output<outputs.sqladmin.v1.DiskEncryptionStatusResponse>;
     /**
-     * The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     * The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
      */
     public readonly endTime!: pulumi.Output<string>;
     /**
-     * The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     * The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
      */
     public readonly enqueuedTime!: pulumi.Output<string>;
     /**
@@ -69,7 +69,7 @@ export class BackupRun extends pulumi.CustomResource {
      */
     public readonly instance!: pulumi.Output<string>;
     /**
-     * This is always *sql#backupRun*.
+     * This is always **sql#backupRun**.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -81,7 +81,7 @@ export class BackupRun extends pulumi.CustomResource {
      */
     public readonly selfLink!: pulumi.Output<string>;
     /**
-     * The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     * The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
      */
     public readonly startTime!: pulumi.Output<string>;
     /**
@@ -93,7 +93,7 @@ export class BackupRun extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     * The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
      */
     public readonly windowStartTime!: pulumi.Output<string>;
 
@@ -173,11 +173,11 @@ export interface BackupRunArgs {
      */
     diskEncryptionStatus?: pulumi.Input<inputs.sqladmin.v1.DiskEncryptionStatusArgs>;
     /**
-     * The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     * The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
      */
     endTime?: pulumi.Input<string>;
     /**
-     * The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     * The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
      */
     enqueuedTime?: pulumi.Input<string>;
     /**
@@ -193,7 +193,7 @@ export interface BackupRunArgs {
      */
     instance: pulumi.Input<string>;
     /**
-     * This is always *sql#backupRun*.
+     * This is always **sql#backupRun**.
      */
     kind?: pulumi.Input<string>;
     /**
@@ -206,7 +206,7 @@ export interface BackupRunArgs {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     * The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
      */
     startTime?: pulumi.Input<string>;
     /**
@@ -218,7 +218,7 @@ export interface BackupRunArgs {
      */
     type?: pulumi.Input<enums.sqladmin.v1.BackupRunType>;
     /**
-     * The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     * The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
      */
     windowStartTime?: pulumi.Input<string>;
 }

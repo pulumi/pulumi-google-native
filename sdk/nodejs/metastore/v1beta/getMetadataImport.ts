@@ -61,3 +61,14 @@ export interface GetMetadataImportResult {
      */
     readonly updateTime: string;
 }
+
+export function getMetadataImportOutput(args: GetMetadataImportOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetadataImportResult> {
+    return pulumi.output(args).apply(a => getMetadataImport(a, opts))
+}
+
+export interface GetMetadataImportOutputArgs {
+    location: pulumi.Input<string>;
+    metadataImportId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
+}

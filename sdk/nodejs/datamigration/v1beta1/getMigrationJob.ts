@@ -107,3 +107,13 @@ export interface GetMigrationJobResult {
      */
     readonly vpcPeeringConnectivity: outputs.datamigration.v1beta1.VpcPeeringConnectivityResponse;
 }
+
+export function getMigrationJobOutput(args: GetMigrationJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMigrationJobResult> {
+    return pulumi.output(args).apply(a => getMigrationJob(a, opts))
+}
+
+export interface GetMigrationJobOutputArgs {
+    location: pulumi.Input<string>;
+    migrationJobId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

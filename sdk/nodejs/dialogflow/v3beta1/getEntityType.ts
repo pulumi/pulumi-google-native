@@ -67,3 +67,15 @@ export interface GetEntityTypeResult {
      */
     readonly redact: boolean;
 }
+
+export function getEntityTypeOutput(args: GetEntityTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntityTypeResult> {
+    return pulumi.output(args).apply(a => getEntityType(a, opts))
+}
+
+export interface GetEntityTypeOutputArgs {
+    agentId: pulumi.Input<string>;
+    entityTypeId: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -71,3 +71,13 @@ export interface GetServiceResult {
      */
     readonly userLabels: {[key: string]: string};
 }
+
+export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+export interface GetServiceOutputArgs {
+    serviceId: pulumi.Input<string>;
+    v3Id: pulumi.Input<string>;
+    v3Id1: pulumi.Input<string>;
+}

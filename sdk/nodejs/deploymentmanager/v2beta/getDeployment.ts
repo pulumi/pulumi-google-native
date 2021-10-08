@@ -73,3 +73,12 @@ export interface GetDeploymentResult {
      */
     readonly updateTime: string;
 }
+
+export function getDeploymentOutput(args: GetDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeploymentResult> {
+    return pulumi.output(args).apply(a => getDeployment(a, opts))
+}
+
+export interface GetDeploymentOutputArgs {
+    deployment: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

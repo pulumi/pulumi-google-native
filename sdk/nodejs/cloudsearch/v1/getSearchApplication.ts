@@ -69,3 +69,12 @@ export interface GetSearchApplicationResult {
      */
     readonly sourceConfig: outputs.cloudsearch.v1.SourceConfigResponse[];
 }
+
+export function getSearchApplicationOutput(args: GetSearchApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSearchApplicationResult> {
+    return pulumi.output(args).apply(a => getSearchApplication(a, opts))
+}
+
+export interface GetSearchApplicationOutputArgs {
+    debugOptionsEnableDebugging?: pulumi.Input<string>;
+    searchapplicationId: pulumi.Input<string>;
+}

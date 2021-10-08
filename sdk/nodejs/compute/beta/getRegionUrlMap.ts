@@ -87,3 +87,13 @@ export interface GetRegionUrlMapResult {
      */
     readonly tests: outputs.compute.beta.UrlMapTestResponse[];
 }
+
+export function getRegionUrlMapOutput(args: GetRegionUrlMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionUrlMapResult> {
+    return pulumi.output(args).apply(a => getRegionUrlMap(a, opts))
+}
+
+export interface GetRegionUrlMapOutputArgs {
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    urlMap: pulumi.Input<string>;
+}

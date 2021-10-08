@@ -49,3 +49,14 @@ export interface GetAnalysisResult {
      */
     readonly requestTime: string;
 }
+
+export function getAnalysisOutput(args: GetAnalysisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAnalysisResult> {
+    return pulumi.output(args).apply(a => getAnalysis(a, opts))
+}
+
+export interface GetAnalysisOutputArgs {
+    analysisId: pulumi.Input<string>;
+    conversationId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

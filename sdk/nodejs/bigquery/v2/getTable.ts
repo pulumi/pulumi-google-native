@@ -41,6 +41,10 @@ export interface GetTableResult {
      */
     readonly creationTime: string;
     /**
+     * The default collation of the table.
+     */
+    readonly defaultCollation: string;
+    /**
      * [Optional] A user-friendly description of this table.
      */
     readonly description: string;
@@ -144,4 +148,15 @@ export interface GetTableResult {
      * [Optional] The view definition.
      */
     readonly view: outputs.bigquery.v2.ViewDefinitionResponse;
+}
+
+export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableResult> {
+    return pulumi.output(args).apply(a => getTable(a, opts))
+}
+
+export interface GetTableOutputArgs {
+    datasetId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    selectedFields?: pulumi.Input<string>;
+    tableId: pulumi.Input<string>;
 }

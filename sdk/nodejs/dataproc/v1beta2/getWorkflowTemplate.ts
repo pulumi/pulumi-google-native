@@ -69,3 +69,14 @@ export interface GetWorkflowTemplateResult {
      */
     readonly version: number;
 }
+
+export function getWorkflowTemplateOutput(args: GetWorkflowTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowTemplateResult> {
+    return pulumi.output(args).apply(a => getWorkflowTemplate(a, opts))
+}
+
+export interface GetWorkflowTemplateOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
+    workflowTemplateId: pulumi.Input<string>;
+}

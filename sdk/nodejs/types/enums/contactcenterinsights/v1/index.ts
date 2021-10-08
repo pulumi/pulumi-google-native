@@ -4,7 +4,7 @@
 
 export const ConversationMedium = {
     /**
-     * Default value.
+     * Default value, if unspecified will default to PHONE_CALL.
      */
     MediumUnspecified: "MEDIUM_UNSPECIFIED",
     /**
@@ -18,13 +18,13 @@ export const ConversationMedium = {
 } as const;
 
 /**
- * Immutable. The conversation medium.
+ * Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
  */
 export type ConversationMedium = (typeof ConversationMedium)[keyof typeof ConversationMedium];
 
 export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium = {
     /**
-     * Default value.
+     * Default value, if unspecified will default to PHONE_CALL.
      */
     MediumUnspecified: "MEDIUM_UNSPECIFIED",
     /**
@@ -38,7 +38,7 @@ export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium =
 } as const;
 
 /**
- * Required. Medium of conversations used in training data.
+ * Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
  */
 export type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium = (typeof GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium)[keyof typeof GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium];
 

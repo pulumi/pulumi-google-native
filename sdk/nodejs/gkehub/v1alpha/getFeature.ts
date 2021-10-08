@@ -71,3 +71,13 @@ export interface GetFeatureResult {
      */
     readonly updateTime: string;
 }
+
+export function getFeatureOutput(args: GetFeatureOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeatureResult> {
+    return pulumi.output(args).apply(a => getFeature(a, opts))
+}
+
+export interface GetFeatureOutputArgs {
+    featureId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

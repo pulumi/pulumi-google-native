@@ -57,3 +57,12 @@ export interface GetBudgetResult {
      */
     readonly thresholdRules: outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse[];
 }
+
+export function getBudgetOutput(args: GetBudgetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBudgetResult> {
+    return pulumi.output(args).apply(a => getBudget(a, opts))
+}
+
+export interface GetBudgetOutputArgs {
+    billingAccountId: pulumi.Input<string>;
+    budgetId: pulumi.Input<string>;
+}

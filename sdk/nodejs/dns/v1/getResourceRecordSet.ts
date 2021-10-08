@@ -55,3 +55,15 @@ export interface GetResourceRecordSetResult {
      */
     readonly type: string;
 }
+
+export function getResourceRecordSetOutput(args: GetResourceRecordSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceRecordSetResult> {
+    return pulumi.output(args).apply(a => getResourceRecordSet(a, opts))
+}
+
+export interface GetResourceRecordSetOutputArgs {
+    clientOperationId?: pulumi.Input<string>;
+    managedZone: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}

@@ -50,3 +50,15 @@ export interface GetEndpointResult {
      */
     readonly port: number;
 }
+
+export function getEndpointOutput(args: GetEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointResult> {
+    return pulumi.output(args).apply(a => getEndpoint(a, opts))
+}
+
+export interface GetEndpointOutputArgs {
+    endpointId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
+}

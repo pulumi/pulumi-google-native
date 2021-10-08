@@ -185,3 +185,14 @@ export interface GetVersionResult {
      */
     readonly vpcAccessConnector: outputs.appengine.v1beta.VpcAccessConnectorResponse;
 }
+
+export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {
+    return pulumi.output(args).apply(a => getVersion(a, opts))
+}
+
+export interface GetVersionOutputArgs {
+    appId: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
+    versionId: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}

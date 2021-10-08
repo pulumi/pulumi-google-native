@@ -61,3 +61,12 @@ export interface GetWorkerPoolResult {
      */
     readonly workerConfig: outputs.cloudbuild.v1alpha2.WorkerConfigResponse;
 }
+
+export function getWorkerPoolOutput(args: GetWorkerPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkerPoolResult> {
+    return pulumi.output(args).apply(a => getWorkerPool(a, opts))
+}
+
+export interface GetWorkerPoolOutputArgs {
+    project?: pulumi.Input<string>;
+    workerPoolId: pulumi.Input<string>;
+}

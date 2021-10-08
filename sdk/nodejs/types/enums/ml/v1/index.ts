@@ -111,6 +111,14 @@ export const GoogleCloudMlV1__AcceleratorConfigType = {
      * TPU v3.
      */
     TpuV3: "TPU_V3",
+    /**
+     * TPU v2 POD.
+     */
+    TpuV2Pod: "TPU_V2_POD",
+    /**
+     * TPU v3 POD.
+     */
+    TpuV3Pod: "TPU_V3_POD",
 } as const;
 
 /**

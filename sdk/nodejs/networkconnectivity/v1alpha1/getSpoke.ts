@@ -75,3 +75,13 @@ export interface GetSpokeResult {
      */
     readonly updateTime: string;
 }
+
+export function getSpokeOutput(args: GetSpokeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpokeResult> {
+    return pulumi.output(args).apply(a => getSpoke(a, opts))
+}
+
+export interface GetSpokeOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    spokeId: pulumi.Input<string>;
+}

@@ -69,3 +69,14 @@ export interface GetProviderResult {
      */
     readonly state: string;
 }
+
+export function getProviderOutput(args: GetProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProviderResult> {
+    return pulumi.output(args).apply(a => getProvider(a, opts))
+}
+
+export interface GetProviderOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    providerId: pulumi.Input<string>;
+    workloadIdentityPoolId: pulumi.Input<string>;
+}

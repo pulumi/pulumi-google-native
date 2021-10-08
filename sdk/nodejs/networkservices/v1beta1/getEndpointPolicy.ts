@@ -75,3 +75,13 @@ export interface GetEndpointPolicyResult {
      */
     readonly updateTime: string;
 }
+
+export function getEndpointPolicyOutput(args: GetEndpointPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointPolicyResult> {
+    return pulumi.output(args).apply(a => getEndpointPolicy(a, opts))
+}
+
+export interface GetEndpointPolicyOutputArgs {
+    endpointPolicyId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

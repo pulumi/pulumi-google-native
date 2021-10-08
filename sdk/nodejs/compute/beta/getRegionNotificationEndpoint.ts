@@ -59,3 +59,13 @@ export interface GetRegionNotificationEndpointResult {
      */
     readonly selfLink: string;
 }
+
+export function getRegionNotificationEndpointOutput(args: GetRegionNotificationEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionNotificationEndpointResult> {
+    return pulumi.output(args).apply(a => getRegionNotificationEndpoint(a, opts))
+}
+
+export interface GetRegionNotificationEndpointOutputArgs {
+    notificationEndpoint: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

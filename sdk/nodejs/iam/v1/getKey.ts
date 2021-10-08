@@ -32,6 +32,10 @@ export interface GetKeyArgs {
 
 export interface GetKeyResult {
     /**
+     * The key status.
+     */
+    readonly disabled: boolean;
+    /**
      * Specifies the algorithm (and possibly key size) for the key.
      */
     readonly keyAlgorithm: string;
@@ -67,4 +71,15 @@ export interface GetKeyResult {
      * The key can be used before this timestamp. For system-managed key pairs, this timestamp is the end time for the private key signing operation. The public key could still be used for verification for a few hours after this time.
      */
     readonly validBeforeTime: string;
+}
+
+export function getKeyOutput(args: GetKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyResult> {
+    return pulumi.output(args).apply(a => getKey(a, opts))
+}
+
+export interface GetKeyOutputArgs {
+    keyId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    publicKeyType?: pulumi.Input<string>;
+    serviceAccountId: pulumi.Input<string>;
 }

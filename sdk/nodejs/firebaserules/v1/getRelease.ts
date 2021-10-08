@@ -44,3 +44,12 @@ export interface GetReleaseResult {
      */
     readonly updateTime: string;
 }
+
+export function getReleaseOutput(args: GetReleaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseResult> {
+    return pulumi.output(args).apply(a => getRelease(a, opts))
+}
+
+export interface GetReleaseOutputArgs {
+    project?: pulumi.Input<string>;
+    releaseId: pulumi.Input<string>;
+}

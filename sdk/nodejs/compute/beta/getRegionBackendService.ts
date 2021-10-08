@@ -159,3 +159,13 @@ export interface GetRegionBackendServiceResult {
      */
     readonly timeoutSec: number;
 }
+
+export function getRegionBackendServiceOutput(args: GetRegionBackendServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionBackendServiceResult> {
+    return pulumi.output(args).apply(a => getRegionBackendService(a, opts))
+}
+
+export interface GetRegionBackendServiceOutputArgs {
+    backendService: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

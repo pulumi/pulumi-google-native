@@ -51,3 +51,13 @@ export interface GetStudyResult {
      */
     readonly studyConfig: outputs.ml.v1.GoogleCloudMlV1__StudyConfigResponse;
 }
+
+export function getStudyOutput(args: GetStudyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStudyResult> {
+    return pulumi.output(args).apply(a => getStudy(a, opts))
+}
+
+export interface GetStudyOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    studyId: pulumi.Input<string>;
+}

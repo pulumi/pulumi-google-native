@@ -69,3 +69,12 @@ export interface GetWorkerPoolResult {
      */
     readonly workerCount: string;
 }
+
+export function getWorkerPoolOutput(args: GetWorkerPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkerPoolResult> {
+    return pulumi.output(args).apply(a => getWorkerPool(a, opts))
+}
+
+export interface GetWorkerPoolOutputArgs {
+    project?: pulumi.Input<string>;
+    workerPoolId: pulumi.Input<string>;
+}

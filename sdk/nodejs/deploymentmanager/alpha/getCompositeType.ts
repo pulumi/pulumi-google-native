@@ -58,3 +58,12 @@ export interface GetCompositeTypeResult {
      */
     readonly templateContents: outputs.deploymentmanager.alpha.TemplateContentsResponse;
 }
+
+export function getCompositeTypeOutput(args: GetCompositeTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCompositeTypeResult> {
+    return pulumi.output(args).apply(a => getCompositeType(a, opts))
+}
+
+export interface GetCompositeTypeOutputArgs {
+    compositeType: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

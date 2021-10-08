@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Retrieve a GitHubEnterpriseConfig. This API is experimental.
+ * Retrieve a GitHubEnterpriseConfig.
  */
 export function getGithubEnterpriseConfig(args: GetGithubEnterpriseConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetGithubEnterpriseConfigResult> {
     if (!opts) {
@@ -70,4 +70,16 @@ export interface GetGithubEnterpriseConfigResult {
      * The key that should be attached to webhook calls to the ReceiveWebhook endpoint.
      */
     readonly webhookKey: string;
+}
+
+export function getGithubEnterpriseConfigOutput(args: GetGithubEnterpriseConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGithubEnterpriseConfigResult> {
+    return pulumi.output(args).apply(a => getGithubEnterpriseConfig(a, opts))
+}
+
+export interface GetGithubEnterpriseConfigOutputArgs {
+    configId?: pulumi.Input<string>;
+    githubEnterpriseConfigId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
 }

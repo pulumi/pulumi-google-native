@@ -50,3 +50,13 @@ export interface GetWorkloadIdentityPoolResult {
      */
     readonly state: string;
 }
+
+export function getWorkloadIdentityPoolOutput(args: GetWorkloadIdentityPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadIdentityPoolResult> {
+    return pulumi.output(args).apply(a => getWorkloadIdentityPool(a, opts))
+}
+
+export interface GetWorkloadIdentityPoolOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    workloadIdentityPoolId: pulumi.Input<string>;
+}

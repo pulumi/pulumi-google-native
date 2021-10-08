@@ -48,6 +48,10 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+     */
+    public readonly enableUlaInternalIpv6!: pulumi.Output<boolean>;
+    /**
      * URL of the firewall policy the network is associated with.
      */
     public /*out*/ readonly firewallPolicy!: pulumi.Output<string>;
@@ -56,17 +60,22 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly gatewayIPv4!: pulumi.Output<string>;
     /**
+     * When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+     */
+    public readonly internalIpv6Range!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#network for networks.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
-     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
      */
     public readonly mtu!: pulumi.Output<number>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly networkFirewallPolicyEnforcementOrder!: pulumi.Output<string>;
     /**
      * A list of network peerings for the resource.
      */
@@ -101,8 +110,11 @@ export class Network extends pulumi.CustomResource {
         if (!opts.id) {
             inputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["enableUlaInternalIpv6"] = args ? args.enableUlaInternalIpv6 : undefined;
+            inputs["internalIpv6Range"] = args ? args.internalIpv6Range : undefined;
             inputs["mtu"] = args ? args.mtu : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["networkFirewallPolicyEnforcementOrder"] = args ? args.networkFirewallPolicyEnforcementOrder : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["routingConfig"] = args ? args.routingConfig : undefined;
@@ -118,11 +130,14 @@ export class Network extends pulumi.CustomResource {
             inputs["autoCreateSubnetworks"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
+            inputs["enableUlaInternalIpv6"] = undefined /*out*/;
             inputs["firewallPolicy"] = undefined /*out*/;
             inputs["gatewayIPv4"] = undefined /*out*/;
+            inputs["internalIpv6Range"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["mtu"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["networkFirewallPolicyEnforcementOrder"] = undefined /*out*/;
             inputs["peerings"] = undefined /*out*/;
             inputs["routingConfig"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
@@ -149,13 +164,22 @@ export interface NetworkArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+     * Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+     */
+    enableUlaInternalIpv6?: pulumi.Input<boolean>;
+    /**
+     * When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+     */
+    internalIpv6Range?: pulumi.Input<string>;
+    /**
+     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
      */
     mtu?: pulumi.Input<number>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
      */
     name?: pulumi.Input<string>;
+    networkFirewallPolicyEnforcementOrder?: pulumi.Input<enums.compute.alpha.NetworkNetworkFirewallPolicyEnforcementOrder>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

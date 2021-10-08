@@ -67,3 +67,13 @@ export interface GetChannelResult {
      */
     readonly url: string;
 }
+
+export function getChannelOutput(args: GetChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChannelResult> {
+    return pulumi.output(args).apply(a => getChannel(a, opts))
+}
+
+export interface GetChannelOutputArgs {
+    channelId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    siteId: pulumi.Input<string>;
+}

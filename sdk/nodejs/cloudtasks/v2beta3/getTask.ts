@@ -83,3 +83,15 @@ export interface GetTaskResult {
      */
     readonly view: string;
 }
+
+export function getTaskOutput(args: GetTaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaskResult> {
+    return pulumi.output(args).apply(a => getTask(a, opts))
+}
+
+export interface GetTaskOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    queueId: pulumi.Input<string>;
+    responseView?: pulumi.Input<string>;
+    taskId: pulumi.Input<string>;
+}

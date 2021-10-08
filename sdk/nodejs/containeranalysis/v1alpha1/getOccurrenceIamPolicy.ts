@@ -41,3 +41,12 @@ export interface GetOccurrenceIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getOccurrenceIamPolicyOutput(args: GetOccurrenceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOccurrenceIamPolicyResult> {
+    return pulumi.output(args).apply(a => getOccurrenceIamPolicy(a, opts))
+}
+
+export interface GetOccurrenceIamPolicyOutputArgs {
+    occurrenceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

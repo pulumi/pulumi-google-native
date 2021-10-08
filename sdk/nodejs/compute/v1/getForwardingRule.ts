@@ -141,3 +141,13 @@ export interface GetForwardingRuleResult {
     readonly subnetwork: string;
     readonly target: string;
 }
+
+export function getForwardingRuleOutput(args: GetForwardingRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRuleResult> {
+    return pulumi.output(args).apply(a => getForwardingRule(a, opts))
+}
+
+export interface GetForwardingRuleOutputArgs {
+    forwardingRule: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

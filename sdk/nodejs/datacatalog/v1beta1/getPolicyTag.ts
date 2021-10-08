@@ -52,3 +52,14 @@ export interface GetPolicyTagResult {
      */
     readonly parentPolicyTag: string;
 }
+
+export function getPolicyTagOutput(args: GetPolicyTagOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyTagResult> {
+    return pulumi.output(args).apply(a => getPolicyTag(a, opts))
+}
+
+export interface GetPolicyTagOutputArgs {
+    location: pulumi.Input<string>;
+    policyTagId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    taxonomyId: pulumi.Input<string>;
+}

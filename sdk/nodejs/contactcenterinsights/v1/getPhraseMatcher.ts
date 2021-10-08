@@ -67,7 +67,21 @@ export interface GetPhraseMatcherResult {
      */
     readonly type: string;
     /**
+     * The most recent time at which the phrase matcher was updated.
+     */
+    readonly updateTime: string;
+    /**
      * The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
      */
     readonly versionTag: string;
+}
+
+export function getPhraseMatcherOutput(args: GetPhraseMatcherOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhraseMatcherResult> {
+    return pulumi.output(args).apply(a => getPhraseMatcher(a, opts))
+}
+
+export interface GetPhraseMatcherOutputArgs {
+    location: pulumi.Input<string>;
+    phraseMatcherId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

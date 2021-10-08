@@ -149,6 +149,7 @@ export class BackendService extends pulumi.CustomResource {
      * Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
+    public readonly subsetting!: pulumi.Output<outputs.compute.v1.SubsettingResponse>;
     /**
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
      */
@@ -191,6 +192,7 @@ export class BackendService extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["securitySettings"] = args ? args.securitySettings : undefined;
             inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
+            inputs["subsetting"] = args ? args.subsetting : undefined;
             inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
@@ -229,6 +231,7 @@ export class BackendService extends pulumi.CustomResource {
             inputs["securitySettings"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["sessionAffinity"] = undefined /*out*/;
+            inputs["subsetting"] = undefined /*out*/;
             inputs["timeoutSec"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -334,6 +337,7 @@ export interface BackendServiceArgs {
      * Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     sessionAffinity?: pulumi.Input<enums.compute.v1.BackendServiceSessionAffinity>;
+    subsetting?: pulumi.Input<inputs.compute.v1.SubsettingArgs>;
     /**
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
      */

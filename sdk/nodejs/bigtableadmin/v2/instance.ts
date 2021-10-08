@@ -36,6 +36,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * A server-assigned timestamp representing when this Instance was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -93,8 +97,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["createTime"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;

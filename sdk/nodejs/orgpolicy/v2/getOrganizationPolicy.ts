@@ -37,3 +37,12 @@ export interface GetOrganizationPolicyResult {
      */
     readonly spec: outputs.orgpolicy.v2.GoogleCloudOrgpolicyV2PolicySpecResponse;
 }
+
+export function getOrganizationPolicyOutput(args: GetOrganizationPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationPolicyResult> {
+    return pulumi.output(args).apply(a => getOrganizationPolicy(a, opts))
+}
+
+export interface GetOrganizationPolicyOutputArgs {
+    organizationId: pulumi.Input<string>;
+    policyId: pulumi.Input<string>;
+}

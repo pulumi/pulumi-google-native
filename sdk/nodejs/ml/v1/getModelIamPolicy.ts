@@ -47,3 +47,13 @@ export interface GetModelIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getModelIamPolicyOutput(args: GetModelIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModelIamPolicyResult> {
+    return pulumi.output(args).apply(a => getModelIamPolicy(a, opts))
+}
+
+export interface GetModelIamPolicyOutputArgs {
+    modelId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

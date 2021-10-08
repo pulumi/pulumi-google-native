@@ -56,6 +56,10 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Maven repository config contains repository level configuration for the repositories of maven type.
+     */
+    public readonly mavenConfig!: pulumi.Output<outputs.artifactregistry.v1beta2.MavenRepositoryConfigResponse>;
+    /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
      */
     public readonly name!: pulumi.Output<string>;
@@ -81,6 +85,7 @@ export class Repository extends pulumi.CustomResource {
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
+            inputs["mavenConfig"] = args ? args.mavenConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["repositoryId"] = args ? args.repositoryId : undefined;
@@ -91,6 +96,7 @@ export class Repository extends pulumi.CustomResource {
             inputs["format"] = undefined /*out*/;
             inputs["kmsKeyName"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
+            inputs["mavenConfig"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
@@ -126,6 +132,10 @@ export interface RepositoryArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Maven repository config contains repository level configuration for the repositories of maven type.
+     */
+    mavenConfig?: pulumi.Input<inputs.artifactregistry.v1beta2.MavenRepositoryConfigArgs>;
     /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
      */

@@ -32,3 +32,12 @@ export interface GetTopicResult {
      */
     readonly name: string;
 }
+
+export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
+    return pulumi.output(args).apply(a => getTopic(a, opts))
+}
+
+export interface GetTopicOutputArgs {
+    project?: pulumi.Input<string>;
+    topicId: pulumi.Input<string>;
+}

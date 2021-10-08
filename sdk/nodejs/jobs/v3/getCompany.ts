@@ -81,3 +81,12 @@ export interface GetCompanyResult {
      */
     readonly websiteUri: string;
 }
+
+export function getCompanyOutput(args: GetCompanyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCompanyResult> {
+    return pulumi.output(args).apply(a => getCompany(a, opts))
+}
+
+export interface GetCompanyOutputArgs {
+    companyId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

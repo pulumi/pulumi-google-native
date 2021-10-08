@@ -44,11 +44,22 @@ export interface GetPolicyTagResult {
      */
     readonly displayName: string;
     /**
-     * Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs. 
+     * Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.
      */
     readonly name: string;
     /**
      * Resource name of this policy tag's parent policy tag. If empty, this is a top level tag. If not set, defaults to an empty string. For example, for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag, and, for "Geolocation", this field is empty.
      */
     readonly parentPolicyTag: string;
+}
+
+export function getPolicyTagOutput(args: GetPolicyTagOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyTagResult> {
+    return pulumi.output(args).apply(a => getPolicyTag(a, opts))
+}
+
+export interface GetPolicyTagOutputArgs {
+    location: pulumi.Input<string>;
+    policyTagId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    taxonomyId: pulumi.Input<string>;
 }

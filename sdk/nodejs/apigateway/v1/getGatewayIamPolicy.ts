@@ -49,3 +49,14 @@ export interface GetGatewayIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getGatewayIamPolicyOutput(args: GetGatewayIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayIamPolicyResult> {
+    return pulumi.output(args).apply(a => getGatewayIamPolicy(a, opts))
+}
+
+export interface GetGatewayIamPolicyOutputArgs {
+    gatewayId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -73,3 +73,14 @@ export interface GetImportJobResult {
      */
     readonly state: string;
 }
+
+export function getImportJobOutput(args: GetImportJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImportJobResult> {
+    return pulumi.output(args).apply(a => getImportJob(a, opts))
+}
+
+export interface GetImportJobOutputArgs {
+    importJobId: pulumi.Input<string>;
+    keyRingId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

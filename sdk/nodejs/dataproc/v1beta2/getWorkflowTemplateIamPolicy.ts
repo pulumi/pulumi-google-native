@@ -45,3 +45,14 @@ export interface GetWorkflowTemplateIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getWorkflowTemplateIamPolicyOutput(args: GetWorkflowTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowTemplateIamPolicyResult> {
+    return pulumi.output(args).apply(a => getWorkflowTemplateIamPolicy(a, opts))
+}
+
+export interface GetWorkflowTemplateIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    workflowTemplateId: pulumi.Input<string>;
+}

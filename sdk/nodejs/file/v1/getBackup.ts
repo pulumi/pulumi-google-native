@@ -78,3 +78,13 @@ export interface GetBackupResult {
      */
     readonly storageBytes: string;
 }
+
+export function getBackupOutput(args: GetBackupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupResult> {
+    return pulumi.output(args).apply(a => getBackup(a, opts))
+}
+
+export interface GetBackupOutputArgs {
+    backupId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

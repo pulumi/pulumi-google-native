@@ -74,3 +74,13 @@ export interface GetTargetPoolResult {
      */
     readonly sessionAffinity: string;
 }
+
+export function getTargetPoolOutput(args: GetTargetPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetPoolResult> {
+    return pulumi.output(args).apply(a => getTargetPool(a, opts))
+}
+
+export interface GetTargetPoolOutputArgs {
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    targetPool: pulumi.Input<string>;
+}

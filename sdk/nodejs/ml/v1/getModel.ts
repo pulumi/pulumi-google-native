@@ -61,3 +61,12 @@ export interface GetModelResult {
      */
     readonly regions: string[];
 }
+
+export function getModelOutput(args: GetModelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModelResult> {
+    return pulumi.output(args).apply(a => getModel(a, opts))
+}
+
+export interface GetModelOutputArgs {
+    modelId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

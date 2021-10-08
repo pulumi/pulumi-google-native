@@ -87,3 +87,13 @@ export interface GetRegionSslCertificateResult {
      */
     readonly type: string;
 }
+
+export function getRegionSslCertificateOutput(args: GetRegionSslCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionSslCertificateResult> {
+    return pulumi.output(args).apply(a => getRegionSslCertificate(a, opts))
+}
+
+export interface GetRegionSslCertificateOutputArgs {
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    sslCertificate: pulumi.Input<string>;
+}

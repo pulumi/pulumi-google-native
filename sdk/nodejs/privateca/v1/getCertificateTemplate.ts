@@ -63,3 +63,13 @@ export interface GetCertificateTemplateResult {
      */
     readonly updateTime: string;
 }
+
+export function getCertificateTemplateOutput(args: GetCertificateTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateTemplateResult> {
+    return pulumi.output(args).apply(a => getCertificateTemplate(a, opts))
+}
+
+export interface GetCertificateTemplateOutputArgs {
+    certificateTemplateId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

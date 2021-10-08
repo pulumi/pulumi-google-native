@@ -73,3 +73,12 @@ export interface GetPublicAdvertisedPrefixResult {
      */
     readonly status: string;
 }
+
+export function getPublicAdvertisedPrefixOutput(args: GetPublicAdvertisedPrefixOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicAdvertisedPrefixResult> {
+    return pulumi.output(args).apply(a => getPublicAdvertisedPrefix(a, opts))
+}
+
+export interface GetPublicAdvertisedPrefixOutputArgs {
+    project?: pulumi.Input<string>;
+    publicAdvertisedPrefix: pulumi.Input<string>;
+}

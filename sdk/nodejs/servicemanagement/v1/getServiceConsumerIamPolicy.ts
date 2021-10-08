@@ -45,3 +45,12 @@ export interface GetServiceConsumerIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getServiceConsumerIamPolicyOutput(args: GetServiceConsumerIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceConsumerIamPolicyResult> {
+    return pulumi.output(args).apply(a => getServiceConsumerIamPolicy(a, opts))
+}
+
+export interface GetServiceConsumerIamPolicyOutputArgs {
+    consumerId: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
+}

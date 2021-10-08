@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new Scheduled Notebook in a given project and location.
+ * Creates a new Execution in a given project and location.
  * Auto-naming is currently not supported for this resource.
  */
 export class Execution extends pulumi.CustomResource {
@@ -57,7 +57,7 @@ export class Execution extends pulumi.CustomResource {
      */
     public /*out*/ readonly jobUri!: pulumi.Output<string>;
     /**
-     * The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+     * The resource name of the execute. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**

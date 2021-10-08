@@ -48,6 +48,8 @@ export * from "./getInstanceGroupManager";
 export * from "./getInstanceIamPolicy";
 export * from "./getInstanceTemplate";
 export * from "./getInstanceTemplateIamPolicy";
+export * from "./getInstantSnapshot";
+export * from "./getInstantSnapshotIamPolicy";
 export * from "./getInterconnect";
 export * from "./getInterconnectAttachment";
 export * from "./getInterconnectAttachmentIamPolicy";
@@ -78,8 +80,6 @@ export * from "./getRegionDisk";
 export * from "./getRegionDiskIamPolicy";
 export * from "./getRegionHealthCheck";
 export * from "./getRegionHealthCheckService";
-export * from "./getRegionInPlaceSnapshot";
-export * from "./getRegionInPlaceSnapshotIamPolicy";
 export * from "./getRegionInstanceGroupManager";
 export * from "./getRegionInstantSnapshot";
 export * from "./getRegionInstantSnapshotIamPolicy";
@@ -118,10 +118,6 @@ export * from "./getTargetVpnGateway";
 export * from "./getUrlMap";
 export * from "./getVpnGateway";
 export * from "./getVpnTunnel";
-export * from "./getZoneInPlaceSnapshot";
-export * from "./getZoneInPlaceSnapshotIamPolicy";
-export * from "./getZoneInstantSnapshot";
-export * from "./getZoneInstantSnapshotIamPolicy";
 export * from "./globalAddress";
 export * from "./globalForwardingRule";
 export * from "./globalNetworkEndpointGroup";
@@ -137,6 +133,8 @@ export * from "./instanceGroupManager";
 export * from "./instanceIamPolicy";
 export * from "./instanceTemplate";
 export * from "./instanceTemplateIamPolicy";
+export * from "./instantSnapshot";
+export * from "./instantSnapshotIamPolicy";
 export * from "./interconnect";
 export * from "./interconnectAttachment";
 export * from "./interconnectAttachmentIamPolicy";
@@ -167,8 +165,6 @@ export * from "./regionDisk";
 export * from "./regionDiskIamPolicy";
 export * from "./regionHealthCheck";
 export * from "./regionHealthCheckService";
-export * from "./regionInPlaceSnapshot";
-export * from "./regionInPlaceSnapshotIamPolicy";
 export * from "./regionInstanceGroupManager";
 export * from "./regionInstantSnapshot";
 export * from "./regionInstantSnapshotIamPolicy";
@@ -207,10 +203,6 @@ export * from "./targetVpnGateway";
 export * from "./urlMap";
 export * from "./vpnGateway";
 export * from "./vpnTunnel";
-export * from "./zoneInPlaceSnapshot";
-export * from "./zoneInPlaceSnapshotIamPolicy";
-export * from "./zoneInstantSnapshot";
-export * from "./zoneInstantSnapshotIamPolicy";
 
 // Export enums:
 export * from "../../types/enums/compute/alpha";
@@ -245,6 +237,8 @@ import { InstanceGroupManager } from "./instanceGroupManager";
 import { InstanceIamPolicy } from "./instanceIamPolicy";
 import { InstanceTemplate } from "./instanceTemplate";
 import { InstanceTemplateIamPolicy } from "./instanceTemplateIamPolicy";
+import { InstantSnapshot } from "./instantSnapshot";
+import { InstantSnapshotIamPolicy } from "./instantSnapshotIamPolicy";
 import { Interconnect } from "./interconnect";
 import { InterconnectAttachment } from "./interconnectAttachment";
 import { InterconnectAttachmentIamPolicy } from "./interconnectAttachmentIamPolicy";
@@ -275,8 +269,6 @@ import { RegionDisk } from "./regionDisk";
 import { RegionDiskIamPolicy } from "./regionDiskIamPolicy";
 import { RegionHealthCheck } from "./regionHealthCheck";
 import { RegionHealthCheckService } from "./regionHealthCheckService";
-import { RegionInPlaceSnapshot } from "./regionInPlaceSnapshot";
-import { RegionInPlaceSnapshotIamPolicy } from "./regionInPlaceSnapshotIamPolicy";
 import { RegionInstanceGroupManager } from "./regionInstanceGroupManager";
 import { RegionInstantSnapshot } from "./regionInstantSnapshot";
 import { RegionInstantSnapshotIamPolicy } from "./regionInstantSnapshotIamPolicy";
@@ -315,10 +307,6 @@ import { TargetVpnGateway } from "./targetVpnGateway";
 import { UrlMap } from "./urlMap";
 import { VpnGateway } from "./vpnGateway";
 import { VpnTunnel } from "./vpnTunnel";
-import { ZoneInPlaceSnapshot } from "./zoneInPlaceSnapshot";
-import { ZoneInPlaceSnapshotIamPolicy } from "./zoneInPlaceSnapshotIamPolicy";
-import { ZoneInstantSnapshot } from "./zoneInstantSnapshot";
-import { ZoneInstantSnapshotIamPolicy } from "./zoneInstantSnapshotIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -382,6 +370,10 @@ const _module = {
                 return new InstanceTemplate(name, <any>undefined, { urn })
             case "google-native:compute/alpha:InstanceTemplateIamPolicy":
                 return new InstanceTemplateIamPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:InstantSnapshot":
+                return new InstantSnapshot(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:InstantSnapshotIamPolicy":
+                return new InstantSnapshotIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:Interconnect":
                 return new Interconnect(name, <any>undefined, { urn })
             case "google-native:compute/alpha:InterconnectAttachment":
@@ -442,10 +434,6 @@ const _module = {
                 return new RegionHealthCheck(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionHealthCheckService":
                 return new RegionHealthCheckService(name, <any>undefined, { urn })
-            case "google-native:compute/alpha:RegionInPlaceSnapshot":
-                return new RegionInPlaceSnapshot(name, <any>undefined, { urn })
-            case "google-native:compute/alpha:RegionInPlaceSnapshotIamPolicy":
-                return new RegionInPlaceSnapshotIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionInstanceGroupManager":
                 return new RegionInstanceGroupManager(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionInstantSnapshot":
@@ -522,14 +510,6 @@ const _module = {
                 return new VpnGateway(name, <any>undefined, { urn })
             case "google-native:compute/alpha:VpnTunnel":
                 return new VpnTunnel(name, <any>undefined, { urn })
-            case "google-native:compute/alpha:ZoneInPlaceSnapshot":
-                return new ZoneInPlaceSnapshot(name, <any>undefined, { urn })
-            case "google-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy":
-                return new ZoneInPlaceSnapshotIamPolicy(name, <any>undefined, { urn })
-            case "google-native:compute/alpha:ZoneInstantSnapshot":
-                return new ZoneInstantSnapshot(name, <any>undefined, { urn })
-            case "google-native:compute/alpha:ZoneInstantSnapshotIamPolicy":
-                return new ZoneInstantSnapshotIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

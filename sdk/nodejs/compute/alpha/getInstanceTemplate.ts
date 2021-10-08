@@ -65,3 +65,12 @@ export interface GetInstanceTemplateResult {
      */
     readonly sourceInstanceParams: outputs.compute.alpha.SourceInstanceParamsResponse;
 }
+
+export function getInstanceTemplateOutput(args: GetInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTemplateResult> {
+    return pulumi.output(args).apply(a => getInstanceTemplate(a, opts))
+}
+
+export interface GetInstanceTemplateOutputArgs {
+    instanceTemplate: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

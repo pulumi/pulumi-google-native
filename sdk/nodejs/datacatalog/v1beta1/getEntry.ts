@@ -89,3 +89,14 @@ export interface GetEntryResult {
      */
     readonly userSpecifiedType: string;
 }
+
+export function getEntryOutput(args: GetEntryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntryResult> {
+    return pulumi.output(args).apply(a => getEntry(a, opts))
+}
+
+export interface GetEntryOutputArgs {
+    entryGroupId: pulumi.Input<string>;
+    entryId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

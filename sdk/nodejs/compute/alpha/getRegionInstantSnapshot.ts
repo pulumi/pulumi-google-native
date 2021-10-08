@@ -94,3 +94,13 @@ export interface GetRegionInstantSnapshotResult {
      */
     readonly zone: string;
 }
+
+export function getRegionInstantSnapshotOutput(args: GetRegionInstantSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstantSnapshotResult> {
+    return pulumi.output(args).apply(a => getRegionInstantSnapshot(a, opts))
+}
+
+export interface GetRegionInstantSnapshotOutputArgs {
+    instantSnapshot: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

@@ -84,3 +84,14 @@ export interface GetBucketAccessControlResult {
      */
     readonly selfLink: string;
 }
+
+export function getBucketAccessControlOutput(args: GetBucketAccessControlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketAccessControlResult> {
+    return pulumi.output(args).apply(a => getBucketAccessControl(a, opts))
+}
+
+export interface GetBucketAccessControlOutputArgs {
+    bucket: pulumi.Input<string>;
+    entity: pulumi.Input<string>;
+    provisionalUserProject?: pulumi.Input<string>;
+    userProject?: pulumi.Input<string>;
+}

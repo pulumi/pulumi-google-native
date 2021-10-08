@@ -44,3 +44,12 @@ export interface GetHistoryResult {
      */
     readonly testPlatform: string;
 }
+
+export function getHistoryOutput(args: GetHistoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHistoryResult> {
+    return pulumi.output(args).apply(a => getHistory(a, opts))
+}
+
+export interface GetHistoryOutputArgs {
+    historyId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

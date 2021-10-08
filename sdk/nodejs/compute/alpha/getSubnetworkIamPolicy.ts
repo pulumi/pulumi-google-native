@@ -57,3 +57,14 @@ export interface GetSubnetworkIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getSubnetworkIamPolicyOutput(args: GetSubnetworkIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkIamPolicyResult> {
+    return pulumi.output(args).apply(a => getSubnetworkIamPolicy(a, opts))
+}
+
+export interface GetSubnetworkIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

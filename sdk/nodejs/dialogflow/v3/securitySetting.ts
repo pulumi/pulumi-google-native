@@ -52,7 +52,7 @@ export class SecuritySetting extends pulumi.CustomResource {
      */
     public readonly inspectTemplate!: pulumi.Output<string>;
     /**
-     * Resource name of the settings. Format: `projects//locations//securitySettings/`.
+     * Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -137,7 +137,7 @@ export interface SecuritySettingArgs {
     inspectTemplate?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
-     * Resource name of the settings. Format: `projects//locations//securitySettings/`.
+     * Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

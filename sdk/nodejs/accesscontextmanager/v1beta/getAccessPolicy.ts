@@ -38,3 +38,11 @@ export interface GetAccessPolicyResult {
      */
     readonly title: string;
 }
+
+export function getAccessPolicyOutput(args: GetAccessPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPolicyResult> {
+    return pulumi.output(args).apply(a => getAccessPolicy(a, opts))
+}
+
+export interface GetAccessPolicyOutputArgs {
+    accessPolicyId: pulumi.Input<string>;
+}

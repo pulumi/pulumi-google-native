@@ -48,3 +48,16 @@ export interface GetContextResult {
      */
     readonly parameters: {[key: string]: string};
 }
+
+export function getContextOutput(args: GetContextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContextResult> {
+    return pulumi.output(args).apply(a => getContext(a, opts))
+}
+
+export interface GetContextOutputArgs {
+    contextId: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    sessionId: pulumi.Input<string>;
+    userId: pulumi.Input<string>;
+}

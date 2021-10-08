@@ -31,6 +31,10 @@ export interface GetRegionInstanceGroupManagerArgs {
 
 export interface GetRegionInstanceGroupManagerResult {
     /**
+     * Specifies the instances configs overrides that should be applied for all instances in the MIG.
+     */
+    readonly allInstancesConfig: outputs.compute.alpha.InstanceGroupManagerAllInstancesConfigResponse;
+    /**
      * The autohealing policy for this managed instance group. You can specify only one value.
      */
     readonly autoHealingPolicies: outputs.compute.alpha.InstanceGroupManagerAutoHealingPolicyResponse[];
@@ -103,7 +107,7 @@ export interface GetRegionInstanceGroupManagerResult {
      */
     readonly serviceAccount: string;
     /**
-     * Stanby policy for stopped and suspended instances.
+     * Standby policy for stopped and suspended instances.
      */
     readonly standbyPolicy: outputs.compute.alpha.InstanceGroupManagerStandbyPolicyResponse;
     /**
@@ -142,4 +146,14 @@ export interface GetRegionInstanceGroupManagerResult {
      * The URL of a zone where the managed instance group is located (for zonal resources).
      */
     readonly zone: string;
+}
+
+export function getRegionInstanceGroupManagerOutput(args: GetRegionInstanceGroupManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceGroupManagerResult> {
+    return pulumi.output(args).apply(a => getRegionInstanceGroupManager(a, opts))
+}
+
+export interface GetRegionInstanceGroupManagerOutputArgs {
+    instanceGroupManager: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
 }

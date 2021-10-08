@@ -41,7 +41,7 @@ export class IngressRule extends pulumi.CustomResource {
      */
     public readonly action!: pulumi.Output<string>;
     /**
-     * An optional string description of this rule. This field has a maximum length of 100 characters.
+     * An optional string description of this rule. This field has a maximum length of 400 characters.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -95,7 +95,7 @@ export interface IngressRuleArgs {
     action?: pulumi.Input<enums.appengine.v1beta.IngressRuleAction>;
     appId: pulumi.Input<string>;
     /**
-     * An optional string description of this rule. This field has a maximum length of 100 characters.
+     * An optional string description of this rule. This field has a maximum length of 400 characters.
      */
     description?: pulumi.Input<string>;
     /**

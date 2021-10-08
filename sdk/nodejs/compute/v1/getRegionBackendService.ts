@@ -144,8 +144,19 @@ export interface GetRegionBackendServiceResult {
      * Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     readonly sessionAffinity: string;
+    readonly subsetting: outputs.compute.v1.SubsettingResponse;
     /**
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
      */
     readonly timeoutSec: number;
+}
+
+export function getRegionBackendServiceOutput(args: GetRegionBackendServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionBackendServiceResult> {
+    return pulumi.output(args).apply(a => getRegionBackendService(a, opts))
+}
+
+export interface GetRegionBackendServiceOutputArgs {
+    backendService: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
 }

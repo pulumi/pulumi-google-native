@@ -40,3 +40,12 @@ export interface GetGcpUserAccessBindingResult {
      */
     readonly name: string;
 }
+
+export function getGcpUserAccessBindingOutput(args: GetGcpUserAccessBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpUserAccessBindingResult> {
+    return pulumi.output(args).apply(a => getGcpUserAccessBinding(a, opts))
+}
+
+export interface GetGcpUserAccessBindingOutputArgs {
+    gcpUserAccessBindingId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

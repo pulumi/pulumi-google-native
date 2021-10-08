@@ -77,3 +77,16 @@ export interface GetMessageResult {
      */
     readonly sendTime: string;
 }
+
+export function getMessageOutput(args: GetMessageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMessageResult> {
+    return pulumi.output(args).apply(a => getMessage(a, opts))
+}
+
+export interface GetMessageOutputArgs {
+    datasetId: pulumi.Input<string>;
+    hl7V2StoreId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    messageId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}

@@ -62,3 +62,12 @@ export interface GetLicenseResult {
      */
     readonly transferable: boolean;
 }
+
+export function getLicenseOutput(args: GetLicenseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLicenseResult> {
+    return pulumi.output(args).apply(a => getLicense(a, opts))
+}
+
+export interface GetLicenseOutputArgs {
+    license: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

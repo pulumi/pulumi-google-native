@@ -57,3 +57,12 @@ export interface GetDashboardResult {
      */
     readonly rowLayout: outputs.monitoring.v1.RowLayoutResponse;
 }
+
+export function getDashboardOutput(args: GetDashboardOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDashboardResult> {
+    return pulumi.output(args).apply(a => getDashboard(a, opts))
+}
+
+export interface GetDashboardOutputArgs {
+    dashboardId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

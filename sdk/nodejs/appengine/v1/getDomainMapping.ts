@@ -41,3 +41,12 @@ export interface GetDomainMappingResult {
      */
     readonly sslSettings: outputs.appengine.v1.SslSettingsResponse;
 }
+
+export function getDomainMappingOutput(args: GetDomainMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainMappingResult> {
+    return pulumi.output(args).apply(a => getDomainMapping(a, opts))
+}
+
+export interface GetDomainMappingOutputArgs {
+    appId: pulumi.Input<string>;
+    domainMappingId: pulumi.Input<string>;
+}

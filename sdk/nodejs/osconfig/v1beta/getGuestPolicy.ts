@@ -65,3 +65,12 @@ export interface GetGuestPolicyResult {
      */
     readonly updateTime: string;
 }
+
+export function getGuestPolicyOutput(args: GetGuestPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGuestPolicyResult> {
+    return pulumi.output(args).apply(a => getGuestPolicy(a, opts))
+}
+
+export interface GetGuestPolicyOutputArgs {
+    guestPolicyId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

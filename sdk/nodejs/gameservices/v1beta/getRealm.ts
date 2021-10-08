@@ -58,3 +58,13 @@ export interface GetRealmResult {
      */
     readonly updateTime: string;
 }
+
+export function getRealmOutput(args: GetRealmOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRealmResult> {
+    return pulumi.output(args).apply(a => getRealm(a, opts))
+}
+
+export interface GetRealmOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    realmId: pulumi.Input<string>;
+}

@@ -63,3 +63,13 @@ export interface GetAuthorizedCertificateResult {
      */
     readonly visibleDomainMappings: string[];
 }
+
+export function getAuthorizedCertificateOutput(args: GetAuthorizedCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorizedCertificateResult> {
+    return pulumi.output(args).apply(a => getAuthorizedCertificate(a, opts))
+}
+
+export interface GetAuthorizedCertificateOutputArgs {
+    appId: pulumi.Input<string>;
+    authorizedCertificateId: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}

@@ -41,3 +41,12 @@ export interface GetTraceSinkResult {
      */
     readonly writerIdentity: string;
 }
+
+export function getTraceSinkOutput(args: GetTraceSinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTraceSinkResult> {
+    return pulumi.output(args).apply(a => getTraceSink(a, opts))
+}
+
+export interface GetTraceSinkOutputArgs {
+    project?: pulumi.Input<string>;
+    traceSinkId: pulumi.Input<string>;
+}

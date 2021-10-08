@@ -58,3 +58,15 @@ export interface GetDebugSessionResult {
      */
     readonly validity: number;
 }
+
+export function getDebugSessionOutput(args: GetDebugSessionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDebugSessionResult> {
+    return pulumi.output(args).apply(a => getDebugSession(a, opts))
+}
+
+export interface GetDebugSessionOutputArgs {
+    apiId: pulumi.Input<string>;
+    debugsessionId: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    revisionId: pulumi.Input<string>;
+}

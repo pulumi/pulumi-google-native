@@ -47,3 +47,13 @@ export interface GetProductSetResult {
      */
     readonly name: string;
 }
+
+export function getProductSetOutput(args: GetProductSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductSetResult> {
+    return pulumi.output(args).apply(a => getProductSet(a, opts))
+}
+
+export interface GetProductSetOutputArgs {
+    location: pulumi.Input<string>;
+    productSetId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

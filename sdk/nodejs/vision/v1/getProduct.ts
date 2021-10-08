@@ -51,3 +51,13 @@ export interface GetProductResult {
      */
     readonly productLabels: outputs.vision.v1.KeyValueResponse[];
 }
+
+export function getProductOutput(args: GetProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductResult> {
+    return pulumi.output(args).apply(a => getProduct(a, opts))
+}
+
+export interface GetProductOutputArgs {
+    location: pulumi.Input<string>;
+    productId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

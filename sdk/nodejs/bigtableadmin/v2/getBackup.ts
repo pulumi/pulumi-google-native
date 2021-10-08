@@ -65,3 +65,14 @@ export interface GetBackupResult {
      */
     readonly state: string;
 }
+
+export function getBackupOutput(args: GetBackupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupResult> {
+    return pulumi.output(args).apply(a => getBackup(a, opts))
+}
+
+export interface GetBackupOutputArgs {
+    backupId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

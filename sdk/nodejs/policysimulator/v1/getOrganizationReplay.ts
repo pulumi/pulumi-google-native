@@ -47,3 +47,13 @@ export interface GetOrganizationReplayResult {
      */
     readonly state: string;
 }
+
+export function getOrganizationReplayOutput(args: GetOrganizationReplayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationReplayResult> {
+    return pulumi.output(args).apply(a => getOrganizationReplay(a, opts))
+}
+
+export interface GetOrganizationReplayOutputArgs {
+    location: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    replayId: pulumi.Input<string>;
+}

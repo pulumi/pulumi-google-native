@@ -49,3 +49,14 @@ export interface GetSpokeIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getSpokeIamPolicyOutput(args: GetSpokeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpokeIamPolicyResult> {
+    return pulumi.output(args).apply(a => getSpokeIamPolicy(a, opts))
+}
+
+export interface GetSpokeIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    spokeId: pulumi.Input<string>;
+}

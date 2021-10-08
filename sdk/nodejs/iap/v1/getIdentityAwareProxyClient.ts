@@ -42,3 +42,13 @@ export interface GetIdentityAwareProxyClientResult {
      */
     readonly secret: string;
 }
+
+export function getIdentityAwareProxyClientOutput(args: GetIdentityAwareProxyClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityAwareProxyClientResult> {
+    return pulumi.output(args).apply(a => getIdentityAwareProxyClient(a, opts))
+}
+
+export interface GetIdentityAwareProxyClientOutputArgs {
+    brandId: pulumi.Input<string>;
+    identityAwareProxyClientId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

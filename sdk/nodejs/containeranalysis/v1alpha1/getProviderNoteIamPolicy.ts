@@ -41,3 +41,12 @@ export interface GetProviderNoteIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getProviderNoteIamPolicyOutput(args: GetProviderNoteIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProviderNoteIamPolicyResult> {
+    return pulumi.output(args).apply(a => getProviderNoteIamPolicy(a, opts))
+}
+
+export interface GetProviderNoteIamPolicyOutputArgs {
+    noteId: pulumi.Input<string>;
+    providerId: pulumi.Input<string>;
+}

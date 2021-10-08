@@ -77,3 +77,14 @@ export interface GetFhirStoreResult {
      */
     readonly version: string;
 }
+
+export function getFhirStoreOutput(args: GetFhirStoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFhirStoreResult> {
+    return pulumi.output(args).apply(a => getFhirStore(a, opts))
+}
+
+export interface GetFhirStoreOutputArgs {
+    datasetId: pulumi.Input<string>;
+    fhirStoreId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

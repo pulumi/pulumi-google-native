@@ -76,6 +76,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
+     * Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
+     */
+    public /*out*/ readonly runtimeVersion!: pulumi.Output<string>;
+    /**
      * State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -105,6 +109,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["host"] = undefined /*out*/;
             inputs["lastModifiedAt"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
+            inputs["runtimeVersion"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         } else {
             inputs["createdAt"] = undefined /*out*/;
@@ -117,6 +122,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["peeringCidrRange"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
+            inputs["runtimeVersion"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {

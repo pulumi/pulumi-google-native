@@ -71,3 +71,13 @@ export interface GetVpnGatewayResult {
      */
     readonly vpnInterfaces: outputs.compute.v1.VpnGatewayVpnGatewayInterfaceResponse[];
 }
+
+export function getVpnGatewayOutput(args: GetVpnGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpnGatewayResult> {
+    return pulumi.output(args).apply(a => getVpnGateway(a, opts))
+}
+
+export interface GetVpnGatewayOutputArgs {
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    vpnGateway: pulumi.Input<string>;
+}

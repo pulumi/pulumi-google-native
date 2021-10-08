@@ -49,3 +49,14 @@ export interface GetKeyRingIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getKeyRingIamPolicyOutput(args: GetKeyRingIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyRingIamPolicyResult> {
+    return pulumi.output(args).apply(a => getKeyRingIamPolicy(a, opts))
+}
+
+export interface GetKeyRingIamPolicyOutputArgs {
+    keyRingId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

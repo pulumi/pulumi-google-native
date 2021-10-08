@@ -30,3 +30,11 @@ export interface GetTopicResult {
      */
     readonly name: string;
 }
+
+export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
+    return pulumi.output(args).apply(a => getTopic(a, opts))
+}
+
+export interface GetTopicOutputArgs {
+    topicId: pulumi.Input<string>;
+}

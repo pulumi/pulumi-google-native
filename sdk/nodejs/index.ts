@@ -38,6 +38,7 @@ import * as cloudtrace from "./cloudtrace";
 import * as composer from "./composer";
 import * as compute from "./compute";
 import * as config from "./config";
+import * as connectors from "./connectors";
 import * as contactcenterinsights from "./contactcenterinsights";
 import * as container from "./container";
 import * as containeranalysis from "./containeranalysis";
@@ -52,6 +53,7 @@ import * as deploymentmanager from "./deploymentmanager";
 import * as dialogflow from "./dialogflow";
 import * as dlp from "./dlp";
 import * as dns from "./dns";
+import * as documentai from "./documentai";
 import * as domains from "./domains";
 import * as essentialcontacts from "./essentialcontacts";
 import * as eventarc from "./eventarc";
@@ -146,6 +148,7 @@ export {
     composer,
     compute,
     config,
+    connectors,
     contactcenterinsights,
     container,
     containeranalysis,
@@ -160,6 +163,7 @@ export {
     dialogflow,
     dlp,
     dns,
+    documentai,
     domains,
     essentialcontacts,
     eventarc,

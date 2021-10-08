@@ -33,7 +33,7 @@ export interface GetMembershipResult {
      */
     readonly createTime: string;
     /**
-     * The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+     * The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
      */
     readonly name: string;
     /**
@@ -52,4 +52,13 @@ export interface GetMembershipResult {
      * The time when the `Membership` was last updated.
      */
     readonly updateTime: string;
+}
+
+export function getMembershipOutput(args: GetMembershipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMembershipResult> {
+    return pulumi.output(args).apply(a => getMembership(a, opts))
+}
+
+export interface GetMembershipOutputArgs {
+    groupId: pulumi.Input<string>;
+    membershipId: pulumi.Input<string>;
 }

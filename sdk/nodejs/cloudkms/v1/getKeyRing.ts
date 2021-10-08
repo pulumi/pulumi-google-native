@@ -38,3 +38,13 @@ export interface GetKeyRingResult {
      */
     readonly name: string;
 }
+
+export function getKeyRingOutput(args: GetKeyRingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyRingResult> {
+    return pulumi.output(args).apply(a => getKeyRing(a, opts))
+}
+
+export interface GetKeyRingOutputArgs {
+    keyRingId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

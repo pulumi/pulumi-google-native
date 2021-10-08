@@ -89,10 +89,6 @@ export class RatePlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Flag that specifies the billing account type, prepaid or postpaid.
-     */
-    public readonly paymentFundingModel!: pulumi.Output<string>;
-    /**
      * Details of the revenue sharing model.
      */
     public readonly revenueShareRates!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1RevenueShareRangeResponse[]>;
@@ -142,7 +138,6 @@ export class RatePlan extends pulumi.CustomResource {
             inputs["fixedFeeFrequency"] = args ? args.fixedFeeFrequency : undefined;
             inputs["fixedRecurringFee"] = args ? args.fixedRecurringFee : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["paymentFundingModel"] = args ? args.paymentFundingModel : undefined;
             inputs["revenueShareRates"] = args ? args.revenueShareRates : undefined;
             inputs["revenueShareType"] = args ? args.revenueShareType : undefined;
             inputs["setupFee"] = args ? args.setupFee : undefined;
@@ -165,7 +160,6 @@ export class RatePlan extends pulumi.CustomResource {
             inputs["fixedRecurringFee"] = undefined /*out*/;
             inputs["lastModifiedAt"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
-            inputs["paymentFundingModel"] = undefined /*out*/;
             inputs["revenueShareRates"] = undefined /*out*/;
             inputs["revenueShareType"] = undefined /*out*/;
             inputs["setupFee"] = undefined /*out*/;
@@ -225,10 +219,6 @@ export interface RatePlanArgs {
      */
     fixedRecurringFee?: pulumi.Input<inputs.apigee.v1.GoogleTypeMoneyArgs>;
     organizationId: pulumi.Input<string>;
-    /**
-     * Flag that specifies the billing account type, prepaid or postpaid.
-     */
-    paymentFundingModel?: pulumi.Input<enums.apigee.v1.RatePlanPaymentFundingModel>;
     /**
      * Details of the revenue sharing model.
      */

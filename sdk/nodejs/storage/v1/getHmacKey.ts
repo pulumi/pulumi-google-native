@@ -66,3 +66,13 @@ export interface GetHmacKeyResult {
      */
     readonly updated: string;
 }
+
+export function getHmacKeyOutput(args: GetHmacKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHmacKeyResult> {
+    return pulumi.output(args).apply(a => getHmacKey(a, opts))
+}
+
+export interface GetHmacKeyOutputArgs {
+    accessId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    userProject?: pulumi.Input<string>;
+}

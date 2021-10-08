@@ -65,3 +65,12 @@ export interface GetEnvironmentResult {
      */
     readonly state: string;
 }
+
+export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
+    return pulumi.output(args).apply(a => getEnvironment(a, opts))
+}
+
+export interface GetEnvironmentOutputArgs {
+    environmentId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

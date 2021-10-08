@@ -48,6 +48,10 @@ export class Dataset extends pulumi.CustomResource {
      * [Required] A reference that identifies the dataset.
      */
     public readonly datasetReference!: pulumi.Output<outputs.bigquery.v2.DatasetReferenceResponse>;
+    /**
+     * The default collation of the dataset.
+     */
+    public /*out*/ readonly defaultCollation!: pulumi.Output<string>;
     public readonly defaultEncryptionConfiguration!: pulumi.Output<outputs.bigquery.v2.EncryptionConfigurationResponse>;
     /**
      * [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
@@ -121,6 +125,7 @@ export class Dataset extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["creationTime"] = undefined /*out*/;
+            inputs["defaultCollation"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["lastModifiedTime"] = undefined /*out*/;
@@ -130,6 +135,7 @@ export class Dataset extends pulumi.CustomResource {
             inputs["access"] = undefined /*out*/;
             inputs["creationTime"] = undefined /*out*/;
             inputs["datasetReference"] = undefined /*out*/;
+            inputs["defaultCollation"] = undefined /*out*/;
             inputs["defaultEncryptionConfiguration"] = undefined /*out*/;
             inputs["defaultPartitionExpirationMs"] = undefined /*out*/;
             inputs["defaultTableExpirationMs"] = undefined /*out*/;

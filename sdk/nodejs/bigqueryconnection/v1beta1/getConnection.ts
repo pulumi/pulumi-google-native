@@ -59,3 +59,13 @@ export interface GetConnectionResult {
      */
     readonly name: string;
 }
+
+export function getConnectionOutput(args: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
+    return pulumi.output(args).apply(a => getConnection(a, opts))
+}
+
+export interface GetConnectionOutputArgs {
+    connectionId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

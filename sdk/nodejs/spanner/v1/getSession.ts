@@ -48,3 +48,14 @@ export interface GetSessionResult {
      */
     readonly name: string;
 }
+
+export function getSessionOutput(args: GetSessionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSessionResult> {
+    return pulumi.output(args).apply(a => getSession(a, opts))
+}
+
+export interface GetSessionOutputArgs {
+    databaseId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    sessionId: pulumi.Input<string>;
+}

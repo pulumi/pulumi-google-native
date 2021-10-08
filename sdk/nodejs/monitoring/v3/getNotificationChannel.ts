@@ -69,3 +69,12 @@ export interface GetNotificationChannelResult {
      */
     readonly verificationStatus: string;
 }
+
+export function getNotificationChannelOutput(args: GetNotificationChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationChannelResult> {
+    return pulumi.output(args).apply(a => getNotificationChannel(a, opts))
+}
+
+export interface GetNotificationChannelOutputArgs {
+    notificationChannelId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

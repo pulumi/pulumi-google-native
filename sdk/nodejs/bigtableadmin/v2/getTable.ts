@@ -53,3 +53,14 @@ export interface GetTableResult {
      */
     readonly restoreInfo: outputs.bigtableadmin.v2.RestoreInfoResponse;
 }
+
+export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableResult> {
+    return pulumi.output(args).apply(a => getTable(a, opts))
+}
+
+export interface GetTableOutputArgs {
+    instanceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    tableId: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}

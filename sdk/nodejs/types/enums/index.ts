@@ -28,6 +28,7 @@ import * as cloudsearch from "./cloudsearch";
 import * as cloudtasks from "./cloudtasks";
 import * as composer from "./composer";
 import * as compute from "./compute";
+import * as connectors from "./connectors";
 import * as contactcenterinsights from "./contactcenterinsights";
 import * as container from "./container";
 import * as containeranalysis from "./containeranalysis";
@@ -86,6 +87,7 @@ import * as toolresults from "./toolresults";
 import * as tpu from "./tpu";
 import * as transcoder from "./transcoder";
 import * as websecurityscanner from "./websecurityscanner";
+import * as workflowexecutions from "./workflowexecutions";
 
 export {
     accesscontextmanager,
@@ -114,6 +116,7 @@ export {
     cloudtasks,
     composer,
     compute,
+    connectors,
     contactcenterinsights,
     container,
     containeranalysis,
@@ -172,4 +175,5 @@ export {
     tpu,
     transcoder,
     websecurityscanner,
+    workflowexecutions,
 };

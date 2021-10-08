@@ -42,3 +42,13 @@ export interface GetEnvgroupAttachmentResult {
      */
     readonly name: string;
 }
+
+export function getEnvgroupAttachmentOutput(args: GetEnvgroupAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvgroupAttachmentResult> {
+    return pulumi.output(args).apply(a => getEnvgroupAttachment(a, opts))
+}
+
+export interface GetEnvgroupAttachmentOutputArgs {
+    attachmentId: pulumi.Input<string>;
+    envgroupId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

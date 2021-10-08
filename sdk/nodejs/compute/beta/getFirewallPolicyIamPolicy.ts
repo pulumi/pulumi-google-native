@@ -53,3 +53,12 @@ export interface GetFirewallPolicyIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getFirewallPolicyIamPolicyOutput(args: GetFirewallPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallPolicyIamPolicyResult> {
+    return pulumi.output(args).apply(a => getFirewallPolicyIamPolicy(a, opts))
+}
+
+export interface GetFirewallPolicyIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

@@ -47,7 +47,7 @@ export class TagTemplate extends pulumi.CustomResource {
      */
     public readonly isPubliclyReadable!: pulumi.Output<boolean>;
     /**
-     * The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. 
+     * The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -106,7 +106,7 @@ export interface TagTemplateArgs {
     isPubliclyReadable?: pulumi.Input<boolean>;
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. 
+     * The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

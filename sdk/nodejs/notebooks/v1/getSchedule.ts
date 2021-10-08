@@ -35,7 +35,7 @@ export interface GetScheduleResult {
      */
     readonly createTime: string;
     /**
-     * Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+     * Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
      */
     readonly cronSchedule: string;
     /**
@@ -67,4 +67,14 @@ export interface GetScheduleResult {
      * Time the schedule was last updated.
      */
     readonly updateTime: string;
+}
+
+export function getScheduleOutput(args: GetScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduleResult> {
+    return pulumi.output(args).apply(a => getSchedule(a, opts))
+}
+
+export interface GetScheduleOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    scheduleId: pulumi.Input<string>;
 }

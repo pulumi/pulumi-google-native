@@ -51,3 +51,15 @@ export interface GetKeyRingCryptoKeyIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getKeyRingCryptoKeyIamPolicyOutput(args: GetKeyRingCryptoKeyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyRingCryptoKeyIamPolicyResult> {
+    return pulumi.output(args).apply(a => getKeyRingCryptoKeyIamPolicy(a, opts))
+}
+
+export interface GetKeyRingCryptoKeyIamPolicyOutputArgs {
+    cryptoKeyId: pulumi.Input<string>;
+    keyRingId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

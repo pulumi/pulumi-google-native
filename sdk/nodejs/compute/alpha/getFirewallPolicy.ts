@@ -79,3 +79,11 @@ export interface GetFirewallPolicyResult {
      */
     readonly shortName: string;
 }
+
+export function getFirewallPolicyOutput(args: GetFirewallPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallPolicyResult> {
+    return pulumi.output(args).apply(a => getFirewallPolicy(a, opts))
+}
+
+export interface GetFirewallPolicyOutputArgs {
+    firewallPolicy: pulumi.Input<string>;
+}

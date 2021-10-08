@@ -45,7 +45,18 @@ export interface GetEntryGroupResult {
      */
     readonly displayName: string;
     /**
-     * The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. 
+     * The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
      */
     readonly name: string;
+}
+
+export function getEntryGroupOutput(args: GetEntryGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntryGroupResult> {
+    return pulumi.output(args).apply(a => getEntryGroup(a, opts))
+}
+
+export interface GetEntryGroupOutputArgs {
+    entryGroupId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    readMask?: pulumi.Input<string>;
 }

@@ -43,3 +43,13 @@ export interface GetPeeringIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getPeeringIamPolicyOutput(args: GetPeeringIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringIamPolicyResult> {
+    return pulumi.output(args).apply(a => getPeeringIamPolicy(a, opts))
+}
+
+export interface GetPeeringIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    peeringId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -73,3 +73,12 @@ export interface GetSslPolicyResult {
      */
     readonly warnings: outputs.compute.beta.SslPolicyWarningsItemResponse[];
 }
+
+export function getSslPolicyOutput(args: GetSslPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslPolicyResult> {
+    return pulumi.output(args).apply(a => getSslPolicy(a, opts))
+}
+
+export interface GetSslPolicyOutputArgs {
+    project?: pulumi.Input<string>;
+    sslPolicy: pulumi.Input<string>;
+}

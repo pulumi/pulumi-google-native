@@ -79,3 +79,13 @@ export interface GetEntitlementResult {
      */
     readonly updateTime: string;
 }
+
+export function getEntitlementOutput(args: GetEntitlementOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntitlementResult> {
+    return pulumi.output(args).apply(a => getEntitlement(a, opts))
+}
+
+export interface GetEntitlementOutputArgs {
+    accountId: pulumi.Input<string>;
+    customerId: pulumi.Input<string>;
+    entitlementId: pulumi.Input<string>;
+}

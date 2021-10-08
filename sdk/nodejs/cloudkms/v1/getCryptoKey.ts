@@ -73,3 +73,14 @@ export interface GetCryptoKeyResult {
      */
     readonly versionTemplate: outputs.cloudkms.v1.CryptoKeyVersionTemplateResponse;
 }
+
+export function getCryptoKeyOutput(args: GetCryptoKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCryptoKeyResult> {
+    return pulumi.output(args).apply(a => getCryptoKey(a, opts))
+}
+
+export interface GetCryptoKeyOutputArgs {
+    cryptoKeyId: pulumi.Input<string>;
+    keyRingId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

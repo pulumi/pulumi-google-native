@@ -73,3 +73,12 @@ export interface GetConnectivityTestResult {
      */
     readonly updateTime: string;
 }
+
+export function getConnectivityTestOutput(args: GetConnectivityTestOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectivityTestResult> {
+    return pulumi.output(args).apply(a => getConnectivityTest(a, opts))
+}
+
+export interface GetConnectivityTestOutputArgs {
+    connectivityTestId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

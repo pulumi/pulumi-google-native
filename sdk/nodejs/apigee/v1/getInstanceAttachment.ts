@@ -42,3 +42,13 @@ export interface GetInstanceAttachmentResult {
      */
     readonly name: string;
 }
+
+export function getInstanceAttachmentOutput(args: GetInstanceAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentResult> {
+    return pulumi.output(args).apply(a => getInstanceAttachment(a, opts))
+}
+
+export interface GetInstanceAttachmentOutputArgs {
+    attachmentId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

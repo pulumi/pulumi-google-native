@@ -48,3 +48,12 @@ export interface GetDataCollectorResult {
      */
     readonly type: string;
 }
+
+export function getDataCollectorOutput(args: GetDataCollectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataCollectorResult> {
+    return pulumi.output(args).apply(a => getDataCollector(a, opts))
+}
+
+export interface GetDataCollectorOutputArgs {
+    datacollectorId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

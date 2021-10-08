@@ -51,3 +51,15 @@ export interface GetServiceBackupIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getServiceBackupIamPolicyOutput(args: GetServiceBackupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceBackupIamPolicyResult> {
+    return pulumi.output(args).apply(a => getServiceBackupIamPolicy(a, opts))
+}
+
+export interface GetServiceBackupIamPolicyOutputArgs {
+    backupId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
+}

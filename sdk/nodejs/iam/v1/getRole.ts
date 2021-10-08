@@ -56,3 +56,12 @@ export interface GetRoleResult {
      */
     readonly title: string;
 }
+
+export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
+    return pulumi.output(args).apply(a => getRole(a, opts))
+}
+
+export interface GetRoleOutputArgs {
+    project?: pulumi.Input<string>;
+    roleId: pulumi.Input<string>;
+}

@@ -127,6 +127,10 @@ export interface GetInterconnectAttachmentResult {
      */
     readonly router: string;
     /**
+     * Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+     */
+    readonly satisfiesPzs: boolean;
+    /**
      * Server-defined URL for the resource.
      */
     readonly selfLink: string;
@@ -142,4 +146,14 @@ export interface GetInterconnectAttachmentResult {
      * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
      */
     readonly vlanTag8021q: number;
+}
+
+export function getInterconnectAttachmentOutput(args: GetInterconnectAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterconnectAttachmentResult> {
+    return pulumi.output(args).apply(a => getInterconnectAttachment(a, opts))
+}
+
+export interface GetInterconnectAttachmentOutputArgs {
+    interconnectAttachment: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
 }

@@ -49,3 +49,12 @@ export interface GetJobResult {
      */
     readonly status: outputs.run.v1alpha1.JobStatusResponse;
 }
+
+export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
+    return pulumi.output(args).apply(a => getJob(a, opts))
+}
+
+export interface GetJobOutputArgs {
+    jobId: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
+}

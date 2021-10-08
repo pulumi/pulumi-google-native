@@ -45,6 +45,10 @@ export interface GetEnvironmentResult {
      */
     readonly name: string;
     /**
+     * The test cases config for continuous tests of this environment.
+     */
+    readonly testCasesConfig: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse;
+    /**
      * Update time of this environment.
      */
     readonly updateTime: string;
@@ -52,4 +56,15 @@ export interface GetEnvironmentResult {
      * A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */
     readonly versionConfigs: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse[];
+}
+
+export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
+    return pulumi.output(args).apply(a => getEnvironment(a, opts))
+}
+
+export interface GetEnvironmentOutputArgs {
+    agentId: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

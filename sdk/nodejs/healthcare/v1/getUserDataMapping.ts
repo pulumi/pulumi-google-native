@@ -59,3 +59,15 @@ export interface GetUserDataMappingResult {
      */
     readonly userId: string;
 }
+
+export function getUserDataMappingOutput(args: GetUserDataMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserDataMappingResult> {
+    return pulumi.output(args).apply(a => getUserDataMapping(a, opts))
+}
+
+export interface GetUserDataMappingOutputArgs {
+    consentStoreId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    userDataMappingId: pulumi.Input<string>;
+}

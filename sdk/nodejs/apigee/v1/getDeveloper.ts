@@ -87,3 +87,13 @@ export interface GetDeveloperResult {
      */
     readonly userName: string;
 }
+
+export function getDeveloperOutput(args: GetDeveloperOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeveloperResult> {
+    return pulumi.output(args).apply(a => getDeveloper(a, opts))
+}
+
+export interface GetDeveloperOutputArgs {
+    action?: pulumi.Input<string>;
+    developerId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

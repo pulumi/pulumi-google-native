@@ -79,3 +79,13 @@ export interface GetRouterResult {
      */
     readonly selfLink: string;
 }
+
+export function getRouterOutput(args: GetRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterResult> {
+    return pulumi.output(args).apply(a => getRouter(a, opts))
+}
+
+export interface GetRouterOutputArgs {
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    router: pulumi.Input<string>;
+}

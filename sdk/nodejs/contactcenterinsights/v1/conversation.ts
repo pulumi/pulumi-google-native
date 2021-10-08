@@ -76,7 +76,7 @@ export class Conversation extends pulumi.CustomResource {
      */
     public /*out*/ readonly latestAnalysis!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnalysisResponse>;
     /**
-     * Immutable. The conversation medium.
+     * Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
      */
     public readonly medium!: pulumi.Output<string>;
     /**
@@ -198,7 +198,7 @@ export interface ConversationArgs {
     languageCode?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
-     * Immutable. The conversation medium.
+     * Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
      */
     medium?: pulumi.Input<enums.contactcenterinsights.v1.ConversationMedium>;
     /**

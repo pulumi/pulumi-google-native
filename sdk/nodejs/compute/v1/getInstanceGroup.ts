@@ -79,3 +79,13 @@ export interface GetInstanceGroupResult {
      */
     readonly zone: string;
 }
+
+export function getInstanceGroupOutput(args: GetInstanceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceGroupResult> {
+    return pulumi.output(args).apply(a => getInstanceGroup(a, opts))
+}
+
+export interface GetInstanceGroupOutputArgs {
+    instanceGroup: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
+}

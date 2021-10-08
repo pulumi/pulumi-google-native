@@ -36,6 +36,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies the instances configs overrides that should be applied for all instances in the MIG.
+     */
+    public readonly allInstancesConfig!: pulumi.Output<outputs.compute.alpha.InstanceGroupManagerAllInstancesConfigResponse>;
+    /**
      * The autohealing policy for this managed instance group. You can specify only one value.
      */
     public readonly autoHealingPolicies!: pulumi.Output<outputs.compute.alpha.InstanceGroupManagerAutoHealingPolicyResponse[]>;
@@ -108,7 +112,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly serviceAccount!: pulumi.Output<string>;
     /**
-     * Stanby policy for stopped and suspended instances.
+     * Standby policy for stopped and suspended instances.
      */
     public readonly standbyPolicy!: pulumi.Output<outputs.compute.alpha.InstanceGroupManagerStandbyPolicyResponse>;
     /**
@@ -162,6 +166,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            inputs["allInstancesConfig"] = args ? args.allInstancesConfig : undefined;
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -193,6 +198,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["zone"] = undefined /*out*/;
         } else {
+            inputs["allInstancesConfig"] = undefined /*out*/;
             inputs["autoHealingPolicies"] = undefined /*out*/;
             inputs["baseInstanceName"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -233,6 +239,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
  * The set of arguments for constructing a RegionInstanceGroupManager resource.
  */
 export interface RegionInstanceGroupManagerArgs {
+    /**
+     * Specifies the instances configs overrides that should be applied for all instances in the MIG.
+     */
+    allInstancesConfig?: pulumi.Input<inputs.compute.alpha.InstanceGroupManagerAllInstancesConfigArgs>;
     /**
      * The autohealing policy for this managed instance group. You can specify only one value.
      */
@@ -277,7 +287,7 @@ export interface RegionInstanceGroupManagerArgs {
      */
     serviceAccount?: pulumi.Input<string>;
     /**
-     * Stanby policy for stopped and suspended instances.
+     * Standby policy for stopped and suspended instances.
      */
     standbyPolicy?: pulumi.Input<inputs.compute.alpha.InstanceGroupManagerStandbyPolicyArgs>;
     /**

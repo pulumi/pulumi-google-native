@@ -73,3 +73,12 @@ export interface GetBillingAccountSinkResult {
      */
     readonly writerIdentity: string;
 }
+
+export function getBillingAccountSinkOutput(args: GetBillingAccountSinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingAccountSinkResult> {
+    return pulumi.output(args).apply(a => getBillingAccountSink(a, opts))
+}
+
+export interface GetBillingAccountSinkOutputArgs {
+    billingAccountId: pulumi.Input<string>;
+    sinkId: pulumi.Input<string>;
+}

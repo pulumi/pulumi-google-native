@@ -81,3 +81,12 @@ export interface GetScanConfigResult {
      */
     readonly userAgent: string;
 }
+
+export function getScanConfigOutput(args: GetScanConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScanConfigResult> {
+    return pulumi.output(args).apply(a => getScanConfig(a, opts))
+}
+
+export interface GetScanConfigOutputArgs {
+    project?: pulumi.Input<string>;
+    scanConfigId: pulumi.Input<string>;
+}

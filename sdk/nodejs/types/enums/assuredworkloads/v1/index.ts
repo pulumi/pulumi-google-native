@@ -63,6 +63,10 @@ export const WorkloadComplianceRegime = {
      * Assured Workloads For EU Regions and Support controls
      */
     EuRegionsAndSupport: "EU_REGIONS_AND_SUPPORT",
+    /**
+     * Assured Workloads For Canada Regions and Support controls
+     */
+    CaRegionsAndSupport: "CA_REGIONS_AND_SUPPORT",
 } as const;
 
 /**

@@ -49,3 +49,12 @@ export interface GetServicePerimeterResult {
      */
     readonly title: string;
 }
+
+export function getServicePerimeterOutput(args: GetServicePerimeterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePerimeterResult> {
+    return pulumi.output(args).apply(a => getServicePerimeter(a, opts))
+}
+
+export interface GetServicePerimeterOutputArgs {
+    accessPolicyId: pulumi.Input<string>;
+    servicePerimeterId: pulumi.Input<string>;
+}

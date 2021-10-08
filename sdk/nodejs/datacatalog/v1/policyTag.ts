@@ -48,7 +48,7 @@ export class PolicyTag extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs. 
+     * Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**

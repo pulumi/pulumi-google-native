@@ -55,3 +55,13 @@ export interface GetTaxonomyResult {
      */
     readonly taxonomyTimestamps: outputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1SystemTimestampsResponse;
 }
+
+export function getTaxonomyOutput(args: GetTaxonomyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaxonomyResult> {
+    return pulumi.output(args).apply(a => getTaxonomy(a, opts))
+}
+
+export interface GetTaxonomyOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    taxonomyId: pulumi.Input<string>;
+}

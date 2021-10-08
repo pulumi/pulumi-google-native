@@ -57,3 +57,12 @@ export interface GetTopicResult {
      */
     readonly schemaSettings: outputs.pubsub.v1.SchemaSettingsResponse;
 }
+
+export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
+    return pulumi.output(args).apply(a => getTopic(a, opts))
+}
+
+export interface GetTopicOutputArgs {
+    project?: pulumi.Input<string>;
+    topicId: pulumi.Input<string>;
+}

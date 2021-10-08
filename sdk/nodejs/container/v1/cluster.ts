@@ -152,6 +152,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly masterAuthorizedNetworksConfig!: pulumi.Output<outputs.container.v1.MasterAuthorizedNetworksConfigResponse>;
     /**
+     * Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+     */
+    public readonly meshCertificates!: pulumi.Output<outputs.container.v1.MeshCertificatesResponse>;
+    /**
      * Monitoring configuration for the cluster.
      */
     public readonly monitoringConfig!: pulumi.Output<outputs.container.v1.MonitoringConfigResponse>;
@@ -270,6 +274,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["masterAuth"] = args ? args.masterAuth : undefined;
             inputs["masterAuthorizedNetworksConfig"] = args ? args.masterAuthorizedNetworksConfig : undefined;
+            inputs["meshCertificates"] = args ? args.meshCertificates : undefined;
             inputs["monitoringConfig"] = args ? args.monitoringConfig : undefined;
             inputs["monitoringService"] = args ? args.monitoringService : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -329,6 +334,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["maintenancePolicy"] = undefined /*out*/;
             inputs["masterAuth"] = undefined /*out*/;
             inputs["masterAuthorizedNetworksConfig"] = undefined /*out*/;
+            inputs["meshCertificates"] = undefined /*out*/;
             inputs["monitoringConfig"] = undefined /*out*/;
             inputs["monitoringService"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -451,6 +457,10 @@ export interface ClusterArgs {
      * The configuration options for master authorized networks feature.
      */
     masterAuthorizedNetworksConfig?: pulumi.Input<inputs.container.v1.MasterAuthorizedNetworksConfigArgs>;
+    /**
+     * Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+     */
+    meshCertificates?: pulumi.Input<inputs.container.v1.MeshCertificatesArgs>;
     /**
      * Monitoring configuration for the cluster.
      */

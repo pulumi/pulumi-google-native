@@ -73,7 +73,7 @@ export interface GetConversationResult {
      */
     readonly latestAnalysis: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnalysisResponse;
     /**
-     * Immutable. The conversation medium.
+     * Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
      */
     readonly medium: string;
     /**
@@ -104,4 +104,15 @@ export interface GetConversationResult {
      * The most recent time at which the conversation was updated.
      */
     readonly updateTime: string;
+}
+
+export function getConversationOutput(args: GetConversationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConversationResult> {
+    return pulumi.output(args).apply(a => getConversation(a, opts))
+}
+
+export interface GetConversationOutputArgs {
+    conversationId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
 }

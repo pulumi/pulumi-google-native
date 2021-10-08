@@ -49,6 +49,10 @@ export interface GetBucketResult {
      */
     readonly cors: outputs.storage.v1.BucketCorsItemResponse[];
     /**
+     * The bucket's custom placement configuration for Custom Dual Regions.
+     */
+    readonly customPlacementConfig: outputs.storage.v1.BucketCustomPlacementConfigResponse;
+    /**
      * The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
      */
     readonly defaultEventBasedHold: boolean;
@@ -113,6 +117,10 @@ export interface GetBucketResult {
      */
     readonly retentionPolicy: outputs.storage.v1.BucketRetentionPolicyResponse;
     /**
+     * The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
+     */
+    readonly rpo: string;
+    /**
      * Reserved for future use.
      */
     readonly satisfiesPZS: boolean;
@@ -140,8 +148,17 @@ export interface GetBucketResult {
      * The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
      */
     readonly website: outputs.storage.v1.BucketWebsiteResponse;
-    /**
-     * The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
-     */
-    readonly zoneAffinity: string[];
+}
+
+export function getBucketOutput(args: GetBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketResult> {
+    return pulumi.output(args).apply(a => getBucket(a, opts))
+}
+
+export interface GetBucketOutputArgs {
+    bucket: pulumi.Input<string>;
+    ifMetagenerationMatch?: pulumi.Input<string>;
+    ifMetagenerationNotMatch?: pulumi.Input<string>;
+    projection?: pulumi.Input<string>;
+    provisionalUserProject?: pulumi.Input<string>;
+    userProject?: pulumi.Input<string>;
 }

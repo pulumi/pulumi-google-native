@@ -43,3 +43,13 @@ export interface GetInstanceDatabaseIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getInstanceDatabaseIamPolicyOutput(args: GetInstanceDatabaseIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceDatabaseIamPolicyResult> {
+    return pulumi.output(args).apply(a => getInstanceDatabaseIamPolicy(a, opts))
+}
+
+export interface GetInstanceDatabaseIamPolicyOutputArgs {
+    databaseId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

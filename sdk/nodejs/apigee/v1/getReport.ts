@@ -117,3 +117,12 @@ export interface GetReportResult {
      */
     readonly topk: string;
 }
+
+export function getReportOutput(args: GetReportOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReportResult> {
+    return pulumi.output(args).apply(a => getReport(a, opts))
+}
+
+export interface GetReportOutputArgs {
+    organizationId: pulumi.Input<string>;
+    reportId: pulumi.Input<string>;
+}

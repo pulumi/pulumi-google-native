@@ -73,3 +73,12 @@ export interface GetTypeProviderResult {
      */
     readonly selfLink: string;
 }
+
+export function getTypeProviderOutput(args: GetTypeProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTypeProviderResult> {
+    return pulumi.output(args).apply(a => getTypeProvider(a, opts))
+}
+
+export interface GetTypeProviderOutputArgs {
+    project?: pulumi.Input<string>;
+    typeProvider: pulumi.Input<string>;
+}

@@ -7,31 +7,31 @@ import * as utilities from "../../utilities";
 /**
  * Creates an instant snapshot in the specified zone.
  */
-export class ZoneInstantSnapshot extends pulumi.CustomResource {
+export class InstantSnapshot extends pulumi.CustomResource {
     /**
-     * Get an existing ZoneInstantSnapshot resource's state with the given name, ID, and optional extra
+     * Get an existing InstantSnapshot resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): ZoneInstantSnapshot {
-        return new ZoneInstantSnapshot(name, undefined as any, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): InstantSnapshot {
+        return new InstantSnapshot(name, undefined as any, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-native:compute/alpha:ZoneInstantSnapshot';
+    public static readonly __pulumiType = 'google-native:compute/alpha:InstantSnapshot';
 
     /**
-     * Returns true if the given object is an instance of ZoneInstantSnapshot.  This is designed to work even
+     * Returns true if the given object is an instance of InstantSnapshot.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ZoneInstantSnapshot {
+    public static isInstance(obj: any): obj is InstantSnapshot {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ZoneInstantSnapshot.__pulumiType;
+        return obj['__pulumiType'] === InstantSnapshot.__pulumiType;
     }
 
     /**
@@ -100,13 +100,13 @@ export class ZoneInstantSnapshot extends pulumi.CustomResource {
     public readonly zone!: pulumi.Output<string>;
 
     /**
-     * Create a ZoneInstantSnapshot resource with the given unique name, arguments, and options.
+     * Create a InstantSnapshot resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ZoneInstantSnapshotArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: InstantSnapshotArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
@@ -149,14 +149,14 @@ export class ZoneInstantSnapshot extends pulumi.CustomResource {
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ZoneInstantSnapshot.__pulumiType, name, inputs, opts);
+        super(InstantSnapshot.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * The set of arguments for constructing a ZoneInstantSnapshot resource.
+ * The set of arguments for constructing a InstantSnapshot resource.
  */
-export interface ZoneInstantSnapshotArgs {
+export interface InstantSnapshotArgs {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

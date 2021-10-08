@@ -49,3 +49,14 @@ export interface GetReusableConfigIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getReusableConfigIamPolicyOutput(args: GetReusableConfigIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReusableConfigIamPolicyResult> {
+    return pulumi.output(args).apply(a => getReusableConfigIamPolicy(a, opts))
+}
+
+export interface GetReusableConfigIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    reusableConfigId: pulumi.Input<string>;
+}

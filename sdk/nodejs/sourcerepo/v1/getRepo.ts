@@ -49,3 +49,12 @@ export interface GetRepoResult {
      */
     readonly url: string;
 }
+
+export function getRepoOutput(args: GetRepoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepoResult> {
+    return pulumi.output(args).apply(a => getRepo(a, opts))
+}
+
+export interface GetRepoOutputArgs {
+    project?: pulumi.Input<string>;
+    repoId: pulumi.Input<string>;
+}

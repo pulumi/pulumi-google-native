@@ -49,3 +49,14 @@ export interface GetMembershipIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getMembershipIamPolicyOutput(args: GetMembershipIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMembershipIamPolicyResult> {
+    return pulumi.output(args).apply(a => getMembershipIamPolicy(a, opts))
+}
+
+export interface GetMembershipIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
+    membershipId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

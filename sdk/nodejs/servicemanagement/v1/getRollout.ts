@@ -53,3 +53,12 @@ export interface GetRolloutResult {
      */
     readonly trafficPercentStrategy: outputs.servicemanagement.v1.TrafficPercentStrategyResponse;
 }
+
+export function getRolloutOutput(args: GetRolloutOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolloutResult> {
+    return pulumi.output(args).apply(a => getRollout(a, opts))
+}
+
+export interface GetRolloutOutputArgs {
+    rolloutId: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
+}

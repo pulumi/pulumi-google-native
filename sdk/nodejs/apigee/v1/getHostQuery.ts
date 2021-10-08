@@ -81,3 +81,12 @@ export interface GetHostQueryResult {
      */
     readonly updated: string;
 }
+
+export function getHostQueryOutput(args: GetHostQueryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostQueryResult> {
+    return pulumi.output(args).apply(a => getHostQuery(a, opts))
+}
+
+export interface GetHostQueryOutputArgs {
+    hostQueryId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

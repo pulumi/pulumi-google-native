@@ -56,3 +56,14 @@ export interface GetSnapshotResult {
      */
     readonly state: string;
 }
+
+export function getSnapshotOutput(args: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
+    return pulumi.output(args).apply(a => getSnapshot(a, opts))
+}
+
+export interface GetSnapshotOutputArgs {
+    instanceId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    snapshotId: pulumi.Input<string>;
+}

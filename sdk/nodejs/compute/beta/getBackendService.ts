@@ -157,3 +157,12 @@ export interface GetBackendServiceResult {
      */
     readonly timeoutSec: number;
 }
+
+export function getBackendServiceOutput(args: GetBackendServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServiceResult> {
+    return pulumi.output(args).apply(a => getBackendService(a, opts))
+}
+
+export interface GetBackendServiceOutputArgs {
+    backendService: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

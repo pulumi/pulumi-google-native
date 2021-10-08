@@ -51,3 +51,15 @@ export interface GetDatasetHl7V2StoreIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getDatasetHl7V2StoreIamPolicyOutput(args: GetDatasetHl7V2StoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetHl7V2StoreIamPolicyResult> {
+    return pulumi.output(args).apply(a => getDatasetHl7V2StoreIamPolicy(a, opts))
+}
+
+export interface GetDatasetHl7V2StoreIamPolicyOutputArgs {
+    datasetId: pulumi.Input<string>;
+    hl7V2StoreId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -77,3 +77,12 @@ export interface GetBackendBucketResult {
      */
     readonly selfLinkWithId: string;
 }
+
+export function getBackendBucketOutput(args: GetBackendBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendBucketResult> {
+    return pulumi.output(args).apply(a => getBackendBucket(a, opts))
+}
+
+export interface GetBackendBucketOutputArgs {
+    backendBucket: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

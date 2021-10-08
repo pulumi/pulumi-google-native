@@ -52,3 +52,12 @@ export interface GetWebAppResult {
      */
     readonly webId: string;
 }
+
+export function getWebAppOutput(args: GetWebAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppResult> {
+    return pulumi.output(args).apply(a => getWebApp(a, opts))
+}
+
+export interface GetWebAppOutputArgs {
+    project?: pulumi.Input<string>;
+    webAppId: pulumi.Input<string>;
+}

@@ -99,3 +99,13 @@ export interface GetNodeResult {
      */
     readonly useServiceNetworking: boolean;
 }
+
+export function getNodeOutput(args: GetNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeResult> {
+    return pulumi.output(args).apply(a => getNode(a, opts))
+}
+
+export interface GetNodeOutputArgs {
+    location: pulumi.Input<string>;
+    nodeId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

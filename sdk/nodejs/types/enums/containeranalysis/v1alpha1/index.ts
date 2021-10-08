@@ -670,7 +670,7 @@ export const VulnerabilityDetailsEffectiveSeverity = {
 } as const;
 
 /**
- * The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+ * The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
  */
 export type VulnerabilityDetailsEffectiveSeverity = (typeof VulnerabilityDetailsEffectiveSeverity)[keyof typeof VulnerabilityDetailsEffectiveSeverity];
 

@@ -60,3 +60,12 @@ export interface GetPeeringResult {
      */
     readonly updateTime: string;
 }
+
+export function getPeeringOutput(args: GetPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringResult> {
+    return pulumi.output(args).apply(a => getPeering(a, opts))
+}
+
+export interface GetPeeringOutputArgs {
+    peeringId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

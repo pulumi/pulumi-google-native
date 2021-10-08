@@ -49,3 +49,16 @@ export interface GetTransitionRouteGroupResult {
      */
     readonly transitionRoutes: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3TransitionRouteResponse[];
 }
+
+export function getTransitionRouteGroupOutput(args: GetTransitionRouteGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitionRouteGroupResult> {
+    return pulumi.output(args).apply(a => getTransitionRouteGroup(a, opts))
+}
+
+export interface GetTransitionRouteGroupOutputArgs {
+    agentId: pulumi.Input<string>;
+    flowId: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    transitionRouteGroupId: pulumi.Input<string>;
+}

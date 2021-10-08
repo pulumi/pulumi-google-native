@@ -57,3 +57,14 @@ export interface GetServiceAttachmentIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getServiceAttachmentIamPolicyOutput(args: GetServiceAttachmentIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceAttachmentIamPolicyResult> {
+    return pulumi.output(args).apply(a => getServiceAttachmentIamPolicy(a, opts))
+}
+
+export interface GetServiceAttachmentIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

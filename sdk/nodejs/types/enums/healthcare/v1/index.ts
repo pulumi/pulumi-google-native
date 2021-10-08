@@ -56,7 +56,7 @@ export const ConsentState = {
      */
     Active: "ACTIVE",
     /**
-     * When a Consent is updated, the current version is archived and a new one is created with its state set to the updated Consent's previous state.
+     * The archived state is currently not being used.
      */
     Archived: "ARCHIVED",
     /**
@@ -126,6 +126,26 @@ export const GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition = {
  */
 export type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition = (typeof GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition)[keyof typeof GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition];
 
+export const ParserConfigVersion = {
+    /**
+     * Unspecified parser version, equivalent to V1.
+     */
+    ParserVersionUnspecified: "PARSER_VERSION_UNSPECIFIED",
+    /**
+     * The `parsed_data` includes every given non-empty message field except the Field Separator (MSH-1) field. As a result, the parsed MSH segment starts with the MSH-2 field and the field numbers are off-by-one with respect to the HL7 standard.
+     */
+    V1: "V1",
+    /**
+     * The `parsed_data` includes every given non-empty message field.
+     */
+    V2: "V2",
+} as const;
+
+/**
+ * Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+ */
+export type ParserConfigVersion = (typeof ParserConfigVersion)[keyof typeof ParserConfigVersion];
+
 export const SchemaConfigSchemaType = {
     /**
      * No schema type specified. This type is unsupported.
@@ -161,6 +181,30 @@ export const SchemaPackageSchematizedParsingType = {
  * Determines how messages that fail to parse are handled.
  */
 export type SchemaPackageSchematizedParsingType = (typeof SchemaPackageSchematizedParsingType)[keyof typeof SchemaPackageSchematizedParsingType];
+
+export const SchemaPackageUnexpectedSegmentHandling = {
+    /**
+     * Unspecified handling mode, equivalent to FAIL.
+     */
+    UnexpectedSegmentHandlingModeUnspecified: "UNEXPECTED_SEGMENT_HANDLING_MODE_UNSPECIFIED",
+    /**
+     * Unexpected segments fail to parse and return an error.
+     */
+    Fail: "FAIL",
+    /**
+     * Unexpected segments do not fail, but are omitted from the output.
+     */
+    Skip: "SKIP",
+    /**
+     * Unexpected segments do not fail, but are parsed in place and added to the current group. If a segment has a type definition, it is used, otherwise it is parsed as VARIES.
+     */
+    Parse: "PARSE",
+} as const;
+
+/**
+ * Determines how unexpected segments (segments not matched to the schema) are handled.
+ */
+export type SchemaPackageUnexpectedSegmentHandling = (typeof SchemaPackageUnexpectedSegmentHandling)[keyof typeof SchemaPackageUnexpectedSegmentHandling];
 
 export const TypePrimitive = {
     /**

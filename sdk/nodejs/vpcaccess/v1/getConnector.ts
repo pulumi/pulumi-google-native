@@ -75,3 +75,13 @@ export interface GetConnectorResult {
      */
     readonly subnet: outputs.vpcaccess.v1.SubnetResponse;
 }
+
+export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorResult> {
+    return pulumi.output(args).apply(a => getConnector(a, opts))
+}
+
+export interface GetConnectorOutputArgs {
+    connectorId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

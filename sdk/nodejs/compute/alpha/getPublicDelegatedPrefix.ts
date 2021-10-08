@@ -83,3 +83,13 @@ export interface GetPublicDelegatedPrefixResult {
      */
     readonly status: string;
 }
+
+export function getPublicDelegatedPrefixOutput(args: GetPublicDelegatedPrefixOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicDelegatedPrefixResult> {
+    return pulumi.output(args).apply(a => getPublicDelegatedPrefix(a, opts))
+}
+
+export interface GetPublicDelegatedPrefixOutputArgs {
+    project?: pulumi.Input<string>;
+    publicDelegatedPrefix: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

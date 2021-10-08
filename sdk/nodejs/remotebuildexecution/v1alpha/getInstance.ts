@@ -49,3 +49,12 @@ export interface GetInstanceResult {
      */
     readonly state: string;
 }
+
+export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
+    return pulumi.output(args).apply(a => getInstance(a, opts))
+}
+
+export interface GetInstanceOutputArgs {
+    instanceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

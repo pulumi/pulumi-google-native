@@ -57,3 +57,14 @@ export interface GetWebhookResult {
      */
     readonly timeout: string;
 }
+
+export function getWebhookOutput(args: GetWebhookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhookResult> {
+    return pulumi.output(args).apply(a => getWebhook(a, opts))
+}
+
+export interface GetWebhookOutputArgs {
+    agentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    webhookId: pulumi.Input<string>;
+}

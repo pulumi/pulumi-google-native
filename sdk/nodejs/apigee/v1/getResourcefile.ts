@@ -44,3 +44,14 @@ export interface GetResourcefileResult {
      */
     readonly extensions: {[key: string]: string}[];
 }
+
+export function getResourcefileOutput(args: GetResourcefileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcefileResult> {
+    return pulumi.output(args).apply(a => getResourcefile(a, opts))
+}
+
+export interface GetResourcefileOutputArgs {
+    environmentId: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}

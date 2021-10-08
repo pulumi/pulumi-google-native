@@ -60,6 +60,10 @@ export class TargetInstance extends pulumi.CustomResource {
      */
     public readonly natPolicy!: pulumi.Output<string>;
     /**
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     */
+    public readonly network!: pulumi.Output<string>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -83,6 +87,7 @@ export class TargetInstance extends pulumi.CustomResource {
             inputs["instance"] = args ? args.instance : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["natPolicy"] = args ? args.natPolicy : undefined;
+            inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -96,6 +101,7 @@ export class TargetInstance extends pulumi.CustomResource {
             inputs["kind"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["natPolicy"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["zone"] = undefined /*out*/;
         }
@@ -126,6 +132,10 @@ export interface TargetInstanceArgs {
      * NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
      */
     natPolicy?: pulumi.Input<enums.compute.v1.TargetInstanceNatPolicy>;
+    /**
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     */
+    network?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     zone?: pulumi.Input<string>;

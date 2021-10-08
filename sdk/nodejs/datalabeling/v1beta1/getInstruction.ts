@@ -61,3 +61,12 @@ export interface GetInstructionResult {
      */
     readonly updateTime: string;
 }
+
+export function getInstructionOutput(args: GetInstructionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstructionResult> {
+    return pulumi.output(args).apply(a => getInstruction(a, opts))
+}
+
+export interface GetInstructionOutputArgs {
+    instructionId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

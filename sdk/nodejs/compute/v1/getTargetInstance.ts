@@ -54,6 +54,10 @@ export interface GetTargetInstanceResult {
      */
     readonly natPolicy: string;
     /**
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     */
+    readonly network: string;
+    /**
      * Server-defined URL for the resource.
      */
     readonly selfLink: string;
@@ -61,4 +65,14 @@ export interface GetTargetInstanceResult {
      * URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly zone: string;
+}
+
+export function getTargetInstanceOutput(args: GetTargetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetInstanceResult> {
+    return pulumi.output(args).apply(a => getTargetInstance(a, opts))
+}
+
+export interface GetTargetInstanceOutputArgs {
+    project?: pulumi.Input<string>;
+    targetInstance: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
 }

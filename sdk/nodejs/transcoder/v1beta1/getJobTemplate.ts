@@ -39,3 +39,13 @@ export interface GetJobTemplateResult {
      */
     readonly name: string;
 }
+
+export function getJobTemplateOutput(args: GetJobTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobTemplateResult> {
+    return pulumi.output(args).apply(a => getJobTemplate(a, opts))
+}
+
+export interface GetJobTemplateOutputArgs {
+    jobTemplateId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

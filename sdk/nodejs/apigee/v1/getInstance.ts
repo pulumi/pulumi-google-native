@@ -68,7 +68,20 @@ export interface GetInstanceResult {
      */
     readonly port: string;
     /**
+     * Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
+     */
+    readonly runtimeVersion: string;
+    /**
      * State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
      */
     readonly state: string;
+}
+
+export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
+    return pulumi.output(args).apply(a => getInstance(a, opts))
+}
+
+export interface GetInstanceOutputArgs {
+    instanceId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
 }

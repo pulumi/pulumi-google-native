@@ -93,3 +93,14 @@ export interface GetNodePoolResult {
      */
     readonly version: string;
 }
+
+export function getNodePoolOutput(args: GetNodePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodePoolResult> {
+    return pulumi.output(args).apply(a => getNodePool(a, opts))
+}
+
+export interface GetNodePoolOutputArgs {
+    clusterId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    nodePoolId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

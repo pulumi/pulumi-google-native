@@ -42,3 +42,13 @@ export interface GetSchemaResult {
      */
     readonly type: string;
 }
+
+export function getSchemaOutput(args: GetSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemaResult> {
+    return pulumi.output(args).apply(a => getSchema(a, opts))
+}
+
+export interface GetSchemaOutputArgs {
+    project?: pulumi.Input<string>;
+    schemaId: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}

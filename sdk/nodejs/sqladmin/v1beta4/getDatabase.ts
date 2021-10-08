@@ -43,7 +43,7 @@ export interface GetDatabaseResult {
      */
     readonly instance: string;
     /**
-     * This is always *sql#database*.
+     * This is always **sql#database**.
      */
     readonly kind: string;
     /**
@@ -59,4 +59,14 @@ export interface GetDatabaseResult {
      */
     readonly selfLink: string;
     readonly sqlserverDatabaseDetails: outputs.sqladmin.v1beta4.SqlServerDatabaseDetailsResponse;
+}
+
+export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
+    return pulumi.output(args).apply(a => getDatabase(a, opts))
+}
+
+export interface GetDatabaseOutputArgs {
+    database: pulumi.Input<string>;
+    instance: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

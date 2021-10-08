@@ -42,7 +42,7 @@ export class OrganizationEnvironmentIamPolicy extends pulumi.CustomResource {
      */
     public readonly auditConfigs!: pulumi.Output<outputs.apigee.v1.GoogleIamV1AuditConfigResponse[]>;
     /**
-     * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+     * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member. The `bindings` in a `Policy` can refer to up to 1,500 members; up to 250 of these members can be Google groups. Each occurrence of a member counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other member, then you can add another 1,450 members to the `bindings` in the `Policy`.
      */
     public readonly bindings!: pulumi.Output<outputs.apigee.v1.GoogleIamV1BindingResponse[]>;
     /**
@@ -100,7 +100,7 @@ export interface OrganizationEnvironmentIamPolicyArgs {
      */
     auditConfigs?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleIamV1AuditConfigArgs>[]>;
     /**
-     * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+     * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member. The `bindings` in a `Policy` can refer to up to 1,500 members; up to 250 of these members can be Google groups. Each occurrence of a member counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other member, then you can add another 1,450 members to the `bindings` in the `Policy`.
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleIamV1BindingArgs>[]>;
     environmentId: pulumi.Input<string>;

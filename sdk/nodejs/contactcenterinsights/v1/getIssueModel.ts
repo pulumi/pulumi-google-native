@@ -59,3 +59,13 @@ export interface GetIssueModelResult {
      */
     readonly updateTime: string;
 }
+
+export function getIssueModelOutput(args: GetIssueModelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIssueModelResult> {
+    return pulumi.output(args).apply(a => getIssueModel(a, opts))
+}
+
+export interface GetIssueModelOutputArgs {
+    issueModelId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

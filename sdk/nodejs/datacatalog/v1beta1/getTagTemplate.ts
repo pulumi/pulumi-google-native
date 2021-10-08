@@ -42,3 +42,13 @@ export interface GetTagTemplateResult {
      */
     readonly name: string;
 }
+
+export function getTagTemplateOutput(args: GetTagTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagTemplateResult> {
+    return pulumi.output(args).apply(a => getTagTemplate(a, opts))
+}
+
+export interface GetTagTemplateOutputArgs {
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    tagTemplateId: pulumi.Input<string>;
+}

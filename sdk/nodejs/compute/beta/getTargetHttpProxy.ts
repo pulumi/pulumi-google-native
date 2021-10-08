@@ -68,3 +68,12 @@ export interface GetTargetHttpProxyResult {
      */
     readonly urlMap: string;
 }
+
+export function getTargetHttpProxyOutput(args: GetTargetHttpProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetHttpProxyResult> {
+    return pulumi.output(args).apply(a => getTargetHttpProxy(a, opts))
+}
+
+export interface GetTargetHttpProxyOutputArgs {
+    project?: pulumi.Input<string>;
+    targetHttpProxy: pulumi.Input<string>;
+}

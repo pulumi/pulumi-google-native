@@ -121,3 +121,12 @@ export interface GetOccurrenceResult {
      */
     readonly vulnerabilityDetails: outputs.containeranalysis.v1alpha1.VulnerabilityDetailsResponse;
 }
+
+export function getOccurrenceOutput(args: GetOccurrenceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOccurrenceResult> {
+    return pulumi.output(args).apply(a => getOccurrence(a, opts))
+}
+
+export interface GetOccurrenceOutputArgs {
+    occurrenceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

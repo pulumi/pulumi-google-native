@@ -55,3 +55,13 @@ export interface GetDeidentifyTemplateResult {
      */
     readonly updateTime: string;
 }
+
+export function getDeidentifyTemplateOutput(args: GetDeidentifyTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeidentifyTemplateResult> {
+    return pulumi.output(args).apply(a => getDeidentifyTemplate(a, opts))
+}
+
+export interface GetDeidentifyTemplateOutputArgs {
+    deidentifyTemplateId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

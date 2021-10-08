@@ -135,3 +135,13 @@ export interface GetVersionResult {
      */
     readonly state: string;
 }
+
+export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {
+    return pulumi.output(args).apply(a => getVersion(a, opts))
+}
+
+export interface GetVersionOutputArgs {
+    modelId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    versionId: pulumi.Input<string>;
+}

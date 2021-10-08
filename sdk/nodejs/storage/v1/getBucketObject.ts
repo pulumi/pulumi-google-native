@@ -169,3 +169,20 @@ export interface GetBucketObjectResult {
      */
     readonly updated: string;
 }
+
+export function getBucketObjectOutput(args: GetBucketObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectResult> {
+    return pulumi.output(args).apply(a => getBucketObject(a, opts))
+}
+
+export interface GetBucketObjectOutputArgs {
+    bucket: pulumi.Input<string>;
+    generation?: pulumi.Input<string>;
+    ifGenerationMatch?: pulumi.Input<string>;
+    ifGenerationNotMatch?: pulumi.Input<string>;
+    ifMetagenerationMatch?: pulumi.Input<string>;
+    ifMetagenerationNotMatch?: pulumi.Input<string>;
+    object: pulumi.Input<string>;
+    projection?: pulumi.Input<string>;
+    provisionalUserProject?: pulumi.Input<string>;
+    userProject?: pulumi.Input<string>;
+}

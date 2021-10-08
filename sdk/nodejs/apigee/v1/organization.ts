@@ -72,6 +72,9 @@ export class Organization extends pulumi.CustomResource {
      * Description of the Apigee organization.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Display name for the Apigee organization. Unused, but reserved for future use.
+     */
     public readonly displayName!: pulumi.Output<string>;
     /**
      * List of environments in the Apigee organization.
@@ -216,6 +219,9 @@ export interface OrganizationArgs {
      * Description of the Apigee organization.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Display name for the Apigee organization. Unused, but reserved for future use.
+     */
     displayName?: pulumi.Input<string>;
     parent: pulumi.Input<string>;
     /**

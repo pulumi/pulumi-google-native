@@ -85,3 +85,12 @@ export interface GetMachineImageResult {
      */
     readonly totalStorageBytes: string;
 }
+
+export function getMachineImageOutput(args: GetMachineImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineImageResult> {
+    return pulumi.output(args).apply(a => getMachineImage(a, opts))
+}
+
+export interface GetMachineImageOutputArgs {
+    machineImage: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -48,3 +48,12 @@ export interface GetAndroidAppResult {
      */
     readonly project: string;
 }
+
+export function getAndroidAppOutput(args: GetAndroidAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAndroidAppResult> {
+    return pulumi.output(args).apply(a => getAndroidApp(a, opts))
+}
+
+export interface GetAndroidAppOutputArgs {
+    androidAppId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

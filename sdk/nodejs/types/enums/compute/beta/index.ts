@@ -315,7 +315,7 @@ export const BackendBalancingMode = {
 } as const;
 
 /**
- * Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+ * Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
  */
 export type BackendBalancingMode = (typeof BackendBalancingMode)[keyof typeof BackendBalancingMode];
 
@@ -420,6 +420,10 @@ export const BackendServiceLoadBalancingScheme = {
      * Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
      */
     External: "EXTERNAL",
+    /**
+     * Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+     */
+    ExternalManaged: "EXTERNAL_MANAGED",
     /**
      * Signifies that this will be used for Internal TCP/UDP Load Balancing.
      */
@@ -695,17 +699,6 @@ export const DiskInstantiationConfigInstantiateFrom = {
  */
 export type DiskInstantiationConfigInstantiateFrom = (typeof DiskInstantiationConfigInstantiateFrom)[keyof typeof DiskInstantiationConfigInstantiateFrom];
 
-export const DiskInterface = {
-    Nvme: "NVME",
-    Scsi: "SCSI",
-    Unspecified: "UNSPECIFIED",
-} as const;
-
-/**
- * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
- */
-export type DiskInterface = (typeof DiskInterface)[keyof typeof DiskInterface];
-
 export const DistributionPolicyTargetShape = {
     /**
      * The group picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
@@ -821,6 +814,7 @@ export type ForwardingRuleIpVersion = (typeof ForwardingRuleIpVersion)[keyof typ
 
 export const ForwardingRuleLoadBalancingScheme = {
     External: "EXTERNAL",
+    ExternalManaged: "EXTERNAL_MANAGED",
     Internal: "INTERNAL",
     InternalManaged: "INTERNAL_MANAGED",
     InternalSelfManaged: "INTERNAL_SELF_MANAGED",
@@ -998,6 +992,7 @@ export type GlobalForwardingRuleIpVersion = (typeof GlobalForwardingRuleIpVersio
 
 export const GlobalForwardingRuleLoadBalancingScheme = {
     External: "EXTERNAL",
+    ExternalManaged: "EXTERNAL_MANAGED",
     Internal: "INTERNAL",
     InternalManaged: "INTERNAL_MANAGED",
     InternalSelfManaged: "INTERNAL_SELF_MANAGED",
@@ -1412,7 +1407,7 @@ export const InstancePropertiesPostKeyRevocationActionType = {
 } as const;
 
 /**
- * PostKeyRevocationActionType of the instance.
+ * PostKeyRevocationActionType of the instance.(will be deprecated soon)
  */
 export type InstancePropertiesPostKeyRevocationActionType = (typeof InstancePropertiesPostKeyRevocationActionType)[keyof typeof InstancePropertiesPostKeyRevocationActionType];
 
@@ -1790,7 +1785,7 @@ export const OrganizationSecurityPolicyType = {
 } as const;
 
 /**
- * The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (GCS). They filter requests before the request is served from Google’s cache.
+ * The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
  */
 export type OrganizationSecurityPolicyType = (typeof OrganizationSecurityPolicyType)[keyof typeof OrganizationSecurityPolicyType];
 
@@ -1860,6 +1855,10 @@ export const RegionBackendServiceLoadBalancingScheme = {
      * Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
      */
     External: "EXTERNAL",
+    /**
+     * Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+     */
+    ExternalManaged: "EXTERNAL_MANAGED",
     /**
      * Signifies that this will be used for Internal TCP/UDP Load Balancing.
      */
@@ -2016,6 +2015,7 @@ export const RegionCommitmentType = {
     GeneralPurposeE2: "GENERAL_PURPOSE_E2",
     GeneralPurposeN2: "GENERAL_PURPOSE_N2",
     GeneralPurposeN2d: "GENERAL_PURPOSE_N2D",
+    GeneralPurposeT2d: "GENERAL_PURPOSE_T2D",
     MemoryOptimized: "MEMORY_OPTIMIZED",
     TypeUnspecified: "TYPE_UNSPECIFIED",
 } as const;
@@ -2024,17 +2024,6 @@ export const RegionCommitmentType = {
  * The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
  */
 export type RegionCommitmentType = (typeof RegionCommitmentType)[keyof typeof RegionCommitmentType];
-
-export const RegionDiskInterface = {
-    Nvme: "NVME",
-    Scsi: "SCSI",
-    Unspecified: "UNSPECIFIED",
-} as const;
-
-/**
- * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
- */
-export type RegionDiskInterface = (typeof RegionDiskInterface)[keyof typeof RegionDiskInterface];
 
 export const RegionHealthCheckServiceHealthStatusAggregationPolicy = {
     /**
@@ -2270,7 +2259,7 @@ export const RouterBgpPeerBfdSessionInitializationMode = {
 } as const;
 
 /**
- * The BFD session initialization mode for this BGP peer. Not currently available publicly. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+ * The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
  */
 export type RouterBgpPeerBfdSessionInitializationMode = (typeof RouterBgpPeerBfdSessionInitializationMode)[keyof typeof RouterBgpPeerBfdSessionInitializationMode];
 
@@ -2419,6 +2408,26 @@ export const SSLHealthCheckProxyHeader = {
  */
 export type SSLHealthCheckProxyHeader = (typeof SSLHealthCheckProxyHeader)[keyof typeof SSLHealthCheckProxyHeader];
 
+export const SchedulingInstanceTerminationAction = {
+    /**
+     * Delete the VM.
+     */
+    Delete: "DELETE",
+    /**
+     * Default value. This value is unused.
+     */
+    InstanceTerminationActionUnspecified: "INSTANCE_TERMINATION_ACTION_UNSPECIFIED",
+    /**
+     * Stop the VM without storing in-memory content. default action.
+     */
+    Stop: "STOP",
+} as const;
+
+/**
+ * Specifies the termination action for the instance.
+ */
+export type SchedulingInstanceTerminationAction = (typeof SchedulingInstanceTerminationAction)[keyof typeof SchedulingInstanceTerminationAction];
+
 export const SchedulingMaintenanceInterval = {
     /**
      * VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
@@ -2463,6 +2472,18 @@ export const SchedulingOnHostMaintenance = {
  * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
  */
 export type SchedulingOnHostMaintenance = (typeof SchedulingOnHostMaintenance)[keyof typeof SchedulingOnHostMaintenance];
+
+export const SchedulingProvisioningModel = {
+    /**
+     * Heavily discounted, no guaranteed runtime.
+     */
+    Spot: "SPOT",
+} as const;
+
+/**
+ * Specifies the provisioning model of the instance.
+ */
+export type SchedulingProvisioningModel = (typeof SchedulingProvisioningModel)[keyof typeof SchedulingProvisioningModel];
 
 export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility = {
     Premium: "PREMIUM",
@@ -2520,7 +2541,7 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
 } as const;
 
 /**
- * Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
  */
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKey = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey];
 
@@ -2541,7 +2562,7 @@ export const SecurityPolicyType = {
 } as const;
 
 /**
- * The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (GCS). They filter requests before the request is served from Google’s cache.
+ * The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
  */
 export type SecurityPolicyType = (typeof SecurityPolicyType)[keyof typeof SecurityPolicyType];
 
@@ -2653,7 +2674,7 @@ export type SslPolicyProfile = (typeof SslPolicyProfile)[keyof typeof SslPolicyP
 
 export const SubnetworkIpv6AccessType = {
     /**
-     * VMs in this subnet can have external IPv6.
+     * VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.
      */
     External: "EXTERNAL",
     /**
@@ -2775,7 +2796,7 @@ export type SubnetworkStackType = (typeof SubnetworkStackType)[keyof typeof Subn
 
 export const SubsettingPolicy = {
     /**
-     * Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is adjusted based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
+     * Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
      */
     ConsistentHashSubsetting: "CONSISTENT_HASH_SUBSETTING",
     /**

@@ -51,3 +51,13 @@ export interface GetApicategoryResult {
      */
     readonly status: string;
 }
+
+export function getApicategoryOutput(args: GetApicategoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApicategoryResult> {
+    return pulumi.output(args).apply(a => getApicategory(a, opts))
+}
+
+export interface GetApicategoryOutputArgs {
+    apicategoryId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    siteId: pulumi.Input<string>;
+}

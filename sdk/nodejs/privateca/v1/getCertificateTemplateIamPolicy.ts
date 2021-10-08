@@ -49,3 +49,14 @@ export interface GetCertificateTemplateIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getCertificateTemplateIamPolicyOutput(args: GetCertificateTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateTemplateIamPolicyResult> {
+    return pulumi.output(args).apply(a => getCertificateTemplateIamPolicy(a, opts))
+}
+
+export interface GetCertificateTemplateIamPolicyOutputArgs {
+    certificateTemplateId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

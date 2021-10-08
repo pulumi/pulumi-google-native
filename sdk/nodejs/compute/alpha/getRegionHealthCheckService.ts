@@ -78,3 +78,13 @@ export interface GetRegionHealthCheckServiceResult {
      */
     readonly selfLinkWithId: string;
 }
+
+export function getRegionHealthCheckServiceOutput(args: GetRegionHealthCheckServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionHealthCheckServiceResult> {
+    return pulumi.output(args).apply(a => getRegionHealthCheckService(a, opts))
+}
+
+export interface GetRegionHealthCheckServiceOutputArgs {
+    healthCheckService: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

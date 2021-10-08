@@ -63,3 +63,13 @@ export interface GetNetworkEdgeSecurityServiceResult {
      */
     readonly selfLinkWithId: string;
 }
+
+export function getNetworkEdgeSecurityServiceOutput(args: GetNetworkEdgeSecurityServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkEdgeSecurityServiceResult> {
+    return pulumi.output(args).apply(a => getNetworkEdgeSecurityService(a, opts))
+}
+
+export interface GetNetworkEdgeSecurityServiceOutputArgs {
+    networkEdgeSecurityService: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

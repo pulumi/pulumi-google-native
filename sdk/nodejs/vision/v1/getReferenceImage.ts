@@ -45,3 +45,14 @@ export interface GetReferenceImageResult {
      */
     readonly uri: string;
 }
+
+export function getReferenceImageOutput(args: GetReferenceImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceImageResult> {
+    return pulumi.output(args).apply(a => getReferenceImage(a, opts))
+}
+
+export interface GetReferenceImageOutputArgs {
+    location: pulumi.Input<string>;
+    productId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    referenceImageId: pulumi.Input<string>;
+}

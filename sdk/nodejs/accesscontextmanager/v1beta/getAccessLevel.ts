@@ -51,3 +51,13 @@ export interface GetAccessLevelResult {
      */
     readonly title: string;
 }
+
+export function getAccessLevelOutput(args: GetAccessLevelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessLevelResult> {
+    return pulumi.output(args).apply(a => getAccessLevel(a, opts))
+}
+
+export interface GetAccessLevelOutputArgs {
+    accessLevelFormat?: pulumi.Input<string>;
+    accessLevelId: pulumi.Input<string>;
+    accessPolicyId: pulumi.Input<string>;
+}

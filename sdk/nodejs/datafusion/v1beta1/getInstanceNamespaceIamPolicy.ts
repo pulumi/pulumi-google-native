@@ -51,3 +51,15 @@ export interface GetInstanceNamespaceIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getInstanceNamespaceIamPolicyOutput(args: GetInstanceNamespaceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceNamespaceIamPolicyResult> {
+    return pulumi.output(args).apply(a => getInstanceNamespaceIamPolicy(a, opts))
+}
+
+export interface GetInstanceNamespaceIamPolicyOutputArgs {
+    instanceId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

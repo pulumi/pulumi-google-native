@@ -69,7 +69,7 @@ export interface GetCertificateAuthorityResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+     * Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
      */
     readonly lifetime: string;
     /**
@@ -100,4 +100,15 @@ export interface GetCertificateAuthorityResult {
      * The time at which this CertificateAuthority was last updated.
      */
     readonly updateTime: string;
+}
+
+export function getCertificateAuthorityOutput(args: GetCertificateAuthorityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateAuthorityResult> {
+    return pulumi.output(args).apply(a => getCertificateAuthority(a, opts))
+}
+
+export interface GetCertificateAuthorityOutputArgs {
+    caPoolId: pulumi.Input<string>;
+    certificateAuthorityId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

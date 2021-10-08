@@ -48,3 +48,12 @@ export interface GetEnvgroupResult {
      */
     readonly state: string;
 }
+
+export function getEnvgroupOutput(args: GetEnvgroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvgroupResult> {
+    return pulumi.output(args).apply(a => getEnvgroup(a, opts))
+}
+
+export interface GetEnvgroupOutputArgs {
+    envgroupId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

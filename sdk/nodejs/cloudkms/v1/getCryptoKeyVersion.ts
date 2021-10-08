@@ -63,15 +63,15 @@ export interface GetCryptoKeyVersionResult {
      */
     readonly generateTime: string;
     /**
-     * The root cause of an import failure. Only present if state is IMPORT_FAILED.
+     * The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
      */
     readonly importFailureReason: string;
     /**
-     * The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+     * The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
      */
     readonly importJob: string;
     /**
-     * The time at which this CryptoKeyVersion's key material was imported.
+     * The time at which this CryptoKeyVersion's key material was most recently imported.
      */
     readonly importTime: string;
     /**
@@ -83,7 +83,23 @@ export interface GetCryptoKeyVersionResult {
      */
     readonly protectionLevel: string;
     /**
+     * Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+     */
+    readonly reimportEligible: boolean;
+    /**
      * The current state of the CryptoKeyVersion.
      */
     readonly state: string;
+}
+
+export function getCryptoKeyVersionOutput(args: GetCryptoKeyVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCryptoKeyVersionResult> {
+    return pulumi.output(args).apply(a => getCryptoKeyVersion(a, opts))
+}
+
+export interface GetCryptoKeyVersionOutputArgs {
+    cryptoKeyId: pulumi.Input<string>;
+    cryptoKeyVersionId: pulumi.Input<string>;
+    keyRingId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

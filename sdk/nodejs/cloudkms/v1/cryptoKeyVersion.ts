@@ -67,15 +67,15 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      */
     public /*out*/ readonly generateTime!: pulumi.Output<string>;
     /**
-     * The root cause of an import failure. Only present if state is IMPORT_FAILED.
+     * The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
      */
     public /*out*/ readonly importFailureReason!: pulumi.Output<string>;
     /**
-     * The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+     * The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
      */
     public /*out*/ readonly importJob!: pulumi.Output<string>;
     /**
-     * The time at which this CryptoKeyVersion's key material was imported.
+     * The time at which this CryptoKeyVersion's key material was most recently imported.
      */
     public /*out*/ readonly importTime!: pulumi.Output<string>;
     /**
@@ -86,6 +86,10 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      * The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
      */
     public /*out*/ readonly protectionLevel!: pulumi.Output<string>;
+    /**
+     * Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+     */
+    public /*out*/ readonly reimportEligible!: pulumi.Output<boolean>;
     /**
      * The current state of the CryptoKeyVersion.
      */
@@ -125,6 +129,7 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             inputs["importTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["protectionLevel"] = undefined /*out*/;
+            inputs["reimportEligible"] = undefined /*out*/;
         } else {
             inputs["algorithm"] = undefined /*out*/;
             inputs["attestation"] = undefined /*out*/;
@@ -138,6 +143,7 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             inputs["importTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["protectionLevel"] = undefined /*out*/;
+            inputs["reimportEligible"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {

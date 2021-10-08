@@ -59,3 +59,13 @@ export interface GetConversationResult {
      */
     readonly startTime: string;
 }
+
+export function getConversationOutput(args: GetConversationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConversationResult> {
+    return pulumi.output(args).apply(a => getConversation(a, opts))
+}
+
+export interface GetConversationOutputArgs {
+    conversationId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

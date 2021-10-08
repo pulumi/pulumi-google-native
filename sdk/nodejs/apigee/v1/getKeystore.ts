@@ -38,3 +38,13 @@ export interface GetKeystoreResult {
      */
     readonly name: string;
 }
+
+export function getKeystoreOutput(args: GetKeystoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeystoreResult> {
+    return pulumi.output(args).apply(a => getKeystore(a, opts))
+}
+
+export interface GetKeystoreOutputArgs {
+    environmentId: pulumi.Input<string>;
+    keystoreId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

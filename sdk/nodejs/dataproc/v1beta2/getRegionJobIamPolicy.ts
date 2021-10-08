@@ -45,3 +45,14 @@ export interface GetRegionJobIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getRegionJobIamPolicyOutput(args: GetRegionJobIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionJobIamPolicyResult> {
+    return pulumi.output(args).apply(a => getRegionJobIamPolicy(a, opts))
+}
+
+export interface GetRegionJobIamPolicyOutputArgs {
+    jobId: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    regionId: pulumi.Input<string>;
+}

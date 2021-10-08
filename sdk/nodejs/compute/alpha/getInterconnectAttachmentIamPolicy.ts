@@ -57,3 +57,14 @@ export interface GetInterconnectAttachmentIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getInterconnectAttachmentIamPolicyOutput(args: GetInterconnectAttachmentIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterconnectAttachmentIamPolicyResult> {
+    return pulumi.output(args).apply(a => getInterconnectAttachmentIamPolicy(a, opts))
+}
+
+export interface GetInterconnectAttachmentIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

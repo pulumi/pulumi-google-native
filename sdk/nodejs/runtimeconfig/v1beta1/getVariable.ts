@@ -50,3 +50,13 @@ export interface GetVariableResult {
      */
     readonly value: string;
 }
+
+export function getVariableOutput(args: GetVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVariableResult> {
+    return pulumi.output(args).apply(a => getVariable(a, opts))
+}
+
+export interface GetVariableOutputArgs {
+    configId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    variableId: pulumi.Input<string>;
+}

@@ -42,3 +42,13 @@ export interface GetNatAddressResult {
      */
     readonly state: string;
 }
+
+export function getNatAddressOutput(args: GetNatAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatAddressResult> {
+    return pulumi.output(args).apply(a => getNatAddress(a, opts))
+}
+
+export interface GetNatAddressOutputArgs {
+    instanceId: pulumi.Input<string>;
+    natAddressId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

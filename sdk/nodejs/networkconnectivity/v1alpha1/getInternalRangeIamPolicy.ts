@@ -49,3 +49,14 @@ export interface GetInternalRangeIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getInternalRangeIamPolicyOutput(args: GetInternalRangeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInternalRangeIamPolicyResult> {
+    return pulumi.output(args).apply(a => getInternalRangeIamPolicy(a, opts))
+}
+
+export interface GetInternalRangeIamPolicyOutputArgs {
+    internalRangeId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

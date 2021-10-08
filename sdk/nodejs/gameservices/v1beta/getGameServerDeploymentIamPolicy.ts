@@ -54,3 +54,14 @@ export interface GetGameServerDeploymentIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getGameServerDeploymentIamPolicyOutput(args: GetGameServerDeploymentIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGameServerDeploymentIamPolicyResult> {
+    return pulumi.output(args).apply(a => getGameServerDeploymentIamPolicy(a, opts))
+}
+
+export interface GetGameServerDeploymentIamPolicyOutputArgs {
+    gameServerDeploymentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

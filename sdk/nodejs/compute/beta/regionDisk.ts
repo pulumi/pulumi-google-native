@@ -44,7 +44,7 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+     * Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.beta.CustomerEncryptionKeyResponse>;
     /**
@@ -55,10 +55,6 @@ export class RegionDisk extends pulumi.CustomResource {
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
      */
     public readonly guestOsFeatures!: pulumi.Output<outputs.compute.beta.GuestOsFeatureResponse[]>;
-    /**
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-     */
-    public readonly interface!: pulumi.Output<string>;
     /**
      * Type of the resource. Always compute#disk for disks.
      */
@@ -91,6 +87,10 @@ export class RegionDisk extends pulumi.CustomResource {
      * An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
      */
     public readonly locationHint!: pulumi.Output<string>;
+    /**
+     * The field indicates if the disk is created from a locked source image. Attachment of a disk created from a locked source image will cause the following operations to become irreversibly prohibited: - R/W or R/O disk attachment to any other instance - Disk detachment. And the disk can only be deleted when the instance is deleted - Creation of images or snapshots - Disk cloning Furthermore, the instance with at least one disk with locked flag set to true will be prohibited from performing the operations below: - Further attachment of secondary disks. - Detachment of any disks - Create machine images - Create instance template - Delete the instance with --keep-disk parameter set to true for locked disks - Attach a locked disk with --auto-delete parameter set to false 
+     */
+    public /*out*/ readonly locked!: pulumi.Output<boolean>;
     /**
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      */
@@ -210,7 +210,6 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             inputs["eraseWindowsVssSignature"] = args ? args.eraseWindowsVssSignature : undefined;
             inputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
-            inputs["interface"] = args ? args.interface : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["licenseCodes"] = args ? args.licenseCodes : undefined;
             inputs["licenses"] = args ? args.licenses : undefined;
@@ -239,6 +238,7 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["lastAttachTimestamp"] = undefined /*out*/;
             inputs["lastDetachTimestamp"] = undefined /*out*/;
+            inputs["locked"] = undefined /*out*/;
             inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["sourceDiskId"] = undefined /*out*/;
@@ -253,7 +253,6 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["diskEncryptionKey"] = undefined /*out*/;
             inputs["eraseWindowsVssSignature"] = undefined /*out*/;
             inputs["guestOsFeatures"] = undefined /*out*/;
-            inputs["interface"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
@@ -262,6 +261,7 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["licenseCodes"] = undefined /*out*/;
             inputs["licenses"] = undefined /*out*/;
             inputs["locationHint"] = undefined /*out*/;
+            inputs["locked"] = undefined /*out*/;
             inputs["multiWriter"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["options"] = undefined /*out*/;
@@ -304,7 +304,7 @@ export interface RegionDiskArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+     * Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKeyArgs>;
     /**
@@ -315,10 +315,6 @@ export interface RegionDiskArgs {
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.beta.GuestOsFeatureArgs>[]>;
-    /**
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-     */
-    interface?: pulumi.Input<enums.compute.beta.RegionDiskInterface>;
     /**
      * Labels to apply to this disk. These can be later modified by the setLabels method.
      */

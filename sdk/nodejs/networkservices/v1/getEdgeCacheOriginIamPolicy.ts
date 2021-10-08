@@ -49,3 +49,14 @@ export interface GetEdgeCacheOriginIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getEdgeCacheOriginIamPolicyOutput(args: GetEdgeCacheOriginIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEdgeCacheOriginIamPolicyResult> {
+    return pulumi.output(args).apply(a => getEdgeCacheOriginIamPolicy(a, opts))
+}
+
+export interface GetEdgeCacheOriginIamPolicyOutputArgs {
+    edgeCacheOriginId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

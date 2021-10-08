@@ -48,3 +48,16 @@ export interface GetFhirResult {
      */
     readonly extensions: {[key: string]: string}[];
 }
+
+export function getFhirOutput(args: GetFhirOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFhirResult> {
+    return pulumi.output(args).apply(a => getFhir(a, opts))
+}
+
+export interface GetFhirOutputArgs {
+    datasetId: pulumi.Input<string>;
+    fhirId: pulumi.Input<string>;
+    fhirId1: pulumi.Input<string>;
+    fhirStoreId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -67,3 +67,15 @@ export interface GetGameServerClusterResult {
      */
     readonly updateTime: string;
 }
+
+export function getGameServerClusterOutput(args: GetGameServerClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGameServerClusterResult> {
+    return pulumi.output(args).apply(a => getGameServerCluster(a, opts))
+}
+
+export interface GetGameServerClusterOutputArgs {
+    gameServerClusterId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    realmId: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}

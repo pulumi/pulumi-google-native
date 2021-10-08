@@ -69,3 +69,14 @@ export interface GetKeyResult {
      */
     readonly status: string;
 }
+
+export function getKeyOutput(args: GetKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyResult> {
+    return pulumi.output(args).apply(a => getKey(a, opts))
+}
+
+export interface GetKeyOutputArgs {
+    appId: pulumi.Input<string>;
+    developerId: pulumi.Input<string>;
+    keyId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+}

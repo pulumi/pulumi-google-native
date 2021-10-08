@@ -47,3 +47,13 @@ export interface GetSecretIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getSecretIamPolicyOutput(args: GetSecretIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretIamPolicyResult> {
+    return pulumi.output(args).apply(a => getSecretIamPolicy(a, opts))
+}
+
+export interface GetSecretIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    secretId: pulumi.Input<string>;
+}

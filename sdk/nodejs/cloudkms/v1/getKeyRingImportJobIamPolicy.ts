@@ -51,3 +51,15 @@ export interface GetKeyRingImportJobIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getKeyRingImportJobIamPolicyOutput(args: GetKeyRingImportJobIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyRingImportJobIamPolicyResult> {
+    return pulumi.output(args).apply(a => getKeyRingImportJobIamPolicy(a, opts))
+}
+
+export interface GetKeyRingImportJobIamPolicyOutputArgs {
+    importJobId: pulumi.Input<string>;
+    keyRingId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -48,7 +48,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly instance!: pulumi.Output<string>;
     /**
-     * This is always *sql#database*.
+     * This is always **sql#database**.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -121,7 +121,7 @@ export interface DatabaseArgs {
      */
     instance: pulumi.Input<string>;
     /**
-     * This is always *sql#database*.
+     * This is always **sql#database**.
      */
     kind?: pulumi.Input<string>;
     /**

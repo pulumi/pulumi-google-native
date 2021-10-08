@@ -88,3 +88,13 @@ export interface GetManagedZoneResult {
      */
     readonly visibility: string;
 }
+
+export function getManagedZoneOutput(args: GetManagedZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedZoneResult> {
+    return pulumi.output(args).apply(a => getManagedZone(a, opts))
+}
+
+export interface GetManagedZoneOutputArgs {
+    clientOperationId?: pulumi.Input<string>;
+    managedZone: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

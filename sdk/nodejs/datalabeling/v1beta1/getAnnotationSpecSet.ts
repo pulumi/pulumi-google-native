@@ -49,3 +49,12 @@ export interface GetAnnotationSpecSetResult {
      */
     readonly name: string;
 }
+
+export function getAnnotationSpecSetOutput(args: GetAnnotationSpecSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAnnotationSpecSetResult> {
+    return pulumi.output(args).apply(a => getAnnotationSpecSet(a, opts))
+}
+
+export interface GetAnnotationSpecSetOutputArgs {
+    annotationSpecSetId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

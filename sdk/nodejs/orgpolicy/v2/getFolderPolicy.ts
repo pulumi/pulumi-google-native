@@ -37,3 +37,12 @@ export interface GetFolderPolicyResult {
      */
     readonly spec: outputs.orgpolicy.v2.GoogleCloudOrgpolicyV2PolicySpecResponse;
 }
+
+export function getFolderPolicyOutput(args: GetFolderPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderPolicyResult> {
+    return pulumi.output(args).apply(a => getFolderPolicy(a, opts))
+}
+
+export interface GetFolderPolicyOutputArgs {
+    folderId: pulumi.Input<string>;
+    policyId: pulumi.Input<string>;
+}

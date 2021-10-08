@@ -54,7 +54,7 @@ export interface GetSslCertResult {
      */
     readonly instance: string;
     /**
-     * This is always sql#sslCert.
+     * This is always **sql#sslCert**.
      */
     readonly kind: string;
     /**
@@ -65,4 +65,14 @@ export interface GetSslCertResult {
      * Sha1 Fingerprint.
      */
     readonly sha1Fingerprint: string;
+}
+
+export function getSslCertOutput(args: GetSslCertOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslCertResult> {
+    return pulumi.output(args).apply(a => getSslCert(a, opts))
+}
+
+export interface GetSslCertOutputArgs {
+    instance: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    sha1Fingerprint: pulumi.Input<string>;
 }

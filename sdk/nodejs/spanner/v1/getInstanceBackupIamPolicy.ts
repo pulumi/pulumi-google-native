@@ -43,3 +43,13 @@ export interface GetInstanceBackupIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getInstanceBackupIamPolicyOutput(args: GetInstanceBackupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceBackupIamPolicyResult> {
+    return pulumi.output(args).apply(a => getInstanceBackupIamPolicy(a, opts))
+}
+
+export interface GetInstanceBackupIamPolicyOutputArgs {
+    backupId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

@@ -51,3 +51,15 @@ export interface GetDatasetConsentStoreIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getDatasetConsentStoreIamPolicyOutput(args: GetDatasetConsentStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetConsentStoreIamPolicyResult> {
+    return pulumi.output(args).apply(a => getDatasetConsentStoreIamPolicy(a, opts))
+}
+
+export interface GetDatasetConsentStoreIamPolicyOutputArgs {
+    consentStoreId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

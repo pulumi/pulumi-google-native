@@ -51,3 +51,15 @@ export interface GetDatasetAnnotationStoreIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getDatasetAnnotationStoreIamPolicyOutput(args: GetDatasetAnnotationStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetAnnotationStoreIamPolicyResult> {
+    return pulumi.output(args).apply(a => getDatasetAnnotationStoreIamPolicy(a, opts))
+}
+
+export interface GetDatasetAnnotationStoreIamPolicyOutputArgs {
+    annotationStoreId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

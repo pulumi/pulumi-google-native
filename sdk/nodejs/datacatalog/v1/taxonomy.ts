@@ -49,7 +49,7 @@ export class Taxonomy extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs. 
+     * Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**

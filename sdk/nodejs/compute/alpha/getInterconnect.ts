@@ -137,3 +137,12 @@ export interface GetInterconnectResult {
      */
     readonly state: string;
 }
+
+export function getInterconnectOutput(args: GetInterconnectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterconnectResult> {
+    return pulumi.output(args).apply(a => getInterconnect(a, opts))
+}
+
+export interface GetInterconnectOutputArgs {
+    interconnect: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

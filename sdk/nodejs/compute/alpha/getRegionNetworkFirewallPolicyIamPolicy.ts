@@ -57,3 +57,14 @@ export interface GetRegionNetworkFirewallPolicyIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getRegionNetworkFirewallPolicyIamPolicyOutput(args: GetRegionNetworkFirewallPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionNetworkFirewallPolicyIamPolicyResult> {
+    return pulumi.output(args).apply(a => getRegionNetworkFirewallPolicyIamPolicy(a, opts))
+}
+
+export interface GetRegionNetworkFirewallPolicyIamPolicyOutputArgs {
+    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    resource: pulumi.Input<string>;
+}

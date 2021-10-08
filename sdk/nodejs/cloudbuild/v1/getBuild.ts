@@ -147,3 +147,15 @@ export interface GetBuildResult {
      */
     readonly warnings: outputs.cloudbuild.v1.WarningResponse[];
 }
+
+export function getBuildOutput(args: GetBuildOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBuildResult> {
+    return pulumi.output(args).apply(a => getBuild(a, opts))
+}
+
+export interface GetBuildOutputArgs {
+    buildId: pulumi.Input<string>;
+    id: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
+}

@@ -41,3 +41,12 @@ export interface GetNoteIamPolicyResult {
      */
     readonly version: number;
 }
+
+export function getNoteIamPolicyOutput(args: GetNoteIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNoteIamPolicyResult> {
+    return pulumi.output(args).apply(a => getNoteIamPolicy(a, opts))
+}
+
+export interface GetNoteIamPolicyOutputArgs {
+    noteId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

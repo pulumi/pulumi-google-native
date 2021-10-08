@@ -58,3 +58,13 @@ export interface GetApiResult {
      */
     readonly updateTime: string;
 }
+
+export function getApiOutput(args: GetApiOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiResult> {
+    return pulumi.output(args).apply(a => getApi(a, opts))
+}
+
+export interface GetApiOutputArgs {
+    apiId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+}

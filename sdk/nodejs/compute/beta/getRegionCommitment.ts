@@ -95,3 +95,13 @@ export interface GetRegionCommitmentResult {
      */
     readonly type: string;
 }
+
+export function getRegionCommitmentOutput(args: GetRegionCommitmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionCommitmentResult> {
+    return pulumi.output(args).apply(a => getRegionCommitment(a, opts))
+}
+
+export interface GetRegionCommitmentOutputArgs {
+    commitment: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+}

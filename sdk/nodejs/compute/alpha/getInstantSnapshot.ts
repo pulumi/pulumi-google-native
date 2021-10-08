@@ -7,7 +7,7 @@ import * as utilities from "../../utilities";
 /**
  * Returns the specified InstantSnapshot resource in the specified zone.
  */
-export function getZoneInstantSnapshot(args: GetZoneInstantSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneInstantSnapshotResult> {
+export function getInstantSnapshot(args: GetInstantSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetInstantSnapshotResult> {
     if (!opts) {
         opts = {}
     }
@@ -15,20 +15,20 @@ export function getZoneInstantSnapshot(args: GetZoneInstantSnapshotArgs, opts?: 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("google-native:compute/alpha:getZoneInstantSnapshot", {
+    return pulumi.runtime.invoke("google-native:compute/alpha:getInstantSnapshot", {
         "instantSnapshot": args.instantSnapshot,
         "project": args.project,
         "zone": args.zone,
     }, opts);
 }
 
-export interface GetZoneInstantSnapshotArgs {
+export interface GetInstantSnapshotArgs {
     instantSnapshot: string;
     project?: string;
     zone: string;
 }
 
-export interface GetZoneInstantSnapshotResult {
+export interface GetInstantSnapshotResult {
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -93,4 +93,14 @@ export interface GetZoneInstantSnapshotResult {
      * URL of the zone where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly zone: string;
+}
+
+export function getInstantSnapshotOutput(args: GetInstantSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstantSnapshotResult> {
+    return pulumi.output(args).apply(a => getInstantSnapshot(a, opts))
+}
+
+export interface GetInstantSnapshotOutputArgs {
+    instantSnapshot: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
 }

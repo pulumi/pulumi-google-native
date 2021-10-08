@@ -34,3 +34,11 @@ export interface GetServiceResult {
      */
     readonly serviceName: string;
 }
+
+export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+export interface GetServiceOutputArgs {
+    serviceName: pulumi.Input<string>;
+}
