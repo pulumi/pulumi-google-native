@@ -1808,7 +1808,7 @@
       }
     }
   },
-  "revision": "20210811",
+  "revision": "20210920",
   "rootUrl": "https://datacatalog.googleapis.com/",
   "schemas": {
     "Binding": {

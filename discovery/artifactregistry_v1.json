@@ -194,7 +194,9 @@
           "flatPath": "v1/operations",
           "httpMethod": "GET",
           "id": "artifactregistry.operations.list",
-          "parameterOrder": [],
+          "parameterOrder": [
+            "name"
+          ],
           "parameters": {
             "filter": {
               "description": "The standard list filter.",
@@ -203,7 +205,9 @@
             },
             "name": {
               "description": "The name of the operation's parent resource.",
-              "location": "query",
+              "location": "path",
+              "pattern": "^operations$",
+              "required": true,
               "type": "string"
             },
             "pageSize": {
@@ -218,7 +222,7 @@
               "type": "string"
             }
           },
-          "path": "v1/operations",
+          "path": "v1/{+name}",
           "response": {
             "$ref": "ListOperationsResponse"
           },
@@ -348,7 +352,7 @@
       }
     }
   },
-  "revision": "20210810",
+  "revision": "20210925",
   "rootUrl": "https://artifactregistry.googleapis.com/",
   "schemas": {
     "AptArtifact": {
@@ -410,7 +414,7 @@
       "id": "DockerImage",
       "properties": {
         "buildTime": {
-          "description": "The time this image was built. This field is returned as the 'metadata.buildTime' field in the Version resource. The build time is returned to the client as an RFC 3339 string, which can be easily used with the JavaScript Date constructor and keeps the Version timestamps returned via OnePlatform consistent, as JSON marshals google.protobuf.Timestamp into an RFC 3339 string.",
+          "description": "The time this image was built. This field is returned as the 'metadata.buildTime' field in the Version resource. The build time is returned to the client as an RFC 3339 string, which can be easily used with the JavaScript Date constructor.",
           "format": "google-datetime",
           "type": "string"
         },
@@ -669,7 +673,6 @@
             "DOCKER",
             "MAVEN",
             "NPM",
-            "PYPI",
             "APT",
             "YUM",
             "PYTHON"
@@ -679,7 +682,6 @@
             "Docker package format.",
             "Maven package format.",
             "NPM package format.",
-            "PyPI package format.",
             "APT package format.",
             "YUM package format.",
             "Python package format."
