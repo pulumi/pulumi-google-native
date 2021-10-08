@@ -876,16 +876,18 @@ type CryptoKeyVersionResponse struct {
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsResponse `pulumi:"externalProtectionLevelOptions"`
 	// The time this CryptoKeyVersion's key material was generated.
 	GenerateTime string `pulumi:"generateTime"`
-	// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+	// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
 	ImportFailureReason string `pulumi:"importFailureReason"`
-	// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+	// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
 	ImportJob string `pulumi:"importJob"`
-	// The time at which this CryptoKeyVersion's key material was imported.
+	// The time at which this CryptoKeyVersion's key material was most recently imported.
 	ImportTime string `pulumi:"importTime"`
 	// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
 	Name string `pulumi:"name"`
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 	ProtectionLevel string `pulumi:"protectionLevel"`
+	// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+	ReimportEligible bool `pulumi:"reimportEligible"`
 	// The current state of the CryptoKeyVersion.
 	State string `pulumi:"state"`
 }
@@ -917,16 +919,18 @@ type CryptoKeyVersionResponseArgs struct {
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsResponseInput `pulumi:"externalProtectionLevelOptions"`
 	// The time this CryptoKeyVersion's key material was generated.
 	GenerateTime pulumi.StringInput `pulumi:"generateTime"`
-	// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+	// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
 	ImportFailureReason pulumi.StringInput `pulumi:"importFailureReason"`
-	// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+	// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
 	ImportJob pulumi.StringInput `pulumi:"importJob"`
-	// The time at which this CryptoKeyVersion's key material was imported.
+	// The time at which this CryptoKeyVersion's key material was most recently imported.
 	ImportTime pulumi.StringInput `pulumi:"importTime"`
 	// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 	ProtectionLevel pulumi.StringInput `pulumi:"protectionLevel"`
+	// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+	ReimportEligible pulumi.BoolInput `pulumi:"reimportEligible"`
 	// The current state of the CryptoKeyVersion.
 	State pulumi.StringInput `pulumi:"state"`
 }
@@ -1046,17 +1050,17 @@ func (o CryptoKeyVersionResponseOutput) GenerateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionResponse) string { return v.GenerateTime }).(pulumi.StringOutput)
 }
 
-// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
 func (o CryptoKeyVersionResponseOutput) ImportFailureReason() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionResponse) string { return v.ImportFailureReason }).(pulumi.StringOutput)
 }
 
-// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
 func (o CryptoKeyVersionResponseOutput) ImportJob() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionResponse) string { return v.ImportJob }).(pulumi.StringOutput)
 }
 
-// The time at which this CryptoKeyVersion's key material was imported.
+// The time at which this CryptoKeyVersion's key material was most recently imported.
 func (o CryptoKeyVersionResponseOutput) ImportTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionResponse) string { return v.ImportTime }).(pulumi.StringOutput)
 }
@@ -1069,6 +1073,11 @@ func (o CryptoKeyVersionResponseOutput) Name() pulumi.StringOutput {
 // The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 func (o CryptoKeyVersionResponseOutput) ProtectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionResponse) string { return v.ProtectionLevel }).(pulumi.StringOutput)
+}
+
+// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+func (o CryptoKeyVersionResponseOutput) ReimportEligible() pulumi.BoolOutput {
+	return o.ApplyT(func(v CryptoKeyVersionResponse) bool { return v.ReimportEligible }).(pulumi.BoolOutput)
 }
 
 // The current state of the CryptoKeyVersion.
@@ -1170,7 +1179,7 @@ func (o CryptoKeyVersionResponsePtrOutput) GenerateTime() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
 func (o CryptoKeyVersionResponsePtrOutput) ImportFailureReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
 		if v == nil {
@@ -1180,7 +1189,7 @@ func (o CryptoKeyVersionResponsePtrOutput) ImportFailureReason() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
 func (o CryptoKeyVersionResponsePtrOutput) ImportJob() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
 		if v == nil {
@@ -1190,7 +1199,7 @@ func (o CryptoKeyVersionResponsePtrOutput) ImportJob() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The time at which this CryptoKeyVersion's key material was imported.
+// The time at which this CryptoKeyVersion's key material was most recently imported.
 func (o CryptoKeyVersionResponsePtrOutput) ImportTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionResponse) *string {
 		if v == nil {
@@ -1218,6 +1227,16 @@ func (o CryptoKeyVersionResponsePtrOutput) ProtectionLevel() pulumi.StringPtrOut
 		}
 		return &v.ProtectionLevel
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+func (o CryptoKeyVersionResponsePtrOutput) ReimportEligible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ReimportEligible
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The current state of the CryptoKeyVersion.
@@ -2426,6 +2445,37 @@ func (o WrappingPublicKeyResponsePtrOutput) Pem() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateChainsResponseInput)(nil)).Elem(), CertificateChainsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateChainsResponsePtrInput)(nil)).Elem(), CertificateChainsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionResponseInput)(nil)).Elem(), CryptoKeyVersionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionResponsePtrInput)(nil)).Elem(), CryptoKeyVersionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplatePtrInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateResponseInput)(nil)).Elem(), CryptoKeyVersionTemplateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateResponsePtrInput)(nil)).Elem(), CryptoKeyVersionTemplateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalProtectionLevelOptionsInput)(nil)).Elem(), ExternalProtectionLevelOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalProtectionLevelOptionsPtrInput)(nil)).Elem(), ExternalProtectionLevelOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalProtectionLevelOptionsResponseInput)(nil)).Elem(), ExternalProtectionLevelOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalProtectionLevelOptionsResponsePtrInput)(nil)).Elem(), ExternalProtectionLevelOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyOperationAttestationResponseInput)(nil)).Elem(), KeyOperationAttestationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyOperationAttestationResponsePtrInput)(nil)).Elem(), KeyOperationAttestationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WrappingPublicKeyResponseInput)(nil)).Elem(), WrappingPublicKeyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WrappingPublicKeyResponsePtrInput)(nil)).Elem(), WrappingPublicKeyResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})

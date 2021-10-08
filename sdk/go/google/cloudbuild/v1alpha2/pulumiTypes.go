@@ -609,6 +609,14 @@ func (o WorkerConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponseInput)(nil)).Elem(), NetworkConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponsePtrInput)(nil)).Elem(), NetworkConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigInput)(nil)).Elem(), WorkerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigPtrInput)(nil)).Elem(), WorkerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigResponseInput)(nil)).Elem(), WorkerConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigResponsePtrInput)(nil)).Elem(), WorkerConfigResponseArgs{})
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})

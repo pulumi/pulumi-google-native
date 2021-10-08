@@ -545,6 +545,10 @@ const (
 	GoogleCloudMlV1__AcceleratorConfigTypeTpuV2 = GoogleCloudMlV1__AcceleratorConfigType("TPU_V2")
 	// TPU v3.
 	GoogleCloudMlV1__AcceleratorConfigTypeTpuV3 = GoogleCloudMlV1__AcceleratorConfigType("TPU_V3")
+	// TPU v2 POD.
+	GoogleCloudMlV1__AcceleratorConfigTypeTpuV2Pod = GoogleCloudMlV1__AcceleratorConfigType("TPU_V2_POD")
+	// TPU v3 POD.
+	GoogleCloudMlV1__AcceleratorConfigTypeTpuV3Pod = GoogleCloudMlV1__AcceleratorConfigType("TPU_V3_POD")
 )
 
 func (GoogleCloudMlV1__AcceleratorConfigType) ElementType() reflect.Type {

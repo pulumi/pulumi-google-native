@@ -291,6 +291,10 @@ func (o OutputConfigResponsePtrOutput) Destination() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OutputConfigInput)(nil)).Elem(), OutputConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OutputConfigPtrInput)(nil)).Elem(), OutputConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OutputConfigResponseInput)(nil)).Elem(), OutputConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OutputConfigResponsePtrInput)(nil)).Elem(), OutputConfigResponseArgs{})
 	pulumi.RegisterOutputType(OutputConfigOutput{})
 	pulumi.RegisterOutputType(OutputConfigPtrOutput{})
 	pulumi.RegisterOutputType(OutputConfigResponseOutput{})

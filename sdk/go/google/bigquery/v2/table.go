@@ -20,6 +20,8 @@ type Table struct {
 	Clustering ClusteringResponseOutput `pulumi:"clustering"`
 	// The time when this table was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
+	// The default collation of the table.
+	DefaultCollation pulumi.StringOutput `pulumi:"defaultCollation"`
 	// [Optional] A user-friendly description of this table.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).

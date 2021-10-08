@@ -1200,6 +1200,21 @@ func (o PushConfigResponsePtrOutput) PushEndpoint() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenInput)(nil)).Elem(), OidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenPtrInput)(nil)).Elem(), OidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenResponseInput)(nil)).Elem(), OidcTokenResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenResponsePtrInput)(nil)).Elem(), OidcTokenResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigInput)(nil)).Elem(), PushConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigPtrInput)(nil)).Elem(), PushConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigResponseInput)(nil)).Elem(), PushConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigResponsePtrInput)(nil)).Elem(), PushConfigResponseArgs{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})

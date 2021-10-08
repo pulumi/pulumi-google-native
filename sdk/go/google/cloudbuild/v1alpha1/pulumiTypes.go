@@ -761,6 +761,14 @@ func (o WorkerConfigResponsePtrOutput) Tag() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInput)(nil)).Elem(), NetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPtrInput)(nil)).Elem(), NetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkResponseInput)(nil)).Elem(), NetworkResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkResponsePtrInput)(nil)).Elem(), NetworkResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigInput)(nil)).Elem(), WorkerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigPtrInput)(nil)).Elem(), WorkerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigResponseInput)(nil)).Elem(), WorkerConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigResponsePtrInput)(nil)).Elem(), WorkerConfigResponseArgs{})
 	pulumi.RegisterOutputType(NetworkOutput{})
 	pulumi.RegisterOutputType(NetworkPtrOutput{})
 	pulumi.RegisterOutputType(NetworkResponseOutput{})

@@ -24,6 +24,8 @@ type Repository struct {
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Maven repository config contains repository level configuration for the repositories of maven type.
+	MavenConfig MavenRepositoryConfigResponseOutput `pulumi:"mavenConfig"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The time when the repository was last updated.
@@ -80,6 +82,8 @@ type repositoryArgs struct {
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
+	// Maven repository config contains repository level configuration for the repositories of maven type.
+	MavenConfig *MavenRepositoryConfig `pulumi:"mavenConfig"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name         *string `pulumi:"name"`
 	Project      *string `pulumi:"project"`
@@ -101,6 +105,8 @@ type RepositoryArgs struct {
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
+	// Maven repository config contains repository level configuration for the repositories of maven type.
+	MavenConfig MavenRepositoryConfigPtrInput
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name         pulumi.StringPtrInput
 	Project      pulumi.StringPtrInput

@@ -43,6 +43,7 @@ type LookupOrganizationResult struct {
 	CustomerName string `pulumi:"customerName"`
 	// Description of the Apigee organization.
 	Description string `pulumi:"description"`
+	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName string `pulumi:"displayName"`
 	// List of environments in the Apigee organization.
 	Environments []string `pulumi:"environments"`
@@ -142,6 +143,7 @@ func (o LookupOrganizationResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Display name for the Apigee organization. Unused, but reserved for future use.
 func (o LookupOrganizationResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }

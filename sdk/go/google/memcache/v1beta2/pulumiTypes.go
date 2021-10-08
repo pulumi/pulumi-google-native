@@ -972,6 +972,20 @@ func (o NodeResponseArrayOutput) Index(i pulumi.IntInput) NodeResponseOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageInput)(nil)).Elem(), InstanceMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageArrayInput)(nil)).Elem(), InstanceMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageResponseInput)(nil)).Elem(), InstanceMessageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageResponseArrayInput)(nil)).Elem(), InstanceMessageResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MemcacheParametersInput)(nil)).Elem(), MemcacheParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MemcacheParametersPtrInput)(nil)).Elem(), MemcacheParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MemcacheParametersResponseInput)(nil)).Elem(), MemcacheParametersResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MemcacheParametersResponsePtrInput)(nil)).Elem(), MemcacheParametersResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponseInput)(nil)).Elem(), NodeConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponsePtrInput)(nil)).Elem(), NodeConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeResponseInput)(nil)).Elem(), NodeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeResponseArrayInput)(nil)).Elem(), NodeResponseArray{})
 	pulumi.RegisterOutputType(InstanceMessageOutput{})
 	pulumi.RegisterOutputType(InstanceMessageArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMessageResponseOutput{})

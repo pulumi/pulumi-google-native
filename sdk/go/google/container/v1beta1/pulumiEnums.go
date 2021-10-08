@@ -1753,6 +1753,8 @@ const (
 	MonitoringComponentConfigEnableComponentsItemComponentUnspecified = MonitoringComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED")
 	// system components
 	MonitoringComponentConfigEnableComponentsItemSystemComponents = MonitoringComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS")
+	// workloads
+	MonitoringComponentConfigEnableComponentsItemWorkloads = MonitoringComponentConfigEnableComponentsItem("WORKLOADS")
 )
 
 func (MonitoringComponentConfigEnableComponentsItem) ElementType() reflect.Type {

@@ -32,16 +32,18 @@ type CryptoKeyVersion struct {
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsResponseOutput `pulumi:"externalProtectionLevelOptions"`
 	// The time this CryptoKeyVersion's key material was generated.
 	GenerateTime pulumi.StringOutput `pulumi:"generateTime"`
-	// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+	// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
 	ImportFailureReason pulumi.StringOutput `pulumi:"importFailureReason"`
-	// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+	// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
 	ImportJob pulumi.StringOutput `pulumi:"importJob"`
-	// The time at which this CryptoKeyVersion's key material was imported.
+	// The time at which this CryptoKeyVersion's key material was most recently imported.
 	ImportTime pulumi.StringOutput `pulumi:"importTime"`
 	// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
+	// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+	ReimportEligible pulumi.BoolOutput `pulumi:"reimportEligible"`
 	// The current state of the CryptoKeyVersion.
 	State pulumi.StringOutput `pulumi:"state"`
 }

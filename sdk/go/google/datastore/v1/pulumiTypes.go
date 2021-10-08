@@ -231,6 +231,10 @@ func (o GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput) Index(i pulumi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyInput)(nil)).Elem(), GoogleDatastoreAdminV1IndexedPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyArrayInput)(nil)).Elem(), GoogleDatastoreAdminV1IndexedPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyResponseInput)(nil)).Elem(), GoogleDatastoreAdminV1IndexedPropertyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyResponseArrayInput)(nil)).Elem(), GoogleDatastoreAdminV1IndexedPropertyResponseArray{})
 	pulumi.RegisterOutputType(GoogleDatastoreAdminV1IndexedPropertyOutput{})
 	pulumi.RegisterOutputType(GoogleDatastoreAdminV1IndexedPropertyArrayOutput{})
 	pulumi.RegisterOutputType(GoogleDatastoreAdminV1IndexedPropertyResponseOutput{})

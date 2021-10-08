@@ -31,7 +31,9 @@ type LookupDatasetResult struct {
 	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime string `pulumi:"creationTime"`
 	// [Required] A reference that identifies the dataset.
-	DatasetReference               DatasetReferenceResponse        `pulumi:"datasetReference"`
+	DatasetReference DatasetReferenceResponse `pulumi:"datasetReference"`
+	// The default collation of the dataset.
+	DefaultCollation               string                          `pulumi:"defaultCollation"`
 	DefaultEncryptionConfiguration EncryptionConfigurationResponse `pulumi:"defaultEncryptionConfiguration"`
 	// [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
 	DefaultPartitionExpirationMs string `pulumi:"defaultPartitionExpirationMs"`
@@ -104,6 +106,11 @@ func (o LookupDatasetResultOutput) CreationTime() pulumi.StringOutput {
 // [Required] A reference that identifies the dataset.
 func (o LookupDatasetResultOutput) DatasetReference() DatasetReferenceResponseOutput {
 	return o.ApplyT(func(v LookupDatasetResult) DatasetReferenceResponse { return v.DatasetReference }).(DatasetReferenceResponseOutput)
+}
+
+// The default collation of the dataset.
+func (o LookupDatasetResultOutput) DefaultCollation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetResult) string { return v.DefaultCollation }).(pulumi.StringOutput)
 }
 
 func (o LookupDatasetResultOutput) DefaultEncryptionConfiguration() EncryptionConfigurationResponseOutput {

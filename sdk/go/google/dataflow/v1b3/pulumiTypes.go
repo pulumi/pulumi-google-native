@@ -487,7 +487,7 @@ func (o BigQueryIODetailsResponseArrayOutput) Index(i pulumi.IntInput) BigQueryI
 	}).(BigQueryIODetailsResponseOutput)
 }
 
-// Metadata for a Cloud BigTable connector used by the job.
+// Metadata for a Cloud Bigtable connector used by the job.
 type BigTableIODetails struct {
 	// InstanceId accessed in the connection.
 	InstanceId *string `pulumi:"instanceId"`
@@ -508,7 +508,7 @@ type BigTableIODetailsInput interface {
 	ToBigTableIODetailsOutputWithContext(context.Context) BigTableIODetailsOutput
 }
 
-// Metadata for a Cloud BigTable connector used by the job.
+// Metadata for a Cloud Bigtable connector used by the job.
 type BigTableIODetailsArgs struct {
 	// InstanceId accessed in the connection.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
@@ -555,7 +555,7 @@ func (i BigTableIODetailsArray) ToBigTableIODetailsArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BigTableIODetailsArrayOutput)
 }
 
-// Metadata for a Cloud BigTable connector used by the job.
+// Metadata for a Cloud Bigtable connector used by the job.
 type BigTableIODetailsOutput struct{ *pulumi.OutputState }
 
 func (BigTableIODetailsOutput) ElementType() reflect.Type {
@@ -605,7 +605,7 @@ func (o BigTableIODetailsArrayOutput) Index(i pulumi.IntInput) BigTableIODetails
 	}).(BigTableIODetailsOutput)
 }
 
-// Metadata for a Cloud BigTable connector used by the job.
+// Metadata for a Cloud Bigtable connector used by the job.
 type BigTableIODetailsResponse struct {
 	// InstanceId accessed in the connection.
 	InstanceId string `pulumi:"instanceId"`
@@ -626,7 +626,7 @@ type BigTableIODetailsResponseInput interface {
 	ToBigTableIODetailsResponseOutputWithContext(context.Context) BigTableIODetailsResponseOutput
 }
 
-// Metadata for a Cloud BigTable connector used by the job.
+// Metadata for a Cloud Bigtable connector used by the job.
 type BigTableIODetailsResponseArgs struct {
 	// InstanceId accessed in the connection.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
@@ -673,7 +673,7 @@ func (i BigTableIODetailsResponseArray) ToBigTableIODetailsResponseArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BigTableIODetailsResponseArrayOutput)
 }
 
-// Metadata for a Cloud BigTable connector used by the job.
+// Metadata for a Cloud Bigtable connector used by the job.
 type BigTableIODetailsResponseOutput struct{ *pulumi.OutputState }
 
 func (BigTableIODetailsResponseOutput) ElementType() reflect.Type {
@@ -3951,7 +3951,7 @@ func (o FileIODetailsResponseArrayOutput) Index(i pulumi.IntInput) FileIODetails
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadata struct {
-	// Identification of a Cloud BigTable source used in the Dataflow job.
+	// Identification of a Cloud Bigtable source used in the Dataflow job.
 	BigTableDetails []BigTableIODetails `pulumi:"bigTableDetails"`
 	// Identification of a BigQuery source used in the Dataflow job.
 	BigqueryDetails []BigQueryIODetails `pulumi:"bigqueryDetails"`
@@ -3959,7 +3959,7 @@ type JobMetadata struct {
 	DatastoreDetails []DatastoreIODetails `pulumi:"datastoreDetails"`
 	// Identification of a File source used in the Dataflow job.
 	FileDetails []FileIODetails `pulumi:"fileDetails"`
-	// Identification of a PubSub source used in the Dataflow job.
+	// Identification of a Pub/Sub source used in the Dataflow job.
 	PubsubDetails []PubSubIODetails `pulumi:"pubsubDetails"`
 	// The SDK version used to run the job.
 	SdkVersion *SdkVersion `pulumi:"sdkVersion"`
@@ -3980,7 +3980,7 @@ type JobMetadataInput interface {
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadataArgs struct {
-	// Identification of a Cloud BigTable source used in the Dataflow job.
+	// Identification of a Cloud Bigtable source used in the Dataflow job.
 	BigTableDetails BigTableIODetailsArrayInput `pulumi:"bigTableDetails"`
 	// Identification of a BigQuery source used in the Dataflow job.
 	BigqueryDetails BigQueryIODetailsArrayInput `pulumi:"bigqueryDetails"`
@@ -3988,7 +3988,7 @@ type JobMetadataArgs struct {
 	DatastoreDetails DatastoreIODetailsArrayInput `pulumi:"datastoreDetails"`
 	// Identification of a File source used in the Dataflow job.
 	FileDetails FileIODetailsArrayInput `pulumi:"fileDetails"`
-	// Identification of a PubSub source used in the Dataflow job.
+	// Identification of a Pub/Sub source used in the Dataflow job.
 	PubsubDetails PubSubIODetailsArrayInput `pulumi:"pubsubDetails"`
 	// The SDK version used to run the job.
 	SdkVersion SdkVersionPtrInput `pulumi:"sdkVersion"`
@@ -4074,7 +4074,7 @@ func (o JobMetadataOutput) ToJobMetadataPtrOutputWithContext(ctx context.Context
 	}).(JobMetadataPtrOutput)
 }
 
-// Identification of a Cloud BigTable source used in the Dataflow job.
+// Identification of a Cloud Bigtable source used in the Dataflow job.
 func (o JobMetadataOutput) BigTableDetails() BigTableIODetailsArrayOutput {
 	return o.ApplyT(func(v JobMetadata) []BigTableIODetails { return v.BigTableDetails }).(BigTableIODetailsArrayOutput)
 }
@@ -4094,7 +4094,7 @@ func (o JobMetadataOutput) FileDetails() FileIODetailsArrayOutput {
 	return o.ApplyT(func(v JobMetadata) []FileIODetails { return v.FileDetails }).(FileIODetailsArrayOutput)
 }
 
-// Identification of a PubSub source used in the Dataflow job.
+// Identification of a Pub/Sub source used in the Dataflow job.
 func (o JobMetadataOutput) PubsubDetails() PubSubIODetailsArrayOutput {
 	return o.ApplyT(func(v JobMetadata) []PubSubIODetails { return v.PubsubDetails }).(PubSubIODetailsArrayOutput)
 }
@@ -4133,7 +4133,7 @@ func (o JobMetadataPtrOutput) Elem() JobMetadataOutput {
 	}).(JobMetadataOutput)
 }
 
-// Identification of a Cloud BigTable source used in the Dataflow job.
+// Identification of a Cloud Bigtable source used in the Dataflow job.
 func (o JobMetadataPtrOutput) BigTableDetails() BigTableIODetailsArrayOutput {
 	return o.ApplyT(func(v *JobMetadata) []BigTableIODetails {
 		if v == nil {
@@ -4173,7 +4173,7 @@ func (o JobMetadataPtrOutput) FileDetails() FileIODetailsArrayOutput {
 	}).(FileIODetailsArrayOutput)
 }
 
-// Identification of a PubSub source used in the Dataflow job.
+// Identification of a Pub/Sub source used in the Dataflow job.
 func (o JobMetadataPtrOutput) PubsubDetails() PubSubIODetailsArrayOutput {
 	return o.ApplyT(func(v *JobMetadata) []PubSubIODetails {
 		if v == nil {
@@ -4205,7 +4205,7 @@ func (o JobMetadataPtrOutput) SpannerDetails() SpannerIODetailsArrayOutput {
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadataResponse struct {
-	// Identification of a Cloud BigTable source used in the Dataflow job.
+	// Identification of a Cloud Bigtable source used in the Dataflow job.
 	BigTableDetails []BigTableIODetailsResponse `pulumi:"bigTableDetails"`
 	// Identification of a BigQuery source used in the Dataflow job.
 	BigqueryDetails []BigQueryIODetailsResponse `pulumi:"bigqueryDetails"`
@@ -4213,7 +4213,7 @@ type JobMetadataResponse struct {
 	DatastoreDetails []DatastoreIODetailsResponse `pulumi:"datastoreDetails"`
 	// Identification of a File source used in the Dataflow job.
 	FileDetails []FileIODetailsResponse `pulumi:"fileDetails"`
-	// Identification of a PubSub source used in the Dataflow job.
+	// Identification of a Pub/Sub source used in the Dataflow job.
 	PubsubDetails []PubSubIODetailsResponse `pulumi:"pubsubDetails"`
 	// The SDK version used to run the job.
 	SdkVersion SdkVersionResponse `pulumi:"sdkVersion"`
@@ -4234,7 +4234,7 @@ type JobMetadataResponseInput interface {
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadataResponseArgs struct {
-	// Identification of a Cloud BigTable source used in the Dataflow job.
+	// Identification of a Cloud Bigtable source used in the Dataflow job.
 	BigTableDetails BigTableIODetailsResponseArrayInput `pulumi:"bigTableDetails"`
 	// Identification of a BigQuery source used in the Dataflow job.
 	BigqueryDetails BigQueryIODetailsResponseArrayInput `pulumi:"bigqueryDetails"`
@@ -4242,7 +4242,7 @@ type JobMetadataResponseArgs struct {
 	DatastoreDetails DatastoreIODetailsResponseArrayInput `pulumi:"datastoreDetails"`
 	// Identification of a File source used in the Dataflow job.
 	FileDetails FileIODetailsResponseArrayInput `pulumi:"fileDetails"`
-	// Identification of a PubSub source used in the Dataflow job.
+	// Identification of a Pub/Sub source used in the Dataflow job.
 	PubsubDetails PubSubIODetailsResponseArrayInput `pulumi:"pubsubDetails"`
 	// The SDK version used to run the job.
 	SdkVersion SdkVersionResponseInput `pulumi:"sdkVersion"`
@@ -4328,7 +4328,7 @@ func (o JobMetadataResponseOutput) ToJobMetadataResponsePtrOutputWithContext(ctx
 	}).(JobMetadataResponsePtrOutput)
 }
 
-// Identification of a Cloud BigTable source used in the Dataflow job.
+// Identification of a Cloud Bigtable source used in the Dataflow job.
 func (o JobMetadataResponseOutput) BigTableDetails() BigTableIODetailsResponseArrayOutput {
 	return o.ApplyT(func(v JobMetadataResponse) []BigTableIODetailsResponse { return v.BigTableDetails }).(BigTableIODetailsResponseArrayOutput)
 }
@@ -4348,7 +4348,7 @@ func (o JobMetadataResponseOutput) FileDetails() FileIODetailsResponseArrayOutpu
 	return o.ApplyT(func(v JobMetadataResponse) []FileIODetailsResponse { return v.FileDetails }).(FileIODetailsResponseArrayOutput)
 }
 
-// Identification of a PubSub source used in the Dataflow job.
+// Identification of a Pub/Sub source used in the Dataflow job.
 func (o JobMetadataResponseOutput) PubsubDetails() PubSubIODetailsResponseArrayOutput {
 	return o.ApplyT(func(v JobMetadataResponse) []PubSubIODetailsResponse { return v.PubsubDetails }).(PubSubIODetailsResponseArrayOutput)
 }
@@ -4387,7 +4387,7 @@ func (o JobMetadataResponsePtrOutput) Elem() JobMetadataResponseOutput {
 	}).(JobMetadataResponseOutput)
 }
 
-// Identification of a Cloud BigTable source used in the Dataflow job.
+// Identification of a Cloud Bigtable source used in the Dataflow job.
 func (o JobMetadataResponsePtrOutput) BigTableDetails() BigTableIODetailsResponseArrayOutput {
 	return o.ApplyT(func(v *JobMetadataResponse) []BigTableIODetailsResponse {
 		if v == nil {
@@ -4427,7 +4427,7 @@ func (o JobMetadataResponsePtrOutput) FileDetails() FileIODetailsResponseArrayOu
 	}).(FileIODetailsResponseArrayOutput)
 }
 
-// Identification of a PubSub source used in the Dataflow job.
+// Identification of a Pub/Sub source used in the Dataflow job.
 func (o JobMetadataResponsePtrOutput) PubsubDetails() PubSubIODetailsResponseArrayOutput {
 	return o.ApplyT(func(v *JobMetadataResponse) []PubSubIODetailsResponse {
 		if v == nil {
@@ -5405,7 +5405,7 @@ func (o PubSubIODetailsResponseArrayOutput) Index(i pulumi.IntInput) PubSubIODet
 
 // The environment values to set at runtime.
 type RuntimeEnvironment struct {
-	// Additional experiment flags for the job.
+	// Additional experiment flags for the job, specified with the `--experiments` option.
 	AdditionalExperiments []string `pulumi:"additionalExperiments"`
 	// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
 	AdditionalUserLabels map[string]string `pulumi:"additionalUserLabels"`
@@ -5452,7 +5452,7 @@ type RuntimeEnvironmentInput interface {
 
 // The environment values to set at runtime.
 type RuntimeEnvironmentArgs struct {
-	// Additional experiment flags for the job.
+	// Additional experiment flags for the job, specified with the `--experiments` option.
 	AdditionalExperiments pulumi.StringArrayInput `pulumi:"additionalExperiments"`
 	// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
 	AdditionalUserLabels pulumi.StringMapInput `pulumi:"additionalUserLabels"`
@@ -5564,7 +5564,7 @@ func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentPtrOutputWithContext(ctx c
 	}).(RuntimeEnvironmentPtrOutput)
 }
 
-// Additional experiment flags for the job.
+// Additional experiment flags for the job, specified with the `--experiments` option.
 func (o RuntimeEnvironmentOutput) AdditionalExperiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) []string { return v.AdditionalExperiments }).(pulumi.StringArrayOutput)
 }
@@ -5668,7 +5668,7 @@ func (o RuntimeEnvironmentPtrOutput) Elem() RuntimeEnvironmentOutput {
 	}).(RuntimeEnvironmentOutput)
 }
 
-// Additional experiment flags for the job.
+// Additional experiment flags for the job, specified with the `--experiments` option.
 func (o RuntimeEnvironmentPtrOutput) AdditionalExperiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) []string {
 		if v == nil {
@@ -9696,6 +9696,119 @@ func (o WorkerSettingsResponseOutput) WorkerId() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingSettingsInput)(nil)).Elem(), AutoscalingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingSettingsPtrInput)(nil)).Elem(), AutoscalingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingSettingsResponseInput)(nil)).Elem(), AutoscalingSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryIODetailsInput)(nil)).Elem(), BigQueryIODetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryIODetailsArrayInput)(nil)).Elem(), BigQueryIODetailsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryIODetailsResponseInput)(nil)).Elem(), BigQueryIODetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryIODetailsResponseArrayInput)(nil)).Elem(), BigQueryIODetailsResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigTableIODetailsInput)(nil)).Elem(), BigTableIODetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigTableIODetailsArrayInput)(nil)).Elem(), BigTableIODetailsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigTableIODetailsResponseInput)(nil)).Elem(), BigTableIODetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigTableIODetailsResponseArrayInput)(nil)).Elem(), BigTableIODetailsResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentSourceInput)(nil)).Elem(), ComponentSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentSourceArrayInput)(nil)).Elem(), ComponentSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentSourceResponseInput)(nil)).Elem(), ComponentSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentSourceResponseArrayInput)(nil)).Elem(), ComponentSourceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTransformInput)(nil)).Elem(), ComponentTransformArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTransformArrayInput)(nil)).Elem(), ComponentTransformArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTransformResponseInput)(nil)).Elem(), ComponentTransformResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTransformResponseArrayInput)(nil)).Elem(), ComponentTransformResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreIODetailsInput)(nil)).Elem(), DatastoreIODetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreIODetailsArrayInput)(nil)).Elem(), DatastoreIODetailsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreIODetailsResponseInput)(nil)).Elem(), DatastoreIODetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreIODetailsResponseArrayInput)(nil)).Elem(), DatastoreIODetailsResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsInput)(nil)).Elem(), DebugOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsPtrInput)(nil)).Elem(), DebugOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsResponseInput)(nil)).Elem(), DebugOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsResponsePtrInput)(nil)).Elem(), DebugOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskInput)(nil)).Elem(), DiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskArrayInput)(nil)).Elem(), DiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskResponseInput)(nil)).Elem(), DiskResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskResponseArrayInput)(nil)).Elem(), DiskResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDataInput)(nil)).Elem(), DisplayDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDataArrayInput)(nil)).Elem(), DisplayDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDataResponseInput)(nil)).Elem(), DisplayDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDataResponseArrayInput)(nil)).Elem(), DisplayDataResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentInput)(nil)).Elem(), EnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPtrInput)(nil)).Elem(), EnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentResponseInput)(nil)).Elem(), EnvironmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentResponsePtrInput)(nil)).Elem(), EnvironmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageStateInput)(nil)).Elem(), ExecutionStageStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageStateArrayInput)(nil)).Elem(), ExecutionStageStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageStateResponseInput)(nil)).Elem(), ExecutionStageStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageStateResponseArrayInput)(nil)).Elem(), ExecutionStageStateResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageSummaryInput)(nil)).Elem(), ExecutionStageSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageSummaryArrayInput)(nil)).Elem(), ExecutionStageSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageSummaryResponseInput)(nil)).Elem(), ExecutionStageSummaryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageSummaryResponseArrayInput)(nil)).Elem(), ExecutionStageSummaryResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileIODetailsInput)(nil)).Elem(), FileIODetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileIODetailsArrayInput)(nil)).Elem(), FileIODetailsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileIODetailsResponseInput)(nil)).Elem(), FileIODetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileIODetailsResponseArrayInput)(nil)).Elem(), FileIODetailsResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataInput)(nil)).Elem(), JobMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataPtrInput)(nil)).Elem(), JobMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataResponseInput)(nil)).Elem(), JobMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataResponsePtrInput)(nil)).Elem(), JobMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInput)(nil)).Elem(), PackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageArrayInput)(nil)).Elem(), PackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageResponseInput)(nil)).Elem(), PackageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageResponseArrayInput)(nil)).Elem(), PackageResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParameterMetadataResponseInput)(nil)).Elem(), ParameterMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParameterMetadataResponseArrayInput)(nil)).Elem(), ParameterMetadataResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDescriptionInput)(nil)).Elem(), PipelineDescriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDescriptionPtrInput)(nil)).Elem(), PipelineDescriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDescriptionResponseInput)(nil)).Elem(), PipelineDescriptionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDescriptionResponsePtrInput)(nil)).Elem(), PipelineDescriptionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubSubIODetailsInput)(nil)).Elem(), PubSubIODetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubSubIODetailsArrayInput)(nil)).Elem(), PubSubIODetailsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubSubIODetailsResponseInput)(nil)).Elem(), PubSubIODetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubSubIODetailsResponseArrayInput)(nil)).Elem(), PubSubIODetailsResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeEnvironmentInput)(nil)).Elem(), RuntimeEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeEnvironmentPtrInput)(nil)).Elem(), RuntimeEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetadataResponseInput)(nil)).Elem(), RuntimeMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetadataResponsePtrInput)(nil)).Elem(), RuntimeMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SDKInfoResponseInput)(nil)).Elem(), SDKInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SDKInfoResponsePtrInput)(nil)).Elem(), SDKInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SdkHarnessContainerImageInput)(nil)).Elem(), SdkHarnessContainerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SdkHarnessContainerImageArrayInput)(nil)).Elem(), SdkHarnessContainerImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SdkHarnessContainerImageResponseInput)(nil)).Elem(), SdkHarnessContainerImageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SdkHarnessContainerImageResponseArrayInput)(nil)).Elem(), SdkHarnessContainerImageResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SdkVersionInput)(nil)).Elem(), SdkVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SdkVersionPtrInput)(nil)).Elem(), SdkVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SdkVersionResponseInput)(nil)).Elem(), SdkVersionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SdkVersionResponsePtrInput)(nil)).Elem(), SdkVersionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpannerIODetailsInput)(nil)).Elem(), SpannerIODetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpannerIODetailsArrayInput)(nil)).Elem(), SpannerIODetailsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpannerIODetailsResponseInput)(nil)).Elem(), SpannerIODetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpannerIODetailsResponseArrayInput)(nil)).Elem(), SpannerIODetailsResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StageSourceInput)(nil)).Elem(), StageSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StageSourceArrayInput)(nil)).Elem(), StageSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StageSourceResponseInput)(nil)).Elem(), StageSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StageSourceResponseArrayInput)(nil)).Elem(), StageSourceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StepInput)(nil)).Elem(), StepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StepArrayInput)(nil)).Elem(), StepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StepResponseInput)(nil)).Elem(), StepResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StepResponseArrayInput)(nil)).Elem(), StepResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskRunnerSettingsInput)(nil)).Elem(), TaskRunnerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskRunnerSettingsPtrInput)(nil)).Elem(), TaskRunnerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskRunnerSettingsResponseInput)(nil)).Elem(), TaskRunnerSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateMetadataResponseInput)(nil)).Elem(), TemplateMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateMetadataResponsePtrInput)(nil)).Elem(), TemplateMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformSummaryInput)(nil)).Elem(), TransformSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformSummaryArrayInput)(nil)).Elem(), TransformSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformSummaryResponseInput)(nil)).Elem(), TransformSummaryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformSummaryResponseArrayInput)(nil)).Elem(), TransformSummaryResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolInput)(nil)).Elem(), WorkerPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolArrayInput)(nil)).Elem(), WorkerPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolResponseInput)(nil)).Elem(), WorkerPoolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolResponseArrayInput)(nil)).Elem(), WorkerPoolResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerSettingsInput)(nil)).Elem(), WorkerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerSettingsPtrInput)(nil)).Elem(), WorkerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerSettingsResponseInput)(nil)).Elem(), WorkerSettingsResponseArgs{})
 	pulumi.RegisterOutputType(AutoscalingSettingsOutput{})
 	pulumi.RegisterOutputType(AutoscalingSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingSettingsResponseOutput{})

@@ -750,6 +750,14 @@ func (o GoogleTypeDateResponsePtrOutput) Year() pulumi.IntPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayConfigInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDateResponseInput)(nil)).Elem(), GoogleTypeDateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDateResponsePtrInput)(nil)).Elem(), GoogleTypeDateResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput{})

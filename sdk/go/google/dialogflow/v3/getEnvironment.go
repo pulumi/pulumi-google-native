@@ -34,6 +34,8 @@ type LookupEnvironmentResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name string `pulumi:"name"`
+	// The test cases config for continuous tests of this environment.
+	TestCasesConfig GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse `pulumi:"testCasesConfig"`
 	// Update time of this environment.
 	UpdateTime string `pulumi:"updateTime"`
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
@@ -87,6 +89,13 @@ func (o LookupEnvironmentResultOutput) DisplayName() pulumi.StringOutput {
 // The name of the environment. Format: `projects//locations//agents//environments/`.
 func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The test cases config for continuous tests of this environment.
+func (o LookupEnvironmentResultOutput) TestCasesConfig() GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse {
+		return v.TestCasesConfig
+	}).(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponseOutput)
 }
 
 // Update time of this environment.

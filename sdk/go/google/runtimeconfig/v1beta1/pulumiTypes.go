@@ -1302,6 +1302,23 @@ func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CardinalityInput)(nil)).Elem(), CardinalityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CardinalityPtrInput)(nil)).Elem(), CardinalityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CardinalityResponseInput)(nil)).Elem(), CardinalityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CardinalityResponsePtrInput)(nil)).Elem(), CardinalityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndConditionInput)(nil)).Elem(), EndConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndConditionPtrInput)(nil)).Elem(), EndConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndConditionResponseInput)(nil)).Elem(), EndConditionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndConditionResponsePtrInput)(nil)).Elem(), EndConditionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})

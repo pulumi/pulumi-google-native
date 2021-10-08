@@ -15,7 +15,7 @@ import (
 type Tag struct {
 	pulumi.CustomResourceState
 
-	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
+	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -67,7 +67,7 @@ func (TagState) ElementType() reflect.Type {
 
 type tagArgs struct {
 	Location *string `pulumi:"location"`
-	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
+	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
 	Name         *string `pulumi:"name"`
 	PackageId    string  `pulumi:"packageId"`
 	Project      *string `pulumi:"project"`
@@ -80,7 +80,7 @@ type tagArgs struct {
 // The set of arguments for constructing a Tag resource.
 type TagArgs struct {
 	Location pulumi.StringPtrInput
-	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
+	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
 	Name         pulumi.StringPtrInput
 	PackageId    pulumi.StringInput
 	Project      pulumi.StringPtrInput

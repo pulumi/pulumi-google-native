@@ -28,7 +28,7 @@ type LookupMembershipArgs struct {
 type LookupMembershipResult struct {
 	// The time when the `Membership` was created.
 	CreateTime string `pulumi:"createTime"`
-	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
 	Name string `pulumi:"name"`
 	// Immutable. The `EntityKey` of the member.
 	PreferredMemberKey EntityKeyResponse `pulumi:"preferredMemberKey"`
@@ -77,7 +77,7 @@ func (o LookupMembershipResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMembershipResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
 func (o LookupMembershipResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMembershipResult) string { return v.Name }).(pulumi.StringOutput)
 }

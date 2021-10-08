@@ -332,7 +332,7 @@ func (o GoogleCloudRetailV2AudienceResponsePtrOutput) Genders() pulumi.StringArr
 type GoogleCloudRetailV2ColorInfo struct {
 	// The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 	ColorFamilies []string `pulumi:"colorFamilies"`
-	// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+	// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 	Colors []string `pulumi:"colors"`
 }
 
@@ -351,7 +351,7 @@ type GoogleCloudRetailV2ColorInfoInput interface {
 type GoogleCloudRetailV2ColorInfoArgs struct {
 	// The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 	ColorFamilies pulumi.StringArrayInput `pulumi:"colorFamilies"`
-	// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+	// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 	Colors pulumi.StringArrayInput `pulumi:"colors"`
 }
 
@@ -438,7 +438,7 @@ func (o GoogleCloudRetailV2ColorInfoOutput) ColorFamilies() pulumi.StringArrayOu
 	return o.ApplyT(func(v GoogleCloudRetailV2ColorInfo) []string { return v.ColorFamilies }).(pulumi.StringArrayOutput)
 }
 
-// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 func (o GoogleCloudRetailV2ColorInfoOutput) Colors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2ColorInfo) []string { return v.Colors }).(pulumi.StringArrayOutput)
 }
@@ -477,7 +477,7 @@ func (o GoogleCloudRetailV2ColorInfoPtrOutput) ColorFamilies() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 func (o GoogleCloudRetailV2ColorInfoPtrOutput) Colors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2ColorInfo) []string {
 		if v == nil {
@@ -491,7 +491,7 @@ func (o GoogleCloudRetailV2ColorInfoPtrOutput) Colors() pulumi.StringArrayOutput
 type GoogleCloudRetailV2ColorInfoResponse struct {
 	// The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 	ColorFamilies []string `pulumi:"colorFamilies"`
-	// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+	// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 	Colors []string `pulumi:"colors"`
 }
 
@@ -510,7 +510,7 @@ type GoogleCloudRetailV2ColorInfoResponseInput interface {
 type GoogleCloudRetailV2ColorInfoResponseArgs struct {
 	// The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 	ColorFamilies pulumi.StringArrayInput `pulumi:"colorFamilies"`
-	// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+	// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 	Colors pulumi.StringArrayInput `pulumi:"colors"`
 }
 
@@ -597,7 +597,7 @@ func (o GoogleCloudRetailV2ColorInfoResponseOutput) ColorFamilies() pulumi.Strin
 	return o.ApplyT(func(v GoogleCloudRetailV2ColorInfoResponse) []string { return v.ColorFamilies }).(pulumi.StringArrayOutput)
 }
 
-// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 func (o GoogleCloudRetailV2ColorInfoResponseOutput) Colors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2ColorInfoResponse) []string { return v.Colors }).(pulumi.StringArrayOutput)
 }
@@ -636,7 +636,7 @@ func (o GoogleCloudRetailV2ColorInfoResponsePtrOutput) ColorFamilies() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 func (o GoogleCloudRetailV2ColorInfoResponsePtrOutput) Colors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2ColorInfoResponse) []string {
 		if v == nil {
@@ -648,7 +648,7 @@ func (o GoogleCloudRetailV2ColorInfoResponsePtrOutput) Colors() pulumi.StringArr
 
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
 type GoogleCloudRetailV2FulfillmentInfo struct {
-	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 	PlaceIds []string `pulumi:"placeIds"`
 	// The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
 	Type *string `pulumi:"type"`
@@ -667,7 +667,7 @@ type GoogleCloudRetailV2FulfillmentInfoInput interface {
 
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
 type GoogleCloudRetailV2FulfillmentInfoArgs struct {
-	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 	PlaceIds pulumi.StringArrayInput `pulumi:"placeIds"`
 	// The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -725,7 +725,7 @@ func (o GoogleCloudRetailV2FulfillmentInfoOutput) ToGoogleCloudRetailV2Fulfillme
 	return o
 }
 
-// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 func (o GoogleCloudRetailV2FulfillmentInfoOutput) PlaceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2FulfillmentInfo) []string { return v.PlaceIds }).(pulumi.StringArrayOutput)
 }
@@ -757,7 +757,7 @@ func (o GoogleCloudRetailV2FulfillmentInfoArrayOutput) Index(i pulumi.IntInput) 
 
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
 type GoogleCloudRetailV2FulfillmentInfoResponse struct {
-	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 	PlaceIds []string `pulumi:"placeIds"`
 	// The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
 	Type string `pulumi:"type"`
@@ -776,7 +776,7 @@ type GoogleCloudRetailV2FulfillmentInfoResponseInput interface {
 
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
 type GoogleCloudRetailV2FulfillmentInfoResponseArgs struct {
-	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 	PlaceIds pulumi.StringArrayInput `pulumi:"placeIds"`
 	// The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -834,7 +834,7 @@ func (o GoogleCloudRetailV2FulfillmentInfoResponseOutput) ToGoogleCloudRetailV2F
 	return o
 }
 
-// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 func (o GoogleCloudRetailV2FulfillmentInfoResponseOutput) PlaceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2FulfillmentInfoResponse) []string { return v.PlaceIds }).(pulumi.StringArrayOutput)
 }
@@ -1975,7 +1975,7 @@ type GoogleCloudRetailV2ProductResponse struct {
 	Conditions []string `pulumi:"conditions"`
 	// Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). schema.org property [Product.description](https://schema.org/description).
 	Description string `pulumi:"description"`
-	// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+	// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
 	ExpireTime string `pulumi:"expireTime"`
 	// Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
 	FulfillmentInfo []GoogleCloudRetailV2FulfillmentInfoResponse `pulumi:"fulfillmentInfo"`
@@ -1987,7 +1987,7 @@ type GoogleCloudRetailV2ProductResponse struct {
 	LanguageCode string `pulumi:"languageCode"`
 	// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
 	Materials []string `pulumi:"materials"`
-	// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
+	// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
 	Name string `pulumi:"name"`
 	// The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property [Product.pattern](https://schema.org/pattern).
 	Patterns []string `pulumi:"patterns"`
@@ -2054,7 +2054,7 @@ type GoogleCloudRetailV2ProductResponseArgs struct {
 	Conditions pulumi.StringArrayInput `pulumi:"conditions"`
 	// Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). schema.org property [Product.description](https://schema.org/description).
 	Description pulumi.StringInput `pulumi:"description"`
-	// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+	// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
 	FulfillmentInfo GoogleCloudRetailV2FulfillmentInfoResponseArrayInput `pulumi:"fulfillmentInfo"`
@@ -2066,7 +2066,7 @@ type GoogleCloudRetailV2ProductResponseArgs struct {
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 	// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
 	Materials pulumi.StringArrayInput `pulumi:"materials"`
-	// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
+	// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property [Product.pattern](https://schema.org/pattern).
 	Patterns pulumi.StringArrayInput `pulumi:"patterns"`
@@ -2205,7 +2205,7 @@ func (o GoogleCloudRetailV2ProductResponseOutput) Description() pulumi.StringOut
 	return o.ApplyT(func(v GoogleCloudRetailV2ProductResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
 func (o GoogleCloudRetailV2ProductResponseOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2ProductResponse) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -2237,7 +2237,7 @@ func (o GoogleCloudRetailV2ProductResponseOutput) Materials() pulumi.StringArray
 	return o.ApplyT(func(v GoogleCloudRetailV2ProductResponse) []string { return v.Materials }).(pulumi.StringArrayOutput)
 }
 
-// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
+// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
 func (o GoogleCloudRetailV2ProductResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2ProductResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2889,6 +2889,40 @@ func (o GoogleCloudRetailV2RatingResponsePtrOutput) RatingHistogram() pulumi.Int
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2AudienceInput)(nil)).Elem(), GoogleCloudRetailV2AudienceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2AudiencePtrInput)(nil)).Elem(), GoogleCloudRetailV2AudienceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2AudienceResponseInput)(nil)).Elem(), GoogleCloudRetailV2AudienceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2AudienceResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2AudienceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ColorInfoInput)(nil)).Elem(), GoogleCloudRetailV2ColorInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ColorInfoPtrInput)(nil)).Elem(), GoogleCloudRetailV2ColorInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ColorInfoResponseInput)(nil)).Elem(), GoogleCloudRetailV2ColorInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ColorInfoResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2ColorInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2FulfillmentInfoInput)(nil)).Elem(), GoogleCloudRetailV2FulfillmentInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2FulfillmentInfoArrayInput)(nil)).Elem(), GoogleCloudRetailV2FulfillmentInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2FulfillmentInfoResponseInput)(nil)).Elem(), GoogleCloudRetailV2FulfillmentInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2FulfillmentInfoResponseArrayInput)(nil)).Elem(), GoogleCloudRetailV2FulfillmentInfoResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ImageInput)(nil)).Elem(), GoogleCloudRetailV2ImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ImageArrayInput)(nil)).Elem(), GoogleCloudRetailV2ImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ImageResponseInput)(nil)).Elem(), GoogleCloudRetailV2ImageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ImageResponseArrayInput)(nil)).Elem(), GoogleCloudRetailV2ImageResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2IntervalResponseInput)(nil)).Elem(), GoogleCloudRetailV2IntervalResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2IntervalResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2IntervalResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PriceInfoInput)(nil)).Elem(), GoogleCloudRetailV2PriceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PriceInfoPtrInput)(nil)).Elem(), GoogleCloudRetailV2PriceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PriceInfoPriceRangeResponseInput)(nil)).Elem(), GoogleCloudRetailV2PriceInfoPriceRangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PriceInfoPriceRangeResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2PriceInfoPriceRangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PriceInfoResponseInput)(nil)).Elem(), GoogleCloudRetailV2PriceInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PriceInfoResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2PriceInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ProductResponseInput)(nil)).Elem(), GoogleCloudRetailV2ProductResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ProductResponseArrayInput)(nil)).Elem(), GoogleCloudRetailV2ProductResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PromotionInput)(nil)).Elem(), GoogleCloudRetailV2PromotionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PromotionArrayInput)(nil)).Elem(), GoogleCloudRetailV2PromotionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PromotionResponseInput)(nil)).Elem(), GoogleCloudRetailV2PromotionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PromotionResponseArrayInput)(nil)).Elem(), GoogleCloudRetailV2PromotionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RatingInput)(nil)).Elem(), GoogleCloudRetailV2RatingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RatingPtrInput)(nil)).Elem(), GoogleCloudRetailV2RatingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RatingResponseInput)(nil)).Elem(), GoogleCloudRetailV2RatingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RatingResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2RatingResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2AudienceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2AudiencePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2AudienceResponseOutput{})

@@ -1486,7 +1486,7 @@ func (o ConfigMapKeySelectorResponseOutput) Optional() pulumi.BoolOutput {
 
 // Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSource struct {
-	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode *int `pulumi:"defaultMode"`
 	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPath `pulumi:"items"`
@@ -1509,7 +1509,7 @@ type ConfigMapVolumeSourceInput interface {
 
 // Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceArgs struct {
-	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode pulumi.IntPtrInput `pulumi:"defaultMode"`
 	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathArrayInput `pulumi:"items"`
@@ -1597,7 +1597,7 @@ func (o ConfigMapVolumeSourceOutput) ToConfigMapVolumeSourcePtrOutputWithContext
 	}).(ConfigMapVolumeSourcePtrOutput)
 }
 
-// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o ConfigMapVolumeSourceOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSource) *int { return v.DefaultMode }).(pulumi.IntPtrOutput)
 }
@@ -1641,7 +1641,7 @@ func (o ConfigMapVolumeSourcePtrOutput) Elem() ConfigMapVolumeSourceOutput {
 	}).(ConfigMapVolumeSourceOutput)
 }
 
-// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o ConfigMapVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConfigMapVolumeSource) *int {
 		if v == nil {
@@ -1683,7 +1683,7 @@ func (o ConfigMapVolumeSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 
 // Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceResponse struct {
-	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode int `pulumi:"defaultMode"`
 	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPathResponse `pulumi:"items"`
@@ -1706,7 +1706,7 @@ type ConfigMapVolumeSourceResponseInput interface {
 
 // Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceResponseArgs struct {
-	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
 	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathResponseArrayInput `pulumi:"items"`
@@ -1743,7 +1743,7 @@ func (o ConfigMapVolumeSourceResponseOutput) ToConfigMapVolumeSourceResponseOutp
 	return o
 }
 
-// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o ConfigMapVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
 }
@@ -5229,7 +5229,7 @@ func (o HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) HTTPHeaderRespon
 type KeyToPath struct {
 	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key *string `pulumi:"key"`
-	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode *int `pulumi:"mode"`
 	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path *string `pulumi:"path"`
@@ -5250,7 +5250,7 @@ type KeyToPathInput interface {
 type KeyToPathArgs struct {
 	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode pulumi.IntPtrInput `pulumi:"mode"`
 	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -5313,7 +5313,7 @@ func (o KeyToPathOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o KeyToPathOutput) Mode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *int { return v.Mode }).(pulumi.IntPtrOutput)
 }
@@ -5347,7 +5347,7 @@ func (o KeyToPathArrayOutput) Index(i pulumi.IntInput) KeyToPathOutput {
 type KeyToPathResponse struct {
 	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key string `pulumi:"key"`
-	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode int `pulumi:"mode"`
 	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path string `pulumi:"path"`
@@ -5368,7 +5368,7 @@ type KeyToPathResponseInput interface {
 type KeyToPathResponseArgs struct {
 	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key pulumi.StringInput `pulumi:"key"`
-	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode pulumi.IntInput `pulumi:"mode"`
 	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path pulumi.StringInput `pulumi:"path"`
@@ -5431,7 +5431,7 @@ func (o KeyToPathResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyToPathResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o KeyToPathResponseOutput) Mode() pulumi.IntOutput {
 	return o.ApplyT(func(v KeyToPathResponse) int { return v.Mode }).(pulumi.IntOutput)
 }
@@ -8882,7 +8882,7 @@ func (o SecretKeySelectorResponseOutput) Optional() pulumi.BoolOutput {
 
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSource struct {
-	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+	// Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode *int `pulumi:"defaultMode"`
 	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPath `pulumi:"items"`
@@ -8905,7 +8905,7 @@ type SecretVolumeSourceInput interface {
 
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceArgs struct {
-	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+	// Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode pulumi.IntPtrInput `pulumi:"defaultMode"`
 	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathArrayInput `pulumi:"items"`
@@ -8993,7 +8993,7 @@ func (o SecretVolumeSourceOutput) ToSecretVolumeSourcePtrOutputWithContext(ctx c
 	}).(SecretVolumeSourcePtrOutput)
 }
 
-// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+// Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o SecretVolumeSourceOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecretVolumeSource) *int { return v.DefaultMode }).(pulumi.IntPtrOutput)
 }
@@ -9037,7 +9037,7 @@ func (o SecretVolumeSourcePtrOutput) Elem() SecretVolumeSourceOutput {
 	}).(SecretVolumeSourceOutput)
 }
 
-// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+// Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o SecretVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) *int {
 		if v == nil {
@@ -9079,7 +9079,7 @@ func (o SecretVolumeSourcePtrOutput) SecretName() pulumi.StringPtrOutput {
 
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceResponse struct {
-	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+	// Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode int `pulumi:"defaultMode"`
 	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPathResponse `pulumi:"items"`
@@ -9102,7 +9102,7 @@ type SecretVolumeSourceResponseInput interface {
 
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceResponseArgs struct {
-	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+	// Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
 	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathResponseArrayInput `pulumi:"items"`
@@ -9139,7 +9139,7 @@ func (o SecretVolumeSourceResponseOutput) ToSecretVolumeSourceResponseOutputWith
 	return o
 }
 
-// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+// Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o SecretVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
 }
@@ -11163,6 +11163,143 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressableInput)(nil)).Elem(), AddressableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressablePtrInput)(nil)).Elem(), AddressableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressableResponseInput)(nil)).Elem(), AddressableResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressableResponsePtrInput)(nil)).Elem(), AddressableResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapEnvSourceInput)(nil)).Elem(), ConfigMapEnvSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapEnvSourcePtrInput)(nil)).Elem(), ConfigMapEnvSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapEnvSourceResponseInput)(nil)).Elem(), ConfigMapEnvSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapKeySelectorInput)(nil)).Elem(), ConfigMapKeySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapKeySelectorPtrInput)(nil)).Elem(), ConfigMapKeySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapKeySelectorResponseInput)(nil)).Elem(), ConfigMapKeySelectorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapVolumeSourceInput)(nil)).Elem(), ConfigMapVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapVolumeSourcePtrInput)(nil)).Elem(), ConfigMapVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapVolumeSourceResponseInput)(nil)).Elem(), ConfigMapVolumeSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerInput)(nil)).Elem(), ContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerArrayInput)(nil)).Elem(), ContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortInput)(nil)).Elem(), ContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortArrayInput)(nil)).Elem(), ContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortResponseInput)(nil)).Elem(), ContainerPortResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortResponseArrayInput)(nil)).Elem(), ContainerPortResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerResponseInput)(nil)).Elem(), ContainerResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerResponseArrayInput)(nil)).Elem(), ContainerResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecInput)(nil)).Elem(), DomainMappingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecPtrInput)(nil)).Elem(), DomainMappingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecResponseInput)(nil)).Elem(), DomainMappingSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecResponsePtrInput)(nil)).Elem(), DomainMappingSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingStatusInput)(nil)).Elem(), DomainMappingStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingStatusPtrInput)(nil)).Elem(), DomainMappingStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingStatusResponseInput)(nil)).Elem(), DomainMappingStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingStatusResponsePtrInput)(nil)).Elem(), DomainMappingStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceInput)(nil)).Elem(), EnvFromSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceArrayInput)(nil)).Elem(), EnvFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceResponseInput)(nil)).Elem(), EnvFromSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceResponseArrayInput)(nil)).Elem(), EnvFromSourceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarInput)(nil)).Elem(), EnvVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarArrayInput)(nil)).Elem(), EnvVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarResponseInput)(nil)).Elem(), EnvVarResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarResponseArrayInput)(nil)).Elem(), EnvVarResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarSourceInput)(nil)).Elem(), EnvVarSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarSourcePtrInput)(nil)).Elem(), EnvVarSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarSourceResponseInput)(nil)).Elem(), EnvVarSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionInput)(nil)).Elem(), ExecActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionPtrInput)(nil)).Elem(), ExecActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionResponseInput)(nil)).Elem(), ExecActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV1ConditionInput)(nil)).Elem(), GoogleCloudRunV1ConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV1ConditionArrayInput)(nil)).Elem(), GoogleCloudRunV1ConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV1ConditionResponseInput)(nil)).Elem(), GoogleCloudRunV1ConditionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV1ConditionResponseArrayInput)(nil)).Elem(), GoogleCloudRunV1ConditionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionInput)(nil)).Elem(), HTTPGetActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionPtrInput)(nil)).Elem(), HTTPGetActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionResponseInput)(nil)).Elem(), HTTPGetActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderInput)(nil)).Elem(), HTTPHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderArrayInput)(nil)).Elem(), HTTPHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderResponseInput)(nil)).Elem(), HTTPHeaderResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderResponseArrayInput)(nil)).Elem(), HTTPHeaderResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathInput)(nil)).Elem(), KeyToPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathArrayInput)(nil)).Elem(), KeyToPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathResponseInput)(nil)).Elem(), KeyToPathResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathResponseArrayInput)(nil)).Elem(), KeyToPathResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceInput)(nil)).Elem(), LocalObjectReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferencePtrInput)(nil)).Elem(), LocalObjectReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceResponseInput)(nil)).Elem(), LocalObjectReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaInput)(nil)).Elem(), ObjectMetaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaPtrInput)(nil)).Elem(), ObjectMetaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaResponseInput)(nil)).Elem(), ObjectMetaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaResponsePtrInput)(nil)).Elem(), ObjectMetaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceInput)(nil)).Elem(), OwnerReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceArrayInput)(nil)).Elem(), OwnerReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceResponseInput)(nil)).Elem(), OwnerReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceResponseArrayInput)(nil)).Elem(), OwnerReferenceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProbeInput)(nil)).Elem(), ProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProbePtrInput)(nil)).Elem(), ProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProbeResponseInput)(nil)).Elem(), ProbeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRecordInput)(nil)).Elem(), ResourceRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRecordArrayInput)(nil)).Elem(), ResourceRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRecordResponseInput)(nil)).Elem(), ResourceRecordResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRecordResponseArrayInput)(nil)).Elem(), ResourceRecordResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRequirementsInput)(nil)).Elem(), ResourceRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRequirementsPtrInput)(nil)).Elem(), ResourceRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRequirementsResponseInput)(nil)).Elem(), ResourceRequirementsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RevisionSpecInput)(nil)).Elem(), RevisionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RevisionSpecPtrInput)(nil)).Elem(), RevisionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RevisionSpecResponseInput)(nil)).Elem(), RevisionSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RevisionSpecResponsePtrInput)(nil)).Elem(), RevisionSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RevisionTemplateInput)(nil)).Elem(), RevisionTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RevisionTemplatePtrInput)(nil)).Elem(), RevisionTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RevisionTemplateResponseInput)(nil)).Elem(), RevisionTemplateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RevisionTemplateResponsePtrInput)(nil)).Elem(), RevisionTemplateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvSourceInput)(nil)).Elem(), SecretEnvSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvSourcePtrInput)(nil)).Elem(), SecretEnvSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvSourceResponseInput)(nil)).Elem(), SecretEnvSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretKeySelectorInput)(nil)).Elem(), SecretKeySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretKeySelectorPtrInput)(nil)).Elem(), SecretKeySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretKeySelectorResponseInput)(nil)).Elem(), SecretKeySelectorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeSourceInput)(nil)).Elem(), SecretVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeSourcePtrInput)(nil)).Elem(), SecretVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeSourceResponseInput)(nil)).Elem(), SecretVolumeSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityContextInput)(nil)).Elem(), SecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityContextPtrInput)(nil)).Elem(), SecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityContextResponseInput)(nil)).Elem(), SecurityContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSpecInput)(nil)).Elem(), ServiceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSpecPtrInput)(nil)).Elem(), ServiceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSpecResponseInput)(nil)).Elem(), ServiceSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSpecResponsePtrInput)(nil)).Elem(), ServiceSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceStatusInput)(nil)).Elem(), ServiceStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceStatusPtrInput)(nil)).Elem(), ServiceStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceStatusResponseInput)(nil)).Elem(), ServiceStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceStatusResponsePtrInput)(nil)).Elem(), ServiceStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPSocketActionInput)(nil)).Elem(), TCPSocketActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPSocketActionPtrInput)(nil)).Elem(), TCPSocketActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPSocketActionResponseInput)(nil)).Elem(), TCPSocketActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficTargetInput)(nil)).Elem(), TrafficTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficTargetArrayInput)(nil)).Elem(), TrafficTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficTargetResponseInput)(nil)).Elem(), TrafficTargetResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficTargetResponseArrayInput)(nil)).Elem(), TrafficTargetResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeInput)(nil)).Elem(), VolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeArrayInput)(nil)).Elem(), VolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountInput)(nil)).Elem(), VolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountArrayInput)(nil)).Elem(), VolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountResponseInput)(nil)).Elem(), VolumeMountResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountResponseArrayInput)(nil)).Elem(), VolumeMountResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeResponseInput)(nil)).Elem(), VolumeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeResponseArrayInput)(nil)).Elem(), VolumeResponseArray{})
 	pulumi.RegisterOutputType(AddressableOutput{})
 	pulumi.RegisterOutputType(AddressablePtrOutput{})
 	pulumi.RegisterOutputType(AddressableResponseOutput{})

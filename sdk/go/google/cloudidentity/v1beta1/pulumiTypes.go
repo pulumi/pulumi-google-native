@@ -508,7 +508,7 @@ func (o DynamicGroupMetadataResponsePtrOutput) Status() DynamicGroupStatusRespon
 
 // Defines a query on a resource.
 type DynamicGroupQuery struct {
-	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 	Query        *string                        `pulumi:"query"`
 	ResourceType *DynamicGroupQueryResourceType `pulumi:"resourceType"`
 }
@@ -526,7 +526,7 @@ type DynamicGroupQueryInput interface {
 
 // Defines a query on a resource.
 type DynamicGroupQueryArgs struct {
-	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 	Query        pulumi.StringPtrInput                 `pulumi:"query"`
 	ResourceType DynamicGroupQueryResourceTypePtrInput `pulumi:"resourceType"`
 }
@@ -583,7 +583,7 @@ func (o DynamicGroupQueryOutput) ToDynamicGroupQueryOutputWithContext(ctx contex
 	return o
 }
 
-// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 func (o DynamicGroupQueryOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DynamicGroupQuery) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
@@ -614,7 +614,7 @@ func (o DynamicGroupQueryArrayOutput) Index(i pulumi.IntInput) DynamicGroupQuery
 
 // Defines a query on a resource.
 type DynamicGroupQueryResponse struct {
-	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 	Query        string `pulumi:"query"`
 	ResourceType string `pulumi:"resourceType"`
 }
@@ -632,7 +632,7 @@ type DynamicGroupQueryResponseInput interface {
 
 // Defines a query on a resource.
 type DynamicGroupQueryResponseArgs struct {
-	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 	Query        pulumi.StringInput `pulumi:"query"`
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
@@ -689,7 +689,7 @@ func (o DynamicGroupQueryResponseOutput) ToDynamicGroupQueryResponseOutputWithCo
 	return o
 }
 
-// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 func (o DynamicGroupQueryResponseOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v DynamicGroupQueryResponse) string { return v.Query }).(pulumi.StringOutput)
 }
@@ -1467,6 +1467,8 @@ type MembershipRole struct {
 	ExpiryDetail *ExpiryDetail `pulumi:"expiryDetail"`
 	// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
 	Name *string `pulumi:"name"`
+	// Evaluations of restrictions applied to parent group on this membership.
+	RestrictionEvaluations *RestrictionEvaluations `pulumi:"restrictionEvaluations"`
 }
 
 // MembershipRoleInput is an input type that accepts MembershipRoleArgs and MembershipRoleOutput values.
@@ -1486,6 +1488,8 @@ type MembershipRoleArgs struct {
 	ExpiryDetail ExpiryDetailPtrInput `pulumi:"expiryDetail"`
 	// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Evaluations of restrictions applied to parent group on this membership.
+	RestrictionEvaluations RestrictionEvaluationsPtrInput `pulumi:"restrictionEvaluations"`
 }
 
 func (MembershipRoleArgs) ElementType() reflect.Type {
@@ -1550,6 +1554,11 @@ func (o MembershipRoleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MembershipRole) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Evaluations of restrictions applied to parent group on this membership.
+func (o MembershipRoleOutput) RestrictionEvaluations() RestrictionEvaluationsPtrOutput {
+	return o.ApplyT(func(v MembershipRole) *RestrictionEvaluations { return v.RestrictionEvaluations }).(RestrictionEvaluationsPtrOutput)
+}
+
 type MembershipRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (MembershipRoleArrayOutput) ElementType() reflect.Type {
@@ -1576,6 +1585,8 @@ type MembershipRoleResponse struct {
 	ExpiryDetail ExpiryDetailResponse `pulumi:"expiryDetail"`
 	// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
 	Name string `pulumi:"name"`
+	// Evaluations of restrictions applied to parent group on this membership.
+	RestrictionEvaluations RestrictionEvaluationsResponse `pulumi:"restrictionEvaluations"`
 }
 
 // MembershipRoleResponseInput is an input type that accepts MembershipRoleResponseArgs and MembershipRoleResponseOutput values.
@@ -1595,6 +1606,8 @@ type MembershipRoleResponseArgs struct {
 	ExpiryDetail ExpiryDetailResponseInput `pulumi:"expiryDetail"`
 	// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Evaluations of restrictions applied to parent group on this membership.
+	RestrictionEvaluations RestrictionEvaluationsResponseInput `pulumi:"restrictionEvaluations"`
 }
 
 func (MembershipRoleResponseArgs) ElementType() reflect.Type {
@@ -1659,6 +1672,11 @@ func (o MembershipRoleResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipRoleResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Evaluations of restrictions applied to parent group on this membership.
+func (o MembershipRoleResponseOutput) RestrictionEvaluations() RestrictionEvaluationsResponseOutput {
+	return o.ApplyT(func(v MembershipRoleResponse) RestrictionEvaluationsResponse { return v.RestrictionEvaluations }).(RestrictionEvaluationsResponseOutput)
+}
+
 type MembershipRoleResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (MembershipRoleResponseArrayOutput) ElementType() reflect.Type {
@@ -1677,6 +1695,182 @@ func (o MembershipRoleResponseArrayOutput) Index(i pulumi.IntInput) MembershipRo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MembershipRoleResponse {
 		return vs[0].([]MembershipRoleResponse)[vs[1].(int)]
 	}).(MembershipRoleResponseOutput)
+}
+
+// The evaluated state of this restriction.
+type MembershipRoleRestrictionEvaluation struct {
+}
+
+// MembershipRoleRestrictionEvaluationInput is an input type that accepts MembershipRoleRestrictionEvaluationArgs and MembershipRoleRestrictionEvaluationOutput values.
+// You can construct a concrete instance of `MembershipRoleRestrictionEvaluationInput` via:
+//
+//          MembershipRoleRestrictionEvaluationArgs{...}
+type MembershipRoleRestrictionEvaluationInput interface {
+	pulumi.Input
+
+	ToMembershipRoleRestrictionEvaluationOutput() MembershipRoleRestrictionEvaluationOutput
+	ToMembershipRoleRestrictionEvaluationOutputWithContext(context.Context) MembershipRoleRestrictionEvaluationOutput
+}
+
+// The evaluated state of this restriction.
+type MembershipRoleRestrictionEvaluationArgs struct {
+}
+
+func (MembershipRoleRestrictionEvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipRoleRestrictionEvaluation)(nil)).Elem()
+}
+
+func (i MembershipRoleRestrictionEvaluationArgs) ToMembershipRoleRestrictionEvaluationOutput() MembershipRoleRestrictionEvaluationOutput {
+	return i.ToMembershipRoleRestrictionEvaluationOutputWithContext(context.Background())
+}
+
+func (i MembershipRoleRestrictionEvaluationArgs) ToMembershipRoleRestrictionEvaluationOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleRestrictionEvaluationOutput)
+}
+
+func (i MembershipRoleRestrictionEvaluationArgs) ToMembershipRoleRestrictionEvaluationPtrOutput() MembershipRoleRestrictionEvaluationPtrOutput {
+	return i.ToMembershipRoleRestrictionEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i MembershipRoleRestrictionEvaluationArgs) ToMembershipRoleRestrictionEvaluationPtrOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleRestrictionEvaluationOutput).ToMembershipRoleRestrictionEvaluationPtrOutputWithContext(ctx)
+}
+
+// MembershipRoleRestrictionEvaluationPtrInput is an input type that accepts MembershipRoleRestrictionEvaluationArgs, MembershipRoleRestrictionEvaluationPtr and MembershipRoleRestrictionEvaluationPtrOutput values.
+// You can construct a concrete instance of `MembershipRoleRestrictionEvaluationPtrInput` via:
+//
+//          MembershipRoleRestrictionEvaluationArgs{...}
+//
+//  or:
+//
+//          nil
+type MembershipRoleRestrictionEvaluationPtrInput interface {
+	pulumi.Input
+
+	ToMembershipRoleRestrictionEvaluationPtrOutput() MembershipRoleRestrictionEvaluationPtrOutput
+	ToMembershipRoleRestrictionEvaluationPtrOutputWithContext(context.Context) MembershipRoleRestrictionEvaluationPtrOutput
+}
+
+type membershipRoleRestrictionEvaluationPtrType MembershipRoleRestrictionEvaluationArgs
+
+func MembershipRoleRestrictionEvaluationPtr(v *MembershipRoleRestrictionEvaluationArgs) MembershipRoleRestrictionEvaluationPtrInput {
+	return (*membershipRoleRestrictionEvaluationPtrType)(v)
+}
+
+func (*membershipRoleRestrictionEvaluationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipRoleRestrictionEvaluation)(nil)).Elem()
+}
+
+func (i *membershipRoleRestrictionEvaluationPtrType) ToMembershipRoleRestrictionEvaluationPtrOutput() MembershipRoleRestrictionEvaluationPtrOutput {
+	return i.ToMembershipRoleRestrictionEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i *membershipRoleRestrictionEvaluationPtrType) ToMembershipRoleRestrictionEvaluationPtrOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleRestrictionEvaluationPtrOutput)
+}
+
+// The evaluated state of this restriction.
+type MembershipRoleRestrictionEvaluationOutput struct{ *pulumi.OutputState }
+
+func (MembershipRoleRestrictionEvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipRoleRestrictionEvaluation)(nil)).Elem()
+}
+
+func (o MembershipRoleRestrictionEvaluationOutput) ToMembershipRoleRestrictionEvaluationOutput() MembershipRoleRestrictionEvaluationOutput {
+	return o
+}
+
+func (o MembershipRoleRestrictionEvaluationOutput) ToMembershipRoleRestrictionEvaluationOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationOutput {
+	return o
+}
+
+func (o MembershipRoleRestrictionEvaluationOutput) ToMembershipRoleRestrictionEvaluationPtrOutput() MembershipRoleRestrictionEvaluationPtrOutput {
+	return o.ToMembershipRoleRestrictionEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (o MembershipRoleRestrictionEvaluationOutput) ToMembershipRoleRestrictionEvaluationPtrOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipRoleRestrictionEvaluation) *MembershipRoleRestrictionEvaluation {
+		return &v
+	}).(MembershipRoleRestrictionEvaluationPtrOutput)
+}
+
+type MembershipRoleRestrictionEvaluationPtrOutput struct{ *pulumi.OutputState }
+
+func (MembershipRoleRestrictionEvaluationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipRoleRestrictionEvaluation)(nil)).Elem()
+}
+
+func (o MembershipRoleRestrictionEvaluationPtrOutput) ToMembershipRoleRestrictionEvaluationPtrOutput() MembershipRoleRestrictionEvaluationPtrOutput {
+	return o
+}
+
+func (o MembershipRoleRestrictionEvaluationPtrOutput) ToMembershipRoleRestrictionEvaluationPtrOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationPtrOutput {
+	return o
+}
+
+func (o MembershipRoleRestrictionEvaluationPtrOutput) Elem() MembershipRoleRestrictionEvaluationOutput {
+	return o.ApplyT(func(v *MembershipRoleRestrictionEvaluation) MembershipRoleRestrictionEvaluation {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipRoleRestrictionEvaluation
+		return ret
+	}).(MembershipRoleRestrictionEvaluationOutput)
+}
+
+// The evaluated state of this restriction.
+type MembershipRoleRestrictionEvaluationResponse struct {
+	// The current state of the restriction
+	State string `pulumi:"state"`
+}
+
+// MembershipRoleRestrictionEvaluationResponseInput is an input type that accepts MembershipRoleRestrictionEvaluationResponseArgs and MembershipRoleRestrictionEvaluationResponseOutput values.
+// You can construct a concrete instance of `MembershipRoleRestrictionEvaluationResponseInput` via:
+//
+//          MembershipRoleRestrictionEvaluationResponseArgs{...}
+type MembershipRoleRestrictionEvaluationResponseInput interface {
+	pulumi.Input
+
+	ToMembershipRoleRestrictionEvaluationResponseOutput() MembershipRoleRestrictionEvaluationResponseOutput
+	ToMembershipRoleRestrictionEvaluationResponseOutputWithContext(context.Context) MembershipRoleRestrictionEvaluationResponseOutput
+}
+
+// The evaluated state of this restriction.
+type MembershipRoleRestrictionEvaluationResponseArgs struct {
+	// The current state of the restriction
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (MembershipRoleRestrictionEvaluationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipRoleRestrictionEvaluationResponse)(nil)).Elem()
+}
+
+func (i MembershipRoleRestrictionEvaluationResponseArgs) ToMembershipRoleRestrictionEvaluationResponseOutput() MembershipRoleRestrictionEvaluationResponseOutput {
+	return i.ToMembershipRoleRestrictionEvaluationResponseOutputWithContext(context.Background())
+}
+
+func (i MembershipRoleRestrictionEvaluationResponseArgs) ToMembershipRoleRestrictionEvaluationResponseOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleRestrictionEvaluationResponseOutput)
+}
+
+// The evaluated state of this restriction.
+type MembershipRoleRestrictionEvaluationResponseOutput struct{ *pulumi.OutputState }
+
+func (MembershipRoleRestrictionEvaluationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipRoleRestrictionEvaluationResponse)(nil)).Elem()
+}
+
+func (o MembershipRoleRestrictionEvaluationResponseOutput) ToMembershipRoleRestrictionEvaluationResponseOutput() MembershipRoleRestrictionEvaluationResponseOutput {
+	return o
+}
+
+func (o MembershipRoleRestrictionEvaluationResponseOutput) ToMembershipRoleRestrictionEvaluationResponseOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationResponseOutput {
+	return o
+}
+
+// The current state of the restriction
+func (o MembershipRoleRestrictionEvaluationResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v MembershipRoleRestrictionEvaluationResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
 // POSIX Group definition to represent a group in a POSIX compliant system.
@@ -1915,7 +2109,241 @@ func (o PosixGroupResponseArrayOutput) Index(i pulumi.IntInput) PosixGroupRespon
 	}).(PosixGroupResponseOutput)
 }
 
+// Evaluations of restrictions applied to parent group on this membership.
+type RestrictionEvaluations struct {
+	// Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+	MemberRestrictionEvaluation *MembershipRoleRestrictionEvaluation `pulumi:"memberRestrictionEvaluation"`
+}
+
+// RestrictionEvaluationsInput is an input type that accepts RestrictionEvaluationsArgs and RestrictionEvaluationsOutput values.
+// You can construct a concrete instance of `RestrictionEvaluationsInput` via:
+//
+//          RestrictionEvaluationsArgs{...}
+type RestrictionEvaluationsInput interface {
+	pulumi.Input
+
+	ToRestrictionEvaluationsOutput() RestrictionEvaluationsOutput
+	ToRestrictionEvaluationsOutputWithContext(context.Context) RestrictionEvaluationsOutput
+}
+
+// Evaluations of restrictions applied to parent group on this membership.
+type RestrictionEvaluationsArgs struct {
+	// Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+	MemberRestrictionEvaluation MembershipRoleRestrictionEvaluationPtrInput `pulumi:"memberRestrictionEvaluation"`
+}
+
+func (RestrictionEvaluationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestrictionEvaluations)(nil)).Elem()
+}
+
+func (i RestrictionEvaluationsArgs) ToRestrictionEvaluationsOutput() RestrictionEvaluationsOutput {
+	return i.ToRestrictionEvaluationsOutputWithContext(context.Background())
+}
+
+func (i RestrictionEvaluationsArgs) ToRestrictionEvaluationsOutputWithContext(ctx context.Context) RestrictionEvaluationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestrictionEvaluationsOutput)
+}
+
+func (i RestrictionEvaluationsArgs) ToRestrictionEvaluationsPtrOutput() RestrictionEvaluationsPtrOutput {
+	return i.ToRestrictionEvaluationsPtrOutputWithContext(context.Background())
+}
+
+func (i RestrictionEvaluationsArgs) ToRestrictionEvaluationsPtrOutputWithContext(ctx context.Context) RestrictionEvaluationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestrictionEvaluationsOutput).ToRestrictionEvaluationsPtrOutputWithContext(ctx)
+}
+
+// RestrictionEvaluationsPtrInput is an input type that accepts RestrictionEvaluationsArgs, RestrictionEvaluationsPtr and RestrictionEvaluationsPtrOutput values.
+// You can construct a concrete instance of `RestrictionEvaluationsPtrInput` via:
+//
+//          RestrictionEvaluationsArgs{...}
+//
+//  or:
+//
+//          nil
+type RestrictionEvaluationsPtrInput interface {
+	pulumi.Input
+
+	ToRestrictionEvaluationsPtrOutput() RestrictionEvaluationsPtrOutput
+	ToRestrictionEvaluationsPtrOutputWithContext(context.Context) RestrictionEvaluationsPtrOutput
+}
+
+type restrictionEvaluationsPtrType RestrictionEvaluationsArgs
+
+func RestrictionEvaluationsPtr(v *RestrictionEvaluationsArgs) RestrictionEvaluationsPtrInput {
+	return (*restrictionEvaluationsPtrType)(v)
+}
+
+func (*restrictionEvaluationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestrictionEvaluations)(nil)).Elem()
+}
+
+func (i *restrictionEvaluationsPtrType) ToRestrictionEvaluationsPtrOutput() RestrictionEvaluationsPtrOutput {
+	return i.ToRestrictionEvaluationsPtrOutputWithContext(context.Background())
+}
+
+func (i *restrictionEvaluationsPtrType) ToRestrictionEvaluationsPtrOutputWithContext(ctx context.Context) RestrictionEvaluationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestrictionEvaluationsPtrOutput)
+}
+
+// Evaluations of restrictions applied to parent group on this membership.
+type RestrictionEvaluationsOutput struct{ *pulumi.OutputState }
+
+func (RestrictionEvaluationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestrictionEvaluations)(nil)).Elem()
+}
+
+func (o RestrictionEvaluationsOutput) ToRestrictionEvaluationsOutput() RestrictionEvaluationsOutput {
+	return o
+}
+
+func (o RestrictionEvaluationsOutput) ToRestrictionEvaluationsOutputWithContext(ctx context.Context) RestrictionEvaluationsOutput {
+	return o
+}
+
+func (o RestrictionEvaluationsOutput) ToRestrictionEvaluationsPtrOutput() RestrictionEvaluationsPtrOutput {
+	return o.ToRestrictionEvaluationsPtrOutputWithContext(context.Background())
+}
+
+func (o RestrictionEvaluationsOutput) ToRestrictionEvaluationsPtrOutputWithContext(ctx context.Context) RestrictionEvaluationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestrictionEvaluations) *RestrictionEvaluations {
+		return &v
+	}).(RestrictionEvaluationsPtrOutput)
+}
+
+// Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+func (o RestrictionEvaluationsOutput) MemberRestrictionEvaluation() MembershipRoleRestrictionEvaluationPtrOutput {
+	return o.ApplyT(func(v RestrictionEvaluations) *MembershipRoleRestrictionEvaluation {
+		return v.MemberRestrictionEvaluation
+	}).(MembershipRoleRestrictionEvaluationPtrOutput)
+}
+
+type RestrictionEvaluationsPtrOutput struct{ *pulumi.OutputState }
+
+func (RestrictionEvaluationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestrictionEvaluations)(nil)).Elem()
+}
+
+func (o RestrictionEvaluationsPtrOutput) ToRestrictionEvaluationsPtrOutput() RestrictionEvaluationsPtrOutput {
+	return o
+}
+
+func (o RestrictionEvaluationsPtrOutput) ToRestrictionEvaluationsPtrOutputWithContext(ctx context.Context) RestrictionEvaluationsPtrOutput {
+	return o
+}
+
+func (o RestrictionEvaluationsPtrOutput) Elem() RestrictionEvaluationsOutput {
+	return o.ApplyT(func(v *RestrictionEvaluations) RestrictionEvaluations {
+		if v != nil {
+			return *v
+		}
+		var ret RestrictionEvaluations
+		return ret
+	}).(RestrictionEvaluationsOutput)
+}
+
+// Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+func (o RestrictionEvaluationsPtrOutput) MemberRestrictionEvaluation() MembershipRoleRestrictionEvaluationPtrOutput {
+	return o.ApplyT(func(v *RestrictionEvaluations) *MembershipRoleRestrictionEvaluation {
+		if v == nil {
+			return nil
+		}
+		return v.MemberRestrictionEvaluation
+	}).(MembershipRoleRestrictionEvaluationPtrOutput)
+}
+
+// Evaluations of restrictions applied to parent group on this membership.
+type RestrictionEvaluationsResponse struct {
+	// Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+	MemberRestrictionEvaluation MembershipRoleRestrictionEvaluationResponse `pulumi:"memberRestrictionEvaluation"`
+}
+
+// RestrictionEvaluationsResponseInput is an input type that accepts RestrictionEvaluationsResponseArgs and RestrictionEvaluationsResponseOutput values.
+// You can construct a concrete instance of `RestrictionEvaluationsResponseInput` via:
+//
+//          RestrictionEvaluationsResponseArgs{...}
+type RestrictionEvaluationsResponseInput interface {
+	pulumi.Input
+
+	ToRestrictionEvaluationsResponseOutput() RestrictionEvaluationsResponseOutput
+	ToRestrictionEvaluationsResponseOutputWithContext(context.Context) RestrictionEvaluationsResponseOutput
+}
+
+// Evaluations of restrictions applied to parent group on this membership.
+type RestrictionEvaluationsResponseArgs struct {
+	// Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+	MemberRestrictionEvaluation MembershipRoleRestrictionEvaluationResponseInput `pulumi:"memberRestrictionEvaluation"`
+}
+
+func (RestrictionEvaluationsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestrictionEvaluationsResponse)(nil)).Elem()
+}
+
+func (i RestrictionEvaluationsResponseArgs) ToRestrictionEvaluationsResponseOutput() RestrictionEvaluationsResponseOutput {
+	return i.ToRestrictionEvaluationsResponseOutputWithContext(context.Background())
+}
+
+func (i RestrictionEvaluationsResponseArgs) ToRestrictionEvaluationsResponseOutputWithContext(ctx context.Context) RestrictionEvaluationsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestrictionEvaluationsResponseOutput)
+}
+
+// Evaluations of restrictions applied to parent group on this membership.
+type RestrictionEvaluationsResponseOutput struct{ *pulumi.OutputState }
+
+func (RestrictionEvaluationsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestrictionEvaluationsResponse)(nil)).Elem()
+}
+
+func (o RestrictionEvaluationsResponseOutput) ToRestrictionEvaluationsResponseOutput() RestrictionEvaluationsResponseOutput {
+	return o
+}
+
+func (o RestrictionEvaluationsResponseOutput) ToRestrictionEvaluationsResponseOutputWithContext(ctx context.Context) RestrictionEvaluationsResponseOutput {
+	return o
+}
+
+// Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+func (o RestrictionEvaluationsResponseOutput) MemberRestrictionEvaluation() MembershipRoleRestrictionEvaluationResponseOutput {
+	return o.ApplyT(func(v RestrictionEvaluationsResponse) MembershipRoleRestrictionEvaluationResponse {
+		return v.MemberRestrictionEvaluation
+	}).(MembershipRoleRestrictionEvaluationResponseOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AndroidAttributesResponseInput)(nil)).Elem(), AndroidAttributesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AndroidAttributesResponsePtrInput)(nil)).Elem(), AndroidAttributesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataInput)(nil)).Elem(), DynamicGroupMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataPtrInput)(nil)).Elem(), DynamicGroupMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataResponseInput)(nil)).Elem(), DynamicGroupMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataResponsePtrInput)(nil)).Elem(), DynamicGroupMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryInput)(nil)).Elem(), DynamicGroupQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryArrayInput)(nil)).Elem(), DynamicGroupQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResponseInput)(nil)).Elem(), DynamicGroupQueryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResponseArrayInput)(nil)).Elem(), DynamicGroupQueryResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupStatusResponseInput)(nil)).Elem(), DynamicGroupStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupStatusResponsePtrInput)(nil)).Elem(), DynamicGroupStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyInput)(nil)).Elem(), EntityKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyPtrInput)(nil)).Elem(), EntityKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyArrayInput)(nil)).Elem(), EntityKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyResponseInput)(nil)).Elem(), EntityKeyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyResponsePtrInput)(nil)).Elem(), EntityKeyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyResponseArrayInput)(nil)).Elem(), EntityKeyResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExpiryDetailInput)(nil)).Elem(), ExpiryDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExpiryDetailPtrInput)(nil)).Elem(), ExpiryDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExpiryDetailResponseInput)(nil)).Elem(), ExpiryDetailResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleInput)(nil)).Elem(), MembershipRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleArrayInput)(nil)).Elem(), MembershipRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleResponseInput)(nil)).Elem(), MembershipRoleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleResponseArrayInput)(nil)).Elem(), MembershipRoleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleRestrictionEvaluationInput)(nil)).Elem(), MembershipRoleRestrictionEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleRestrictionEvaluationPtrInput)(nil)).Elem(), MembershipRoleRestrictionEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleRestrictionEvaluationResponseInput)(nil)).Elem(), MembershipRoleRestrictionEvaluationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosixGroupInput)(nil)).Elem(), PosixGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosixGroupArrayInput)(nil)).Elem(), PosixGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosixGroupResponseInput)(nil)).Elem(), PosixGroupResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosixGroupResponseArrayInput)(nil)).Elem(), PosixGroupResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestrictionEvaluationsInput)(nil)).Elem(), RestrictionEvaluationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestrictionEvaluationsPtrInput)(nil)).Elem(), RestrictionEvaluationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestrictionEvaluationsResponseInput)(nil)).Elem(), RestrictionEvaluationsResponseArgs{})
 	pulumi.RegisterOutputType(AndroidAttributesResponseOutput{})
 	pulumi.RegisterOutputType(AndroidAttributesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DynamicGroupMetadataOutput{})
@@ -1941,8 +2369,14 @@ func init() {
 	pulumi.RegisterOutputType(MembershipRoleArrayOutput{})
 	pulumi.RegisterOutputType(MembershipRoleResponseOutput{})
 	pulumi.RegisterOutputType(MembershipRoleResponseArrayOutput{})
+	pulumi.RegisterOutputType(MembershipRoleRestrictionEvaluationOutput{})
+	pulumi.RegisterOutputType(MembershipRoleRestrictionEvaluationPtrOutput{})
+	pulumi.RegisterOutputType(MembershipRoleRestrictionEvaluationResponseOutput{})
 	pulumi.RegisterOutputType(PosixGroupOutput{})
 	pulumi.RegisterOutputType(PosixGroupArrayOutput{})
 	pulumi.RegisterOutputType(PosixGroupResponseOutput{})
 	pulumi.RegisterOutputType(PosixGroupResponseArrayOutput{})
+	pulumi.RegisterOutputType(RestrictionEvaluationsOutput{})
+	pulumi.RegisterOutputType(RestrictionEvaluationsPtrOutput{})
+	pulumi.RegisterOutputType(RestrictionEvaluationsResponseOutput{})
 }

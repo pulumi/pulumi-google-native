@@ -1169,6 +1169,22 @@ func (o LanguageCodesSetResponsePtrOutput) LanguageCodes() pulumi.StringArrayOut
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsSourceInput)(nil)).Elem(), GcsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsSourcePtrInput)(nil)).Elem(), GcsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsSourceResponseInput)(nil)).Elem(), GcsSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsSourceResponsePtrInput)(nil)).Elem(), GcsSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryInputConfigInput)(nil)).Elem(), GlossaryInputConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryInputConfigPtrInput)(nil)).Elem(), GlossaryInputConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryInputConfigResponseInput)(nil)).Elem(), GlossaryInputConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryInputConfigResponsePtrInput)(nil)).Elem(), GlossaryInputConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LanguageCodePairInput)(nil)).Elem(), LanguageCodePairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LanguageCodePairPtrInput)(nil)).Elem(), LanguageCodePairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LanguageCodePairResponseInput)(nil)).Elem(), LanguageCodePairResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LanguageCodePairResponsePtrInput)(nil)).Elem(), LanguageCodePairResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LanguageCodesSetInput)(nil)).Elem(), LanguageCodesSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LanguageCodesSetPtrInput)(nil)).Elem(), LanguageCodesSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LanguageCodesSetResponseInput)(nil)).Elem(), LanguageCodesSetResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LanguageCodesSetResponsePtrInput)(nil)).Elem(), LanguageCodesSetResponseArgs{})
 	pulumi.RegisterOutputType(GcsSourceOutput{})
 	pulumi.RegisterOutputType(GcsSourcePtrOutput{})
 	pulumi.RegisterOutputType(GcsSourceResponseOutput{})

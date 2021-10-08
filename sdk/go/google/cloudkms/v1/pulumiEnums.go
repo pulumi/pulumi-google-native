@@ -366,7 +366,7 @@ const (
 	CryptoKeyVersionStateEnumEnabled = CryptoKeyVersionStateEnum("ENABLED")
 	// This version may not be used, but the key material is still available, and the version can be placed back into the ENABLED state.
 	CryptoKeyVersionStateEnumDisabled = CryptoKeyVersionStateEnum("DISABLED")
-	// This version is destroyed, and the key material is no longer stored.
+	// This version is destroyed, and the key material is no longer stored. This version may only become ENABLED again if this version is reimport_eligible and the original key material is reimported with a call to KeyManagementService.ImportCryptoKeyVersion.
 	CryptoKeyVersionStateEnumDestroyed = CryptoKeyVersionStateEnum("DESTROYED")
 	// This version is scheduled for destruction, and will be destroyed soon. Call RestoreCryptoKeyVersion to put it back into the DISABLED state.
 	CryptoKeyVersionStateEnumDestroyScheduled = CryptoKeyVersionStateEnum("DESTROY_SCHEDULED")
@@ -565,6 +565,12 @@ const (
 	CryptoKeyVersionTemplateAlgorithmRsaDecryptOaep4096Sha256 = CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_4096_SHA256")
 	// RSAES-OAEP 4096 bit key with a SHA512 digest.
 	CryptoKeyVersionTemplateAlgorithmRsaDecryptOaep4096Sha512 = CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_4096_SHA512")
+	// RSAES-OAEP 2048 bit key with a SHA1 digest.
+	CryptoKeyVersionTemplateAlgorithmRsaDecryptOaep2048Sha1 = CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_2048_SHA1")
+	// RSAES-OAEP 3072 bit key with a SHA1 digest.
+	CryptoKeyVersionTemplateAlgorithmRsaDecryptOaep3072Sha1 = CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_3072_SHA1")
+	// RSAES-OAEP 4096 bit key with a SHA1 digest.
+	CryptoKeyVersionTemplateAlgorithmRsaDecryptOaep4096Sha1 = CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_4096_SHA1")
 	// ECDSA on the NIST P-256 curve with a SHA256 digest.
 	CryptoKeyVersionTemplateAlgorithmEcSignP256Sha256 = CryptoKeyVersionTemplateAlgorithm("EC_SIGN_P256_SHA256")
 	// ECDSA on the NIST P-384 curve with a SHA384 digest.

@@ -311,7 +311,7 @@ func (o DynamicGroupMetadataResponsePtrOutput) Status() DynamicGroupStatusRespon
 
 // Defines a query on a resource.
 type DynamicGroupQuery struct {
-	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 	Query *string `pulumi:"query"`
 	// Resource type for the Dynamic Group Query
 	ResourceType *DynamicGroupQueryResourceType `pulumi:"resourceType"`
@@ -330,7 +330,7 @@ type DynamicGroupQueryInput interface {
 
 // Defines a query on a resource.
 type DynamicGroupQueryArgs struct {
-	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// Resource type for the Dynamic Group Query
 	ResourceType DynamicGroupQueryResourceTypePtrInput `pulumi:"resourceType"`
@@ -388,7 +388,7 @@ func (o DynamicGroupQueryOutput) ToDynamicGroupQueryOutputWithContext(ctx contex
 	return o
 }
 
-// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 func (o DynamicGroupQueryOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DynamicGroupQuery) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
@@ -420,7 +420,7 @@ func (o DynamicGroupQueryArrayOutput) Index(i pulumi.IntInput) DynamicGroupQuery
 
 // Defines a query on a resource.
 type DynamicGroupQueryResponse struct {
-	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 	Query string `pulumi:"query"`
 	// Resource type for the Dynamic Group Query
 	ResourceType string `pulumi:"resourceType"`
@@ -439,7 +439,7 @@ type DynamicGroupQueryResponseInput interface {
 
 // Defines a query on a resource.
 type DynamicGroupQueryResponseArgs struct {
-	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 	Query pulumi.StringInput `pulumi:"query"`
 	// Resource type for the Dynamic Group Query
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
@@ -497,7 +497,7 @@ func (o DynamicGroupQueryResponseOutput) ToDynamicGroupQueryResponseOutputWithCo
 	return o
 }
 
-// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 func (o DynamicGroupQueryResponseOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v DynamicGroupQueryResponse) string { return v.Query }).(pulumi.StringOutput)
 }
@@ -690,7 +690,7 @@ func (o DynamicGroupStatusResponsePtrOutput) StatusTime() pulumi.StringPtrOutput
 type EntityKey struct {
 	// The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
 	Id *string `pulumi:"id"`
-	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
 	Namespace *string `pulumi:"namespace"`
 }
 
@@ -709,7 +709,7 @@ type EntityKeyInput interface {
 type EntityKeyArgs struct {
 	// The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
 
@@ -796,7 +796,7 @@ func (o EntityKeyOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntityKey) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
 func (o EntityKeyOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntityKey) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -835,7 +835,7 @@ func (o EntityKeyPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
 func (o EntityKeyPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EntityKey) *string {
 		if v == nil {
@@ -847,7 +847,7 @@ func (o EntityKeyPtrOutput) Namespace() pulumi.StringPtrOutput {
 
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyResponse struct {
-	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -864,7 +864,7 @@ type EntityKeyResponseInput interface {
 
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyResponseArgs struct {
-	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -946,7 +946,7 @@ func (o EntityKeyResponseOutput) ToEntityKeyResponsePtrOutputWithContext(ctx con
 	}).(EntityKeyResponsePtrOutput)
 }
 
-// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
 func (o EntityKeyResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v EntityKeyResponse) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -975,7 +975,7 @@ func (o EntityKeyResponsePtrOutput) Elem() EntityKeyResponseOutput {
 	}).(EntityKeyResponseOutput)
 }
 
-// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
 func (o EntityKeyResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EntityKeyResponse) *string {
 		if v == nil {
@@ -1596,6 +1596,29 @@ func (o MembershipRoleResponseArrayOutput) Index(i pulumi.IntInput) MembershipRo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataInput)(nil)).Elem(), DynamicGroupMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataPtrInput)(nil)).Elem(), DynamicGroupMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataResponseInput)(nil)).Elem(), DynamicGroupMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataResponsePtrInput)(nil)).Elem(), DynamicGroupMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryInput)(nil)).Elem(), DynamicGroupQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryArrayInput)(nil)).Elem(), DynamicGroupQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResponseInput)(nil)).Elem(), DynamicGroupQueryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResponseArrayInput)(nil)).Elem(), DynamicGroupQueryResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupStatusResponseInput)(nil)).Elem(), DynamicGroupStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupStatusResponsePtrInput)(nil)).Elem(), DynamicGroupStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyInput)(nil)).Elem(), EntityKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyPtrInput)(nil)).Elem(), EntityKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyResponseInput)(nil)).Elem(), EntityKeyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyResponsePtrInput)(nil)).Elem(), EntityKeyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExpiryDetailInput)(nil)).Elem(), ExpiryDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExpiryDetailPtrInput)(nil)).Elem(), ExpiryDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExpiryDetailResponseInput)(nil)).Elem(), ExpiryDetailResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseInput)(nil)).Elem(), GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrInput)(nil)).Elem(), GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleInput)(nil)).Elem(), MembershipRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleArrayInput)(nil)).Elem(), MembershipRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleResponseInput)(nil)).Elem(), MembershipRoleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleResponseArrayInput)(nil)).Elem(), MembershipRoleResponseArray{})
 	pulumi.RegisterOutputType(DynamicGroupMetadataOutput{})
 	pulumi.RegisterOutputType(DynamicGroupMetadataPtrOutput{})
 	pulumi.RegisterOutputType(DynamicGroupMetadataResponseOutput{})

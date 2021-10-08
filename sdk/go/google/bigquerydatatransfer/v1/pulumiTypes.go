@@ -787,6 +787,16 @@ func (o UserInfoResponsePtrOutput) Email() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailPreferencesInput)(nil)).Elem(), EmailPreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailPreferencesPtrInput)(nil)).Elem(), EmailPreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailPreferencesResponseInput)(nil)).Elem(), EmailPreferencesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailPreferencesResponsePtrInput)(nil)).Elem(), EmailPreferencesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleOptionsInput)(nil)).Elem(), ScheduleOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleOptionsPtrInput)(nil)).Elem(), ScheduleOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleOptionsResponseInput)(nil)).Elem(), ScheduleOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleOptionsResponsePtrInput)(nil)).Elem(), ScheduleOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserInfoResponseInput)(nil)).Elem(), UserInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserInfoResponsePtrInput)(nil)).Elem(), UserInfoResponseArgs{})
 	pulumi.RegisterOutputType(EmailPreferencesOutput{})
 	pulumi.RegisterOutputType(EmailPreferencesPtrOutput{})
 	pulumi.RegisterOutputType(EmailPreferencesResponseOutput{})

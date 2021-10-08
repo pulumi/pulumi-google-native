@@ -34,6 +34,7 @@ type Organization struct {
 	CustomerName pulumi.StringOutput `pulumi:"customerName"`
 	// Description of the Apigee organization.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// List of environments in the Apigee organization.
 	Environments pulumi.StringArrayOutput `pulumi:"environments"`
@@ -119,6 +120,7 @@ type organizationArgs struct {
 	CustomerName *string `pulumi:"customerName"`
 	// Description of the Apigee organization.
 	Description *string `pulumi:"description"`
+	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName *string `pulumi:"displayName"`
 	Parent      string  `pulumi:"parent"`
 	// Properties defined in the Apigee organization profile.
@@ -147,6 +149,7 @@ type OrganizationArgs struct {
 	CustomerName pulumi.StringPtrInput
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrInput
+	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName pulumi.StringPtrInput
 	Parent      pulumi.StringInput
 	// Properties defined in the Apigee organization profile.

@@ -83,7 +83,8 @@ type LookupBackendServiceResult struct {
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-	SessionAffinity string `pulumi:"sessionAffinity"`
+	SessionAffinity string             `pulumi:"sessionAffinity"`
+	Subsetting      SubsettingResponse `pulumi:"subsetting"`
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
 	TimeoutSec int `pulumi:"timeoutSec"`
 }
@@ -266,6 +267,10 @@ func (o LookupBackendServiceResultOutput) SelfLink() pulumi.StringOutput {
 // Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o LookupBackendServiceResultOutput) SessionAffinity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.SessionAffinity }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) Subsetting() SubsettingResponseOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) SubsettingResponse { return v.Subsetting }).(SubsettingResponseOutput)
 }
 
 // Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.

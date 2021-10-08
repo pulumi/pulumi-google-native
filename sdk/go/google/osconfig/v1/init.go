@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:osconfig/v1:OsPolicyAssignment":
+		r = &OsPolicyAssignment{}
 	case "google-native:osconfig/v1:PatchDeployment":
 		r = &PatchDeployment{}
 	default:

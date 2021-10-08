@@ -53,7 +53,7 @@ type Device struct {
 	Meid pulumi.StringOutput `pulumi:"meid"`
 	// Model name of device. Example: Pixel 3.
 	Model pulumi.StringOutput `pulumi:"model"`
-	// [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
+	// [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}`, where device is the unique id assigned to the Device.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Mobile or network operator of device, if available.
 	NetworkOperator pulumi.StringOutput `pulumi:"networkOperator"`

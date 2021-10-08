@@ -36,6 +36,8 @@ type LookupBucketResult struct {
 	Billing BucketBillingResponse `pulumi:"billing"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors []BucketCorsItemResponse `pulumi:"cors"`
+	// The bucket's custom placement configuration for Custom Dual Regions.
+	CustomPlacementConfig BucketCustomPlacementConfigResponse `pulumi:"customPlacementConfig"`
 	// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
 	DefaultEventBasedHold bool `pulumi:"defaultEventBasedHold"`
 	// Default access controls to apply to new objects when no ACL is provided.
@@ -68,6 +70,8 @@ type LookupBucketResult struct {
 	ProjectNumber string `pulumi:"projectNumber"`
 	// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
 	RetentionPolicy BucketRetentionPolicyResponse `pulumi:"retentionPolicy"`
+	// The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
+	Rpo string `pulumi:"rpo"`
 	// Reserved for future use.
 	SatisfiesPZS bool `pulumi:"satisfiesPZS"`
 	// The URI of this bucket.
@@ -82,8 +86,6 @@ type LookupBucketResult struct {
 	Versioning BucketVersioningResponse `pulumi:"versioning"`
 	// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
 	Website BucketWebsiteResponse `pulumi:"website"`
-	// The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
-	ZoneAffinity []string `pulumi:"zoneAffinity"`
 }
 
 func LookupBucketOutput(ctx *pulumi.Context, args LookupBucketOutputArgs, opts ...pulumi.InvokeOption) LookupBucketResultOutput {
@@ -135,6 +137,11 @@ func (o LookupBucketResultOutput) Billing() BucketBillingResponseOutput {
 // The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 func (o LookupBucketResultOutput) Cors() BucketCorsItemResponseArrayOutput {
 	return o.ApplyT(func(v LookupBucketResult) []BucketCorsItemResponse { return v.Cors }).(BucketCorsItemResponseArrayOutput)
+}
+
+// The bucket's custom placement configuration for Custom Dual Regions.
+func (o LookupBucketResultOutput) CustomPlacementConfig() BucketCustomPlacementConfigResponseOutput {
+	return o.ApplyT(func(v LookupBucketResult) BucketCustomPlacementConfigResponse { return v.CustomPlacementConfig }).(BucketCustomPlacementConfigResponseOutput)
 }
 
 // The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
@@ -217,6 +224,11 @@ func (o LookupBucketResultOutput) RetentionPolicy() BucketRetentionPolicyRespons
 	return o.ApplyT(func(v LookupBucketResult) BucketRetentionPolicyResponse { return v.RetentionPolicy }).(BucketRetentionPolicyResponseOutput)
 }
 
+// The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
+func (o LookupBucketResultOutput) Rpo() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.Rpo }).(pulumi.StringOutput)
+}
+
 // Reserved for future use.
 func (o LookupBucketResultOutput) SatisfiesPZS() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBucketResult) bool { return v.SatisfiesPZS }).(pulumi.BoolOutput)
@@ -250,11 +262,6 @@ func (o LookupBucketResultOutput) Versioning() BucketVersioningResponseOutput {
 // The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
 func (o LookupBucketResultOutput) Website() BucketWebsiteResponseOutput {
 	return o.ApplyT(func(v LookupBucketResult) BucketWebsiteResponse { return v.Website }).(BucketWebsiteResponseOutput)
-}
-
-// The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
-func (o LookupBucketResultOutput) ZoneAffinity() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupBucketResult) []string { return v.ZoneAffinity }).(pulumi.StringArrayOutput)
 }
 
 func init() {

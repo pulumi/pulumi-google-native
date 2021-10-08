@@ -20,6 +20,8 @@ type Execution struct {
 
 	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
 	Argument pulumi.StringOutput `pulumi:"argument"`
+	// The call logging level associated to this execution.
+	CallLogLevel pulumi.StringOutput `pulumi:"callLogLevel"`
 	// Marks the end of execution, successful or not.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
@@ -79,19 +81,23 @@ func (ExecutionState) ElementType() reflect.Type {
 
 type executionArgs struct {
 	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-	Argument   *string `pulumi:"argument"`
-	Location   *string `pulumi:"location"`
-	Project    *string `pulumi:"project"`
-	WorkflowId string  `pulumi:"workflowId"`
+	Argument *string `pulumi:"argument"`
+	// The call logging level associated to this execution.
+	CallLogLevel *ExecutionCallLogLevel `pulumi:"callLogLevel"`
+	Location     *string                `pulumi:"location"`
+	Project      *string                `pulumi:"project"`
+	WorkflowId   string                 `pulumi:"workflowId"`
 }
 
 // The set of arguments for constructing a Execution resource.
 type ExecutionArgs struct {
 	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-	Argument   pulumi.StringPtrInput
-	Location   pulumi.StringPtrInput
-	Project    pulumi.StringPtrInput
-	WorkflowId pulumi.StringInput
+	Argument pulumi.StringPtrInput
+	// The call logging level associated to this execution.
+	CallLogLevel ExecutionCallLogLevelPtrInput
+	Location     pulumi.StringPtrInput
+	Project      pulumi.StringPtrInput
+	WorkflowId   pulumi.StringInput
 }
 
 func (ExecutionArgs) ElementType() reflect.Type {

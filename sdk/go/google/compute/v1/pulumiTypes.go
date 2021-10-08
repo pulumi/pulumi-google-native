@@ -1745,7 +1745,7 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesResponsePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// This reservation type allows to pre allocate specific instance configuration.
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
 type AllocationSpecificSKUReservation struct {
 	// Specifies the number of resources that are allocated.
 	Count *string `pulumi:"count"`
@@ -1764,7 +1764,7 @@ type AllocationSpecificSKUReservationInput interface {
 	ToAllocationSpecificSKUReservationOutputWithContext(context.Context) AllocationSpecificSKUReservationOutput
 }
 
-// This reservation type allows to pre allocate specific instance configuration.
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
 type AllocationSpecificSKUReservationArgs struct {
 	// Specifies the number of resources that are allocated.
 	Count pulumi.StringPtrInput `pulumi:"count"`
@@ -1825,7 +1825,7 @@ func (i *allocationSpecificSKUReservationPtrType) ToAllocationSpecificSKUReserva
 	return pulumi.ToOutputWithContext(ctx, i).(AllocationSpecificSKUReservationPtrOutput)
 }
 
-// This reservation type allows to pre allocate specific instance configuration.
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
 type AllocationSpecificSKUReservationOutput struct{ *pulumi.OutputState }
 
 func (AllocationSpecificSKUReservationOutput) ElementType() reflect.Type {
@@ -1906,7 +1906,7 @@ func (o AllocationSpecificSKUReservationPtrOutput) InstanceProperties() Allocati
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput)
 }
 
-// This reservation type allows to pre allocate specific instance configuration.
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
 type AllocationSpecificSKUReservationResponse struct {
 	// Specifies the number of resources that are allocated.
 	Count string `pulumi:"count"`
@@ -1927,7 +1927,7 @@ type AllocationSpecificSKUReservationResponseInput interface {
 	ToAllocationSpecificSKUReservationResponseOutputWithContext(context.Context) AllocationSpecificSKUReservationResponseOutput
 }
 
-// This reservation type allows to pre allocate specific instance configuration.
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
 type AllocationSpecificSKUReservationResponseArgs struct {
 	// Specifies the number of resources that are allocated.
 	Count pulumi.StringInput `pulumi:"count"`
@@ -1990,7 +1990,7 @@ func (i *allocationSpecificSKUReservationResponsePtrType) ToAllocationSpecificSK
 	return pulumi.ToOutputWithContext(ctx, i).(AllocationSpecificSKUReservationResponsePtrOutput)
 }
 
-// This reservation type allows to pre allocate specific instance configuration.
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
 type AllocationSpecificSKUReservationResponseOutput struct{ *pulumi.OutputState }
 
 func (AllocationSpecificSKUReservationResponseOutput) ElementType() reflect.Type {
@@ -5564,7 +5564,7 @@ func (o AutoscalingPolicyScaleInControlResponsePtrOutput) TimeWindowSec() pulumi
 
 // Message containing information of one individual backend.
 type Backend struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode *BackendBalancingMode `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler *float64 `pulumi:"capacityScaler"`
@@ -5603,7 +5603,7 @@ type BackendInput interface {
 
 // Message containing information of one individual backend.
 type BackendArgs struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode BackendBalancingModePtrInput `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler pulumi.Float64PtrInput `pulumi:"capacityScaler"`
@@ -5681,7 +5681,7 @@ func (o BackendOutput) ToBackendOutputWithContext(ctx context.Context) BackendOu
 	return o
 }
 
-// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 func (o BackendOutput) BalancingMode() BackendBalancingModePtrOutput {
 	return o.ApplyT(func(v Backend) *BackendBalancingMode { return v.BalancingMode }).(BackendBalancingModePtrOutput)
 }
@@ -6830,7 +6830,7 @@ func (o BackendBucketCdnPolicyResponsePtrOutput) SignedUrlKeyNames() pulumi.Stri
 
 // Message containing information of one individual backend.
 type BackendResponse struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode string `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler float64 `pulumi:"capacityScaler"`
@@ -6869,7 +6869,7 @@ type BackendResponseInput interface {
 
 // Message containing information of one individual backend.
 type BackendResponseArgs struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode pulumi.StringInput `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler pulumi.Float64Input `pulumi:"capacityScaler"`
@@ -6947,7 +6947,7 @@ func (o BackendResponseOutput) ToBackendResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 func (o BackendResponseOutput) BalancingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendResponse) string { return v.BalancingMode }).(pulumi.StringOutput)
 }
@@ -12394,13 +12394,13 @@ func (o CorsPolicyResponsePtrOutput) MaxAge() pulumi.IntPtrOutput {
 }
 
 type CustomerEncryptionKey struct {
-	// The name of the encryption key that is stored in Google Cloud KMS.
+	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
 	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
 	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
-	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
 	RawKey *string `pulumi:"rawKey"`
-	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
 	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
 }
 
@@ -12416,13 +12416,13 @@ type CustomerEncryptionKeyInput interface {
 }
 
 type CustomerEncryptionKeyArgs struct {
-	// The name of the encryption key that is stored in Google Cloud KMS.
+	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
-	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
 	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
-	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
-	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
 	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
 }
 
@@ -12503,22 +12503,22 @@ func (o CustomerEncryptionKeyOutput) ToCustomerEncryptionKeyPtrOutputWithContext
 	}).(CustomerEncryptionKeyPtrOutput)
 }
 
-// The name of the encryption key that is stored in Google Cloud KMS.
+// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
 func (o CustomerEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
-// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
 func (o CustomerEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
 func (o CustomerEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
 }
 
-// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
 func (o CustomerEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.RsaEncryptedKey }).(pulumi.StringPtrOutput)
 }
@@ -12547,7 +12547,7 @@ func (o CustomerEncryptionKeyPtrOutput) Elem() CustomerEncryptionKeyOutput {
 	}).(CustomerEncryptionKeyOutput)
 }
 
-// The name of the encryption key that is stored in Google Cloud KMS.
+// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
 func (o CustomerEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
 		if v == nil {
@@ -12557,7 +12557,7 @@ func (o CustomerEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
 func (o CustomerEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
 		if v == nil {
@@ -12567,7 +12567,7 @@ func (o CustomerEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
 func (o CustomerEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
 		if v == nil {
@@ -12577,7 +12577,7 @@ func (o CustomerEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
 func (o CustomerEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
 		if v == nil {
@@ -12588,13 +12588,13 @@ func (o CustomerEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput
 }
 
 type CustomerEncryptionKeyResponse struct {
-	// The name of the encryption key that is stored in Google Cloud KMS.
+	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
 	KmsKeyName string `pulumi:"kmsKeyName"`
-	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
-	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
 	RawKey string `pulumi:"rawKey"`
-	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
 	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
 	// [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 	Sha256 string `pulumi:"sha256"`
@@ -12612,13 +12612,13 @@ type CustomerEncryptionKeyResponseInput interface {
 }
 
 type CustomerEncryptionKeyResponseArgs struct {
-	// The name of the encryption key that is stored in Google Cloud KMS.
+	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
 	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
-	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
 	RawKey pulumi.StringInput `pulumi:"rawKey"`
-	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
 	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
 	// [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 	Sha256 pulumi.StringInput `pulumi:"sha256"`
@@ -12701,22 +12701,22 @@ func (o CustomerEncryptionKeyResponseOutput) ToCustomerEncryptionKeyResponsePtrO
 	}).(CustomerEncryptionKeyResponsePtrOutput)
 }
 
-// The name of the encryption key that is stored in Google Cloud KMS.
+// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
 func (o CustomerEncryptionKeyResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
 func (o CustomerEncryptionKeyResponseOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
 
-// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
 func (o CustomerEncryptionKeyResponseOutput) RawKey() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.RawKey }).(pulumi.StringOutput)
 }
 
-// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
 func (o CustomerEncryptionKeyResponseOutput) RsaEncryptedKey() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.RsaEncryptedKey }).(pulumi.StringOutput)
 }
@@ -12750,7 +12750,7 @@ func (o CustomerEncryptionKeyResponsePtrOutput) Elem() CustomerEncryptionKeyResp
 	}).(CustomerEncryptionKeyResponseOutput)
 }
 
-// The name of the encryption key that is stored in Google Cloud KMS.
+// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
 func (o CustomerEncryptionKeyResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKeyResponse) *string {
 		if v == nil {
@@ -12760,7 +12760,7 @@ func (o CustomerEncryptionKeyResponsePtrOutput) KmsKeyName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
 func (o CustomerEncryptionKeyResponsePtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKeyResponse) *string {
 		if v == nil {
@@ -12770,7 +12770,7 @@ func (o CustomerEncryptionKeyResponsePtrOutput) KmsKeyServiceAccount() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
 func (o CustomerEncryptionKeyResponsePtrOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKeyResponse) *string {
 		if v == nil {
@@ -12780,7 +12780,7 @@ func (o CustomerEncryptionKeyResponsePtrOutput) RawKey() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
 func (o CustomerEncryptionKeyResponsePtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKeyResponse) *string {
 		if v == nil {
@@ -44140,6 +44140,112 @@ func (o ResourcePolicyWeeklyCycleResponsePtrOutput) DayOfWeeks() ResourcePolicyW
 	}).(ResourcePolicyWeeklyCycleDayOfWeekResponseArrayOutput)
 }
 
+type RouteAsPathResponse struct {
+	// The AS numbers of the AS Path.
+	AsLists []int `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values: - 'AS_SET': unordered set of autonomous systems that the route in has traversed - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType string `pulumi:"pathSegmentType"`
+}
+
+// RouteAsPathResponseInput is an input type that accepts RouteAsPathResponseArgs and RouteAsPathResponseOutput values.
+// You can construct a concrete instance of `RouteAsPathResponseInput` via:
+//
+//          RouteAsPathResponseArgs{...}
+type RouteAsPathResponseInput interface {
+	pulumi.Input
+
+	ToRouteAsPathResponseOutput() RouteAsPathResponseOutput
+	ToRouteAsPathResponseOutputWithContext(context.Context) RouteAsPathResponseOutput
+}
+
+type RouteAsPathResponseArgs struct {
+	// The AS numbers of the AS Path.
+	AsLists pulumi.IntArrayInput `pulumi:"asLists"`
+	// The type of the AS Path, which can be one of the following values: - 'AS_SET': unordered set of autonomous systems that the route in has traversed - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+	PathSegmentType pulumi.StringInput `pulumi:"pathSegmentType"`
+}
+
+func (RouteAsPathResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAsPathResponse)(nil)).Elem()
+}
+
+func (i RouteAsPathResponseArgs) ToRouteAsPathResponseOutput() RouteAsPathResponseOutput {
+	return i.ToRouteAsPathResponseOutputWithContext(context.Background())
+}
+
+func (i RouteAsPathResponseArgs) ToRouteAsPathResponseOutputWithContext(ctx context.Context) RouteAsPathResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAsPathResponseOutput)
+}
+
+// RouteAsPathResponseArrayInput is an input type that accepts RouteAsPathResponseArray and RouteAsPathResponseArrayOutput values.
+// You can construct a concrete instance of `RouteAsPathResponseArrayInput` via:
+//
+//          RouteAsPathResponseArray{ RouteAsPathResponseArgs{...} }
+type RouteAsPathResponseArrayInput interface {
+	pulumi.Input
+
+	ToRouteAsPathResponseArrayOutput() RouteAsPathResponseArrayOutput
+	ToRouteAsPathResponseArrayOutputWithContext(context.Context) RouteAsPathResponseArrayOutput
+}
+
+type RouteAsPathResponseArray []RouteAsPathResponseInput
+
+func (RouteAsPathResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteAsPathResponse)(nil)).Elem()
+}
+
+func (i RouteAsPathResponseArray) ToRouteAsPathResponseArrayOutput() RouteAsPathResponseArrayOutput {
+	return i.ToRouteAsPathResponseArrayOutputWithContext(context.Background())
+}
+
+func (i RouteAsPathResponseArray) ToRouteAsPathResponseArrayOutputWithContext(ctx context.Context) RouteAsPathResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAsPathResponseArrayOutput)
+}
+
+type RouteAsPathResponseOutput struct{ *pulumi.OutputState }
+
+func (RouteAsPathResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAsPathResponse)(nil)).Elem()
+}
+
+func (o RouteAsPathResponseOutput) ToRouteAsPathResponseOutput() RouteAsPathResponseOutput {
+	return o
+}
+
+func (o RouteAsPathResponseOutput) ToRouteAsPathResponseOutputWithContext(ctx context.Context) RouteAsPathResponseOutput {
+	return o
+}
+
+// The AS numbers of the AS Path.
+func (o RouteAsPathResponseOutput) AsLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v RouteAsPathResponse) []int { return v.AsLists }).(pulumi.IntArrayOutput)
+}
+
+// The type of the AS Path, which can be one of the following values: - 'AS_SET': unordered set of autonomous systems that the route in has traversed - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
+func (o RouteAsPathResponseOutput) PathSegmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteAsPathResponse) string { return v.PathSegmentType }).(pulumi.StringOutput)
+}
+
+type RouteAsPathResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteAsPathResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteAsPathResponse)(nil)).Elem()
+}
+
+func (o RouteAsPathResponseArrayOutput) ToRouteAsPathResponseArrayOutput() RouteAsPathResponseArrayOutput {
+	return o
+}
+
+func (o RouteAsPathResponseArrayOutput) ToRouteAsPathResponseArrayOutputWithContext(ctx context.Context) RouteAsPathResponseArrayOutput {
+	return o
+}
+
+func (o RouteAsPathResponseArrayOutput) Index(i pulumi.IntInput) RouteAsPathResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteAsPathResponse {
+		return vs[0].([]RouteAsPathResponse)[vs[1].(int)]
+	}).(RouteAsPathResponseOutput)
+}
+
 type RouteWarningsItemDataItemResponse struct {
 	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
 	Key string `pulumi:"key"`
@@ -44801,6 +44907,8 @@ type RouterBgpPeer struct {
 	AdvertisedIpRanges []RouterAdvertisedIpRange `pulumi:"advertisedIpRanges"`
 	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority *int `pulumi:"advertisedRoutePriority"`
+	// BFD configuration for the BGP peering.
+	Bfd *RouterBgpPeerBfd `pulumi:"bfd"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable *RouterBgpPeerEnable `pulumi:"enable"`
 	// Name of the interface the BGP peer is associated with.
@@ -44813,6 +44921,8 @@ type RouterBgpPeer struct {
 	PeerAsn *int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
+	// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
+	RouterApplianceInstance *string `pulumi:"routerApplianceInstance"`
 }
 
 // RouterBgpPeerInput is an input type that accepts RouterBgpPeerArgs and RouterBgpPeerOutput values.
@@ -44835,6 +44945,8 @@ type RouterBgpPeerArgs struct {
 	AdvertisedIpRanges RouterAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
 	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority pulumi.IntPtrInput `pulumi:"advertisedRoutePriority"`
+	// BFD configuration for the BGP peering.
+	Bfd RouterBgpPeerBfdPtrInput `pulumi:"bfd"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable RouterBgpPeerEnablePtrInput `pulumi:"enable"`
 	// Name of the interface the BGP peer is associated with.
@@ -44847,6 +44959,8 @@ type RouterBgpPeerArgs struct {
 	PeerAsn pulumi.IntPtrInput `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress pulumi.StringPtrInput `pulumi:"peerIpAddress"`
+	// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
+	RouterApplianceInstance pulumi.StringPtrInput `pulumi:"routerApplianceInstance"`
 }
 
 func (RouterBgpPeerArgs) ElementType() reflect.Type {
@@ -44920,6 +45034,11 @@ func (o RouterBgpPeerOutput) AdvertisedRoutePriority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *int { return v.AdvertisedRoutePriority }).(pulumi.IntPtrOutput)
 }
 
+// BFD configuration for the BGP peering.
+func (o RouterBgpPeerOutput) Bfd() RouterBgpPeerBfdPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *RouterBgpPeerBfd { return v.Bfd }).(RouterBgpPeerBfdPtrOutput)
+}
+
 // The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 func (o RouterBgpPeerOutput) Enable() RouterBgpPeerEnablePtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *RouterBgpPeerEnable { return v.Enable }).(RouterBgpPeerEnablePtrOutput)
@@ -44950,6 +45069,11 @@ func (o RouterBgpPeerOutput) PeerIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *string { return v.PeerIpAddress }).(pulumi.StringPtrOutput)
 }
 
+// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
+func (o RouterBgpPeerOutput) RouterApplianceInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *string { return v.RouterApplianceInstance }).(pulumi.StringPtrOutput)
+}
+
 type RouterBgpPeerArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterBgpPeerArrayOutput) ElementType() reflect.Type {
@@ -44970,6 +45094,281 @@ func (o RouterBgpPeerArrayOutput) Index(i pulumi.IntInput) RouterBgpPeerOutput {
 	}).(RouterBgpPeerOutput)
 }
 
+type RouterBgpPeerBfd struct {
+	// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+	MinReceiveInterval *int `pulumi:"minReceiveInterval"`
+	// The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+	MinTransmitInterval *int `pulumi:"minTransmitInterval"`
+	// The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
+	Multiplier *int `pulumi:"multiplier"`
+	// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+	SessionInitializationMode *RouterBgpPeerBfdSessionInitializationMode `pulumi:"sessionInitializationMode"`
+}
+
+// RouterBgpPeerBfdInput is an input type that accepts RouterBgpPeerBfdArgs and RouterBgpPeerBfdOutput values.
+// You can construct a concrete instance of `RouterBgpPeerBfdInput` via:
+//
+//          RouterBgpPeerBfdArgs{...}
+type RouterBgpPeerBfdInput interface {
+	pulumi.Input
+
+	ToRouterBgpPeerBfdOutput() RouterBgpPeerBfdOutput
+	ToRouterBgpPeerBfdOutputWithContext(context.Context) RouterBgpPeerBfdOutput
+}
+
+type RouterBgpPeerBfdArgs struct {
+	// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+	MinReceiveInterval pulumi.IntPtrInput `pulumi:"minReceiveInterval"`
+	// The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+	MinTransmitInterval pulumi.IntPtrInput `pulumi:"minTransmitInterval"`
+	// The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
+	Multiplier pulumi.IntPtrInput `pulumi:"multiplier"`
+	// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+	SessionInitializationMode RouterBgpPeerBfdSessionInitializationModePtrInput `pulumi:"sessionInitializationMode"`
+}
+
+func (RouterBgpPeerBfdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerBfd)(nil)).Elem()
+}
+
+func (i RouterBgpPeerBfdArgs) ToRouterBgpPeerBfdOutput() RouterBgpPeerBfdOutput {
+	return i.ToRouterBgpPeerBfdOutputWithContext(context.Background())
+}
+
+func (i RouterBgpPeerBfdArgs) ToRouterBgpPeerBfdOutputWithContext(ctx context.Context) RouterBgpPeerBfdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpPeerBfdOutput)
+}
+
+func (i RouterBgpPeerBfdArgs) ToRouterBgpPeerBfdPtrOutput() RouterBgpPeerBfdPtrOutput {
+	return i.ToRouterBgpPeerBfdPtrOutputWithContext(context.Background())
+}
+
+func (i RouterBgpPeerBfdArgs) ToRouterBgpPeerBfdPtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpPeerBfdOutput).ToRouterBgpPeerBfdPtrOutputWithContext(ctx)
+}
+
+// RouterBgpPeerBfdPtrInput is an input type that accepts RouterBgpPeerBfdArgs, RouterBgpPeerBfdPtr and RouterBgpPeerBfdPtrOutput values.
+// You can construct a concrete instance of `RouterBgpPeerBfdPtrInput` via:
+//
+//          RouterBgpPeerBfdArgs{...}
+//
+//  or:
+//
+//          nil
+type RouterBgpPeerBfdPtrInput interface {
+	pulumi.Input
+
+	ToRouterBgpPeerBfdPtrOutput() RouterBgpPeerBfdPtrOutput
+	ToRouterBgpPeerBfdPtrOutputWithContext(context.Context) RouterBgpPeerBfdPtrOutput
+}
+
+type routerBgpPeerBfdPtrType RouterBgpPeerBfdArgs
+
+func RouterBgpPeerBfdPtr(v *RouterBgpPeerBfdArgs) RouterBgpPeerBfdPtrInput {
+	return (*routerBgpPeerBfdPtrType)(v)
+}
+
+func (*routerBgpPeerBfdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterBgpPeerBfd)(nil)).Elem()
+}
+
+func (i *routerBgpPeerBfdPtrType) ToRouterBgpPeerBfdPtrOutput() RouterBgpPeerBfdPtrOutput {
+	return i.ToRouterBgpPeerBfdPtrOutputWithContext(context.Background())
+}
+
+func (i *routerBgpPeerBfdPtrType) ToRouterBgpPeerBfdPtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpPeerBfdPtrOutput)
+}
+
+type RouterBgpPeerBfdOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerBfdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerBfd)(nil)).Elem()
+}
+
+func (o RouterBgpPeerBfdOutput) ToRouterBgpPeerBfdOutput() RouterBgpPeerBfdOutput {
+	return o
+}
+
+func (o RouterBgpPeerBfdOutput) ToRouterBgpPeerBfdOutputWithContext(ctx context.Context) RouterBgpPeerBfdOutput {
+	return o
+}
+
+func (o RouterBgpPeerBfdOutput) ToRouterBgpPeerBfdPtrOutput() RouterBgpPeerBfdPtrOutput {
+	return o.ToRouterBgpPeerBfdPtrOutputWithContext(context.Background())
+}
+
+func (o RouterBgpPeerBfdOutput) ToRouterBgpPeerBfdPtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterBgpPeerBfd) *RouterBgpPeerBfd {
+		return &v
+	}).(RouterBgpPeerBfdPtrOutput)
+}
+
+// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+func (o RouterBgpPeerBfdOutput) MinReceiveInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeerBfd) *int { return v.MinReceiveInterval }).(pulumi.IntPtrOutput)
+}
+
+// The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+func (o RouterBgpPeerBfdOutput) MinTransmitInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeerBfd) *int { return v.MinTransmitInterval }).(pulumi.IntPtrOutput)
+}
+
+// The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
+func (o RouterBgpPeerBfdOutput) Multiplier() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeerBfd) *int { return v.Multiplier }).(pulumi.IntPtrOutput)
+}
+
+// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+func (o RouterBgpPeerBfdOutput) SessionInitializationMode() RouterBgpPeerBfdSessionInitializationModePtrOutput {
+	return o.ApplyT(func(v RouterBgpPeerBfd) *RouterBgpPeerBfdSessionInitializationMode {
+		return v.SessionInitializationMode
+	}).(RouterBgpPeerBfdSessionInitializationModePtrOutput)
+}
+
+type RouterBgpPeerBfdPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerBfdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterBgpPeerBfd)(nil)).Elem()
+}
+
+func (o RouterBgpPeerBfdPtrOutput) ToRouterBgpPeerBfdPtrOutput() RouterBgpPeerBfdPtrOutput {
+	return o
+}
+
+func (o RouterBgpPeerBfdPtrOutput) ToRouterBgpPeerBfdPtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdPtrOutput {
+	return o
+}
+
+func (o RouterBgpPeerBfdPtrOutput) Elem() RouterBgpPeerBfdOutput {
+	return o.ApplyT(func(v *RouterBgpPeerBfd) RouterBgpPeerBfd {
+		if v != nil {
+			return *v
+		}
+		var ret RouterBgpPeerBfd
+		return ret
+	}).(RouterBgpPeerBfdOutput)
+}
+
+// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+func (o RouterBgpPeerBfdPtrOutput) MinReceiveInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouterBgpPeerBfd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinReceiveInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+func (o RouterBgpPeerBfdPtrOutput) MinTransmitInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouterBgpPeerBfd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinTransmitInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
+func (o RouterBgpPeerBfdPtrOutput) Multiplier() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouterBgpPeerBfd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Multiplier
+	}).(pulumi.IntPtrOutput)
+}
+
+// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+func (o RouterBgpPeerBfdPtrOutput) SessionInitializationMode() RouterBgpPeerBfdSessionInitializationModePtrOutput {
+	return o.ApplyT(func(v *RouterBgpPeerBfd) *RouterBgpPeerBfdSessionInitializationMode {
+		if v == nil {
+			return nil
+		}
+		return v.SessionInitializationMode
+	}).(RouterBgpPeerBfdSessionInitializationModePtrOutput)
+}
+
+type RouterBgpPeerBfdResponse struct {
+	// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+	MinReceiveInterval int `pulumi:"minReceiveInterval"`
+	// The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+	MinTransmitInterval int `pulumi:"minTransmitInterval"`
+	// The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
+	Multiplier int `pulumi:"multiplier"`
+	// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+	SessionInitializationMode string `pulumi:"sessionInitializationMode"`
+}
+
+// RouterBgpPeerBfdResponseInput is an input type that accepts RouterBgpPeerBfdResponseArgs and RouterBgpPeerBfdResponseOutput values.
+// You can construct a concrete instance of `RouterBgpPeerBfdResponseInput` via:
+//
+//          RouterBgpPeerBfdResponseArgs{...}
+type RouterBgpPeerBfdResponseInput interface {
+	pulumi.Input
+
+	ToRouterBgpPeerBfdResponseOutput() RouterBgpPeerBfdResponseOutput
+	ToRouterBgpPeerBfdResponseOutputWithContext(context.Context) RouterBgpPeerBfdResponseOutput
+}
+
+type RouterBgpPeerBfdResponseArgs struct {
+	// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+	MinReceiveInterval pulumi.IntInput `pulumi:"minReceiveInterval"`
+	// The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+	MinTransmitInterval pulumi.IntInput `pulumi:"minTransmitInterval"`
+	// The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
+	Multiplier pulumi.IntInput `pulumi:"multiplier"`
+	// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+	SessionInitializationMode pulumi.StringInput `pulumi:"sessionInitializationMode"`
+}
+
+func (RouterBgpPeerBfdResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerBfdResponse)(nil)).Elem()
+}
+
+func (i RouterBgpPeerBfdResponseArgs) ToRouterBgpPeerBfdResponseOutput() RouterBgpPeerBfdResponseOutput {
+	return i.ToRouterBgpPeerBfdResponseOutputWithContext(context.Background())
+}
+
+func (i RouterBgpPeerBfdResponseArgs) ToRouterBgpPeerBfdResponseOutputWithContext(ctx context.Context) RouterBgpPeerBfdResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpPeerBfdResponseOutput)
+}
+
+type RouterBgpPeerBfdResponseOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerBfdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerBfdResponse)(nil)).Elem()
+}
+
+func (o RouterBgpPeerBfdResponseOutput) ToRouterBgpPeerBfdResponseOutput() RouterBgpPeerBfdResponseOutput {
+	return o
+}
+
+func (o RouterBgpPeerBfdResponseOutput) ToRouterBgpPeerBfdResponseOutputWithContext(ctx context.Context) RouterBgpPeerBfdResponseOutput {
+	return o
+}
+
+// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+func (o RouterBgpPeerBfdResponseOutput) MinReceiveInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterBgpPeerBfdResponse) int { return v.MinReceiveInterval }).(pulumi.IntOutput)
+}
+
+// The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+func (o RouterBgpPeerBfdResponseOutput) MinTransmitInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterBgpPeerBfdResponse) int { return v.MinTransmitInterval }).(pulumi.IntOutput)
+}
+
+// The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
+func (o RouterBgpPeerBfdResponseOutput) Multiplier() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterBgpPeerBfdResponse) int { return v.Multiplier }).(pulumi.IntOutput)
+}
+
+// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+func (o RouterBgpPeerBfdResponseOutput) SessionInitializationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpPeerBfdResponse) string { return v.SessionInitializationMode }).(pulumi.StringOutput)
+}
+
 type RouterBgpPeerResponse struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	AdvertiseMode string `pulumi:"advertiseMode"`
@@ -44979,6 +45378,8 @@ type RouterBgpPeerResponse struct {
 	AdvertisedIpRanges []RouterAdvertisedIpRangeResponse `pulumi:"advertisedIpRanges"`
 	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority int `pulumi:"advertisedRoutePriority"`
+	// BFD configuration for the BGP peering.
+	Bfd RouterBgpPeerBfdResponse `pulumi:"bfd"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable string `pulumi:"enable"`
 	// Name of the interface the BGP peer is associated with.
@@ -44993,6 +45394,8 @@ type RouterBgpPeerResponse struct {
 	PeerAsn int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress string `pulumi:"peerIpAddress"`
+	// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
+	RouterApplianceInstance string `pulumi:"routerApplianceInstance"`
 }
 
 // RouterBgpPeerResponseInput is an input type that accepts RouterBgpPeerResponseArgs and RouterBgpPeerResponseOutput values.
@@ -45015,6 +45418,8 @@ type RouterBgpPeerResponseArgs struct {
 	AdvertisedIpRanges RouterAdvertisedIpRangeResponseArrayInput `pulumi:"advertisedIpRanges"`
 	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority pulumi.IntInput `pulumi:"advertisedRoutePriority"`
+	// BFD configuration for the BGP peering.
+	Bfd RouterBgpPeerBfdResponseInput `pulumi:"bfd"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable pulumi.StringInput `pulumi:"enable"`
 	// Name of the interface the BGP peer is associated with.
@@ -45029,6 +45434,8 @@ type RouterBgpPeerResponseArgs struct {
 	PeerAsn pulumi.IntInput `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress pulumi.StringInput `pulumi:"peerIpAddress"`
+	// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
+	RouterApplianceInstance pulumi.StringInput `pulumi:"routerApplianceInstance"`
 }
 
 func (RouterBgpPeerResponseArgs) ElementType() reflect.Type {
@@ -45102,6 +45509,11 @@ func (o RouterBgpPeerResponseOutput) AdvertisedRoutePriority() pulumi.IntOutput 
 	return o.ApplyT(func(v RouterBgpPeerResponse) int { return v.AdvertisedRoutePriority }).(pulumi.IntOutput)
 }
 
+// BFD configuration for the BGP peering.
+func (o RouterBgpPeerResponseOutput) Bfd() RouterBgpPeerBfdResponseOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) RouterBgpPeerBfdResponse { return v.Bfd }).(RouterBgpPeerBfdResponseOutput)
+}
+
 // The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 func (o RouterBgpPeerResponseOutput) Enable() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.Enable }).(pulumi.StringOutput)
@@ -45135,6 +45547,11 @@ func (o RouterBgpPeerResponseOutput) PeerAsn() pulumi.IntOutput {
 // IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 func (o RouterBgpPeerResponseOutput) PeerIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.PeerIpAddress }).(pulumi.StringOutput)
+}
+
+// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
+func (o RouterBgpPeerResponseOutput) RouterApplianceInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.RouterApplianceInstance }).(pulumi.StringOutput)
 }
 
 type RouterBgpPeerResponseArrayOutput struct{ *pulumi.OutputState }
@@ -45379,6 +45796,12 @@ type RouterInterface struct {
 	LinkedVpnTunnel *string `pulumi:"linkedVpnTunnel"`
 	// Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// The regional private internal IP address that is used to establish BGP sessions to a VM instance acting as a third-party Router Appliance, such as a Next Gen Firewall, a Virtual Router, or an SD-WAN VM.
+	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// Name of the interface that will be redundant with the current interface you are creating. The redundantInterface must belong to the same Cloud Router as the interface here. To establish the BGP session to a Router Appliance VM, you must create two BGP peers. The two BGP peers must be attached to two separate interfaces that are redundant with each other. The redundant_interface must be 1-63 characters long, and comply with RFC1035. Specifically, the redundant_interface must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	RedundantInterface *string `pulumi:"redundantInterface"`
+	// The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
+	Subnetwork *string `pulumi:"subnetwork"`
 }
 
 // RouterInterfaceInput is an input type that accepts RouterInterfaceArgs and RouterInterfaceOutput values.
@@ -45401,6 +45824,12 @@ type RouterInterfaceArgs struct {
 	LinkedVpnTunnel pulumi.StringPtrInput `pulumi:"linkedVpnTunnel"`
 	// Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The regional private internal IP address that is used to establish BGP sessions to a VM instance acting as a third-party Router Appliance, such as a Next Gen Firewall, a Virtual Router, or an SD-WAN VM.
+	PrivateIpAddress pulumi.StringPtrInput `pulumi:"privateIpAddress"`
+	// Name of the interface that will be redundant with the current interface you are creating. The redundantInterface must belong to the same Cloud Router as the interface here. To establish the BGP session to a Router Appliance VM, you must create two BGP peers. The two BGP peers must be attached to two separate interfaces that are redundant with each other. The redundant_interface must be 1-63 characters long, and comply with RFC1035. Specifically, the redundant_interface must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	RedundantInterface pulumi.StringPtrInput `pulumi:"redundantInterface"`
+	// The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
 
 func (RouterInterfaceArgs) ElementType() reflect.Type {
@@ -45474,6 +45903,21 @@ func (o RouterInterfaceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterInterface) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The regional private internal IP address that is used to establish BGP sessions to a VM instance acting as a third-party Router Appliance, such as a Next Gen Firewall, a Virtual Router, or an SD-WAN VM.
+func (o RouterInterfaceOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterInterface) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Name of the interface that will be redundant with the current interface you are creating. The redundantInterface must belong to the same Cloud Router as the interface here. To establish the BGP session to a Router Appliance VM, you must create two BGP peers. The two BGP peers must be attached to two separate interfaces that are redundant with each other. The redundant_interface must be 1-63 characters long, and comply with RFC1035. Specifically, the redundant_interface must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o RouterInterfaceOutput) RedundantInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterInterface) *string { return v.RedundantInterface }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
+func (o RouterInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
 type RouterInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterInterfaceArrayOutput) ElementType() reflect.Type {
@@ -45505,6 +45949,12 @@ type RouterInterfaceResponse struct {
 	ManagementType string `pulumi:"managementType"`
 	// Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
+	// The regional private internal IP address that is used to establish BGP sessions to a VM instance acting as a third-party Router Appliance, such as a Next Gen Firewall, a Virtual Router, or an SD-WAN VM.
+	PrivateIpAddress string `pulumi:"privateIpAddress"`
+	// Name of the interface that will be redundant with the current interface you are creating. The redundantInterface must belong to the same Cloud Router as the interface here. To establish the BGP session to a Router Appliance VM, you must create two BGP peers. The two BGP peers must be attached to two separate interfaces that are redundant with each other. The redundant_interface must be 1-63 characters long, and comply with RFC1035. Specifically, the redundant_interface must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	RedundantInterface string `pulumi:"redundantInterface"`
+	// The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
+	Subnetwork string `pulumi:"subnetwork"`
 }
 
 // RouterInterfaceResponseInput is an input type that accepts RouterInterfaceResponseArgs and RouterInterfaceResponseOutput values.
@@ -45529,6 +45979,12 @@ type RouterInterfaceResponseArgs struct {
 	ManagementType pulumi.StringInput `pulumi:"managementType"`
 	// Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The regional private internal IP address that is used to establish BGP sessions to a VM instance acting as a third-party Router Appliance, such as a Next Gen Firewall, a Virtual Router, or an SD-WAN VM.
+	PrivateIpAddress pulumi.StringInput `pulumi:"privateIpAddress"`
+	// Name of the interface that will be redundant with the current interface you are creating. The redundantInterface must belong to the same Cloud Router as the interface here. To establish the BGP session to a Router Appliance VM, you must create two BGP peers. The two BGP peers must be attached to two separate interfaces that are redundant with each other. The redundant_interface must be 1-63 characters long, and comply with RFC1035. Specifically, the redundant_interface must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	RedundantInterface pulumi.StringInput `pulumi:"redundantInterface"`
+	// The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
 }
 
 func (RouterInterfaceResponseArgs) ElementType() reflect.Type {
@@ -45607,6 +46063,21 @@ func (o RouterInterfaceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterInterfaceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The regional private internal IP address that is used to establish BGP sessions to a VM instance acting as a third-party Router Appliance, such as a Next Gen Firewall, a Virtual Router, or an SD-WAN VM.
+func (o RouterInterfaceResponseOutput) PrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterInterfaceResponse) string { return v.PrivateIpAddress }).(pulumi.StringOutput)
+}
+
+// Name of the interface that will be redundant with the current interface you are creating. The redundantInterface must belong to the same Cloud Router as the interface here. To establish the BGP session to a Router Appliance VM, you must create two BGP peers. The two BGP peers must be attached to two separate interfaces that are redundant with each other. The redundant_interface must be 1-63 characters long, and comply with RFC1035. Specifically, the redundant_interface must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o RouterInterfaceResponseOutput) RedundantInterface() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterInterfaceResponse) string { return v.RedundantInterface }).(pulumi.StringOutput)
+}
+
+// The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
+func (o RouterInterfaceResponseOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterInterfaceResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
 type RouterInterfaceResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterInterfaceResponseArrayOutput) ElementType() reflect.Type {
@@ -45644,12 +46115,16 @@ type RouterNat struct {
 	NatIpAllocateOption *RouterNatNatIpAllocateOption `pulumi:"natIpAllocateOption"`
 	// A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid static external IP addresses assigned to the project.
 	NatIps []string `pulumi:"natIps"`
+	// A list of rules associated with this NAT.
+	Rules []RouterNatRule `pulumi:"rules"`
 	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat *RouterNatSourceSubnetworkIpRangesToNat `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks []RouterNatSubnetworkToNat `pulumi:"subnetworks"`
 	// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec *int `pulumi:"tcpEstablishedIdleTimeoutSec"`
+	// Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
+	TcpTimeWaitTimeoutSec *int `pulumi:"tcpTimeWaitTimeoutSec"`
 	// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec *int `pulumi:"tcpTransitoryIdleTimeoutSec"`
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
@@ -45684,12 +46159,16 @@ type RouterNatArgs struct {
 	NatIpAllocateOption RouterNatNatIpAllocateOptionPtrInput `pulumi:"natIpAllocateOption"`
 	// A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid static external IP addresses assigned to the project.
 	NatIps pulumi.StringArrayInput `pulumi:"natIps"`
+	// A list of rules associated with this NAT.
+	Rules RouterNatRuleArrayInput `pulumi:"rules"`
 	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat RouterNatSourceSubnetworkIpRangesToNatPtrInput `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks RouterNatSubnetworkToNatArrayInput `pulumi:"subnetworks"`
 	// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec pulumi.IntPtrInput `pulumi:"tcpEstablishedIdleTimeoutSec"`
+	// Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
+	TcpTimeWaitTimeoutSec pulumi.IntPtrInput `pulumi:"tcpTimeWaitTimeoutSec"`
 	// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec pulumi.IntPtrInput `pulumi:"tcpTransitoryIdleTimeoutSec"`
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
@@ -45787,6 +46266,11 @@ func (o RouterNatOutput) NatIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouterNat) []string { return v.NatIps }).(pulumi.StringArrayOutput)
 }
 
+// A list of rules associated with this NAT.
+func (o RouterNatOutput) Rules() RouterNatRuleArrayOutput {
+	return o.ApplyT(func(v RouterNat) []RouterNatRule { return v.Rules }).(RouterNatRuleArrayOutput)
+}
+
 // Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
 func (o RouterNatOutput) SourceSubnetworkIpRangesToNat() RouterNatSourceSubnetworkIpRangesToNatPtrOutput {
 	return o.ApplyT(func(v RouterNat) *RouterNatSourceSubnetworkIpRangesToNat { return v.SourceSubnetworkIpRangesToNat }).(RouterNatSourceSubnetworkIpRangesToNatPtrOutput)
@@ -45800,6 +46284,11 @@ func (o RouterNatOutput) Subnetworks() RouterNatSubnetworkToNatArrayOutput {
 // Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
 func (o RouterNatOutput) TcpEstablishedIdleTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RouterNat) *int { return v.TcpEstablishedIdleTimeoutSec }).(pulumi.IntPtrOutput)
+}
+
+// Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
+func (o RouterNatOutput) TcpTimeWaitTimeoutSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterNat) *int { return v.TcpTimeWaitTimeoutSec }).(pulumi.IntPtrOutput)
 }
 
 // Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
@@ -46072,12 +46561,16 @@ type RouterNatResponse struct {
 	NatIpAllocateOption string `pulumi:"natIpAllocateOption"`
 	// A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid static external IP addresses assigned to the project.
 	NatIps []string `pulumi:"natIps"`
+	// A list of rules associated with this NAT.
+	Rules []RouterNatRuleResponse `pulumi:"rules"`
 	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat string `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks []RouterNatSubnetworkToNatResponse `pulumi:"subnetworks"`
 	// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec int `pulumi:"tcpEstablishedIdleTimeoutSec"`
+	// Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
+	TcpTimeWaitTimeoutSec int `pulumi:"tcpTimeWaitTimeoutSec"`
 	// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec int `pulumi:"tcpTransitoryIdleTimeoutSec"`
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
@@ -46112,12 +46605,16 @@ type RouterNatResponseArgs struct {
 	NatIpAllocateOption pulumi.StringInput `pulumi:"natIpAllocateOption"`
 	// A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid static external IP addresses assigned to the project.
 	NatIps pulumi.StringArrayInput `pulumi:"natIps"`
+	// A list of rules associated with this NAT.
+	Rules RouterNatRuleResponseArrayInput `pulumi:"rules"`
 	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat pulumi.StringInput `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks RouterNatSubnetworkToNatResponseArrayInput `pulumi:"subnetworks"`
 	// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec pulumi.IntInput `pulumi:"tcpEstablishedIdleTimeoutSec"`
+	// Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
+	TcpTimeWaitTimeoutSec pulumi.IntInput `pulumi:"tcpTimeWaitTimeoutSec"`
 	// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec pulumi.IntInput `pulumi:"tcpTransitoryIdleTimeoutSec"`
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
@@ -46215,6 +46712,11 @@ func (o RouterNatResponseOutput) NatIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouterNatResponse) []string { return v.NatIps }).(pulumi.StringArrayOutput)
 }
 
+// A list of rules associated with this NAT.
+func (o RouterNatResponseOutput) Rules() RouterNatRuleResponseArrayOutput {
+	return o.ApplyT(func(v RouterNatResponse) []RouterNatRuleResponse { return v.Rules }).(RouterNatRuleResponseArrayOutput)
+}
+
 // Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
 func (o RouterNatResponseOutput) SourceSubnetworkIpRangesToNat() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterNatResponse) string { return v.SourceSubnetworkIpRangesToNat }).(pulumi.StringOutput)
@@ -46228,6 +46730,11 @@ func (o RouterNatResponseOutput) Subnetworks() RouterNatSubnetworkToNatResponseA
 // Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
 func (o RouterNatResponseOutput) TcpEstablishedIdleTimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v RouterNatResponse) int { return v.TcpEstablishedIdleTimeoutSec }).(pulumi.IntOutput)
+}
+
+// Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
+func (o RouterNatResponseOutput) TcpTimeWaitTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterNatResponse) int { return v.TcpTimeWaitTimeoutSec }).(pulumi.IntOutput)
 }
 
 // Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
@@ -46258,6 +46765,471 @@ func (o RouterNatResponseArrayOutput) Index(i pulumi.IntInput) RouterNatResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterNatResponse {
 		return vs[0].([]RouterNatResponse)[vs[1].(int)]
 	}).(RouterNatResponseOutput)
+}
+
+type RouterNatRule struct {
+	// The action to be enforced for traffic that matches this rule.
+	Action *RouterNatRuleAction `pulumi:"action"`
+	// An optional description of this rule.
+	Description *string `pulumi:"description"`
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+	Match *string `pulumi:"match"`
+	// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+	RuleNumber *int `pulumi:"ruleNumber"`
+}
+
+// RouterNatRuleInput is an input type that accepts RouterNatRuleArgs and RouterNatRuleOutput values.
+// You can construct a concrete instance of `RouterNatRuleInput` via:
+//
+//          RouterNatRuleArgs{...}
+type RouterNatRuleInput interface {
+	pulumi.Input
+
+	ToRouterNatRuleOutput() RouterNatRuleOutput
+	ToRouterNatRuleOutputWithContext(context.Context) RouterNatRuleOutput
+}
+
+type RouterNatRuleArgs struct {
+	// The action to be enforced for traffic that matches this rule.
+	Action RouterNatRuleActionPtrInput `pulumi:"action"`
+	// An optional description of this rule.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+	Match pulumi.StringPtrInput `pulumi:"match"`
+	// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+	RuleNumber pulumi.IntPtrInput `pulumi:"ruleNumber"`
+}
+
+func (RouterNatRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRule)(nil)).Elem()
+}
+
+func (i RouterNatRuleArgs) ToRouterNatRuleOutput() RouterNatRuleOutput {
+	return i.ToRouterNatRuleOutputWithContext(context.Background())
+}
+
+func (i RouterNatRuleArgs) ToRouterNatRuleOutputWithContext(ctx context.Context) RouterNatRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleOutput)
+}
+
+// RouterNatRuleArrayInput is an input type that accepts RouterNatRuleArray and RouterNatRuleArrayOutput values.
+// You can construct a concrete instance of `RouterNatRuleArrayInput` via:
+//
+//          RouterNatRuleArray{ RouterNatRuleArgs{...} }
+type RouterNatRuleArrayInput interface {
+	pulumi.Input
+
+	ToRouterNatRuleArrayOutput() RouterNatRuleArrayOutput
+	ToRouterNatRuleArrayOutputWithContext(context.Context) RouterNatRuleArrayOutput
+}
+
+type RouterNatRuleArray []RouterNatRuleInput
+
+func (RouterNatRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterNatRule)(nil)).Elem()
+}
+
+func (i RouterNatRuleArray) ToRouterNatRuleArrayOutput() RouterNatRuleArrayOutput {
+	return i.ToRouterNatRuleArrayOutputWithContext(context.Background())
+}
+
+func (i RouterNatRuleArray) ToRouterNatRuleArrayOutputWithContext(ctx context.Context) RouterNatRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleArrayOutput)
+}
+
+type RouterNatRuleOutput struct{ *pulumi.OutputState }
+
+func (RouterNatRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRule)(nil)).Elem()
+}
+
+func (o RouterNatRuleOutput) ToRouterNatRuleOutput() RouterNatRuleOutput {
+	return o
+}
+
+func (o RouterNatRuleOutput) ToRouterNatRuleOutputWithContext(ctx context.Context) RouterNatRuleOutput {
+	return o
+}
+
+// The action to be enforced for traffic that matches this rule.
+func (o RouterNatRuleOutput) Action() RouterNatRuleActionPtrOutput {
+	return o.ApplyT(func(v RouterNatRule) *RouterNatRuleAction { return v.Action }).(RouterNatRuleActionPtrOutput)
+}
+
+// An optional description of this rule.
+func (o RouterNatRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterNatRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+func (o RouterNatRuleOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterNatRule) *string { return v.Match }).(pulumi.StringPtrOutput)
+}
+
+// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+func (o RouterNatRuleOutput) RuleNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterNatRule) *int { return v.RuleNumber }).(pulumi.IntPtrOutput)
+}
+
+type RouterNatRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterNatRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterNatRule)(nil)).Elem()
+}
+
+func (o RouterNatRuleArrayOutput) ToRouterNatRuleArrayOutput() RouterNatRuleArrayOutput {
+	return o
+}
+
+func (o RouterNatRuleArrayOutput) ToRouterNatRuleArrayOutputWithContext(ctx context.Context) RouterNatRuleArrayOutput {
+	return o
+}
+
+func (o RouterNatRuleArrayOutput) Index(i pulumi.IntInput) RouterNatRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterNatRule {
+		return vs[0].([]RouterNatRule)[vs[1].(int)]
+	}).(RouterNatRuleOutput)
+}
+
+type RouterNatRuleAction struct {
+	// A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+	SourceNatActiveIps []string `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+	SourceNatDrainIps []string `pulumi:"sourceNatDrainIps"`
+}
+
+// RouterNatRuleActionInput is an input type that accepts RouterNatRuleActionArgs and RouterNatRuleActionOutput values.
+// You can construct a concrete instance of `RouterNatRuleActionInput` via:
+//
+//          RouterNatRuleActionArgs{...}
+type RouterNatRuleActionInput interface {
+	pulumi.Input
+
+	ToRouterNatRuleActionOutput() RouterNatRuleActionOutput
+	ToRouterNatRuleActionOutputWithContext(context.Context) RouterNatRuleActionOutput
+}
+
+type RouterNatRuleActionArgs struct {
+	// A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+	SourceNatActiveIps pulumi.StringArrayInput `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+	SourceNatDrainIps pulumi.StringArrayInput `pulumi:"sourceNatDrainIps"`
+}
+
+func (RouterNatRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRuleAction)(nil)).Elem()
+}
+
+func (i RouterNatRuleActionArgs) ToRouterNatRuleActionOutput() RouterNatRuleActionOutput {
+	return i.ToRouterNatRuleActionOutputWithContext(context.Background())
+}
+
+func (i RouterNatRuleActionArgs) ToRouterNatRuleActionOutputWithContext(ctx context.Context) RouterNatRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleActionOutput)
+}
+
+func (i RouterNatRuleActionArgs) ToRouterNatRuleActionPtrOutput() RouterNatRuleActionPtrOutput {
+	return i.ToRouterNatRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i RouterNatRuleActionArgs) ToRouterNatRuleActionPtrOutputWithContext(ctx context.Context) RouterNatRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleActionOutput).ToRouterNatRuleActionPtrOutputWithContext(ctx)
+}
+
+// RouterNatRuleActionPtrInput is an input type that accepts RouterNatRuleActionArgs, RouterNatRuleActionPtr and RouterNatRuleActionPtrOutput values.
+// You can construct a concrete instance of `RouterNatRuleActionPtrInput` via:
+//
+//          RouterNatRuleActionArgs{...}
+//
+//  or:
+//
+//          nil
+type RouterNatRuleActionPtrInput interface {
+	pulumi.Input
+
+	ToRouterNatRuleActionPtrOutput() RouterNatRuleActionPtrOutput
+	ToRouterNatRuleActionPtrOutputWithContext(context.Context) RouterNatRuleActionPtrOutput
+}
+
+type routerNatRuleActionPtrType RouterNatRuleActionArgs
+
+func RouterNatRuleActionPtr(v *RouterNatRuleActionArgs) RouterNatRuleActionPtrInput {
+	return (*routerNatRuleActionPtrType)(v)
+}
+
+func (*routerNatRuleActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterNatRuleAction)(nil)).Elem()
+}
+
+func (i *routerNatRuleActionPtrType) ToRouterNatRuleActionPtrOutput() RouterNatRuleActionPtrOutput {
+	return i.ToRouterNatRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i *routerNatRuleActionPtrType) ToRouterNatRuleActionPtrOutputWithContext(ctx context.Context) RouterNatRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleActionPtrOutput)
+}
+
+type RouterNatRuleActionOutput struct{ *pulumi.OutputState }
+
+func (RouterNatRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRuleAction)(nil)).Elem()
+}
+
+func (o RouterNatRuleActionOutput) ToRouterNatRuleActionOutput() RouterNatRuleActionOutput {
+	return o
+}
+
+func (o RouterNatRuleActionOutput) ToRouterNatRuleActionOutputWithContext(ctx context.Context) RouterNatRuleActionOutput {
+	return o
+}
+
+func (o RouterNatRuleActionOutput) ToRouterNatRuleActionPtrOutput() RouterNatRuleActionPtrOutput {
+	return o.ToRouterNatRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatRuleActionOutput) ToRouterNatRuleActionPtrOutputWithContext(ctx context.Context) RouterNatRuleActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterNatRuleAction) *RouterNatRuleAction {
+		return &v
+	}).(RouterNatRuleActionPtrOutput)
+}
+
+// A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+func (o RouterNatRuleActionOutput) SourceNatActiveIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterNatRuleAction) []string { return v.SourceNatActiveIps }).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+func (o RouterNatRuleActionOutput) SourceNatDrainIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterNatRuleAction) []string { return v.SourceNatDrainIps }).(pulumi.StringArrayOutput)
+}
+
+type RouterNatRuleActionPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterNatRuleActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterNatRuleAction)(nil)).Elem()
+}
+
+func (o RouterNatRuleActionPtrOutput) ToRouterNatRuleActionPtrOutput() RouterNatRuleActionPtrOutput {
+	return o
+}
+
+func (o RouterNatRuleActionPtrOutput) ToRouterNatRuleActionPtrOutputWithContext(ctx context.Context) RouterNatRuleActionPtrOutput {
+	return o
+}
+
+func (o RouterNatRuleActionPtrOutput) Elem() RouterNatRuleActionOutput {
+	return o.ApplyT(func(v *RouterNatRuleAction) RouterNatRuleAction {
+		if v != nil {
+			return *v
+		}
+		var ret RouterNatRuleAction
+		return ret
+	}).(RouterNatRuleActionOutput)
+}
+
+// A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+func (o RouterNatRuleActionPtrOutput) SourceNatActiveIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouterNatRuleAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceNatActiveIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+func (o RouterNatRuleActionPtrOutput) SourceNatDrainIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouterNatRuleAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceNatDrainIps
+	}).(pulumi.StringArrayOutput)
+}
+
+type RouterNatRuleActionResponse struct {
+	// A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+	SourceNatActiveIps []string `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+	SourceNatDrainIps []string `pulumi:"sourceNatDrainIps"`
+}
+
+// RouterNatRuleActionResponseInput is an input type that accepts RouterNatRuleActionResponseArgs and RouterNatRuleActionResponseOutput values.
+// You can construct a concrete instance of `RouterNatRuleActionResponseInput` via:
+//
+//          RouterNatRuleActionResponseArgs{...}
+type RouterNatRuleActionResponseInput interface {
+	pulumi.Input
+
+	ToRouterNatRuleActionResponseOutput() RouterNatRuleActionResponseOutput
+	ToRouterNatRuleActionResponseOutputWithContext(context.Context) RouterNatRuleActionResponseOutput
+}
+
+type RouterNatRuleActionResponseArgs struct {
+	// A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+	SourceNatActiveIps pulumi.StringArrayInput `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+	SourceNatDrainIps pulumi.StringArrayInput `pulumi:"sourceNatDrainIps"`
+}
+
+func (RouterNatRuleActionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRuleActionResponse)(nil)).Elem()
+}
+
+func (i RouterNatRuleActionResponseArgs) ToRouterNatRuleActionResponseOutput() RouterNatRuleActionResponseOutput {
+	return i.ToRouterNatRuleActionResponseOutputWithContext(context.Background())
+}
+
+func (i RouterNatRuleActionResponseArgs) ToRouterNatRuleActionResponseOutputWithContext(ctx context.Context) RouterNatRuleActionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleActionResponseOutput)
+}
+
+type RouterNatRuleActionResponseOutput struct{ *pulumi.OutputState }
+
+func (RouterNatRuleActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRuleActionResponse)(nil)).Elem()
+}
+
+func (o RouterNatRuleActionResponseOutput) ToRouterNatRuleActionResponseOutput() RouterNatRuleActionResponseOutput {
+	return o
+}
+
+func (o RouterNatRuleActionResponseOutput) ToRouterNatRuleActionResponseOutputWithContext(ctx context.Context) RouterNatRuleActionResponseOutput {
+	return o
+}
+
+// A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+func (o RouterNatRuleActionResponseOutput) SourceNatActiveIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterNatRuleActionResponse) []string { return v.SourceNatActiveIps }).(pulumi.StringArrayOutput)
+}
+
+// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+func (o RouterNatRuleActionResponseOutput) SourceNatDrainIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterNatRuleActionResponse) []string { return v.SourceNatDrainIps }).(pulumi.StringArrayOutput)
+}
+
+type RouterNatRuleResponse struct {
+	// The action to be enforced for traffic that matches this rule.
+	Action RouterNatRuleActionResponse `pulumi:"action"`
+	// An optional description of this rule.
+	Description string `pulumi:"description"`
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+	Match string `pulumi:"match"`
+	// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+	RuleNumber int `pulumi:"ruleNumber"`
+}
+
+// RouterNatRuleResponseInput is an input type that accepts RouterNatRuleResponseArgs and RouterNatRuleResponseOutput values.
+// You can construct a concrete instance of `RouterNatRuleResponseInput` via:
+//
+//          RouterNatRuleResponseArgs{...}
+type RouterNatRuleResponseInput interface {
+	pulumi.Input
+
+	ToRouterNatRuleResponseOutput() RouterNatRuleResponseOutput
+	ToRouterNatRuleResponseOutputWithContext(context.Context) RouterNatRuleResponseOutput
+}
+
+type RouterNatRuleResponseArgs struct {
+	// The action to be enforced for traffic that matches this rule.
+	Action RouterNatRuleActionResponseInput `pulumi:"action"`
+	// An optional description of this rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+	Match pulumi.StringInput `pulumi:"match"`
+	// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+	RuleNumber pulumi.IntInput `pulumi:"ruleNumber"`
+}
+
+func (RouterNatRuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRuleResponse)(nil)).Elem()
+}
+
+func (i RouterNatRuleResponseArgs) ToRouterNatRuleResponseOutput() RouterNatRuleResponseOutput {
+	return i.ToRouterNatRuleResponseOutputWithContext(context.Background())
+}
+
+func (i RouterNatRuleResponseArgs) ToRouterNatRuleResponseOutputWithContext(ctx context.Context) RouterNatRuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleResponseOutput)
+}
+
+// RouterNatRuleResponseArrayInput is an input type that accepts RouterNatRuleResponseArray and RouterNatRuleResponseArrayOutput values.
+// You can construct a concrete instance of `RouterNatRuleResponseArrayInput` via:
+//
+//          RouterNatRuleResponseArray{ RouterNatRuleResponseArgs{...} }
+type RouterNatRuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToRouterNatRuleResponseArrayOutput() RouterNatRuleResponseArrayOutput
+	ToRouterNatRuleResponseArrayOutputWithContext(context.Context) RouterNatRuleResponseArrayOutput
+}
+
+type RouterNatRuleResponseArray []RouterNatRuleResponseInput
+
+func (RouterNatRuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterNatRuleResponse)(nil)).Elem()
+}
+
+func (i RouterNatRuleResponseArray) ToRouterNatRuleResponseArrayOutput() RouterNatRuleResponseArrayOutput {
+	return i.ToRouterNatRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i RouterNatRuleResponseArray) ToRouterNatRuleResponseArrayOutputWithContext(ctx context.Context) RouterNatRuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatRuleResponseArrayOutput)
+}
+
+type RouterNatRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (RouterNatRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatRuleResponse)(nil)).Elem()
+}
+
+func (o RouterNatRuleResponseOutput) ToRouterNatRuleResponseOutput() RouterNatRuleResponseOutput {
+	return o
+}
+
+func (o RouterNatRuleResponseOutput) ToRouterNatRuleResponseOutputWithContext(ctx context.Context) RouterNatRuleResponseOutput {
+	return o
+}
+
+// The action to be enforced for traffic that matches this rule.
+func (o RouterNatRuleResponseOutput) Action() RouterNatRuleActionResponseOutput {
+	return o.ApplyT(func(v RouterNatRuleResponse) RouterNatRuleActionResponse { return v.Action }).(RouterNatRuleActionResponseOutput)
+}
+
+// An optional description of this rule.
+func (o RouterNatRuleResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterNatRuleResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+func (o RouterNatRuleResponseOutput) Match() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterNatRuleResponse) string { return v.Match }).(pulumi.StringOutput)
+}
+
+// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+func (o RouterNatRuleResponseOutput) RuleNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterNatRuleResponse) int { return v.RuleNumber }).(pulumi.IntOutput)
+}
+
+type RouterNatRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterNatRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterNatRuleResponse)(nil)).Elem()
+}
+
+func (o RouterNatRuleResponseArrayOutput) ToRouterNatRuleResponseArrayOutput() RouterNatRuleResponseArrayOutput {
+	return o
+}
+
+func (o RouterNatRuleResponseArrayOutput) ToRouterNatRuleResponseArrayOutputWithContext(ctx context.Context) RouterNatRuleResponseArrayOutput {
+	return o
+}
+
+func (o RouterNatRuleResponseArrayOutput) Index(i pulumi.IntInput) RouterNatRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterNatRuleResponse {
+		return vs[0].([]RouterNatRuleResponse)[vs[1].(int)]
+	}).(RouterNatRuleResponseOutput)
 }
 
 // Defines the IP ranges that want to use NAT for a subnetwork.
@@ -53742,6 +54714,278 @@ func (o SubnetworkSecondaryRangeResponseArrayOutput) Index(i pulumi.IntInput) Su
 	}).(SubnetworkSecondaryRangeResponseOutput)
 }
 
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+type Subsetting struct {
+	Policy *SubsettingPolicy `pulumi:"policy"`
+}
+
+// SubsettingInput is an input type that accepts SubsettingArgs and SubsettingOutput values.
+// You can construct a concrete instance of `SubsettingInput` via:
+//
+//          SubsettingArgs{...}
+type SubsettingInput interface {
+	pulumi.Input
+
+	ToSubsettingOutput() SubsettingOutput
+	ToSubsettingOutputWithContext(context.Context) SubsettingOutput
+}
+
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+type SubsettingArgs struct {
+	Policy SubsettingPolicyPtrInput `pulumi:"policy"`
+}
+
+func (SubsettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subsetting)(nil)).Elem()
+}
+
+func (i SubsettingArgs) ToSubsettingOutput() SubsettingOutput {
+	return i.ToSubsettingOutputWithContext(context.Background())
+}
+
+func (i SubsettingArgs) ToSubsettingOutputWithContext(ctx context.Context) SubsettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubsettingOutput)
+}
+
+func (i SubsettingArgs) ToSubsettingPtrOutput() SubsettingPtrOutput {
+	return i.ToSubsettingPtrOutputWithContext(context.Background())
+}
+
+func (i SubsettingArgs) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubsettingOutput).ToSubsettingPtrOutputWithContext(ctx)
+}
+
+// SubsettingPtrInput is an input type that accepts SubsettingArgs, SubsettingPtr and SubsettingPtrOutput values.
+// You can construct a concrete instance of `SubsettingPtrInput` via:
+//
+//          SubsettingArgs{...}
+//
+//  or:
+//
+//          nil
+type SubsettingPtrInput interface {
+	pulumi.Input
+
+	ToSubsettingPtrOutput() SubsettingPtrOutput
+	ToSubsettingPtrOutputWithContext(context.Context) SubsettingPtrOutput
+}
+
+type subsettingPtrType SubsettingArgs
+
+func SubsettingPtr(v *SubsettingArgs) SubsettingPtrInput {
+	return (*subsettingPtrType)(v)
+}
+
+func (*subsettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Subsetting)(nil)).Elem()
+}
+
+func (i *subsettingPtrType) ToSubsettingPtrOutput() SubsettingPtrOutput {
+	return i.ToSubsettingPtrOutputWithContext(context.Background())
+}
+
+func (i *subsettingPtrType) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubsettingPtrOutput)
+}
+
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+type SubsettingOutput struct{ *pulumi.OutputState }
+
+func (SubsettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subsetting)(nil)).Elem()
+}
+
+func (o SubsettingOutput) ToSubsettingOutput() SubsettingOutput {
+	return o
+}
+
+func (o SubsettingOutput) ToSubsettingOutputWithContext(ctx context.Context) SubsettingOutput {
+	return o
+}
+
+func (o SubsettingOutput) ToSubsettingPtrOutput() SubsettingPtrOutput {
+	return o.ToSubsettingPtrOutputWithContext(context.Background())
+}
+
+func (o SubsettingOutput) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Subsetting) *Subsetting {
+		return &v
+	}).(SubsettingPtrOutput)
+}
+
+func (o SubsettingOutput) Policy() SubsettingPolicyPtrOutput {
+	return o.ApplyT(func(v Subsetting) *SubsettingPolicy { return v.Policy }).(SubsettingPolicyPtrOutput)
+}
+
+type SubsettingPtrOutput struct{ *pulumi.OutputState }
+
+func (SubsettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Subsetting)(nil)).Elem()
+}
+
+func (o SubsettingPtrOutput) ToSubsettingPtrOutput() SubsettingPtrOutput {
+	return o
+}
+
+func (o SubsettingPtrOutput) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
+	return o
+}
+
+func (o SubsettingPtrOutput) Elem() SubsettingOutput {
+	return o.ApplyT(func(v *Subsetting) Subsetting {
+		if v != nil {
+			return *v
+		}
+		var ret Subsetting
+		return ret
+	}).(SubsettingOutput)
+}
+
+func (o SubsettingPtrOutput) Policy() SubsettingPolicyPtrOutput {
+	return o.ApplyT(func(v *Subsetting) *SubsettingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(SubsettingPolicyPtrOutput)
+}
+
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+type SubsettingResponse struct {
+	Policy string `pulumi:"policy"`
+}
+
+// SubsettingResponseInput is an input type that accepts SubsettingResponseArgs and SubsettingResponseOutput values.
+// You can construct a concrete instance of `SubsettingResponseInput` via:
+//
+//          SubsettingResponseArgs{...}
+type SubsettingResponseInput interface {
+	pulumi.Input
+
+	ToSubsettingResponseOutput() SubsettingResponseOutput
+	ToSubsettingResponseOutputWithContext(context.Context) SubsettingResponseOutput
+}
+
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+type SubsettingResponseArgs struct {
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (SubsettingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubsettingResponse)(nil)).Elem()
+}
+
+func (i SubsettingResponseArgs) ToSubsettingResponseOutput() SubsettingResponseOutput {
+	return i.ToSubsettingResponseOutputWithContext(context.Background())
+}
+
+func (i SubsettingResponseArgs) ToSubsettingResponseOutputWithContext(ctx context.Context) SubsettingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubsettingResponseOutput)
+}
+
+func (i SubsettingResponseArgs) ToSubsettingResponsePtrOutput() SubsettingResponsePtrOutput {
+	return i.ToSubsettingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SubsettingResponseArgs) ToSubsettingResponsePtrOutputWithContext(ctx context.Context) SubsettingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubsettingResponseOutput).ToSubsettingResponsePtrOutputWithContext(ctx)
+}
+
+// SubsettingResponsePtrInput is an input type that accepts SubsettingResponseArgs, SubsettingResponsePtr and SubsettingResponsePtrOutput values.
+// You can construct a concrete instance of `SubsettingResponsePtrInput` via:
+//
+//          SubsettingResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SubsettingResponsePtrInput interface {
+	pulumi.Input
+
+	ToSubsettingResponsePtrOutput() SubsettingResponsePtrOutput
+	ToSubsettingResponsePtrOutputWithContext(context.Context) SubsettingResponsePtrOutput
+}
+
+type subsettingResponsePtrType SubsettingResponseArgs
+
+func SubsettingResponsePtr(v *SubsettingResponseArgs) SubsettingResponsePtrInput {
+	return (*subsettingResponsePtrType)(v)
+}
+
+func (*subsettingResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubsettingResponse)(nil)).Elem()
+}
+
+func (i *subsettingResponsePtrType) ToSubsettingResponsePtrOutput() SubsettingResponsePtrOutput {
+	return i.ToSubsettingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *subsettingResponsePtrType) ToSubsettingResponsePtrOutputWithContext(ctx context.Context) SubsettingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubsettingResponsePtrOutput)
+}
+
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+type SubsettingResponseOutput struct{ *pulumi.OutputState }
+
+func (SubsettingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubsettingResponse)(nil)).Elem()
+}
+
+func (o SubsettingResponseOutput) ToSubsettingResponseOutput() SubsettingResponseOutput {
+	return o
+}
+
+func (o SubsettingResponseOutput) ToSubsettingResponseOutputWithContext(ctx context.Context) SubsettingResponseOutput {
+	return o
+}
+
+func (o SubsettingResponseOutput) ToSubsettingResponsePtrOutput() SubsettingResponsePtrOutput {
+	return o.ToSubsettingResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SubsettingResponseOutput) ToSubsettingResponsePtrOutputWithContext(ctx context.Context) SubsettingResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubsettingResponse) *SubsettingResponse {
+		return &v
+	}).(SubsettingResponsePtrOutput)
+}
+
+func (o SubsettingResponseOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v SubsettingResponse) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type SubsettingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SubsettingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubsettingResponse)(nil)).Elem()
+}
+
+func (o SubsettingResponsePtrOutput) ToSubsettingResponsePtrOutput() SubsettingResponsePtrOutput {
+	return o
+}
+
+func (o SubsettingResponsePtrOutput) ToSubsettingResponsePtrOutputWithContext(ctx context.Context) SubsettingResponsePtrOutput {
+	return o
+}
+
+func (o SubsettingResponsePtrOutput) Elem() SubsettingResponseOutput {
+	return o.ApplyT(func(v *SubsettingResponse) SubsettingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SubsettingResponse
+		return ret
+	}).(SubsettingResponseOutput)
+}
+
+func (o SubsettingResponsePtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubsettingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
 type TCPHealthCheck struct {
 	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
@@ -55943,6 +57187,715 @@ func (o WeightedBackendServiceResponseArrayOutput) Index(i pulumi.IntInput) Weig
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigInput)(nil)).Elem(), AcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigArrayInput)(nil)).Elem(), AcceleratorConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigResponseInput)(nil)).Elem(), AcceleratorConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigResponseArrayInput)(nil)).Elem(), AcceleratorConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigInput)(nil)).Elem(), AccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigArrayInput)(nil)).Elem(), AccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigResponseInput)(nil)).Elem(), AccessConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigResponseArrayInput)(nil)).Elem(), AccessConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesInput)(nil)).Elem(), AdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesPtrInput)(nil)).Elem(), AdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesResponseInput)(nil)).Elem(), AdvancedMachineFeaturesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesResponsePtrInput)(nil)).Elem(), AdvancedMachineFeaturesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AliasIpRangeInput)(nil)).Elem(), AliasIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AliasIpRangeArrayInput)(nil)).Elem(), AliasIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AliasIpRangeResponseInput)(nil)).Elem(), AliasIpRangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AliasIpRangeResponseArrayInput)(nil)).Elem(), AliasIpRangeResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInput)(nil)).Elem(), AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArrayInput)(nil)).Elem(), AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseInput)(nil)).Elem(), AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseArrayInput)(nil)).Elem(), AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationReservedInstancePropertiesInput)(nil)).Elem(), AllocationSpecificSKUAllocationReservedInstancePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationReservedInstancePropertiesPtrInput)(nil)).Elem(), AllocationSpecificSKUAllocationReservedInstancePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationReservedInstancePropertiesResponseInput)(nil)).Elem(), AllocationSpecificSKUAllocationReservedInstancePropertiesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationReservedInstancePropertiesResponsePtrInput)(nil)).Elem(), AllocationSpecificSKUAllocationReservedInstancePropertiesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUReservationInput)(nil)).Elem(), AllocationSpecificSKUReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUReservationPtrInput)(nil)).Elem(), AllocationSpecificSKUReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUReservationResponseInput)(nil)).Elem(), AllocationSpecificSKUReservationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUReservationResponsePtrInput)(nil)).Elem(), AllocationSpecificSKUReservationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInput)(nil)).Elem(), AttachedDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskArrayInput)(nil)).Elem(), AttachedDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsInput)(nil)).Elem(), AttachedDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsPtrInput)(nil)).Elem(), AttachedDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsResponseInput)(nil)).Elem(), AttachedDiskInitializeParamsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskResponseInput)(nil)).Elem(), AttachedDiskResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskResponseArrayInput)(nil)).Elem(), AttachedDiskResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationLoggingOptionsInput)(nil)).Elem(), AuthorizationLoggingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationLoggingOptionsPtrInput)(nil)).Elem(), AuthorizationLoggingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationLoggingOptionsResponseInput)(nil)).Elem(), AuthorizationLoggingOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerStatusDetailsResponseInput)(nil)).Elem(), AutoscalerStatusDetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerStatusDetailsResponseArrayInput)(nil)).Elem(), AutoscalerStatusDetailsResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyInput)(nil)).Elem(), AutoscalingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyPtrInput)(nil)).Elem(), AutoscalingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyCpuUtilizationInput)(nil)).Elem(), AutoscalingPolicyCpuUtilizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyCpuUtilizationPtrInput)(nil)).Elem(), AutoscalingPolicyCpuUtilizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyCpuUtilizationResponseInput)(nil)).Elem(), AutoscalingPolicyCpuUtilizationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyCpuUtilizationResponsePtrInput)(nil)).Elem(), AutoscalingPolicyCpuUtilizationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyCustomMetricUtilizationInput)(nil)).Elem(), AutoscalingPolicyCustomMetricUtilizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyCustomMetricUtilizationArrayInput)(nil)).Elem(), AutoscalingPolicyCustomMetricUtilizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyCustomMetricUtilizationResponseInput)(nil)).Elem(), AutoscalingPolicyCustomMetricUtilizationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyCustomMetricUtilizationResponseArrayInput)(nil)).Elem(), AutoscalingPolicyCustomMetricUtilizationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyLoadBalancingUtilizationInput)(nil)).Elem(), AutoscalingPolicyLoadBalancingUtilizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyLoadBalancingUtilizationPtrInput)(nil)).Elem(), AutoscalingPolicyLoadBalancingUtilizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyLoadBalancingUtilizationResponseInput)(nil)).Elem(), AutoscalingPolicyLoadBalancingUtilizationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyLoadBalancingUtilizationResponsePtrInput)(nil)).Elem(), AutoscalingPolicyLoadBalancingUtilizationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyResponseInput)(nil)).Elem(), AutoscalingPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyResponsePtrInput)(nil)).Elem(), AutoscalingPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScaleInControlInput)(nil)).Elem(), AutoscalingPolicyScaleInControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScaleInControlPtrInput)(nil)).Elem(), AutoscalingPolicyScaleInControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScaleInControlResponseInput)(nil)).Elem(), AutoscalingPolicyScaleInControlResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScaleInControlResponsePtrInput)(nil)).Elem(), AutoscalingPolicyScaleInControlResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendInput)(nil)).Elem(), BackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendArrayInput)(nil)).Elem(), BackendArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyInput)(nil)).Elem(), BackendBucketCdnPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyPtrInput)(nil)).Elem(), BackendBucketCdnPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyBypassCacheOnRequestHeaderInput)(nil)).Elem(), BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayInput)(nil)).Elem(), BackendBucketCdnPolicyBypassCacheOnRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponseInput)(nil)).Elem(), BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponseArrayInput)(nil)).Elem(), BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyNegativeCachingPolicyInput)(nil)).Elem(), BackendBucketCdnPolicyNegativeCachingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyNegativeCachingPolicyArrayInput)(nil)).Elem(), BackendBucketCdnPolicyNegativeCachingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyNegativeCachingPolicyResponseInput)(nil)).Elem(), BackendBucketCdnPolicyNegativeCachingPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyNegativeCachingPolicyResponseArrayInput)(nil)).Elem(), BackendBucketCdnPolicyNegativeCachingPolicyResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyResponseInput)(nil)).Elem(), BackendBucketCdnPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyResponsePtrInput)(nil)).Elem(), BackendBucketCdnPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendResponseInput)(nil)).Elem(), BackendResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendResponseArrayInput)(nil)).Elem(), BackendResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyInput)(nil)).Elem(), BackendServiceCdnPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyPtrInput)(nil)).Elem(), BackendServiceCdnPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyBypassCacheOnRequestHeaderInput)(nil)).Elem(), BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayInput)(nil)).Elem(), BackendServiceCdnPolicyBypassCacheOnRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseInput)(nil)).Elem(), BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseArrayInput)(nil)).Elem(), BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyNegativeCachingPolicyInput)(nil)).Elem(), BackendServiceCdnPolicyNegativeCachingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyNegativeCachingPolicyArrayInput)(nil)).Elem(), BackendServiceCdnPolicyNegativeCachingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyNegativeCachingPolicyResponseInput)(nil)).Elem(), BackendServiceCdnPolicyNegativeCachingPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyNegativeCachingPolicyResponseArrayInput)(nil)).Elem(), BackendServiceCdnPolicyNegativeCachingPolicyResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyResponseInput)(nil)).Elem(), BackendServiceCdnPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyResponsePtrInput)(nil)).Elem(), BackendServiceCdnPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceFailoverPolicyInput)(nil)).Elem(), BackendServiceFailoverPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceFailoverPolicyPtrInput)(nil)).Elem(), BackendServiceFailoverPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceFailoverPolicyResponseInput)(nil)).Elem(), BackendServiceFailoverPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceFailoverPolicyResponsePtrInput)(nil)).Elem(), BackendServiceFailoverPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceIAPInput)(nil)).Elem(), BackendServiceIAPArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceIAPPtrInput)(nil)).Elem(), BackendServiceIAPArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceIAPResponseInput)(nil)).Elem(), BackendServiceIAPResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceIAPResponsePtrInput)(nil)).Elem(), BackendServiceIAPResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigInput)(nil)).Elem(), BackendServiceLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigPtrInput)(nil)).Elem(), BackendServiceLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigResponseInput)(nil)).Elem(), BackendServiceLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigResponsePtrInput)(nil)).Elem(), BackendServiceLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CacheKeyPolicyInput)(nil)).Elem(), CacheKeyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CacheKeyPolicyPtrInput)(nil)).Elem(), CacheKeyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CacheKeyPolicyResponseInput)(nil)).Elem(), CacheKeyPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CacheKeyPolicyResponsePtrInput)(nil)).Elem(), CacheKeyPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CircuitBreakersInput)(nil)).Elem(), CircuitBreakersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CircuitBreakersPtrInput)(nil)).Elem(), CircuitBreakersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CircuitBreakersResponseInput)(nil)).Elem(), CircuitBreakersResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CircuitBreakersResponsePtrInput)(nil)).Elem(), CircuitBreakersResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionInput)(nil)).Elem(), ConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionArrayInput)(nil)).Elem(), ConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionResponseInput)(nil)).Elem(), ConditionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionResponseArrayInput)(nil)).Elem(), ConditionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialInstanceConfigInput)(nil)).Elem(), ConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialInstanceConfigPtrInput)(nil)).Elem(), ConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialInstanceConfigResponseInput)(nil)).Elem(), ConfidentialInstanceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialInstanceConfigResponsePtrInput)(nil)).Elem(), ConfidentialInstanceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionDrainingInput)(nil)).Elem(), ConnectionDrainingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionDrainingPtrInput)(nil)).Elem(), ConnectionDrainingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionDrainingResponseInput)(nil)).Elem(), ConnectionDrainingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionDrainingResponsePtrInput)(nil)).Elem(), ConnectionDrainingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsistentHashLoadBalancerSettingsInput)(nil)).Elem(), ConsistentHashLoadBalancerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsistentHashLoadBalancerSettingsPtrInput)(nil)).Elem(), ConsistentHashLoadBalancerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsistentHashLoadBalancerSettingsHttpCookieInput)(nil)).Elem(), ConsistentHashLoadBalancerSettingsHttpCookieArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsistentHashLoadBalancerSettingsHttpCookiePtrInput)(nil)).Elem(), ConsistentHashLoadBalancerSettingsHttpCookieArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsistentHashLoadBalancerSettingsHttpCookieResponseInput)(nil)).Elem(), ConsistentHashLoadBalancerSettingsHttpCookieResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsistentHashLoadBalancerSettingsHttpCookieResponsePtrInput)(nil)).Elem(), ConsistentHashLoadBalancerSettingsHttpCookieResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsistentHashLoadBalancerSettingsResponseInput)(nil)).Elem(), ConsistentHashLoadBalancerSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsistentHashLoadBalancerSettingsResponsePtrInput)(nil)).Elem(), ConsistentHashLoadBalancerSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CorsPolicyInput)(nil)).Elem(), CorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CorsPolicyPtrInput)(nil)).Elem(), CorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CorsPolicyResponseInput)(nil)).Elem(), CorsPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CorsPolicyResponsePtrInput)(nil)).Elem(), CorsPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyPtrInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyResponseInput)(nil)).Elem(), CustomerEncryptionKeyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyResponsePtrInput)(nil)).Elem(), CustomerEncryptionKeyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusInput)(nil)).Elem(), DeprecationStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusPtrInput)(nil)).Elem(), DeprecationStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusResponseInput)(nil)).Elem(), DeprecationStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusResponsePtrInput)(nil)).Elem(), DeprecationStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigInput)(nil)).Elem(), DiskInstantiationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigArrayInput)(nil)).Elem(), DiskInstantiationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigResponseInput)(nil)).Elem(), DiskInstantiationConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigResponseArrayInput)(nil)).Elem(), DiskInstantiationConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDeviceInput)(nil)).Elem(), DisplayDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDevicePtrInput)(nil)).Elem(), DisplayDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDeviceResponseInput)(nil)).Elem(), DisplayDeviceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDeviceResponsePtrInput)(nil)).Elem(), DisplayDeviceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyInput)(nil)).Elem(), DistributionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyPtrInput)(nil)).Elem(), DistributionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyResponseInput)(nil)).Elem(), DistributionPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyResponsePtrInput)(nil)).Elem(), DistributionPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyZoneConfigurationInput)(nil)).Elem(), DistributionPolicyZoneConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyZoneConfigurationArrayInput)(nil)).Elem(), DistributionPolicyZoneConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyZoneConfigurationResponseInput)(nil)).Elem(), DistributionPolicyZoneConfigurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyZoneConfigurationResponseArrayInput)(nil)).Elem(), DistributionPolicyZoneConfigurationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DurationInput)(nil)).Elem(), DurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DurationPtrInput)(nil)).Elem(), DurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DurationResponseInput)(nil)).Elem(), DurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DurationResponsePtrInput)(nil)).Elem(), DurationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalVpnGatewayInterfaceInput)(nil)).Elem(), ExternalVpnGatewayInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalVpnGatewayInterfaceArrayInput)(nil)).Elem(), ExternalVpnGatewayInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalVpnGatewayInterfaceResponseInput)(nil)).Elem(), ExternalVpnGatewayInterfaceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalVpnGatewayInterfaceResponseArrayInput)(nil)).Elem(), ExternalVpnGatewayInterfaceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileContentBufferInput)(nil)).Elem(), FileContentBufferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileContentBufferPtrInput)(nil)).Elem(), FileContentBufferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileContentBufferArrayInput)(nil)).Elem(), FileContentBufferArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileContentBufferResponseInput)(nil)).Elem(), FileContentBufferResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileContentBufferResponsePtrInput)(nil)).Elem(), FileContentBufferResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileContentBufferResponseArrayInput)(nil)).Elem(), FileContentBufferResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallAllowedItemInput)(nil)).Elem(), FirewallAllowedItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallAllowedItemArrayInput)(nil)).Elem(), FirewallAllowedItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallAllowedItemResponseInput)(nil)).Elem(), FirewallAllowedItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallAllowedItemResponseArrayInput)(nil)).Elem(), FirewallAllowedItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeniedItemInput)(nil)).Elem(), FirewallDeniedItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeniedItemArrayInput)(nil)).Elem(), FirewallDeniedItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeniedItemResponseInput)(nil)).Elem(), FirewallDeniedItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallDeniedItemResponseArrayInput)(nil)).Elem(), FirewallDeniedItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallLogConfigInput)(nil)).Elem(), FirewallLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallLogConfigPtrInput)(nil)).Elem(), FirewallLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallLogConfigResponseInput)(nil)).Elem(), FirewallLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallLogConfigResponsePtrInput)(nil)).Elem(), FirewallLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyAssociationInput)(nil)).Elem(), FirewallPolicyAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyAssociationArrayInput)(nil)).Elem(), FirewallPolicyAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyAssociationResponseInput)(nil)).Elem(), FirewallPolicyAssociationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyAssociationResponseArrayInput)(nil)).Elem(), FirewallPolicyAssociationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleInput)(nil)).Elem(), FirewallPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleArrayInput)(nil)).Elem(), FirewallPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleMatcherInput)(nil)).Elem(), FirewallPolicyRuleMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleMatcherPtrInput)(nil)).Elem(), FirewallPolicyRuleMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleMatcherLayer4ConfigInput)(nil)).Elem(), FirewallPolicyRuleMatcherLayer4ConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleMatcherLayer4ConfigArrayInput)(nil)).Elem(), FirewallPolicyRuleMatcherLayer4ConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleMatcherLayer4ConfigResponseInput)(nil)).Elem(), FirewallPolicyRuleMatcherLayer4ConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleMatcherLayer4ConfigResponseArrayInput)(nil)).Elem(), FirewallPolicyRuleMatcherLayer4ConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleMatcherResponseInput)(nil)).Elem(), FirewallPolicyRuleMatcherResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleResponseInput)(nil)).Elem(), FirewallPolicyRuleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyRuleResponseArrayInput)(nil)).Elem(), FirewallPolicyRuleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FixedOrPercentInput)(nil)).Elem(), FixedOrPercentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FixedOrPercentPtrInput)(nil)).Elem(), FixedOrPercentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FixedOrPercentResponseInput)(nil)).Elem(), FixedOrPercentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FixedOrPercentResponsePtrInput)(nil)).Elem(), FixedOrPercentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleServiceDirectoryRegistrationInput)(nil)).Elem(), ForwardingRuleServiceDirectoryRegistrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleServiceDirectoryRegistrationArrayInput)(nil)).Elem(), ForwardingRuleServiceDirectoryRegistrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleServiceDirectoryRegistrationResponseInput)(nil)).Elem(), ForwardingRuleServiceDirectoryRegistrationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleServiceDirectoryRegistrationResponseArrayInput)(nil)).Elem(), ForwardingRuleServiceDirectoryRegistrationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GRPCHealthCheckInput)(nil)).Elem(), GRPCHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GRPCHealthCheckPtrInput)(nil)).Elem(), GRPCHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GRPCHealthCheckResponseInput)(nil)).Elem(), GRPCHealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GRPCHealthCheckResponsePtrInput)(nil)).Elem(), GRPCHealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsFeatureInput)(nil)).Elem(), GuestOsFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsFeatureArrayInput)(nil)).Elem(), GuestOsFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsFeatureResponseInput)(nil)).Elem(), GuestOsFeatureResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsFeatureResponseArrayInput)(nil)).Elem(), GuestOsFeatureResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTP2HealthCheckInput)(nil)).Elem(), HTTP2HealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTP2HealthCheckPtrInput)(nil)).Elem(), HTTP2HealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTP2HealthCheckResponseInput)(nil)).Elem(), HTTP2HealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTP2HealthCheckResponsePtrInput)(nil)).Elem(), HTTP2HealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHealthCheckTypeInput)(nil)).Elem(), HTTPHealthCheckTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHealthCheckTypePtrInput)(nil)).Elem(), HTTPHealthCheckTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHealthCheckResponseInput)(nil)).Elem(), HTTPHealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHealthCheckResponsePtrInput)(nil)).Elem(), HTTPHealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPSHealthCheckTypeInput)(nil)).Elem(), HTTPSHealthCheckTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPSHealthCheckTypePtrInput)(nil)).Elem(), HTTPSHealthCheckTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPSHealthCheckResponseInput)(nil)).Elem(), HTTPSHealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPSHealthCheckResponsePtrInput)(nil)).Elem(), HTTPSHealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckLogConfigInput)(nil)).Elem(), HealthCheckLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckLogConfigPtrInput)(nil)).Elem(), HealthCheckLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckLogConfigResponseInput)(nil)).Elem(), HealthCheckLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckLogConfigResponsePtrInput)(nil)).Elem(), HealthCheckLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostRuleInput)(nil)).Elem(), HostRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostRuleArrayInput)(nil)).Elem(), HostRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostRuleResponseInput)(nil)).Elem(), HostRuleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostRuleResponseArrayInput)(nil)).Elem(), HostRuleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultAbortInput)(nil)).Elem(), HttpFaultAbortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultAbortPtrInput)(nil)).Elem(), HttpFaultAbortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultAbortResponseInput)(nil)).Elem(), HttpFaultAbortResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultAbortResponsePtrInput)(nil)).Elem(), HttpFaultAbortResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultDelayInput)(nil)).Elem(), HttpFaultDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultDelayPtrInput)(nil)).Elem(), HttpFaultDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultDelayResponseInput)(nil)).Elem(), HttpFaultDelayResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultDelayResponsePtrInput)(nil)).Elem(), HttpFaultDelayResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultInjectionInput)(nil)).Elem(), HttpFaultInjectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultInjectionPtrInput)(nil)).Elem(), HttpFaultInjectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultInjectionResponseInput)(nil)).Elem(), HttpFaultInjectionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpFaultInjectionResponsePtrInput)(nil)).Elem(), HttpFaultInjectionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderActionInput)(nil)).Elem(), HttpHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderActionPtrInput)(nil)).Elem(), HttpHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderActionResponseInput)(nil)).Elem(), HttpHeaderActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderActionResponsePtrInput)(nil)).Elem(), HttpHeaderActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderMatchInput)(nil)).Elem(), HttpHeaderMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderMatchArrayInput)(nil)).Elem(), HttpHeaderMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderMatchResponseInput)(nil)).Elem(), HttpHeaderMatchResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderMatchResponseArrayInput)(nil)).Elem(), HttpHeaderMatchResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderOptionInput)(nil)).Elem(), HttpHeaderOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderOptionArrayInput)(nil)).Elem(), HttpHeaderOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderOptionResponseInput)(nil)).Elem(), HttpHeaderOptionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderOptionResponseArrayInput)(nil)).Elem(), HttpHeaderOptionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpQueryParameterMatchInput)(nil)).Elem(), HttpQueryParameterMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpQueryParameterMatchArrayInput)(nil)).Elem(), HttpQueryParameterMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpQueryParameterMatchResponseInput)(nil)).Elem(), HttpQueryParameterMatchResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpQueryParameterMatchResponseArrayInput)(nil)).Elem(), HttpQueryParameterMatchResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRedirectActionInput)(nil)).Elem(), HttpRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRedirectActionPtrInput)(nil)).Elem(), HttpRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRedirectActionResponseInput)(nil)).Elem(), HttpRedirectActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRedirectActionResponsePtrInput)(nil)).Elem(), HttpRedirectActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRetryPolicyInput)(nil)).Elem(), HttpRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRetryPolicyPtrInput)(nil)).Elem(), HttpRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRetryPolicyResponseInput)(nil)).Elem(), HttpRetryPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRetryPolicyResponsePtrInput)(nil)).Elem(), HttpRetryPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteActionInput)(nil)).Elem(), HttpRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteActionPtrInput)(nil)).Elem(), HttpRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteActionResponseInput)(nil)).Elem(), HttpRouteActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteActionResponsePtrInput)(nil)).Elem(), HttpRouteActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleInput)(nil)).Elem(), HttpRouteRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleArrayInput)(nil)).Elem(), HttpRouteRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchInput)(nil)).Elem(), HttpRouteRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchArrayInput)(nil)).Elem(), HttpRouteRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchResponseInput)(nil)).Elem(), HttpRouteRuleMatchResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchResponseArrayInput)(nil)).Elem(), HttpRouteRuleMatchResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleResponseInput)(nil)).Elem(), HttpRouteRuleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleResponseArrayInput)(nil)).Elem(), HttpRouteRuleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageRawDiskInput)(nil)).Elem(), ImageRawDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageRawDiskPtrInput)(nil)).Elem(), ImageRawDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageRawDiskResponseInput)(nil)).Elem(), ImageRawDiskResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageRawDiskResponsePtrInput)(nil)).Elem(), ImageRawDiskResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InitialStateConfigInput)(nil)).Elem(), InitialStateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InitialStateConfigPtrInput)(nil)).Elem(), InitialStateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InitialStateConfigResponseInput)(nil)).Elem(), InitialStateConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InitialStateConfigResponsePtrInput)(nil)).Elem(), InitialStateConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerActionsSummaryResponseInput)(nil)).Elem(), InstanceGroupManagerActionsSummaryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerActionsSummaryResponsePtrInput)(nil)).Elem(), InstanceGroupManagerActionsSummaryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyArrayInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyResponseInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyResponseArrayInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStatusResponseInput)(nil)).Elem(), InstanceGroupManagerStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStatusResponsePtrInput)(nil)).Elem(), InstanceGroupManagerStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseInput)(nil)).Elem(), InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStatusStatefulPerInstanceConfigsResponsePtrInput)(nil)).Elem(), InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStatusStatefulResponseInput)(nil)).Elem(), InstanceGroupManagerStatusStatefulResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStatusStatefulResponsePtrInput)(nil)).Elem(), InstanceGroupManagerStatusStatefulResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStatusVersionTargetResponseInput)(nil)).Elem(), InstanceGroupManagerStatusVersionTargetResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStatusVersionTargetResponsePtrInput)(nil)).Elem(), InstanceGroupManagerStatusVersionTargetResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyPtrInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyResponseInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyResponsePtrInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerVersionInput)(nil)).Elem(), InstanceGroupManagerVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerVersionArrayInput)(nil)).Elem(), InstanceGroupManagerVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerVersionResponseInput)(nil)).Elem(), InstanceGroupManagerVersionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerVersionResponseArrayInput)(nil)).Elem(), InstanceGroupManagerVersionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesInput)(nil)).Elem(), InstancePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesPtrInput)(nil)).Elem(), InstancePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesResponseInput)(nil)).Elem(), InstancePropertiesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesResponsePtrInput)(nil)).Elem(), InstancePropertiesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Int64RangeMatchInput)(nil)).Elem(), Int64RangeMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Int64RangeMatchPtrInput)(nil)).Elem(), Int64RangeMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Int64RangeMatchResponseInput)(nil)).Elem(), Int64RangeMatchResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentPartnerMetadataInput)(nil)).Elem(), InterconnectAttachmentPartnerMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentPartnerMetadataPtrInput)(nil)).Elem(), InterconnectAttachmentPartnerMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentPartnerMetadataResponseInput)(nil)).Elem(), InterconnectAttachmentPartnerMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentPartnerMetadataResponsePtrInput)(nil)).Elem(), InterconnectAttachmentPartnerMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentPrivateInfoResponseInput)(nil)).Elem(), InterconnectAttachmentPrivateInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentPrivateInfoResponsePtrInput)(nil)).Elem(), InterconnectAttachmentPrivateInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectCircuitInfoResponseInput)(nil)).Elem(), InterconnectCircuitInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectCircuitInfoResponseArrayInput)(nil)).Elem(), InterconnectCircuitInfoResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectOutageNotificationResponseInput)(nil)).Elem(), InterconnectOutageNotificationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectOutageNotificationResponseArrayInput)(nil)).Elem(), InterconnectOutageNotificationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceCommitmentInput)(nil)).Elem(), LicenseResourceCommitmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceCommitmentPtrInput)(nil)).Elem(), LicenseResourceCommitmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceCommitmentResponseInput)(nil)).Elem(), LicenseResourceCommitmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceCommitmentResponsePtrInput)(nil)).Elem(), LicenseResourceCommitmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceRequirementsInput)(nil)).Elem(), LicenseResourceRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceRequirementsPtrInput)(nil)).Elem(), LicenseResourceRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceRequirementsResponseInput)(nil)).Elem(), LicenseResourceRequirementsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceRequirementsResponsePtrInput)(nil)).Elem(), LicenseResourceRequirementsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskInput)(nil)).Elem(), LocalDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskArrayInput)(nil)).Elem(), LocalDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskResponseInput)(nil)).Elem(), LocalDiskResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskResponseArrayInput)(nil)).Elem(), LocalDiskResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigInput)(nil)).Elem(), LogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigArrayInput)(nil)).Elem(), LogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCloudAuditOptionsInput)(nil)).Elem(), LogConfigCloudAuditOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCloudAuditOptionsPtrInput)(nil)).Elem(), LogConfigCloudAuditOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCloudAuditOptionsResponseInput)(nil)).Elem(), LogConfigCloudAuditOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCounterOptionsInput)(nil)).Elem(), LogConfigCounterOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCounterOptionsPtrInput)(nil)).Elem(), LogConfigCounterOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCounterOptionsCustomFieldInput)(nil)).Elem(), LogConfigCounterOptionsCustomFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCounterOptionsCustomFieldArrayInput)(nil)).Elem(), LogConfigCounterOptionsCustomFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCounterOptionsCustomFieldResponseInput)(nil)).Elem(), LogConfigCounterOptionsCustomFieldResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCounterOptionsCustomFieldResponseArrayInput)(nil)).Elem(), LogConfigCounterOptionsCustomFieldResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCounterOptionsResponseInput)(nil)).Elem(), LogConfigCounterOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigDataAccessOptionsInput)(nil)).Elem(), LogConfigDataAccessOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigDataAccessOptionsPtrInput)(nil)).Elem(), LogConfigDataAccessOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigDataAccessOptionsResponseInput)(nil)).Elem(), LogConfigDataAccessOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigResponseInput)(nil)).Elem(), LogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigResponseArrayInput)(nil)).Elem(), LogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataInput)(nil)).Elem(), MetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataPtrInput)(nil)).Elem(), MetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterInput)(nil)).Elem(), MetadataFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterArrayInput)(nil)).Elem(), MetadataFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterLabelMatchInput)(nil)).Elem(), MetadataFilterLabelMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterLabelMatchArrayInput)(nil)).Elem(), MetadataFilterLabelMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterLabelMatchResponseInput)(nil)).Elem(), MetadataFilterLabelMatchResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterLabelMatchResponseArrayInput)(nil)).Elem(), MetadataFilterLabelMatchResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterResponseInput)(nil)).Elem(), MetadataFilterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterResponseArrayInput)(nil)).Elem(), MetadataFilterResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataItemsItemInput)(nil)).Elem(), MetadataItemsItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataItemsItemArrayInput)(nil)).Elem(), MetadataItemsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataItemsItemResponseInput)(nil)).Elem(), MetadataItemsItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataItemsItemResponseArrayInput)(nil)).Elem(), MetadataItemsItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataResponseInput)(nil)).Elem(), MetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataResponsePtrInput)(nil)).Elem(), MetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamedPortInput)(nil)).Elem(), NamedPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamedPortArrayInput)(nil)).Elem(), NamedPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamedPortResponseInput)(nil)).Elem(), NamedPortResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamedPortResponseArrayInput)(nil)).Elem(), NamedPortResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupAppEngineInput)(nil)).Elem(), NetworkEndpointGroupAppEngineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupAppEnginePtrInput)(nil)).Elem(), NetworkEndpointGroupAppEngineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupAppEngineResponseInput)(nil)).Elem(), NetworkEndpointGroupAppEngineResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupAppEngineResponsePtrInput)(nil)).Elem(), NetworkEndpointGroupAppEngineResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudFunctionInput)(nil)).Elem(), NetworkEndpointGroupCloudFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudFunctionPtrInput)(nil)).Elem(), NetworkEndpointGroupCloudFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudFunctionResponseInput)(nil)).Elem(), NetworkEndpointGroupCloudFunctionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudFunctionResponsePtrInput)(nil)).Elem(), NetworkEndpointGroupCloudFunctionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudRunInput)(nil)).Elem(), NetworkEndpointGroupCloudRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudRunPtrInput)(nil)).Elem(), NetworkEndpointGroupCloudRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudRunResponseInput)(nil)).Elem(), NetworkEndpointGroupCloudRunResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudRunResponsePtrInput)(nil)).Elem(), NetworkEndpointGroupCloudRunResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceInput)(nil)).Elem(), NetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceArrayInput)(nil)).Elem(), NetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceResponseInput)(nil)).Elem(), NetworkInterfaceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceResponseArrayInput)(nil)).Elem(), NetworkInterfaceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPeeringResponseInput)(nil)).Elem(), NetworkPeeringResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPeeringResponseArrayInput)(nil)).Elem(), NetworkPeeringResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkRoutingConfigInput)(nil)).Elem(), NetworkRoutingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkRoutingConfigPtrInput)(nil)).Elem(), NetworkRoutingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkRoutingConfigResponseInput)(nil)).Elem(), NetworkRoutingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkRoutingConfigResponsePtrInput)(nil)).Elem(), NetworkRoutingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAutoscalingPolicyInput)(nil)).Elem(), NodeGroupAutoscalingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAutoscalingPolicyPtrInput)(nil)).Elem(), NodeGroupAutoscalingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAutoscalingPolicyResponseInput)(nil)).Elem(), NodeGroupAutoscalingPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAutoscalingPolicyResponsePtrInput)(nil)).Elem(), NodeGroupAutoscalingPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupMaintenanceWindowInput)(nil)).Elem(), NodeGroupMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupMaintenanceWindowPtrInput)(nil)).Elem(), NodeGroupMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupMaintenanceWindowResponseInput)(nil)).Elem(), NodeGroupMaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupMaintenanceWindowResponsePtrInput)(nil)).Elem(), NodeGroupMaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateNodeTypeFlexibilityInput)(nil)).Elem(), NodeTemplateNodeTypeFlexibilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateNodeTypeFlexibilityPtrInput)(nil)).Elem(), NodeTemplateNodeTypeFlexibilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateNodeTypeFlexibilityResponseInput)(nil)).Elem(), NodeTemplateNodeTypeFlexibilityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateNodeTypeFlexibilityResponsePtrInput)(nil)).Elem(), NodeTemplateNodeTypeFlexibilityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationEndpointGrpcSettingsInput)(nil)).Elem(), NotificationEndpointGrpcSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationEndpointGrpcSettingsPtrInput)(nil)).Elem(), NotificationEndpointGrpcSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationEndpointGrpcSettingsResponseInput)(nil)).Elem(), NotificationEndpointGrpcSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationEndpointGrpcSettingsResponsePtrInput)(nil)).Elem(), NotificationEndpointGrpcSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OutlierDetectionInput)(nil)).Elem(), OutlierDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OutlierDetectionPtrInput)(nil)).Elem(), OutlierDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OutlierDetectionResponseInput)(nil)).Elem(), OutlierDetectionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OutlierDetectionResponsePtrInput)(nil)).Elem(), OutlierDetectionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringFilterInput)(nil)).Elem(), PacketMirroringFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringFilterPtrInput)(nil)).Elem(), PacketMirroringFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringFilterResponseInput)(nil)).Elem(), PacketMirroringFilterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringFilterResponsePtrInput)(nil)).Elem(), PacketMirroringFilterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringForwardingRuleInfoInput)(nil)).Elem(), PacketMirroringForwardingRuleInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringForwardingRuleInfoPtrInput)(nil)).Elem(), PacketMirroringForwardingRuleInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringForwardingRuleInfoResponseInput)(nil)).Elem(), PacketMirroringForwardingRuleInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringForwardingRuleInfoResponsePtrInput)(nil)).Elem(), PacketMirroringForwardingRuleInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoPtrInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoInstanceInfoInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoInstanceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoInstanceInfoArrayInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoInstanceInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoInstanceInfoResponseInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoInstanceInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoInstanceInfoResponseArrayInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoInstanceInfoResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoResponseInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoResponsePtrInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoSubnetInfoInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoSubnetInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoSubnetInfoArrayInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoSubnetInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoSubnetInfoResponseInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoSubnetInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMirroredResourceInfoSubnetInfoResponseArrayInput)(nil)).Elem(), PacketMirroringMirroredResourceInfoSubnetInfoResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringNetworkInfoInput)(nil)).Elem(), PacketMirroringNetworkInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringNetworkInfoPtrInput)(nil)).Elem(), PacketMirroringNetworkInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringNetworkInfoResponseInput)(nil)).Elem(), PacketMirroringNetworkInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringNetworkInfoResponsePtrInput)(nil)).Elem(), PacketMirroringNetworkInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathMatcherInput)(nil)).Elem(), PathMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathMatcherArrayInput)(nil)).Elem(), PathMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathMatcherResponseInput)(nil)).Elem(), PathMatcherResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathMatcherResponseArrayInput)(nil)).Elem(), PathMatcherResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathRuleInput)(nil)).Elem(), PathRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathRuleArrayInput)(nil)).Elem(), PathRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathRuleResponseInput)(nil)).Elem(), PathRuleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathRuleResponseArrayInput)(nil)).Elem(), PathRuleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixPublicDelegatedPrefixResponseInput)(nil)).Elem(), PublicAdvertisedPrefixPublicDelegatedPrefixResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayInput)(nil)).Elem(), PublicAdvertisedPrefixPublicDelegatedPrefixResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixInput)(nil)).Elem(), PublicDelegatedPrefixPublicDelegatedSubPrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixArrayInput)(nil)).Elem(), PublicDelegatedPrefixPublicDelegatedSubPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixResponseInput)(nil)).Elem(), PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayInput)(nil)).Elem(), PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RequestMirrorPolicyInput)(nil)).Elem(), RequestMirrorPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RequestMirrorPolicyPtrInput)(nil)).Elem(), RequestMirrorPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RequestMirrorPolicyResponseInput)(nil)).Elem(), RequestMirrorPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RequestMirrorPolicyResponsePtrInput)(nil)).Elem(), RequestMirrorPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationTypeInput)(nil)).Elem(), ReservationTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationTypeArrayInput)(nil)).Elem(), ReservationTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityInput)(nil)).Elem(), ReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityPtrInput)(nil)).Elem(), ReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityResponseInput)(nil)).Elem(), ReservationAffinityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityResponsePtrInput)(nil)).Elem(), ReservationAffinityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationResponseInput)(nil)).Elem(), ReservationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationResponseArrayInput)(nil)).Elem(), ReservationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCommitmentInput)(nil)).Elem(), ResourceCommitmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCommitmentArrayInput)(nil)).Elem(), ResourceCommitmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCommitmentResponseInput)(nil)).Elem(), ResourceCommitmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCommitmentResponseArrayInput)(nil)).Elem(), ResourceCommitmentResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDailyCycleInput)(nil)).Elem(), ResourcePolicyDailyCycleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDailyCyclePtrInput)(nil)).Elem(), ResourcePolicyDailyCycleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDailyCycleResponseInput)(nil)).Elem(), ResourcePolicyDailyCycleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDailyCycleResponsePtrInput)(nil)).Elem(), ResourcePolicyDailyCycleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyGroupPlacementPolicyInput)(nil)).Elem(), ResourcePolicyGroupPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyGroupPlacementPolicyPtrInput)(nil)).Elem(), ResourcePolicyGroupPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyGroupPlacementPolicyResponseInput)(nil)).Elem(), ResourcePolicyGroupPlacementPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyGroupPlacementPolicyResponsePtrInput)(nil)).Elem(), ResourcePolicyGroupPlacementPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyHourlyCycleInput)(nil)).Elem(), ResourcePolicyHourlyCycleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyHourlyCyclePtrInput)(nil)).Elem(), ResourcePolicyHourlyCycleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyHourlyCycleResponseInput)(nil)).Elem(), ResourcePolicyHourlyCycleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyHourlyCycleResponsePtrInput)(nil)).Elem(), ResourcePolicyHourlyCycleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicyInput)(nil)).Elem(), ResourcePolicyInstanceSchedulePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicyPtrInput)(nil)).Elem(), ResourcePolicyInstanceSchedulePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicyResponseInput)(nil)).Elem(), ResourcePolicyInstanceSchedulePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicyResponsePtrInput)(nil)).Elem(), ResourcePolicyInstanceSchedulePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicyScheduleInput)(nil)).Elem(), ResourcePolicyInstanceSchedulePolicyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicySchedulePtrInput)(nil)).Elem(), ResourcePolicyInstanceSchedulePolicyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicyScheduleResponseInput)(nil)).Elem(), ResourcePolicyInstanceSchedulePolicyScheduleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicyScheduleResponsePtrInput)(nil)).Elem(), ResourcePolicyInstanceSchedulePolicyScheduleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseInput)(nil)).Elem(), ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponsePtrInput)(nil)).Elem(), ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyResourceStatusResponseInput)(nil)).Elem(), ResourcePolicyResourceStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyResourceStatusResponsePtrInput)(nil)).Elem(), ResourcePolicyResourceStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyPtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyResponseInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyResponsePtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyRetentionPolicyInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponsePtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicySchedulePtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleResponseInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicyScheduleResponsePtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicyScheduleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicySnapshotPropertiesInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicySnapshotPropertiesResponseInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicySnapshotPropertiesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicySnapshotSchedulePolicySnapshotPropertiesResponsePtrInput)(nil)).Elem(), ResourcePolicySnapshotSchedulePolicySnapshotPropertiesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyWeeklyCycleInput)(nil)).Elem(), ResourcePolicyWeeklyCycleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyWeeklyCyclePtrInput)(nil)).Elem(), ResourcePolicyWeeklyCycleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyWeeklyCycleDayOfWeekInput)(nil)).Elem(), ResourcePolicyWeeklyCycleDayOfWeekArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyWeeklyCycleDayOfWeekArrayInput)(nil)).Elem(), ResourcePolicyWeeklyCycleDayOfWeekArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyWeeklyCycleDayOfWeekResponseInput)(nil)).Elem(), ResourcePolicyWeeklyCycleDayOfWeekResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyWeeklyCycleDayOfWeekResponseArrayInput)(nil)).Elem(), ResourcePolicyWeeklyCycleDayOfWeekResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyWeeklyCycleResponseInput)(nil)).Elem(), ResourcePolicyWeeklyCycleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyWeeklyCycleResponsePtrInput)(nil)).Elem(), ResourcePolicyWeeklyCycleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAsPathResponseInput)(nil)).Elem(), RouteAsPathResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAsPathResponseArrayInput)(nil)).Elem(), RouteAsPathResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteWarningsItemDataItemResponseInput)(nil)).Elem(), RouteWarningsItemDataItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteWarningsItemDataItemResponseArrayInput)(nil)).Elem(), RouteWarningsItemDataItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteWarningsItemResponseInput)(nil)).Elem(), RouteWarningsItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteWarningsItemResponseArrayInput)(nil)).Elem(), RouteWarningsItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterAdvertisedIpRangeInput)(nil)).Elem(), RouterAdvertisedIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterAdvertisedIpRangeArrayInput)(nil)).Elem(), RouterAdvertisedIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterAdvertisedIpRangeResponseInput)(nil)).Elem(), RouterAdvertisedIpRangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterAdvertisedIpRangeResponseArrayInput)(nil)).Elem(), RouterAdvertisedIpRangeResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpInput)(nil)).Elem(), RouterBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPtrInput)(nil)).Elem(), RouterBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerInput)(nil)).Elem(), RouterBgpPeerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerArrayInput)(nil)).Elem(), RouterBgpPeerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdInput)(nil)).Elem(), RouterBgpPeerBfdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdPtrInput)(nil)).Elem(), RouterBgpPeerBfdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdResponseInput)(nil)).Elem(), RouterBgpPeerBfdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerResponseInput)(nil)).Elem(), RouterBgpPeerResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerResponseArrayInput)(nil)).Elem(), RouterBgpPeerResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpResponseInput)(nil)).Elem(), RouterBgpResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpResponsePtrInput)(nil)).Elem(), RouterBgpResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceInput)(nil)).Elem(), RouterInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceArrayInput)(nil)).Elem(), RouterInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceResponseInput)(nil)).Elem(), RouterInterfaceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceResponseArrayInput)(nil)).Elem(), RouterInterfaceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatInput)(nil)).Elem(), RouterNatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatArrayInput)(nil)).Elem(), RouterNatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigInput)(nil)).Elem(), RouterNatLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigPtrInput)(nil)).Elem(), RouterNatLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigResponseInput)(nil)).Elem(), RouterNatLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatResponseInput)(nil)).Elem(), RouterNatResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatResponseArrayInput)(nil)).Elem(), RouterNatResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleInput)(nil)).Elem(), RouterNatRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleArrayInput)(nil)).Elem(), RouterNatRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleActionInput)(nil)).Elem(), RouterNatRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleActionPtrInput)(nil)).Elem(), RouterNatRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleActionResponseInput)(nil)).Elem(), RouterNatRuleActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleResponseInput)(nil)).Elem(), RouterNatRuleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatRuleResponseArrayInput)(nil)).Elem(), RouterNatRuleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatSubnetworkToNatInput)(nil)).Elem(), RouterNatSubnetworkToNatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatSubnetworkToNatArrayInput)(nil)).Elem(), RouterNatSubnetworkToNatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatSubnetworkToNatResponseInput)(nil)).Elem(), RouterNatSubnetworkToNatResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatSubnetworkToNatResponseArrayInput)(nil)).Elem(), RouterNatSubnetworkToNatResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleInput)(nil)).Elem(), RuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleArrayInput)(nil)).Elem(), RuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleResponseInput)(nil)).Elem(), RuleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleResponseArrayInput)(nil)).Elem(), RuleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLHealthCheckInput)(nil)).Elem(), SSLHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLHealthCheckPtrInput)(nil)).Elem(), SSLHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLHealthCheckResponseInput)(nil)).Elem(), SSLHealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLHealthCheckResponsePtrInput)(nil)).Elem(), SSLHealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingInput)(nil)).Elem(), SchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingPtrInput)(nil)).Elem(), SchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityInput)(nil)).Elem(), SchedulingNodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityArrayInput)(nil)).Elem(), SchedulingNodeAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityResponseInput)(nil)).Elem(), SchedulingNodeAffinityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityResponseArrayInput)(nil)).Elem(), SchedulingNodeAffinityResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingResponseInput)(nil)).Elem(), SchedulingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingResponsePtrInput)(nil)).Elem(), SchedulingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponsePtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigResponseInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigResponsePtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigResponseInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigResponsePtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleInput)(nil)).Elem(), SecurityPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleArrayInput)(nil)).Elem(), SecurityPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherInput)(nil)).Elem(), SecurityPolicyRuleMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigResponseInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherResponseInput)(nil)).Elem(), SecurityPolicyRuleMatcherResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleResponseInput)(nil)).Elem(), SecurityPolicyRuleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleResponseArrayInput)(nil)).Elem(), SecurityPolicyRuleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsInput)(nil)).Elem(), SecuritySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsPtrInput)(nil)).Elem(), SecuritySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsResponseInput)(nil)).Elem(), SecuritySettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsResponsePtrInput)(nil)).Elem(), SecuritySettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingInput)(nil)).Elem(), ServerBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingPtrInput)(nil)).Elem(), ServerBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingResponseInput)(nil)).Elem(), ServerBindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingResponsePtrInput)(nil)).Elem(), ServerBindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountInput)(nil)).Elem(), ServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountArrayInput)(nil)).Elem(), ServiceAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountResponseInput)(nil)).Elem(), ServiceAccountResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountResponseArrayInput)(nil)).Elem(), ServiceAccountResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConnectedEndpointResponseInput)(nil)).Elem(), ServiceAttachmentConnectedEndpointResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConnectedEndpointResponseArrayInput)(nil)).Elem(), ServiceAttachmentConnectedEndpointResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConsumerProjectLimitInput)(nil)).Elem(), ServiceAttachmentConsumerProjectLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConsumerProjectLimitArrayInput)(nil)).Elem(), ServiceAttachmentConsumerProjectLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConsumerProjectLimitResponseInput)(nil)).Elem(), ServiceAttachmentConsumerProjectLimitResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConsumerProjectLimitResponseArrayInput)(nil)).Elem(), ServiceAttachmentConsumerProjectLimitResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigResponseInput)(nil)).Elem(), ShieldedInstanceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigResponsePtrInput)(nil)).Elem(), ShieldedInstanceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceIntegrityPolicyInput)(nil)).Elem(), ShieldedInstanceIntegrityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceIntegrityPolicyPtrInput)(nil)).Elem(), ShieldedInstanceIntegrityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceIntegrityPolicyResponseInput)(nil)).Elem(), ShieldedInstanceIntegrityPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceIntegrityPolicyResponsePtrInput)(nil)).Elem(), ShieldedInstanceIntegrityPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceInstanceParamsInput)(nil)).Elem(), SourceInstanceParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceInstanceParamsPtrInput)(nil)).Elem(), SourceInstanceParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceInstanceParamsResponseInput)(nil)).Elem(), SourceInstanceParamsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceInstanceParamsResponsePtrInput)(nil)).Elem(), SourceInstanceParamsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificateManagedSslCertificateInput)(nil)).Elem(), SslCertificateManagedSslCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificateManagedSslCertificatePtrInput)(nil)).Elem(), SslCertificateManagedSslCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificateManagedSslCertificateResponseInput)(nil)).Elem(), SslCertificateManagedSslCertificateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificateManagedSslCertificateResponsePtrInput)(nil)).Elem(), SslCertificateManagedSslCertificateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificateSelfManagedSslCertificateInput)(nil)).Elem(), SslCertificateSelfManagedSslCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificateSelfManagedSslCertificatePtrInput)(nil)).Elem(), SslCertificateSelfManagedSslCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificateSelfManagedSslCertificateResponseInput)(nil)).Elem(), SslCertificateSelfManagedSslCertificateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificateSelfManagedSslCertificateResponsePtrInput)(nil)).Elem(), SslCertificateSelfManagedSslCertificateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyWarningsItemDataItemResponseInput)(nil)).Elem(), SslPolicyWarningsItemDataItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyWarningsItemDataItemResponseArrayInput)(nil)).Elem(), SslPolicyWarningsItemDataItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyWarningsItemResponseInput)(nil)).Elem(), SslPolicyWarningsItemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyWarningsItemResponseArrayInput)(nil)).Elem(), SslPolicyWarningsItemResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyInput)(nil)).Elem(), StatefulPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPtrInput)(nil)).Elem(), StatefulPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateInput)(nil)).Elem(), StatefulPolicyPreservedStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStatePtrInput)(nil)).Elem(), StatefulPolicyPreservedStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateResponseInput)(nil)).Elem(), StatefulPolicyPreservedStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateResponsePtrInput)(nil)).Elem(), StatefulPolicyPreservedStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyResponseInput)(nil)).Elem(), StatefulPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyResponsePtrInput)(nil)).Elem(), StatefulPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigPtrInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigResponseInput)(nil)).Elem(), SubnetworkLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigResponsePtrInput)(nil)).Elem(), SubnetworkLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryRangeInput)(nil)).Elem(), SubnetworkSecondaryRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryRangeArrayInput)(nil)).Elem(), SubnetworkSecondaryRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryRangeResponseInput)(nil)).Elem(), SubnetworkSecondaryRangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryRangeResponseArrayInput)(nil)).Elem(), SubnetworkSecondaryRangeResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubsettingInput)(nil)).Elem(), SubsettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubsettingPtrInput)(nil)).Elem(), SubsettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubsettingResponseInput)(nil)).Elem(), SubsettingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubsettingResponsePtrInput)(nil)).Elem(), SubsettingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPHealthCheckInput)(nil)).Elem(), TCPHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPHealthCheckPtrInput)(nil)).Elem(), TCPHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPHealthCheckResponseInput)(nil)).Elem(), TCPHealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPHealthCheckResponsePtrInput)(nil)).Elem(), TCPHealthCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagsInput)(nil)).Elem(), TagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagsPtrInput)(nil)).Elem(), TagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagsResponseInput)(nil)).Elem(), TagsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagsResponsePtrInput)(nil)).Elem(), TagsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Uint128ResponseInput)(nil)).Elem(), Uint128ResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Uint128ResponsePtrInput)(nil)).Elem(), Uint128ResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapTestInput)(nil)).Elem(), UrlMapTestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapTestArrayInput)(nil)).Elem(), UrlMapTestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapTestHeaderInput)(nil)).Elem(), UrlMapTestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapTestHeaderArrayInput)(nil)).Elem(), UrlMapTestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapTestHeaderResponseInput)(nil)).Elem(), UrlMapTestHeaderResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapTestHeaderResponseArrayInput)(nil)).Elem(), UrlMapTestHeaderResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapTestResponseInput)(nil)).Elem(), UrlMapTestResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapTestResponseArrayInput)(nil)).Elem(), UrlMapTestResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlRewriteInput)(nil)).Elem(), UrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlRewritePtrInput)(nil)).Elem(), UrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlRewriteResponseInput)(nil)).Elem(), UrlRewriteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlRewriteResponsePtrInput)(nil)).Elem(), UrlRewriteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceArrayInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceResponseInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceResponseArrayInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceInput)(nil)).Elem(), WeightedBackendServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceArrayInput)(nil)).Elem(), WeightedBackendServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceResponseInput)(nil)).Elem(), WeightedBackendServiceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceResponseArrayInput)(nil)).Elem(), WeightedBackendServiceResponseArray{})
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigArrayOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigResponseOutput{})
@@ -56479,6 +58432,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleDayOfWeekResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleResponseOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleResponsePtrOutput{})
+	pulumi.RegisterOutputType(RouteAsPathResponseOutput{})
+	pulumi.RegisterOutputType(RouteAsPathResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouteWarningsItemDataItemResponseOutput{})
 	pulumi.RegisterOutputType(RouteWarningsItemDataItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouteWarningsItemResponseOutput{})
@@ -56491,6 +58446,9 @@ func init() {
 	pulumi.RegisterOutputType(RouterBgpPtrOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerArrayOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerBfdOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerBfdPtrOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerBfdResponseOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerResponseOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouterBgpResponseOutput{})
@@ -56506,6 +58464,13 @@ func init() {
 	pulumi.RegisterOutputType(RouterNatLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(RouterNatResponseOutput{})
 	pulumi.RegisterOutputType(RouterNatResponseArrayOutput{})
+	pulumi.RegisterOutputType(RouterNatRuleOutput{})
+	pulumi.RegisterOutputType(RouterNatRuleArrayOutput{})
+	pulumi.RegisterOutputType(RouterNatRuleActionOutput{})
+	pulumi.RegisterOutputType(RouterNatRuleActionPtrOutput{})
+	pulumi.RegisterOutputType(RouterNatRuleActionResponseOutput{})
+	pulumi.RegisterOutputType(RouterNatRuleResponseOutput{})
+	pulumi.RegisterOutputType(RouterNatRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouterNatSubnetworkToNatOutput{})
 	pulumi.RegisterOutputType(RouterNatSubnetworkToNatArrayOutput{})
 	pulumi.RegisterOutputType(RouterNatSubnetworkToNatResponseOutput{})
@@ -56606,6 +58571,10 @@ func init() {
 	pulumi.RegisterOutputType(SubnetworkSecondaryRangeArrayOutput{})
 	pulumi.RegisterOutputType(SubnetworkSecondaryRangeResponseOutput{})
 	pulumi.RegisterOutputType(SubnetworkSecondaryRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(SubsettingOutput{})
+	pulumi.RegisterOutputType(SubsettingPtrOutput{})
+	pulumi.RegisterOutputType(SubsettingResponseOutput{})
+	pulumi.RegisterOutputType(SubsettingResponsePtrOutput{})
 	pulumi.RegisterOutputType(TCPHealthCheckOutput{})
 	pulumi.RegisterOutputType(TCPHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(TCPHealthCheckResponseOutput{})

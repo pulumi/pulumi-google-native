@@ -71,7 +71,8 @@ type BackendService struct {
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-	SessionAffinity pulumi.StringOutput `pulumi:"sessionAffinity"`
+	SessionAffinity pulumi.StringOutput      `pulumi:"sessionAffinity"`
+	Subsetting      SubsettingResponseOutput `pulumi:"subsetting"`
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
 	TimeoutSec pulumi.IntOutput `pulumi:"timeoutSec"`
 }
@@ -163,6 +164,7 @@ type backendServiceArgs struct {
 	SecuritySettings *SecuritySettings `pulumi:"securitySettings"`
 	// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	SessionAffinity *BackendServiceSessionAffinity `pulumi:"sessionAffinity"`
+	Subsetting      *Subsetting                    `pulumi:"subsetting"`
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
 	TimeoutSec *int `pulumi:"timeoutSec"`
 }
@@ -217,6 +219,7 @@ type BackendServiceArgs struct {
 	SecuritySettings SecuritySettingsPtrInput
 	// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	SessionAffinity BackendServiceSessionAffinityPtrInput
+	Subsetting      SubsettingPtrInput
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
 	TimeoutSec pulumi.IntPtrInput
 }

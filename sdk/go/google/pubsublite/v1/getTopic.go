@@ -31,6 +31,8 @@ type LookupTopicResult struct {
 	Name string `pulumi:"name"`
 	// The settings for this topic's partitions.
 	PartitionConfig PartitionConfigResponse `pulumi:"partitionConfig"`
+	// The settings for this topic's Reservation usage.
+	ReservationConfig ReservationConfigResponse `pulumi:"reservationConfig"`
 	// The settings for this topic's message retention.
 	RetentionConfig RetentionConfigResponse `pulumi:"retentionConfig"`
 }
@@ -76,6 +78,11 @@ func (o LookupTopicResultOutput) Name() pulumi.StringOutput {
 // The settings for this topic's partitions.
 func (o LookupTopicResultOutput) PartitionConfig() PartitionConfigResponseOutput {
 	return o.ApplyT(func(v LookupTopicResult) PartitionConfigResponse { return v.PartitionConfig }).(PartitionConfigResponseOutput)
+}
+
+// The settings for this topic's Reservation usage.
+func (o LookupTopicResultOutput) ReservationConfig() ReservationConfigResponseOutput {
+	return o.ApplyT(func(v LookupTopicResult) ReservationConfigResponse { return v.ReservationConfig }).(ReservationConfigResponseOutput)
 }
 
 // The settings for this topic's message retention.

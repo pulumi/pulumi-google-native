@@ -32,6 +32,8 @@ type LookupTableResult struct {
 	Clustering ClusteringResponse `pulumi:"clustering"`
 	// The time when this table was created, in milliseconds since the epoch.
 	CreationTime string `pulumi:"creationTime"`
+	// The default collation of the table.
+	DefaultCollation string `pulumi:"defaultCollation"`
 	// [Optional] A user-friendly description of this table.
 	Description string `pulumi:"description"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -128,6 +130,11 @@ func (o LookupTableResultOutput) Clustering() ClusteringResponseOutput {
 // The time when this table was created, in milliseconds since the epoch.
 func (o LookupTableResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// The default collation of the table.
+func (o LookupTableResultOutput) DefaultCollation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.DefaultCollation }).(pulumi.StringOutput)
 }
 
 // [Optional] A user-friendly description of this table.

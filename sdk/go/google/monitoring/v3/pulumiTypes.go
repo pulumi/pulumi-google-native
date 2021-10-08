@@ -266,6 +266,8 @@ func (o AggregationResponseArrayOutput) Index(i pulumi.IntInput) AggregationResp
 
 // Control over how the notification channels in notification_channels are notified when this alert fires.
 type AlertStrategy struct {
+	// If an alert policy that was active has no data for this long, any open incidents will close
+	AutoClose *string `pulumi:"autoClose"`
 	// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 	NotificationRateLimit *NotificationRateLimit `pulumi:"notificationRateLimit"`
 }
@@ -283,6 +285,8 @@ type AlertStrategyInput interface {
 
 // Control over how the notification channels in notification_channels are notified when this alert fires.
 type AlertStrategyArgs struct {
+	// If an alert policy that was active has no data for this long, any open incidents will close
+	AutoClose pulumi.StringPtrInput `pulumi:"autoClose"`
 	// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 	NotificationRateLimit NotificationRateLimitPtrInput `pulumi:"notificationRateLimit"`
 }
@@ -365,6 +369,11 @@ func (o AlertStrategyOutput) ToAlertStrategyPtrOutputWithContext(ctx context.Con
 	}).(AlertStrategyPtrOutput)
 }
 
+// If an alert policy that was active has no data for this long, any open incidents will close
+func (o AlertStrategyOutput) AutoClose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertStrategy) *string { return v.AutoClose }).(pulumi.StringPtrOutput)
+}
+
 // Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 func (o AlertStrategyOutput) NotificationRateLimit() NotificationRateLimitPtrOutput {
 	return o.ApplyT(func(v AlertStrategy) *NotificationRateLimit { return v.NotificationRateLimit }).(NotificationRateLimitPtrOutput)
@@ -394,6 +403,16 @@ func (o AlertStrategyPtrOutput) Elem() AlertStrategyOutput {
 	}).(AlertStrategyOutput)
 }
 
+// If an alert policy that was active has no data for this long, any open incidents will close
+func (o AlertStrategyPtrOutput) AutoClose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoClose
+	}).(pulumi.StringPtrOutput)
+}
+
 // Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 func (o AlertStrategyPtrOutput) NotificationRateLimit() NotificationRateLimitPtrOutput {
 	return o.ApplyT(func(v *AlertStrategy) *NotificationRateLimit {
@@ -406,6 +425,8 @@ func (o AlertStrategyPtrOutput) NotificationRateLimit() NotificationRateLimitPtr
 
 // Control over how the notification channels in notification_channels are notified when this alert fires.
 type AlertStrategyResponse struct {
+	// If an alert policy that was active has no data for this long, any open incidents will close
+	AutoClose string `pulumi:"autoClose"`
 	// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 	NotificationRateLimit NotificationRateLimitResponse `pulumi:"notificationRateLimit"`
 }
@@ -423,6 +444,8 @@ type AlertStrategyResponseInput interface {
 
 // Control over how the notification channels in notification_channels are notified when this alert fires.
 type AlertStrategyResponseArgs struct {
+	// If an alert policy that was active has no data for this long, any open incidents will close
+	AutoClose pulumi.StringInput `pulumi:"autoClose"`
 	// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 	NotificationRateLimit NotificationRateLimitResponseInput `pulumi:"notificationRateLimit"`
 }
@@ -505,6 +528,11 @@ func (o AlertStrategyResponseOutput) ToAlertStrategyResponsePtrOutputWithContext
 	}).(AlertStrategyResponsePtrOutput)
 }
 
+// If an alert policy that was active has no data for this long, any open incidents will close
+func (o AlertStrategyResponseOutput) AutoClose() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertStrategyResponse) string { return v.AutoClose }).(pulumi.StringOutput)
+}
+
 // Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 func (o AlertStrategyResponseOutput) NotificationRateLimit() NotificationRateLimitResponseOutput {
 	return o.ApplyT(func(v AlertStrategyResponse) NotificationRateLimitResponse { return v.NotificationRateLimit }).(NotificationRateLimitResponseOutput)
@@ -532,6 +560,16 @@ func (o AlertStrategyResponsePtrOutput) Elem() AlertStrategyResponseOutput {
 		var ret AlertStrategyResponse
 		return ret
 	}).(AlertStrategyResponseOutput)
+}
+
+// If an alert policy that was active has no data for this long, any open incidents will close
+func (o AlertStrategyResponsePtrOutput) AutoClose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertStrategyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AutoClose
+	}).(pulumi.StringPtrOutput)
 }
 
 // Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
@@ -5982,9 +6020,9 @@ func (o LatencyCriteriaResponsePtrOutput) Threshold() pulumi.StringPtrOutput {
 
 // A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
 type LogMatch struct {
-	// A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
+	// A logs-based filter. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries) for how this filter should be constructed.
 	Filter string `pulumi:"filter"`
-	// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors for syntax and examples.
+	// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors (https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics#LogMetric.FIELDS.value_extractor) for syntax and examples.
 	LabelExtractors map[string]string `pulumi:"labelExtractors"`
 }
 
@@ -6001,9 +6039,9 @@ type LogMatchInput interface {
 
 // A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
 type LogMatchArgs struct {
-	// A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
+	// A logs-based filter. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries) for how this filter should be constructed.
 	Filter pulumi.StringInput `pulumi:"filter"`
-	// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors for syntax and examples.
+	// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors (https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics#LogMetric.FIELDS.value_extractor) for syntax and examples.
 	LabelExtractors pulumi.StringMapInput `pulumi:"labelExtractors"`
 }
 
@@ -6085,12 +6123,12 @@ func (o LogMatchOutput) ToLogMatchPtrOutputWithContext(ctx context.Context) LogM
 	}).(LogMatchPtrOutput)
 }
 
-// A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
+// A logs-based filter. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries) for how this filter should be constructed.
 func (o LogMatchOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v LogMatch) string { return v.Filter }).(pulumi.StringOutput)
 }
 
-// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors for syntax and examples.
+// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors (https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics#LogMetric.FIELDS.value_extractor) for syntax and examples.
 func (o LogMatchOutput) LabelExtractors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LogMatch) map[string]string { return v.LabelExtractors }).(pulumi.StringMapOutput)
 }
@@ -6119,7 +6157,7 @@ func (o LogMatchPtrOutput) Elem() LogMatchOutput {
 	}).(LogMatchOutput)
 }
 
-// A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
+// A logs-based filter. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries) for how this filter should be constructed.
 func (o LogMatchPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogMatch) *string {
 		if v == nil {
@@ -6129,7 +6167,7 @@ func (o LogMatchPtrOutput) Filter() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors for syntax and examples.
+// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors (https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics#LogMetric.FIELDS.value_extractor) for syntax and examples.
 func (o LogMatchPtrOutput) LabelExtractors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LogMatch) map[string]string {
 		if v == nil {
@@ -6141,9 +6179,9 @@ func (o LogMatchPtrOutput) LabelExtractors() pulumi.StringMapOutput {
 
 // A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
 type LogMatchResponse struct {
-	// A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
+	// A logs-based filter. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries) for how this filter should be constructed.
 	Filter string `pulumi:"filter"`
-	// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors for syntax and examples.
+	// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors (https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics#LogMetric.FIELDS.value_extractor) for syntax and examples.
 	LabelExtractors map[string]string `pulumi:"labelExtractors"`
 }
 
@@ -6160,9 +6198,9 @@ type LogMatchResponseInput interface {
 
 // A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
 type LogMatchResponseArgs struct {
-	// A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
+	// A logs-based filter. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries) for how this filter should be constructed.
 	Filter pulumi.StringInput `pulumi:"filter"`
-	// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors for syntax and examples.
+	// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors (https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics#LogMetric.FIELDS.value_extractor) for syntax and examples.
 	LabelExtractors pulumi.StringMapInput `pulumi:"labelExtractors"`
 }
 
@@ -6193,12 +6231,12 @@ func (o LogMatchResponseOutput) ToLogMatchResponseOutputWithContext(ctx context.
 	return o
 }
 
-// A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
+// A logs-based filter. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries) for how this filter should be constructed.
 func (o LogMatchResponseOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v LogMatchResponse) string { return v.Filter }).(pulumi.StringOutput)
 }
 
-// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors for syntax and examples.
+// Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors (https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics#LogMetric.FIELDS.value_extractor) for syntax and examples.
 func (o LogMatchResponseOutput) LabelExtractors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LogMatchResponse) map[string]string { return v.LabelExtractors }).(pulumi.StringMapOutput)
 }
@@ -12398,6 +12436,159 @@ func (o WindowsBasedSliResponsePtrOutput) WindowPeriod() pulumi.StringPtrOutput 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationInput)(nil)).Elem(), AggregationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationArrayInput)(nil)).Elem(), AggregationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationResponseInput)(nil)).Elem(), AggregationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationResponseArrayInput)(nil)).Elem(), AggregationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertStrategyInput)(nil)).Elem(), AlertStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertStrategyPtrInput)(nil)).Elem(), AlertStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertStrategyResponseInput)(nil)).Elem(), AlertStrategyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertStrategyResponsePtrInput)(nil)).Elem(), AlertStrategyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineInput)(nil)).Elem(), AppEngineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEnginePtrInput)(nil)).Elem(), AppEngineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineResponseInput)(nil)).Elem(), AppEngineResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineResponsePtrInput)(nil)).Elem(), AppEngineResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AvailabilityCriteriaInput)(nil)).Elem(), AvailabilityCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AvailabilityCriteriaPtrInput)(nil)).Elem(), AvailabilityCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AvailabilityCriteriaResponseInput)(nil)).Elem(), AvailabilityCriteriaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AvailabilityCriteriaResponsePtrInput)(nil)).Elem(), AvailabilityCriteriaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicAuthenticationInput)(nil)).Elem(), BasicAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicAuthenticationPtrInput)(nil)).Elem(), BasicAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicAuthenticationResponseInput)(nil)).Elem(), BasicAuthenticationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicAuthenticationResponsePtrInput)(nil)).Elem(), BasicAuthenticationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicSliInput)(nil)).Elem(), BasicSliArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicSliPtrInput)(nil)).Elem(), BasicSliArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicSliResponseInput)(nil)).Elem(), BasicSliResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicSliResponsePtrInput)(nil)).Elem(), BasicSliResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudEndpointsInput)(nil)).Elem(), CloudEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudEndpointsPtrInput)(nil)).Elem(), CloudEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudEndpointsResponseInput)(nil)).Elem(), CloudEndpointsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudEndpointsResponsePtrInput)(nil)).Elem(), CloudEndpointsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIstioInput)(nil)).Elem(), ClusterIstioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIstioPtrInput)(nil)).Elem(), ClusterIstioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIstioResponseInput)(nil)).Elem(), ClusterIstioResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIstioResponsePtrInput)(nil)).Elem(), ClusterIstioResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionInput)(nil)).Elem(), ConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionArrayInput)(nil)).Elem(), ConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionResponseInput)(nil)).Elem(), ConditionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionResponseArrayInput)(nil)).Elem(), ConditionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentMatcherInput)(nil)).Elem(), ContentMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentMatcherArrayInput)(nil)).Elem(), ContentMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentMatcherResponseInput)(nil)).Elem(), ContentMatcherResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentMatcherResponseArrayInput)(nil)).Elem(), ContentMatcherResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomInput)(nil)).Elem(), CustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomPtrInput)(nil)).Elem(), CustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResponseInput)(nil)).Elem(), CustomResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResponsePtrInput)(nil)).Elem(), CustomResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionCutInput)(nil)).Elem(), DistributionCutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionCutPtrInput)(nil)).Elem(), DistributionCutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionCutResponseInput)(nil)).Elem(), DistributionCutResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributionCutResponsePtrInput)(nil)).Elem(), DistributionCutResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentationInput)(nil)).Elem(), DocumentationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentationPtrInput)(nil)).Elem(), DocumentationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentationResponseInput)(nil)).Elem(), DocumentationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentationResponsePtrInput)(nil)).Elem(), DocumentationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleMonitoringV3RangeInput)(nil)).Elem(), GoogleMonitoringV3RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleMonitoringV3RangePtrInput)(nil)).Elem(), GoogleMonitoringV3RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleMonitoringV3RangeResponseInput)(nil)).Elem(), GoogleMonitoringV3RangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleMonitoringV3RangeResponsePtrInput)(nil)).Elem(), GoogleMonitoringV3RangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpCheckInput)(nil)).Elem(), HttpCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpCheckPtrInput)(nil)).Elem(), HttpCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpCheckResponseInput)(nil)).Elem(), HttpCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpCheckResponsePtrInput)(nil)).Elem(), HttpCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalCheckerInput)(nil)).Elem(), InternalCheckerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalCheckerArrayInput)(nil)).Elem(), InternalCheckerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalCheckerResponseInput)(nil)).Elem(), InternalCheckerResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalCheckerResponseArrayInput)(nil)).Elem(), InternalCheckerResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IstioCanonicalServiceInput)(nil)).Elem(), IstioCanonicalServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IstioCanonicalServicePtrInput)(nil)).Elem(), IstioCanonicalServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IstioCanonicalServiceResponseInput)(nil)).Elem(), IstioCanonicalServiceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IstioCanonicalServiceResponsePtrInput)(nil)).Elem(), IstioCanonicalServiceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LabelDescriptorInput)(nil)).Elem(), LabelDescriptorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LabelDescriptorArrayInput)(nil)).Elem(), LabelDescriptorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LabelDescriptorResponseInput)(nil)).Elem(), LabelDescriptorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LabelDescriptorResponseArrayInput)(nil)).Elem(), LabelDescriptorResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LatencyCriteriaInput)(nil)).Elem(), LatencyCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LatencyCriteriaPtrInput)(nil)).Elem(), LatencyCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LatencyCriteriaResponseInput)(nil)).Elem(), LatencyCriteriaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LatencyCriteriaResponsePtrInput)(nil)).Elem(), LatencyCriteriaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogMatchInput)(nil)).Elem(), LogMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogMatchPtrInput)(nil)).Elem(), LogMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogMatchResponseInput)(nil)).Elem(), LogMatchResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshIstioInput)(nil)).Elem(), MeshIstioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshIstioPtrInput)(nil)).Elem(), MeshIstioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshIstioResponseInput)(nil)).Elem(), MeshIstioResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshIstioResponsePtrInput)(nil)).Elem(), MeshIstioResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricAbsenceInput)(nil)).Elem(), MetricAbsenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricAbsencePtrInput)(nil)).Elem(), MetricAbsenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricAbsenceResponseInput)(nil)).Elem(), MetricAbsenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetadataInput)(nil)).Elem(), MetricDescriptorMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetadataPtrInput)(nil)).Elem(), MetricDescriptorMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetadataResponseInput)(nil)).Elem(), MetricDescriptorMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetadataResponsePtrInput)(nil)).Elem(), MetricDescriptorMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRangeInput)(nil)).Elem(), MetricRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRangePtrInput)(nil)).Elem(), MetricRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRangeResponseInput)(nil)).Elem(), MetricRangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRangeResponsePtrInput)(nil)).Elem(), MetricRangeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricThresholdInput)(nil)).Elem(), MetricThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricThresholdPtrInput)(nil)).Elem(), MetricThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricThresholdResponseInput)(nil)).Elem(), MetricThresholdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourceInput)(nil)).Elem(), MonitoredResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourcePtrInput)(nil)).Elem(), MonitoredResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourceResponseInput)(nil)).Elem(), MonitoredResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourceResponsePtrInput)(nil)).Elem(), MonitoredResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringQueryLanguageConditionInput)(nil)).Elem(), MonitoringQueryLanguageConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringQueryLanguageConditionPtrInput)(nil)).Elem(), MonitoringQueryLanguageConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringQueryLanguageConditionResponseInput)(nil)).Elem(), MonitoringQueryLanguageConditionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutationRecordInput)(nil)).Elem(), MutationRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutationRecordPtrInput)(nil)).Elem(), MutationRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutationRecordArrayInput)(nil)).Elem(), MutationRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutationRecordResponseInput)(nil)).Elem(), MutationRecordResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutationRecordResponsePtrInput)(nil)).Elem(), MutationRecordResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutationRecordResponseArrayInput)(nil)).Elem(), MutationRecordResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRateLimitInput)(nil)).Elem(), NotificationRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRateLimitPtrInput)(nil)).Elem(), NotificationRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRateLimitResponseInput)(nil)).Elem(), NotificationRateLimitResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRateLimitResponsePtrInput)(nil)).Elem(), NotificationRateLimitResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceThresholdInput)(nil)).Elem(), PerformanceThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceThresholdPtrInput)(nil)).Elem(), PerformanceThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceThresholdResponseInput)(nil)).Elem(), PerformanceThresholdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceThresholdResponsePtrInput)(nil)).Elem(), PerformanceThresholdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RequestBasedSliInput)(nil)).Elem(), RequestBasedSliArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RequestBasedSliPtrInput)(nil)).Elem(), RequestBasedSliArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RequestBasedSliResponseInput)(nil)).Elem(), RequestBasedSliResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RequestBasedSliResponsePtrInput)(nil)).Elem(), RequestBasedSliResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupInput)(nil)).Elem(), ResourceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupPtrInput)(nil)).Elem(), ResourceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResponseInput)(nil)).Elem(), ResourceGroupResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResponsePtrInput)(nil)).Elem(), ResourceGroupResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelIndicatorInput)(nil)).Elem(), ServiceLevelIndicatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelIndicatorPtrInput)(nil)).Elem(), ServiceLevelIndicatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelIndicatorResponseInput)(nil)).Elem(), ServiceLevelIndicatorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelIndicatorResponsePtrInput)(nil)).Elem(), ServiceLevelIndicatorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusInput)(nil)).Elem(), StatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusPtrInput)(nil)).Elem(), StatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TcpCheckInput)(nil)).Elem(), TcpCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TcpCheckPtrInput)(nil)).Elem(), TcpCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TcpCheckResponseInput)(nil)).Elem(), TcpCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TcpCheckResponsePtrInput)(nil)).Elem(), TcpCheckResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryInput)(nil)).Elem(), TelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPtrInput)(nil)).Elem(), TelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryResponseInput)(nil)).Elem(), TelemetryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryResponsePtrInput)(nil)).Elem(), TelemetryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesRatioInput)(nil)).Elem(), TimeSeriesRatioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesRatioPtrInput)(nil)).Elem(), TimeSeriesRatioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesRatioResponseInput)(nil)).Elem(), TimeSeriesRatioResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesRatioResponsePtrInput)(nil)).Elem(), TimeSeriesRatioResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerInput)(nil)).Elem(), TriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerPtrInput)(nil)).Elem(), TriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerResponseInput)(nil)).Elem(), TriggerResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WindowsBasedSliInput)(nil)).Elem(), WindowsBasedSliArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WindowsBasedSliPtrInput)(nil)).Elem(), WindowsBasedSliArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WindowsBasedSliResponseInput)(nil)).Elem(), WindowsBasedSliResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WindowsBasedSliResponsePtrInput)(nil)).Elem(), WindowsBasedSliResponseArgs{})
 	pulumi.RegisterOutputType(AggregationOutput{})
 	pulumi.RegisterOutputType(AggregationArrayOutput{})
 	pulumi.RegisterOutputType(AggregationResponseOutput{})

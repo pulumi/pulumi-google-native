@@ -38,7 +38,7 @@ type LookupGlobalAddressResult struct {
 	IpVersion string `pulumi:"ipVersion"`
 	// Type of the resource. Always compute#address for addresses.
 	Kind string `pulumi:"kind"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name string `pulumi:"name"`
 	// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the VPC_PEERING purpose.
 	Network string `pulumi:"network"`
@@ -122,7 +122,7 @@ func (o LookupGlobalAddressResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 func (o LookupGlobalAddressResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Name }).(pulumi.StringOutput)
 }

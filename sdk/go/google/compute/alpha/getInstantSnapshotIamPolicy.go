@@ -11,23 +11,23 @@ import (
 )
 
 // Gets the access control policy for a resource. May be empty if no such policy or resource exists.
-func LookupZoneInstantSnapshotIamPolicy(ctx *pulumi.Context, args *LookupZoneInstantSnapshotIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupZoneInstantSnapshotIamPolicyResult, error) {
-	var rv LookupZoneInstantSnapshotIamPolicyResult
-	err := ctx.Invoke("google-native:compute/alpha:getZoneInstantSnapshotIamPolicy", args, &rv, opts...)
+func LookupInstantSnapshotIamPolicy(ctx *pulumi.Context, args *LookupInstantSnapshotIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupInstantSnapshotIamPolicyResult, error) {
+	var rv LookupInstantSnapshotIamPolicyResult
+	err := ctx.Invoke("google-native:compute/alpha:getInstantSnapshotIamPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
-type LookupZoneInstantSnapshotIamPolicyArgs struct {
+type LookupInstantSnapshotIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	Resource                      string  `pulumi:"resource"`
 	Zone                          string  `pulumi:"zone"`
 }
 
-type LookupZoneInstantSnapshotIamPolicyResult struct {
+type LookupInstantSnapshotIamPolicyResult struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs []AuditConfigResponse `pulumi:"auditConfigs"`
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -42,70 +42,70 @@ type LookupZoneInstantSnapshotIamPolicyResult struct {
 	Version int `pulumi:"version"`
 }
 
-func LookupZoneInstantSnapshotIamPolicyOutput(ctx *pulumi.Context, args LookupZoneInstantSnapshotIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupZoneInstantSnapshotIamPolicyResultOutput {
+func LookupInstantSnapshotIamPolicyOutput(ctx *pulumi.Context, args LookupInstantSnapshotIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupInstantSnapshotIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupZoneInstantSnapshotIamPolicyResult, error) {
-			args := v.(LookupZoneInstantSnapshotIamPolicyArgs)
-			r, err := LookupZoneInstantSnapshotIamPolicy(ctx, &args, opts...)
+		ApplyT(func(v interface{}) (LookupInstantSnapshotIamPolicyResult, error) {
+			args := v.(LookupInstantSnapshotIamPolicyArgs)
+			r, err := LookupInstantSnapshotIamPolicy(ctx, &args, opts...)
 			return *r, err
-		}).(LookupZoneInstantSnapshotIamPolicyResultOutput)
+		}).(LookupInstantSnapshotIamPolicyResultOutput)
 }
 
-type LookupZoneInstantSnapshotIamPolicyOutputArgs struct {
+type LookupInstantSnapshotIamPolicyOutputArgs struct {
 	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	Resource                      pulumi.StringInput    `pulumi:"resource"`
 	Zone                          pulumi.StringInput    `pulumi:"zone"`
 }
 
-func (LookupZoneInstantSnapshotIamPolicyOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupZoneInstantSnapshotIamPolicyArgs)(nil)).Elem()
+func (LookupInstantSnapshotIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstantSnapshotIamPolicyArgs)(nil)).Elem()
 }
 
-type LookupZoneInstantSnapshotIamPolicyResultOutput struct{ *pulumi.OutputState }
+type LookupInstantSnapshotIamPolicyResultOutput struct{ *pulumi.OutputState }
 
-func (LookupZoneInstantSnapshotIamPolicyResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupZoneInstantSnapshotIamPolicyResult)(nil)).Elem()
+func (LookupInstantSnapshotIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstantSnapshotIamPolicyResult)(nil)).Elem()
 }
 
-func (o LookupZoneInstantSnapshotIamPolicyResultOutput) ToLookupZoneInstantSnapshotIamPolicyResultOutput() LookupZoneInstantSnapshotIamPolicyResultOutput {
+func (o LookupInstantSnapshotIamPolicyResultOutput) ToLookupInstantSnapshotIamPolicyResultOutput() LookupInstantSnapshotIamPolicyResultOutput {
 	return o
 }
 
-func (o LookupZoneInstantSnapshotIamPolicyResultOutput) ToLookupZoneInstantSnapshotIamPolicyResultOutputWithContext(ctx context.Context) LookupZoneInstantSnapshotIamPolicyResultOutput {
+func (o LookupInstantSnapshotIamPolicyResultOutput) ToLookupInstantSnapshotIamPolicyResultOutputWithContext(ctx context.Context) LookupInstantSnapshotIamPolicyResultOutput {
 	return o
 }
 
 // Specifies cloud audit logging configuration for this policy.
-func (o LookupZoneInstantSnapshotIamPolicyResultOutput) AuditConfigs() AuditConfigResponseArrayOutput {
-	return o.ApplyT(func(v LookupZoneInstantSnapshotIamPolicyResult) []AuditConfigResponse { return v.AuditConfigs }).(AuditConfigResponseArrayOutput)
+func (o LookupInstantSnapshotIamPolicyResultOutput) AuditConfigs() AuditConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupInstantSnapshotIamPolicyResult) []AuditConfigResponse { return v.AuditConfigs }).(AuditConfigResponseArrayOutput)
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o LookupZoneInstantSnapshotIamPolicyResultOutput) Bindings() BindingResponseArrayOutput {
-	return o.ApplyT(func(v LookupZoneInstantSnapshotIamPolicyResult) []BindingResponse { return v.Bindings }).(BindingResponseArrayOutput)
+func (o LookupInstantSnapshotIamPolicyResultOutput) Bindings() BindingResponseArrayOutput {
+	return o.ApplyT(func(v LookupInstantSnapshotIamPolicyResult) []BindingResponse { return v.Bindings }).(BindingResponseArrayOutput)
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o LookupZoneInstantSnapshotIamPolicyResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneInstantSnapshotIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+func (o LookupInstantSnapshotIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstantSnapshotIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // This is deprecated and has no effect. Do not use.
-func (o LookupZoneInstantSnapshotIamPolicyResultOutput) IamOwned() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupZoneInstantSnapshotIamPolicyResult) bool { return v.IamOwned }).(pulumi.BoolOutput)
+func (o LookupInstantSnapshotIamPolicyResultOutput) IamOwned() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstantSnapshotIamPolicyResult) bool { return v.IamOwned }).(pulumi.BoolOutput)
 }
 
 // This is deprecated and has no effect. Do not use.
-func (o LookupZoneInstantSnapshotIamPolicyResultOutput) Rules() RuleResponseArrayOutput {
-	return o.ApplyT(func(v LookupZoneInstantSnapshotIamPolicyResult) []RuleResponse { return v.Rules }).(RuleResponseArrayOutput)
+func (o LookupInstantSnapshotIamPolicyResultOutput) Rules() RuleResponseArrayOutput {
+	return o.ApplyT(func(v LookupInstantSnapshotIamPolicyResult) []RuleResponse { return v.Rules }).(RuleResponseArrayOutput)
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o LookupZoneInstantSnapshotIamPolicyResultOutput) Version() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupZoneInstantSnapshotIamPolicyResult) int { return v.Version }).(pulumi.IntOutput)
+func (o LookupInstantSnapshotIamPolicyResultOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstantSnapshotIamPolicyResult) int { return v.Version }).(pulumi.IntOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupZoneInstantSnapshotIamPolicyResultOutput{})
+	pulumi.RegisterOutputType(LookupInstantSnapshotIamPolicyResultOutput{})
 }

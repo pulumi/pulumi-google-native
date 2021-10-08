@@ -2702,7 +2702,7 @@ func (in *autoscalingPolicyModePtr) ToAutoscalingPolicyModePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscalingPolicyModePtrOutput)
 }
 
-// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 type BackendBalancingMode string
 
 const (
@@ -18368,6 +18368,172 @@ func (o RouterBgpPeerAdvertisedGroupsItemArrayOutput) Index(i pulumi.IntInput) R
 	}).(RouterBgpPeerAdvertisedGroupsItemOutput)
 }
 
+// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+type RouterBgpPeerBfdSessionInitializationMode string
+
+const (
+	RouterBgpPeerBfdSessionInitializationModeActive   = RouterBgpPeerBfdSessionInitializationMode("ACTIVE")
+	RouterBgpPeerBfdSessionInitializationModeDisabled = RouterBgpPeerBfdSessionInitializationMode("DISABLED")
+	RouterBgpPeerBfdSessionInitializationModePassive  = RouterBgpPeerBfdSessionInitializationMode("PASSIVE")
+)
+
+func (RouterBgpPeerBfdSessionInitializationMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerBfdSessionInitializationMode)(nil)).Elem()
+}
+
+func (e RouterBgpPeerBfdSessionInitializationMode) ToRouterBgpPeerBfdSessionInitializationModeOutput() RouterBgpPeerBfdSessionInitializationModeOutput {
+	return pulumi.ToOutput(e).(RouterBgpPeerBfdSessionInitializationModeOutput)
+}
+
+func (e RouterBgpPeerBfdSessionInitializationMode) ToRouterBgpPeerBfdSessionInitializationModeOutputWithContext(ctx context.Context) RouterBgpPeerBfdSessionInitializationModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RouterBgpPeerBfdSessionInitializationModeOutput)
+}
+
+func (e RouterBgpPeerBfdSessionInitializationMode) ToRouterBgpPeerBfdSessionInitializationModePtrOutput() RouterBgpPeerBfdSessionInitializationModePtrOutput {
+	return e.ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(context.Background())
+}
+
+func (e RouterBgpPeerBfdSessionInitializationMode) ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdSessionInitializationModePtrOutput {
+	return RouterBgpPeerBfdSessionInitializationMode(e).ToRouterBgpPeerBfdSessionInitializationModeOutputWithContext(ctx).ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(ctx)
+}
+
+func (e RouterBgpPeerBfdSessionInitializationMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterBgpPeerBfdSessionInitializationMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterBgpPeerBfdSessionInitializationMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RouterBgpPeerBfdSessionInitializationMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RouterBgpPeerBfdSessionInitializationModeOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerBfdSessionInitializationModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerBfdSessionInitializationMode)(nil)).Elem()
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModeOutput) ToRouterBgpPeerBfdSessionInitializationModeOutput() RouterBgpPeerBfdSessionInitializationModeOutput {
+	return o
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModeOutput) ToRouterBgpPeerBfdSessionInitializationModeOutputWithContext(ctx context.Context) RouterBgpPeerBfdSessionInitializationModeOutput {
+	return o
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModeOutput) ToRouterBgpPeerBfdSessionInitializationModePtrOutput() RouterBgpPeerBfdSessionInitializationModePtrOutput {
+	return o.ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(context.Background())
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModeOutput) ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdSessionInitializationModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterBgpPeerBfdSessionInitializationMode) *RouterBgpPeerBfdSessionInitializationMode {
+		return &v
+	}).(RouterBgpPeerBfdSessionInitializationModePtrOutput)
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RouterBgpPeerBfdSessionInitializationMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RouterBgpPeerBfdSessionInitializationMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouterBgpPeerBfdSessionInitializationModePtrOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerBfdSessionInitializationModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterBgpPeerBfdSessionInitializationMode)(nil)).Elem()
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModePtrOutput) ToRouterBgpPeerBfdSessionInitializationModePtrOutput() RouterBgpPeerBfdSessionInitializationModePtrOutput {
+	return o
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModePtrOutput) ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdSessionInitializationModePtrOutput {
+	return o
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModePtrOutput) Elem() RouterBgpPeerBfdSessionInitializationModeOutput {
+	return o.ApplyT(func(v *RouterBgpPeerBfdSessionInitializationMode) RouterBgpPeerBfdSessionInitializationMode {
+		if v != nil {
+			return *v
+		}
+		var ret RouterBgpPeerBfdSessionInitializationMode
+		return ret
+	}).(RouterBgpPeerBfdSessionInitializationModeOutput)
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RouterBgpPeerBfdSessionInitializationMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RouterBgpPeerBfdSessionInitializationModeInput is an input type that accepts RouterBgpPeerBfdSessionInitializationModeArgs and RouterBgpPeerBfdSessionInitializationModeOutput values.
+// You can construct a concrete instance of `RouterBgpPeerBfdSessionInitializationModeInput` via:
+//
+//          RouterBgpPeerBfdSessionInitializationModeArgs{...}
+type RouterBgpPeerBfdSessionInitializationModeInput interface {
+	pulumi.Input
+
+	ToRouterBgpPeerBfdSessionInitializationModeOutput() RouterBgpPeerBfdSessionInitializationModeOutput
+	ToRouterBgpPeerBfdSessionInitializationModeOutputWithContext(context.Context) RouterBgpPeerBfdSessionInitializationModeOutput
+}
+
+var routerBgpPeerBfdSessionInitializationModePtrType = reflect.TypeOf((**RouterBgpPeerBfdSessionInitializationMode)(nil)).Elem()
+
+type RouterBgpPeerBfdSessionInitializationModePtrInput interface {
+	pulumi.Input
+
+	ToRouterBgpPeerBfdSessionInitializationModePtrOutput() RouterBgpPeerBfdSessionInitializationModePtrOutput
+	ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(context.Context) RouterBgpPeerBfdSessionInitializationModePtrOutput
+}
+
+type routerBgpPeerBfdSessionInitializationModePtr string
+
+func RouterBgpPeerBfdSessionInitializationModePtr(v string) RouterBgpPeerBfdSessionInitializationModePtrInput {
+	return (*routerBgpPeerBfdSessionInitializationModePtr)(&v)
+}
+
+func (*routerBgpPeerBfdSessionInitializationModePtr) ElementType() reflect.Type {
+	return routerBgpPeerBfdSessionInitializationModePtrType
+}
+
+func (in *routerBgpPeerBfdSessionInitializationModePtr) ToRouterBgpPeerBfdSessionInitializationModePtrOutput() RouterBgpPeerBfdSessionInitializationModePtrOutput {
+	return pulumi.ToOutput(in).(RouterBgpPeerBfdSessionInitializationModePtrOutput)
+}
+
+func (in *routerBgpPeerBfdSessionInitializationModePtr) ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdSessionInitializationModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerBfdSessionInitializationModePtrOutput)
+}
+
 // The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 type RouterBgpPeerEnable string
 
@@ -21598,7 +21764,7 @@ func (in *sslPolicyProfilePtr) ToSslPolicyProfilePtrOutputWithContext(ctx contex
 type SubnetworkIpv6AccessType string
 
 const (
-	// VMs in this subnet can have external IPv6.
+	// VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.
 	SubnetworkIpv6AccessTypeExternal = SubnetworkIpv6AccessType("EXTERNAL")
 	// IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet.
 	SubnetworkIpv6AccessTypeUnspecifiedIpv6AccessType = SubnetworkIpv6AccessType("UNSPECIFIED_IPV6_ACCESS_TYPE")
@@ -22769,6 +22935,172 @@ func (in *subnetworkStackTypePtr) ToSubnetworkStackTypePtrOutput() SubnetworkSta
 
 func (in *subnetworkStackTypePtr) ToSubnetworkStackTypePtrOutputWithContext(ctx context.Context) SubnetworkStackTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkStackTypePtrOutput)
+}
+
+type SubsettingPolicy string
+
+const (
+	// Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
+	SubsettingPolicyConsistentHashSubsetting = SubsettingPolicy("CONSISTENT_HASH_SUBSETTING")
+	// No Subsetting. Clients may open connections and send traffic to all backends of this backend service. This can lead to performance issues if there is substantial imbalance in the count of clients and backends.
+	SubsettingPolicyNone = SubsettingPolicy("NONE")
+)
+
+func (SubsettingPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubsettingPolicy)(nil)).Elem()
+}
+
+func (e SubsettingPolicy) ToSubsettingPolicyOutput() SubsettingPolicyOutput {
+	return pulumi.ToOutput(e).(SubsettingPolicyOutput)
+}
+
+func (e SubsettingPolicy) ToSubsettingPolicyOutputWithContext(ctx context.Context) SubsettingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SubsettingPolicyOutput)
+}
+
+func (e SubsettingPolicy) ToSubsettingPolicyPtrOutput() SubsettingPolicyPtrOutput {
+	return e.ToSubsettingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e SubsettingPolicy) ToSubsettingPolicyPtrOutputWithContext(ctx context.Context) SubsettingPolicyPtrOutput {
+	return SubsettingPolicy(e).ToSubsettingPolicyOutputWithContext(ctx).ToSubsettingPolicyPtrOutputWithContext(ctx)
+}
+
+func (e SubsettingPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SubsettingPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SubsettingPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SubsettingPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SubsettingPolicyOutput struct{ *pulumi.OutputState }
+
+func (SubsettingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubsettingPolicy)(nil)).Elem()
+}
+
+func (o SubsettingPolicyOutput) ToSubsettingPolicyOutput() SubsettingPolicyOutput {
+	return o
+}
+
+func (o SubsettingPolicyOutput) ToSubsettingPolicyOutputWithContext(ctx context.Context) SubsettingPolicyOutput {
+	return o
+}
+
+func (o SubsettingPolicyOutput) ToSubsettingPolicyPtrOutput() SubsettingPolicyPtrOutput {
+	return o.ToSubsettingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o SubsettingPolicyOutput) ToSubsettingPolicyPtrOutputWithContext(ctx context.Context) SubsettingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubsettingPolicy) *SubsettingPolicy {
+		return &v
+	}).(SubsettingPolicyPtrOutput)
+}
+
+func (o SubsettingPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SubsettingPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SubsettingPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SubsettingPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SubsettingPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SubsettingPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SubsettingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (SubsettingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubsettingPolicy)(nil)).Elem()
+}
+
+func (o SubsettingPolicyPtrOutput) ToSubsettingPolicyPtrOutput() SubsettingPolicyPtrOutput {
+	return o
+}
+
+func (o SubsettingPolicyPtrOutput) ToSubsettingPolicyPtrOutputWithContext(ctx context.Context) SubsettingPolicyPtrOutput {
+	return o
+}
+
+func (o SubsettingPolicyPtrOutput) Elem() SubsettingPolicyOutput {
+	return o.ApplyT(func(v *SubsettingPolicy) SubsettingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SubsettingPolicy
+		return ret
+	}).(SubsettingPolicyOutput)
+}
+
+func (o SubsettingPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SubsettingPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SubsettingPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SubsettingPolicyInput is an input type that accepts SubsettingPolicyArgs and SubsettingPolicyOutput values.
+// You can construct a concrete instance of `SubsettingPolicyInput` via:
+//
+//          SubsettingPolicyArgs{...}
+type SubsettingPolicyInput interface {
+	pulumi.Input
+
+	ToSubsettingPolicyOutput() SubsettingPolicyOutput
+	ToSubsettingPolicyOutputWithContext(context.Context) SubsettingPolicyOutput
+}
+
+var subsettingPolicyPtrType = reflect.TypeOf((**SubsettingPolicy)(nil)).Elem()
+
+type SubsettingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToSubsettingPolicyPtrOutput() SubsettingPolicyPtrOutput
+	ToSubsettingPolicyPtrOutputWithContext(context.Context) SubsettingPolicyPtrOutput
+}
+
+type subsettingPolicyPtr string
+
+func SubsettingPolicyPtr(v string) SubsettingPolicyPtrInput {
+	return (*subsettingPolicyPtr)(&v)
+}
+
+func (*subsettingPolicyPtr) ElementType() reflect.Type {
+	return subsettingPolicyPtrType
+}
+
+func (in *subsettingPolicyPtr) ToSubsettingPolicyPtrOutput() SubsettingPolicyPtrOutput {
+	return pulumi.ToOutput(in).(SubsettingPolicyPtrOutput)
+}
+
+func (in *subsettingPolicyPtr) ToSubsettingPolicyPtrOutputWithContext(ctx context.Context) SubsettingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SubsettingPolicyPtrOutput)
 }
 
 // Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
@@ -24167,6 +24499,8 @@ func init() {
 	pulumi.RegisterOutputType(RouterBgpPeerAdvertisedGroupsItemOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerAdvertisedGroupsItemPtrOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerAdvertisedGroupsItemArrayOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerBfdSessionInitializationModeOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerBfdSessionInitializationModePtrOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerEnableOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerEnablePtrOutput{})
 	pulumi.RegisterOutputType(RouterNatLogConfigFilterOutput{})
@@ -24220,6 +24554,8 @@ func init() {
 	pulumi.RegisterOutputType(SubnetworkRolePtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkStackTypeOutput{})
 	pulumi.RegisterOutputType(SubnetworkStackTypePtrOutput{})
+	pulumi.RegisterOutputType(SubsettingPolicyOutput{})
+	pulumi.RegisterOutputType(SubsettingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TCPHealthCheckPortSpecificationOutput{})
 	pulumi.RegisterOutputType(TCPHealthCheckPortSpecificationPtrOutput{})
 	pulumi.RegisterOutputType(TCPHealthCheckProxyHeaderOutput{})

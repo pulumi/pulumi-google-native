@@ -291,6 +291,10 @@ func (o PushConfigResponsePtrOutput) PushEndpoint() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigInput)(nil)).Elem(), PushConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigPtrInput)(nil)).Elem(), PushConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigResponseInput)(nil)).Elem(), PushConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PushConfigResponsePtrInput)(nil)).Elem(), PushConfigResponseArgs{})
 	pulumi.RegisterOutputType(PushConfigOutput{})
 	pulumi.RegisterOutputType(PushConfigPtrOutput{})
 	pulumi.RegisterOutputType(PushConfigResponseOutput{})

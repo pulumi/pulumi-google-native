@@ -89,6 +89,10 @@ type LookupBackendServiceResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
+	// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+	ServiceBindings []string `pulumi:"serviceBindings"`
+	// URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. If used with a backend service, must reference a global policy. If used with a regional backend service, must reference a regional policy.
+	ServiceLbPolicy string `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	SessionAffinity string             `pulumi:"sessionAffinity"`
 	Subsetting      SubsettingResponse `pulumi:"subsetting"`
@@ -290,6 +294,16 @@ func (o LookupBackendServiceResultOutput) SelfLink() pulumi.StringOutput {
 // Server-defined URL for this resource with the resource id.
 func (o LookupBackendServiceResultOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+func (o LookupBackendServiceResultOutput) ServiceBindings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []string { return v.ServiceBindings }).(pulumi.StringArrayOutput)
+}
+
+// URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. If used with a backend service, must reference a global policy. If used with a regional backend service, must reference a regional policy.
+func (o LookupBackendServiceResultOutput) ServiceLbPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.ServiceLbPolicy }).(pulumi.StringOutput)
 }
 
 // Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.

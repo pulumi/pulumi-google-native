@@ -3847,7 +3847,7 @@ type Rule struct {
 	Description *string `pulumi:"description"`
 	// If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
 	In []string `pulumi:"in"`
-	// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+	// The config returned to callers of CheckPolicy for any entries that match the LOG action.
 	LogConfig []LogConfig `pulumi:"logConfig"`
 	// If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
 	NotIn []string `pulumi:"notIn"`
@@ -3876,7 +3876,7 @@ type RuleArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
 	In pulumi.StringArrayInput `pulumi:"in"`
-	// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+	// The config returned to callers of CheckPolicy for any entries that match the LOG action.
 	LogConfig LogConfigArrayInput `pulumi:"logConfig"`
 	// If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
 	NotIn pulumi.StringArrayInput `pulumi:"notIn"`
@@ -3956,7 +3956,7 @@ func (o RuleOutput) In() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Rule) []string { return v.In }).(pulumi.StringArrayOutput)
 }
 
-// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+// The config returned to callers of CheckPolicy for any entries that match the LOG action.
 func (o RuleOutput) LogConfig() LogConfigArrayOutput {
 	return o.ApplyT(func(v Rule) []LogConfig { return v.LogConfig }).(LogConfigArrayOutput)
 }
@@ -4001,7 +4001,7 @@ type RuleResponse struct {
 	Description string `pulumi:"description"`
 	// If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
 	In []string `pulumi:"in"`
-	// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+	// The config returned to callers of CheckPolicy for any entries that match the LOG action.
 	LogConfig []LogConfigResponse `pulumi:"logConfig"`
 	// If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
 	NotIn []string `pulumi:"notIn"`
@@ -4030,7 +4030,7 @@ type RuleResponseArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
 	In pulumi.StringArrayInput `pulumi:"in"`
-	// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+	// The config returned to callers of CheckPolicy for any entries that match the LOG action.
 	LogConfig LogConfigResponseArrayInput `pulumi:"logConfig"`
 	// If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
 	NotIn pulumi.StringArrayInput `pulumi:"notIn"`
@@ -4110,7 +4110,7 @@ func (o RuleResponseOutput) In() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleResponse) []string { return v.In }).(pulumi.StringArrayOutput)
 }
 
-// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+// The config returned to callers of CheckPolicy for any entries that match the LOG action.
 func (o RuleResponseOutput) LogConfig() LogConfigResponseArrayOutput {
 	return o.ApplyT(func(v RuleResponse) []LogConfigResponse { return v.LogConfig }).(LogConfigResponseArrayOutput)
 }
@@ -4654,6 +4654,75 @@ func (o ScheduleResponseArrayOutput) Index(i pulumi.IntInput) ScheduleResponseOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationLoggingOptionsInput)(nil)).Elem(), AuthorizationLoggingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationLoggingOptionsPtrInput)(nil)).Elem(), AuthorizationLoggingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationLoggingOptionsResponseInput)(nil)).Elem(), AuthorizationLoggingOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAuditOptionsInput)(nil)).Elem(), CloudAuditOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAuditOptionsPtrInput)(nil)).Elem(), CloudAuditOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAuditOptionsResponseInput)(nil)).Elem(), CloudAuditOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionInput)(nil)).Elem(), ConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionArrayInput)(nil)).Elem(), ConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionResponseInput)(nil)).Elem(), ConditionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionResponseArrayInput)(nil)).Elem(), ConditionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CounterOptionsInput)(nil)).Elem(), CounterOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CounterOptionsPtrInput)(nil)).Elem(), CounterOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CounterOptionsResponseInput)(nil)).Elem(), CounterOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomFieldInput)(nil)).Elem(), CustomFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomFieldArrayInput)(nil)).Elem(), CustomFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomFieldResponseInput)(nil)).Elem(), CustomFieldResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomFieldResponseArrayInput)(nil)).Elem(), CustomFieldResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessOptionsInput)(nil)).Elem(), DataAccessOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessOptionsPtrInput)(nil)).Elem(), DataAccessOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessOptionsResponseInput)(nil)).Elem(), DataAccessOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetConfigInput)(nil)).Elem(), FleetConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetConfigArrayInput)(nil)).Elem(), FleetConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetConfigResponseInput)(nil)).Elem(), FleetConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetConfigResponseArrayInput)(nil)).Elem(), FleetConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterConnectionInfoInput)(nil)).Elem(), GameServerClusterConnectionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterConnectionInfoPtrInput)(nil)).Elem(), GameServerClusterConnectionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterConnectionInfoResponseInput)(nil)).Elem(), GameServerClusterConnectionInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterConnectionInfoResponsePtrInput)(nil)).Elem(), GameServerClusterConnectionInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterReferenceInput)(nil)).Elem(), GkeClusterReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterReferencePtrInput)(nil)).Elem(), GkeClusterReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterReferenceResponseInput)(nil)).Elem(), GkeClusterReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterReferenceResponsePtrInput)(nil)).Elem(), GkeClusterReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterStateResponseInput)(nil)).Elem(), KubernetesClusterStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterStateResponsePtrInput)(nil)).Elem(), KubernetesClusterStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorInput)(nil)).Elem(), LabelSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorArrayInput)(nil)).Elem(), LabelSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorResponseInput)(nil)).Elem(), LabelSelectorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorResponseArrayInput)(nil)).Elem(), LabelSelectorResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigInput)(nil)).Elem(), LogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigArrayInput)(nil)).Elem(), LogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigResponseInput)(nil)).Elem(), LogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigResponseArrayInput)(nil)).Elem(), LogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleInput)(nil)).Elem(), RuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleArrayInput)(nil)).Elem(), RuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleResponseInput)(nil)).Elem(), RuleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleResponseArrayInput)(nil)).Elem(), RuleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigInput)(nil)).Elem(), ScalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigArrayInput)(nil)).Elem(), ScalingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigResponseInput)(nil)).Elem(), ScalingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigResponseArrayInput)(nil)).Elem(), ScalingConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleInput)(nil)).Elem(), ScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleArrayInput)(nil)).Elem(), ScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleResponseInput)(nil)).Elem(), ScheduleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleResponseArrayInput)(nil)).Elem(), ScheduleResponseArray{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})

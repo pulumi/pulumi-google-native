@@ -79,6 +79,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceTemplate{}
 	case "google-native:compute/alpha:InstanceTemplateIamPolicy":
 		r = &InstanceTemplateIamPolicy{}
+	case "google-native:compute/alpha:InstantSnapshot":
+		r = &InstantSnapshot{}
+	case "google-native:compute/alpha:InstantSnapshotIamPolicy":
+		r = &InstantSnapshotIamPolicy{}
 	case "google-native:compute/alpha:Interconnect":
 		r = &Interconnect{}
 	case "google-native:compute/alpha:InterconnectAttachment":
@@ -139,10 +143,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionHealthCheck{}
 	case "google-native:compute/alpha:RegionHealthCheckService":
 		r = &RegionHealthCheckService{}
-	case "google-native:compute/alpha:RegionInPlaceSnapshot":
-		r = &RegionInPlaceSnapshot{}
-	case "google-native:compute/alpha:RegionInPlaceSnapshotIamPolicy":
-		r = &RegionInPlaceSnapshotIamPolicy{}
 	case "google-native:compute/alpha:RegionInstanceGroupManager":
 		r = &RegionInstanceGroupManager{}
 	case "google-native:compute/alpha:RegionInstantSnapshot":
@@ -219,14 +219,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VpnGateway{}
 	case "google-native:compute/alpha:VpnTunnel":
 		r = &VpnTunnel{}
-	case "google-native:compute/alpha:ZoneInPlaceSnapshot":
-		r = &ZoneInPlaceSnapshot{}
-	case "google-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy":
-		r = &ZoneInPlaceSnapshotIamPolicy{}
-	case "google-native:compute/alpha:ZoneInstantSnapshot":
-		r = &ZoneInstantSnapshot{}
-	case "google-native:compute/alpha:ZoneInstantSnapshotIamPolicy":
-		r = &ZoneInstantSnapshotIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

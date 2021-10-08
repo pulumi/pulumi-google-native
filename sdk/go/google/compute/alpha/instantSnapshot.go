@@ -11,7 +11,7 @@ import (
 )
 
 // Creates an instant snapshot in the specified zone.
-type ZoneInstantSnapshot struct {
+type InstantSnapshot struct {
 	pulumi.CustomResourceState
 
 	// Creation timestamp in RFC3339 text format.
@@ -48,45 +48,45 @@ type ZoneInstantSnapshot struct {
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
-// NewZoneInstantSnapshot registers a new resource with the given unique name, arguments, and options.
-func NewZoneInstantSnapshot(ctx *pulumi.Context,
-	name string, args *ZoneInstantSnapshotArgs, opts ...pulumi.ResourceOption) (*ZoneInstantSnapshot, error) {
+// NewInstantSnapshot registers a new resource with the given unique name, arguments, and options.
+func NewInstantSnapshot(ctx *pulumi.Context,
+	name string, args *InstantSnapshotArgs, opts ...pulumi.ResourceOption) (*InstantSnapshot, error) {
 	if args == nil {
-		args = &ZoneInstantSnapshotArgs{}
+		args = &InstantSnapshotArgs{}
 	}
 
-	var resource ZoneInstantSnapshot
-	err := ctx.RegisterResource("google-native:compute/alpha:ZoneInstantSnapshot", name, args, &resource, opts...)
+	var resource InstantSnapshot
+	err := ctx.RegisterResource("google-native:compute/alpha:InstantSnapshot", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetZoneInstantSnapshot gets an existing ZoneInstantSnapshot resource's state with the given name, ID, and optional
+// GetInstantSnapshot gets an existing InstantSnapshot resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetZoneInstantSnapshot(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *ZoneInstantSnapshotState, opts ...pulumi.ResourceOption) (*ZoneInstantSnapshot, error) {
-	var resource ZoneInstantSnapshot
-	err := ctx.ReadResource("google-native:compute/alpha:ZoneInstantSnapshot", name, id, state, &resource, opts...)
+func GetInstantSnapshot(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *InstantSnapshotState, opts ...pulumi.ResourceOption) (*InstantSnapshot, error) {
+	var resource InstantSnapshot
+	err := ctx.ReadResource("google-native:compute/alpha:InstantSnapshot", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering ZoneInstantSnapshot resources.
-type zoneInstantSnapshotState struct {
+// Input properties used for looking up and filtering InstantSnapshot resources.
+type instantSnapshotState struct {
 }
 
-type ZoneInstantSnapshotState struct {
+type InstantSnapshotState struct {
 }
 
-func (ZoneInstantSnapshotState) ElementType() reflect.Type {
-	return reflect.TypeOf((*zoneInstantSnapshotState)(nil)).Elem()
+func (InstantSnapshotState) ElementType() reflect.Type {
+	return reflect.TypeOf((*instantSnapshotState)(nil)).Elem()
 }
 
-type zoneInstantSnapshotArgs struct {
+type instantSnapshotArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
@@ -102,8 +102,8 @@ type zoneInstantSnapshotArgs struct {
 	Zone       *string `pulumi:"zone"`
 }
 
-// The set of arguments for constructing a ZoneInstantSnapshot resource.
-type ZoneInstantSnapshotArgs struct {
+// The set of arguments for constructing a InstantSnapshot resource.
+type InstantSnapshotArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
@@ -119,43 +119,43 @@ type ZoneInstantSnapshotArgs struct {
 	Zone       pulumi.StringPtrInput
 }
 
-func (ZoneInstantSnapshotArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*zoneInstantSnapshotArgs)(nil)).Elem()
+func (InstantSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*instantSnapshotArgs)(nil)).Elem()
 }
 
-type ZoneInstantSnapshotInput interface {
+type InstantSnapshotInput interface {
 	pulumi.Input
 
-	ToZoneInstantSnapshotOutput() ZoneInstantSnapshotOutput
-	ToZoneInstantSnapshotOutputWithContext(ctx context.Context) ZoneInstantSnapshotOutput
+	ToInstantSnapshotOutput() InstantSnapshotOutput
+	ToInstantSnapshotOutputWithContext(ctx context.Context) InstantSnapshotOutput
 }
 
-func (*ZoneInstantSnapshot) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneInstantSnapshot)(nil))
+func (*InstantSnapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstantSnapshot)(nil))
 }
 
-func (i *ZoneInstantSnapshot) ToZoneInstantSnapshotOutput() ZoneInstantSnapshotOutput {
-	return i.ToZoneInstantSnapshotOutputWithContext(context.Background())
+func (i *InstantSnapshot) ToInstantSnapshotOutput() InstantSnapshotOutput {
+	return i.ToInstantSnapshotOutputWithContext(context.Background())
 }
 
-func (i *ZoneInstantSnapshot) ToZoneInstantSnapshotOutputWithContext(ctx context.Context) ZoneInstantSnapshotOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneInstantSnapshotOutput)
+func (i *InstantSnapshot) ToInstantSnapshotOutputWithContext(ctx context.Context) InstantSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstantSnapshotOutput)
 }
 
-type ZoneInstantSnapshotOutput struct{ *pulumi.OutputState }
+type InstantSnapshotOutput struct{ *pulumi.OutputState }
 
-func (ZoneInstantSnapshotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneInstantSnapshot)(nil))
+func (InstantSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstantSnapshot)(nil))
 }
 
-func (o ZoneInstantSnapshotOutput) ToZoneInstantSnapshotOutput() ZoneInstantSnapshotOutput {
+func (o InstantSnapshotOutput) ToInstantSnapshotOutput() InstantSnapshotOutput {
 	return o
 }
 
-func (o ZoneInstantSnapshotOutput) ToZoneInstantSnapshotOutputWithContext(ctx context.Context) ZoneInstantSnapshotOutput {
+func (o InstantSnapshotOutput) ToInstantSnapshotOutputWithContext(ctx context.Context) InstantSnapshotOutput {
 	return o
 }
 
 func init() {
-	pulumi.RegisterOutputType(ZoneInstantSnapshotOutput{})
+	pulumi.RegisterOutputType(InstantSnapshotOutput{})
 }

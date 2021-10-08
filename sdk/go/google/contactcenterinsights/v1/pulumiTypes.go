@@ -1818,6 +1818,8 @@ func (o GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponseArra
 type GoogleCloudContactcenterinsightsV1ConversationParticipantResponse struct {
 	// The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
 	DialogflowParticipantName string `pulumi:"dialogflowParticipantName"`
+	// Obfuscated user ID from Dialogflow.
+	ObfuscatedExternalUserId string `pulumi:"obfuscatedExternalUserId"`
 	// The role of the participant.
 	Role string `pulumi:"role"`
 	// A user-specified ID representing the participant.
@@ -1839,6 +1841,8 @@ type GoogleCloudContactcenterinsightsV1ConversationParticipantResponseInput inte
 type GoogleCloudContactcenterinsightsV1ConversationParticipantResponseArgs struct {
 	// The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
 	DialogflowParticipantName pulumi.StringInput `pulumi:"dialogflowParticipantName"`
+	// Obfuscated user ID from Dialogflow.
+	ObfuscatedExternalUserId pulumi.StringInput `pulumi:"obfuscatedExternalUserId"`
 	// The role of the participant.
 	Role pulumi.StringInput `pulumi:"role"`
 	// A user-specified ID representing the participant.
@@ -1876,6 +1880,13 @@ func (o GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput)
 func (o GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput) DialogflowParticipantName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationParticipantResponse) string {
 		return v.DialogflowParticipantName
+	}).(pulumi.StringOutput)
+}
+
+// Obfuscated user ID from Dialogflow.
+func (o GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput) ObfuscatedExternalUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationParticipantResponse) string {
+		return v.ObfuscatedExternalUserId
 	}).(pulumi.StringOutput)
 }
 
@@ -2031,16 +2042,79 @@ func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptResponsePtrOutpu
 	}).(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseArrayOutput)
 }
 
+// Metadata from Dialogflow relating to the current transcript segment.
+type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse struct {
+	// Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist.
+	SmartReplyAllowlistCovered bool `pulumi:"smartReplyAllowlistCovered"`
+}
+
+// GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseInput is an input type that accepts GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseArgs and GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseInput` via:
+//
+//          GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseArgs{...}
+type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput() GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput
+	ToGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput
+}
+
+// Metadata from Dialogflow relating to the current transcript segment.
+type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseArgs struct {
+	// Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist.
+	SmartReplyAllowlistCovered pulumi.BoolInput `pulumi:"smartReplyAllowlistCovered"`
+}
+
+func (GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseArgs) ToGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput() GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseArgs) ToGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput)
+}
+
+// Metadata from Dialogflow relating to the current transcript segment.
+type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput() GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput {
+	return o
+}
+
+// Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist.
+func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput) SmartReplyAllowlistCovered() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse) bool {
+		return v.SmartReplyAllowlistCovered
+	}).(pulumi.BoolOutput)
+}
+
 // A segment of a full transcript.
 type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse struct {
 	// For conversations derived from multi-channel audio, this is the channel number corresponding to the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of 0 indicates that the audio is mono.
 	ChannelTag int `pulumi:"channelTag"`
 	// A confidence estimate between 0.0 and 1.0 of the fidelity of this segment. A default value of 0.0 indicates that the value is unset.
 	Confidence float64 `pulumi:"confidence"`
+	// CCAI metadata relating to the current transcript segment.
+	DialogflowSegmentMetadata GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse `pulumi:"dialogflowSegmentMetadata"`
 	// The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
 	LanguageCode string `pulumi:"languageCode"`
+	// The time that the message occurred, if provided.
+	MessageTime string `pulumi:"messageTime"`
 	// The participant of this segment.
 	SegmentParticipant GoogleCloudContactcenterinsightsV1ConversationParticipantResponse `pulumi:"segmentParticipant"`
+	// The sentiment for this transcript segment.
+	Sentiment GoogleCloudContactcenterinsightsV1SentimentDataResponse `pulumi:"sentiment"`
 	// The text of this segment.
 	Text string `pulumi:"text"`
 	// A list of the word-specific information for each word in the segment.
@@ -2064,10 +2138,16 @@ type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentRe
 	ChannelTag pulumi.IntInput `pulumi:"channelTag"`
 	// A confidence estimate between 0.0 and 1.0 of the fidelity of this segment. A default value of 0.0 indicates that the value is unset.
 	Confidence pulumi.Float64Input `pulumi:"confidence"`
+	// CCAI metadata relating to the current transcript segment.
+	DialogflowSegmentMetadata GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseInput `pulumi:"dialogflowSegmentMetadata"`
 	// The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
+	// The time that the message occurred, if provided.
+	MessageTime pulumi.StringInput `pulumi:"messageTime"`
 	// The participant of this segment.
 	SegmentParticipant GoogleCloudContactcenterinsightsV1ConversationParticipantResponseInput `pulumi:"segmentParticipant"`
+	// The sentiment for this transcript segment.
+	Sentiment GoogleCloudContactcenterinsightsV1SentimentDataResponseInput `pulumi:"sentiment"`
 	// The text of this segment.
 	Text pulumi.StringInput `pulumi:"text"`
 	// A list of the word-specific information for each word in the segment.
@@ -2140,10 +2220,24 @@ func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmen
 	}).(pulumi.Float64Output)
 }
 
+// CCAI metadata relating to the current transcript segment.
+func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseOutput) DialogflowSegmentMetadata() GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse) GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse {
+		return v.DialogflowSegmentMetadata
+	}).(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput)
+}
+
 // The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
 func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse) string {
 		return v.LanguageCode
+	}).(pulumi.StringOutput)
+}
+
+// The time that the message occurred, if provided.
+func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseOutput) MessageTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse) string {
+		return v.MessageTime
 	}).(pulumi.StringOutput)
 }
 
@@ -2152,6 +2246,13 @@ func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmen
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse) GoogleCloudContactcenterinsightsV1ConversationParticipantResponse {
 		return v.SegmentParticipant
 	}).(GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput)
+}
+
+// The sentiment for this transcript segment.
+func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseOutput) Sentiment() GoogleCloudContactcenterinsightsV1SentimentDataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse) GoogleCloudContactcenterinsightsV1SentimentDataResponse {
+		return v.Sentiment
+	}).(GoogleCloudContactcenterinsightsV1SentimentDataResponseOutput)
 }
 
 // The text of this segment.
@@ -3529,6 +3630,8 @@ func (o GoogleCloudContactcenterinsightsV1InterruptionDataResponseOutput) ToGoog
 
 // Information about the issue.
 type GoogleCloudContactcenterinsightsV1IssueAssignmentResponse struct {
+	// Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since then.
+	DisplayName string `pulumi:"displayName"`
 	// Resource name of the assigned issue.
 	Issue string `pulumi:"issue"`
 	// Score indicating the likelihood of the issue assignment. currently bounded on [0,1].
@@ -3548,6 +3651,8 @@ type GoogleCloudContactcenterinsightsV1IssueAssignmentResponseInput interface {
 
 // Information about the issue.
 type GoogleCloudContactcenterinsightsV1IssueAssignmentResponseArgs struct {
+	// Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since then.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// Resource name of the assigned issue.
 	Issue pulumi.StringInput `pulumi:"issue"`
 	// Score indicating the likelihood of the issue assignment. currently bounded on [0,1].
@@ -3606,6 +3711,11 @@ func (o GoogleCloudContactcenterinsightsV1IssueAssignmentResponseOutput) ToGoogl
 	return o
 }
 
+// Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since then.
+func (o GoogleCloudContactcenterinsightsV1IssueAssignmentResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueAssignmentResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
 // Resource name of the assigned issue.
 func (o GoogleCloudContactcenterinsightsV1IssueAssignmentResponseOutput) Issue() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueAssignmentResponse) string { return v.Issue }).(pulumi.StringOutput)
@@ -3638,8 +3748,10 @@ func (o GoogleCloudContactcenterinsightsV1IssueAssignmentResponseArrayOutput) In
 
 // Configs for the input data used to create the issue model.
 type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig struct {
-	// Medium of conversations used in training data.
-	Medium GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium `pulumi:"medium"`
+	// A filter to reduce the conversations used for training the model to a specific subset.
+	Filter *string `pulumi:"filter"`
+	// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
+	Medium *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium `pulumi:"medium"`
 }
 
 // GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigInput is an input type that accepts GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs and GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput values.
@@ -3655,8 +3767,10 @@ type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigInput interface 
 
 // Configs for the input data used to create the issue model.
 type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs struct {
-	// Medium of conversations used in training data.
-	Medium GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumInput `pulumi:"medium"`
+	// A filter to reduce the conversations used for training the model to a specific subset.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
+	Medium GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrInput `pulumi:"medium"`
 }
 
 func (GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs) ElementType() reflect.Type {
@@ -3737,11 +3851,16 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput) ToGoo
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput)
 }
 
-// Medium of conversations used in training data.
-func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput) Medium() GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig) GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium {
+// A filter to reduce the conversations used for training the model to a specific subset.
+func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
+func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput) Medium() GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig) *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium {
 		return v.Medium
-	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput)
+	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput)
 }
 
 type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput struct{ *pulumi.OutputState }
@@ -3768,19 +3887,31 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput) El
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput)
 }
 
-// Medium of conversations used in training data.
+// A filter to reduce the conversations used for training the model to a specific subset.
+func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput) Medium() GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig) *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium {
 		if v == nil {
 			return nil
 		}
-		return &v.Medium
+		return v.Medium
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput)
 }
 
 // Configs for the input data used to create the issue model.
 type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse struct {
-	// Medium of conversations used in training data.
+	// A filter to reduce the conversations used for training the model to a specific subset.
+	Filter string `pulumi:"filter"`
+	// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
 	Medium string `pulumi:"medium"`
 	// Number of conversations used in training. Output only.
 	TrainingConversationsCount string `pulumi:"trainingConversationsCount"`
@@ -3799,7 +3930,9 @@ type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseInput in
 
 // Configs for the input data used to create the issue model.
 type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseArgs struct {
-	// Medium of conversations used in training data.
+	// A filter to reduce the conversations used for training the model to a specific subset.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
 	Medium pulumi.StringInput `pulumi:"medium"`
 	// Number of conversations used in training. Output only.
 	TrainingConversationsCount pulumi.StringInput `pulumi:"trainingConversationsCount"`
@@ -3883,7 +4016,12 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutpu
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponsePtrOutput)
 }
 
-// Medium of conversations used in training data.
+// A filter to reduce the conversations used for training the model to a specific subset.
+func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput) Medium() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse) string { return v.Medium }).(pulumi.StringOutput)
 }
@@ -3919,7 +4057,17 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponsePtrOu
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput)
 }
 
-// Medium of conversations used in training data.
+// A filter to reduce the conversations used for training the model to a specific subset.
+func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponsePtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponsePtrOutput) Medium() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse) *string {
 		if v == nil {
@@ -5491,6 +5639,80 @@ func (o GoogleCloudContactcenterinsightsV1SmartReplyDataResponseOutput) Reply() 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnalysisResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnalysisResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnalysisResponsePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnalysisResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponsePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnalysisResultResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnalysisResultResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnalysisResultResponsePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnalysisResultResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnswerFeedbackResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnswerFeedbackResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1CallAnnotationResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1CallAnnotationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1CallAnnotationResponseArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1CallAnnotationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationCallMetadataInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponsePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationDataSourceInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationDataSourcePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationDataSourceResponsePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponseArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationParticipantResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationParticipantResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationTranscriptResponsePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponseArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1DialogflowSourceInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1DialogflowSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1DialogflowSourcePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1DialogflowSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1DialogflowSourceResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1DialogflowSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1DialogflowSourceResponsePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1DialogflowSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1EntityMentionDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1EntityMentionDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ExactMatchConfigInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ExactMatchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ExactMatchConfigPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ExactMatchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ExactMatchConfigResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ExactMatchConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1FaqAnswerDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1FaqAnswerDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1GcsSourceInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1GcsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1GcsSourcePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1GcsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1GcsSourceResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1GcsSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1GcsSourceResponsePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1GcsSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1HoldDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1HoldDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IntentMatchDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IntentMatchDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1InterruptionDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1InterruptionDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueAssignmentResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueAssignmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueAssignmentResponseArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueAssignmentResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponsePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponsePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelResultResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueModelResultResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelResultResponsePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueModelResultResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponseArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArrayInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1SentimentDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1SentimentDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1SilenceDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1SilenceDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1SmartReplyDataResponseInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1SmartReplyDataResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnalysisResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnalysisResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput{})
@@ -5515,6 +5737,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponseOutput{})

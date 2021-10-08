@@ -7109,9 +7109,9 @@ func (o RevocationDetailsResponsePtrOutput) RevocationTime() pulumi.StringPtrOut
 
 // Describes an RSA key that may be used in a Certificate issued from a CaPool.
 type RsaKeyType struct {
-	// Optional. The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
+	// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
 	MaxModulusSize *string `pulumi:"maxModulusSize"`
-	// Optional. The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
+	// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
 	MinModulusSize *string `pulumi:"minModulusSize"`
 }
 
@@ -7128,9 +7128,9 @@ type RsaKeyTypeInput interface {
 
 // Describes an RSA key that may be used in a Certificate issued from a CaPool.
 type RsaKeyTypeArgs struct {
-	// Optional. The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
+	// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
 	MaxModulusSize pulumi.StringPtrInput `pulumi:"maxModulusSize"`
-	// Optional. The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
+	// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
 	MinModulusSize pulumi.StringPtrInput `pulumi:"minModulusSize"`
 }
 
@@ -7212,12 +7212,12 @@ func (o RsaKeyTypeOutput) ToRsaKeyTypePtrOutputWithContext(ctx context.Context) 
 	}).(RsaKeyTypePtrOutput)
 }
 
-// Optional. The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
+// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
 func (o RsaKeyTypeOutput) MaxModulusSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RsaKeyType) *string { return v.MaxModulusSize }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
+// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
 func (o RsaKeyTypeOutput) MinModulusSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RsaKeyType) *string { return v.MinModulusSize }).(pulumi.StringPtrOutput)
 }
@@ -7246,7 +7246,7 @@ func (o RsaKeyTypePtrOutput) Elem() RsaKeyTypeOutput {
 	}).(RsaKeyTypeOutput)
 }
 
-// Optional. The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
+// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
 func (o RsaKeyTypePtrOutput) MaxModulusSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RsaKeyType) *string {
 		if v == nil {
@@ -7256,7 +7256,7 @@ func (o RsaKeyTypePtrOutput) MaxModulusSize() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
+// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
 func (o RsaKeyTypePtrOutput) MinModulusSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RsaKeyType) *string {
 		if v == nil {
@@ -7268,9 +7268,9 @@ func (o RsaKeyTypePtrOutput) MinModulusSize() pulumi.StringPtrOutput {
 
 // Describes an RSA key that may be used in a Certificate issued from a CaPool.
 type RsaKeyTypeResponse struct {
-	// Optional. The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
+	// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
 	MaxModulusSize string `pulumi:"maxModulusSize"`
-	// Optional. The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
+	// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
 	MinModulusSize string `pulumi:"minModulusSize"`
 }
 
@@ -7287,9 +7287,9 @@ type RsaKeyTypeResponseInput interface {
 
 // Describes an RSA key that may be used in a Certificate issued from a CaPool.
 type RsaKeyTypeResponseArgs struct {
-	// Optional. The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
+	// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
 	MaxModulusSize pulumi.StringInput `pulumi:"maxModulusSize"`
-	// Optional. The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
+	// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
 	MinModulusSize pulumi.StringInput `pulumi:"minModulusSize"`
 }
 
@@ -7320,12 +7320,12 @@ func (o RsaKeyTypeResponseOutput) ToRsaKeyTypeResponseOutputWithContext(ctx cont
 	return o
 }
 
-// Optional. The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
+// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
 func (o RsaKeyTypeResponseOutput) MaxModulusSize() pulumi.StringOutput {
 	return o.ApplyT(func(v RsaKeyTypeResponse) string { return v.MaxModulusSize }).(pulumi.StringOutput)
 }
 
-// Optional. The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
+// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
 func (o RsaKeyTypeResponseOutput) MinModulusSize() pulumi.StringOutput {
 	return o.ApplyT(func(v RsaKeyTypeResponse) string { return v.MinModulusSize }).(pulumi.StringOutput)
 }
@@ -10128,6 +10128,125 @@ func (o X509ParametersResponsePtrOutput) PolicyIds() ObjectIdResponseArrayOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessUrlsResponseInput)(nil)).Elem(), AccessUrlsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessUrlsResponsePtrInput)(nil)).Elem(), AccessUrlsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedKeyTypeInput)(nil)).Elem(), AllowedKeyTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedKeyTypeArrayInput)(nil)).Elem(), AllowedKeyTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedKeyTypeResponseInput)(nil)).Elem(), AllowedKeyTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedKeyTypeResponseArrayInput)(nil)).Elem(), AllowedKeyTypeResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaOptionsInput)(nil)).Elem(), CaOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaOptionsPtrInput)(nil)).Elem(), CaOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaOptionsResponseInput)(nil)).Elem(), CaOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaOptionsResponsePtrInput)(nil)).Elem(), CaOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigInput)(nil)).Elem(), CertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigPtrInput)(nil)).Elem(), CertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigResponseInput)(nil)).Elem(), CertificateConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigResponsePtrInput)(nil)).Elem(), CertificateConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateDescriptionResponseInput)(nil)).Elem(), CertificateDescriptionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateDescriptionResponsePtrInput)(nil)).Elem(), CertificateDescriptionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateDescriptionResponseArrayInput)(nil)).Elem(), CertificateDescriptionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateExtensionConstraintsInput)(nil)).Elem(), CertificateExtensionConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateExtensionConstraintsPtrInput)(nil)).Elem(), CertificateExtensionConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateExtensionConstraintsResponseInput)(nil)).Elem(), CertificateExtensionConstraintsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateExtensionConstraintsResponsePtrInput)(nil)).Elem(), CertificateExtensionConstraintsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateFingerprintResponseInput)(nil)).Elem(), CertificateFingerprintResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateFingerprintResponsePtrInput)(nil)).Elem(), CertificateFingerprintResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIdentityConstraintsInput)(nil)).Elem(), CertificateIdentityConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIdentityConstraintsPtrInput)(nil)).Elem(), CertificateIdentityConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIdentityConstraintsResponseInput)(nil)).Elem(), CertificateIdentityConstraintsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIdentityConstraintsResponsePtrInput)(nil)).Elem(), CertificateIdentityConstraintsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcKeyTypeInput)(nil)).Elem(), EcKeyTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcKeyTypePtrInput)(nil)).Elem(), EcKeyTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcKeyTypeResponseInput)(nil)).Elem(), EcKeyTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponsePtrInput)(nil)).Elem(), ExprResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtendedKeyUsageOptionsInput)(nil)).Elem(), ExtendedKeyUsageOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtendedKeyUsageOptionsPtrInput)(nil)).Elem(), ExtendedKeyUsageOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtendedKeyUsageOptionsResponseInput)(nil)).Elem(), ExtendedKeyUsageOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtendedKeyUsageOptionsResponsePtrInput)(nil)).Elem(), ExtendedKeyUsageOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IssuanceModesInput)(nil)).Elem(), IssuanceModesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IssuanceModesPtrInput)(nil)).Elem(), IssuanceModesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IssuanceModesResponseInput)(nil)).Elem(), IssuanceModesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IssuanceModesResponsePtrInput)(nil)).Elem(), IssuanceModesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IssuancePolicyInput)(nil)).Elem(), IssuancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IssuancePolicyPtrInput)(nil)).Elem(), IssuancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IssuancePolicyResponseInput)(nil)).Elem(), IssuancePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IssuancePolicyResponsePtrInput)(nil)).Elem(), IssuancePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyIdResponseInput)(nil)).Elem(), KeyIdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyIdResponsePtrInput)(nil)).Elem(), KeyIdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageInput)(nil)).Elem(), KeyUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsagePtrInput)(nil)).Elem(), KeyUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageOptionsInput)(nil)).Elem(), KeyUsageOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageOptionsPtrInput)(nil)).Elem(), KeyUsageOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageOptionsResponseInput)(nil)).Elem(), KeyUsageOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageOptionsResponsePtrInput)(nil)).Elem(), KeyUsageOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageResponseInput)(nil)).Elem(), KeyUsageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageResponsePtrInput)(nil)).Elem(), KeyUsageResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecInput)(nil)).Elem(), KeyVersionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecPtrInput)(nil)).Elem(), KeyVersionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecResponseInput)(nil)).Elem(), KeyVersionSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecResponsePtrInput)(nil)).Elem(), KeyVersionSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIdInput)(nil)).Elem(), ObjectIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIdArrayInput)(nil)).Elem(), ObjectIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIdResponseInput)(nil)).Elem(), ObjectIdResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIdResponseArrayInput)(nil)).Elem(), ObjectIdResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyInput)(nil)).Elem(), PublicKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyPtrInput)(nil)).Elem(), PublicKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyResponseInput)(nil)).Elem(), PublicKeyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyResponsePtrInput)(nil)).Elem(), PublicKeyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOptionsInput)(nil)).Elem(), PublishingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOptionsPtrInput)(nil)).Elem(), PublishingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOptionsResponseInput)(nil)).Elem(), PublishingOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOptionsResponsePtrInput)(nil)).Elem(), PublishingOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RevocationDetailsResponseInput)(nil)).Elem(), RevocationDetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RevocationDetailsResponsePtrInput)(nil)).Elem(), RevocationDetailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RsaKeyTypeInput)(nil)).Elem(), RsaKeyTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RsaKeyTypePtrInput)(nil)).Elem(), RsaKeyTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RsaKeyTypeResponseInput)(nil)).Elem(), RsaKeyTypeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectInput)(nil)).Elem(), SubjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectPtrInput)(nil)).Elem(), SubjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectAltNamesInput)(nil)).Elem(), SubjectAltNamesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectAltNamesPtrInput)(nil)).Elem(), SubjectAltNamesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectAltNamesResponseInput)(nil)).Elem(), SubjectAltNamesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectAltNamesResponsePtrInput)(nil)).Elem(), SubjectAltNamesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectConfigInput)(nil)).Elem(), SubjectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectConfigPtrInput)(nil)).Elem(), SubjectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectConfigResponseInput)(nil)).Elem(), SubjectConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectConfigResponsePtrInput)(nil)).Elem(), SubjectConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectDescriptionResponseInput)(nil)).Elem(), SubjectDescriptionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectDescriptionResponsePtrInput)(nil)).Elem(), SubjectDescriptionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectResponseInput)(nil)).Elem(), SubjectResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectResponsePtrInput)(nil)).Elem(), SubjectResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigInput)(nil)).Elem(), SubordinateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigPtrInput)(nil)).Elem(), SubordinateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigChainInput)(nil)).Elem(), SubordinateConfigChainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigChainPtrInput)(nil)).Elem(), SubordinateConfigChainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigChainResponseInput)(nil)).Elem(), SubordinateConfigChainResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigChainResponsePtrInput)(nil)).Elem(), SubordinateConfigChainResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigResponseInput)(nil)).Elem(), SubordinateConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubordinateConfigResponsePtrInput)(nil)).Elem(), SubordinateConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*X509ExtensionInput)(nil)).Elem(), X509ExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*X509ExtensionArrayInput)(nil)).Elem(), X509ExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*X509ExtensionResponseInput)(nil)).Elem(), X509ExtensionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*X509ExtensionResponseArrayInput)(nil)).Elem(), X509ExtensionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*X509ParametersInput)(nil)).Elem(), X509ParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*X509ParametersPtrInput)(nil)).Elem(), X509ParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*X509ParametersResponseInput)(nil)).Elem(), X509ParametersResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*X509ParametersResponsePtrInput)(nil)).Elem(), X509ParametersResponseArgs{})
 	pulumi.RegisterOutputType(AccessUrlsResponseOutput{})
 	pulumi.RegisterOutputType(AccessUrlsResponsePtrOutput{})
 	pulumi.RegisterOutputType(AllowedKeyTypeOutput{})

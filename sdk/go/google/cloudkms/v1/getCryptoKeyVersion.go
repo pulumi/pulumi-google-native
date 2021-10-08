@@ -43,16 +43,18 @@ type LookupCryptoKeyVersionResult struct {
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsResponse `pulumi:"externalProtectionLevelOptions"`
 	// The time this CryptoKeyVersion's key material was generated.
 	GenerateTime string `pulumi:"generateTime"`
-	// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+	// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
 	ImportFailureReason string `pulumi:"importFailureReason"`
-	// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+	// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
 	ImportJob string `pulumi:"importJob"`
-	// The time at which this CryptoKeyVersion's key material was imported.
+	// The time at which this CryptoKeyVersion's key material was most recently imported.
 	ImportTime string `pulumi:"importTime"`
 	// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
 	Name string `pulumi:"name"`
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 	ProtectionLevel string `pulumi:"protectionLevel"`
+	// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+	ReimportEligible bool `pulumi:"reimportEligible"`
 	// The current state of the CryptoKeyVersion.
 	State string `pulumi:"state"`
 }
@@ -129,17 +131,17 @@ func (o LookupCryptoKeyVersionResultOutput) GenerateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.GenerateTime }).(pulumi.StringOutput)
 }
 
-// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
 func (o LookupCryptoKeyVersionResultOutput) ImportFailureReason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.ImportFailureReason }).(pulumi.StringOutput)
 }
 
-// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
 func (o LookupCryptoKeyVersionResultOutput) ImportJob() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.ImportJob }).(pulumi.StringOutput)
 }
 
-// The time at which this CryptoKeyVersion's key material was imported.
+// The time at which this CryptoKeyVersion's key material was most recently imported.
 func (o LookupCryptoKeyVersionResultOutput) ImportTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.ImportTime }).(pulumi.StringOutput)
 }
@@ -152,6 +154,11 @@ func (o LookupCryptoKeyVersionResultOutput) Name() pulumi.StringOutput {
 // The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 func (o LookupCryptoKeyVersionResultOutput) ProtectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCryptoKeyVersionResult) string { return v.ProtectionLevel }).(pulumi.StringOutput)
+}
+
+// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+func (o LookupCryptoKeyVersionResultOutput) ReimportEligible() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupCryptoKeyVersionResult) bool { return v.ReimportEligible }).(pulumi.BoolOutput)
 }
 
 // The current state of the CryptoKeyVersion.

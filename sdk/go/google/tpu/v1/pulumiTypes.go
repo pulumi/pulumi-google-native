@@ -565,6 +565,14 @@ func (o SymptomResponseArrayOutput) Index(i pulumi.IntInput) SymptomResponseOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointResponseInput)(nil)).Elem(), NetworkEndpointResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointResponseArrayInput)(nil)).Elem(), NetworkEndpointResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingConfigInput)(nil)).Elem(), SchedulingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingConfigPtrInput)(nil)).Elem(), SchedulingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingConfigResponseInput)(nil)).Elem(), SchedulingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingConfigResponsePtrInput)(nil)).Elem(), SchedulingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SymptomResponseInput)(nil)).Elem(), SymptomResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SymptomResponseArrayInput)(nil)).Elem(), SymptomResponseArray{})
 	pulumi.RegisterOutputType(NetworkEndpointResponseOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingConfigOutput{})

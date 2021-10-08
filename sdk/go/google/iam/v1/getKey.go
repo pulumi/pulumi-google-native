@@ -28,6 +28,8 @@ type LookupKeyArgs struct {
 }
 
 type LookupKeyResult struct {
+	// The key status.
+	Disabled bool `pulumi:"disabled"`
 	// Specifies the algorithm (and possibly key size) for the key.
 	KeyAlgorithm string `pulumi:"keyAlgorithm"`
 	// The key origin.
@@ -80,6 +82,11 @@ func (o LookupKeyResultOutput) ToLookupKeyResultOutput() LookupKeyResultOutput {
 
 func (o LookupKeyResultOutput) ToLookupKeyResultOutputWithContext(ctx context.Context) LookupKeyResultOutput {
 	return o
+}
+
+// The key status.
+func (o LookupKeyResultOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupKeyResult) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
 // Specifies the algorithm (and possibly key size) for the key.

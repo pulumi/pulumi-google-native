@@ -22,7 +22,7 @@ const (
 	RepositoryFormatMaven = RepositoryFormat("MAVEN")
 	// NPM package format.
 	RepositoryFormatNpm = RepositoryFormat("NPM")
-	// PyPI package format.
+	// PyPI package format. Deprecated, use PYTHON instead.
 	RepositoryFormatPypi = RepositoryFormat("PYPI")
 	// APT package format.
 	RepositoryFormatApt = RepositoryFormat("APT")

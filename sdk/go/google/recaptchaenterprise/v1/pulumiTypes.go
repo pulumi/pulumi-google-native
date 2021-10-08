@@ -12,6 +12,8 @@ import (
 
 // Settings specific to keys that can be used by Android apps.
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettings struct {
+	// If set to true, it means allowed_package_names will not be enforced.
+	AllowAllPackageNames *bool `pulumi:"allowAllPackageNames"`
 	// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 	AllowedPackageNames []string `pulumi:"allowedPackageNames"`
 }
@@ -29,6 +31,8 @@ type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsInput interface {
 
 // Settings specific to keys that can be used by Android apps.
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs struct {
+	// If set to true, it means allowed_package_names will not be enforced.
+	AllowAllPackageNames pulumi.BoolPtrInput `pulumi:"allowAllPackageNames"`
 	// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 	AllowedPackageNames pulumi.StringArrayInput `pulumi:"allowedPackageNames"`
 }
@@ -111,6 +115,11 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput) ToGoogleCloudR
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput)
 }
 
+// If set to true, it means allowed_package_names will not be enforced.
+func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput) AllowAllPackageNames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) *bool { return v.AllowAllPackageNames }).(pulumi.BoolPtrOutput)
+}
+
 // Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput) AllowedPackageNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) []string { return v.AllowedPackageNames }).(pulumi.StringArrayOutput)
@@ -140,6 +149,16 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) Elem() Goog
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput)
 }
 
+// If set to true, it means allowed_package_names will not be enforced.
+func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) AllowAllPackageNames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowAllPackageNames
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) AllowedPackageNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) []string {
@@ -152,6 +171,8 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) AllowedPack
 
 // Settings specific to keys that can be used by Android apps.
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse struct {
+	// If set to true, it means allowed_package_names will not be enforced.
+	AllowAllPackageNames bool `pulumi:"allowAllPackageNames"`
 	// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 	AllowedPackageNames []string `pulumi:"allowedPackageNames"`
 }
@@ -169,6 +190,8 @@ type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseInput interface {
 
 // Settings specific to keys that can be used by Android apps.
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseArgs struct {
+	// If set to true, it means allowed_package_names will not be enforced.
+	AllowAllPackageNames pulumi.BoolInput `pulumi:"allowAllPackageNames"`
 	// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 	AllowedPackageNames pulumi.StringArrayInput `pulumi:"allowedPackageNames"`
 }
@@ -251,6 +274,11 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) ToGoog
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput)
 }
 
+// If set to true, it means allowed_package_names will not be enforced.
+func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) AllowAllPackageNames() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) bool { return v.AllowAllPackageNames }).(pulumi.BoolOutput)
+}
+
 // Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) AllowedPackageNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) []string {
@@ -282,6 +310,16 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput) Ele
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput)
 }
 
+// If set to true, it means allowed_package_names will not be enforced.
+func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput) AllowAllPackageNames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AllowAllPackageNames
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput) AllowedPackageNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) []string {
@@ -294,6 +332,8 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput) All
 
 // Settings specific to keys that can be used by iOS apps.
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettings struct {
+	// If set to true, it means allowed_bundle_ids will not be enforced.
+	AllowAllBundleIds *bool `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds []string `pulumi:"allowedBundleIds"`
 }
@@ -311,6 +351,8 @@ type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsInput interface {
 
 // Settings specific to keys that can be used by iOS apps.
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs struct {
+	// If set to true, it means allowed_bundle_ids will not be enforced.
+	AllowAllBundleIds pulumi.BoolPtrInput `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds pulumi.StringArrayInput `pulumi:"allowedBundleIds"`
 }
@@ -393,6 +435,11 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) ToGoogleCloudRecap
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput)
 }
 
+// If set to true, it means allowed_bundle_ids will not be enforced.
+func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) AllowAllBundleIds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettings) *bool { return v.AllowAllBundleIds }).(pulumi.BoolPtrOutput)
+}
+
 // iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) AllowedBundleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettings) []string { return v.AllowedBundleIds }).(pulumi.StringArrayOutput)
@@ -422,6 +469,16 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) Elem() GoogleCl
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput)
 }
 
+// If set to true, it means allowed_bundle_ids will not be enforced.
+func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) AllowAllBundleIds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1IOSKeySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowAllBundleIds
+	}).(pulumi.BoolPtrOutput)
+}
+
 // iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) AllowedBundleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1IOSKeySettings) []string {
@@ -434,6 +491,8 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) AllowedBundleId
 
 // Settings specific to keys that can be used by iOS apps.
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse struct {
+	// If set to true, it means allowed_bundle_ids will not be enforced.
+	AllowAllBundleIds bool `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds []string `pulumi:"allowedBundleIds"`
 }
@@ -451,6 +510,8 @@ type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseInput interface {
 
 // Settings specific to keys that can be used by iOS apps.
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseArgs struct {
+	// If set to true, it means allowed_bundle_ids will not be enforced.
+	AllowAllBundleIds pulumi.BoolInput `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds pulumi.StringArrayInput `pulumi:"allowedBundleIds"`
 }
@@ -533,6 +594,11 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) ToGoogleCl
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutput)
 }
 
+// If set to true, it means allowed_bundle_ids will not be enforced.
+func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) AllowAllBundleIds() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) bool { return v.AllowAllBundleIds }).(pulumi.BoolOutput)
+}
+
 // iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) AllowedBundleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) []string { return v.AllowedBundleIds }).(pulumi.StringArrayOutput)
@@ -560,6 +626,16 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutput) Elem() 
 		var ret GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse
 		return ret
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput)
+}
+
+// If set to true, it means allowed_bundle_ids will not be enforced.
+func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutput) AllowAllBundleIds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AllowAllBundleIds
+	}).(pulumi.BoolPtrOutput)
 }
 
 // iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
@@ -1331,6 +1407,22 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponsePtrOutput) Integra
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1IOSKeySettingsInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1TestingOptionsInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1TestingOptionsResponsePtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WebKeySettingsInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponsePtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput{})

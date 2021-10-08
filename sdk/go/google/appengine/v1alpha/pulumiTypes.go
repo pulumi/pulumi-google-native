@@ -905,6 +905,18 @@ func (o SslSettingsResponsePtrOutput) IsManagedCertificate() pulumi.BoolPtrOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateRawDataInput)(nil)).Elem(), CertificateRawDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateRawDataPtrInput)(nil)).Elem(), CertificateRawDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateRawDataResponseInput)(nil)).Elem(), CertificateRawDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateRawDataResponsePtrInput)(nil)).Elem(), CertificateRawDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedCertificateResponseInput)(nil)).Elem(), ManagedCertificateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedCertificateResponsePtrInput)(nil)).Elem(), ManagedCertificateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRecordResponseInput)(nil)).Elem(), ResourceRecordResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRecordResponseArrayInput)(nil)).Elem(), ResourceRecordResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslSettingsInput)(nil)).Elem(), SslSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslSettingsPtrInput)(nil)).Elem(), SslSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslSettingsResponseInput)(nil)).Elem(), SslSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslSettingsResponsePtrInput)(nil)).Elem(), SslSettingsResponseArgs{})
 	pulumi.RegisterOutputType(CertificateRawDataOutput{})
 	pulumi.RegisterOutputType(CertificateRawDataPtrOutput{})
 	pulumi.RegisterOutputType(CertificateRawDataResponseOutput{})

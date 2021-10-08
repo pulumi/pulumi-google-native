@@ -42,8 +42,6 @@ type RatePlan struct {
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Name of the rate plan.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Flag that specifies the billing account type, prepaid or postpaid.
-	PaymentFundingModel pulumi.StringOutput `pulumi:"paymentFundingModel"`
 	// Details of the revenue sharing model.
 	RevenueShareRates GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput `pulumi:"revenueShareRates"`
 	// Method used to calculate the revenue that is shared with developers.
@@ -123,8 +121,6 @@ type ratePlanArgs struct {
 	// Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
 	FixedRecurringFee *GoogleTypeMoney `pulumi:"fixedRecurringFee"`
 	OrganizationId    string           `pulumi:"organizationId"`
-	// Flag that specifies the billing account type, prepaid or postpaid.
-	PaymentFundingModel *RatePlanPaymentFundingModel `pulumi:"paymentFundingModel"`
 	// Details of the revenue sharing model.
 	RevenueShareRates []GoogleCloudApigeeV1RevenueShareRange `pulumi:"revenueShareRates"`
 	// Method used to calculate the revenue that is shared with developers.
@@ -161,8 +157,6 @@ type RatePlanArgs struct {
 	// Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
 	FixedRecurringFee GoogleTypeMoneyPtrInput
 	OrganizationId    pulumi.StringInput
-	// Flag that specifies the billing account type, prepaid or postpaid.
-	PaymentFundingModel RatePlanPaymentFundingModelPtrInput
 	// Details of the revenue sharing model.
 	RevenueShareRates GoogleCloudApigeeV1RevenueShareRangeArrayInput
 	// Method used to calculate the revenue that is shared with developers.

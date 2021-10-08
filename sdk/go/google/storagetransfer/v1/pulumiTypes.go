@@ -2350,7 +2350,7 @@ func (o HttpDataResponsePtrOutput) ListUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Logging configure.
+// Logging configuration.
 type LoggingConfig struct {
 	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
 	EnableOnpremGcsTransferLogs *bool `pulumi:"enableOnpremGcsTransferLogs"`
@@ -2367,7 +2367,7 @@ type LoggingConfigInput interface {
 	ToLoggingConfigOutputWithContext(context.Context) LoggingConfigOutput
 }
 
-// Logging configure.
+// Logging configuration.
 type LoggingConfigArgs struct {
 	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
 	EnableOnpremGcsTransferLogs pulumi.BoolPtrInput `pulumi:"enableOnpremGcsTransferLogs"`
@@ -2426,7 +2426,7 @@ func (i *loggingConfigPtrType) ToLoggingConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigPtrOutput)
 }
 
-// Logging configure.
+// Logging configuration.
 type LoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (LoggingConfigOutput) ElementType() reflect.Type {
@@ -2490,7 +2490,7 @@ func (o LoggingConfigPtrOutput) EnableOnpremGcsTransferLogs() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Logging configure.
+// Logging configuration.
 type LoggingConfigResponse struct {
 	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
 	EnableOnpremGcsTransferLogs bool `pulumi:"enableOnpremGcsTransferLogs"`
@@ -2507,7 +2507,7 @@ type LoggingConfigResponseInput interface {
 	ToLoggingConfigResponseOutputWithContext(context.Context) LoggingConfigResponseOutput
 }
 
-// Logging configure.
+// Logging configuration.
 type LoggingConfigResponseArgs struct {
 	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
 	EnableOnpremGcsTransferLogs pulumi.BoolInput `pulumi:"enableOnpremGcsTransferLogs"`
@@ -2566,7 +2566,7 @@ func (i *loggingConfigResponsePtrType) ToLoggingConfigResponsePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponsePtrOutput)
 }
 
-// Logging configure.
+// Logging configuration.
 type LoggingConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (LoggingConfigResponseOutput) ElementType() reflect.Type {
@@ -2986,7 +2986,7 @@ func (o NotificationConfigResponsePtrOutput) PubsubTopic() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. This is not supported for transfers involving PosixFilesystem.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
 type ObjectConditions struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes []string `pulumi:"excludePrefixes"`
@@ -3013,7 +3013,7 @@ type ObjectConditionsInput interface {
 	ToObjectConditionsOutputWithContext(context.Context) ObjectConditionsOutput
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. This is not supported for transfers involving PosixFilesystem.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
 type ObjectConditionsArgs struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
@@ -3082,7 +3082,7 @@ func (i *objectConditionsPtrType) ToObjectConditionsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectConditionsPtrOutput)
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. This is not supported for transfers involving PosixFilesystem.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
 type ObjectConditionsOutput struct{ *pulumi.OutputState }
 
 func (ObjectConditionsOutput) ElementType() reflect.Type {
@@ -3221,7 +3221,7 @@ func (o ObjectConditionsPtrOutput) MinTimeElapsedSinceLastModification() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. This is not supported for transfers involving PosixFilesystem.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
 type ObjectConditionsResponse struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes []string `pulumi:"excludePrefixes"`
@@ -3248,7 +3248,7 @@ type ObjectConditionsResponseInput interface {
 	ToObjectConditionsResponseOutputWithContext(context.Context) ObjectConditionsResponseOutput
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. This is not supported for transfers involving PosixFilesystem.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
 type ObjectConditionsResponseArgs struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
@@ -3317,7 +3317,7 @@ func (i *objectConditionsResponsePtrType) ToObjectConditionsResponsePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectConditionsResponsePtrOutput)
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. This is not supported for transfers involving PosixFilesystem.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
 type ObjectConditionsResponseOutput struct{ *pulumi.OutputState }
 
 func (ObjectConditionsResponseOutput) ElementType() reflect.Type {
@@ -3456,7 +3456,7 @@ func (o ObjectConditionsResponsePtrOutput) MinTimeElapsedSinceLastModification()
 	}).(pulumi.StringPtrOutput)
 }
 
-// A POSIX filesystem data source or sink.
+// A POSIX filesystem resource.
 type PosixFilesystem struct {
 	// Root directory path to the filesystem.
 	RootDirectory *string `pulumi:"rootDirectory"`
@@ -3473,7 +3473,7 @@ type PosixFilesystemInput interface {
 	ToPosixFilesystemOutputWithContext(context.Context) PosixFilesystemOutput
 }
 
-// A POSIX filesystem data source or sink.
+// A POSIX filesystem resource.
 type PosixFilesystemArgs struct {
 	// Root directory path to the filesystem.
 	RootDirectory pulumi.StringPtrInput `pulumi:"rootDirectory"`
@@ -3532,7 +3532,7 @@ func (i *posixFilesystemPtrType) ToPosixFilesystemPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PosixFilesystemPtrOutput)
 }
 
-// A POSIX filesystem data source or sink.
+// A POSIX filesystem resource.
 type PosixFilesystemOutput struct{ *pulumi.OutputState }
 
 func (PosixFilesystemOutput) ElementType() reflect.Type {
@@ -3596,7 +3596,7 @@ func (o PosixFilesystemPtrOutput) RootDirectory() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A POSIX filesystem data source or sink.
+// A POSIX filesystem resource.
 type PosixFilesystemResponse struct {
 	// Root directory path to the filesystem.
 	RootDirectory string `pulumi:"rootDirectory"`
@@ -3613,7 +3613,7 @@ type PosixFilesystemResponseInput interface {
 	ToPosixFilesystemResponseOutputWithContext(context.Context) PosixFilesystemResponseOutput
 }
 
-// A POSIX filesystem data source or sink.
+// A POSIX filesystem resource.
 type PosixFilesystemResponseArgs struct {
 	// Root directory path to the filesystem.
 	RootDirectory pulumi.StringInput `pulumi:"rootDirectory"`
@@ -3672,7 +3672,7 @@ func (i *posixFilesystemResponsePtrType) ToPosixFilesystemResponsePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(PosixFilesystemResponsePtrOutput)
 }
 
-// A POSIX filesystem data source or sink.
+// A POSIX filesystem resource.
 type PosixFilesystemResponseOutput struct{ *pulumi.OutputState }
 
 func (PosixFilesystemResponseOutput) ElementType() reflect.Type {
@@ -5465,6 +5465,66 @@ func (o TransferSpecResponsePtrOutput) TransferOptions() TransferOptionsResponse
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsAccessKeyInput)(nil)).Elem(), AwsAccessKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsAccessKeyPtrInput)(nil)).Elem(), AwsAccessKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsAccessKeyResponseInput)(nil)).Elem(), AwsAccessKeyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsAccessKeyResponsePtrInput)(nil)).Elem(), AwsAccessKeyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsS3DataInput)(nil)).Elem(), AwsS3DataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsS3DataPtrInput)(nil)).Elem(), AwsS3DataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsS3DataResponseInput)(nil)).Elem(), AwsS3DataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsS3DataResponsePtrInput)(nil)).Elem(), AwsS3DataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureBlobStorageDataInput)(nil)).Elem(), AzureBlobStorageDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureBlobStorageDataPtrInput)(nil)).Elem(), AzureBlobStorageDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureBlobStorageDataResponseInput)(nil)).Elem(), AzureBlobStorageDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureBlobStorageDataResponsePtrInput)(nil)).Elem(), AzureBlobStorageDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureCredentialsInput)(nil)).Elem(), AzureCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureCredentialsPtrInput)(nil)).Elem(), AzureCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureCredentialsResponseInput)(nil)).Elem(), AzureCredentialsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureCredentialsResponsePtrInput)(nil)).Elem(), AzureCredentialsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DateInput)(nil)).Elem(), DateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatePtrInput)(nil)).Elem(), DateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DateResponseInput)(nil)).Elem(), DateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DateResponsePtrInput)(nil)).Elem(), DateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsDataInput)(nil)).Elem(), GcsDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsDataPtrInput)(nil)).Elem(), GcsDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsDataResponseInput)(nil)).Elem(), GcsDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsDataResponsePtrInput)(nil)).Elem(), GcsDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpDataInput)(nil)).Elem(), HttpDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpDataPtrInput)(nil)).Elem(), HttpDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpDataResponseInput)(nil)).Elem(), HttpDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpDataResponsePtrInput)(nil)).Elem(), HttpDataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigInput)(nil)).Elem(), LoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigPtrInput)(nil)).Elem(), LoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigResponseInput)(nil)).Elem(), LoggingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigResponsePtrInput)(nil)).Elem(), LoggingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigInput)(nil)).Elem(), NotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPtrInput)(nil)).Elem(), NotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigResponseInput)(nil)).Elem(), NotificationConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigResponsePtrInput)(nil)).Elem(), NotificationConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectConditionsInput)(nil)).Elem(), ObjectConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectConditionsPtrInput)(nil)).Elem(), ObjectConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectConditionsResponseInput)(nil)).Elem(), ObjectConditionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectConditionsResponsePtrInput)(nil)).Elem(), ObjectConditionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosixFilesystemInput)(nil)).Elem(), PosixFilesystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosixFilesystemPtrInput)(nil)).Elem(), PosixFilesystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosixFilesystemResponseInput)(nil)).Elem(), PosixFilesystemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosixFilesystemResponsePtrInput)(nil)).Elem(), PosixFilesystemResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleInput)(nil)).Elem(), ScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePtrInput)(nil)).Elem(), ScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleResponseInput)(nil)).Elem(), ScheduleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleResponsePtrInput)(nil)).Elem(), ScheduleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayInput)(nil)).Elem(), TimeOfDayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayPtrInput)(nil)).Elem(), TimeOfDayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayResponseInput)(nil)).Elem(), TimeOfDayResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayResponsePtrInput)(nil)).Elem(), TimeOfDayResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferOptionsInput)(nil)).Elem(), TransferOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferOptionsPtrInput)(nil)).Elem(), TransferOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferOptionsResponseInput)(nil)).Elem(), TransferOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferOptionsResponsePtrInput)(nil)).Elem(), TransferOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferSpecInput)(nil)).Elem(), TransferSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferSpecPtrInput)(nil)).Elem(), TransferSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferSpecResponseInput)(nil)).Elem(), TransferSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferSpecResponsePtrInput)(nil)).Elem(), TransferSpecResponseArgs{})
 	pulumi.RegisterOutputType(AwsAccessKeyOutput{})
 	pulumi.RegisterOutputType(AwsAccessKeyPtrOutput{})
 	pulumi.RegisterOutputType(AwsAccessKeyResponseOutput{})

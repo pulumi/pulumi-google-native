@@ -35,6 +35,8 @@ type Instance struct {
 	PeeringCidrRange pulumi.StringOutput `pulumi:"peeringCidrRange"`
 	// Port number of the exposed Apigee endpoint.
 	Port pulumi.StringOutput `pulumi:"port"`
+	// Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
+	RuntimeVersion pulumi.StringOutput `pulumi:"runtimeVersion"`
 	// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
 	State pulumi.StringOutput `pulumi:"state"`
 }

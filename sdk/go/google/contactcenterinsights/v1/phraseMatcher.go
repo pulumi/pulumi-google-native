@@ -33,6 +33,8 @@ type PhraseMatcher struct {
 	RoleMatch pulumi.StringOutput `pulumi:"roleMatch"`
 	// The type of this phrase matcher.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The most recent time at which the phrase matcher was updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
 	VersionTag pulumi.StringOutput `pulumi:"versionTag"`
 }

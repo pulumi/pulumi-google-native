@@ -256,6 +256,8 @@ type AddonsConfig struct {
 	DnsCacheConfig *DnsCacheConfig `pulumi:"dnsCacheConfig"`
 	// Configuration for the Compute Engine Persistent Disk CSI driver.
 	GcePersistentDiskCsiDriverConfig *GcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfig"`
+	// Configuration for the GCP Filestore CSI driver.
+	GcpFilestoreCsiDriverConfig *GcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 	HorizontalPodAutoscaling *HorizontalPodAutoscaling `pulumi:"horizontalPodAutoscaling"`
 	// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -291,6 +293,8 @@ type AddonsConfigArgs struct {
 	DnsCacheConfig DnsCacheConfigPtrInput `pulumi:"dnsCacheConfig"`
 	// Configuration for the Compute Engine Persistent Disk CSI driver.
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigPtrInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
+	// Configuration for the GCP Filestore CSI driver.
+	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 	HorizontalPodAutoscaling HorizontalPodAutoscalingPtrInput `pulumi:"horizontalPodAutoscaling"`
 	// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -403,6 +407,11 @@ func (o AddonsConfigOutput) GcePersistentDiskCsiDriverConfig() GcePersistentDisk
 	return o.ApplyT(func(v AddonsConfig) *GcePersistentDiskCsiDriverConfig { return v.GcePersistentDiskCsiDriverConfig }).(GcePersistentDiskCsiDriverConfigPtrOutput)
 }
 
+// Configuration for the GCP Filestore CSI driver.
+func (o AddonsConfigOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v AddonsConfig) *GcpFilestoreCsiDriverConfig { return v.GcpFilestoreCsiDriverConfig }).(GcpFilestoreCsiDriverConfigPtrOutput)
+}
+
 // Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 func (o AddonsConfigOutput) HorizontalPodAutoscaling() HorizontalPodAutoscalingPtrOutput {
 	return o.ApplyT(func(v AddonsConfig) *HorizontalPodAutoscaling { return v.HorizontalPodAutoscaling }).(HorizontalPodAutoscalingPtrOutput)
@@ -497,6 +506,16 @@ func (o AddonsConfigPtrOutput) GcePersistentDiskCsiDriverConfig() GcePersistentD
 	}).(GcePersistentDiskCsiDriverConfigPtrOutput)
 }
 
+// Configuration for the GCP Filestore CSI driver.
+func (o AddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v *AddonsConfig) *GcpFilestoreCsiDriverConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcpFilestoreCsiDriverConfig
+	}).(GcpFilestoreCsiDriverConfigPtrOutput)
+}
+
 // Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 func (o AddonsConfigPtrOutput) HorizontalPodAutoscaling() HorizontalPodAutoscalingPtrOutput {
 	return o.ApplyT(func(v *AddonsConfig) *HorizontalPodAutoscaling {
@@ -567,6 +586,8 @@ type AddonsConfigResponse struct {
 	DnsCacheConfig DnsCacheConfigResponse `pulumi:"dnsCacheConfig"`
 	// Configuration for the Compute Engine Persistent Disk CSI driver.
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigResponse `pulumi:"gcePersistentDiskCsiDriverConfig"`
+	// Configuration for the GCP Filestore CSI driver.
+	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigResponse `pulumi:"gcpFilestoreCsiDriverConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 	HorizontalPodAutoscaling HorizontalPodAutoscalingResponse `pulumi:"horizontalPodAutoscaling"`
 	// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -602,6 +623,8 @@ type AddonsConfigResponseArgs struct {
 	DnsCacheConfig DnsCacheConfigResponseInput `pulumi:"dnsCacheConfig"`
 	// Configuration for the Compute Engine Persistent Disk CSI driver.
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigResponseInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
+	// Configuration for the GCP Filestore CSI driver.
+	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigResponseInput `pulumi:"gcpFilestoreCsiDriverConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 	HorizontalPodAutoscaling HorizontalPodAutoscalingResponseInput `pulumi:"horizontalPodAutoscaling"`
 	// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -716,6 +739,11 @@ func (o AddonsConfigResponseOutput) GcePersistentDiskCsiDriverConfig() GcePersis
 	}).(GcePersistentDiskCsiDriverConfigResponseOutput)
 }
 
+// Configuration for the GCP Filestore CSI driver.
+func (o AddonsConfigResponseOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriverConfigResponseOutput {
+	return o.ApplyT(func(v AddonsConfigResponse) GcpFilestoreCsiDriverConfigResponse { return v.GcpFilestoreCsiDriverConfig }).(GcpFilestoreCsiDriverConfigResponseOutput)
+}
+
 // Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 func (o AddonsConfigResponseOutput) HorizontalPodAutoscaling() HorizontalPodAutoscalingResponseOutput {
 	return o.ApplyT(func(v AddonsConfigResponse) HorizontalPodAutoscalingResponse { return v.HorizontalPodAutoscaling }).(HorizontalPodAutoscalingResponseOutput)
@@ -808,6 +836,16 @@ func (o AddonsConfigResponsePtrOutput) GcePersistentDiskCsiDriverConfig() GcePer
 		}
 		return &v.GcePersistentDiskCsiDriverConfig
 	}).(GcePersistentDiskCsiDriverConfigResponsePtrOutput)
+}
+
+// Configuration for the GCP Filestore CSI driver.
+func (o AddonsConfigResponsePtrOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriverConfigResponsePtrOutput {
+	return o.ApplyT(func(v *AddonsConfigResponse) *GcpFilestoreCsiDriverConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GcpFilestoreCsiDriverConfig
+	}).(GcpFilestoreCsiDriverConfigResponsePtrOutput)
 }
 
 // Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -4506,6 +4544,8 @@ type ClusterUpdate struct {
 	DesiredMasterAuthorizedNetworksConfig *MasterAuthorizedNetworksConfig `pulumi:"desiredMasterAuthorizedNetworksConfig"`
 	// The Kubernetes version to change the master to. The only valid value is the latest supported version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
 	DesiredMasterVersion *string `pulumi:"desiredMasterVersion"`
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	DesiredMeshCertificates *MeshCertificates `pulumi:"desiredMeshCertificates"`
 	// The desired monitoring configuration.
 	DesiredMonitoringConfig *MonitoringConfig `pulumi:"desiredMonitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
@@ -4595,6 +4635,8 @@ type ClusterUpdateArgs struct {
 	DesiredMasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigPtrInput `pulumi:"desiredMasterAuthorizedNetworksConfig"`
 	// The Kubernetes version to change the master to. The only valid value is the latest supported version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
 	DesiredMasterVersion pulumi.StringPtrInput `pulumi:"desiredMasterVersion"`
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	DesiredMeshCertificates MeshCertificatesPtrInput `pulumi:"desiredMeshCertificates"`
 	// The desired monitoring configuration.
 	DesiredMonitoringConfig MonitoringConfigPtrInput `pulumi:"desiredMonitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
@@ -4756,6 +4798,11 @@ func (o ClusterUpdateOutput) DesiredMasterAuthorizedNetworksConfig() MasterAutho
 // The Kubernetes version to change the master to. The only valid value is the latest supported version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
 func (o ClusterUpdateOutput) DesiredMasterVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredMasterVersion }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+func (o ClusterUpdateOutput) DesiredMeshCertificates() MeshCertificatesPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *MeshCertificates { return v.DesiredMeshCertificates }).(MeshCertificatesPtrOutput)
 }
 
 // The desired monitoring configuration.
@@ -7771,6 +7818,286 @@ func (o GcePersistentDiskCsiDriverConfigResponsePtrOutput) Elem() GcePersistentD
 // Whether the Compute Engine PD CSI driver is enabled for this cluster.
 func (o GcePersistentDiskCsiDriverConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcePersistentDiskCsiDriverConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the GCP Filestore CSI driver.
+type GcpFilestoreCsiDriverConfig struct {
+	// Whether the GCP Filestore CSI driver is enabled for this cluster.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GcpFilestoreCsiDriverConfigInput is an input type that accepts GcpFilestoreCsiDriverConfigArgs and GcpFilestoreCsiDriverConfigOutput values.
+// You can construct a concrete instance of `GcpFilestoreCsiDriverConfigInput` via:
+//
+//          GcpFilestoreCsiDriverConfigArgs{...}
+type GcpFilestoreCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToGcpFilestoreCsiDriverConfigOutput() GcpFilestoreCsiDriverConfigOutput
+	ToGcpFilestoreCsiDriverConfigOutputWithContext(context.Context) GcpFilestoreCsiDriverConfigOutput
+}
+
+// Configuration for the GCP Filestore CSI driver.
+type GcpFilestoreCsiDriverConfigArgs struct {
+	// Whether the GCP Filestore CSI driver is enabled for this cluster.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GcpFilestoreCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GcpFilestoreCsiDriverConfigArgs) ToGcpFilestoreCsiDriverConfigOutput() GcpFilestoreCsiDriverConfigOutput {
+	return i.ToGcpFilestoreCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i GcpFilestoreCsiDriverConfigArgs) ToGcpFilestoreCsiDriverConfigOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpFilestoreCsiDriverConfigOutput)
+}
+
+func (i GcpFilestoreCsiDriverConfigArgs) ToGcpFilestoreCsiDriverConfigPtrOutput() GcpFilestoreCsiDriverConfigPtrOutput {
+	return i.ToGcpFilestoreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GcpFilestoreCsiDriverConfigArgs) ToGcpFilestoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpFilestoreCsiDriverConfigOutput).ToGcpFilestoreCsiDriverConfigPtrOutputWithContext(ctx)
+}
+
+// GcpFilestoreCsiDriverConfigPtrInput is an input type that accepts GcpFilestoreCsiDriverConfigArgs, GcpFilestoreCsiDriverConfigPtr and GcpFilestoreCsiDriverConfigPtrOutput values.
+// You can construct a concrete instance of `GcpFilestoreCsiDriverConfigPtrInput` via:
+//
+//          GcpFilestoreCsiDriverConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GcpFilestoreCsiDriverConfigPtrInput interface {
+	pulumi.Input
+
+	ToGcpFilestoreCsiDriverConfigPtrOutput() GcpFilestoreCsiDriverConfigPtrOutput
+	ToGcpFilestoreCsiDriverConfigPtrOutputWithContext(context.Context) GcpFilestoreCsiDriverConfigPtrOutput
+}
+
+type gcpFilestoreCsiDriverConfigPtrType GcpFilestoreCsiDriverConfigArgs
+
+func GcpFilestoreCsiDriverConfigPtr(v *GcpFilestoreCsiDriverConfigArgs) GcpFilestoreCsiDriverConfigPtrInput {
+	return (*gcpFilestoreCsiDriverConfigPtrType)(v)
+}
+
+func (*gcpFilestoreCsiDriverConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i *gcpFilestoreCsiDriverConfigPtrType) ToGcpFilestoreCsiDriverConfigPtrOutput() GcpFilestoreCsiDriverConfigPtrOutput {
+	return i.ToGcpFilestoreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpFilestoreCsiDriverConfigPtrType) ToGcpFilestoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpFilestoreCsiDriverConfigPtrOutput)
+}
+
+// Configuration for the GCP Filestore CSI driver.
+type GcpFilestoreCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (GcpFilestoreCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GcpFilestoreCsiDriverConfigOutput) ToGcpFilestoreCsiDriverConfigOutput() GcpFilestoreCsiDriverConfigOutput {
+	return o
+}
+
+func (o GcpFilestoreCsiDriverConfigOutput) ToGcpFilestoreCsiDriverConfigOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigOutput {
+	return o
+}
+
+func (o GcpFilestoreCsiDriverConfigOutput) ToGcpFilestoreCsiDriverConfigPtrOutput() GcpFilestoreCsiDriverConfigPtrOutput {
+	return o.ToGcpFilestoreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GcpFilestoreCsiDriverConfigOutput) ToGcpFilestoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpFilestoreCsiDriverConfig) *GcpFilestoreCsiDriverConfig {
+		return &v
+	}).(GcpFilestoreCsiDriverConfigPtrOutput)
+}
+
+// Whether the GCP Filestore CSI driver is enabled for this cluster.
+func (o GcpFilestoreCsiDriverConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpFilestoreCsiDriverConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GcpFilestoreCsiDriverConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpFilestoreCsiDriverConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GcpFilestoreCsiDriverConfigPtrOutput) ToGcpFilestoreCsiDriverConfigPtrOutput() GcpFilestoreCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o GcpFilestoreCsiDriverConfigPtrOutput) ToGcpFilestoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o GcpFilestoreCsiDriverConfigPtrOutput) Elem() GcpFilestoreCsiDriverConfigOutput {
+	return o.ApplyT(func(v *GcpFilestoreCsiDriverConfig) GcpFilestoreCsiDriverConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GcpFilestoreCsiDriverConfig
+		return ret
+	}).(GcpFilestoreCsiDriverConfigOutput)
+}
+
+// Whether the GCP Filestore CSI driver is enabled for this cluster.
+func (o GcpFilestoreCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpFilestoreCsiDriverConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the GCP Filestore CSI driver.
+type GcpFilestoreCsiDriverConfigResponse struct {
+	// Whether the GCP Filestore CSI driver is enabled for this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GcpFilestoreCsiDriverConfigResponseInput is an input type that accepts GcpFilestoreCsiDriverConfigResponseArgs and GcpFilestoreCsiDriverConfigResponseOutput values.
+// You can construct a concrete instance of `GcpFilestoreCsiDriverConfigResponseInput` via:
+//
+//          GcpFilestoreCsiDriverConfigResponseArgs{...}
+type GcpFilestoreCsiDriverConfigResponseInput interface {
+	pulumi.Input
+
+	ToGcpFilestoreCsiDriverConfigResponseOutput() GcpFilestoreCsiDriverConfigResponseOutput
+	ToGcpFilestoreCsiDriverConfigResponseOutputWithContext(context.Context) GcpFilestoreCsiDriverConfigResponseOutput
+}
+
+// Configuration for the GCP Filestore CSI driver.
+type GcpFilestoreCsiDriverConfigResponseArgs struct {
+	// Whether the GCP Filestore CSI driver is enabled for this cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GcpFilestoreCsiDriverConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpFilestoreCsiDriverConfigResponse)(nil)).Elem()
+}
+
+func (i GcpFilestoreCsiDriverConfigResponseArgs) ToGcpFilestoreCsiDriverConfigResponseOutput() GcpFilestoreCsiDriverConfigResponseOutput {
+	return i.ToGcpFilestoreCsiDriverConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GcpFilestoreCsiDriverConfigResponseArgs) ToGcpFilestoreCsiDriverConfigResponseOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpFilestoreCsiDriverConfigResponseOutput)
+}
+
+func (i GcpFilestoreCsiDriverConfigResponseArgs) ToGcpFilestoreCsiDriverConfigResponsePtrOutput() GcpFilestoreCsiDriverConfigResponsePtrOutput {
+	return i.ToGcpFilestoreCsiDriverConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GcpFilestoreCsiDriverConfigResponseArgs) ToGcpFilestoreCsiDriverConfigResponsePtrOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpFilestoreCsiDriverConfigResponseOutput).ToGcpFilestoreCsiDriverConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GcpFilestoreCsiDriverConfigResponsePtrInput is an input type that accepts GcpFilestoreCsiDriverConfigResponseArgs, GcpFilestoreCsiDriverConfigResponsePtr and GcpFilestoreCsiDriverConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GcpFilestoreCsiDriverConfigResponsePtrInput` via:
+//
+//          GcpFilestoreCsiDriverConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GcpFilestoreCsiDriverConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGcpFilestoreCsiDriverConfigResponsePtrOutput() GcpFilestoreCsiDriverConfigResponsePtrOutput
+	ToGcpFilestoreCsiDriverConfigResponsePtrOutputWithContext(context.Context) GcpFilestoreCsiDriverConfigResponsePtrOutput
+}
+
+type gcpFilestoreCsiDriverConfigResponsePtrType GcpFilestoreCsiDriverConfigResponseArgs
+
+func GcpFilestoreCsiDriverConfigResponsePtr(v *GcpFilestoreCsiDriverConfigResponseArgs) GcpFilestoreCsiDriverConfigResponsePtrInput {
+	return (*gcpFilestoreCsiDriverConfigResponsePtrType)(v)
+}
+
+func (*gcpFilestoreCsiDriverConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpFilestoreCsiDriverConfigResponse)(nil)).Elem()
+}
+
+func (i *gcpFilestoreCsiDriverConfigResponsePtrType) ToGcpFilestoreCsiDriverConfigResponsePtrOutput() GcpFilestoreCsiDriverConfigResponsePtrOutput {
+	return i.ToGcpFilestoreCsiDriverConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gcpFilestoreCsiDriverConfigResponsePtrType) ToGcpFilestoreCsiDriverConfigResponsePtrOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpFilestoreCsiDriverConfigResponsePtrOutput)
+}
+
+// Configuration for the GCP Filestore CSI driver.
+type GcpFilestoreCsiDriverConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GcpFilestoreCsiDriverConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpFilestoreCsiDriverConfigResponse)(nil)).Elem()
+}
+
+func (o GcpFilestoreCsiDriverConfigResponseOutput) ToGcpFilestoreCsiDriverConfigResponseOutput() GcpFilestoreCsiDriverConfigResponseOutput {
+	return o
+}
+
+func (o GcpFilestoreCsiDriverConfigResponseOutput) ToGcpFilestoreCsiDriverConfigResponseOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigResponseOutput {
+	return o
+}
+
+func (o GcpFilestoreCsiDriverConfigResponseOutput) ToGcpFilestoreCsiDriverConfigResponsePtrOutput() GcpFilestoreCsiDriverConfigResponsePtrOutput {
+	return o.ToGcpFilestoreCsiDriverConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GcpFilestoreCsiDriverConfigResponseOutput) ToGcpFilestoreCsiDriverConfigResponsePtrOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpFilestoreCsiDriverConfigResponse) *GcpFilestoreCsiDriverConfigResponse {
+		return &v
+	}).(GcpFilestoreCsiDriverConfigResponsePtrOutput)
+}
+
+// Whether the GCP Filestore CSI driver is enabled for this cluster.
+func (o GcpFilestoreCsiDriverConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GcpFilestoreCsiDriverConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GcpFilestoreCsiDriverConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GcpFilestoreCsiDriverConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpFilestoreCsiDriverConfigResponse)(nil)).Elem()
+}
+
+func (o GcpFilestoreCsiDriverConfigResponsePtrOutput) ToGcpFilestoreCsiDriverConfigResponsePtrOutput() GcpFilestoreCsiDriverConfigResponsePtrOutput {
+	return o
+}
+
+func (o GcpFilestoreCsiDriverConfigResponsePtrOutput) ToGcpFilestoreCsiDriverConfigResponsePtrOutputWithContext(ctx context.Context) GcpFilestoreCsiDriverConfigResponsePtrOutput {
+	return o
+}
+
+func (o GcpFilestoreCsiDriverConfigResponsePtrOutput) Elem() GcpFilestoreCsiDriverConfigResponseOutput {
+	return o.ApplyT(func(v *GcpFilestoreCsiDriverConfigResponse) GcpFilestoreCsiDriverConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GcpFilestoreCsiDriverConfigResponse
+		return ret
+	}).(GcpFilestoreCsiDriverConfigResponseOutput)
+}
+
+// Whether the GCP Filestore CSI driver is enabled for this cluster.
+func (o GcpFilestoreCsiDriverConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpFilestoreCsiDriverConfigResponse) *bool {
 		if v == nil {
 			return nil
 		}
@@ -13456,6 +13783,286 @@ func (o MaxPodsConstraintResponsePtrOutput) MaxPodsPerNode() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type MeshCertificates struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates *bool `pulumi:"enableCertificates"`
+}
+
+// MeshCertificatesInput is an input type that accepts MeshCertificatesArgs and MeshCertificatesOutput values.
+// You can construct a concrete instance of `MeshCertificatesInput` via:
+//
+//          MeshCertificatesArgs{...}
+type MeshCertificatesInput interface {
+	pulumi.Input
+
+	ToMeshCertificatesOutput() MeshCertificatesOutput
+	ToMeshCertificatesOutputWithContext(context.Context) MeshCertificatesOutput
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type MeshCertificatesArgs struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates pulumi.BoolPtrInput `pulumi:"enableCertificates"`
+}
+
+func (MeshCertificatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshCertificates)(nil)).Elem()
+}
+
+func (i MeshCertificatesArgs) ToMeshCertificatesOutput() MeshCertificatesOutput {
+	return i.ToMeshCertificatesOutputWithContext(context.Background())
+}
+
+func (i MeshCertificatesArgs) ToMeshCertificatesOutputWithContext(ctx context.Context) MeshCertificatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshCertificatesOutput)
+}
+
+func (i MeshCertificatesArgs) ToMeshCertificatesPtrOutput() MeshCertificatesPtrOutput {
+	return i.ToMeshCertificatesPtrOutputWithContext(context.Background())
+}
+
+func (i MeshCertificatesArgs) ToMeshCertificatesPtrOutputWithContext(ctx context.Context) MeshCertificatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshCertificatesOutput).ToMeshCertificatesPtrOutputWithContext(ctx)
+}
+
+// MeshCertificatesPtrInput is an input type that accepts MeshCertificatesArgs, MeshCertificatesPtr and MeshCertificatesPtrOutput values.
+// You can construct a concrete instance of `MeshCertificatesPtrInput` via:
+//
+//          MeshCertificatesArgs{...}
+//
+//  or:
+//
+//          nil
+type MeshCertificatesPtrInput interface {
+	pulumi.Input
+
+	ToMeshCertificatesPtrOutput() MeshCertificatesPtrOutput
+	ToMeshCertificatesPtrOutputWithContext(context.Context) MeshCertificatesPtrOutput
+}
+
+type meshCertificatesPtrType MeshCertificatesArgs
+
+func MeshCertificatesPtr(v *MeshCertificatesArgs) MeshCertificatesPtrInput {
+	return (*meshCertificatesPtrType)(v)
+}
+
+func (*meshCertificatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MeshCertificates)(nil)).Elem()
+}
+
+func (i *meshCertificatesPtrType) ToMeshCertificatesPtrOutput() MeshCertificatesPtrOutput {
+	return i.ToMeshCertificatesPtrOutputWithContext(context.Background())
+}
+
+func (i *meshCertificatesPtrType) ToMeshCertificatesPtrOutputWithContext(ctx context.Context) MeshCertificatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshCertificatesPtrOutput)
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type MeshCertificatesOutput struct{ *pulumi.OutputState }
+
+func (MeshCertificatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshCertificates)(nil)).Elem()
+}
+
+func (o MeshCertificatesOutput) ToMeshCertificatesOutput() MeshCertificatesOutput {
+	return o
+}
+
+func (o MeshCertificatesOutput) ToMeshCertificatesOutputWithContext(ctx context.Context) MeshCertificatesOutput {
+	return o
+}
+
+func (o MeshCertificatesOutput) ToMeshCertificatesPtrOutput() MeshCertificatesPtrOutput {
+	return o.ToMeshCertificatesPtrOutputWithContext(context.Background())
+}
+
+func (o MeshCertificatesOutput) ToMeshCertificatesPtrOutputWithContext(ctx context.Context) MeshCertificatesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MeshCertificates) *MeshCertificates {
+		return &v
+	}).(MeshCertificatesPtrOutput)
+}
+
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o MeshCertificatesOutput) EnableCertificates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MeshCertificates) *bool { return v.EnableCertificates }).(pulumi.BoolPtrOutput)
+}
+
+type MeshCertificatesPtrOutput struct{ *pulumi.OutputState }
+
+func (MeshCertificatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MeshCertificates)(nil)).Elem()
+}
+
+func (o MeshCertificatesPtrOutput) ToMeshCertificatesPtrOutput() MeshCertificatesPtrOutput {
+	return o
+}
+
+func (o MeshCertificatesPtrOutput) ToMeshCertificatesPtrOutputWithContext(ctx context.Context) MeshCertificatesPtrOutput {
+	return o
+}
+
+func (o MeshCertificatesPtrOutput) Elem() MeshCertificatesOutput {
+	return o.ApplyT(func(v *MeshCertificates) MeshCertificates {
+		if v != nil {
+			return *v
+		}
+		var ret MeshCertificates
+		return ret
+	}).(MeshCertificatesOutput)
+}
+
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o MeshCertificatesPtrOutput) EnableCertificates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MeshCertificates) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCertificates
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type MeshCertificatesResponse struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates bool `pulumi:"enableCertificates"`
+}
+
+// MeshCertificatesResponseInput is an input type that accepts MeshCertificatesResponseArgs and MeshCertificatesResponseOutput values.
+// You can construct a concrete instance of `MeshCertificatesResponseInput` via:
+//
+//          MeshCertificatesResponseArgs{...}
+type MeshCertificatesResponseInput interface {
+	pulumi.Input
+
+	ToMeshCertificatesResponseOutput() MeshCertificatesResponseOutput
+	ToMeshCertificatesResponseOutputWithContext(context.Context) MeshCertificatesResponseOutput
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type MeshCertificatesResponseArgs struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates pulumi.BoolInput `pulumi:"enableCertificates"`
+}
+
+func (MeshCertificatesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshCertificatesResponse)(nil)).Elem()
+}
+
+func (i MeshCertificatesResponseArgs) ToMeshCertificatesResponseOutput() MeshCertificatesResponseOutput {
+	return i.ToMeshCertificatesResponseOutputWithContext(context.Background())
+}
+
+func (i MeshCertificatesResponseArgs) ToMeshCertificatesResponseOutputWithContext(ctx context.Context) MeshCertificatesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshCertificatesResponseOutput)
+}
+
+func (i MeshCertificatesResponseArgs) ToMeshCertificatesResponsePtrOutput() MeshCertificatesResponsePtrOutput {
+	return i.ToMeshCertificatesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MeshCertificatesResponseArgs) ToMeshCertificatesResponsePtrOutputWithContext(ctx context.Context) MeshCertificatesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshCertificatesResponseOutput).ToMeshCertificatesResponsePtrOutputWithContext(ctx)
+}
+
+// MeshCertificatesResponsePtrInput is an input type that accepts MeshCertificatesResponseArgs, MeshCertificatesResponsePtr and MeshCertificatesResponsePtrOutput values.
+// You can construct a concrete instance of `MeshCertificatesResponsePtrInput` via:
+//
+//          MeshCertificatesResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MeshCertificatesResponsePtrInput interface {
+	pulumi.Input
+
+	ToMeshCertificatesResponsePtrOutput() MeshCertificatesResponsePtrOutput
+	ToMeshCertificatesResponsePtrOutputWithContext(context.Context) MeshCertificatesResponsePtrOutput
+}
+
+type meshCertificatesResponsePtrType MeshCertificatesResponseArgs
+
+func MeshCertificatesResponsePtr(v *MeshCertificatesResponseArgs) MeshCertificatesResponsePtrInput {
+	return (*meshCertificatesResponsePtrType)(v)
+}
+
+func (*meshCertificatesResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MeshCertificatesResponse)(nil)).Elem()
+}
+
+func (i *meshCertificatesResponsePtrType) ToMeshCertificatesResponsePtrOutput() MeshCertificatesResponsePtrOutput {
+	return i.ToMeshCertificatesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *meshCertificatesResponsePtrType) ToMeshCertificatesResponsePtrOutputWithContext(ctx context.Context) MeshCertificatesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshCertificatesResponsePtrOutput)
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type MeshCertificatesResponseOutput struct{ *pulumi.OutputState }
+
+func (MeshCertificatesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshCertificatesResponse)(nil)).Elem()
+}
+
+func (o MeshCertificatesResponseOutput) ToMeshCertificatesResponseOutput() MeshCertificatesResponseOutput {
+	return o
+}
+
+func (o MeshCertificatesResponseOutput) ToMeshCertificatesResponseOutputWithContext(ctx context.Context) MeshCertificatesResponseOutput {
+	return o
+}
+
+func (o MeshCertificatesResponseOutput) ToMeshCertificatesResponsePtrOutput() MeshCertificatesResponsePtrOutput {
+	return o.ToMeshCertificatesResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MeshCertificatesResponseOutput) ToMeshCertificatesResponsePtrOutputWithContext(ctx context.Context) MeshCertificatesResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MeshCertificatesResponse) *MeshCertificatesResponse {
+		return &v
+	}).(MeshCertificatesResponsePtrOutput)
+}
+
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o MeshCertificatesResponseOutput) EnableCertificates() pulumi.BoolOutput {
+	return o.ApplyT(func(v MeshCertificatesResponse) bool { return v.EnableCertificates }).(pulumi.BoolOutput)
+}
+
+type MeshCertificatesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MeshCertificatesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MeshCertificatesResponse)(nil)).Elem()
+}
+
+func (o MeshCertificatesResponsePtrOutput) ToMeshCertificatesResponsePtrOutput() MeshCertificatesResponsePtrOutput {
+	return o
+}
+
+func (o MeshCertificatesResponsePtrOutput) ToMeshCertificatesResponsePtrOutputWithContext(ctx context.Context) MeshCertificatesResponsePtrOutput {
+	return o
+}
+
+func (o MeshCertificatesResponsePtrOutput) Elem() MeshCertificatesResponseOutput {
+	return o.ApplyT(func(v *MeshCertificatesResponse) MeshCertificatesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MeshCertificatesResponse
+		return ret
+	}).(MeshCertificatesResponseOutput)
+}
+
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o MeshCertificatesResponsePtrOutput) EnableCertificates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MeshCertificatesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableCertificates
+	}).(pulumi.BoolPtrOutput)
+}
+
 // MonitoringComponentConfig is cluster monitoring component configuration.
 type MonitoringComponentConfig struct {
 	// Select components to collect metrics. An empty set would disable all monitoring.
@@ -15243,7 +15850,7 @@ type NodeConfig struct {
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
 	MachineType *string `pulumi:"machineType"`
-	// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+	// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
@@ -15261,6 +15868,8 @@ type NodeConfig struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options.
 	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot *bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
 	Tags []string `pulumi:"tags"`
 	// List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -15306,7 +15915,7 @@ type NodeConfigArgs struct {
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+	// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
@@ -15324,6 +15933,8 @@ type NodeConfigArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options.
 	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -15470,7 +16081,7 @@ func (o NodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
-// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
 func (o NodeConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -15513,6 +16124,11 @@ func (o NodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 // Shielded Instance options.
 func (o NodeConfigOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *ShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigPtrOutput)
+}
+
+// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o NodeConfigOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
@@ -15674,7 +16290,7 @@ func (o NodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
 func (o NodeConfigPtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodeConfig) map[string]string {
 		if v == nil {
@@ -15762,6 +16378,16 @@ func (o NodeConfigPtrOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrO
 		}
 		return v.ShieldedInstanceConfig
 	}).(ShieldedInstanceConfigPtrOutput)
+}
+
+// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o NodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Spot
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
@@ -16062,7 +16688,7 @@ type NodeConfigResponse struct {
 	LocalSsdCount int `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
 	MachineType string `pulumi:"machineType"`
-	// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+	// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
 	MinCpuPlatform string `pulumi:"minCpuPlatform"`
@@ -16080,6 +16706,8 @@ type NodeConfigResponse struct {
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Shielded Instance options.
 	ShieldedInstanceConfig ShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
+	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
 	Tags []string `pulumi:"tags"`
 	// List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -16125,7 +16753,7 @@ type NodeConfigResponseArgs struct {
 	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+	// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
 	MinCpuPlatform pulumi.StringInput `pulumi:"minCpuPlatform"`
@@ -16143,6 +16771,8 @@ type NodeConfigResponseArgs struct {
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 	// Shielded Instance options.
 	ShieldedInstanceConfig ShieldedInstanceConfigResponseInput `pulumi:"shieldedInstanceConfig"`
+	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot pulumi.BoolInput `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -16289,7 +16919,7 @@ func (o NodeConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
-// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
 func (o NodeConfigResponseOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodeConfigResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -16332,6 +16962,11 @@ func (o NodeConfigResponseOutput) ServiceAccount() pulumi.StringOutput {
 // Shielded Instance options.
 func (o NodeConfigResponseOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) ShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
+}
+
+// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o NodeConfigResponseOutput) Spot() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodeConfigResponse) bool { return v.Spot }).(pulumi.BoolOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
@@ -16493,7 +17128,7 @@ func (o NodeConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
+// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
 func (o NodeConfigResponsePtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) map[string]string {
 		if v == nil {
@@ -16581,6 +17216,16 @@ func (o NodeConfigResponsePtrOutput) ShieldedInstanceConfig() ShieldedInstanceCo
 		}
 		return &v.ShieldedInstanceConfig
 	}).(ShieldedInstanceConfigResponsePtrOutput)
+}
+
+// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o NodeConfigResponsePtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Spot
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
@@ -17932,9 +18577,9 @@ type NodePoolAutoscaling struct {
 	Autoprovisioned *bool `pulumi:"autoprovisioned"`
 	// Is autoscaling enabled for this node pool.
 	Enabled *bool `pulumi:"enabled"`
-	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+	// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 	MaxNodeCount *int `pulumi:"maxNodeCount"`
-	// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+	// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount *int `pulumi:"minNodeCount"`
 }
 
@@ -17955,9 +18600,9 @@ type NodePoolAutoscalingArgs struct {
 	Autoprovisioned pulumi.BoolPtrInput `pulumi:"autoprovisioned"`
 	// Is autoscaling enabled for this node pool.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+	// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
-	// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+	// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
 }
 
@@ -18049,12 +18694,12 @@ func (o NodePoolAutoscalingOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 func (o NodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
 }
 
-// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 func (o NodePoolAutoscalingOutput) MinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
 }
@@ -18103,7 +18748,7 @@ func (o NodePoolAutoscalingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 func (o NodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
 		if v == nil {
@@ -18113,7 +18758,7 @@ func (o NodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 func (o NodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
 		if v == nil {
@@ -18129,9 +18774,9 @@ type NodePoolAutoscalingResponse struct {
 	Autoprovisioned bool `pulumi:"autoprovisioned"`
 	// Is autoscaling enabled for this node pool.
 	Enabled bool `pulumi:"enabled"`
-	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+	// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 	MaxNodeCount int `pulumi:"maxNodeCount"`
-	// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+	// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount int `pulumi:"minNodeCount"`
 }
 
@@ -18152,9 +18797,9 @@ type NodePoolAutoscalingResponseArgs struct {
 	Autoprovisioned pulumi.BoolInput `pulumi:"autoprovisioned"`
 	// Is autoscaling enabled for this node pool.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+	// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
-	// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+	// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
 }
 
@@ -18246,12 +18891,12 @@ func (o NodePoolAutoscalingResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodePoolAutoscalingResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 func (o NodePoolAutoscalingResponseOutput) MaxNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolAutoscalingResponse) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
-// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 func (o NodePoolAutoscalingResponseOutput) MinNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolAutoscalingResponse) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
@@ -18300,7 +18945,7 @@ func (o NodePoolAutoscalingResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
+// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 func (o NodePoolAutoscalingResponsePtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscalingResponse) *int {
 		if v == nil {
@@ -18310,7 +18955,7 @@ func (o NodePoolAutoscalingResponsePtrOutput) MaxNodeCount() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 func (o NodePoolAutoscalingResponsePtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscalingResponse) *int {
 		if v == nil {
@@ -26195,6 +26840,330 @@ func (o WorkloadMetadataConfigResponsePtrOutput) NodeMetadata() pulumi.StringPtr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigInput)(nil)).Elem(), AcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigArrayInput)(nil)).Elem(), AcceleratorConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigResponseInput)(nil)).Elem(), AcceleratorConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigResponseArrayInput)(nil)).Elem(), AcceleratorConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigInput)(nil)).Elem(), AddonsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigPtrInput)(nil)).Elem(), AddonsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigResponseInput)(nil)).Elem(), AddonsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigResponsePtrInput)(nil)).Elem(), AddonsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatorGroupsConfigInput)(nil)).Elem(), AuthenticatorGroupsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatorGroupsConfigPtrInput)(nil)).Elem(), AuthenticatorGroupsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatorGroupsConfigResponseInput)(nil)).Elem(), AuthenticatorGroupsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatorGroupsConfigResponsePtrInput)(nil)).Elem(), AuthenticatorGroupsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoUpgradeOptionsInput)(nil)).Elem(), AutoUpgradeOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoUpgradeOptionsPtrInput)(nil)).Elem(), AutoUpgradeOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoUpgradeOptionsResponseInput)(nil)).Elem(), AutoUpgradeOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoUpgradeOptionsResponsePtrInput)(nil)).Elem(), AutoUpgradeOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutopilotInput)(nil)).Elem(), AutopilotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutopilotPtrInput)(nil)).Elem(), AutopilotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutopilotResponseInput)(nil)).Elem(), AutopilotResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutopilotResponsePtrInput)(nil)).Elem(), AutopilotResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoprovisioningNodePoolDefaultsInput)(nil)).Elem(), AutoprovisioningNodePoolDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoprovisioningNodePoolDefaultsPtrInput)(nil)).Elem(), AutoprovisioningNodePoolDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoprovisioningNodePoolDefaultsResponseInput)(nil)).Elem(), AutoprovisioningNodePoolDefaultsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoprovisioningNodePoolDefaultsResponsePtrInput)(nil)).Elem(), AutoprovisioningNodePoolDefaultsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDestinationInput)(nil)).Elem(), BigQueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDestinationPtrInput)(nil)).Elem(), BigQueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDestinationResponseInput)(nil)).Elem(), BigQueryDestinationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDestinationResponsePtrInput)(nil)).Elem(), BigQueryDestinationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationInput)(nil)).Elem(), BinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationPtrInput)(nil)).Elem(), BinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationResponseInput)(nil)).Elem(), BinaryAuthorizationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationResponsePtrInput)(nil)).Elem(), BinaryAuthorizationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockInput)(nil)).Elem(), CidrBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockArrayInput)(nil)).Elem(), CidrBlockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockResponseInput)(nil)).Elem(), CidrBlockResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockResponseArrayInput)(nil)).Elem(), CidrBlockResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCertificateConfigInput)(nil)).Elem(), ClientCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCertificateConfigPtrInput)(nil)).Elem(), ClientCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCertificateConfigResponseInput)(nil)).Elem(), ClientCertificateConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCertificateConfigResponsePtrInput)(nil)).Elem(), ClientCertificateConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunConfigInput)(nil)).Elem(), CloudRunConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunConfigPtrInput)(nil)).Elem(), CloudRunConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunConfigResponseInput)(nil)).Elem(), CloudRunConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunConfigResponsePtrInput)(nil)).Elem(), CloudRunConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingInput)(nil)).Elem(), ClusterAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingPtrInput)(nil)).Elem(), ClusterAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingResponseInput)(nil)).Elem(), ClusterAutoscalingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingResponsePtrInput)(nil)).Elem(), ClusterAutoscalingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTelemetryInput)(nil)).Elem(), ClusterTelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTelemetryPtrInput)(nil)).Elem(), ClusterTelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTelemetryResponseInput)(nil)).Elem(), ClusterTelemetryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTelemetryResponsePtrInput)(nil)).Elem(), ClusterTelemetryResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUpdateInput)(nil)).Elem(), ClusterUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialNodesInput)(nil)).Elem(), ConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialNodesPtrInput)(nil)).Elem(), ConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialNodesResponseInput)(nil)).Elem(), ConfidentialNodesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialNodesResponsePtrInput)(nil)).Elem(), ConfidentialNodesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigConnectorConfigInput)(nil)).Elem(), ConfigConnectorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigConnectorConfigPtrInput)(nil)).Elem(), ConfigConnectorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigConnectorConfigResponseInput)(nil)).Elem(), ConfigConnectorConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigConnectorConfigResponsePtrInput)(nil)).Elem(), ConfigConnectorConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumptionMeteringConfigInput)(nil)).Elem(), ConsumptionMeteringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumptionMeteringConfigPtrInput)(nil)).Elem(), ConsumptionMeteringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumptionMeteringConfigResponseInput)(nil)).Elem(), ConsumptionMeteringConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumptionMeteringConfigResponsePtrInput)(nil)).Elem(), ConsumptionMeteringConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigInput)(nil)).Elem(), DNSConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigPtrInput)(nil)).Elem(), DNSConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigResponseInput)(nil)).Elem(), DNSConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigResponsePtrInput)(nil)).Elem(), DNSConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DailyMaintenanceWindowInput)(nil)).Elem(), DailyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DailyMaintenanceWindowPtrInput)(nil)).Elem(), DailyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DailyMaintenanceWindowResponseInput)(nil)).Elem(), DailyMaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DailyMaintenanceWindowResponsePtrInput)(nil)).Elem(), DailyMaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionInput)(nil)).Elem(), DatabaseEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionPtrInput)(nil)).Elem(), DatabaseEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionResponseInput)(nil)).Elem(), DatabaseEncryptionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionResponsePtrInput)(nil)).Elem(), DatabaseEncryptionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSnatStatusInput)(nil)).Elem(), DefaultSnatStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSnatStatusPtrInput)(nil)).Elem(), DefaultSnatStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSnatStatusResponseInput)(nil)).Elem(), DefaultSnatStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSnatStatusResponsePtrInput)(nil)).Elem(), DefaultSnatStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsCacheConfigInput)(nil)).Elem(), DnsCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsCacheConfigPtrInput)(nil)).Elem(), DnsCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsCacheConfigResponseInput)(nil)).Elem(), DnsCacheConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsCacheConfigResponsePtrInput)(nil)).Elem(), DnsCacheConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageConfigInput)(nil)).Elem(), EphemeralStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageConfigPtrInput)(nil)).Elem(), EphemeralStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageConfigResponseInput)(nil)).Elem(), EphemeralStorageConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageConfigResponsePtrInput)(nil)).Elem(), EphemeralStorageConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigPtrInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigResponseInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigResponsePtrInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigPtrInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigResponseInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigResponsePtrInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HorizontalPodAutoscalingInput)(nil)).Elem(), HorizontalPodAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HorizontalPodAutoscalingPtrInput)(nil)).Elem(), HorizontalPodAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HorizontalPodAutoscalingResponseInput)(nil)).Elem(), HorizontalPodAutoscalingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HorizontalPodAutoscalingResponsePtrInput)(nil)).Elem(), HorizontalPodAutoscalingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpLoadBalancingInput)(nil)).Elem(), HttpLoadBalancingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpLoadBalancingPtrInput)(nil)).Elem(), HttpLoadBalancingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpLoadBalancingResponseInput)(nil)).Elem(), HttpLoadBalancingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpLoadBalancingResponsePtrInput)(nil)).Elem(), HttpLoadBalancingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ILBSubsettingConfigInput)(nil)).Elem(), ILBSubsettingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ILBSubsettingConfigPtrInput)(nil)).Elem(), ILBSubsettingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyInput)(nil)).Elem(), IPAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyPtrInput)(nil)).Elem(), IPAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyResponseInput)(nil)).Elem(), IPAllocationPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyResponsePtrInput)(nil)).Elem(), IPAllocationPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceConfigInput)(nil)).Elem(), IdentityServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceConfigPtrInput)(nil)).Elem(), IdentityServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceConfigResponseInput)(nil)).Elem(), IdentityServiceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceConfigResponsePtrInput)(nil)).Elem(), IdentityServiceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntraNodeVisibilityConfigInput)(nil)).Elem(), IntraNodeVisibilityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntraNodeVisibilityConfigPtrInput)(nil)).Elem(), IntraNodeVisibilityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IstioConfigInput)(nil)).Elem(), IstioConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IstioConfigPtrInput)(nil)).Elem(), IstioConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IstioConfigResponseInput)(nil)).Elem(), IstioConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IstioConfigResponsePtrInput)(nil)).Elem(), IstioConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KalmConfigInput)(nil)).Elem(), KalmConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KalmConfigPtrInput)(nil)).Elem(), KalmConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KalmConfigResponseInput)(nil)).Elem(), KalmConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KalmConfigResponsePtrInput)(nil)).Elem(), KalmConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDashboardInput)(nil)).Elem(), KubernetesDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDashboardPtrInput)(nil)).Elem(), KubernetesDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDashboardResponseInput)(nil)).Elem(), KubernetesDashboardResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDashboardResponsePtrInput)(nil)).Elem(), KubernetesDashboardResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyAbacInput)(nil)).Elem(), LegacyAbacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyAbacPtrInput)(nil)).Elem(), LegacyAbacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyAbacResponseInput)(nil)).Elem(), LegacyAbacResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LegacyAbacResponsePtrInput)(nil)).Elem(), LegacyAbacResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LinuxNodeConfigInput)(nil)).Elem(), LinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LinuxNodeConfigPtrInput)(nil)).Elem(), LinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LinuxNodeConfigResponseInput)(nil)).Elem(), LinuxNodeConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LinuxNodeConfigResponsePtrInput)(nil)).Elem(), LinuxNodeConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigInput)(nil)).Elem(), LoggingComponentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigPtrInput)(nil)).Elem(), LoggingComponentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigResponseInput)(nil)).Elem(), LoggingComponentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigResponsePtrInput)(nil)).Elem(), LoggingComponentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigInput)(nil)).Elem(), LoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigPtrInput)(nil)).Elem(), LoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigResponseInput)(nil)).Elem(), LoggingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigResponsePtrInput)(nil)).Elem(), LoggingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyInput)(nil)).Elem(), MaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyPtrInput)(nil)).Elem(), MaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyResponseInput)(nil)).Elem(), MaintenancePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyResponsePtrInput)(nil)).Elem(), MaintenancePolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponseInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponsePtrInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterInput)(nil)).Elem(), MasterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterPtrInput)(nil)).Elem(), MasterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthInput)(nil)).Elem(), MasterAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthPtrInput)(nil)).Elem(), MasterAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthResponseInput)(nil)).Elem(), MasterAuthResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthResponsePtrInput)(nil)).Elem(), MasterAuthResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthorizedNetworksConfigInput)(nil)).Elem(), MasterAuthorizedNetworksConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthorizedNetworksConfigPtrInput)(nil)).Elem(), MasterAuthorizedNetworksConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthorizedNetworksConfigResponseInput)(nil)).Elem(), MasterAuthorizedNetworksConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthorizedNetworksConfigResponsePtrInput)(nil)).Elem(), MasterAuthorizedNetworksConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterResponseInput)(nil)).Elem(), MasterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterResponsePtrInput)(nil)).Elem(), MasterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaxPodsConstraintInput)(nil)).Elem(), MaxPodsConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaxPodsConstraintPtrInput)(nil)).Elem(), MaxPodsConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaxPodsConstraintResponseInput)(nil)).Elem(), MaxPodsConstraintResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaxPodsConstraintResponsePtrInput)(nil)).Elem(), MaxPodsConstraintResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshCertificatesInput)(nil)).Elem(), MeshCertificatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshCertificatesPtrInput)(nil)).Elem(), MeshCertificatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshCertificatesResponseInput)(nil)).Elem(), MeshCertificatesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshCertificatesResponsePtrInput)(nil)).Elem(), MeshCertificatesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringComponentConfigInput)(nil)).Elem(), MonitoringComponentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringComponentConfigPtrInput)(nil)).Elem(), MonitoringComponentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringComponentConfigResponseInput)(nil)).Elem(), MonitoringComponentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringComponentConfigResponsePtrInput)(nil)).Elem(), MonitoringComponentConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringConfigInput)(nil)).Elem(), MonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringConfigPtrInput)(nil)).Elem(), MonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringConfigResponseInput)(nil)).Elem(), MonitoringConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringConfigResponsePtrInput)(nil)).Elem(), MonitoringConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponseInput)(nil)).Elem(), NetworkConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponsePtrInput)(nil)).Elem(), NetworkConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyInput)(nil)).Elem(), NetworkPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPtrInput)(nil)).Elem(), NetworkPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyConfigInput)(nil)).Elem(), NetworkPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyConfigPtrInput)(nil)).Elem(), NetworkPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyConfigResponseInput)(nil)).Elem(), NetworkPolicyConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyConfigResponsePtrInput)(nil)).Elem(), NetworkPolicyConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyResponseInput)(nil)).Elem(), NetworkPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyResponsePtrInput)(nil)).Elem(), NetworkPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkTagsInput)(nil)).Elem(), NetworkTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigDefaultsInput)(nil)).Elem(), NodeConfigDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigDefaultsPtrInput)(nil)).Elem(), NodeConfigDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigDefaultsResponseInput)(nil)).Elem(), NodeConfigDefaultsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigDefaultsResponsePtrInput)(nil)).Elem(), NodeConfigDefaultsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponseInput)(nil)).Elem(), NodeConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponsePtrInput)(nil)).Elem(), NodeConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeKubeletConfigInput)(nil)).Elem(), NodeKubeletConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeKubeletConfigPtrInput)(nil)).Elem(), NodeKubeletConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeKubeletConfigResponseInput)(nil)).Elem(), NodeKubeletConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeKubeletConfigResponsePtrInput)(nil)).Elem(), NodeKubeletConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeLabelsInput)(nil)).Elem(), NodeLabelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeManagementInput)(nil)).Elem(), NodeManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeManagementPtrInput)(nil)).Elem(), NodeManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeManagementResponseInput)(nil)).Elem(), NodeManagementResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeManagementResponsePtrInput)(nil)).Elem(), NodeManagementResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeNetworkConfigInput)(nil)).Elem(), NodeNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeNetworkConfigPtrInput)(nil)).Elem(), NodeNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeNetworkConfigResponseInput)(nil)).Elem(), NodeNetworkConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeNetworkConfigResponsePtrInput)(nil)).Elem(), NodeNetworkConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTypeInput)(nil)).Elem(), NodePoolTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTypeArrayInput)(nil)).Elem(), NodePoolTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingPtrInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingResponseInput)(nil)).Elem(), NodePoolAutoscalingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingResponsePtrInput)(nil)).Elem(), NodePoolAutoscalingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsInput)(nil)).Elem(), NodePoolDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsPtrInput)(nil)).Elem(), NodePoolDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsResponseInput)(nil)).Elem(), NodePoolDefaultsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsResponsePtrInput)(nil)).Elem(), NodePoolDefaultsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolResponseInput)(nil)).Elem(), NodePoolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolResponseArrayInput)(nil)).Elem(), NodePoolResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintInput)(nil)).Elem(), NodeTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintArrayInput)(nil)).Elem(), NodeTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintResponseInput)(nil)).Elem(), NodeTaintResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintResponseArrayInput)(nil)).Elem(), NodeTaintResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintsInput)(nil)).Elem(), NodeTaintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigInput)(nil)).Elem(), NotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPtrInput)(nil)).Elem(), NotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigResponseInput)(nil)).Elem(), NotificationConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigResponsePtrInput)(nil)).Elem(), NotificationConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyConfigInput)(nil)).Elem(), PodSecurityPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyConfigPtrInput)(nil)).Elem(), PodSecurityPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyConfigResponseInput)(nil)).Elem(), PodSecurityPolicyConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyConfigResponsePtrInput)(nil)).Elem(), PodSecurityPolicyConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigInput)(nil)).Elem(), PrivateClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigPtrInput)(nil)).Elem(), PrivateClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigResponseInput)(nil)).Elem(), PrivateClusterConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigResponsePtrInput)(nil)).Elem(), PrivateClusterConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterMasterGlobalAccessConfigInput)(nil)).Elem(), PrivateClusterMasterGlobalAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterMasterGlobalAccessConfigPtrInput)(nil)).Elem(), PrivateClusterMasterGlobalAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterMasterGlobalAccessConfigResponseInput)(nil)).Elem(), PrivateClusterMasterGlobalAccessConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterMasterGlobalAccessConfigResponsePtrInput)(nil)).Elem(), PrivateClusterMasterGlobalAccessConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubSubInput)(nil)).Elem(), PubSubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubSubPtrInput)(nil)).Elem(), PubSubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubSubResponseInput)(nil)).Elem(), PubSubResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubSubResponsePtrInput)(nil)).Elem(), PubSubResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecurringTimeWindowInput)(nil)).Elem(), RecurringTimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecurringTimeWindowPtrInput)(nil)).Elem(), RecurringTimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecurringTimeWindowResponseInput)(nil)).Elem(), RecurringTimeWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecurringTimeWindowResponsePtrInput)(nil)).Elem(), RecurringTimeWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelInput)(nil)).Elem(), ReleaseChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPtrInput)(nil)).Elem(), ReleaseChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelResponseInput)(nil)).Elem(), ReleaseChannelResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelResponsePtrInput)(nil)).Elem(), ReleaseChannelResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityInput)(nil)).Elem(), ReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityPtrInput)(nil)).Elem(), ReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityResponseInput)(nil)).Elem(), ReservationAffinityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityResponsePtrInput)(nil)).Elem(), ReservationAffinityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceLimitInput)(nil)).Elem(), ResourceLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceLimitArrayInput)(nil)).Elem(), ResourceLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceLimitResponseInput)(nil)).Elem(), ResourceLimitResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceLimitResponseArrayInput)(nil)).Elem(), ResourceLimitResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceUsageExportConfigInput)(nil)).Elem(), ResourceUsageExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceUsageExportConfigPtrInput)(nil)).Elem(), ResourceUsageExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceUsageExportConfigResponseInput)(nil)).Elem(), ResourceUsageExportConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceUsageExportConfigResponsePtrInput)(nil)).Elem(), ResourceUsageExportConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigInput)(nil)).Elem(), SandboxConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigPtrInput)(nil)).Elem(), SandboxConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigResponseInput)(nil)).Elem(), SandboxConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigResponsePtrInput)(nil)).Elem(), SandboxConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceExternalIPsConfigInput)(nil)).Elem(), ServiceExternalIPsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceExternalIPsConfigPtrInput)(nil)).Elem(), ServiceExternalIPsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceExternalIPsConfigResponseInput)(nil)).Elem(), ServiceExternalIPsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceExternalIPsConfigResponsePtrInput)(nil)).Elem(), ServiceExternalIPsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigResponseInput)(nil)).Elem(), ShieldedInstanceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigResponsePtrInput)(nil)).Elem(), ShieldedInstanceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedNodesInput)(nil)).Elem(), ShieldedNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedNodesPtrInput)(nil)).Elem(), ShieldedNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedNodesResponseInput)(nil)).Elem(), ShieldedNodesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedNodesResponsePtrInput)(nil)).Elem(), ShieldedNodesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionInput)(nil)).Elem(), StatusConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionArrayInput)(nil)).Elem(), StatusConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionResponseInput)(nil)).Elem(), StatusConditionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionResponseArrayInput)(nil)).Elem(), StatusConditionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowInput)(nil)).Elem(), TimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowPtrInput)(nil)).Elem(), TimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowResponseInput)(nil)).Elem(), TimeWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowResponsePtrInput)(nil)).Elem(), TimeWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TpuConfigInput)(nil)).Elem(), TpuConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TpuConfigPtrInput)(nil)).Elem(), TpuConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TpuConfigResponseInput)(nil)).Elem(), TpuConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TpuConfigResponsePtrInput)(nil)).Elem(), TpuConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsInput)(nil)).Elem(), UpgradeSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsPtrInput)(nil)).Elem(), UpgradeSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsResponseInput)(nil)).Elem(), UpgradeSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsResponsePtrInput)(nil)).Elem(), UpgradeSettingsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerticalPodAutoscalingInput)(nil)).Elem(), VerticalPodAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerticalPodAutoscalingPtrInput)(nil)).Elem(), VerticalPodAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerticalPodAutoscalingResponseInput)(nil)).Elem(), VerticalPodAutoscalingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerticalPodAutoscalingResponsePtrInput)(nil)).Elem(), VerticalPodAutoscalingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNICInput)(nil)).Elem(), VirtualNICArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNICPtrInput)(nil)).Elem(), VirtualNICArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNICResponseInput)(nil)).Elem(), VirtualNICResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNICResponsePtrInput)(nil)).Elem(), VirtualNICResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadCertificatesInput)(nil)).Elem(), WorkloadCertificatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadCertificatesPtrInput)(nil)).Elem(), WorkloadCertificatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadCertificatesResponseInput)(nil)).Elem(), WorkloadCertificatesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadCertificatesResponsePtrInput)(nil)).Elem(), WorkloadCertificatesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityConfigInput)(nil)).Elem(), WorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityConfigPtrInput)(nil)).Elem(), WorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityConfigResponseInput)(nil)).Elem(), WorkloadIdentityConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityConfigResponsePtrInput)(nil)).Elem(), WorkloadIdentityConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigInput)(nil)).Elem(), WorkloadMetadataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigPtrInput)(nil)).Elem(), WorkloadMetadataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigResponseInput)(nil)).Elem(), WorkloadMetadataConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigResponsePtrInput)(nil)).Elem(), WorkloadMetadataConfigResponseArgs{})
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigArrayOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigResponseOutput{})
@@ -26288,6 +27257,10 @@ func init() {
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigResponseOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigPtrOutput{})
+	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigResponseOutput{})
+	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(HorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(HorizontalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(HorizontalPodAutoscalingResponseOutput{})
@@ -26360,6 +27333,10 @@ func init() {
 	pulumi.RegisterOutputType(MaxPodsConstraintPtrOutput{})
 	pulumi.RegisterOutputType(MaxPodsConstraintResponseOutput{})
 	pulumi.RegisterOutputType(MaxPodsConstraintResponsePtrOutput{})
+	pulumi.RegisterOutputType(MeshCertificatesOutput{})
+	pulumi.RegisterOutputType(MeshCertificatesPtrOutput{})
+	pulumi.RegisterOutputType(MeshCertificatesResponseOutput{})
+	pulumi.RegisterOutputType(MeshCertificatesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MonitoringComponentConfigOutput{})
 	pulumi.RegisterOutputType(MonitoringComponentConfigPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringComponentConfigResponseOutput{})

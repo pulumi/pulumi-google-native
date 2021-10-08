@@ -2427,6 +2427,257 @@ func (o ExecActionResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExecActionResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type GoogleRpcStatus struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// GoogleRpcStatusInput is an input type that accepts GoogleRpcStatusArgs and GoogleRpcStatusOutput values.
+// You can construct a concrete instance of `GoogleRpcStatusInput` via:
+//
+//          GoogleRpcStatusArgs{...}
+type GoogleRpcStatusInput interface {
+	pulumi.Input
+
+	ToGoogleRpcStatusOutput() GoogleRpcStatusOutput
+	ToGoogleRpcStatusOutputWithContext(context.Context) GoogleRpcStatusOutput
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type GoogleRpcStatusArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (GoogleRpcStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleRpcStatus)(nil)).Elem()
+}
+
+func (i GoogleRpcStatusArgs) ToGoogleRpcStatusOutput() GoogleRpcStatusOutput {
+	return i.ToGoogleRpcStatusOutputWithContext(context.Background())
+}
+
+func (i GoogleRpcStatusArgs) ToGoogleRpcStatusOutputWithContext(ctx context.Context) GoogleRpcStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusOutput)
+}
+
+func (i GoogleRpcStatusArgs) ToGoogleRpcStatusPtrOutput() GoogleRpcStatusPtrOutput {
+	return i.ToGoogleRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleRpcStatusArgs) ToGoogleRpcStatusPtrOutputWithContext(ctx context.Context) GoogleRpcStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusOutput).ToGoogleRpcStatusPtrOutputWithContext(ctx)
+}
+
+// GoogleRpcStatusPtrInput is an input type that accepts GoogleRpcStatusArgs, GoogleRpcStatusPtr and GoogleRpcStatusPtrOutput values.
+// You can construct a concrete instance of `GoogleRpcStatusPtrInput` via:
+//
+//          GoogleRpcStatusArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleRpcStatusPtrInput interface {
+	pulumi.Input
+
+	ToGoogleRpcStatusPtrOutput() GoogleRpcStatusPtrOutput
+	ToGoogleRpcStatusPtrOutputWithContext(context.Context) GoogleRpcStatusPtrOutput
+}
+
+type googleRpcStatusPtrType GoogleRpcStatusArgs
+
+func GoogleRpcStatusPtr(v *GoogleRpcStatusArgs) GoogleRpcStatusPtrInput {
+	return (*googleRpcStatusPtrType)(v)
+}
+
+func (*googleRpcStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleRpcStatus)(nil)).Elem()
+}
+
+func (i *googleRpcStatusPtrType) ToGoogleRpcStatusPtrOutput() GoogleRpcStatusPtrOutput {
+	return i.ToGoogleRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *googleRpcStatusPtrType) ToGoogleRpcStatusPtrOutputWithContext(ctx context.Context) GoogleRpcStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusPtrOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type GoogleRpcStatusOutput struct{ *pulumi.OutputState }
+
+func (GoogleRpcStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleRpcStatus)(nil)).Elem()
+}
+
+func (o GoogleRpcStatusOutput) ToGoogleRpcStatusOutput() GoogleRpcStatusOutput {
+	return o
+}
+
+func (o GoogleRpcStatusOutput) ToGoogleRpcStatusOutputWithContext(ctx context.Context) GoogleRpcStatusOutput {
+	return o
+}
+
+func (o GoogleRpcStatusOutput) ToGoogleRpcStatusPtrOutput() GoogleRpcStatusPtrOutput {
+	return o.ToGoogleRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleRpcStatusOutput) ToGoogleRpcStatusPtrOutputWithContext(ctx context.Context) GoogleRpcStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleRpcStatus) *GoogleRpcStatus {
+		return &v
+	}).(GoogleRpcStatusPtrOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o GoogleRpcStatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleRpcStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o GoogleRpcStatusOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v GoogleRpcStatus) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o GoogleRpcStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleRpcStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type GoogleRpcStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleRpcStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleRpcStatus)(nil)).Elem()
+}
+
+func (o GoogleRpcStatusPtrOutput) ToGoogleRpcStatusPtrOutput() GoogleRpcStatusPtrOutput {
+	return o
+}
+
+func (o GoogleRpcStatusPtrOutput) ToGoogleRpcStatusPtrOutputWithContext(ctx context.Context) GoogleRpcStatusPtrOutput {
+	return o
+}
+
+func (o GoogleRpcStatusPtrOutput) Elem() GoogleRpcStatusOutput {
+	return o.ApplyT(func(v *GoogleRpcStatus) GoogleRpcStatus {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleRpcStatus
+		return ret
+	}).(GoogleRpcStatusOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o GoogleRpcStatusPtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleRpcStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o GoogleRpcStatusPtrOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *GoogleRpcStatus) []map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o GoogleRpcStatusPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleRpcStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type GoogleRpcStatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// GoogleRpcStatusResponseInput is an input type that accepts GoogleRpcStatusResponseArgs and GoogleRpcStatusResponseOutput values.
+// You can construct a concrete instance of `GoogleRpcStatusResponseInput` via:
+//
+//          GoogleRpcStatusResponseArgs{...}
+type GoogleRpcStatusResponseInput interface {
+	pulumi.Input
+
+	ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput
+	ToGoogleRpcStatusResponseOutputWithContext(context.Context) GoogleRpcStatusResponseOutput
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type GoogleRpcStatusResponseArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GoogleRpcStatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleRpcStatusResponse)(nil)).Elem()
+}
+
+func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput {
+	return i.ToGoogleRpcStatusResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponseOutputWithContext(ctx context.Context) GoogleRpcStatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusResponseOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type GoogleRpcStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleRpcStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleRpcStatusResponse)(nil)).Elem()
+}
+
+func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput {
+	return o
+}
+
+func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponseOutputWithContext(ctx context.Context) GoogleRpcStatusResponseOutput {
+	return o
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o GoogleRpcStatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleRpcStatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o GoogleRpcStatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v GoogleRpcStatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o GoogleRpcStatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleRpcStatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
 // Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetAction struct {
 	// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
@@ -2924,6 +3175,229 @@ func (o HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) HTTPHeaderRespon
 	}).(HTTPHeaderResponseOutput)
 }
 
+// Result of an instance attempt.
+type InstanceAttemptResult struct {
+	// Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
+	ExitCode *int `pulumi:"exitCode"`
+	// Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+	Status *GoogleRpcStatus `pulumi:"status"`
+}
+
+// InstanceAttemptResultInput is an input type that accepts InstanceAttemptResultArgs and InstanceAttemptResultOutput values.
+// You can construct a concrete instance of `InstanceAttemptResultInput` via:
+//
+//          InstanceAttemptResultArgs{...}
+type InstanceAttemptResultInput interface {
+	pulumi.Input
+
+	ToInstanceAttemptResultOutput() InstanceAttemptResultOutput
+	ToInstanceAttemptResultOutputWithContext(context.Context) InstanceAttemptResultOutput
+}
+
+// Result of an instance attempt.
+type InstanceAttemptResultArgs struct {
+	// Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
+	ExitCode pulumi.IntPtrInput `pulumi:"exitCode"`
+	// Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+	Status GoogleRpcStatusPtrInput `pulumi:"status"`
+}
+
+func (InstanceAttemptResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAttemptResult)(nil)).Elem()
+}
+
+func (i InstanceAttemptResultArgs) ToInstanceAttemptResultOutput() InstanceAttemptResultOutput {
+	return i.ToInstanceAttemptResultOutputWithContext(context.Background())
+}
+
+func (i InstanceAttemptResultArgs) ToInstanceAttemptResultOutputWithContext(ctx context.Context) InstanceAttemptResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttemptResultOutput)
+}
+
+func (i InstanceAttemptResultArgs) ToInstanceAttemptResultPtrOutput() InstanceAttemptResultPtrOutput {
+	return i.ToInstanceAttemptResultPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceAttemptResultArgs) ToInstanceAttemptResultPtrOutputWithContext(ctx context.Context) InstanceAttemptResultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttemptResultOutput).ToInstanceAttemptResultPtrOutputWithContext(ctx)
+}
+
+// InstanceAttemptResultPtrInput is an input type that accepts InstanceAttemptResultArgs, InstanceAttemptResultPtr and InstanceAttemptResultPtrOutput values.
+// You can construct a concrete instance of `InstanceAttemptResultPtrInput` via:
+//
+//          InstanceAttemptResultArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceAttemptResultPtrInput interface {
+	pulumi.Input
+
+	ToInstanceAttemptResultPtrOutput() InstanceAttemptResultPtrOutput
+	ToInstanceAttemptResultPtrOutputWithContext(context.Context) InstanceAttemptResultPtrOutput
+}
+
+type instanceAttemptResultPtrType InstanceAttemptResultArgs
+
+func InstanceAttemptResultPtr(v *InstanceAttemptResultArgs) InstanceAttemptResultPtrInput {
+	return (*instanceAttemptResultPtrType)(v)
+}
+
+func (*instanceAttemptResultPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAttemptResult)(nil)).Elem()
+}
+
+func (i *instanceAttemptResultPtrType) ToInstanceAttemptResultPtrOutput() InstanceAttemptResultPtrOutput {
+	return i.ToInstanceAttemptResultPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceAttemptResultPtrType) ToInstanceAttemptResultPtrOutputWithContext(ctx context.Context) InstanceAttemptResultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttemptResultPtrOutput)
+}
+
+// Result of an instance attempt.
+type InstanceAttemptResultOutput struct{ *pulumi.OutputState }
+
+func (InstanceAttemptResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAttemptResult)(nil)).Elem()
+}
+
+func (o InstanceAttemptResultOutput) ToInstanceAttemptResultOutput() InstanceAttemptResultOutput {
+	return o
+}
+
+func (o InstanceAttemptResultOutput) ToInstanceAttemptResultOutputWithContext(ctx context.Context) InstanceAttemptResultOutput {
+	return o
+}
+
+func (o InstanceAttemptResultOutput) ToInstanceAttemptResultPtrOutput() InstanceAttemptResultPtrOutput {
+	return o.ToInstanceAttemptResultPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceAttemptResultOutput) ToInstanceAttemptResultPtrOutputWithContext(ctx context.Context) InstanceAttemptResultPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAttemptResult) *InstanceAttemptResult {
+		return &v
+	}).(InstanceAttemptResultPtrOutput)
+}
+
+// Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
+func (o InstanceAttemptResultOutput) ExitCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAttemptResult) *int { return v.ExitCode }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+func (o InstanceAttemptResultOutput) Status() GoogleRpcStatusPtrOutput {
+	return o.ApplyT(func(v InstanceAttemptResult) *GoogleRpcStatus { return v.Status }).(GoogleRpcStatusPtrOutput)
+}
+
+type InstanceAttemptResultPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceAttemptResultPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAttemptResult)(nil)).Elem()
+}
+
+func (o InstanceAttemptResultPtrOutput) ToInstanceAttemptResultPtrOutput() InstanceAttemptResultPtrOutput {
+	return o
+}
+
+func (o InstanceAttemptResultPtrOutput) ToInstanceAttemptResultPtrOutputWithContext(ctx context.Context) InstanceAttemptResultPtrOutput {
+	return o
+}
+
+func (o InstanceAttemptResultPtrOutput) Elem() InstanceAttemptResultOutput {
+	return o.ApplyT(func(v *InstanceAttemptResult) InstanceAttemptResult {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAttemptResult
+		return ret
+	}).(InstanceAttemptResultOutput)
+}
+
+// Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
+func (o InstanceAttemptResultPtrOutput) ExitCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAttemptResult) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExitCode
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+func (o InstanceAttemptResultPtrOutput) Status() GoogleRpcStatusPtrOutput {
+	return o.ApplyT(func(v *InstanceAttemptResult) *GoogleRpcStatus {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(GoogleRpcStatusPtrOutput)
+}
+
+// Result of an instance attempt.
+type InstanceAttemptResultResponse struct {
+	// Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
+	ExitCode int `pulumi:"exitCode"`
+	// Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+	Status GoogleRpcStatusResponse `pulumi:"status"`
+}
+
+// InstanceAttemptResultResponseInput is an input type that accepts InstanceAttemptResultResponseArgs and InstanceAttemptResultResponseOutput values.
+// You can construct a concrete instance of `InstanceAttemptResultResponseInput` via:
+//
+//          InstanceAttemptResultResponseArgs{...}
+type InstanceAttemptResultResponseInput interface {
+	pulumi.Input
+
+	ToInstanceAttemptResultResponseOutput() InstanceAttemptResultResponseOutput
+	ToInstanceAttemptResultResponseOutputWithContext(context.Context) InstanceAttemptResultResponseOutput
+}
+
+// Result of an instance attempt.
+type InstanceAttemptResultResponseArgs struct {
+	// Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
+	ExitCode pulumi.IntInput `pulumi:"exitCode"`
+	// Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+	Status GoogleRpcStatusResponseInput `pulumi:"status"`
+}
+
+func (InstanceAttemptResultResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAttemptResultResponse)(nil)).Elem()
+}
+
+func (i InstanceAttemptResultResponseArgs) ToInstanceAttemptResultResponseOutput() InstanceAttemptResultResponseOutput {
+	return i.ToInstanceAttemptResultResponseOutputWithContext(context.Background())
+}
+
+func (i InstanceAttemptResultResponseArgs) ToInstanceAttemptResultResponseOutputWithContext(ctx context.Context) InstanceAttemptResultResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttemptResultResponseOutput)
+}
+
+// Result of an instance attempt.
+type InstanceAttemptResultResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceAttemptResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAttemptResultResponse)(nil)).Elem()
+}
+
+func (o InstanceAttemptResultResponseOutput) ToInstanceAttemptResultResponseOutput() InstanceAttemptResultResponseOutput {
+	return o
+}
+
+func (o InstanceAttemptResultResponseOutput) ToInstanceAttemptResultResponseOutputWithContext(ctx context.Context) InstanceAttemptResultResponseOutput {
+	return o
+}
+
+// Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
+func (o InstanceAttemptResultResponseOutput) ExitCode() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceAttemptResultResponse) int { return v.ExitCode }).(pulumi.IntOutput)
+}
+
+// Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+func (o InstanceAttemptResultResponseOutput) Status() GoogleRpcStatusResponseOutput {
+	return o.ApplyT(func(v InstanceAttemptResultResponse) GoogleRpcStatusResponse { return v.Status }).(GoogleRpcStatusResponseOutput)
+}
+
 // InstanceSpec is a description of an instance.
 type InstanceSpec struct {
 	// Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
@@ -3402,6 +3876,8 @@ type InstanceStatus struct {
 	Failed *int `pulumi:"failed"`
 	// Index of the instance, unique per Job, and beginning at 0.
 	Index int `pulumi:"index"`
+	// Optional. Result of the last attempt of this instance. +optional
+	LastAttemptResult *InstanceAttemptResult `pulumi:"lastAttemptResult"`
 	// Optional. Last exit code seen for this instance. +optional
 	LastExitCode *int `pulumi:"lastExitCode"`
 	// Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
@@ -3431,6 +3907,8 @@ type InstanceStatusArgs struct {
 	Failed pulumi.IntPtrInput `pulumi:"failed"`
 	// Index of the instance, unique per Job, and beginning at 0.
 	Index pulumi.IntInput `pulumi:"index"`
+	// Optional. Result of the last attempt of this instance. +optional
+	LastAttemptResult InstanceAttemptResultPtrInput `pulumi:"lastAttemptResult"`
 	// Optional. Last exit code seen for this instance. +optional
 	LastExitCode pulumi.IntPtrInput `pulumi:"lastExitCode"`
 	// Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
@@ -3508,6 +3986,11 @@ func (o InstanceStatusOutput) Index() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceStatus) int { return v.Index }).(pulumi.IntOutput)
 }
 
+// Optional. Result of the last attempt of this instance. +optional
+func (o InstanceStatusOutput) LastAttemptResult() InstanceAttemptResultPtrOutput {
+	return o.ApplyT(func(v InstanceStatus) *InstanceAttemptResult { return v.LastAttemptResult }).(InstanceAttemptResultPtrOutput)
+}
+
 // Optional. Last exit code seen for this instance. +optional
 func (o InstanceStatusOutput) LastExitCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceStatus) *int { return v.LastExitCode }).(pulumi.IntPtrOutput)
@@ -3556,6 +4039,8 @@ type InstanceStatusResponse struct {
 	Failed int `pulumi:"failed"`
 	// Index of the instance, unique per Job, and beginning at 0.
 	Index int `pulumi:"index"`
+	// Optional. Result of the last attempt of this instance. +optional
+	LastAttemptResult InstanceAttemptResultResponse `pulumi:"lastAttemptResult"`
 	// Optional. Last exit code seen for this instance. +optional
 	LastExitCode int `pulumi:"lastExitCode"`
 	// Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
@@ -3585,6 +4070,8 @@ type InstanceStatusResponseArgs struct {
 	Failed pulumi.IntInput `pulumi:"failed"`
 	// Index of the instance, unique per Job, and beginning at 0.
 	Index pulumi.IntInput `pulumi:"index"`
+	// Optional. Result of the last attempt of this instance. +optional
+	LastAttemptResult InstanceAttemptResultResponseInput `pulumi:"lastAttemptResult"`
 	// Optional. Last exit code seen for this instance. +optional
 	LastExitCode pulumi.IntInput `pulumi:"lastExitCode"`
 	// Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
@@ -3660,6 +4147,11 @@ func (o InstanceStatusResponseOutput) Failed() pulumi.IntOutput {
 // Index of the instance, unique per Job, and beginning at 0.
 func (o InstanceStatusResponseOutput) Index() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceStatusResponse) int { return v.Index }).(pulumi.IntOutput)
+}
+
+// Optional. Result of the last attempt of this instance. +optional
+func (o InstanceStatusResponseOutput) LastAttemptResult() InstanceAttemptResultResponseOutput {
+	return o.ApplyT(func(v InstanceStatusResponse) InstanceAttemptResultResponse { return v.LastAttemptResult }).(InstanceAttemptResultResponseOutput)
 }
 
 // Optional. Last exit code seen for this instance. +optional
@@ -9179,6 +9671,118 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapEnvSourceInput)(nil)).Elem(), ConfigMapEnvSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapEnvSourcePtrInput)(nil)).Elem(), ConfigMapEnvSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapEnvSourceResponseInput)(nil)).Elem(), ConfigMapEnvSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapKeySelectorInput)(nil)).Elem(), ConfigMapKeySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapKeySelectorPtrInput)(nil)).Elem(), ConfigMapKeySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapKeySelectorResponseInput)(nil)).Elem(), ConfigMapKeySelectorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapVolumeSourceInput)(nil)).Elem(), ConfigMapVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapVolumeSourcePtrInput)(nil)).Elem(), ConfigMapVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapVolumeSourceResponseInput)(nil)).Elem(), ConfigMapVolumeSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerInput)(nil)).Elem(), ContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerArrayInput)(nil)).Elem(), ContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortInput)(nil)).Elem(), ContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortArrayInput)(nil)).Elem(), ContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortResponseInput)(nil)).Elem(), ContainerPortResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortResponseArrayInput)(nil)).Elem(), ContainerPortResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerResponseInput)(nil)).Elem(), ContainerResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerResponseArrayInput)(nil)).Elem(), ContainerResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceInput)(nil)).Elem(), EnvFromSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceArrayInput)(nil)).Elem(), EnvFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceResponseInput)(nil)).Elem(), EnvFromSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceResponseArrayInput)(nil)).Elem(), EnvFromSourceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarInput)(nil)).Elem(), EnvVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarArrayInput)(nil)).Elem(), EnvVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarResponseInput)(nil)).Elem(), EnvVarResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarResponseArrayInput)(nil)).Elem(), EnvVarResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarSourceInput)(nil)).Elem(), EnvVarSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarSourcePtrInput)(nil)).Elem(), EnvVarSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarSourceResponseInput)(nil)).Elem(), EnvVarSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionInput)(nil)).Elem(), ExecActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionPtrInput)(nil)).Elem(), ExecActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionResponseInput)(nil)).Elem(), ExecActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusInput)(nil)).Elem(), GoogleRpcStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusPtrInput)(nil)).Elem(), GoogleRpcStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusResponseInput)(nil)).Elem(), GoogleRpcStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionInput)(nil)).Elem(), HTTPGetActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionPtrInput)(nil)).Elem(), HTTPGetActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionResponseInput)(nil)).Elem(), HTTPGetActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderInput)(nil)).Elem(), HTTPHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderArrayInput)(nil)).Elem(), HTTPHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderResponseInput)(nil)).Elem(), HTTPHeaderResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderResponseArrayInput)(nil)).Elem(), HTTPHeaderResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttemptResultInput)(nil)).Elem(), InstanceAttemptResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttemptResultPtrInput)(nil)).Elem(), InstanceAttemptResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttemptResultResponseInput)(nil)).Elem(), InstanceAttemptResultResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecInput)(nil)).Elem(), InstanceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecPtrInput)(nil)).Elem(), InstanceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecResponseInput)(nil)).Elem(), InstanceSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecResponsePtrInput)(nil)).Elem(), InstanceSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStatusInput)(nil)).Elem(), InstanceStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStatusArrayInput)(nil)).Elem(), InstanceStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStatusResponseInput)(nil)).Elem(), InstanceStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStatusResponseArrayInput)(nil)).Elem(), InstanceStatusResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTemplateSpecInput)(nil)).Elem(), InstanceTemplateSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTemplateSpecPtrInput)(nil)).Elem(), InstanceTemplateSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTemplateSpecResponseInput)(nil)).Elem(), InstanceTemplateSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTemplateSpecResponsePtrInput)(nil)).Elem(), InstanceTemplateSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionInput)(nil)).Elem(), JobConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionArrayInput)(nil)).Elem(), JobConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionResponseInput)(nil)).Elem(), JobConditionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionResponseArrayInput)(nil)).Elem(), JobConditionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobSpecInput)(nil)).Elem(), JobSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobSpecPtrInput)(nil)).Elem(), JobSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobSpecResponseInput)(nil)).Elem(), JobSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobSpecResponsePtrInput)(nil)).Elem(), JobSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusInput)(nil)).Elem(), JobStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusPtrInput)(nil)).Elem(), JobStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusResponseInput)(nil)).Elem(), JobStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusResponsePtrInput)(nil)).Elem(), JobStatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathInput)(nil)).Elem(), KeyToPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathArrayInput)(nil)).Elem(), KeyToPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathResponseInput)(nil)).Elem(), KeyToPathResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyToPathResponseArrayInput)(nil)).Elem(), KeyToPathResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceInput)(nil)).Elem(), LocalObjectReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferencePtrInput)(nil)).Elem(), LocalObjectReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceResponseInput)(nil)).Elem(), LocalObjectReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaInput)(nil)).Elem(), ObjectMetaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaPtrInput)(nil)).Elem(), ObjectMetaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaResponseInput)(nil)).Elem(), ObjectMetaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaResponsePtrInput)(nil)).Elem(), ObjectMetaResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceInput)(nil)).Elem(), OwnerReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceArrayInput)(nil)).Elem(), OwnerReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceResponseInput)(nil)).Elem(), OwnerReferenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceResponseArrayInput)(nil)).Elem(), OwnerReferenceResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProbeInput)(nil)).Elem(), ProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProbePtrInput)(nil)).Elem(), ProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProbeResponseInput)(nil)).Elem(), ProbeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRequirementsInput)(nil)).Elem(), ResourceRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRequirementsPtrInput)(nil)).Elem(), ResourceRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRequirementsResponseInput)(nil)).Elem(), ResourceRequirementsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvSourceInput)(nil)).Elem(), SecretEnvSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvSourcePtrInput)(nil)).Elem(), SecretEnvSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvSourceResponseInput)(nil)).Elem(), SecretEnvSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretKeySelectorInput)(nil)).Elem(), SecretKeySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretKeySelectorPtrInput)(nil)).Elem(), SecretKeySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretKeySelectorResponseInput)(nil)).Elem(), SecretKeySelectorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeSourceInput)(nil)).Elem(), SecretVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeSourcePtrInput)(nil)).Elem(), SecretVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeSourceResponseInput)(nil)).Elem(), SecretVolumeSourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityContextInput)(nil)).Elem(), SecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityContextPtrInput)(nil)).Elem(), SecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityContextResponseInput)(nil)).Elem(), SecurityContextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPSocketActionInput)(nil)).Elem(), TCPSocketActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPSocketActionPtrInput)(nil)).Elem(), TCPSocketActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPSocketActionResponseInput)(nil)).Elem(), TCPSocketActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeInput)(nil)).Elem(), VolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeArrayInput)(nil)).Elem(), VolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountInput)(nil)).Elem(), VolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountArrayInput)(nil)).Elem(), VolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountResponseInput)(nil)).Elem(), VolumeMountResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountResponseArrayInput)(nil)).Elem(), VolumeMountResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeResponseInput)(nil)).Elem(), VolumeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeResponseArrayInput)(nil)).Elem(), VolumeResponseArray{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourceOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourcePtrOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourceResponseOutput{})
@@ -9210,6 +9814,9 @@ func init() {
 	pulumi.RegisterOutputType(ExecActionOutput{})
 	pulumi.RegisterOutputType(ExecActionPtrOutput{})
 	pulumi.RegisterOutputType(ExecActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleRpcStatusOutput{})
+	pulumi.RegisterOutputType(GoogleRpcStatusPtrOutput{})
+	pulumi.RegisterOutputType(GoogleRpcStatusResponseOutput{})
 	pulumi.RegisterOutputType(HTTPGetActionOutput{})
 	pulumi.RegisterOutputType(HTTPGetActionPtrOutput{})
 	pulumi.RegisterOutputType(HTTPGetActionResponseOutput{})
@@ -9217,6 +9824,9 @@ func init() {
 	pulumi.RegisterOutputType(HTTPHeaderArrayOutput{})
 	pulumi.RegisterOutputType(HTTPHeaderResponseOutput{})
 	pulumi.RegisterOutputType(HTTPHeaderResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceAttemptResultOutput{})
+	pulumi.RegisterOutputType(InstanceAttemptResultPtrOutput{})
+	pulumi.RegisterOutputType(InstanceAttemptResultResponseOutput{})
 	pulumi.RegisterOutputType(InstanceSpecOutput{})
 	pulumi.RegisterOutputType(InstanceSpecPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSpecResponseOutput{})

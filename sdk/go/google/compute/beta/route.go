@@ -14,6 +14,8 @@ import (
 type Route struct {
 	pulumi.CustomResourceState
 
+	// AS path.
+	AsPaths RouteAsPathResponseArrayOutput `pulumi:"asPaths"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this field when you create the resource.
@@ -44,6 +46,8 @@ type Route struct {
 	NextHopVpnTunnel pulumi.StringOutput `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
 	Priority pulumi.IntOutput `pulumi:"priority"`
+	// The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
+	RouteType pulumi.StringOutput `pulumi:"routeType"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
