@@ -70,6 +70,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name for the Apigee organization. Unused, but reserved for future use.
+        /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
@@ -226,6 +229,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Display name for the Apigee organization. Unused, but reserved for future use.
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 

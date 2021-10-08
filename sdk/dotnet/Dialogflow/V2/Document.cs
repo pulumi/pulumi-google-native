@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
-    /// Creates a new document. Operation
+    /// Creates a new document. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: KnowledgeOperationMetadata - `response`: Document
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2:Document")]
     public partial class Document : Pulumi.CustomResource

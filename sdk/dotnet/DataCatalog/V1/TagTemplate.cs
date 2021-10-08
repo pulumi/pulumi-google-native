@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<bool> IsPubliclyReadable { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. 
+        /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. 
+        /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

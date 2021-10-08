@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly int AdvertisedRoutePriority;
         /// <summary>
-        /// BFD configuration for the BGP peering. Not currently available publicly.
+        /// BFD configuration for the BGP peering.
         /// </summary>
         public readonly Outputs.RouterBgpPeerBfdResponse Bfd;
         /// <summary>

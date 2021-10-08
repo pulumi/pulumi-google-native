@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// A server-assigned timestamp representing when this Instance was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
         /// </summary>
         [Output("displayName")]

@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
+        /// The most recent time at which the phrase matcher was updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
         /// </summary>
         [Output("versionTag")]

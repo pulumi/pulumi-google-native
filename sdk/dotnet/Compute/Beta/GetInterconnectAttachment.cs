@@ -136,6 +136,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Router;
         /// <summary>
+        /// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
@@ -202,6 +206,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string router,
 
+            bool satisfiesPzs,
+
             string selfLink,
 
             string state,
@@ -234,6 +240,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             PrivateInterconnectInfo = privateInterconnectInfo;
             Region = region;
             Router = router;
+            SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             State = state;
             Type = type;

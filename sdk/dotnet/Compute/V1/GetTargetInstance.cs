@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string NatPolicy;
         /// <summary>
+        /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+        /// </summary>
+        public readonly string Network;
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
@@ -86,6 +90,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string natPolicy,
 
+            string network,
+
             string selfLink,
 
             string zone)
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Kind = kind;
             Name = name;
             NatPolicy = natPolicy;
+            Network = network;
             SelfLink = selfLink;
             Zone = zone;
         }

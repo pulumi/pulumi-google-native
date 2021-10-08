@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
-        /// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified above at most.
+        /// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
         /// </summary>
         public readonly bool IgnoreIdleSlots;
         /// <summary>

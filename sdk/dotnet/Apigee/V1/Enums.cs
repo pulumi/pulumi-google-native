@@ -479,15 +479,15 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static RatePlanConsumptionPricingType FixedPerUnit { get; } = new RatePlanConsumptionPricingType("FIXED_PER_UNIT");
         /// <summary>
-        /// Variable rate charged based on the total volume of API calls. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 150 x $1.5 = $225 * Total price for 250 calls: 250 x $1 = $250. **Note**: Not supported by Apigee at this time.
+        /// Variable rate charged for each API call based on price tiers. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 100 x $2 + 50 x $1.5 = $275 * Total price for 250 calls: 100 x $2 + 100 x $1.5 + 50 x $1 = $400. **Note**: Not supported by Apigee at this time.
         /// </summary>
         public static RatePlanConsumptionPricingType Banded { get; } = new RatePlanConsumptionPricingType("BANDED");
         /// <summary>
-        /// Variable rate charged for each API call based on price tiers. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 100 x $2 + 50 x $1.5 = $275 * Total price for 250 calls: 100 x $2 + 100 x $1.5 + 50 x $1 = $400. **Note**: Not supported by Apigee at this time.
+        /// **Note**: Not supported by Apigee at this time.
         /// </summary>
         public static RatePlanConsumptionPricingType Tiered { get; } = new RatePlanConsumptionPricingType("TIERED");
         /// <summary>
-        /// Flat rate charged for a bundle of API calls whether or not the entire bundle is used. Example: * 1-100 calls cost $75 flat fee * 101-200 calls cost $100 flat free * 201-300 calls cost $150 flat fee * Total price for 1 call: $75 * Total price for 50 calls: $75 * Total price for 150 calls: $100 * Total price for 250 calls: $150. **Note**: Not supported by Apigee at this time.
+        /// **Note**: Not supported by Apigee at this time.
         /// </summary>
         public static RatePlanConsumptionPricingType Stairstep { get; } = new RatePlanConsumptionPricingType("STAIRSTEP");
 
@@ -499,47 +499,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RatePlanConsumptionPricingType other && Equals(other);
         public bool Equals(RatePlanConsumptionPricingType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// Flag that specifies the billing account type, prepaid or postpaid.
-    /// </summary>
-    [EnumType]
-    public readonly struct RatePlanPaymentFundingModel : IEquatable<RatePlanPaymentFundingModel>
-    {
-        private readonly string _value;
-
-        private RatePlanPaymentFundingModel(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Billing account type not specified.
-        /// </summary>
-        public static RatePlanPaymentFundingModel PaymentFundingModelUnspecified { get; } = new RatePlanPaymentFundingModel("PAYMENT_FUNDING_MODEL_UNSPECIFIED");
-        /// <summary>
-        /// Prepaid billing account type. Developer pays in advance for the use of your API products. Funds are deducted from their prepaid account balance. **Note**: Not supported by Apigee at this time.
-        /// </summary>
-        public static RatePlanPaymentFundingModel Prepaid { get; } = new RatePlanPaymentFundingModel("PREPAID");
-        /// <summary>
-        /// Postpaid billing account type. Developer is billed through an invoice after using your API products.
-        /// </summary>
-        public static RatePlanPaymentFundingModel Postpaid { get; } = new RatePlanPaymentFundingModel("POSTPAID");
-
-        public static bool operator ==(RatePlanPaymentFundingModel left, RatePlanPaymentFundingModel right) => left.Equals(right);
-        public static bool operator !=(RatePlanPaymentFundingModel left, RatePlanPaymentFundingModel right) => !left.Equals(right);
-
-        public static explicit operator string(RatePlanPaymentFundingModel value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RatePlanPaymentFundingModel other && Equals(other);
-        public bool Equals(RatePlanPaymentFundingModel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

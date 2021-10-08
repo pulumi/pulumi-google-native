@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     public sealed class AlertStrategyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If an alert policy that was active has no data for this long, any open incidents will close
+        /// </summary>
+        [Input("autoClose")]
+        public Input<string>? AutoClose { get; set; }
+
+        /// <summary>
         /// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
         /// </summary>
         [Input("notificationRateLimit")]

@@ -46,6 +46,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> NatIps;
         /// <summary>
+        /// A list of rules associated with this NAT.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RouterNatRuleResponse> Rules;
+        /// <summary>
         /// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
         /// </summary>
         public readonly string SourceSubnetworkIpRangesToNat;
@@ -57,6 +61,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
         /// </summary>
         public readonly int TcpEstablishedIdleTimeoutSec;
+        /// <summary>
+        /// Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
+        /// </summary>
+        public readonly int TcpTimeWaitTimeoutSec;
         /// <summary>
         /// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
         /// </summary>
@@ -84,11 +92,15 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             ImmutableArray<string> natIps,
 
+            ImmutableArray<Outputs.RouterNatRuleResponse> rules,
+
             string sourceSubnetworkIpRangesToNat,
 
             ImmutableArray<Outputs.RouterNatSubnetworkToNatResponse> subnetworks,
 
             int tcpEstablishedIdleTimeoutSec,
+
+            int tcpTimeWaitTimeoutSec,
 
             int tcpTransitoryIdleTimeoutSec,
 
@@ -102,9 +114,11 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Name = name;
             NatIpAllocateOption = natIpAllocateOption;
             NatIps = natIps;
+            Rules = rules;
             SourceSubnetworkIpRangesToNat = sourceSubnetworkIpRangesToNat;
             Subnetworks = subnetworks;
             TcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
+            TcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;
             TcpTransitoryIdleTimeoutSec = tcpTransitoryIdleTimeoutSec;
             UdpIdleTimeoutSec = udpIdleTimeoutSec;
         }

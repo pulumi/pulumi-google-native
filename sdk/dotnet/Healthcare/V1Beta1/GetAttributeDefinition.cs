@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     public sealed class GetAttributeDefinitionResult
     {
         /// <summary>
-        /// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        /// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
         /// </summary>
         public readonly ImmutableArray<string> AllowedValues;
         /// <summary>

@@ -95,12 +95,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Flag that specifies the billing account type, prepaid or postpaid.
-        /// </summary>
-        [Output("paymentFundingModel")]
-        public Output<string> PaymentFundingModel { get; private set; } = null!;
-
-        /// <summary>
         /// Details of the revenue sharing model.
         /// </summary>
         [Output("revenueShareRates")]
@@ -246,12 +240,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
-
-        /// <summary>
-        /// Flag that specifies the billing account type, prepaid or postpaid.
-        /// </summary>
-        [Input("paymentFundingModel")]
-        public Input<Pulumi.GoogleNative.Apigee.V1.RatePlanPaymentFundingModel>? PaymentFundingModel { get; set; }
 
         [Input("revenueShareRates")]
         private InputList<Inputs.GoogleCloudApigeeV1RevenueShareRangeArgs>? _revenueShareRates;

@@ -65,6 +65,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Licenses;
         /// <summary>
+        /// Whether to indicate the attached disk is locked. The locked disk is not allowed to be detached from the instance, or to be used as the source of the snapshot creation, and the image creation. The instance with at least one locked attached disk is not allow to be used as source of machine image creation, instant snapshot creation, and not allowed to be deleted with --keep-disk parameter set to true for locked disks.
+        /// </summary>
+        public readonly bool Locked;
+        /// <summary>
         /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
         /// </summary>
         public readonly string Mode;
@@ -115,6 +119,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<string> licenses,
 
+            bool locked,
+
             string mode,
 
             string savedState,
@@ -139,6 +145,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Interface = @interface;
             Kind = kind;
             Licenses = licenses;
+            Locked = locked;
             Mode = mode;
             SavedState = savedState;
             ShieldedInstanceInitialState = shieldedInstanceInitialState;

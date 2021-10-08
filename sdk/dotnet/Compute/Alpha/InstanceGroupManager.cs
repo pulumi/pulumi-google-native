@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class InstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        /// </summary>
+        [Output("allInstancesConfig")]
+        public Output<Outputs.InstanceGroupManagerAllInstancesConfigResponse> AllInstancesConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The autohealing policy for this managed instance group. You can specify only one value.
         /// </summary>
         [Output("autoHealingPolicies")]
@@ -124,7 +130,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
-        /// Stanby policy for stopped and suspended instances.
+        /// Standby policy for stopped and suspended instances.
         /// </summary>
         [Output("standbyPolicy")]
         public Output<Outputs.InstanceGroupManagerStandbyPolicyResponse> StandbyPolicy { get; private set; } = null!;
@@ -228,6 +234,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
     public sealed class InstanceGroupManagerArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        /// </summary>
+        [Input("allInstancesConfig")]
+        public Input<Inputs.InstanceGroupManagerAllInstancesConfigArgs>? AllInstancesConfig { get; set; }
+
         [Input("autoHealingPolicies")]
         private InputList<Inputs.InstanceGroupManagerAutoHealingPolicyArgs>? _autoHealingPolicies;
 
@@ -307,7 +319,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
-        /// Stanby policy for stopped and suspended instances.
+        /// Standby policy for stopped and suspended instances.
         /// </summary>
         [Input("standbyPolicy")]
         public Input<Inputs.InstanceGroupManagerStandbyPolicyArgs>? StandbyPolicy { get; set; }

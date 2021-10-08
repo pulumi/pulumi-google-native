@@ -34,13 +34,13 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Output<string> BuildId { get; private set; } = null!;
 
         /// <summary>
-        /// The Cloud Build Name of the function deployment. projects//locations//builds/.
+        /// The Cloud Build Name of the function deployment. `projects//locations//builds/`.
         /// </summary>
         [Output("buildName")]
         public Output<string> BuildName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+        /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         /// </summary>
         [Output("buildWorkerPool")]
         public Output<string> BuildWorkerPool { get; private set; } = null!;
@@ -106,13 +106,13 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        /// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+        /// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Output<string> ServiceAccountEmail { get; private set; } = null!;
 
         /// <summary>
-        /// The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
+        /// The Google Cloud Storage URL, starting with `gs://`, pointing to the zip archive which contains the function.
         /// </summary>
         [Output("sourceArchiveUrl")]
         public Output<string> SourceArchiveUrl { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Output<string> SourceToken { get; private set; } = null!;
 
         /// <summary>
-        /// The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods {Create, Update} The signature is stripped from the Function object on read methods {Get, List}
+        /// The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods (Create, Update) The signature is stripped from the Function object on read methods (Get, List)
         /// </summary>
         [Output("sourceUploadUrl")]
         public Output<string> SourceUploadUrl { get; private set; } = null!;
@@ -259,7 +259,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         }
 
         /// <summary>
-        /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+        /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         /// </summary>
         [Input("buildWorkerPool")]
         public Input<string>? BuildWorkerPool { get; set; }
@@ -340,7 +340,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        /// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -349,7 +349,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+        /// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
@@ -385,7 +385,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
+        /// The Google Cloud Storage URL, starting with `gs://`, pointing to the zip archive which contains the function.
         /// </summary>
         [Input("sourceArchiveUrl")]
         public Input<string>? SourceArchiveUrl { get; set; }
@@ -403,7 +403,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Input<string>? SourceToken { get; set; }
 
         /// <summary>
-        /// The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods {Create, Update} The signature is stripped from the Function object on read methods {Get, List}
+        /// The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods (Create, Update) The signature is stripped from the Function object on read methods (Get, List)
         /// </summary>
         [Input("sourceUploadUrl")]
         public Input<string>? SourceUploadUrl { get; set; }

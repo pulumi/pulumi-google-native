@@ -22,13 +22,13 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<Pulumi.GoogleNative.Compute.Beta.BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends>? ConnectionPersistenceOnUnhealthyBackends { get; set; }
 
         /// <summary>
-        /// Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+        /// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
         /// </summary>
         [Input("enableStrongAffinity")]
         public Input<bool>? EnableStrongAffinity { get; set; }
 
         /// <summary>
-        /// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+        /// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
         /// </summary>
         [Input("idleTimeoutSec")]
         public Input<int>? IdleTimeoutSec { get; set; }

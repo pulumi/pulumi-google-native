@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<Inputs.GcePersistentDiskCsiDriverConfigArgs>? GcePersistentDiskCsiDriverConfig { get; set; }
 
         /// <summary>
+        /// Configuration for the GCP Filestore CSI driver.
+        /// </summary>
+        [Input("gcpFilestoreCsiDriverConfig")]
+        public Input<Inputs.GcpFilestoreCsiDriverConfigArgs>? GcpFilestoreCsiDriverConfig { get; set; }
+
+        /// <summary>
         /// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         /// </summary>
         [Input("horizontalPodAutoscaling")]

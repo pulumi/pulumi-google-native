@@ -25,13 +25,25 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         /// </summary>
         public readonly double Confidence;
         /// <summary>
+        /// CCAI metadata relating to the current transcript segment.
+        /// </summary>
+        public readonly Outputs.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse DialogflowSegmentMetadata;
+        /// <summary>
         /// The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
         /// </summary>
         public readonly string LanguageCode;
         /// <summary>
+        /// The time that the message occurred, if provided.
+        /// </summary>
+        public readonly string MessageTime;
+        /// <summary>
         /// The participant of this segment.
         /// </summary>
         public readonly Outputs.GoogleCloudContactcenterinsightsV1ConversationParticipantResponse SegmentParticipant;
+        /// <summary>
+        /// The sentiment for this transcript segment.
+        /// </summary>
+        public readonly Outputs.GoogleCloudContactcenterinsightsV1SentimentDataResponse Sentiment;
         /// <summary>
         /// The text of this segment.
         /// </summary>
@@ -47,9 +59,15 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 
             double confidence,
 
+            Outputs.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse dialogflowSegmentMetadata,
+
             string languageCode,
 
+            string messageTime,
+
             Outputs.GoogleCloudContactcenterinsightsV1ConversationParticipantResponse segmentParticipant,
+
+            Outputs.GoogleCloudContactcenterinsightsV1SentimentDataResponse sentiment,
 
             string text,
 
@@ -57,8 +75,11 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         {
             ChannelTag = channelTag;
             Confidence = confidence;
+            DialogflowSegmentMetadata = dialogflowSegmentMetadata;
             LanguageCode = languageCode;
+            MessageTime = messageTime;
             SegmentParticipant = segmentParticipant;
+            Sentiment = sentiment;
             Text = text;
             Words = words;
         }

@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. Only networks that are in the distributed mode can have subnetworks. This field can be set only at resource creation time.
+        /// The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. This field can be set only at resource creation time.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. Only networks that are in the distributed mode can have subnetworks. This field can be set only at resource creation time.
+        /// The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. This field can be set only at resource creation time.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

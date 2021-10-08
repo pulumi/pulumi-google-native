@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2RedactConfigResponse RedactConfig;
         /// <summary>
-        /// Replace
+        /// Replace with a specified value.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2ReplaceValueConfigResponse ReplaceConfig;
         /// <summary>

@@ -16,10 +16,16 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
     public sealed class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Medium of conversations used in training data.
+        /// A filter to reduce the conversations used for training the model to a specific subset.
         /// </summary>
-        [Input("medium", required: true)]
-        public Input<Pulumi.GoogleNative.Contactcenterinsights.V1.GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium> Medium { get; set; } = null!;
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
+        /// </summary>
+        [Input("medium")]
+        public Input<Pulumi.GoogleNative.Contactcenterinsights.V1.GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium>? Medium { get; set; }
 
         public GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs()
         {

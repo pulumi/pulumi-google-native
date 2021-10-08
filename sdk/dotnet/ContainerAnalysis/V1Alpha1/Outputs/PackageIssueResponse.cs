@@ -21,21 +21,35 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// </summary>
         public readonly Outputs.VulnerabilityLocationResponse AffectedLocation;
         /// <summary>
+        /// The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when distro or language system has not yet assigned a severity for this vulnerability.
+        /// </summary>
+        public readonly string EffectiveSeverity;
+        /// <summary>
         /// The location of the available fix for vulnerability.
         /// </summary>
         public readonly Outputs.VulnerabilityLocationResponse FixedLocation;
+        /// <summary>
+        /// The type of package (e.g. OS, MAVEN, GO).
+        /// </summary>
+        public readonly string PackageType;
         public readonly string SeverityName;
 
         [OutputConstructor]
         private PackageIssueResponse(
             Outputs.VulnerabilityLocationResponse affectedLocation,
 
+            string effectiveSeverity,
+
             Outputs.VulnerabilityLocationResponse fixedLocation,
+
+            string packageType,
 
             string severityName)
         {
             AffectedLocation = affectedLocation;
+            EffectiveSeverity = effectiveSeverity;
             FixedLocation = fixedLocation;
+            PackageType = packageType;
             SeverityName = severityName;
         }
     }

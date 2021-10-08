@@ -628,7 +628,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+    /// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
     /// </summary>
     [EnumType]
     public readonly struct BackendBalancingMode : IEquatable<BackendBalancingMode>
@@ -4304,6 +4304,38 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+    /// </summary>
+    [EnumType]
+    public readonly struct RouterBgpPeerBfdSessionInitializationMode : IEquatable<RouterBgpPeerBfdSessionInitializationMode>
+    {
+        private readonly string _value;
+
+        private RouterBgpPeerBfdSessionInitializationMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static RouterBgpPeerBfdSessionInitializationMode Active { get; } = new RouterBgpPeerBfdSessionInitializationMode("ACTIVE");
+        public static RouterBgpPeerBfdSessionInitializationMode Disabled { get; } = new RouterBgpPeerBfdSessionInitializationMode("DISABLED");
+        public static RouterBgpPeerBfdSessionInitializationMode Passive { get; } = new RouterBgpPeerBfdSessionInitializationMode("PASSIVE");
+
+        public static bool operator ==(RouterBgpPeerBfdSessionInitializationMode left, RouterBgpPeerBfdSessionInitializationMode right) => left.Equals(right);
+        public static bool operator !=(RouterBgpPeerBfdSessionInitializationMode left, RouterBgpPeerBfdSessionInitializationMode right) => !left.Equals(right);
+
+        public static explicit operator string(RouterBgpPeerBfdSessionInitializationMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RouterBgpPeerBfdSessionInitializationMode other && Equals(other);
+        public bool Equals(RouterBgpPeerBfdSessionInitializationMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
     /// </summary>
     [EnumType]
@@ -5016,7 +5048,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         /// <summary>
-        /// VMs in this subnet can have external IPv6.
+        /// VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.
         /// </summary>
         public static SubnetworkIpv6AccessType External { get; } = new SubnetworkIpv6AccessType("EXTERNAL");
         /// <summary>
@@ -5260,6 +5292,40 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SubnetworkStackType other && Equals(other);
         public bool Equals(SubnetworkStackType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct SubsettingPolicy : IEquatable<SubsettingPolicy>
+    {
+        private readonly string _value;
+
+        private SubsettingPolicy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
+        /// </summary>
+        public static SubsettingPolicy ConsistentHashSubsetting { get; } = new SubsettingPolicy("CONSISTENT_HASH_SUBSETTING");
+        /// <summary>
+        /// No Subsetting. Clients may open connections and send traffic to all backends of this backend service. This can lead to performance issues if there is substantial imbalance in the count of clients and backends.
+        /// </summary>
+        public static SubsettingPolicy None { get; } = new SubsettingPolicy("NONE");
+
+        public static bool operator ==(SubsettingPolicy left, SubsettingPolicy right) => left.Equals(right);
+        public static bool operator !=(SubsettingPolicy left, SubsettingPolicy right) => !left.Equals(right);
+
+        public static explicit operator string(SubsettingPolicy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SubsettingPolicy other && Equals(other);
+        public bool Equals(SubsettingPolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

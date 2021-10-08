@@ -17,22 +17,36 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
     public sealed class MembershipEndpointResponse
     {
         /// <summary>
-        /// Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+        /// Optional. Specific information for a GKE-on-GCP cluster.
         /// </summary>
         public readonly Outputs.GkeClusterResponse GkeCluster;
         /// <summary>
         /// Useful Kubernetes-specific metadata.
         /// </summary>
         public readonly Outputs.KubernetesMetadataResponse KubernetesMetadata;
+        /// <summary>
+        /// Optional. Specific information for a GKE Multi-Cloud cluster.
+        /// </summary>
+        public readonly Outputs.MultiCloudClusterResponse MultiCloudCluster;
+        /// <summary>
+        /// Optional. Specific information for a GKE On-Prem cluster.
+        /// </summary>
+        public readonly Outputs.OnPremClusterResponse OnPremCluster;
 
         [OutputConstructor]
         private MembershipEndpointResponse(
             Outputs.GkeClusterResponse gkeCluster,
 
-            Outputs.KubernetesMetadataResponse kubernetesMetadata)
+            Outputs.KubernetesMetadataResponse kubernetesMetadata,
+
+            Outputs.MultiCloudClusterResponse multiCloudCluster,
+
+            Outputs.OnPremClusterResponse onPremCluster)
         {
             GkeCluster = gkeCluster;
             KubernetesMetadata = kubernetesMetadata;
+            MultiCloudCluster = multiCloudCluster;
+            OnPremCluster = onPremCluster;
         }
     }
 }

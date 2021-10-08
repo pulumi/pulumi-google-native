@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     public sealed class EnvironmentConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("databaseConfig")]
         public Input<Inputs.DatabaseConfigArgs>? DatabaseConfig { get; set; }
 
         /// <summary>
-        /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+        /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<Inputs.NodeConfigArgs>? NodeConfig { get; set; }
 
         /// <summary>
-        /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+        /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<Inputs.WebServerConfigArgs>? WebServerConfig { get; set; }
 
         /// <summary>
-        /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+        /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("webServerNetworkAccessControl")]
         public Input<Inputs.WebServerNetworkAccessControlArgs>? WebServerNetworkAccessControl { get; set; }

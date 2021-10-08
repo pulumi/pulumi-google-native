@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly Outputs.GcePersistentDiskCsiDriverConfigResponse GcePersistentDiskCsiDriverConfig;
         /// <summary>
+        /// Configuration for the GCP Filestore CSI driver.
+        /// </summary>
+        public readonly Outputs.GcpFilestoreCsiDriverConfigResponse GcpFilestoreCsiDriverConfig;
+        /// <summary>
         /// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         /// </summary>
         public readonly Outputs.HorizontalPodAutoscalingResponse HorizontalPodAutoscaling;
@@ -59,6 +63,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             Outputs.GcePersistentDiskCsiDriverConfigResponse gcePersistentDiskCsiDriverConfig,
 
+            Outputs.GcpFilestoreCsiDriverConfigResponse gcpFilestoreCsiDriverConfig,
+
             Outputs.HorizontalPodAutoscalingResponse horizontalPodAutoscaling,
 
             Outputs.HttpLoadBalancingResponse httpLoadBalancing,
@@ -71,6 +77,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             ConfigConnectorConfig = configConnectorConfig;
             DnsCacheConfig = dnsCacheConfig;
             GcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
+            GcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
             HorizontalPodAutoscaling = horizontalPodAutoscaling;
             HttpLoadBalancing = httpLoadBalancing;
             KubernetesDashboard = kubernetesDashboard;

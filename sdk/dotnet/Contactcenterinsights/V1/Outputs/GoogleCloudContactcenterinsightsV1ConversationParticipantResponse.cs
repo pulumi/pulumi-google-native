@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         /// </summary>
         public readonly string DialogflowParticipantName;
         /// <summary>
+        /// Obfuscated user ID from Dialogflow.
+        /// </summary>
+        public readonly string ObfuscatedExternalUserId;
+        /// <summary>
         /// The role of the participant.
         /// </summary>
         public readonly string Role;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         private GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(
             string dialogflowParticipantName,
 
+            string obfuscatedExternalUserId,
+
             string role,
 
             string userId)
         {
             DialogflowParticipantName = dialogflowParticipantName;
+            ObfuscatedExternalUserId = obfuscatedExternalUserId;
             Role = role;
             UserId = userId;
         }

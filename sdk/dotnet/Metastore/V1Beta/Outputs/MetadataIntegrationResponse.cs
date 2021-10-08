@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
         /// The integration config for the Data Catalog service.
         /// </summary>
         public readonly Outputs.DataCatalogConfigResponse DataCatalogConfig;
+        /// <summary>
+        /// The integration config for the Dataplex service.
+        /// </summary>
+        public readonly Outputs.DataplexConfigResponse DataplexConfig;
 
         [OutputConstructor]
-        private MetadataIntegrationResponse(Outputs.DataCatalogConfigResponse dataCatalogConfig)
+        private MetadataIntegrationResponse(
+            Outputs.DataCatalogConfigResponse dataCatalogConfig,
+
+            Outputs.DataplexConfigResponse dataplexConfig)
         {
             DataCatalogConfig = dataCatalogConfig;
+            DataplexConfig = dataplexConfig;
         }
     }
 }

@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
         private InputList<Inputs.LogConfigArgs>? _logConfig;
 
         /// <summary>
-        /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+        /// The config returned to callers of CheckPolicy for any entries that match the LOG action.
         /// </summary>
         public InputList<Inputs.LogConfigArgs> LogConfig
         {

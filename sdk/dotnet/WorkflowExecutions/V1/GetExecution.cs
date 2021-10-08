@@ -50,6 +50,10 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         public readonly string Argument;
         /// <summary>
+        /// The call logging level associated to this execution.
+        /// </summary>
+        public readonly string CallLogLevel;
+        /// <summary>
         /// Marks the end of execution, successful or not.
         /// </summary>
         public readonly string EndTime;
@@ -82,6 +86,8 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         private GetExecutionResult(
             string argument,
 
+            string callLogLevel,
+
             string endTime,
 
             Outputs.ErrorResponse error,
@@ -97,6 +103,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
             string workflowRevisionId)
         {
             Argument = argument;
+            CallLogLevel = callLogLevel;
             EndTime = endTime;
             Error = error;
             Name = name;

@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Output<bool> EnableMessageOrdering { get; private set; } = null!;
 
         /// <summary>
-        /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day.
+        /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
         /// </summary>
         [Output("expirationPolicy")]
         public Output<Outputs.ExpirationPolicyResponse> ExpirationPolicy { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Input<bool>? EnableMessageOrdering { get; set; }
 
         /// <summary>
-        /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day.
+        /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day. If `expiration_policy` is set, but `expiration_policy.ttl` is not set, the subscription never expires.
         /// </summary>
         [Input("expirationPolicy")]
         public Input<Inputs.ExpirationPolicyArgs>? ExpirationPolicy { get; set; }

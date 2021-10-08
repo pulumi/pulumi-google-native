@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
     /// </summary>
     public sealed class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If set to true, it means allowed_bundle_ids will not be enforced.
+        /// </summary>
+        [Input("allowAllBundleIds")]
+        public Input<bool>? AllowAllBundleIds { get; set; }
+
         [Input("allowedBundleIds")]
         private InputList<string>? _allowedBundleIds;
 

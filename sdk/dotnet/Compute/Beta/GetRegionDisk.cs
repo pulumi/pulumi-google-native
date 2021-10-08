@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+        /// Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse DiskEncryptionKey;
         /// <summary>
@@ -59,10 +59,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
-        /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        /// </summary>
-        public readonly string Interface;
         /// <summary>
         /// Type of the resource. Always compute#disk for disks.
         /// </summary>
@@ -95,6 +91,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
         /// </summary>
         public readonly string LocationHint;
+        /// <summary>
+        /// The field indicates if the disk is created from a locked source image. Attachment of a disk created from a locked source image will cause the following operations to become irreversibly prohibited: - R/W or R/O disk attachment to any other instance - Disk detachment. And the disk can only be deleted when the instance is deleted - Creation of images or snapshots - Disk cloning Furthermore, the instance with at least one disk with locked flag set to true will be prohibited from performing the operations below: - Further attachment of secondary disks. - Detachment of any disks - Create machine images - Create instance template - Delete the instance with --keep-disk parameter set to true for locked disks - Attach a locked disk with --auto-delete parameter set to false 
+        /// </summary>
+        public readonly bool Locked;
         /// <summary>
         /// Indicates whether or not the disk can be read/write attached to more than one instance.
         /// </summary>
@@ -208,8 +208,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
 
-            string @interface,
-
             string kind,
 
             string labelFingerprint,
@@ -225,6 +223,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
             ImmutableArray<string> licenses,
 
             string locationHint,
+
+            bool locked,
 
             bool multiWriter,
 
@@ -281,7 +281,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
             DiskEncryptionKey = diskEncryptionKey;
             EraseWindowsVssSignature = eraseWindowsVssSignature;
             GuestOsFeatures = guestOsFeatures;
-            Interface = @interface;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;
@@ -290,6 +289,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             LicenseCodes = licenseCodes;
             Licenses = licenses;
             LocationHint = locationHint;
+            Locked = locked;
             MultiWriter = multiWriter;
             Name = name;
             Options = options;

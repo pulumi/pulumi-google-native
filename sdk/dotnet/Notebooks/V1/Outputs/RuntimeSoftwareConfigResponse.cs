@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly bool IdleShutdown;
         /// <summary>
-        /// Time in minutes to wait before shuting down runtime. Default: 180 minutes
+        /// Time in minutes to wait before shutting down runtime. Default: 180 minutes
         /// </summary>
         public readonly int IdleShutdownTimeout;
         /// <summary>

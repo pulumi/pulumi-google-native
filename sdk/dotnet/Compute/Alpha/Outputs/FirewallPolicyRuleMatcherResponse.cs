@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class FirewallPolicyRuleMatcherResponse
     {
         /// <summary>
+        /// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+        /// </summary>
+        public readonly ImmutableArray<string> DestAddressGroups;
+        /// <summary>
         /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
@@ -24,6 +28,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Pairs of IP protocols and ports that the rule should match.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse> Layer4Configs;
+        /// <summary>
+        /// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+        /// </summary>
+        public readonly ImmutableArray<string> SrcAddressGroups;
         /// <summary>
         /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         /// </summary>
@@ -35,16 +43,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private FirewallPolicyRuleMatcherResponse(
+            ImmutableArray<string> destAddressGroups,
+
             ImmutableArray<string> destIpRanges,
 
             ImmutableArray<Outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse> layer4Configs,
+
+            ImmutableArray<string> srcAddressGroups,
 
             ImmutableArray<string> srcIpRanges,
 
             ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> srcSecureTags)
         {
+            DestAddressGroups = destAddressGroups;
             DestIpRanges = destIpRanges;
             Layer4Configs = layer4Configs;
+            SrcAddressGroups = srcAddressGroups;
             SrcIpRanges = srcIpRanges;
             SrcSecureTags = srcSecureTags;
         }

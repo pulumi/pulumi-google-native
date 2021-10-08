@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public sealed class GetInstanceResult
     {
         /// <summary>
+        /// A server-assigned timestamp representing when this Instance was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
         /// </summary>
         public readonly string DisplayName;
@@ -59,6 +63,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
         [OutputConstructor]
         private GetInstanceResult(
+            string createTime,
+
             string displayName,
 
             ImmutableDictionary<string, string> labels,
@@ -69,6 +75,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
             string type)
         {
+            CreateTime = createTime;
             DisplayName = displayName;
             Labels = labels;
             Name = name;

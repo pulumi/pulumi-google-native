@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     public sealed class RecipeArgs : Pulumi.ResourceArgs
     {
         [Input("arguments")]
-        private InputList<string>? _arguments;
+        private InputList<ImmutableDictionary<string, string>>? _arguments;
 
         /// <summary>
         /// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
         /// </summary>
-        public InputList<string> Arguments
+        public InputList<ImmutableDictionary<string, string>> Arguments
         {
-            get => _arguments ?? (_arguments = new InputList<string>());
+            get => _arguments ?? (_arguments = new InputList<ImmutableDictionary<string, string>>());
             set => _arguments = value;
         }
 
@@ -40,14 +40,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public Input<string>? EntryPoint { get; set; }
 
         [Input("environment")]
-        private InputMap<string>? _environment;
+        private InputList<ImmutableDictionary<string, string>>? _environment;
 
         /// <summary>
         /// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
         /// </summary>
-        public InputMap<string> Environment
+        public InputList<ImmutableDictionary<string, string>> Environment
         {
-            get => _environment ?? (_environment = new InputMap<string>());
+            get => _environment ?? (_environment = new InputList<ImmutableDictionary<string, string>>());
             set => _environment = value;
         }
 

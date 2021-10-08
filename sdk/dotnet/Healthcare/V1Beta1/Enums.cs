@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static ConsentState Active { get; } = new ConsentState("ACTIVE");
         /// <summary>
-        /// When a Consent is updated, the current version is archived and a new one is created with its state set to the updated Consent's previous state.
+        /// The archived state is currently not being used.
         /// </summary>
         public static ConsentState Archived { get; } = new ConsentState("ARCHIVED");
         /// <summary>

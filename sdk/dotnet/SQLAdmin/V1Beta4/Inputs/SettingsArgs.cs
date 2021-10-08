@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     public sealed class SettingsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
+        /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
         /// </summary>
         [Input("activationPolicy")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.SettingsActivationPolicy>? ActivationPolicy { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<Inputs.SqlActiveDirectoryConfigArgs>? ActiveDirectoryConfig { get; set; }
 
         /// <summary>
-        /// Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
+        /// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         /// </summary>
         [Input("availabilityType")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.SettingsAvailabilityType>? AvailabilityType { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<string>? DataDiskSizeGb { get; set; }
 
         /// <summary>
-        /// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
+        /// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
         /// </summary>
         [Input("dataDiskType")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.SettingsDataDiskType>? DataDiskType { get; set; }
@@ -100,13 +100,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<Inputs.InsightsConfigArgs>? InsightsConfig { get; set; }
 
         /// <summary>
-        /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
+        /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
         /// </summary>
         [Input("ipConfiguration")]
         public Input<Inputs.IpConfigurationArgs>? IpConfiguration { get; set; }
 
         /// <summary>
-        /// This is always *sql#settings*.
+        /// This is always **sql#settings**.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<Inputs.MaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
-        /// The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
+        /// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
         /// </summary>
         [Input("pricingPlan")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.SettingsPricingPlan>? PricingPlan { get; set; }
@@ -134,6 +134,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         /// </summary>
         [Input("settingsVersion")]
         public Input<string>? SettingsVersion { get; set; }
+
+        /// <summary>
+        /// SQL Server specific audit configuration.
+        /// </summary>
+        [Input("sqlServerAuditConfig")]
+        public Input<Inputs.SqlServerAuditConfigArgs>? SqlServerAuditConfig { get; set; }
 
         /// <summary>
         /// Configuration to increase storage size automatically. The default value is true.
@@ -148,7 +154,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<string>? StorageAutoResizeLimit { get; set; }
 
         /// <summary>
-        /// The tier (or machine type) for this instance, for example *db-custom-1-3840* .
+        /// The tier (or machine type) for this instance, for example **db-custom-1-3840**.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<int>? HostErrorTimeoutSeconds { get; set; }
 
         /// <summary>
+        /// Specifies the termination action for the instance.
+        /// </summary>
+        [Input("instanceTerminationAction")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.SchedulingInstanceTerminationAction>? InstanceTerminationAction { get; set; }
+
+        /// <summary>
         /// An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
         /// </summary>
         [Input("locationHint")]
@@ -74,6 +80,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
+
+        /// <summary>
+        /// Specifies the provisioning model of the instance.
+        /// </summary>
+        [Input("provisioningModel")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.SchedulingProvisioningModel>? ProvisioningModel { get; set; }
 
         public SchedulingArgs()
         {

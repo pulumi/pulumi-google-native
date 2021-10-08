@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.V1
     public partial class Route : Pulumi.CustomResource
     {
         /// <summary>
+        /// AS path.
+        /// </summary>
+        [Output("asPaths")]
+        public Output<ImmutableArray<Outputs.RouteAsPathResponse>> AsPaths { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -98,6 +104,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
+        /// </summary>
+        [Output("routeType")]
+        public Output<string> RouteType { get; private set; } = null!;
 
         /// <summary>
         /// Server-defined fully-qualified URL for this resource.

@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
         /// </summary>
         public readonly int Index;
         /// <summary>
+        /// Optional. Result of the last attempt of this instance. +optional
+        /// </summary>
+        public readonly Outputs.InstanceAttemptResultResponse LastAttemptResult;
+        /// <summary>
         /// Optional. Last exit code seen for this instance. +optional
         /// </summary>
         public readonly int LastExitCode;
@@ -53,6 +57,8 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 
             int index,
 
+            Outputs.InstanceAttemptResultResponse lastAttemptResult,
+
             int lastExitCode,
 
             int restarted,
@@ -64,6 +70,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
             CompletionTime = completionTime;
             Failed = failed;
             Index = index;
+            LastAttemptResult = lastAttemptResult;
             LastExitCode = lastExitCode;
             Restarted = restarted;
             StartTime = startTime;

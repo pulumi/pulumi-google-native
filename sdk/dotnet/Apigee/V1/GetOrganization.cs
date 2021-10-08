@@ -69,6 +69,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Description of the Apigee organization.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Display name for the Apigee organization. Unused, but reserved for future use.
+        /// </summary>
         public readonly string DisplayName;
         /// <summary>
         /// List of environments in the Apigee organization.

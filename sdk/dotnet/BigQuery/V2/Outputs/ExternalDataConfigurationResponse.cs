@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly bool Autodetect;
         /// <summary>
+        /// Additional properties to set if sourceFormat is set to Avro.
+        /// </summary>
+        public readonly Outputs.AvroOptionsResponse AvroOptions;
+        /// <summary>
         /// [Optional] Additional options if sourceFormat is set to BIGTABLE.
         /// </summary>
         public readonly Outputs.BigtableOptionsResponse BigtableOptions;
@@ -74,6 +78,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         private ExternalDataConfigurationResponse(
             bool autodetect,
 
+            Outputs.AvroOptionsResponse avroOptions,
+
             Outputs.BigtableOptionsResponse bigtableOptions,
 
             string compression,
@@ -101,6 +107,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             ImmutableArray<string> sourceUris)
         {
             Autodetect = autodetect;
+            AvroOptions = avroOptions;
             BigtableOptions = bigtableOptions;
             Compression = compression;
             ConnectionId = connectionId;

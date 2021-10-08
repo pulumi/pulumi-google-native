@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<string>? HostPort { get; set; }
 
         /// <summary>
-        /// This is always *sql#onPremisesConfiguration*.
+        /// This is always **sql#onPremisesConfiguration**.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

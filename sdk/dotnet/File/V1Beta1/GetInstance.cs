@@ -56,6 +56,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         public readonly ImmutableArray<Outputs.FileShareConfigResponse> FileShares;
         /// <summary>
+        /// KMS key name used for data encryption.
+        /// </summary>
+        public readonly string KmsKeyName;
+        /// <summary>
         /// Resource labels to represent user provided metadata.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -80,6 +84,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         public readonly string StatusMessage;
         /// <summary>
+        /// field indicates all the reasons the instance is in "SUSPENDED" state.
+        /// </summary>
+        public readonly ImmutableArray<string> SuspensionReasons;
+        /// <summary>
         /// The service tier of the instance.
         /// </summary>
         public readonly string Tier;
@@ -94,6 +102,8 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
             ImmutableArray<Outputs.FileShareConfigResponse> fileShares,
 
+            string kmsKeyName,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -106,18 +116,22 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
             string statusMessage,
 
+            ImmutableArray<string> suspensionReasons,
+
             string tier)
         {
             CreateTime = createTime;
             Description = description;
             Etag = etag;
             FileShares = fileShares;
+            KmsKeyName = kmsKeyName;
             Labels = labels;
             Name = name;
             Networks = networks;
             SatisfiesPzs = satisfiesPzs;
             State = state;
             StatusMessage = statusMessage;
+            SuspensionReasons = suspensionReasons;
             Tier = tier;
         }
     }

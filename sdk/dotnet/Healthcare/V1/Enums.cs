@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public static ConsentState Active { get; } = new ConsentState("ACTIVE");
         /// <summary>
-        /// When a Consent is updated, the current version is archived and a new one is created with its state set to the updated Consent's previous state.
+        /// The archived state is currently not being used.
         /// </summary>
         public static ConsentState Archived { get; } = new ConsentState("ARCHIVED");
         /// <summary>
@@ -237,6 +237,47 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     }
 
     /// <summary>
+    /// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+    /// </summary>
+    [EnumType]
+    public readonly struct ParserConfigVersion : IEquatable<ParserConfigVersion>
+    {
+        private readonly string _value;
+
+        private ParserConfigVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified parser version, equivalent to V1.
+        /// </summary>
+        public static ParserConfigVersion ParserVersionUnspecified { get; } = new ParserConfigVersion("PARSER_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// The `parsed_data` includes every given non-empty message field except the Field Separator (MSH-1) field. As a result, the parsed MSH segment starts with the MSH-2 field and the field numbers are off-by-one with respect to the HL7 standard.
+        /// </summary>
+        public static ParserConfigVersion V1 { get; } = new ParserConfigVersion("V1");
+        /// <summary>
+        /// The `parsed_data` includes every given non-empty message field.
+        /// </summary>
+        public static ParserConfigVersion V2 { get; } = new ParserConfigVersion("V2");
+
+        public static bool operator ==(ParserConfigVersion left, ParserConfigVersion right) => left.Equals(right);
+        public static bool operator !=(ParserConfigVersion left, ParserConfigVersion right) => !left.Equals(right);
+
+        public static explicit operator string(ParserConfigVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ParserConfigVersion other && Equals(other);
+        public bool Equals(ParserConfigVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies the output schema type. Schema type is required.
     /// </summary>
     [EnumType]
@@ -307,6 +348,51 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SchemaPackageSchematizedParsingType other && Equals(other);
         public bool Equals(SchemaPackageSchematizedParsingType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Determines how unexpected segments (segments not matched to the schema) are handled.
+    /// </summary>
+    [EnumType]
+    public readonly struct SchemaPackageUnexpectedSegmentHandling : IEquatable<SchemaPackageUnexpectedSegmentHandling>
+    {
+        private readonly string _value;
+
+        private SchemaPackageUnexpectedSegmentHandling(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified handling mode, equivalent to FAIL.
+        /// </summary>
+        public static SchemaPackageUnexpectedSegmentHandling UnexpectedSegmentHandlingModeUnspecified { get; } = new SchemaPackageUnexpectedSegmentHandling("UNEXPECTED_SEGMENT_HANDLING_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Unexpected segments fail to parse and return an error.
+        /// </summary>
+        public static SchemaPackageUnexpectedSegmentHandling Fail { get; } = new SchemaPackageUnexpectedSegmentHandling("FAIL");
+        /// <summary>
+        /// Unexpected segments do not fail, but are omitted from the output.
+        /// </summary>
+        public static SchemaPackageUnexpectedSegmentHandling Skip { get; } = new SchemaPackageUnexpectedSegmentHandling("SKIP");
+        /// <summary>
+        /// Unexpected segments do not fail, but are parsed in place and added to the current group. If a segment has a type definition, it is used, otherwise it is parsed as VARIES.
+        /// </summary>
+        public static SchemaPackageUnexpectedSegmentHandling Parse { get; } = new SchemaPackageUnexpectedSegmentHandling("PARSE");
+
+        public static bool operator ==(SchemaPackageUnexpectedSegmentHandling left, SchemaPackageUnexpectedSegmentHandling right) => left.Equals(right);
+        public static bool operator !=(SchemaPackageUnexpectedSegmentHandling left, SchemaPackageUnexpectedSegmentHandling right) => !left.Equals(right);
+
+        public static explicit operator string(SchemaPackageUnexpectedSegmentHandling value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SchemaPackageUnexpectedSegmentHandling other && Equals(other);
+        public bool Equals(SchemaPackageUnexpectedSegmentHandling other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

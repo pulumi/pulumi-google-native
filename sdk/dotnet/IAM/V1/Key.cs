@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.IAM.V1
     public partial class Key : Pulumi.CustomResource
     {
         /// <summary>
+        /// The key status.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool> Disabled { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies the algorithm (and possibly key size) for the key.
         /// </summary>
         [Output("keyAlgorithm")]

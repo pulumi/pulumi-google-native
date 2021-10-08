@@ -74,15 +74,15 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public readonly string GenerateTime;
         /// <summary>
-        /// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+        /// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
         /// </summary>
         public readonly string ImportFailureReason;
         /// <summary>
-        /// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+        /// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
         /// </summary>
         public readonly string ImportJob;
         /// <summary>
-        /// The time at which this CryptoKeyVersion's key material was imported.
+        /// The time at which this CryptoKeyVersion's key material was most recently imported.
         /// </summary>
         public readonly string ImportTime;
         /// <summary>
@@ -93,6 +93,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
         /// </summary>
         public readonly string ProtectionLevel;
+        /// <summary>
+        /// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+        /// </summary>
+        public readonly bool ReimportEligible;
         /// <summary>
         /// The current state of the CryptoKeyVersion.
         /// </summary>
@@ -124,6 +128,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
             string protectionLevel,
 
+            bool reimportEligible,
+
             string state)
         {
             Algorithm = algorithm;
@@ -138,6 +144,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
             ImportTime = importTime;
             Name = name;
             ProtectionLevel = protectionLevel;
+            ReimportEligible = reimportEligible;
             State = state;
         }
     }

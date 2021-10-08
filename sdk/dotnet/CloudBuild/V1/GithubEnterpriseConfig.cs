@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1
 {
     /// <summary>
-    /// Create an association between a GCP project and a GitHub Enterprise server. This API is experimental.
+    /// Create an association between a GCP project and a GitHub Enterprise server.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbuild/v1:GithubEnterpriseConfig")]
     public partial class GithubEnterpriseConfig : Pulumi.CustomResource
@@ -125,6 +125,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("gheConfigId")]
+        public Input<string>? GheConfigId { get; set; }
 
         /// <summary>
         /// The URL of the github enterprise host the configuration is for.

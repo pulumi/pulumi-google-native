@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+        /// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

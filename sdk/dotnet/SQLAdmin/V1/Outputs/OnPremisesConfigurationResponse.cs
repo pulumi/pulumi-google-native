@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly string HostPort;
         /// <summary>
-        /// This is always *sql#onPremisesConfiguration*.
+        /// This is always **sql#onPremisesConfiguration**.
         /// </summary>
         public readonly string Kind;
         /// <summary>

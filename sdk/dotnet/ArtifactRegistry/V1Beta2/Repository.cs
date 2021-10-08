@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Maven repository config contains repository level configuration for the repositories of maven type.
+        /// </summary>
+        [Output("mavenConfig")]
+        public Output<Outputs.MavenRepositoryConfigResponse> MavenConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         /// </summary>
         [Output("name")]
@@ -140,6 +146,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Maven repository config contains repository level configuration for the repositories of maven type.
+        /// </summary>
+        [Input("mavenConfig")]
+        public Input<Inputs.MavenRepositoryConfigArgs>? MavenConfig { get; set; }
 
         /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".

@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
 
         /// <summary>
-        /// PostKeyRevocationActionType of the instance.
+        /// PostKeyRevocationActionType of the instance.(will be deprecated soon)
         /// </summary>
         [Input("postKeyRevocationActionType")]
         public Input<Pulumi.GoogleNative.Compute.Beta.InstancePropertiesPostKeyRevocationActionType>? PostKeyRevocationActionType { get; set; }

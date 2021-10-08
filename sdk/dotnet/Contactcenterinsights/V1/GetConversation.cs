@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public readonly Outputs.GoogleCloudContactcenterinsightsV1AnalysisResponse LatestAnalysis;
         /// <summary>
-        /// Immutable. The conversation medium.
+        /// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         /// </summary>
         public readonly string Medium;
         /// <summary>

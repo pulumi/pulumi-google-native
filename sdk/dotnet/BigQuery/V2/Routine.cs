@@ -94,6 +94,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Output("routineType")]
         public Output<string> RoutineType { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+        /// </summary>
+        [Output("strictMode")]
+        public Output<bool> StrictMode { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Routine resource with the given unique name, arguments, and options.
@@ -216,6 +222,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("routineType", required: true)]
         public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineRoutineType> RoutineType { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+        /// </summary>
+        [Input("strictMode")]
+        public Input<bool>? StrictMode { get; set; }
 
         public RoutineArgs()
         {

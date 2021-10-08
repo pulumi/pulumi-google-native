@@ -61,19 +61,19 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> GenerateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+        /// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
         /// </summary>
         [Output("importFailureReason")]
         public Output<string> ImportFailureReason { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+        /// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
         /// </summary>
         [Output("importJob")]
         public Output<string> ImportJob { get; private set; } = null!;
 
         /// <summary>
-        /// The time at which this CryptoKeyVersion's key material was imported.
+        /// The time at which this CryptoKeyVersion's key material was most recently imported.
         /// </summary>
         [Output("importTime")]
         public Output<string> ImportTime { get; private set; } = null!;
@@ -89,6 +89,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         [Output("protectionLevel")]
         public Output<string> ProtectionLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+        /// </summary>
+        [Output("reimportEligible")]
+        public Output<bool> ReimportEligible { get; private set; } = null!;
 
         /// <summary>
         /// The current state of the CryptoKeyVersion.

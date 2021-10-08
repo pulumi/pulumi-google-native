@@ -196,7 +196,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    ///  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
+    /// The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
     /// </summary>
     [EnumType]
     public readonly struct InstanceBackendType : IEquatable<InstanceBackendType>
@@ -241,7 +241,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+    /// The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
     /// </summary>
     [EnumType]
     public readonly struct InstanceDatabaseVersion : IEquatable<InstanceDatabaseVersion>
@@ -346,7 +346,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
+    /// The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
     /// </summary>
     [EnumType]
     public readonly struct InstanceInstanceType : IEquatable<InstanceInstanceType>
@@ -391,7 +391,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+    /// The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
     /// </summary>
     [EnumType]
     public readonly struct InstanceState : IEquatable<InstanceState>
@@ -498,7 +498,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
+    /// The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
     /// </summary>
     [EnumType]
     public readonly struct IpMappingType : IEquatable<IpMappingType>
@@ -547,7 +547,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
+    /// Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
     /// </summary>
     [EnumType]
     public readonly struct MaintenanceWindowUpdateTrack : IEquatable<MaintenanceWindowUpdateTrack>
@@ -588,7 +588,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
+    /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
     /// </summary>
     [EnumType]
     public readonly struct SettingsActivationPolicy : IEquatable<SettingsActivationPolicy>
@@ -633,7 +633,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
+    /// Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
     /// </summary>
     [EnumType]
     public readonly struct SettingsAvailabilityType : IEquatable<SettingsAvailabilityType>
@@ -674,7 +674,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
+    /// The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
     /// </summary>
     [EnumType]
     public readonly struct SettingsDataDiskType : IEquatable<SettingsDataDiskType>
@@ -719,7 +719,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
+    /// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
     /// </summary>
     [EnumType]
     public readonly struct SettingsPricingPlan : IEquatable<SettingsPricingPlan>
@@ -760,7 +760,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the proactive database wellness job
+    /// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
     /// </summary>
     [EnumType]
     public readonly struct SqlOutOfDiskReportSqlOutOfDiskState : IEquatable<SqlOutOfDiskReportSqlOutOfDiskState>

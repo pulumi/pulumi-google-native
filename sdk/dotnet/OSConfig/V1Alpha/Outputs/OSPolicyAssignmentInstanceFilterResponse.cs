@@ -32,10 +32,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
         /// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
         /// </summary>
         public readonly ImmutableArray<Outputs.OSPolicyAssignmentInstanceFilterInventoryResponse> Inventories;
-        /// <summary>
-        /// A VM is selected if it's OS short name matches with any of the values provided in this list.
-        /// </summary>
-        public readonly ImmutableArray<string> OsShortNames;
 
         [OutputConstructor]
         private OSPolicyAssignmentInstanceFilterResponse(
@@ -45,15 +41,12 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 
             ImmutableArray<Outputs.OSPolicyAssignmentLabelSetResponse> inclusionLabels,
 
-            ImmutableArray<Outputs.OSPolicyAssignmentInstanceFilterInventoryResponse> inventories,
-
-            ImmutableArray<string> osShortNames)
+            ImmutableArray<Outputs.OSPolicyAssignmentInstanceFilterInventoryResponse> inventories)
         {
             All = all;
             ExclusionLabels = exclusionLabels;
             InclusionLabels = inclusionLabels;
             Inventories = inventories;
-            OsShortNames = osShortNames;
         }
     }
 }

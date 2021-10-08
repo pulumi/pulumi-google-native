@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
 {
 
     /// <summary>
-    /// A POSIX filesystem data source or sink.
+    /// A POSIX filesystem resource.
     /// </summary>
     public sealed class PosixFilesystemArgs : Pulumi.ResourceArgs
     {

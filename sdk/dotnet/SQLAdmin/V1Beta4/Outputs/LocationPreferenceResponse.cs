@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 {
 
     /// <summary>
-    /// Preferred location. This specifies where a Cloud SQL instance is located, either in a specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
+    /// Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
     /// </summary>
     [OutputType]
     public sealed class LocationPreferenceResponse
@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string FollowGaeApplication;
         /// <summary>
-        /// This is always *sql#locationPreference*.
+        /// This is always **sql#locationPreference**.
         /// </summary>
         public readonly string Kind;
         /// <summary>

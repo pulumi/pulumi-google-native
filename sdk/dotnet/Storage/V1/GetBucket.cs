@@ -61,6 +61,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketCorsItemResponse> Cors;
         /// <summary>
+        /// The bucket's custom placement configuration for Custom Dual Regions.
+        /// </summary>
+        public readonly Outputs.BucketCustomPlacementConfigResponse CustomPlacementConfig;
+        /// <summary>
         /// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
         /// </summary>
         public readonly bool DefaultEventBasedHold;
@@ -125,6 +129,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly Outputs.BucketRetentionPolicyResponse RetentionPolicy;
         /// <summary>
+        /// The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
+        /// </summary>
+        public readonly string Rpo;
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPZS;
@@ -152,10 +160,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
         /// </summary>
         public readonly Outputs.BucketWebsiteResponse Website;
-        /// <summary>
-        /// The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
-        /// </summary>
-        public readonly ImmutableArray<string> ZoneAffinity;
 
         [OutputConstructor]
         private GetBucketResult(
@@ -164,6 +168,8 @@ namespace Pulumi.GoogleNative.Storage.V1
             Outputs.BucketBillingResponse billing,
 
             ImmutableArray<Outputs.BucketCorsItemResponse> cors,
+
+            Outputs.BucketCustomPlacementConfigResponse customPlacementConfig,
 
             bool defaultEventBasedHold,
 
@@ -197,6 +203,8 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             Outputs.BucketRetentionPolicyResponse retentionPolicy,
 
+            string rpo,
+
             bool satisfiesPZS,
 
             string selfLink,
@@ -209,13 +217,12 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             Outputs.BucketVersioningResponse versioning,
 
-            Outputs.BucketWebsiteResponse website,
-
-            ImmutableArray<string> zoneAffinity)
+            Outputs.BucketWebsiteResponse website)
         {
             Acl = acl;
             Billing = billing;
             Cors = cors;
+            CustomPlacementConfig = customPlacementConfig;
             DefaultEventBasedHold = defaultEventBasedHold;
             DefaultObjectAcl = defaultObjectAcl;
             Encryption = encryption;
@@ -232,6 +239,7 @@ namespace Pulumi.GoogleNative.Storage.V1
             Owner = owner;
             ProjectNumber = projectNumber;
             RetentionPolicy = retentionPolicy;
+            Rpo = rpo;
             SatisfiesPZS = satisfiesPZS;
             SelfLink = selfLink;
             StorageClass = storageClass;
@@ -239,7 +247,6 @@ namespace Pulumi.GoogleNative.Storage.V1
             Updated = updated;
             Versioning = versioning;
             Website = website;
-            ZoneAffinity = zoneAffinity;
         }
     }
 }

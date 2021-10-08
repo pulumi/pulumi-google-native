@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
 {
 
     /// <summary>
-    /// The configuration settings for the Airflow web server App Engine instance.
+    /// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
     /// </summary>
     [OutputType]
     public sealed class WebServerConfigResponse

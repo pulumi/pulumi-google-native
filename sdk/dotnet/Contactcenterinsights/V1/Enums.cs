@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 {
     /// <summary>
-    /// Immutable. The conversation medium.
+    /// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
     /// </summary>
     [EnumType]
     public readonly struct ConversationMedium : IEquatable<ConversationMedium>
@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         }
 
         /// <summary>
-        /// Default value.
+        /// Default value, if unspecified will default to PHONE_CALL.
         /// </summary>
         public static ConversationMedium MediumUnspecified { get; } = new ConversationMedium("MEDIUM_UNSPECIFIED");
         /// <summary>
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
     }
 
     /// <summary>
-    /// Required. Medium of conversations used in training data.
+    /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
     /// </summary>
     [EnumType]
     public readonly struct GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium : IEquatable<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium>
@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         }
 
         /// <summary>
-        /// Default value.
+        /// Default value, if unspecified will default to PHONE_CALL.
         /// </summary>
         public static GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium MediumUnspecified { get; } = new GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium("MEDIUM_UNSPECIFIED");
         /// <summary>

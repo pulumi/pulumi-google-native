@@ -205,6 +205,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
+        /// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+        /// </summary>
+        [Output("serviceBindings")]
+        public Output<ImmutableArray<string>> ServiceBindings { get; private set; } = null!;
+
+        /// <summary>
+        /// URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. If used with a backend service, must reference a global policy. If used with a regional backend service, must reference a regional policy.
+        /// </summary>
+        [Output("serviceLbPolicy")]
+        public Output<string> ServiceLbPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Output("sessionAffinity")]
@@ -437,6 +449,24 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("securitySettings")]
         public Input<Inputs.SecuritySettingsArgs>? SecuritySettings { get; set; }
+
+        [Input("serviceBindings")]
+        private InputList<string>? _serviceBindings;
+
+        /// <summary>
+        /// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+        /// </summary>
+        public InputList<string> ServiceBindings
+        {
+            get => _serviceBindings ?? (_serviceBindings = new InputList<string>());
+            set => _serviceBindings = value;
+        }
+
+        /// <summary>
+        /// URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. If used with a backend service, must reference a global policy. If used with a regional backend service, must reference a regional policy.
+        /// </summary>
+        [Input("serviceLbPolicy")]
+        public Input<string>? ServiceLbPolicy { get; set; }
 
         /// <summary>
         /// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.

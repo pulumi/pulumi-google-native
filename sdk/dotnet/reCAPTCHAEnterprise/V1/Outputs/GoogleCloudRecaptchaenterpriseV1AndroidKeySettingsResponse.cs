@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
     public sealed class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse
     {
         /// <summary>
+        /// If set to true, it means allowed_package_names will not be enforced.
+        /// </summary>
+        public readonly bool AllowAllPackageNames;
+        /// <summary>
         /// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         /// </summary>
         public readonly ImmutableArray<string> AllowedPackageNames;
 
         [OutputConstructor]
-        private GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(ImmutableArray<string> allowedPackageNames)
+        private GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(
+            bool allowAllPackageNames,
+
+            ImmutableArray<string> allowedPackageNames)
         {
+            AllowAllPackageNames = allowAllPackageNames;
             AllowedPackageNames = allowedPackageNames;
         }
     }

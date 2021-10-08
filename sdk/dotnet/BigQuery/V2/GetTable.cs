@@ -51,6 +51,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
+        /// The default collation of the table.
+        /// </summary>
+        public readonly string DefaultCollation;
+        /// <summary>
         /// [Optional] A user-friendly description of this table.
         /// </summary>
         public readonly string Description;
@@ -161,6 +165,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string creationTime,
 
+            string defaultCollation,
+
             string description,
 
             Outputs.EncryptionConfigurationResponse encryptionConfiguration,
@@ -215,6 +221,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         {
             Clustering = clustering;
             CreationTime = creationTime;
+            DefaultCollation = defaultCollation;
             Description = description;
             EncryptionConfiguration = encryptionConfiguration;
             Etag = etag;

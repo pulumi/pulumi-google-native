@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
     public sealed class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse
     {
         /// <summary>
+        /// Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since then.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
         /// Resource name of the assigned issue.
         /// </summary>
         public readonly string Issue;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudContactcenterinsightsV1IssueAssignmentResponse(
+            string displayName,
+
             string issue,
 
             double score)
         {
+            DisplayName = displayName;
             Issue = issue;
             Score = score;
         }

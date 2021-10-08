@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Inputs.TextArgs>? Text { get; set; }
 
         /// <summary>
+        /// A widget that displays time series data in a tabular format.
+        /// </summary>
+        [Input("timeSeriesTable")]
+        public Input<Inputs.TimeSeriesTableArgs>? TimeSeriesTable { get; set; }
+
+        /// <summary>
         /// Optional. The title of the widget.
         /// </summary>
         [Input("title")]

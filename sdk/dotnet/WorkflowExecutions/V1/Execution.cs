@@ -25,6 +25,12 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         public Output<string> Argument { get; private set; } = null!;
 
         /// <summary>
+        /// The call logging level associated to this execution.
+        /// </summary>
+        [Output("callLogLevel")]
+        public Output<string> CallLogLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Marks the end of execution, successful or not.
         /// </summary>
         [Output("endTime")]
@@ -116,6 +122,12 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         [Input("argument")]
         public Input<string>? Argument { get; set; }
+
+        /// <summary>
+        /// The call logging level associated to this execution.
+        /// </summary>
+        [Input("callLogLevel")]
+        public Input<Pulumi.GoogleNative.WorkflowExecutions.V1.ExecutionCallLogLevel>? CallLogLevel { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

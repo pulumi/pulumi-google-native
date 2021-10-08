@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class InstanceGroupManagerStatusResponse
     {
         /// <summary>
+        /// A status of consistency of Instances' config applied to instances with Instances' config defined in managed instance group.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerStatusAllInstancesConfigResponse AllInstancesConfig;
+        /// <summary>
         /// The URL of the Autoscaler that targets this instance group manager.
         /// </summary>
         public readonly string Autoscaler;
@@ -32,6 +36,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private InstanceGroupManagerStatusResponse(
+            Outputs.InstanceGroupManagerStatusAllInstancesConfigResponse allInstancesConfig,
+
             string autoscaler,
 
             bool isStable,
@@ -40,6 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.InstanceGroupManagerStatusVersionTargetResponse versionTarget)
         {
+            AllInstancesConfig = allInstancesConfig;
             Autoscaler = autoscaler;
             IsStable = isStable;
             Stateful = stateful;

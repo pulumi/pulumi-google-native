@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<bool>? EnableNestedVirtualization { get; set; }
 
         /// <summary>
+        /// Whether to enable UEFI networking for instance creation.
+        /// </summary>
+        [Input("enableUefiNetworking")]
+        public Input<bool>? EnableUefiNetworking { get; set; }
+
+        /// <summary>
         /// The number of vNUMA nodes.
         /// </summary>
         [Input("numaNodeCount")]

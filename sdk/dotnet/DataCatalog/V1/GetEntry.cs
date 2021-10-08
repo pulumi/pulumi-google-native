@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly string LinkedResource;
         /// <summary>
-        /// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. 
+        /// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         public readonly string Name;
         /// <summary>

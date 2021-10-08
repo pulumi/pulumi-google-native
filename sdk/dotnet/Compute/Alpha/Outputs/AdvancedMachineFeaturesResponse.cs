@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly bool EnableNestedVirtualization;
         /// <summary>
+        /// Whether to enable UEFI networking for instance creation.
+        /// </summary>
+        public readonly bool EnableUefiNetworking;
+        /// <summary>
         /// The number of vNUMA nodes.
         /// </summary>
         public readonly int NumaNodeCount;
@@ -37,6 +41,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private AdvancedMachineFeaturesResponse(
             bool enableNestedVirtualization,
 
+            bool enableUefiNetworking,
+
             int numaNodeCount,
 
             int threadsPerCore,
@@ -44,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             int visibleCoreCount)
         {
             EnableNestedVirtualization = enableNestedVirtualization;
+            EnableUefiNetworking = enableUefiNetworking;
             NumaNodeCount = numaNodeCount;
             ThreadsPerCore = threadsPerCore;
             VisibleCoreCount = visibleCoreCount;

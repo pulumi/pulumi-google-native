@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Output<string> Instance { get; private set; } = null!;
 
         /// <summary>
-        /// This is always sql#sslCert.
+        /// This is always **sql#sslCert**.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;

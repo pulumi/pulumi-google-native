@@ -60,6 +60,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// Maven repository config contains repository level configuration for the repositories of maven type.
+        /// </summary>
+        public readonly Outputs.MavenRepositoryConfigResponse MavenConfig;
+        /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         /// </summary>
         public readonly string Name;
@@ -80,6 +84,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
 
             ImmutableDictionary<string, string> labels,
 
+            Outputs.MavenRepositoryConfigResponse mavenConfig,
+
             string name,
 
             string updateTime)
@@ -89,6 +95,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
             Format = format;
             KmsKeyName = kmsKeyName;
             Labels = labels;
+            MavenConfig = mavenConfig;
             Name = name;
             UpdateTime = updateTime;
         }

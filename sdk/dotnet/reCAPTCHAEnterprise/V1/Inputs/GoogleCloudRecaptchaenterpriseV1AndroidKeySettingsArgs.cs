@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
     /// </summary>
     public sealed class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If set to true, it means allowed_package_names will not be enforced.
+        /// </summary>
+        [Input("allowAllPackageNames")]
+        public Input<bool>? AllowAllPackageNames { get; set; }
+
         [Input("allowedPackageNames")]
         private InputList<string>? _allowedPackageNames;
 

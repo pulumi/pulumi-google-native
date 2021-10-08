@@ -109,6 +109,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
 
     public sealed class ClusterArgs : Pulumi.ResourceArgs
     {
+        [Input("actionOnFailedPrimaryWorkers")]
+        public Input<string>? ActionOnFailedPrimaryWorkers { get; set; }
+
         /// <summary>
         /// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         /// </summary>

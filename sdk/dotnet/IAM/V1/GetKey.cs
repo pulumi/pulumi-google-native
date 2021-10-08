@@ -43,6 +43,10 @@ namespace Pulumi.GoogleNative.IAM.V1
     public sealed class GetKeyResult
     {
         /// <summary>
+        /// The key status.
+        /// </summary>
+        public readonly bool Disabled;
+        /// <summary>
         /// Specifies the algorithm (and possibly key size) for the key.
         /// </summary>
         public readonly string KeyAlgorithm;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.IAM.V1
 
         [OutputConstructor]
         private GetKeyResult(
+            bool disabled,
+
             string keyAlgorithm,
 
             string keyOrigin,
@@ -99,6 +105,7 @@ namespace Pulumi.GoogleNative.IAM.V1
 
             string validBeforeTime)
         {
+            Disabled = disabled;
             KeyAlgorithm = keyAlgorithm;
             KeyOrigin = keyOrigin;
             KeyType = keyType;

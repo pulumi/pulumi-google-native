@@ -202,6 +202,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<Outputs.MasterAuthorizedNetworksConfigResponse> MasterAuthorizedNetworksConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        /// </summary>
+        [Output("meshCertificates")]
+        public Output<Outputs.MeshCertificatesResponse> MeshCertificates { get; private set; } = null!;
+
+        /// <summary>
         /// Monitoring configuration for the cluster.
         /// </summary>
         [Output("monitoringConfig")]
@@ -554,6 +560,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("masterAuthorizedNetworksConfig")]
         public Input<Inputs.MasterAuthorizedNetworksConfigArgs>? MasterAuthorizedNetworksConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        /// </summary>
+        [Input("meshCertificates")]
+        public Input<Inputs.MeshCertificatesArgs>? MeshCertificates { get; set; }
 
         /// <summary>
         /// Monitoring configuration for the cluster.

@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs. 
+        /// Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
         /// </summary>
         public readonly string Name;
         /// <summary>

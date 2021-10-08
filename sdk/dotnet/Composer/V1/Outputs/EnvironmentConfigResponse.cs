@@ -25,11 +25,11 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
         /// </summary>
         public readonly string DagGcsPrefix;
         /// <summary>
-        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly Outputs.DatabaseConfigResponse DatabaseConfig;
         /// <summary>
-        /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+        /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly Outputs.EncryptionConfigResponse EncryptionConfig;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
         /// </summary>
         public readonly Outputs.NodeConfigResponse NodeConfig;
         /// <summary>
-        /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+        /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly int NodeCount;
         /// <summary>
@@ -57,7 +57,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
         /// </summary>
         public readonly Outputs.WebServerConfigResponse WebServerConfig;
         /// <summary>
-        /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+        /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly Outputs.WebServerNetworkAccessControlResponse WebServerNetworkAccessControl;
 

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> FolderMap;
         /// <summary>
+        /// A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ProjectMap;
+        /// <summary>
         /// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         /// </summary>
         public readonly ImmutableArray<string> Projects;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private ShareSettingsResponse(
             ImmutableDictionary<string, string> folderMap,
 
+            ImmutableDictionary<string, string> projectMap,
+
             ImmutableArray<string> projects,
 
             string shareType)
         {
             FolderMap = folderMap;
+            ProjectMap = projectMap;
             Projects = projects;
             ShareType = shareType;
         }

@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
         }
 
         /// <summary>
+        /// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+        /// </summary>
+        [Input("endpointProtocol")]
+        public Input<Pulumi.GoogleNative.Metastore.V1Alpha.HiveMetastoreConfigEndpointProtocol>? EndpointProtocol { get; set; }
+
+        /// <summary>
         /// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
         /// </summary>
         [Input("kerberosConfig")]

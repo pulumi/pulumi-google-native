@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<int> Index { get; set; } = null!;
 
         /// <summary>
+        /// Optional. Result of the last attempt of this instance. +optional
+        /// </summary>
+        [Input("lastAttemptResult")]
+        public Input<Inputs.InstanceAttemptResultArgs>? LastAttemptResult { get; set; }
+
+        /// <summary>
         /// Optional. Last exit code seen for this instance. +optional
         /// </summary>
         [Input("lastExitCode")]

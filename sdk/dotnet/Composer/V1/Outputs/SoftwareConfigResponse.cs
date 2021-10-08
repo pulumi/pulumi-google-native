@@ -33,9 +33,13 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> PypiPackages;
         /// <summary>
-        /// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
+        /// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
         /// </summary>
         public readonly string PythonVersion;
+        /// <summary>
+        /// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+        /// </summary>
+        public readonly int SchedulerCount;
 
         [OutputConstructor]
         private SoftwareConfigResponse(
@@ -47,13 +51,16 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
 
             ImmutableDictionary<string, string> pypiPackages,
 
-            string pythonVersion)
+            string pythonVersion,
+
+            int schedulerCount)
         {
             AirflowConfigOverrides = airflowConfigOverrides;
             EnvVariables = envVariables;
             ImageVersion = imageVersion;
             PypiPackages = pypiPackages;
             PythonVersion = pythonVersion;
+            SchedulerCount = schedulerCount;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Outputs
     public sealed class MembershipEndpointResponse
     {
         /// <summary>
-        /// Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
+        /// Optional. Specific information for a GKE-on-GCP cluster.
         /// </summary>
         public readonly Outputs.GkeClusterResponse GkeCluster;
         /// <summary>
@@ -28,6 +28,14 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Outputs
         /// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
         /// </summary>
         public readonly Outputs.KubernetesResourceResponse KubernetesResource;
+        /// <summary>
+        /// Optional. Specific information for a GKE Multi-Cloud cluster.
+        /// </summary>
+        public readonly Outputs.MultiCloudClusterResponse MultiCloudCluster;
+        /// <summary>
+        /// Optional. Specific information for a GKE On-Prem cluster.
+        /// </summary>
+        public readonly Outputs.OnPremClusterResponse OnPremCluster;
 
         [OutputConstructor]
         private MembershipEndpointResponse(
@@ -35,11 +43,17 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Outputs
 
             Outputs.KubernetesMetadataResponse kubernetesMetadata,
 
-            Outputs.KubernetesResourceResponse kubernetesResource)
+            Outputs.KubernetesResourceResponse kubernetesResource,
+
+            Outputs.MultiCloudClusterResponse multiCloudCluster,
+
+            Outputs.OnPremClusterResponse onPremCluster)
         {
             GkeCluster = gkeCluster;
             KubernetesMetadata = kubernetesMetadata;
             KubernetesResource = kubernetesResource;
+            MultiCloudCluster = multiCloudCluster;
+            OnPremCluster = onPremCluster;
         }
     }
 }

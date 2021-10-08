@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
     public sealed class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse
     {
         /// <summary>
+        /// If set to true, it means allowed_bundle_ids will not be enforced.
+        /// </summary>
+        public readonly bool AllowAllBundleIds;
+        /// <summary>
         /// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         /// </summary>
         public readonly ImmutableArray<string> AllowedBundleIds;
 
         [OutputConstructor]
-        private GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(ImmutableArray<string> allowedBundleIds)
+        private GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(
+            bool allowAllBundleIds,
+
+            ImmutableArray<string> allowedBundleIds)
         {
+            AllowAllBundleIds = allowAllBundleIds;
             AllowedBundleIds = allowedBundleIds;
         }
     }

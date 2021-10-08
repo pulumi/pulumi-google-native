@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<int>? AdvertisedRoutePriority { get; set; }
 
         /// <summary>
-        /// BFD configuration for the BGP peering. Not currently available publicly.
+        /// BFD configuration for the BGP peering.
         /// </summary>
         [Input("bfd")]
         public Input<Inputs.RouterBgpPeerBfdArgs>? Bfd { get; set; }

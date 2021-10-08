@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Inputs
     public sealed class DynamicGroupQueryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' &amp;&amp; loc.building_id=='bar')`
+        /// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' &amp;&amp; loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
         /// </summary>
         [Input("query")]
         public Input<string>? Query { get; set; }

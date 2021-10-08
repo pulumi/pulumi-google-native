@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
         /// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
         /// </summary>
         public readonly string SegmentTerminator;
+        /// <summary>
+        /// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+        /// </summary>
+        public readonly string Version;
 
         [OutputConstructor]
         private ParserConfigResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 
             Outputs.SchemaPackageResponse schema,
 
-            string segmentTerminator)
+            string segmentTerminator,
+
+            string version)
         {
             AllowNullHeader = allowNullHeader;
             Schema = schema;
             SegmentTerminator = segmentTerminator;
+            Version = version;
         }
     }
 }

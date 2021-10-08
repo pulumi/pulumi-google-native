@@ -189,6 +189,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("sessionAffinity")]
         public Output<string> SessionAffinity { get; private set; } = null!;
 
+        [Output("subsetting")]
+        public Output<Outputs.SubsettingResponse> Subsetting { get; private set; } = null!;
+
         /// <summary>
         /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         /// </summary>
@@ -410,6 +413,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("sessionAffinity")]
         public Input<Pulumi.GoogleNative.Compute.V1.RegionBackendServiceSessionAffinity>? SessionAffinity { get; set; }
+
+        [Input("subsetting")]
+        public Input<Inputs.SubsettingArgs>? Subsetting { get; set; }
 
         /// <summary>
         /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
