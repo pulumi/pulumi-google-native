@@ -5,6 +5,10 @@ CHANGELOG
 
 (None)
 
+## 0.8.0 (2021-10-08)
+
+- Update to support the latest resource definitions and the latest Pulumi SDK
+
 ## 0.7.0 (2021-08-06)
 
 - Use the appropriate HTTP verbs for invokes [#175](https://github.com/pulumi/pulumi-google-native/pull/175)
