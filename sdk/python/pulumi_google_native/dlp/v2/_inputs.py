@@ -3014,7 +3014,7 @@ class GooglePrivacyDlpV2PrimitiveTransformationArgs:
         :param pulumi.Input['GooglePrivacyDlpV2DateShiftConfigArgs'] date_shift_config: Date Shift
         :param pulumi.Input['GooglePrivacyDlpV2FixedSizeBucketingConfigArgs'] fixed_size_bucketing_config: Fixed size bucketing
         :param pulumi.Input['GooglePrivacyDlpV2RedactConfigArgs'] redact_config: Redact
-        :param pulumi.Input['GooglePrivacyDlpV2ReplaceValueConfigArgs'] replace_config: Replace
+        :param pulumi.Input['GooglePrivacyDlpV2ReplaceValueConfigArgs'] replace_config: Replace with a specified value.
         :param pulumi.Input['GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs'] replace_with_info_type_config: Replace with infotype
         :param pulumi.Input['GooglePrivacyDlpV2TimePartConfigArgs'] time_part_config: Time extraction
         """
@@ -3141,7 +3141,7 @@ class GooglePrivacyDlpV2PrimitiveTransformationArgs:
     @pulumi.getter(name="replaceConfig")
     def replace_config(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ReplaceValueConfigArgs']]:
         """
-        Replace
+        Replace with a specified value.
         """
         return pulumi.get(self, "replace_config")
 

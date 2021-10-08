@@ -281,6 +281,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["creation_time"] = None
+            __props__.__dict__["default_collation"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["last_modified_time"] = None
@@ -311,6 +312,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["access"] = None
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["dataset_reference"] = None
+        __props__.__dict__["default_collation"] = None
         __props__.__dict__["default_encryption_configuration"] = None
         __props__.__dict__["default_partition_expiration_ms"] = None
         __props__.__dict__["default_table_expiration_ms"] = None
@@ -349,6 +351,14 @@ class Dataset(pulumi.CustomResource):
         [Required] A reference that identifies the dataset.
         """
         return pulumi.get(self, "dataset_reference")
+
+    @property
+    @pulumi.getter(name="defaultCollation")
+    def default_collation(self) -> pulumi.Output[str]:
+        """
+        The default collation of the dataset.
+        """
+        return pulumi.get(self, "default_collation")
 
     @property
     @pulumi.getter(name="defaultEncryptionConfiguration")

@@ -9,8 +9,12 @@ from ._enums import *
 from .edge_cache_keyset_iam_policy import *
 from .edge_cache_origin_iam_policy import *
 from .edge_cache_service_iam_policy import *
+from .endpoint_policy import *
+from .endpoint_policy_iam_policy import *
 from .get_edge_cache_keyset_iam_policy import *
 from .get_edge_cache_origin_iam_policy import *
 from .get_edge_cache_service_iam_policy import *
+from .get_endpoint_policy import *
+from .get_endpoint_policy_iam_policy import *
 from ._inputs import *
 from . import outputs

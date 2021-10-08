@@ -33,6 +33,7 @@ __all__ = [
     'SchedulerAcceleratorConfigResponse',
     'ShieldedInstanceConfigResponse',
     'UpgradeHistoryEntryResponse',
+    'VertexAIParametersResponse',
     'VirtualMachineConfigResponse',
     'VirtualMachineResponse',
     'VmImageResponse',
@@ -236,12 +237,12 @@ class DiskResponse(dict):
         :param str disk_size_gb: Indicates the size of the disk in base-2 GB.
         :param Sequence['GuestOsFeatureResponse'] guest_os_features: Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         :param str index: A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
-        :param str interface: Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+        :param str interface: Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
         :param str kind: Type of the resource. Always compute#attachedDisk for attached disks.
         :param Sequence[str] licenses: A list of publicly visible licenses. Reserved for Google's use. A License represents billing and aggregate usage data for public and marketplace images.
-        :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+        :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
         :param str source: Indicates a valid partial or full URL to an existing Persistent Disk resource.
-        :param str type: Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
+        :param str type: Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: * PERSISTENT * SCRATCH
         """
         pulumi.set(__self__, "auto_delete", auto_delete)
         pulumi.set(__self__, "boot", boot)
@@ -308,7 +309,7 @@ class DiskResponse(dict):
     @pulumi.getter
     def interface(self) -> str:
         """
-        Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+        Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
         """
         return pulumi.get(self, "interface")
 
@@ -332,7 +333,7 @@ class DiskResponse(dict):
     @pulumi.getter
     def mode(self) -> str:
         """
-        The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+        The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
         """
         return pulumi.get(self, "mode")
 
@@ -348,7 +349,7 @@ class DiskResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
+        Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: * PERSISTENT * SCRATCH
         """
         return pulumi.get(self, "type")
 
@@ -441,7 +442,7 @@ class ExecutionResponse(dict):
         :param str display_name: Name used for UI purposes. Name can only contain alphanumeric characters and underscores '_'.
         :param 'ExecutionTemplateResponse' execution_template: execute metadata including name, hardware spec, region, labels, etc.
         :param str job_uri: The URI of the external job used to execute the notebook.
-        :param str name: The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+        :param str name: The resource name of the execute. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
         :param str output_notebook_file: Output notebook file generated by this execution
         :param str state: State of the underlying AI Platform job.
         :param str update_time: Time the Execution was last updated.
@@ -500,7 +501,7 @@ class ExecutionResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+        The resource name of the execute. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
         """
         return pulumi.get(self, "name")
 
@@ -555,6 +556,8 @@ class ExecutionTemplateResponse(dict):
             suggest = "params_yaml_file"
         elif key == "serviceAccount":
             suggest = "service_account"
+        elif key == "vertexAiParameters":
+            suggest = "vertex_ai_parameters"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ExecutionTemplateResponse. Access the value via the '{suggest}' property getter instead.")
@@ -578,20 +581,22 @@ class ExecutionTemplateResponse(dict):
                  output_notebook_folder: str,
                  parameters: str,
                  params_yaml_file: str,
-                 service_account: str):
+                 service_account: str,
+                 vertex_ai_parameters: 'outputs.VertexAIParametersResponse'):
         """
         The description a notebook execution workload.
         :param 'SchedulerAcceleratorConfigResponse' accelerator_config: Configuration (count and accelerator type) for hardware running notebook execution.
         :param str container_image_uri: Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
         :param 'DataprocParametersResponse' dataproc_parameters: Parameters used in Dataproc JobType executions.
-        :param str input_notebook_file: Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        :param str input_notebook_file: Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
         :param str job_type: The type of Job to be used on this execution.
         :param Mapping[str, str] labels: Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
-        :param str master_type: Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
-        :param str output_notebook_folder: Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+        :param str master_type: Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
+        :param str output_notebook_folder: Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
         :param str parameters: Parameters used within the 'input_notebook_file' notebook.
         :param str params_yaml_file: Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
         :param str service_account: The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+        :param 'VertexAIParametersResponse' vertex_ai_parameters: Parameters used in Vertex AI JobType executions.
         """
         pulumi.set(__self__, "accelerator_config", accelerator_config)
         pulumi.set(__self__, "container_image_uri", container_image_uri)
@@ -604,6 +609,7 @@ class ExecutionTemplateResponse(dict):
         pulumi.set(__self__, "parameters", parameters)
         pulumi.set(__self__, "params_yaml_file", params_yaml_file)
         pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "vertex_ai_parameters", vertex_ai_parameters)
 
     @property
     @pulumi.getter(name="acceleratorConfig")
@@ -633,7 +639,7 @@ class ExecutionTemplateResponse(dict):
     @pulumi.getter(name="inputNotebookFile")
     def input_notebook_file(self) -> str:
         """
-        Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
         """
         return pulumi.get(self, "input_notebook_file")
 
@@ -657,7 +663,7 @@ class ExecutionTemplateResponse(dict):
     @pulumi.getter(name="masterType")
     def master_type(self) -> str:
         """
-        Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+        Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
         """
         return pulumi.get(self, "master_type")
 
@@ -665,7 +671,7 @@ class ExecutionTemplateResponse(dict):
     @pulumi.getter(name="outputNotebookFolder")
     def output_notebook_folder(self) -> str:
         """
-        Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+        Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
         """
         return pulumi.get(self, "output_notebook_folder")
 
@@ -692,6 +698,14 @@ class ExecutionTemplateResponse(dict):
         The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="vertexAiParameters")
+    def vertex_ai_parameters(self) -> 'outputs.VertexAIParametersResponse':
+        """
+        Parameters used in Vertex AI JobType executions.
+        """
+        return pulumi.get(self, "vertex_ai_parameters")
 
 
 @pulumi.output_type
@@ -758,7 +772,7 @@ class GuestOsFeatureResponse(dict):
                  type: str):
         """
         Guest OS features for boot disk.
-        :param str type: The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        :param str type: The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
         """
         pulumi.set(__self__, "type", type)
 
@@ -766,7 +780,7 @@ class GuestOsFeatureResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
         """
         return pulumi.get(self, "type")
 
@@ -861,7 +875,7 @@ class LocalDiskInitializeParamsResponse(dict):
 @pulumi.output_type
 class LocalDiskResponse(dict):
     """
-    An Local attached disk resource.
+    A Local attached disk resource.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -900,19 +914,19 @@ class LocalDiskResponse(dict):
                  source: str,
                  type: str):
         """
-        An Local attached disk resource.
+        A Local attached disk resource.
         :param bool auto_delete: Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
         :param bool boot: Optional. Output only. Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
         :param str device_name: Optional. Output only. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
         :param Sequence['RuntimeGuestOsFeatureResponse'] guest_os_features: Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         :param int index: A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
         :param 'LocalDiskInitializeParamsResponse' initialize_params: Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
-        :param str interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+        :param str interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
         :param str kind: Type of the resource. Always compute#attachedDisk for attached disks.
         :param Sequence[str] licenses: Any valid publicly visible licenses.
-        :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+        :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
         :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        :param str type: Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+        :param str type: Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
         """
         pulumi.set(__self__, "auto_delete", auto_delete)
         pulumi.set(__self__, "boot", boot)
@@ -979,7 +993,7 @@ class LocalDiskResponse(dict):
     @pulumi.getter
     def interface(self) -> str:
         """
-        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
         """
         return pulumi.get(self, "interface")
 
@@ -1003,7 +1017,7 @@ class LocalDiskResponse(dict):
     @pulumi.getter
     def mode(self) -> str:
         """
-        The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+        The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
         """
         return pulumi.get(self, "mode")
 
@@ -1019,7 +1033,7 @@ class LocalDiskResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+        Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
         """
         return pulumi.get(self, "type")
 
@@ -1373,7 +1387,7 @@ class RuntimeSoftwareConfigResponse(dict):
         :param str custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         :param bool enable_health_monitoring: Verifies core internal services are running. Default: True
         :param bool idle_shutdown: Runtime will automatically shutdown after idle_shutdown_time. Default: True
-        :param int idle_shutdown_timeout: Time in minutes to wait before shuting down runtime. Default: 180 minutes
+        :param int idle_shutdown_timeout: Time in minutes to wait before shutting down runtime. Default: 180 minutes
         :param bool install_gpu_driver: Install Nvidia Driver automatically.
         :param str notebook_upgrade_schedule: Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         :param str post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
@@ -1414,7 +1428,7 @@ class RuntimeSoftwareConfigResponse(dict):
     @pulumi.getter(name="idleShutdownTimeout")
     def idle_shutdown_timeout(self) -> int:
         """
-        Time in minutes to wait before shuting down runtime. Default: 180 minutes
+        Time in minutes to wait before shutting down runtime. Default: 180 minutes
         """
         return pulumi.get(self, "idle_shutdown_timeout")
 
@@ -1446,7 +1460,7 @@ class RuntimeSoftwareConfigResponse(dict):
 @pulumi.output_type
 class SchedulerAcceleratorConfigResponse(dict):
     """
-    Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+    Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1469,7 +1483,7 @@ class SchedulerAcceleratorConfigResponse(dict):
                  core_count: str,
                  type: str):
         """
-        Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+        Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
         :param str core_count: Count of cores of this accelerator.
         :param str type: Type of this accelerator.
         """
@@ -1702,6 +1716,28 @@ class UpgradeHistoryEntryResponse(dict):
         The VM image before this instance upgrade.
         """
         return pulumi.get(self, "vm_image")
+
+
+@pulumi.output_type
+class VertexAIParametersResponse(dict):
+    """
+    Parameters used in Vertex AI JobType executions.
+    """
+    def __init__(__self__, *,
+                 network: str):
+        """
+        Parameters used in Vertex AI JobType executions.
+        :param str network: The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
+        """
+        return pulumi.get(self, "network")
 
 
 @pulumi.output_type

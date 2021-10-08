@@ -126,7 +126,7 @@ class GetServiceResult:
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> 'outputs.MaintenanceWindowResponse':
         """
-        The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+        The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
         """
         return pulumi.get(self, "maintenance_window")
 

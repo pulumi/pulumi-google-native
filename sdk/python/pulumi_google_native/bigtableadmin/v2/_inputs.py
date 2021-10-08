@@ -254,11 +254,26 @@ class ExprArgs:
 
 @pulumi.input_type
 class MultiClusterRoutingUseAnyArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_ids: The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
         """
-        pass
+        if cluster_ids is not None:
+            pulumi.set(__self__, "cluster_ids", cluster_ids)
+
+    @property
+    @pulumi.getter(name="clusterIds")
+    def cluster_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+        """
+        return pulumi.get(self, "cluster_ids")
+
+    @cluster_ids.setter
+    def cluster_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cluster_ids", value)
 
 
 @pulumi.input_type

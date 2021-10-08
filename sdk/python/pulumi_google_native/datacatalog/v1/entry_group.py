@@ -24,7 +24,7 @@ class EntryGroupArgs:
         The set of arguments for constructing a EntryGroup resource.
         :param pulumi.Input[str] description: Entry group description. Can consist of several sentences or paragraphs that describe the entry group contents. Default value is an empty string.
         :param pulumi.Input[str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
-        :param pulumi.Input[str] name: The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. 
+        :param pulumi.Input[str] name: The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
         """
         pulumi.set(__self__, "entry_group_id", entry_group_id)
         if description is not None:
@@ -84,7 +84,7 @@ class EntryGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. 
+        The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
 
@@ -121,7 +121,7 @@ class EntryGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Entry group description. Can consist of several sentences or paragraphs that describe the entry group contents. Default value is an empty string.
         :param pulumi.Input[str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
-        :param pulumi.Input[str] name: The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. 
+        :param pulumi.Input[str] name: The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
         """
         ...
     @overload
@@ -230,7 +230,7 @@ class EntryGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. 
+        The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
 

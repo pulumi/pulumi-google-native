@@ -18,6 +18,7 @@ class BucketArgs:
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input['BucketAccessControlArgs']]]] = None,
                  billing: Optional[pulumi.Input['BucketBillingArgs']] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]]] = None,
+                 custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
@@ -40,6 +41,7 @@ class BucketArgs:
                  projection: Optional[pulumi.Input[str]] = None,
                  provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
+                 rpo: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
@@ -47,13 +49,13 @@ class BucketArgs:
                  updated: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
-                 website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
-                 zone_affinity: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
         The set of arguments for constructing a Bucket resource.
         :param pulumi.Input[Sequence[pulumi.Input['BucketAccessControlArgs']]] acl: Access controls on the bucket.
         :param pulumi.Input['BucketBillingArgs'] billing: The bucket's billing configuration.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]] cors: The bucket's Cross-Origin Resource Sharing (CORS) configuration.
+        :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom placement configuration for Custom Dual Regions.
         :param pulumi.Input[bool] default_event_based_hold: The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]] default_object_acl: Default access controls to apply to new objects when no ACL is provided.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: Encryption configuration for a bucket.
@@ -71,6 +73,7 @@ class BucketArgs:
         :param pulumi.Input['BucketOwnerArgs'] owner: The owner of the bucket. This is always the project team's owner group.
         :param pulumi.Input[str] project_number: The project number of the project the bucket belongs to.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+        :param pulumi.Input[str] rpo: The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[str] self_link: The URI of this bucket.
         :param pulumi.Input[str] storage_class: The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
@@ -78,7 +81,6 @@ class BucketArgs:
         :param pulumi.Input[str] updated: The modification time of the bucket in RFC 3339 format.
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's versioning configuration.
         :param pulumi.Input['BucketWebsiteArgs'] website: The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_affinity: The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -86,6 +88,8 @@ class BucketArgs:
             pulumi.set(__self__, "billing", billing)
         if cors is not None:
             pulumi.set(__self__, "cors", cors)
+        if custom_placement_config is not None:
+            pulumi.set(__self__, "custom_placement_config", custom_placement_config)
         if default_event_based_hold is not None:
             pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
         if default_object_acl is not None:
@@ -130,6 +134,8 @@ class BucketArgs:
             pulumi.set(__self__, "provisional_user_project", provisional_user_project)
         if retention_policy is not None:
             pulumi.set(__self__, "retention_policy", retention_policy)
+        if rpo is not None:
+            pulumi.set(__self__, "rpo", rpo)
         if satisfies_pzs is not None:
             pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if self_link is not None:
@@ -146,8 +152,6 @@ class BucketArgs:
             pulumi.set(__self__, "versioning", versioning)
         if website is not None:
             pulumi.set(__self__, "website", website)
-        if zone_affinity is not None:
-            pulumi.set(__self__, "zone_affinity", zone_affinity)
 
     @property
     @pulumi.getter
@@ -184,6 +188,18 @@ class BucketArgs:
     @cors.setter
     def cors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]]]):
         pulumi.set(self, "cors", value)
+
+    @property
+    @pulumi.getter(name="customPlacementConfig")
+    def custom_placement_config(self) -> Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]:
+        """
+        The bucket's custom placement configuration for Custom Dual Regions.
+        """
+        return pulumi.get(self, "custom_placement_config")
+
+    @custom_placement_config.setter
+    def custom_placement_config(self, value: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]):
+        pulumi.set(self, "custom_placement_config", value)
 
     @property
     @pulumi.getter(name="defaultEventBasedHold")
@@ -435,6 +451,18 @@ class BucketArgs:
         pulumi.set(self, "retention_policy", value)
 
     @property
+    @pulumi.getter
+    def rpo(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
+        """
+        return pulumi.get(self, "rpo")
+
+    @rpo.setter
+    def rpo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rpo", value)
+
+    @property
     @pulumi.getter(name="satisfiesPZS")
     def satisfies_pzs(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -527,18 +555,6 @@ class BucketArgs:
     def website(self, value: Optional[pulumi.Input['BucketWebsiteArgs']]):
         pulumi.set(self, "website", value)
 
-    @property
-    @pulumi.getter(name="zoneAffinity")
-    def zone_affinity(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
-        """
-        return pulumi.get(self, "zone_affinity")
-
-    @zone_affinity.setter
-    def zone_affinity(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "zone_affinity", value)
-
 
 class Bucket(pulumi.CustomResource):
     @overload
@@ -548,6 +564,7 @@ class Bucket(pulumi.CustomResource):
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BucketBillingArgs']]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]]] = None,
+                 custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
@@ -570,6 +587,7 @@ class Bucket(pulumi.CustomResource):
                  projection: Optional[pulumi.Input[str]] = None,
                  provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
+                 rpo: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
@@ -578,7 +596,6 @@ class Bucket(pulumi.CustomResource):
                  user_project: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
                  website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
-                 zone_affinity: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Creates a new bucket.
@@ -588,6 +605,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]] acl: Access controls on the bucket.
         :param pulumi.Input[pulumi.InputType['BucketBillingArgs']] billing: The bucket's billing configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]] cors: The bucket's Cross-Origin Resource Sharing (CORS) configuration.
+        :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom placement configuration for Custom Dual Regions.
         :param pulumi.Input[bool] default_event_based_hold: The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]] default_object_acl: Default access controls to apply to new objects when no ACL is provided.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: Encryption configuration for a bucket.
@@ -605,6 +623,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketOwnerArgs']] owner: The owner of the bucket. This is always the project team's owner group.
         :param pulumi.Input[str] project_number: The project number of the project the bucket belongs to.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+        :param pulumi.Input[str] rpo: The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[str] self_link: The URI of this bucket.
         :param pulumi.Input[str] storage_class: The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
@@ -612,7 +631,6 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] updated: The modification time of the bucket in RFC 3339 format.
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: The bucket's versioning configuration.
         :param pulumi.Input[pulumi.InputType['BucketWebsiteArgs']] website: The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_affinity: The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
         """
         ...
     @overload
@@ -641,6 +659,7 @@ class Bucket(pulumi.CustomResource):
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BucketBillingArgs']]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]]] = None,
+                 custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
@@ -663,6 +682,7 @@ class Bucket(pulumi.CustomResource):
                  projection: Optional[pulumi.Input[str]] = None,
                  provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
+                 rpo: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
@@ -671,7 +691,6 @@ class Bucket(pulumi.CustomResource):
                  user_project: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
                  website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
-                 zone_affinity: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -687,6 +706,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["acl"] = acl
             __props__.__dict__["billing"] = billing
             __props__.__dict__["cors"] = cors
+            __props__.__dict__["custom_placement_config"] = custom_placement_config
             __props__.__dict__["default_event_based_hold"] = default_event_based_hold
             __props__.__dict__["default_object_acl"] = default_object_acl
             __props__.__dict__["encryption"] = encryption
@@ -709,6 +729,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["projection"] = projection
             __props__.__dict__["provisional_user_project"] = provisional_user_project
             __props__.__dict__["retention_policy"] = retention_policy
+            __props__.__dict__["rpo"] = rpo
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["storage_class"] = storage_class
@@ -717,7 +738,6 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["user_project"] = user_project
             __props__.__dict__["versioning"] = versioning
             __props__.__dict__["website"] = website
-            __props__.__dict__["zone_affinity"] = zone_affinity
         super(Bucket, __self__).__init__(
             'google-native:storage/v1:Bucket',
             resource_name,
@@ -743,6 +763,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["acl"] = None
         __props__.__dict__["billing"] = None
         __props__.__dict__["cors"] = None
+        __props__.__dict__["custom_placement_config"] = None
         __props__.__dict__["default_event_based_hold"] = None
         __props__.__dict__["default_object_acl"] = None
         __props__.__dict__["encryption"] = None
@@ -759,6 +780,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["owner"] = None
         __props__.__dict__["project_number"] = None
         __props__.__dict__["retention_policy"] = None
+        __props__.__dict__["rpo"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["storage_class"] = None
@@ -766,7 +788,6 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["updated"] = None
         __props__.__dict__["versioning"] = None
         __props__.__dict__["website"] = None
-        __props__.__dict__["zone_affinity"] = None
         return Bucket(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -792,6 +813,14 @@ class Bucket(pulumi.CustomResource):
         The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         """
         return pulumi.get(self, "cors")
+
+    @property
+    @pulumi.getter(name="customPlacementConfig")
+    def custom_placement_config(self) -> pulumi.Output['outputs.BucketCustomPlacementConfigResponse']:
+        """
+        The bucket's custom placement configuration for Custom Dual Regions.
+        """
+        return pulumi.get(self, "custom_placement_config")
 
     @property
     @pulumi.getter(name="defaultEventBasedHold")
@@ -922,6 +951,14 @@ class Bucket(pulumi.CustomResource):
         return pulumi.get(self, "retention_policy")
 
     @property
+    @pulumi.getter
+    def rpo(self) -> pulumi.Output[str]:
+        """
+        The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
+        """
+        return pulumi.get(self, "rpo")
+
+    @property
     @pulumi.getter(name="satisfiesPZS")
     def satisfies_pzs(self) -> pulumi.Output[bool]:
         """
@@ -976,12 +1013,4 @@ class Bucket(pulumi.CustomResource):
         The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
         """
         return pulumi.get(self, "website")
-
-    @property
-    @pulumi.getter(name="zoneAffinity")
-    def zone_affinity(self) -> pulumi.Output[Sequence[str]]:
-        """
-        The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
-        """
-        return pulumi.get(self, "zone_affinity")
 

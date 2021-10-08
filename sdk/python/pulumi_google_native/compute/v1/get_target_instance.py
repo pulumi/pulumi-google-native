@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetInstanceResult:
-    def __init__(__self__, creation_timestamp=None, description=None, instance=None, kind=None, name=None, nat_policy=None, self_link=None, zone=None):
+    def __init__(__self__, creation_timestamp=None, description=None, instance=None, kind=None, name=None, nat_policy=None, network=None, self_link=None, zone=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -36,6 +36,9 @@ class GetTargetInstanceResult:
         if nat_policy and not isinstance(nat_policy, str):
             raise TypeError("Expected argument 'nat_policy' to be a str")
         pulumi.set(__self__, "nat_policy", nat_policy)
+        if network and not isinstance(network, str):
+            raise TypeError("Expected argument 'network' to be a str")
+        pulumi.set(__self__, "network", network)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -92,6 +95,14 @@ class GetTargetInstanceResult:
         return pulumi.get(self, "nat_policy")
 
     @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+        """
+        return pulumi.get(self, "network")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -120,6 +131,7 @@ class AwaitableGetTargetInstanceResult(GetTargetInstanceResult):
             kind=self.kind,
             name=self.name,
             nat_policy=self.nat_policy,
+            network=self.network,
             self_link=self.self_link,
             zone=self.zone)
 
@@ -148,6 +160,7 @@ def get_target_instance(project: Optional[str] = None,
         kind=__ret__.kind,
         name=__ret__.name,
         nat_policy=__ret__.nat_policy,
+        network=__ret__.network,
         self_link=__ret__.self_link,
         zone=__ret__.zone)
 

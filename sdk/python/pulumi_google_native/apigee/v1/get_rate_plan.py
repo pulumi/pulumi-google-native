@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRatePlanResult:
-    def __init__(__self__, apiproduct=None, billing_period=None, consumption_pricing_rates=None, consumption_pricing_type=None, created_at=None, currency_code=None, description=None, display_name=None, end_time=None, fixed_fee_frequency=None, fixed_recurring_fee=None, last_modified_at=None, name=None, payment_funding_model=None, revenue_share_rates=None, revenue_share_type=None, setup_fee=None, start_time=None, state=None):
+    def __init__(__self__, apiproduct=None, billing_period=None, consumption_pricing_rates=None, consumption_pricing_type=None, created_at=None, currency_code=None, description=None, display_name=None, end_time=None, fixed_fee_frequency=None, fixed_recurring_fee=None, last_modified_at=None, name=None, revenue_share_rates=None, revenue_share_type=None, setup_fee=None, start_time=None, state=None):
         if apiproduct and not isinstance(apiproduct, str):
             raise TypeError("Expected argument 'apiproduct' to be a str")
         pulumi.set(__self__, "apiproduct", apiproduct)
@@ -58,9 +58,6 @@ class GetRatePlanResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if payment_funding_model and not isinstance(payment_funding_model, str):
-            raise TypeError("Expected argument 'payment_funding_model' to be a str")
-        pulumi.set(__self__, "payment_funding_model", payment_funding_model)
         if revenue_share_rates and not isinstance(revenue_share_rates, list):
             raise TypeError("Expected argument 'revenue_share_rates' to be a list")
         pulumi.set(__self__, "revenue_share_rates", revenue_share_rates)
@@ -182,14 +179,6 @@ class GetRatePlanResult:
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="paymentFundingModel")
-    def payment_funding_model(self) -> str:
-        """
-        Flag that specifies the billing account type, prepaid or postpaid.
-        """
-        return pulumi.get(self, "payment_funding_model")
-
-    @property
     @pulumi.getter(name="revenueShareRates")
     def revenue_share_rates(self) -> Sequence['outputs.GoogleCloudApigeeV1RevenueShareRangeResponse']:
         """
@@ -249,7 +238,6 @@ class AwaitableGetRatePlanResult(GetRatePlanResult):
             fixed_recurring_fee=self.fixed_recurring_fee,
             last_modified_at=self.last_modified_at,
             name=self.name,
-            payment_funding_model=self.payment_funding_model,
             revenue_share_rates=self.revenue_share_rates,
             revenue_share_type=self.revenue_share_type,
             setup_fee=self.setup_fee,
@@ -288,7 +276,6 @@ def get_rate_plan(apiproduct_id: Optional[str] = None,
         fixed_recurring_fee=__ret__.fixed_recurring_fee,
         last_modified_at=__ret__.last_modified_at,
         name=__ret__.name,
-        payment_funding_model=__ret__.payment_funding_model,
         revenue_share_rates=__ret__.revenue_share_rates,
         revenue_share_type=__ret__.revenue_share_type,
         setup_fee=__ret__.setup_fee,

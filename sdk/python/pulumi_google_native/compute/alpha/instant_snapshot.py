@@ -8,28 +8,27 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 
-__all__ = ['RegionInPlaceSnapshotArgs', 'RegionInPlaceSnapshot']
+__all__ = ['InstantSnapshotArgs', 'InstantSnapshot']
 
 @pulumi.input_type
-class RegionInPlaceSnapshotArgs:
+class InstantSnapshotArgs:
     def __init__(__self__, *,
-                 region: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 source_disk: Optional[pulumi.Input[str]] = None):
+                 source_disk: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a RegionInPlaceSnapshot resource.
+        The set of arguments for constructing a InstantSnapshot resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[bool] guest_flush: Specifies to create an application consistent in-place snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this InPlaceSnapshot. These can be later modified by the setLabels method. Label values may be empty.
+        :param pulumi.Input[bool] guest_flush: Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this InstantSnapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] source_disk: URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+        :param pulumi.Input[str] source_disk: URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
         """
-        pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if guest_flush is not None:
@@ -44,15 +43,8 @@ class RegionInPlaceSnapshotArgs:
             pulumi.set(__self__, "request_id", request_id)
         if source_disk is not None:
             pulumi.set(__self__, "source_disk", source_disk)
-
-    @property
-    @pulumi.getter
-    def region(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: pulumi.Input[str]):
-        pulumi.set(self, "region", value)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -70,7 +62,7 @@ class RegionInPlaceSnapshotArgs:
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies to create an application consistent in-place snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
         """
         return pulumi.get(self, "guest_flush")
 
@@ -82,7 +74,7 @@ class RegionInPlaceSnapshotArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to this InPlaceSnapshot. These can be later modified by the setLabels method. Label values may be empty.
+        Labels to apply to this InstantSnapshot. These can be later modified by the setLabels method. Label values may be empty.
         """
         return pulumi.get(self, "labels")
 
@@ -124,7 +116,7 @@ class RegionInPlaceSnapshotArgs:
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+        URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
         """
         return pulumi.get(self, "source_disk")
 
@@ -132,8 +124,17 @@ class RegionInPlaceSnapshotArgs:
     def source_disk(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_disk", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
 
-class RegionInPlaceSnapshot(pulumi.CustomResource):
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
+class InstantSnapshot(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -143,37 +144,37 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates an in-place snapshot in the specified region.
+        Creates an instant snapshot in the specified zone.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[bool] guest_flush: Specifies to create an application consistent in-place snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this InPlaceSnapshot. These can be later modified by the setLabels method. Label values may be empty.
+        :param pulumi.Input[bool] guest_flush: Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this InstantSnapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] source_disk: URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+        :param pulumi.Input[str] source_disk: URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionInPlaceSnapshotArgs,
+                 args: Optional[InstantSnapshotArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an in-place snapshot in the specified region.
+        Creates an instant snapshot in the specified zone.
 
         :param str resource_name: The name of the resource.
-        :param RegionInPlaceSnapshotArgs args: The arguments to use to populate this resource's properties.
+        :param InstantSnapshotArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionInPlaceSnapshotArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstantSnapshotArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -187,9 +188,9 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -200,29 +201,28 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionInPlaceSnapshotArgs.__new__(RegionInPlaceSnapshotArgs)
+            __props__ = InstantSnapshotArgs.__new__(InstantSnapshotArgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["guest_flush"] = guest_flush
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
-            __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["source_disk"] = source_disk
+            __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["disk_size_gb"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["region"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["source_disk_id"] = None
             __props__.__dict__["status"] = None
-            __props__.__dict__["zone"] = None
-        super(RegionInPlaceSnapshot, __self__).__init__(
-            'google-native:compute/alpha:RegionInPlaceSnapshot',
+        super(InstantSnapshot, __self__).__init__(
+            'google-native:compute/alpha:InstantSnapshot',
             resource_name,
             __props__,
             opts)
@@ -230,9 +230,9 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
     @staticmethod
     def get(resource_name: str,
             id: pulumi.Input[str],
-            opts: Optional[pulumi.ResourceOptions] = None) -> 'RegionInPlaceSnapshot':
+            opts: Optional[pulumi.ResourceOptions] = None) -> 'InstantSnapshot':
         """
-        Get an existing RegionInPlaceSnapshot resource's state with the given name, id, and optional extra
+        Get an existing InstantSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -241,7 +241,7 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = RegionInPlaceSnapshotArgs.__new__(RegionInPlaceSnapshotArgs)
+        __props__ = InstantSnapshotArgs.__new__(InstantSnapshotArgs)
 
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
@@ -252,13 +252,14 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["source_disk"] = None
         __props__.__dict__["source_disk_id"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["zone"] = None
-        return RegionInPlaceSnapshot(resource_name, opts=opts, __props__=__props__)
+        return InstantSnapshot(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -288,7 +289,7 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> pulumi.Output[bool]:
         """
-        Specifies to create an application consistent in-place snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
         """
         return pulumi.get(self, "guest_flush")
 
@@ -296,7 +297,7 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        Type of the resource. Always compute#inPlaceSnapshot for InPlaceSnapshot resources.
+        Type of the resource. Always compute#instantSnapshot for InstantSnapshot resources.
         """
         return pulumi.get(self, "kind")
 
@@ -304,7 +305,7 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        A fingerprint for the labels being applied to this InPlaceSnapshot, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a InPlaceSnapshot.
+        A fingerprint for the labels being applied to this InstantSnapshot, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a InstantSnapshot.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -312,7 +313,7 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Labels to apply to this InPlaceSnapshot. These can be later modified by the setLabels method. Label values may be empty.
+        Labels to apply to this InstantSnapshot. These can be later modified by the setLabels method. Label values may be empty.
         """
         return pulumi.get(self, "labels")
 
@@ -328,9 +329,17 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        URL of the region where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter(name="selfLink")
@@ -352,7 +361,7 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> pulumi.Output[str]:
         """
-        URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+        URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
         """
         return pulumi.get(self, "source_disk")
 
@@ -360,7 +369,7 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
     @pulumi.getter(name="sourceDiskId")
     def source_disk_id(self) -> pulumi.Output[str]:
         """
-        The ID value of the disk used to create this InPlaceSnapshot. This value may be used to determine whether the InPlaceSnapshot was taken from the current or a previous instance of a given disk name.
+        The ID value of the disk used to create this InstantSnapshot. This value may be used to determine whether the InstantSnapshot was taken from the current or a previous instance of a given disk name.
         """
         return pulumi.get(self, "source_disk_id")
 
@@ -368,7 +377,7 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
+        The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
         """
         return pulumi.get(self, "status")
 
@@ -376,7 +385,7 @@ class RegionInPlaceSnapshot(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        URL of the zone where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the zone where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "zone")
 

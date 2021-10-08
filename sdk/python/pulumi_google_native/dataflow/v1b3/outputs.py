@@ -152,7 +152,7 @@ class BigQueryIODetailsResponse(dict):
 @pulumi.output_type
 class BigTableIODetailsResponse(dict):
     """
-    Metadata for a Cloud BigTable connector used by the job.
+    Metadata for a Cloud Bigtable connector used by the job.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -178,7 +178,7 @@ class BigTableIODetailsResponse(dict):
                  project: str,
                  table_id: str):
         """
-        Metadata for a Cloud BigTable connector used by the job.
+        Metadata for a Cloud Bigtable connector used by the job.
         :param str instance_id: InstanceId accessed in the connection.
         :param str project: ProjectId accessed in the connection.
         :param str table_id: TableId accessed in the connection.
@@ -1151,11 +1151,11 @@ class JobMetadataResponse(dict):
                  spanner_details: Sequence['outputs.SpannerIODetailsResponse']):
         """
         Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
-        :param Sequence['BigTableIODetailsResponse'] big_table_details: Identification of a Cloud BigTable source used in the Dataflow job.
+        :param Sequence['BigTableIODetailsResponse'] big_table_details: Identification of a Cloud Bigtable source used in the Dataflow job.
         :param Sequence['BigQueryIODetailsResponse'] bigquery_details: Identification of a BigQuery source used in the Dataflow job.
         :param Sequence['DatastoreIODetailsResponse'] datastore_details: Identification of a Datastore source used in the Dataflow job.
         :param Sequence['FileIODetailsResponse'] file_details: Identification of a File source used in the Dataflow job.
-        :param Sequence['PubSubIODetailsResponse'] pubsub_details: Identification of a PubSub source used in the Dataflow job.
+        :param Sequence['PubSubIODetailsResponse'] pubsub_details: Identification of a Pub/Sub source used in the Dataflow job.
         :param 'SdkVersionResponse' sdk_version: The SDK version used to run the job.
         :param Sequence['SpannerIODetailsResponse'] spanner_details: Identification of a Spanner source used in the Dataflow job.
         """
@@ -1171,7 +1171,7 @@ class JobMetadataResponse(dict):
     @pulumi.getter(name="bigTableDetails")
     def big_table_details(self) -> Sequence['outputs.BigTableIODetailsResponse']:
         """
-        Identification of a Cloud BigTable source used in the Dataflow job.
+        Identification of a Cloud Bigtable source used in the Dataflow job.
         """
         return pulumi.get(self, "big_table_details")
 
@@ -1203,7 +1203,7 @@ class JobMetadataResponse(dict):
     @pulumi.getter(name="pubsubDetails")
     def pubsub_details(self) -> Sequence['outputs.PubSubIODetailsResponse']:
         """
-        Identification of a PubSub source used in the Dataflow job.
+        Identification of a Pub/Sub source used in the Dataflow job.
         """
         return pulumi.get(self, "pubsub_details")
 

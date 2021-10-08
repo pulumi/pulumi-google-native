@@ -33,6 +33,7 @@ __all__ = [
     'SqlActiveDirectoryConfigResponse',
     'SqlOutOfDiskReportResponse',
     'SqlScheduledMaintenanceResponse',
+    'SqlServerAuditConfigResponse',
     'SqlServerDatabaseDetailsResponse',
     'SslCertResponse',
 ]
@@ -66,8 +67,8 @@ class AclEntryResponse(dict):
                  value: str):
         """
         An entry for an Access Control list.
-        :param str expiration_time: The time when this access control entry expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-        :param str kind: This is always *sql#aclEntry*.
+        :param str expiration_time: The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        :param str kind: This is always **sql#aclEntry**.
         :param str name: Optional. A label to identify this entry.
         :param str value: The allowlisted value for the access control list.
         """
@@ -80,7 +81,7 @@ class AclEntryResponse(dict):
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> str:
         """
-        The time when this access control entry expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         """
         return pulumi.get(self, "expiration_time")
 
@@ -88,7 +89,7 @@ class AclEntryResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#aclEntry*.
+        This is always **sql#aclEntry**.
         """
         return pulumi.get(self, "kind")
 
@@ -156,11 +157,11 @@ class BackupConfigurationResponse(dict):
         :param 'BackupRetentionSettingsResponse' backup_retention_settings: Backup retention settings.
         :param bool binary_log_enabled: (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
         :param bool enabled: Whether this configuration is enabled.
-        :param str kind: This is always *sql#backupConfiguration*.
+        :param str kind: This is always **sql#backupConfiguration**.
         :param str location: Location of the backup
         :param bool point_in_time_recovery_enabled: (Postgres only) Whether point in time recovery is enabled.
         :param bool replication_log_archiving_enabled: Reserved for future use.
-        :param str start_time: Start time for the daily backup configuration in UTC timezone in the 24 hour format - *HH:MM*.
+        :param str start_time: Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
         :param int transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7.
         """
         pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
@@ -201,7 +202,7 @@ class BackupConfigurationResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#backupConfiguration*.
+        This is always **sql#backupConfiguration**.
         """
         return pulumi.get(self, "kind")
 
@@ -233,7 +234,7 @@ class BackupConfigurationResponse(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         """
-        Start time for the daily backup configuration in UTC timezone in the 24 hour format - *HH:MM*.
+        Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
         """
         return pulumi.get(self, "start_time")
 
@@ -308,8 +309,8 @@ class DatabaseFlagsResponse(dict):
                  value: str):
         """
         Database flags for Cloud SQL instances.
-        :param str name: The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
-        :param str value: The value of the flag. Booleans are set to *on* for true and *off* for false. This field must be omitted if the flag doesn't take a value.
+        :param str name: The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see [Configuring Database Flags](https://cloud.google.com/sql/docs/mysql/flags) in the Cloud SQL documentation.
+        :param str value: The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -318,7 +319,7 @@ class DatabaseFlagsResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+        The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see [Configuring Database Flags](https://cloud.google.com/sql/docs/mysql/flags) in the Cloud SQL documentation.
         """
         return pulumi.get(self, "name")
 
@@ -326,7 +327,7 @@ class DatabaseFlagsResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The value of the flag. Booleans are set to *on* for true and *off* for false. This field must be omitted if the flag doesn't take a value.
+        The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
         """
         return pulumi.get(self, "value")
 
@@ -421,7 +422,7 @@ class DiskEncryptionConfigurationResponse(dict):
                  kms_key_name: str):
         """
         Disk encryption configuration for an instance.
-        :param str kind: This is always *sql#diskEncryptionConfiguration*.
+        :param str kind: This is always **sql#diskEncryptionConfiguration**.
         :param str kms_key_name: Resource name of KMS key for disk encryption
         """
         pulumi.set(__self__, "kind", kind)
@@ -431,7 +432,7 @@ class DiskEncryptionConfigurationResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#diskEncryptionConfiguration*.
+        This is always **sql#diskEncryptionConfiguration**.
         """
         return pulumi.get(self, "kind")
 
@@ -471,7 +472,7 @@ class DiskEncryptionStatusResponse(dict):
                  kms_key_version_name: str):
         """
         Disk encryption status for an instance.
-        :param str kind: This is always *sql#diskEncryptionStatus*.
+        :param str kind: This is always **sql#diskEncryptionStatus**.
         :param str kms_key_version_name: KMS key version used to encrypt the Cloud SQL instance resource
         """
         pulumi.set(__self__, "kind", kind)
@@ -481,7 +482,7 @@ class DiskEncryptionStatusResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#diskEncryptionStatus*.
+        This is always **sql#diskEncryptionStatus**.
         """
         return pulumi.get(self, "kind")
 
@@ -701,9 +702,9 @@ class IpConfigurationResponse(dict):
         """
         IP Management configuration.
         :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
-        :param Sequence['AclEntryResponse'] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
+        :param Sequence['AclEntryResponse'] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
         :param bool ipv4_enabled: Whether the instance is assigned a public IP address or not.
-        :param str private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, */projects/myProject/global/networks/default*. This setting can be updated, but it cannot be removed after it is set.
+        :param str private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
         :param bool require_ssl: Whether SSL connections over IP are enforced or not.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
@@ -724,7 +725,7 @@ class IpConfigurationResponse(dict):
     @pulumi.getter(name="authorizedNetworks")
     def authorized_networks(self) -> Sequence['outputs.AclEntryResponse']:
         """
-        The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
+        The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
         """
         return pulumi.get(self, "authorized_networks")
 
@@ -740,7 +741,7 @@ class IpConfigurationResponse(dict):
     @pulumi.getter(name="privateNetwork")
     def private_network(self) -> str:
         """
-        The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, */projects/myProject/global/networks/default*. This setting can be updated, but it cannot be removed after it is set.
+        The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
         """
         return pulumi.get(self, "private_network")
 
@@ -784,8 +785,8 @@ class IpMappingResponse(dict):
         """
         Database instance IP Mapping.
         :param str ip_address: The IP address assigned.
-        :param str time_to_retire: The due time for this IP to be retired in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*. This field is only available when the IP is scheduled to be retired.
-        :param str type: The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
+        :param str time_to_retire: The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**. This field is only available when the IP is scheduled to be retired.
+        :param str type: The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
         """
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "time_to_retire", time_to_retire)
@@ -803,7 +804,7 @@ class IpMappingResponse(dict):
     @pulumi.getter(name="timeToRetire")
     def time_to_retire(self) -> str:
         """
-        The due time for this IP to be retired in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*. This field is only available when the IP is scheduled to be retired.
+        The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**. This field is only available when the IP is scheduled to be retired.
         """
         return pulumi.get(self, "time_to_retire")
 
@@ -811,7 +812,7 @@ class IpMappingResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
+        The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
         """
         return pulumi.get(self, "type")
 
@@ -819,7 +820,7 @@ class IpMappingResponse(dict):
 @pulumi.output_type
 class LocationPreferenceResponse(dict):
     """
-    Preferred location. This specifies where a Cloud SQL instance is located, either in a specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
+    Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -846,9 +847,9 @@ class LocationPreferenceResponse(dict):
                  secondary_zone: str,
                  zone: str):
         """
-        Preferred location. This specifies where a Cloud SQL instance is located, either in a specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
+        Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
         :param str follow_gae_application: The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
-        :param str kind: This is always *sql#locationPreference*.
+        :param str kind: This is always **sql#locationPreference**.
         :param str secondary_zone: The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
         :param str zone: The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
         """
@@ -869,7 +870,7 @@ class LocationPreferenceResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#locationPreference*.
+        This is always **sql#locationPreference**.
         """
         return pulumi.get(self, "kind")
 
@@ -921,8 +922,8 @@ class MaintenanceWindowResponse(dict):
         Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
         :param int day: day of week (1-7), starting on Monday.
         :param int hour: hour of day - 0 to 23.
-        :param str kind: This is always *sql#maintenanceWindow*.
-        :param str update_track: Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
+        :param str kind: This is always **sql#maintenanceWindow**.
+        :param str update_track: Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
         """
         pulumi.set(__self__, "day", day)
         pulumi.set(__self__, "hour", hour)
@@ -949,7 +950,7 @@ class MaintenanceWindowResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#maintenanceWindow*.
+        This is always **sql#maintenanceWindow**.
         """
         return pulumi.get(self, "kind")
 
@@ -957,7 +958,7 @@ class MaintenanceWindowResponse(dict):
     @pulumi.getter(name="updateTrack")
     def update_track(self) -> str:
         """
-        Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
+        Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
         """
         return pulumi.get(self, "update_track")
 
@@ -1017,7 +1018,7 @@ class MySqlReplicaConfigurationResponse(dict):
         :param str client_key: PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
         :param int connect_retry_interval: Seconds to wait between connect retries. MySQL's default is 60 seconds.
         :param str dump_file_path: Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps have the binlog co-ordinates from which replication begins. This can be accomplished by setting --master-data to 1 when using mysqldump.
-        :param str kind: This is always *sql#mysqlReplicaConfiguration*.
+        :param str kind: This is always **sql#mysqlReplicaConfiguration**.
         :param str master_heartbeat_period: Interval in milliseconds between replication heartbeats.
         :param str password: The password for the replication connection.
         :param str ssl_cipher: A list of permissible ciphers to use for SSL encryption.
@@ -1080,7 +1081,7 @@ class MySqlReplicaConfigurationResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#mysqlReplicaConfiguration*.
+        This is always **sql#mysqlReplicaConfiguration**.
         """
         return pulumi.get(self, "kind")
 
@@ -1174,7 +1175,7 @@ class OnPremisesConfigurationResponse(dict):
         :param str client_key: PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
         :param str dump_file_path: The dump file to create the Cloud SQL replica.
         :param str host_port: The host and port of the on-premises instance in host:port format
-        :param str kind: This is always *sql#onPremisesConfiguration*.
+        :param str kind: This is always **sql#onPremisesConfiguration**.
         :param str password: The password for connecting to on-premises instance.
         :param 'InstanceReferenceResponse' source_instance: The reference to Cloud SQL instance if the source is Cloud SQL.
         :param str username: The username for connecting to on-premises instance.
@@ -1233,7 +1234,7 @@ class OnPremisesConfigurationResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#onPremisesConfiguration*.
+        This is always **sql#onPremisesConfiguration**.
         """
         return pulumi.get(self, "kind")
 
@@ -1274,7 +1275,7 @@ class OperationErrorResponse(dict):
         """
         Database instance operation error.
         :param str code: Identifies the specific error that occurred.
-        :param str kind: This is always *sql#operationError*.
+        :param str kind: This is always **sql#operationError**.
         :param str message: Additional information about the error encountered.
         """
         pulumi.set(__self__, "code", code)
@@ -1293,7 +1294,7 @@ class OperationErrorResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#operationError*.
+        This is always **sql#operationError**.
         """
         return pulumi.get(self, "kind")
 
@@ -1336,9 +1337,9 @@ class ReplicaConfigurationResponse(dict):
                  mysql_replica_configuration: 'outputs.MySqlReplicaConfigurationResponse'):
         """
         Read-replica configuration for connecting to the primary instance.
-        :param bool failover_target: Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
-        :param str kind: This is always *sql#replicaConfiguration*.
-        :param 'MySqlReplicaConfigurationResponse' mysql_replica_configuration: MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+        :param bool failover_target: Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+        :param str kind: This is always **sql#replicaConfiguration**.
+        :param 'MySqlReplicaConfigurationResponse' mysql_replica_configuration: MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
         """
         pulumi.set(__self__, "failover_target", failover_target)
         pulumi.set(__self__, "kind", kind)
@@ -1348,7 +1349,7 @@ class ReplicaConfigurationResponse(dict):
     @pulumi.getter(name="failoverTarget")
     def failover_target(self) -> bool:
         """
-        Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+        Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
         """
         return pulumi.get(self, "failover_target")
 
@@ -1356,7 +1357,7 @@ class ReplicaConfigurationResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#replicaConfiguration*.
+        This is always **sql#replicaConfiguration**.
         """
         return pulumi.get(self, "kind")
 
@@ -1364,7 +1365,7 @@ class ReplicaConfigurationResponse(dict):
     @pulumi.getter(name="mysqlReplicaConfiguration")
     def mysql_replica_configuration(self) -> 'outputs.MySqlReplicaConfigurationResponse':
         """
-        MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+        MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
         """
         return pulumi.get(self, "mysql_replica_configuration")
 
@@ -1409,6 +1410,8 @@ class SettingsResponse(dict):
             suggest = "pricing_plan"
         elif key == "settingsVersion":
             suggest = "settings_version"
+        elif key == "sqlServerAuditConfig":
+            suggest = "sql_server_audit_config"
         elif key == "storageAutoResize":
             suggest = "storage_auto_resize"
         elif key == "storageAutoResizeLimit":
@@ -1446,33 +1449,35 @@ class SettingsResponse(dict):
                  maintenance_window: 'outputs.MaintenanceWindowResponse',
                  pricing_plan: str,
                  settings_version: str,
+                 sql_server_audit_config: 'outputs.SqlServerAuditConfigResponse',
                  storage_auto_resize: bool,
                  storage_auto_resize_limit: str,
                  tier: str,
                  user_labels: Mapping[str, str]):
         """
         Database instance settings.
-        :param str activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
+        :param str activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
         :param 'SqlActiveDirectoryConfigResponse' active_directory_config: Active Directory configuration, relevant only for Cloud SQL for SQL Server.
-        :param str availability_type: Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
+        :param str availability_type: Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         :param 'BackupConfigurationResponse' backup_configuration: The daily backup configuration for the instance.
         :param str collation: The name of server Instance collation.
         :param bool crash_safe_replication_enabled: Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
         :param str data_disk_size_gb: The size of data disk, in GB. The data disk size minimum is 10GB.
-        :param str data_disk_type: The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
+        :param str data_disk_type: The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
         :param Sequence['DatabaseFlagsResponse'] database_flags: The database flags passed to the instance at startup.
         :param bool database_replication_enabled: Configuration specific to read replica instances. Indicates whether replication is enabled or not.
         :param Sequence['DenyMaintenancePeriodResponse'] deny_maintenance_periods: Deny maintenance periods
         :param 'InsightsConfigResponse' insights_config: Insights configuration, for now relevant only for Postgres.
-        :param 'IpConfigurationResponse' ip_configuration: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
-        :param str kind: This is always *sql#settings*.
+        :param 'IpConfigurationResponse' ip_configuration: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+        :param str kind: This is always **sql#settings**.
         :param 'LocationPreferenceResponse' location_preference: The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
         :param 'MaintenanceWindowResponse' maintenance_window: The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
-        :param str pricing_plan: The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
+        :param str pricing_plan: The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
         :param str settings_version: The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
+        :param 'SqlServerAuditConfigResponse' sql_server_audit_config: SQL Server specific audit configuration.
         :param bool storage_auto_resize: Configuration to increase storage size automatically. The default value is true.
         :param str storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-        :param str tier: The tier (or machine type) for this instance, for example *db-custom-1-3840* .
+        :param str tier: The tier (or machine type) for this instance, for example **db-custom-1-3840**.
         :param Mapping[str, str] user_labels: User-provided labels, represented as a dictionary where each label is a single key value pair.
         """
         pulumi.set(__self__, "activation_policy", activation_policy)
@@ -1493,6 +1498,7 @@ class SettingsResponse(dict):
         pulumi.set(__self__, "maintenance_window", maintenance_window)
         pulumi.set(__self__, "pricing_plan", pricing_plan)
         pulumi.set(__self__, "settings_version", settings_version)
+        pulumi.set(__self__, "sql_server_audit_config", sql_server_audit_config)
         pulumi.set(__self__, "storage_auto_resize", storage_auto_resize)
         pulumi.set(__self__, "storage_auto_resize_limit", storage_auto_resize_limit)
         pulumi.set(__self__, "tier", tier)
@@ -1502,7 +1508,7 @@ class SettingsResponse(dict):
     @pulumi.getter(name="activationPolicy")
     def activation_policy(self) -> str:
         """
-        The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
+        The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
         """
         return pulumi.get(self, "activation_policy")
 
@@ -1518,7 +1524,7 @@ class SettingsResponse(dict):
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> str:
         """
-        Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
+        Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         """
         return pulumi.get(self, "availability_type")
 
@@ -1558,7 +1564,7 @@ class SettingsResponse(dict):
     @pulumi.getter(name="dataDiskType")
     def data_disk_type(self) -> str:
         """
-        The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
+        The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
         """
         return pulumi.get(self, "data_disk_type")
 
@@ -1598,7 +1604,7 @@ class SettingsResponse(dict):
     @pulumi.getter(name="ipConfiguration")
     def ip_configuration(self) -> 'outputs.IpConfigurationResponse':
         """
-        The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
+        The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
         """
         return pulumi.get(self, "ip_configuration")
 
@@ -1606,7 +1612,7 @@ class SettingsResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#settings*.
+        This is always **sql#settings**.
         """
         return pulumi.get(self, "kind")
 
@@ -1630,7 +1636,7 @@ class SettingsResponse(dict):
     @pulumi.getter(name="pricingPlan")
     def pricing_plan(self) -> str:
         """
-        The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
+        The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
         """
         return pulumi.get(self, "pricing_plan")
 
@@ -1641,6 +1647,14 @@ class SettingsResponse(dict):
         The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
         """
         return pulumi.get(self, "settings_version")
+
+    @property
+    @pulumi.getter(name="sqlServerAuditConfig")
+    def sql_server_audit_config(self) -> 'outputs.SqlServerAuditConfigResponse':
+        """
+        SQL Server specific audit configuration.
+        """
+        return pulumi.get(self, "sql_server_audit_config")
 
     @property
     @pulumi.getter(name="storageAutoResize")
@@ -1662,7 +1676,7 @@ class SettingsResponse(dict):
     @pulumi.getter
     def tier(self) -> str:
         """
-        The tier (or machine type) for this instance, for example *db-custom-1-3840* .
+        The tier (or machine type) for this instance, for example **db-custom-1-3840**.
         """
         return pulumi.get(self, "tier")
 
@@ -1737,8 +1751,8 @@ class SqlOutOfDiskReportResponse(dict):
                  sql_out_of_disk_state: str):
         """
         This message wraps up the information written by out-of-disk detection job.
-        :param int sql_min_recommended_increase_size_gb: The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD.
-        :param str sql_out_of_disk_state: This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the proactive database wellness job
+        :param int sql_min_recommended_increase_size_gb: The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
+        :param str sql_out_of_disk_state: This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
         """
         pulumi.set(__self__, "sql_min_recommended_increase_size_gb", sql_min_recommended_increase_size_gb)
         pulumi.set(__self__, "sql_out_of_disk_state", sql_out_of_disk_state)
@@ -1747,7 +1761,7 @@ class SqlOutOfDiskReportResponse(dict):
     @pulumi.getter(name="sqlMinRecommendedIncreaseSizeGb")
     def sql_min_recommended_increase_size_gb(self) -> int:
         """
-        The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD.
+        The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
         """
         return pulumi.get(self, "sql_min_recommended_increase_size_gb")
 
@@ -1755,7 +1769,7 @@ class SqlOutOfDiskReportResponse(dict):
     @pulumi.getter(name="sqlOutOfDiskState")
     def sql_out_of_disk_state(self) -> str:
         """
-        This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the proactive database wellness job
+        This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
         """
         return pulumi.get(self, "sql_out_of_disk_state")
 
@@ -1832,6 +1846,39 @@ class SqlScheduledMaintenanceResponse(dict):
         The start time of any upcoming scheduled maintenance for this instance.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class SqlServerAuditConfigResponse(dict):
+    """
+    SQL Server specific audit configuration.
+    """
+    def __init__(__self__, *,
+                 bucket: str,
+                 kind: str):
+        """
+        SQL Server specific audit configuration.
+        :param str bucket: The name of the destination bucket (e.g., gs://mybucket).
+        :param str kind: This is always sql#sqlServerAuditConfig
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        The name of the destination bucket (e.g., gs://mybucket).
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        """
+        This is always sql#sqlServerAuditConfig
+        """
+        return pulumi.get(self, "kind")
 
 
 @pulumi.output_type
@@ -1933,10 +1980,10 @@ class SslCertResponse(dict):
         :param str cert: PEM representation.
         :param str cert_serial_number: Serial number, as extracted from the certificate.
         :param str common_name: User supplied name. Constrained to [a-zA-Z.-_ ]+.
-        :param str create_time: The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
-        :param str expiration_time: The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        :param str create_time: The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        :param str expiration_time: The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         :param str instance: Name of the database instance.
-        :param str kind: This is always *sql#sslCert*.
+        :param str kind: This is always **sql#sslCert**.
         :param str self_link: The URI of this resource.
         :param str sha1_fingerprint: Sha1 Fingerprint.
         """
@@ -1978,7 +2025,7 @@ class SslCertResponse(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
+        The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         """
         return pulumi.get(self, "create_time")
 
@@ -1986,7 +2033,7 @@ class SslCertResponse(dict):
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> str:
         """
-        The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         """
         return pulumi.get(self, "expiration_time")
 
@@ -2002,7 +2049,7 @@ class SslCertResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        This is always *sql#sslCert*.
+        This is always **sql#sslCert**.
         """
         return pulumi.get(self, "kind")
 

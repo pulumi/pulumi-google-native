@@ -14,8 +14,10 @@ __all__ = [
     'DynamicGroupQueryArgs',
     'EntityKeyArgs',
     'ExpiryDetailArgs',
+    'MembershipRoleRestrictionEvaluationArgs',
     'MembershipRoleArgs',
     'PosixGroupArgs',
+    'RestrictionEvaluationsArgs',
 ]
 
 @pulumi.input_type
@@ -49,7 +51,7 @@ class DynamicGroupQueryArgs:
                  resource_type: Optional[pulumi.Input['DynamicGroupQueryResourceType']] = None):
         """
         Defines a query on a resource.
-        :param pulumi.Input[str] query: Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+        :param pulumi.Input[str] query: Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
         """
         if query is not None:
             pulumi.set(__self__, "query", query)
@@ -60,7 +62,7 @@ class DynamicGroupQueryArgs:
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input[str]]:
         """
-        Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+        Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
         """
         return pulumi.get(self, "query")
 
@@ -143,19 +145,32 @@ class ExpiryDetailArgs:
 
 
 @pulumi.input_type
+class MembershipRoleRestrictionEvaluationArgs:
+    def __init__(__self__):
+        """
+        The evaluated state of this restriction.
+        """
+        pass
+
+
+@pulumi.input_type
 class MembershipRoleArgs:
     def __init__(__self__, *,
                  expiry_detail: Optional[pulumi.Input['ExpiryDetailArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 restriction_evaluations: Optional[pulumi.Input['RestrictionEvaluationsArgs']] = None):
         """
         A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
         :param pulumi.Input['ExpiryDetailArgs'] expiry_detail: The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
         :param pulumi.Input[str] name: The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
+        :param pulumi.Input['RestrictionEvaluationsArgs'] restriction_evaluations: Evaluations of restrictions applied to parent group on this membership.
         """
         if expiry_detail is not None:
             pulumi.set(__self__, "expiry_detail", expiry_detail)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if restriction_evaluations is not None:
+            pulumi.set(__self__, "restriction_evaluations", restriction_evaluations)
 
     @property
     @pulumi.getter(name="expiryDetail")
@@ -180,6 +195,18 @@ class MembershipRoleArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="restrictionEvaluations")
+    def restriction_evaluations(self) -> Optional[pulumi.Input['RestrictionEvaluationsArgs']]:
+        """
+        Evaluations of restrictions applied to parent group on this membership.
+        """
+        return pulumi.get(self, "restriction_evaluations")
+
+    @restriction_evaluations.setter
+    def restriction_evaluations(self, value: Optional[pulumi.Input['RestrictionEvaluationsArgs']]):
+        pulumi.set(self, "restriction_evaluations", value)
 
 
 @pulumi.input_type
@@ -236,5 +263,29 @@ class PosixGroupArgs:
     @system_id.setter
     def system_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "system_id", value)
+
+
+@pulumi.input_type
+class RestrictionEvaluationsArgs:
+    def __init__(__self__, *,
+                 member_restriction_evaluation: Optional[pulumi.Input['MembershipRoleRestrictionEvaluationArgs']] = None):
+        """
+        Evaluations of restrictions applied to parent group on this membership.
+        :param pulumi.Input['MembershipRoleRestrictionEvaluationArgs'] member_restriction_evaluation: Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+        """
+        if member_restriction_evaluation is not None:
+            pulumi.set(__self__, "member_restriction_evaluation", member_restriction_evaluation)
+
+    @property
+    @pulumi.getter(name="memberRestrictionEvaluation")
+    def member_restriction_evaluation(self) -> Optional[pulumi.Input['MembershipRoleRestrictionEvaluationArgs']]:
+        """
+        Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+        """
+        return pulumi.get(self, "member_restriction_evaluation")
+
+    @member_restriction_evaluation.setter
+    def member_restriction_evaluation(self, value: Optional[pulumi.Input['MembershipRoleRestrictionEvaluationArgs']]):
+        pulumi.set(self, "member_restriction_evaluation", value)
 
 

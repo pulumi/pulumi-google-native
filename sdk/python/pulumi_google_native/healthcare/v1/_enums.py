@@ -10,8 +10,10 @@ __all__ = [
     'ConsentState',
     'FhirStoreVersion',
     'GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition',
+    'ParserConfigVersion',
     'SchemaConfigSchemaType',
     'SchemaPackageSchematizedParsingType',
+    'SchemaPackageUnexpectedSegmentHandling',
     'TypePrimitive',
 ]
 
@@ -70,7 +72,7 @@ class ConsentState(str, Enum):
     """
     ARCHIVED = "ARCHIVED"
     """
-    When a Consent is updated, the current version is archived and a new one is created with its state set to the updated Consent's previous state.
+    The archived state is currently not being used.
     """
     REVOKED = "REVOKED"
     """
@@ -130,6 +132,24 @@ class GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition(str, Enum):
     """
 
 
+class ParserConfigVersion(str, Enum):
+    """
+    Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
+    """
+    PARSER_VERSION_UNSPECIFIED = "PARSER_VERSION_UNSPECIFIED"
+    """
+    Unspecified parser version, equivalent to V1.
+    """
+    V1 = "V1"
+    """
+    The `parsed_data` includes every given non-empty message field except the Field Separator (MSH-1) field. As a result, the parsed MSH segment starts with the MSH-2 field and the field numbers are off-by-one with respect to the HL7 standard.
+    """
+    V2 = "V2"
+    """
+    The `parsed_data` includes every given non-empty message field.
+    """
+
+
 class SchemaConfigSchemaType(str, Enum):
     """
     Specifies the output schema type. Schema type is required.
@@ -159,6 +179,28 @@ class SchemaPackageSchematizedParsingType(str, Enum):
     HARD_FAIL = "HARD_FAIL"
     """
     Messages that fail to parse are rejected from ingestion/insertion and return an error code.
+    """
+
+
+class SchemaPackageUnexpectedSegmentHandling(str, Enum):
+    """
+    Determines how unexpected segments (segments not matched to the schema) are handled.
+    """
+    UNEXPECTED_SEGMENT_HANDLING_MODE_UNSPECIFIED = "UNEXPECTED_SEGMENT_HANDLING_MODE_UNSPECIFIED"
+    """
+    Unspecified handling mode, equivalent to FAIL.
+    """
+    FAIL = "FAIL"
+    """
+    Unexpected segments fail to parse and return an error.
+    """
+    SKIP = "SKIP"
+    """
+    Unexpected segments do not fail, but are omitted from the output.
+    """
+    PARSE = "PARSE"
+    """
+    Unexpected segments do not fail, but are parsed in place and added to the current group. If a segment has a type definition, it is used, otherwise it is parsed as VARIES.
     """
 
 

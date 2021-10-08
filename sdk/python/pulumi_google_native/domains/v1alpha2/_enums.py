@@ -68,6 +68,14 @@ class DsRecordAlgorithm(str, Enum):
     """
     The algorithm is unspecified.
     """
+    RSAMD5 = "RSAMD5"
+    """
+    RSA/MD5. Cannot be used for new deployments.
+    """
+    DH = "DH"
+    """
+    Diffie-Hellman. Cannot be used for new deployments.
+    """
     DSA = "DSA"
     """
     DSA/SHA1. Not recommended for new deployments.
@@ -115,6 +123,18 @@ class DsRecordAlgorithm(str, Enum):
     ED448 = "ED448"
     """
     Ed448.
+    """
+    INDIRECT = "INDIRECT"
+    """
+    Reserved for Indirect Keys. Cannot be used for new deployments.
+    """
+    PRIVATEDNS = "PRIVATEDNS"
+    """
+    Private algorithm. Cannot be used for new deployments.
+    """
+    PRIVATEOID = "PRIVATEOID"
+    """
+    Private algorithm OID. Cannot be used for new deployments.
     """
 
 

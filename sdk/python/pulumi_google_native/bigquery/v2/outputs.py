@@ -14,6 +14,7 @@ __all__ = [
     'ArgumentResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
+    'AvroOptionsResponse',
     'BiEngineReasonResponse',
     'BiEngineStatisticsResponse',
     'BigQueryModelTrainingResponse',
@@ -263,6 +264,41 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
+
+
+@pulumi.output_type
+class AvroOptionsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useAvroLogicalTypes":
+            suggest = "use_avro_logical_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AvroOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AvroOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AvroOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 use_avro_logical_types: bool):
+        """
+        :param bool use_avro_logical_types: [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        """
+        pulumi.set(__self__, "use_avro_logical_types", use_avro_logical_types)
+
+    @property
+    @pulumi.getter(name="useAvroLogicalTypes")
+    def use_avro_logical_types(self) -> bool:
+        """
+        [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        """
+        return pulumi.get(self, "use_avro_logical_types")
 
 
 @pulumi.output_type
@@ -1345,7 +1381,9 @@ class DestinationTablePropertiesResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "friendlyName":
+        if key == "expirationTimestampMillis":
+            suggest = "expiration_timestamp_millis"
+        elif key == "friendlyName":
             suggest = "friendly_name"
 
         if suggest:
@@ -1361,14 +1399,17 @@ class DestinationTablePropertiesResponse(dict):
 
     def __init__(__self__, *,
                  description: str,
+                 expiration_timestamp_millis: str,
                  friendly_name: str,
                  labels: Mapping[str, str]):
         """
         :param str description: [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
+        :param str expiration_timestamp_millis: [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
         :param str friendly_name: [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
         :param Mapping[str, str] labels: [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
         """
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expiration_timestamp_millis", expiration_timestamp_millis)
         pulumi.set(__self__, "friendly_name", friendly_name)
         pulumi.set(__self__, "labels", labels)
 
@@ -1379,6 +1420,14 @@ class DestinationTablePropertiesResponse(dict):
         [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expirationTimestampMillis")
+    def expiration_timestamp_millis(self) -> str:
+        """
+        [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+        """
+        return pulumi.get(self, "expiration_timestamp_millis")
 
     @property
     @pulumi.getter(name="friendlyName")
@@ -2043,7 +2092,9 @@ class ExternalDataConfigurationResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bigtableOptions":
+        if key == "avroOptions":
+            suggest = "avro_options"
+        elif key == "bigtableOptions":
             suggest = "bigtable_options"
         elif key == "connectionId":
             suggest = "connection_id"
@@ -2079,6 +2130,7 @@ class ExternalDataConfigurationResponse(dict):
 
     def __init__(__self__, *,
                  autodetect: bool,
+                 avro_options: 'outputs.AvroOptionsResponse',
                  bigtable_options: 'outputs.BigtableOptionsResponse',
                  compression: str,
                  connection_id: str,
@@ -2094,6 +2146,7 @@ class ExternalDataConfigurationResponse(dict):
                  source_uris: Sequence[str]):
         """
         :param bool autodetect: Try to detect schema and format options automatically. Any option specified explicitly will be honored.
+        :param 'AvroOptionsResponse' avro_options: Additional properties to set if sourceFormat is set to Avro.
         :param 'BigtableOptionsResponse' bigtable_options: [Optional] Additional options if sourceFormat is set to BIGTABLE.
         :param str compression: [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
         :param str connection_id: [Optional, Trusted Tester] Connection for external data source.
@@ -2109,6 +2162,7 @@ class ExternalDataConfigurationResponse(dict):
         :param Sequence[str] source_uris: [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
         """
         pulumi.set(__self__, "autodetect", autodetect)
+        pulumi.set(__self__, "avro_options", avro_options)
         pulumi.set(__self__, "bigtable_options", bigtable_options)
         pulumi.set(__self__, "compression", compression)
         pulumi.set(__self__, "connection_id", connection_id)
@@ -2130,6 +2184,14 @@ class ExternalDataConfigurationResponse(dict):
         Try to detect schema and format options automatically. Any option specified explicitly will be honored.
         """
         return pulumi.get(self, "autodetect")
+
+    @property
+    @pulumi.getter(name="avroOptions")
+    def avro_options(self) -> 'outputs.AvroOptionsResponse':
+        """
+        Additional properties to set if sourceFormat is set to Avro.
+        """
+        return pulumi.get(self, "avro_options")
 
     @property
     @pulumi.getter(name="bigtableOptions")
@@ -2597,7 +2659,7 @@ class JobConfigurationLoadResponse(dict):
         :param str source_format: [Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
         :param Sequence[str] source_uris: [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
         :param 'TimePartitioningResponse' time_partitioning: Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
-        :param bool use_avro_logical_types: [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+        :param bool use_avro_logical_types: [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
         :param str write_disposition: [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         pulumi.set(__self__, "allow_jagged_rows", allow_jagged_rows)
@@ -2841,7 +2903,7 @@ class JobConfigurationLoadResponse(dict):
     @pulumi.getter(name="useAvroLogicalTypes")
     def use_avro_logical_types(self) -> bool:
         """
-        [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+        [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
         """
         return pulumi.get(self, "use_avro_logical_types")
 

@@ -42,6 +42,7 @@ class BackendServiceArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input['SecuritySettingsArgs']] = None,
                  session_affinity: Optional[pulumi.Input['BackendServiceSessionAffinity']] = None,
+                 subsetting: Optional[pulumi.Input['SubsettingArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a BackendService resource.
@@ -121,6 +122,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "security_settings", security_settings)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
+        if subsetting is not None:
+            pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec is not None:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
 
@@ -425,6 +428,15 @@ class BackendServiceArgs:
         pulumi.set(self, "session_affinity", value)
 
     @property
+    @pulumi.getter
+    def subsetting(self) -> Optional[pulumi.Input['SubsettingArgs']]:
+        return pulumi.get(self, "subsetting")
+
+    @subsetting.setter
+    def subsetting(self, value: Optional[pulumi.Input['SubsettingArgs']]):
+        pulumi.set(self, "subsetting", value)
+
+    @property
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
@@ -468,6 +480,7 @@ class BackendService(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['SecuritySettingsArgs']]] = None,
                  session_affinity: Optional[pulumi.Input['BackendServiceSessionAffinity']] = None,
+                 subsetting: Optional[pulumi.Input[pulumi.InputType['SubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -549,6 +562,7 @@ class BackendService(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['SecuritySettingsArgs']]] = None,
                  session_affinity: Optional[pulumi.Input['BackendServiceSessionAffinity']] = None,
+                 subsetting: Optional[pulumi.Input[pulumi.InputType['SubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:
@@ -588,6 +602,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["session_affinity"] = session_affinity
+            __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
@@ -647,6 +662,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["security_settings"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["session_affinity"] = None
+        __props__.__dict__["subsetting"] = None
         __props__.__dict__["timeout_sec"] = None
         return BackendService(resource_name, opts=opts, __props__=__props__)
 
@@ -883,6 +899,11 @@ class BackendService(pulumi.CustomResource):
         Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "session_affinity")
+
+    @property
+    @pulumi.getter
+    def subsetting(self) -> pulumi.Output['outputs.SubsettingResponse']:
+        return pulumi.get(self, "subsetting")
 
     @property
     @pulumi.getter(name="timeoutSec")

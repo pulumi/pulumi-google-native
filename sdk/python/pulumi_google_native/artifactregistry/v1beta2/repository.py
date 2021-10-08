@@ -7,7 +7,9 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 from ._enums import *
+from ._inputs import *
 
 __all__ = ['RepositoryArgs', 'Repository']
 
@@ -20,6 +22,7 @@ class RepositoryArgs:
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maven_config: Optional[pulumi.Input['MavenRepositoryConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
@@ -31,6 +34,7 @@ class RepositoryArgs:
         :param pulumi.Input['RepositoryFormat'] format: The format of packages that are stored in the repository.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
+        :param pulumi.Input['MavenRepositoryConfigArgs'] maven_config: Maven repository config contains repository level configuration for the repositories of maven type.
         :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         """
@@ -46,6 +50,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maven_config is not None:
+            pulumi.set(__self__, "maven_config", maven_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -125,6 +131,18 @@ class RepositoryArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="mavenConfig")
+    def maven_config(self) -> Optional[pulumi.Input['MavenRepositoryConfigArgs']]:
+        """
+        Maven repository config contains repository level configuration for the repositories of maven type.
+        """
+        return pulumi.get(self, "maven_config")
+
+    @maven_config.setter
+    def maven_config(self, value: Optional[pulumi.Input['MavenRepositoryConfigArgs']]):
+        pulumi.set(self, "maven_config", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -178,6 +196,7 @@ class Repository(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maven_config: Optional[pulumi.Input[pulumi.InputType['MavenRepositoryConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
@@ -193,6 +212,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input['RepositoryFormat'] format: The format of packages that are stored in the repository.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
+        :param pulumi.Input[pulumi.InputType['MavenRepositoryConfigArgs']] maven_config: Maven repository config contains repository level configuration for the repositories of maven type.
         :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         """
@@ -226,6 +246,7 @@ class Repository(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maven_config: Optional[pulumi.Input[pulumi.InputType['MavenRepositoryConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
@@ -248,6 +269,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["maven_config"] = maven_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["repository_id"] = repository_id
@@ -279,6 +301,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["format"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["maven_config"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["update_time"] = None
         return Repository(resource_name, opts=opts, __props__=__props__)
@@ -322,6 +345,14 @@ class Repository(pulumi.CustomResource):
         Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="mavenConfig")
+    def maven_config(self) -> pulumi.Output['outputs.MavenRepositoryConfigResponse']:
+        """
+        Maven repository config contains repository level configuration for the repositories of maven type.
+        """
+        return pulumi.get(self, "maven_config")
 
     @property
     @pulumi.getter

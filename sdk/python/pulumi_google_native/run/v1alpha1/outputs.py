@@ -19,8 +19,10 @@ __all__ = [
     'EnvVarResponse',
     'EnvVarSourceResponse',
     'ExecActionResponse',
+    'GoogleRpcStatusResponse',
     'HTTPGetActionResponse',
     'HTTPHeaderResponse',
+    'InstanceAttemptResultResponse',
     'InstanceSpecResponse',
     'InstanceStatusResponse',
     'InstanceTemplateSpecResponse',
@@ -736,6 +738,50 @@ class ExecActionResponse(dict):
 
 
 @pulumi.output_type
+class GoogleRpcStatusResponse(dict):
+    """
+    The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    """
+    def __init__(__self__, *,
+                 code: int,
+                 details: Sequence[Mapping[str, str]],
+                 message: str):
+        """
+        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        :param int code: The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> int:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Sequence[Mapping[str, str]]:
+        """
+        A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
 class HTTPGetActionResponse(dict):
     """
     Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
@@ -838,6 +884,56 @@ class HTTPHeaderResponse(dict):
         The header field value
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class InstanceAttemptResultResponse(dict):
+    """
+    Result of an instance attempt.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exitCode":
+            suggest = "exit_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceAttemptResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceAttemptResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceAttemptResultResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exit_code: int,
+                 status: 'outputs.GoogleRpcStatusResponse'):
+        """
+        Result of an instance attempt.
+        :param int exit_code: Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
+        :param 'GoogleRpcStatusResponse' status: Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+        """
+        pulumi.set(__self__, "exit_code", exit_code)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="exitCode")
+    def exit_code(self) -> int:
+        """
+        Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details.
+        """
+        return pulumi.get(self, "exit_code")
+
+    @property
+    @pulumi.getter
+    def status(self) -> 'outputs.GoogleRpcStatusResponse':
+        """
+        Optional. The status of this attempt. If the status code is OK, then the attempt succeeded.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -950,6 +1046,8 @@ class InstanceStatusResponse(dict):
         suggest = None
         if key == "completionTime":
             suggest = "completion_time"
+        elif key == "lastAttemptResult":
+            suggest = "last_attempt_result"
         elif key == "lastExitCode":
             suggest = "last_exit_code"
         elif key == "startTime":
@@ -970,6 +1068,7 @@ class InstanceStatusResponse(dict):
                  completion_time: str,
                  failed: int,
                  index: int,
+                 last_attempt_result: 'outputs.InstanceAttemptResultResponse',
                  last_exit_code: int,
                  restarted: int,
                  start_time: str,
@@ -979,6 +1078,7 @@ class InstanceStatusResponse(dict):
         :param str completion_time: Optional. Represents time when the instance was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
         :param int failed: Optional. The number of times this instance exited with code > 0; +optional
         :param int index: Index of the instance, unique per Job, and beginning at 0.
+        :param 'InstanceAttemptResultResponse' last_attempt_result: Optional. Result of the last attempt of this instance. +optional
         :param int last_exit_code: Optional. Last exit code seen for this instance. +optional
         :param int restarted: Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
         :param str start_time: Optional. Represents time when the instance was created by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
@@ -987,6 +1087,7 @@ class InstanceStatusResponse(dict):
         pulumi.set(__self__, "completion_time", completion_time)
         pulumi.set(__self__, "failed", failed)
         pulumi.set(__self__, "index", index)
+        pulumi.set(__self__, "last_attempt_result", last_attempt_result)
         pulumi.set(__self__, "last_exit_code", last_exit_code)
         pulumi.set(__self__, "restarted", restarted)
         pulumi.set(__self__, "start_time", start_time)
@@ -1015,6 +1116,14 @@ class InstanceStatusResponse(dict):
         Index of the instance, unique per Job, and beginning at 0.
         """
         return pulumi.get(self, "index")
+
+    @property
+    @pulumi.getter(name="lastAttemptResult")
+    def last_attempt_result(self) -> 'outputs.InstanceAttemptResultResponse':
+        """
+        Optional. Result of the last attempt of this instance. +optional
+        """
+        return pulumi.get(self, "last_attempt_result")
 
     @property
     @pulumi.getter(name="lastExitCode")

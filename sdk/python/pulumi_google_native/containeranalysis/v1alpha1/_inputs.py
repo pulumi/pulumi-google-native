@@ -3216,16 +3216,20 @@ class PackageIssueArgs:
     def __init__(__self__, *,
                  affected_location: Optional[pulumi.Input['VulnerabilityLocationArgs']] = None,
                  fixed_location: Optional[pulumi.Input['VulnerabilityLocationArgs']] = None,
+                 package_type: Optional[pulumi.Input[str]] = None,
                  severity_name: Optional[pulumi.Input[str]] = None):
         """
         This message wraps a location affected by a vulnerability and its associated fix (if one is available).
         :param pulumi.Input['VulnerabilityLocationArgs'] affected_location: The location of the vulnerability.
         :param pulumi.Input['VulnerabilityLocationArgs'] fixed_location: The location of the available fix for vulnerability.
+        :param pulumi.Input[str] package_type: The type of package (e.g. OS, MAVEN, GO).
         """
         if affected_location is not None:
             pulumi.set(__self__, "affected_location", affected_location)
         if fixed_location is not None:
             pulumi.set(__self__, "fixed_location", fixed_location)
+        if package_type is not None:
+            pulumi.set(__self__, "package_type", package_type)
         if severity_name is not None:
             pulumi.set(__self__, "severity_name", severity_name)
 
@@ -3252,6 +3256,18 @@ class PackageIssueArgs:
     @fixed_location.setter
     def fixed_location(self, value: Optional[pulumi.Input['VulnerabilityLocationArgs']]):
         pulumi.set(self, "fixed_location", value)
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of package (e.g. OS, MAVEN, GO).
+        """
+        return pulumi.get(self, "package_type")
+
+    @package_type.setter
+    def package_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_type", value)
 
     @property
     @pulumi.getter(name="severityName")
@@ -3730,17 +3746,17 @@ class PgpSignedAttestationArgs:
 @pulumi.input_type
 class RecipeArgs:
     def __init__(__self__, *,
-                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  defined_in_material: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
-                 environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 environment: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
         :param pulumi.Input[str] defined_in_material: Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
         :param pulumi.Input[str] entry_point: String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
         :param pulumi.Input[str] type: URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
         """
         if arguments is not None:
@@ -3756,14 +3772,14 @@ class RecipeArgs:
 
     @property
     @pulumi.getter
-    def arguments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def arguments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
         Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
         """
         return pulumi.get(self, "arguments")
 
     @arguments.setter
-    def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "arguments", value)
 
     @property
@@ -3792,14 +3808,14 @@ class RecipeArgs:
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def environment(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
         Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def environment(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "environment", value)
 
     @property
@@ -4611,9 +4627,9 @@ class VulnerabilityDetailsArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Used by Occurrence to point to where the vulnerability exists and how to fix it.
-        :param pulumi.Input['VulnerabilityDetailsEffectiveSeverity'] effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+        :param pulumi.Input['VulnerabilityDetailsEffectiveSeverity'] effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
         :param pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
-        :param pulumi.Input[str] type: The type of package; whether native or non native(ruby gems, node.js packages etc)
+        :param pulumi.Input[str] type: The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
         """
         if effective_severity is not None:
             pulumi.set(__self__, "effective_severity", effective_severity)
@@ -4626,7 +4642,7 @@ class VulnerabilityDetailsArgs:
     @pulumi.getter(name="effectiveSeverity")
     def effective_severity(self) -> Optional[pulumi.Input['VulnerabilityDetailsEffectiveSeverity']]:
         """
-        The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+        The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
         """
         return pulumi.get(self, "effective_severity")
 
@@ -4650,7 +4666,7 @@ class VulnerabilityDetailsArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of package; whether native or non native(ruby gems, node.js packages etc)
+        The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
         """
         return pulumi.get(self, "type")
 

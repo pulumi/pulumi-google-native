@@ -228,7 +228,7 @@ class MetricDescriptor(pulumi.CustomResource):
                  value_type: Optional[pulumi.Input['MetricDescriptorValueType']] = None,
                  __props__=None):
         """
-        Creates a new metric descriptor. User-created metric descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics).
+        Creates a new metric descriptor. The creation is executed asynchronously and callers may check the returned operation to track its progress. User-created metric descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -251,7 +251,7 @@ class MetricDescriptor(pulumi.CustomResource):
                  args: Optional[MetricDescriptorArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new metric descriptor. User-created metric descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics).
+        Creates a new metric descriptor. The creation is executed asynchronously and callers may check the returned operation to track its progress. User-created metric descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics).
 
         :param str resource_name: The name of the resource.
         :param MetricDescriptorArgs args: The arguments to use to populate this resource's properties.

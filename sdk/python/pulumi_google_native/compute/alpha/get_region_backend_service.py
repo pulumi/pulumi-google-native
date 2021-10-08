@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, self_link_with_id=None, session_affinity=None, subsetting=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, self_link_with_id=None, service_bindings=None, service_lb_policy=None, session_affinity=None, subsetting=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -118,6 +118,12 @@ class GetRegionBackendServiceResult:
         if self_link_with_id and not isinstance(self_link_with_id, str):
             raise TypeError("Expected argument 'self_link_with_id' to be a str")
         pulumi.set(__self__, "self_link_with_id", self_link_with_id)
+        if service_bindings and not isinstance(service_bindings, list):
+            raise TypeError("Expected argument 'service_bindings' to be a list")
+        pulumi.set(__self__, "service_bindings", service_bindings)
+        if service_lb_policy and not isinstance(service_lb_policy, str):
+            raise TypeError("Expected argument 'service_lb_policy' to be a str")
+        pulumi.set(__self__, "service_lb_policy", service_lb_policy)
         if session_affinity and not isinstance(session_affinity, str):
             raise TypeError("Expected argument 'session_affinity' to be a str")
         pulumi.set(__self__, "session_affinity", session_affinity)
@@ -384,6 +390,22 @@ class GetRegionBackendServiceResult:
         return pulumi.get(self, "self_link_with_id")
 
     @property
+    @pulumi.getter(name="serviceBindings")
+    def service_bindings(self) -> Sequence[str]:
+        """
+        URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+        """
+        return pulumi.get(self, "service_bindings")
+
+    @property
+    @pulumi.getter(name="serviceLbPolicy")
+    def service_lb_policy(self) -> str:
+        """
+        URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. If used with a backend service, must reference a global policy. If used with a regional backend service, must reference a regional policy.
+        """
+        return pulumi.get(self, "service_lb_policy")
+
+    @property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> str:
         """
@@ -444,6 +466,8 @@ class AwaitableGetRegionBackendServiceResult(GetRegionBackendServiceResult):
             security_settings=self.security_settings,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
+            service_bindings=self.service_bindings,
+            service_lb_policy=self.service_lb_policy,
             session_affinity=self.session_affinity,
             subsetting=self.subsetting,
             timeout_sec=self.timeout_sec)
@@ -500,6 +524,8 @@ def get_region_backend_service(backend_service: Optional[str] = None,
         security_settings=__ret__.security_settings,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
+        service_bindings=__ret__.service_bindings,
+        service_lb_policy=__ret__.service_lb_policy,
         session_affinity=__ret__.session_affinity,
         subsetting=__ret__.subsetting,
         timeout_sec=__ret__.timeout_sec)

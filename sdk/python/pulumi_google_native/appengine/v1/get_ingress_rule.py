@@ -43,7 +43,7 @@ class GetIngressRuleResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        An optional string description of this rule. This field has a maximum length of 100 characters.
+        An optional string description of this rule. This field has a maximum length of 400 characters.
         """
         return pulumi.get(self, "description")
 

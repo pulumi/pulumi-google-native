@@ -69,6 +69,8 @@ if typing.TYPE_CHECKING:
     compute = __compute
     import pulumi_google_native.config as __config
     config = __config
+    import pulumi_google_native.connectors as __connectors
+    connectors = __connectors
     import pulumi_google_native.contactcenterinsights as __contactcenterinsights
     contactcenterinsights = __contactcenterinsights
     import pulumi_google_native.container as __container
@@ -97,6 +99,8 @@ if typing.TYPE_CHECKING:
     dlp = __dlp
     import pulumi_google_native.dns as __dns
     dns = __dns
+    import pulumi_google_native.documentai as __documentai
+    documentai = __documentai
     import pulumi_google_native.domains as __domains
     domains = __domains
     import pulumi_google_native.essentialcontacts as __essentialcontacts
@@ -250,6 +254,7 @@ else:
     composer = _utilities.lazy_import('pulumi_google_native.composer')
     compute = _utilities.lazy_import('pulumi_google_native.compute')
     config = _utilities.lazy_import('pulumi_google_native.config')
+    connectors = _utilities.lazy_import('pulumi_google_native.connectors')
     contactcenterinsights = _utilities.lazy_import('pulumi_google_native.contactcenterinsights')
     container = _utilities.lazy_import('pulumi_google_native.container')
     containeranalysis = _utilities.lazy_import('pulumi_google_native.containeranalysis')
@@ -264,6 +269,7 @@ else:
     dialogflow = _utilities.lazy_import('pulumi_google_native.dialogflow')
     dlp = _utilities.lazy_import('pulumi_google_native.dlp')
     dns = _utilities.lazy_import('pulumi_google_native.dns')
+    documentai = _utilities.lazy_import('pulumi_google_native.documentai')
     domains = _utilities.lazy_import('pulumi_google_native.domains')
     essentialcontacts = _utilities.lazy_import('pulumi_google_native.essentialcontacts')
     eventarc = _utilities.lazy_import('pulumi_google_native.eventarc')
@@ -866,6 +872,8 @@ _utilities.register(
    "google-native:compute/alpha:InstanceIamPolicy": "InstanceIamPolicy",
    "google-native:compute/alpha:InstanceTemplate": "InstanceTemplate",
    "google-native:compute/alpha:InstanceTemplateIamPolicy": "InstanceTemplateIamPolicy",
+   "google-native:compute/alpha:InstantSnapshot": "InstantSnapshot",
+   "google-native:compute/alpha:InstantSnapshotIamPolicy": "InstantSnapshotIamPolicy",
    "google-native:compute/alpha:Interconnect": "Interconnect",
    "google-native:compute/alpha:InterconnectAttachment": "InterconnectAttachment",
    "google-native:compute/alpha:InterconnectAttachmentIamPolicy": "InterconnectAttachmentIamPolicy",
@@ -896,8 +904,6 @@ _utilities.register(
    "google-native:compute/alpha:RegionDiskIamPolicy": "RegionDiskIamPolicy",
    "google-native:compute/alpha:RegionHealthCheck": "RegionHealthCheck",
    "google-native:compute/alpha:RegionHealthCheckService": "RegionHealthCheckService",
-   "google-native:compute/alpha:RegionInPlaceSnapshot": "RegionInPlaceSnapshot",
-   "google-native:compute/alpha:RegionInPlaceSnapshotIamPolicy": "RegionInPlaceSnapshotIamPolicy",
    "google-native:compute/alpha:RegionInstanceGroupManager": "RegionInstanceGroupManager",
    "google-native:compute/alpha:RegionInstantSnapshot": "RegionInstantSnapshot",
    "google-native:compute/alpha:RegionInstantSnapshotIamPolicy": "RegionInstantSnapshotIamPolicy",
@@ -935,11 +941,7 @@ _utilities.register(
    "google-native:compute/alpha:TargetVpnGateway": "TargetVpnGateway",
    "google-native:compute/alpha:UrlMap": "UrlMap",
    "google-native:compute/alpha:VpnGateway": "VpnGateway",
-   "google-native:compute/alpha:VpnTunnel": "VpnTunnel",
-   "google-native:compute/alpha:ZoneInPlaceSnapshot": "ZoneInPlaceSnapshot",
-   "google-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy": "ZoneInPlaceSnapshotIamPolicy",
-   "google-native:compute/alpha:ZoneInstantSnapshot": "ZoneInstantSnapshot",
-   "google-native:compute/alpha:ZoneInstantSnapshotIamPolicy": "ZoneInstantSnapshotIamPolicy"
+   "google-native:compute/alpha:VpnTunnel": "VpnTunnel"
   }
  },
  {
@@ -1117,6 +1119,16 @@ _utilities.register(
    "google-native:compute/v1:UrlMap": "UrlMap",
    "google-native:compute/v1:VpnGateway": "VpnGateway",
    "google-native:compute/v1:VpnTunnel": "VpnTunnel"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "connectors/v1",
+  "fqn": "pulumi_google_native.connectors.v1",
+  "classes": {
+   "google-native:connectors/v1:Connection": "Connection",
+   "google-native:connectors/v1:ConnectionIamPolicy": "ConnectionIamPolicy",
+   "google-native:connectors/v1:ProviderIamPolicy": "ProviderIamPolicy"
   }
  },
  {
@@ -1450,6 +1462,22 @@ _utilities.register(
    "google-native:dns/v1beta2:ResourceRecordSet": "ResourceRecordSet",
    "google-native:dns/v1beta2:ResponsePolicy": "ResponsePolicy",
    "google-native:dns/v1beta2:ResponsePolicyRule": "ResponsePolicyRule"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "documentai/v1",
+  "fqn": "pulumi_google_native.documentai.v1",
+  "classes": {
+   "google-native:documentai/v1:Processor": "Processor"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "documentai/v1beta3",
+  "fqn": "pulumi_google_native.documentai.v1beta3",
+  "classes": {
+   "google-native:documentai/v1beta3:Processor": "Processor"
   }
  },
  {
@@ -1789,7 +1817,9 @@ _utilities.register(
   "fqn": "pulumi_google_native.managedidentities.v1",
   "classes": {
    "google-native:managedidentities/v1:Domain": "Domain",
-   "google-native:managedidentities/v1:DomainIamPolicy": "DomainIamPolicy"
+   "google-native:managedidentities/v1:DomainIamPolicy": "DomainIamPolicy",
+   "google-native:managedidentities/v1:Peering": "Peering",
+   "google-native:managedidentities/v1:PeeringIamPolicy": "PeeringIamPolicy"
   }
  },
  {
@@ -1896,6 +1926,18 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "networkconnectivity/v1",
+  "fqn": "pulumi_google_native.networkconnectivity.v1",
+  "classes": {
+   "google-native:networkconnectivity/v1:Hub": "Hub",
+   "google-native:networkconnectivity/v1:HubIamPolicy": "HubIamPolicy",
+   "google-native:networkconnectivity/v1:PolicyBasedRouteIamPolicy": "PolicyBasedRouteIamPolicy",
+   "google-native:networkconnectivity/v1:Spoke": "Spoke",
+   "google-native:networkconnectivity/v1:SpokeIamPolicy": "SpokeIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "networkconnectivity/v1alpha1",
   "fqn": "pulumi_google_native.networkconnectivity.v1alpha1",
   "classes": {
@@ -1926,6 +1968,19 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "networksecurity/v1",
+  "fqn": "pulumi_google_native.networksecurity.v1",
+  "classes": {
+   "google-native:networksecurity/v1:AuthorizationPolicy": "AuthorizationPolicy",
+   "google-native:networksecurity/v1:AuthorizationPolicyIamPolicy": "AuthorizationPolicyIamPolicy",
+   "google-native:networksecurity/v1:ClientTlsPolicy": "ClientTlsPolicy",
+   "google-native:networksecurity/v1:ClientTlsPolicyIamPolicy": "ClientTlsPolicyIamPolicy",
+   "google-native:networksecurity/v1:ServerTlsPolicy": "ServerTlsPolicy",
+   "google-native:networksecurity/v1:ServerTlsPolicyIamPolicy": "ServerTlsPolicyIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "networksecurity/v1beta1",
   "fqn": "pulumi_google_native.networksecurity.v1beta1",
   "classes": {
@@ -1944,7 +1999,9 @@ _utilities.register(
   "classes": {
    "google-native:networkservices/v1:EdgeCacheKeysetIamPolicy": "EdgeCacheKeysetIamPolicy",
    "google-native:networkservices/v1:EdgeCacheOriginIamPolicy": "EdgeCacheOriginIamPolicy",
-   "google-native:networkservices/v1:EdgeCacheServiceIamPolicy": "EdgeCacheServiceIamPolicy"
+   "google-native:networkservices/v1:EdgeCacheServiceIamPolicy": "EdgeCacheServiceIamPolicy",
+   "google-native:networkservices/v1:EndpointPolicy": "EndpointPolicy",
+   "google-native:networkservices/v1:EndpointPolicyIamPolicy": "EndpointPolicyIamPolicy"
   }
  },
  {
@@ -1984,6 +2041,7 @@ _utilities.register(
   "mod": "osconfig/v1",
   "fqn": "pulumi_google_native.osconfig.v1",
   "classes": {
+   "google-native:osconfig/v1:OsPolicyAssignment": "OsPolicyAssignment",
    "google-native:osconfig/v1:PatchDeployment": "PatchDeployment"
   }
  },
@@ -2090,6 +2148,7 @@ _utilities.register(
   "mod": "pubsublite/v1",
   "fqn": "pulumi_google_native.pubsublite.v1",
   "classes": {
+   "google-native:pubsublite/v1:Reservation": "Reservation",
    "google-native:pubsublite/v1:Subscription": "Subscription",
    "google-native:pubsublite/v1:Topic": "Topic"
   }

@@ -17,6 +17,7 @@ class GithubEnterpriseConfigArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
+                 ghe_config_id: Optional[pulumi.Input[str]] = None,
                  host_url: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,8 @@ class GithubEnterpriseConfigArgs:
         pulumi.set(__self__, "app_id", app_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if ghe_config_id is not None:
+            pulumi.set(__self__, "ghe_config_id", ghe_config_id)
         if host_url is not None:
             pulumi.set(__self__, "host_url", host_url)
         if location is not None:
@@ -82,6 +85,15 @@ class GithubEnterpriseConfigArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="gheConfigId")
+    def ghe_config_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ghe_config_id")
+
+    @ghe_config_id.setter
+    def ghe_config_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ghe_config_id", value)
 
     @property
     @pulumi.getter(name="hostUrl")
@@ -190,6 +202,7 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 ghe_config_id: Optional[pulumi.Input[str]] = None,
                  host_url: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -201,7 +214,7 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
                  webhook_key: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create an association between a GCP project and a GitHub Enterprise server. This API is experimental.
+        Create an association between a GCP project and a GitHub Enterprise server.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -221,7 +234,7 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
                  args: GithubEnterpriseConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create an association between a GCP project and a GitHub Enterprise server. This API is experimental.
+        Create an association between a GCP project and a GitHub Enterprise server.
 
         :param str resource_name: The name of the resource.
         :param GithubEnterpriseConfigArgs args: The arguments to use to populate this resource's properties.
@@ -240,6 +253,7 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 ghe_config_id: Optional[pulumi.Input[str]] = None,
                  host_url: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -265,6 +279,7 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'app_id'")
             __props__.__dict__["app_id"] = app_id
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["ghe_config_id"] = ghe_config_id
             __props__.__dict__["host_url"] = host_url
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name

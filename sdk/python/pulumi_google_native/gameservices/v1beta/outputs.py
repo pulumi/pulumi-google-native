@@ -946,7 +946,7 @@ class RuleResponse(dict):
         :param Sequence['ConditionResponse'] conditions: Additional restrictions that must be met. All conditions must pass for the rule to match.
         :param str description: Human-readable description of the rule.
         :param Sequence[str] in_: If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-        :param Sequence['LogConfigResponse'] log_config: The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+        :param Sequence['LogConfigResponse'] log_config: The config returned to callers of CheckPolicy for any entries that match the LOG action.
         :param Sequence[str] not_in: If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
         :param Sequence[str] permissions: A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
         """
@@ -994,7 +994,7 @@ class RuleResponse(dict):
     @pulumi.getter(name="logConfig")
     def log_config(self) -> Sequence['outputs.LogConfigResponse']:
         """
-        The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+        The config returned to callers of CheckPolicy for any entries that match the LOG action.
         """
         return pulumi.get(self, "log_config")
 

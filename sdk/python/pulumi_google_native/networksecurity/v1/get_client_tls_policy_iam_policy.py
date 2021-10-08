@@ -10,15 +10,15 @@ from ... import _utilities
 from . import outputs
 
 __all__ = [
-    'GetRegionInPlaceSnapshotIamPolicyResult',
-    'AwaitableGetRegionInPlaceSnapshotIamPolicyResult',
-    'get_region_in_place_snapshot_iam_policy',
-    'get_region_in_place_snapshot_iam_policy_output',
+    'GetClientTlsPolicyIamPolicyResult',
+    'AwaitableGetClientTlsPolicyIamPolicyResult',
+    'get_client_tls_policy_iam_policy',
+    'get_client_tls_policy_iam_policy_output',
 ]
 
 @pulumi.output_type
-class GetRegionInPlaceSnapshotIamPolicyResult:
-    def __init__(__self__, audit_configs=None, bindings=None, etag=None, iam_owned=None, rules=None, version=None):
+class GetClientTlsPolicyIamPolicyResult:
+    def __init__(__self__, audit_configs=None, bindings=None, etag=None, version=None):
         if audit_configs and not isinstance(audit_configs, list):
             raise TypeError("Expected argument 'audit_configs' to be a list")
         pulumi.set(__self__, "audit_configs", audit_configs)
@@ -28,19 +28,13 @@ class GetRegionInPlaceSnapshotIamPolicyResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
-        if iam_owned and not isinstance(iam_owned, bool):
-            raise TypeError("Expected argument 'iam_owned' to be a bool")
-        pulumi.set(__self__, "iam_owned", iam_owned)
-        if rules and not isinstance(rules, list):
-            raise TypeError("Expected argument 'rules' to be a list")
-        pulumi.set(__self__, "rules", rules)
         if version and not isinstance(version, int):
             raise TypeError("Expected argument 'version' to be a int")
         pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="auditConfigs")
-    def audit_configs(self) -> Sequence['outputs.AuditConfigResponse']:
+    def audit_configs(self) -> Sequence['outputs.GoogleIamV1AuditConfigResponse']:
         """
         Specifies cloud audit logging configuration for this policy.
         """
@@ -48,7 +42,7 @@ class GetRegionInPlaceSnapshotIamPolicyResult:
 
     @property
     @pulumi.getter
-    def bindings(self) -> Sequence['outputs.BindingResponse']:
+    def bindings(self) -> Sequence['outputs.GoogleIamV1BindingResponse']:
         """
         Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
         """
@@ -63,22 +57,6 @@ class GetRegionInPlaceSnapshotIamPolicyResult:
         return pulumi.get(self, "etag")
 
     @property
-    @pulumi.getter(name="iamOwned")
-    def iam_owned(self) -> bool:
-        """
-        This is deprecated and has no effect. Do not use.
-        """
-        return pulumi.get(self, "iam_owned")
-
-    @property
-    @pulumi.getter
-    def rules(self) -> Sequence['outputs.RuleResponse']:
-        """
-        This is deprecated and has no effect. Do not use.
-        """
-        return pulumi.get(self, "rules")
-
-    @property
     @pulumi.getter
     def version(self) -> int:
         """
@@ -87,55 +65,51 @@ class GetRegionInPlaceSnapshotIamPolicyResult:
         return pulumi.get(self, "version")
 
 
-class AwaitableGetRegionInPlaceSnapshotIamPolicyResult(GetRegionInPlaceSnapshotIamPolicyResult):
+class AwaitableGetClientTlsPolicyIamPolicyResult(GetClientTlsPolicyIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetRegionInPlaceSnapshotIamPolicyResult(
+        return GetClientTlsPolicyIamPolicyResult(
             audit_configs=self.audit_configs,
             bindings=self.bindings,
             etag=self.etag,
-            iam_owned=self.iam_owned,
-            rules=self.rules,
             version=self.version)
 
 
-def get_region_in_place_snapshot_iam_policy(options_requested_policy_version: Optional[str] = None,
-                                            project: Optional[str] = None,
-                                            region: Optional[str] = None,
-                                            resource: Optional[str] = None,
-                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionInPlaceSnapshotIamPolicyResult:
+def get_client_tls_policy_iam_policy(client_tls_policy_id: Optional[str] = None,
+                                     location: Optional[str] = None,
+                                     options_requested_policy_version: Optional[str] = None,
+                                     project: Optional[str] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientTlsPolicyIamPolicyResult:
     """
-    Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
     """
     __args__ = dict()
+    __args__['clientTlsPolicyId'] = client_tls_policy_id
+    __args__['location'] = location
     __args__['optionsRequestedPolicyVersion'] = options_requested_policy_version
     __args__['project'] = project
-    __args__['region'] = region
-    __args__['resource'] = resource
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getRegionInPlaceSnapshotIamPolicy', __args__, opts=opts, typ=GetRegionInPlaceSnapshotIamPolicyResult).value
+    __ret__ = pulumi.runtime.invoke('google-native:networksecurity/v1:getClientTlsPolicyIamPolicy', __args__, opts=opts, typ=GetClientTlsPolicyIamPolicyResult).value
 
-    return AwaitableGetRegionInPlaceSnapshotIamPolicyResult(
+    return AwaitableGetClientTlsPolicyIamPolicyResult(
         audit_configs=__ret__.audit_configs,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
-        iam_owned=__ret__.iam_owned,
-        rules=__ret__.rules,
         version=__ret__.version)
 
 
-@_utilities.lift_output_func(get_region_in_place_snapshot_iam_policy)
-def get_region_in_place_snapshot_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
-                                                   project: Optional[pulumi.Input[Optional[str]]] = None,
-                                                   region: Optional[pulumi.Input[str]] = None,
-                                                   resource: Optional[pulumi.Input[str]] = None,
-                                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionInPlaceSnapshotIamPolicyResult]:
+@_utilities.lift_output_func(get_client_tls_policy_iam_policy)
+def get_client_tls_policy_iam_policy_output(client_tls_policy_id: Optional[pulumi.Input[str]] = None,
+                                            location: Optional[pulumi.Input[str]] = None,
+                                            options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientTlsPolicyIamPolicyResult]:
     """
-    Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
     """
     ...

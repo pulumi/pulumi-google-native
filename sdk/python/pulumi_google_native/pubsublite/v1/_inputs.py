@@ -13,6 +13,7 @@ __all__ = [
     'CapacityArgs',
     'DeliveryConfigArgs',
     'PartitionConfigArgs',
+    'ReservationConfigArgs',
     'RetentionConfigArgs',
 ]
 
@@ -118,6 +119,30 @@ class PartitionConfigArgs:
     @count.setter
     def count(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "count", value)
+
+
+@pulumi.input_type
+class ReservationConfigArgs:
+    def __init__(__self__, *,
+                 throughput_reservation: Optional[pulumi.Input[str]] = None):
+        """
+        The settings for this topic's Reservation usage.
+        :param pulumi.Input[str] throughput_reservation: The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+        """
+        if throughput_reservation is not None:
+            pulumi.set(__self__, "throughput_reservation", throughput_reservation)
+
+    @property
+    @pulumi.getter(name="throughputReservation")
+    def throughput_reservation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+        """
+        return pulumi.get(self, "throughput_reservation")
+
+    @throughput_reservation.setter
+    def throughput_reservation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "throughput_reservation", value)
 
 
 @pulumi.input_type

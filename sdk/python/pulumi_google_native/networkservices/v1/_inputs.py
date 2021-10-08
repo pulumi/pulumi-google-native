@@ -13,7 +13,11 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
+    'EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs',
+    'EndpointMatcherMetadataLabelMatcherArgs',
+    'EndpointMatcherArgs',
     'ExprArgs',
+    'TrafficPortSelectorArgs',
 ]
 
 @pulumi.input_type
@@ -153,6 +157,108 @@ class BindingArgs:
 
 
 @pulumi.input_type
+class EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs:
+    def __init__(__self__, *,
+                 label_name: pulumi.Input[str],
+                 label_value: pulumi.Input[str]):
+        """
+        Defines a name-pair value for a single label.
+        :param pulumi.Input[str] label_name: Label name presented as key in xDS Node Metadata.
+        :param pulumi.Input[str] label_value: Label value presented as value corresponding to the above key, in xDS Node Metadata.
+        """
+        pulumi.set(__self__, "label_name", label_name)
+        pulumi.set(__self__, "label_value", label_value)
+
+    @property
+    @pulumi.getter(name="labelName")
+    def label_name(self) -> pulumi.Input[str]:
+        """
+        Label name presented as key in xDS Node Metadata.
+        """
+        return pulumi.get(self, "label_name")
+
+    @label_name.setter
+    def label_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label_name", value)
+
+    @property
+    @pulumi.getter(name="labelValue")
+    def label_value(self) -> pulumi.Input[str]:
+        """
+        Label value presented as value corresponding to the above key, in xDS Node Metadata.
+        """
+        return pulumi.get(self, "label_value")
+
+    @label_value.setter
+    def label_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label_value", value)
+
+
+@pulumi.input_type
+class EndpointMatcherMetadataLabelMatcherArgs:
+    def __init__(__self__, *,
+                 metadata_label_match_criteria: Optional[pulumi.Input['EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria']] = None,
+                 metadata_labels: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs']]]] = None):
+        """
+        The matcher that is based on node metadata presented by xDS clients.
+        :param pulumi.Input['EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria'] metadata_label_match_criteria: Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+        :param pulumi.Input[Sequence[pulumi.Input['EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs']]] metadata_labels: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+        """
+        if metadata_label_match_criteria is not None:
+            pulumi.set(__self__, "metadata_label_match_criteria", metadata_label_match_criteria)
+        if metadata_labels is not None:
+            pulumi.set(__self__, "metadata_labels", metadata_labels)
+
+    @property
+    @pulumi.getter(name="metadataLabelMatchCriteria")
+    def metadata_label_match_criteria(self) -> Optional[pulumi.Input['EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria']]:
+        """
+        Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+        """
+        return pulumi.get(self, "metadata_label_match_criteria")
+
+    @metadata_label_match_criteria.setter
+    def metadata_label_match_criteria(self, value: Optional[pulumi.Input['EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria']]):
+        pulumi.set(self, "metadata_label_match_criteria", value)
+
+    @property
+    @pulumi.getter(name="metadataLabels")
+    def metadata_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs']]]]:
+        """
+        The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+        """
+        return pulumi.get(self, "metadata_labels")
+
+    @metadata_labels.setter
+    def metadata_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs']]]]):
+        pulumi.set(self, "metadata_labels", value)
+
+
+@pulumi.input_type
+class EndpointMatcherArgs:
+    def __init__(__self__, *,
+                 metadata_label_matcher: Optional[pulumi.Input['EndpointMatcherMetadataLabelMatcherArgs']] = None):
+        """
+        A definition of a matcher that selects endpoints to which the policies should be applied.
+        :param pulumi.Input['EndpointMatcherMetadataLabelMatcherArgs'] metadata_label_matcher: The matcher is based on node metadata presented by xDS clients.
+        """
+        if metadata_label_matcher is not None:
+            pulumi.set(__self__, "metadata_label_matcher", metadata_label_matcher)
+
+    @property
+    @pulumi.getter(name="metadataLabelMatcher")
+    def metadata_label_matcher(self) -> Optional[pulumi.Input['EndpointMatcherMetadataLabelMatcherArgs']]:
+        """
+        The matcher is based on node metadata presented by xDS clients.
+        """
+        return pulumi.get(self, "metadata_label_matcher")
+
+    @metadata_label_matcher.setter
+    def metadata_label_matcher(self, value: Optional[pulumi.Input['EndpointMatcherMetadataLabelMatcherArgs']]):
+        pulumi.set(self, "metadata_label_matcher", value)
+
+
+@pulumi.input_type
 class ExprArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
@@ -222,5 +328,29 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class TrafficPortSelectorArgs:
+    def __init__(__self__, *,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Specification of a port-based selector.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+        """
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ports", value)
 
 

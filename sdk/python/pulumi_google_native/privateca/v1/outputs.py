@@ -1553,8 +1553,8 @@ class RsaKeyTypeResponse(dict):
                  min_modulus_size: str):
         """
         Describes an RSA key that may be used in a Certificate issued from a CaPool.
-        :param str max_modulus_size: Optional. The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
-        :param str min_modulus_size: Optional. The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
+        :param str max_modulus_size: Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
+        :param str min_modulus_size: Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
         """
         pulumi.set(__self__, "max_modulus_size", max_modulus_size)
         pulumi.set(__self__, "min_modulus_size", min_modulus_size)
@@ -1563,7 +1563,7 @@ class RsaKeyTypeResponse(dict):
     @pulumi.getter(name="maxModulusSize")
     def max_modulus_size(self) -> str:
         """
-        Optional. The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
+        Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
         """
         return pulumi.get(self, "max_modulus_size")
 
@@ -1571,7 +1571,7 @@ class RsaKeyTypeResponse(dict):
     @pulumi.getter(name="minModulusSize")
     def min_modulus_size(self) -> str:
         """
-        Optional. The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
+        Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
         """
         return pulumi.get(self, "min_modulus_size")
 

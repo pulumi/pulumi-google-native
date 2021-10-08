@@ -10,14 +10,14 @@ from ... import _utilities
 from . import outputs
 
 __all__ = [
-    'GetZoneInstantSnapshotIamPolicyResult',
-    'AwaitableGetZoneInstantSnapshotIamPolicyResult',
-    'get_zone_instant_snapshot_iam_policy',
-    'get_zone_instant_snapshot_iam_policy_output',
+    'GetInstantSnapshotIamPolicyResult',
+    'AwaitableGetInstantSnapshotIamPolicyResult',
+    'get_instant_snapshot_iam_policy',
+    'get_instant_snapshot_iam_policy_output',
 ]
 
 @pulumi.output_type
-class GetZoneInstantSnapshotIamPolicyResult:
+class GetInstantSnapshotIamPolicyResult:
     def __init__(__self__, audit_configs=None, bindings=None, etag=None, iam_owned=None, rules=None, version=None):
         if audit_configs and not isinstance(audit_configs, list):
             raise TypeError("Expected argument 'audit_configs' to be a list")
@@ -87,12 +87,12 @@ class GetZoneInstantSnapshotIamPolicyResult:
         return pulumi.get(self, "version")
 
 
-class AwaitableGetZoneInstantSnapshotIamPolicyResult(GetZoneInstantSnapshotIamPolicyResult):
+class AwaitableGetInstantSnapshotIamPolicyResult(GetInstantSnapshotIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetZoneInstantSnapshotIamPolicyResult(
+        return GetInstantSnapshotIamPolicyResult(
             audit_configs=self.audit_configs,
             bindings=self.bindings,
             etag=self.etag,
@@ -101,11 +101,11 @@ class AwaitableGetZoneInstantSnapshotIamPolicyResult(GetZoneInstantSnapshotIamPo
             version=self.version)
 
 
-def get_zone_instant_snapshot_iam_policy(options_requested_policy_version: Optional[str] = None,
-                                         project: Optional[str] = None,
-                                         resource: Optional[str] = None,
-                                         zone: Optional[str] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneInstantSnapshotIamPolicyResult:
+def get_instant_snapshot_iam_policy(options_requested_policy_version: Optional[str] = None,
+                                    project: Optional[str] = None,
+                                    resource: Optional[str] = None,
+                                    zone: Optional[str] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstantSnapshotIamPolicyResult:
     """
     Gets the access control policy for a resource. May be empty if no such policy or resource exists.
     """
@@ -118,9 +118,9 @@ def get_zone_instant_snapshot_iam_policy(options_requested_policy_version: Optio
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getZoneInstantSnapshotIamPolicy', __args__, opts=opts, typ=GetZoneInstantSnapshotIamPolicyResult).value
+    __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getInstantSnapshotIamPolicy', __args__, opts=opts, typ=GetInstantSnapshotIamPolicyResult).value
 
-    return AwaitableGetZoneInstantSnapshotIamPolicyResult(
+    return AwaitableGetInstantSnapshotIamPolicyResult(
         audit_configs=__ret__.audit_configs,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
@@ -129,12 +129,12 @@ def get_zone_instant_snapshot_iam_policy(options_requested_policy_version: Optio
         version=__ret__.version)
 
 
-@_utilities.lift_output_func(get_zone_instant_snapshot_iam_policy)
-def get_zone_instant_snapshot_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
-                                                project: Optional[pulumi.Input[Optional[str]]] = None,
-                                                resource: Optional[pulumi.Input[str]] = None,
-                                                zone: Optional[pulumi.Input[str]] = None,
-                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneInstantSnapshotIamPolicyResult]:
+@_utilities.lift_output_func(get_instant_snapshot_iam_policy)
+def get_instant_snapshot_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                                           resource: Optional[pulumi.Input[str]] = None,
+                                           zone: Optional[pulumi.Input[str]] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstantSnapshotIamPolicyResult]:
     """
     Gets the access control policy for a resource. May be empty if no such policy or resource exists.
     """

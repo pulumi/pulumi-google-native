@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, created_at=None, description=None, disk_encryption_key_name=None, display_name=None, host=None, last_modified_at=None, location=None, name=None, peering_cidr_range=None, port=None, state=None):
+    def __init__(__self__, created_at=None, description=None, disk_encryption_key_name=None, display_name=None, host=None, last_modified_at=None, location=None, name=None, peering_cidr_range=None, port=None, runtime_version=None, state=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -48,6 +48,9 @@ class GetInstanceResult:
         if port and not isinstance(port, str):
             raise TypeError("Expected argument 'port' to be a str")
         pulumi.set(__self__, "port", port)
+        if runtime_version and not isinstance(runtime_version, str):
+            raise TypeError("Expected argument 'runtime_version' to be a str")
+        pulumi.set(__self__, "runtime_version", runtime_version)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -133,6 +136,14 @@ class GetInstanceResult:
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> str:
+        """
+        Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -157,6 +168,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             name=self.name,
             peering_cidr_range=self.peering_cidr_range,
             port=self.port,
+            runtime_version=self.runtime_version,
             state=self.state)
 
 
@@ -186,6 +198,7 @@ def get_instance(instance_id: Optional[str] = None,
         name=__ret__.name,
         peering_cidr_range=__ret__.peering_cidr_range,
         port=__ret__.port,
+        runtime_version=__ret__.runtime_version,
         state=__ret__.state)
 
 

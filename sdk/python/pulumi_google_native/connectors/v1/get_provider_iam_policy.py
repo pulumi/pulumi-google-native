@@ -10,15 +10,15 @@ from ... import _utilities
 from . import outputs
 
 __all__ = [
-    'GetZoneInPlaceSnapshotIamPolicyResult',
-    'AwaitableGetZoneInPlaceSnapshotIamPolicyResult',
-    'get_zone_in_place_snapshot_iam_policy',
-    'get_zone_in_place_snapshot_iam_policy_output',
+    'GetProviderIamPolicyResult',
+    'AwaitableGetProviderIamPolicyResult',
+    'get_provider_iam_policy',
+    'get_provider_iam_policy_output',
 ]
 
 @pulumi.output_type
-class GetZoneInPlaceSnapshotIamPolicyResult:
-    def __init__(__self__, audit_configs=None, bindings=None, etag=None, iam_owned=None, rules=None, version=None):
+class GetProviderIamPolicyResult:
+    def __init__(__self__, audit_configs=None, bindings=None, etag=None, version=None):
         if audit_configs and not isinstance(audit_configs, list):
             raise TypeError("Expected argument 'audit_configs' to be a list")
         pulumi.set(__self__, "audit_configs", audit_configs)
@@ -28,12 +28,6 @@ class GetZoneInPlaceSnapshotIamPolicyResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
-        if iam_owned and not isinstance(iam_owned, bool):
-            raise TypeError("Expected argument 'iam_owned' to be a bool")
-        pulumi.set(__self__, "iam_owned", iam_owned)
-        if rules and not isinstance(rules, list):
-            raise TypeError("Expected argument 'rules' to be a list")
-        pulumi.set(__self__, "rules", rules)
         if version and not isinstance(version, int):
             raise TypeError("Expected argument 'version' to be a int")
         pulumi.set(__self__, "version", version)
@@ -63,22 +57,6 @@ class GetZoneInPlaceSnapshotIamPolicyResult:
         return pulumi.get(self, "etag")
 
     @property
-    @pulumi.getter(name="iamOwned")
-    def iam_owned(self) -> bool:
-        """
-        This is deprecated and has no effect. Do not use.
-        """
-        return pulumi.get(self, "iam_owned")
-
-    @property
-    @pulumi.getter
-    def rules(self) -> Sequence['outputs.RuleResponse']:
-        """
-        This is deprecated and has no effect. Do not use.
-        """
-        return pulumi.get(self, "rules")
-
-    @property
     @pulumi.getter
     def version(self) -> int:
         """
@@ -87,55 +65,51 @@ class GetZoneInPlaceSnapshotIamPolicyResult:
         return pulumi.get(self, "version")
 
 
-class AwaitableGetZoneInPlaceSnapshotIamPolicyResult(GetZoneInPlaceSnapshotIamPolicyResult):
+class AwaitableGetProviderIamPolicyResult(GetProviderIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetZoneInPlaceSnapshotIamPolicyResult(
+        return GetProviderIamPolicyResult(
             audit_configs=self.audit_configs,
             bindings=self.bindings,
             etag=self.etag,
-            iam_owned=self.iam_owned,
-            rules=self.rules,
             version=self.version)
 
 
-def get_zone_in_place_snapshot_iam_policy(options_requested_policy_version: Optional[str] = None,
-                                          project: Optional[str] = None,
-                                          resource: Optional[str] = None,
-                                          zone: Optional[str] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneInPlaceSnapshotIamPolicyResult:
+def get_provider_iam_policy(location: Optional[str] = None,
+                            options_requested_policy_version: Optional[str] = None,
+                            project: Optional[str] = None,
+                            provider_id: Optional[str] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProviderIamPolicyResult:
     """
-    Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
     """
     __args__ = dict()
+    __args__['location'] = location
     __args__['optionsRequestedPolicyVersion'] = options_requested_policy_version
     __args__['project'] = project
-    __args__['resource'] = resource
-    __args__['zone'] = zone
+    __args__['providerId'] = provider_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getZoneInPlaceSnapshotIamPolicy', __args__, opts=opts, typ=GetZoneInPlaceSnapshotIamPolicyResult).value
+    __ret__ = pulumi.runtime.invoke('google-native:connectors/v1:getProviderIamPolicy', __args__, opts=opts, typ=GetProviderIamPolicyResult).value
 
-    return AwaitableGetZoneInPlaceSnapshotIamPolicyResult(
+    return AwaitableGetProviderIamPolicyResult(
         audit_configs=__ret__.audit_configs,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
-        iam_owned=__ret__.iam_owned,
-        rules=__ret__.rules,
         version=__ret__.version)
 
 
-@_utilities.lift_output_func(get_zone_in_place_snapshot_iam_policy)
-def get_zone_in_place_snapshot_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
-                                                 project: Optional[pulumi.Input[Optional[str]]] = None,
-                                                 resource: Optional[pulumi.Input[str]] = None,
-                                                 zone: Optional[pulumi.Input[str]] = None,
-                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneInPlaceSnapshotIamPolicyResult]:
+@_utilities.lift_output_func(get_provider_iam_policy)
+def get_provider_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
+                                   options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                                   provider_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProviderIamPolicyResult]:
     """
-    Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
     """
     ...

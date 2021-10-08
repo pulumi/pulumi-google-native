@@ -219,6 +219,10 @@ class MonitoringComponentConfigEnableComponentsItem(str, Enum):
     """
     system components
     """
+    WORKLOADS = "WORKLOADS"
+    """
+    workloads
+    """
 
 
 class NetworkConfigDatapathProvider(str, Enum):

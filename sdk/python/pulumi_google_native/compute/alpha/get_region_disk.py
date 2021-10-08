@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionDiskResult:
-    def __init__(__self__, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, multi_writer=None, name=None, options=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, size_gb=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, type=None, user_licenses=None, users=None, zone=None):
+    def __init__(__self__, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, size_gb=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, type=None, user_licenses=None, users=None, zone=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -34,9 +34,6 @@ class GetRegionDiskResult:
         if guest_os_features and not isinstance(guest_os_features, list):
             raise TypeError("Expected argument 'guest_os_features' to be a list")
         pulumi.set(__self__, "guest_os_features", guest_os_features)
-        if interface and not isinstance(interface, str):
-            raise TypeError("Expected argument 'interface' to be a str")
-        pulumi.set(__self__, "interface", interface)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -61,6 +58,9 @@ class GetRegionDiskResult:
         if location_hint and not isinstance(location_hint, str):
             raise TypeError("Expected argument 'location_hint' to be a str")
         pulumi.set(__self__, "location_hint", location_hint)
+        if locked and not isinstance(locked, bool):
+            raise TypeError("Expected argument 'locked' to be a bool")
+        pulumi.set(__self__, "locked", locked)
         if multi_writer and not isinstance(multi_writer, bool):
             raise TypeError("Expected argument 'multi_writer' to be a bool")
         pulumi.set(__self__, "multi_writer", multi_writer)
@@ -166,7 +166,7 @@ class GetRegionDiskResult:
     @pulumi.getter(name="diskEncryptionKey")
     def disk_encryption_key(self) -> 'outputs.CustomerEncryptionKeyResponse':
         """
-        Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+        Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         """
         return pulumi.get(self, "disk_encryption_key")
 
@@ -185,14 +185,6 @@ class GetRegionDiskResult:
         A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         """
         return pulumi.get(self, "guest_os_features")
-
-    @property
-    @pulumi.getter
-    def interface(self) -> str:
-        """
-        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        """
-        return pulumi.get(self, "interface")
 
     @property
     @pulumi.getter
@@ -257,6 +249,14 @@ class GetRegionDiskResult:
         An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
         """
         return pulumi.get(self, "location_hint")
+
+    @property
+    @pulumi.getter
+    def locked(self) -> bool:
+        """
+        The field indicates if the disk is created from a locked source image. Attachment of a disk created from a locked source image will cause the following operations to become irreversibly prohibited: - R/W or R/O disk attachment to any other instance - Disk detachment. And the disk can only be deleted when the instance is deleted - Creation of images or snapshots - Disk cloning Furthermore, the instance with at least one disk with locked flag set to true will be prohibited from performing the operations below: - Further attachment of secondary disks. - Detachment of any disks - Create machine images - Create instance template - Delete the instance with --keep-disk parameter set to true for locked disks - Attach a locked disk with --auto-delete parameter set to false 
+        """
+        return pulumi.get(self, "locked")
 
     @property
     @pulumi.getter(name="multiWriter")
@@ -494,7 +494,6 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             disk_encryption_key=self.disk_encryption_key,
             erase_windows_vss_signature=self.erase_windows_vss_signature,
             guest_os_features=self.guest_os_features,
-            interface=self.interface,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
@@ -503,6 +502,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             license_codes=self.license_codes,
             licenses=self.licenses,
             location_hint=self.location_hint,
+            locked=self.locked,
             multi_writer=self.multi_writer,
             name=self.name,
             options=self.options,
@@ -556,7 +556,6 @@ def get_region_disk(disk: Optional[str] = None,
         disk_encryption_key=__ret__.disk_encryption_key,
         erase_windows_vss_signature=__ret__.erase_windows_vss_signature,
         guest_os_features=__ret__.guest_os_features,
-        interface=__ret__.interface,
         kind=__ret__.kind,
         label_fingerprint=__ret__.label_fingerprint,
         labels=__ret__.labels,
@@ -565,6 +564,7 @@ def get_region_disk(disk: Optional[str] = None,
         license_codes=__ret__.license_codes,
         licenses=__ret__.licenses,
         location_hint=__ret__.location_hint,
+        locked=__ret__.locked,
         multi_writer=__ret__.multi_writer,
         name=__ret__.name,
         options=__ret__.options,

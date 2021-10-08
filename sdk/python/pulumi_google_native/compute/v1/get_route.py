@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetRouteResult:
-    def __init__(__self__, creation_timestamp=None, description=None, dest_range=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_ilb=None, next_hop_instance=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, self_link=None, tags=None, warnings=None):
+    def __init__(__self__, as_paths=None, creation_timestamp=None, description=None, dest_range=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_ilb=None, next_hop_instance=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_type=None, self_link=None, tags=None, warnings=None):
+        if as_paths and not isinstance(as_paths, list):
+            raise TypeError("Expected argument 'as_paths' to be a list")
+        pulumi.set(__self__, "as_paths", as_paths)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -61,6 +64,9 @@ class GetRouteResult:
         if priority and not isinstance(priority, int):
             raise TypeError("Expected argument 'priority' to be a int")
         pulumi.set(__self__, "priority", priority)
+        if route_type and not isinstance(route_type, str):
+            raise TypeError("Expected argument 'route_type' to be a str")
+        pulumi.set(__self__, "route_type", route_type)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -70,6 +76,14 @@ class GetRouteResult:
         if warnings and not isinstance(warnings, list):
             raise TypeError("Expected argument 'warnings' to be a list")
         pulumi.set(__self__, "warnings", warnings)
+
+    @property
+    @pulumi.getter(name="asPaths")
+    def as_paths(self) -> Sequence['outputs.RouteAsPathResponse']:
+        """
+        AS path.
+        """
+        return pulumi.get(self, "as_paths")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -184,6 +198,14 @@ class GetRouteResult:
         return pulumi.get(self, "priority")
 
     @property
+    @pulumi.getter(name="routeType")
+    def route_type(self) -> str:
+        """
+        The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
+        """
+        return pulumi.get(self, "route_type")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -214,6 +236,7 @@ class AwaitableGetRouteResult(GetRouteResult):
         if False:
             yield self
         return GetRouteResult(
+            as_paths=self.as_paths,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             dest_range=self.dest_range,
@@ -228,6 +251,7 @@ class AwaitableGetRouteResult(GetRouteResult):
             next_hop_peering=self.next_hop_peering,
             next_hop_vpn_tunnel=self.next_hop_vpn_tunnel,
             priority=self.priority,
+            route_type=self.route_type,
             self_link=self.self_link,
             tags=self.tags,
             warnings=self.warnings)
@@ -249,6 +273,7 @@ def get_route(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getRoute', __args__, opts=opts, typ=GetRouteResult).value
 
     return AwaitableGetRouteResult(
+        as_paths=__ret__.as_paths,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         dest_range=__ret__.dest_range,
@@ -263,6 +288,7 @@ def get_route(project: Optional[str] = None,
         next_hop_peering=__ret__.next_hop_peering,
         next_hop_vpn_tunnel=__ret__.next_hop_vpn_tunnel,
         priority=__ret__.priority,
+        route_type=__ret__.route_type,
         self_link=__ret__.self_link,
         tags=__ret__.tags,
         warnings=__ret__.warnings)

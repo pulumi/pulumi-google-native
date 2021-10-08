@@ -14,6 +14,7 @@ __all__ = [
     'CapacityResponse',
     'DeliveryConfigResponse',
     'PartitionConfigResponse',
+    'ReservationConfigResponse',
     'RetentionConfigResponse',
 ]
 
@@ -139,6 +140,45 @@ class PartitionConfigResponse(dict):
         The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
         """
         return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class ReservationConfigResponse(dict):
+    """
+    The settings for this topic's Reservation usage.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "throughputReservation":
+            suggest = "throughput_reservation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReservationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReservationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReservationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 throughput_reservation: str):
+        """
+        The settings for this topic's Reservation usage.
+        :param str throughput_reservation: The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+        """
+        pulumi.set(__self__, "throughput_reservation", throughput_reservation)
+
+    @property
+    @pulumi.getter(name="throughputReservation")
+    def throughput_reservation(self) -> str:
+        """
+        The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+        """
+        return pulumi.get(self, "throughput_reservation")
 
 
 @pulumi.output_type

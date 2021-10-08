@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetExecutionResult:
-    def __init__(__self__, argument=None, end_time=None, error=None, name=None, result=None, start_time=None, state=None, workflow_revision_id=None):
+    def __init__(__self__, argument=None, call_log_level=None, end_time=None, error=None, name=None, result=None, start_time=None, state=None, workflow_revision_id=None):
         if argument and not isinstance(argument, str):
             raise TypeError("Expected argument 'argument' to be a str")
         pulumi.set(__self__, "argument", argument)
+        if call_log_level and not isinstance(call_log_level, str):
+            raise TypeError("Expected argument 'call_log_level' to be a str")
+        pulumi.set(__self__, "call_log_level", call_log_level)
         if end_time and not isinstance(end_time, str):
             raise TypeError("Expected argument 'end_time' to be a str")
         pulumi.set(__self__, "end_time", end_time)
@@ -51,6 +54,14 @@ class GetExecutionResult:
         Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
         """
         return pulumi.get(self, "argument")
+
+    @property
+    @pulumi.getter(name="callLogLevel")
+    def call_log_level(self) -> str:
+        """
+        The call logging level associated to this execution.
+        """
+        return pulumi.get(self, "call_log_level")
 
     @property
     @pulumi.getter(name="endTime")
@@ -116,6 +127,7 @@ class AwaitableGetExecutionResult(GetExecutionResult):
             yield self
         return GetExecutionResult(
             argument=self.argument,
+            call_log_level=self.call_log_level,
             end_time=self.end_time,
             error=self.error,
             name=self.name,
@@ -148,6 +160,7 @@ def get_execution(execution_id: Optional[str] = None,
 
     return AwaitableGetExecutionResult(
         argument=__ret__.argument,
+        call_log_level=__ret__.call_log_level,
         end_time=__ret__.end_time,
         error=__ret__.error,
         name=__ret__.name,

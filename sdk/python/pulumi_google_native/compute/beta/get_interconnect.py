@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInterconnectResult:
-    def __init__(__self__, admin_enabled=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, interconnect_attachments=None, interconnect_type=None, kind=None, label_fingerprint=None, labels=None, link_type=None, location=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, requested_link_count=None, self_link=None, state=None):
+    def __init__(__self__, admin_enabled=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, interconnect_attachments=None, interconnect_type=None, kind=None, label_fingerprint=None, labels=None, link_type=None, location=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, requested_link_count=None, satisfies_pzs=None, self_link=None, state=None):
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -82,6 +82,9 @@ class GetInterconnectResult:
         if requested_link_count and not isinstance(requested_link_count, int):
             raise TypeError("Expected argument 'requested_link_count' to be a int")
         pulumi.set(__self__, "requested_link_count", requested_link_count)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -258,6 +261,14 @@ class GetInterconnectResult:
         return pulumi.get(self, "requested_link_count")
 
     @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -301,6 +312,7 @@ class AwaitableGetInterconnectResult(GetInterconnectResult):
             peer_ip_address=self.peer_ip_address,
             provisioned_link_count=self.provisioned_link_count,
             requested_link_count=self.requested_link_count,
+            satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             state=self.state)
 
@@ -342,6 +354,7 @@ def get_interconnect(interconnect: Optional[str] = None,
         peer_ip_address=__ret__.peer_ip_address,
         provisioned_link_count=__ret__.provisioned_link_count,
         requested_link_count=__ret__.requested_link_count,
+        satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
         state=__ret__.state)
 

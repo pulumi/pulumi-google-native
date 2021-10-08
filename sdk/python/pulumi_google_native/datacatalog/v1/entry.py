@@ -601,7 +601,7 @@ class Entry(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. 
+        The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
 

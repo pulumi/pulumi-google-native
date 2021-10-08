@@ -15,11 +15,11 @@ __all__ = [
 
 class ConversationMedium(str, Enum):
     """
-    Immutable. The conversation medium.
+    Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
     """
     MEDIUM_UNSPECIFIED = "MEDIUM_UNSPECIFIED"
     """
-    Default value.
+    Default value, if unspecified will default to PHONE_CALL.
     """
     PHONE_CALL = "PHONE_CALL"
     """
@@ -33,11 +33,11 @@ class ConversationMedium(str, Enum):
 
 class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium(str, Enum):
     """
-    Required. Medium of conversations used in training data.
+    Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
     """
     MEDIUM_UNSPECIFIED = "MEDIUM_UNSPECIFIED"
     """
-    Default value.
+    Default value, if unspecified will default to PHONE_CALL.
     """
     PHONE_CALL = "PHONE_CALL"
     """

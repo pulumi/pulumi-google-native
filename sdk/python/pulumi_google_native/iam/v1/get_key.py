@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetKeyResult:
-    def __init__(__self__, key_algorithm=None, key_origin=None, key_type=None, name=None, private_key_data=None, private_key_type=None, public_key_data=None, valid_after_time=None, valid_before_time=None):
+    def __init__(__self__, disabled=None, key_algorithm=None, key_origin=None, key_type=None, name=None, private_key_data=None, private_key_type=None, public_key_data=None, valid_after_time=None, valid_before_time=None):
+        if disabled and not isinstance(disabled, bool):
+            raise TypeError("Expected argument 'disabled' to be a bool")
+        pulumi.set(__self__, "disabled", disabled)
         if key_algorithm and not isinstance(key_algorithm, str):
             raise TypeError("Expected argument 'key_algorithm' to be a str")
         pulumi.set(__self__, "key_algorithm", key_algorithm)
@@ -45,6 +48,14 @@ class GetKeyResult:
         if valid_before_time and not isinstance(valid_before_time, str):
             raise TypeError("Expected argument 'valid_before_time' to be a str")
         pulumi.set(__self__, "valid_before_time", valid_before_time)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        The key status.
+        """
+        return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="keyAlgorithm")
@@ -125,6 +136,7 @@ class AwaitableGetKeyResult(GetKeyResult):
         if False:
             yield self
         return GetKeyResult(
+            disabled=self.disabled,
             key_algorithm=self.key_algorithm,
             key_origin=self.key_origin,
             key_type=self.key_type,
@@ -156,6 +168,7 @@ def get_key(key_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iam/v1:getKey', __args__, opts=opts, typ=GetKeyResult).value
 
     return AwaitableGetKeyResult(
+        disabled=__ret__.disabled,
         key_algorithm=__ret__.key_algorithm,
         key_origin=__ret__.key_origin,
         key_type=__ret__.key_type,

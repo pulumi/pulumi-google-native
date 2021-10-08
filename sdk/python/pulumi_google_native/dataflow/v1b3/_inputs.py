@@ -158,7 +158,7 @@ class BigTableIODetailsArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  table_id: Optional[pulumi.Input[str]] = None):
         """
-        Metadata for a Cloud BigTable connector used by the job.
+        Metadata for a Cloud Bigtable connector used by the job.
         :param pulumi.Input[str] instance_id: InstanceId accessed in the connection.
         :param pulumi.Input[str] project: ProjectId accessed in the connection.
         :param pulumi.Input[str] table_id: TableId accessed in the connection.
@@ -1131,11 +1131,11 @@ class JobMetadataArgs:
                  spanner_details: Optional[pulumi.Input[Sequence[pulumi.Input['SpannerIODetailsArgs']]]] = None):
         """
         Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
-        :param pulumi.Input[Sequence[pulumi.Input['BigTableIODetailsArgs']]] big_table_details: Identification of a Cloud BigTable source used in the Dataflow job.
+        :param pulumi.Input[Sequence[pulumi.Input['BigTableIODetailsArgs']]] big_table_details: Identification of a Cloud Bigtable source used in the Dataflow job.
         :param pulumi.Input[Sequence[pulumi.Input['BigQueryIODetailsArgs']]] bigquery_details: Identification of a BigQuery source used in the Dataflow job.
         :param pulumi.Input[Sequence[pulumi.Input['DatastoreIODetailsArgs']]] datastore_details: Identification of a Datastore source used in the Dataflow job.
         :param pulumi.Input[Sequence[pulumi.Input['FileIODetailsArgs']]] file_details: Identification of a File source used in the Dataflow job.
-        :param pulumi.Input[Sequence[pulumi.Input['PubSubIODetailsArgs']]] pubsub_details: Identification of a PubSub source used in the Dataflow job.
+        :param pulumi.Input[Sequence[pulumi.Input['PubSubIODetailsArgs']]] pubsub_details: Identification of a Pub/Sub source used in the Dataflow job.
         :param pulumi.Input['SdkVersionArgs'] sdk_version: The SDK version used to run the job.
         :param pulumi.Input[Sequence[pulumi.Input['SpannerIODetailsArgs']]] spanner_details: Identification of a Spanner source used in the Dataflow job.
         """
@@ -1158,7 +1158,7 @@ class JobMetadataArgs:
     @pulumi.getter(name="bigTableDetails")
     def big_table_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BigTableIODetailsArgs']]]]:
         """
-        Identification of a Cloud BigTable source used in the Dataflow job.
+        Identification of a Cloud Bigtable source used in the Dataflow job.
         """
         return pulumi.get(self, "big_table_details")
 
@@ -1206,7 +1206,7 @@ class JobMetadataArgs:
     @pulumi.getter(name="pubsubDetails")
     def pubsub_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PubSubIODetailsArgs']]]]:
         """
-        Identification of a PubSub source used in the Dataflow job.
+        Identification of a Pub/Sub source used in the Dataflow job.
         """
         return pulumi.get(self, "pubsub_details")
 
@@ -1396,7 +1396,7 @@ class RuntimeEnvironmentArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The environment values to set at runtime.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: Additional experiment flags for the job.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: Additional experiment flags for the job, specified with the `--experiments` option.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_user_labels: Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
         :param pulumi.Input[bool] bypass_temp_dir_validation: Whether to bypass the safety checks for the job's temporary directory. Use with caution.
         :param pulumi.Input[bool] enable_streaming_engine: Whether to enable Streaming Engine for the job.
@@ -1450,7 +1450,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter(name="additionalExperiments")
     def additional_experiments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Additional experiment flags for the job.
+        Additional experiment flags for the job, specified with the `--experiments` option.
         """
         return pulumi.get(self, "additional_experiments")
 

@@ -19,13 +19,29 @@ __all__ = [
 @pulumi.input_type
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs:
     def __init__(__self__, *,
+                 allow_all_package_names: Optional[pulumi.Input[bool]] = None,
                  allowed_package_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Settings specific to keys that can be used by Android apps.
+        :param pulumi.Input[bool] allow_all_package_names: If set to true, it means allowed_package_names will not be enforced.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_package_names: Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         """
+        if allow_all_package_names is not None:
+            pulumi.set(__self__, "allow_all_package_names", allow_all_package_names)
         if allowed_package_names is not None:
             pulumi.set(__self__, "allowed_package_names", allowed_package_names)
+
+    @property
+    @pulumi.getter(name="allowAllPackageNames")
+    def allow_all_package_names(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, it means allowed_package_names will not be enforced.
+        """
+        return pulumi.get(self, "allow_all_package_names")
+
+    @allow_all_package_names.setter
+    def allow_all_package_names(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_all_package_names", value)
 
     @property
     @pulumi.getter(name="allowedPackageNames")
@@ -43,13 +59,29 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs:
 @pulumi.input_type
 class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs:
     def __init__(__self__, *,
+                 allow_all_bundle_ids: Optional[pulumi.Input[bool]] = None,
                  allowed_bundle_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Settings specific to keys that can be used by iOS apps.
+        :param pulumi.Input[bool] allow_all_bundle_ids: If set to true, it means allowed_bundle_ids will not be enforced.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_bundle_ids: iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         """
+        if allow_all_bundle_ids is not None:
+            pulumi.set(__self__, "allow_all_bundle_ids", allow_all_bundle_ids)
         if allowed_bundle_ids is not None:
             pulumi.set(__self__, "allowed_bundle_ids", allowed_bundle_ids)
+
+    @property
+    @pulumi.getter(name="allowAllBundleIds")
+    def allow_all_bundle_ids(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, it means allowed_bundle_ids will not be enforced.
+        """
+        return pulumi.get(self, "allow_all_bundle_ids")
+
+    @allow_all_bundle_ids.setter
+    def allow_all_bundle_ids(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_all_bundle_ids", value)
 
     @property
     @pulumi.getter(name="allowedBundleIds")

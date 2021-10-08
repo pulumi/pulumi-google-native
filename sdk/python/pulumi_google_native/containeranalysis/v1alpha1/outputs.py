@@ -3218,8 +3218,12 @@ class PackageIssueResponse(dict):
         suggest = None
         if key == "affectedLocation":
             suggest = "affected_location"
+        elif key == "effectiveSeverity":
+            suggest = "effective_severity"
         elif key == "fixedLocation":
             suggest = "fixed_location"
+        elif key == "packageType":
+            suggest = "package_type"
         elif key == "severityName":
             suggest = "severity_name"
 
@@ -3236,15 +3240,21 @@ class PackageIssueResponse(dict):
 
     def __init__(__self__, *,
                  affected_location: 'outputs.VulnerabilityLocationResponse',
+                 effective_severity: str,
                  fixed_location: 'outputs.VulnerabilityLocationResponse',
+                 package_type: str,
                  severity_name: str):
         """
         This message wraps a location affected by a vulnerability and its associated fix (if one is available).
         :param 'VulnerabilityLocationResponse' affected_location: The location of the vulnerability.
+        :param str effective_severity: The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when distro or language system has not yet assigned a severity for this vulnerability.
         :param 'VulnerabilityLocationResponse' fixed_location: The location of the available fix for vulnerability.
+        :param str package_type: The type of package (e.g. OS, MAVEN, GO).
         """
         pulumi.set(__self__, "affected_location", affected_location)
+        pulumi.set(__self__, "effective_severity", effective_severity)
         pulumi.set(__self__, "fixed_location", fixed_location)
+        pulumi.set(__self__, "package_type", package_type)
         pulumi.set(__self__, "severity_name", severity_name)
 
     @property
@@ -3256,12 +3266,28 @@ class PackageIssueResponse(dict):
         return pulumi.get(self, "affected_location")
 
     @property
+    @pulumi.getter(name="effectiveSeverity")
+    def effective_severity(self) -> str:
+        """
+        The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when distro or language system has not yet assigned a severity for this vulnerability.
+        """
+        return pulumi.get(self, "effective_severity")
+
+    @property
     @pulumi.getter(name="fixedLocation")
     def fixed_location(self) -> 'outputs.VulnerabilityLocationResponse':
         """
         The location of the available fix for vulnerability.
         """
         return pulumi.get(self, "fixed_location")
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> str:
+        """
+        The type of package (e.g. OS, MAVEN, GO).
+        """
+        return pulumi.get(self, "package_type")
 
     @property
     @pulumi.getter(name="severityName")
@@ -3695,17 +3721,17 @@ class RecipeResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 arguments: Sequence[str],
+                 arguments: Sequence[Mapping[str, str]],
                  defined_in_material: str,
                  entry_point: str,
-                 environment: Mapping[str, str],
+                 environment: Sequence[Mapping[str, str]],
                  type: str):
         """
         Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
-        :param Sequence[str] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
+        :param Sequence[Mapping[str, str]] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
         :param str defined_in_material: Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
         :param str entry_point: String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
-        :param Mapping[str, str] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
+        :param Sequence[Mapping[str, str]] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
         :param str type: URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
         """
         pulumi.set(__self__, "arguments", arguments)
@@ -3716,7 +3742,7 @@ class RecipeResponse(dict):
 
     @property
     @pulumi.getter
-    def arguments(self) -> Sequence[str]:
+    def arguments(self) -> Sequence[Mapping[str, str]]:
         """
         Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
         """
@@ -3740,7 +3766,7 @@ class RecipeResponse(dict):
 
     @property
     @pulumi.getter
-    def environment(self) -> Mapping[str, str]:
+    def environment(self) -> Sequence[Mapping[str, str]]:
         """
         Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
         """
@@ -4498,10 +4524,10 @@ class VulnerabilityDetailsResponse(dict):
         """
         Used by Occurrence to point to where the vulnerability exists and how to fix it.
         :param float cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
-        :param str effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+        :param str effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
         :param Sequence['PackageIssueResponse'] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
         :param str severity: The note provider assigned Severity of the vulnerability.
-        :param str type: The type of package; whether native or non native(ruby gems, node.js packages etc)
+        :param str type: The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
         """
         pulumi.set(__self__, "cvss_score", cvss_score)
         pulumi.set(__self__, "effective_severity", effective_severity)
@@ -4521,7 +4547,7 @@ class VulnerabilityDetailsResponse(dict):
     @pulumi.getter(name="effectiveSeverity")
     def effective_severity(self) -> str:
         """
-        The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+        The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
         """
         return pulumi.get(self, "effective_severity")
 
@@ -4545,7 +4571,7 @@ class VulnerabilityDetailsResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of package; whether native or non native(ruby gems, node.js packages etc)
+        The type of package; whether native or non native(ruby gems, node.js packages etc). This may be deprecated in the future because we can have multiple PackageIssues with different package types.
         """
         return pulumi.get(self, "type")
 

@@ -147,7 +147,7 @@ class GetCertificateAuthorityResult:
     @pulumi.getter
     def lifetime(self) -> str:
         """
-        The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         """
         return pulumi.get(self, "lifetime")
 

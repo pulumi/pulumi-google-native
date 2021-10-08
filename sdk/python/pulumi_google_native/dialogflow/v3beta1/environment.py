@@ -21,13 +21,15 @@ class EnvironmentArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 test_cases_config: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         :param pulumi.Input[str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] name: The name of the environment. Format: `projects//locations//agents//environments/`.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs'] test_cases_config: The test cases config for continuous tests of this environment.
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -40,6 +42,8 @@ class EnvironmentArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if test_cases_config is not None:
+            pulumi.set(__self__, "test_cases_config", test_cases_config)
 
     @property
     @pulumi.getter(name="agentId")
@@ -116,6 +120,18 @@ class EnvironmentArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="testCasesConfig")
+    def test_cases_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs']]:
+        """
+        The test cases config for continuous tests of this environment.
+        """
+        return pulumi.get(self, "test_cases_config")
+
+    @test_cases_config.setter
+    def test_cases_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs']]):
+        pulumi.set(self, "test_cases_config", value)
+
 
 class Environment(pulumi.CustomResource):
     @overload
@@ -128,16 +144,18 @@ class Environment(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 test_cases_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs']]] = None,
                  version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]]]] = None,
                  __props__=None):
         """
-        Creates an Environment in the specified Agent.
+        Creates an Environment in the specified Agent. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`: Environment
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[str] name: The name of the environment. Format: `projects//locations//agents//environments/`.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs']] test_cases_config: The test cases config for continuous tests of this environment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         """
         ...
@@ -147,7 +165,7 @@ class Environment(pulumi.CustomResource):
                  args: EnvironmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an Environment in the specified Agent.
+        Creates an Environment in the specified Agent. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`: Environment
 
         :param str resource_name: The name of the resource.
         :param EnvironmentArgs args: The arguments to use to populate this resource's properties.
@@ -170,6 +188,7 @@ class Environment(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 test_cases_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs']]] = None,
                  version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]]]] = None,
                  __props__=None):
         if opts is None:
@@ -193,6 +212,7 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["test_cases_config"] = test_cases_config
             if version_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'version_configs'")
             __props__.__dict__["version_configs"] = version_configs
@@ -222,6 +242,7 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["test_cases_config"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["version_configs"] = None
         return Environment(resource_name, opts=opts, __props__=__props__)
@@ -249,6 +270,14 @@ class Environment(pulumi.CustomResource):
         The name of the environment. Format: `projects//locations//agents//environments/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="testCasesConfig")
+    def test_cases_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse']:
+        """
+        The test cases config for continuous tests of this environment.
+        """
+        return pulumi.get(self, "test_cases_config")
 
     @property
     @pulumi.getter(name="updateTime")

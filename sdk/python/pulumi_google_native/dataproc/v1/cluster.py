@@ -18,6 +18,7 @@ class ClusterArgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[str],
                  region: pulumi.Input[str],
+                 action_on_failed_primary_workers: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['ClusterConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -31,6 +32,8 @@ class ClusterArgs:
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "region", region)
+        if action_on_failed_primary_workers is not None:
+            pulumi.set(__self__, "action_on_failed_primary_workers", action_on_failed_primary_workers)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if labels is not None:
@@ -60,6 +63,15 @@ class ClusterArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="actionOnFailedPrimaryWorkers")
+    def action_on_failed_primary_workers(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "action_on_failed_primary_workers")
+
+    @action_on_failed_primary_workers.setter
+    def action_on_failed_primary_workers(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action_on_failed_primary_workers", value)
 
     @property
     @pulumi.getter
@@ -112,6 +124,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 action_on_failed_primary_workers: Optional[pulumi.Input[str]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['ClusterConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -155,6 +168,7 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 action_on_failed_primary_workers: Optional[pulumi.Input[str]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['ClusterConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -173,6 +187,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            __props__.__dict__["action_on_failed_primary_workers"] = action_on_failed_primary_workers
             if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
             __props__.__dict__["cluster_name"] = cluster_name

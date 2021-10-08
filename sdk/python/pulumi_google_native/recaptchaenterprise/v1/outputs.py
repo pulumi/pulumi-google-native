@@ -24,7 +24,9 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "allowedPackageNames":
+        if key == "allowAllPackageNames":
+            suggest = "allow_all_package_names"
+        elif key == "allowedPackageNames":
             suggest = "allowed_package_names"
 
         if suggest:
@@ -39,12 +41,23 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allow_all_package_names: bool,
                  allowed_package_names: Sequence[str]):
         """
         Settings specific to keys that can be used by Android apps.
+        :param bool allow_all_package_names: If set to true, it means allowed_package_names will not be enforced.
         :param Sequence[str] allowed_package_names: Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         """
+        pulumi.set(__self__, "allow_all_package_names", allow_all_package_names)
         pulumi.set(__self__, "allowed_package_names", allowed_package_names)
+
+    @property
+    @pulumi.getter(name="allowAllPackageNames")
+    def allow_all_package_names(self) -> bool:
+        """
+        If set to true, it means allowed_package_names will not be enforced.
+        """
+        return pulumi.get(self, "allow_all_package_names")
 
     @property
     @pulumi.getter(name="allowedPackageNames")
@@ -63,7 +76,9 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "allowedBundleIds":
+        if key == "allowAllBundleIds":
+            suggest = "allow_all_bundle_ids"
+        elif key == "allowedBundleIds":
             suggest = "allowed_bundle_ids"
 
         if suggest:
@@ -78,12 +93,23 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allow_all_bundle_ids: bool,
                  allowed_bundle_ids: Sequence[str]):
         """
         Settings specific to keys that can be used by iOS apps.
+        :param bool allow_all_bundle_ids: If set to true, it means allowed_bundle_ids will not be enforced.
         :param Sequence[str] allowed_bundle_ids: iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         """
+        pulumi.set(__self__, "allow_all_bundle_ids", allow_all_bundle_ids)
         pulumi.set(__self__, "allowed_bundle_ids", allowed_bundle_ids)
+
+    @property
+    @pulumi.getter(name="allowAllBundleIds")
+    def allow_all_bundle_ids(self) -> bool:
+        """
+        If set to true, it means allowed_bundle_ids will not be enforced.
+        """
+        return pulumi.get(self, "allow_all_bundle_ids")
 
     @property
     @pulumi.getter(name="allowedBundleIds")

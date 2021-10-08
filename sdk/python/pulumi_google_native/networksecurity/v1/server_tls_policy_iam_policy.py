@@ -11,78 +11,74 @@ from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['ZoneInPlaceSnapshotIamPolicyArgs', 'ZoneInPlaceSnapshotIamPolicy']
+__all__ = ['ServerTlsPolicyIamPolicyArgs', 'ServerTlsPolicyIamPolicy']
 
 @pulumi.input_type
-class ZoneInPlaceSnapshotIamPolicyArgs:
+class ServerTlsPolicyIamPolicyArgs:
     def __init__(__self__, *,
-                 resource: pulumi.Input[str],
-                 audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
+                 server_tls_policy_id: pulumi.Input[str],
+                 audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleIamV1AuditConfigArgs']]]] = None,
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleIamV1BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 iam_owned: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RuleArgs']]]] = None,
-                 version: Optional[pulumi.Input[int]] = None,
-                 zone: Optional[pulumi.Input[str]] = None):
+                 update_mask: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[int]] = None):
         """
-        The set of arguments for constructing a ZoneInPlaceSnapshotIamPolicy resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]] audit_configs: Specifies cloud audit logging configuration for this policy.
-        :param pulumi.Input[Sequence[pulumi.Input['BindingArgs']]] bindings: Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        The set of arguments for constructing a ServerTlsPolicyIamPolicy resource.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleIamV1AuditConfigArgs']]] audit_configs: Specifies cloud audit logging configuration for this policy.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleIamV1BindingArgs']]] bindings: Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-        :param pulumi.Input[bool] iam_owned: This is deprecated and has no effect. Do not use.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleArgs']]] rules: This is deprecated and has no effect. Do not use.
+        :param pulumi.Input[str] update_mask: OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
         :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
-        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "server_tls_policy_id", server_tls_policy_id)
         if audit_configs is not None:
             pulumi.set(__self__, "audit_configs", audit_configs)
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
-        if iam_owned is not None:
-            pulumi.set(__self__, "iam_owned", iam_owned)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+        if update_mask is not None:
+            pulumi.set(__self__, "update_mask", update_mask)
         if version is not None:
             pulumi.set(__self__, "version", version)
-        if zone is not None:
-            pulumi.set(__self__, "zone", zone)
 
     @property
-    @pulumi.getter
-    def resource(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "resource")
+    @pulumi.getter(name="serverTlsPolicyId")
+    def server_tls_policy_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "server_tls_policy_id")
 
-    @resource.setter
-    def resource(self, value: pulumi.Input[str]):
-        pulumi.set(self, "resource", value)
+    @server_tls_policy_id.setter
+    def server_tls_policy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_tls_policy_id", value)
 
     @property
     @pulumi.getter(name="auditConfigs")
-    def audit_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]]:
+    def audit_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleIamV1AuditConfigArgs']]]]:
         """
         Specifies cloud audit logging configuration for this policy.
         """
         return pulumi.get(self, "audit_configs")
 
     @audit_configs.setter
-    def audit_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]]):
+    def audit_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleIamV1AuditConfigArgs']]]]):
         pulumi.set(self, "audit_configs", value)
 
     @property
     @pulumi.getter
-    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]]:
+    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleIamV1BindingArgs']]]]:
         """
         Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
         """
         return pulumi.get(self, "bindings")
 
     @bindings.setter
-    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]]):
+    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleIamV1BindingArgs']]]]):
         pulumi.set(self, "bindings", value)
 
     @property
@@ -98,16 +94,13 @@ class ZoneInPlaceSnapshotIamPolicyArgs:
         pulumi.set(self, "etag", value)
 
     @property
-    @pulumi.getter(name="iamOwned")
-    def iam_owned(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This is deprecated and has no effect. Do not use.
-        """
-        return pulumi.get(self, "iam_owned")
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
 
-    @iam_owned.setter
-    def iam_owned(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "iam_owned", value)
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -119,16 +112,16 @@ class ZoneInPlaceSnapshotIamPolicyArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleArgs']]]]:
+    @pulumi.getter(name="updateMask")
+    def update_mask(self) -> Optional[pulumi.Input[str]]:
         """
-        This is deprecated and has no effect. Do not use.
+        OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
         """
-        return pulumi.get(self, "rules")
+        return pulumi.get(self, "update_mask")
 
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleArgs']]]]):
-        pulumi.set(self, "rules", value)
+    @update_mask.setter
+    def update_mask(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_mask", value)
 
     @property
     @pulumi.getter
@@ -142,63 +135,52 @@ class ZoneInPlaceSnapshotIamPolicyArgs:
     def version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "version", value)
 
-    @property
-    @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "zone")
 
-    @zone.setter
-    def zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "zone", value)
-
-
-class ZoneInPlaceSnapshotIamPolicy(pulumi.CustomResource):
+class ServerTlsPolicyIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuditConfigArgs']]]]] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
+                 audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleIamV1AuditConfigArgs']]]]] = None,
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleIamV1BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 iam_owned: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleArgs']]]]] = None,
+                 server_tls_policy_id: Optional[pulumi.Input[str]] = None,
+                 update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
-                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Sets the access control policy on the specified resource. Replaces any existing policy.
+        Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuditConfigArgs']]]] audit_configs: Specifies cloud audit logging configuration for this policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]] bindings: Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleIamV1AuditConfigArgs']]]] audit_configs: Specifies cloud audit logging configuration for this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleIamV1BindingArgs']]]] bindings: Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-        :param pulumi.Input[bool] iam_owned: This is deprecated and has no effect. Do not use.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleArgs']]]] rules: This is deprecated and has no effect. Do not use.
+        :param pulumi.Input[str] update_mask: OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
         :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ZoneInPlaceSnapshotIamPolicyArgs,
+                 args: ServerTlsPolicyIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Sets the access control policy on the specified resource. Replaces any existing policy.
+        Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
-        :param ZoneInPlaceSnapshotIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param ServerTlsPolicyIamPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ZoneInPlaceSnapshotIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServerTlsPolicyIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -207,15 +189,14 @@ class ZoneInPlaceSnapshotIamPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuditConfigArgs']]]]] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
+                 audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleIamV1AuditConfigArgs']]]]] = None,
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleIamV1BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 iam_owned: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleArgs']]]]] = None,
+                 server_tls_policy_id: Optional[pulumi.Input[str]] = None,
+                 update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
-                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -226,21 +207,20 @@ class ZoneInPlaceSnapshotIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ZoneInPlaceSnapshotIamPolicyArgs.__new__(ZoneInPlaceSnapshotIamPolicyArgs)
+            __props__ = ServerTlsPolicyIamPolicyArgs.__new__(ServerTlsPolicyIamPolicyArgs)
 
             __props__.__dict__["audit_configs"] = audit_configs
             __props__.__dict__["bindings"] = bindings
             __props__.__dict__["etag"] = etag
-            __props__.__dict__["iam_owned"] = iam_owned
+            __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
-            if resource is None and not opts.urn:
-                raise TypeError("Missing required property 'resource'")
-            __props__.__dict__["resource"] = resource
-            __props__.__dict__["rules"] = rules
+            if server_tls_policy_id is None and not opts.urn:
+                raise TypeError("Missing required property 'server_tls_policy_id'")
+            __props__.__dict__["server_tls_policy_id"] = server_tls_policy_id
+            __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-            __props__.__dict__["zone"] = zone
-        super(ZoneInPlaceSnapshotIamPolicy, __self__).__init__(
-            'google-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy',
+        super(ServerTlsPolicyIamPolicy, __self__).__init__(
+            'google-native:networksecurity/v1:ServerTlsPolicyIamPolicy',
             resource_name,
             __props__,
             opts)
@@ -248,9 +228,9 @@ class ZoneInPlaceSnapshotIamPolicy(pulumi.CustomResource):
     @staticmethod
     def get(resource_name: str,
             id: pulumi.Input[str],
-            opts: Optional[pulumi.ResourceOptions] = None) -> 'ZoneInPlaceSnapshotIamPolicy':
+            opts: Optional[pulumi.ResourceOptions] = None) -> 'ServerTlsPolicyIamPolicy':
         """
-        Get an existing ZoneInPlaceSnapshotIamPolicy resource's state with the given name, id, and optional extra
+        Get an existing ServerTlsPolicyIamPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -259,19 +239,17 @@ class ZoneInPlaceSnapshotIamPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = ZoneInPlaceSnapshotIamPolicyArgs.__new__(ZoneInPlaceSnapshotIamPolicyArgs)
+        __props__ = ServerTlsPolicyIamPolicyArgs.__new__(ServerTlsPolicyIamPolicyArgs)
 
         __props__.__dict__["audit_configs"] = None
         __props__.__dict__["bindings"] = None
         __props__.__dict__["etag"] = None
-        __props__.__dict__["iam_owned"] = None
-        __props__.__dict__["rules"] = None
         __props__.__dict__["version"] = None
-        return ZoneInPlaceSnapshotIamPolicy(resource_name, opts=opts, __props__=__props__)
+        return ServerTlsPolicyIamPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="auditConfigs")
-    def audit_configs(self) -> pulumi.Output[Sequence['outputs.AuditConfigResponse']]:
+    def audit_configs(self) -> pulumi.Output[Sequence['outputs.GoogleIamV1AuditConfigResponse']]:
         """
         Specifies cloud audit logging configuration for this policy.
         """
@@ -279,7 +257,7 @@ class ZoneInPlaceSnapshotIamPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bindings(self) -> pulumi.Output[Sequence['outputs.BindingResponse']]:
+    def bindings(self) -> pulumi.Output[Sequence['outputs.GoogleIamV1BindingResponse']]:
         """
         Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
         """
@@ -292,22 +270,6 @@ class ZoneInPlaceSnapshotIamPolicy(pulumi.CustomResource):
         `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
         """
         return pulumi.get(self, "etag")
-
-    @property
-    @pulumi.getter(name="iamOwned")
-    def iam_owned(self) -> pulumi.Output[bool]:
-        """
-        This is deprecated and has no effect. Do not use.
-        """
-        return pulumi.get(self, "iam_owned")
-
-    @property
-    @pulumi.getter
-    def rules(self) -> pulumi.Output[Sequence['outputs.RuleResponse']]:
-        """
-        This is deprecated and has no effect. Do not use.
-        """
-        return pulumi.get(self, "rules")
 
     @property
     @pulumi.getter

@@ -37,7 +37,7 @@ class ConversationArgs:
         :param pulumi.Input[str] expire_time: The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map for the user to specify any custom fields. A maximum of 20 labels per conversation is allowed, with a maximum of 256 characters per entry.
         :param pulumi.Input[str] language_code: A user-specified language code for the conversation.
-        :param pulumi.Input['ConversationMedium'] medium: Immutable. The conversation medium.
+        :param pulumi.Input['ConversationMedium'] medium: Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         :param pulumi.Input[str] name: Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
         :param pulumi.Input[str] start_time: The time at which the conversation started.
         :param pulumi.Input[str] ttl: Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
@@ -163,7 +163,7 @@ class ConversationArgs:
     @pulumi.getter
     def medium(self) -> Optional[pulumi.Input['ConversationMedium']]:
         """
-        Immutable. The conversation medium.
+        Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         """
         return pulumi.get(self, "medium")
 
@@ -247,7 +247,7 @@ class Conversation(pulumi.CustomResource):
         :param pulumi.Input[str] expire_time: The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map for the user to specify any custom fields. A maximum of 20 labels per conversation is allowed, with a maximum of 256 characters per entry.
         :param pulumi.Input[str] language_code: A user-specified language code for the conversation.
-        :param pulumi.Input['ConversationMedium'] medium: Immutable. The conversation medium.
+        :param pulumi.Input['ConversationMedium'] medium: Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         :param pulumi.Input[str] name: Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
         :param pulumi.Input[str] start_time: The time at which the conversation started.
         :param pulumi.Input[str] ttl: Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
@@ -448,7 +448,7 @@ class Conversation(pulumi.CustomResource):
     @pulumi.getter
     def medium(self) -> pulumi.Output[str]:
         """
-        Immutable. The conversation medium.
+        Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         """
         return pulumi.get(self, "medium")
 

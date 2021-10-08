@@ -140,10 +140,13 @@ __all__ = [
     'ResourcePolicyWeeklyCycleDayOfWeekArgs',
     'ResourcePolicyWeeklyCycleArgs',
     'RouterAdvertisedIpRangeArgs',
+    'RouterBgpPeerBfdArgs',
     'RouterBgpPeerArgs',
     'RouterBgpArgs',
     'RouterInterfaceArgs',
     'RouterNatLogConfigArgs',
+    'RouterNatRuleActionArgs',
+    'RouterNatRuleArgs',
     'RouterNatSubnetworkToNatArgs',
     'RouterNatArgs',
     'RuleArgs',
@@ -169,6 +172,7 @@ __all__ = [
     'StatefulPolicyArgs',
     'SubnetworkLogConfigArgs',
     'SubnetworkSecondaryRangeArgs',
+    'SubsettingArgs',
     'TCPHealthCheckArgs',
     'TagsArgs',
     'UrlMapTestHeaderArgs',
@@ -535,7 +539,7 @@ class AllocationSpecificSKUReservationArgs:
                  count: Optional[pulumi.Input[str]] = None,
                  instance_properties: Optional[pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs']] = None):
         """
-        This reservation type allows to pre allocate specific instance configuration.
+        This reservation type allows to pre allocate specific instance configuration. Next ID: 5
         :param pulumi.Input[str] count: Specifies the number of resources that are allocated.
         :param pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs'] instance_properties: The instance properties for the reservation.
         """
@@ -2078,7 +2082,7 @@ class BackendArgs:
                  max_utilization: Optional[pulumi.Input[float]] = None):
         """
         Message containing information of one individual backend.
-        :param pulumi.Input['BackendBalancingMode'] balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+        :param pulumi.Input['BackendBalancingMode'] balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
         :param pulumi.Input[float] capacity_scaler: A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] failover: This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService.
@@ -2120,7 +2124,7 @@ class BackendArgs:
     @pulumi.getter(name="balancingMode")
     def balancing_mode(self) -> Optional[pulumi.Input['BackendBalancingMode']]:
         """
-        Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
+        Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -2901,10 +2905,10 @@ class CustomerEncryptionKeyArgs:
                  raw_key: Optional[pulumi.Input[str]] = None,
                  rsa_encrypted_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
-        :param pulumi.Input[str] kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
-        :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
-        :param pulumi.Input[str] rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
+        :param pulumi.Input[str] kms_key_name: The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key 
+        :param pulumi.Input[str] kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/ 
+        :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=" 
+        :param pulumi.Input[str] rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
         """
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -2919,7 +2923,7 @@ class CustomerEncryptionKeyArgs:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the encryption key that is stored in Google Cloud KMS.
+        The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key 
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -2931,7 +2935,7 @@ class CustomerEncryptionKeyArgs:
     @pulumi.getter(name="kmsKeyServiceAccount")
     def kms_key_service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/ 
         """
         return pulumi.get(self, "kms_key_service_account")
 
@@ -2943,7 +2947,7 @@ class CustomerEncryptionKeyArgs:
     @pulumi.getter(name="rawKey")
     def raw_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rawKey": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=" 
         """
         return pulumi.get(self, "raw_key")
 
@@ -2955,7 +2959,7 @@ class CustomerEncryptionKeyArgs:
     @pulumi.getter(name="rsaEncryptedKey")
     def rsa_encrypted_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
         """
         return pulumi.get(self, "rsa_encrypted_key")
 
@@ -8676,29 +8680,104 @@ class RouterAdvertisedIpRangeArgs:
 
 
 @pulumi.input_type
+class RouterBgpPeerBfdArgs:
+    def __init__(__self__, *,
+                 min_receive_interval: Optional[pulumi.Input[int]] = None,
+                 min_transmit_interval: Optional[pulumi.Input[int]] = None,
+                 multiplier: Optional[pulumi.Input[int]] = None,
+                 session_initialization_mode: Optional[pulumi.Input['RouterBgpPeerBfdSessionInitializationMode']] = None):
+        """
+        :param pulumi.Input[int] min_receive_interval: The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+        :param pulumi.Input[int] min_transmit_interval: The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+        :param pulumi.Input[int] multiplier: The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
+        :param pulumi.Input['RouterBgpPeerBfdSessionInitializationMode'] session_initialization_mode: The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+        """
+        if min_receive_interval is not None:
+            pulumi.set(__self__, "min_receive_interval", min_receive_interval)
+        if min_transmit_interval is not None:
+            pulumi.set(__self__, "min_transmit_interval", min_transmit_interval)
+        if multiplier is not None:
+            pulumi.set(__self__, "multiplier", multiplier)
+        if session_initialization_mode is not None:
+            pulumi.set(__self__, "session_initialization_mode", session_initialization_mode)
+
+    @property
+    @pulumi.getter(name="minReceiveInterval")
+    def min_receive_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+        """
+        return pulumi.get(self, "min_receive_interval")
+
+    @min_receive_interval.setter
+    def min_receive_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_receive_interval", value)
+
+    @property
+    @pulumi.getter(name="minTransmitInterval")
+    def min_transmit_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
+        """
+        return pulumi.get(self, "min_transmit_interval")
+
+    @min_transmit_interval.setter
+    def min_transmit_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_transmit_interval", value)
+
+    @property
+    @pulumi.getter
+    def multiplier(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
+        """
+        return pulumi.get(self, "multiplier")
+
+    @multiplier.setter
+    def multiplier(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "multiplier", value)
+
+    @property
+    @pulumi.getter(name="sessionInitializationMode")
+    def session_initialization_mode(self) -> Optional[pulumi.Input['RouterBgpPeerBfdSessionInitializationMode']]:
+        """
+        The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+        """
+        return pulumi.get(self, "session_initialization_mode")
+
+    @session_initialization_mode.setter
+    def session_initialization_mode(self, value: Optional[pulumi.Input['RouterBgpPeerBfdSessionInitializationMode']]):
+        pulumi.set(self, "session_initialization_mode", value)
+
+
+@pulumi.input_type
 class RouterBgpPeerArgs:
     def __init__(__self__, *,
                  advertise_mode: Optional[pulumi.Input['RouterBgpPeerAdvertiseMode']] = None,
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerAdvertisedGroupsItem']]]] = None,
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterAdvertisedIpRangeArgs']]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
+                 bfd: Optional[pulumi.Input['RouterBgpPeerBfdArgs']] = None,
                  enable: Optional[pulumi.Input['RouterBgpPeerEnable']] = None,
                  interface_name: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
-                 peer_ip_address: Optional[pulumi.Input[str]] = None):
+                 peer_ip_address: Optional[pulumi.Input[str]] = None,
+                 router_appliance_instance: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['RouterBgpPeerAdvertiseMode'] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
         :param pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerAdvertisedGroupsItem']]] advertised_groups: User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         :param pulumi.Input[Sequence[pulumi.Input['RouterAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
+        :param pulumi.Input['RouterBgpPeerBfdArgs'] bfd: BFD configuration for the BGP peering.
         :param pulumi.Input['RouterBgpPeerEnable'] enable: The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
         :param pulumi.Input[str] interface_name: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[int] peer_asn: Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
+        :param pulumi.Input[str] router_appliance_instance: URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
         """
         if advertise_mode is not None:
             pulumi.set(__self__, "advertise_mode", advertise_mode)
@@ -8708,6 +8787,8 @@ class RouterBgpPeerArgs:
             pulumi.set(__self__, "advertised_ip_ranges", advertised_ip_ranges)
         if advertised_route_priority is not None:
             pulumi.set(__self__, "advertised_route_priority", advertised_route_priority)
+        if bfd is not None:
+            pulumi.set(__self__, "bfd", bfd)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if interface_name is not None:
@@ -8720,6 +8801,8 @@ class RouterBgpPeerArgs:
             pulumi.set(__self__, "peer_asn", peer_asn)
         if peer_ip_address is not None:
             pulumi.set(__self__, "peer_ip_address", peer_ip_address)
+        if router_appliance_instance is not None:
+            pulumi.set(__self__, "router_appliance_instance", router_appliance_instance)
 
     @property
     @pulumi.getter(name="advertiseMode")
@@ -8768,6 +8851,18 @@ class RouterBgpPeerArgs:
     @advertised_route_priority.setter
     def advertised_route_priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "advertised_route_priority", value)
+
+    @property
+    @pulumi.getter
+    def bfd(self) -> Optional[pulumi.Input['RouterBgpPeerBfdArgs']]:
+        """
+        BFD configuration for the BGP peering.
+        """
+        return pulumi.get(self, "bfd")
+
+    @bfd.setter
+    def bfd(self, value: Optional[pulumi.Input['RouterBgpPeerBfdArgs']]):
+        pulumi.set(self, "bfd", value)
 
     @property
     @pulumi.getter
@@ -8840,6 +8935,18 @@ class RouterBgpPeerArgs:
     @peer_ip_address.setter
     def peer_ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "peer_ip_address", value)
+
+    @property
+    @pulumi.getter(name="routerApplianceInstance")
+    def router_appliance_instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
+        """
+        return pulumi.get(self, "router_appliance_instance")
+
+    @router_appliance_instance.setter
+    def router_appliance_instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "router_appliance_instance", value)
 
 
 @pulumi.input_type
@@ -8935,12 +9042,18 @@ class RouterInterfaceArgs:
                  ip_range: Optional[pulumi.Input[str]] = None,
                  linked_interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  linked_vpn_tunnel: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
+                 redundant_interface: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be in the RFC3927 link-local IP address space. The value must be a CIDR-formatted string, for example: 169.254.0.1/30. NOTE: Do not truncate the address as it represents the IP address of the interface.
         :param pulumi.Input[str] linked_interconnect_attachment: URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
         :param pulumi.Input[str] linked_vpn_tunnel: URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
         :param pulumi.Input[str] name: Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[str] private_ip_address: The regional private internal IP address that is used to establish BGP sessions to a VM instance acting as a third-party Router Appliance, such as a Next Gen Firewall, a Virtual Router, or an SD-WAN VM.
+        :param pulumi.Input[str] redundant_interface: Name of the interface that will be redundant with the current interface you are creating. The redundantInterface must belong to the same Cloud Router as the interface here. To establish the BGP session to a Router Appliance VM, you must create two BGP peers. The two BGP peers must be attached to two separate interfaces that are redundant with each other. The redundant_interface must be 1-63 characters long, and comply with RFC1035. Specifically, the redundant_interface must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[str] subnetwork: The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
         """
         if ip_range is not None:
             pulumi.set(__self__, "ip_range", ip_range)
@@ -8950,6 +9063,12 @@ class RouterInterfaceArgs:
             pulumi.set(__self__, "linked_vpn_tunnel", linked_vpn_tunnel)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
+        if redundant_interface is not None:
+            pulumi.set(__self__, "redundant_interface", redundant_interface)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
 
     @property
     @pulumi.getter(name="ipRange")
@@ -8999,6 +9118,42 @@ class RouterInterfaceArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The regional private internal IP address that is used to establish BGP sessions to a VM instance acting as a third-party Router Appliance, such as a Next Gen Firewall, a Virtual Router, or an SD-WAN VM.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip_address", value)
+
+    @property
+    @pulumi.getter(name="redundantInterface")
+    def redundant_interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the interface that will be redundant with the current interface you are creating. The redundantInterface must belong to the same Cloud Router as the interface here. To establish the BGP session to a Router Appliance VM, you must create two BGP peers. The two BGP peers must be attached to two separate interfaces that are redundant with each other. The redundant_interface must be 1-63 characters long, and comply with RFC1035. Specifically, the redundant_interface must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "redundant_interface")
+
+    @redundant_interface.setter
+    def redundant_interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redundant_interface", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
 
 @pulumi.input_type
 class RouterNatLogConfigArgs:
@@ -9038,6 +9193,116 @@ class RouterNatLogConfigArgs:
     @filter.setter
     def filter(self, value: Optional[pulumi.Input['RouterNatLogConfigFilter']]):
         pulumi.set(self, "filter", value)
+
+
+@pulumi.input_type
+class RouterNatRuleActionArgs:
+    def __init__(__self__, *,
+                 source_nat_active_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_nat_drain_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_drain_ips: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+        """
+        if source_nat_active_ips is not None:
+            pulumi.set(__self__, "source_nat_active_ips", source_nat_active_ips)
+        if source_nat_drain_ips is not None:
+            pulumi.set(__self__, "source_nat_drain_ips", source_nat_drain_ips)
+
+    @property
+    @pulumi.getter(name="sourceNatActiveIps")
+    def source_nat_active_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+        """
+        return pulumi.get(self, "source_nat_active_ips")
+
+    @source_nat_active_ips.setter
+    def source_nat_active_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_nat_active_ips", value)
+
+    @property
+    @pulumi.getter(name="sourceNatDrainIps")
+    def source_nat_drain_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+        """
+        return pulumi.get(self, "source_nat_drain_ips")
+
+    @source_nat_drain_ips.setter
+    def source_nat_drain_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_nat_drain_ips", value)
+
+
+@pulumi.input_type
+class RouterNatRuleArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input['RouterNatRuleActionArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 match: Optional[pulumi.Input[str]] = None,
+                 rule_number: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['RouterNatRuleActionArgs'] action: The action to be enforced for traffic that matches this rule.
+        :param pulumi.Input[str] description: An optional description of this rule.
+        :param pulumi.Input[str] match: CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+        :param pulumi.Input[int] rule_number: An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if rule_number is not None:
+            pulumi.set(__self__, "rule_number", rule_number)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input['RouterNatRuleActionArgs']]:
+        """
+        The action to be enforced for traffic that matches this rule.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input['RouterNatRuleActionArgs']]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional[pulumi.Input[str]]:
+        """
+        CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+        """
+        return pulumi.get(self, "match")
+
+    @match.setter
+    def match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "match", value)
+
+    @property
+    @pulumi.getter(name="ruleNumber")
+    def rule_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+        """
+        return pulumi.get(self, "rule_number")
+
+    @rule_number.setter
+    def rule_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rule_number", value)
 
 
 @pulumi.input_type
@@ -9107,9 +9372,11 @@ class RouterNatArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  nat_ip_allocate_option: Optional[pulumi.Input['RouterNatNatIpAllocateOption']] = None,
                  nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]] = None,
                  source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input['RouterNatSourceSubnetworkIpRangesToNat']] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkToNatArgs']]]] = None,
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None):
         """
@@ -9121,9 +9388,11 @@ class RouterNatArgs:
         :param pulumi.Input[str] name: Unique name of this Nat service. The name must be 1-63 characters long and comply with RFC1035.
         :param pulumi.Input['RouterNatNatIpAllocateOption'] nat_ip_allocate_option: Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty. 
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid static external IP addresses assigned to the project.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]] rules: A list of rules associated with this NAT.
         :param pulumi.Input['RouterNatSourceSubnetworkIpRangesToNat'] source_subnetwork_ip_ranges_to_nat: Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
         :param pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkToNatArgs']]] subnetworks: A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
         :param pulumi.Input[int] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
+        :param pulumi.Input[int] tcp_time_wait_timeout_sec: Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
@@ -9143,12 +9412,16 @@ class RouterNatArgs:
             pulumi.set(__self__, "nat_ip_allocate_option", nat_ip_allocate_option)
         if nat_ips is not None:
             pulumi.set(__self__, "nat_ips", nat_ips)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if source_subnetwork_ip_ranges_to_nat is not None:
             pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
         if subnetworks is not None:
             pulumi.set(__self__, "subnetworks", subnetworks)
         if tcp_established_idle_timeout_sec is not None:
             pulumi.set(__self__, "tcp_established_idle_timeout_sec", tcp_established_idle_timeout_sec)
+        if tcp_time_wait_timeout_sec is not None:
+            pulumi.set(__self__, "tcp_time_wait_timeout_sec", tcp_time_wait_timeout_sec)
         if tcp_transitory_idle_timeout_sec is not None:
             pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
         if udp_idle_timeout_sec is not None:
@@ -9248,6 +9521,18 @@ class RouterNatArgs:
         pulumi.set(self, "nat_ips", value)
 
     @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]]:
+        """
+        A list of rules associated with this NAT.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
     @pulumi.getter(name="sourceSubnetworkIpRangesToNat")
     def source_subnetwork_ip_ranges_to_nat(self) -> Optional[pulumi.Input['RouterNatSourceSubnetworkIpRangesToNat']]:
         """
@@ -9282,6 +9567,18 @@ class RouterNatArgs:
     @tcp_established_idle_timeout_sec.setter
     def tcp_established_idle_timeout_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "tcp_established_idle_timeout_sec", value)
+
+    @property
+    @pulumi.getter(name="tcpTimeWaitTimeoutSec")
+    def tcp_time_wait_timeout_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
+        """
+        return pulumi.get(self, "tcp_time_wait_timeout_sec")
+
+    @tcp_time_wait_timeout_sec.setter
+    def tcp_time_wait_timeout_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tcp_time_wait_timeout_sec", value)
 
     @property
     @pulumi.getter(name="tcpTransitoryIdleTimeoutSec")
@@ -10438,6 +10735,26 @@ class SubnetworkSecondaryRangeArgs:
     @range_name.setter
     def range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
+class SubsettingArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input['SubsettingPolicy']] = None):
+        """
+        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input['SubsettingPolicy']]:
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input['SubsettingPolicy']]):
+        pulumi.set(self, "policy", value)
 
 
 @pulumi.input_type

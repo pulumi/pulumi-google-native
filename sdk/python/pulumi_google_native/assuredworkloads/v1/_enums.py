@@ -72,3 +72,7 @@ class WorkloadComplianceRegime(str, Enum):
     """
     Assured Workloads For EU Regions and Support controls
     """
+    CA_REGIONS_AND_SUPPORT = "CA_REGIONS_AND_SUPPORT"
+    """
+    Assured Workloads For Canada Regions and Support controls
+    """

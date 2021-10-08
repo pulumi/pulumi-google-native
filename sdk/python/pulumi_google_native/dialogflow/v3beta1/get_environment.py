@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEnvironmentResult:
-    def __init__(__self__, description=None, display_name=None, name=None, update_time=None, version_configs=None):
+    def __init__(__self__, description=None, display_name=None, name=None, test_cases_config=None, update_time=None, version_configs=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -28,6 +28,9 @@ class GetEnvironmentResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if test_cases_config and not isinstance(test_cases_config, dict):
+            raise TypeError("Expected argument 'test_cases_config' to be a dict")
+        pulumi.set(__self__, "test_cases_config", test_cases_config)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -60,6 +63,14 @@ class GetEnvironmentResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="testCasesConfig")
+    def test_cases_config(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse':
+        """
+        The test cases config for continuous tests of this environment.
+        """
+        return pulumi.get(self, "test_cases_config")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -85,6 +96,7 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             description=self.description,
             display_name=self.display_name,
             name=self.name,
+            test_cases_config=self.test_cases_config,
             update_time=self.update_time,
             version_configs=self.version_configs)
 
@@ -112,6 +124,7 @@ def get_environment(agent_id: Optional[str] = None,
         description=__ret__.description,
         display_name=__ret__.display_name,
         name=__ret__.name,
+        test_cases_config=__ret__.test_cases_config,
         update_time=__ret__.update_time,
         version_configs=__ret__.version_configs)
 

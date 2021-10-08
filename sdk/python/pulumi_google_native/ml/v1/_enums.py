@@ -130,6 +130,14 @@ class GoogleCloudMlV1__AcceleratorConfigType(str, Enum):
     """
     TPU v3.
     """
+    TPU_V2_POD = "TPU_V2_POD"
+    """
+    TPU v2 POD.
+    """
+    TPU_V3_POD = "TPU_V3_POD"
+    """
+    TPU v3 POD.
+    """
 
 
 class GoogleCloudMlV1__HyperparameterSpecAlgorithm(str, Enum):

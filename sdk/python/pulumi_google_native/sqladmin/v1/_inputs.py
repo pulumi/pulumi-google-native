@@ -32,6 +32,7 @@ __all__ = [
     'SqlActiveDirectoryConfigArgs',
     'SqlOutOfDiskReportArgs',
     'SqlScheduledMaintenanceArgs',
+    'SqlServerAuditConfigArgs',
     'SqlServerDatabaseDetailsArgs',
     'SslCertArgs',
 ]
@@ -349,7 +350,7 @@ class DenyMaintenancePeriodArgs:
         """
         Deny maintenance Periods. This specifies a date range during when all CSA rollout will be denied.
         :param pulumi.Input[str] end_date: "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
-        :param pulumi.Input[str] start_date: "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        :param pulumi.Input[str] start_date: "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
         :param pulumi.Input[str] time: Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
         """
         if end_date is not None:
@@ -375,7 +376,7 @@ class DenyMaintenancePeriodArgs:
     @pulumi.getter(name="startDate")
     def start_date(self) -> Optional[pulumi.Input[str]]:
         """
-        "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
         """
         return pulumi.get(self, "start_date")
 
@@ -888,7 +889,7 @@ class MaintenanceWindowArgs:
         :param pulumi.Input[int] day: day of week (1-7), starting on Monday.
         :param pulumi.Input[int] hour: hour of day - 0 to 23.
         :param pulumi.Input[str] kind: This is always **sql#maintenanceWindow**.
-        :param pulumi.Input['MaintenanceWindowUpdateTrack'] update_track: Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+        :param pulumi.Input['MaintenanceWindowUpdateTrack'] update_track: Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
         """
         if day is not None:
             pulumi.set(__self__, "day", day)
@@ -939,7 +940,7 @@ class MaintenanceWindowArgs:
     @pulumi.getter(name="updateTrack")
     def update_track(self) -> Optional[pulumi.Input['MaintenanceWindowUpdateTrack']]:
         """
-        Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+        Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
         """
         return pulumi.get(self, "update_track")
 
@@ -1151,7 +1152,7 @@ class OnPremisesConfigurationArgs:
         :param pulumi.Input[str] client_key: PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
         :param pulumi.Input[str] dump_file_path: The dump file to create the Cloud SQL replica.
         :param pulumi.Input[str] host_port: The host and port of the on-premises instance in host:port format
-        :param pulumi.Input[str] kind: This is always *sql#onPremisesConfiguration*.
+        :param pulumi.Input[str] kind: This is always **sql#onPremisesConfiguration**.
         :param pulumi.Input[str] password: The password for connecting to on-premises instance.
         :param pulumi.Input['InstanceReferenceArgs'] source_instance: The reference to Cloud SQL instance if the source is Cloud SQL.
         :param pulumi.Input[str] username: The username for connecting to on-premises instance.
@@ -1239,7 +1240,7 @@ class OnPremisesConfigurationArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        This is always *sql#onPremisesConfiguration*.
+        This is always **sql#onPremisesConfiguration**.
         """
         return pulumi.get(self, "kind")
 
@@ -1348,9 +1349,9 @@ class ReplicaConfigurationArgs:
                  mysql_replica_configuration: Optional[pulumi.Input['MySqlReplicaConfigurationArgs']] = None):
         """
         Read-replica configuration for connecting to the primary instance.
-        :param pulumi.Input[bool] failover_target: Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
-        :param pulumi.Input[str] kind: This is always *sql#replicaConfiguration*.
-        :param pulumi.Input['MySqlReplicaConfigurationArgs'] mysql_replica_configuration: MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata.The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+        :param pulumi.Input[bool] failover_target: Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+        :param pulumi.Input[str] kind: This is always **sql#replicaConfiguration**.
+        :param pulumi.Input['MySqlReplicaConfigurationArgs'] mysql_replica_configuration: MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
         """
         if failover_target is not None:
             pulumi.set(__self__, "failover_target", failover_target)
@@ -1363,7 +1364,7 @@ class ReplicaConfigurationArgs:
     @pulumi.getter(name="failoverTarget")
     def failover_target(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+        Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
         """
         return pulumi.get(self, "failover_target")
 
@@ -1375,7 +1376,7 @@ class ReplicaConfigurationArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        This is always *sql#replicaConfiguration*.
+        This is always **sql#replicaConfiguration**.
         """
         return pulumi.get(self, "kind")
 
@@ -1387,7 +1388,7 @@ class ReplicaConfigurationArgs:
     @pulumi.getter(name="mysqlReplicaConfiguration")
     def mysql_replica_configuration(self) -> Optional[pulumi.Input['MySqlReplicaConfigurationArgs']]:
         """
-        MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata.The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+        MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named **master.info** in the data directory.
         """
         return pulumi.get(self, "mysql_replica_configuration")
 
@@ -1417,30 +1418,32 @@ class SettingsArgs:
                  maintenance_window: Optional[pulumi.Input['MaintenanceWindowArgs']] = None,
                  pricing_plan: Optional[pulumi.Input['SettingsPricingPlan']] = None,
                  settings_version: Optional[pulumi.Input[str]] = None,
+                 sql_server_audit_config: Optional[pulumi.Input['SqlServerAuditConfigArgs']] = None,
                  storage_auto_resize: Optional[pulumi.Input[bool]] = None,
                  storage_auto_resize_limit: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Database instance settings.
-        :param pulumi.Input['SettingsActivationPolicy'] activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+        :param pulumi.Input['SettingsActivationPolicy'] activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
         :param pulumi.Input['SqlActiveDirectoryConfigArgs'] active_directory_config: Active Directory configuration, relevant only for Cloud SQL for SQL Server.
-        :param pulumi.Input['SettingsAvailabilityType'] availability_type: Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+        :param pulumi.Input['SettingsAvailabilityType'] availability_type: Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         :param pulumi.Input['BackupConfigurationArgs'] backup_configuration: The daily backup configuration for the instance.
         :param pulumi.Input[str] collation: The name of server Instance collation.
         :param pulumi.Input[bool] crash_safe_replication_enabled: Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
         :param pulumi.Input[str] data_disk_size_gb: The size of data disk, in GB. The data disk size minimum is 10GB.
-        :param pulumi.Input['SettingsDataDiskType'] data_disk_type: The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+        :param pulumi.Input['SettingsDataDiskType'] data_disk_type: The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseFlagsArgs']]] database_flags: The database flags passed to the instance at startup.
         :param pulumi.Input[bool] database_replication_enabled: Configuration specific to read replica instances. Indicates whether replication is enabled or not.
         :param pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]] deny_maintenance_periods: Deny maintenance periods
         :param pulumi.Input['InsightsConfigArgs'] insights_config: Insights configuration, for now relevant only for Postgres.
         :param pulumi.Input['IpConfigurationArgs'] ip_configuration: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
         :param pulumi.Input[str] kind: This is always **sql#settings**.
-        :param pulumi.Input['LocationPreferenceArgs'] location_preference: The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+        :param pulumi.Input['LocationPreferenceArgs'] location_preference: The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
         :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
         :param pulumi.Input['SettingsPricingPlan'] pricing_plan: The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
         :param pulumi.Input[str] settings_version: The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
+        :param pulumi.Input['SqlServerAuditConfigArgs'] sql_server_audit_config: SQL Server specific audit configuration.
         :param pulumi.Input[bool] storage_auto_resize: Configuration to increase storage size automatically. The default value is true.
         :param pulumi.Input[str] storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example **db-custom-1-3840**.
@@ -1482,6 +1485,8 @@ class SettingsArgs:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
         if settings_version is not None:
             pulumi.set(__self__, "settings_version", settings_version)
+        if sql_server_audit_config is not None:
+            pulumi.set(__self__, "sql_server_audit_config", sql_server_audit_config)
         if storage_auto_resize is not None:
             pulumi.set(__self__, "storage_auto_resize", storage_auto_resize)
         if storage_auto_resize_limit is not None:
@@ -1495,7 +1500,7 @@ class SettingsArgs:
     @pulumi.getter(name="activationPolicy")
     def activation_policy(self) -> Optional[pulumi.Input['SettingsActivationPolicy']]:
         """
-        The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+        The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
         """
         return pulumi.get(self, "activation_policy")
 
@@ -1519,7 +1524,7 @@ class SettingsArgs:
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> Optional[pulumi.Input['SettingsAvailabilityType']]:
         """
-        Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+        Availability type. Potential values: * **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. * **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         """
         return pulumi.get(self, "availability_type")
 
@@ -1579,7 +1584,7 @@ class SettingsArgs:
     @pulumi.getter(name="dataDiskType")
     def data_disk_type(self) -> Optional[pulumi.Input['SettingsDataDiskType']]:
         """
-        The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+        The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
         """
         return pulumi.get(self, "data_disk_type")
 
@@ -1663,7 +1668,7 @@ class SettingsArgs:
     @pulumi.getter(name="locationPreference")
     def location_preference(self) -> Optional[pulumi.Input['LocationPreferenceArgs']]:
         """
-        The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+        The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
         """
         return pulumi.get(self, "location_preference")
 
@@ -1706,6 +1711,18 @@ class SettingsArgs:
     @settings_version.setter
     def settings_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "settings_version", value)
+
+    @property
+    @pulumi.getter(name="sqlServerAuditConfig")
+    def sql_server_audit_config(self) -> Optional[pulumi.Input['SqlServerAuditConfigArgs']]:
+        """
+        SQL Server specific audit configuration.
+        """
+        return pulumi.get(self, "sql_server_audit_config")
+
+    @sql_server_audit_config.setter
+    def sql_server_audit_config(self, value: Optional[pulumi.Input['SqlServerAuditConfigArgs']]):
+        pulumi.set(self, "sql_server_audit_config", value)
 
     @property
     @pulumi.getter(name="storageAutoResize")
@@ -1803,8 +1820,8 @@ class SqlOutOfDiskReportArgs:
                  sql_out_of_disk_state: Optional[pulumi.Input['SqlOutOfDiskReportSqlOutOfDiskState']] = None):
         """
         This message wraps up the information written by out-of-disk detection job.
-        :param pulumi.Input[int] sql_min_recommended_increase_size_gb: The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
-        :param pulumi.Input['SqlOutOfDiskReportSqlOutOfDiskState'] sql_out_of_disk_state: This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+        :param pulumi.Input[int] sql_min_recommended_increase_size_gb: The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
+        :param pulumi.Input['SqlOutOfDiskReportSqlOutOfDiskState'] sql_out_of_disk_state: This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
         """
         if sql_min_recommended_increase_size_gb is not None:
             pulumi.set(__self__, "sql_min_recommended_increase_size_gb", sql_min_recommended_increase_size_gb)
@@ -1815,7 +1832,7 @@ class SqlOutOfDiskReportArgs:
     @pulumi.getter(name="sqlMinRecommendedIncreaseSizeGb")
     def sql_min_recommended_increase_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
+        The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
         """
         return pulumi.get(self, "sql_min_recommended_increase_size_gb")
 
@@ -1827,7 +1844,7 @@ class SqlOutOfDiskReportArgs:
     @pulumi.getter(name="sqlOutOfDiskState")
     def sql_out_of_disk_state(self) -> Optional[pulumi.Input['SqlOutOfDiskReportSqlOutOfDiskState']]:
         """
-        This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+        This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
         """
         return pulumi.get(self, "sql_out_of_disk_state")
 
@@ -1905,6 +1922,46 @@ class SqlScheduledMaintenanceArgs:
 
 
 @pulumi.input_type
+class SqlServerAuditConfigArgs:
+    def __init__(__self__, *,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None):
+        """
+        SQL Server specific audit configuration.
+        :param pulumi.Input[str] bucket: The name of the destination bucket (e.g., gs://mybucket).
+        :param pulumi.Input[str] kind: This is always sql#sqlServerAuditConfig
+        """
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the destination bucket (e.g., gs://mybucket).
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is always sql#sqlServerAuditConfig
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+
+@pulumi.input_type
 class SqlServerDatabaseDetailsArgs:
     def __init__(__self__, *,
                  compatibility_level: Optional[pulumi.Input[int]] = None,
@@ -1964,7 +2021,7 @@ class SslCertArgs:
         :param pulumi.Input[str] create_time: The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
         :param pulumi.Input[str] expiration_time: The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         :param pulumi.Input[str] instance: Name of the database instance.
-        :param pulumi.Input[str] kind: This is always sql#sslCert.
+        :param pulumi.Input[str] kind: This is always **sql#sslCert**.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[str] sha1_fingerprint: Sha1 Fingerprint.
         """
@@ -2063,7 +2120,7 @@ class SslCertArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        This is always sql#sslCert.
+        This is always **sql#sslCert**.
         """
         return pulumi.get(self, "kind")
 

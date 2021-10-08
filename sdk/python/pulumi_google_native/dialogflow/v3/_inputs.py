@@ -19,6 +19,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3DtmfInputArgs',
     'GoogleCloudDialogflowCxV3EntityTypeEntityArgs',
     'GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs',
+    'GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs',
     'GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs',
     'GoogleCloudDialogflowCxV3EventHandlerArgs',
     'GoogleCloudDialogflowCxV3EventInputArgs',
@@ -253,7 +254,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs:
                  triggered_intent: Optional[pulumi.Input['GoogleCloudDialogflowCxV3IntentArgs']] = None):
         """
         The output from the virtual agent.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] diagnostic_info: Input only. The diagnostic info output for the turn.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] diagnostic_info: Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
         :param pulumi.Input['GoogleCloudDialogflowCxV3PageArgs'] current_page: The Page on which the utterance was spoken. Only name and displayName will be set.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_parameters: The session parameters available to the bot at this point.
         :param pulumi.Input['GoogleRpcStatusArgs'] status: Response error from the agent in the test result. If set, other output is empty.
@@ -276,7 +277,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs:
     @pulumi.getter(name="diagnosticInfo")
     def diagnostic_info(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
-        Input only. The diagnostic info output for the turn.
+        Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
         """
         return pulumi.get(self, "diagnostic_info")
 
@@ -484,6 +485,62 @@ class GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs:
+    def __init__(__self__, *,
+                 enable_continuous_run: Optional[pulumi.Input[bool]] = None,
+                 enable_predeployment_run: Optional[pulumi.Input[bool]] = None,
+                 test_cases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The configuration for continuous tests.
+        :param pulumi.Input[bool] enable_continuous_run: Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+        :param pulumi.Input[bool] enable_predeployment_run: Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] test_cases: A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
+        """
+        if enable_continuous_run is not None:
+            pulumi.set(__self__, "enable_continuous_run", enable_continuous_run)
+        if enable_predeployment_run is not None:
+            pulumi.set(__self__, "enable_predeployment_run", enable_predeployment_run)
+        if test_cases is not None:
+            pulumi.set(__self__, "test_cases", test_cases)
+
+    @property
+    @pulumi.getter(name="enableContinuousRun")
+    def enable_continuous_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+        """
+        return pulumi.get(self, "enable_continuous_run")
+
+    @enable_continuous_run.setter
+    def enable_continuous_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_continuous_run", value)
+
+    @property
+    @pulumi.getter(name="enablePredeploymentRun")
+    def enable_predeployment_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
+        """
+        return pulumi.get(self, "enable_predeployment_run")
+
+    @enable_predeployment_run.setter
+    def enable_predeployment_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_predeployment_run", value)
+
+    @property
+    @pulumi.getter(name="testCases")
+    def test_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
+        """
+        return pulumi.get(self, "test_cases")
+
+    @test_cases.setter
+    def test_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "test_cases", value)
 
 
 @pulumi.input_type

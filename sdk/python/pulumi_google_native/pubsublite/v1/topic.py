@@ -20,11 +20,13 @@ class TopicArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  partition_config: Optional[pulumi.Input['PartitionConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reservation_config: Optional[pulumi.Input['ReservationConfigArgs']] = None,
                  retention_config: Optional[pulumi.Input['RetentionConfigArgs']] = None):
         """
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[str] name: The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
         :param pulumi.Input['PartitionConfigArgs'] partition_config: The settings for this topic's partitions.
+        :param pulumi.Input['ReservationConfigArgs'] reservation_config: The settings for this topic's Reservation usage.
         :param pulumi.Input['RetentionConfigArgs'] retention_config: The settings for this topic's message retention.
         """
         pulumi.set(__self__, "topic_id", topic_id)
@@ -36,6 +38,8 @@ class TopicArgs:
             pulumi.set(__self__, "partition_config", partition_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if reservation_config is not None:
+            pulumi.set(__self__, "reservation_config", reservation_config)
         if retention_config is not None:
             pulumi.set(__self__, "retention_config", retention_config)
 
@@ -91,6 +95,18 @@ class TopicArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="reservationConfig")
+    def reservation_config(self) -> Optional[pulumi.Input['ReservationConfigArgs']]:
+        """
+        The settings for this topic's Reservation usage.
+        """
+        return pulumi.get(self, "reservation_config")
+
+    @reservation_config.setter
+    def reservation_config(self, value: Optional[pulumi.Input['ReservationConfigArgs']]):
+        pulumi.set(self, "reservation_config", value)
+
+    @property
     @pulumi.getter(name="retentionConfig")
     def retention_config(self) -> Optional[pulumi.Input['RetentionConfigArgs']]:
         """
@@ -112,6 +128,7 @@ class Topic(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  partition_config: Optional[pulumi.Input[pulumi.InputType['PartitionConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reservation_config: Optional[pulumi.Input[pulumi.InputType['ReservationConfigArgs']]] = None,
                  retention_config: Optional[pulumi.Input[pulumi.InputType['RetentionConfigArgs']]] = None,
                  topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -122,6 +139,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
         :param pulumi.Input[pulumi.InputType['PartitionConfigArgs']] partition_config: The settings for this topic's partitions.
+        :param pulumi.Input[pulumi.InputType['ReservationConfigArgs']] reservation_config: The settings for this topic's Reservation usage.
         :param pulumi.Input[pulumi.InputType['RetentionConfigArgs']] retention_config: The settings for this topic's message retention.
         """
         ...
@@ -152,6 +170,7 @@ class Topic(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  partition_config: Optional[pulumi.Input[pulumi.InputType['PartitionConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reservation_config: Optional[pulumi.Input[pulumi.InputType['ReservationConfigArgs']]] = None,
                  retention_config: Optional[pulumi.Input[pulumi.InputType['RetentionConfigArgs']]] = None,
                  topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -170,6 +189,7 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["partition_config"] = partition_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["reservation_config"] = reservation_config
             __props__.__dict__["retention_config"] = retention_config
             if topic_id is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_id'")
@@ -198,6 +218,7 @@ class Topic(pulumi.CustomResource):
 
         __props__.__dict__["name"] = None
         __props__.__dict__["partition_config"] = None
+        __props__.__dict__["reservation_config"] = None
         __props__.__dict__["retention_config"] = None
         return Topic(resource_name, opts=opts, __props__=__props__)
 
@@ -216,6 +237,14 @@ class Topic(pulumi.CustomResource):
         The settings for this topic's partitions.
         """
         return pulumi.get(self, "partition_config")
+
+    @property
+    @pulumi.getter(name="reservationConfig")
+    def reservation_config(self) -> pulumi.Output['outputs.ReservationConfigResponse']:
+        """
+        The settings for this topic's Reservation usage.
+        """
+        return pulumi.get(self, "reservation_config")
 
     @property
     @pulumi.getter(name="retentionConfig")

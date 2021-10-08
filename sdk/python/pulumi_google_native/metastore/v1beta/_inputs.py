@@ -15,6 +15,7 @@ __all__ = [
     'BindingArgs',
     'DataCatalogConfigArgs',
     'DatabaseDumpArgs',
+    'DataplexConfigArgs',
     'EncryptionConfigArgs',
     'ExprArgs',
     'HiveMetastoreConfigArgs',
@@ -257,6 +258,30 @@ class DatabaseDumpArgs:
 
 
 @pulumi.input_type
+class DataplexConfigArgs:
+    def __init__(__self__, *,
+                 lake_resources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Specifies how metastore metadata should be integrated with the Dataplex service.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] lake_resources: A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+        """
+        if lake_resources is not None:
+            pulumi.set(__self__, "lake_resources", lake_resources)
+
+    @property
+    @pulumi.getter(name="lakeResources")
+    def lake_resources(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+        """
+        return pulumi.get(self, "lake_resources")
+
+    @lake_resources.setter
+    def lake_resources(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "lake_resources", value)
+
+
+@pulumi.input_type
 class EncryptionConfigArgs:
     def __init__(__self__, *,
                  kms_key: Optional[pulumi.Input[str]] = None):
@@ -356,16 +381,20 @@ class ExprArgs:
 class HiveMetastoreConfigArgs:
     def __init__(__self__, *,
                  config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 endpoint_protocol: Optional[pulumi.Input['HiveMetastoreConfigEndpointProtocol']] = None,
                  kerberos_config: Optional[pulumi.Input['KerberosConfigArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Specifies configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+        :param pulumi.Input['HiveMetastoreConfigEndpointProtocol'] endpoint_protocol: The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
         :param pulumi.Input['KerberosConfigArgs'] kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
         :param pulumi.Input[str] version: Immutable. The Hive metastore schema version.
         """
         if config_overrides is not None:
             pulumi.set(__self__, "config_overrides", config_overrides)
+        if endpoint_protocol is not None:
+            pulumi.set(__self__, "endpoint_protocol", endpoint_protocol)
         if kerberos_config is not None:
             pulumi.set(__self__, "kerberos_config", kerberos_config)
         if version is not None:
@@ -382,6 +411,18 @@ class HiveMetastoreConfigArgs:
     @config_overrides.setter
     def config_overrides(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "config_overrides", value)
+
+    @property
+    @pulumi.getter(name="endpointProtocol")
+    def endpoint_protocol(self) -> Optional[pulumi.Input['HiveMetastoreConfigEndpointProtocol']]:
+        """
+        The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+        """
+        return pulumi.get(self, "endpoint_protocol")
+
+    @endpoint_protocol.setter
+    def endpoint_protocol(self, value: Optional[pulumi.Input['HiveMetastoreConfigEndpointProtocol']]):
+        pulumi.set(self, "endpoint_protocol", value)
 
     @property
     @pulumi.getter(name="kerberosConfig")
@@ -507,13 +548,17 @@ class MaintenanceWindowArgs:
 @pulumi.input_type
 class MetadataIntegrationArgs:
     def __init__(__self__, *,
-                 data_catalog_config: Optional[pulumi.Input['DataCatalogConfigArgs']] = None):
+                 data_catalog_config: Optional[pulumi.Input['DataCatalogConfigArgs']] = None,
+                 dataplex_config: Optional[pulumi.Input['DataplexConfigArgs']] = None):
         """
         Specifies how metastore metadata should be integrated with external services.
         :param pulumi.Input['DataCatalogConfigArgs'] data_catalog_config: The integration config for the Data Catalog service.
+        :param pulumi.Input['DataplexConfigArgs'] dataplex_config: The integration config for the Dataplex service.
         """
         if data_catalog_config is not None:
             pulumi.set(__self__, "data_catalog_config", data_catalog_config)
+        if dataplex_config is not None:
+            pulumi.set(__self__, "dataplex_config", dataplex_config)
 
     @property
     @pulumi.getter(name="dataCatalogConfig")
@@ -526,6 +571,18 @@ class MetadataIntegrationArgs:
     @data_catalog_config.setter
     def data_catalog_config(self, value: Optional[pulumi.Input['DataCatalogConfigArgs']]):
         pulumi.set(self, "data_catalog_config", value)
+
+    @property
+    @pulumi.getter(name="dataplexConfig")
+    def dataplex_config(self) -> Optional[pulumi.Input['DataplexConfigArgs']]:
+        """
+        The integration config for the Dataplex service.
+        """
+        return pulumi.get(self, "dataplex_config")
+
+    @dataplex_config.setter
+    def dataplex_config(self, value: Optional[pulumi.Input['DataplexConfigArgs']]):
+        pulumi.set(self, "dataplex_config", value)
 
 
 @pulumi.input_type

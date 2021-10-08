@@ -41,7 +41,7 @@ class GetAttributeDefinitionResult:
     @pulumi.getter(name="allowedValues")
     def allowed_values(self) -> Sequence[str]:
         """
-        Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
         """
         return pulumi.get(self, "allowed_values")
 

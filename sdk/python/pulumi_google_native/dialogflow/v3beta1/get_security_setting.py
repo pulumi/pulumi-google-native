@@ -83,7 +83,7 @@ class GetSecuritySettingResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
         """
         return pulumi.get(self, "name")
 

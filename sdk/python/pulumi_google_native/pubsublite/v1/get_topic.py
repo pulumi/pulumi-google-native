@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetTopicResult:
-    def __init__(__self__, name=None, partition_config=None, retention_config=None):
+    def __init__(__self__, name=None, partition_config=None, reservation_config=None, retention_config=None):
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if partition_config and not isinstance(partition_config, dict):
             raise TypeError("Expected argument 'partition_config' to be a dict")
         pulumi.set(__self__, "partition_config", partition_config)
+        if reservation_config and not isinstance(reservation_config, dict):
+            raise TypeError("Expected argument 'reservation_config' to be a dict")
+        pulumi.set(__self__, "reservation_config", reservation_config)
         if retention_config and not isinstance(retention_config, dict):
             raise TypeError("Expected argument 'retention_config' to be a dict")
         pulumi.set(__self__, "retention_config", retention_config)
@@ -46,6 +49,14 @@ class GetTopicResult:
         return pulumi.get(self, "partition_config")
 
     @property
+    @pulumi.getter(name="reservationConfig")
+    def reservation_config(self) -> 'outputs.ReservationConfigResponse':
+        """
+        The settings for this topic's Reservation usage.
+        """
+        return pulumi.get(self, "reservation_config")
+
+    @property
     @pulumi.getter(name="retentionConfig")
     def retention_config(self) -> 'outputs.RetentionConfigResponse':
         """
@@ -62,6 +73,7 @@ class AwaitableGetTopicResult(GetTopicResult):
         return GetTopicResult(
             name=self.name,
             partition_config=self.partition_config,
+            reservation_config=self.reservation_config,
             retention_config=self.retention_config)
 
 
@@ -85,6 +97,7 @@ def get_topic(location: Optional[str] = None,
     return AwaitableGetTopicResult(
         name=__ret__.name,
         partition_config=__ret__.partition_config,
+        reservation_config=__ret__.reservation_config,
         retention_config=__ret__.retention_config)
 
 
