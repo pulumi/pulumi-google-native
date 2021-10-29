@@ -30,7 +30,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		Name:        "google-native",
 		Description: "A native Pulumi package for creating and managing Google Cloud resources.",
 		License:     "Apache-2.0",
-		Keywords:    []string{"pulumi", "google cloud"},
+		Keywords:    []string{"pulumi", "google cloud", "category/cloud", "kind/native"},
 		Homepage:    "https://pulumi.com",
 		Repository:  "https://github.com/pulumi/pulumi-google-native",
 		Config: schema.ConfigSpec{
