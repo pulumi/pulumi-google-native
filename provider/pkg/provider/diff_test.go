@@ -26,13 +26,13 @@ func TestGetInputsFromState(t *testing.T) {
 		"c1": map[string]interface{}{
 			"p2": "v2",
 		},
-		"p3": 123.456,
+		"p3":      123.456,
 		"output1": "should-be-ignored",
 	})
 	actual := getInputsFromState(res, state).Mappable()
 	expected := map[string]interface{}{
-		"p1": "v1",
-		"p2": "v2",
+		"p1":    "v1",
+		"p2":    "v2",
 		"p3sdk": 123.456,
 	}
 	assert.Equal(t, expected, actual)

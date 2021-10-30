@@ -69,7 +69,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				if getIamPolicy, has := res.Methods["getIamPolicy"]; has {
 					dd := discoveryDocumentResource{
 						createMethod: &restMethod,
-						getMethod: &getIamPolicy,
+						getMethod:    &getIamPolicy,
 						updateMethod: &restMethod,
 					}
 					err := add(typeName, dd)
@@ -111,7 +111,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 
 			dd := discoveryDocumentResource{
 				createMethod: createMethod,
-				getMethod: getMethod,
+				getMethod:    getMethod,
 				updateMethod: updateMethod,
 				deleteMethod: deleteMethod,
 			}

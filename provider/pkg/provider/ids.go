@@ -49,7 +49,7 @@ func evalPropertyValue(values map[string]interface{}, path string) (string, bool
 	parts := strings.Split(path, ".")
 	for idx, part := range parts {
 		value := current[part]
-		if idx == len(parts) - 1 {
+		if idx == len(parts)-1 {
 			if str, ok := value.(string); ok {
 				return str, true
 			}

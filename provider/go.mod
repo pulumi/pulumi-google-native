@@ -16,8 +16,8 @@ require (
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/pkg/errors v0.9.1
-	github.com/pulumi/pulumi/pkg/v3 v3.14.1-0.20211007232357-25a4c9d4398b
-	github.com/pulumi/pulumi/sdk/v3 v3.14.0
+	github.com/pulumi/pulumi/pkg/v3 v3.16.1-0.20211029163517-d39a14432fb5
+	github.com/pulumi/pulumi/sdk/v3 v3.16.1-0.20211029163517-d39a14432fb5
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/oauth2 v0.0.0-20210427180440-81ed05c6b58c
 	google.golang.org/api v0.46.0
