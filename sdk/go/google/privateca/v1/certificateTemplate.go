@@ -148,5 +148,6 @@ func (o CertificateTemplateOutput) ToCertificateTemplateOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateInput)(nil)).Elem(), &CertificateTemplate{})
 	pulumi.RegisterOutputType(CertificateTemplateOutput{})
 }

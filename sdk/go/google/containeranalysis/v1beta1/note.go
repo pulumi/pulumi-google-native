@@ -218,5 +218,6 @@ func (o NoteOutput) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteInput)(nil)).Elem(), &Note{})
 	pulumi.RegisterOutputType(NoteOutput{})
 }

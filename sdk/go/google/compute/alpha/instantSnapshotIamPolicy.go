@@ -147,5 +147,6 @@ func (o InstantSnapshotIamPolicyOutput) ToInstantSnapshotIamPolicyOutputWithCont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstantSnapshotIamPolicyInput)(nil)).Elem(), &InstantSnapshotIamPolicy{})
 	pulumi.RegisterOutputType(InstantSnapshotIamPolicyOutput{})
 }

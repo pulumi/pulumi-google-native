@@ -137,5 +137,6 @@ func (o TransitionRouteGroupOutput) ToTransitionRouteGroupOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitionRouteGroupInput)(nil)).Elem(), &TransitionRouteGroup{})
 	pulumi.RegisterOutputType(TransitionRouteGroupOutput{})
 }

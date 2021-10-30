@@ -127,5 +127,6 @@ func (o SubscriptionIamPolicyOutput) ToSubscriptionIamPolicyOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIamPolicyInput)(nil)).Elem(), &SubscriptionIamPolicy{})
 	pulumi.RegisterOutputType(SubscriptionIamPolicyOutput{})
 }

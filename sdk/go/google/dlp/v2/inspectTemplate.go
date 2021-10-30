@@ -132,5 +132,6 @@ func (o InspectTemplateOutput) ToInspectTemplateOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InspectTemplateInput)(nil)).Elem(), &InspectTemplate{})
 	pulumi.RegisterOutputType(InspectTemplateOutput{})
 }

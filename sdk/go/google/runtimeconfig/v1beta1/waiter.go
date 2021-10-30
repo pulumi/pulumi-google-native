@@ -139,5 +139,6 @@ func (o WaiterOutput) ToWaiterOutputWithContext(ctx context.Context) WaiterOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WaiterInput)(nil)).Elem(), &Waiter{})
 	pulumi.RegisterOutputType(WaiterOutput{})
 }

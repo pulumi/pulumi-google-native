@@ -142,5 +142,6 @@ func (o NetworkEdgeSecurityServiceOutput) ToNetworkEdgeSecurityServiceOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEdgeSecurityServiceInput)(nil)).Elem(), &NetworkEdgeSecurityService{})
 	pulumi.RegisterOutputType(NetworkEdgeSecurityServiceOutput{})
 }

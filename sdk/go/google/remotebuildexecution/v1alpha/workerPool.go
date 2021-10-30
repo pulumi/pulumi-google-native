@@ -147,5 +147,6 @@ func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) Wor
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolInput)(nil)).Elem(), &WorkerPool{})
 	pulumi.RegisterOutputType(WorkerPoolOutput{})
 }

@@ -870,6 +870,16 @@ func (in *publicKeyTypePtr) ToPublicKeyTypePtrOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityTierInput)(nil)).Elem(), CertificateAuthorityTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityTierPtrInput)(nil)).Elem(), CertificateAuthorityTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityTypeInput)(nil)).Elem(), CertificateAuthorityType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityTypePtrInput)(nil)).Elem(), CertificateAuthorityType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecAlgorithmInput)(nil)).Elem(), KeyVersionSpecAlgorithm("SIGN_HASH_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecAlgorithmPtrInput)(nil)).Elem(), KeyVersionSpecAlgorithm("SIGN_HASH_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyTypeInput)(nil)).Elem(), PublicKeyType("KEY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyTypePtrInput)(nil)).Elem(), PublicKeyType("KEY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(CertificateAuthorityTierOutput{})

@@ -151,5 +151,6 @@ func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) R
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationInput)(nil)).Elem(), &Reservation{})
 	pulumi.RegisterOutputType(ReservationOutput{})
 }

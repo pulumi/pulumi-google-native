@@ -167,5 +167,6 @@ func (o MetricDescriptorOutput) ToMetricDescriptorOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorInput)(nil)).Elem(), &MetricDescriptor{})
 	pulumi.RegisterOutputType(MetricDescriptorOutput{})
 }

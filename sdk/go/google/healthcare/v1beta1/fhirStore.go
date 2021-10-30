@@ -174,5 +174,6 @@ func (o FhirStoreOutput) ToFhirStoreOutputWithContext(ctx context.Context) FhirS
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreInput)(nil)).Elem(), &FhirStore{})
 	pulumi.RegisterOutputType(FhirStoreOutput{})
 }

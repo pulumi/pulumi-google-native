@@ -566,6 +566,13 @@ func (in *transferJobStatusPtr) ToTransferJobStatusPtrOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigEventTypesItemInput)(nil)).Elem(), NotificationConfigEventTypesItem("EVENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigEventTypesItemPtrInput)(nil)).Elem(), NotificationConfigEventTypesItem("EVENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigEventTypesItemArrayInput)(nil)).Elem(), NotificationConfigEventTypesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPayloadFormatInput)(nil)).Elem(), NotificationConfigPayloadFormat("PAYLOAD_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPayloadFormatPtrInput)(nil)).Elem(), NotificationConfigPayloadFormat("PAYLOAD_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobStatusInput)(nil)).Elem(), TransferJobStatus("STATUS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobStatusPtrInput)(nil)).Elem(), TransferJobStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterOutputType(NotificationConfigEventTypesItemOutput{})
 	pulumi.RegisterOutputType(NotificationConfigEventTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigEventTypesItemArrayOutput{})

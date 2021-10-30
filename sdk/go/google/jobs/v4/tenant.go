@@ -117,5 +117,6 @@ func (o TenantOutput) ToTenantOutputWithContext(ctx context.Context) TenantOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInput)(nil)).Elem(), &Tenant{})
 	pulumi.RegisterOutputType(TenantOutput{})
 }

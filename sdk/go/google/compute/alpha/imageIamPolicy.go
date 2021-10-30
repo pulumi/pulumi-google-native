@@ -145,5 +145,6 @@ func (o ImageIamPolicyOutput) ToImageIamPolicyOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageIamPolicyInput)(nil)).Elem(), &ImageIamPolicy{})
 	pulumi.RegisterOutputType(ImageIamPolicyOutput{})
 }

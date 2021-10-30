@@ -164,5 +164,6 @@ func (o BillingAccountSinkOutput) ToBillingAccountSinkOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkInput)(nil)).Elem(), &BillingAccountSink{})
 	pulumi.RegisterOutputType(BillingAccountSinkOutput{})
 }

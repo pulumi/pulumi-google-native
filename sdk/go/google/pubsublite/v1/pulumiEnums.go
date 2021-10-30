@@ -180,6 +180,8 @@ func (in *deliveryConfigDeliveryRequirementPtr) ToDeliveryConfigDeliveryRequirem
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryConfigDeliveryRequirementInput)(nil)).Elem(), DeliveryConfigDeliveryRequirement("DELIVERY_REQUIREMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryConfigDeliveryRequirementPtrInput)(nil)).Elem(), DeliveryConfigDeliveryRequirement("DELIVERY_REQUIREMENT_UNSPECIFIED"))
 	pulumi.RegisterOutputType(DeliveryConfigDeliveryRequirementOutput{})
 	pulumi.RegisterOutputType(DeliveryConfigDeliveryRequirementPtrOutput{})
 }

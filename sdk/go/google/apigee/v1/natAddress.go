@@ -120,5 +120,6 @@ func (o NatAddressOutput) ToNatAddressOutputWithContext(ctx context.Context) Nat
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NatAddressInput)(nil)).Elem(), &NatAddress{})
 	pulumi.RegisterOutputType(NatAddressOutput{})
 }

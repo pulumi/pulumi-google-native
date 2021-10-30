@@ -165,5 +165,6 @@ func (o SpokeOutput) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeInput)(nil)).Elem(), &Spoke{})
 	pulumi.RegisterOutputType(SpokeOutput{})
 }

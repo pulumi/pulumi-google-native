@@ -194,5 +194,6 @@ func (o ManagedZoneOutput) ToManagedZoneOutputWithContext(ctx context.Context) M
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneInput)(nil)).Elem(), &ManagedZone{})
 	pulumi.RegisterOutputType(ManagedZoneOutput{})
 }

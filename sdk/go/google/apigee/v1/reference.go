@@ -137,5 +137,6 @@ func (o ReferenceOutput) ToReferenceOutputWithContext(ctx context.Context) Refer
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceInput)(nil)).Elem(), &Reference{})
 	pulumi.RegisterOutputType(ReferenceOutput{})
 }

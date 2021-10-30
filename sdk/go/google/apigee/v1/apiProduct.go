@@ -198,5 +198,6 @@ func (o ApiProductOutput) ToApiProductOutputWithContext(ctx context.Context) Api
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductInput)(nil)).Elem(), &ApiProduct{})
 	pulumi.RegisterOutputType(ApiProductOutput{})
 }

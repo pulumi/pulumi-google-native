@@ -178,5 +178,6 @@ func (o CompanyOutput) ToCompanyOutputWithContext(ctx context.Context) CompanyOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanyInput)(nil)).Elem(), &Company{})
 	pulumi.RegisterOutputType(CompanyOutput{})
 }

@@ -140,5 +140,6 @@ func (o ProcessorOutput) ToProcessorOutputWithContext(ctx context.Context) Proce
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProcessorInput)(nil)).Elem(), &Processor{})
 	pulumi.RegisterOutputType(ProcessorOutput{})
 }

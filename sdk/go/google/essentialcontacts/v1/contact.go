@@ -142,5 +142,6 @@ func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContactInput)(nil)).Elem(), &Contact{})
 	pulumi.RegisterOutputType(ContactOutput{})
 }

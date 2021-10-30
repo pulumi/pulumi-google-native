@@ -144,5 +144,6 @@ func (o KeyRingImportJobIamPolicyOutput) ToKeyRingImportJobIamPolicyOutputWithCo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobIamPolicyInput)(nil)).Elem(), &KeyRingImportJobIamPolicy{})
 	pulumi.RegisterOutputType(KeyRingImportJobIamPolicyOutput{})
 }

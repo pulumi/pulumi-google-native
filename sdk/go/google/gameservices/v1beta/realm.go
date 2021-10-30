@@ -146,5 +146,6 @@ func (o RealmOutput) ToRealmOutputWithContext(ctx context.Context) RealmOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RealmInput)(nil)).Elem(), &Realm{})
 	pulumi.RegisterOutputType(RealmOutput{})
 }

@@ -149,5 +149,6 @@ func (o RegistryOutput) ToRegistryOutputWithContext(ctx context.Context) Registr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryInput)(nil)).Elem(), &Registry{})
 	pulumi.RegisterOutputType(RegistryOutput{})
 }

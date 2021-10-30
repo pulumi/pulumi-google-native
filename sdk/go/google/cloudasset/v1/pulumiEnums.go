@@ -188,6 +188,8 @@ func (in *feedContentTypePtr) ToFeedContentTypePtrOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FeedContentTypeInput)(nil)).Elem(), FeedContentType("CONTENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FeedContentTypePtrInput)(nil)).Elem(), FeedContentType("CONTENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(FeedContentTypeOutput{})
 	pulumi.RegisterOutputType(FeedContentTypePtrOutput{})
 }

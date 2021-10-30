@@ -171,5 +171,6 @@ func (o ConversationProfileOutput) ToConversationProfileOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileInput)(nil)).Elem(), &ConversationProfile{})
 	pulumi.RegisterOutputType(ConversationProfileOutput{})
 }

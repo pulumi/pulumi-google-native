@@ -171,5 +171,6 @@ func (o NodeTemplateOutput) ToNodeTemplateOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateInput)(nil)).Elem(), &NodeTemplate{})
 	pulumi.RegisterOutputType(NodeTemplateOutput{})
 }

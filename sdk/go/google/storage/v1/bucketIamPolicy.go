@@ -141,5 +141,6 @@ func (o BucketIamPolicyOutput) ToBucketIamPolicyOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamPolicyInput)(nil)).Elem(), &BucketIamPolicy{})
 	pulumi.RegisterOutputType(BucketIamPolicyOutput{})
 }

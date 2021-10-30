@@ -126,5 +126,6 @@ func (o EnvgroupOutput) ToEnvgroupOutputWithContext(ctx context.Context) Envgrou
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvgroupInput)(nil)).Elem(), &Envgroup{})
 	pulumi.RegisterOutputType(EnvgroupOutput{})
 }

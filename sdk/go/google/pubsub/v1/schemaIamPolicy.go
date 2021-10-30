@@ -127,5 +127,6 @@ func (o SchemaIamPolicyOutput) ToSchemaIamPolicyOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaIamPolicyInput)(nil)).Elem(), &SchemaIamPolicy{})
 	pulumi.RegisterOutputType(SchemaIamPolicyOutput{})
 }

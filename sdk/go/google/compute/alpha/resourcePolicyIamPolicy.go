@@ -150,5 +150,6 @@ func (o ResourcePolicyIamPolicyOutput) ToResourcePolicyIamPolicyOutputWithContex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyIamPolicyInput)(nil)).Elem(), &ResourcePolicyIamPolicy{})
 	pulumi.RegisterOutputType(ResourcePolicyIamPolicyOutput{})
 }

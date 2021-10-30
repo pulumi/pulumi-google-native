@@ -369,6 +369,10 @@ func (in *httpTargetHttpMethodPtr) ToHttpTargetHttpMethodPtrOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpTargetHttpMethodInput)(nil)).Elem(), AppEngineHttpTargetHttpMethod("HTTP_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpTargetHttpMethodPtrInput)(nil)).Elem(), AppEngineHttpTargetHttpMethod("HTTP_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpTargetHttpMethodInput)(nil)).Elem(), HttpTargetHttpMethod("HTTP_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpTargetHttpMethodPtrInput)(nil)).Elem(), HttpTargetHttpMethod("HTTP_METHOD_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AppEngineHttpTargetHttpMethodOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpTargetHttpMethodPtrOutput{})
 	pulumi.RegisterOutputType(HttpTargetHttpMethodOutput{})

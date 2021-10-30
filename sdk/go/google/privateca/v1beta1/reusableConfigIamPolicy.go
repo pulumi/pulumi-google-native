@@ -139,5 +139,6 @@ func (o ReusableConfigIamPolicyOutput) ToReusableConfigIamPolicyOutputWithContex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReusableConfigIamPolicyInput)(nil)).Elem(), &ReusableConfigIamPolicy{})
 	pulumi.RegisterOutputType(ReusableConfigIamPolicyOutput{})
 }

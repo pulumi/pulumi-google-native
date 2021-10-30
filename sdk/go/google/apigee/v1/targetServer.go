@@ -158,5 +158,6 @@ func (o TargetServerOutput) ToTargetServerOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerInput)(nil)).Elem(), &TargetServer{})
 	pulumi.RegisterOutputType(TargetServerOutput{})
 }

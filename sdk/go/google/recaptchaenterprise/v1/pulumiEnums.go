@@ -522,6 +522,12 @@ func (in *googleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtr) ToGo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge("TESTING_CHALLENGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge("TESTING_CHALLENGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference("CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference("CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType("INTEGRATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType("INTEGRATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceOutput{})

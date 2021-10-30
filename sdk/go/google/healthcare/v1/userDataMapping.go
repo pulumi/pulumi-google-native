@@ -148,5 +148,6 @@ func (o UserDataMappingOutput) ToUserDataMappingOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*UserDataMappingInput)(nil)).Elem(), &UserDataMapping{})
 	pulumi.RegisterOutputType(UserDataMappingOutput{})
 }

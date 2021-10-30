@@ -267,5 +267,6 @@ func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutputWithContext(
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentInput)(nil)).Elem(), &InterconnectAttachment{})
 	pulumi.RegisterOutputType(InterconnectAttachmentOutput{})
 }

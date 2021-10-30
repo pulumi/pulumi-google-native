@@ -365,6 +365,10 @@ func (in *workloadComplianceRegimePtr) ToWorkloadComplianceRegimePtrOutputWithCo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("RESOURCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("RESOURCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadComplianceRegimeInput)(nil)).Elem(), WorkloadComplianceRegime("COMPLIANCE_REGIME_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadComplianceRegimePtrInput)(nil)).Elem(), WorkloadComplianceRegime("COMPLIANCE_REGIME_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput{})
 	pulumi.RegisterOutputType(WorkloadComplianceRegimeOutput{})

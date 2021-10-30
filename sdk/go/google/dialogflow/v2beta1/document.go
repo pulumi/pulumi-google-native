@@ -176,5 +176,6 @@ func (o DocumentOutput) ToDocumentOutputWithContext(ctx context.Context) Documen
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentInput)(nil)).Elem(), &Document{})
 	pulumi.RegisterOutputType(DocumentOutput{})
 }

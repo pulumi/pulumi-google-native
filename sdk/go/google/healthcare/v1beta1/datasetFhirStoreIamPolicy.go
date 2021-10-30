@@ -144,5 +144,6 @@ func (o DatasetFhirStoreIamPolicyOutput) ToDatasetFhirStoreIamPolicyOutputWithCo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetFhirStoreIamPolicyInput)(nil)).Elem(), &DatasetFhirStoreIamPolicy{})
 	pulumi.RegisterOutputType(DatasetFhirStoreIamPolicyOutput{})
 }

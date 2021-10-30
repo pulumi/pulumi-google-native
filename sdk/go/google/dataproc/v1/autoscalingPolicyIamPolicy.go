@@ -129,5 +129,6 @@ func (o AutoscalingPolicyIamPolicyOutput) ToAutoscalingPolicyIamPolicyOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyIamPolicyInput)(nil)).Elem(), &AutoscalingPolicyIamPolicy{})
 	pulumi.RegisterOutputType(AutoscalingPolicyIamPolicyOutput{})
 }

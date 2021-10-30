@@ -137,5 +137,6 @@ func (o ResponsePolicyRuleOutput) ToResponsePolicyRuleOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleInput)(nil)).Elem(), &ResponsePolicyRule{})
 	pulumi.RegisterOutputType(ResponsePolicyRuleOutput{})
 }

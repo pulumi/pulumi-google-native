@@ -136,5 +136,6 @@ func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingInput)(nil)).Elem(), &DomainMapping{})
 	pulumi.RegisterOutputType(DomainMappingOutput{})
 }

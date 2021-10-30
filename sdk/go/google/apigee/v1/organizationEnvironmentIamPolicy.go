@@ -140,5 +140,6 @@ func (o OrganizationEnvironmentIamPolicyOutput) ToOrganizationEnvironmentIamPoli
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationEnvironmentIamPolicyInput)(nil)).Elem(), &OrganizationEnvironmentIamPolicy{})
 	pulumi.RegisterOutputType(OrganizationEnvironmentIamPolicyOutput{})
 }

@@ -163,5 +163,6 @@ func (o MachineImageOutput) ToMachineImageOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageInput)(nil)).Elem(), &MachineImage{})
 	pulumi.RegisterOutputType(MachineImageOutput{})
 }

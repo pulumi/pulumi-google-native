@@ -207,5 +207,6 @@ func (o RatePlanOutput) ToRatePlanOutputWithContext(ctx context.Context) RatePla
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanInput)(nil)).Elem(), &RatePlan{})
 	pulumi.RegisterOutputType(RatePlanOutput{})
 }

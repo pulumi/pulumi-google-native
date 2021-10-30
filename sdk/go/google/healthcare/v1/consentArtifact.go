@@ -165,5 +165,6 @@ func (o ConsentArtifactOutput) ToConsentArtifactOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentArtifactInput)(nil)).Elem(), &ConsentArtifact{})
 	pulumi.RegisterOutputType(ConsentArtifactOutput{})
 }

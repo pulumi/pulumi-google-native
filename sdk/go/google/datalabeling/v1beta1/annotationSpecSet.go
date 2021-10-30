@@ -131,5 +131,6 @@ func (o AnnotationSpecSetOutput) ToAnnotationSpecSetOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationSpecSetInput)(nil)).Elem(), &AnnotationSpecSet{})
 	pulumi.RegisterOutputType(AnnotationSpecSetOutput{})
 }

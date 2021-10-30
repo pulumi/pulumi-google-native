@@ -516,6 +516,12 @@ func (in *indexQueryScopePtr) ToIndexQueryScopePtrOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1beta2IndexFieldArrayConfigInput)(nil)).Elem(), GoogleFirestoreAdminV1beta2IndexFieldArrayConfig("ARRAY_CONFIG_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1beta2IndexFieldArrayConfig("ARRAY_CONFIG_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1beta2IndexFieldOrderInput)(nil)).Elem(), GoogleFirestoreAdminV1beta2IndexFieldOrder("ORDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1beta2IndexFieldOrderPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1beta2IndexFieldOrder("ORDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexQueryScopeInput)(nil)).Elem(), IndexQueryScope("QUERY_SCOPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexQueryScopePtrInput)(nil)).Elem(), IndexQueryScope("QUERY_SCOPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1beta2IndexFieldArrayConfigOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1beta2IndexFieldOrderOutput{})

@@ -158,5 +158,6 @@ func (o TestCaseOutput) ToTestCaseOutputWithContext(ctx context.Context) TestCas
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TestCaseInput)(nil)).Elem(), &TestCase{})
 	pulumi.RegisterOutputType(TestCaseOutput{})
 }

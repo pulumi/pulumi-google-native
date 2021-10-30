@@ -129,5 +129,6 @@ func (o NamespaceIamPolicyOutput) ToNamespaceIamPolicyOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamPolicyInput)(nil)).Elem(), &NamespaceIamPolicy{})
 	pulumi.RegisterOutputType(NamespaceIamPolicyOutput{})
 }

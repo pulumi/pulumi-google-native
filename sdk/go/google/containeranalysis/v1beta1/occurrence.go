@@ -207,5 +207,6 @@ func (o OccurrenceOutput) ToOccurrenceOutputWithContext(ctx context.Context) Occ
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OccurrenceInput)(nil)).Elem(), &Occurrence{})
 	pulumi.RegisterOutputType(OccurrenceOutput{})
 }

@@ -170,5 +170,6 @@ func (o PatchDeploymentOutput) ToPatchDeploymentOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentInput)(nil)).Elem(), &PatchDeployment{})
 	pulumi.RegisterOutputType(PatchDeploymentOutput{})
 }

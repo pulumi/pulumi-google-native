@@ -147,5 +147,6 @@ func (o ReservationIamPolicyOutput) ToReservationIamPolicyOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationIamPolicyInput)(nil)).Elem(), &ReservationIamPolicy{})
 	pulumi.RegisterOutputType(ReservationIamPolicyOutput{})
 }

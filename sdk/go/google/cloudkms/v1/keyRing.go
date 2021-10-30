@@ -116,5 +116,6 @@ func (o KeyRingOutput) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingInput)(nil)).Elem(), &KeyRing{})
 	pulumi.RegisterOutputType(KeyRingOutput{})
 }

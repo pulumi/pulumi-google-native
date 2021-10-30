@@ -127,5 +127,6 @@ func (o TopicIamPolicyOutput) ToTopicIamPolicyOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIamPolicyInput)(nil)).Elem(), &TopicIamPolicy{})
 	pulumi.RegisterOutputType(TopicIamPolicyOutput{})
 }

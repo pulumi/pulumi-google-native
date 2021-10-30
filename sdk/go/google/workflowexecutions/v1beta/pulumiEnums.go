@@ -180,6 +180,8 @@ func (in *executionCallLogLevelPtr) ToExecutionCallLogLevelPtrOutputWithContext(
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionCallLogLevelInput)(nil)).Elem(), ExecutionCallLogLevel("CALL_LOG_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionCallLogLevelPtrInput)(nil)).Elem(), ExecutionCallLogLevel("CALL_LOG_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ExecutionCallLogLevelOutput{})
 	pulumi.RegisterOutputType(ExecutionCallLogLevelPtrOutput{})
 }

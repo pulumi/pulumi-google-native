@@ -136,5 +136,6 @@ func (o DlpJobOutput) ToDlpJobOutputWithContext(ctx context.Context) DlpJobOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DlpJobInput)(nil)).Elem(), &DlpJob{})
 	pulumi.RegisterOutputType(DlpJobOutput{})
 }

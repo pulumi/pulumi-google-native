@@ -190,6 +190,8 @@ func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryFormatInput)(nil)).Elem(), RepositoryFormat("FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryFormatPtrInput)(nil)).Elem(), RepositoryFormat("FORMAT_UNSPECIFIED"))
 	pulumi.RegisterOutputType(RepositoryFormatOutput{})
 	pulumi.RegisterOutputType(RepositoryFormatPtrOutput{})
 }

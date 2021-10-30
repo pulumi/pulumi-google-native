@@ -530,6 +530,12 @@ func (in *googleCloudChannelV1RenewalSettingsPaymentPlanPtr) ToGoogleCloudChanne
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ChannelPartnerLinkLinkStateInput)(nil)).Elem(), ChannelPartnerLinkLinkState("CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ChannelPartnerLinkLinkStatePtrInput)(nil)).Elem(), ChannelPartnerLinkLinkState("CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PeriodPeriodTypeInput)(nil)).Elem(), GoogleCloudChannelV1PeriodPeriodType("PERIOD_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PeriodPeriodTypePtrInput)(nil)).Elem(), GoogleCloudChannelV1PeriodPeriodType("PERIOD_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsPaymentPlanInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsPaymentPlan("PAYMENT_PLAN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsPaymentPlan("PAYMENT_PLAN_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ChannelPartnerLinkLinkStateOutput{})
 	pulumi.RegisterOutputType(ChannelPartnerLinkLinkStatePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodPeriodTypeOutput{})

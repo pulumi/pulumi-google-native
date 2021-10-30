@@ -148,5 +148,6 @@ func (o GameServerDeploymentIamPolicyOutput) ToGameServerDeploymentIamPolicyOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerDeploymentIamPolicyInput)(nil)).Elem(), &GameServerDeploymentIamPolicy{})
 	pulumi.RegisterOutputType(GameServerDeploymentIamPolicyOutput{})
 }

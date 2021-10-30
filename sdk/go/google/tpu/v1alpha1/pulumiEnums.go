@@ -186,6 +186,8 @@ func (in *nodeHealthPtr) ToNodeHealthPtrOutputWithContext(ctx context.Context) N
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeHealthInput)(nil)).Elem(), NodeHealth("HEALTH_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeHealthPtrInput)(nil)).Elem(), NodeHealth("HEALTH_UNSPECIFIED"))
 	pulumi.RegisterOutputType(NodeHealthOutput{})
 	pulumi.RegisterOutputType(NodeHealthPtrOutput{})
 }

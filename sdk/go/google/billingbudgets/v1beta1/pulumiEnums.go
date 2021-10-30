@@ -520,6 +520,12 @@ func (in *googleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtr) ToGoogleCl
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod("CALENDAR_PERIOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod("CALENDAR_PERIOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment("CREDIT_TYPES_TREATMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment("CREDIT_TYPES_TREATMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis("BASIS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis("BASIS_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput{})

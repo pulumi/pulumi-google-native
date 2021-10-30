@@ -132,5 +132,6 @@ func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolInput)(nil)).Elem(), &WorkloadIdentityPool{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolOutput{})
 }

@@ -155,5 +155,6 @@ func (o SearchApplicationOutput) ToSearchApplicationOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchApplicationInput)(nil)).Elem(), &SearchApplication{})
 	pulumi.RegisterOutputType(SearchApplicationOutput{})
 }

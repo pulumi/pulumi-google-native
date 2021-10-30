@@ -157,5 +157,6 @@ func (o RegionHealthCheckServiceOutput) ToRegionHealthCheckServiceOutputWithCont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckServiceInput)(nil)).Elem(), &RegionHealthCheckService{})
 	pulumi.RegisterOutputType(RegionHealthCheckServiceOutput{})
 }

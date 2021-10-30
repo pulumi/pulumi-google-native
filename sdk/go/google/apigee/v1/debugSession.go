@@ -158,5 +158,6 @@ func (o DebugSessionOutput) ToDebugSessionOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DebugSessionInput)(nil)).Elem(), &DebugSession{})
 	pulumi.RegisterOutputType(DebugSessionOutput{})
 }

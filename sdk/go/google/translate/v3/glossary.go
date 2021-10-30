@@ -137,5 +137,6 @@ func (o GlossaryOutput) ToGlossaryOutputWithContext(ctx context.Context) Glossar
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryInput)(nil)).Elem(), &Glossary{})
 	pulumi.RegisterOutputType(GlossaryOutput{})
 }

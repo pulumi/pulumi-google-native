@@ -139,5 +139,6 @@ func (o KeyRingIamPolicyOutput) ToKeyRingIamPolicyOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIamPolicyInput)(nil)).Elem(), &KeyRingIamPolicy{})
 	pulumi.RegisterOutputType(KeyRingIamPolicyOutput{})
 }

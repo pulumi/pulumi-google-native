@@ -129,5 +129,6 @@ func (o DataCollectorOutput) ToDataCollectorOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DataCollectorInput)(nil)).Elem(), &DataCollector{})
 	pulumi.RegisterOutputType(DataCollectorOutput{})
 }

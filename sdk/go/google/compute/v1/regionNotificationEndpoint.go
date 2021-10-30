@@ -135,5 +135,6 @@ func (o RegionNotificationEndpointOutput) ToRegionNotificationEndpointOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNotificationEndpointInput)(nil)).Elem(), &RegionNotificationEndpoint{})
 	pulumi.RegisterOutputType(RegionNotificationEndpointOutput{})
 }

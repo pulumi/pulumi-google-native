@@ -127,5 +127,6 @@ func (o PeeringIamPolicyOutput) ToPeeringIamPolicyOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PeeringIamPolicyInput)(nil)).Elem(), &PeeringIamPolicy{})
 	pulumi.RegisterOutputType(PeeringIamPolicyOutput{})
 }

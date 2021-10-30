@@ -147,5 +147,6 @@ func (o Hl7V2StoreOutput) ToHl7V2StoreOutputWithContext(ctx context.Context) Hl7
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7V2StoreInput)(nil)).Elem(), &Hl7V2Store{})
 	pulumi.RegisterOutputType(Hl7V2StoreOutput{})
 }

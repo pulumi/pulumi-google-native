@@ -132,5 +132,6 @@ func (o ReferenceImageOutput) ToReferenceImageOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceImageInput)(nil)).Elem(), &ReferenceImage{})
 	pulumi.RegisterOutputType(ReferenceImageOutput{})
 }

@@ -349,6 +349,10 @@ func (in *indexAncestorPtr) ToIndexAncestorPtrOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyDirectionInput)(nil)).Elem(), GoogleDatastoreAdminV1IndexedPropertyDirection("DIRECTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyDirectionPtrInput)(nil)).Elem(), GoogleDatastoreAdminV1IndexedPropertyDirection("DIRECTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexAncestorInput)(nil)).Elem(), IndexAncestor("ANCESTOR_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexAncestorPtrInput)(nil)).Elem(), IndexAncestor("ANCESTOR_MODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleDatastoreAdminV1IndexedPropertyDirectionOutput{})
 	pulumi.RegisterOutputType(GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput{})
 	pulumi.RegisterOutputType(IndexAncestorOutput{})

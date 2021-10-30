@@ -138,5 +138,6 @@ func (o ServiceAccountOutput) ToServiceAccountOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountInput)(nil)).Elem(), &ServiceAccount{})
 	pulumi.RegisterOutputType(ServiceAccountOutput{})
 }

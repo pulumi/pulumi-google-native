@@ -135,5 +135,6 @@ func (o ResourcefileOutput) ToResourcefileOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcefileInput)(nil)).Elem(), &Resourcefile{})
 	pulumi.RegisterOutputType(ResourcefileOutput{})
 }

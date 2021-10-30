@@ -161,5 +161,6 @@ func (o RegionInstantSnapshotOutput) ToRegionInstantSnapshotOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstantSnapshotInput)(nil)).Elem(), &RegionInstantSnapshot{})
 	pulumi.RegisterOutputType(RegionInstantSnapshotOutput{})
 }

@@ -127,5 +127,6 @@ func (o EnvgroupAttachmentOutput) ToEnvgroupAttachmentOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvgroupAttachmentInput)(nil)).Elem(), &EnvgroupAttachment{})
 	pulumi.RegisterOutputType(EnvgroupAttachmentOutput{})
 }

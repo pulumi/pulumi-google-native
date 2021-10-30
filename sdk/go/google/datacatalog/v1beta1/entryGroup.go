@@ -129,5 +129,6 @@ func (o EntryGroupOutput) ToEntryGroupOutputWithContext(ctx context.Context) Ent
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupInput)(nil)).Elem(), &EntryGroup{})
 	pulumi.RegisterOutputType(EntryGroupOutput{})
 }

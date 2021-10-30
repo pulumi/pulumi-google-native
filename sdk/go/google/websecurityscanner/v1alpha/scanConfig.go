@@ -168,5 +168,6 @@ func (o ScanConfigOutput) ToScanConfigOutputWithContext(ctx context.Context) Sca
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigInput)(nil)).Elem(), &ScanConfig{})
 	pulumi.RegisterOutputType(ScanConfigOutput{})
 }

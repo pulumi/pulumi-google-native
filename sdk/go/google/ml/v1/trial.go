@@ -146,5 +146,6 @@ func (o TrialOutput) ToTrialOutputWithContext(ctx context.Context) TrialOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TrialInput)(nil)).Elem(), &Trial{})
 	pulumi.RegisterOutputType(TrialOutput{})
 }

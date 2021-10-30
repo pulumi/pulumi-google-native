@@ -132,5 +132,6 @@ func (o InstanceBackupIamPolicyOutput) ToInstanceBackupIamPolicyOutputWithContex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupIamPolicyInput)(nil)).Elem(), &InstanceBackupIamPolicy{})
 	pulumi.RegisterOutputType(InstanceBackupIamPolicyOutput{})
 }

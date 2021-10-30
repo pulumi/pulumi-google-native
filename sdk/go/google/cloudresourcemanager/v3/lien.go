@@ -135,5 +135,6 @@ func (o LienOutput) ToLienOutputWithContext(ctx context.Context) LienOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LienInput)(nil)).Elem(), &Lien{})
 	pulumi.RegisterOutputType(LienOutput{})
 }

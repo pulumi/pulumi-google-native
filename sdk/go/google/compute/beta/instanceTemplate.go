@@ -139,5 +139,6 @@ func (o InstanceTemplateOutput) ToInstanceTemplateOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTemplateInput)(nil)).Elem(), &InstanceTemplate{})
 	pulumi.RegisterOutputType(InstanceTemplateOutput{})
 }

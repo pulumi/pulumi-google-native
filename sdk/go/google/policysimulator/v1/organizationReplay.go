@@ -125,5 +125,6 @@ func (o OrganizationReplayOutput) ToOrganizationReplayOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationReplayInput)(nil)).Elem(), &OrganizationReplay{})
 	pulumi.RegisterOutputType(OrganizationReplayOutput{})
 }

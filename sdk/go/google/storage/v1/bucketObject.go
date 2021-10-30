@@ -311,5 +311,6 @@ func (o BucketObjectOutput) ToBucketObjectOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectInput)(nil)).Elem(), &BucketObject{})
 	pulumi.RegisterOutputType(BucketObjectOutput{})
 }

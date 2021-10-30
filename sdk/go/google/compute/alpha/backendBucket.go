@@ -159,5 +159,6 @@ func (o BackendBucketOutput) ToBackendBucketOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketInput)(nil)).Elem(), &BackendBucket{})
 	pulumi.RegisterOutputType(BackendBucketOutput{})
 }

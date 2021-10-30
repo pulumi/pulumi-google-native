@@ -141,5 +141,6 @@ func (o CaPoolOutput) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolInput)(nil)).Elem(), &CaPool{})
 	pulumi.RegisterOutputType(CaPoolOutput{})
 }
