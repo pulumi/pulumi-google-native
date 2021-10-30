@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Ml.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(GetVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:ml/v1:getVersion", args ?? new GetVersionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about a model version. Models can have multiple versions. You can call projects.models.versions.list to get the same information that this method returns for all of the versions of a model.
+        /// </summary>
+        public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:ml/v1:getVersion", args ?? new GetVersionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Ml.V1
         public string VersionId { get; set; } = null!;
 
         public GetVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetVersionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("modelId", required: true)]
+        public Input<string> ModelId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("versionId", required: true)]
+        public Input<string> VersionId { get; set; } = null!;
+
+        public GetVersionInvokeArgs()
         {
         }
     }

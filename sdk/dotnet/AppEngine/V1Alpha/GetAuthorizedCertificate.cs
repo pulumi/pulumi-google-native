@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.AppEngine.V1Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         /// </summary>
         public static Task<GetAuthorizedCertificateResult> InvokeAsync(GetAuthorizedCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizedCertificateResult>("google-native:appengine/v1alpha:getAuthorizedCertificate", args ?? new GetAuthorizedCertificateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified SSL certificate.
+        /// </summary>
+        public static Output<GetAuthorizedCertificateResult> Invoke(GetAuthorizedCertificateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAuthorizedCertificateResult>("google-native:appengine/v1alpha:getAuthorizedCertificate", args ?? new GetAuthorizedCertificateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         public string? View { get; set; }
 
         public GetAuthorizedCertificateArgs()
+        {
+        }
+    }
+
+    public sealed class GetAuthorizedCertificateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
+
+        [Input("authorizedCertificateId", required: true)]
+        public Input<string> AuthorizedCertificateId { get; set; } = null!;
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
+        public GetAuthorizedCertificateInvokeArgs()
         {
         }
     }

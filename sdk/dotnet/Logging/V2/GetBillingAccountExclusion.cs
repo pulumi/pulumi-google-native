@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Logging.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         public static Task<GetBillingAccountExclusionResult> InvokeAsync(GetBillingAccountExclusionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountExclusionResult>("google-native:logging/v2:getBillingAccountExclusion", args ?? new GetBillingAccountExclusionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the description of an exclusion.
+        /// </summary>
+        public static Output<GetBillingAccountExclusionResult> Invoke(GetBillingAccountExclusionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBillingAccountExclusionResult>("google-native:logging/v2:getBillingAccountExclusion", args ?? new GetBillingAccountExclusionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Logging.V2
         public string ExclusionId { get; set; } = null!;
 
         public GetBillingAccountExclusionArgs()
+        {
+        }
+    }
+
+    public sealed class GetBillingAccountExclusionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("billingAccountId", required: true)]
+        public Input<string> BillingAccountId { get; set; } = null!;
+
+        [Input("exclusionId", required: true)]
+        public Input<string> ExclusionId { get; set; } = null!;
+
+        public GetBillingAccountExclusionInvokeArgs()
         {
         }
     }

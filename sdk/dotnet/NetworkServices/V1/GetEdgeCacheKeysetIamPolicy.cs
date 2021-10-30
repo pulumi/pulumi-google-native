@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkServices.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// </summary>
         public static Task<GetEdgeCacheKeysetIamPolicyResult> InvokeAsync(GetEdgeCacheKeysetIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEdgeCacheKeysetIamPolicyResult>("google-native:networkservices/v1:getEdgeCacheKeysetIamPolicy", args ?? new GetEdgeCacheKeysetIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetEdgeCacheKeysetIamPolicyResult> Invoke(GetEdgeCacheKeysetIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEdgeCacheKeysetIamPolicyResult>("google-native:networkservices/v1:getEdgeCacheKeysetIamPolicy", args ?? new GetEdgeCacheKeysetIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public string? Project { get; set; }
 
         public GetEdgeCacheKeysetIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetEdgeCacheKeysetIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("edgeCacheKeysetId", required: true)]
+        public Input<string> EdgeCacheKeysetId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetEdgeCacheKeysetIamPolicyInvokeArgs()
         {
         }
     }

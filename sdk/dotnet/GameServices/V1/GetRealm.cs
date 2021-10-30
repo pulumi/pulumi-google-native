@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.GameServices.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.GameServices.V1
         /// </summary>
         public static Task<GetRealmResult> InvokeAsync(GetRealmArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRealmResult>("google-native:gameservices/v1:getRealm", args ?? new GetRealmArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single realm.
+        /// </summary>
+        public static Output<GetRealmResult> Invoke(GetRealmInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRealmResult>("google-native:gameservices/v1:getRealm", args ?? new GetRealmInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public string RealmId { get; set; } = null!;
 
         public GetRealmArgs()
+        {
+        }
+    }
+
+    public sealed class GetRealmInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("realmId", required: true)]
+        public Input<string> RealmId { get; set; } = null!;
+
+        public GetRealmInvokeArgs()
         {
         }
     }

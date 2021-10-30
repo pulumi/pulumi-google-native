@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetKeystoreResult> InvokeAsync(GetKeystoreArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeystoreResult>("google-native:apigee/v1:getKeystore", args ?? new GetKeystoreArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a keystore or truststore.
+        /// </summary>
+        public static Output<GetKeystoreResult> Invoke(GetKeystoreInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeystoreResult>("google-native:apigee/v1:getKeystore", args ?? new GetKeystoreInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetKeystoreArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeystoreInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("keystoreId", required: true)]
+        public Input<string> KeystoreId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetKeystoreInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetNodeTemplateResult> InvokeAsync(GetNodeTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("google-native:compute/v1:getNodeTemplate", args ?? new GetNodeTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified node template. Gets a list of available node templates by making a list() request.
+        /// </summary>
+        public static Output<GetNodeTemplateResult> Invoke(GetNodeTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodeTemplateResult>("google-native:compute/v1:getNodeTemplate", args ?? new GetNodeTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string Region { get; set; } = null!;
 
         public GetNodeTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodeTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("nodeTemplate", required: true)]
+        public Input<string> NodeTemplate { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetNodeTemplateInvokeArgs()
         {
         }
     }

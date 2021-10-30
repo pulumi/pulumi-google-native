@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetSslCertificateResult> InvokeAsync(GetSslCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSslCertificateResult>("google-native:compute/beta:getSslCertificate", args ?? new GetSslCertificateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making a list() request.
+        /// </summary>
+        public static Output<GetSslCertificateResult> Invoke(GetSslCertificateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSslCertificateResult>("google-native:compute/beta:getSslCertificate", args ?? new GetSslCertificateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string SslCertificate { get; set; } = null!;
 
         public GetSslCertificateArgs()
+        {
+        }
+    }
+
+    public sealed class GetSslCertificateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("sslCertificate", required: true)]
+        public Input<string> SslCertificate { get; set; } = null!;
+
+        public GetSslCertificateInvokeArgs()
         {
         }
     }

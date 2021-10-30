@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkSecurity.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         /// </summary>
         public static Task<GetServerTlsPolicyIamPolicyResult> InvokeAsync(GetServerTlsPolicyIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerTlsPolicyIamPolicyResult>("google-native:networksecurity/v1:getServerTlsPolicyIamPolicy", args ?? new GetServerTlsPolicyIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetServerTlsPolicyIamPolicyResult> Invoke(GetServerTlsPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServerTlsPolicyIamPolicyResult>("google-native:networksecurity/v1:getServerTlsPolicyIamPolicy", args ?? new GetServerTlsPolicyIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public string ServerTlsPolicyId { get; set; } = null!;
 
         public GetServerTlsPolicyIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetServerTlsPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("serverTlsPolicyId", required: true)]
+        public Input<string> ServerTlsPolicyId { get; set; } = null!;
+
+        public GetServerTlsPolicyIamPolicyInvokeArgs()
         {
         }
     }

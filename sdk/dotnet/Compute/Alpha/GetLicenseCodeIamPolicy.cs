@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetLicenseCodeIamPolicyResult> InvokeAsync(GetLicenseCodeIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLicenseCodeIamPolicyResult>("google-native:compute/alpha:getLicenseCodeIamPolicy", args ?? new GetLicenseCodeIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images. 
+        /// </summary>
+        public static Output<GetLicenseCodeIamPolicyResult> Invoke(GetLicenseCodeIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetLicenseCodeIamPolicyResult>("google-native:compute/alpha:getLicenseCodeIamPolicy", args ?? new GetLicenseCodeIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Resource { get; set; } = null!;
 
         public GetLicenseCodeIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetLicenseCodeIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("resource", required: true)]
+        public Input<string> Resource { get; set; } = null!;
+
+        public GetLicenseCodeIamPolicyInvokeArgs()
         {
         }
     }

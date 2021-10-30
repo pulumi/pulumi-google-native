@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         /// </summary>
         public static Task<GetWaiterResult> InvokeAsync(GetWaiterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWaiterResult>("google-native:runtimeconfig/v1beta1:getWaiter", args ?? new GetWaiterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about a single waiter.
+        /// </summary>
+        public static Output<GetWaiterResult> Invoke(GetWaiterInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWaiterResult>("google-native:runtimeconfig/v1beta1:getWaiter", args ?? new GetWaiterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         public string WaiterId { get; set; } = null!;
 
         public GetWaiterArgs()
+        {
+        }
+    }
+
+    public sealed class GetWaiterInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("waiterId", required: true)]
+        public Input<string> WaiterId { get; set; } = null!;
+
+        public GetWaiterInvokeArgs()
         {
         }
     }

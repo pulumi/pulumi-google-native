@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Firebase.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// </summary>
         public static Task<GetIosAppResult> InvokeAsync(GetIosAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIosAppResult>("google-native:firebase/v1beta1:getIosApp", args ?? new GetIosAppArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified IosApp.
+        /// </summary>
+        public static Output<GetIosAppResult> Invoke(GetIosAppInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIosAppResult>("google-native:firebase/v1beta1:getIosApp", args ?? new GetIosAppInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public string? Project { get; set; }
 
         public GetIosAppArgs()
+        {
+        }
+    }
+
+    public sealed class GetIosAppInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("iosAppId", required: true)]
+        public Input<string> IosAppId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetIosAppInvokeArgs()
         {
         }
     }

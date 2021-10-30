@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BinaryAuthorization.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         /// </summary>
         public static Task<GetAttestorIamPolicyResult> InvokeAsync(GetAttestorIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAttestorIamPolicyResult>("google-native:binaryauthorization/v1:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetAttestorIamPolicyResult> Invoke(GetAttestorIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAttestorIamPolicyResult>("google-native:binaryauthorization/v1:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         public string? Project { get; set; }
 
         public GetAttestorIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetAttestorIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("attestorId", required: true)]
+        public Input<string> AttestorId { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAttestorIamPolicyInvokeArgs()
         {
         }
     }

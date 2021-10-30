@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public static Task<GetParticipantResult> InvokeAsync(GetParticipantArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetParticipantResult>("google-native:dialogflow/v2:getParticipant", args ?? new GetParticipantArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves a conversation participant.
+        /// </summary>
+        public static Output<GetParticipantResult> Invoke(GetParticipantInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetParticipantResult>("google-native:dialogflow/v2:getParticipant", args ?? new GetParticipantInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public string? Project { get; set; }
 
         public GetParticipantArgs()
+        {
+        }
+    }
+
+    public sealed class GetParticipantInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("conversationId", required: true)]
+        public Input<string> ConversationId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("participantId", required: true)]
+        public Input<string> ParticipantId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetParticipantInvokeArgs()
         {
         }
     }

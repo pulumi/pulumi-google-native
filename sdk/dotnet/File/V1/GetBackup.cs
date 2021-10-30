@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.File.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.File.V1
         /// </summary>
         public static Task<GetBackupResult> InvokeAsync(GetBackupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("google-native:file/v1:getBackup", args ?? new GetBackupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the details of a specific backup.
+        /// </summary>
+        public static Output<GetBackupResult> Invoke(GetBackupInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBackupResult>("google-native:file/v1:getBackup", args ?? new GetBackupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.File.V1
         public string? Project { get; set; }
 
         public GetBackupArgs()
+        {
+        }
+    }
+
+    public sealed class GetBackupInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("backupId", required: true)]
+        public Input<string> BackupId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetBackupInvokeArgs()
         {
         }
     }

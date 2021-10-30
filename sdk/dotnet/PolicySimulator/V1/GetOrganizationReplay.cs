@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.PolicySimulator.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
         /// </summary>
         public static Task<GetOrganizationReplayResult> InvokeAsync(GetOrganizationReplayArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationReplayResult>("google-native:policysimulator/v1:getOrganizationReplay", args ?? new GetOrganizationReplayArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
+        /// </summary>
+        public static Output<GetOrganizationReplayResult> Invoke(GetOrganizationReplayInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationReplayResult>("google-native:policysimulator/v1:getOrganizationReplay", args ?? new GetOrganizationReplayInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
         public string ReplayId { get; set; } = null!;
 
         public GetOrganizationReplayArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationReplayInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("replayId", required: true)]
+        public Input<string> ReplayId { get; set; } = null!;
+
+        public GetOrganizationReplayInvokeArgs()
         {
         }
     }

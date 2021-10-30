@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public static Task<GetWorkloadResult> InvokeAsync(GetWorkloadArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadResult>("google-native:assuredworkloads/v1:getWorkload", args ?? new GetWorkloadArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets Assured Workload associated with a CRM Node
+        /// </summary>
+        public static Output<GetWorkloadResult> Invoke(GetWorkloadInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWorkloadResult>("google-native:assuredworkloads/v1:getWorkload", args ?? new GetWorkloadInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public string WorkloadId { get; set; } = null!;
 
         public GetWorkloadArgs()
+        {
+        }
+    }
+
+    public sealed class GetWorkloadInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("workloadId", required: true)]
+        public Input<string> WorkloadId { get; set; } = null!;
+
+        public GetWorkloadInvokeArgs()
         {
         }
     }

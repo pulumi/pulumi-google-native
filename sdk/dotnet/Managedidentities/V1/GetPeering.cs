@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Managedidentities.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         /// </summary>
         public static Task<GetPeeringResult> InvokeAsync(GetPeeringArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPeeringResult>("google-native:managedidentities/v1:getPeering", args ?? new GetPeeringArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single Peering.
+        /// </summary>
+        public static Output<GetPeeringResult> Invoke(GetPeeringInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPeeringResult>("google-native:managedidentities/v1:getPeering", args ?? new GetPeeringInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         public string? Project { get; set; }
 
         public GetPeeringArgs()
+        {
+        }
+    }
+
+    public sealed class GetPeeringInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("peeringId", required: true)]
+        public Input<string> PeeringId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetPeeringInvokeArgs()
         {
         }
     }

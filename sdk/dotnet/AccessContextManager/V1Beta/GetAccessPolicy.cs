@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         /// </summary>
         public static Task<GetAccessPolicyResult> InvokeAsync(GetAccessPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessPolicyResult>("google-native:accesscontextmanager/v1beta:getAccessPolicy", args ?? new GetAccessPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get an AccessPolicy by name.
+        /// </summary>
+        public static Output<GetAccessPolicyResult> Invoke(GetAccessPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccessPolicyResult>("google-native:accesscontextmanager/v1beta:getAccessPolicy", args ?? new GetAccessPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         public string AccessPolicyId { get; set; } = null!;
 
         public GetAccessPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccessPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("accessPolicyId", required: true)]
+        public Input<string> AccessPolicyId { get; set; } = null!;
+
+        public GetAccessPolicyInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         /// </summary>
         public static Task<GetCapacityCommitmentResult> InvokeAsync(GetCapacityCommitmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCapacityCommitmentResult>("google-native:bigqueryreservation/v1beta1:getCapacityCommitment", args ?? new GetCapacityCommitmentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns information about the capacity commitment.
+        /// </summary>
+        public static Output<GetCapacityCommitmentResult> Invoke(GetCapacityCommitmentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCapacityCommitmentResult>("google-native:bigqueryreservation/v1beta1:getCapacityCommitment", args ?? new GetCapacityCommitmentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         public string? Project { get; set; }
 
         public GetCapacityCommitmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetCapacityCommitmentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("capacityCommitmentId", required: true)]
+        public Input<string> CapacityCommitmentId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCapacityCommitmentInvokeArgs()
         {
         }
     }

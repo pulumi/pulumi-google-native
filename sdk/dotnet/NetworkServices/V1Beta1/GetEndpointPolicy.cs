@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         public static Task<GetEndpointPolicyResult> InvokeAsync(GetEndpointPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointPolicyResult>("google-native:networkservices/v1beta1:getEndpointPolicy", args ?? new GetEndpointPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single EndpointPolicy.
+        /// </summary>
+        public static Output<GetEndpointPolicyResult> Invoke(GetEndpointPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointPolicyResult>("google-native:networkservices/v1beta1:getEndpointPolicy", args ?? new GetEndpointPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public string? Project { get; set; }
 
         public GetEndpointPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetEndpointPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("endpointPolicyId", required: true)]
+        public Input<string> EndpointPolicyId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetEndpointPolicyInvokeArgs()
         {
         }
     }

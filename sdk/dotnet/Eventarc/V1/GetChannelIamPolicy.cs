@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Eventarc.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// </summary>
         public static Task<GetChannelIamPolicyResult> InvokeAsync(GetChannelIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetChannelIamPolicyResult>("google-native:eventarc/v1:getChannelIamPolicy", args ?? new GetChannelIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetChannelIamPolicyResult> Invoke(GetChannelIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetChannelIamPolicyResult>("google-native:eventarc/v1:getChannelIamPolicy", args ?? new GetChannelIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public string? Project { get; set; }
 
         public GetChannelIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetChannelIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("channelId", required: true)]
+        public Input<string> ChannelId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetChannelIamPolicyInvokeArgs()
         {
         }
     }

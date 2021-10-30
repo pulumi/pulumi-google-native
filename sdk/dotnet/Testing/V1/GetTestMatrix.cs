@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Testing.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// </summary>
         public static Task<GetTestMatrixResult> InvokeAsync(GetTestMatrixArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTestMatrixResult>("google-native:testing/v1:getTestMatrix", args ?? new GetTestMatrixArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Checks the status of a test matrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
+        /// </summary>
+        public static Output<GetTestMatrixResult> Invoke(GetTestMatrixInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTestMatrixResult>("google-native:testing/v1:getTestMatrix", args ?? new GetTestMatrixInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Testing.V1
         public string TestMatrixId { get; set; } = null!;
 
         public GetTestMatrixArgs()
+        {
+        }
+    }
+
+    public sealed class GetTestMatrixInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("testMatrixId", required: true)]
+        public Input<string> TestMatrixId { get; set; } = null!;
+
+        public GetTestMatrixInvokeArgs()
         {
         }
     }

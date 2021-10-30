@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         public static Task<GetFeedbackMessageResult> InvokeAsync(GetFeedbackMessageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFeedbackMessageResult>("google-native:datalabeling/v1beta1:getFeedbackMessage", args ?? new GetFeedbackMessageArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a FeedbackMessage object.
+        /// </summary>
+        public static Output<GetFeedbackMessageResult> Invoke(GetFeedbackMessageInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFeedbackMessageResult>("google-native:datalabeling/v1beta1:getFeedbackMessage", args ?? new GetFeedbackMessageInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public string? Project { get; set; }
 
         public GetFeedbackMessageArgs()
+        {
+        }
+    }
+
+    public sealed class GetFeedbackMessageInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("annotatedDatasetId", required: true)]
+        public Input<string> AnnotatedDatasetId { get; set; } = null!;
+
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("feedbackMessageId", required: true)]
+        public Input<string> FeedbackMessageId { get; set; } = null!;
+
+        [Input("feedbackThreadId", required: true)]
+        public Input<string> FeedbackThreadId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetFeedbackMessageInvokeArgs()
         {
         }
     }

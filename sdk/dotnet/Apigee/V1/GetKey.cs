@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("google-native:apigee/v1:getKey", args ?? new GetKeyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
+        /// </summary>
+        public static Output<GetKeyResult> Invoke(GetKeyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeyResult>("google-native:apigee/v1:getKey", args ?? new GetKeyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetKeyArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
+
+        [Input("developerId", required: true)]
+        public Input<string> DeveloperId { get; set; } = null!;
+
+        [Input("keyId", required: true)]
+        public Input<string> KeyId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetKeyInvokeArgs()
         {
         }
     }

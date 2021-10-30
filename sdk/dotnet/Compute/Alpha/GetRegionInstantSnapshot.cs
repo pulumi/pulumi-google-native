@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetRegionInstantSnapshotResult> InvokeAsync(GetRegionInstantSnapshotArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstantSnapshotResult>("google-native:compute/alpha:getRegionInstantSnapshot", args ?? new GetRegionInstantSnapshotArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified InstantSnapshot resource in the specified region.
+        /// </summary>
+        public static Output<GetRegionInstantSnapshotResult> Invoke(GetRegionInstantSnapshotInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionInstantSnapshotResult>("google-native:compute/alpha:getRegionInstantSnapshot", args ?? new GetRegionInstantSnapshotInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Region { get; set; } = null!;
 
         public GetRegionInstantSnapshotArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionInstantSnapshotInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instantSnapshot", required: true)]
+        public Input<string> InstantSnapshot { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetRegionInstantSnapshotInvokeArgs()
         {
         }
     }

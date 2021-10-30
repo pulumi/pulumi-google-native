@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         /// </summary>
         public static Task<GetEndpointResult> InvokeAsync(GetEndpointArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("google-native:servicedirectory/v1beta1:getEndpoint", args ?? new GetEndpointArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an endpoint.
+        /// </summary>
+        public static Output<GetEndpointResult> Invoke(GetEndpointInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointResult>("google-native:servicedirectory/v1beta1:getEndpoint", args ?? new GetEndpointInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public string ServiceId { get; set; } = null!;
 
         public GetEndpointArgs()
+        {
+        }
+    }
+
+    public sealed class GetEndpointInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("endpointId", required: true)]
+        public Input<string> EndpointId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        public GetEndpointInvokeArgs()
         {
         }
     }

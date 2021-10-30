@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.IAM.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public static Task<GetOrganizationRoleResult> InvokeAsync(GetOrganizationRoleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationRoleResult>("google-native:iam/v1:getOrganizationRole", args ?? new GetOrganizationRoleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the definition of a Role.
+        /// </summary>
+        public static Output<GetOrganizationRoleResult> Invoke(GetOrganizationRoleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationRoleResult>("google-native:iam/v1:getOrganizationRole", args ?? new GetOrganizationRoleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.IAM.V1
         public string RoleId { get; set; } = null!;
 
         public GetOrganizationRoleArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationRoleInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("roleId", required: true)]
+        public Input<string> RoleId { get; set; } = null!;
+
+        public GetOrganizationRoleInvokeArgs()
         {
         }
     }

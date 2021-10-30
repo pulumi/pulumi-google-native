@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkSecurity.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         /// </summary>
         public static Task<GetAuthorizationPolicyIamPolicyResult> InvokeAsync(GetAuthorizationPolicyIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationPolicyIamPolicyResult>("google-native:networksecurity/v1:getAuthorizationPolicyIamPolicy", args ?? new GetAuthorizationPolicyIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetAuthorizationPolicyIamPolicyResult> Invoke(GetAuthorizationPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAuthorizationPolicyIamPolicyResult>("google-native:networksecurity/v1:getAuthorizationPolicyIamPolicy", args ?? new GetAuthorizationPolicyIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public string? Project { get; set; }
 
         public GetAuthorizationPolicyIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetAuthorizationPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("authorizationPolicyId", required: true)]
+        public Input<string> AuthorizationPolicyId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAuthorizationPolicyIamPolicyInvokeArgs()
         {
         }
     }

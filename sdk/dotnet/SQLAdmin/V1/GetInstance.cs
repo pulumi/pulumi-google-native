@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.SQLAdmin.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("google-native:sqladmin/v1:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves a resource containing information about a Cloud SQL instance.
+        /// </summary>
+        public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("google-native:sqladmin/v1:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public string? Project { get; set; }
 
         public GetInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instance", required: true)]
+        public Input<string> Instance { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInstanceInvokeArgs()
         {
         }
     }

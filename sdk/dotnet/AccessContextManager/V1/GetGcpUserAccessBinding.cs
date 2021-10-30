@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.AccessContextManager.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         /// </summary>
         public static Task<GetGcpUserAccessBindingResult> InvokeAsync(GetGcpUserAccessBindingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGcpUserAccessBindingResult>("google-native:accesscontextmanager/v1:getGcpUserAccessBinding", args ?? new GetGcpUserAccessBindingArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the GcpUserAccessBinding with the given name.
+        /// </summary>
+        public static Output<GetGcpUserAccessBindingResult> Invoke(GetGcpUserAccessBindingInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGcpUserAccessBindingResult>("google-native:accesscontextmanager/v1:getGcpUserAccessBinding", args ?? new GetGcpUserAccessBindingInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetGcpUserAccessBindingArgs()
+        {
+        }
+    }
+
+    public sealed class GetGcpUserAccessBindingInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("gcpUserAccessBindingId", required: true)]
+        public Input<string> GcpUserAccessBindingId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetGcpUserAccessBindingInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         public static Task<GetOccurrenceResult> InvokeAsync(GetOccurrenceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOccurrenceResult>("google-native:containeranalysis/v1alpha1:getOccurrence", args ?? new GetOccurrenceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the requested `Occurrence`.
+        /// </summary>
+        public static Output<GetOccurrenceResult> Invoke(GetOccurrenceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOccurrenceResult>("google-native:containeranalysis/v1alpha1:getOccurrence", args ?? new GetOccurrenceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public string? Project { get; set; }
 
         public GetOccurrenceArgs()
+        {
+        }
+    }
+
+    public sealed class GetOccurrenceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("occurrenceId", required: true)]
+        public Input<string> OccurrenceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetOccurrenceInvokeArgs()
         {
         }
     }

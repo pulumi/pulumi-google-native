@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Storage.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public static Task<GetNotificationResult> InvokeAsync(GetNotificationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationResult>("google-native:storage/v1:getNotification", args ?? new GetNotificationArgs(), options.WithVersion());
+
+        /// <summary>
+        /// View a notification configuration.
+        /// </summary>
+        public static Output<GetNotificationResult> Invoke(GetNotificationInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNotificationResult>("google-native:storage/v1:getNotification", args ?? new GetNotificationInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Storage.V1
         public string? UserProject { get; set; }
 
         public GetNotificationArgs()
+        {
+        }
+    }
+
+    public sealed class GetNotificationInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
+
+        [Input("notification", required: true)]
+        public Input<string> Notification { get; set; } = null!;
+
+        [Input("provisionalUserProject")]
+        public Input<string>? ProvisionalUserProject { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
+
+        public GetNotificationInvokeArgs()
         {
         }
     }

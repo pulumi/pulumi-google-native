@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Eventarc.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         /// </summary>
         public static Task<GetTriggerIamPolicyResult> InvokeAsync(GetTriggerIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTriggerIamPolicyResult>("google-native:eventarc/v1beta1:getTriggerIamPolicy", args ?? new GetTriggerIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetTriggerIamPolicyResult> Invoke(GetTriggerIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTriggerIamPolicyResult>("google-native:eventarc/v1beta1:getTriggerIamPolicy", args ?? new GetTriggerIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         public string TriggerId { get; set; } = null!;
 
         public GetTriggerIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetTriggerIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("triggerId", required: true)]
+        public Input<string> TriggerId { get; set; } = null!;
+
+        public GetTriggerIamPolicyInvokeArgs()
         {
         }
     }

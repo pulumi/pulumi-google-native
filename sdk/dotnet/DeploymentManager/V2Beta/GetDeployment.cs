@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         /// </summary>
         public static Task<GetDeploymentResult> InvokeAsync(GetDeploymentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDeploymentResult>("google-native:deploymentmanager/v2beta:getDeployment", args ?? new GetDeploymentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about a specific deployment.
+        /// </summary>
+        public static Output<GetDeploymentResult> Invoke(GetDeploymentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDeploymentResult>("google-native:deploymentmanager/v2beta:getDeployment", args ?? new GetDeploymentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         public string? Project { get; set; }
 
         public GetDeploymentArgs()
+        {
+        }
+    }
+
+    public sealed class GetDeploymentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("deployment", required: true)]
+        public Input<string> Deployment { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDeploymentInvokeArgs()
         {
         }
     }

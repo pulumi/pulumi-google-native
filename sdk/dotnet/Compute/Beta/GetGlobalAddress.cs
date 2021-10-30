@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetGlobalAddressResult> InvokeAsync(GetGlobalAddressArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("google-native:compute/beta:getGlobalAddress", args ?? new GetGlobalAddressArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified address resource. Gets a list of available addresses by making a list() request.
+        /// </summary>
+        public static Output<GetGlobalAddressResult> Invoke(GetGlobalAddressInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGlobalAddressResult>("google-native:compute/beta:getGlobalAddress", args ?? new GetGlobalAddressInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string? Project { get; set; }
 
         public GetGlobalAddressArgs()
+        {
+        }
+    }
+
+    public sealed class GetGlobalAddressInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("address", required: true)]
+        public Input<string> Address { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetGlobalAddressInvokeArgs()
         {
         }
     }

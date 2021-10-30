@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetRegionInstanceGroupManagerResult> InvokeAsync(GetRegionInstanceGroupManagerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupManagerResult>("google-native:compute/beta:getRegionInstanceGroupManager", args ?? new GetRegionInstanceGroupManagerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns all of the details about the specified managed instance group.
+        /// </summary>
+        public static Output<GetRegionInstanceGroupManagerResult> Invoke(GetRegionInstanceGroupManagerInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionInstanceGroupManagerResult>("google-native:compute/beta:getRegionInstanceGroupManager", args ?? new GetRegionInstanceGroupManagerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string Region { get; set; } = null!;
 
         public GetRegionInstanceGroupManagerArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionInstanceGroupManagerInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instanceGroupManager", required: true)]
+        public Input<string> InstanceGroupManager { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetRegionInstanceGroupManagerInvokeArgs()
         {
         }
     }

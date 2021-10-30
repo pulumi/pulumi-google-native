@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ServiceManagement.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         public static Task<GetServiceIamPolicyResult> InvokeAsync(GetServiceIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIamPolicyResult>("google-native:servicemanagement/v1:getServiceIamPolicy", args ?? new GetServiceIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetServiceIamPolicyResult> Invoke(GetServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("google-native:servicemanagement/v1:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public string ServiceId { get; set; } = null!;
 
         public GetServiceIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        public GetServiceIamPolicyInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetTargetVpnGatewayResult> InvokeAsync(GetTargetVpnGatewayArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTargetVpnGatewayResult>("google-native:compute/alpha:getTargetVpnGateway", args ?? new GetTargetVpnGatewayArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a list() request.
+        /// </summary>
+        public static Output<GetTargetVpnGatewayResult> Invoke(GetTargetVpnGatewayInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTargetVpnGatewayResult>("google-native:compute/alpha:getTargetVpnGateway", args ?? new GetTargetVpnGatewayInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string TargetVpnGateway { get; set; } = null!;
 
         public GetTargetVpnGatewayArgs()
+        {
+        }
+    }
+
+    public sealed class GetTargetVpnGatewayInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        [Input("targetVpnGateway", required: true)]
+        public Input<string> TargetVpnGateway { get; set; } = null!;
+
+        public GetTargetVpnGatewayInvokeArgs()
         {
         }
     }

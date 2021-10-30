@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.APIGateway.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         /// </summary>
         public static Task<GetConfigResult> InvokeAsync(GetConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("google-native:apigateway/v1:getConfig", args ?? new GetConfigArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single ApiConfig.
+        /// </summary>
+        public static Output<GetConfigResult> Invoke(GetConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConfigResult>("google-native:apigateway/v1:getConfig", args ?? new GetConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         public string? View { get; set; }
 
         public GetConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("apiId", required: true)]
+        public Input<string> ApiId { get; set; } = null!;
+
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
+        public GetConfigInvokeArgs()
         {
         }
     }

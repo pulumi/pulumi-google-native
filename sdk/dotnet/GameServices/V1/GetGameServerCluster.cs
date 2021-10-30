@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.GameServices.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.GameServices.V1
         /// </summary>
         public static Task<GetGameServerClusterResult> InvokeAsync(GetGameServerClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGameServerClusterResult>("google-native:gameservices/v1:getGameServerCluster", args ?? new GetGameServerClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single game server cluster.
+        /// </summary>
+        public static Output<GetGameServerClusterResult> Invoke(GetGameServerClusterInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGameServerClusterResult>("google-native:gameservices/v1:getGameServerCluster", args ?? new GetGameServerClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public string? View { get; set; }
 
         public GetGameServerClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetGameServerClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("gameServerClusterId", required: true)]
+        public Input<string> GameServerClusterId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("realmId", required: true)]
+        public Input<string> RealmId { get; set; } = null!;
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
+        public GetGameServerClusterInvokeArgs()
         {
         }
     }

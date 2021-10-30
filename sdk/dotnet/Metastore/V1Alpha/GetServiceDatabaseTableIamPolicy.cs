@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Metastore.V1Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         /// </summary>
         public static Task<GetServiceDatabaseTableIamPolicyResult> InvokeAsync(GetServiceDatabaseTableIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceDatabaseTableIamPolicyResult>("google-native:metastore/v1alpha:getServiceDatabaseTableIamPolicy", args ?? new GetServiceDatabaseTableIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetServiceDatabaseTableIamPolicyResult> Invoke(GetServiceDatabaseTableIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceDatabaseTableIamPolicyResult>("google-native:metastore/v1alpha:getServiceDatabaseTableIamPolicy", args ?? new GetServiceDatabaseTableIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +47,31 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public string TableId { get; set; } = null!;
 
         public GetServiceDatabaseTableIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceDatabaseTableIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("databaseId", required: true)]
+        public Input<string> DatabaseId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        [Input("tableId", required: true)]
+        public Input<string> TableId { get; set; } = null!;
+
+        public GetServiceDatabaseTableIamPolicyInvokeArgs()
         {
         }
     }

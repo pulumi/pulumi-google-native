@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         /// </summary>
         public static Task<GetSubscriptionResult> InvokeAsync(GetSubscriptionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionResult>("google-native:pubsub/v1beta1a:getSubscription", args ?? new GetSubscriptionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the configuration details of a subscription.
+        /// </summary>
+        public static Output<GetSubscriptionResult> Invoke(GetSubscriptionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSubscriptionResult>("google-native:pubsub/v1beta1a:getSubscription", args ?? new GetSubscriptionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         public string SubscriptionId { get; set; } = null!;
 
         public GetSubscriptionArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubscriptionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("subscriptionId", required: true)]
+        public Input<string> SubscriptionId { get; set; } = null!;
+
+        public GetSubscriptionInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.IAM.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("google-native:iam/v1:getKey", args ?? new GetKeyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a ServiceAccountKey.
+        /// </summary>
+        public static Output<GetKeyResult> Invoke(GetKeyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeyResult>("google-native:iam/v1:getKey", args ?? new GetKeyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.IAM.V1
         public string ServiceAccountId { get; set; } = null!;
 
         public GetKeyArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("keyId", required: true)]
+        public Input<string> KeyId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("publicKeyType")]
+        public Input<string>? PublicKeyType { get; set; }
+
+        [Input("serviceAccountId", required: true)]
+        public Input<string> ServiceAccountId { get; set; } = null!;
+
+        public GetKeyInvokeArgs()
         {
         }
     }

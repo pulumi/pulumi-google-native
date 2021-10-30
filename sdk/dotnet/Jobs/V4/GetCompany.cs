@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Jobs.V4
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         public static Task<GetCompanyResult> InvokeAsync(GetCompanyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCompanyResult>("google-native:jobs/v4:getCompany", args ?? new GetCompanyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves specified company.
+        /// </summary>
+        public static Output<GetCompanyResult> Invoke(GetCompanyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCompanyResult>("google-native:jobs/v4:getCompany", args ?? new GetCompanyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Jobs.V4
         public string TenantId { get; set; } = null!;
 
         public GetCompanyArgs()
+        {
+        }
+    }
+
+    public sealed class GetCompanyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("companyId", required: true)]
+        public Input<string> CompanyId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("tenantId", required: true)]
+        public Input<string> TenantId { get; set; } = null!;
+
+        public GetCompanyInvokeArgs()
         {
         }
     }

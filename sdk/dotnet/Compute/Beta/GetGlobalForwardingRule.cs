@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetGlobalForwardingRuleResult> InvokeAsync(GetGlobalForwardingRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalForwardingRuleResult>("google-native:compute/beta:getGlobalForwardingRule", args ?? new GetGlobalForwardingRuleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request.
+        /// </summary>
+        public static Output<GetGlobalForwardingRuleResult> Invoke(GetGlobalForwardingRuleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGlobalForwardingRuleResult>("google-native:compute/beta:getGlobalForwardingRule", args ?? new GetGlobalForwardingRuleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string? Project { get; set; }
 
         public GetGlobalForwardingRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetGlobalForwardingRuleInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("forwardingRule", required: true)]
+        public Input<string> ForwardingRule { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetGlobalForwardingRuleInvokeArgs()
         {
         }
     }

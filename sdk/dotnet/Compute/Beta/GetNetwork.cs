@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("google-native:compute/beta:getNetwork", args ?? new GetNetworkArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified network. Gets a list of available networks by making a list() request.
+        /// </summary>
+        public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("google-native:compute/beta:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string? Project { get; set; }
 
         public GetNetworkArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworkInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("network", required: true)]
+        public Input<string> Network { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetNetworkInvokeArgs()
         {
         }
     }

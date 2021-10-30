@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigQueryReservation.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         public static Task<GetReservationResult> InvokeAsync(GetReservationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReservationResult>("google-native:bigqueryreservation/v1:getReservation", args ?? new GetReservationArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns information about the reservation.
+        /// </summary>
+        public static Output<GetReservationResult> Invoke(GetReservationInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetReservationResult>("google-native:bigqueryreservation/v1:getReservation", args ?? new GetReservationInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public string ReservationId { get; set; } = null!;
 
         public GetReservationArgs()
+        {
+        }
+    }
+
+    public sealed class GetReservationInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("reservationId", required: true)]
+        public Input<string> ReservationId { get; set; } = null!;
+
+        public GetReservationInvokeArgs()
         {
         }
     }

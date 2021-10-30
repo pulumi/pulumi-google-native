@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigQuery.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public static Task<GetDatasetResult> InvokeAsync(GetDatasetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetResult>("google-native:bigquery/v2:getDataset", args ?? new GetDatasetArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the dataset specified by datasetID.
+        /// </summary>
+        public static Output<GetDatasetResult> Invoke(GetDatasetInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatasetResult>("google-native:bigquery/v2:getDataset", args ?? new GetDatasetInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public string? Project { get; set; }
 
         public GetDatasetArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatasetInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDatasetInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.OSConfig.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         /// </summary>
         public static Task<GetGuestPolicyResult> InvokeAsync(GetGuestPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGuestPolicyResult>("google-native:osconfig/v1beta:getGuestPolicy", args ?? new GetGuestPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get an OS Config guest policy.
+        /// </summary>
+        public static Output<GetGuestPolicyResult> Invoke(GetGuestPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGuestPolicyResult>("google-native:osconfig/v1beta:getGuestPolicy", args ?? new GetGuestPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         public string? Project { get; set; }
 
         public GetGuestPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetGuestPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("guestPolicyId", required: true)]
+        public Input<string> GuestPolicyId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetGuestPolicyInvokeArgs()
         {
         }
     }

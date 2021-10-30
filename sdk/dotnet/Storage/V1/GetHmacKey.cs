@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Storage.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public static Task<GetHmacKeyResult> InvokeAsync(GetHmacKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHmacKeyResult>("google-native:storage/v1:getHmacKey", args ?? new GetHmacKeyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves an HMAC key's metadata
+        /// </summary>
+        public static Output<GetHmacKeyResult> Invoke(GetHmacKeyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHmacKeyResult>("google-native:storage/v1:getHmacKey", args ?? new GetHmacKeyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Storage.V1
         public string? UserProject { get; set; }
 
         public GetHmacKeyArgs()
+        {
+        }
+    }
+
+    public sealed class GetHmacKeyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("accessId", required: true)]
+        public Input<string> AccessId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
+
+        public GetHmacKeyInvokeArgs()
         {
         }
     }

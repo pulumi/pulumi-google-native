@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public static Task<GetIntentResult> InvokeAsync(GetIntentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIntentResult>("google-native:dialogflow/v2:getIntent", args ?? new GetIntentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified intent.
+        /// </summary>
+        public static Output<GetIntentResult> Invoke(GetIntentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIntentResult>("google-native:dialogflow/v2:getIntent", args ?? new GetIntentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public string? Project { get; set; }
 
         public GetIntentArgs()
+        {
+        }
+    }
+
+    public sealed class GetIntentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("intentId", required: true)]
+        public Input<string> IntentId { get; set; } = null!;
+
+        [Input("intentView")]
+        public Input<string>? IntentView { get; set; }
+
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetIntentInvokeArgs()
         {
         }
     }

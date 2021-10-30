@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.SourceRepo.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         /// </summary>
         public static Task<GetRepoIamPolicyResult> InvokeAsync(GetRepoIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRepoIamPolicyResult>("google-native:sourcerepo/v1:getRepoIamPolicy", args ?? new GetRepoIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetRepoIamPolicyResult> Invoke(GetRepoIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRepoIamPolicyResult>("google-native:sourcerepo/v1:getRepoIamPolicy", args ?? new GetRepoIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         public string RepoId { get; set; } = null!;
 
         public GetRepoIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetRepoIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("repoId", required: true)]
+        public Input<string> RepoId { get; set; } = null!;
+
+        public GetRepoIamPolicyInvokeArgs()
         {
         }
     }

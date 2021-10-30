@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dataflow.V1b3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// </summary>
         public static Task<GetTemplateResult> InvokeAsync(GetTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTemplateResult>("google-native:dataflow/v1b3:getTemplate", args ?? new GetTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get the template associated with a template.
+        /// </summary>
+        public static Output<GetTemplateResult> Invoke(GetTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTemplateResult>("google-native:dataflow/v1b3:getTemplate", args ?? new GetTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public string? View { get; set; }
 
         public GetTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("gcsPath", required: true)]
+        public Input<string> GcsPath { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
+        public GetTemplateInvokeArgs()
         {
         }
     }

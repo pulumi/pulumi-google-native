@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DNS.V1Beta2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// </summary>
         public static Task<GetResponsePolicyResult> InvokeAsync(GetResponsePolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResponsePolicyResult>("google-native:dns/v1beta2:getResponsePolicy", args ?? new GetResponsePolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Fetches the representation of an existing Response Policy.
+        /// </summary>
+        public static Output<GetResponsePolicyResult> Invoke(GetResponsePolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetResponsePolicyResult>("google-native:dns/v1beta2:getResponsePolicy", args ?? new GetResponsePolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public string ResponsePolicy { get; set; } = null!;
 
         public GetResponsePolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetResponsePolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("clientOperationId")]
+        public Input<string>? ClientOperationId { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("responsePolicy", required: true)]
+        public Input<string> ResponsePolicy { get; set; } = null!;
+
+        public GetResponsePolicyInvokeArgs()
         {
         }
     }

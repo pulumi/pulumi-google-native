@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("google-native:compute/alpha:getSnapshot", args ?? new GetSnapshotArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified Snapshot resource. Gets a list of available snapshots by making a list() request.
+        /// </summary>
+        public static Output<GetSnapshotResult> Invoke(GetSnapshotInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("google-native:compute/alpha:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Snapshot { get; set; } = null!;
 
         public GetSnapshotArgs()
+        {
+        }
+    }
+
+    public sealed class GetSnapshotInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("snapshot", required: true)]
+        public Input<string> Snapshot { get; set; } = null!;
+
+        public GetSnapshotInvokeArgs()
         {
         }
     }

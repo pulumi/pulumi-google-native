@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetInstantSnapshotIamPolicyResult> InvokeAsync(GetInstantSnapshotIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstantSnapshotIamPolicyResult>("google-native:compute/alpha:getInstantSnapshotIamPolicy", args ?? new GetInstantSnapshotIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        public static Output<GetInstantSnapshotIamPolicyResult> Invoke(GetInstantSnapshotIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstantSnapshotIamPolicyResult>("google-native:compute/alpha:getInstantSnapshotIamPolicy", args ?? new GetInstantSnapshotIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Zone { get; set; } = null!;
 
         public GetInstantSnapshotIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstantSnapshotIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("resource", required: true)]
+        public Input<string> Resource { get; set; } = null!;
+
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
+
+        public GetInstantSnapshotIamPolicyInvokeArgs()
         {
         }
     }

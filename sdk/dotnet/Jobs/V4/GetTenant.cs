@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Jobs.V4
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         public static Task<GetTenantResult> InvokeAsync(GetTenantArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTenantResult>("google-native:jobs/v4:getTenant", args ?? new GetTenantArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves specified tenant.
+        /// </summary>
+        public static Output<GetTenantResult> Invoke(GetTenantInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTenantResult>("google-native:jobs/v4:getTenant", args ?? new GetTenantInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Jobs.V4
         public string TenantId { get; set; } = null!;
 
         public GetTenantArgs()
+        {
+        }
+    }
+
+    public sealed class GetTenantInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("tenantId", required: true)]
+        public Input<string> TenantId { get; set; } = null!;
+
+        public GetTenantInvokeArgs()
         {
         }
     }

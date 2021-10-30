@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetTargetGrpcProxyResult> InvokeAsync(GetTargetGrpcProxyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTargetGrpcProxyResult>("google-native:compute/beta:getTargetGrpcProxy", args ?? new GetTargetGrpcProxyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified TargetGrpcProxy resource in the given scope.
+        /// </summary>
+        public static Output<GetTargetGrpcProxyResult> Invoke(GetTargetGrpcProxyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTargetGrpcProxyResult>("google-native:compute/beta:getTargetGrpcProxy", args ?? new GetTargetGrpcProxyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string TargetGrpcProxy { get; set; } = null!;
 
         public GetTargetGrpcProxyArgs()
+        {
+        }
+    }
+
+    public sealed class GetTargetGrpcProxyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("targetGrpcProxy", required: true)]
+        public Input<string> TargetGrpcProxy { get; set; } = null!;
+
+        public GetTargetGrpcProxyInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Spanner.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public static Task<GetInstanceIamPolicyResult> InvokeAsync(GetInstanceIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceIamPolicyResult>("google-native:spanner/v1:getInstanceIamPolicy", args ?? new GetInstanceIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. Authorization requires `spanner.instances.getIamPolicy` on resource.
+        /// </summary>
+        public static Output<GetInstanceIamPolicyResult> Invoke(GetInstanceIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceIamPolicyResult>("google-native:spanner/v1:getInstanceIamPolicy", args ?? new GetInstanceIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public string? Project { get; set; }
 
         public GetInstanceIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInstanceIamPolicyInvokeArgs()
         {
         }
     }

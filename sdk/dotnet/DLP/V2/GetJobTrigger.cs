@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DLP.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static Task<GetJobTriggerResult> InvokeAsync(GetJobTriggerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetJobTriggerResult>("google-native:dlp/v2:getJobTrigger", args ?? new GetJobTriggerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        /// </summary>
+        public static Output<GetJobTriggerResult> Invoke(GetJobTriggerInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetJobTriggerResult>("google-native:dlp/v2:getJobTrigger", args ?? new GetJobTriggerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DLP.V2
         public string? Project { get; set; }
 
         public GetJobTriggerArgs()
+        {
+        }
+    }
+
+    public sealed class GetJobTriggerInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("jobTriggerId", required: true)]
+        public Input<string> JobTriggerId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetJobTriggerInvokeArgs()
         {
         }
     }

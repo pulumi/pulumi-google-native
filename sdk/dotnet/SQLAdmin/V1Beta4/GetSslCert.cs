@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public static Task<GetSslCertResult> InvokeAsync(GetSslCertArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSslCertResult>("google-native:sqladmin/v1beta4:getSslCert", args ?? new GetSslCertArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.
+        /// </summary>
+        public static Output<GetSslCertResult> Invoke(GetSslCertInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSslCertResult>("google-native:sqladmin/v1beta4:getSslCert", args ?? new GetSslCertInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public string Sha1Fingerprint { get; set; } = null!;
 
         public GetSslCertArgs()
+        {
+        }
+    }
+
+    public sealed class GetSslCertInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instance", required: true)]
+        public Input<string> Instance { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("sha1Fingerprint", required: true)]
+        public Input<string> Sha1Fingerprint { get; set; } = null!;
+
+        public GetSslCertInvokeArgs()
         {
         }
     }

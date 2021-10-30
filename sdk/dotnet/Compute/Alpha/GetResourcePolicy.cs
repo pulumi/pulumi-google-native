@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetResourcePolicyResult> InvokeAsync(GetResourcePolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePolicyResult>("google-native:compute/alpha:getResourcePolicy", args ?? new GetResourcePolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves all information of the specified resource policy.
+        /// </summary>
+        public static Output<GetResourcePolicyResult> Invoke(GetResourcePolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetResourcePolicyResult>("google-native:compute/alpha:getResourcePolicy", args ?? new GetResourcePolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string ResourcePolicy { get; set; } = null!;
 
         public GetResourcePolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetResourcePolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        [Input("resourcePolicy", required: true)]
+        public Input<string> ResourcePolicy { get; set; } = null!;
+
+        public GetResourcePolicyInvokeArgs()
         {
         }
     }

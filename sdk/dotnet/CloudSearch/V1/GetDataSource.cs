@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudSearch.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// </summary>
         public static Task<GetDataSourceResult> InvokeAsync(GetDataSourceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDataSourceResult>("google-native:cloudsearch/v1:getDataSource", args ?? new GetDataSourceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a datasource. **Note:** This API requires an admin account to execute.
+        /// </summary>
+        public static Output<GetDataSourceResult> Invoke(GetDataSourceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDataSourceResult>("google-native:cloudsearch/v1:getDataSource", args ?? new GetDataSourceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public string? DebugOptionsEnableDebugging { get; set; }
 
         public GetDataSourceArgs()
+        {
+        }
+    }
+
+    public sealed class GetDataSourceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasourceId", required: true)]
+        public Input<string> DatasourceId { get; set; } = null!;
+
+        [Input("debugOptionsEnableDebugging")]
+        public Input<string>? DebugOptionsEnableDebugging { get; set; }
+
+        public GetDataSourceInvokeArgs()
         {
         }
     }

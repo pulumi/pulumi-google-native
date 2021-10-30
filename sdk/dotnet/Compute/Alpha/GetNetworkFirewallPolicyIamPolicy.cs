@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetNetworkFirewallPolicyIamPolicyResult> InvokeAsync(GetNetworkFirewallPolicyIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkFirewallPolicyIamPolicyResult>("google-native:compute/alpha:getNetworkFirewallPolicyIamPolicy", args ?? new GetNetworkFirewallPolicyIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        public static Output<GetNetworkFirewallPolicyIamPolicyResult> Invoke(GetNetworkFirewallPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkFirewallPolicyIamPolicyResult>("google-native:compute/alpha:getNetworkFirewallPolicyIamPolicy", args ?? new GetNetworkFirewallPolicyIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Resource { get; set; } = null!;
 
         public GetNetworkFirewallPolicyIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworkFirewallPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("resource", required: true)]
+        public Input<string> Resource { get; set; } = null!;
+
+        public GetNetworkFirewallPolicyIamPolicyInvokeArgs()
         {
         }
     }

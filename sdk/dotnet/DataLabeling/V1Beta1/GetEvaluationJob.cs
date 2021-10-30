@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         public static Task<GetEvaluationJobResult> InvokeAsync(GetEvaluationJobArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEvaluationJobResult>("google-native:datalabeling/v1beta1:getEvaluationJob", args ?? new GetEvaluationJobArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an evaluation job by resource name.
+        /// </summary>
+        public static Output<GetEvaluationJobResult> Invoke(GetEvaluationJobInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEvaluationJobResult>("google-native:datalabeling/v1beta1:getEvaluationJob", args ?? new GetEvaluationJobInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public string? Project { get; set; }
 
         public GetEvaluationJobArgs()
+        {
+        }
+    }
+
+    public sealed class GetEvaluationJobInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("evaluationJobId", required: true)]
+        public Input<string> EvaluationJobId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetEvaluationJobInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.StorageTransfer.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public static Task<GetTransferJobResult> InvokeAsync(GetTransferJobArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransferJobResult>("google-native:storagetransfer/v1:getTransferJob", args ?? new GetTransferJobArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a transfer job.
+        /// </summary>
+        public static Output<GetTransferJobResult> Invoke(GetTransferJobInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTransferJobResult>("google-native:storagetransfer/v1:getTransferJob", args ?? new GetTransferJobInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public string TransferJobId { get; set; } = null!;
 
         public GetTransferJobArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransferJobInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
+        [Input("transferJobId", required: true)]
+        public Input<string> TransferJobId { get; set; } = null!;
+
+        public GetTransferJobInvokeArgs()
         {
         }
     }

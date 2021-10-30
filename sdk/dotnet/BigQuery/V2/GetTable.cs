@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigQuery.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public static Task<GetTableResult> InvokeAsync(GetTableArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTableResult>("google-native:bigquery/v2:getTable", args ?? new GetTableArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
+        /// </summary>
+        public static Output<GetTableResult> Invoke(GetTableInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTableResult>("google-native:bigquery/v2:getTable", args ?? new GetTableInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public string TableId { get; set; } = null!;
 
         public GetTableArgs()
+        {
+        }
+    }
+
+    public sealed class GetTableInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("selectedFields")]
+        public Input<string>? SelectedFields { get; set; }
+
+        [Input("tableId", required: true)]
+        public Input<string> TableId { get; set; } = null!;
+
+        public GetTableInvokeArgs()
         {
         }
     }

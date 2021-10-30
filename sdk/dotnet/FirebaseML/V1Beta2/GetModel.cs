@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
         /// </summary>
         public static Task<GetModelResult> InvokeAsync(GetModelArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetModelResult>("google-native:firebaseml/v1beta2:getModel", args ?? new GetModelArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a model resource.
+        /// </summary>
+        public static Output<GetModelResult> Invoke(GetModelInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetModelResult>("google-native:firebaseml/v1beta2:getModel", args ?? new GetModelInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
         public string? Project { get; set; }
 
         public GetModelArgs()
+        {
+        }
+    }
+
+    public sealed class GetModelInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("modelId", required: true)]
+        public Input<string> ModelId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetModelInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetEnvgroupResult> InvokeAsync(GetEnvgroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEnvgroupResult>("google-native:apigee/v1:getEnvgroup", args ?? new GetEnvgroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an environment group.
+        /// </summary>
+        public static Output<GetEnvgroupResult> Invoke(GetEnvgroupInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEnvgroupResult>("google-native:apigee/v1:getEnvgroup", args ?? new GetEnvgroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetEnvgroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetEnvgroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("envgroupId", required: true)]
+        public Input<string> EnvgroupId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetEnvgroupInvokeArgs()
         {
         }
     }

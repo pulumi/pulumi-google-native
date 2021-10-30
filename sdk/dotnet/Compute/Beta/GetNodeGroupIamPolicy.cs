@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetNodeGroupIamPolicyResult> InvokeAsync(GetNodeGroupIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeGroupIamPolicyResult>("google-native:compute/beta:getNodeGroupIamPolicy", args ?? new GetNodeGroupIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        public static Output<GetNodeGroupIamPolicyResult> Invoke(GetNodeGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodeGroupIamPolicyResult>("google-native:compute/beta:getNodeGroupIamPolicy", args ?? new GetNodeGroupIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string Zone { get; set; } = null!;
 
         public GetNodeGroupIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodeGroupIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("resource", required: true)]
+        public Input<string> Resource { get; set; } = null!;
+
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
+
+        public GetNodeGroupIamPolicyInvokeArgs()
         {
         }
     }

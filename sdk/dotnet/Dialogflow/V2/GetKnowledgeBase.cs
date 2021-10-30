@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public static Task<GetKnowledgeBaseResult> InvokeAsync(GetKnowledgeBaseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKnowledgeBaseResult>("google-native:dialogflow/v2:getKnowledgeBase", args ?? new GetKnowledgeBaseArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified knowledge base.
+        /// </summary>
+        public static Output<GetKnowledgeBaseResult> Invoke(GetKnowledgeBaseInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKnowledgeBaseResult>("google-native:dialogflow/v2:getKnowledgeBase", args ?? new GetKnowledgeBaseInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public string? Project { get; set; }
 
         public GetKnowledgeBaseArgs()
+        {
+        }
+    }
+
+    public sealed class GetKnowledgeBaseInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("knowledgeBaseId", required: true)]
+        public Input<string> KnowledgeBaseId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetKnowledgeBaseInvokeArgs()
         {
         }
     }

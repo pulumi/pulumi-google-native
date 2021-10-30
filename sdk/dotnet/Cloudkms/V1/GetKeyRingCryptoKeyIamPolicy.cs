@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Cloudkms.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static Task<GetKeyRingCryptoKeyIamPolicyResult> InvokeAsync(GetKeyRingCryptoKeyIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyRingCryptoKeyIamPolicyResult>("google-native:cloudkms/v1:getKeyRingCryptoKeyIamPolicy", args ?? new GetKeyRingCryptoKeyIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetKeyRingCryptoKeyIamPolicyResult> Invoke(GetKeyRingCryptoKeyIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeyRingCryptoKeyIamPolicyResult>("google-native:cloudkms/v1:getKeyRingCryptoKeyIamPolicy", args ?? new GetKeyRingCryptoKeyIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public string? Project { get; set; }
 
         public GetKeyRingCryptoKeyIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyRingCryptoKeyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("cryptoKeyId", required: true)]
+        public Input<string> CryptoKeyId { get; set; } = null!;
+
+        [Input("keyRingId", required: true)]
+        public Input<string> KeyRingId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetKeyRingCryptoKeyIamPolicyInvokeArgs()
         {
         }
     }

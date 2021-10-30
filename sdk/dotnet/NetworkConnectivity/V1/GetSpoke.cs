@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkConnectivity.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public static Task<GetSpokeResult> InvokeAsync(GetSpokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSpokeResult>("google-native:networkconnectivity/v1:getSpoke", args ?? new GetSpokeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details about the specified spoke.
+        /// </summary>
+        public static Output<GetSpokeResult> Invoke(GetSpokeInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSpokeResult>("google-native:networkconnectivity/v1:getSpoke", args ?? new GetSpokeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public string SpokeId { get; set; } = null!;
 
         public GetSpokeArgs()
+        {
+        }
+    }
+
+    public sealed class GetSpokeInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("spokeId", required: true)]
+        public Input<string> SpokeId { get; set; } = null!;
+
+        public GetSpokeInvokeArgs()
         {
         }
     }

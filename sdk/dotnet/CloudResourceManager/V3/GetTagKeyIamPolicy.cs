@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudResourceManager.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         public static Task<GetTagKeyIamPolicyResult> InvokeAsync(GetTagKeyIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTagKeyIamPolicyResult>("google-native:cloudresourcemanager/v3:getTagKeyIamPolicy", args ?? new GetTagKeyIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a TagKey. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `cloudresourcemanager.googleapis.com/tagKeys.getIamPolicy` permission on the specified TagKey.
+        /// </summary>
+        public static Output<GetTagKeyIamPolicyResult> Invoke(GetTagKeyIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTagKeyIamPolicyResult>("google-native:cloudresourcemanager/v3:getTagKeyIamPolicy", args ?? new GetTagKeyIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public string TagKeyId { get; set; } = null!;
 
         public GetTagKeyIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetTagKeyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("tagKeyId", required: true)]
+        public Input<string> TagKeyId { get; set; } = null!;
+
+        public GetTagKeyIamPolicyInvokeArgs()
         {
         }
     }

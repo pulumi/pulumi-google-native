@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetPacketMirroringResult> InvokeAsync(GetPacketMirroringArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPacketMirroringResult>("google-native:compute/alpha:getPacketMirroring", args ?? new GetPacketMirroringArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified PacketMirroring resource.
+        /// </summary>
+        public static Output<GetPacketMirroringResult> Invoke(GetPacketMirroringInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPacketMirroringResult>("google-native:compute/alpha:getPacketMirroring", args ?? new GetPacketMirroringInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Region { get; set; } = null!;
 
         public GetPacketMirroringArgs()
+        {
+        }
+    }
+
+    public sealed class GetPacketMirroringInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("packetMirroring", required: true)]
+        public Input<string> PacketMirroring { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetPacketMirroringInvokeArgs()
         {
         }
     }

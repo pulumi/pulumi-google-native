@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudChannel.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public static Task<GetChannelPartnerLinkResult> InvokeAsync(GetChannelPartnerLinkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetChannelPartnerLinkResult>("google-native:cloudchannel/v1:getChannelPartnerLink", args ?? new GetChannelPartnerLinkArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the requested ChannelPartnerLink resource. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link name. Return value: The ChannelPartnerLink resource.
+        /// </summary>
+        public static Output<GetChannelPartnerLinkResult> Invoke(GetChannelPartnerLinkInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetChannelPartnerLinkResult>("google-native:cloudchannel/v1:getChannelPartnerLink", args ?? new GetChannelPartnerLinkInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public string? View { get; set; }
 
         public GetChannelPartnerLinkArgs()
+        {
+        }
+    }
+
+    public sealed class GetChannelPartnerLinkInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
+        [Input("channelPartnerLinkId", required: true)]
+        public Input<string> ChannelPartnerLinkId { get; set; } = null!;
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
+        public GetChannelPartnerLinkInvokeArgs()
         {
         }
     }

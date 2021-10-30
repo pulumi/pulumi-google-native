@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         public static Task<GetInstanceClusterBackupIamPolicyResult> InvokeAsync(GetInstanceClusterBackupIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClusterBackupIamPolicyResult>("google-native:bigtableadmin/v2:getInstanceClusterBackupIamPolicy", args ?? new GetInstanceClusterBackupIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+        /// </summary>
+        public static Output<GetInstanceClusterBackupIamPolicyResult> Invoke(GetInstanceClusterBackupIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceClusterBackupIamPolicyResult>("google-native:bigtableadmin/v2:getInstanceClusterBackupIamPolicy", args ?? new GetInstanceClusterBackupIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public string? Project { get; set; }
 
         public GetInstanceClusterBackupIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceClusterBackupIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("backupId", required: true)]
+        public Input<string> BackupId { get; set; } = null!;
+
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInstanceClusterBackupIamPolicyInvokeArgs()
         {
         }
     }

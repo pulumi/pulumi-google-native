@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigQuery.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public static Task<GetRoutineResult> InvokeAsync(GetRoutineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoutineResult>("google-native:bigquery/v2:getRoutine", args ?? new GetRoutineArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified routine resource by routine ID.
+        /// </summary>
+        public static Output<GetRoutineResult> Invoke(GetRoutineInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRoutineResult>("google-native:bigquery/v2:getRoutine", args ?? new GetRoutineInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public string RoutineId { get; set; } = null!;
 
         public GetRoutineArgs()
+        {
+        }
+    }
+
+    public sealed class GetRoutineInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("readMask")]
+        public Input<string>? ReadMask { get; set; }
+
+        [Input("routineId", required: true)]
+        public Input<string> RoutineId { get; set; } = null!;
+
+        public GetRoutineInvokeArgs()
         {
         }
     }

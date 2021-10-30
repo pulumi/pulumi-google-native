@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetResourcefileResult> InvokeAsync(GetResourcefileArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResourcefileResult>("google-native:apigee/v1:getResourcefile", args ?? new GetResourcefileArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+        /// </summary>
+        public static Output<GetResourcefileResult> Invoke(GetResourcefileInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetResourcefileResult>("google-native:apigee/v1:getResourcefile", args ?? new GetResourcefileInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string Type { get; set; } = null!;
 
         public GetResourcefileArgs()
+        {
+        }
+    }
+
+    public sealed class GetResourcefileInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
+
+        public GetResourcefileInvokeArgs()
         {
         }
     }

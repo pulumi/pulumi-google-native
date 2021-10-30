@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         /// </summary>
         public static Task<GetRepositoryIamPolicyResult> InvokeAsync(GetRepositoryIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryIamPolicyResult>("google-native:artifactregistry/v1beta2:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the IAM policy for a given resource.
+        /// </summary>
+        public static Output<GetRepositoryIamPolicyResult> Invoke(GetRepositoryIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRepositoryIamPolicyResult>("google-native:artifactregistry/v1beta2:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         public string RepositoryId { get; set; } = null!;
 
         public GetRepositoryIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetRepositoryIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("repositoryId", required: true)]
+        public Input<string> RepositoryId { get; set; } = null!;
+
+        public GetRepositoryIamPolicyInvokeArgs()
         {
         }
     }

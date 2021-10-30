@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetServiceAttachmentResult> InvokeAsync(GetServiceAttachmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceAttachmentResult>("google-native:compute/alpha:getServiceAttachment", args ?? new GetServiceAttachmentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified ServiceAttachment resource in the given scope.
+        /// </summary>
+        public static Output<GetServiceAttachmentResult> Invoke(GetServiceAttachmentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceAttachmentResult>("google-native:compute/alpha:getServiceAttachment", args ?? new GetServiceAttachmentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string ServiceAttachment { get; set; } = null!;
 
         public GetServiceAttachmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceAttachmentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        [Input("serviceAttachment", required: true)]
+        public Input<string> ServiceAttachment { get; set; } = null!;
+
+        public GetServiceAttachmentInvokeArgs()
         {
         }
     }

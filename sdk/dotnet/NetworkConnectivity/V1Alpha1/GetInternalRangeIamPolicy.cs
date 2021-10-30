@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         /// </summary>
         public static Task<GetInternalRangeIamPolicyResult> InvokeAsync(GetInternalRangeIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInternalRangeIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getInternalRangeIamPolicy", args ?? new GetInternalRangeIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetInternalRangeIamPolicyResult> Invoke(GetInternalRangeIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInternalRangeIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getInternalRangeIamPolicy", args ?? new GetInternalRangeIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         public string? Project { get; set; }
 
         public GetInternalRangeIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetInternalRangeIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("internalRangeId", required: true)]
+        public Input<string> InternalRangeId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInternalRangeIamPolicyInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// </summary>
         public static Task<GetEntryResult> InvokeAsync(GetEntryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEntryResult>("google-native:datacatalog/v1beta1:getEntry", args ?? new GetEntryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an entry.
+        /// </summary>
+        public static Output<GetEntryResult> Invoke(GetEntryInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEntryResult>("google-native:datacatalog/v1beta1:getEntry", args ?? new GetEntryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public string? Project { get; set; }
 
         public GetEntryArgs()
+        {
+        }
+    }
+
+    public sealed class GetEntryInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("entryGroupId", required: true)]
+        public Input<string> EntryGroupId { get; set; } = null!;
+
+        [Input("entryId", required: true)]
+        public Input<string> EntryId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetEntryInvokeArgs()
         {
         }
     }

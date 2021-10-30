@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetGlobalNetworkEndpointGroupResult> InvokeAsync(GetGlobalNetworkEndpointGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalNetworkEndpointGroupResult>("google-native:compute/alpha:getGlobalNetworkEndpointGroup", args ?? new GetGlobalNetworkEndpointGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
+        /// </summary>
+        public static Output<GetGlobalNetworkEndpointGroupResult> Invoke(GetGlobalNetworkEndpointGroupInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGlobalNetworkEndpointGroupResult>("google-native:compute/alpha:getGlobalNetworkEndpointGroup", args ?? new GetGlobalNetworkEndpointGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string? Project { get; set; }
 
         public GetGlobalNetworkEndpointGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetGlobalNetworkEndpointGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("networkEndpointGroup", required: true)]
+        public Input<string> NetworkEndpointGroup { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetGlobalNetworkEndpointGroupInvokeArgs()
         {
         }
     }

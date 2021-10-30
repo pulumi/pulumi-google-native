@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetQueryResult> InvokeAsync(GetQueryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQueryResult>("google-native:apigee/v1:getQuery", args ?? new GetQueryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get query status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
+        /// </summary>
+        public static Output<GetQueryResult> Invoke(GetQueryInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetQueryResult>("google-native:apigee/v1:getQuery", args ?? new GetQueryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string QueryId { get; set; } = null!;
 
         public GetQueryArgs()
+        {
+        }
+    }
+
+    public sealed class GetQueryInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("queryId", required: true)]
+        public Input<string> QueryId { get; set; } = null!;
+
+        public GetQueryInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudSearch.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// </summary>
         public static Task<GetSearchApplicationResult> InvokeAsync(GetSearchApplicationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSearchApplicationResult>("google-native:cloudsearch/v1:getSearchApplication", args ?? new GetSearchApplicationArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified search application. **Note:** This API requires an admin account to execute.
+        /// </summary>
+        public static Output<GetSearchApplicationResult> Invoke(GetSearchApplicationInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSearchApplicationResult>("google-native:cloudsearch/v1:getSearchApplication", args ?? new GetSearchApplicationInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public string SearchapplicationId { get; set; } = null!;
 
         public GetSearchApplicationArgs()
+        {
+        }
+    }
+
+    public sealed class GetSearchApplicationInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("debugOptionsEnableDebugging")]
+        public Input<string>? DebugOptionsEnableDebugging { get; set; }
+
+        [Input("searchapplicationId", required: true)]
+        public Input<string> SearchapplicationId { get; set; } = null!;
+
+        public GetSearchApplicationInvokeArgs()
         {
         }
     }

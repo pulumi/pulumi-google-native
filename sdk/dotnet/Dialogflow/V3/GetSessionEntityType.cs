@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public static Task<GetSessionEntityTypeResult> InvokeAsync(GetSessionEntityTypeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSessionEntityTypeResult>("google-native:dialogflow/v3:getSessionEntityType", args ?? new GetSessionEntityTypeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified session entity type.
+        /// </summary>
+        public static Output<GetSessionEntityTypeResult> Invoke(GetSessionEntityTypeInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSessionEntityTypeResult>("google-native:dialogflow/v3:getSessionEntityType", args ?? new GetSessionEntityTypeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +47,31 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public string SessionId { get; set; } = null!;
 
         public GetSessionEntityTypeArgs()
+        {
+        }
+    }
+
+    public sealed class GetSessionEntityTypeInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
+
+        [Input("entityTypeId", required: true)]
+        public Input<string> EntityTypeId { get; set; } = null!;
+
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("sessionId", required: true)]
+        public Input<string> SessionId { get; set; } = null!;
+
+        public GetSessionEntityTypeInvokeArgs()
         {
         }
     }

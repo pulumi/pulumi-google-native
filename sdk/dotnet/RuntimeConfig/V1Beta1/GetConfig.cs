@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         /// </summary>
         public static Task<GetConfigResult> InvokeAsync(GetConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("google-native:runtimeconfig/v1beta1:getConfig", args ?? new GetConfigArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about a RuntimeConfig resource.
+        /// </summary>
+        public static Output<GetConfigResult> Invoke(GetConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConfigResult>("google-native:runtimeconfig/v1beta1:getConfig", args ?? new GetConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         public string? Project { get; set; }
 
         public GetConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetConfigInvokeArgs()
         {
         }
     }

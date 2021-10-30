@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.OSConfig.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         /// </summary>
         public static Task<GetOsPolicyAssignmentResult> InvokeAsync(GetOsPolicyAssignmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOsPolicyAssignmentResult>("google-native:osconfig/v1:getOsPolicyAssignment", args ?? new GetOsPolicyAssignmentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieve an existing OS policy assignment. This method always returns the latest revision. In order to retrieve a previous revision of the assignment, also provide the revision ID in the `name` parameter.
+        /// </summary>
+        public static Output<GetOsPolicyAssignmentResult> Invoke(GetOsPolicyAssignmentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOsPolicyAssignmentResult>("google-native:osconfig/v1:getOsPolicyAssignment", args ?? new GetOsPolicyAssignmentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public string? Project { get; set; }
 
         public GetOsPolicyAssignmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetOsPolicyAssignmentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("osPolicyAssignmentId", required: true)]
+        public Input<string> OsPolicyAssignmentId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetOsPolicyAssignmentInvokeArgs()
         {
         }
     }

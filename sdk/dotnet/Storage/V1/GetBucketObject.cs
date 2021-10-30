@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Storage.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public static Task<GetBucketObjectResult> InvokeAsync(GetBucketObjectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("google-native:storage/v1:getBucketObject", args ?? new GetBucketObjectArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves an object or its metadata.
+        /// </summary>
+        public static Output<GetBucketObjectResult> Invoke(GetBucketObjectInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBucketObjectResult>("google-native:storage/v1:getBucketObject", args ?? new GetBucketObjectInvokeArgs(), options.WithVersion());
     }
 
 
@@ -52,6 +59,43 @@ namespace Pulumi.GoogleNative.Storage.V1
         public string? UserProject { get; set; }
 
         public GetBucketObjectArgs()
+        {
+        }
+    }
+
+    public sealed class GetBucketObjectInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
+
+        [Input("generation")]
+        public Input<string>? Generation { get; set; }
+
+        [Input("ifGenerationMatch")]
+        public Input<string>? IfGenerationMatch { get; set; }
+
+        [Input("ifGenerationNotMatch")]
+        public Input<string>? IfGenerationNotMatch { get; set; }
+
+        [Input("ifMetagenerationMatch")]
+        public Input<string>? IfMetagenerationMatch { get; set; }
+
+        [Input("ifMetagenerationNotMatch")]
+        public Input<string>? IfMetagenerationNotMatch { get; set; }
+
+        [Input("object", required: true)]
+        public Input<string> Object { get; set; } = null!;
+
+        [Input("projection")]
+        public Input<string>? Projection { get; set; }
+
+        [Input("provisionalUserProject")]
+        public Input<string>? ProvisionalUserProject { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
+
+        public GetBucketObjectInvokeArgs()
         {
         }
     }

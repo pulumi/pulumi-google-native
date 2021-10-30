@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudResourceManager.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         public static Task<GetProjectIamPolicyResult> InvokeAsync(GetProjectIamPolicyArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectIamPolicyResult>("google-native:cloudresourcemanager/v3:getProjectIamPolicy", args ?? new GetProjectIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the IAM access control policy for the specified project, in the format `projects/{ProjectIdOrNumber}` e.g. projects/123. Permission is denied if the policy or the resource do not exist.
+        /// </summary>
+        public static Output<GetProjectIamPolicyResult> Invoke(GetProjectIamPolicyInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectIamPolicyResult>("google-native:cloudresourcemanager/v3:getProjectIamPolicy", args ?? new GetProjectIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public string? Project { get; set; }
 
         public GetProjectIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetProjectIamPolicyInvokeArgs()
         {
         }
     }

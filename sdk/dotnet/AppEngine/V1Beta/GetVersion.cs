@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.AppEngine.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(GetVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:appengine/v1beta:getVersion", args ?? new GetVersionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
+        /// </summary>
+        public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:appengine/v1beta:getVersion", args ?? new GetVersionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public string? View { get; set; }
 
         public GetVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetVersionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
+
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        [Input("versionId", required: true)]
+        public Input<string> VersionId { get; set; } = null!;
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
+        public GetVersionInvokeArgs()
         {
         }
     }

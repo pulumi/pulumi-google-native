@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetApicategoryResult> InvokeAsync(GetApicategoryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApicategoryResult>("google-native:apigee/v1:getApicategory", args ?? new GetApicategoryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a category on the portal.
+        /// </summary>
+        public static Output<GetApicategoryResult> Invoke(GetApicategoryInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApicategoryResult>("google-native:apigee/v1:getApicategory", args ?? new GetApicategoryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string SiteId { get; set; } = null!;
 
         public GetApicategoryArgs()
+        {
+        }
+    }
+
+    public sealed class GetApicategoryInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("apicategoryId", required: true)]
+        public Input<string> ApicategoryId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("siteId", required: true)]
+        public Input<string> SiteId { get; set; } = null!;
+
+        public GetApicategoryInvokeArgs()
         {
         }
     }

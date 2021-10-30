@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DNS.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// </summary>
         public static Task<GetManagedZoneResult> InvokeAsync(GetManagedZoneArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("google-native:dns/v1:getManagedZone", args ?? new GetManagedZoneArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Fetches the representation of an existing ManagedZone.
+        /// </summary>
+        public static Output<GetManagedZoneResult> Invoke(GetManagedZoneInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetManagedZoneResult>("google-native:dns/v1:getManagedZone", args ?? new GetManagedZoneInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DNS.V1
         public string? Project { get; set; }
 
         public GetManagedZoneArgs()
+        {
+        }
+    }
+
+    public sealed class GetManagedZoneInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("clientOperationId")]
+        public Input<string>? ClientOperationId { get; set; }
+
+        [Input("managedZone", required: true)]
+        public Input<string> ManagedZone { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetManagedZoneInvokeArgs()
         {
         }
     }

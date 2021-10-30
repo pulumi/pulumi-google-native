@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetBackendBucketResult> InvokeAsync(GetBackendBucketArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBackendBucketResult>("google-native:compute/beta:getBackendBucket", args ?? new GetBackendBucketArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a list() request.
+        /// </summary>
+        public static Output<GetBackendBucketResult> Invoke(GetBackendBucketInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBackendBucketResult>("google-native:compute/beta:getBackendBucket", args ?? new GetBackendBucketInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string? Project { get; set; }
 
         public GetBackendBucketArgs()
+        {
+        }
+    }
+
+    public sealed class GetBackendBucketInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("backendBucket", required: true)]
+        public Input<string> BackendBucket { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetBackendBucketInvokeArgs()
         {
         }
     }

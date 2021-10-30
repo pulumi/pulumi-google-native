@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1
         /// </summary>
         public static Task<GetConnectivityTestIamPolicyResult> InvokeAsync(GetConnectivityTestIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConnectivityTestIamPolicyResult>("google-native:networkmanagement/v1beta1:getConnectivityTestIamPolicy", args ?? new GetConnectivityTestIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetConnectivityTestIamPolicyResult> Invoke(GetConnectivityTestIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConnectivityTestIamPolicyResult>("google-native:networkmanagement/v1beta1:getConnectivityTestIamPolicy", args ?? new GetConnectivityTestIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1
         public string? Project { get; set; }
 
         public GetConnectivityTestIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetConnectivityTestIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("connectivityTestId", required: true)]
+        public Input<string> ConnectivityTestId { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetConnectivityTestIamPolicyInvokeArgs()
         {
         }
     }

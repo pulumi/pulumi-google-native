@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public static Task<GetAgentResult> InvokeAsync(GetAgentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAgentResult>("google-native:dialogflow/v3beta1:getAgent", args ?? new GetAgentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified agent.
+        /// </summary>
+        public static Output<GetAgentResult> Invoke(GetAgentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAgentResult>("google-native:dialogflow/v3beta1:getAgent", args ?? new GetAgentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public string? Project { get; set; }
 
         public GetAgentArgs()
+        {
+        }
+    }
+
+    public sealed class GetAgentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAgentInvokeArgs()
         {
         }
     }

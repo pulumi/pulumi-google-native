@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Metastore.V1Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         /// </summary>
         public static Task<GetBackupResult> InvokeAsync(GetBackupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("google-native:metastore/v1alpha:getBackup", args ?? new GetBackupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single backup.
+        /// </summary>
+        public static Output<GetBackupResult> Invoke(GetBackupInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBackupResult>("google-native:metastore/v1alpha:getBackup", args ?? new GetBackupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public string ServiceId { get; set; } = null!;
 
         public GetBackupArgs()
+        {
+        }
+    }
+
+    public sealed class GetBackupInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("backupId", required: true)]
+        public Input<string> BackupId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        public GetBackupInvokeArgs()
         {
         }
     }

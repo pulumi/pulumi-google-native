@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetReferenceResult> InvokeAsync(GetReferenceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReferenceResult>("google-native:apigee/v1:getReference", args ?? new GetReferenceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a Reference resource.
+        /// </summary>
+        public static Output<GetReferenceResult> Invoke(GetReferenceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetReferenceResult>("google-native:apigee/v1:getReference", args ?? new GetReferenceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string ReferenceId { get; set; } = null!;
 
         public GetReferenceArgs()
+        {
+        }
+    }
+
+    public sealed class GetReferenceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("referenceId", required: true)]
+        public Input<string> ReferenceId { get; set; } = null!;
+
+        public GetReferenceInvokeArgs()
         {
         }
     }

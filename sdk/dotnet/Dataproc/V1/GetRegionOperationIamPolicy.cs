@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dataproc.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public static Task<GetRegionOperationIamPolicyResult> InvokeAsync(GetRegionOperationIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionOperationIamPolicyResult>("google-native:dataproc/v1:getRegionOperationIamPolicy", args ?? new GetRegionOperationIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetRegionOperationIamPolicyResult> Invoke(GetRegionOperationIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionOperationIamPolicyResult>("google-native:dataproc/v1:getRegionOperationIamPolicy", args ?? new GetRegionOperationIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public string RegionId { get; set; } = null!;
 
         public GetRegionOperationIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionOperationIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("operationId", required: true)]
+        public Input<string> OperationId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("regionId", required: true)]
+        public Input<string> RegionId { get; set; } = null!;
+
+        public GetRegionOperationIamPolicyInvokeArgs()
         {
         }
     }

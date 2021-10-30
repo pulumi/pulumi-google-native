@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Genomics.V1Alpha2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         /// </summary>
         public static Task<GetPipelineResult> InvokeAsync(GetPipelineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPipelineResult>("google-native:genomics/v1alpha2:getPipeline", args ?? new GetPipelineArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves a pipeline based on ID. Caller must have READ permission to the project.
+        /// </summary>
+        public static Output<GetPipelineResult> Invoke(GetPipelineInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPipelineResult>("google-native:genomics/v1alpha2:getPipeline", args ?? new GetPipelineInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         public string PipelineId { get; set; } = null!;
 
         public GetPipelineArgs()
+        {
+        }
+    }
+
+    public sealed class GetPipelineInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("pipelineId", required: true)]
+        public Input<string> PipelineId { get; set; } = null!;
+
+        public GetPipelineInvokeArgs()
         {
         }
     }

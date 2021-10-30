@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetFirewallPolicyResult> InvokeAsync(GetFirewallPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFirewallPolicyResult>("google-native:compute/v1:getFirewallPolicy", args ?? new GetFirewallPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified firewall policy.
+        /// </summary>
+        public static Output<GetFirewallPolicyResult> Invoke(GetFirewallPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFirewallPolicyResult>("google-native:compute/v1:getFirewallPolicy", args ?? new GetFirewallPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string FirewallPolicy { get; set; } = null!;
 
         public GetFirewallPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetFirewallPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("firewallPolicy", required: true)]
+        public Input<string> FirewallPolicy { get; set; } = null!;
+
+        public GetFirewallPolicyInvokeArgs()
         {
         }
     }

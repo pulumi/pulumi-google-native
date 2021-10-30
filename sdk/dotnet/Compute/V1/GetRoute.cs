@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetRouteResult> InvokeAsync(GetRouteArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteResult>("google-native:compute/v1:getRoute", args ?? new GetRouteArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified Route resource. Gets a list of available routes by making a list() request.
+        /// </summary>
+        public static Output<GetRouteResult> Invoke(GetRouteInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRouteResult>("google-native:compute/v1:getRoute", args ?? new GetRouteInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string Route { get; set; } = null!;
 
         public GetRouteArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouteInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("route", required: true)]
+        public Input<string> Route { get; set; } = null!;
+
+        public GetRouteInvokeArgs()
         {
         }
     }

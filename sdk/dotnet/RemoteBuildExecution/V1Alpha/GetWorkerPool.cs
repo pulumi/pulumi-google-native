@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         /// </summary>
         public static Task<GetWorkerPoolResult> InvokeAsync(GetWorkerPoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkerPoolResult>("google-native:remotebuildexecution/v1alpha:getWorkerPool", args ?? new GetWorkerPoolArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified worker pool.
+        /// </summary>
+        public static Output<GetWorkerPoolResult> Invoke(GetWorkerPoolInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWorkerPoolResult>("google-native:remotebuildexecution/v1alpha:getWorkerPool", args ?? new GetWorkerPoolInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         public string WorkerpoolId { get; set; } = null!;
 
         public GetWorkerPoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetWorkerPoolInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("workerpoolId", required: true)]
+        public Input<string> WorkerpoolId { get; set; } = null!;
+
+        public GetWorkerPoolInvokeArgs()
         {
         }
     }

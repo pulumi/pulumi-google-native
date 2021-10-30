@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetApiResult> InvokeAsync(GetApiArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApiResult>("google-native:apigee/v1:getApi", args ?? new GetApiArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an API proxy including a list of existing revisions.
+        /// </summary>
+        public static Output<GetApiResult> Invoke(GetApiInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApiResult>("google-native:apigee/v1:getApi", args ?? new GetApiInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetApiArgs()
+        {
+        }
+    }
+
+    public sealed class GetApiInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("apiId", required: true)]
+        public Input<string> ApiId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetApiInvokeArgs()
         {
         }
     }

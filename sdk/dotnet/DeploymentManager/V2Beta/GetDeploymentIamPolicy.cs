@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         /// </summary>
         public static Task<GetDeploymentIamPolicyResult> InvokeAsync(GetDeploymentIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDeploymentIamPolicyResult>("google-native:deploymentmanager/v2beta:getDeploymentIamPolicy", args ?? new GetDeploymentIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        public static Output<GetDeploymentIamPolicyResult> Invoke(GetDeploymentIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDeploymentIamPolicyResult>("google-native:deploymentmanager/v2beta:getDeploymentIamPolicy", args ?? new GetDeploymentIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         public string Resource { get; set; } = null!;
 
         public GetDeploymentIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetDeploymentIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("resource", required: true)]
+        public Input<string> Resource { get; set; } = null!;
+
+        public GetDeploymentIamPolicyInvokeArgs()
         {
         }
     }

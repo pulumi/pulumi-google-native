@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigQuery.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public static Task<GetRowAccessPolicyIamPolicyResult> InvokeAsync(GetRowAccessPolicyIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRowAccessPolicyIamPolicyResult>("google-native:bigquery/v2:getRowAccessPolicyIamPolicy", args ?? new GetRowAccessPolicyIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetRowAccessPolicyIamPolicyResult> Invoke(GetRowAccessPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRowAccessPolicyIamPolicyResult>("google-native:bigquery/v2:getRowAccessPolicyIamPolicy", args ?? new GetRowAccessPolicyIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public string TableId { get; set; } = null!;
 
         public GetRowAccessPolicyIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetRowAccessPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("rowAccessPolicyId", required: true)]
+        public Input<string> RowAccessPolicyId { get; set; } = null!;
+
+        [Input("tableId", required: true)]
+        public Input<string> TableId { get; set; } = null!;
+
+        public GetRowAccessPolicyIamPolicyInvokeArgs()
         {
         }
     }

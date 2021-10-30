@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetHealthCheckResult> InvokeAsync(GetHealthCheckArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHealthCheckResult>("google-native:compute/alpha:getHealthCheck", args ?? new GetHealthCheckArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
+        /// </summary>
+        public static Output<GetHealthCheckResult> Invoke(GetHealthCheckInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHealthCheckResult>("google-native:compute/alpha:getHealthCheck", args ?? new GetHealthCheckInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string? Project { get; set; }
 
         public GetHealthCheckArgs()
+        {
+        }
+    }
+
+    public sealed class GetHealthCheckInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("healthCheck", required: true)]
+        public Input<string> HealthCheck { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetHealthCheckInvokeArgs()
         {
         }
     }

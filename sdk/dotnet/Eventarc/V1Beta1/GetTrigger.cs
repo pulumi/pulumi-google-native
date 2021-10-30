@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Eventarc.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         /// </summary>
         public static Task<GetTriggerResult> InvokeAsync(GetTriggerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTriggerResult>("google-native:eventarc/v1beta1:getTrigger", args ?? new GetTriggerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a single trigger.
+        /// </summary>
+        public static Output<GetTriggerResult> Invoke(GetTriggerInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTriggerResult>("google-native:eventarc/v1beta1:getTrigger", args ?? new GetTriggerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         public string TriggerId { get; set; } = null!;
 
         public GetTriggerArgs()
+        {
+        }
+    }
+
+    public sealed class GetTriggerInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("triggerId", required: true)]
+        public Input<string> TriggerId { get; set; } = null!;
+
+        public GetTriggerInvokeArgs()
         {
         }
     }

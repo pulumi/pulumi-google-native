@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudIoT.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         /// </summary>
         public static Task<GetRegistryResult> InvokeAsync(GetRegistryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryResult>("google-native:cloudiot/v1:getRegistry", args ?? new GetRegistryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a device registry configuration.
+        /// </summary>
+        public static Output<GetRegistryResult> Invoke(GetRegistryInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegistryResult>("google-native:cloudiot/v1:getRegistry", args ?? new GetRegistryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public string RegistryId { get; set; } = null!;
 
         public GetRegistryArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegistryInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("registryId", required: true)]
+        public Input<string> RegistryId { get; set; } = null!;
+
+        public GetRegistryInvokeArgs()
         {
         }
     }

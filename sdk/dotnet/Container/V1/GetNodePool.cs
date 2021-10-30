@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Container.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         public static Task<GetNodePoolResult> InvokeAsync(GetNodePoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("google-native:container/v1:getNodePool", args ?? new GetNodePoolArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the requested node pool.
+        /// </summary>
+        public static Output<GetNodePoolResult> Invoke(GetNodePoolInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodePoolResult>("google-native:container/v1:getNodePool", args ?? new GetNodePoolInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Container.V1
         public string? Project { get; set; }
 
         public GetNodePoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodePoolInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("nodePoolId", required: true)]
+        public Input<string> NodePoolId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetNodePoolInvokeArgs()
         {
         }
     }

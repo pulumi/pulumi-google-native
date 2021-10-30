@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("google-native:firebasedatabase/v1beta:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the DatabaseInstance identified by the specified resource name.
+        /// </summary>
+        public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("google-native:firebasedatabase/v1beta:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         public string? Project { get; set; }
 
         public GetInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInstanceInvokeArgs()
         {
         }
     }

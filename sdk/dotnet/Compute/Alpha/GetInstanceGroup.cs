@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetInstanceGroupResult> InvokeAsync(GetInstanceGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("google-native:compute/alpha:getInstanceGroup", args ?? new GetInstanceGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
+        /// </summary>
+        public static Output<GetInstanceGroupResult> Invoke(GetInstanceGroupInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceGroupResult>("google-native:compute/alpha:getInstanceGroup", args ?? new GetInstanceGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Zone { get; set; } = null!;
 
         public GetInstanceGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instanceGroup", required: true)]
+        public Input<string> InstanceGroup { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
+
+        public GetInstanceGroupInvokeArgs()
         {
         }
     }

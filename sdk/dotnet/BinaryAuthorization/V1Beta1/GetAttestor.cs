@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         /// </summary>
         public static Task<GetAttestorResult> InvokeAsync(GetAttestorArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAttestorResult>("google-native:binaryauthorization/v1beta1:getAttestor", args ?? new GetAttestorArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+        /// </summary>
+        public static Output<GetAttestorResult> Invoke(GetAttestorInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAttestorResult>("google-native:binaryauthorization/v1beta1:getAttestor", args ?? new GetAttestorInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         public string? Project { get; set; }
 
         public GetAttestorArgs()
+        {
+        }
+    }
+
+    public sealed class GetAttestorInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("attestorId", required: true)]
+        public Input<string> AttestorId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAttestorInvokeArgs()
         {
         }
     }

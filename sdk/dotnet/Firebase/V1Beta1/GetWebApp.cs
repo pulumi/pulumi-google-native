@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Firebase.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// </summary>
         public static Task<GetWebAppResult> InvokeAsync(GetWebAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWebAppResult>("google-native:firebase/v1beta1:getWebApp", args ?? new GetWebAppArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified WebApp.
+        /// </summary>
+        public static Output<GetWebAppResult> Invoke(GetWebAppInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWebAppResult>("google-native:firebase/v1beta1:getWebApp", args ?? new GetWebAppInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public string WebAppId { get; set; } = null!;
 
         public GetWebAppArgs()
+        {
+        }
+    }
+
+    public sealed class GetWebAppInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("webAppId", required: true)]
+        public Input<string> WebAppId { get; set; } = null!;
+
+        public GetWebAppInvokeArgs()
         {
         }
     }

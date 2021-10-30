@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public static Task<GetSecuritySettingResult> InvokeAsync(GetSecuritySettingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecuritySettingResult>("google-native:dialogflow/v3:getSecuritySetting", args ?? new GetSecuritySettingArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified SecuritySettings. The returned settings may be stale by up to 1 minute.
+        /// </summary>
+        public static Output<GetSecuritySettingResult> Invoke(GetSecuritySettingInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSecuritySettingResult>("google-native:dialogflow/v3:getSecuritySetting", args ?? new GetSecuritySettingInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public string SecuritySettingId { get; set; } = null!;
 
         public GetSecuritySettingArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecuritySettingInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("securitySettingId", required: true)]
+        public Input<string> SecuritySettingId { get; set; } = null!;
+
+        public GetSecuritySettingInvokeArgs()
         {
         }
     }

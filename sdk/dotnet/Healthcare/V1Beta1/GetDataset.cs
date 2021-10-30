@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static Task<GetDatasetResult> InvokeAsync(GetDatasetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetResult>("google-native:healthcare/v1beta1:getDataset", args ?? new GetDatasetArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets any metadata associated with a dataset.
+        /// </summary>
+        public static Output<GetDatasetResult> Invoke(GetDatasetInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatasetResult>("google-native:healthcare/v1beta1:getDataset", args ?? new GetDatasetInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public string? Project { get; set; }
 
         public GetDatasetArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatasetInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDatasetInvokeArgs()
         {
         }
     }

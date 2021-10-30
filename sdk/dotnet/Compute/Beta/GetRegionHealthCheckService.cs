@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetRegionHealthCheckServiceResult> InvokeAsync(GetRegionHealthCheckServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionHealthCheckServiceResult>("google-native:compute/beta:getRegionHealthCheckService", args ?? new GetRegionHealthCheckServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified regional HealthCheckService resource.
+        /// </summary>
+        public static Output<GetRegionHealthCheckServiceResult> Invoke(GetRegionHealthCheckServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionHealthCheckServiceResult>("google-native:compute/beta:getRegionHealthCheckService", args ?? new GetRegionHealthCheckServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string Region { get; set; } = null!;
 
         public GetRegionHealthCheckServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionHealthCheckServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("healthCheckService", required: true)]
+        public Input<string> HealthCheckService { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetRegionHealthCheckServiceInvokeArgs()
         {
         }
     }

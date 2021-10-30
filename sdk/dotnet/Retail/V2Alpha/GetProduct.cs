@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Retail.V2Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         /// </summary>
         public static Task<GetProductResult> InvokeAsync(GetProductArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("google-native:retail/v2alpha:getProduct", args ?? new GetProductArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a Product.
+        /// </summary>
+        public static Output<GetProductResult> Invoke(GetProductInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProductResult>("google-native:retail/v2alpha:getProduct", args ?? new GetProductInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public string? Project { get; set; }
 
         public GetProductArgs()
+        {
+        }
+    }
+
+    public sealed class GetProductInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("branchId", required: true)]
+        public Input<string> BranchId { get; set; } = null!;
+
+        [Input("catalogId", required: true)]
+        public Input<string> CatalogId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("productId", required: true)]
+        public Input<string> ProductId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetProductInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public static Task<GetTransitionRouteGroupResult> InvokeAsync(GetTransitionRouteGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransitionRouteGroupResult>("google-native:dialogflow/v3:getTransitionRouteGroup", args ?? new GetTransitionRouteGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified TransitionRouteGroup.
+        /// </summary>
+        public static Output<GetTransitionRouteGroupResult> Invoke(GetTransitionRouteGroupInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTransitionRouteGroupResult>("google-native:dialogflow/v3:getTransitionRouteGroup", args ?? new GetTransitionRouteGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +47,31 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public string TransitionRouteGroupId { get; set; } = null!;
 
         public GetTransitionRouteGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransitionRouteGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
+
+        [Input("flowId", required: true)]
+        public Input<string> FlowId { get; set; } = null!;
+
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("transitionRouteGroupId", required: true)]
+        public Input<string> TransitionRouteGroupId { get; set; } = null!;
+
+        public GetTransitionRouteGroupInvokeArgs()
         {
         }
     }

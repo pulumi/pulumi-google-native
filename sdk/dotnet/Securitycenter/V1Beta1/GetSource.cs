@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Securitycenter.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Securitycenter.V1Beta1
         /// </summary>
         public static Task<GetSourceResult> InvokeAsync(GetSourceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSourceResult>("google-native:securitycenter/v1beta1:getSource", args ?? new GetSourceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a source.
+        /// </summary>
+        public static Output<GetSourceResult> Invoke(GetSourceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSourceResult>("google-native:securitycenter/v1beta1:getSource", args ?? new GetSourceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Securitycenter.V1Beta1
         public string SourceId { get; set; } = null!;
 
         public GetSourceArgs()
+        {
+        }
+    }
+
+    public sealed class GetSourceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("sourceId", required: true)]
+        public Input<string> SourceId { get; set; } = null!;
+
+        public GetSourceInvokeArgs()
         {
         }
     }

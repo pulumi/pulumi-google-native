@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetAutoscalerResult> InvokeAsync(GetAutoscalerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalerResult>("google-native:compute/alpha:getAutoscaler", args ?? new GetAutoscalerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
+        /// </summary>
+        public static Output<GetAutoscalerResult> Invoke(GetAutoscalerInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAutoscalerResult>("google-native:compute/alpha:getAutoscaler", args ?? new GetAutoscalerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Zone { get; set; } = null!;
 
         public GetAutoscalerArgs()
+        {
+        }
+    }
+
+    public sealed class GetAutoscalerInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("autoscaler", required: true)]
+        public Input<string> Autoscaler { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
+
+        public GetAutoscalerInvokeArgs()
         {
         }
     }

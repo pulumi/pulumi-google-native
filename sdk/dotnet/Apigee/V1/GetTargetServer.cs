@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetTargetServerResult> InvokeAsync(GetTargetServerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTargetServerResult>("google-native:apigee/v1:getTargetServer", args ?? new GetTargetServerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a TargetServer resource.
+        /// </summary>
+        public static Output<GetTargetServerResult> Invoke(GetTargetServerInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTargetServerResult>("google-native:apigee/v1:getTargetServer", args ?? new GetTargetServerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string TargetserverId { get; set; } = null!;
 
         public GetTargetServerArgs()
+        {
+        }
+    }
+
+    public sealed class GetTargetServerInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("targetserverId", required: true)]
+        public Input<string> TargetserverId { get; set; } = null!;
+
+        public GetTargetServerInvokeArgs()
         {
         }
     }

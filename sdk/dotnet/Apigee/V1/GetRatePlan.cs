@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetRatePlanResult> InvokeAsync(GetRatePlanArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRatePlanResult>("google-native:apigee/v1:getRatePlan", args ?? new GetRatePlanArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the details of a rate plan.
+        /// </summary>
+        public static Output<GetRatePlanResult> Invoke(GetRatePlanInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRatePlanResult>("google-native:apigee/v1:getRatePlan", args ?? new GetRatePlanInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string RateplanId { get; set; } = null!;
 
         public GetRatePlanArgs()
+        {
+        }
+    }
+
+    public sealed class GetRatePlanInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("apiproductId", required: true)]
+        public Input<string> ApiproductId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("rateplanId", required: true)]
+        public Input<string> RateplanId { get; set; } = null!;
+
+        public GetRatePlanInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Notebooks.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public static Task<GetScheduleResult> InvokeAsync(GetScheduleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetScheduleResult>("google-native:notebooks/v1:getSchedule", args ?? new GetScheduleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of schedule
+        /// </summary>
+        public static Output<GetScheduleResult> Invoke(GetScheduleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetScheduleResult>("google-native:notebooks/v1:getSchedule", args ?? new GetScheduleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public string ScheduleId { get; set; } = null!;
 
         public GetScheduleArgs()
+        {
+        }
+    }
+
+    public sealed class GetScheduleInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("scheduleId", required: true)]
+        public Input<string> ScheduleId { get; set; } = null!;
+
+        public GetScheduleInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Cloudkms.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static Task<GetKeyRingIamPolicyResult> InvokeAsync(GetKeyRingIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyRingIamPolicyResult>("google-native:cloudkms/v1:getKeyRingIamPolicy", args ?? new GetKeyRingIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetKeyRingIamPolicyResult> Invoke(GetKeyRingIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeyRingIamPolicyResult>("google-native:cloudkms/v1:getKeyRingIamPolicy", args ?? new GetKeyRingIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public string? Project { get; set; }
 
         public GetKeyRingIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyRingIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("keyRingId", required: true)]
+        public Input<string> KeyRingId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetKeyRingIamPolicyInvokeArgs()
         {
         }
     }

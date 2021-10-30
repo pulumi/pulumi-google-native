@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigQuery.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public static Task<GetJobResult> InvokeAsync(GetJobArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:bigquery/v2:getJob", args ?? new GetJobArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role.
+        /// </summary>
+        public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:bigquery/v2:getJob", args ?? new GetJobInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public string? Project { get; set; }
 
         public GetJobArgs()
+        {
+        }
+    }
+
+    public sealed class GetJobInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("jobId", required: true)]
+        public Input<string> JobId { get; set; } = null!;
+
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetJobInvokeArgs()
         {
         }
     }

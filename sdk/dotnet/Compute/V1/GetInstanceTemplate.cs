@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetInstanceTemplateResult> InvokeAsync(GetInstanceTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateResult>("google-native:compute/v1:getInstanceTemplate", args ?? new GetInstanceTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+        /// </summary>
+        public static Output<GetInstanceTemplateResult> Invoke(GetInstanceTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateResult>("google-native:compute/v1:getInstanceTemplate", args ?? new GetInstanceTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string? Project { get; set; }
 
         public GetInstanceTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instanceTemplate", required: true)]
+        public Input<string> InstanceTemplate { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInstanceTemplateInvokeArgs()
         {
         }
     }

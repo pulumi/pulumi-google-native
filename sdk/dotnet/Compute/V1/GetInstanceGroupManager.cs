@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetInstanceGroupManagerResult> InvokeAsync(GetInstanceGroupManagerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupManagerResult>("google-native:compute/v1:getInstanceGroupManager", args ?? new GetInstanceGroupManagerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.
+        /// </summary>
+        public static Output<GetInstanceGroupManagerResult> Invoke(GetInstanceGroupManagerInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceGroupManagerResult>("google-native:compute/v1:getInstanceGroupManager", args ?? new GetInstanceGroupManagerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string Zone { get; set; } = null!;
 
         public GetInstanceGroupManagerArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceGroupManagerInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instanceGroupManager", required: true)]
+        public Input<string> InstanceGroupManager { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
+
+        public GetInstanceGroupManagerInvokeArgs()
         {
         }
     }

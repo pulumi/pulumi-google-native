@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetArchiveDeploymentResult> InvokeAsync(GetArchiveDeploymentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetArchiveDeploymentResult>("google-native:apigee/v1:getArchiveDeployment", args ?? new GetArchiveDeploymentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified ArchiveDeployment.
+        /// </summary>
+        public static Output<GetArchiveDeploymentResult> Invoke(GetArchiveDeploymentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetArchiveDeploymentResult>("google-native:apigee/v1:getArchiveDeployment", args ?? new GetArchiveDeploymentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetArchiveDeploymentArgs()
+        {
+        }
+    }
+
+    public sealed class GetArchiveDeploymentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("archiveDeploymentId", required: true)]
+        public Input<string> ArchiveDeploymentId { get; set; } = null!;
+
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetArchiveDeploymentInvokeArgs()
         {
         }
     }

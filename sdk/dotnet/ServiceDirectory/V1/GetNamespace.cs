@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ServiceDirectory.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         /// </summary>
         public static Task<GetNamespaceResult> InvokeAsync(GetNamespaceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceResult>("google-native:servicedirectory/v1:getNamespace", args ?? new GetNamespaceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a namespace.
+        /// </summary>
+        public static Output<GetNamespaceResult> Invoke(GetNamespaceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNamespaceResult>("google-native:servicedirectory/v1:getNamespace", args ?? new GetNamespaceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         public string? Project { get; set; }
 
         public GetNamespaceArgs()
+        {
+        }
+    }
+
+    public sealed class GetNamespaceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetNamespaceInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataFusion.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// </summary>
         public static Task<GetInstanceNamespaceIamPolicyResult> InvokeAsync(GetInstanceNamespaceIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceNamespaceIamPolicyResult>("google-native:datafusion/v1beta1:getInstanceNamespaceIamPolicy", args ?? new GetInstanceNamespaceIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetInstanceNamespaceIamPolicyResult> Invoke(GetInstanceNamespaceIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceNamespaceIamPolicyResult>("google-native:datafusion/v1beta1:getInstanceNamespaceIamPolicy", args ?? new GetInstanceNamespaceIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public string? Project { get; set; }
 
         public GetInstanceNamespaceIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceNamespaceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInstanceNamespaceIamPolicyInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Firestore.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
         /// </summary>
         public static Task<GetIndexResult> InvokeAsync(GetIndexArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIndexResult>("google-native:firestore/v1beta1:getIndex", args ?? new GetIndexArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an index.
+        /// </summary>
+        public static Output<GetIndexResult> Invoke(GetIndexInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIndexResult>("google-native:firestore/v1beta1:getIndex", args ?? new GetIndexInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
         public string? Project { get; set; }
 
         public GetIndexArgs()
+        {
+        }
+    }
+
+    public sealed class GetIndexInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("databaseId", required: true)]
+        public Input<string> DatabaseId { get; set; } = null!;
+
+        [Input("indexId", required: true)]
+        public Input<string> IndexId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetIndexInvokeArgs()
         {
         }
     }

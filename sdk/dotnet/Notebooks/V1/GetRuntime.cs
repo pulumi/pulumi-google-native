@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Notebooks.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public static Task<GetRuntimeResult> InvokeAsync(GetRuntimeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRuntimeResult>("google-native:notebooks/v1:getRuntime", args ?? new GetRuntimeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single Runtime. The location must be a regional endpoint rather than zonal.
+        /// </summary>
+        public static Output<GetRuntimeResult> Invoke(GetRuntimeInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRuntimeResult>("google-native:notebooks/v1:getRuntime", args ?? new GetRuntimeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public string RuntimeId { get; set; } = null!;
 
         public GetRuntimeArgs()
+        {
+        }
+    }
+
+    public sealed class GetRuntimeInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("runtimeId", required: true)]
+        public Input<string> RuntimeId { get; set; } = null!;
+
+        public GetRuntimeInvokeArgs()
         {
         }
     }

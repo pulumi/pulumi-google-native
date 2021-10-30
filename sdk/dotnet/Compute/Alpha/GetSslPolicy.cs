@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetSslPolicyResult> InvokeAsync(GetSslPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSslPolicyResult>("google-native:compute/alpha:getSslPolicy", args ?? new GetSslPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Lists all of the ordered rules present in a single specified policy.
+        /// </summary>
+        public static Output<GetSslPolicyResult> Invoke(GetSslPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSslPolicyResult>("google-native:compute/alpha:getSslPolicy", args ?? new GetSslPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string SslPolicy { get; set; } = null!;
 
         public GetSslPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetSslPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("sslPolicy", required: true)]
+        public Input<string> SslPolicy { get; set; } = null!;
+
+        public GetSslPolicyInvokeArgs()
         {
         }
     }

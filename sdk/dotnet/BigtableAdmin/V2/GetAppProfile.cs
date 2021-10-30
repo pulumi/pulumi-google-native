@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         public static Task<GetAppProfileResult> InvokeAsync(GetAppProfileArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppProfileResult>("google-native:bigtableadmin/v2:getAppProfile", args ?? new GetAppProfileArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about an app profile.
+        /// </summary>
+        public static Output<GetAppProfileResult> Invoke(GetAppProfileInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAppProfileResult>("google-native:bigtableadmin/v2:getAppProfile", args ?? new GetAppProfileInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public string? Project { get; set; }
 
         public GetAppProfileArgs()
+        {
+        }
+    }
+
+    public sealed class GetAppProfileInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("appProfileId", required: true)]
+        public Input<string> AppProfileId { get; set; } = null!;
+
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAppProfileInvokeArgs()
         {
         }
     }

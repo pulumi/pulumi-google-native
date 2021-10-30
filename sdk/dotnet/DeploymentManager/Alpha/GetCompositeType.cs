@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DeploymentManager.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         /// </summary>
         public static Task<GetCompositeTypeResult> InvokeAsync(GetCompositeTypeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCompositeTypeResult>("google-native:deploymentmanager/alpha:getCompositeType", args ?? new GetCompositeTypeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about a specific composite type.
+        /// </summary>
+        public static Output<GetCompositeTypeResult> Invoke(GetCompositeTypeInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCompositeTypeResult>("google-native:deploymentmanager/alpha:getCompositeType", args ?? new GetCompositeTypeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         public string? Project { get; set; }
 
         public GetCompositeTypeArgs()
+        {
+        }
+    }
+
+    public sealed class GetCompositeTypeInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("compositeType", required: true)]
+        public Input<string> CompositeType { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCompositeTypeInvokeArgs()
         {
         }
     }

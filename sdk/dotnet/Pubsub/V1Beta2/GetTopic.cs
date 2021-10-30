@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Pubsub.V1Beta2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
         /// </summary>
         public static Task<GetTopicResult> InvokeAsync(GetTopicArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("google-native:pubsub/v1beta2:getTopic", args ?? new GetTopicArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the configuration of a topic.
+        /// </summary>
+        public static Output<GetTopicResult> Invoke(GetTopicInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTopicResult>("google-native:pubsub/v1beta2:getTopic", args ?? new GetTopicInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
         public string TopicId { get; set; } = null!;
 
         public GetTopicArgs()
+        {
+        }
+    }
+
+    public sealed class GetTopicInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("topicId", required: true)]
+        public Input<string> TopicId { get; set; } = null!;
+
+        public GetTopicInvokeArgs()
         {
         }
     }

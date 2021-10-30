@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static Task<GetDatasetDicomStoreIamPolicyResult> InvokeAsync(GetDatasetDicomStoreIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetDicomStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetDicomStoreIamPolicy", args ?? new GetDatasetDicomStoreIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetDatasetDicomStoreIamPolicyResult> Invoke(GetDatasetDicomStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatasetDicomStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetDicomStoreIamPolicy", args ?? new GetDatasetDicomStoreIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public string? Project { get; set; }
 
         public GetDatasetDicomStoreIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatasetDicomStoreIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("dicomStoreId", required: true)]
+        public Input<string> DicomStoreId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDatasetDicomStoreIamPolicyInvokeArgs()
         {
         }
     }
