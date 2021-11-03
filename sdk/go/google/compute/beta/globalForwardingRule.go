@@ -245,5 +245,6 @@ func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleInput)(nil)).Elem(), &GlobalForwardingRule{})
 	pulumi.RegisterOutputType(GlobalForwardingRuleOutput{})
 }

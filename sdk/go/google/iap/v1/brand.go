@@ -120,5 +120,6 @@ func (o BrandOutput) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandInput)(nil)).Elem(), &Brand{})
 	pulumi.RegisterOutputType(BrandOutput{})
 }

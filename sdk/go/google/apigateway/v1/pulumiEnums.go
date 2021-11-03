@@ -182,6 +182,8 @@ func (in *apigatewayAuditLogConfigLogTypePtr) ToApigatewayAuditLogConfigLogTypeP
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApigatewayAuditLogConfigLogTypeInput)(nil)).Elem(), ApigatewayAuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ApigatewayAuditLogConfigLogTypePtrInput)(nil)).Elem(), ApigatewayAuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ApigatewayAuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(ApigatewayAuditLogConfigLogTypePtrOutput{})
 }

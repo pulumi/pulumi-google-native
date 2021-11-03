@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.APIGateway.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         /// </summary>
         public static Task<GetGatewayResult> InvokeAsync(GetGatewayArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGatewayResult>("google-native:apigateway/v1beta:getGateway", args ?? new GetGatewayArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single Gateway.
+        /// </summary>
+        public static Output<GetGatewayResult> Invoke(GetGatewayInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGatewayResult>("google-native:apigateway/v1beta:getGateway", args ?? new GetGatewayInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         public string? Project { get; set; }
 
         public GetGatewayArgs()
+        {
+        }
+    }
+
+    public sealed class GetGatewayInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("gatewayId", required: true)]
+        public Input<string> GatewayId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetGatewayInvokeArgs()
         {
         }
     }

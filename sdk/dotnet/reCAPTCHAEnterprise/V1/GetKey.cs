@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("google-native:recaptchaenterprise/v1:getKey", args ?? new GetKeyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified key.
+        /// </summary>
+        public static Output<GetKeyResult> Invoke(GetKeyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeyResult>("google-native:recaptchaenterprise/v1:getKey", args ?? new GetKeyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         public string? Project { get; set; }
 
         public GetKeyArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("keyId", required: true)]
+        public Input<string> KeyId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetKeyInvokeArgs()
         {
         }
     }

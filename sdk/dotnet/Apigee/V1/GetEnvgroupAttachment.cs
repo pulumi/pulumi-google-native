@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetEnvgroupAttachmentResult> InvokeAsync(GetEnvgroupAttachmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEnvgroupAttachmentResult>("google-native:apigee/v1:getEnvgroupAttachment", args ?? new GetEnvgroupAttachmentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an environment group attachment.
+        /// </summary>
+        public static Output<GetEnvgroupAttachmentResult> Invoke(GetEnvgroupAttachmentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEnvgroupAttachmentResult>("google-native:apigee/v1:getEnvgroupAttachment", args ?? new GetEnvgroupAttachmentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetEnvgroupAttachmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetEnvgroupAttachmentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("attachmentId", required: true)]
+        public Input<string> AttachmentId { get; set; } = null!;
+
+        [Input("envgroupId", required: true)]
+        public Input<string> EnvgroupId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetEnvgroupAttachmentInvokeArgs()
         {
         }
     }

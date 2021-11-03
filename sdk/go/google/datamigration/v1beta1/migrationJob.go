@@ -210,5 +210,6 @@ func (o MigrationJobOutput) ToMigrationJobOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobInput)(nil)).Elem(), &MigrationJob{})
 	pulumi.RegisterOutputType(MigrationJobOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Ml.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         public static Task<GetStudyResult> InvokeAsync(GetStudyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStudyResult>("google-native:ml/v1:getStudy", args ?? new GetStudyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a study.
+        /// </summary>
+        public static Output<GetStudyResult> Invoke(GetStudyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetStudyResult>("google-native:ml/v1:getStudy", args ?? new GetStudyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Ml.V1
         public string StudyId { get; set; } = null!;
 
         public GetStudyArgs()
+        {
+        }
+    }
+
+    public sealed class GetStudyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("studyId", required: true)]
+        public Input<string> StudyId { get; set; } = null!;
+
+        public GetStudyInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// </summary>
         public static Task<GetWorkflowTemplateResult> InvokeAsync(GetWorkflowTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowTemplateResult>("google-native:dataproc/v1beta2:getWorkflowTemplate", args ?? new GetWorkflowTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter.
+        /// </summary>
+        public static Output<GetWorkflowTemplateResult> Invoke(GetWorkflowTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWorkflowTemplateResult>("google-native:dataproc/v1beta2:getWorkflowTemplate", args ?? new GetWorkflowTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public string WorkflowTemplateId { get; set; } = null!;
 
         public GetWorkflowTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetWorkflowTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        [Input("workflowTemplateId", required: true)]
+        public Input<string> WorkflowTemplateId { get; set; } = null!;
+
+        public GetWorkflowTemplateInvokeArgs()
         {
         }
     }

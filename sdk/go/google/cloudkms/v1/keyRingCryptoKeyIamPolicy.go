@@ -144,5 +144,6 @@ func (o KeyRingCryptoKeyIamPolicyOutput) ToKeyRingCryptoKeyIamPolicyOutputWithCo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingCryptoKeyIamPolicyInput)(nil)).Elem(), &KeyRingCryptoKeyIamPolicy{})
 	pulumi.RegisterOutputType(KeyRingCryptoKeyIamPolicyOutput{})
 }

@@ -156,5 +156,6 @@ func (o GuestPolicyOutput) ToGuestPolicyOutputWithContext(ctx context.Context) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestPolicyInput)(nil)).Elem(), &GuestPolicy{})
 	pulumi.RegisterOutputType(GuestPolicyOutput{})
 }

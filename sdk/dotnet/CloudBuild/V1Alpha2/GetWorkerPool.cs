@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         /// </summary>
         public static Task<GetWorkerPoolResult> InvokeAsync(GetWorkerPoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkerPoolResult>("google-native:cloudbuild/v1alpha2:getWorkerPool", args ?? new GetWorkerPoolArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns details of a `WorkerPool`.
+        /// </summary>
+        public static Output<GetWorkerPoolResult> Invoke(GetWorkerPoolInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWorkerPoolResult>("google-native:cloudbuild/v1alpha2:getWorkerPool", args ?? new GetWorkerPoolInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         public string WorkerPoolId { get; set; } = null!;
 
         public GetWorkerPoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetWorkerPoolInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("workerPoolId", required: true)]
+        public Input<string> WorkerPoolId { get; set; } = null!;
+
+        public GetWorkerPoolInvokeArgs()
         {
         }
     }

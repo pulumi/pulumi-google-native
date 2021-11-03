@@ -147,5 +147,6 @@ func (o SessionEntityTypeOutput) ToSessionEntityTypeOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionEntityTypeInput)(nil)).Elem(), &SessionEntityType{})
 	pulumi.RegisterOutputType(SessionEntityTypeOutput{})
 }

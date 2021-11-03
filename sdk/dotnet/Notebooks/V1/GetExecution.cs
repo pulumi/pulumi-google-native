@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Notebooks.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public static Task<GetExecutionResult> InvokeAsync(GetExecutionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetExecutionResult>("google-native:notebooks/v1:getExecution", args ?? new GetExecutionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of executions
+        /// </summary>
+        public static Output<GetExecutionResult> Invoke(GetExecutionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetExecutionResult>("google-native:notebooks/v1:getExecution", args ?? new GetExecutionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public string? Project { get; set; }
 
         public GetExecutionArgs()
+        {
+        }
+    }
+
+    public sealed class GetExecutionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("executionId", required: true)]
+        public Input<string> ExecutionId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetExecutionInvokeArgs()
         {
         }
     }

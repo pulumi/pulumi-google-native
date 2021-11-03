@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudChannel.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public static Task<GetEntitlementResult> InvokeAsync(GetEntitlementArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEntitlementResult>("google-native:cloudchannel/v1:getEntitlement", args ?? new GetEntitlementArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the requested Entitlement resource. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer entitlement was not found. Return value: The requested Entitlement resource.
+        /// </summary>
+        public static Output<GetEntitlementResult> Invoke(GetEntitlementInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEntitlementResult>("google-native:cloudchannel/v1:getEntitlement", args ?? new GetEntitlementInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public string EntitlementId { get; set; } = null!;
 
         public GetEntitlementArgs()
+        {
+        }
+    }
+
+    public sealed class GetEntitlementInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
+        [Input("customerId", required: true)]
+        public Input<string> CustomerId { get; set; } = null!;
+
+        [Input("entitlementId", required: true)]
+        public Input<string> EntitlementId { get; set; } = null!;
+
+        public GetEntitlementInvokeArgs()
         {
         }
     }

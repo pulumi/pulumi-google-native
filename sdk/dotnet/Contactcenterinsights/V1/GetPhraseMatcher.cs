@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public static Task<GetPhraseMatcherResult> InvokeAsync(GetPhraseMatcherArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPhraseMatcherResult>("google-native:contactcenterinsights/v1:getPhraseMatcher", args ?? new GetPhraseMatcherArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a phrase matcher.
+        /// </summary>
+        public static Output<GetPhraseMatcherResult> Invoke(GetPhraseMatcherInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPhraseMatcherResult>("google-native:contactcenterinsights/v1:getPhraseMatcher", args ?? new GetPhraseMatcherInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public string? Project { get; set; }
 
         public GetPhraseMatcherArgs()
+        {
+        }
+    }
+
+    public sealed class GetPhraseMatcherInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("phraseMatcherId", required: true)]
+        public Input<string> PhraseMatcherId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetPhraseMatcherInvokeArgs()
         {
         }
     }

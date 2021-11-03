@@ -756,6 +756,15 @@ func (o SoftwareConfigOptionalComponentsItemArrayOutput) Index(i pulumi.IntInput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GceClusterConfigPrivateIpv6GoogleAccessInput)(nil)).Elem(), GceClusterConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GceClusterConfigPrivateIpv6GoogleAccessPtrInput)(nil)).Elem(), GceClusterConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigPreemptibilityInput)(nil)).Elem(), InstanceGroupConfigPreemptibility("PREEMPTIBILITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigPreemptibilityPtrInput)(nil)).Elem(), InstanceGroupConfigPreemptibility("PREEMPTIBILITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypeInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypePtrInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigOptionalComponentsItemInput)(nil)).Elem(), SoftwareConfigOptionalComponentsItem("COMPONENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigOptionalComponentsItemPtrInput)(nil)).Elem(), SoftwareConfigOptionalComponentsItem("COMPONENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigOptionalComponentsItemArrayInput)(nil)).Elem(), SoftwareConfigOptionalComponentsItemArray{})
 	pulumi.RegisterOutputType(GceClusterConfigPrivateIpv6GoogleAccessOutput{})
 	pulumi.RegisterOutputType(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupConfigPreemptibilityOutput{})

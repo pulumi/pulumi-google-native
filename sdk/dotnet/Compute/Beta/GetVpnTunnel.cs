@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetVpnTunnelResult> InvokeAsync(GetVpnTunnelArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpnTunnelResult>("google-native:compute/beta:getVpnTunnel", args ?? new GetVpnTunnelArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
+        /// </summary>
+        public static Output<GetVpnTunnelResult> Invoke(GetVpnTunnelInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVpnTunnelResult>("google-native:compute/beta:getVpnTunnel", args ?? new GetVpnTunnelInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string VpnTunnel { get; set; } = null!;
 
         public GetVpnTunnelArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpnTunnelInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        [Input("vpnTunnel", required: true)]
+        public Input<string> VpnTunnel { get; set; } = null!;
+
+        public GetVpnTunnelInvokeArgs()
         {
         }
     }

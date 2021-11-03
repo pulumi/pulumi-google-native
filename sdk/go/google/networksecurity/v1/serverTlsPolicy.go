@@ -149,5 +149,6 @@ func (o ServerTlsPolicyOutput) ToServerTlsPolicyOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyInput)(nil)).Elem(), &ServerTlsPolicy{})
 	pulumi.RegisterOutputType(ServerTlsPolicyOutput{})
 }

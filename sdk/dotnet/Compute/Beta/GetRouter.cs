@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetRouterResult> InvokeAsync(GetRouterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("google-native:compute/beta:getRouter", args ?? new GetRouterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified Router resource. Gets a list of available routers by making a list() request.
+        /// </summary>
+        public static Output<GetRouterResult> Invoke(GetRouterInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRouterResult>("google-native:compute/beta:getRouter", args ?? new GetRouterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string Router { get; set; } = null!;
 
         public GetRouterArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouterInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        [Input("router", required: true)]
+        public Input<string> Router { get; set; } = null!;
+
+        public GetRouterInvokeArgs()
         {
         }
     }

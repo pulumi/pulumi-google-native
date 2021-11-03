@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudResourceManager.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         public static Task<GetFolderIamPolicyResult> InvokeAsync(GetFolderIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFolderIamPolicyResult>("google-native:cloudresourcemanager/v3:getFolderIamPolicy", args ?? new GetFolderIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
+        /// </summary>
+        public static Output<GetFolderIamPolicyResult> Invoke(GetFolderIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFolderIamPolicyResult>("google-native:cloudresourcemanager/v3:getFolderIamPolicy", args ?? new GetFolderIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public string FolderId { get; set; } = null!;
 
         public GetFolderIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetFolderIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("folderId", required: true)]
+        public Input<string> FolderId { get; set; } = null!;
+
+        public GetFolderIamPolicyInvokeArgs()
         {
         }
     }

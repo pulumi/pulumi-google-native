@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         /// </summary>
         public static Task<GetConnectionIamPolicyResult> InvokeAsync(GetConnectionIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionIamPolicyResult>("google-native:bigqueryconnection/v1beta1:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetConnectionIamPolicyResult> Invoke(GetConnectionIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConnectionIamPolicyResult>("google-native:bigqueryconnection/v1beta1:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         public string? Project { get; set; }
 
         public GetConnectionIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetConnectionIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("connectionId", required: true)]
+        public Input<string> ConnectionId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetConnectionIamPolicyInvokeArgs()
         {
         }
     }

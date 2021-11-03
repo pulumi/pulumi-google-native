@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetHttpsHealthCheckResult> InvokeAsync(GetHttpsHealthCheckArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHttpsHealthCheckResult>("google-native:compute/beta:getHttpsHealthCheck", args ?? new GetHttpsHealthCheckArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by making a list() request.
+        /// </summary>
+        public static Output<GetHttpsHealthCheckResult> Invoke(GetHttpsHealthCheckInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHttpsHealthCheckResult>("google-native:compute/beta:getHttpsHealthCheck", args ?? new GetHttpsHealthCheckInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string? Project { get; set; }
 
         public GetHttpsHealthCheckArgs()
+        {
+        }
+    }
+
+    public sealed class GetHttpsHealthCheckInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("httpsHealthCheck", required: true)]
+        public Input<string> HttpsHealthCheck { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetHttpsHealthCheckInvokeArgs()
         {
         }
     }

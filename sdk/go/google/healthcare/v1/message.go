@@ -166,5 +166,6 @@ func (o MessageOutput) ToMessageOutputWithContext(ctx context.Context) MessageOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MessageInput)(nil)).Elem(), &Message{})
 	pulumi.RegisterOutputType(MessageOutput{})
 }

@@ -135,5 +135,6 @@ func (o ServicePerimeterOutput) ToServicePerimeterOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterInput)(nil)).Elem(), &ServicePerimeter{})
 	pulumi.RegisterOutputType(ServicePerimeterOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("google-native:firebasehosting/v1beta1:getDomain", args ?? new GetDomainArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a domain mapping on the specified site.
+        /// </summary>
+        public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainResult>("google-native:firebasehosting/v1beta1:getDomain", args ?? new GetDomainInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         public string SiteId { get; set; } = null!;
 
         public GetDomainArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("domainId", required: true)]
+        public Input<string> DomainId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("siteId", required: true)]
+        public Input<string> SiteId { get; set; } = null!;
+
+        public GetDomainInvokeArgs()
         {
         }
     }

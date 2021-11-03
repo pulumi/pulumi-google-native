@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.FirebaseRules.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         /// </summary>
         public static Task<GetRulesetResult> InvokeAsync(GetRulesetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRulesetResult>("google-native:firebaserules/v1:getRuleset", args ?? new GetRulesetArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a `Ruleset` by name including the full `Source` contents.
+        /// </summary>
+        public static Output<GetRulesetResult> Invoke(GetRulesetInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRulesetResult>("google-native:firebaserules/v1:getRuleset", args ?? new GetRulesetInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         public string RulesetId { get; set; } = null!;
 
         public GetRulesetArgs()
+        {
+        }
+    }
+
+    public sealed class GetRulesetInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("rulesetId", required: true)]
+        public Input<string> RulesetId { get; set; } = null!;
+
+        public GetRulesetInvokeArgs()
         {
         }
     }

@@ -159,5 +159,6 @@ func (o SslCertificateOutput) ToSslCertificateOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificateInput)(nil)).Elem(), &SslCertificate{})
 	pulumi.RegisterOutputType(SslCertificateOutput{})
 }

@@ -135,5 +135,6 @@ func (o DicomStoreOutput) ToDicomStoreOutputWithContext(ctx context.Context) Dic
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreInput)(nil)).Elem(), &DicomStore{})
 	pulumi.RegisterOutputType(DicomStoreOutput{})
 }

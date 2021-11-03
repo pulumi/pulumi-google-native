@@ -144,5 +144,6 @@ func (o ServiceDatabaseIamPolicyOutput) ToServiceDatabaseIamPolicyOutputWithCont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceDatabaseIamPolicyInput)(nil)).Elem(), &ServiceDatabaseIamPolicy{})
 	pulumi.RegisterOutputType(ServiceDatabaseIamPolicyOutput{})
 }

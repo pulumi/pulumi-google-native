@@ -128,5 +128,6 @@ func (o HmacKeyOutput) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HmacKeyInput)(nil)).Elem(), &HmacKey{})
 	pulumi.RegisterOutputType(HmacKeyOutput{})
 }

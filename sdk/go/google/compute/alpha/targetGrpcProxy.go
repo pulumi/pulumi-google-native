@@ -137,5 +137,6 @@ func (o TargetGrpcProxyOutput) ToTargetGrpcProxyOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetGrpcProxyInput)(nil)).Elem(), &TargetGrpcProxy{})
 	pulumi.RegisterOutputType(TargetGrpcProxyOutput{})
 }

@@ -138,5 +138,6 @@ func (o ChannelPartnerLinkOutput) ToChannelPartnerLinkOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ChannelPartnerLinkInput)(nil)).Elem(), &ChannelPartnerLink{})
 	pulumi.RegisterOutputType(ChannelPartnerLinkOutput{})
 }

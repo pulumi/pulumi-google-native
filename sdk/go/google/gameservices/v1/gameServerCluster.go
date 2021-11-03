@@ -150,5 +150,6 @@ func (o GameServerClusterOutput) ToGameServerClusterOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterInput)(nil)).Elem(), &GameServerCluster{})
 	pulumi.RegisterOutputType(GameServerClusterOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudAsset.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         /// </summary>
         public static Task<GetFeedResult> InvokeAsync(GetFeedArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFeedResult>("google-native:cloudasset/v1:getFeed", args ?? new GetFeedArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details about an asset feed.
+        /// </summary>
+        public static Output<GetFeedResult> Invoke(GetFeedInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFeedResult>("google-native:cloudasset/v1:getFeed", args ?? new GetFeedInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         public string V1Id1 { get; set; } = null!;
 
         public GetFeedArgs()
+        {
+        }
+    }
+
+    public sealed class GetFeedInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("feedId", required: true)]
+        public Input<string> FeedId { get; set; } = null!;
+
+        [Input("v1Id", required: true)]
+        public Input<string> V1Id { get; set; } = null!;
+
+        [Input("v1Id1", required: true)]
+        public Input<string> V1Id1 { get; set; } = null!;
+
+        public GetFeedInvokeArgs()
         {
         }
     }

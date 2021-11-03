@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public static Task<GetConsentArtifactResult> InvokeAsync(GetConsentArtifactArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConsentArtifactResult>("google-native:healthcare/v1:getConsentArtifact", args ?? new GetConsentArtifactArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified Consent artifact.
+        /// </summary>
+        public static Output<GetConsentArtifactResult> Invoke(GetConsentArtifactInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConsentArtifactResult>("google-native:healthcare/v1:getConsentArtifact", args ?? new GetConsentArtifactInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public string? Project { get; set; }
 
         public GetConsentArtifactArgs()
+        {
+        }
+    }
+
+    public sealed class GetConsentArtifactInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("consentArtifactId", required: true)]
+        public Input<string> ConsentArtifactId { get; set; } = null!;
+
+        [Input("consentStoreId", required: true)]
+        public Input<string> ConsentStoreId { get; set; } = null!;
+
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetConsentArtifactInvokeArgs()
         {
         }
     }

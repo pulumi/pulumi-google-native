@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Datamigration.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public static Task<GetConnectionProfileResult> InvokeAsync(GetConnectionProfileArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionProfileResult>("google-native:datamigration/v1:getConnectionProfile", args ?? new GetConnectionProfileArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single connection profile.
+        /// </summary>
+        public static Output<GetConnectionProfileResult> Invoke(GetConnectionProfileInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConnectionProfileResult>("google-native:datamigration/v1:getConnectionProfile", args ?? new GetConnectionProfileInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public string? Project { get; set; }
 
         public GetConnectionProfileArgs()
+        {
+        }
+    }
+
+    public sealed class GetConnectionProfileInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("connectionProfileId", required: true)]
+        public Input<string> ConnectionProfileId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetConnectionProfileInvokeArgs()
         {
         }
     }

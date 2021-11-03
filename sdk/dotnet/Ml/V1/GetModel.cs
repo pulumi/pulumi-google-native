@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Ml.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         public static Task<GetModelResult> InvokeAsync(GetModelArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetModelResult>("google-native:ml/v1:getModel", args ?? new GetModelArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about a model, including its name, the description (if set), and the default version (if at least one version of the model has been deployed).
+        /// </summary>
+        public static Output<GetModelResult> Invoke(GetModelInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetModelResult>("google-native:ml/v1:getModel", args ?? new GetModelInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Ml.V1
         public string? Project { get; set; }
 
         public GetModelArgs()
+        {
+        }
+    }
+
+    public sealed class GetModelInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("modelId", required: true)]
+        public Input<string> ModelId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetModelInvokeArgs()
         {
         }
     }

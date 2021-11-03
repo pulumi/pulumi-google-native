@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudFunctions.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// </summary>
         public static Task<GetFunctionResult> InvokeAsync(GetFunctionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionResult>("google-native:cloudfunctions/v1:getFunction", args ?? new GetFunctionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns a function with the given name from the requested project.
+        /// </summary>
+        public static Output<GetFunctionResult> Invoke(GetFunctionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFunctionResult>("google-native:cloudfunctions/v1:getFunction", args ?? new GetFunctionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public string? Project { get; set; }
 
         public GetFunctionArgs()
+        {
+        }
+    }
+
+    public sealed class GetFunctionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("functionId", required: true)]
+        public Input<string> FunctionId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetFunctionInvokeArgs()
         {
         }
     }

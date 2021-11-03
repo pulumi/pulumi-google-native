@@ -180,5 +180,6 @@ func (o HostQueryOutput) ToHostQueryOutputWithContext(ctx context.Context) HostQ
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HostQueryInput)(nil)).Elem(), &HostQuery{})
 	pulumi.RegisterOutputType(HostQueryOutput{})
 }

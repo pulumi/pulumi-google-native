@@ -131,5 +131,6 @@ func (o RepoOutput) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoInput)(nil)).Elem(), &Repo{})
 	pulumi.RegisterOutputType(RepoOutput{})
 }

@@ -152,5 +152,6 @@ func (o MembershipOutput) ToMembershipOutputWithContext(ctx context.Context) Mem
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipInput)(nil)).Elem(), &Membership{})
 	pulumi.RegisterOutputType(MembershipOutput{})
 }

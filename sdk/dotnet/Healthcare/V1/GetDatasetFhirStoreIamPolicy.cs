@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public static Task<GetDatasetFhirStoreIamPolicyResult> InvokeAsync(GetDatasetFhirStoreIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetFhirStoreIamPolicyResult>("google-native:healthcare/v1:getDatasetFhirStoreIamPolicy", args ?? new GetDatasetFhirStoreIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetDatasetFhirStoreIamPolicyResult> Invoke(GetDatasetFhirStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatasetFhirStoreIamPolicyResult>("google-native:healthcare/v1:getDatasetFhirStoreIamPolicy", args ?? new GetDatasetFhirStoreIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public string? Project { get; set; }
 
         public GetDatasetFhirStoreIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatasetFhirStoreIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("fhirStoreId", required: true)]
+        public Input<string> FhirStoreId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDatasetFhirStoreIamPolicyInvokeArgs()
         {
         }
     }

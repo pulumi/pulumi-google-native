@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetAddressResult> InvokeAsync(GetAddressArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("google-native:compute/v1:getAddress", args ?? new GetAddressArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified address resource.
+        /// </summary>
+        public static Output<GetAddressResult> Invoke(GetAddressInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAddressResult>("google-native:compute/v1:getAddress", args ?? new GetAddressInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string Region { get; set; } = null!;
 
         public GetAddressArgs()
+        {
+        }
+    }
+
+    public sealed class GetAddressInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("address", required: true)]
+        public Input<string> Address { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetAddressInvokeArgs()
         {
         }
     }

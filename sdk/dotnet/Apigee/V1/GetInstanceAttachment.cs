@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetInstanceAttachmentResult> InvokeAsync(GetInstanceAttachmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentResult>("google-native:apigee/v1:getInstanceAttachment", args ?? new GetInstanceAttachmentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an attachment. **Note:** Not supported for Apigee hybrid.
+        /// </summary>
+        public static Output<GetInstanceAttachmentResult> Invoke(GetInstanceAttachmentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceAttachmentResult>("google-native:apigee/v1:getInstanceAttachment", args ?? new GetInstanceAttachmentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetInstanceAttachmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceAttachmentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("attachmentId", required: true)]
+        public Input<string> AttachmentId { get; set; } = null!;
+
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetInstanceAttachmentInvokeArgs()
         {
         }
     }

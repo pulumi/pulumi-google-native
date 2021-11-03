@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetDataCollectorResult> InvokeAsync(GetDataCollectorArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDataCollectorResult>("google-native:apigee/v1:getDataCollector", args ?? new GetDataCollectorArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a data collector.
+        /// </summary>
+        public static Output<GetDataCollectorResult> Invoke(GetDataCollectorInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDataCollectorResult>("google-native:apigee/v1:getDataCollector", args ?? new GetDataCollectorInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetDataCollectorArgs()
+        {
+        }
+    }
+
+    public sealed class GetDataCollectorInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datacollectorId", required: true)]
+        public Input<string> DatacollectorId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetDataCollectorInvokeArgs()
         {
         }
     }

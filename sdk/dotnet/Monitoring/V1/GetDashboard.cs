@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Monitoring.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         /// </summary>
         public static Task<GetDashboardResult> InvokeAsync(GetDashboardArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDashboardResult>("google-native:monitoring/v1:getDashboard", args ?? new GetDashboardArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on the specified dashboard. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam).
+        /// </summary>
+        public static Output<GetDashboardResult> Invoke(GetDashboardInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDashboardResult>("google-native:monitoring/v1:getDashboard", args ?? new GetDashboardInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         public string? Project { get; set; }
 
         public GetDashboardArgs()
+        {
+        }
+    }
+
+    public sealed class GetDashboardInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("dashboardId", required: true)]
+        public Input<string> DashboardId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDashboardInvokeArgs()
         {
         }
     }

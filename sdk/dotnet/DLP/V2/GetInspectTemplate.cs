@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DLP.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static Task<GetInspectTemplateResult> InvokeAsync(GetInspectTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInspectTemplateResult>("google-native:dlp/v2:getInspectTemplate", args ?? new GetInspectTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        /// </summary>
+        public static Output<GetInspectTemplateResult> Invoke(GetInspectTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInspectTemplateResult>("google-native:dlp/v2:getInspectTemplate", args ?? new GetInspectTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DLP.V2
         public string? Project { get; set; }
 
         public GetInspectTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetInspectTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("inspectTemplateId", required: true)]
+        public Input<string> InspectTemplateId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInspectTemplateInvokeArgs()
         {
         }
     }

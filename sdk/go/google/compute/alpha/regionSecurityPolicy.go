@@ -183,5 +183,6 @@ func (o RegionSecurityPolicyOutput) ToRegionSecurityPolicyOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyInput)(nil)).Elem(), &RegionSecurityPolicy{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyOutput{})
 }

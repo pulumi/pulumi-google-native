@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Orgpolicy.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// </summary>
         public static Task<GetOrganizationPolicyResult> InvokeAsync(GetOrganizationPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationPolicyResult>("google-native:orgpolicy/v2:getOrganizationPolicy", args ?? new GetOrganizationPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+        /// </summary>
+        public static Output<GetOrganizationPolicyResult> Invoke(GetOrganizationPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationPolicyResult>("google-native:orgpolicy/v2:getOrganizationPolicy", args ?? new GetOrganizationPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public string PolicyId { get; set; } = null!;
 
         public GetOrganizationPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("policyId", required: true)]
+        public Input<string> PolicyId { get; set; } = null!;
+
+        public GetOrganizationPolicyInvokeArgs()
         {
         }
     }

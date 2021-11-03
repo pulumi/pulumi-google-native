@@ -520,6 +520,12 @@ func (in *endpointPolicyTypePtr) ToEndpointPolicyTypePtrOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria("METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria("METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyTypeInput)(nil)).Elem(), EndpointPolicyType("ENDPOINT_POLICY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyTypePtrInput)(nil)).Elem(), EndpointPolicyType("ENDPOINT_POLICY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaOutput{})

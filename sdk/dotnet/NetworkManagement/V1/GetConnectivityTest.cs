@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkManagement.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         /// </summary>
         public static Task<GetConnectivityTestResult> InvokeAsync(GetConnectivityTestArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConnectivityTestResult>("google-native:networkmanagement/v1:getConnectivityTest", args ?? new GetConnectivityTestArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the details of a specific Connectivity Test.
+        /// </summary>
+        public static Output<GetConnectivityTestResult> Invoke(GetConnectivityTestInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConnectivityTestResult>("google-native:networkmanagement/v1:getConnectivityTest", args ?? new GetConnectivityTestInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         public string? Project { get; set; }
 
         public GetConnectivityTestArgs()
+        {
+        }
+    }
+
+    public sealed class GetConnectivityTestInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("connectivityTestId", required: true)]
+        public Input<string> ConnectivityTestId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetConnectivityTestInvokeArgs()
         {
         }
     }

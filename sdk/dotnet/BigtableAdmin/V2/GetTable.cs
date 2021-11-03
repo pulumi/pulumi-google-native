@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         public static Task<GetTableResult> InvokeAsync(GetTableArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTableResult>("google-native:bigtableadmin/v2:getTable", args ?? new GetTableArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets metadata information about the specified table.
+        /// </summary>
+        public static Output<GetTableResult> Invoke(GetTableInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTableResult>("google-native:bigtableadmin/v2:getTable", args ?? new GetTableInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public string? View { get; set; }
 
         public GetTableArgs()
+        {
+        }
+    }
+
+    public sealed class GetTableInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("tableId", required: true)]
+        public Input<string> TableId { get; set; } = null!;
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
+        public GetTableInvokeArgs()
         {
         }
     }

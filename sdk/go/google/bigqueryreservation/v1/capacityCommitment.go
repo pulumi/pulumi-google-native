@@ -136,5 +136,6 @@ func (o CapacityCommitmentOutput) ToCapacityCommitmentOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentInput)(nil)).Elem(), &CapacityCommitment{})
 	pulumi.RegisterOutputType(CapacityCommitmentOutput{})
 }

@@ -204,6 +204,8 @@ func (in *pkixPublicKeySignatureAlgorithmPtr) ToPkixPublicKeySignatureAlgorithmP
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PkixPublicKeySignatureAlgorithmInput)(nil)).Elem(), PkixPublicKeySignatureAlgorithm("SIGNATURE_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PkixPublicKeySignatureAlgorithmPtrInput)(nil)).Elem(), PkixPublicKeySignatureAlgorithm("SIGNATURE_ALGORITHM_UNSPECIFIED"))
 	pulumi.RegisterOutputType(PkixPublicKeySignatureAlgorithmOutput{})
 	pulumi.RegisterOutputType(PkixPublicKeySignatureAlgorithmPtrOutput{})
 }

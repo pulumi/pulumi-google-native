@@ -144,5 +144,6 @@ func (o DatasetConsentStoreIamPolicyOutput) ToDatasetConsentStoreIamPolicyOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetConsentStoreIamPolicyInput)(nil)).Elem(), &DatasetConsentStoreIamPolicy{})
 	pulumi.RegisterOutputType(DatasetConsentStoreIamPolicyOutput{})
 }

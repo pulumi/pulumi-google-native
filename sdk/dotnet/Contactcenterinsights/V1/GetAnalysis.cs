@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public static Task<GetAnalysisResult> InvokeAsync(GetAnalysisArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAnalysisResult>("google-native:contactcenterinsights/v1:getAnalysis", args ?? new GetAnalysisArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an analysis.
+        /// </summary>
+        public static Output<GetAnalysisResult> Invoke(GetAnalysisInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAnalysisResult>("google-native:contactcenterinsights/v1:getAnalysis", args ?? new GetAnalysisInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public string? Project { get; set; }
 
         public GetAnalysisArgs()
+        {
+        }
+    }
+
+    public sealed class GetAnalysisInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("analysisId", required: true)]
+        public Input<string> AnalysisId { get; set; } = null!;
+
+        [Input("conversationId", required: true)]
+        public Input<string> ConversationId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAnalysisInvokeArgs()
         {
         }
     }

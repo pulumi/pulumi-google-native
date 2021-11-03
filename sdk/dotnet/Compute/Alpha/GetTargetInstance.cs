@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetTargetInstanceResult> InvokeAsync(GetTargetInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTargetInstanceResult>("google-native:compute/alpha:getTargetInstance", args ?? new GetTargetInstanceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
+        /// </summary>
+        public static Output<GetTargetInstanceResult> Invoke(GetTargetInstanceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTargetInstanceResult>("google-native:compute/alpha:getTargetInstance", args ?? new GetTargetInstanceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Zone { get; set; } = null!;
 
         public GetTargetInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetTargetInstanceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("targetInstance", required: true)]
+        public Input<string> TargetInstance { get; set; } = null!;
+
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
+
+        public GetTargetInstanceInvokeArgs()
         {
         }
     }

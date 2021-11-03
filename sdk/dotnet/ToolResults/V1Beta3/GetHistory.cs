@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// </summary>
         public static Task<GetHistoryResult> InvokeAsync(GetHistoryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHistoryResult>("google-native:toolresults/v1beta3:getHistory", args ?? new GetHistoryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History does not exist
+        /// </summary>
+        public static Output<GetHistoryResult> Invoke(GetHistoryInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHistoryResult>("google-native:toolresults/v1beta3:getHistory", args ?? new GetHistoryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public string? Project { get; set; }
 
         public GetHistoryArgs()
+        {
+        }
+    }
+
+    public sealed class GetHistoryInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("historyId", required: true)]
+        public Input<string> HistoryId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetHistoryInvokeArgs()
         {
         }
     }

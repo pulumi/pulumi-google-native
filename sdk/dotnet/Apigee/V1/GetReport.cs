@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetReportResult> InvokeAsync(GetReportArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReportResult>("google-native:apigee/v1:getReport", args ?? new GetReportArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieve a custom report definition.
+        /// </summary>
+        public static Output<GetReportResult> Invoke(GetReportInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetReportResult>("google-native:apigee/v1:getReport", args ?? new GetReportInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string ReportId { get; set; } = null!;
 
         public GetReportArgs()
+        {
+        }
+    }
+
+    public sealed class GetReportInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("reportId", required: true)]
+        public Input<string> ReportId { get; set; } = null!;
+
+        public GetReportInvokeArgs()
         {
         }
     }

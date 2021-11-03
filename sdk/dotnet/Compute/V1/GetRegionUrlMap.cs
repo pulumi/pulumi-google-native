@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetRegionUrlMapResult> InvokeAsync(GetRegionUrlMapArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionUrlMapResult>("google-native:compute/v1:getRegionUrlMap", args ?? new GetRegionUrlMapArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+        /// </summary>
+        public static Output<GetRegionUrlMapResult> Invoke(GetRegionUrlMapInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionUrlMapResult>("google-native:compute/v1:getRegionUrlMap", args ?? new GetRegionUrlMapInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string UrlMap { get; set; } = null!;
 
         public GetRegionUrlMapArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionUrlMapInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        [Input("urlMap", required: true)]
+        public Input<string> UrlMap { get; set; } = null!;
+
+        public GetRegionUrlMapInvokeArgs()
         {
         }
     }

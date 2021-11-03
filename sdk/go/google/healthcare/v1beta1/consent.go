@@ -175,5 +175,6 @@ func (o ConsentOutput) ToConsentOutputWithContext(ctx context.Context) ConsentOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentInput)(nil)).Elem(), &Consent{})
 	pulumi.RegisterOutputType(ConsentOutput{})
 }

@@ -149,5 +149,6 @@ func (o CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput) ToCa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolCertificateAuthorityCertificateRevocationListIamPolicyInput)(nil)).Elem(), &CaPoolCertificateAuthorityCertificateRevocationListIamPolicy{})
 	pulumi.RegisterOutputType(CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput{})
 }

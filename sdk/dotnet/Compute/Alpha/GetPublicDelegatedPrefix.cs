@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetPublicDelegatedPrefixResult> InvokeAsync(GetPublicDelegatedPrefixArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPublicDelegatedPrefixResult>("google-native:compute/alpha:getPublicDelegatedPrefix", args ?? new GetPublicDelegatedPrefixArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified PublicDelegatedPrefix resource in the given region.
+        /// </summary>
+        public static Output<GetPublicDelegatedPrefixResult> Invoke(GetPublicDelegatedPrefixInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPublicDelegatedPrefixResult>("google-native:compute/alpha:getPublicDelegatedPrefix", args ?? new GetPublicDelegatedPrefixInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Region { get; set; } = null!;
 
         public GetPublicDelegatedPrefixArgs()
+        {
+        }
+    }
+
+    public sealed class GetPublicDelegatedPrefixInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("publicDelegatedPrefix", required: true)]
+        public Input<string> PublicDelegatedPrefix { get; set; } = null!;
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetPublicDelegatedPrefixInvokeArgs()
         {
         }
     }

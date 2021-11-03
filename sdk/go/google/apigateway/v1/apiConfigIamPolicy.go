@@ -144,5 +144,6 @@ func (o ApiConfigIamPolicyOutput) ToApiConfigIamPolicyOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiConfigIamPolicyInput)(nil)).Elem(), &ApiConfigIamPolicy{})
 	pulumi.RegisterOutputType(ApiConfigIamPolicyOutput{})
 }

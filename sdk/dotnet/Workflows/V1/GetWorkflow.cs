@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Workflows.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Workflows.V1
         /// </summary>
         public static Task<GetWorkflowResult> InvokeAsync(GetWorkflowArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowResult>("google-native:workflows/v1:getWorkflow", args ?? new GetWorkflowArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single Workflow.
+        /// </summary>
+        public static Output<GetWorkflowResult> Invoke(GetWorkflowInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWorkflowResult>("google-native:workflows/v1:getWorkflow", args ?? new GetWorkflowInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public string WorkflowId { get; set; } = null!;
 
         public GetWorkflowArgs()
+        {
+        }
+    }
+
+    public sealed class GetWorkflowInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("workflowId", required: true)]
+        public Input<string> WorkflowId { get; set; } = null!;
+
+        public GetWorkflowInvokeArgs()
         {
         }
     }

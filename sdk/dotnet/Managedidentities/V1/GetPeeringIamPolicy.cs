@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Managedidentities.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         /// </summary>
         public static Task<GetPeeringIamPolicyResult> InvokeAsync(GetPeeringIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPeeringIamPolicyResult>("google-native:managedidentities/v1:getPeeringIamPolicy", args ?? new GetPeeringIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetPeeringIamPolicyResult> Invoke(GetPeeringIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPeeringIamPolicyResult>("google-native:managedidentities/v1:getPeeringIamPolicy", args ?? new GetPeeringIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         public string? Project { get; set; }
 
         public GetPeeringIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetPeeringIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("peeringId", required: true)]
+        public Input<string> PeeringId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetPeeringIamPolicyInvokeArgs()
         {
         }
     }

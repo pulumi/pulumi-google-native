@@ -132,5 +132,6 @@ func (o DeidentifyTemplateOutput) ToDeidentifyTemplateOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifyTemplateInput)(nil)).Elem(), &DeidentifyTemplate{})
 	pulumi.RegisterOutputType(DeidentifyTemplateOutput{})
 }

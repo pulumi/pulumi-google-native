@@ -187,5 +187,6 @@ func (o RegionTargetHttpsProxyOutput) ToRegionTargetHttpsProxyOutputWithContext(
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetHttpsProxyInput)(nil)).Elem(), &RegionTargetHttpsProxy{})
 	pulumi.RegisterOutputType(RegionTargetHttpsProxyOutput{})
 }

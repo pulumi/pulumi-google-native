@@ -183,5 +183,6 @@ func (o InterconnectOutput) ToInterconnectOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectInput)(nil)).Elem(), &Interconnect{})
 	pulumi.RegisterOutputType(InterconnectOutput{})
 }

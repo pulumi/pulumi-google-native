@@ -145,5 +145,6 @@ func (o LicenseCodeIamPolicyOutput) ToLicenseCodeIamPolicyOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseCodeIamPolicyInput)(nil)).Elem(), &LicenseCodeIamPolicy{})
 	pulumi.RegisterOutputType(LicenseCodeIamPolicyOutput{})
 }

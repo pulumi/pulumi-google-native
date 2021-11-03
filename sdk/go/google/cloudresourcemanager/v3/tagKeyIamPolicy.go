@@ -135,5 +135,6 @@ func (o TagKeyIamPolicyOutput) ToTagKeyIamPolicyOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamPolicyInput)(nil)).Elem(), &TagKeyIamPolicy{})
 	pulumi.RegisterOutputType(TagKeyIamPolicyOutput{})
 }

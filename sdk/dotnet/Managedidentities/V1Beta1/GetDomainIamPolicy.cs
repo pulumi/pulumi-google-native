@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
         /// </summary>
         public static Task<GetDomainIamPolicyResult> InvokeAsync(GetDomainIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainIamPolicyResult>("google-native:managedidentities/v1beta1:getDomainIamPolicy", args ?? new GetDomainIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetDomainIamPolicyResult> Invoke(GetDomainIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainIamPolicyResult>("google-native:managedidentities/v1beta1:getDomainIamPolicy", args ?? new GetDomainIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
         public string? Project { get; set; }
 
         public GetDomainIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("domainId", required: true)]
+        public Input<string> DomainId { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDomainIamPolicyInvokeArgs()
         {
         }
     }

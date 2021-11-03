@@ -351,6 +351,10 @@ func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolat
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy("POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy("POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation("LINUX_ISOLATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrInput)(nil)).Elem(), GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation("LINUX_ISOLATION_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// </summary>
         public static Task<GetRegionWorkflowTemplateIamPolicyResult> InvokeAsync(GetRegionWorkflowTemplateIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionWorkflowTemplateIamPolicyResult>("google-native:dataproc/v1beta2:getRegionWorkflowTemplateIamPolicy", args ?? new GetRegionWorkflowTemplateIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetRegionWorkflowTemplateIamPolicyResult> Invoke(GetRegionWorkflowTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionWorkflowTemplateIamPolicyResult>("google-native:dataproc/v1beta2:getRegionWorkflowTemplateIamPolicy", args ?? new GetRegionWorkflowTemplateIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public string WorkflowTemplateId { get; set; } = null!;
 
         public GetRegionWorkflowTemplateIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionWorkflowTemplateIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("regionId", required: true)]
+        public Input<string> RegionId { get; set; } = null!;
+
+        [Input("workflowTemplateId", required: true)]
+        public Input<string> WorkflowTemplateId { get; set; } = null!;
+
+        public GetRegionWorkflowTemplateIamPolicyInvokeArgs()
         {
         }
     }

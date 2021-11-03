@@ -167,5 +167,6 @@ func (o UrlMapOutput) ToUrlMapOutputWithContext(ctx context.Context) UrlMapOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapInput)(nil)).Elem(), &UrlMap{})
 	pulumi.RegisterOutputType(UrlMapOutput{})
 }

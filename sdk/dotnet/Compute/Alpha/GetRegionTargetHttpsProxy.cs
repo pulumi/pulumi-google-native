@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetRegionTargetHttpsProxyResult> InvokeAsync(GetRegionTargetHttpsProxyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionTargetHttpsProxyResult>("google-native:compute/alpha:getRegionTargetHttpsProxy", args ?? new GetRegionTargetHttpsProxyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+        /// </summary>
+        public static Output<GetRegionTargetHttpsProxyResult> Invoke(GetRegionTargetHttpsProxyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionTargetHttpsProxyResult>("google-native:compute/alpha:getRegionTargetHttpsProxy", args ?? new GetRegionTargetHttpsProxyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string TargetHttpsProxy { get; set; } = null!;
 
         public GetRegionTargetHttpsProxyArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionTargetHttpsProxyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        [Input("targetHttpsProxy", required: true)]
+        public Input<string> TargetHttpsProxy { get; set; } = null!;
+
+        public GetRegionTargetHttpsProxyInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Vision.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Vision.V1
         /// </summary>
         public static Task<GetProductResult> InvokeAsync(GetProductArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("google-native:vision/v1:getProduct", args ?? new GetProductArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information associated with a Product. Possible errors: * Returns NOT_FOUND if the Product does not exist.
+        /// </summary>
+        public static Output<GetProductResult> Invoke(GetProductInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProductResult>("google-native:vision/v1:getProduct", args ?? new GetProductInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Vision.V1
         public string? Project { get; set; }
 
         public GetProductArgs()
+        {
+        }
+    }
+
+    public sealed class GetProductInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("productId", required: true)]
+        public Input<string> ProductId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetProductInvokeArgs()
         {
         }
     }

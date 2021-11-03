@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Billingbudgets.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         /// </summary>
         public static Task<GetBudgetResult> InvokeAsync(GetBudgetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBudgetResult>("google-native:billingbudgets/v1:getBudget", args ?? new GetBudgetArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.
+        /// </summary>
+        public static Output<GetBudgetResult> Invoke(GetBudgetInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBudgetResult>("google-native:billingbudgets/v1:getBudget", args ?? new GetBudgetInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         public string BudgetId { get; set; } = null!;
 
         public GetBudgetArgs()
+        {
+        }
+    }
+
+    public sealed class GetBudgetInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("billingAccountId", required: true)]
+        public Input<string> BillingAccountId { get; set; } = null!;
+
+        [Input("budgetId", required: true)]
+        public Input<string> BudgetId { get; set; } = null!;
+
+        public GetBudgetInvokeArgs()
         {
         }
     }

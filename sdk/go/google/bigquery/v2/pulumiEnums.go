@@ -1224,6 +1224,20 @@ func (in *standardSqlDataTypeTypeKindPtr) ToStandardSqlDataTypeTypeKindPtrOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentArgumentKindInput)(nil)).Elem(), ArgumentArgumentKind("ARGUMENT_KIND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentArgumentKindPtrInput)(nil)).Elem(), ArgumentArgumentKind("ARGUMENT_KIND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentModeInput)(nil)).Elem(), ArgumentMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentModePtrInput)(nil)).Elem(), ArgumentMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineDeterminismLevelInput)(nil)).Elem(), RoutineDeterminismLevel("DETERMINISM_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineDeterminismLevelPtrInput)(nil)).Elem(), RoutineDeterminismLevel("DETERMINISM_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineLanguageInput)(nil)).Elem(), RoutineLanguage("LANGUAGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineLanguagePtrInput)(nil)).Elem(), RoutineLanguage("LANGUAGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineRoutineTypeInput)(nil)).Elem(), RoutineRoutineType("ROUTINE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineRoutineTypePtrInput)(nil)).Elem(), RoutineRoutineType("ROUTINE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeTypeKindInput)(nil)).Elem(), StandardSqlDataTypeTypeKind("TYPE_KIND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeTypeKindPtrInput)(nil)).Elem(), StandardSqlDataTypeTypeKind("TYPE_KIND_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ArgumentArgumentKindOutput{})
 	pulumi.RegisterOutputType(ArgumentArgumentKindPtrOutput{})
 	pulumi.RegisterOutputType(ArgumentModeOutput{})

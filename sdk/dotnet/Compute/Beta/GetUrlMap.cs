@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetUrlMapResult> InvokeAsync(GetUrlMapArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUrlMapResult>("google-native:compute/beta:getUrlMap", args ?? new GetUrlMapArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+        /// </summary>
+        public static Output<GetUrlMapResult> Invoke(GetUrlMapInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUrlMapResult>("google-native:compute/beta:getUrlMap", args ?? new GetUrlMapInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string UrlMap { get; set; } = null!;
 
         public GetUrlMapArgs()
+        {
+        }
+    }
+
+    public sealed class GetUrlMapInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("urlMap", required: true)]
+        public Input<string> UrlMap { get; set; } = null!;
+
+        public GetUrlMapInvokeArgs()
         {
         }
     }

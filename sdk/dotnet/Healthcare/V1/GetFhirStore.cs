@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public static Task<GetFhirStoreResult> InvokeAsync(GetFhirStoreArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFhirStoreResult>("google-native:healthcare/v1:getFhirStore", args ?? new GetFhirStoreArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the configuration of the specified FHIR store.
+        /// </summary>
+        public static Output<GetFhirStoreResult> Invoke(GetFhirStoreInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFhirStoreResult>("google-native:healthcare/v1:getFhirStore", args ?? new GetFhirStoreInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public string? Project { get; set; }
 
         public GetFhirStoreArgs()
+        {
+        }
+    }
+
+    public sealed class GetFhirStoreInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("fhirStoreId", required: true)]
+        public Input<string> FhirStoreId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetFhirStoreInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// </summary>
         public static Task<GetAutoscalingPolicyResult> InvokeAsync(GetAutoscalingPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalingPolicyResult>("google-native:dataproc/v1beta2:getAutoscalingPolicy", args ?? new GetAutoscalingPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves autoscaling policy.
+        /// </summary>
+        public static Output<GetAutoscalingPolicyResult> Invoke(GetAutoscalingPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAutoscalingPolicyResult>("google-native:dataproc/v1beta2:getAutoscalingPolicy", args ?? new GetAutoscalingPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public string? Project { get; set; }
 
         public GetAutoscalingPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetAutoscalingPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("autoscalingPolicyId", required: true)]
+        public Input<string> AutoscalingPolicyId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAutoscalingPolicyInvokeArgs()
         {
         }
     }

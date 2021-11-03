@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataCatalog.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public static Task<GetTaxonomyResult> InvokeAsync(GetTaxonomyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTaxonomyResult>("google-native:datacatalog/v1:getTaxonomy", args ?? new GetTaxonomyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a taxonomy.
+        /// </summary>
+        public static Output<GetTaxonomyResult> Invoke(GetTaxonomyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTaxonomyResult>("google-native:datacatalog/v1:getTaxonomy", args ?? new GetTaxonomyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public string TaxonomyId { get; set; } = null!;
 
         public GetTaxonomyArgs()
+        {
+        }
+    }
+
+    public sealed class GetTaxonomyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("taxonomyId", required: true)]
+        public Input<string> TaxonomyId { get; set; } = null!;
+
+        public GetTaxonomyInvokeArgs()
         {
         }
     }

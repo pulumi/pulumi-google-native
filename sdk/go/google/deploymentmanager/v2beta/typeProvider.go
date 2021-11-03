@@ -155,5 +155,6 @@ func (o TypeProviderOutput) ToTypeProviderOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TypeProviderInput)(nil)).Elem(), &TypeProvider{})
 	pulumi.RegisterOutputType(TypeProviderOutput{})
 }

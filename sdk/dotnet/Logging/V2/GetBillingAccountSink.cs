@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Logging.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         public static Task<GetBillingAccountSinkResult> InvokeAsync(GetBillingAccountSinkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountSinkResult>("google-native:logging/v2:getBillingAccountSink", args ?? new GetBillingAccountSinkArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a sink.
+        /// </summary>
+        public static Output<GetBillingAccountSinkResult> Invoke(GetBillingAccountSinkInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBillingAccountSinkResult>("google-native:logging/v2:getBillingAccountSink", args ?? new GetBillingAccountSinkInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Logging.V2
         public string SinkId { get; set; } = null!;
 
         public GetBillingAccountSinkArgs()
+        {
+        }
+    }
+
+    public sealed class GetBillingAccountSinkInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("billingAccountId", required: true)]
+        public Input<string> BillingAccountId { get; set; } = null!;
+
+        [Input("sinkId", required: true)]
+        public Input<string> SinkId { get; set; } = null!;
+
+        public GetBillingAccountSinkInvokeArgs()
         {
         }
     }

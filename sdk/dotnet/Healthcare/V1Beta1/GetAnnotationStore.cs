@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static Task<GetAnnotationStoreResult> InvokeAsync(GetAnnotationStoreArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAnnotationStoreResult>("google-native:healthcare/v1beta1:getAnnotationStore", args ?? new GetAnnotationStoreArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified Annotation store or returns NOT_FOUND if it does not exist.
+        /// </summary>
+        public static Output<GetAnnotationStoreResult> Invoke(GetAnnotationStoreInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAnnotationStoreResult>("google-native:healthcare/v1beta1:getAnnotationStore", args ?? new GetAnnotationStoreInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public string? Project { get; set; }
 
         public GetAnnotationStoreArgs()
+        {
+        }
+    }
+
+    public sealed class GetAnnotationStoreInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("annotationStoreId", required: true)]
+        public Input<string> AnnotationStoreId { get; set; } = null!;
+
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAnnotationStoreInvokeArgs()
         {
         }
     }

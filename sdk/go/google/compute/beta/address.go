@@ -189,5 +189,6 @@ func (o AddressOutput) ToAddressOutputWithContext(ctx context.Context) AddressOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressInput)(nil)).Elem(), &Address{})
 	pulumi.RegisterOutputType(AddressOutput{})
 }

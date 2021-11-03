@@ -150,5 +150,6 @@ func (o RegionDiskIamPolicyOutput) ToRegionDiskIamPolicyOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamPolicyInput)(nil)).Elem(), &RegionDiskIamPolicy{})
 	pulumi.RegisterOutputType(RegionDiskIamPolicyOutput{})
 }

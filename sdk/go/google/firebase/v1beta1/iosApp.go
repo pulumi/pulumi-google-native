@@ -137,5 +137,6 @@ func (o IosAppOutput) ToIosAppOutputWithContext(ctx context.Context) IosAppOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IosAppInput)(nil)).Elem(), &IosApp{})
 	pulumi.RegisterOutputType(IosAppOutput{})
 }

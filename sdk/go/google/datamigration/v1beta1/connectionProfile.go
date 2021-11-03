@@ -159,5 +159,6 @@ func (o ConnectionProfileOutput) ToConnectionProfileOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileInput)(nil)).Elem(), &ConnectionProfile{})
 	pulumi.RegisterOutputType(ConnectionProfileOutput{})
 }

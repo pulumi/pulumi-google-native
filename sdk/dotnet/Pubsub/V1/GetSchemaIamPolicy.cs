@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Pubsub.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         public static Task<GetSchemaIamPolicyResult> InvokeAsync(GetSchemaIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSchemaIamPolicyResult>("google-native:pubsub/v1:getSchemaIamPolicy", args ?? new GetSchemaIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetSchemaIamPolicyResult> Invoke(GetSchemaIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSchemaIamPolicyResult>("google-native:pubsub/v1:getSchemaIamPolicy", args ?? new GetSchemaIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public string SchemaId { get; set; } = null!;
 
         public GetSchemaIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetSchemaIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("schemaId", required: true)]
+        public Input<string> SchemaId { get; set; } = null!;
+
+        public GetSchemaIamPolicyInvokeArgs()
         {
         }
     }

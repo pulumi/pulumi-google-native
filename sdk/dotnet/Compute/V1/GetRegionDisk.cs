@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetRegionDiskResult> InvokeAsync(GetRegionDiskArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionDiskResult>("google-native:compute/v1:getRegionDisk", args ?? new GetRegionDiskArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns a specified regional persistent disk.
+        /// </summary>
+        public static Output<GetRegionDiskResult> Invoke(GetRegionDiskInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionDiskResult>("google-native:compute/v1:getRegionDisk", args ?? new GetRegionDiskInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string Region { get; set; } = null!;
 
         public GetRegionDiskArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionDiskInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("disk", required: true)]
+        public Input<string> Disk { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetRegionDiskInvokeArgs()
         {
         }
     }

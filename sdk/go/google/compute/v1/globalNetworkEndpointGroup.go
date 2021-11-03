@@ -175,5 +175,6 @@ func (o GlobalNetworkEndpointGroupOutput) ToGlobalNetworkEndpointGroupOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupInput)(nil)).Elem(), &GlobalNetworkEndpointGroup{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupOutput{})
 }

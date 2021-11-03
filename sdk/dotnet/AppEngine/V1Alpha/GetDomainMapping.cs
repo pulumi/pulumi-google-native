@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.AppEngine.V1Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         /// </summary>
         public static Task<GetDomainMappingResult> InvokeAsync(GetDomainMappingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainMappingResult>("google-native:appengine/v1alpha:getDomainMapping", args ?? new GetDomainMappingArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified domain mapping.
+        /// </summary>
+        public static Output<GetDomainMappingResult> Invoke(GetDomainMappingInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainMappingResult>("google-native:appengine/v1alpha:getDomainMapping", args ?? new GetDomainMappingInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         public string DomainMappingId { get; set; } = null!;
 
         public GetDomainMappingArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainMappingInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
+
+        [Input("domainMappingId", required: true)]
+        public Input<string> DomainMappingId { get; set; } = null!;
+
+        public GetDomainMappingInvokeArgs()
         {
         }
     }

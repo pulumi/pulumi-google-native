@@ -134,5 +134,6 @@ func (o ArchiveDeploymentOutput) ToArchiveDeploymentOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ArchiveDeploymentInput)(nil)).Elem(), &ArchiveDeployment{})
 	pulumi.RegisterOutputType(ArchiveDeploymentOutput{})
 }

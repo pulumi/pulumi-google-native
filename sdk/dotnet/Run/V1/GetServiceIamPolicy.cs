@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Run.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Run.V1
         /// </summary>
         public static Task<GetServiceIamPolicyResult> InvokeAsync(GetServiceIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIamPolicyResult>("google-native:run/v1:getServiceIamPolicy", args ?? new GetServiceIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get the IAM Access Control policy currently in effect for the given Cloud Run service. This result does not include any inherited policies.
+        /// </summary>
+        public static Output<GetServiceIamPolicyResult> Invoke(GetServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("google-native:run/v1:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Run.V1
         public string ServiceId { get; set; } = null!;
 
         public GetServiceIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        public GetServiceIamPolicyInvokeArgs()
         {
         }
     }

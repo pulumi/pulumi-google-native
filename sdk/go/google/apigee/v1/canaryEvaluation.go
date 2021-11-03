@@ -166,5 +166,6 @@ func (o CanaryEvaluationOutput) ToCanaryEvaluationOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CanaryEvaluationInput)(nil)).Elem(), &CanaryEvaluation{})
 	pulumi.RegisterOutputType(CanaryEvaluationOutput{})
 }

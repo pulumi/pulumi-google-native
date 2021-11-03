@@ -353,6 +353,10 @@ func (in *projectLifecycleStatePtr) ToProjectLifecycleStatePtrOutputWithContext(
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLifecycleStateInput)(nil)).Elem(), ProjectLifecycleState("LIFECYCLE_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLifecycleStatePtrInput)(nil)).Elem(), ProjectLifecycleState("LIFECYCLE_STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(ProjectLifecycleStateOutput{})

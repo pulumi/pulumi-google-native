@@ -139,5 +139,6 @@ func (o CertificateAuthorityIamPolicyOutput) ToCertificateAuthorityIamPolicyOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityIamPolicyInput)(nil)).Elem(), &CertificateAuthorityIamPolicy{})
 	pulumi.RegisterOutputType(CertificateAuthorityIamPolicyOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetNetworkEdgeSecurityServiceResult> InvokeAsync(GetNetworkEdgeSecurityServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkEdgeSecurityServiceResult>("google-native:compute/alpha:getNetworkEdgeSecurityService", args ?? new GetNetworkEdgeSecurityServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a specified NetworkEdgeSecurityService.
+        /// </summary>
+        public static Output<GetNetworkEdgeSecurityServiceResult> Invoke(GetNetworkEdgeSecurityServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkEdgeSecurityServiceResult>("google-native:compute/alpha:getNetworkEdgeSecurityService", args ?? new GetNetworkEdgeSecurityServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Region { get; set; } = null!;
 
         public GetNetworkEdgeSecurityServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworkEdgeSecurityServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("networkEdgeSecurityService", required: true)]
+        public Input<string> NetworkEdgeSecurityService { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetNetworkEdgeSecurityServiceInvokeArgs()
         {
         }
     }

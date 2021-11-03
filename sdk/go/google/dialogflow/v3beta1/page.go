@@ -161,5 +161,6 @@ func (o PageOutput) ToPageOutputWithContext(ctx context.Context) PageOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PageInput)(nil)).Elem(), &Page{})
 	pulumi.RegisterOutputType(PageOutput{})
 }

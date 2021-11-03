@@ -351,6 +351,10 @@ func (in *membershipInfrastructureTypePtr) ToMembershipInfrastructureTypePtrOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipInfrastructureTypeInput)(nil)).Elem(), MembershipInfrastructureType("INFRASTRUCTURE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipInfrastructureTypePtrInput)(nil)).Elem(), MembershipInfrastructureType("INFRASTRUCTURE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(MembershipInfrastructureTypeOutput{})

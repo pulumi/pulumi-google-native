@@ -130,5 +130,6 @@ func (o AuthorizedCertificateOutput) ToAuthorizedCertificateOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedCertificateInput)(nil)).Elem(), &AuthorizedCertificate{})
 	pulumi.RegisterOutputType(AuthorizedCertificateOutput{})
 }

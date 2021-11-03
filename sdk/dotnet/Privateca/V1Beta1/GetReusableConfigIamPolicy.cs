@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Privateca.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// </summary>
         public static Task<GetReusableConfigIamPolicyResult> InvokeAsync(GetReusableConfigIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReusableConfigIamPolicyResult>("google-native:privateca/v1beta1:getReusableConfigIamPolicy", args ?? new GetReusableConfigIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetReusableConfigIamPolicyResult> Invoke(GetReusableConfigIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetReusableConfigIamPolicyResult>("google-native:privateca/v1beta1:getReusableConfigIamPolicy", args ?? new GetReusableConfigIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public string ReusableConfigId { get; set; } = null!;
 
         public GetReusableConfigIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetReusableConfigIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("reusableConfigId", required: true)]
+        public Input<string> ReusableConfigId { get; set; } = null!;
+
+        public GetReusableConfigIamPolicyInvokeArgs()
         {
         }
     }

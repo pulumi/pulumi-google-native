@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudResourceManager.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         public static Task<GetLienResult> InvokeAsync(GetLienArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLienResult>("google-native:cloudresourcemanager/v3:getLien", args ?? new GetLienArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
+        /// </summary>
+        public static Output<GetLienResult> Invoke(GetLienInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetLienResult>("google-native:cloudresourcemanager/v3:getLien", args ?? new GetLienInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public string LienId { get; set; } = null!;
 
         public GetLienArgs()
+        {
+        }
+    }
+
+    public sealed class GetLienInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("lienId", required: true)]
+        public Input<string> LienId { get; set; } = null!;
+
+        public GetLienInvokeArgs()
         {
         }
     }

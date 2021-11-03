@@ -147,5 +147,6 @@ func (o NodeGroupIamPolicyOutput) ToNodeGroupIamPolicyOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIamPolicyInput)(nil)).Elem(), &NodeGroupIamPolicy{})
 	pulumi.RegisterOutputType(NodeGroupIamPolicyOutput{})
 }

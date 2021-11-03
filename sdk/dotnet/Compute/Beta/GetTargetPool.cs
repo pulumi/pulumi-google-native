@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetTargetPoolResult> InvokeAsync(GetTargetPoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTargetPoolResult>("google-native:compute/beta:getTargetPool", args ?? new GetTargetPoolArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified target pool. Gets a list of available target pools by making a list() request.
+        /// </summary>
+        public static Output<GetTargetPoolResult> Invoke(GetTargetPoolInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTargetPoolResult>("google-native:compute/beta:getTargetPool", args ?? new GetTargetPoolInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string TargetPool { get; set; } = null!;
 
         public GetTargetPoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetTargetPoolInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        [Input("targetPool", required: true)]
+        public Input<string> TargetPool { get; set; } = null!;
+
+        public GetTargetPoolInvokeArgs()
         {
         }
     }

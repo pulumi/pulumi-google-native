@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Translate.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Translate.V3
         /// </summary>
         public static Task<GetGlossaryResult> InvokeAsync(GetGlossaryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGlossaryResult>("google-native:translate/v3:getGlossary", args ?? new GetGlossaryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
+        /// </summary>
+        public static Output<GetGlossaryResult> Invoke(GetGlossaryInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGlossaryResult>("google-native:translate/v3:getGlossary", args ?? new GetGlossaryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Translate.V3
         public string? Project { get; set; }
 
         public GetGlossaryArgs()
+        {
+        }
+    }
+
+    public sealed class GetGlossaryInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("glossaryId", required: true)]
+        public Input<string> GlossaryId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetGlossaryInvokeArgs()
         {
         }
     }

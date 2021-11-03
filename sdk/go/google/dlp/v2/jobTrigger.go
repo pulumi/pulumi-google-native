@@ -155,5 +155,6 @@ func (o JobTriggerOutput) ToJobTriggerOutputWithContext(ctx context.Context) Job
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerInput)(nil)).Elem(), &JobTrigger{})
 	pulumi.RegisterOutputType(JobTriggerOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetForwardingRuleResult> InvokeAsync(GetForwardingRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("google-native:compute/alpha:getForwardingRule", args ?? new GetForwardingRuleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified ForwardingRule resource.
+        /// </summary>
+        public static Output<GetForwardingRuleResult> Invoke(GetForwardingRuleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetForwardingRuleResult>("google-native:compute/alpha:getForwardingRule", args ?? new GetForwardingRuleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Region { get; set; } = null!;
 
         public GetForwardingRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetForwardingRuleInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("forwardingRule", required: true)]
+        public Input<string> ForwardingRule { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetForwardingRuleInvokeArgs()
         {
         }
     }

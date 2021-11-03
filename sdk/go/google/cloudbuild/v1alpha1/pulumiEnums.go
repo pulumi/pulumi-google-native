@@ -228,6 +228,9 @@ func (o WorkerPoolRegionsItemArrayOutput) Index(i pulumi.IntInput) WorkerPoolReg
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolRegionsItemInput)(nil)).Elem(), WorkerPoolRegionsItem("REGION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolRegionsItemPtrInput)(nil)).Elem(), WorkerPoolRegionsItem("REGION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolRegionsItemArrayInput)(nil)).Elem(), WorkerPoolRegionsItemArray{})
 	pulumi.RegisterOutputType(WorkerPoolRegionsItemOutput{})
 	pulumi.RegisterOutputType(WorkerPoolRegionsItemPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolRegionsItemArrayOutput{})

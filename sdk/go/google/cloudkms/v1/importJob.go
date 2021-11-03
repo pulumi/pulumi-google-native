@@ -151,5 +151,6 @@ func (o ImportJobOutput) ToImportJobOutputWithContext(ctx context.Context) Impor
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobInput)(nil)).Elem(), &ImportJob{})
 	pulumi.RegisterOutputType(ImportJobOutput{})
 }

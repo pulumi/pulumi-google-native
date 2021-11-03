@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public static Task<GetWebhookResult> InvokeAsync(GetWebhookArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWebhookResult>("google-native:dialogflow/v3beta1:getWebhook", args ?? new GetWebhookArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified webhook.
+        /// </summary>
+        public static Output<GetWebhookResult> Invoke(GetWebhookInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWebhookResult>("google-native:dialogflow/v3beta1:getWebhook", args ?? new GetWebhookInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public string WebhookId { get; set; } = null!;
 
         public GetWebhookArgs()
+        {
+        }
+    }
+
+    public sealed class GetWebhookInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("webhookId", required: true)]
+        public Input<string> WebhookId { get; set; } = null!;
+
+        public GetWebhookInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         /// </summary>
         public static Task<GetHubIamPolicyResult> InvokeAsync(GetHubIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHubIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getHubIamPolicy", args ?? new GetHubIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetHubIamPolicyResult> Invoke(GetHubIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHubIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getHubIamPolicy", args ?? new GetHubIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         public string? Project { get; set; }
 
         public GetHubIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetHubIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("hubId", required: true)]
+        public Input<string> HubId { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetHubIamPolicyInvokeArgs()
         {
         }
     }

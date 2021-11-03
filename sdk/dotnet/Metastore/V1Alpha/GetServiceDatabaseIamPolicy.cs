@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Metastore.V1Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         /// </summary>
         public static Task<GetServiceDatabaseIamPolicyResult> InvokeAsync(GetServiceDatabaseIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceDatabaseIamPolicyResult>("google-native:metastore/v1alpha:getServiceDatabaseIamPolicy", args ?? new GetServiceDatabaseIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetServiceDatabaseIamPolicyResult> Invoke(GetServiceDatabaseIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceDatabaseIamPolicyResult>("google-native:metastore/v1alpha:getServiceDatabaseIamPolicy", args ?? new GetServiceDatabaseIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public string ServiceId { get; set; } = null!;
 
         public GetServiceDatabaseIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceDatabaseIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("databaseId", required: true)]
+        public Input<string> DatabaseId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        public GetServiceDatabaseIamPolicyInvokeArgs()
         {
         }
     }

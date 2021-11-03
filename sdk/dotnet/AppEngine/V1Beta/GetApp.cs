@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.AppEngine.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("google-native:appengine/v1beta:getApp", args ?? new GetAppArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about an application.
+        /// </summary>
+        public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAppResult>("google-native:appengine/v1beta:getApp", args ?? new GetAppInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public string AppId { get; set; } = null!;
 
         public GetAppArgs()
+        {
+        }
+    }
+
+    public sealed class GetAppInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
+
+        public GetAppInvokeArgs()
         {
         }
     }

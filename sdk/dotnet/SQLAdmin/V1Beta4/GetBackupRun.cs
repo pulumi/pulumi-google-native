@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public static Task<GetBackupRunResult> InvokeAsync(GetBackupRunArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBackupRunResult>("google-native:sqladmin/v1beta4:getBackupRun", args ?? new GetBackupRunArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves a resource containing information about a backup run.
+        /// </summary>
+        public static Output<GetBackupRunResult> Invoke(GetBackupRunInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBackupRunResult>("google-native:sqladmin/v1beta4:getBackupRun", args ?? new GetBackupRunInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public string? Project { get; set; }
 
         public GetBackupRunArgs()
+        {
+        }
+    }
+
+    public sealed class GetBackupRunInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
+
+        [Input("instance", required: true)]
+        public Input<string> Instance { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetBackupRunInvokeArgs()
         {
         }
     }

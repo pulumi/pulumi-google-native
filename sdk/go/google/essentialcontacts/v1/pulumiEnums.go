@@ -1193,6 +1193,21 @@ func (in *organizationContactValidationStatePtr) ToOrganizationContactValidation
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContactNotificationCategorySubscriptionsItemInput)(nil)).Elem(), ContactNotificationCategorySubscriptionsItem("NOTIFICATION_CATEGORY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ContactNotificationCategorySubscriptionsItemPtrInput)(nil)).Elem(), ContactNotificationCategorySubscriptionsItem("NOTIFICATION_CATEGORY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ContactNotificationCategorySubscriptionsItemArrayInput)(nil)).Elem(), ContactNotificationCategorySubscriptionsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContactValidationStateInput)(nil)).Elem(), ContactValidationState("VALIDATION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ContactValidationStatePtrInput)(nil)).Elem(), ContactValidationState("VALIDATION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderContactNotificationCategorySubscriptionsItemInput)(nil)).Elem(), FolderContactNotificationCategorySubscriptionsItem("NOTIFICATION_CATEGORY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderContactNotificationCategorySubscriptionsItemPtrInput)(nil)).Elem(), FolderContactNotificationCategorySubscriptionsItem("NOTIFICATION_CATEGORY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderContactNotificationCategorySubscriptionsItemArrayInput)(nil)).Elem(), FolderContactNotificationCategorySubscriptionsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderContactValidationStateInput)(nil)).Elem(), FolderContactValidationState("VALIDATION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderContactValidationStatePtrInput)(nil)).Elem(), FolderContactValidationState("VALIDATION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationContactNotificationCategorySubscriptionsItemInput)(nil)).Elem(), OrganizationContactNotificationCategorySubscriptionsItem("NOTIFICATION_CATEGORY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationContactNotificationCategorySubscriptionsItemPtrInput)(nil)).Elem(), OrganizationContactNotificationCategorySubscriptionsItem("NOTIFICATION_CATEGORY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationContactNotificationCategorySubscriptionsItemArrayInput)(nil)).Elem(), OrganizationContactNotificationCategorySubscriptionsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationContactValidationStateInput)(nil)).Elem(), OrganizationContactValidationState("VALIDATION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationContactValidationStatePtrInput)(nil)).Elem(), OrganizationContactValidationState("VALIDATION_STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ContactNotificationCategorySubscriptionsItemOutput{})
 	pulumi.RegisterOutputType(ContactNotificationCategorySubscriptionsItemPtrOutput{})
 	pulumi.RegisterOutputType(ContactNotificationCategorySubscriptionsItemArrayOutput{})

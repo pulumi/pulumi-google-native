@@ -127,5 +127,6 @@ func (o StudyOutput) ToStudyOutputWithContext(ctx context.Context) StudyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StudyInput)(nil)).Elem(), &Study{})
 	pulumi.RegisterOutputType(StudyOutput{})
 }

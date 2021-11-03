@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetDeveloperResult> InvokeAsync(GetDeveloperArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDeveloperResult>("google-native:apigee/v1:getDeveloper", args ?? new GetDeveloperArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the developer details, including the developer's name, email address, apps, and other information. **Note**: The response includes only the first 100 developer apps.
+        /// </summary>
+        public static Output<GetDeveloperResult> Invoke(GetDeveloperInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDeveloperResult>("google-native:apigee/v1:getDeveloper", args ?? new GetDeveloperInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetDeveloperArgs()
+        {
+        }
+    }
+
+    public sealed class GetDeveloperInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("action")]
+        public Input<string>? Action { get; set; }
+
+        [Input("developerId", required: true)]
+        public Input<string> DeveloperId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetDeveloperInvokeArgs()
         {
         }
     }

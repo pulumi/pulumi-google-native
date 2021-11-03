@@ -121,5 +121,6 @@ func (o ProductSetOutput) ToProductSetOutputWithContext(ctx context.Context) Pro
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProductSetInput)(nil)).Elem(), &ProductSet{})
 	pulumi.RegisterOutputType(ProductSetOutput{})
 }

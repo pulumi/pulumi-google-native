@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Spanner.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public static Task<GetSessionResult> InvokeAsync(GetSessionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSessionResult>("google-native:spanner/v1:getSession", args ?? new GetSessionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a session. Returns `NOT_FOUND` if the session does not exist. This is mainly useful for determining whether a session is still alive.
+        /// </summary>
+        public static Output<GetSessionResult> Invoke(GetSessionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSessionResult>("google-native:spanner/v1:getSession", args ?? new GetSessionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public string SessionId { get; set; } = null!;
 
         public GetSessionArgs()
+        {
+        }
+    }
+
+    public sealed class GetSessionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("databaseId", required: true)]
+        public Input<string> DatabaseId { get; set; } = null!;
+
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("sessionId", required: true)]
+        public Input<string> SessionId { get; set; } = null!;
+
+        public GetSessionInvokeArgs()
         {
         }
     }

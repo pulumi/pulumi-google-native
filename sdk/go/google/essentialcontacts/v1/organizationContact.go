@@ -145,5 +145,6 @@ func (o OrganizationContactOutput) ToOrganizationContactOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationContactInput)(nil)).Elem(), &OrganizationContact{})
 	pulumi.RegisterOutputType(OrganizationContactOutput{})
 }

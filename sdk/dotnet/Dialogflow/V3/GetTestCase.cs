@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public static Task<GetTestCaseResult> InvokeAsync(GetTestCaseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTestCaseResult>("google-native:dialogflow/v3:getTestCase", args ?? new GetTestCaseArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a test case.
+        /// </summary>
+        public static Output<GetTestCaseResult> Invoke(GetTestCaseInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTestCaseResult>("google-native:dialogflow/v3:getTestCase", args ?? new GetTestCaseInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public string TestCaseId { get; set; } = null!;
 
         public GetTestCaseArgs()
+        {
+        }
+    }
+
+    public sealed class GetTestCaseInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("testCaseId", required: true)]
+        public Input<string> TestCaseId { get; set; } = null!;
+
+        public GetTestCaseInvokeArgs()
         {
         }
     }

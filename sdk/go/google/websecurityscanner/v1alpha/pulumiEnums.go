@@ -737,6 +737,15 @@ func (in *scanRunResultStatePtr) ToScanRunResultStatePtrOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigTargetPlatformsItemInput)(nil)).Elem(), ScanConfigTargetPlatformsItem("TARGET_PLATFORM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigTargetPlatformsItemPtrInput)(nil)).Elem(), ScanConfigTargetPlatformsItem("TARGET_PLATFORM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigTargetPlatformsItemArrayInput)(nil)).Elem(), ScanConfigTargetPlatformsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigUserAgentInput)(nil)).Elem(), ScanConfigUserAgent("USER_AGENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigUserAgentPtrInput)(nil)).Elem(), ScanConfigUserAgent("USER_AGENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanRunExecutionStateInput)(nil)).Elem(), ScanRunExecutionState("EXECUTION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanRunExecutionStatePtrInput)(nil)).Elem(), ScanRunExecutionState("EXECUTION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanRunResultStateInput)(nil)).Elem(), ScanRunResultState("RESULT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanRunResultStatePtrInput)(nil)).Elem(), ScanRunResultState("RESULT_STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ScanConfigTargetPlatformsItemOutput{})
 	pulumi.RegisterOutputType(ScanConfigTargetPlatformsItemPtrOutput{})
 	pulumi.RegisterOutputType(ScanConfigTargetPlatformsItemArrayOutput{})

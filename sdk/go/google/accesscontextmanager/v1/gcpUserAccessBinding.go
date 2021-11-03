@@ -129,5 +129,6 @@ func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingInput)(nil)).Elem(), &GcpUserAccessBinding{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingOutput{})
 }

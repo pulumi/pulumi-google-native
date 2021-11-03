@@ -349,6 +349,10 @@ func (in *manifestTypePtr) ToManifestTypePtrOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AnimationFadeFadeTypeInput)(nil)).Elem(), AnimationFadeFadeType("FADE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AnimationFadeFadeTypePtrInput)(nil)).Elem(), AnimationFadeFadeType("FADE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ManifestTypeInput)(nil)).Elem(), ManifestType("MANIFEST_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ManifestTypePtrInput)(nil)).Elem(), ManifestType("MANIFEST_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AnimationFadeFadeTypeOutput{})
 	pulumi.RegisterOutputType(AnimationFadeFadeTypePtrOutput{})
 	pulumi.RegisterOutputType(ManifestTypeOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetRegionBackendServiceResult> InvokeAsync(GetRegionBackendServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionBackendServiceResult>("google-native:compute/beta:getRegionBackendService", args ?? new GetRegionBackendServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified regional BackendService resource.
+        /// </summary>
+        public static Output<GetRegionBackendServiceResult> Invoke(GetRegionBackendServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionBackendServiceResult>("google-native:compute/beta:getRegionBackendService", args ?? new GetRegionBackendServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string Region { get; set; } = null!;
 
         public GetRegionBackendServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionBackendServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("backendService", required: true)]
+        public Input<string> BackendService { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetRegionBackendServiceInvokeArgs()
         {
         }
     }

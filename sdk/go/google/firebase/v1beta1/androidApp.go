@@ -131,5 +131,6 @@ func (o AndroidAppOutput) ToAndroidAppOutputWithContext(ctx context.Context) And
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AndroidAppInput)(nil)).Elem(), &AndroidApp{})
 	pulumi.RegisterOutputType(AndroidAppOutput{})
 }

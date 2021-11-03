@@ -520,6 +520,12 @@ func (in *scanConfigUserAgentPtr) ToScanConfigUserAgentPtrOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigExportToSecurityCommandCenterInput)(nil)).Elem(), ScanConfigExportToSecurityCommandCenter("EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigExportToSecurityCommandCenterPtrInput)(nil)).Elem(), ScanConfigExportToSecurityCommandCenter("EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigRiskLevelInput)(nil)).Elem(), ScanConfigRiskLevel("RISK_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigRiskLevelPtrInput)(nil)).Elem(), ScanConfigRiskLevel("RISK_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigUserAgentInput)(nil)).Elem(), ScanConfigUserAgent("USER_AGENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScanConfigUserAgentPtrInput)(nil)).Elem(), ScanConfigUserAgent("USER_AGENT_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ScanConfigExportToSecurityCommandCenterOutput{})
 	pulumi.RegisterOutputType(ScanConfigExportToSecurityCommandCenterPtrOutput{})
 	pulumi.RegisterOutputType(ScanConfigRiskLevelOutput{})

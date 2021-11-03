@@ -141,5 +141,6 @@ func (o InstructionOutput) ToInstructionOutputWithContext(ctx context.Context) I
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstructionInput)(nil)).Elem(), &Instruction{})
 	pulumi.RegisterOutputType(InstructionOutput{})
 }

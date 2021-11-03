@@ -132,5 +132,6 @@ func (o SharedflowOutput) ToSharedflowOutputWithContext(ctx context.Context) Sha
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SharedflowInput)(nil)).Elem(), &Sharedflow{})
 	pulumi.RegisterOutputType(SharedflowOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetRegionNotificationEndpointResult> InvokeAsync(GetRegionNotificationEndpointArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionNotificationEndpointResult>("google-native:compute/alpha:getRegionNotificationEndpoint", args ?? new GetRegionNotificationEndpointArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified NotificationEndpoint resource in the given region.
+        /// </summary>
+        public static Output<GetRegionNotificationEndpointResult> Invoke(GetRegionNotificationEndpointInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionNotificationEndpointResult>("google-native:compute/alpha:getRegionNotificationEndpoint", args ?? new GetRegionNotificationEndpointInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Region { get; set; } = null!;
 
         public GetRegionNotificationEndpointArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionNotificationEndpointInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("notificationEndpoint", required: true)]
+        public Input<string> NotificationEndpoint { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetRegionNotificationEndpointInvokeArgs()
         {
         }
     }

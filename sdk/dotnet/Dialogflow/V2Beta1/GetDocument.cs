@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public static Task<GetDocumentResult> InvokeAsync(GetDocumentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDocumentResult>("google-native:dialogflow/v2beta1:getDocument", args ?? new GetDocumentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified document. Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`.
+        /// </summary>
+        public static Output<GetDocumentResult> Invoke(GetDocumentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDocumentResult>("google-native:dialogflow/v2beta1:getDocument", args ?? new GetDocumentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public string? Project { get; set; }
 
         public GetDocumentArgs()
+        {
+        }
+    }
+
+    public sealed class GetDocumentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("documentId", required: true)]
+        public Input<string> DocumentId { get; set; } = null!;
+
+        [Input("knowledgeBaseId", required: true)]
+        public Input<string> KnowledgeBaseId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDocumentInvokeArgs()
         {
         }
     }

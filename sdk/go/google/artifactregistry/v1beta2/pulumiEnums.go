@@ -359,6 +359,10 @@ func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigVersionPolicyInput)(nil)).Elem(), MavenRepositoryConfigVersionPolicy("VERSION_POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigVersionPolicyPtrInput)(nil)).Elem(), MavenRepositoryConfigVersionPolicy("VERSION_POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryFormatInput)(nil)).Elem(), RepositoryFormat("FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryFormatPtrInput)(nil)).Elem(), RepositoryFormat("FORMAT_UNSPECIFIED"))
 	pulumi.RegisterOutputType(MavenRepositoryConfigVersionPolicyOutput{})
 	pulumi.RegisterOutputType(MavenRepositoryConfigVersionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryFormatOutput{})

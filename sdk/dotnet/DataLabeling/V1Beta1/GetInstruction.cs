@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         public static Task<GetInstructionResult> InvokeAsync(GetInstructionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstructionResult>("google-native:datalabeling/v1beta1:getInstruction", args ?? new GetInstructionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an instruction by resource name.
+        /// </summary>
+        public static Output<GetInstructionResult> Invoke(GetInstructionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstructionResult>("google-native:datalabeling/v1beta1:getInstruction", args ?? new GetInstructionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public string? Project { get; set; }
 
         public GetInstructionArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstructionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instructionId", required: true)]
+        public Input<string> InstructionId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInstructionInvokeArgs()
         {
         }
     }

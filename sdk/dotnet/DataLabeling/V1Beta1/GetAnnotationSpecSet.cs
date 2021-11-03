@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         public static Task<GetAnnotationSpecSetResult> InvokeAsync(GetAnnotationSpecSetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAnnotationSpecSetResult>("google-native:datalabeling/v1beta1:getAnnotationSpecSet", args ?? new GetAnnotationSpecSetArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an annotation spec set by resource name.
+        /// </summary>
+        public static Output<GetAnnotationSpecSetResult> Invoke(GetAnnotationSpecSetInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAnnotationSpecSetResult>("google-native:datalabeling/v1beta1:getAnnotationSpecSet", args ?? new GetAnnotationSpecSetInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public string? Project { get; set; }
 
         public GetAnnotationSpecSetArgs()
+        {
+        }
+    }
+
+    public sealed class GetAnnotationSpecSetInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("annotationSpecSetId", required: true)]
+        public Input<string> AnnotationSpecSetId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAnnotationSpecSetInvokeArgs()
         {
         }
     }

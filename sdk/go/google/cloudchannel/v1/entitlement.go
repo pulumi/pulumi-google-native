@@ -164,5 +164,6 @@ func (o EntitlementOutput) ToEntitlementOutputWithContext(ctx context.Context) E
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementInput)(nil)).Elem(), &Entitlement{})
 	pulumi.RegisterOutputType(EntitlementOutput{})
 }

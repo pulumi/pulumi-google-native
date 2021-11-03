@@ -132,5 +132,6 @@ func (o RegionClusterIamPolicyOutput) ToRegionClusterIamPolicyOutputWithContext(
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionClusterIamPolicyInput)(nil)).Elem(), &RegionClusterIamPolicy{})
 	pulumi.RegisterOutputType(RegionClusterIamPolicyOutput{})
 }

@@ -144,5 +144,6 @@ func (o DatasetHl7V2StoreIamPolicyOutput) ToDatasetHl7V2StoreIamPolicyOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetHl7V2StoreIamPolicyInput)(nil)).Elem(), &DatasetHl7V2StoreIamPolicy{})
 	pulumi.RegisterOutputType(DatasetHl7V2StoreIamPolicyOutput{})
 }

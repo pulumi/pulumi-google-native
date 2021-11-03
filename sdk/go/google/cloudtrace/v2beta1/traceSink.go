@@ -119,5 +119,6 @@ func (o TraceSinkOutput) ToTraceSinkOutputWithContext(ctx context.Context) Trace
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TraceSinkInput)(nil)).Elem(), &TraceSink{})
 	pulumi.RegisterOutputType(TraceSinkOutput{})
 }

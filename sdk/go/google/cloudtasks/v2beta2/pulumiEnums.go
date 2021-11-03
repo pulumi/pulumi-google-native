@@ -355,6 +355,10 @@ func (in *taskResponseViewPtr) ToTaskResponseViewPtrOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpRequestHttpMethodInput)(nil)).Elem(), AppEngineHttpRequestHttpMethod("HTTP_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpRequestHttpMethodPtrInput)(nil)).Elem(), AppEngineHttpRequestHttpMethod("HTTP_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskResponseViewInput)(nil)).Elem(), TaskResponseView("VIEW_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskResponseViewPtrInput)(nil)).Elem(), TaskResponseView("VIEW_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AppEngineHttpRequestHttpMethodOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpRequestHttpMethodPtrOutput{})
 	pulumi.RegisterOutputType(TaskResponseViewOutput{})

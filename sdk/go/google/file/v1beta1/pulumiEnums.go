@@ -906,6 +906,17 @@ func (in *nfsExportOptionsSquashModePtr) ToNfsExportOptionsSquashModePtrOutputWi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierPtrInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigConnectModeInput)(nil)).Elem(), NetworkConfigConnectMode("CONNECT_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigConnectModePtrInput)(nil)).Elem(), NetworkConfigConnectMode("CONNECT_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigModesItemInput)(nil)).Elem(), NetworkConfigModesItem("ADDRESS_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigModesItemPtrInput)(nil)).Elem(), NetworkConfigModesItem("ADDRESS_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigModesItemArrayInput)(nil)).Elem(), NetworkConfigModesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsAccessModeInput)(nil)).Elem(), NfsExportOptionsAccessMode("ACCESS_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsAccessModePtrInput)(nil)).Elem(), NfsExportOptionsAccessMode("ACCESS_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsSquashModeInput)(nil)).Elem(), NfsExportOptionsSquashMode("SQUASH_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsSquashModePtrInput)(nil)).Elem(), NfsExportOptionsSquashMode("SQUASH_MODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(InstanceTierOutput{})
 	pulumi.RegisterOutputType(InstanceTierPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigConnectModeOutput{})

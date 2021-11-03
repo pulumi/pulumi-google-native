@@ -144,5 +144,6 @@ func (o DatasetAnnotationStoreIamPolicyOutput) ToDatasetAnnotationStoreIamPolicy
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAnnotationStoreIamPolicyInput)(nil)).Elem(), &DatasetAnnotationStoreIamPolicy{})
 	pulumi.RegisterOutputType(DatasetAnnotationStoreIamPolicyOutput{})
 }

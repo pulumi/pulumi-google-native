@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DocumentAI.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         /// </summary>
         public static Task<GetProcessorResult> InvokeAsync(GetProcessorArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProcessorResult>("google-native:documentai/v1:getProcessor", args ?? new GetProcessorArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a processor detail.
+        /// </summary>
+        public static Output<GetProcessorResult> Invoke(GetProcessorInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProcessorResult>("google-native:documentai/v1:getProcessor", args ?? new GetProcessorInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         public string? Project { get; set; }
 
         public GetProcessorArgs()
+        {
+        }
+    }
+
+    public sealed class GetProcessorInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("processorId", required: true)]
+        public Input<string> ProcessorId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetProcessorInvokeArgs()
         {
         }
     }

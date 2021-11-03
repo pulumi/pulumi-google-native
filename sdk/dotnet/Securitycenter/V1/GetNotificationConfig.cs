@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Securitycenter.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// </summary>
         public static Task<GetNotificationConfigResult> InvokeAsync(GetNotificationConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationConfigResult>("google-native:securitycenter/v1:getNotificationConfig", args ?? new GetNotificationConfigArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a notification config.
+        /// </summary>
+        public static Output<GetNotificationConfigResult> Invoke(GetNotificationConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNotificationConfigResult>("google-native:securitycenter/v1:getNotificationConfig", args ?? new GetNotificationConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetNotificationConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetNotificationConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("notificationConfigId", required: true)]
+        public Input<string> NotificationConfigId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetNotificationConfigInvokeArgs()
         {
         }
     }

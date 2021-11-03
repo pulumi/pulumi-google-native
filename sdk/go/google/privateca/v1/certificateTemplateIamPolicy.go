@@ -139,5 +139,6 @@ func (o CertificateTemplateIamPolicyOutput) ToCertificateTemplateIamPolicyOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateIamPolicyInput)(nil)).Elem(), &CertificateTemplateIamPolicy{})
 	pulumi.RegisterOutputType(CertificateTemplateIamPolicyOutput{})
 }

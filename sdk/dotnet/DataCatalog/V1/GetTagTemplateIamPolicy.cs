@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataCatalog.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public static Task<GetTagTemplateIamPolicyResult> InvokeAsync(GetTagTemplateIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTagTemplateIamPolicyResult>("google-native:datacatalog/v1:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Tag templates - Entry groups Note: This method doesn't get policies from Google Cloud Platform resources ingested into Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
+        /// </summary>
+        public static Output<GetTagTemplateIamPolicyResult> Invoke(GetTagTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTagTemplateIamPolicyResult>("google-native:datacatalog/v1:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public string TagTemplateId { get; set; } = null!;
 
         public GetTagTemplateIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetTagTemplateIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("tagTemplateId", required: true)]
+        public Input<string> TagTemplateId { get; set; } = null!;
+
+        public GetTagTemplateIamPolicyInvokeArgs()
         {
         }
     }

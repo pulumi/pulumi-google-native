@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         public static Task<GetNoteResult> InvokeAsync(GetNoteArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNoteResult>("google-native:containeranalysis/v1beta1:getNote", args ?? new GetNoteArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified note.
+        /// </summary>
+        public static Output<GetNoteResult> Invoke(GetNoteInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNoteResult>("google-native:containeranalysis/v1beta1:getNote", args ?? new GetNoteInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public string? Project { get; set; }
 
         public GetNoteArgs()
+        {
+        }
+    }
+
+    public sealed class GetNoteInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("noteId", required: true)]
+        public Input<string> NoteId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetNoteInvokeArgs()
         {
         }
     }

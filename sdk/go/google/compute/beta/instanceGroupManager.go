@@ -207,5 +207,6 @@ func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInput)(nil)).Elem(), &InstanceGroupManager{})
 	pulumi.RegisterOutputType(InstanceGroupManagerOutput{})
 }

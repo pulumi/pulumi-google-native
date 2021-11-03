@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Monitoring.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public static Task<GetMetricDescriptorResult> InvokeAsync(GetMetricDescriptorArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMetricDescriptorResult>("google-native:monitoring/v3:getMetricDescriptor", args ?? new GetMetricDescriptorArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a single metric descriptor. This method does not require a Workspace.
+        /// </summary>
+        public static Output<GetMetricDescriptorResult> Invoke(GetMetricDescriptorInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMetricDescriptorResult>("google-native:monitoring/v3:getMetricDescriptor", args ?? new GetMetricDescriptorInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public string? Project { get; set; }
 
         public GetMetricDescriptorArgs()
+        {
+        }
+    }
+
+    public sealed class GetMetricDescriptorInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("metricDescriptorId", required: true)]
+        public Input<string> MetricDescriptorId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetMetricDescriptorInvokeArgs()
         {
         }
     }

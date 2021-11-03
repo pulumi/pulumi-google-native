@@ -149,5 +149,6 @@ func (o EntityTypeOutput) ToEntityTypeOutputWithContext(ctx context.Context) Ent
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeInput)(nil)).Elem(), &EntityType{})
 	pulumi.RegisterOutputType(EntityTypeOutput{})
 }

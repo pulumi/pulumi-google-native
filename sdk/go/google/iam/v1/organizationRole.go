@@ -151,5 +151,6 @@ func (o OrganizationRoleOutput) ToOrganizationRoleOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationRoleInput)(nil)).Elem(), &OrganizationRole{})
 	pulumi.RegisterOutputType(OrganizationRoleOutput{})
 }

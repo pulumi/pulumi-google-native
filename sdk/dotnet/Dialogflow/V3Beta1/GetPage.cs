@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public static Task<GetPageResult> InvokeAsync(GetPageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPageResult>("google-native:dialogflow/v3beta1:getPage", args ?? new GetPageArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified page.
+        /// </summary>
+        public static Output<GetPageResult> Invoke(GetPageInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPageResult>("google-native:dialogflow/v3beta1:getPage", args ?? new GetPageInvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +47,31 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public string? Project { get; set; }
 
         public GetPageArgs()
+        {
+        }
+    }
+
+    public sealed class GetPageInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
+
+        [Input("flowId", required: true)]
+        public Input<string> FlowId { get; set; } = null!;
+
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("pageId", required: true)]
+        public Input<string> PageId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetPageInvokeArgs()
         {
         }
     }

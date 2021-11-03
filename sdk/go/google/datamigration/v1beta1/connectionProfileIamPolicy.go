@@ -139,5 +139,6 @@ func (o ConnectionProfileIamPolicyOutput) ToConnectionProfileIamPolicyOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileIamPolicyInput)(nil)).Elem(), &ConnectionProfileIamPolicy{})
 	pulumi.RegisterOutputType(ConnectionProfileIamPolicyOutput{})
 }

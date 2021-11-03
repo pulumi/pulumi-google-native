@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Monitoring.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public static Task<GetAlertPolicyResult> InvokeAsync(GetAlertPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlertPolicyResult>("google-native:monitoring/v3:getAlertPolicy", args ?? new GetAlertPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a single alerting policy.
+        /// </summary>
+        public static Output<GetAlertPolicyResult> Invoke(GetAlertPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlertPolicyResult>("google-native:monitoring/v3:getAlertPolicy", args ?? new GetAlertPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public string? Project { get; set; }
 
         public GetAlertPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlertPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("alertPolicyId", required: true)]
+        public Input<string> AlertPolicyId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAlertPolicyInvokeArgs()
         {
         }
     }

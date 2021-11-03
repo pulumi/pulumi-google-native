@@ -395,6 +395,11 @@ func (o TaxonomyActivatedPolicyTypesItemArrayOutput) Index(i pulumi.IntInput) Ta
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypeInput)(nil)).Elem(), EntryType("ENTRY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypePtrInput)(nil)).Elem(), EntryType("ENTRY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItem("POLICY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemPtrInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItem("POLICY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemArrayInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItemArray{})
 	pulumi.RegisterOutputType(EntryTypeOutput{})
 	pulumi.RegisterOutputType(EntryTypePtrOutput{})
 	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemOutput{})

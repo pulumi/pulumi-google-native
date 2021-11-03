@@ -127,5 +127,6 @@ func (o AttestorOutput) ToAttestorOutputWithContext(ctx context.Context) Attesto
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorInput)(nil)).Elem(), &Attestor{})
 	pulumi.RegisterOutputType(AttestorOutput{})
 }

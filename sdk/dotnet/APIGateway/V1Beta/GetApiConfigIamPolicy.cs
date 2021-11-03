@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.APIGateway.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         /// </summary>
         public static Task<GetApiConfigIamPolicyResult> InvokeAsync(GetApiConfigIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApiConfigIamPolicyResult>("google-native:apigateway/v1beta:getApiConfigIamPolicy", args ?? new GetApiConfigIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetApiConfigIamPolicyResult> Invoke(GetApiConfigIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApiConfigIamPolicyResult>("google-native:apigateway/v1beta:getApiConfigIamPolicy", args ?? new GetApiConfigIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         public string? Project { get; set; }
 
         public GetApiConfigIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetApiConfigIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("apiId", required: true)]
+        public Input<string> ApiId { get; set; } = null!;
+
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetApiConfigIamPolicyInvokeArgs()
         {
         }
     }

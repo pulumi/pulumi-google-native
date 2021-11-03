@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DLP.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static Task<GetDeidentifyTemplateResult> InvokeAsync(GetDeidentifyTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDeidentifyTemplateResult>("google-native:dlp/v2:getDeidentifyTemplate", args ?? new GetDeidentifyTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+        /// </summary>
+        public static Output<GetDeidentifyTemplateResult> Invoke(GetDeidentifyTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDeidentifyTemplateResult>("google-native:dlp/v2:getDeidentifyTemplate", args ?? new GetDeidentifyTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DLP.V2
         public string? Project { get; set; }
 
         public GetDeidentifyTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetDeidentifyTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("deidentifyTemplateId", required: true)]
+        public Input<string> DeidentifyTemplateId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDeidentifyTemplateInvokeArgs()
         {
         }
     }

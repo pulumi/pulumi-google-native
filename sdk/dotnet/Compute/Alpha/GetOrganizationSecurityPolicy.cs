@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetOrganizationSecurityPolicyResult> InvokeAsync(GetOrganizationSecurityPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationSecurityPolicyResult>("google-native:compute/alpha:getOrganizationSecurityPolicy", args ?? new GetOrganizationSecurityPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// List all of the ordered rules present in a single specified policy.
+        /// </summary>
+        public static Output<GetOrganizationSecurityPolicyResult> Invoke(GetOrganizationSecurityPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationSecurityPolicyResult>("google-native:compute/alpha:getOrganizationSecurityPolicy", args ?? new GetOrganizationSecurityPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string SecurityPolicy { get; set; } = null!;
 
         public GetOrganizationSecurityPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationSecurityPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("securityPolicy", required: true)]
+        public Input<string> SecurityPolicy { get; set; } = null!;
+
+        public GetOrganizationSecurityPolicyInvokeArgs()
         {
         }
     }

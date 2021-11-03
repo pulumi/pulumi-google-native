@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.GameServices.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.GameServices.V1
         /// </summary>
         public static Task<GetGameServerDeploymentResult> InvokeAsync(GetGameServerDeploymentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGameServerDeploymentResult>("google-native:gameservices/v1:getGameServerDeployment", args ?? new GetGameServerDeploymentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single game server deployment.
+        /// </summary>
+        public static Output<GetGameServerDeploymentResult> Invoke(GetGameServerDeploymentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGameServerDeploymentResult>("google-native:gameservices/v1:getGameServerDeployment", args ?? new GetGameServerDeploymentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public string? Project { get; set; }
 
         public GetGameServerDeploymentArgs()
+        {
+        }
+    }
+
+    public sealed class GetGameServerDeploymentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("gameServerDeploymentId", required: true)]
+        public Input<string> GameServerDeploymentId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetGameServerDeploymentInvokeArgs()
         {
         }
     }

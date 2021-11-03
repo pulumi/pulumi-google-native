@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Iap.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Iap.V1Beta1
         /// </summary>
         public static Task<GetV1beta1IamPolicyResult> InvokeAsync(GetV1beta1IamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetV1beta1IamPolicyResult>("google-native:iap/v1beta1:getV1beta1IamPolicy", args ?? new GetV1beta1IamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
+        /// </summary>
+        public static Output<GetV1beta1IamPolicyResult> Invoke(GetV1beta1IamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetV1beta1IamPolicyResult>("google-native:iap/v1beta1:getV1beta1IamPolicy", args ?? new GetV1beta1IamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.Iap.V1Beta1
         public string V1beta1Id { get; set; } = null!;
 
         public GetV1beta1IamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetV1beta1IamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("v1beta1Id", required: true)]
+        public Input<string> V1beta1Id { get; set; } = null!;
+
+        public GetV1beta1IamPolicyInvokeArgs()
         {
         }
     }

@@ -134,5 +134,6 @@ func (o ConversationOutput) ToConversationOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationInput)(nil)).Elem(), &Conversation{})
 	pulumi.RegisterOutputType(ConversationOutput{})
 }

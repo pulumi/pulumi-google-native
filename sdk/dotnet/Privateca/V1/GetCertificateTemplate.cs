@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Privateca.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// </summary>
         public static Task<GetCertificateTemplateResult> InvokeAsync(GetCertificateTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateTemplateResult>("google-native:privateca/v1:getCertificateTemplate", args ?? new GetCertificateTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns a CertificateTemplate.
+        /// </summary>
+        public static Output<GetCertificateTemplateResult> Invoke(GetCertificateTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCertificateTemplateResult>("google-native:privateca/v1:getCertificateTemplate", args ?? new GetCertificateTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public string? Project { get; set; }
 
         public GetCertificateTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("certificateTemplateId", required: true)]
+        public Input<string> CertificateTemplateId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCertificateTemplateInvokeArgs()
         {
         }
     }

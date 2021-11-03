@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Monitoring.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public static Task<GetNotificationChannelResult> InvokeAsync(GetNotificationChannelArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationChannelResult>("google-native:monitoring/v3:getNotificationChannel", args ?? new GetNotificationChannelArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a single notification channel. The channel includes the relevant configuration details with which the channel was created. However, the response may truncate or omit passwords, API keys, or other private key matter and thus the response may not be 100% identical to the information that was supplied in the call to the create method.
+        /// </summary>
+        public static Output<GetNotificationChannelResult> Invoke(GetNotificationChannelInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNotificationChannelResult>("google-native:monitoring/v3:getNotificationChannel", args ?? new GetNotificationChannelInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public string? Project { get; set; }
 
         public GetNotificationChannelArgs()
+        {
+        }
+    }
+
+    public sealed class GetNotificationChannelInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("notificationChannelId", required: true)]
+        public Input<string> NotificationChannelId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetNotificationChannelInvokeArgs()
         {
         }
     }

@@ -187,5 +187,6 @@ func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolInput)(nil)).Elem(), &NodePool{})
 	pulumi.RegisterOutputType(NodePoolOutput{})
 }

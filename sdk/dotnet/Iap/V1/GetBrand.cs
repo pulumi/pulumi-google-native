@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Iap.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Iap.V1
         /// </summary>
         public static Task<GetBrandResult> InvokeAsync(GetBrandArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBrandResult>("google-native:iap/v1:getBrand", args ?? new GetBrandArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the OAuth brand of the project.
+        /// </summary>
+        public static Output<GetBrandResult> Invoke(GetBrandInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBrandResult>("google-native:iap/v1:getBrand", args ?? new GetBrandInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Iap.V1
         public string? Project { get; set; }
 
         public GetBrandArgs()
+        {
+        }
+    }
+
+    public sealed class GetBrandInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("brandId", required: true)]
+        public Input<string> BrandId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetBrandInvokeArgs()
         {
         }
     }

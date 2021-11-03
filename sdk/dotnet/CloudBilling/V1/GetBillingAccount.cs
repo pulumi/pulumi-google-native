@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudBilling.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         /// </summary>
         public static Task<GetBillingAccountResult> InvokeAsync(GetBillingAccountArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("google-native:cloudbilling/v1:getBillingAccount", args ?? new GetBillingAccountArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access).
+        /// </summary>
+        public static Output<GetBillingAccountResult> Invoke(GetBillingAccountInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBillingAccountResult>("google-native:cloudbilling/v1:getBillingAccount", args ?? new GetBillingAccountInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         public string BillingAccountId { get; set; } = null!;
 
         public GetBillingAccountArgs()
+        {
+        }
+    }
+
+    public sealed class GetBillingAccountInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("billingAccountId", required: true)]
+        public Input<string> BillingAccountId { get; set; } = null!;
+
+        public GetBillingAccountInvokeArgs()
         {
         }
     }

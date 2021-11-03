@@ -128,5 +128,6 @@ func (o OverrideOutput) ToOverrideOutputWithContext(ctx context.Context) Overrid
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OverrideInput)(nil)).Elem(), &Override{})
 	pulumi.RegisterOutputType(OverrideOutput{})
 }

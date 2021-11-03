@@ -150,5 +150,6 @@ func (o SubnetworkIamPolicyOutput) ToSubnetworkIamPolicyOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIamPolicyInput)(nil)).Elem(), &SubnetworkIamPolicy{})
 	pulumi.RegisterOutputType(SubnetworkIamPolicyOutput{})
 }

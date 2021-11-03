@@ -150,5 +150,6 @@ func (o InterconnectAttachmentIamPolicyOutput) ToInterconnectAttachmentIamPolicy
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentIamPolicyInput)(nil)).Elem(), &InterconnectAttachmentIamPolicy{})
 	pulumi.RegisterOutputType(InterconnectAttachmentIamPolicyOutput{})
 }

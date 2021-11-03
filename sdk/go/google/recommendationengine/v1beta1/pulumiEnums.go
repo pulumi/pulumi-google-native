@@ -184,6 +184,8 @@ func (in *googleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtr)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState("STOCK_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState("STOCK_STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput{})
 }

@@ -1294,6 +1294,22 @@ func (in *servicePerimeterPerimeterTypePtr) ToServicePerimeterPerimeterTypePtrOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelCombiningFunctionInput)(nil)).Elem(), BasicLevelCombiningFunction("AND"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelCombiningFunctionPtrInput)(nil)).Elem(), BasicLevelCombiningFunction("AND"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePolicyAllowedDeviceManagementLevelsItemInput)(nil)).Elem(), DevicePolicyAllowedDeviceManagementLevelsItem("MANAGEMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePolicyAllowedDeviceManagementLevelsItemPtrInput)(nil)).Elem(), DevicePolicyAllowedDeviceManagementLevelsItem("MANAGEMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePolicyAllowedDeviceManagementLevelsItemArrayInput)(nil)).Elem(), DevicePolicyAllowedDeviceManagementLevelsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePolicyAllowedEncryptionStatusesItemInput)(nil)).Elem(), DevicePolicyAllowedEncryptionStatusesItem("ENCRYPTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePolicyAllowedEncryptionStatusesItemPtrInput)(nil)).Elem(), DevicePolicyAllowedEncryptionStatusesItem("ENCRYPTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePolicyAllowedEncryptionStatusesItemArrayInput)(nil)).Elem(), DevicePolicyAllowedEncryptionStatusesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EgressFromIdentityTypeInput)(nil)).Elem(), EgressFromIdentityType("IDENTITY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EgressFromIdentityTypePtrInput)(nil)).Elem(), EgressFromIdentityType("IDENTITY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressFromIdentityTypeInput)(nil)).Elem(), IngressFromIdentityType("IDENTITY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressFromIdentityTypePtrInput)(nil)).Elem(), IngressFromIdentityType("IDENTITY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OsConstraintOsTypeInput)(nil)).Elem(), OsConstraintOsType("OS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OsConstraintOsTypePtrInput)(nil)).Elem(), OsConstraintOsType("OS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterPerimeterTypeInput)(nil)).Elem(), ServicePerimeterPerimeterType("PERIMETER_TYPE_REGULAR"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterPerimeterTypePtrInput)(nil)).Elem(), ServicePerimeterPerimeterType("PERIMETER_TYPE_REGULAR"))
 	pulumi.RegisterOutputType(BasicLevelCombiningFunctionOutput{})
 	pulumi.RegisterOutputType(BasicLevelCombiningFunctionPtrOutput{})
 	pulumi.RegisterOutputType(DevicePolicyAllowedDeviceManagementLevelsItemOutput{})

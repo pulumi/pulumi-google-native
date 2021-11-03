@@ -353,6 +353,10 @@ func (in *indexStateEnumPtr) ToIndexStateEnumPtrOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1beta1IndexFieldModeInput)(nil)).Elem(), GoogleFirestoreAdminV1beta1IndexFieldMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1beta1IndexFieldModePtrInput)(nil)).Elem(), GoogleFirestoreAdminV1beta1IndexFieldMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexStateEnumInput)(nil)).Elem(), IndexStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexStateEnumPtrInput)(nil)).Elem(), IndexStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1beta1IndexFieldModeOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput{})
 	pulumi.RegisterOutputType(IndexStateEnumOutput{})

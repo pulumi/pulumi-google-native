@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetInterconnectResult> InvokeAsync(GetInterconnectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectResult>("google-native:compute/alpha:getInterconnect", args ?? new GetInterconnectArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified interconnect. Get a list of available interconnects by making a list() request.
+        /// </summary>
+        public static Output<GetInterconnectResult> Invoke(GetInterconnectInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInterconnectResult>("google-native:compute/alpha:getInterconnect", args ?? new GetInterconnectInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string? Project { get; set; }
 
         public GetInterconnectArgs()
+        {
+        }
+    }
+
+    public sealed class GetInterconnectInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("interconnect", required: true)]
+        public Input<string> Interconnect { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInterconnectInvokeArgs()
         {
         }
     }

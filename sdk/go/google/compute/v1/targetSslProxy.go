@@ -145,5 +145,6 @@ func (o TargetSslProxyOutput) ToTargetSslProxyOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSslProxyInput)(nil)).Elem(), &TargetSslProxy{})
 	pulumi.RegisterOutputType(TargetSslProxyOutput{})
 }

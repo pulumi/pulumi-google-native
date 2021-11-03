@@ -154,5 +154,6 @@ func (o FutureReservationOutput) ToFutureReservationOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FutureReservationInput)(nil)).Elem(), &FutureReservation{})
 	pulumi.RegisterOutputType(FutureReservationOutput{})
 }

@@ -217,5 +217,6 @@ func (o DefaultObjectAccessControlOutput) ToDefaultObjectAccessControlOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlInput)(nil)).Elem(), &DefaultObjectAccessControl{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlOutput{})
 }

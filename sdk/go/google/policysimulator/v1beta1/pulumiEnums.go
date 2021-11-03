@@ -178,6 +178,8 @@ func (in *googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtr) ToGoogleClo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource("LOG_SOURCE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource("LOG_SOURCE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput{})
 }

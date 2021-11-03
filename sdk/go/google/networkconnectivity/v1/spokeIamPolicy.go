@@ -139,5 +139,6 @@ func (o SpokeIamPolicyOutput) ToSpokeIamPolicyOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeIamPolicyInput)(nil)).Elem(), &SpokeIamPolicy{})
 	pulumi.RegisterOutputType(SpokeIamPolicyOutput{})
 }

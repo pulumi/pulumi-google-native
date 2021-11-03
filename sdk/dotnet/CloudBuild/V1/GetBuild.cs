@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudBuild.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public static Task<GetBuildResult> InvokeAsync(GetBuildArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBuildResult>("google-native:cloudbuild/v1:getBuild", args ?? new GetBuildArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.
+        /// </summary>
+        public static Output<GetBuildResult> Invoke(GetBuildInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBuildResult>("google-native:cloudbuild/v1:getBuild", args ?? new GetBuildInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public string ProjectId { get; set; } = null!;
 
         public GetBuildArgs()
+        {
+        }
+    }
+
+    public sealed class GetBuildInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("buildId", required: true)]
+        public Input<string> BuildId { get; set; } = null!;
+
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
+        public GetBuildInvokeArgs()
         {
         }
     }

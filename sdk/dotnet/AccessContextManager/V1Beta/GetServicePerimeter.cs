@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         /// </summary>
         public static Task<GetServicePerimeterResult> InvokeAsync(GetServicePerimeterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServicePerimeterResult>("google-native:accesscontextmanager/v1beta:getServicePerimeter", args ?? new GetServicePerimeterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a Service Perimeter by resource name.
+        /// </summary>
+        public static Output<GetServicePerimeterResult> Invoke(GetServicePerimeterInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServicePerimeterResult>("google-native:accesscontextmanager/v1beta:getServicePerimeter", args ?? new GetServicePerimeterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         public string ServicePerimeterId { get; set; } = null!;
 
         public GetServicePerimeterArgs()
+        {
+        }
+    }
+
+    public sealed class GetServicePerimeterInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("accessPolicyId", required: true)]
+        public Input<string> AccessPolicyId { get; set; } = null!;
+
+        [Input("servicePerimeterId", required: true)]
+        public Input<string> ServicePerimeterId { get; set; } = null!;
+
+        public GetServicePerimeterInvokeArgs()
         {
         }
     }

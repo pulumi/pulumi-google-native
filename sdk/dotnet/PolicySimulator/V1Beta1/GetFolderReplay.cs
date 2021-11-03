@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
         /// </summary>
         public static Task<GetFolderReplayResult> InvokeAsync(GetFolderReplayArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFolderReplayResult>("google-native:policysimulator/v1beta1:getFolderReplay", args ?? new GetFolderReplayArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
+        /// </summary>
+        public static Output<GetFolderReplayResult> Invoke(GetFolderReplayInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFolderReplayResult>("google-native:policysimulator/v1beta1:getFolderReplay", args ?? new GetFolderReplayInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
         public string ReplayId { get; set; } = null!;
 
         public GetFolderReplayArgs()
+        {
+        }
+    }
+
+    public sealed class GetFolderReplayInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("folderId", required: true)]
+        public Input<string> FolderId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("replayId", required: true)]
+        public Input<string> ReplayId { get; set; } = null!;
+
+        public GetFolderReplayInvokeArgs()
         {
         }
     }

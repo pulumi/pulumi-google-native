@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetNodeGroupResult> InvokeAsync(GetNodeGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeGroupResult>("google-native:compute/beta:getNodeGroup", args ?? new GetNodeGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request. Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead.
+        /// </summary>
+        public static Output<GetNodeGroupResult> Invoke(GetNodeGroupInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodeGroupResult>("google-native:compute/beta:getNodeGroup", args ?? new GetNodeGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string Zone { get; set; } = null!;
 
         public GetNodeGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodeGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("nodeGroup", required: true)]
+        public Input<string> NodeGroup { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
+
+        public GetNodeGroupInvokeArgs()
         {
         }
     }

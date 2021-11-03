@@ -167,5 +167,6 @@ func (o ConnectivityTestOutput) ToConnectivityTestOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestInput)(nil)).Elem(), &ConnectivityTest{})
 	pulumi.RegisterOutputType(ConnectivityTestOutput{})
 }

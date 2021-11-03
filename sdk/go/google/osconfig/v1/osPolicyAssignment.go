@@ -168,5 +168,6 @@ func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInput)(nil)).Elem(), &OsPolicyAssignment{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentOutput{})
 }

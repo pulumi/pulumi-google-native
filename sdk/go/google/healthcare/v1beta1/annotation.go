@@ -150,5 +150,6 @@ func (o AnnotationOutput) ToAnnotationOutputWithContext(ctx context.Context) Ann
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationInput)(nil)).Elem(), &Annotation{})
 	pulumi.RegisterOutputType(AnnotationOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BinaryAuthorization.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         /// </summary>
         public static Task<GetPolicyIamPolicyResult> InvokeAsync(GetPolicyIamPolicyArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyIamPolicyResult>("google-native:binaryauthorization/v1:getPolicyIamPolicy", args ?? new GetPolicyIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetPolicyIamPolicyResult> Invoke(GetPolicyIamPolicyInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPolicyIamPolicyResult>("google-native:binaryauthorization/v1:getPolicyIamPolicy", args ?? new GetPolicyIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         public string? Project { get; set; }
 
         public GetPolicyIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetPolicyIamPolicyInvokeArgs()
         {
         }
     }

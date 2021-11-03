@@ -860,6 +860,16 @@ func (in *phraseMatcherTypePtr) ToPhraseMatcherTypePtrOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationMediumInput)(nil)).Elem(), ConversationMedium("MEDIUM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationMediumPtrInput)(nil)).Elem(), ConversationMedium("MEDIUM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium("MEDIUM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium("MEDIUM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType("PHRASE_MATCH_RULE_GROUP_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType("PHRASE_MATCH_RULE_GROUP_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PhraseMatcherRoleMatchInput)(nil)).Elem(), PhraseMatcherRoleMatch("ROLE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PhraseMatcherRoleMatchPtrInput)(nil)).Elem(), PhraseMatcherRoleMatch("ROLE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PhraseMatcherTypeInput)(nil)).Elem(), PhraseMatcherType("PHRASE_MATCHER_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PhraseMatcherTypePtrInput)(nil)).Elem(), PhraseMatcherType("PHRASE_MATCHER_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ConversationMediumOutput{})
 	pulumi.RegisterOutputType(ConversationMediumPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput{})

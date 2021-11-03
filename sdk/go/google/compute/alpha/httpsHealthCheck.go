@@ -169,5 +169,6 @@ func (o HttpsHealthCheckOutput) ToHttpsHealthCheckOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpsHealthCheckInput)(nil)).Elem(), &HttpsHealthCheck{})
 	pulumi.RegisterOutputType(HttpsHealthCheckOutput{})
 }

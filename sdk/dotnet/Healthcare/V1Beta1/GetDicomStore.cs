@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static Task<GetDicomStoreResult> InvokeAsync(GetDicomStoreArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDicomStoreResult>("google-native:healthcare/v1beta1:getDicomStore", args ?? new GetDicomStoreArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified DICOM store.
+        /// </summary>
+        public static Output<GetDicomStoreResult> Invoke(GetDicomStoreInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDicomStoreResult>("google-native:healthcare/v1beta1:getDicomStore", args ?? new GetDicomStoreInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public string? Project { get; set; }
 
         public GetDicomStoreArgs()
+        {
+        }
+    }
+
+    public sealed class GetDicomStoreInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("dicomStoreId", required: true)]
+        public Input<string> DicomStoreId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDicomStoreInvokeArgs()
         {
         }
     }

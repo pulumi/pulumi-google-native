@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetApiProductResult> InvokeAsync(GetApiProductArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApiProductResult>("google-native:apigee/v1:getApiProduct", args ?? new GetApiProductArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets configuration details for an API product. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via the UI or the API. View the list of API products to verify the internal name.
+        /// </summary>
+        public static Output<GetApiProductResult> Invoke(GetApiProductInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApiProductResult>("google-native:apigee/v1:getApiProduct", args ?? new GetApiProductInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetApiProductArgs()
+        {
+        }
+    }
+
+    public sealed class GetApiProductInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("apiproductId", required: true)]
+        public Input<string> ApiproductId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetApiProductInvokeArgs()
         {
         }
     }

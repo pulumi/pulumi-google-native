@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.TPU.V1Alpha1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         /// </summary>
         public static Task<GetNodeResult> InvokeAsync(GetNodeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeResult>("google-native:tpu/v1alpha1:getNode", args ?? new GetNodeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the details of a node.
+        /// </summary>
+        public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodeResult>("google-native:tpu/v1alpha1:getNode", args ?? new GetNodeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         public string? Project { get; set; }
 
         public GetNodeArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodeInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("nodeId", required: true)]
+        public Input<string> NodeId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetNodeInvokeArgs()
         {
         }
     }

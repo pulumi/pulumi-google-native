@@ -150,5 +150,6 @@ func (o NodeTemplateIamPolicyOutput) ToNodeTemplateIamPolicyOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateIamPolicyInput)(nil)).Elem(), &NodeTemplateIamPolicy{})
 	pulumi.RegisterOutputType(NodeTemplateIamPolicyOutput{})
 }

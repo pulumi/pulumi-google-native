@@ -691,6 +691,14 @@ func (in *httpsTriggerSecurityLevelPtr) ToHttpsTriggerSecurityLevelPtrOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIngressSettingsInput)(nil)).Elem(), FunctionIngressSettings("INGRESS_SETTINGS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIngressSettingsPtrInput)(nil)).Elem(), FunctionIngressSettings("INGRESS_SETTINGS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionVpcConnectorEgressSettingsInput)(nil)).Elem(), FunctionVpcConnectorEgressSettings("VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionVpcConnectorEgressSettingsPtrInput)(nil)).Elem(), FunctionVpcConnectorEgressSettings("VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpsTriggerSecurityLevelInput)(nil)).Elem(), HttpsTriggerSecurityLevel("SECURITY_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpsTriggerSecurityLevelPtrInput)(nil)).Elem(), HttpsTriggerSecurityLevel("SECURITY_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(FunctionIngressSettingsOutput{})

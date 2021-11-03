@@ -177,6 +177,8 @@ func (in *dynamicGroupQueryResourceTypePtr) ToDynamicGroupQueryResourceTypePtrOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResourceTypeInput)(nil)).Elem(), DynamicGroupQueryResourceType("RESOURCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResourceTypePtrInput)(nil)).Elem(), DynamicGroupQueryResourceType("RESOURCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(DynamicGroupQueryResourceTypeOutput{})
 	pulumi.RegisterOutputType(DynamicGroupQueryResourceTypePtrOutput{})
 }

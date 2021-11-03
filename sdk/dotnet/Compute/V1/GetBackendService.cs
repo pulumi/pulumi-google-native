@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetBackendServiceResult> InvokeAsync(GetBackendServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceResult>("google-native:compute/v1:getBackendService", args ?? new GetBackendServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified BackendService resource. Gets a list of available backend services.
+        /// </summary>
+        public static Output<GetBackendServiceResult> Invoke(GetBackendServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBackendServiceResult>("google-native:compute/v1:getBackendService", args ?? new GetBackendServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string? Project { get; set; }
 
         public GetBackendServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetBackendServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("backendService", required: true)]
+        public Input<string> BackendService { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetBackendServiceInvokeArgs()
         {
         }
     }

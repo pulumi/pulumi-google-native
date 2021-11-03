@@ -162,5 +162,6 @@ func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationInput)(nil)).Elem(), &Notification{})
 	pulumi.RegisterOutputType(NotificationOutput{})
 }

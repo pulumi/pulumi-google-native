@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// </summary>
         public static Task<GetExecutionResult> InvokeAsync(GetExecutionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetExecutionResult>("google-native:toolresults/v1beta3:getExecution", args ?? new GetExecutionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an Execution. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution does not exist
+        /// </summary>
+        public static Output<GetExecutionResult> Invoke(GetExecutionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetExecutionResult>("google-native:toolresults/v1beta3:getExecution", args ?? new GetExecutionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public string? Project { get; set; }
 
         public GetExecutionArgs()
+        {
+        }
+    }
+
+    public sealed class GetExecutionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("executionId", required: true)]
+        public Input<string> ExecutionId { get; set; } = null!;
+
+        [Input("historyId", required: true)]
+        public Input<string> HistoryId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetExecutionInvokeArgs()
         {
         }
     }

@@ -251,5 +251,6 @@ func (o SubnetworkOutput) ToSubnetworkOutputWithContext(ctx context.Context) Sub
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkInput)(nil)).Elem(), &Subnetwork{})
 	pulumi.RegisterOutputType(SubnetworkOutput{})
 }

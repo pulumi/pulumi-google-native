@@ -132,5 +132,6 @@ func (o RegionWorkflowTemplateIamPolicyOutput) ToRegionWorkflowTemplateIamPolicy
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionWorkflowTemplateIamPolicyInput)(nil)).Elem(), &RegionWorkflowTemplateIamPolicy{})
 	pulumi.RegisterOutputType(RegionWorkflowTemplateIamPolicyOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudBuild.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public static Task<GetGithubEnterpriseConfigResult> InvokeAsync(GetGithubEnterpriseConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGithubEnterpriseConfigResult>("google-native:cloudbuild/v1:getGithubEnterpriseConfig", args ?? new GetGithubEnterpriseConfigArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieve a GitHubEnterpriseConfig.
+        /// </summary>
+        public static Output<GetGithubEnterpriseConfigResult> Invoke(GetGithubEnterpriseConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGithubEnterpriseConfigResult>("google-native:cloudbuild/v1:getGithubEnterpriseConfig", args ?? new GetGithubEnterpriseConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public string? ProjectId { get; set; }
 
         public GetGithubEnterpriseConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetGithubEnterpriseConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("configId")]
+        public Input<string>? ConfigId { get; set; }
+
+        [Input("githubEnterpriseConfigId", required: true)]
+        public Input<string> GithubEnterpriseConfigId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        public GetGithubEnterpriseConfigInvokeArgs()
         {
         }
     }

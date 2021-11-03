@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         /// </summary>
         public static Task<GetCatalogItemResult> InvokeAsync(GetCatalogItemArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogItemResult>("google-native:recommendationengine/v1beta1:getCatalogItem", args ?? new GetCatalogItemArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a specific catalog item.
+        /// </summary>
+        public static Output<GetCatalogItemResult> Invoke(GetCatalogItemInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCatalogItemResult>("google-native:recommendationengine/v1beta1:getCatalogItem", args ?? new GetCatalogItemInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         public string? Project { get; set; }
 
         public GetCatalogItemArgs()
+        {
+        }
+    }
+
+    public sealed class GetCatalogItemInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("catalogId", required: true)]
+        public Input<string> CatalogId { get; set; } = null!;
+
+        [Input("catalogItemId", required: true)]
+        public Input<string> CatalogItemId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCatalogItemInvokeArgs()
         {
         }
     }

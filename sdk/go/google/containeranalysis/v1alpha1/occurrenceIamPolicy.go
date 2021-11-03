@@ -127,5 +127,6 @@ func (o OccurrenceIamPolicyOutput) ToOccurrenceIamPolicyOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OccurrenceIamPolicyInput)(nil)).Elem(), &OccurrenceIamPolicy{})
 	pulumi.RegisterOutputType(OccurrenceIamPolicyOutput{})
 }

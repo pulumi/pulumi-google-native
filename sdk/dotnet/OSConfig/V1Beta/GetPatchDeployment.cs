@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.OSConfig.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         /// </summary>
         public static Task<GetPatchDeploymentResult> InvokeAsync(GetPatchDeploymentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPatchDeploymentResult>("google-native:osconfig/v1beta:getPatchDeployment", args ?? new GetPatchDeploymentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get an OS Config patch deployment.
+        /// </summary>
+        public static Output<GetPatchDeploymentResult> Invoke(GetPatchDeploymentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPatchDeploymentResult>("google-native:osconfig/v1beta:getPatchDeployment", args ?? new GetPatchDeploymentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         public string? Project { get; set; }
 
         public GetPatchDeploymentArgs()
+        {
+        }
+    }
+
+    public sealed class GetPatchDeploymentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("patchDeploymentId", required: true)]
+        public Input<string> PatchDeploymentId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetPatchDeploymentInvokeArgs()
         {
         }
     }

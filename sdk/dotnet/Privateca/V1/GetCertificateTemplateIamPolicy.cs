@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Privateca.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// </summary>
         public static Task<GetCertificateTemplateIamPolicyResult> InvokeAsync(GetCertificateTemplateIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateTemplateIamPolicyResult>("google-native:privateca/v1:getCertificateTemplateIamPolicy", args ?? new GetCertificateTemplateIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetCertificateTemplateIamPolicyResult> Invoke(GetCertificateTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCertificateTemplateIamPolicyResult>("google-native:privateca/v1:getCertificateTemplateIamPolicy", args ?? new GetCertificateTemplateIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public string? Project { get; set; }
 
         public GetCertificateTemplateIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateTemplateIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("certificateTemplateId", required: true)]
+        public Input<string> CertificateTemplateId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCertificateTemplateIamPolicyInvokeArgs()
         {
         }
     }

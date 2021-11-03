@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Securitycenter.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// </summary>
         public static Task<GetOrganizationSourceIamPolicyResult> InvokeAsync(GetOrganizationSourceIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationSourceIamPolicyResult>("google-native:securitycenter/v1:getOrganizationSourceIamPolicy", args ?? new GetOrganizationSourceIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy on the specified Source.
+        /// </summary>
+        public static Output<GetOrganizationSourceIamPolicyResult> Invoke(GetOrganizationSourceIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationSourceIamPolicyResult>("google-native:securitycenter/v1:getOrganizationSourceIamPolicy", args ?? new GetOrganizationSourceIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public string SourceId { get; set; } = null!;
 
         public GetOrganizationSourceIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationSourceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("sourceId", required: true)]
+        public Input<string> SourceId { get; set; } = null!;
+
+        public GetOrganizationSourceIamPolicyInvokeArgs()
         {
         }
     }

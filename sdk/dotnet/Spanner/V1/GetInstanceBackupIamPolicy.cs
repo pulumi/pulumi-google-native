@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Spanner.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public static Task<GetInstanceBackupIamPolicyResult> InvokeAsync(GetInstanceBackupIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceBackupIamPolicyResult>("google-native:spanner/v1:getInstanceBackupIamPolicy", args ?? new GetInstanceBackupIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource.
+        /// </summary>
+        public static Output<GetInstanceBackupIamPolicyResult> Invoke(GetInstanceBackupIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceBackupIamPolicyResult>("google-native:spanner/v1:getInstanceBackupIamPolicy", args ?? new GetInstanceBackupIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public string? Project { get; set; }
 
         public GetInstanceBackupIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceBackupIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("backupId", required: true)]
+        public Input<string> BackupId { get; set; } = null!;
+
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInstanceBackupIamPolicyInvokeArgs()
         {
         }
     }

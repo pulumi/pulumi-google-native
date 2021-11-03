@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         /// </summary>
         public static Task<GetDomainBackupIamPolicyResult> InvokeAsync(GetDomainBackupIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainBackupIamPolicyResult>("google-native:managedidentities/v1alpha1:getDomainBackupIamPolicy", args ?? new GetDomainBackupIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetDomainBackupIamPolicyResult> Invoke(GetDomainBackupIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainBackupIamPolicyResult>("google-native:managedidentities/v1alpha1:getDomainBackupIamPolicy", args ?? new GetDomainBackupIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         public string? Project { get; set; }
 
         public GetDomainBackupIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainBackupIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("backupId", required: true)]
+        public Input<string> BackupId { get; set; } = null!;
+
+        [Input("domainId", required: true)]
+        public Input<string> DomainId { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDomainBackupIamPolicyInvokeArgs()
         {
         }
     }

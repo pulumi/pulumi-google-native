@@ -186,5 +186,6 @@ func (o DeveloperOutput) ToDeveloperOutputWithContext(ctx context.Context) Devel
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperInput)(nil)).Elem(), &Developer{})
 	pulumi.RegisterOutputType(DeveloperOutput{})
 }

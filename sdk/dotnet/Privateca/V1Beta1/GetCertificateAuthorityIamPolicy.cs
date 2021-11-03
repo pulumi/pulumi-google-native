@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Privateca.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// </summary>
         public static Task<GetCertificateAuthorityIamPolicyResult> InvokeAsync(GetCertificateAuthorityIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateAuthorityIamPolicyResult>("google-native:privateca/v1beta1:getCertificateAuthorityIamPolicy", args ?? new GetCertificateAuthorityIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetCertificateAuthorityIamPolicyResult> Invoke(GetCertificateAuthorityIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCertificateAuthorityIamPolicyResult>("google-native:privateca/v1beta1:getCertificateAuthorityIamPolicy", args ?? new GetCertificateAuthorityIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public string? Project { get; set; }
 
         public GetCertificateAuthorityIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateAuthorityIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("certificateAuthorityId", required: true)]
+        public Input<string> CertificateAuthorityId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCertificateAuthorityIamPolicyInvokeArgs()
         {
         }
     }

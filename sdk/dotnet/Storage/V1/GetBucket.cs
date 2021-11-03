@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Storage.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public static Task<GetBucketResult> InvokeAsync(GetBucketArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBucketResult>("google-native:storage/v1:getBucket", args ?? new GetBucketArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns metadata for the specified bucket.
+        /// </summary>
+        public static Output<GetBucketResult> Invoke(GetBucketInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBucketResult>("google-native:storage/v1:getBucket", args ?? new GetBucketInvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +47,31 @@ namespace Pulumi.GoogleNative.Storage.V1
         public string? UserProject { get; set; }
 
         public GetBucketArgs()
+        {
+        }
+    }
+
+    public sealed class GetBucketInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
+
+        [Input("ifMetagenerationMatch")]
+        public Input<string>? IfMetagenerationMatch { get; set; }
+
+        [Input("ifMetagenerationNotMatch")]
+        public Input<string>? IfMetagenerationNotMatch { get; set; }
+
+        [Input("projection")]
+        public Input<string>? Projection { get; set; }
+
+        [Input("provisionalUserProject")]
+        public Input<string>? ProvisionalUserProject { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
+
+        public GetBucketInvokeArgs()
         {
         }
     }

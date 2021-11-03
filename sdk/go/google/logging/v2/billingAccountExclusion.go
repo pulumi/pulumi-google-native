@@ -136,5 +136,6 @@ func (o BillingAccountExclusionOutput) ToBillingAccountExclusionOutputWithContex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountExclusionInput)(nil)).Elem(), &BillingAccountExclusion{})
 	pulumi.RegisterOutputType(BillingAccountExclusionOutput{})
 }

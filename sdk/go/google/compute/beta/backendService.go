@@ -273,5 +273,6 @@ func (o BackendServiceOutput) ToBackendServiceOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceInput)(nil)).Elem(), &BackendService{})
 	pulumi.RegisterOutputType(BackendServiceOutput{})
 }

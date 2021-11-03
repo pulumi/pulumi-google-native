@@ -130,5 +130,6 @@ func (o ProviderNoteIamPolicyOutput) ToProviderNoteIamPolicyOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderNoteIamPolicyInput)(nil)).Elem(), &ProviderNoteIamPolicy{})
 	pulumi.RegisterOutputType(ProviderNoteIamPolicyOutput{})
 }

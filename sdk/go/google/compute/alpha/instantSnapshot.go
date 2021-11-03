@@ -157,5 +157,6 @@ func (o InstantSnapshotOutput) ToInstantSnapshotOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstantSnapshotInput)(nil)).Elem(), &InstantSnapshot{})
 	pulumi.RegisterOutputType(InstantSnapshotOutput{})
 }

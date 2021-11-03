@@ -143,5 +143,6 @@ func (o FirewallPolicyIamPolicyOutput) ToFirewallPolicyIamPolicyOutputWithContex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyIamPolicyInput)(nil)).Elem(), &FirewallPolicyIamPolicy{})
 	pulumi.RegisterOutputType(FirewallPolicyIamPolicyOutput{})
 }

@@ -137,5 +137,6 @@ func (o ConnectivityTestIamPolicyOutput) ToConnectivityTestIamPolicyOutputWithCo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestIamPolicyInput)(nil)).Elem(), &ConnectivityTestIamPolicy{})
 	pulumi.RegisterOutputType(ConnectivityTestIamPolicyOutput{})
 }

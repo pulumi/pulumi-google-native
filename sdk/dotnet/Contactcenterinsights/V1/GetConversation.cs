@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public static Task<GetConversationResult> InvokeAsync(GetConversationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConversationResult>("google-native:contactcenterinsights/v1:getConversation", args ?? new GetConversationArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a conversation.
+        /// </summary>
+        public static Output<GetConversationResult> Invoke(GetConversationInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConversationResult>("google-native:contactcenterinsights/v1:getConversation", args ?? new GetConversationInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public string? View { get; set; }
 
         public GetConversationArgs()
+        {
+        }
+    }
+
+    public sealed class GetConversationInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("conversationId", required: true)]
+        public Input<string> ConversationId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
+        public GetConversationInvokeArgs()
         {
         }
     }

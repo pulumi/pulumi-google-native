@@ -145,5 +145,6 @@ func (o NetworkFirewallPolicyIamPolicyOutput) ToNetworkFirewallPolicyIamPolicyOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkFirewallPolicyIamPolicyInput)(nil)).Elem(), &NetworkFirewallPolicyIamPolicy{})
 	pulumi.RegisterOutputType(NetworkFirewallPolicyIamPolicyOutput{})
 }

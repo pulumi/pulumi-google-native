@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Privateca.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// </summary>
         public static Task<GetCaPoolResult> InvokeAsync(GetCaPoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCaPoolResult>("google-native:privateca/v1:getCaPool", args ?? new GetCaPoolArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns a CaPool.
+        /// </summary>
+        public static Output<GetCaPoolResult> Invoke(GetCaPoolInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCaPoolResult>("google-native:privateca/v1:getCaPool", args ?? new GetCaPoolInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public string? Project { get; set; }
 
         public GetCaPoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetCaPoolInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("caPoolId", required: true)]
+        public Input<string> CaPoolId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCaPoolInvokeArgs()
         {
         }
     }

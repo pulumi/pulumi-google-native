@@ -147,5 +147,6 @@ func (o FeedbackMessageOutput) ToFeedbackMessageOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FeedbackMessageInput)(nil)).Elem(), &FeedbackMessage{})
 	pulumi.RegisterOutputType(FeedbackMessageOutput{})
 }

@@ -165,5 +165,6 @@ func (o RouterOutput) ToRouterOutputWithContext(ctx context.Context) RouterOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInput)(nil)).Elem(), &Router{})
 	pulumi.RegisterOutputType(RouterOutput{})
 }

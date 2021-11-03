@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// </summary>
         public static Task<GetTransferConfigResult> InvokeAsync(GetTransferConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransferConfigResult>("google-native:bigquerydatatransfer/v1:getTransferConfig", args ?? new GetTransferConfigArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns information about a data transfer config.
+        /// </summary>
+        public static Output<GetTransferConfigResult> Invoke(GetTransferConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTransferConfigResult>("google-native:bigquerydatatransfer/v1:getTransferConfig", args ?? new GetTransferConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         public string TransferConfigId { get; set; } = null!;
 
         public GetTransferConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransferConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("transferConfigId", required: true)]
+        public Input<string> TransferConfigId { get; set; } = null!;
+
+        public GetTransferConfigInvokeArgs()
         {
         }
     }

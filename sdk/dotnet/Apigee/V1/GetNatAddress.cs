@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetNatAddressResult> InvokeAsync(GetNatAddressArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNatAddressResult>("google-native:apigee/v1:getNatAddress", args ?? new GetNatAddressArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.
+        /// </summary>
+        public static Output<GetNatAddressResult> Invoke(GetNatAddressInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNatAddressResult>("google-native:apigee/v1:getNatAddress", args ?? new GetNatAddressInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetNatAddressArgs()
+        {
+        }
+    }
+
+    public sealed class GetNatAddressInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("natAddressId", required: true)]
+        public Input<string> NatAddressId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetNatAddressInvokeArgs()
         {
         }
     }

@@ -129,5 +129,6 @@ func (o HistoryOutput) ToHistoryOutputWithContext(ctx context.Context) HistoryOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HistoryInput)(nil)).Elem(), &History{})
 	pulumi.RegisterOutputType(HistoryOutput{})
 }

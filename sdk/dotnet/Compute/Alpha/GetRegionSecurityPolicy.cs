@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetRegionSecurityPolicyResult> InvokeAsync(GetRegionSecurityPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionSecurityPolicyResult>("google-native:compute/alpha:getRegionSecurityPolicy", args ?? new GetRegionSecurityPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// List all of the ordered rules present in a single specified policy.
+        /// </summary>
+        public static Output<GetRegionSecurityPolicyResult> Invoke(GetRegionSecurityPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionSecurityPolicyResult>("google-native:compute/alpha:getRegionSecurityPolicy", args ?? new GetRegionSecurityPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string SecurityPolicy { get; set; } = null!;
 
         public GetRegionSecurityPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionSecurityPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        [Input("securityPolicy", required: true)]
+        public Input<string> SecurityPolicy { get; set; } = null!;
+
+        public GetRegionSecurityPolicyInvokeArgs()
         {
         }
     }

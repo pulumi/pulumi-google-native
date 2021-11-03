@@ -139,5 +139,6 @@ func (o AuthorizationPolicyIamPolicyOutput) ToAuthorizationPolicyIamPolicyOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyIamPolicyInput)(nil)).Elem(), &AuthorizationPolicyIamPolicy{})
 	pulumi.RegisterOutputType(AuthorizationPolicyIamPolicyOutput{})
 }

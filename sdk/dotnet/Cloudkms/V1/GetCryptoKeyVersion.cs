@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Cloudkms.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static Task<GetCryptoKeyVersionResult> InvokeAsync(GetCryptoKeyVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCryptoKeyVersionResult>("google-native:cloudkms/v1:getCryptoKeyVersion", args ?? new GetCryptoKeyVersionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns metadata for a given CryptoKeyVersion.
+        /// </summary>
+        public static Output<GetCryptoKeyVersionResult> Invoke(GetCryptoKeyVersionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCryptoKeyVersionResult>("google-native:cloudkms/v1:getCryptoKeyVersion", args ?? new GetCryptoKeyVersionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public string? Project { get; set; }
 
         public GetCryptoKeyVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetCryptoKeyVersionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("cryptoKeyId", required: true)]
+        public Input<string> CryptoKeyId { get; set; } = null!;
+
+        [Input("cryptoKeyVersionId", required: true)]
+        public Input<string> CryptoKeyVersionId { get; set; } = null!;
+
+        [Input("keyRingId", required: true)]
+        public Input<string> KeyRingId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCryptoKeyVersionInvokeArgs()
         {
         }
     }

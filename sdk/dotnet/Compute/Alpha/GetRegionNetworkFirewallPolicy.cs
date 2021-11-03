@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetRegionNetworkFirewallPolicyResult> InvokeAsync(GetRegionNetworkFirewallPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionNetworkFirewallPolicyResult>("google-native:compute/alpha:getRegionNetworkFirewallPolicy", args ?? new GetRegionNetworkFirewallPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified network firewall policy.
+        /// </summary>
+        public static Output<GetRegionNetworkFirewallPolicyResult> Invoke(GetRegionNetworkFirewallPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionNetworkFirewallPolicyResult>("google-native:compute/alpha:getRegionNetworkFirewallPolicy", args ?? new GetRegionNetworkFirewallPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Region { get; set; } = null!;
 
         public GetRegionNetworkFirewallPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionNetworkFirewallPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("firewallPolicy", required: true)]
+        public Input<string> FirewallPolicy { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetRegionNetworkFirewallPolicyInvokeArgs()
         {
         }
     }

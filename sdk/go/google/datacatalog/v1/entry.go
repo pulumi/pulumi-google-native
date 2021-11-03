@@ -219,5 +219,6 @@ func (o EntryOutput) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryInput)(nil)).Elem(), &Entry{})
 	pulumi.RegisterOutputType(EntryOutput{})
 }

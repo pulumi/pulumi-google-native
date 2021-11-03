@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         /// </summary>
         public static Task<GetChannelResult> InvokeAsync(GetChannelArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetChannelResult>("google-native:firebasehosting/v1beta1:getChannel", args ?? new GetChannelArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves information for the specified channel of the specified site.
+        /// </summary>
+        public static Output<GetChannelResult> Invoke(GetChannelInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetChannelResult>("google-native:firebasehosting/v1beta1:getChannel", args ?? new GetChannelInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         public string SiteId { get; set; } = null!;
 
         public GetChannelArgs()
+        {
+        }
+    }
+
+    public sealed class GetChannelInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("channelId", required: true)]
+        public Input<string> ChannelId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("siteId", required: true)]
+        public Input<string> SiteId { get; set; } = null!;
+
+        public GetChannelInvokeArgs()
         {
         }
     }

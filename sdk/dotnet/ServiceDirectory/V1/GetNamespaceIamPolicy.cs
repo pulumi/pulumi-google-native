@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ServiceDirectory.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         /// </summary>
         public static Task<GetNamespaceIamPolicyResult> InvokeAsync(GetNamespaceIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceIamPolicyResult>("google-native:servicedirectory/v1:getNamespaceIamPolicy", args ?? new GetNamespaceIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the IAM Policy for a resource (namespace or service only).
+        /// </summary>
+        public static Output<GetNamespaceIamPolicyResult> Invoke(GetNamespaceIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNamespaceIamPolicyResult>("google-native:servicedirectory/v1:getNamespaceIamPolicy", args ?? new GetNamespaceIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         public string? Project { get; set; }
 
         public GetNamespaceIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetNamespaceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetNamespaceIamPolicyInvokeArgs()
         {
         }
     }
