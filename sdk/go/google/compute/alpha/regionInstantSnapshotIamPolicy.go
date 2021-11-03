@@ -150,5 +150,6 @@ func (o RegionInstantSnapshotIamPolicyOutput) ToRegionInstantSnapshotIamPolicyOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstantSnapshotIamPolicyInput)(nil)).Elem(), &RegionInstantSnapshotIamPolicy{})
 	pulumi.RegisterOutputType(RegionInstantSnapshotIamPolicyOutput{})
 }

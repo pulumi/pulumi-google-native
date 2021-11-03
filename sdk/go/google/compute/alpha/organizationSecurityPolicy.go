@@ -175,5 +175,6 @@ func (o OrganizationSecurityPolicyOutput) ToOrganizationSecurityPolicyOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSecurityPolicyInput)(nil)).Elem(), &OrganizationSecurityPolicy{})
 	pulumi.RegisterOutputType(OrganizationSecurityPolicyOutput{})
 }

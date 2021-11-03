@@ -161,5 +161,6 @@ func (o TargetPoolOutput) ToTargetPoolOutputWithContext(ctx context.Context) Tar
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetPoolInput)(nil)).Elem(), &TargetPool{})
 	pulumi.RegisterOutputType(TargetPoolOutput{})
 }

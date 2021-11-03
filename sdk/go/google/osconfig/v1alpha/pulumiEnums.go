@@ -860,6 +860,16 @@ func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOSPol
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyModeInput)(nil)).Elem(), OSPolicyMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyModePtrInput)(nil)).Elem(), OSPolicyMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceExecResourceExecInterpreterInput)(nil)).Elem(), OSPolicyResourceExecResourceExecInterpreter("INTERPRETER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceExecResourceExecInterpreterPtrInput)(nil)).Elem(), OSPolicyResourceExecResourceExecInterpreter("INTERPRETER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileResourceStateInput)(nil)).Elem(), OSPolicyResourceFileResourceState("DESIRED_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceFileResourceStatePtrInput)(nil)).Elem(), OSPolicyResourceFileResourceState("DESIRED_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceDesiredStateInput)(nil)).Elem(), OSPolicyResourcePackageResourceDesiredState("DESIRED_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourcePackageResourceDesiredStatePtrInput)(nil)).Elem(), OSPolicyResourcePackageResourceDesiredState("DESIRED_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceAptRepositoryArchiveType("ARCHIVE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrInput)(nil)).Elem(), OSPolicyResourceRepositoryResourceAptRepositoryArchiveType("ARCHIVE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(OSPolicyModeOutput{})
 	pulumi.RegisterOutputType(OSPolicyModePtrOutput{})
 	pulumi.RegisterOutputType(OSPolicyResourceExecResourceExecInterpreterOutput{})

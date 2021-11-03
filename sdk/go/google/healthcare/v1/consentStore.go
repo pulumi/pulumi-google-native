@@ -138,5 +138,6 @@ func (o ConsentStoreOutput) ToConsentStoreOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreInput)(nil)).Elem(), &ConsentStore{})
 	pulumi.RegisterOutputType(ConsentStoreOutput{})
 }

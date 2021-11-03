@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudChannel.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public static Task<GetCustomerResult> InvokeAsync(GetCustomerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerResult>("google-native:cloudchannel/v1:getCustomer", args ?? new GetCustomerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.
+        /// </summary>
+        public static Output<GetCustomerResult> Invoke(GetCustomerInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCustomerResult>("google-native:cloudchannel/v1:getCustomer", args ?? new GetCustomerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public string CustomerId { get; set; } = null!;
 
         public GetCustomerArgs()
+        {
+        }
+    }
+
+    public sealed class GetCustomerInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
+        [Input("channelPartnerLinkId", required: true)]
+        public Input<string> ChannelPartnerLinkId { get; set; } = null!;
+
+        [Input("customerId", required: true)]
+        public Input<string> CustomerId { get; set; } = null!;
+
+        public GetCustomerInvokeArgs()
         {
         }
     }

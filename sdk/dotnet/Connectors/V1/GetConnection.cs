@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Connectors.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("google-native:connectors/v1:getConnection", args ?? new GetConnectionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single Connection.
+        /// </summary>
+        public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("google-native:connectors/v1:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public string? View { get; set; }
 
         public GetConnectionArgs()
+        {
+        }
+    }
+
+    public sealed class GetConnectionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("connectionId", required: true)]
+        public Input<string> ConnectionId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
+        public GetConnectionInvokeArgs()
         {
         }
     }

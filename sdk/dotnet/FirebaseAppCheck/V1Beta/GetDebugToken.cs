@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
         /// </summary>
         public static Task<GetDebugTokenResult> InvokeAsync(GetDebugTokenArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDebugTokenResult>("google-native:firebaseappcheck/v1beta:getDebugToken", args ?? new GetDebugTokenArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified DebugToken. For security reasons, the `token` field is never populated in the response.
+        /// </summary>
+        public static Output<GetDebugTokenResult> Invoke(GetDebugTokenInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDebugTokenResult>("google-native:firebaseappcheck/v1beta:getDebugToken", args ?? new GetDebugTokenInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
         public string? Project { get; set; }
 
         public GetDebugTokenArgs()
+        {
+        }
+    }
+
+    public sealed class GetDebugTokenInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
+
+        [Input("debugTokenId", required: true)]
+        public Input<string> DebugTokenId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDebugTokenInvokeArgs()
         {
         }
     }

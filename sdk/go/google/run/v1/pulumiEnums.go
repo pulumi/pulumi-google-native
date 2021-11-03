@@ -521,6 +521,12 @@ func (in *resourceRecordTypePtr) ToResourceRecordTypePtrOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecCertificateModeInput)(nil)).Elem(), DomainMappingSpecCertificateMode("CERTIFICATE_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecCertificateModePtrInput)(nil)).Elem(), DomainMappingSpecCertificateMode("CERTIFICATE_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRecordTypeInput)(nil)).Elem(), ResourceRecordType("RECORD_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRecordTypePtrInput)(nil)).Elem(), ResourceRecordType("RECORD_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(DomainMappingSpecCertificateModeOutput{})

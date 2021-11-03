@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.FirebaseRules.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         /// </summary>
         public static Task<GetReleaseResult> InvokeAsync(GetReleaseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReleaseResult>("google-native:firebaserules/v1:getRelease", args ?? new GetReleaseArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a `Release` by name.
+        /// </summary>
+        public static Output<GetReleaseResult> Invoke(GetReleaseInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetReleaseResult>("google-native:firebaserules/v1:getRelease", args ?? new GetReleaseInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         public string ReleaseId { get; set; } = null!;
 
         public GetReleaseArgs()
+        {
+        }
+    }
+
+    public sealed class GetReleaseInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("releaseId", required: true)]
+        public Input<string> ReleaseId { get; set; } = null!;
+
+        public GetReleaseInvokeArgs()
         {
         }
     }

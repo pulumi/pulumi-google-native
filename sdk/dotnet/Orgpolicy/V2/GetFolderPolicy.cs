@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Orgpolicy.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// </summary>
         public static Task<GetFolderPolicyResult> InvokeAsync(GetFolderPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFolderPolicyResult>("google-native:orgpolicy/v2:getFolderPolicy", args ?? new GetFolderPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+        /// </summary>
+        public static Output<GetFolderPolicyResult> Invoke(GetFolderPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFolderPolicyResult>("google-native:orgpolicy/v2:getFolderPolicy", args ?? new GetFolderPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public string PolicyId { get; set; } = null!;
 
         public GetFolderPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetFolderPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("folderId", required: true)]
+        public Input<string> FolderId { get; set; } = null!;
+
+        [Input("policyId", required: true)]
+        public Input<string> PolicyId { get; set; } = null!;
+
+        public GetFolderPolicyInvokeArgs()
         {
         }
     }

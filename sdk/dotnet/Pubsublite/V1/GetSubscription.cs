@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Pubsublite.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         /// </summary>
         public static Task<GetSubscriptionResult> InvokeAsync(GetSubscriptionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionResult>("google-native:pubsublite/v1:getSubscription", args ?? new GetSubscriptionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the subscription configuration.
+        /// </summary>
+        public static Output<GetSubscriptionResult> Invoke(GetSubscriptionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSubscriptionResult>("google-native:pubsublite/v1:getSubscription", args ?? new GetSubscriptionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         public string SubscriptionId { get; set; } = null!;
 
         public GetSubscriptionArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubscriptionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("subscriptionId", required: true)]
+        public Input<string> SubscriptionId { get; set; } = null!;
+
+        public GetSubscriptionInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         /// </summary>
         public static Task<GetVariableResult> InvokeAsync(GetVariableArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVariableResult>("google-native:runtimeconfig/v1beta1:getVariable", args ?? new GetVariableArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about a single variable.
+        /// </summary>
+        public static Output<GetVariableResult> Invoke(GetVariableInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVariableResult>("google-native:runtimeconfig/v1beta1:getVariable", args ?? new GetVariableInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         public string VariableId { get; set; } = null!;
 
         public GetVariableArgs()
+        {
+        }
+    }
+
+    public sealed class GetVariableInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("variableId", required: true)]
+        public Input<string> VariableId { get; set; } = null!;
+
+        public GetVariableInvokeArgs()
         {
         }
     }

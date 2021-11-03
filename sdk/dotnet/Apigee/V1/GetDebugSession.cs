@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetDebugSessionResult> InvokeAsync(GetDebugSessionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDebugSessionResult>("google-native:apigee/v1:getDebugSession", args ?? new GetDebugSessionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves a debug session.
+        /// </summary>
+        public static Output<GetDebugSessionResult> Invoke(GetDebugSessionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDebugSessionResult>("google-native:apigee/v1:getDebugSession", args ?? new GetDebugSessionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string RevisionId { get; set; } = null!;
 
         public GetDebugSessionArgs()
+        {
+        }
+    }
+
+    public sealed class GetDebugSessionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("apiId", required: true)]
+        public Input<string> ApiId { get; set; } = null!;
+
+        [Input("debugsessionId", required: true)]
+        public Input<string> DebugsessionId { get; set; } = null!;
+
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("revisionId", required: true)]
+        public Input<string> RevisionId { get; set; } = null!;
+
+        public GetDebugSessionInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkConnectivity.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public static Task<GetHubResult> InvokeAsync(GetHubArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHubResult>("google-native:networkconnectivity/v1:getHub", args ?? new GetHubArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details about the specified hub.
+        /// </summary>
+        public static Output<GetHubResult> Invoke(GetHubInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHubResult>("google-native:networkconnectivity/v1:getHub", args ?? new GetHubInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public string? Project { get; set; }
 
         public GetHubArgs()
+        {
+        }
+    }
+
+    public sealed class GetHubInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("hubId", required: true)]
+        public Input<string> HubId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetHubInvokeArgs()
         {
         }
     }

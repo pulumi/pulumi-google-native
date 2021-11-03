@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Cloudkms.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static Task<GetImportJobResult> InvokeAsync(GetImportJobArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImportJobResult>("google-native:cloudkms/v1:getImportJob", args ?? new GetImportJobArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns metadata for a given ImportJob.
+        /// </summary>
+        public static Output<GetImportJobResult> Invoke(GetImportJobInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetImportJobResult>("google-native:cloudkms/v1:getImportJob", args ?? new GetImportJobInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public string? Project { get; set; }
 
         public GetImportJobArgs()
+        {
+        }
+    }
+
+    public sealed class GetImportJobInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("importJobId", required: true)]
+        public Input<string> ImportJobId { get; set; } = null!;
+
+        [Input("keyRingId", required: true)]
+        public Input<string> KeyRingId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetImportJobInvokeArgs()
         {
         }
     }

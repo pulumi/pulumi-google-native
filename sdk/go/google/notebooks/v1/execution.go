@@ -140,5 +140,6 @@ func (o ExecutionOutput) ToExecutionOutputWithContext(ctx context.Context) Execu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionInput)(nil)).Elem(), &Execution{})
 	pulumi.RegisterOutputType(ExecutionOutput{})
 }

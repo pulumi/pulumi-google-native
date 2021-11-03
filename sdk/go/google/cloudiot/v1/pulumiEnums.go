@@ -1375,6 +1375,22 @@ func (in *registryLogLevelPtr) ToRegistryLogLevelPtrOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLogLevelInput)(nil)).Elem(), DeviceLogLevel("LOG_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLogLevelPtrInput)(nil)).Elem(), DeviceLogLevel("LOG_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayConfigGatewayAuthMethodInput)(nil)).Elem(), GatewayConfigGatewayAuthMethod("GATEWAY_AUTH_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayConfigGatewayAuthMethodPtrInput)(nil)).Elem(), GatewayConfigGatewayAuthMethod("GATEWAY_AUTH_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayConfigGatewayTypeInput)(nil)).Elem(), GatewayConfigGatewayType("GATEWAY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayConfigGatewayTypePtrInput)(nil)).Elem(), GatewayConfigGatewayType("GATEWAY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpConfigHttpEnabledStateInput)(nil)).Elem(), HttpConfigHttpEnabledState("HTTP_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpConfigHttpEnabledStatePtrInput)(nil)).Elem(), HttpConfigHttpEnabledState("HTTP_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MqttConfigMqttEnabledStateInput)(nil)).Elem(), MqttConfigMqttEnabledState("MQTT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MqttConfigMqttEnabledStatePtrInput)(nil)).Elem(), MqttConfigMqttEnabledState("MQTT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyCertificateFormatInput)(nil)).Elem(), PublicKeyCertificateFormat("UNSPECIFIED_PUBLIC_KEY_CERTIFICATE_FORMAT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyCertificateFormatPtrInput)(nil)).Elem(), PublicKeyCertificateFormat("UNSPECIFIED_PUBLIC_KEY_CERTIFICATE_FORMAT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyCredentialFormatInput)(nil)).Elem(), PublicKeyCredentialFormat("UNSPECIFIED_PUBLIC_KEY_FORMAT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyCredentialFormatPtrInput)(nil)).Elem(), PublicKeyCredentialFormat("UNSPECIFIED_PUBLIC_KEY_FORMAT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryLogLevelInput)(nil)).Elem(), RegistryLogLevel("LOG_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryLogLevelPtrInput)(nil)).Elem(), RegistryLogLevel("LOG_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterOutputType(DeviceLogLevelOutput{})
 	pulumi.RegisterOutputType(DeviceLogLevelPtrOutput{})
 	pulumi.RegisterOutputType(GatewayConfigGatewayAuthMethodOutput{})

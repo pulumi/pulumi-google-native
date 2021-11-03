@@ -263,5 +263,6 @@ func (o RegionDiskOutput) ToRegionDiskOutputWithContext(ctx context.Context) Reg
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskInput)(nil)).Elem(), &RegionDisk{})
 	pulumi.RegisterOutputType(RegionDiskOutput{})
 }

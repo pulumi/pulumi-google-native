@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Monitoring.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public static Task<GetServiceLevelObjectiveResult> InvokeAsync(GetServiceLevelObjectiveArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceLevelObjectiveResult>("google-native:monitoring/v3:getServiceLevelObjective", args ?? new GetServiceLevelObjectiveArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a ServiceLevelObjective by name.
+        /// </summary>
+        public static Output<GetServiceLevelObjectiveResult> Invoke(GetServiceLevelObjectiveInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceLevelObjectiveResult>("google-native:monitoring/v3:getServiceLevelObjective", args ?? new GetServiceLevelObjectiveInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public string? View { get; set; }
 
         public GetServiceLevelObjectiveArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceLevelObjectiveInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        [Input("serviceLevelObjectiveId", required: true)]
+        public Input<string> ServiceLevelObjectiveId { get; set; } = null!;
+
+        [Input("v3Id", required: true)]
+        public Input<string> V3Id { get; set; } = null!;
+
+        [Input("v3Id1", required: true)]
+        public Input<string> V3Id1 { get; set; } = null!;
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
+        public GetServiceLevelObjectiveInvokeArgs()
         {
         }
     }

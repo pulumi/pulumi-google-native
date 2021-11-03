@@ -522,6 +522,12 @@ func (in *instanceTypePtr) ToInstanceTypePtrOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorAcceleratorTypeInput)(nil)).Elem(), AcceleratorAcceleratorType("ACCELERATOR_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorAcceleratorTypePtrInput)(nil)).Elem(), AcceleratorAcceleratorType("ACCELERATOR_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypeInput)(nil)).Elem(), InstanceType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypePtrInput)(nil)).Elem(), InstanceType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AcceleratorAcceleratorTypeOutput{})
 	pulumi.RegisterOutputType(AcceleratorAcceleratorTypePtrOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})

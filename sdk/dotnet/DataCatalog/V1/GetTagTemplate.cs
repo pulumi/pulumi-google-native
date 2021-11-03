@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataCatalog.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public static Task<GetTagTemplateResult> InvokeAsync(GetTagTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTagTemplateResult>("google-native:datacatalog/v1:getTagTemplate", args ?? new GetTagTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a tag template.
+        /// </summary>
+        public static Output<GetTagTemplateResult> Invoke(GetTagTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTagTemplateResult>("google-native:datacatalog/v1:getTagTemplate", args ?? new GetTagTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public string TagTemplateId { get; set; } = null!;
 
         public GetTagTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetTagTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("tagTemplateId", required: true)]
+        public Input<string> TagTemplateId { get; set; } = null!;
+
+        public GetTagTemplateInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Datamigration.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public static Task<GetMigrationJobResult> InvokeAsync(GetMigrationJobArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMigrationJobResult>("google-native:datamigration/v1:getMigrationJob", args ?? new GetMigrationJobArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single migration job.
+        /// </summary>
+        public static Output<GetMigrationJobResult> Invoke(GetMigrationJobInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMigrationJobResult>("google-native:datamigration/v1:getMigrationJob", args ?? new GetMigrationJobInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public string? Project { get; set; }
 
         public GetMigrationJobArgs()
+        {
+        }
+    }
+
+    public sealed class GetMigrationJobInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("migrationJobId", required: true)]
+        public Input<string> MigrationJobId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetMigrationJobInvokeArgs()
         {
         }
     }

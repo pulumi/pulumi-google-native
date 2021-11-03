@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         /// </summary>
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("google-native:artifactregistry/v1beta1:getTag", args ?? new GetTagArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a tag.
+        /// </summary>
+        public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTagResult>("google-native:artifactregistry/v1beta1:getTag", args ?? new GetTagInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public string TagId { get; set; } = null!;
 
         public GetTagArgs()
+        {
+        }
+    }
+
+    public sealed class GetTagInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("packageId", required: true)]
+        public Input<string> PackageId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("repositoryId", required: true)]
+        public Input<string> RepositoryId { get; set; } = null!;
+
+        [Input("tagId", required: true)]
+        public Input<string> TagId { get; set; } = null!;
+
+        public GetTagInvokeArgs()
         {
         }
     }

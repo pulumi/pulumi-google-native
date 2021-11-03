@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// </summary>
         public static Task<GetEntryGroupResult> InvokeAsync(GetEntryGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEntryGroupResult>("google-native:datacatalog/v1beta1:getEntryGroup", args ?? new GetEntryGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an EntryGroup.
+        /// </summary>
+        public static Output<GetEntryGroupResult> Invoke(GetEntryGroupInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEntryGroupResult>("google-native:datacatalog/v1beta1:getEntryGroup", args ?? new GetEntryGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public string? ReadMask { get; set; }
 
         public GetEntryGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetEntryGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("entryGroupId", required: true)]
+        public Input<string> EntryGroupId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("readMask")]
+        public Input<string>? ReadMask { get; set; }
+
+        public GetEntryGroupInvokeArgs()
         {
         }
     }

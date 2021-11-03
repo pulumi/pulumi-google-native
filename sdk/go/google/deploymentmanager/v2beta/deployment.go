@@ -145,5 +145,6 @@ func (o DeploymentOutput) ToDeploymentOutputWithContext(ctx context.Context) Dep
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentInput)(nil)).Elem(), &Deployment{})
 	pulumi.RegisterOutputType(DeploymentOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.EssentialContacts.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         /// </summary>
         public static Task<GetContactResult> InvokeAsync(GetContactArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContactResult>("google-native:essentialcontacts/v1:getContact", args ?? new GetContactArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a single contact.
+        /// </summary>
+        public static Output<GetContactResult> Invoke(GetContactInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetContactResult>("google-native:essentialcontacts/v1:getContact", args ?? new GetContactInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         public string? Project { get; set; }
 
         public GetContactArgs()
+        {
+        }
+    }
+
+    public sealed class GetContactInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("contactId", required: true)]
+        public Input<string> ContactId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetContactInvokeArgs()
         {
         }
     }

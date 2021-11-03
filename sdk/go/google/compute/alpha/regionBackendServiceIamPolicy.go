@@ -150,5 +150,6 @@ func (o RegionBackendServiceIamPolicyOutput) ToRegionBackendServiceIamPolicyOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceIamPolicyInput)(nil)).Elem(), &RegionBackendServiceIamPolicy{})
 	pulumi.RegisterOutputType(RegionBackendServiceIamPolicyOutput{})
 }

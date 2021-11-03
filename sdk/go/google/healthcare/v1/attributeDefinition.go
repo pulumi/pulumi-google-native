@@ -161,5 +161,6 @@ func (o AttributeDefinitionOutput) ToAttributeDefinitionOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AttributeDefinitionInput)(nil)).Elem(), &AttributeDefinition{})
 	pulumi.RegisterOutputType(AttributeDefinitionOutput{})
 }

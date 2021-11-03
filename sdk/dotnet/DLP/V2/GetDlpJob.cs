@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DLP.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static Task<GetDlpJobResult> InvokeAsync(GetDlpJobArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDlpJobResult>("google-native:dlp/v2:getDlpJob", args ?? new GetDlpJobArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        /// </summary>
+        public static Output<GetDlpJobResult> Invoke(GetDlpJobInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDlpJobResult>("google-native:dlp/v2:getDlpJob", args ?? new GetDlpJobInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DLP.V2
         public string? Project { get; set; }
 
         public GetDlpJobArgs()
+        {
+        }
+    }
+
+    public sealed class GetDlpJobInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("dlpJobId", required: true)]
+        public Input<string> DlpJobId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDlpJobInvokeArgs()
         {
         }
     }

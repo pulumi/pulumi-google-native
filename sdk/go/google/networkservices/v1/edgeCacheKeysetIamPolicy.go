@@ -139,5 +139,6 @@ func (o EdgeCacheKeysetIamPolicyOutput) ToEdgeCacheKeysetIamPolicyOutputWithCont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetIamPolicyInput)(nil)).Elem(), &EdgeCacheKeysetIamPolicy{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetIamPolicyOutput{})
 }

@@ -118,5 +118,6 @@ func (o IdentityAwareProxyClientOutput) ToIdentityAwareProxyClientOutputWithCont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityAwareProxyClientInput)(nil)).Elem(), &IdentityAwareProxyClient{})
 	pulumi.RegisterOutputType(IdentityAwareProxyClientOutput{})
 }

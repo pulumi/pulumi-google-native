@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.SecretManager.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         /// </summary>
         public static Task<GetSecretIamPolicyResult> InvokeAsync(GetSecretIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretIamPolicyResult>("google-native:secretmanager/v1:getSecretIamPolicy", args ?? new GetSecretIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetSecretIamPolicyResult> Invoke(GetSecretIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSecretIamPolicyResult>("google-native:secretmanager/v1:getSecretIamPolicy", args ?? new GetSecretIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         public string SecretId { get; set; } = null!;
 
         public GetSecretIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecretIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("secretId", required: true)]
+        public Input<string> SecretId { get; set; } = null!;
+
+        public GetSecretIamPolicyInvokeArgs()
         {
         }
     }

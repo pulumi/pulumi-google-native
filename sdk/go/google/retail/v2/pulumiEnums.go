@@ -355,6 +355,10 @@ func (in *productTypePtr) ToProductTypePtrOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProductAvailabilityInput)(nil)).Elem(), ProductAvailability("AVAILABILITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ProductAvailabilityPtrInput)(nil)).Elem(), ProductAvailability("AVAILABILITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ProductTypeInput)(nil)).Elem(), ProductType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ProductTypePtrInput)(nil)).Elem(), ProductType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ProductAvailabilityOutput{})
 	pulumi.RegisterOutputType(ProductAvailabilityPtrOutput{})
 	pulumi.RegisterOutputType(ProductTypeOutput{})

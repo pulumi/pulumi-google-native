@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Cloudkms.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static Task<GetKeyRingResult> InvokeAsync(GetKeyRingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyRingResult>("google-native:cloudkms/v1:getKeyRing", args ?? new GetKeyRingArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns metadata for a given KeyRing.
+        /// </summary>
+        public static Output<GetKeyRingResult> Invoke(GetKeyRingInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeyRingResult>("google-native:cloudkms/v1:getKeyRing", args ?? new GetKeyRingInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public string? Project { get; set; }
 
         public GetKeyRingArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyRingInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("keyRingId", required: true)]
+        public Input<string> KeyRingId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetKeyRingInvokeArgs()
         {
         }
     }

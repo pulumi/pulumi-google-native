@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Metastore.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// </summary>
         public static Task<GetServiceIamPolicyResult> InvokeAsync(GetServiceIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIamPolicyResult>("google-native:metastore/v1beta:getServiceIamPolicy", args ?? new GetServiceIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetServiceIamPolicyResult> Invoke(GetServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("google-native:metastore/v1beta:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public string ServiceId { get; set; } = null!;
 
         public GetServiceIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        public GetServiceIamPolicyInvokeArgs()
         {
         }
     }

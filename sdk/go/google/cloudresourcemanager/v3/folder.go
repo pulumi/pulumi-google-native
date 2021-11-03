@@ -128,5 +128,6 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderInput)(nil)).Elem(), &Folder{})
 	pulumi.RegisterOutputType(FolderOutput{})
 }

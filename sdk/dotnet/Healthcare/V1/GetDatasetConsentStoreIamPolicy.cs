@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public static Task<GetDatasetConsentStoreIamPolicyResult> InvokeAsync(GetDatasetConsentStoreIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetConsentStoreIamPolicyResult>("google-native:healthcare/v1:getDatasetConsentStoreIamPolicy", args ?? new GetDatasetConsentStoreIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetDatasetConsentStoreIamPolicyResult> Invoke(GetDatasetConsentStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatasetConsentStoreIamPolicyResult>("google-native:healthcare/v1:getDatasetConsentStoreIamPolicy", args ?? new GetDatasetConsentStoreIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public string? Project { get; set; }
 
         public GetDatasetConsentStoreIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatasetConsentStoreIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("consentStoreId", required: true)]
+        public Input<string> ConsentStoreId { get; set; } = null!;
+
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDatasetConsentStoreIamPolicyInvokeArgs()
         {
         }
     }

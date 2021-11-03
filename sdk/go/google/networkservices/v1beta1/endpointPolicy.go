@@ -173,5 +173,6 @@ func (o EndpointPolicyOutput) ToEndpointPolicyOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyInput)(nil)).Elem(), &EndpointPolicy{})
 	pulumi.RegisterOutputType(EndpointPolicyOutput{})
 }

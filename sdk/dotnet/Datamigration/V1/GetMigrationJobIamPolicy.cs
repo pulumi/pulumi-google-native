@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Datamigration.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public static Task<GetMigrationJobIamPolicyResult> InvokeAsync(GetMigrationJobIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMigrationJobIamPolicyResult>("google-native:datamigration/v1:getMigrationJobIamPolicy", args ?? new GetMigrationJobIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetMigrationJobIamPolicyResult> Invoke(GetMigrationJobIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMigrationJobIamPolicyResult>("google-native:datamigration/v1:getMigrationJobIamPolicy", args ?? new GetMigrationJobIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public string? Project { get; set; }
 
         public GetMigrationJobIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetMigrationJobIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("migrationJobId", required: true)]
+        public Input<string> MigrationJobId { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetMigrationJobIamPolicyInvokeArgs()
         {
         }
     }

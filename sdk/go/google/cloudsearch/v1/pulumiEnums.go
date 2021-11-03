@@ -684,6 +684,14 @@ func (in *sourceScoringConfigSourceImportancePtr) ToSourceScoringConfigSourceImp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CompositeFilterLogicOperatorInput)(nil)).Elem(), CompositeFilterLogicOperator("AND"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CompositeFilterLogicOperatorPtrInput)(nil)).Elem(), CompositeFilterLogicOperator("AND"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SortOptionsSortOrderInput)(nil)).Elem(), SortOptionsSortOrder("ASCENDING"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SortOptionsSortOrderPtrInput)(nil)).Elem(), SortOptionsSortOrder("ASCENDING"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SourcePredefinedSourceInput)(nil)).Elem(), SourcePredefinedSource("NONE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SourcePredefinedSourcePtrInput)(nil)).Elem(), SourcePredefinedSource("NONE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceScoringConfigSourceImportanceInput)(nil)).Elem(), SourceScoringConfigSourceImportance("DEFAULT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceScoringConfigSourceImportancePtrInput)(nil)).Elem(), SourceScoringConfigSourceImportance("DEFAULT"))
 	pulumi.RegisterOutputType(CompositeFilterLogicOperatorOutput{})
 	pulumi.RegisterOutputType(CompositeFilterLogicOperatorPtrOutput{})
 	pulumi.RegisterOutputType(SortOptionsSortOrderOutput{})

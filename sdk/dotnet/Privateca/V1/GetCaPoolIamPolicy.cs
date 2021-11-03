@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Privateca.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// </summary>
         public static Task<GetCaPoolIamPolicyResult> InvokeAsync(GetCaPoolIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCaPoolIamPolicyResult>("google-native:privateca/v1:getCaPoolIamPolicy", args ?? new GetCaPoolIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetCaPoolIamPolicyResult> Invoke(GetCaPoolIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCaPoolIamPolicyResult>("google-native:privateca/v1:getCaPoolIamPolicy", args ?? new GetCaPoolIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public string? Project { get; set; }
 
         public GetCaPoolIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetCaPoolIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("caPoolId", required: true)]
+        public Input<string> CaPoolId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCaPoolIamPolicyInvokeArgs()
         {
         }
     }

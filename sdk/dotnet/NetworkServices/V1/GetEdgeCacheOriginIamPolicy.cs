@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkServices.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// </summary>
         public static Task<GetEdgeCacheOriginIamPolicyResult> InvokeAsync(GetEdgeCacheOriginIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEdgeCacheOriginIamPolicyResult>("google-native:networkservices/v1:getEdgeCacheOriginIamPolicy", args ?? new GetEdgeCacheOriginIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetEdgeCacheOriginIamPolicyResult> Invoke(GetEdgeCacheOriginIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEdgeCacheOriginIamPolicyResult>("google-native:networkservices/v1:getEdgeCacheOriginIamPolicy", args ?? new GetEdgeCacheOriginIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public string? Project { get; set; }
 
         public GetEdgeCacheOriginIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetEdgeCacheOriginIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("edgeCacheOriginId", required: true)]
+        public Input<string> EdgeCacheOriginId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetEdgeCacheOriginIamPolicyInvokeArgs()
         {
         }
     }

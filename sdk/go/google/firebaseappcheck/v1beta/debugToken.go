@@ -128,5 +128,6 @@ func (o DebugTokenOutput) ToDebugTokenOutputWithContext(ctx context.Context) Deb
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DebugTokenInput)(nil)).Elem(), &DebugToken{})
 	pulumi.RegisterOutputType(DebugTokenOutput{})
 }

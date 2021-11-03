@@ -205,5 +205,6 @@ func (o BucketAccessControlOutput) ToBucketAccessControlOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlInput)(nil)).Elem(), &BucketAccessControl{})
 	pulumi.RegisterOutputType(BucketAccessControlOutput{})
 }

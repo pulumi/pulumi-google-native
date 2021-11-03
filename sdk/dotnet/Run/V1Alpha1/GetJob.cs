@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Run.V1Alpha1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
         /// </summary>
         public static Task<GetJobResult> InvokeAsync(GetJobArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:run/v1alpha1:getJob", args ?? new GetJobArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a job.
+        /// </summary>
+        public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:run/v1alpha1:getJob", args ?? new GetJobInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
         public string NamespaceId { get; set; } = null!;
 
         public GetJobArgs()
+        {
+        }
+    }
+
+    public sealed class GetJobInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("jobId", required: true)]
+        public Input<string> JobId { get; set; } = null!;
+
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
+
+        public GetJobInvokeArgs()
         {
         }
     }

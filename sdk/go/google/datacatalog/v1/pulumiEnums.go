@@ -1250,6 +1250,21 @@ func (o TaxonomyActivatedPolicyTypesItemArrayOutput) Index(i pulumi.IntInput) Ta
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypeInput)(nil)).Elem(), EntryType("ENTRY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypePtrInput)(nil)).Elem(), EntryType("ENTRY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType("CONNECTION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType("CONNECTION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType("DATABASE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType("DATABASE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecType("TABLE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecType("TABLE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecRoutineType("ROUTINE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecRoutineType("ROUTINE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItem("POLICY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemPtrInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItem("POLICY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemArrayInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItemArray{})
 	pulumi.RegisterOutputType(EntryTypeOutput{})
 	pulumi.RegisterOutputType(EntryTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput{})

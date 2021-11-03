@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.VPCAccess.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         /// </summary>
         public static Task<GetConnectorResult> InvokeAsync(GetConnectorArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConnectorResult>("google-native:vpcaccess/v1:getConnector", args ?? new GetConnectorArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
+        /// </summary>
+        public static Output<GetConnectorResult> Invoke(GetConnectorInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConnectorResult>("google-native:vpcaccess/v1:getConnector", args ?? new GetConnectorInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         public string? Project { get; set; }
 
         public GetConnectorArgs()
+        {
+        }
+    }
+
+    public sealed class GetConnectorInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("connectorId", required: true)]
+        public Input<string> ConnectorId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetConnectorInvokeArgs()
         {
         }
     }

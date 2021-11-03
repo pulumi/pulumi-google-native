@@ -118,5 +118,6 @@ func (o BillingAccountOutput) ToBillingAccountOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountInput)(nil)).Elem(), &BillingAccount{})
 	pulumi.RegisterOutputType(BillingAccountOutput{})
 }

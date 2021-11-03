@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkServices.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// </summary>
         public static Task<GetEdgeCacheServiceIamPolicyResult> InvokeAsync(GetEdgeCacheServiceIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEdgeCacheServiceIamPolicyResult>("google-native:networkservices/v1:getEdgeCacheServiceIamPolicy", args ?? new GetEdgeCacheServiceIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetEdgeCacheServiceIamPolicyResult> Invoke(GetEdgeCacheServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEdgeCacheServiceIamPolicyResult>("google-native:networkservices/v1:getEdgeCacheServiceIamPolicy", args ?? new GetEdgeCacheServiceIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public string? Project { get; set; }
 
         public GetEdgeCacheServiceIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetEdgeCacheServiceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("edgeCacheServiceId", required: true)]
+        public Input<string> EdgeCacheServiceId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetEdgeCacheServiceIamPolicyInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public static Task<GetDatabaseResult> InvokeAsync(GetDatabaseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseResult>("google-native:sqladmin/v1beta4:getDatabase", args ?? new GetDatabaseArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves a resource containing information about a database inside a Cloud SQL instance.
+        /// </summary>
+        public static Output<GetDatabaseResult> Invoke(GetDatabaseInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatabaseResult>("google-native:sqladmin/v1beta4:getDatabase", args ?? new GetDatabaseInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public string? Project { get; set; }
 
         public GetDatabaseArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatabaseInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("database", required: true)]
+        public Input<string> Database { get; set; } = null!;
+
+        [Input("instance", required: true)]
+        public Input<string> Instance { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDatabaseInvokeArgs()
         {
         }
     }

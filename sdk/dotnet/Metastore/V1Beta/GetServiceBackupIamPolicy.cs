@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Metastore.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// </summary>
         public static Task<GetServiceBackupIamPolicyResult> InvokeAsync(GetServiceBackupIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceBackupIamPolicyResult>("google-native:metastore/v1beta:getServiceBackupIamPolicy", args ?? new GetServiceBackupIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetServiceBackupIamPolicyResult> Invoke(GetServiceBackupIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceBackupIamPolicyResult>("google-native:metastore/v1beta:getServiceBackupIamPolicy", args ?? new GetServiceBackupIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public string ServiceId { get; set; } = null!;
 
         public GetServiceBackupIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceBackupIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("backupId", required: true)]
+        public Input<string> BackupId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        public GetServiceBackupIamPolicyInvokeArgs()
         {
         }
     }

@@ -182,6 +182,8 @@ func (in *diskTypePtr) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskT
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskTypeInput)(nil)).Elem(), DiskType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskTypePtrInput)(nil)).Elem(), DiskType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(DiskTypeOutput{})
 	pulumi.RegisterOutputType(DiskTypePtrOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetInterconnectAttachmentIamPolicyResult> InvokeAsync(GetInterconnectAttachmentIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectAttachmentIamPolicyResult>("google-native:compute/alpha:getInterconnectAttachmentIamPolicy", args ?? new GetInterconnectAttachmentIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        public static Output<GetInterconnectAttachmentIamPolicyResult> Invoke(GetInterconnectAttachmentIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInterconnectAttachmentIamPolicyResult>("google-native:compute/alpha:getInterconnectAttachmentIamPolicy", args ?? new GetInterconnectAttachmentIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Resource { get; set; } = null!;
 
         public GetInterconnectAttachmentIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetInterconnectAttachmentIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        [Input("resource", required: true)]
+        public Input<string> Resource { get; set; } = null!;
+
+        public GetInterconnectAttachmentIamPolicyInvokeArgs()
         {
         }
     }

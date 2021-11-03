@@ -144,5 +144,6 @@ func (o CertificateAuthorityCertificateRevocationListIamPolicyOutput) ToCertific
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityCertificateRevocationListIamPolicyInput)(nil)).Elem(), &CertificateAuthorityCertificateRevocationListIamPolicy{})
 	pulumi.RegisterOutputType(CertificateAuthorityCertificateRevocationListIamPolicyOutput{})
 }

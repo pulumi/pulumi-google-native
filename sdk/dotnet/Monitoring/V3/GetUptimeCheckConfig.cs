@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Monitoring.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public static Task<GetUptimeCheckConfigResult> InvokeAsync(GetUptimeCheckConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUptimeCheckConfigResult>("google-native:monitoring/v3:getUptimeCheckConfig", args ?? new GetUptimeCheckConfigArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a single Uptime check configuration.
+        /// </summary>
+        public static Output<GetUptimeCheckConfigResult> Invoke(GetUptimeCheckConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUptimeCheckConfigResult>("google-native:monitoring/v3:getUptimeCheckConfig", args ?? new GetUptimeCheckConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public string UptimeCheckConfigId { get; set; } = null!;
 
         public GetUptimeCheckConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetUptimeCheckConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("uptimeCheckConfigId", required: true)]
+        public Input<string> UptimeCheckConfigId { get; set; } = null!;
+
+        public GetUptimeCheckConfigInvokeArgs()
         {
         }
     }

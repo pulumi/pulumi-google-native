@@ -131,5 +131,6 @@ func (o VariableOutput) ToVariableOutputWithContext(ctx context.Context) Variabl
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VariableInput)(nil)).Elem(), &Variable{})
 	pulumi.RegisterOutputType(VariableOutput{})
 }

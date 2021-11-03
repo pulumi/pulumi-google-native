@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Ml.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         public static Task<GetTrialResult> InvokeAsync(GetTrialArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTrialResult>("google-native:ml/v1:getTrial", args ?? new GetTrialArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a trial.
+        /// </summary>
+        public static Output<GetTrialResult> Invoke(GetTrialInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTrialResult>("google-native:ml/v1:getTrial", args ?? new GetTrialInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Ml.V1
         public string TrialId { get; set; } = null!;
 
         public GetTrialArgs()
+        {
+        }
+    }
+
+    public sealed class GetTrialInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("studyId", required: true)]
+        public Input<string> StudyId { get; set; } = null!;
+
+        [Input("trialId", required: true)]
+        public Input<string> TrialId { get; set; } = null!;
+
+        public GetTrialInvokeArgs()
         {
         }
     }

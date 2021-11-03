@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudResourceManager.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         public static Task<GetTagKeyResult> InvokeAsync(GetTagKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTagKeyResult>("google-native:cloudresourcemanager/v3:getTagKey", args ?? new GetTagKeyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves a TagKey. This method will return `PERMISSION_DENIED` if the key does not exist or the user does not have permission to view it.
+        /// </summary>
+        public static Output<GetTagKeyResult> Invoke(GetTagKeyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTagKeyResult>("google-native:cloudresourcemanager/v3:getTagKey", args ?? new GetTagKeyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public string TagKeyId { get; set; } = null!;
 
         public GetTagKeyArgs()
+        {
+        }
+    }
+
+    public sealed class GetTagKeyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("tagKeyId", required: true)]
+        public Input<string> TagKeyId { get; set; } = null!;
+
+        public GetTagKeyInvokeArgs()
         {
         }
     }

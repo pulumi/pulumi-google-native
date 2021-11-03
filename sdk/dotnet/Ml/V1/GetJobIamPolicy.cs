@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Ml.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         public static Task<GetJobIamPolicyResult> InvokeAsync(GetJobIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetJobIamPolicyResult>("google-native:ml/v1:getJobIamPolicy", args ?? new GetJobIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetJobIamPolicyResult> Invoke(GetJobIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetJobIamPolicyResult>("google-native:ml/v1:getJobIamPolicy", args ?? new GetJobIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Ml.V1
         public string? Project { get; set; }
 
         public GetJobIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetJobIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("jobId", required: true)]
+        public Input<string> JobId { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetJobIamPolicyInvokeArgs()
         {
         }
     }

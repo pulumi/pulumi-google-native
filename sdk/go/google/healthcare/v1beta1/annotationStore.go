@@ -123,5 +123,6 @@ func (o AnnotationStoreOutput) ToAnnotationStoreOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationStoreInput)(nil)).Elem(), &AnnotationStore{})
 	pulumi.RegisterOutputType(AnnotationStoreOutput{})
 }

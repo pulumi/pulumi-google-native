@@ -168,5 +168,6 @@ func (o TestMatrixOutput) ToTestMatrixOutputWithContext(ctx context.Context) Tes
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TestMatrixInput)(nil)).Elem(), &TestMatrix{})
 	pulumi.RegisterOutputType(TestMatrixOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// </summary>
         public static Task<GetEntryGroupIamPolicyResult> InvokeAsync(GetEntryGroupIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEntryGroupIamPolicyResult>("google-native:datacatalog/v1beta1:getEntryGroupIamPolicy", args ?? new GetEntryGroupIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entries.getIamPolicy` to get policies on entries. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
+        /// </summary>
+        public static Output<GetEntryGroupIamPolicyResult> Invoke(GetEntryGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEntryGroupIamPolicyResult>("google-native:datacatalog/v1beta1:getEntryGroupIamPolicy", args ?? new GetEntryGroupIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public string? Project { get; set; }
 
         public GetEntryGroupIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetEntryGroupIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("entryGroupId", required: true)]
+        public Input<string> EntryGroupId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetEntryGroupIamPolicyInvokeArgs()
         {
         }
     }

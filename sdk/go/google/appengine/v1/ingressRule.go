@@ -130,5 +130,6 @@ func (o IngressRuleOutput) ToIngressRuleOutputWithContext(ctx context.Context) I
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressRuleInput)(nil)).Elem(), &IngressRule{})
 	pulumi.RegisterOutputType(IngressRuleOutput{})
 }

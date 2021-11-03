@@ -135,5 +135,6 @@ func (o FolderIamPolicyOutput) ToFolderIamPolicyOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderIamPolicyInput)(nil)).Elem(), &FolderIamPolicy{})
 	pulumi.RegisterOutputType(FolderIamPolicyOutput{})
 }

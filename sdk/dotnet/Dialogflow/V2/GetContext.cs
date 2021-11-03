@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public static Task<GetContextResult> InvokeAsync(GetContextArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContextResult>("google-native:dialogflow/v2:getContext", args ?? new GetContextArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified context.
+        /// </summary>
+        public static Output<GetContextResult> Invoke(GetContextInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetContextResult>("google-native:dialogflow/v2:getContext", args ?? new GetContextInvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +47,31 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public string UserId { get; set; } = null!;
 
         public GetContextArgs()
+        {
+        }
+    }
+
+    public sealed class GetContextInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("contextId", required: true)]
+        public Input<string> ContextId { get; set; } = null!;
+
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("sessionId", required: true)]
+        public Input<string> SessionId { get; set; } = null!;
+
+        [Input("userId", required: true)]
+        public Input<string> UserId { get; set; } = null!;
+
+        public GetContextInvokeArgs()
         {
         }
     }

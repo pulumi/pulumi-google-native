@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Run.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Run.V1
         /// </summary>
         public static Task<GetDomainMappingResult> InvokeAsync(GetDomainMappingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainMappingResult>("google-native:run/v1:getDomainMapping", args ?? new GetDomainMappingArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a domain mapping.
+        /// </summary>
+        public static Output<GetDomainMappingResult> Invoke(GetDomainMappingInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainMappingResult>("google-native:run/v1:getDomainMapping", args ?? new GetDomainMappingInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Run.V1
         public string? Project { get; set; }
 
         public GetDomainMappingArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainMappingInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("domainmappingId", required: true)]
+        public Input<string> DomainmappingId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDomainMappingInvokeArgs()
         {
         }
     }

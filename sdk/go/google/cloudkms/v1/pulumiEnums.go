@@ -1252,6 +1252,20 @@ func (in *importJobProtectionLevelPtr) ToImportJobProtectionLevelPtrOutputWithCo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyPurposeInput)(nil)).Elem(), CryptoKeyPurpose("CRYPTO_KEY_PURPOSE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyPurposePtrInput)(nil)).Elem(), CryptoKeyPurpose("CRYPTO_KEY_PURPOSE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionStateEnumInput)(nil)).Elem(), CryptoKeyVersionStateEnum("CRYPTO_KEY_VERSION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionStateEnumPtrInput)(nil)).Elem(), CryptoKeyVersionStateEnum("CRYPTO_KEY_VERSION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateAlgorithmInput)(nil)).Elem(), CryptoKeyVersionTemplateAlgorithm("CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateAlgorithmPtrInput)(nil)).Elem(), CryptoKeyVersionTemplateAlgorithm("CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateProtectionLevelInput)(nil)).Elem(), CryptoKeyVersionTemplateProtectionLevel("PROTECTION_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateProtectionLevelPtrInput)(nil)).Elem(), CryptoKeyVersionTemplateProtectionLevel("PROTECTION_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobImportMethodInput)(nil)).Elem(), ImportJobImportMethod("IMPORT_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobImportMethodPtrInput)(nil)).Elem(), ImportJobImportMethod("IMPORT_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobProtectionLevelInput)(nil)).Elem(), ImportJobProtectionLevel("PROTECTION_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobProtectionLevelPtrInput)(nil)).Elem(), ImportJobProtectionLevel("PROTECTION_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyPurposeOutput{})

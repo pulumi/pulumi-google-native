@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetSubnetworkResult> InvokeAsync(GetSubnetworkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkResult>("google-native:compute/v1:getSubnetwork", args ?? new GetSubnetworkArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified subnetwork. Gets a list of available subnetworks list() request.
+        /// </summary>
+        public static Output<GetSubnetworkResult> Invoke(GetSubnetworkInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSubnetworkResult>("google-native:compute/v1:getSubnetwork", args ?? new GetSubnetworkInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string Subnetwork { get; set; } = null!;
 
         public GetSubnetworkArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubnetworkInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        [Input("subnetwork", required: true)]
+        public Input<string> Subnetwork { get; set; } = null!;
+
+        public GetSubnetworkInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Monitoring.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("google-native:monitoring/v3:getService", args ?? new GetServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get the named Service.
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("google-native:monitoring/v3:getService", args ?? new GetServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public string V3Id1 { get; set; } = null!;
 
         public GetServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        [Input("v3Id", required: true)]
+        public Input<string> V3Id { get; set; } = null!;
+
+        [Input("v3Id1", required: true)]
+        public Input<string> V3Id1 { get; set; } = null!;
+
+        public GetServiceInvokeArgs()
         {
         }
     }

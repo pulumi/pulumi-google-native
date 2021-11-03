@@ -132,5 +132,6 @@ func (o TaxonomyOutput) ToTaxonomyOutputWithContext(ctx context.Context) Taxonom
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyInput)(nil)).Elem(), &Taxonomy{})
 	pulumi.RegisterOutputType(TaxonomyOutput{})
 }

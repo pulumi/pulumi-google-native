@@ -181,5 +181,6 @@ func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupInput)(nil)).Elem(), &RegionNetworkEndpointGroup{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupOutput{})
 }

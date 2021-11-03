@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public static Task<GetAttributeDefinitionResult> InvokeAsync(GetAttributeDefinitionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAttributeDefinitionResult>("google-native:healthcare/v1:getAttributeDefinition", args ?? new GetAttributeDefinitionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified Attribute definition.
+        /// </summary>
+        public static Output<GetAttributeDefinitionResult> Invoke(GetAttributeDefinitionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAttributeDefinitionResult>("google-native:healthcare/v1:getAttributeDefinition", args ?? new GetAttributeDefinitionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public string? Project { get; set; }
 
         public GetAttributeDefinitionArgs()
+        {
+        }
+    }
+
+    public sealed class GetAttributeDefinitionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("attributeDefinitionId", required: true)]
+        public Input<string> AttributeDefinitionId { get; set; } = null!;
+
+        [Input("consentStoreId", required: true)]
+        public Input<string> ConsentStoreId { get; set; } = null!;
+
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAttributeDefinitionInvokeArgs()
         {
         }
     }

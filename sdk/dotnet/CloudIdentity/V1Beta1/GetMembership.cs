@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         /// </summary>
         public static Task<GetMembershipResult> InvokeAsync(GetMembershipArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMembershipResult>("google-native:cloudidentity/v1beta1:getMembership", args ?? new GetMembershipArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves a `Membership`.
+        /// </summary>
+        public static Output<GetMembershipResult> Invoke(GetMembershipInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMembershipResult>("google-native:cloudidentity/v1beta1:getMembership", args ?? new GetMembershipInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public string MembershipId { get; set; } = null!;
 
         public GetMembershipArgs()
+        {
+        }
+    }
+
+    public sealed class GetMembershipInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("groupId", required: true)]
+        public Input<string> GroupId { get; set; } = null!;
+
+        [Input("membershipId", required: true)]
+        public Input<string> MembershipId { get; set; } = null!;
+
+        public GetMembershipInvokeArgs()
         {
         }
     }

@@ -183,5 +183,6 @@ func (o RegionCommitmentOutput) ToRegionCommitmentOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentInput)(nil)).Elem(), &RegionCommitment{})
 	pulumi.RegisterOutputType(RegionCommitmentOutput{})
 }

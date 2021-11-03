@@ -141,5 +141,6 @@ func (o ContextOutput) ToContextOutputWithContext(ctx context.Context) ContextOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContextInput)(nil)).Elem(), &Context{})
 	pulumi.RegisterOutputType(ContextOutput{})
 }

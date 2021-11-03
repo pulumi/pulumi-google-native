@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetDatastoreResult> InvokeAsync(GetDatastoreArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("google-native:apigee/v1:getDatastore", args ?? new GetDatastoreArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a Datastore
+        /// </summary>
+        public static Output<GetDatastoreResult> Invoke(GetDatastoreInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatastoreResult>("google-native:apigee/v1:getDatastore", args ?? new GetDatastoreInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetDatastoreArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatastoreInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datastoreId", required: true)]
+        public Input<string> DatastoreId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetDatastoreInvokeArgs()
         {
         }
     }

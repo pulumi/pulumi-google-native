@@ -144,5 +144,6 @@ func (o MetadataImportOutput) ToMetadataImportOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataImportInput)(nil)).Elem(), &MetadataImport{})
 	pulumi.RegisterOutputType(MetadataImportOutput{})
 }

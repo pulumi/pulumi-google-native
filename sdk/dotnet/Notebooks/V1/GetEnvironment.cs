@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Notebooks.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public static Task<GetEnvironmentResult> InvokeAsync(GetEnvironmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentResult>("google-native:notebooks/v1:getEnvironment", args ?? new GetEnvironmentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single Environment.
+        /// </summary>
+        public static Output<GetEnvironmentResult> Invoke(GetEnvironmentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEnvironmentResult>("google-native:notebooks/v1:getEnvironment", args ?? new GetEnvironmentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public string? Project { get; set; }
 
         public GetEnvironmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetEnvironmentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetEnvironmentInvokeArgs()
         {
         }
     }

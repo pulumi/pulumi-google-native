@@ -344,6 +344,10 @@ func (in *instanceMessageCodePtr) ToInstanceMessageCodePtrOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheVersionInput)(nil)).Elem(), InstanceMemcacheVersion("MEMCACHE_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheVersionPtrInput)(nil)).Elem(), InstanceMemcacheVersion("MEMCACHE_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageCodeInput)(nil)).Elem(), InstanceMessageCode("CODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageCodePtrInput)(nil)).Elem(), InstanceMessageCode("CODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(InstanceMemcacheVersionOutput{})
 	pulumi.RegisterOutputType(InstanceMemcacheVersionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMessageCodeOutput{})

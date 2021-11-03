@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(GetVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:dialogflow/v2:getVersion", args ?? new GetVersionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified agent version.
+        /// </summary>
+        public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:dialogflow/v2:getVersion", args ?? new GetVersionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public string VersionId { get; set; } = null!;
 
         public GetVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetVersionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("versionId", required: true)]
+        public Input<string> VersionId { get; set; } = null!;
+
+        public GetVersionInvokeArgs()
         {
         }
     }

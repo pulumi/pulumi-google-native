@@ -117,5 +117,6 @@ func (o ReleaseOutput) ToReleaseOutputWithContext(ctx context.Context) ReleaseOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseInput)(nil)).Elem(), &Release{})
 	pulumi.RegisterOutputType(ReleaseOutput{})
 }

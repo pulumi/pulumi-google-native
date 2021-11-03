@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetTargetHttpsProxyResult> InvokeAsync(GetTargetHttpsProxyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTargetHttpsProxyResult>("google-native:compute/beta:getTargetHttpsProxy", args ?? new GetTargetHttpsProxyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by making a list() request.
+        /// </summary>
+        public static Output<GetTargetHttpsProxyResult> Invoke(GetTargetHttpsProxyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTargetHttpsProxyResult>("google-native:compute/beta:getTargetHttpsProxy", args ?? new GetTargetHttpsProxyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string TargetHttpsProxy { get; set; } = null!;
 
         public GetTargetHttpsProxyArgs()
+        {
+        }
+    }
+
+    public sealed class GetTargetHttpsProxyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("targetHttpsProxy", required: true)]
+        public Input<string> TargetHttpsProxy { get; set; } = null!;
+
+        public GetTargetHttpsProxyInvokeArgs()
         {
         }
     }

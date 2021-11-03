@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetPublicAdvertisedPrefixResult> InvokeAsync(GetPublicAdvertisedPrefixArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPublicAdvertisedPrefixResult>("google-native:compute/alpha:getPublicAdvertisedPrefix", args ?? new GetPublicAdvertisedPrefixArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified PublicAdvertisedPrefix resource.
+        /// </summary>
+        public static Output<GetPublicAdvertisedPrefixResult> Invoke(GetPublicAdvertisedPrefixInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPublicAdvertisedPrefixResult>("google-native:compute/alpha:getPublicAdvertisedPrefix", args ?? new GetPublicAdvertisedPrefixInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string PublicAdvertisedPrefix { get; set; } = null!;
 
         public GetPublicAdvertisedPrefixArgs()
+        {
+        }
+    }
+
+    public sealed class GetPublicAdvertisedPrefixInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("publicAdvertisedPrefix", required: true)]
+        public Input<string> PublicAdvertisedPrefix { get; set; } = null!;
+
+        public GetPublicAdvertisedPrefixInvokeArgs()
         {
         }
     }

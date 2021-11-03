@@ -139,5 +139,6 @@ func (o EdgeCacheServiceIamPolicyOutput) ToEdgeCacheServiceIamPolicyOutputWithCo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceIamPolicyInput)(nil)).Elem(), &EdgeCacheServiceIamPolicy{})
 	pulumi.RegisterOutputType(EdgeCacheServiceIamPolicyOutput{})
 }

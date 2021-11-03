@@ -118,5 +118,6 @@ func (o KeystoreOutput) ToKeystoreOutputWithContext(ctx context.Context) Keystor
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoreInput)(nil)).Elem(), &Keystore{})
 	pulumi.RegisterOutputType(KeystoreOutput{})
 }

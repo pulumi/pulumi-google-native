@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dataproc.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public static Task<GetWorkflowTemplateIamPolicyResult> InvokeAsync(GetWorkflowTemplateIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowTemplateIamPolicyResult>("google-native:dataproc/v1:getWorkflowTemplateIamPolicy", args ?? new GetWorkflowTemplateIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetWorkflowTemplateIamPolicyResult> Invoke(GetWorkflowTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWorkflowTemplateIamPolicyResult>("google-native:dataproc/v1:getWorkflowTemplateIamPolicy", args ?? new GetWorkflowTemplateIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public string WorkflowTemplateId { get; set; } = null!;
 
         public GetWorkflowTemplateIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetWorkflowTemplateIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("workflowTemplateId", required: true)]
+        public Input<string> WorkflowTemplateId { get; set; } = null!;
+
+        public GetWorkflowTemplateIamPolicyInvokeArgs()
         {
         }
     }

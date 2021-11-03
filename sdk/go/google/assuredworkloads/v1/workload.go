@@ -173,5 +173,6 @@ func (o WorkloadOutput) ToWorkloadOutputWithContext(ctx context.Context) Workloa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadInput)(nil)).Elem(), &Workload{})
 	pulumi.RegisterOutputType(WorkloadOutput{})
 }

@@ -697,6 +697,14 @@ func (in *weeklyMaintenanceWindowDayPtr) ToWeeklyMaintenanceWindowDayPtrOutputWi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConnectModeInput)(nil)).Elem(), InstanceConnectMode("CONNECT_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConnectModePtrInput)(nil)).Elem(), InstanceConnectMode("CONNECT_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierPtrInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTransitEncryptionModeInput)(nil)).Elem(), InstanceTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTransitEncryptionModePtrInput)(nil)).Elem(), InstanceTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowDayInput)(nil)).Elem(), WeeklyMaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowDayPtrInput)(nil)).Elem(), WeeklyMaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterOutputType(InstanceConnectModeOutput{})
 	pulumi.RegisterOutputType(InstanceConnectModePtrOutput{})
 	pulumi.RegisterOutputType(InstanceTierOutput{})

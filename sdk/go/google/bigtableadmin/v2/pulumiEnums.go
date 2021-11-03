@@ -687,6 +687,14 @@ func (in *tableGranularityPtr) ToTableGranularityPtrOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDefaultStorageTypeInput)(nil)).Elem(), ClusterDefaultStorageType("STORAGE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDefaultStorageTypePtrInput)(nil)).Elem(), ClusterDefaultStorageType("STORAGE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypeInput)(nil)).Elem(), InstanceType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypePtrInput)(nil)).Elem(), InstanceType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TableGranularityInput)(nil)).Elem(), TableGranularity("TIMESTAMP_GRANULARITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TableGranularityPtrInput)(nil)).Elem(), TableGranularity("TIMESTAMP_GRANULARITY_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(ClusterDefaultStorageTypeOutput{})

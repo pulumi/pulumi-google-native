@@ -150,5 +150,6 @@ func (o ServiceAttachmentIamPolicyOutput) ToServiceAttachmentIamPolicyOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentIamPolicyInput)(nil)).Elem(), &ServiceAttachmentIamPolicy{})
 	pulumi.RegisterOutputType(ServiceAttachmentIamPolicyOutput{})
 }

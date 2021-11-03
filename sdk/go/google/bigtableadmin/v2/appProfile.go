@@ -144,5 +144,6 @@ func (o AppProfileOutput) ToAppProfileOutputWithContext(ctx context.Context) App
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileInput)(nil)).Elem(), &AppProfile{})
 	pulumi.RegisterOutputType(AppProfileOutput{})
 }

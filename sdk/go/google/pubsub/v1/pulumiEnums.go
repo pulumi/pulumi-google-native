@@ -349,6 +349,10 @@ func (in *schemaTypePtr) ToSchemaTypePtrOutputWithContext(ctx context.Context) S
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSettingsEncodingInput)(nil)).Elem(), SchemaSettingsEncoding("ENCODING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSettingsEncodingPtrInput)(nil)).Elem(), SchemaSettingsEncoding("ENCODING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaTypeInput)(nil)).Elem(), SchemaType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaTypePtrInput)(nil)).Elem(), SchemaType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(SchemaSettingsEncodingOutput{})
 	pulumi.RegisterOutputType(SchemaSettingsEncodingPtrOutput{})
 	pulumi.RegisterOutputType(SchemaTypeOutput{})

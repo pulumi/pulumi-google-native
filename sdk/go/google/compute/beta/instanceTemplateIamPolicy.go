@@ -145,5 +145,6 @@ func (o InstanceTemplateIamPolicyOutput) ToInstanceTemplateIamPolicyOutputWithCo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTemplateIamPolicyInput)(nil)).Elem(), &InstanceTemplateIamPolicy{})
 	pulumi.RegisterOutputType(InstanceTemplateIamPolicyOutput{})
 }

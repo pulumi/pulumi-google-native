@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Storage.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public static Task<GetBucketAccessControlResult> InvokeAsync(GetBucketAccessControlArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBucketAccessControlResult>("google-native:storage/v1:getBucketAccessControl", args ?? new GetBucketAccessControlArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the ACL entry for the specified entity on the specified bucket.
+        /// </summary>
+        public static Output<GetBucketAccessControlResult> Invoke(GetBucketAccessControlInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBucketAccessControlResult>("google-native:storage/v1:getBucketAccessControl", args ?? new GetBucketAccessControlInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Storage.V1
         public string? UserProject { get; set; }
 
         public GetBucketAccessControlArgs()
+        {
+        }
+    }
+
+    public sealed class GetBucketAccessControlInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
+
+        [Input("entity", required: true)]
+        public Input<string> Entity { get; set; } = null!;
+
+        [Input("provisionalUserProject")]
+        public Input<string>? ProvisionalUserProject { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
+
+        public GetBucketAccessControlInvokeArgs()
         {
         }
     }

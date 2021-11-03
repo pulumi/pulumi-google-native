@@ -140,5 +140,6 @@ func (o RuntimeOutput) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeInput)(nil)).Elem(), &Runtime{})
 	pulumi.RegisterOutputType(RuntimeOutput{})
 }

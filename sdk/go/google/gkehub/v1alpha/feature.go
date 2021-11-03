@@ -140,5 +140,6 @@ func (o FeatureOutput) ToFeatureOutputWithContext(ctx context.Context) FeatureOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureInput)(nil)).Elem(), &Feature{})
 	pulumi.RegisterOutputType(FeatureOutput{})
 }

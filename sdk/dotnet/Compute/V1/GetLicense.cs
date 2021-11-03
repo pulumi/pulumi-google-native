@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetLicenseResult> InvokeAsync(GetLicenseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLicenseResult>("google-native:compute/v1:getLicense", args ?? new GetLicenseArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images. 
+        /// </summary>
+        public static Output<GetLicenseResult> Invoke(GetLicenseInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetLicenseResult>("google-native:compute/v1:getLicense", args ?? new GetLicenseInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string? Project { get; set; }
 
         public GetLicenseArgs()
+        {
+        }
+    }
+
+    public sealed class GetLicenseInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("license", required: true)]
+        public Input<string> License { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetLicenseInvokeArgs()
         {
         }
     }

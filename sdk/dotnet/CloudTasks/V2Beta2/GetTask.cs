@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         /// </summary>
         public static Task<GetTaskResult> InvokeAsync(GetTaskArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTaskResult>("google-native:cloudtasks/v2beta2:getTask", args ?? new GetTaskArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a task.
+        /// </summary>
+        public static Output<GetTaskResult> Invoke(GetTaskInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTaskResult>("google-native:cloudtasks/v2beta2:getTask", args ?? new GetTaskInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         public string TaskId { get; set; } = null!;
 
         public GetTaskArgs()
+        {
+        }
+    }
+
+    public sealed class GetTaskInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("queueId", required: true)]
+        public Input<string> QueueId { get; set; } = null!;
+
+        [Input("responseView")]
+        public Input<string>? ResponseView { get; set; }
+
+        [Input("taskId", required: true)]
+        public Input<string> TaskId { get; set; } = null!;
+
+        public GetTaskInvokeArgs()
         {
         }
     }

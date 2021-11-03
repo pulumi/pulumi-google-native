@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.AccessContextManager.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         /// </summary>
         public static Task<GetAccessLevelResult> InvokeAsync(GetAccessLevelArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessLevelResult>("google-native:accesscontextmanager/v1:getAccessLevel", args ?? new GetAccessLevelArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get an Access Level by resource name.
+        /// </summary>
+        public static Output<GetAccessLevelResult> Invoke(GetAccessLevelInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccessLevelResult>("google-native:accesscontextmanager/v1:getAccessLevel", args ?? new GetAccessLevelInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public string AccessPolicyId { get; set; } = null!;
 
         public GetAccessLevelArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccessLevelInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("accessLevelFormat")]
+        public Input<string>? AccessLevelFormat { get; set; }
+
+        [Input("accessLevelId", required: true)]
+        public Input<string> AccessLevelId { get; set; } = null!;
+
+        [Input("accessPolicyId", required: true)]
+        public Input<string> AccessPolicyId { get; set; } = null!;
+
+        public GetAccessLevelInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.GKEHub.V1Alpha2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2
         /// </summary>
         public static Task<GetMembershipResult> InvokeAsync(GetMembershipArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMembershipResult>("google-native:gkehub/v1alpha2:getMembership", args ?? new GetMembershipArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the details of a Membership.
+        /// </summary>
+        public static Output<GetMembershipResult> Invoke(GetMembershipInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMembershipResult>("google-native:gkehub/v1alpha2:getMembership", args ?? new GetMembershipInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2
         public string? Project { get; set; }
 
         public GetMembershipArgs()
+        {
+        }
+    }
+
+    public sealed class GetMembershipInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("membershipId", required: true)]
+        public Input<string> MembershipId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetMembershipInvokeArgs()
         {
         }
     }

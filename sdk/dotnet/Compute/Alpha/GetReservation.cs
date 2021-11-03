@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetReservationResult> InvokeAsync(GetReservationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReservationResult>("google-native:compute/alpha:getReservation", args ?? new GetReservationArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves information about the specified reservation.
+        /// </summary>
+        public static Output<GetReservationResult> Invoke(GetReservationInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetReservationResult>("google-native:compute/alpha:getReservation", args ?? new GetReservationInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Zone { get; set; } = null!;
 
         public GetReservationArgs()
+        {
+        }
+    }
+
+    public sealed class GetReservationInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("reservation", required: true)]
+        public Input<string> Reservation { get; set; } = null!;
+
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
+
+        public GetReservationInvokeArgs()
         {
         }
     }

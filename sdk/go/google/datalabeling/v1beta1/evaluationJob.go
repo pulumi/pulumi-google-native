@@ -165,5 +165,6 @@ func (o EvaluationJobOutput) ToEvaluationJobOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationJobInput)(nil)).Elem(), &EvaluationJob{})
 	pulumi.RegisterOutputType(EvaluationJobOutput{})
 }

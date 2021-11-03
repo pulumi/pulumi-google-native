@@ -177,5 +177,6 @@ func (o ServiceAttachmentOutput) ToServiceAttachmentOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentInput)(nil)).Elem(), &ServiceAttachment{})
 	pulumi.RegisterOutputType(ServiceAttachmentOutput{})
 }

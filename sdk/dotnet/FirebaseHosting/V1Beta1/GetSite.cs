@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         /// </summary>
         public static Task<GetSiteResult> InvokeAsync(GetSiteArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSiteResult>("google-native:firebasehosting/v1beta1:getSite", args ?? new GetSiteArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified Hosting Site.
+        /// </summary>
+        public static Output<GetSiteResult> Invoke(GetSiteInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSiteResult>("google-native:firebasehosting/v1beta1:getSite", args ?? new GetSiteInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         public string SiteId { get; set; } = null!;
 
         public GetSiteArgs()
+        {
+        }
+    }
+
+    public sealed class GetSiteInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("siteId", required: true)]
+        public Input<string> SiteId { get; set; } = null!;
+
+        public GetSiteInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetMachineImageResult> InvokeAsync(GetMachineImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMachineImageResult>("google-native:compute/alpha:getMachineImage", args ?? new GetMachineImageArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified machine image. Gets a list of available machine images by making a list() request.
+        /// </summary>
+        public static Output<GetMachineImageResult> Invoke(GetMachineImageInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMachineImageResult>("google-native:compute/alpha:getMachineImage", args ?? new GetMachineImageInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string? Project { get; set; }
 
         public GetMachineImageArgs()
+        {
+        }
+    }
+
+    public sealed class GetMachineImageInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("machineImage", required: true)]
+        public Input<string> MachineImage { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetMachineImageInvokeArgs()
         {
         }
     }

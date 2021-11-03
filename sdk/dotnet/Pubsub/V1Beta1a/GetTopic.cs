@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         /// </summary>
         public static Task<GetTopicResult> InvokeAsync(GetTopicArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("google-native:pubsub/v1beta1a:getTopic", args ?? new GetTopicArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the configuration of a topic. Since the topic only has the name attribute, this method is only useful to check the existence of a topic. If other attributes are added in the future, they will be returned here.
+        /// </summary>
+        public static Output<GetTopicResult> Invoke(GetTopicInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTopicResult>("google-native:pubsub/v1beta1a:getTopic", args ?? new GetTopicInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         public string TopicId { get; set; } = null!;
 
         public GetTopicArgs()
+        {
+        }
+    }
+
+    public sealed class GetTopicInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("topicId", required: true)]
+        public Input<string> TopicId { get; set; } = null!;
+
+        public GetTopicInvokeArgs()
         {
         }
     }

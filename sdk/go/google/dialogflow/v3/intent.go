@@ -162,5 +162,6 @@ func (o IntentOutput) ToIntentOutputWithContext(ctx context.Context) IntentOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IntentInput)(nil)).Elem(), &Intent{})
 	pulumi.RegisterOutputType(IntentOutput{})
 }

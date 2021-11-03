@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.SourceRepo.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         /// </summary>
         public static Task<GetRepoResult> InvokeAsync(GetRepoArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRepoResult>("google-native:sourcerepo/v1:getRepo", args ?? new GetRepoArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns information about a repo.
+        /// </summary>
+        public static Output<GetRepoResult> Invoke(GetRepoInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRepoResult>("google-native:sourcerepo/v1:getRepo", args ?? new GetRepoInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         public string RepoId { get; set; } = null!;
 
         public GetRepoArgs()
+        {
+        }
+    }
+
+    public sealed class GetRepoInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("repoId", required: true)]
+        public Input<string> RepoId { get; set; } = null!;
+
+        public GetRepoInvokeArgs()
         {
         }
     }

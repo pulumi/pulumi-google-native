@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudIoT.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         /// </summary>
         public static Task<GetDeviceResult> InvokeAsync(GetDeviceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDeviceResult>("google-native:cloudiot/v1:getDevice", args ?? new GetDeviceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details about a device.
+        /// </summary>
+        public static Output<GetDeviceResult> Invoke(GetDeviceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDeviceResult>("google-native:cloudiot/v1:getDevice", args ?? new GetDeviceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public string RegistryId { get; set; } = null!;
 
         public GetDeviceArgs()
+        {
+        }
+    }
+
+    public sealed class GetDeviceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("deviceId", required: true)]
+        public Input<string> DeviceId { get; set; } = null!;
+
+        [Input("fieldMask")]
+        public Input<string>? FieldMask { get; set; }
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("registryId", required: true)]
+        public Input<string> RegistryId { get; set; } = null!;
+
+        public GetDeviceInvokeArgs()
         {
         }
     }

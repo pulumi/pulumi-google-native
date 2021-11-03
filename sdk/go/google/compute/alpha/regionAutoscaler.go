@@ -153,5 +153,6 @@ func (o RegionAutoscalerOutput) ToRegionAutoscalerOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionAutoscalerInput)(nil)).Elem(), &RegionAutoscaler{})
 	pulumi.RegisterOutputType(RegionAutoscalerOutput{})
 }

@@ -129,5 +129,6 @@ func (o IssueModelOutput) ToIssueModelOutputWithContext(ctx context.Context) Iss
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IssueModelInput)(nil)).Elem(), &IssueModel{})
 	pulumi.RegisterOutputType(IssueModelOutput{})
 }

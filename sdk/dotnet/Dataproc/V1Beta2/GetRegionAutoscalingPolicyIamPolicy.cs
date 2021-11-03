@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// </summary>
         public static Task<GetRegionAutoscalingPolicyIamPolicyResult> InvokeAsync(GetRegionAutoscalingPolicyIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionAutoscalingPolicyIamPolicyResult>("google-native:dataproc/v1beta2:getRegionAutoscalingPolicyIamPolicy", args ?? new GetRegionAutoscalingPolicyIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetRegionAutoscalingPolicyIamPolicyResult> Invoke(GetRegionAutoscalingPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionAutoscalingPolicyIamPolicyResult>("google-native:dataproc/v1beta2:getRegionAutoscalingPolicyIamPolicy", args ?? new GetRegionAutoscalingPolicyIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public string RegionId { get; set; } = null!;
 
         public GetRegionAutoscalingPolicyIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionAutoscalingPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("autoscalingPolicyId", required: true)]
+        public Input<string> AutoscalingPolicyId { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("regionId", required: true)]
+        public Input<string> RegionId { get; set; } = null!;
+
+        public GetRegionAutoscalingPolicyIamPolicyInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudBilling.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         /// </summary>
         public static Task<GetBillingAccountIamPolicyResult> InvokeAsync(GetBillingAccountIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountIamPolicyResult>("google-native:cloudbilling/v1:getBillingAccountIamPolicy", args ?? new GetBillingAccountIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a billing account. The caller must have the `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
+        /// </summary>
+        public static Output<GetBillingAccountIamPolicyResult> Invoke(GetBillingAccountIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBillingAccountIamPolicyResult>("google-native:cloudbilling/v1:getBillingAccountIamPolicy", args ?? new GetBillingAccountIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         public string? OptionsRequestedPolicyVersion { get; set; }
 
         public GetBillingAccountIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetBillingAccountIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("billingAccountId", required: true)]
+        public Input<string> BillingAccountId { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        public GetBillingAccountIamPolicyInvokeArgs()
         {
         }
     }

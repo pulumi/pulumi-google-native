@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static Task<GetHl7V2StoreResult> InvokeAsync(GetHl7V2StoreArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHl7V2StoreResult>("google-native:healthcare/v1beta1:getHl7V2Store", args ?? new GetHl7V2StoreArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified HL7v2 store.
+        /// </summary>
+        public static Output<GetHl7V2StoreResult> Invoke(GetHl7V2StoreInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHl7V2StoreResult>("google-native:healthcare/v1beta1:getHl7V2Store", args ?? new GetHl7V2StoreInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public string? Project { get; set; }
 
         public GetHl7V2StoreArgs()
+        {
+        }
+    }
+
+    public sealed class GetHl7V2StoreInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("hl7V2StoreId", required: true)]
+        public Input<string> Hl7V2StoreId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetHl7V2StoreInvokeArgs()
         {
         }
     }

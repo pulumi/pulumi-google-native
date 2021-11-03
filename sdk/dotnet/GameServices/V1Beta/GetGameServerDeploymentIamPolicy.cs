@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.GameServices.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         /// </summary>
         public static Task<GetGameServerDeploymentIamPolicyResult> InvokeAsync(GetGameServerDeploymentIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGameServerDeploymentIamPolicyResult>("google-native:gameservices/v1beta:getGameServerDeploymentIamPolicy", args ?? new GetGameServerDeploymentIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetGameServerDeploymentIamPolicyResult> Invoke(GetGameServerDeploymentIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGameServerDeploymentIamPolicyResult>("google-native:gameservices/v1beta:getGameServerDeploymentIamPolicy", args ?? new GetGameServerDeploymentIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         public string? Project { get; set; }
 
         public GetGameServerDeploymentIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetGameServerDeploymentIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("gameServerDeploymentId", required: true)]
+        public Input<string> GameServerDeploymentId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetGameServerDeploymentIamPolicyInvokeArgs()
         {
         }
     }

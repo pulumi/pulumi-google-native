@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetRegionCommitmentResult> InvokeAsync(GetRegionCommitmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionCommitmentResult>("google-native:compute/v1:getRegionCommitment", args ?? new GetRegionCommitmentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified commitment resource. Gets a list of available commitments by making a list() request.
+        /// </summary>
+        public static Output<GetRegionCommitmentResult> Invoke(GetRegionCommitmentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionCommitmentResult>("google-native:compute/v1:getRegionCommitment", args ?? new GetRegionCommitmentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string Region { get; set; } = null!;
 
         public GetRegionCommitmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionCommitmentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("commitment", required: true)]
+        public Input<string> Commitment { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetRegionCommitmentInvokeArgs()
         {
         }
     }

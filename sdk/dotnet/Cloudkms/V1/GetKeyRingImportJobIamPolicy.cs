@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Cloudkms.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static Task<GetKeyRingImportJobIamPolicyResult> InvokeAsync(GetKeyRingImportJobIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyRingImportJobIamPolicyResult>("google-native:cloudkms/v1:getKeyRingImportJobIamPolicy", args ?? new GetKeyRingImportJobIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetKeyRingImportJobIamPolicyResult> Invoke(GetKeyRingImportJobIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeyRingImportJobIamPolicyResult>("google-native:cloudkms/v1:getKeyRingImportJobIamPolicy", args ?? new GetKeyRingImportJobIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public string? Project { get; set; }
 
         public GetKeyRingImportJobIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyRingImportJobIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("importJobId", required: true)]
+        public Input<string> ImportJobId { get; set; } = null!;
+
+        [Input("keyRingId", required: true)]
+        public Input<string> KeyRingId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetKeyRingImportJobIamPolicyInvokeArgs()
         {
         }
     }

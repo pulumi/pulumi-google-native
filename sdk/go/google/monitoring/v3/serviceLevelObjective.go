@@ -160,5 +160,6 @@ func (o ServiceLevelObjectiveOutput) ToServiceLevelObjectiveOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelObjectiveInput)(nil)).Elem(), &ServiceLevelObjective{})
 	pulumi.RegisterOutputType(ServiceLevelObjectiveOutput{})
 }

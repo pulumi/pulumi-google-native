@@ -189,5 +189,6 @@ func (o RoutineOutput) ToRoutineOutputWithContext(ctx context.Context) RoutineOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineInput)(nil)).Elem(), &Routine{})
 	pulumi.RegisterOutputType(RoutineOutput{})
 }

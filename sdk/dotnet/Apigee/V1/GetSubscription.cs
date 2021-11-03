@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetSubscriptionResult> InvokeAsync(GetSubscriptionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionResult>("google-native:apigee/v1:getSubscription", args ?? new GetSubscriptionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details for an API product subscription.
+        /// </summary>
+        public static Output<GetSubscriptionResult> Invoke(GetSubscriptionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSubscriptionResult>("google-native:apigee/v1:getSubscription", args ?? new GetSubscriptionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string SubscriptionId { get; set; } = null!;
 
         public GetSubscriptionArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubscriptionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("developerId", required: true)]
+        public Input<string> DeveloperId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("subscriptionId", required: true)]
+        public Input<string> SubscriptionId { get; set; } = null!;
+
+        public GetSubscriptionInvokeArgs()
         {
         }
     }

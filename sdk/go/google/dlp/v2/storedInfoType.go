@@ -122,5 +122,6 @@ func (o StoredInfoTypeOutput) ToStoredInfoTypeOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StoredInfoTypeInput)(nil)).Elem(), &StoredInfoType{})
 	pulumi.RegisterOutputType(StoredInfoTypeOutput{})
 }

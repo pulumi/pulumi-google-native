@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.AppEngine.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public static Task<GetIngressRuleResult> InvokeAsync(GetIngressRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIngressRuleResult>("google-native:appengine/v1:getIngressRule", args ?? new GetIngressRuleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified firewall rule.
+        /// </summary>
+        public static Output<GetIngressRuleResult> Invoke(GetIngressRuleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIngressRuleResult>("google-native:appengine/v1:getIngressRule", args ?? new GetIngressRuleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public string IngressRuleId { get; set; } = null!;
 
         public GetIngressRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetIngressRuleInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
+
+        [Input("ingressRuleId", required: true)]
+        public Input<string> IngressRuleId { get; set; } = null!;
+
+        public GetIngressRuleInvokeArgs()
         {
         }
     }

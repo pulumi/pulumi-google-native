@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetRegionAutoscalerResult> InvokeAsync(GetRegionAutoscalerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionAutoscalerResult>("google-native:compute/beta:getRegionAutoscaler", args ?? new GetRegionAutoscalerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified autoscaler.
+        /// </summary>
+        public static Output<GetRegionAutoscalerResult> Invoke(GetRegionAutoscalerInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionAutoscalerResult>("google-native:compute/beta:getRegionAutoscaler", args ?? new GetRegionAutoscalerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string Region { get; set; } = null!;
 
         public GetRegionAutoscalerArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionAutoscalerInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("autoscaler", required: true)]
+        public Input<string> Autoscaler { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetRegionAutoscalerInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Storage.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public static Task<GetObjectAccessControlResult> InvokeAsync(GetObjectAccessControlArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetObjectAccessControlResult>("google-native:storage/v1:getObjectAccessControl", args ?? new GetObjectAccessControlArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the ACL entry for the specified entity on the specified object.
+        /// </summary>
+        public static Output<GetObjectAccessControlResult> Invoke(GetObjectAccessControlInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetObjectAccessControlResult>("google-native:storage/v1:getObjectAccessControl", args ?? new GetObjectAccessControlInvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +47,31 @@ namespace Pulumi.GoogleNative.Storage.V1
         public string? UserProject { get; set; }
 
         public GetObjectAccessControlArgs()
+        {
+        }
+    }
+
+    public sealed class GetObjectAccessControlInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
+
+        [Input("entity", required: true)]
+        public Input<string> Entity { get; set; } = null!;
+
+        [Input("generation")]
+        public Input<string>? Generation { get; set; }
+
+        [Input("object", required: true)]
+        public Input<string> Object { get; set; } = null!;
+
+        [Input("provisionalUserProject")]
+        public Input<string>? ProvisionalUserProject { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
+
+        public GetObjectAccessControlInvokeArgs()
         {
         }
     }

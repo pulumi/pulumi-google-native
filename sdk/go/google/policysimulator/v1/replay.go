@@ -122,5 +122,6 @@ func (o ReplayOutput) ToReplayOutputWithContext(ctx context.Context) ReplayOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplayInput)(nil)).Elem(), &Replay{})
 	pulumi.RegisterOutputType(ReplayOutput{})
 }

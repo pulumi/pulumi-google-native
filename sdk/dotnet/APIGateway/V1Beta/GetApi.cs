@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.APIGateway.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         /// </summary>
         public static Task<GetApiResult> InvokeAsync(GetApiArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApiResult>("google-native:apigateway/v1beta:getApi", args ?? new GetApiArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single Api.
+        /// </summary>
+        public static Output<GetApiResult> Invoke(GetApiInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApiResult>("google-native:apigateway/v1beta:getApi", args ?? new GetApiInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         public string? Project { get; set; }
 
         public GetApiArgs()
+        {
+        }
+    }
+
+    public sealed class GetApiInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("apiId", required: true)]
+        public Input<string> ApiId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetApiInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1
         /// </summary>
         public static Task<GetJobTemplateResult> InvokeAsync(GetJobTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetJobTemplateResult>("google-native:transcoder/v1beta1:getJobTemplate", args ?? new GetJobTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the job template data.
+        /// </summary>
+        public static Output<GetJobTemplateResult> Invoke(GetJobTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetJobTemplateResult>("google-native:transcoder/v1beta1:getJobTemplate", args ?? new GetJobTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1
         public string? Project { get; set; }
 
         public GetJobTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetJobTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("jobTemplateId", required: true)]
+        public Input<string> JobTemplateId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetJobTemplateInvokeArgs()
         {
         }
     }

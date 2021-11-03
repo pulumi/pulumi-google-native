@@ -134,5 +134,6 @@ func (o TaxonomyPolicyTagIamPolicyOutput) ToTaxonomyPolicyTagIamPolicyOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyPolicyTagIamPolicyInput)(nil)).Elem(), &TaxonomyPolicyTagIamPolicy{})
 	pulumi.RegisterOutputType(TaxonomyPolicyTagIamPolicyOutput{})
 }

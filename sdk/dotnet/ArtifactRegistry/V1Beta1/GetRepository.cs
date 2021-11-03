@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         /// </summary>
         public static Task<GetRepositoryResult> InvokeAsync(GetRepositoryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("google-native:artifactregistry/v1beta1:getRepository", args ?? new GetRepositoryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a repository.
+        /// </summary>
+        public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("google-native:artifactregistry/v1beta1:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public string RepositoryId { get; set; } = null!;
 
         public GetRepositoryArgs()
+        {
+        }
+    }
+
+    public sealed class GetRepositoryInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("repositoryId", required: true)]
+        public Input<string> RepositoryId { get; set; } = null!;
+
+        public GetRepositoryInvokeArgs()
         {
         }
     }

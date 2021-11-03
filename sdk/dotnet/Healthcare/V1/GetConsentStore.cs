@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public static Task<GetConsentStoreResult> InvokeAsync(GetConsentStoreArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConsentStoreResult>("google-native:healthcare/v1:getConsentStore", args ?? new GetConsentStoreArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified consent store.
+        /// </summary>
+        public static Output<GetConsentStoreResult> Invoke(GetConsentStoreInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConsentStoreResult>("google-native:healthcare/v1:getConsentStore", args ?? new GetConsentStoreInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public string? Project { get; set; }
 
         public GetConsentStoreArgs()
+        {
+        }
+    }
+
+    public sealed class GetConsentStoreInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("consentStoreId", required: true)]
+        public Input<string> ConsentStoreId { get; set; } = null!;
+
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetConsentStoreInvokeArgs()
         {
         }
     }

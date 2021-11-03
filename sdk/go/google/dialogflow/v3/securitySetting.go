@@ -161,5 +161,6 @@ func (o SecuritySettingOutput) ToSecuritySettingOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingInput)(nil)).Elem(), &SecuritySetting{})
 	pulumi.RegisterOutputType(SecuritySettingOutput{})
 }

@@ -136,5 +136,6 @@ func (o PerfSampleSeriesOutput) ToPerfSampleSeriesOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PerfSampleSeriesInput)(nil)).Elem(), &PerfSampleSeries{})
 	pulumi.RegisterOutputType(PerfSampleSeriesOutput{})
 }

@@ -520,6 +520,12 @@ func (in *roboDirectiveActionTypePtr) ToRoboDirectiveActionTypePtrOutputWithCont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AndroidInstrumentationTestOrchestratorOptionInput)(nil)).Elem(), AndroidInstrumentationTestOrchestratorOption("ORCHESTRATOR_OPTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AndroidInstrumentationTestOrchestratorOptionPtrInput)(nil)).Elem(), AndroidInstrumentationTestOrchestratorOption("ORCHESTRATOR_OPTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AndroidRoboTestRoboModeInput)(nil)).Elem(), AndroidRoboTestRoboMode("ROBO_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AndroidRoboTestRoboModePtrInput)(nil)).Elem(), AndroidRoboTestRoboMode("ROBO_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoboDirectiveActionTypeInput)(nil)).Elem(), RoboDirectiveActionType("ACTION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoboDirectiveActionTypePtrInput)(nil)).Elem(), RoboDirectiveActionType("ACTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AndroidInstrumentationTestOrchestratorOptionOutput{})
 	pulumi.RegisterOutputType(AndroidInstrumentationTestOrchestratorOptionPtrOutput{})
 	pulumi.RegisterOutputType(AndroidRoboTestRoboModeOutput{})

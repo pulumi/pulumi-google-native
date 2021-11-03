@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetInterconnectAttachmentResult> InvokeAsync(GetInterconnectAttachmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectAttachmentResult>("google-native:compute/beta:getInterconnectAttachment", args ?? new GetInterconnectAttachmentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified interconnect attachment.
+        /// </summary>
+        public static Output<GetInterconnectAttachmentResult> Invoke(GetInterconnectAttachmentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInterconnectAttachmentResult>("google-native:compute/beta:getInterconnectAttachment", args ?? new GetInterconnectAttachmentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string Region { get; set; } = null!;
 
         public GetInterconnectAttachmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetInterconnectAttachmentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("interconnectAttachment", required: true)]
+        public Input<string> InterconnectAttachment { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        public GetInterconnectAttachmentInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         public static Task<GetEndpointPolicyIamPolicyResult> InvokeAsync(GetEndpointPolicyIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointPolicyIamPolicyResult>("google-native:networkservices/v1beta1:getEndpointPolicyIamPolicy", args ?? new GetEndpointPolicyIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetEndpointPolicyIamPolicyResult> Invoke(GetEndpointPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointPolicyIamPolicyResult>("google-native:networkservices/v1beta1:getEndpointPolicyIamPolicy", args ?? new GetEndpointPolicyIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public string? Project { get; set; }
 
         public GetEndpointPolicyIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetEndpointPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("endpointPolicyId", required: true)]
+        public Input<string> EndpointPolicyId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetEndpointPolicyIamPolicyInvokeArgs()
         {
         }
     }

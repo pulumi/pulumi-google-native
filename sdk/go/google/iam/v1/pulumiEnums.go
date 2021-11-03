@@ -870,6 +870,16 @@ func (in *roleStagePtr) ToRoleStagePtrOutputWithContext(ctx context.Context) Rol
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyKeyAlgorithmInput)(nil)).Elem(), KeyKeyAlgorithm("KEY_ALG_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyKeyAlgorithmPtrInput)(nil)).Elem(), KeyKeyAlgorithm("KEY_ALG_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyPrivateKeyTypeInput)(nil)).Elem(), KeyPrivateKeyType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyPrivateKeyTypePtrInput)(nil)).Elem(), KeyPrivateKeyType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationRoleStageInput)(nil)).Elem(), OrganizationRoleStage("ALPHA"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationRoleStagePtrInput)(nil)).Elem(), OrganizationRoleStage("ALPHA"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleStageInput)(nil)).Elem(), RoleStage("ALPHA"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleStagePtrInput)(nil)).Elem(), RoleStage("ALPHA"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(KeyKeyAlgorithmOutput{})

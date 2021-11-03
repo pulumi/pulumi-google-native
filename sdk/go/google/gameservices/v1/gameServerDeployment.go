@@ -137,5 +137,6 @@ func (o GameServerDeploymentOutput) ToGameServerDeploymentOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerDeploymentInput)(nil)).Elem(), &GameServerDeployment{})
 	pulumi.RegisterOutputType(GameServerDeploymentOutput{})
 }

@@ -147,5 +147,6 @@ func (o InstanceClusterBackupIamPolicyOutput) ToInstanceClusterBackupIamPolicyOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClusterBackupIamPolicyInput)(nil)).Elem(), &InstanceClusterBackupIamPolicy{})
 	pulumi.RegisterOutputType(InstanceClusterBackupIamPolicyOutput{})
 }

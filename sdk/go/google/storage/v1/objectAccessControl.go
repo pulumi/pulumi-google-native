@@ -220,5 +220,6 @@ func (o ObjectAccessControlOutput) ToObjectAccessControlOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlInput)(nil)).Elem(), &ObjectAccessControl{})
 	pulumi.RegisterOutputType(ObjectAccessControlOutput{})
 }

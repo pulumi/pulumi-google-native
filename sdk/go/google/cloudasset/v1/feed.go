@@ -166,5 +166,6 @@ func (o FeedOutput) ToFeedOutputWithContext(ctx context.Context) FeedOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FeedInput)(nil)).Elem(), &Feed{})
 	pulumi.RegisterOutputType(FeedOutput{})
 }

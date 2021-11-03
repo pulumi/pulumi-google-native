@@ -147,5 +147,6 @@ func (o AutoscalerOutput) ToAutoscalerOutputWithContext(ctx context.Context) Aut
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerInput)(nil)).Elem(), &Autoscaler{})
 	pulumi.RegisterOutputType(AutoscalerOutput{})
 }

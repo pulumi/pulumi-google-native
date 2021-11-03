@@ -717,6 +717,14 @@ func (in *instructionDataTypePtr) ToInstructionDataTypePtrOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType("STRING_AGGREGATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType("STRING_AGGREGATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1InputConfigAnnotationType("ANNOTATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1InputConfigAnnotationType("ANNOTATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1InputConfigDataTypeInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1InputConfigDataType("DATA_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1InputConfigDataType("DATA_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstructionDataTypeInput)(nil)).Elem(), InstructionDataType("DATA_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstructionDataTypePtrInput)(nil)).Elem(), InstructionDataType("DATA_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput{})

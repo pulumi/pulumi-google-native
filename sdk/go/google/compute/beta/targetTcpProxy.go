@@ -139,5 +139,6 @@ func (o TargetTcpProxyOutput) ToTargetTcpProxyOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetTcpProxyInput)(nil)).Elem(), &TargetTcpProxy{})
 	pulumi.RegisterOutputType(TargetTcpProxyOutput{})
 }

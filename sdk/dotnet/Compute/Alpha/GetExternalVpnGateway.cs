@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetExternalVpnGatewayResult> InvokeAsync(GetExternalVpnGatewayArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetExternalVpnGatewayResult>("google-native:compute/alpha:getExternalVpnGateway", args ?? new GetExternalVpnGatewayArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a list() request.
+        /// </summary>
+        public static Output<GetExternalVpnGatewayResult> Invoke(GetExternalVpnGatewayInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetExternalVpnGatewayResult>("google-native:compute/alpha:getExternalVpnGateway", args ?? new GetExternalVpnGatewayInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string? Project { get; set; }
 
         public GetExternalVpnGatewayArgs()
+        {
+        }
+    }
+
+    public sealed class GetExternalVpnGatewayInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("externalVpnGateway", required: true)]
+        public Input<string> ExternalVpnGateway { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetExternalVpnGatewayInvokeArgs()
         {
         }
     }

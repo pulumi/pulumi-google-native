@@ -161,5 +161,6 @@ func (o GithubEnterpriseConfigOutput) ToGithubEnterpriseConfigOutputWithContext(
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GithubEnterpriseConfigInput)(nil)).Elem(), &GithubEnterpriseConfig{})
 	pulumi.RegisterOutputType(GithubEnterpriseConfigOutput{})
 }

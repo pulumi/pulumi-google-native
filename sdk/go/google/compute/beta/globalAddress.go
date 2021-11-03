@@ -183,5 +183,6 @@ func (o GlobalAddressOutput) ToGlobalAddressOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressInput)(nil)).Elem(), &GlobalAddress{})
 	pulumi.RegisterOutputType(GlobalAddressOutput{})
 }

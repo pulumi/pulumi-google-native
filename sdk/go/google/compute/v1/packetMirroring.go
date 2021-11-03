@@ -165,5 +165,6 @@ func (o PacketMirroringOutput) ToPacketMirroringOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringInput)(nil)).Elem(), &PacketMirroring{})
 	pulumi.RegisterOutputType(PacketMirroringOutput{})
 }

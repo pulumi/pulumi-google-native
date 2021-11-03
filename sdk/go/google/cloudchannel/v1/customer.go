@@ -172,5 +172,6 @@ func (o CustomerOutput) ToCustomerOutputWithContext(ctx context.Context) Custome
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomerInput)(nil)).Elem(), &Customer{})
 	pulumi.RegisterOutputType(CustomerOutput{})
 }

@@ -141,5 +141,6 @@ func (o ExternalVpnGatewayOutput) ToExternalVpnGatewayOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalVpnGatewayInput)(nil)).Elem(), &ExternalVpnGateway{})
 	pulumi.RegisterOutputType(ExternalVpnGatewayOutput{})
 }

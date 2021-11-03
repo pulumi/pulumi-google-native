@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         public static Task<GetOccurrenceIamPolicyResult> InvokeAsync(GetOccurrenceIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOccurrenceIamPolicyResult>("google-native:containeranalysis/v1alpha1:getOccurrenceIamPolicy", args ?? new GetOccurrenceIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a note or an `Occurrence` resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. Attempting to call this method on a resource without the required permission will result in a `PERMISSION_DENIED` error. Attempting to call this method on a non-existent resource will result in a `NOT_FOUND` error if the user has list permission on the project, or a `PERMISSION_DENIED` error otherwise. The resource takes the following formats: `projects/{PROJECT_ID}/occurrences/{OCCURRENCE_ID}` for occurrences and projects/{PROJECT_ID}/notes/{NOTE_ID} for notes
+        /// </summary>
+        public static Output<GetOccurrenceIamPolicyResult> Invoke(GetOccurrenceIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOccurrenceIamPolicyResult>("google-native:containeranalysis/v1alpha1:getOccurrenceIamPolicy", args ?? new GetOccurrenceIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public string? Project { get; set; }
 
         public GetOccurrenceIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetOccurrenceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("occurrenceId", required: true)]
+        public Input<string> OccurrenceId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetOccurrenceIamPolicyInvokeArgs()
         {
         }
     }

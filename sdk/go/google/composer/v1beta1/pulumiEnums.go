@@ -357,6 +357,10 @@ func (in *environmentStateEnumPtr) ToEnvironmentStateEnumPtrOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEnvironmentSizeInput)(nil)).Elem(), EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEnvironmentSizePtrInput)(nil)).Elem(), EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStateEnumInput)(nil)).Elem(), EnvironmentStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStateEnumPtrInput)(nil)).Elem(), EnvironmentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(EnvironmentConfigEnvironmentSizeOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigEnvironmentSizePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentStateEnumOutput{})

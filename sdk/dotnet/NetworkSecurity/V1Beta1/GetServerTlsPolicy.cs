@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         /// </summary>
         public static Task<GetServerTlsPolicyResult> InvokeAsync(GetServerTlsPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerTlsPolicyResult>("google-native:networksecurity/v1beta1:getServerTlsPolicy", args ?? new GetServerTlsPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single ServerTlsPolicy.
+        /// </summary>
+        public static Output<GetServerTlsPolicyResult> Invoke(GetServerTlsPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServerTlsPolicyResult>("google-native:networksecurity/v1beta1:getServerTlsPolicy", args ?? new GetServerTlsPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public string ServerTlsPolicyId { get; set; } = null!;
 
         public GetServerTlsPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetServerTlsPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("serverTlsPolicyId", required: true)]
+        public Input<string> ServerTlsPolicyId { get; set; } = null!;
+
+        public GetServerTlsPolicyInvokeArgs()
         {
         }
     }

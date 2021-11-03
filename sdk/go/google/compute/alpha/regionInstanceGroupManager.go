@@ -243,5 +243,6 @@ func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerInput)(nil)).Elem(), &RegionInstanceGroupManager{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerOutput{})
 }

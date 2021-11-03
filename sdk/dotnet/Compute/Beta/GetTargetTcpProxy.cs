@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetTargetTcpProxyResult> InvokeAsync(GetTargetTcpProxyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTargetTcpProxyResult>("google-native:compute/beta:getTargetTcpProxy", args ?? new GetTargetTcpProxyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
+        /// </summary>
+        public static Output<GetTargetTcpProxyResult> Invoke(GetTargetTcpProxyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTargetTcpProxyResult>("google-native:compute/beta:getTargetTcpProxy", args ?? new GetTargetTcpProxyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string TargetTcpProxy { get; set; } = null!;
 
         public GetTargetTcpProxyArgs()
+        {
+        }
+    }
+
+    public sealed class GetTargetTcpProxyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("targetTcpProxy", required: true)]
+        public Input<string> TargetTcpProxy { get; set; } = null!;
+
+        public GetTargetTcpProxyInvokeArgs()
         {
         }
     }

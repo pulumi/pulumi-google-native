@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static Task<GetInstanceTemplateIamPolicyResult> InvokeAsync(GetInstanceTemplateIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateIamPolicyResult>("google-native:compute/beta:getInstanceTemplateIamPolicy", args ?? new GetInstanceTemplateIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        public static Output<GetInstanceTemplateIamPolicyResult> Invoke(GetInstanceTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateIamPolicyResult>("google-native:compute/beta:getInstanceTemplateIamPolicy", args ?? new GetInstanceTemplateIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public string Resource { get; set; } = null!;
 
         public GetInstanceTemplateIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceTemplateIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("resource", required: true)]
+        public Input<string> Resource { get; set; } = null!;
+
+        public GetInstanceTemplateIamPolicyInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.GKEHub.V1Beta
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         /// </summary>
         public static Task<GetFeatureResult> InvokeAsync(GetFeatureArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFeatureResult>("google-native:gkehub/v1beta:getFeature", args ?? new GetFeatureArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single Feature.
+        /// </summary>
+        public static Output<GetFeatureResult> Invoke(GetFeatureInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFeatureResult>("google-native:gkehub/v1beta:getFeature", args ?? new GetFeatureInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         public string? Project { get; set; }
 
         public GetFeatureArgs()
+        {
+        }
+    }
+
+    public sealed class GetFeatureInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("featureId", required: true)]
+        public Input<string> FeatureId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetFeatureInvokeArgs()
         {
         }
     }

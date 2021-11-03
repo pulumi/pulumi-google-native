@@ -137,5 +137,6 @@ func (o PolicyBasedRouteIamPolicyOutput) ToPolicyBasedRouteIamPolicyOutputWithCo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteIamPolicyInput)(nil)).Elem(), &PolicyBasedRouteIamPolicy{})
 	pulumi.RegisterOutputType(PolicyBasedRouteIamPolicyOutput{})
 }

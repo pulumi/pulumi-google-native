@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// </summary>
         public static Task<GetFeatureIamPolicyResult> InvokeAsync(GetFeatureIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFeatureIamPolicyResult>("google-native:gkehub/v1alpha:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetFeatureIamPolicyResult> Invoke(GetFeatureIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFeatureIamPolicyResult>("google-native:gkehub/v1alpha:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public string? Project { get; set; }
 
         public GetFeatureIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetFeatureIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("featureId", required: true)]
+        public Input<string> FeatureId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetFeatureIamPolicyInvokeArgs()
         {
         }
     }

@@ -161,5 +161,6 @@ func (o TransferJobOutput) ToTransferJobOutputWithContext(ctx context.Context) T
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobInput)(nil)).Elem(), &TransferJob{})
 	pulumi.RegisterOutputType(TransferJobOutput{})
 }

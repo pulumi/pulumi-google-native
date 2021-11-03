@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         /// </summary>
         public static Task<GetDeviceResult> InvokeAsync(GetDeviceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDeviceResult>("google-native:cloudidentity/v1beta1:getDevice", args ?? new GetDeviceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified device.
+        /// </summary>
+        public static Output<GetDeviceResult> Invoke(GetDeviceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDeviceResult>("google-native:cloudidentity/v1beta1:getDevice", args ?? new GetDeviceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public string DeviceId { get; set; } = null!;
 
         public GetDeviceArgs()
+        {
+        }
+    }
+
+    public sealed class GetDeviceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("deviceId", required: true)]
+        public Input<string> DeviceId { get; set; } = null!;
+
+        public GetDeviceInvokeArgs()
         {
         }
     }

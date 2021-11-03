@@ -185,5 +185,6 @@ func (o TransferConfigOutput) ToTransferConfigOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferConfigInput)(nil)).Elem(), &TransferConfig{})
 	pulumi.RegisterOutputType(TransferConfigOutput{})
 }

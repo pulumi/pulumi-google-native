@@ -129,5 +129,6 @@ func (o TaxonomyIamPolicyOutput) ToTaxonomyIamPolicyOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamPolicyInput)(nil)).Elem(), &TaxonomyIamPolicy{})
 	pulumi.RegisterOutputType(TaxonomyIamPolicyOutput{})
 }

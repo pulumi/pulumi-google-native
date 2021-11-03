@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static Task<GetUserDataMappingResult> InvokeAsync(GetUserDataMappingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserDataMappingResult>("google-native:healthcare/v1beta1:getUserDataMapping", args ?? new GetUserDataMappingArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified User data mapping.
+        /// </summary>
+        public static Output<GetUserDataMappingResult> Invoke(GetUserDataMappingInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUserDataMappingResult>("google-native:healthcare/v1beta1:getUserDataMapping", args ?? new GetUserDataMappingInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public string UserDataMappingId { get; set; } = null!;
 
         public GetUserDataMappingArgs()
+        {
+        }
+    }
+
+    public sealed class GetUserDataMappingInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("consentStoreId", required: true)]
+        public Input<string> ConsentStoreId { get; set; } = null!;
+
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("userDataMappingId", required: true)]
+        public Input<string> UserDataMappingId { get; set; } = null!;
+
+        public GetUserDataMappingInvokeArgs()
         {
         }
     }

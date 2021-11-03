@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Storage.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public static Task<GetObjectIamPolicyResult> InvokeAsync(GetObjectIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetObjectIamPolicyResult>("google-native:storage/v1:getObjectIamPolicy", args ?? new GetObjectIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns an IAM policy for the specified object.
+        /// </summary>
+        public static Output<GetObjectIamPolicyResult> Invoke(GetObjectIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetObjectIamPolicyResult>("google-native:storage/v1:getObjectIamPolicy", args ?? new GetObjectIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Storage.V1
         public string? UserProject { get; set; }
 
         public GetObjectIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetObjectIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
+
+        [Input("generation")]
+        public Input<string>? Generation { get; set; }
+
+        [Input("object", required: true)]
+        public Input<string> Object { get; set; } = null!;
+
+        [Input("provisionalUserProject")]
+        public Input<string>? ProvisionalUserProject { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
+
+        public GetObjectIamPolicyInvokeArgs()
         {
         }
     }

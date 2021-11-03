@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Jobs.V4
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         public static Task<GetJobResult> InvokeAsync(GetJobArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:jobs/v4:getJob", args ?? new GetJobArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
+        /// </summary>
+        public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:jobs/v4:getJob", args ?? new GetJobInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Jobs.V4
         public string TenantId { get; set; } = null!;
 
         public GetJobArgs()
+        {
+        }
+    }
+
+    public sealed class GetJobInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("jobId", required: true)]
+        public Input<string> JobId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("tenantId", required: true)]
+        public Input<string> TenantId { get; set; } = null!;
+
+        public GetJobInvokeArgs()
         {
         }
     }

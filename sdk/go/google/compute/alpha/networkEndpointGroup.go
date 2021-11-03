@@ -197,5 +197,6 @@ func (o NetworkEndpointGroupOutput) ToNetworkEndpointGroupOutputWithContext(ctx 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupInput)(nil)).Elem(), &NetworkEndpointGroup{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupOutput{})
 }

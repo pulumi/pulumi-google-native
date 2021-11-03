@@ -173,5 +173,6 @@ func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigInput)(nil)).Elem(), &UptimeCheckConfig{})
 	pulumi.RegisterOutputType(UptimeCheckConfigOutput{})
 }

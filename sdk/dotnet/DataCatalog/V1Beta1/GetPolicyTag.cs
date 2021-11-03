@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// </summary>
         public static Task<GetPolicyTagResult> InvokeAsync(GetPolicyTagArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyTagResult>("google-native:datacatalog/v1beta1:getPolicyTag", args ?? new GetPolicyTagArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a policy tag.
+        /// </summary>
+        public static Output<GetPolicyTagResult> Invoke(GetPolicyTagInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPolicyTagResult>("google-native:datacatalog/v1beta1:getPolicyTag", args ?? new GetPolicyTagInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public string TaxonomyId { get; set; } = null!;
 
         public GetPolicyTagArgs()
+        {
+        }
+    }
+
+    public sealed class GetPolicyTagInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("policyTagId", required: true)]
+        public Input<string> PolicyTagId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("taxonomyId", required: true)]
+        public Input<string> TaxonomyId { get; set; } = null!;
+
+        public GetPolicyTagInvokeArgs()
         {
         }
     }

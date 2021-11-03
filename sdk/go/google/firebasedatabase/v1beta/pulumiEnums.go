@@ -351,6 +351,10 @@ func (in *instanceTypePtr) ToInstanceTypePtrOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStateEnumInput)(nil)).Elem(), InstanceStateEnum("LIFECYCLE_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStateEnumPtrInput)(nil)).Elem(), InstanceStateEnum("LIFECYCLE_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypeInput)(nil)).Elem(), InstanceType("DATABASE_INSTANCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypePtrInput)(nil)).Elem(), InstanceType("DATABASE_INSTANCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(InstanceStateEnumOutput{})
 	pulumi.RegisterOutputType(InstanceStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTypeOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Connectors.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public static Task<GetProviderIamPolicyResult> InvokeAsync(GetProviderIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProviderIamPolicyResult>("google-native:connectors/v1:getProviderIamPolicy", args ?? new GetProviderIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetProviderIamPolicyResult> Invoke(GetProviderIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProviderIamPolicyResult>("google-native:connectors/v1:getProviderIamPolicy", args ?? new GetProviderIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public string ProviderId { get; set; } = null!;
 
         public GetProviderIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetProviderIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("providerId", required: true)]
+        public Input<string> ProviderId { get; set; } = null!;
+
+        public GetProviderIamPolicyInvokeArgs()
         {
         }
     }

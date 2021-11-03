@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudIdentity.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("google-native:cloudidentity/v1:getGroup", args ?? new GetGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves a `Group`.
+        /// </summary>
+        public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGroupResult>("google-native:cloudidentity/v1:getGroup", args ?? new GetGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         public string GroupId { get; set; } = null!;
 
         public GetGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("groupId", required: true)]
+        public Input<string> GroupId { get; set; } = null!;
+
+        public GetGroupInvokeArgs()
         {
         }
     }

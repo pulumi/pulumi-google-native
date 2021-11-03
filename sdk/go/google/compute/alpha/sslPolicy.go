@@ -153,5 +153,6 @@ func (o SslPolicyOutput) ToSslPolicyOutputWithContext(ctx context.Context) SslPo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyInput)(nil)).Elem(), &SslPolicy{})
 	pulumi.RegisterOutputType(SslPolicyOutput{})
 }

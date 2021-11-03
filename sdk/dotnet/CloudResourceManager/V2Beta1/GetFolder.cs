@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("google-native:cloudresourcemanager/v2beta1:getFolder", args ?? new GetFolderArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.
+        /// </summary>
+        public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFolderResult>("google-native:cloudresourcemanager/v2beta1:getFolder", args ?? new GetFolderInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +32,16 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
         public string FolderId { get; set; } = null!;
 
         public GetFolderArgs()
+        {
+        }
+    }
+
+    public sealed class GetFolderInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("folderId", required: true)]
+        public Input<string> FolderId { get; set; } = null!;
+
+        public GetFolderInvokeArgs()
         {
         }
     }

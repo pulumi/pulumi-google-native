@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.EssentialContacts.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         /// </summary>
         public static Task<GetOrganizationContactResult> InvokeAsync(GetOrganizationContactArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationContactResult>("google-native:essentialcontacts/v1:getOrganizationContact", args ?? new GetOrganizationContactArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a single contact.
+        /// </summary>
+        public static Output<GetOrganizationContactResult> Invoke(GetOrganizationContactInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationContactResult>("google-native:essentialcontacts/v1:getOrganizationContact", args ?? new GetOrganizationContactInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetOrganizationContactArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationContactInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("contactId", required: true)]
+        public Input<string> ContactId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetOrganizationContactInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudFunctions.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// </summary>
         public static Task<GetFunctionIamPolicyResult> InvokeAsync(GetFunctionIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionIamPolicyResult>("google-native:cloudfunctions/v1:getFunctionIamPolicy", args ?? new GetFunctionIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the IAM access control policy for a function. Returns an empty policy if the function exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetFunctionIamPolicyResult> Invoke(GetFunctionIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFunctionIamPolicyResult>("google-native:cloudfunctions/v1:getFunctionIamPolicy", args ?? new GetFunctionIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public string? Project { get; set; }
 
         public GetFunctionIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetFunctionIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("functionId", required: true)]
+        public Input<string> FunctionId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetFunctionIamPolicyInvokeArgs()
         {
         }
     }

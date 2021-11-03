@@ -135,5 +135,6 @@ func (o AccessLevelOutput) ToAccessLevelOutputWithContext(ctx context.Context) A
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelInput)(nil)).Elem(), &AccessLevel{})
 	pulumi.RegisterOutputType(AccessLevelOutput{})
 }

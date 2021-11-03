@@ -147,5 +147,6 @@ func (o RowAccessPolicyIamPolicyOutput) ToRowAccessPolicyIamPolicyOutputWithCont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RowAccessPolicyIamPolicyInput)(nil)).Elem(), &RowAccessPolicyIamPolicy{})
 	pulumi.RegisterOutputType(RowAccessPolicyIamPolicyOutput{})
 }

@@ -125,5 +125,6 @@ func (o FolderReplayOutput) ToFolderReplayOutputWithContext(ctx context.Context)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderReplayInput)(nil)).Elem(), &FolderReplay{})
 	pulumi.RegisterOutputType(FolderReplayOutput{})
 }

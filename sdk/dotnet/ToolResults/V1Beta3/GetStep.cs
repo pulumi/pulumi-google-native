@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// </summary>
         public static Task<GetStepResult> InvokeAsync(GetStepArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStepResult>("google-native:toolresults/v1beta3:getStep", args ?? new GetStepArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Step does not exist
+        /// </summary>
+        public static Output<GetStepResult> Invoke(GetStepInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetStepResult>("google-native:toolresults/v1beta3:getStep", args ?? new GetStepInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public string StepId { get; set; } = null!;
 
         public GetStepArgs()
+        {
+        }
+    }
+
+    public sealed class GetStepInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("executionId", required: true)]
+        public Input<string> ExecutionId { get; set; } = null!;
+
+        [Input("historyId", required: true)]
+        public Input<string> HistoryId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("stepId", required: true)]
+        public Input<string> StepId { get; set; } = null!;
+
+        public GetStepInvokeArgs()
         {
         }
     }

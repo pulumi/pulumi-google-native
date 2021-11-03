@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static Task<GetSecurityPolicyResult> InvokeAsync(GetSecurityPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityPolicyResult>("google-native:compute/v1:getSecurityPolicy", args ?? new GetSecurityPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// List all of the ordered rules present in a single specified policy.
+        /// </summary>
+        public static Output<GetSecurityPolicyResult> Invoke(GetSecurityPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSecurityPolicyResult>("google-native:compute/v1:getSecurityPolicy", args ?? new GetSecurityPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Compute.V1
         public string SecurityPolicy { get; set; } = null!;
 
         public GetSecurityPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecurityPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("securityPolicy", required: true)]
+        public Input<string> SecurityPolicy { get; set; } = null!;
+
+        public GetSecurityPolicyInvokeArgs()
         {
         }
     }

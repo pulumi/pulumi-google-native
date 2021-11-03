@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetOrganizationEnvironmentIamPolicyResult> InvokeAsync(GetOrganizationEnvironmentIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationEnvironmentIamPolicyResult>("google-native:apigee/v1:getOrganizationEnvironmentIamPolicy", args ?? new GetOrganizationEnvironmentIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.
+        /// </summary>
+        public static Output<GetOrganizationEnvironmentIamPolicyResult> Invoke(GetOrganizationEnvironmentIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationEnvironmentIamPolicyResult>("google-native:apigee/v1:getOrganizationEnvironmentIamPolicy", args ?? new GetOrganizationEnvironmentIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetOrganizationEnvironmentIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationEnvironmentIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetOrganizationEnvironmentIamPolicyInvokeArgs()
         {
         }
     }

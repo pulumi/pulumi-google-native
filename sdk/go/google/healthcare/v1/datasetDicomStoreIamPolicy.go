@@ -144,5 +144,6 @@ func (o DatasetDicomStoreIamPolicyOutput) ToDatasetDicomStoreIamPolicyOutputWith
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetDicomStoreIamPolicyInput)(nil)).Elem(), &DatasetDicomStoreIamPolicy{})
 	pulumi.RegisterOutputType(DatasetDicomStoreIamPolicyOutput{})
 }

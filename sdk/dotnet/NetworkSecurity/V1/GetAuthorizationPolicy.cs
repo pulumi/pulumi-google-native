@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.NetworkSecurity.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         /// </summary>
         public static Task<GetAuthorizationPolicyResult> InvokeAsync(GetAuthorizationPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationPolicyResult>("google-native:networksecurity/v1:getAuthorizationPolicy", args ?? new GetAuthorizationPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single AuthorizationPolicy.
+        /// </summary>
+        public static Output<GetAuthorizationPolicyResult> Invoke(GetAuthorizationPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAuthorizationPolicyResult>("google-native:networksecurity/v1:getAuthorizationPolicy", args ?? new GetAuthorizationPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public string? Project { get; set; }
 
         public GetAuthorizationPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetAuthorizationPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("authorizationPolicyId", required: true)]
+        public Input<string> AuthorizationPolicyId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAuthorizationPolicyInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.EssentialContacts.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         /// </summary>
         public static Task<GetFolderContactResult> InvokeAsync(GetFolderContactArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFolderContactResult>("google-native:essentialcontacts/v1:getFolderContact", args ?? new GetFolderContactArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a single contact.
+        /// </summary>
+        public static Output<GetFolderContactResult> Invoke(GetFolderContactInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFolderContactResult>("google-native:essentialcontacts/v1:getFolderContact", args ?? new GetFolderContactInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         public string FolderId { get; set; } = null!;
 
         public GetFolderContactArgs()
+        {
+        }
+    }
+
+    public sealed class GetFolderContactInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("contactId", required: true)]
+        public Input<string> ContactId { get; set; } = null!;
+
+        [Input("folderId", required: true)]
+        public Input<string> FolderId { get; set; } = null!;
+
+        public GetFolderContactInvokeArgs()
         {
         }
     }

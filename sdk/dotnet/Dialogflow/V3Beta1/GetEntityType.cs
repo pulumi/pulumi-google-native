@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public static Task<GetEntityTypeResult> InvokeAsync(GetEntityTypeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEntityTypeResult>("google-native:dialogflow/v3beta1:getEntityType", args ?? new GetEntityTypeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified entity type.
+        /// </summary>
+        public static Output<GetEntityTypeResult> Invoke(GetEntityTypeInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEntityTypeResult>("google-native:dialogflow/v3beta1:getEntityType", args ?? new GetEntityTypeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public string? Project { get; set; }
 
         public GetEntityTypeArgs()
+        {
+        }
+    }
+
+    public sealed class GetEntityTypeInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
+
+        [Input("entityTypeId", required: true)]
+        public Input<string> EntityTypeId { get; set; } = null!;
+
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetEntityTypeInvokeArgs()
         {
         }
     }

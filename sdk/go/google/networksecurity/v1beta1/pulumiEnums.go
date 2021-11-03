@@ -351,6 +351,10 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyActionInput)(nil)).Elem(), AuthorizationPolicyAction("ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyActionPtrInput)(nil)).Elem(), AuthorizationPolicyAction("ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypeInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypePtrInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuthorizationPolicyActionOutput{})
 	pulumi.RegisterOutputType(AuthorizationPolicyActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})

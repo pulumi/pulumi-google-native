@@ -155,5 +155,6 @@ func (o WorkflowTemplateOutput) ToWorkflowTemplateOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateInput)(nil)).Elem(), &WorkflowTemplate{})
 	pulumi.RegisterOutputType(WorkflowTemplateOutput{})
 }

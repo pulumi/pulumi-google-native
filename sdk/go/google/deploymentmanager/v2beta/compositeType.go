@@ -136,5 +136,6 @@ func (o CompositeTypeOutput) ToCompositeTypeOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CompositeTypeInput)(nil)).Elem(), &CompositeType{})
 	pulumi.RegisterOutputType(CompositeTypeOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DNS.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// </summary>
         public static Task<GetResourceRecordSetResult> InvokeAsync(GetResourceRecordSetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResourceRecordSetResult>("google-native:dns/v1:getResourceRecordSet", args ?? new GetResourceRecordSetArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Fetches the representation of an existing ResourceRecordSet.
+        /// </summary>
+        public static Output<GetResourceRecordSetResult> Invoke(GetResourceRecordSetInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetResourceRecordSetResult>("google-native:dns/v1:getResourceRecordSet", args ?? new GetResourceRecordSetInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.DNS.V1
         public string Type { get; set; } = null!;
 
         public GetResourceRecordSetArgs()
+        {
+        }
+    }
+
+    public sealed class GetResourceRecordSetInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("clientOperationId")]
+        public Input<string>? ClientOperationId { get; set; }
+
+        [Input("managedZone", required: true)]
+        public Input<string> ManagedZone { get; set; } = null!;
+
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
+
+        public GetResourceRecordSetInvokeArgs()
         {
         }
     }

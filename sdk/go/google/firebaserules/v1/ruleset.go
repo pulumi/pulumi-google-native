@@ -114,5 +114,6 @@ func (o RulesetOutput) ToRulesetOutputWithContext(ctx context.Context) RulesetOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetInput)(nil)).Elem(), &Ruleset{})
 	pulumi.RegisterOutputType(RulesetOutput{})
 }

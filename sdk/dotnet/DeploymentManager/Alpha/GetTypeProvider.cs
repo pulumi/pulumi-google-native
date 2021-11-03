@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DeploymentManager.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         /// </summary>
         public static Task<GetTypeProviderResult> InvokeAsync(GetTypeProviderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTypeProviderResult>("google-native:deploymentmanager/alpha:getTypeProvider", args ?? new GetTypeProviderArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about a specific type provider.
+        /// </summary>
+        public static Output<GetTypeProviderResult> Invoke(GetTypeProviderInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTypeProviderResult>("google-native:deploymentmanager/alpha:getTypeProvider", args ?? new GetTypeProviderInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         public string TypeProvider { get; set; } = null!;
 
         public GetTypeProviderArgs()
+        {
+        }
+    }
+
+    public sealed class GetTypeProviderInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("typeProvider", required: true)]
+        public Input<string> TypeProvider { get; set; } = null!;
+
+        public GetTypeProviderInvokeArgs()
         {
         }
     }

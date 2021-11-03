@@ -132,5 +132,6 @@ func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyInput)(nil)).Elem(), &AutoscalingPolicy{})
 	pulumi.RegisterOutputType(AutoscalingPolicyOutput{})
 }

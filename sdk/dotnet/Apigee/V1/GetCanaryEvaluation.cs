@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetCanaryEvaluationResult> InvokeAsync(GetCanaryEvaluationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCanaryEvaluationResult>("google-native:apigee/v1:getCanaryEvaluation", args ?? new GetCanaryEvaluationArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a CanaryEvaluation for an organization.
+        /// </summary>
+        public static Output<GetCanaryEvaluationResult> Invoke(GetCanaryEvaluationInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCanaryEvaluationResult>("google-native:apigee/v1:getCanaryEvaluation", args ?? new GetCanaryEvaluationInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string OrganizationId { get; set; } = null!;
 
         public GetCanaryEvaluationArgs()
+        {
+        }
+    }
+
+    public sealed class GetCanaryEvaluationInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("canaryevaluationId", required: true)]
+        public Input<string> CanaryevaluationId { get; set; } = null!;
+
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        public GetCanaryEvaluationInvokeArgs()
         {
         }
     }

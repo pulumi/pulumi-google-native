@@ -121,5 +121,6 @@ func (o InstanceAttachmentOutput) ToInstanceAttachmentOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttachmentInput)(nil)).Elem(), &InstanceAttachment{})
 	pulumi.RegisterOutputType(InstanceAttachmentOutput{})
 }

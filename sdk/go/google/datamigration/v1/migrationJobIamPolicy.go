@@ -139,5 +139,6 @@ func (o MigrationJobIamPolicyOutput) ToMigrationJobIamPolicyOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobIamPolicyInput)(nil)).Elem(), &MigrationJobIamPolicy{})
 	pulumi.RegisterOutputType(MigrationJobIamPolicyOutput{})
 }

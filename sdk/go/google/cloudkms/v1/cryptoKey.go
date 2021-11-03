@@ -167,5 +167,6 @@ func (o CryptoKeyOutput) ToCryptoKeyOutputWithContext(ctx context.Context) Crypt
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyInput)(nil)).Elem(), &CryptoKey{})
 	pulumi.RegisterOutputType(CryptoKeyOutput{})
 }

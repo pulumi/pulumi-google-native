@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("google-native:managedidentities/v1alpha1:getDomain", args ?? new GetDomainArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single Domain.
+        /// </summary>
+        public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainResult>("google-native:managedidentities/v1alpha1:getDomain", args ?? new GetDomainInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         public string? Project { get; set; }
 
         public GetDomainArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("domainId", required: true)]
+        public Input<string> DomainId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDomainInvokeArgs()
         {
         }
     }

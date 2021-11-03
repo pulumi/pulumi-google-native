@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Apigee.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("google-native:apigee/v1:getApp", args ?? new GetAppArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns the details for a developer app.
+        /// </summary>
+        public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAppResult>("google-native:apigee/v1:getApp", args ?? new GetAppInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public string? Query { get; set; }
 
         public GetAppArgs()
+        {
+        }
+    }
+
+    public sealed class GetAppInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
+
+        [Input("developerId", required: true)]
+        public Input<string> DeveloperId { get; set; } = null!;
+
+        [Input("entity")]
+        public Input<string>? Entity { get; set; }
+
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("query")]
+        public Input<string>? Query { get; set; }
+
+        public GetAppInvokeArgs()
         {
         }
     }

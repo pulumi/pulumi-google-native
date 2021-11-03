@@ -186,6 +186,8 @@ func (in *environmentStateEnumPtr) ToEnvironmentStateEnumPtrOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStateEnumInput)(nil)).Elem(), EnvironmentStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStateEnumPtrInput)(nil)).Elem(), EnvironmentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(EnvironmentStateEnumOutput{})
 	pulumi.RegisterOutputType(EnvironmentStateEnumPtrOutput{})
 }

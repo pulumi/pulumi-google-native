@@ -139,5 +139,6 @@ func (o InternalRangeIamPolicyOutput) ToInternalRangeIamPolicyOutputWithContext(
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeIamPolicyInput)(nil)).Elem(), &InternalRangeIamPolicy{})
 	pulumi.RegisterOutputType(InternalRangeIamPolicyOutput{})
 }

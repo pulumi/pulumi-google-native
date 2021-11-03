@@ -178,6 +178,8 @@ func (in *domainRedirectTypePtr) ToDomainRedirectTypePtrOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectTypeInput)(nil)).Elem(), DomainRedirectType("REDIRECT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectTypePtrInput)(nil)).Elem(), DomainRedirectType("REDIRECT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(DomainRedirectTypeOutput{})
 	pulumi.RegisterOutputType(DomainRedirectTypePtrOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public static Task<GetConsentResult> InvokeAsync(GetConsentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConsentResult>("google-native:healthcare/v1:getConsent", args ?? new GetConsentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the specified revision of a Consent, or the latest revision if `revision_id` is not specified in the resource name.
+        /// </summary>
+        public static Output<GetConsentResult> Invoke(GetConsentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConsentResult>("google-native:healthcare/v1:getConsent", args ?? new GetConsentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public string? Project { get; set; }
 
         public GetConsentArgs()
+        {
+        }
+    }
+
+    public sealed class GetConsentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("consentId", required: true)]
+        public Input<string> ConsentId { get; set; } = null!;
+
+        [Input("consentStoreId", required: true)]
+        public Input<string> ConsentStoreId { get; set; } = null!;
+
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetConsentInvokeArgs()
         {
         }
     }

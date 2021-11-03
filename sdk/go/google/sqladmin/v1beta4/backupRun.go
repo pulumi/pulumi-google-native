@@ -200,5 +200,6 @@ func (o BackupRunOutput) ToBackupRunOutputWithContext(ctx context.Context) Backu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupRunInput)(nil)).Elem(), &BackupRun{})
 	pulumi.RegisterOutputType(BackupRunOutput{})
 }

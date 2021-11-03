@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Privateca.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// </summary>
         public static Task<GetCertificateAuthorityCertificateRevocationListIamPolicyResult> InvokeAsync(GetCertificateAuthorityCertificateRevocationListIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateAuthorityCertificateRevocationListIamPolicyResult>("google-native:privateca/v1beta1:getCertificateAuthorityCertificateRevocationListIamPolicy", args ?? new GetCertificateAuthorityCertificateRevocationListIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetCertificateAuthorityCertificateRevocationListIamPolicyResult> Invoke(GetCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCertificateAuthorityCertificateRevocationListIamPolicyResult>("google-native:privateca/v1beta1:getCertificateAuthorityCertificateRevocationListIamPolicy", args ?? new GetCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public string? Project { get; set; }
 
         public GetCertificateAuthorityCertificateRevocationListIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("certificateAuthorityId", required: true)]
+        public Input<string> CertificateAuthorityId { get; set; } = null!;
+
+        [Input("certificateRevocationListId", required: true)]
+        public Input<string> CertificateRevocationListId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs()
         {
         }
     }

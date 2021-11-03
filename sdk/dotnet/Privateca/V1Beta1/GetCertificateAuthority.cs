@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Privateca.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// </summary>
         public static Task<GetCertificateAuthorityResult> InvokeAsync(GetCertificateAuthorityArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateAuthorityResult>("google-native:privateca/v1beta1:getCertificateAuthority", args ?? new GetCertificateAuthorityArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns a CertificateAuthority.
+        /// </summary>
+        public static Output<GetCertificateAuthorityResult> Invoke(GetCertificateAuthorityInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCertificateAuthorityResult>("google-native:privateca/v1beta1:getCertificateAuthority", args ?? new GetCertificateAuthorityInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public string? Project { get; set; }
 
         public GetCertificateAuthorityArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateAuthorityInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("certificateAuthorityId", required: true)]
+        public Input<string> CertificateAuthorityId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCertificateAuthorityInvokeArgs()
         {
         }
     }

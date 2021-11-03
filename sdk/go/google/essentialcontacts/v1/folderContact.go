@@ -145,5 +145,6 @@ func (o FolderContactOutput) ToFolderContactOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderContactInput)(nil)).Elem(), &FolderContact{})
 	pulumi.RegisterOutputType(FolderContactOutput{})
 }

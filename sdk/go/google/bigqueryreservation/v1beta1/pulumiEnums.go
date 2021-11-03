@@ -357,6 +357,10 @@ func (in *capacityCommitmentRenewalPlanPtr) ToCapacityCommitmentRenewalPlanPtrOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentPlanInput)(nil)).Elem(), CapacityCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentPlanPtrInput)(nil)).Elem(), CapacityCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentRenewalPlanInput)(nil)).Elem(), CapacityCommitmentRenewalPlan("COMMITMENT_PLAN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentRenewalPlanPtrInput)(nil)).Elem(), CapacityCommitmentRenewalPlan("COMMITMENT_PLAN_UNSPECIFIED"))
 	pulumi.RegisterOutputType(CapacityCommitmentPlanOutput{})
 	pulumi.RegisterOutputType(CapacityCommitmentPlanPtrOutput{})
 	pulumi.RegisterOutputType(CapacityCommitmentRenewalPlanOutput{})

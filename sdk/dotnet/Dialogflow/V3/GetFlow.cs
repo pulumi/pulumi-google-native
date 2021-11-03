@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V3
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public static Task<GetFlowResult> InvokeAsync(GetFlowArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFlowResult>("google-native:dialogflow/v3:getFlow", args ?? new GetFlowArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified flow.
+        /// </summary>
+        public static Output<GetFlowResult> Invoke(GetFlowInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFlowResult>("google-native:dialogflow/v3:getFlow", args ?? new GetFlowInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public string? Project { get; set; }
 
         public GetFlowArgs()
+        {
+        }
+    }
+
+    public sealed class GetFlowInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
+
+        [Input("flowId", required: true)]
+        public Input<string> FlowId { get; set; } = null!;
+
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetFlowInvokeArgs()
         {
         }
     }

@@ -132,5 +132,6 @@ func (o RegionOperationIamPolicyOutput) ToRegionOperationIamPolicyOutputWithCont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionOperationIamPolicyInput)(nil)).Elem(), &RegionOperationIamPolicy{})
 	pulumi.RegisterOutputType(RegionOperationIamPolicyOutput{})
 }

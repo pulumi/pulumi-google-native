@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static Task<GetMessageResult> InvokeAsync(GetMessageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMessageResult>("google-native:healthcare/v1beta1:getMessage", args ?? new GetMessageArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an HL7v2 message.
+        /// </summary>
+        public static Output<GetMessageResult> Invoke(GetMessageInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMessageResult>("google-native:healthcare/v1beta1:getMessage", args ?? new GetMessageInvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +47,31 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public string? View { get; set; }
 
         public GetMessageArgs()
+        {
+        }
+    }
+
+    public sealed class GetMessageInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("hl7V2StoreId", required: true)]
+        public Input<string> Hl7V2StoreId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("messageId", required: true)]
+        public Input<string> MessageId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
+        public GetMessageInvokeArgs()
         {
         }
     }

@@ -157,5 +157,6 @@ func (o PublicDelegatedPrefixOutput) ToPublicDelegatedPrefixOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixInput)(nil)).Elem(), &PublicDelegatedPrefix{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixOutput{})
 }

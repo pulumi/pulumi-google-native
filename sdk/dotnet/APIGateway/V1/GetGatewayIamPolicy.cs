@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.APIGateway.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         /// </summary>
         public static Task<GetGatewayIamPolicyResult> InvokeAsync(GetGatewayIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGatewayIamPolicyResult>("google-native:apigateway/v1:getGatewayIamPolicy", args ?? new GetGatewayIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetGatewayIamPolicyResult> Invoke(GetGatewayIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGatewayIamPolicyResult>("google-native:apigateway/v1:getGatewayIamPolicy", args ?? new GetGatewayIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         public string? Project { get; set; }
 
         public GetGatewayIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetGatewayIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("gatewayId", required: true)]
+        public Input<string> GatewayId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetGatewayIamPolicyInvokeArgs()
         {
         }
     }

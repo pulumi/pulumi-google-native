@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.ServiceManagement.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         public static Task<GetRolloutResult> InvokeAsync(GetRolloutArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRolloutResult>("google-native:servicemanagement/v1:getRollout", args ?? new GetRolloutArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a service configuration rollout.
+        /// </summary>
+        public static Output<GetRolloutResult> Invoke(GetRolloutInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRolloutResult>("google-native:servicemanagement/v1:getRollout", args ?? new GetRolloutInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public string ServiceName { get; set; } = null!;
 
         public GetRolloutArgs()
+        {
+        }
+    }
+
+    public sealed class GetRolloutInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("rolloutId", required: true)]
+        public Input<string> RolloutId { get; set; } = null!;
+
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        public GetRolloutInvokeArgs()
         {
         }
     }

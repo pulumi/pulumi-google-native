@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.WebSecurityScanner.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         /// </summary>
         public static Task<GetScanConfigResult> InvokeAsync(GetScanConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetScanConfigResult>("google-native:websecurityscanner/v1:getScanConfig", args ?? new GetScanConfigArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a ScanConfig.
+        /// </summary>
+        public static Output<GetScanConfigResult> Invoke(GetScanConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetScanConfigResult>("google-native:websecurityscanner/v1:getScanConfig", args ?? new GetScanConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         public string ScanConfigId { get; set; } = null!;
 
         public GetScanConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetScanConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("scanConfigId", required: true)]
+        public Input<string> ScanConfigId { get; set; } = null!;
+
+        public GetScanConfigInvokeArgs()
         {
         }
     }

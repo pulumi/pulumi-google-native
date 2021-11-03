@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.DNS.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// </summary>
         public static Task<GetChangeResult> InvokeAsync(GetChangeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetChangeResult>("google-native:dns/v1:getChange", args ?? new GetChangeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Fetches the representation of an existing Change.
+        /// </summary>
+        public static Output<GetChangeResult> Invoke(GetChangeInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetChangeResult>("google-native:dns/v1:getChange", args ?? new GetChangeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.DNS.V1
         public string? Project { get; set; }
 
         public GetChangeArgs()
+        {
+        }
+    }
+
+    public sealed class GetChangeInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("changeId", required: true)]
+        public Input<string> ChangeId { get; set; } = null!;
+
+        [Input("clientOperationId")]
+        public Input<string>? ClientOperationId { get; set; }
+
+        [Input("managedZone", required: true)]
+        public Input<string> ManagedZone { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetChangeInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudIoT.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         /// </summary>
         public static Task<GetRegistryGroupIamPolicyResult> InvokeAsync(GetRegistryGroupIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryGroupIamPolicyResult>("google-native:cloudiot/v1:getRegistryGroupIamPolicy", args ?? new GetRegistryGroupIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetRegistryGroupIamPolicyResult> Invoke(GetRegistryGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegistryGroupIamPolicyResult>("google-native:cloudiot/v1:getRegistryGroupIamPolicy", args ?? new GetRegistryGroupIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public string RegistryId { get; set; } = null!;
 
         public GetRegistryGroupIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegistryGroupIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("groupId", required: true)]
+        public Input<string> GroupId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("registryId", required: true)]
+        public Input<string> RegistryId { get; set; } = null!;
+
+        public GetRegistryGroupIamPolicyInvokeArgs()
         {
         }
     }

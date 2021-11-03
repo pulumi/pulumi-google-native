@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static Task<GetDatasetHl7V2StoreIamPolicyResult> InvokeAsync(GetDatasetHl7V2StoreIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetHl7V2StoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetHl7V2StoreIamPolicy", args ?? new GetDatasetHl7V2StoreIamPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// </summary>
+        public static Output<GetDatasetHl7V2StoreIamPolicyResult> Invoke(GetDatasetHl7V2StoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatasetHl7V2StoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetHl7V2StoreIamPolicy", args ?? new GetDatasetHl7V2StoreIamPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public string? Project { get; set; }
 
         public GetDatasetHl7V2StoreIamPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatasetHl7V2StoreIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("hl7V2StoreId", required: true)]
+        public Input<string> Hl7V2StoreId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("optionsRequestedPolicyVersion")]
+        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDatasetHl7V2StoreIamPolicyInvokeArgs()
         {
         }
     }

@@ -1196,6 +1196,20 @@ func (in *validationOptionsUndeclaredPropertiesPtr) ToValidationOptionsUndeclare
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CompositeTypeStatusInput)(nil)).Elem(), CompositeTypeStatus("UNKNOWN_STATUS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CompositeTypeStatusPtrInput)(nil)).Elem(), CompositeTypeStatus("UNKNOWN_STATUS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiagnosticLevelInput)(nil)).Elem(), DiagnosticLevel("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiagnosticLevelPtrInput)(nil)).Elem(), DiagnosticLevel("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InputMappingLocationInput)(nil)).Elem(), InputMappingLocation("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InputMappingLocationPtrInput)(nil)).Elem(), InputMappingLocation("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateContentsInterpreterInput)(nil)).Elem(), TemplateContentsInterpreter("UNKNOWN_INTERPRETER"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateContentsInterpreterPtrInput)(nil)).Elem(), TemplateContentsInterpreter("UNKNOWN_INTERPRETER"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ValidationOptionsSchemaValidationInput)(nil)).Elem(), ValidationOptionsSchemaValidation("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ValidationOptionsSchemaValidationPtrInput)(nil)).Elem(), ValidationOptionsSchemaValidation("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ValidationOptionsUndeclaredPropertiesInput)(nil)).Elem(), ValidationOptionsUndeclaredProperties("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ValidationOptionsUndeclaredPropertiesPtrInput)(nil)).Elem(), ValidationOptionsUndeclaredProperties("UNKNOWN"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(CompositeTypeStatusOutput{})

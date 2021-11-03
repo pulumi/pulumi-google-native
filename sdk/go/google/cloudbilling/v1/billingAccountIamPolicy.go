@@ -135,5 +135,6 @@ func (o BillingAccountIamPolicyOutput) ToBillingAccountIamPolicyOutputWithContex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountIamPolicyInput)(nil)).Elem(), &BillingAccountIamPolicy{})
 	pulumi.RegisterOutputType(BillingAccountIamPolicyOutput{})
 }

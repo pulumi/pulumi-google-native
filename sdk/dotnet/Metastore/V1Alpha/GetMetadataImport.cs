@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Metastore.V1Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         /// </summary>
         public static Task<GetMetadataImportResult> InvokeAsync(GetMetadataImportArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMetadataImportResult>("google-native:metastore/v1alpha:getMetadataImport", args ?? new GetMetadataImportArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets details of a single import.
+        /// </summary>
+        public static Output<GetMetadataImportResult> Invoke(GetMetadataImportInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMetadataImportResult>("google-native:metastore/v1alpha:getMetadataImport", args ?? new GetMetadataImportInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public string ServiceId { get; set; } = null!;
 
         public GetMetadataImportArgs()
+        {
+        }
+    }
+
+    public sealed class GetMetadataImportInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("metadataImportId", required: true)]
+        public Input<string> MetadataImportId { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
+        public GetMetadataImportInvokeArgs()
         {
         }
     }

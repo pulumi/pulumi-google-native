@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
         /// </summary>
         public static Task<GetTraceSinkResult> InvokeAsync(GetTraceSinkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTraceSinkResult>("google-native:cloudtrace/v2beta1:getTraceSink", args ?? new GetTraceSinkArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a trace sink by name under the parent resource (GCP project).
+        /// </summary>
+        public static Output<GetTraceSinkResult> Invoke(GetTraceSinkInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTraceSinkResult>("google-native:cloudtrace/v2beta1:getTraceSink", args ?? new GetTraceSinkInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
         public string TraceSinkId { get; set; } = null!;
 
         public GetTraceSinkArgs()
+        {
+        }
+    }
+
+    public sealed class GetTraceSinkInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("traceSinkId", required: true)]
+        public Input<string> TraceSinkId { get; set; } = null!;
+
+        public GetTraceSinkInvokeArgs()
         {
         }
     }

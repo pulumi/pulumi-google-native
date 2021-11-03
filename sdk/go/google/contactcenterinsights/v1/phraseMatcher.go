@@ -157,5 +157,6 @@ func (o PhraseMatcherOutput) ToPhraseMatcherOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PhraseMatcherInput)(nil)).Elem(), &PhraseMatcher{})
 	pulumi.RegisterOutputType(PhraseMatcherOutput{})
 }

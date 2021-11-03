@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.IAM.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public static Task<GetServiceAccountResult> InvokeAsync(GetServiceAccountArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceAccountResult>("google-native:iam/v1:getServiceAccount", args ?? new GetServiceAccountArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets a ServiceAccount.
+        /// </summary>
+        public static Output<GetServiceAccountResult> Invoke(GetServiceAccountInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceAccountResult>("google-native:iam/v1:getServiceAccount", args ?? new GetServiceAccountInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.GoogleNative.IAM.V1
         public string ServiceAccountId { get; set; } = null!;
 
         public GetServiceAccountArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceAccountInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("serviceAccountId", required: true)]
+        public Input<string> ServiceAccountId { get; set; } = null!;
+
+        public GetServiceAccountInvokeArgs()
         {
         }
     }

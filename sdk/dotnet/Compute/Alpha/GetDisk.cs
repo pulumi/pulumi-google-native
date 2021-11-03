@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static Task<GetDiskResult> InvokeAsync(GetDiskArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDiskResult>("google-native:compute/alpha:getDisk", args ?? new GetDiskArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+        /// </summary>
+        public static Output<GetDiskResult> Invoke(GetDiskInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDiskResult>("google-native:compute/alpha:getDisk", args ?? new GetDiskInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +38,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public string Zone { get; set; } = null!;
 
         public GetDiskArgs()
+        {
+        }
+    }
+
+    public sealed class GetDiskInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("disk", required: true)]
+        public Input<string> Disk { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
+
+        public GetDiskInvokeArgs()
         {
         }
     }

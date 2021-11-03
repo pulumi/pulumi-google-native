@@ -1427,6 +1427,23 @@ func (in *publicKeyFormatPtr) ToPublicKeyFormatPtrOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolTierInput)(nil)).Elem(), CaPoolTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolTierPtrInput)(nil)).Elem(), CaPoolTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityTypeInput)(nil)).Elem(), CertificateAuthorityType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityTypePtrInput)(nil)).Elem(), CertificateAuthorityType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateExtensionConstraintsKnownExtensionsItemInput)(nil)).Elem(), CertificateExtensionConstraintsKnownExtensionsItem("KNOWN_CERTIFICATE_EXTENSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateExtensionConstraintsKnownExtensionsItemPtrInput)(nil)).Elem(), CertificateExtensionConstraintsKnownExtensionsItem("KNOWN_CERTIFICATE_EXTENSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateExtensionConstraintsKnownExtensionsItemArrayInput)(nil)).Elem(), CertificateExtensionConstraintsKnownExtensionsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateSubjectModeInput)(nil)).Elem(), CertificateSubjectMode("SUBJECT_REQUEST_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateSubjectModePtrInput)(nil)).Elem(), CertificateSubjectMode("SUBJECT_REQUEST_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EcKeyTypeSignatureAlgorithmInput)(nil)).Elem(), EcKeyTypeSignatureAlgorithm("EC_SIGNATURE_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EcKeyTypeSignatureAlgorithmPtrInput)(nil)).Elem(), EcKeyTypeSignatureAlgorithm("EC_SIGNATURE_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecAlgorithmInput)(nil)).Elem(), KeyVersionSpecAlgorithm("SIGN_HASH_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecAlgorithmPtrInput)(nil)).Elem(), KeyVersionSpecAlgorithm("SIGN_HASH_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyFormatInput)(nil)).Elem(), PublicKeyFormat("KEY_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyFormatPtrInput)(nil)).Elem(), PublicKeyFormat("KEY_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(CaPoolTierOutput{})

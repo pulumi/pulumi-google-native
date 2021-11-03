@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.IAM.V1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public static Task<GetProviderResult> InvokeAsync(GetProviderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProviderResult>("google-native:iam/v1:getProvider", args ?? new GetProviderArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an individual WorkloadIdentityPoolProvider.
+        /// </summary>
+        public static Output<GetProviderResult> Invoke(GetProviderInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProviderResult>("google-native:iam/v1:getProvider", args ?? new GetProviderInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +41,25 @@ namespace Pulumi.GoogleNative.IAM.V1
         public string WorkloadIdentityPoolId { get; set; } = null!;
 
         public GetProviderArgs()
+        {
+        }
+    }
+
+    public sealed class GetProviderInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("providerId", required: true)]
+        public Input<string> ProviderId { get; set; } = null!;
+
+        [Input("workloadIdentityPoolId", required: true)]
+        public Input<string> WorkloadIdentityPoolId { get; set; } = null!;
+
+        public GetProviderInvokeArgs()
         {
         }
     }

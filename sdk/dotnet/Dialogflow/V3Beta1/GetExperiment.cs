@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
@@ -16,6 +17,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public static Task<GetExperimentResult> InvokeAsync(GetExperimentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetExperimentResult>("google-native:dialogflow/v3beta1:getExperiment", args ?? new GetExperimentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Retrieves the specified Experiment.
+        /// </summary>
+        public static Output<GetExperimentResult> Invoke(GetExperimentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetExperimentResult>("google-native:dialogflow/v3beta1:getExperiment", args ?? new GetExperimentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +44,28 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public string? Project { get; set; }
 
         public GetExperimentArgs()
+        {
+        }
+    }
+
+    public sealed class GetExperimentInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
+
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("experimentId", required: true)]
+        public Input<string> ExperimentId { get; set; } = null!;
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetExperimentInvokeArgs()
         {
         }
     }
