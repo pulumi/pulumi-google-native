@@ -45,7 +45,7 @@ setup(name='pulumi_google_native',
       cmdclass={
           'install': InstallPluginCommand,
       },
-      keywords='pulumi google cloud',
+      keywords='pulumi google cloud category/cloud kind/native',
       url='https://pulumi.com',
       project_urls={
           'Repository': 'https://github.com/pulumi/pulumi-google-native'
