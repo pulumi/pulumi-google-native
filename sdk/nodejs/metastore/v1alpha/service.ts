@@ -80,6 +80,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
+     * Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+     */
+    public readonly networkConfig!: pulumi.Output<outputs.metastore.v1alpha.NetworkConfigResponse>;
+    /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
     public readonly port!: pulumi.Output<number>;
@@ -130,6 +134,7 @@ export class Service extends pulumi.CustomResource {
             inputs["metadataIntegration"] = args ? args.metadataIntegration : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
+            inputs["networkConfig"] = args ? args.networkConfig : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
@@ -156,6 +161,7 @@ export class Service extends pulumi.CustomResource {
             inputs["metadataManagementActivity"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["network"] = undefined /*out*/;
+            inputs["networkConfig"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
             inputs["releaseChannel"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -204,6 +210,10 @@ export interface ServiceArgs {
      * Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+     */
+    networkConfig?: pulumi.Input<inputs.metastore.v1alpha.NetworkConfigArgs>;
     /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      */

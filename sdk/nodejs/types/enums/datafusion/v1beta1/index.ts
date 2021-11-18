@@ -69,3 +69,23 @@ export const InstanceType = {
  * Required. Instance type.
  */
 export type InstanceType = (typeof InstanceType)[keyof typeof InstanceType];
+
+export const VersionType = {
+    /**
+     * Version does not have availability yet
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Version is under development and not considered stable
+     */
+    TypePreview: "TYPE_PREVIEW",
+    /**
+     * Version is available for public use
+     */
+    TypeGeneralAvailability: "TYPE_GENERAL_AVAILABILITY",
+} as const;
+
+/**
+ * Type represents the release availability of the version
+ */
+export type VersionType = (typeof VersionType)[keyof typeof VersionType];

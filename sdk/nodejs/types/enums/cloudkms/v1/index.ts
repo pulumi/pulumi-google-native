@@ -136,6 +136,18 @@ export const CryptoKeyVersionTemplateAlgorithm = {
      */
     RsaSignPkcs14096Sha512: "RSA_SIGN_PKCS1_4096_SHA512",
     /**
+     * RSASSA-PKCS1-v1_5 signing without encoding, with a 2048 bit key.
+     */
+    RsaSignRawPkcs12048: "RSA_SIGN_RAW_PKCS1_2048",
+    /**
+     * RSASSA-PKCS1-v1_5 signing without encoding, with a 3072 bit key.
+     */
+    RsaSignRawPkcs13072: "RSA_SIGN_RAW_PKCS1_3072",
+    /**
+     * RSASSA-PKCS1-v1_5 signing without encoding, with a 4096 bit key.
+     */
+    RsaSignRawPkcs14096: "RSA_SIGN_RAW_PKCS1_4096",
+    /**
      * RSAES-OAEP 2048 bit key with a SHA256 digest.
      */
     RsaDecryptOaep2048Sha256: "RSA_DECRYPT_OAEP_2048_SHA256",

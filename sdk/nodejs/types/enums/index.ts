@@ -18,6 +18,7 @@ import * as cloudasset from "./cloudasset";
 import * as cloudbilling from "./cloudbilling";
 import * as cloudbuild from "./cloudbuild";
 import * as cloudchannel from "./cloudchannel";
+import * as clouddeploy from "./clouddeploy";
 import * as cloudfunctions from "./cloudfunctions";
 import * as cloudidentity from "./cloudidentity";
 import * as cloudiot from "./cloudiot";
@@ -25,6 +26,7 @@ import * as cloudkms from "./cloudkms";
 import * as cloudresourcemanager from "./cloudresourcemanager";
 import * as cloudscheduler from "./cloudscheduler";
 import * as cloudsearch from "./cloudsearch";
+import * as cloudsupport from "./cloudsupport";
 import * as cloudtasks from "./cloudtasks";
 import * as composer from "./composer";
 import * as compute from "./compute";
@@ -37,8 +39,10 @@ import * as dataflow from "./dataflow";
 import * as datafusion from "./datafusion";
 import * as datalabeling from "./datalabeling";
 import * as datamigration from "./datamigration";
+import * as datapipelines from "./datapipelines";
 import * as dataproc from "./dataproc";
 import * as datastore from "./datastore";
+import * as datastream from "./datastream";
 import * as deploymentmanager from "./deploymentmanager";
 import * as dialogflow from "./dialogflow";
 import * as dlp from "./dlp";
@@ -86,6 +90,7 @@ import * as testing from "./testing";
 import * as toolresults from "./toolresults";
 import * as tpu from "./tpu";
 import * as transcoder from "./transcoder";
+import * as vmmigration from "./vmmigration";
 import * as websecurityscanner from "./websecurityscanner";
 import * as workflowexecutions from "./workflowexecutions";
 
@@ -106,6 +111,7 @@ export {
     cloudbilling,
     cloudbuild,
     cloudchannel,
+    clouddeploy,
     cloudfunctions,
     cloudidentity,
     cloudiot,
@@ -113,6 +119,7 @@ export {
     cloudresourcemanager,
     cloudscheduler,
     cloudsearch,
+    cloudsupport,
     cloudtasks,
     composer,
     compute,
@@ -125,8 +132,10 @@ export {
     datafusion,
     datalabeling,
     datamigration,
+    datapipelines,
     dataproc,
     datastore,
+    datastream,
     deploymentmanager,
     dialogflow,
     dlp,
@@ -174,6 +183,7 @@ export {
     toolresults,
     tpu,
     transcoder,
+    vmmigration,
     websecurityscanner,
     workflowexecutions,
 };

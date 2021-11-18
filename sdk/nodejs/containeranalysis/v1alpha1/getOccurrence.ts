@@ -103,7 +103,7 @@ export interface GetOccurrenceResult {
     /**
      * Describes a specific SPDX Package.
      */
-    readonly spdxPackage: outputs.containeranalysis.v1alpha1.PackageOccurrenceResponse;
+    readonly spdxPackage: outputs.containeranalysis.v1alpha1.PackageInfoOccurrenceResponse;
     /**
      * Describes a specific relationship between SPDX elements.
      */

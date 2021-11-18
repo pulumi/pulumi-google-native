@@ -99,7 +99,7 @@ export interface GetNoteResult {
     /**
      * A note describing an SPDX Package.
      */
-    readonly spdxPackage: outputs.containeranalysis.v1alpha1.PackageNoteResponse;
+    readonly spdxPackage: outputs.containeranalysis.v1alpha1.PackageInfoNoteResponse;
     /**
      * A note describing a relationship between SPDX elements.
      */

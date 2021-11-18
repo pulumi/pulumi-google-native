@@ -59,6 +59,10 @@ export interface GetInstanceResult {
      */
     readonly description: string;
     /**
+     * If the instance state is DISABLED, the reason for disabling the instance.
+     */
+    readonly disabledReason: string[];
+    /**
      * Display name for an instance.
      */
     readonly displayName: string;

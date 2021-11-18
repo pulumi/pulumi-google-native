@@ -60,7 +60,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly mysql!: pulumi.Output<outputs.datamigration.v1.MySqlConnectionProfileResponse>;
     /**
-     * The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
+     * The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -152,7 +152,7 @@ export interface ConnectionProfileArgs {
      */
     mysql?: pulumi.Input<inputs.datamigration.v1.MySqlConnectionProfileArgs>;
     /**
-     * The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
+     * The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
      */
     name?: pulumi.Input<string>;
     /**

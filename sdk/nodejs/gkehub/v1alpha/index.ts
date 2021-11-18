@@ -9,7 +9,9 @@ export * from "./feature";
 export * from "./featureIamPolicy";
 export * from "./getFeature";
 export * from "./getFeatureIamPolicy";
+export * from "./getMembership";
 export * from "./getMembershipIamPolicy";
+export * from "./membership";
 export * from "./membershipIamPolicy";
 
 // Export enums:
@@ -18,6 +20,7 @@ export * from "../../types/enums/gkehub/v1alpha";
 // Import resources to register:
 import { Feature } from "./feature";
 import { FeatureIamPolicy } from "./featureIamPolicy";
+import { Membership } from "./membership";
 import { MembershipIamPolicy } from "./membershipIamPolicy";
 
 const _module = {
@@ -28,6 +31,8 @@ const _module = {
                 return new Feature(name, <any>undefined, { urn })
             case "google-native:gkehub/v1alpha:FeatureIamPolicy":
                 return new FeatureIamPolicy(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1alpha:Membership":
+                return new Membership(name, <any>undefined, { urn })
             case "google-native:gkehub/v1alpha:MembershipIamPolicy":
                 return new MembershipIamPolicy(name, <any>undefined, { urn })
             default:

@@ -539,19 +539,19 @@ export namespace apigateway {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface ApigatewayBindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.apigateway.v1.ApigatewayExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -658,19 +658,19 @@ export namespace apigateway {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface ApigatewayBindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.apigateway.v1beta.ApigatewayExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -1171,19 +1171,19 @@ export namespace apigee {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface GoogleIamV1BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.apigee.v1.GoogleTypeExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -2780,19 +2780,19 @@ export namespace appengine {
 export namespace artifactregistry {
     export namespace v1beta1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.artifactregistry.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -2823,19 +2823,19 @@ export namespace artifactregistry {
 
     export namespace v1beta2 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.artifactregistry.v1beta2.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -3038,19 +3038,19 @@ export namespace bigquery {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.bigquery.v2.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -3232,9 +3232,9 @@ export namespace bigquery {
              */
             description?: pulumi.Input<string>;
             /**
-             * [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+             * [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
              */
-            expirationTimestampMillis?: pulumi.Input<string>;
+            expirationTime?: pulumi.Input<string>;
             /**
              * [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
              */
@@ -4070,19 +4070,19 @@ export namespace bigqueryconnection {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.bigqueryconnection.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -4220,21 +4220,69 @@ export namespace bigtableadmin {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Limits for the number of nodes a Cluster can autoscale up/down to.
+         */
+        export interface AutoscalingLimitsArgs {
+            /**
+             * Maximum number of nodes to scale up to.
+             */
+            maxServeNodes: pulumi.Input<number>;
+            /**
+             * Minimum number of nodes to scale down to.
+             */
+            minServeNodes: pulumi.Input<number>;
+        }
+
+        /**
+         * The Autoscaling targets for a Cluster. These determine the recommended nodes.
+         */
+        export interface AutoscalingTargetsArgs {
+            /**
+             * The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+             */
+            cpuUtilizationPercent?: pulumi.Input<number>;
+        }
+
+        /**
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.bigtableadmin.v2.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
+        }
+
+        /**
+         * Autoscaling config for a cluster.
+         */
+        export interface ClusterAutoscalingConfigArgs {
+            /**
+             * Autoscaling limits for this cluster.
+             */
+            autoscalingLimits: pulumi.Input<inputs.bigtableadmin.v2.AutoscalingLimitsArgs>;
+            /**
+             * Autoscaling targets for this cluster.
+             */
+            autoscalingTargets: pulumi.Input<inputs.bigtableadmin.v2.AutoscalingTargetsArgs>;
+        }
+
+        /**
+         * Configuration for a cluster.
+         */
+        export interface ClusterConfigArgs {
+            /**
+             * Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+             */
+            clusterAutoscalingConfig?: pulumi.Input<inputs.bigtableadmin.v2.ClusterAutoscalingConfigArgs>;
         }
 
         /**
@@ -4627,19 +4675,19 @@ export namespace binaryauthorization {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.binaryauthorization.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -4720,19 +4768,19 @@ export namespace binaryauthorization {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.binaryauthorization.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -4793,6 +4841,30 @@ export namespace binaryauthorization {
 export namespace cloudasset {
     export namespace v1 {
         /**
+         * Specifies roles and/or permissions to analyze, to determine both the identities possessing them and the resources they control. If multiple values are specified, results will include roles or permissions matching any of them. The total number of roles and permissions should be equal or less than 10.
+         */
+        export interface AccessSelectorArgs {
+            /**
+             * Optional. The permissions to appear in result.
+             */
+            permissions?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional. The roles to appear in result.
+             */
+            roles?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * The IAM conditions context.
+         */
+        export interface ConditionContextArgs {
+            /**
+             * The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
+             */
+            accessTime?: pulumi.Input<string>;
+        }
+
+        /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
          */
         export interface ExprArgs {
@@ -4825,6 +4897,76 @@ export namespace cloudasset {
         }
 
         /**
+         * ## IAM policy analysis query message.
+         */
+        export interface IamPolicyAnalysisQueryArgs {
+            /**
+             * Optional. Specifies roles or permissions for analysis. This is optional.
+             */
+            accessSelector?: pulumi.Input<inputs.cloudasset.v1.AccessSelectorArgs>;
+            /**
+             * Optional. The hypothetical context for IAM conditions evaluation.
+             */
+            conditionContext?: pulumi.Input<inputs.cloudasset.v1.ConditionContextArgs>;
+            /**
+             * Optional. Specifies an identity for analysis.
+             */
+            identitySelector?: pulumi.Input<inputs.cloudasset.v1.IdentitySelectorArgs>;
+            /**
+             * Optional. The query options.
+             */
+            options?: pulumi.Input<inputs.cloudasset.v1.OptionsArgs>;
+            /**
+             * Optional. Specifies a resource for analysis.
+             */
+            resourceSelector?: pulumi.Input<inputs.cloudasset.v1.ResourceSelectorArgs>;
+            /**
+             * The relative name of the root asset. Only resources and IAM policies within the scope will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
+             */
+            scope: pulumi.Input<string>;
+        }
+
+        /**
+         * Specifies an identity for which to determine resource access, based on roles assigned either directly to them or to the groups they belong to, directly or indirectly.
+         */
+        export interface IdentitySelectorArgs {
+            /**
+             * The identity appear in the form of principals in [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are: "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported. You must give a specific identity.
+             */
+            identity: pulumi.Input<string>;
+        }
+
+        /**
+         * Contains query options.
+         */
+        export interface OptionsArgs {
+            /**
+             * Optional. If true, the response will include access analysis from identities to resources via service account impersonation. This is a very expensive operation, because many derived queries will be executed. We highly recommend you use AssetService.AnalyzeIamPolicyLongrunning rpc instead. For example, if the request analyzes for which resources user A has permission P, and there's an IAM policy states user A has iam.serviceAccounts.getAccessToken permission to a service account SA, and there's another IAM policy states service account SA has permission P to a GCP folder F, then user A potentially has access to the GCP folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another example, if the request analyzes for who has permission P to a GCP folder F, and there's an IAM policy states user A has iam.serviceAccounts.actAs permission to a service account SA, and there's another IAM policy states service account SA has permission P to the GCP folder F, then user A potentially has access to the GCP folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default is false.
+             */
+            analyzeServiceAccountImpersonation?: pulumi.Input<boolean>;
+            /**
+             * Optional. If true, the identities section of the result will expand any Google groups appearing in an IAM policy binding. If IamPolicyAnalysisQuery.identity_selector is specified, the identity in the result will be determined by the selector, and this flag is not allowed to set. Default is false.
+             */
+            expandGroups?: pulumi.Input<boolean>;
+            /**
+             * Optional. If true and IamPolicyAnalysisQuery.resource_selector is not specified, the resource section of the result will expand any resource attached to an IAM policy to include resources lower in the resource hierarchy. For example, if the request analyzes for which resources user A has permission P, and the results include an IAM policy with P on a GCP folder, the results will also include resources in that folder with permission P. If true and IamPolicyAnalysisQuery.resource_selector is specified, the resource section of the result will expand the specified resource to include resources lower in the resource hierarchy. Only project or lower resources are supported. Folder and organization resource cannot be used together with this option. For example, if the request analyzes for which users have permission P on a GCP project with this option enabled, the results will include all users who have permission P on that project or any lower resource. Default is false.
+             */
+            expandResources?: pulumi.Input<boolean>;
+            /**
+             * Optional. If true, the access section of result will expand any roles appearing in IAM policy bindings to include their permissions. If IamPolicyAnalysisQuery.access_selector is specified, the access section of the result will be determined by the selector, and this flag is not allowed to set. Default is false.
+             */
+            expandRoles?: pulumi.Input<boolean>;
+            /**
+             * Optional. If true, the result will output the relevant membership relationships between groups and other groups, and between groups and principals. Default is false.
+             */
+            outputGroupEdges?: pulumi.Input<boolean>;
+            /**
+             * Optional. If true, the result will output the relevant parent/child relationships between resources. Default is false.
+             */
+            outputResourceEdges?: pulumi.Input<boolean>;
+        }
+
+        /**
          * A Pub/Sub destination.
          */
         export interface PubsubDestinationArgs {
@@ -4832,6 +4974,26 @@ export namespace cloudasset {
              * The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
              */
             topic?: pulumi.Input<string>;
+        }
+
+        /**
+         * The query content.
+         */
+        export interface QueryContentArgs {
+            /**
+             * An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy rpc or the AssetService.AnalyzeIamPolicyLongrunning rpc.
+             */
+            iamPolicyAnalysisQuery?: pulumi.Input<inputs.cloudasset.v1.IamPolicyAnalysisQueryArgs>;
+        }
+
+        /**
+         * Specifies the resource to analyze for access policies, which may be set directly on the resource, or on ancestors such as organizations, folders or projects.
+         */
+        export interface ResourceSelectorArgs {
+            /**
+             * The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types).
+             */
+            fullResourceName: pulumi.Input<string>;
         }
 
     }
@@ -4868,19 +5030,19 @@ export namespace cloudbilling {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudbilling.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -5787,6 +5949,177 @@ export namespace cloudchannel {
     }
 }
 
+export namespace clouddeploy {
+    export namespace v1 {
+        /**
+         * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+         */
+        export interface AuditConfigArgs {
+            /**
+             * The configuration for logging of each type of permission.
+             */
+            auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.clouddeploy.v1.AuditLogConfigArgs>[]>;
+            /**
+             * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+             */
+            service?: pulumi.Input<string>;
+        }
+
+        /**
+         * Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+         */
+        export interface AuditLogConfigArgs {
+            /**
+             * Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+             */
+            exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The log type that this config enables.
+             */
+            logType?: pulumi.Input<enums.clouddeploy.v1.AuditLogConfigLogType>;
+        }
+
+        /**
+         * Associates `members`, or principals, with a `role`.
+         */
+        export interface BindingArgs {
+            /**
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             */
+            condition?: pulumi.Input<inputs.clouddeploy.v1.ExprArgs>;
+            /**
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             */
+            members?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             */
+            role?: pulumi.Input<string>;
+        }
+
+        /**
+         * Description of an a image to use during Skaffold rendering.
+         */
+        export interface BuildArtifactArgs {
+            /**
+             * Image name in Skaffold configuration.
+             */
+            image?: pulumi.Input<string>;
+            /**
+             * Image tag to use. This will generally be the full path to an image, such as "gcr.io/my-project/busybox:1.2.3" or "gcr.io/my-project/busybox@sha256:abc123".
+             */
+            tag?: pulumi.Input<string>;
+        }
+
+        /**
+         * Execution using the default Cloud Build pool.
+         */
+        export interface DefaultPoolArgs {
+            /**
+             * Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+             */
+            artifactStorage?: pulumi.Input<string>;
+            /**
+             * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+             */
+            serviceAccount?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration of the environment to use when calling Skaffold.
+         */
+        export interface ExecutionConfigArgs {
+            /**
+             * Optional. Use default Cloud Build pool.
+             */
+            defaultPool?: pulumi.Input<inputs.clouddeploy.v1.DefaultPoolArgs>;
+            /**
+             * Optional. Use private Cloud Build pool.
+             */
+            privatePool?: pulumi.Input<inputs.clouddeploy.v1.PrivatePoolArgs>;
+            /**
+             * Usages when this configuration should be applied.
+             */
+            usages: pulumi.Input<pulumi.Input<enums.clouddeploy.v1.ExecutionConfigUsagesItem>[]>;
+        }
+
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+         */
+        export interface ExprArgs {
+            /**
+             * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Textual representation of an expression in Common Expression Language syntax.
+             */
+            expression?: pulumi.Input<string>;
+            /**
+             * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+             */
+            title?: pulumi.Input<string>;
+        }
+
+        /**
+         * Information specifying a GKE Cluster.
+         */
+        export interface GkeClusterArgs {
+            /**
+             * Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+             */
+            cluster?: pulumi.Input<string>;
+        }
+
+        /**
+         * Execution using a private Cloud Build pool.
+         */
+        export interface PrivatePoolArgs {
+            /**
+             * Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+             */
+            artifactStorage?: pulumi.Input<string>;
+            /**
+             * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+             */
+            serviceAccount?: pulumi.Input<string>;
+            /**
+             * Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`.
+             */
+            workerPool: pulumi.Input<string>;
+        }
+
+        /**
+         * SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+         */
+        export interface SerialPipelineArgs {
+            /**
+             * Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
+             */
+            stages?: pulumi.Input<pulumi.Input<inputs.clouddeploy.v1.StageArgs>[]>;
+        }
+
+        /**
+         * Stage specifies a location to which to deploy.
+         */
+        export interface StageArgs {
+            /**
+             * Skaffold profiles to use when rendering the manifest for this stage's `Target`.
+             */
+            profiles?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+             */
+            targetId?: pulumi.Input<string>;
+        }
+
+    }
+}
+
 export namespace cloudfunctions {
     export namespace v1 {
         /**
@@ -5818,19 +6151,19 @@ export namespace cloudfunctions {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudfunctions.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -6146,19 +6479,19 @@ export namespace cloudidentity {
 export namespace cloudiot {
     export namespace v1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudiot.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -6339,19 +6672,19 @@ export namespace cloudkms {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudkms.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -6436,19 +6769,19 @@ export namespace cloudresourcemanager {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudresourcemanager.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -6521,19 +6854,19 @@ export namespace cloudresourcemanager {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudresourcemanager.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -6606,19 +6939,19 @@ export namespace cloudresourcemanager {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudresourcemanager.v2.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -6677,19 +7010,19 @@ export namespace cloudresourcemanager {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudresourcemanager.v2beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -6748,19 +7081,19 @@ export namespace cloudresourcemanager {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudresourcemanager.v3.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -7270,7 +7603,7 @@ export namespace cloudsearch {
          */
         export interface SourceCrowdingConfigArgs {
             /**
-             * Maximum number of results allowed from a source. No limits will be set on results if this value is less than or equal to 0.
+             * Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
              */
             numResults?: pulumi.Input<number>;
             /**
@@ -7310,6 +7643,39 @@ export namespace cloudsearch {
              * The value to be compared with.
              */
             value?: pulumi.Input<inputs.cloudsearch.v1.ValueArgs>;
+        }
+
+    }
+}
+
+export namespace cloudsupport {
+    export namespace v2beta {
+        /**
+         * An object containing information about the effective user and authenticated principal responsible for an action.
+         */
+        export interface ActorArgs {
+            /**
+             * The name to display for the actor. If not provided, it is inferred from credentials supplied during case creation. When an email is provided, a display name must also be provided. This will be obfuscated if the user is a Google Support agent.
+             */
+            displayName?: pulumi.Input<string>;
+            /**
+             * The email address of the actor. If not provided, it is inferred from credentials supplied during case creation. If the authenticated principal does not have an email address, one must be provided. When a name is provided, an email must also be provided. This will be obfuscated if the user is a Google Support agent.
+             */
+            email?: pulumi.Input<string>;
+        }
+
+        /**
+         * A classification object with a product type and value.
+         */
+        export interface CaseClassificationArgs {
+            /**
+             * The display name of the classification.
+             */
+            displayName?: pulumi.Input<string>;
+            /**
+             * The unique ID for a classification. Must be specified for case creation.
+             */
+            id?: pulumi.Input<string>;
         }
 
     }
@@ -7362,19 +7728,19 @@ export namespace cloudtasks {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudtasks.v2.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -7567,19 +7933,19 @@ export namespace cloudtasks {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudtasks.v2beta2.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -7732,19 +8098,19 @@ export namespace cloudtasks {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.cloudtasks.v2beta3.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -7964,6 +8330,10 @@ export namespace composer {
              */
             encryptionConfig?: pulumi.Input<inputs.composer.v1.EncryptionConfigArgs>;
             /**
+             * Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+             */
+            environmentSize?: pulumi.Input<enums.composer.v1.EnvironmentConfigEnvironmentSize>;
+            /**
              * The configuration used for the Kubernetes Engine cluster.
              */
             nodeConfig?: pulumi.Input<inputs.composer.v1.NodeConfigArgs>;
@@ -7984,9 +8354,13 @@ export namespace composer {
              */
             webServerConfig?: pulumi.Input<inputs.composer.v1.WebServerConfigArgs>;
             /**
-             * Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+             * Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
              */
             webServerNetworkAccessControl?: pulumi.Input<inputs.composer.v1.WebServerNetworkAccessControlArgs>;
+            /**
+             * Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+             */
+            workloadsConfig?: pulumi.Input<inputs.composer.v1.WorkloadsConfigArgs>;
         }
 
         /**
@@ -8076,6 +8450,10 @@ export namespace composer {
          */
         export interface PrivateEnvironmentConfigArgs {
             /**
+             * Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+             */
+            cloudComposerNetworkIpv4CidrBlock?: pulumi.Input<string>;
+            /**
              * Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
              */
             cloudSqlIpv4CidrBlock?: pulumi.Input<string>;
@@ -8091,6 +8469,28 @@ export namespace composer {
              * Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             webServerIpv4CidrBlock?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration for resources used by Airflow schedulers.
+         */
+        export interface SchedulerResourceArgs {
+            /**
+             * Optional. The number of schedulers.
+             */
+            count?: pulumi.Input<number>;
+            /**
+             * Optional. CPU request and limit for a single Airflow scheduler replica.
+             */
+            cpu?: pulumi.Input<number>;
+            /**
+             * Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
+             */
+            memoryGb?: pulumi.Input<number>;
+            /**
+             * Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
+             */
+            storageGb?: pulumi.Input<number>;
         }
 
         /**
@@ -8134,13 +8534,75 @@ export namespace composer {
         }
 
         /**
-         * Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         * Network-level access control policy for the Airflow web server.
          */
         export interface WebServerNetworkAccessControlArgs {
             /**
              * A collection of allowed IP ranges with descriptions.
              */
             allowedIpRanges?: pulumi.Input<pulumi.Input<inputs.composer.v1.AllowedIpRangeArgs>[]>;
+        }
+
+        /**
+         * Configuration for resources used by Airflow web server.
+         */
+        export interface WebServerResourceArgs {
+            /**
+             * Optional. CPU request and limit for Airflow web server.
+             */
+            cpu?: pulumi.Input<number>;
+            /**
+             * Optional. Memory (GB) request and limit for Airflow web server.
+             */
+            memoryGb?: pulumi.Input<number>;
+            /**
+             * Optional. Storage (GB) request and limit for Airflow web server.
+             */
+            storageGb?: pulumi.Input<number>;
+        }
+
+        /**
+         * Configuration for resources used by Airflow workers.
+         */
+        export interface WorkerResourceArgs {
+            /**
+             * Optional. CPU request and limit for a single Airflow worker replica.
+             */
+            cpu?: pulumi.Input<number>;
+            /**
+             * Optional. Maximum number of workers for autoscaling.
+             */
+            maxCount?: pulumi.Input<number>;
+            /**
+             * Optional. Memory (GB) request and limit for a single Airflow worker replica.
+             */
+            memoryGb?: pulumi.Input<number>;
+            /**
+             * Optional. Minimum number of workers for autoscaling.
+             */
+            minCount?: pulumi.Input<number>;
+            /**
+             * Optional. Storage (GB) request and limit for a single Airflow worker replica.
+             */
+            storageGb?: pulumi.Input<number>;
+        }
+
+        /**
+         * The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
+        export interface WorkloadsConfigArgs {
+            /**
+             * Optional. Resources used by Airflow schedulers.
+             */
+            scheduler?: pulumi.Input<inputs.composer.v1.SchedulerResourceArgs>;
+            /**
+             * Optional. Resources used by Airflow web server.
+             */
+            webServer?: pulumi.Input<inputs.composer.v1.WebServerResourceArgs>;
+            /**
+             * Optional. Resources used by Airflow workers.
+             */
+            worker?: pulumi.Input<inputs.composer.v1.WorkerResourceArgs>;
         }
 
     }
@@ -8158,6 +8620,20 @@ export namespace composer {
              * IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
              */
             value?: pulumi.Input<string>;
+        }
+
+        /**
+         * CidrBlock contains an optional name and one CIDR block.
+         */
+        export interface CidrBlockArgs {
+            /**
+             * cidr_block must be specified in CIDR notation.
+             */
+            cidrBlock?: pulumi.Input<string>;
+            /**
+             * display_name is a field for users to identify CIDR blocks.
+             */
+            displayName?: pulumi.Input<string>;
         }
 
         /**
@@ -8201,6 +8677,10 @@ export namespace composer {
              */
             maintenanceWindow?: pulumi.Input<inputs.composer.v1beta1.MaintenanceWindowArgs>;
             /**
+             * Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+             */
+            masterAuthorizedNetworksConfig?: pulumi.Input<inputs.composer.v1beta1.MasterAuthorizedNetworksConfigArgs>;
+            /**
              * The configuration used for the Kubernetes Engine cluster.
              */
             nodeConfig?: pulumi.Input<inputs.composer.v1beta1.NodeConfigArgs>;
@@ -8221,7 +8701,7 @@ export namespace composer {
              */
             webServerConfig?: pulumi.Input<inputs.composer.v1beta1.WebServerConfigArgs>;
             /**
-             * Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+             * Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
              */
             webServerNetworkAccessControl?: pulumi.Input<inputs.composer.v1beta1.WebServerNetworkAccessControlArgs>;
             /**
@@ -8257,7 +8737,7 @@ export namespace composer {
         }
 
         /**
-         * The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+         * The configuration settings for Cloud Composer maintenance window. The following example: ``` { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } ``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
          */
         export interface MaintenanceWindowArgs {
             /**
@@ -8272,6 +8752,20 @@ export namespace composer {
              * Start time of the first recurrence of the maintenance window.
              */
             startTime: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+         */
+        export interface MasterAuthorizedNetworksConfigArgs {
+            /**
+             * cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+             */
+            cidrBlocks?: pulumi.Input<pulumi.Input<inputs.composer.v1beta1.CidrBlockArgs>[]>;
+            /**
+             * Whether or not master authorized networks is enabled.
+             */
+            enabled?: pulumi.Input<boolean>;
         }
 
         /**
@@ -8342,6 +8836,10 @@ export namespace composer {
          * The configuration information for configuring a Private IP Cloud Composer environment.
          */
         export interface PrivateEnvironmentConfigArgs {
+            /**
+             * Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+             */
+            cloudComposerConnectionSubnetwork?: pulumi.Input<string>;
             /**
              * Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
              */
@@ -8431,7 +8929,7 @@ export namespace composer {
         }
 
         /**
-         * Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         * Network-level access control policy for the Airflow web server.
          */
         export interface WebServerNetworkAccessControlArgs {
             /**
@@ -19719,19 +20217,19 @@ export namespace connectors {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.connectors.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -20057,6 +20555,16 @@ export namespace container {
         }
 
         /**
+         * Specifies options for controlling advanced machine features.
+         */
+        export interface AdvancedMachineFeaturesArgs {
+            /**
+             * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+             */
+            threadsPerCore?: pulumi.Input<string>;
+        }
+
+        /**
          * Configuration for returning group information from authenticators.
          */
         export interface AuthenticatorGroupsConfigArgs {
@@ -20247,6 +20755,24 @@ export namespace container {
         }
 
         /**
+         * DNSConfig contains the desired set of options for configuring clusterDNS.
+         */
+        export interface DNSConfigArgs {
+            /**
+             * cluster_dns indicates which in-cluster DNS provider should be used.
+             */
+            clusterDns?: pulumi.Input<enums.container.v1.DNSConfigClusterDns>;
+            /**
+             * cluster_dns_domain is the suffix used for all cluster service records.
+             */
+            clusterDnsDomain?: pulumi.Input<string>;
+            /**
+             * cluster_dns_scope indicates the scope of access to cluster DNS records.
+             */
+            clusterDnsScope?: pulumi.Input<enums.container.v1.DNSConfigClusterDnsScope>;
+        }
+
+        /**
          * Time window specified for daily maintenance operations.
          */
         export interface DailyMaintenanceWindowArgs {
@@ -20296,6 +20822,16 @@ export namespace container {
         export interface GcePersistentDiskCsiDriverConfigArgs {
             /**
              * Whether the Compute Engine PD CSI driver is enabled for this cluster.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * GcfsConfig contains configurations of Google Container File System (image streaming).
+         */
+        export interface GcfsConfigArgs {
+            /**
+             * Whether to use GCFS.
              */
             enabled?: pulumi.Input<boolean>;
         }
@@ -20504,6 +21040,10 @@ export namespace container {
          * Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
          */
         export interface MeshCertificatesArgs {
+            /**
+             * enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+             */
+            enableCertificates?: pulumi.Input<boolean>;
         }
 
         /**
@@ -20538,6 +21078,10 @@ export namespace container {
              * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
              */
             defaultSnatStatus?: pulumi.Input<inputs.container.v1.DefaultSnatStatusArgs>;
+            /**
+             * DNSConfig contains clusterDNS config for this cluster.
+             */
+            dnsConfig?: pulumi.Input<inputs.container.v1.DNSConfigArgs>;
             /**
              * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
              */
@@ -20585,6 +21129,10 @@ export namespace container {
              */
             accelerators?: pulumi.Input<pulumi.Input<inputs.container.v1.AcceleratorConfigArgs>[]>;
             /**
+             * Advanced features for the Compute Engine VM.
+             */
+            advancedMachineFeatures?: pulumi.Input<inputs.container.v1.AdvancedMachineFeaturesArgs>;
+            /**
              *  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
              */
             bootDiskKmsKey?: pulumi.Input<string>;
@@ -20596,6 +21144,10 @@ export namespace container {
              * Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
              */
             diskType?: pulumi.Input<string>;
+            /**
+             * Google Container File System (image streaming) configs.
+             */
+            gcfsConfig?: pulumi.Input<inputs.container.v1.GcfsConfigArgs>;
             /**
              * Enable or disable gvnic in the node pool.
              */
@@ -20672,6 +21224,16 @@ export namespace container {
              * The workload metadata configuration for this node.
              */
             workloadMetadataConfig?: pulumi.Input<inputs.container.v1.WorkloadMetadataConfigArgs>;
+        }
+
+        /**
+         * Subset of NodeConfig message that has defaults.
+         */
+        export interface NodeConfigDefaultsArgs {
+            /**
+             * GCFS (Google Container File System, a.k.a Riptide) options.
+             */
+            gcfsConfig?: pulumi.Input<inputs.container.v1.GcfsConfigArgs>;
         }
 
         /**
@@ -20798,6 +21360,16 @@ export namespace container {
              * Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
              */
             minNodeCount?: pulumi.Input<number>;
+        }
+
+        /**
+         * Subset of Nodepool message that has defaults.
+         */
+        export interface NodePoolDefaultsArgs {
+            /**
+             * Subset of NodeConfig message that has defaults.
+             */
+            nodeConfigDefaults?: pulumi.Input<inputs.container.v1.NodeConfigDefaultsArgs>;
         }
 
         /**
@@ -21140,6 +21712,16 @@ export namespace container {
         }
 
         /**
+         * Specifies options for controlling advanced machine features.
+         */
+        export interface AdvancedMachineFeaturesArgs {
+            /**
+             * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+             */
+            threadsPerCore?: pulumi.Input<string>;
+        }
+
+        /**
          * Configuration for returning group information from authenticators.
          */
         export interface AuthenticatorGroupsConfigArgs {
@@ -21422,6 +22004,16 @@ export namespace container {
         }
 
         /**
+         * GcfsConfig contains configurations of Google Container File System.
+         */
+        export interface GcfsConfigArgs {
+            /**
+             * Whether to use GCFS.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
          * Configuration for the GCP Filestore CSI driver.
          */
         export interface GcpFilestoreCsiDriverConfigArgs {
@@ -21614,6 +22206,16 @@ export namespace container {
         }
 
         /**
+         * ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+         */
+        export interface ManagedPrometheusConfigArgs {
+            /**
+             * Enable Managed Collection.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
          * Master is the configuration for components on master.
          */
         export interface MasterArgs {
@@ -21690,6 +22292,10 @@ export namespace container {
              * Monitoring components configuration
              */
             componentConfig?: pulumi.Input<inputs.container.v1beta1.MonitoringComponentConfigArgs>;
+            /**
+             * Enable Google Cloud Managed Service for Prometheus in the cluster.
+             */
+            managedPrometheusConfig?: pulumi.Input<inputs.container.v1beta1.ManagedPrometheusConfigArgs>;
         }
 
         /**
@@ -21759,6 +22365,10 @@ export namespace container {
              */
             accelerators?: pulumi.Input<pulumi.Input<inputs.container.v1beta1.AcceleratorConfigArgs>[]>;
             /**
+             * Advanced features for the Compute Engine VM.
+             */
+            advancedMachineFeatures?: pulumi.Input<inputs.container.v1beta1.AdvancedMachineFeaturesArgs>;
+            /**
              *  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
              */
             bootDiskKmsKey?: pulumi.Input<string>;
@@ -21774,6 +22384,10 @@ export namespace container {
              * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
              */
             ephemeralStorageConfig?: pulumi.Input<inputs.container.v1beta1.EphemeralStorageConfigArgs>;
+            /**
+             * GCFS (Google Container File System) configs.
+             */
+            gcfsConfig?: pulumi.Input<inputs.container.v1beta1.GcfsConfigArgs>;
             /**
              * Enable or disable gvnic on the node pool.
              */
@@ -21860,6 +22474,10 @@ export namespace container {
          * Subset of NodeConfig message that has defaults.
          */
         export interface NodeConfigDefaultsArgs {
+            /**
+             * GCFS (Google Container File System, a.k.a Riptide) options.
+             */
+            gcfsConfig?: pulumi.Input<inputs.container.v1beta1.GcfsConfigArgs>;
         }
 
         /**
@@ -22331,6 +22949,1301 @@ export namespace container {
 }
 
 export namespace containeranalysis {
+    export namespace v1 {
+        /**
+         * An alias to a repo revision.
+         */
+        export interface AliasContextArgs {
+            /**
+             * The alias kind.
+             */
+            kind?: pulumi.Input<enums.containeranalysis.v1.AliasContextKind>;
+            /**
+             * The alias name.
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * Artifact describes a build product.
+         */
+        export interface ArtifactArgs {
+            /**
+             * Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
+             */
+            checksum?: pulumi.Input<string>;
+            /**
+             * Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
+             */
+            names?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one `Authority` for "QA" and one for "build". This note is intended to act strictly as a grouping mechanism for the attached occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the ability for a principle to attach an occurrence to a given note. It also provides a single point of lookup to find all attached attestation occurrences, even if they don't all live in the same project.
+         */
+        export interface AttestationNoteArgs {
+            /**
+             * Hint hints at the purpose of the attestation authority.
+             */
+            hint?: pulumi.Input<inputs.containeranalysis.v1.HintArgs>;
+        }
+
+        /**
+         * Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for lookup (how to find this attestation if you already know the authority and artifact to be verified) and intent (for which authority this attestation was intended to sign.
+         */
+        export interface AttestationOccurrenceArgs {
+            /**
+             * One or more JWTs encoding a self-contained attestation. Each JWT encodes the payload that it verifies within the JWT itself. Verifier implementation SHOULD ignore the `serialized_payload` field when verifying these JWTs. If only JWTs are present on this AttestationOccurrence, then the `serialized_payload` SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `resource_uri` of this Occurrence, but this is not validated by Grafeas metadata API implementations. The JWT itself is opaque to Grafeas.
+             */
+            jwts?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.JwtArgs>[]>;
+            /**
+             * The serialized payload that is verified by one or more `signatures`.
+             */
+            serializedPayload: pulumi.Input<string>;
+            /**
+             * One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification.
+             */
+            signatures?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.SignatureArgs>[]>;
+        }
+
+        /**
+         * Associates `members`, or principals, with a `role`.
+         */
+        export interface BindingArgs {
+            /**
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             */
+            condition?: pulumi.Input<inputs.containeranalysis.v1.ExprArgs>;
+            /**
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             */
+            members?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             */
+            role?: pulumi.Input<string>;
+        }
+
+        /**
+         * Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
+         */
+        export interface BuildNoteArgs {
+            /**
+             * Immutable. Version of the builder which produced this build.
+             */
+            builderVersion: pulumi.Input<string>;
+        }
+
+        /**
+         * Details of a build occurrence.
+         */
+        export interface BuildOccurrenceArgs {
+            /**
+             * In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
+             */
+            intotoStatement?: pulumi.Input<inputs.containeranalysis.v1.InTotoStatementArgs>;
+            /**
+             * The actual provenance for the build.
+             */
+            provenance?: pulumi.Input<inputs.containeranalysis.v1.BuildProvenanceArgs>;
+            /**
+             * Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
+             */
+            provenanceBytes?: pulumi.Input<string>;
+        }
+
+        /**
+         * Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
+         */
+        export interface BuildProvenanceArgs {
+            /**
+             * Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
+             */
+            buildOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Version string of the builder at the time this build was executed.
+             */
+            builderVersion?: pulumi.Input<string>;
+            /**
+             * Output of the build.
+             */
+            builtArtifacts?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.ArtifactArgs>[]>;
+            /**
+             * Commands requested by the build.
+             */
+            commands?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.CommandArgs>[]>;
+            /**
+             * Time at which the build was created.
+             */
+            createTime?: pulumi.Input<string>;
+            /**
+             * E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
+             */
+            creator?: pulumi.Input<string>;
+            /**
+             * Time at which execution of the build was finished.
+             */
+            endTime?: pulumi.Input<string>;
+            /**
+             * Unique identifier of the build.
+             */
+            id: pulumi.Input<string>;
+            /**
+             * URI where any logs for this provenance were written.
+             */
+            logsUri?: pulumi.Input<string>;
+            /**
+             * ID of the project.
+             */
+            project?: pulumi.Input<string>;
+            /**
+             * Details of the Source input to the build.
+             */
+            sourceProvenance?: pulumi.Input<inputs.containeranalysis.v1.SourceArgs>;
+            /**
+             * Time at which execution of the build was started.
+             */
+            startTime?: pulumi.Input<string>;
+            /**
+             * Trigger identifier if the build was triggered automatically; empty if not.
+             */
+            triggerId?: pulumi.Input<string>;
+        }
+
+        export interface BuilderConfigArgs {
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
+         */
+        export interface CVSSv3Args {
+            attackComplexity?: pulumi.Input<enums.containeranalysis.v1.CVSSv3AttackComplexity>;
+            /**
+             * Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+             */
+            attackVector?: pulumi.Input<enums.containeranalysis.v1.CVSSv3AttackVector>;
+            availabilityImpact?: pulumi.Input<enums.containeranalysis.v1.CVSSv3AvailabilityImpact>;
+            /**
+             * The base score is a function of the base metric scores.
+             */
+            baseScore?: pulumi.Input<number>;
+            confidentialityImpact?: pulumi.Input<enums.containeranalysis.v1.CVSSv3ConfidentialityImpact>;
+            exploitabilityScore?: pulumi.Input<number>;
+            impactScore?: pulumi.Input<number>;
+            integrityImpact?: pulumi.Input<enums.containeranalysis.v1.CVSSv3IntegrityImpact>;
+            privilegesRequired?: pulumi.Input<enums.containeranalysis.v1.CVSSv3PrivilegesRequired>;
+            scope?: pulumi.Input<enums.containeranalysis.v1.CVSSv3Scope>;
+            userInteraction?: pulumi.Input<enums.containeranalysis.v1.CVSSv3UserInteraction>;
+        }
+
+        /**
+         * The category to which the update belongs.
+         */
+        export interface CategoryArgs {
+            /**
+             * The identifier of the category.
+             */
+            categoryId?: pulumi.Input<string>;
+            /**
+             * The localized name of the category.
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * A compliance check that is a CIS benchmark.
+         */
+        export interface CisBenchmarkArgs {
+            profileLevel?: pulumi.Input<number>;
+            severity?: pulumi.Input<enums.containeranalysis.v1.CisBenchmarkSeverity>;
+        }
+
+        /**
+         * A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
+         */
+        export interface CloudRepoSourceContextArgs {
+            /**
+             * An alias, which may be a branch or tag.
+             */
+            aliasContext?: pulumi.Input<inputs.containeranalysis.v1.AliasContextArgs>;
+            /**
+             * The ID of the repo.
+             */
+            repoId?: pulumi.Input<inputs.containeranalysis.v1.RepoIdArgs>;
+            /**
+             * A revision ID.
+             */
+            revisionId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Command describes a step performed as part of the build pipeline.
+         */
+        export interface CommandArgs {
+            /**
+             * Command-line arguments used when executing this command.
+             */
+            args?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Working directory (relative to project source root) used when running this command.
+             */
+            dir?: pulumi.Input<string>;
+            /**
+             * Environment variables set before running this command.
+             */
+            env?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+             */
+            id?: pulumi.Input<string>;
+            /**
+             * Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * The ID(s) of the command(s) that this command depends on.
+             */
+            waitFor?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Indicates that the builder claims certain fields in this message to be complete.
+         */
+        export interface CompletenessArgs {
+            /**
+             * If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+             */
+            arguments?: pulumi.Input<boolean>;
+            /**
+             * If true, the builder claims that recipe.environment is claimed to be complete.
+             */
+            environment?: pulumi.Input<boolean>;
+            /**
+             * If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+             */
+            materials?: pulumi.Input<boolean>;
+        }
+
+        export interface ComplianceNoteArgs {
+            cisBenchmark?: pulumi.Input<inputs.containeranalysis.v1.CisBenchmarkArgs>;
+            /**
+             * A description about this compliance check.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * A rationale for the existence of this compliance check.
+             */
+            rationale?: pulumi.Input<string>;
+            /**
+             * A description of remediation steps if the compliance check fails.
+             */
+            remediation?: pulumi.Input<string>;
+            /**
+             * Serialized scan instructions with a predefined format.
+             */
+            scanInstructions?: pulumi.Input<string>;
+            /**
+             * The title that identifies this compliance check.
+             */
+            title?: pulumi.Input<string>;
+            /**
+             * The OS and config versions the benchmark applies to.
+             */
+            version?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.ComplianceVersionArgs>[]>;
+        }
+
+        /**
+         * An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
+         */
+        export interface ComplianceOccurrenceArgs {
+            nonComplianceReason?: pulumi.Input<string>;
+            nonCompliantFiles?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.NonCompliantFileArgs>[]>;
+        }
+
+        /**
+         * Describes the CIS benchmark version that is applicable to a given OS and os version.
+         */
+        export interface ComplianceVersionArgs {
+            /**
+             * The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
+             */
+            cpeUri?: pulumi.Input<string>;
+            /**
+             * The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        export interface DSSEAttestationNoteArgs {
+            /**
+             * DSSEHint hints at the purpose of the attestation authority.
+             */
+            hint?: pulumi.Input<inputs.containeranalysis.v1.DSSEHintArgs>;
+        }
+
+        /**
+         * Deprecated. Prefer to use a regular Occurrence, and populate the Envelope at the top level of the Occurrence.
+         */
+        export interface DSSEAttestationOccurrenceArgs {
+            /**
+             * If doing something security critical, make sure to verify the signatures in this metadata.
+             */
+            envelope?: pulumi.Input<inputs.containeranalysis.v1.EnvelopeArgs>;
+            statement?: pulumi.Input<inputs.containeranalysis.v1.InTotoStatementArgs>;
+        }
+
+        /**
+         * This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
+         */
+        export interface DSSEHintArgs {
+            /**
+             * The human readable name of this attestation authority, for example "cloudbuild-prod".
+             */
+            humanReadableName: pulumi.Input<string>;
+        }
+
+        /**
+         * An artifact that can be deployed in some runtime.
+         */
+        export interface DeploymentNoteArgs {
+            /**
+             * Resource URI for the artifact being deployed.
+             */
+            resourceUri: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * The period during which some deployable was active in a runtime.
+         */
+        export interface DeploymentOccurrenceArgs {
+            /**
+             * Address of the runtime element hosting this deployment.
+             */
+            address?: pulumi.Input<string>;
+            /**
+             * Configuration used to create this deployment.
+             */
+            config?: pulumi.Input<string>;
+            /**
+             * Beginning of the lifetime of this deployment.
+             */
+            deployTime: pulumi.Input<string>;
+            /**
+             * Platform hosting this deployment.
+             */
+            platform?: pulumi.Input<enums.containeranalysis.v1.DeploymentOccurrencePlatform>;
+            /**
+             * End of the lifetime of this deployment.
+             */
+            undeployTime?: pulumi.Input<string>;
+            /**
+             * Identity of the user that triggered this deployment.
+             */
+            userEmail?: pulumi.Input<string>;
+        }
+
+        /**
+         * A detail for a distro and package affected by this vulnerability and its associated fix (if one is available).
+         */
+        export interface DetailArgs {
+            /**
+             * The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability affects.
+             */
+            affectedCpeUri: pulumi.Input<string>;
+            /**
+             * The package this vulnerability affects.
+             */
+            affectedPackage: pulumi.Input<string>;
+            /**
+             * The version number at the end of an interval in which this vulnerability exists. A vulnerability can affect a package between version numbers that are disjoint sets of intervals (example: [1.0.0-1.1.0], [2.4.6-2.4.8] and [4.5.6-4.6.8]) each of which will be represented in its own Detail. If a specific affected version is provided by a vulnerability database, affected_version_start and affected_version_end will be the same in that Detail.
+             */
+            affectedVersionEnd?: pulumi.Input<inputs.containeranalysis.v1.VersionArgs>;
+            /**
+             * The version number at the start of an interval in which this vulnerability exists. A vulnerability can affect a package between version numbers that are disjoint sets of intervals (example: [1.0.0-1.1.0], [2.4.6-2.4.8] and [4.5.6-4.6.8]) each of which will be represented in its own Detail. If a specific affected version is provided by a vulnerability database, affected_version_start and affected_version_end will be the same in that Detail.
+             */
+            affectedVersionStart?: pulumi.Input<inputs.containeranalysis.v1.VersionArgs>;
+            /**
+             * A vendor-specific description of this vulnerability.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The distro recommended [CPE URI](https://cpe.mitre.org/specification/) to update to that contains a fix for this vulnerability. It is possible for this to be different from the affected_cpe_uri.
+             */
+            fixedCpeUri?: pulumi.Input<string>;
+            /**
+             * The distro recommended package to update to that contains a fix for this vulnerability. It is possible for this to be different from the affected_package.
+             */
+            fixedPackage?: pulumi.Input<string>;
+            /**
+             * The distro recommended version to update to that contains a fix for this vulnerability. Setting this to VersionKind.MAXIMUM means no such version is yet available.
+             */
+            fixedVersion?: pulumi.Input<inputs.containeranalysis.v1.VersionArgs>;
+            /**
+             * Whether this detail is obsolete. Occurrences are expected not to point to obsolete details.
+             */
+            isObsolete?: pulumi.Input<boolean>;
+            /**
+             * The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+             */
+            packageType?: pulumi.Input<string>;
+            /**
+             * The distro assigned severity of this vulnerability.
+             */
+            severityName?: pulumi.Input<string>;
+            /**
+             * The source from which the information in this Detail was obtained.
+             */
+            source?: pulumi.Input<string>;
+            /**
+             * The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
+             */
+            sourceUpdateTime?: pulumi.Input<string>;
+            /**
+             * The name of the vendor of the product.
+             */
+            vendor?: pulumi.Input<string>;
+        }
+
+        /**
+         * A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
+         */
+        export interface DiscoveryNoteArgs {
+            /**
+             * Immutable. The kind of analysis that is handled by this discovery.
+             */
+            analysisKind: pulumi.Input<enums.containeranalysis.v1.DiscoveryNoteAnalysisKind>;
+        }
+
+        /**
+         * Provides information about the analysis status of a discovered resource.
+         */
+        export interface DiscoveryOccurrenceArgs {
+            /**
+             * The status of discovery for the resource.
+             */
+            analysisStatus?: pulumi.Input<enums.containeranalysis.v1.DiscoveryOccurrenceAnalysisStatus>;
+            /**
+             * When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
+             */
+            analysisStatusError?: pulumi.Input<inputs.containeranalysis.v1.StatusArgs>;
+            /**
+             * Whether the resource is continuously analyzed.
+             */
+            continuousAnalysis?: pulumi.Input<enums.containeranalysis.v1.DiscoveryOccurrenceContinuousAnalysis>;
+            /**
+             * The CPE of the resource being scanned.
+             */
+            cpe?: pulumi.Input<string>;
+            /**
+             * The last time this resource was scanned.
+             */
+            lastScanTime?: pulumi.Input<string>;
+        }
+
+        /**
+         * This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg mirror.
+         */
+        export interface DistributionArgs {
+            /**
+             * The CPU architecture for which packages in this distribution channel were built.
+             */
+            architecture?: pulumi.Input<enums.containeranalysis.v1.DistributionArchitecture>;
+            /**
+             * The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+             */
+            cpeUri: pulumi.Input<string>;
+            /**
+             * The distribution channel-specific description of this package.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The latest available version of this package in this distribution channel.
+             */
+            latestVersion?: pulumi.Input<inputs.containeranalysis.v1.VersionArgs>;
+            /**
+             * A freeform string denoting the maintainer of this package.
+             */
+            maintainer?: pulumi.Input<string>;
+            /**
+             * The distribution channel-specific homepage for this package.
+             */
+            url?: pulumi.Input<string>;
+        }
+
+        /**
+         * MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
+         */
+        export interface EnvelopeArgs {
+            payload?: pulumi.Input<string>;
+            payloadType?: pulumi.Input<string>;
+            signatures?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.EnvelopeSignatureArgs>[]>;
+        }
+
+        export interface EnvelopeSignatureArgs {
+            keyid?: pulumi.Input<string>;
+            sig?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+         */
+        export interface ExprArgs {
+            /**
+             * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Textual representation of an expression in Common Expression Language syntax.
+             */
+            expression?: pulumi.Input<string>;
+            /**
+             * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+             */
+            title?: pulumi.Input<string>;
+        }
+
+        /**
+         * A set of properties that uniquely identify a given Docker image.
+         */
+        export interface FingerprintArgs {
+            /**
+             * The layer ID of the final layer in the Docker image's v1 representation.
+             */
+            v1Name: pulumi.Input<string>;
+            /**
+             * The ordered list of v2 blobs that represent a given image.
+             */
+            v2Blob: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * A SourceContext referring to a Gerrit project.
+         */
+        export interface GerritSourceContextArgs {
+            /**
+             * An alias, which may be a branch or tag.
+             */
+            aliasContext?: pulumi.Input<inputs.containeranalysis.v1.AliasContextArgs>;
+            /**
+             * The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
+             */
+            gerritProject?: pulumi.Input<string>;
+            /**
+             * The URI of a running Gerrit instance.
+             */
+            hostUri?: pulumi.Input<string>;
+            /**
+             * A revision (commit) ID.
+             */
+            revisionId?: pulumi.Input<string>;
+        }
+
+        /**
+         * A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
+         */
+        export interface GitSourceContextArgs {
+            /**
+             * Git commit hash.
+             */
+            revisionId?: pulumi.Input<string>;
+            /**
+             * Git repository URL.
+             */
+            url?: pulumi.Input<string>;
+        }
+
+        /**
+         * This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
+         */
+        export interface HintArgs {
+            /**
+             * The human readable name of this attestation authority, for example "qa".
+             */
+            humanReadableName: pulumi.Input<string>;
+        }
+
+        /**
+         * The unique identifier of the update.
+         */
+        export interface IdentityArgs {
+            /**
+             * The revision number of the update.
+             */
+            revision?: pulumi.Input<number>;
+            /**
+             * The revision independent identifier of the update.
+             */
+            updateId?: pulumi.Input<string>;
+        }
+
+        /**
+         * Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g., a tag of the resource_url.
+         */
+        export interface ImageNoteArgs {
+            /**
+             * Immutable. The fingerprint of the base image.
+             */
+            fingerprint: pulumi.Input<inputs.containeranalysis.v1.FingerprintArgs>;
+            /**
+             * Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+             */
+            resourceUrl: pulumi.Input<string>;
+        }
+
+        /**
+         * Details of the derived image portion of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
+         */
+        export interface ImageOccurrenceArgs {
+            /**
+             * The fingerprint of the derived image.
+             */
+            fingerprint: pulumi.Input<inputs.containeranalysis.v1.FingerprintArgs>;
+            /**
+             * This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
+             */
+            layerInfo?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.LayerArgs>[]>;
+        }
+
+        export interface InTotoProvenanceArgs {
+            /**
+             * required
+             */
+            builderConfig?: pulumi.Input<inputs.containeranalysis.v1.BuilderConfigArgs>;
+            /**
+             * The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+             */
+            materials?: pulumi.Input<pulumi.Input<string>[]>;
+            metadata?: pulumi.Input<inputs.containeranalysis.v1.MetadataArgs>;
+            /**
+             * Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
+             */
+            recipe?: pulumi.Input<inputs.containeranalysis.v1.RecipeArgs>;
+        }
+
+        /**
+         * Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
+         */
+        export interface InTotoStatementArgs {
+            /**
+             * "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+             */
+            predicateType?: pulumi.Input<string>;
+            provenance?: pulumi.Input<inputs.containeranalysis.v1.InTotoProvenanceArgs>;
+            slsaProvenance?: pulumi.Input<inputs.containeranalysis.v1.SlsaProvenanceArgs>;
+            subject?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.SubjectArgs>[]>;
+            /**
+             * Always "https://in-toto.io/Statement/v0.1".
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        export interface JwtArgs {
+            /**
+             * The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
+             */
+            compactJwt?: pulumi.Input<string>;
+        }
+
+        export interface KnowledgeBaseArgs {
+            /**
+             * The KB name (generally of the form KB[0-9]+ (e.g., KB123456)).
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * A link to the KB in the [Windows update catalog] (https://www.catalog.update.microsoft.com/).
+             */
+            url?: pulumi.Input<string>;
+        }
+
+        /**
+         * Layer holds metadata specific to a layer of a Docker image.
+         */
+        export interface LayerArgs {
+            /**
+             * The recovered arguments to the Dockerfile directive.
+             */
+            arguments?: pulumi.Input<string>;
+            /**
+             * The recovered Dockerfile directive used to construct this layer. See https://docs.docker.com/engine/reference/builder/ for more information.
+             */
+            directive: pulumi.Input<string>;
+        }
+
+        /**
+         * An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
+         */
+        export interface LocationArgs {
+            /**
+             * The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+             */
+            cpeUri: pulumi.Input<string>;
+            /**
+             * The path from which we gathered that this package/version is installed.
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * The version installed at this location.
+             */
+            version?: pulumi.Input<inputs.containeranalysis.v1.VersionArgs>;
+        }
+
+        export interface MaterialArgs {
+            digest?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            uri?: pulumi.Input<string>;
+        }
+
+        /**
+         * Other properties of the build.
+         */
+        export interface MetadataArgs {
+            /**
+             * The timestamp of when the build completed.
+             */
+            buildFinishedOn?: pulumi.Input<string>;
+            /**
+             * Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+             */
+            buildInvocationId?: pulumi.Input<string>;
+            /**
+             * The timestamp of when the build started.
+             */
+            buildStartedOn?: pulumi.Input<string>;
+            /**
+             * Indicates that the builder claims certain fields in this message to be complete.
+             */
+            completeness?: pulumi.Input<inputs.containeranalysis.v1.CompletenessArgs>;
+            /**
+             * If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+             */
+            reproducible?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Details about files that caused a compliance check to fail.
+         */
+        export interface NonCompliantFileArgs {
+            /**
+             * Command to display the non-compliant files.
+             */
+            displayCommand?: pulumi.Input<string>;
+            /**
+             * display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * Explains why a file is non compliant for a CIS check.
+             */
+            reason?: pulumi.Input<string>;
+        }
+
+        /**
+         * A detail for a distro and package this vulnerability occurrence was found in and its associated fix (if one is available).
+         */
+        export interface PackageIssueArgs {
+            /**
+             * The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was found in.
+             */
+            affectedCpeUri: pulumi.Input<string>;
+            /**
+             * The package this vulnerability was found in.
+             */
+            affectedPackage: pulumi.Input<string>;
+            /**
+             * The version of the package that is installed on the resource affected by this vulnerability.
+             */
+            affectedVersion: pulumi.Input<inputs.containeranalysis.v1.VersionArgs>;
+            /**
+             * The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.
+             */
+            fixedCpeUri?: pulumi.Input<string>;
+            /**
+             * The package this vulnerability was fixed in. It is possible for this to be different from the affected_package.
+             */
+            fixedPackage?: pulumi.Input<string>;
+            /**
+             * The version of the package this vulnerability was fixed in. Setting this to VersionKind.MAXIMUM means no fix is yet available.
+             */
+            fixedVersion: pulumi.Input<inputs.containeranalysis.v1.VersionArgs>;
+            /**
+             * The type of package (e.g. OS, MAVEN, GO).
+             */
+            packageType?: pulumi.Input<string>;
+        }
+
+        /**
+         * This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+         */
+        export interface PackageNoteArgs {
+            /**
+             * The various channels by which a package is distributed.
+             */
+            distribution?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.DistributionArgs>[]>;
+            /**
+             * Immutable. The name of the package.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * Details on how a particular software package was installed on a system.
+         */
+        export interface PackageOccurrenceArgs {
+            /**
+             * All of the places within the filesystem versions of this package have been found.
+             */
+            location: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.LocationArgs>[]>;
+        }
+
+        /**
+         * Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
+         */
+        export interface ProjectRepoIdArgs {
+            /**
+             * The ID of the project.
+             */
+            project?: pulumi.Input<string>;
+            /**
+             * The name of the repo. Leave empty for the default repo.
+             */
+            repoName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+         */
+        export interface RecipeArgs {
+            /**
+             * Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
+             */
+            arguments?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            /**
+             * Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+             */
+            definedInMaterial?: pulumi.Input<string>;
+            /**
+             * String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+             */
+            entryPoint?: pulumi.Input<string>;
+            /**
+             * Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
+             */
+            environment?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            /**
+             * URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Metadata for any related URL information.
+         */
+        export interface RelatedUrlArgs {
+            /**
+             * Label to describe usage of the URL.
+             */
+            label?: pulumi.Input<string>;
+            /**
+             * Specific URL associated with the resource.
+             */
+            url?: pulumi.Input<string>;
+        }
+
+        /**
+         * A unique identifier for a Cloud Repo.
+         */
+        export interface RepoIdArgs {
+            /**
+             * A combination of a project ID and a repo name.
+             */
+            projectRepoId?: pulumi.Input<inputs.containeranalysis.v1.ProjectRepoIdArgs>;
+            /**
+             * A server-assigned, globally unique identifier.
+             */
+            uid?: pulumi.Input<string>;
+        }
+
+        /**
+         * Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical serialization of the proto message that holds this signature).
+         */
+        export interface SignatureArgs {
+            /**
+             * The identifier for the public key that verifies this signature. * The `public_key_id` is required. * The `public_key_id` SHOULD be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an immutable reference, such as a cryptographic digest. Examples of valid `public_key_id`s: OpenPGP V4 public key fingerprint: * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization): * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" * "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
+             */
+            publicKeyId?: pulumi.Input<string>;
+            /**
+             * The content of the signature, an opaque bytestring. The payload that this signature verifies MUST be unambiguously provided with the Signature during verification. A wrapper message might provide the payload explicitly. Alternatively, a message might have a canonical serialization that can always be unambiguously computed to derive the payload.
+             */
+            signature?: pulumi.Input<string>;
+        }
+
+        export interface SlsaBuilderArgs {
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * Indicates that the builder claims certain fields in this message to be complete.
+         */
+        export interface SlsaCompletenessArgs {
+            /**
+             * If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+             */
+            arguments?: pulumi.Input<boolean>;
+            /**
+             * If true, the builder claims that recipe.environment is claimed to be complete.
+             */
+            environment?: pulumi.Input<boolean>;
+            /**
+             * If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+             */
+            materials?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Other properties of the build.
+         */
+        export interface SlsaMetadataArgs {
+            /**
+             * The timestamp of when the build completed.
+             */
+            buildFinishedOn?: pulumi.Input<string>;
+            /**
+             * Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+             */
+            buildInvocationId?: pulumi.Input<string>;
+            /**
+             * The timestamp of when the build started.
+             */
+            buildStartedOn?: pulumi.Input<string>;
+            /**
+             * Indicates that the builder claims certain fields in this message to be complete.
+             */
+            completeness?: pulumi.Input<inputs.containeranalysis.v1.SlsaCompletenessArgs>;
+            /**
+             * If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+             */
+            reproducible?: pulumi.Input<boolean>;
+        }
+
+        export interface SlsaProvenanceArgs {
+            /**
+             * required
+             */
+            builder?: pulumi.Input<inputs.containeranalysis.v1.SlsaBuilderArgs>;
+            /**
+             * The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+             */
+            materials?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.MaterialArgs>[]>;
+            metadata?: pulumi.Input<inputs.containeranalysis.v1.SlsaMetadataArgs>;
+            /**
+             * Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
+             */
+            recipe?: pulumi.Input<inputs.containeranalysis.v1.SlsaRecipeArgs>;
+        }
+
+        /**
+         * Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+         */
+        export interface SlsaRecipeArgs {
+            /**
+             * Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+             */
+            arguments?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+             */
+            definedInMaterial?: pulumi.Input<string>;
+            /**
+             * String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+             */
+            entryPoint?: pulumi.Input<string>;
+            /**
+             * Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+             */
+            environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * Source describes the location of the source used for the build.
+         */
+        export interface SourceArgs {
+            /**
+             * If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
+             */
+            additionalContexts?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.SourceContextArgs>[]>;
+            /**
+             * If provided, the input binary artifacts for the build came from this location.
+             */
+            artifactStorageSourceUri?: pulumi.Input<string>;
+            /**
+             * If provided, the source code used for the build came from this location.
+             */
+            context?: pulumi.Input<inputs.containeranalysis.v1.SourceContextArgs>;
+            /**
+             * Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+             */
+            fileHashes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
+         */
+        export interface SourceContextArgs {
+            /**
+             * A SourceContext referring to a revision in a Google Cloud Source Repo.
+             */
+            cloudRepo?: pulumi.Input<inputs.containeranalysis.v1.CloudRepoSourceContextArgs>;
+            /**
+             * A SourceContext referring to a Gerrit project.
+             */
+            gerrit?: pulumi.Input<inputs.containeranalysis.v1.GerritSourceContextArgs>;
+            /**
+             * A SourceContext referring to any third party Git repo (e.g., GitHub).
+             */
+            git?: pulumi.Input<inputs.containeranalysis.v1.GitSourceContextArgs>;
+            /**
+             * Labels with user defined metadata.
+             */
+            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+         */
+        export interface StatusArgs {
+            /**
+             * The status code, which should be an enum value of google.rpc.Code.
+             */
+            code?: pulumi.Input<number>;
+            /**
+             * A list of messages that carry the error details. There is a common set of message types for APIs to use.
+             */
+            details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            /**
+             * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+             */
+            message?: pulumi.Input<string>;
+        }
+
+        export interface SubjectArgs {
+            /**
+             * "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+             */
+            digest?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            name?: pulumi.Input<string>;
+        }
+
+        /**
+         * The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some distributions have additional metadata around updates, classifying them into various categories and severities.
+         */
+        export interface UpgradeDistributionArgs {
+            /**
+             * The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed. For Windows the classification is one of the category_ids listed at https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ff357803(v=vs.85)
+             */
+            classification?: pulumi.Input<string>;
+            /**
+             * Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
+             */
+            cpeUri?: pulumi.Input<string>;
+            /**
+             * The cve tied to this Upgrade.
+             */
+            cve?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The severity as specified by the upstream operating system.
+             */
+            severity?: pulumi.Input<string>;
+        }
+
+        /**
+         * An Upgrade Note represents a potential upgrade of a package to a given version. For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be an Upgrade Note. For Windows, windows_update field represents the information related to the update.
+         */
+        export interface UpgradeNoteArgs {
+            /**
+             * Metadata about the upgrade for each specific operating system.
+             */
+            distributions?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.UpgradeDistributionArgs>[]>;
+            /**
+             * Required for non-Windows OS. The package this Upgrade is for.
+             */
+            package?: pulumi.Input<string>;
+            /**
+             * Required for non-Windows OS. The version of the package in machine + human readable form.
+             */
+            version?: pulumi.Input<inputs.containeranalysis.v1.VersionArgs>;
+            /**
+             * Required for Windows OS. Represents the metadata about the Windows update.
+             */
+            windowsUpdate?: pulumi.Input<inputs.containeranalysis.v1.WindowsUpdateArgs>;
+        }
+
+        /**
+         * An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability). For Windows, both distribution and windows_update contain information for the Windows update.
+         */
+        export interface UpgradeOccurrenceArgs {
+            /**
+             * Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
+             */
+            distribution?: pulumi.Input<inputs.containeranalysis.v1.UpgradeDistributionArgs>;
+            /**
+             * Required for non-Windows OS. The package this Upgrade is for.
+             */
+            package?: pulumi.Input<string>;
+            /**
+             * Required for non-Windows OS. The version of the package in a machine + human readable form.
+             */
+            parsedVersion?: pulumi.Input<inputs.containeranalysis.v1.VersionArgs>;
+            /**
+             * Required for Windows OS. Represents the metadata about the Windows update.
+             */
+            windowsUpdate?: pulumi.Input<inputs.containeranalysis.v1.WindowsUpdateArgs>;
+        }
+
+        /**
+         * Version contains structured information about the version of a package.
+         */
+        export interface VersionArgs {
+            /**
+             * Used to correct mistakes in the version numbering scheme.
+             */
+            epoch?: pulumi.Input<number>;
+            /**
+             * Human readable version string. This string is of the form :- and is only set when kind is NORMAL.
+             */
+            fullName?: pulumi.Input<string>;
+            /**
+             * Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
+             */
+            inclusive?: pulumi.Input<boolean>;
+            /**
+             * Distinguishes between sentinel MIN/MAX versions and normal versions.
+             */
+            kind: pulumi.Input<enums.containeranalysis.v1.VersionKind>;
+            /**
+             * Required only when version kind is NORMAL. The main part of the version name.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * The iteration of the package build from the above version.
+             */
+            revision?: pulumi.Input<string>;
+        }
+
+        /**
+         * A security vulnerability that can be found in resources.
+         */
+        export interface VulnerabilityNoteArgs {
+            /**
+             * The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
+             */
+            cvssScore?: pulumi.Input<number>;
+            /**
+             * The full description of the CVSSv3 for this vulnerability.
+             */
+            cvssV3?: pulumi.Input<inputs.containeranalysis.v1.CVSSv3Args>;
+            /**
+             * Details of all known distros and packages affected by this vulnerability.
+             */
+            details?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.DetailArgs>[]>;
+            /**
+             * The note provider assigned severity of this vulnerability.
+             */
+            severity?: pulumi.Input<enums.containeranalysis.v1.VulnerabilityNoteSeverity>;
+            /**
+             * The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
+             */
+            sourceUpdateTime?: pulumi.Input<string>;
+            /**
+             * Windows details get their own format because the information format and model don't match a normal detail. Specifically Windows updates are done as patches, thus Windows vulnerabilities really are a missing package, rather than a package being at an incorrect version.
+             */
+            windowsDetails?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.WindowsDetailArgs>[]>;
+        }
+
+        /**
+         * An occurrence of a severity vulnerability on a resource.
+         */
+        export interface VulnerabilityOccurrenceArgs {
+            /**
+             * The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
+             */
+            effectiveSeverity?: pulumi.Input<enums.containeranalysis.v1.VulnerabilityOccurrenceEffectiveSeverity>;
+            /**
+             * The set of affected locations and their fixes (if available) within the associated resource.
+             */
+            packageIssue: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.PackageIssueArgs>[]>;
+            /**
+             * The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        export interface WindowsDetailArgs {
+            /**
+             * The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability affects.
+             */
+            cpeUri: pulumi.Input<string>;
+            /**
+             * The description of this vulnerability.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed KBs presence is considered a fix.
+             */
+            fixingKbs: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.KnowledgeBaseArgs>[]>;
+            /**
+             * The name of this vulnerability.
+             */
+            name: pulumi.Input<string>;
+        }
+
+        /**
+         * Windows Update represents the metadata about the update for the Windows operating system. The fields in this message come from the Windows Update API documented at https://docs.microsoft.com/en-us/windows/win32/api/wuapi/nn-wuapi-iupdate.
+         */
+        export interface WindowsUpdateArgs {
+            /**
+             * The list of categories to which the update belongs.
+             */
+            categories?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.CategoryArgs>[]>;
+            /**
+             * The localized description of the update.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Required - The unique identifier for the update.
+             */
+            identity?: pulumi.Input<inputs.containeranalysis.v1.IdentityArgs>;
+            /**
+             * The Microsoft Knowledge Base article IDs that are associated with the update.
+             */
+            kbArticleIds?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The last published timestamp of the update.
+             */
+            lastPublishedTimestamp?: pulumi.Input<string>;
+            /**
+             * The hyperlink to the support information for the update.
+             */
+            supportUrl?: pulumi.Input<string>;
+            /**
+             * The localized title of the update.
+             */
+            title?: pulumi.Input<string>;
+        }
+
+    }
+
     export namespace v1alpha1 {
         /**
          * Artifact describes a build product.
@@ -22389,19 +24302,19 @@ export namespace containeranalysis {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.containeranalysis.v1alpha1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -22411,9 +24324,9 @@ export namespace containeranalysis {
          */
         export interface BuildDetailsArgs {
             /**
-             * In-toto Provenance representation as defined in spec.
+             * In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
              */
-            intotoProvenance?: pulumi.Input<inputs.containeranalysis.v1alpha1.InTotoProvenanceArgs>;
+            intotoStatement?: pulumi.Input<inputs.containeranalysis.v1alpha1.InTotoStatementArgs>;
             /**
              * The actual provenance
              */
@@ -23022,13 +24935,9 @@ export namespace containeranalysis {
              */
             id?: pulumi.Input<string>;
             /**
-             * This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-             */
-            licenseComments?: pulumi.Input<string>;
-            /**
              * This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
              */
-            licenseConcluded?: pulumi.Input<string>;
+            licenseConcluded?: pulumi.Input<inputs.containeranalysis.v1alpha1.LicenseArgs>;
             /**
              * This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
              */
@@ -23202,10 +25111,20 @@ export namespace containeranalysis {
          */
         export interface InTotoStatementArgs {
             /**
-             * "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+             * "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
              */
             predicateType?: pulumi.Input<string>;
+            /**
+             * provenance is a predicate of type intotoprovenance
+             */
             provenance?: pulumi.Input<inputs.containeranalysis.v1alpha1.InTotoProvenanceArgs>;
+            /**
+             * slsa_provenance is a predicate of type slsaProvenance
+             */
+            slsaProvenance?: pulumi.Input<inputs.containeranalysis.v1alpha1.SlsaProvenanceArgs>;
+            /**
+             * subject is the subjects of the intoto statement
+             */
             subject?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1alpha1.SubjectArgs>[]>;
             /**
              * Always "https://in-toto.io/Statement/v0.1".
@@ -23238,6 +25157,20 @@ export namespace containeranalysis {
         }
 
         /**
+         * License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+         */
+        export interface LicenseArgs {
+            /**
+             * Comments
+             */
+            comments?: pulumi.Input<string>;
+            /**
+             * Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+             */
+            expression?: pulumi.Input<string>;
+        }
+
+        /**
          * An occurrence of a particular package installation found within a system's filesystem. e.g. glibc was found in /var/lib/dpkg/status
          */
         export interface LocationArgs {
@@ -23253,6 +25186,20 @@ export namespace containeranalysis {
              * The version installed at this location.
              */
             version?: pulumi.Input<inputs.containeranalysis.v1alpha1.VersionArgs>;
+        }
+
+        /**
+         * Material is a material used in the generation of the provenance
+         */
+        export interface MaterialArgs {
+            /**
+             * digest is a map from a hash algorithm (e.g. sha256) to the value in the material
+             */
+            digest?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * uri is the uri of the material
+             */
+            uri?: pulumi.Input<string>;
         }
 
         /**
@@ -23314,28 +25261,9 @@ export namespace containeranalysis {
         }
 
         /**
-         * This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+         * PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
          */
-        export interface PackageIssueArgs {
-            /**
-             * The location of the vulnerability.
-             */
-            affectedLocation?: pulumi.Input<inputs.containeranalysis.v1alpha1.VulnerabilityLocationArgs>;
-            /**
-             * The location of the available fix for vulnerability.
-             */
-            fixedLocation?: pulumi.Input<inputs.containeranalysis.v1alpha1.VulnerabilityLocationArgs>;
-            /**
-             * The type of package (e.g. OS, MAVEN, GO).
-             */
-            packageType?: pulumi.Input<string>;
-            severityName?: pulumi.Input<string>;
-        }
-
-        /**
-         * PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-         */
-        export interface PackageNoteArgs {
+        export interface PackageInfoNoteArgs {
             /**
              * Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
              */
@@ -23375,11 +25303,15 @@ export namespace containeranalysis {
             /**
              * List the licenses that have been declared by the authors of the package
              */
-            licenseDeclared?: pulumi.Input<string>;
+            licenseDeclared?: pulumi.Input<inputs.containeranalysis.v1alpha1.LicenseArgs>;
             /**
              * If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
              */
             originator?: pulumi.Input<string>;
+            /**
+             * The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+             */
+            packageType?: pulumi.Input<string>;
             /**
              * A short description of the package
              */
@@ -23403,9 +25335,9 @@ export namespace containeranalysis {
         }
 
         /**
-         * PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+         * PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
          */
-        export interface PackageOccurrenceArgs {
+        export interface PackageInfoOccurrenceArgs {
             /**
              * A place for the SPDX file creator to record any general comments about the package being described
              */
@@ -23419,17 +25351,32 @@ export namespace containeranalysis {
              */
             id?: pulumi.Input<string>;
             /**
-             * This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-             */
-            licenseComments?: pulumi.Input<string>;
-            /**
              * package or alternative values, if the governing license cannot be determined
              */
-            licenseConcluded?: pulumi.Input<string>;
+            licenseConcluded?: pulumi.Input<inputs.containeranalysis.v1alpha1.LicenseArgs>;
             /**
              * Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
              */
             sourceInfo?: pulumi.Input<string>;
+        }
+
+        /**
+         * This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+         */
+        export interface PackageIssueArgs {
+            /**
+             * The location of the vulnerability.
+             */
+            affectedLocation?: pulumi.Input<inputs.containeranalysis.v1alpha1.VulnerabilityLocationArgs>;
+            /**
+             * The location of the available fix for vulnerability.
+             */
+            fixedLocation?: pulumi.Input<inputs.containeranalysis.v1alpha1.VulnerabilityLocationArgs>;
+            /**
+             * The type of package (e.g. OS, MAVEN, GO).
+             */
+            packageType?: pulumi.Input<string>;
+            severityName?: pulumi.Input<string>;
         }
 
         /**
@@ -23494,6 +25441,10 @@ export namespace containeranalysis {
          * RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
          */
         export interface RelationshipNoteArgs {
+            /**
+             * The type of relationship between the source and target SPDX elements
+             */
+            type?: pulumi.Input<enums.containeranalysis.v1alpha1.RelationshipNoteType>;
         }
 
         /**
@@ -23512,10 +25463,6 @@ export namespace containeranalysis {
              * Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
              */
             target?: pulumi.Input<string>;
-            /**
-             * The type of relationship between the source and target SPDX elements
-             */
-            type?: pulumi.Input<enums.containeranalysis.v1alpha1.RelationshipOccurrenceType>;
         }
 
         /**
@@ -23560,6 +25507,108 @@ export namespace containeranalysis {
              * The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo" for a Docker image.
              */
             uri?: pulumi.Input<string>;
+        }
+
+        /**
+         * SlsaBuilder encapsulates the identity of the builder of this provenance.
+         */
+        export interface SlsaBuilderArgs {
+            /**
+             * id is the id of the slsa provenance builder
+             */
+            id?: pulumi.Input<string>;
+        }
+
+        /**
+         * Indicates that the builder claims certain fields in this message to be complete.
+         */
+        export interface SlsaCompletenessArgs {
+            /**
+             * If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+             */
+            arguments?: pulumi.Input<boolean>;
+            /**
+             * If true, the builder claims that recipe.environment is claimed to be complete.
+             */
+            environment?: pulumi.Input<boolean>;
+            /**
+             * If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+             */
+            materials?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Other properties of the build.
+         */
+        export interface SlsaMetadataArgs {
+            /**
+             * The timestamp of when the build completed.
+             */
+            buildFinishedOn?: pulumi.Input<string>;
+            /**
+             * Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+             */
+            buildInvocationId?: pulumi.Input<string>;
+            /**
+             * The timestamp of when the build started.
+             */
+            buildStartedOn?: pulumi.Input<string>;
+            /**
+             * Indicates that the builder claims certain fields in this message to be complete.
+             */
+            completeness?: pulumi.Input<inputs.containeranalysis.v1alpha1.SlsaCompletenessArgs>;
+            /**
+             * If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+             */
+            reproducible?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * SlsaProvenance is the slsa provenance as defined by the slsa spec.
+         */
+        export interface SlsaProvenanceArgs {
+            /**
+             * builder is the builder of this provenance
+             */
+            builder?: pulumi.Input<inputs.containeranalysis.v1alpha1.SlsaBuilderArgs>;
+            /**
+             * The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+             */
+            materials?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1alpha1.MaterialArgs>[]>;
+            /**
+             * metadata is the metadata of the provenance
+             */
+            metadata?: pulumi.Input<inputs.containeranalysis.v1alpha1.SlsaMetadataArgs>;
+            /**
+             * Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
+             */
+            recipe?: pulumi.Input<inputs.containeranalysis.v1alpha1.SlsaRecipeArgs>;
+        }
+
+        /**
+         * Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+         */
+        export interface SlsaRecipeArgs {
+            /**
+             * Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+             */
+            arguments?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+             */
+            definedInMaterial?: pulumi.Input<string>;
+            /**
+             * String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+             */
+            entryPoint?: pulumi.Input<string>;
+            /**
+             * Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+             */
+            environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+             */
+            type?: pulumi.Input<string>;
         }
 
         /**
@@ -23628,11 +25677,17 @@ export namespace containeranalysis {
             object?: pulumi.Input<string>;
         }
 
+        /**
+         * Subject refers to the subject of the intoto statement
+         */
         export interface SubjectArgs {
             /**
-             * "": ""
+             * "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
              */
             digest?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * name is the name of the Subject used here
+             */
             name?: pulumi.Input<string>;
         }
 
@@ -23859,19 +25914,19 @@ export namespace containeranalysis {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.containeranalysis.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -24378,13 +26433,9 @@ export namespace containeranalysis {
              */
             id?: pulumi.Input<string>;
             /**
-             * This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-             */
-            licenseComments?: pulumi.Input<string>;
-            /**
              * This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
              */
-            licenseConcluded?: pulumi.Input<string>;
+            licenseConcluded?: pulumi.Input<inputs.containeranalysis.v1beta1.LicenseArgs>;
             /**
              * This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
              */
@@ -24625,6 +26676,20 @@ export namespace containeranalysis {
         }
 
         /**
+         * License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+         */
+        export interface LicenseArgs {
+            /**
+             * Comments
+             */
+            comments?: pulumi.Input<string>;
+            /**
+             * Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+             */
+            expression?: pulumi.Input<string>;
+        }
+
+        /**
          * This corresponds to an in-toto link.
          */
         export interface LinkArgs {
@@ -24683,27 +26748,9 @@ export namespace containeranalysis {
         }
 
         /**
-         * This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+         * PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
          */
-        export interface PackageIssueArgs {
-            /**
-             * The location of the vulnerability.
-             */
-            affectedLocation: pulumi.Input<inputs.containeranalysis.v1beta1.VulnerabilityLocationArgs>;
-            /**
-             * The location of the available fix for vulnerability.
-             */
-            fixedLocation?: pulumi.Input<inputs.containeranalysis.v1beta1.VulnerabilityLocationArgs>;
-            /**
-             * The type of package (e.g. OS, MAVEN, GO).
-             */
-            packageType?: pulumi.Input<string>;
-        }
-
-        /**
-         * PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-         */
-        export interface PackageNoteArgs {
+        export interface PackageInfoNoteArgs {
             /**
              * Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
              */
@@ -24743,11 +26790,15 @@ export namespace containeranalysis {
             /**
              * List the licenses that have been declared by the authors of the package
              */
-            licenseDeclared?: pulumi.Input<string>;
+            licenseDeclared?: pulumi.Input<inputs.containeranalysis.v1beta1.LicenseArgs>;
             /**
              * If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
              */
             originator?: pulumi.Input<string>;
+            /**
+             * The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+             */
+            packageType?: pulumi.Input<string>;
             /**
              * A short description of the package
              */
@@ -24771,9 +26822,9 @@ export namespace containeranalysis {
         }
 
         /**
-         * PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+         * PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
          */
-        export interface PackageOccurrenceArgs {
+        export interface PackageInfoOccurrenceArgs {
             /**
              * A place for the SPDX file creator to record any general comments about the package being described
              */
@@ -24787,17 +26838,31 @@ export namespace containeranalysis {
              */
             id?: pulumi.Input<string>;
             /**
-             * This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-             */
-            licenseComments?: pulumi.Input<string>;
-            /**
              * package or alternative values, if the governing license cannot be determined
              */
-            licenseConcluded?: pulumi.Input<string>;
+            licenseConcluded?: pulumi.Input<inputs.containeranalysis.v1beta1.LicenseArgs>;
             /**
              * Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
              */
             sourceInfo?: pulumi.Input<string>;
+        }
+
+        /**
+         * This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+         */
+        export interface PackageIssueArgs {
+            /**
+             * The location of the vulnerability.
+             */
+            affectedLocation: pulumi.Input<inputs.containeranalysis.v1beta1.VulnerabilityLocationArgs>;
+            /**
+             * The location of the available fix for vulnerability.
+             */
+            fixedLocation?: pulumi.Input<inputs.containeranalysis.v1beta1.VulnerabilityLocationArgs>;
+            /**
+             * The type of package (e.g. OS, MAVEN, GO).
+             */
+            packageType?: pulumi.Input<string>;
         }
 
         /**
@@ -24850,6 +26915,10 @@ export namespace containeranalysis {
          * RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
          */
         export interface RelationshipNoteArgs {
+            /**
+             * The type of relationship between the source and target SPDX elements
+             */
+            type?: pulumi.Input<enums.containeranalysis.v1beta1.RelationshipNoteType>;
         }
 
         /**
@@ -24868,10 +26937,6 @@ export namespace containeranalysis {
              * Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
              */
             target?: pulumi.Input<string>;
-            /**
-             * The type of relationship between the source and target SPDX elements
-             */
-            type?: pulumi.Input<enums.containeranalysis.v1beta1.RelationshipOccurrenceType>;
         }
 
         /**
@@ -25095,19 +27160,19 @@ export namespace containeranalysis {
 export namespace datacatalog {
     export namespace v1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.datacatalog.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -25344,19 +27409,19 @@ export namespace datacatalog {
 
     export namespace v1beta1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.datacatalog.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -26312,19 +28377,19 @@ export namespace datafusion {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.datafusion.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -26388,6 +28453,10 @@ export namespace datafusion {
              */
             defaultVersion?: pulumi.Input<boolean>;
             /**
+             * Type represents the release availability of the version
+             */
+            type?: pulumi.Input<enums.datafusion.v1.VersionType>;
+            /**
              * The version number of the Data Fusion instance, such as '6.0.1.0'.
              */
             versionNumber?: pulumi.Input<string>;
@@ -26435,19 +28504,19 @@ export namespace datafusion {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.datafusion.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -26510,6 +28579,10 @@ export namespace datafusion {
              * Whether this is currently the default version for Cloud Data Fusion
              */
             defaultVersion?: pulumi.Input<boolean>;
+            /**
+             * Type represents the release availability of the version
+             */
+            type?: pulumi.Input<enums.datafusion.v1beta1.VersionType>;
             /**
              * The version number of the Data Fusion instance, such as '6.0.1.0'.
              */
@@ -26847,19 +28920,19 @@ export namespace datamigration {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.datamigration.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -27164,19 +29237,19 @@ export namespace datamigration {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.datamigration.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -27418,6 +29491,287 @@ export namespace datamigration {
     }
 }
 
+export namespace datapipelines {
+    export namespace v1 {
+        /**
+         * The environment values to be set at runtime for a Flex Template.
+         */
+        export interface GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs {
+            /**
+             * Additional experiment flags for the job.
+             */
+            additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Additional user labels to be specified for the job. Keys and values must follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions). An object containing a list of key/value pairs. Example: `{ "name": "wrench", "mass": "1kg", "count": "3" }`.
+             */
+            additionalUserLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Whether to enable Streaming Engine for the job.
+             */
+            enableStreamingEngine?: pulumi.Input<boolean>;
+            /**
+             * Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
+             */
+            flexrsGoal?: pulumi.Input<enums.datapipelines.v1.GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal>;
+            /**
+             * Configuration for VM IPs.
+             */
+            ipConfiguration?: pulumi.Input<enums.datapipelines.v1.GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration>;
+            /**
+             * Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+             */
+            kmsKeyName?: pulumi.Input<string>;
+            /**
+             * The machine type to use for the job. Defaults to the value from the template if not specified.
+             */
+            machineType?: pulumi.Input<string>;
+            /**
+             * The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+             */
+            maxWorkers?: pulumi.Input<number>;
+            /**
+             * Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+             */
+            network?: pulumi.Input<string>;
+            /**
+             * The initial number of Compute Engine instances for the job.
+             */
+            numWorkers?: pulumi.Input<number>;
+            /**
+             * The email address of the service account to run the job as.
+             */
+            serviceAccountEmail?: pulumi.Input<string>;
+            /**
+             * Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+             */
+            subnetwork?: pulumi.Input<string>;
+            /**
+             * The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
+             */
+            tempLocation?: pulumi.Input<string>;
+            /**
+             * The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, defaults to the control plane region.
+             */
+            workerRegion?: pulumi.Input<string>;
+            /**
+             * The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+             */
+            workerZone?: pulumi.Input<string>;
+            /**
+             * The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+             */
+            zone?: pulumi.Input<string>;
+        }
+
+        /**
+         * Launch Flex Template parameter.
+         */
+        export interface GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs {
+            /**
+             * Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
+             */
+            containerSpecGcsPath?: pulumi.Input<string>;
+            /**
+             * The runtime environment for the Flex Template job.
+             */
+            environment?: pulumi.Input<inputs.datapipelines.v1.GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs>;
+            /**
+             * The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.
+             */
+            jobName: pulumi.Input<string>;
+            /**
+             * Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.
+             */
+            launchOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The parameters for the Flex Template. Example: `{"num_workers":"5"}`
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Use this to pass transform name mappings for streaming update jobs. Example: `{"oldTransformName":"newTransformName",...}`
+             */
+            transformNameMappings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.
+             */
+            update?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * A request to launch a Dataflow job from a Flex Template.
+         */
+        export interface GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs {
+            /**
+             * Parameter to launch a job from a Flex Template.
+             */
+            launchParameter: pulumi.Input<inputs.datapipelines.v1.GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs>;
+            /**
+             * The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. For example, `us-central1`, `us-west1`.
+             */
+            location: pulumi.Input<string>;
+            /**
+             * The ID of the Cloud Platform project that the job belongs to.
+             */
+            project: pulumi.Input<string>;
+            /**
+             * If true, the request is validated but not actually executed. Defaults to false.
+             */
+            validateOnly?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Parameters to provide to the template being launched.
+         */
+        export interface GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs {
+            /**
+             * The runtime environment for the job.
+             */
+            environment?: pulumi.Input<inputs.datapipelines.v1.GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs>;
+            /**
+             * The job name to use for the created job.
+             */
+            jobName: pulumi.Input<string>;
+            /**
+             * The runtime parameters to pass to the job.
+             */
+            parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job. Only applicable when updating a pipeline.
+             */
+            transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state.
+             */
+            update?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * A request to launch a template.
+         */
+        export interface GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs {
+            /**
+             * A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
+             */
+            gcsPath?: pulumi.Input<string>;
+            /**
+             * The parameters of the template to launch. This should be part of the body of the POST request.
+             */
+            launchParameters?: pulumi.Input<inputs.datapipelines.v1.GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs>;
+            /**
+             * The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * The ID of the Cloud Platform project that the job belongs to.
+             */
+            project: pulumi.Input<string>;
+            /**
+             * If true, the request is validated but not actually executed. Defaults to false.
+             */
+            validateOnly?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The environment values to set at runtime.
+         */
+        export interface GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs {
+            /**
+             * Additional experiment flags for the job.
+             */
+            additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
+             */
+            additionalUserLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+             */
+            bypassTempDirValidation?: pulumi.Input<boolean>;
+            /**
+             * Whether to enable Streaming Engine for the job.
+             */
+            enableStreamingEngine?: pulumi.Input<boolean>;
+            /**
+             * Configuration for VM IPs.
+             */
+            ipConfiguration?: pulumi.Input<enums.datapipelines.v1.GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration>;
+            /**
+             * Name for the Cloud KMS key for the job. The key format is: projects//locations//keyRings//cryptoKeys/
+             */
+            kmsKeyName?: pulumi.Input<string>;
+            /**
+             * The machine type to use for the job. Defaults to the value from the template if not specified.
+             */
+            machineType?: pulumi.Input<string>;
+            /**
+             * The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+             */
+            maxWorkers?: pulumi.Input<number>;
+            /**
+             * Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+             */
+            network?: pulumi.Input<string>;
+            /**
+             * The initial number of Compute Engine instances for the job.
+             */
+            numWorkers?: pulumi.Input<number>;
+            /**
+             * The email address of the service account to run the job as.
+             */
+            serviceAccountEmail?: pulumi.Input<string>;
+            /**
+             * Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+             */
+            subnetwork?: pulumi.Input<string>;
+            /**
+             * The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
+             */
+            tempLocation?: pulumi.Input<string>;
+            /**
+             * The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
+             */
+            workerRegion?: pulumi.Input<string>;
+            /**
+             * The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+             */
+            workerZone?: pulumi.Input<string>;
+            /**
+             * The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+             */
+            zone?: pulumi.Input<string>;
+        }
+
+        /**
+         * Details of the schedule the pipeline runs on.
+         */
+        export interface GoogleCloudDatapipelinesV1ScheduleSpecArgs {
+            /**
+             * Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
+             */
+            schedule?: pulumi.Input<string>;
+            /**
+             * Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
+             */
+            timeZone?: pulumi.Input<string>;
+        }
+
+        /**
+         * Workload details for creating the pipeline jobs.
+         */
+        export interface GoogleCloudDatapipelinesV1WorkloadArgs {
+            /**
+             * Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
+             */
+            dataflowFlexTemplateRequest?: pulumi.Input<inputs.datapipelines.v1.GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs>;
+            /**
+             * Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
+             */
+            dataflowLaunchTemplateRequest?: pulumi.Input<inputs.datapipelines.v1.GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs>;
+        }
+
+    }
+}
+
 export namespace dataproc {
     export namespace v1 {
         /**
@@ -27453,6 +29807,10 @@ export namespace dataproc {
              */
             cooldownPeriod?: pulumi.Input<string>;
             /**
+             * Optional. Spark Standalone autoscaling configuration
+             */
+            sparkStandaloneConfig?: pulumi.Input<inputs.dataproc.v1.SparkStandaloneAutoscalingConfigArgs>;
+            /**
              * Optional. YARN autoscaling configuration.
              */
             yarnConfig?: pulumi.Input<inputs.dataproc.v1.BasicYarnAutoscalingConfigArgs>;
@@ -27485,19 +29843,19 @@ export namespace dataproc {
         }
 
         /**
-         * Associates members with a role.
+         * Associates members, or principals, with a role.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.dataproc.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+             * Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+             * Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
              */
             role?: pulumi.Input<string>;
         }
@@ -28410,6 +30768,32 @@ export namespace dataproc {
              * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
              */
             scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
+        /**
+         * Basic autoscaling configurations for Spark Standalone.
+         */
+        export interface SparkStandaloneAutoscalingConfigArgs {
+            /**
+             * Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+             */
+            gracefulDecommissionTimeout: pulumi.Input<string>;
+            /**
+             * Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+             */
+            scaleDownFactor: pulumi.Input<number>;
+            /**
+             * Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+             */
+            scaleDownMinWorkerFraction?: pulumi.Input<number>;
+            /**
+             * Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+             */
+            scaleUpFactor: pulumi.Input<number>;
+            /**
+             * Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+             */
+            scaleUpMinWorkerFraction?: pulumi.Input<number>;
         }
 
         /**
@@ -29493,6 +31877,858 @@ export namespace datastore {
     }
 }
 
+export namespace datastream {
+    export namespace v1 {
+        /**
+         * AVRO file format configuration.
+         */
+        export interface AvroFileFormatArgs {
+        }
+
+        /**
+         * Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+         */
+        export interface BackfillAllStrategyArgs {
+            /**
+             * MySQL data source objects to avoid backfilling.
+             */
+            mysqlExcludedObjects?: pulumi.Input<inputs.datastream.v1.MysqlRdbmsArgs>;
+            /**
+             * Oracle data source objects to avoid backfilling.
+             */
+            oracleExcludedObjects?: pulumi.Input<inputs.datastream.v1.OracleRdbmsArgs>;
+        }
+
+        /**
+         * Backfill strategy to disable automatic backfill for the Stream's objects.
+         */
+        export interface BackfillNoneStrategyArgs {
+        }
+
+        /**
+         * The configuration of the stream destination.
+         */
+        export interface DestinationConfigArgs {
+            /**
+             * Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
+             */
+            destinationConnectionProfile: pulumi.Input<string>;
+            /**
+             * A configuration for how data should be loaded to Cloud Storage.
+             */
+            gcsDestinationConfig?: pulumi.Input<inputs.datastream.v1.GcsDestinationConfigArgs>;
+        }
+
+        /**
+         * Forward SSH Tunnel connectivity.
+         */
+        export interface ForwardSshTunnelConnectivityArgs {
+            /**
+             * Hostname for the SSH tunnel.
+             */
+            hostname: pulumi.Input<string>;
+            /**
+             * Input only. SSH password.
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * Port for the SSH tunnel, default value is 22.
+             */
+            port?: pulumi.Input<number>;
+            /**
+             * Input only. SSH private key.
+             */
+            privateKey?: pulumi.Input<string>;
+            /**
+             * Username for the SSH tunnel.
+             */
+            username: pulumi.Input<string>;
+        }
+
+        /**
+         * Google Cloud Storage destination configuration
+         */
+        export interface GcsDestinationConfigArgs {
+            /**
+             * AVRO file format configuration.
+             */
+            avroFileFormat?: pulumi.Input<inputs.datastream.v1.AvroFileFormatArgs>;
+            /**
+             * The maximum duration for which new events are added before a file is closed and a new file is created.
+             */
+            fileRotationInterval?: pulumi.Input<string>;
+            /**
+             * The maximum file size to be saved in the bucket.
+             */
+            fileRotationMb?: pulumi.Input<number>;
+            /**
+             * JSON file format configuration.
+             */
+            jsonFileFormat?: pulumi.Input<inputs.datastream.v1.JsonFileFormatArgs>;
+            /**
+             * Path inside the Cloud Storage bucket to write data to.
+             */
+            path?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cloud Storage bucket profile.
+         */
+        export interface GcsProfileArgs {
+            /**
+             * The Cloud Storage bucket name.
+             */
+            bucket: pulumi.Input<string>;
+            /**
+             * The root path inside the Cloud Storage bucket.
+             */
+            rootPath?: pulumi.Input<string>;
+        }
+
+        /**
+         * JSON file format configuration.
+         */
+        export interface JsonFileFormatArgs {
+            /**
+             * Compression of the loaded JSON file.
+             */
+            compression?: pulumi.Input<enums.datastream.v1.JsonFileFormatCompression>;
+            /**
+             * The schema file format along JSON data files.
+             */
+            schemaFileFormat?: pulumi.Input<enums.datastream.v1.JsonFileFormatSchemaFileFormat>;
+        }
+
+        /**
+         * MySQL Column.
+         */
+        export interface MysqlColumnArgs {
+            /**
+             * Column collation.
+             */
+            collation?: pulumi.Input<string>;
+            /**
+             * Column name.
+             */
+            column?: pulumi.Input<string>;
+            /**
+             * The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+             */
+            dataType?: pulumi.Input<string>;
+            /**
+             * Column length.
+             */
+            length?: pulumi.Input<number>;
+            /**
+             * Whether or not the column can accept a null value.
+             */
+            nullable?: pulumi.Input<boolean>;
+            /**
+             * The ordinal position of the column in the table.
+             */
+            ordinalPosition?: pulumi.Input<number>;
+            /**
+             * Whether or not the column represents a primary key.
+             */
+            primaryKey?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * MySQL database.
+         */
+        export interface MysqlDatabaseArgs {
+            /**
+             * Database name.
+             */
+            database?: pulumi.Input<string>;
+            /**
+             * Tables in the database.
+             */
+            mysqlTables?: pulumi.Input<pulumi.Input<inputs.datastream.v1.MysqlTableArgs>[]>;
+        }
+
+        /**
+         * MySQL database profile.
+         */
+        export interface MysqlProfileArgs {
+            /**
+             * Hostname for the MySQL connection.
+             */
+            hostname: pulumi.Input<string>;
+            /**
+             * Input only. Password for the MySQL connection.
+             */
+            password: pulumi.Input<string>;
+            /**
+             * Port for the MySQL connection, default value is 3306.
+             */
+            port?: pulumi.Input<number>;
+            /**
+             * SSL configuration for the MySQL connection.
+             */
+            sslConfig?: pulumi.Input<inputs.datastream.v1.MysqlSslConfigArgs>;
+            /**
+             * Username for the MySQL connection.
+             */
+            username: pulumi.Input<string>;
+        }
+
+        /**
+         * MySQL database structure
+         */
+        export interface MysqlRdbmsArgs {
+            /**
+             * Mysql databases on the server
+             */
+            mysqlDatabases?: pulumi.Input<pulumi.Input<inputs.datastream.v1.MysqlDatabaseArgs>[]>;
+        }
+
+        /**
+         * MySQL source configuration
+         */
+        export interface MysqlSourceConfigArgs {
+            /**
+             * MySQL objects to exclude from the stream.
+             */
+            excludeObjects?: pulumi.Input<inputs.datastream.v1.MysqlRdbmsArgs>;
+            /**
+             * MySQL objects to retrieve from the source.
+             */
+            includeObjects?: pulumi.Input<inputs.datastream.v1.MysqlRdbmsArgs>;
+        }
+
+        /**
+         * MySQL SSL configuration information.
+         */
+        export interface MysqlSslConfigArgs {
+            /**
+             * Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+             */
+            caCertificate?: pulumi.Input<string>;
+            /**
+             * Input only. PEM-encoded certificate that will be used by the replica to authenticate against the source database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are mandatory.
+             */
+            clientCertificate?: pulumi.Input<string>;
+            /**
+             * Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory.
+             */
+            clientKey?: pulumi.Input<string>;
+        }
+
+        /**
+         * MySQL table.
+         */
+        export interface MysqlTableArgs {
+            /**
+             * MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+             */
+            mysqlColumns?: pulumi.Input<pulumi.Input<inputs.datastream.v1.MysqlColumnArgs>[]>;
+            /**
+             * Table name.
+             */
+            table?: pulumi.Input<string>;
+        }
+
+        /**
+         * Oracle Column.
+         */
+        export interface OracleColumnArgs {
+            /**
+             * Column name.
+             */
+            column?: pulumi.Input<string>;
+            /**
+             * The Oracle data type.
+             */
+            dataType?: pulumi.Input<string>;
+            /**
+             * Column encoding.
+             */
+            encoding?: pulumi.Input<string>;
+            /**
+             * Column length.
+             */
+            length?: pulumi.Input<number>;
+            /**
+             * Whether or not the column can accept a null value.
+             */
+            nullable?: pulumi.Input<boolean>;
+            /**
+             * The ordinal position of the column in the table.
+             */
+            ordinalPosition?: pulumi.Input<number>;
+            /**
+             * Column precision.
+             */
+            precision?: pulumi.Input<number>;
+            /**
+             * Whether or not the column represents a primary key.
+             */
+            primaryKey?: pulumi.Input<boolean>;
+            /**
+             * Column scale.
+             */
+            scale?: pulumi.Input<number>;
+        }
+
+        /**
+         * Oracle database profile.
+         */
+        export interface OracleProfileArgs {
+            /**
+             * Connection string attributes
+             */
+            connectionAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Database for the Oracle connection.
+             */
+            databaseService: pulumi.Input<string>;
+            /**
+             * Hostname for the Oracle connection.
+             */
+            hostname: pulumi.Input<string>;
+            /**
+             * Password for the Oracle connection.
+             */
+            password: pulumi.Input<string>;
+            /**
+             * Port for the Oracle connection, default value is 1521.
+             */
+            port?: pulumi.Input<number>;
+            /**
+             * Username for the Oracle connection.
+             */
+            username: pulumi.Input<string>;
+        }
+
+        /**
+         * Oracle database structure.
+         */
+        export interface OracleRdbmsArgs {
+            /**
+             * Oracle schemas/databases in the database server.
+             */
+            oracleSchemas?: pulumi.Input<pulumi.Input<inputs.datastream.v1.OracleSchemaArgs>[]>;
+        }
+
+        /**
+         * Oracle schema.
+         */
+        export interface OracleSchemaArgs {
+            /**
+             * Tables in the schema.
+             */
+            oracleTables?: pulumi.Input<pulumi.Input<inputs.datastream.v1.OracleTableArgs>[]>;
+            /**
+             * Schema name.
+             */
+            schema?: pulumi.Input<string>;
+        }
+
+        /**
+         * Oracle data source configuration
+         */
+        export interface OracleSourceConfigArgs {
+            /**
+             * Oracle objects to exclude from the stream.
+             */
+            excludeObjects?: pulumi.Input<inputs.datastream.v1.OracleRdbmsArgs>;
+            /**
+             * Oracle objects to include in the stream.
+             */
+            includeObjects?: pulumi.Input<inputs.datastream.v1.OracleRdbmsArgs>;
+        }
+
+        /**
+         * Oracle table.
+         */
+        export interface OracleTableArgs {
+            /**
+             * Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+             */
+            oracleColumns?: pulumi.Input<pulumi.Input<inputs.datastream.v1.OracleColumnArgs>[]>;
+            /**
+             * Table name.
+             */
+            table?: pulumi.Input<string>;
+        }
+
+        /**
+         * Private Connectivity
+         */
+        export interface PrivateConnectivityArgs {
+            /**
+             * A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+             */
+            privateConnection: pulumi.Input<string>;
+        }
+
+        /**
+         * The configuration of the stream source.
+         */
+        export interface SourceConfigArgs {
+            /**
+             * MySQL data source configuration
+             */
+            mysqlSourceConfig?: pulumi.Input<inputs.datastream.v1.MysqlSourceConfigArgs>;
+            /**
+             * Oracle data source configuration
+             */
+            oracleSourceConfig?: pulumi.Input<inputs.datastream.v1.OracleSourceConfigArgs>;
+            /**
+             * Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
+             */
+            sourceConnectionProfile: pulumi.Input<string>;
+        }
+
+        /**
+         * Static IP address connectivity.
+         */
+        export interface StaticServiceIpConnectivityArgs {
+        }
+
+        /**
+         * The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
+         */
+        export interface VpcPeeringConfigArgs {
+            /**
+             * A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+             */
+            subnet: pulumi.Input<string>;
+            /**
+             * Fully qualified name of the VPC that Datastream will peer to. Format: `projects/{project}/global/{networks}/{name}`
+             */
+            vpc: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v1alpha1 {
+        /**
+         * AVRO file format configuration.
+         */
+        export interface AvroFileFormatArgs {
+        }
+
+        /**
+         * Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+         */
+        export interface BackfillAllStrategyArgs {
+            /**
+             * MySQL data source objects to avoid backfilling.
+             */
+            mysqlExcludedObjects?: pulumi.Input<inputs.datastream.v1alpha1.MysqlRdbmsArgs>;
+            /**
+             * Oracle data source objects to avoid backfilling.
+             */
+            oracleExcludedObjects?: pulumi.Input<inputs.datastream.v1alpha1.OracleRdbmsArgs>;
+        }
+
+        /**
+         * Backfill strategy to disable automatic backfill for the Stream's objects.
+         */
+        export interface BackfillNoneStrategyArgs {
+        }
+
+        /**
+         * The configuration of the stream destination.
+         */
+        export interface DestinationConfigArgs {
+            /**
+             * Destination connection profile identifier.
+             */
+            destinationConnectionProfileName: pulumi.Input<string>;
+            gcsDestinationConfig?: pulumi.Input<inputs.datastream.v1alpha1.GcsDestinationConfigArgs>;
+        }
+
+        /**
+         * Forward SSH Tunnel connectivity.
+         */
+        export interface ForwardSshTunnelConnectivityArgs {
+            /**
+             * Hostname for the SSH tunnel.
+             */
+            hostname: pulumi.Input<string>;
+            /**
+             * Input only. SSH password.
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * Port for the SSH tunnel, default value is 22.
+             */
+            port?: pulumi.Input<number>;
+            /**
+             * Input only. SSH private key.
+             */
+            privateKey?: pulumi.Input<string>;
+            /**
+             * Username for the SSH tunnel.
+             */
+            username: pulumi.Input<string>;
+        }
+
+        /**
+         * Google Cloud Storage destination configuration
+         */
+        export interface GcsDestinationConfigArgs {
+            /**
+             * AVRO file format configuration.
+             */
+            avroFileFormat?: pulumi.Input<inputs.datastream.v1alpha1.AvroFileFormatArgs>;
+            /**
+             * The maximum duration for which new events are added before a file is closed and a new file is created.
+             */
+            fileRotationInterval?: pulumi.Input<string>;
+            /**
+             * The maximum file size to be saved in the bucket.
+             */
+            fileRotationMb?: pulumi.Input<number>;
+            /**
+             * JSON file format configuration.
+             */
+            jsonFileFormat?: pulumi.Input<inputs.datastream.v1alpha1.JsonFileFormatArgs>;
+            /**
+             * Path inside the Cloud Storage bucket to write data to.
+             */
+            path?: pulumi.Input<string>;
+        }
+
+        /**
+         * Cloud Storage bucket profile.
+         */
+        export interface GcsProfileArgs {
+            /**
+             * The full project and resource path for Cloud Storage bucket including the name.
+             */
+            bucketName: pulumi.Input<string>;
+            /**
+             * The root path inside the Cloud Storage bucket.
+             */
+            rootPath?: pulumi.Input<string>;
+        }
+
+        /**
+         * JSON file format configuration.
+         */
+        export interface JsonFileFormatArgs {
+            /**
+             * Compression of the loaded JSON file.
+             */
+            compression?: pulumi.Input<enums.datastream.v1alpha1.JsonFileFormatCompression>;
+            /**
+             * The schema file format along JSON data files.
+             */
+            schemaFileFormat?: pulumi.Input<enums.datastream.v1alpha1.JsonFileFormatSchemaFileFormat>;
+        }
+
+        /**
+         * MySQL Column.
+         */
+        export interface MysqlColumnArgs {
+            /**
+             * Column collation.
+             */
+            collation?: pulumi.Input<string>;
+            /**
+             * Column name.
+             */
+            columnName?: pulumi.Input<string>;
+            /**
+             * The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+             */
+            dataType?: pulumi.Input<string>;
+            /**
+             * Column length.
+             */
+            length?: pulumi.Input<number>;
+            /**
+             * Whether or not the column can accept a null value.
+             */
+            nullable?: pulumi.Input<boolean>;
+            /**
+             * The ordinal position of the column in the table.
+             */
+            ordinalPosition?: pulumi.Input<number>;
+            /**
+             * Whether or not the column represents a primary key.
+             */
+            primaryKey?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * MySQL database.
+         */
+        export interface MysqlDatabaseArgs {
+            /**
+             * Database name.
+             */
+            databaseName?: pulumi.Input<string>;
+            /**
+             * Tables in the database.
+             */
+            mysqlTables?: pulumi.Input<pulumi.Input<inputs.datastream.v1alpha1.MysqlTableArgs>[]>;
+        }
+
+        /**
+         * MySQL database profile.
+         */
+        export interface MysqlProfileArgs {
+            /**
+             * Hostname for the MySQL connection.
+             */
+            hostname: pulumi.Input<string>;
+            /**
+             * Input only. Password for the MySQL connection.
+             */
+            password: pulumi.Input<string>;
+            /**
+             * Port for the MySQL connection, default value is 3306.
+             */
+            port?: pulumi.Input<number>;
+            /**
+             * SSL configuration for the MySQL connection.
+             */
+            sslConfig?: pulumi.Input<inputs.datastream.v1alpha1.MysqlSslConfigArgs>;
+            /**
+             * Username for the MySQL connection.
+             */
+            username: pulumi.Input<string>;
+        }
+
+        /**
+         * MySQL database structure
+         */
+        export interface MysqlRdbmsArgs {
+            /**
+             * Mysql databases on the server
+             */
+            mysqlDatabases?: pulumi.Input<pulumi.Input<inputs.datastream.v1alpha1.MysqlDatabaseArgs>[]>;
+        }
+
+        /**
+         * MySQL source configuration
+         */
+        export interface MysqlSourceConfigArgs {
+            /**
+             * MySQL objects to retrieve from the source.
+             */
+            allowlist?: pulumi.Input<inputs.datastream.v1alpha1.MysqlRdbmsArgs>;
+            /**
+             * MySQL objects to exclude from the stream.
+             */
+            rejectlist?: pulumi.Input<inputs.datastream.v1alpha1.MysqlRdbmsArgs>;
+        }
+
+        /**
+         * MySQL SSL configuration information.
+         */
+        export interface MysqlSslConfigArgs {
+            /**
+             * Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+             */
+            caCertificate?: pulumi.Input<string>;
+            /**
+             * Input only. PEM-encoded certificate that will be used by the replica to authenticate against the source database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are mandatory.
+             */
+            clientCertificate?: pulumi.Input<string>;
+            /**
+             * Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory.
+             */
+            clientKey?: pulumi.Input<string>;
+        }
+
+        /**
+         * MySQL table.
+         */
+        export interface MysqlTableArgs {
+            /**
+             * MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+             */
+            mysqlColumns?: pulumi.Input<pulumi.Input<inputs.datastream.v1alpha1.MysqlColumnArgs>[]>;
+            /**
+             * Table name.
+             */
+            tableName?: pulumi.Input<string>;
+        }
+
+        /**
+         * No connectivity settings.
+         */
+        export interface NoConnectivitySettingsArgs {
+        }
+
+        /**
+         * Oracle Column.
+         */
+        export interface OracleColumnArgs {
+            /**
+             * Column name.
+             */
+            columnName?: pulumi.Input<string>;
+            /**
+             * The Oracle data type.
+             */
+            dataType?: pulumi.Input<string>;
+            /**
+             * Column encoding.
+             */
+            encoding?: pulumi.Input<string>;
+            /**
+             * Column length.
+             */
+            length?: pulumi.Input<number>;
+            /**
+             * Whether or not the column can accept a null value.
+             */
+            nullable?: pulumi.Input<boolean>;
+            /**
+             * The ordinal position of the column in the table.
+             */
+            ordinalPosition?: pulumi.Input<number>;
+            /**
+             * Column precision.
+             */
+            precision?: pulumi.Input<number>;
+            /**
+             * Whether or not the column represents a primary key.
+             */
+            primaryKey?: pulumi.Input<boolean>;
+            /**
+             * Column scale.
+             */
+            scale?: pulumi.Input<number>;
+        }
+
+        /**
+         * Oracle database profile.
+         */
+        export interface OracleProfileArgs {
+            /**
+             * Connection string attributes
+             */
+            connectionAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Database for the Oracle connection.
+             */
+            databaseService: pulumi.Input<string>;
+            /**
+             * Hostname for the Oracle connection.
+             */
+            hostname: pulumi.Input<string>;
+            /**
+             * Password for the Oracle connection.
+             */
+            password: pulumi.Input<string>;
+            /**
+             * Port for the Oracle connection, default value is 1521.
+             */
+            port?: pulumi.Input<number>;
+            /**
+             * Username for the Oracle connection.
+             */
+            username: pulumi.Input<string>;
+        }
+
+        /**
+         * Oracle database structure.
+         */
+        export interface OracleRdbmsArgs {
+            /**
+             * Oracle schemas/databases in the database server.
+             */
+            oracleSchemas?: pulumi.Input<pulumi.Input<inputs.datastream.v1alpha1.OracleSchemaArgs>[]>;
+        }
+
+        /**
+         * Oracle schema.
+         */
+        export interface OracleSchemaArgs {
+            /**
+             * Tables in the schema.
+             */
+            oracleTables?: pulumi.Input<pulumi.Input<inputs.datastream.v1alpha1.OracleTableArgs>[]>;
+            /**
+             * Schema name.
+             */
+            schemaName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Oracle data source configuration
+         */
+        export interface OracleSourceConfigArgs {
+            /**
+             * Oracle objects to include in the stream.
+             */
+            allowlist?: pulumi.Input<inputs.datastream.v1alpha1.OracleRdbmsArgs>;
+            /**
+             * Oracle objects to exclude from the stream.
+             */
+            rejectlist?: pulumi.Input<inputs.datastream.v1alpha1.OracleRdbmsArgs>;
+        }
+
+        /**
+         * Oracle table.
+         */
+        export interface OracleTableArgs {
+            /**
+             * Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+             */
+            oracleColumns?: pulumi.Input<pulumi.Input<inputs.datastream.v1alpha1.OracleColumnArgs>[]>;
+            /**
+             * Table name.
+             */
+            tableName?: pulumi.Input<string>;
+        }
+
+        /**
+         * Private Connectivity
+         */
+        export interface PrivateConnectivityArgs {
+            privateConnectionName?: pulumi.Input<string>;
+        }
+
+        /**
+         * The configuration of the stream source.
+         */
+        export interface SourceConfigArgs {
+            /**
+             * MySQL data source configuration
+             */
+            mysqlSourceConfig?: pulumi.Input<inputs.datastream.v1alpha1.MysqlSourceConfigArgs>;
+            /**
+             * Oracle data source configuration
+             */
+            oracleSourceConfig?: pulumi.Input<inputs.datastream.v1alpha1.OracleSourceConfigArgs>;
+            /**
+             * Source connection profile identifier.
+             */
+            sourceConnectionProfileName: pulumi.Input<string>;
+        }
+
+        /**
+         * Static IP address connectivity.
+         */
+        export interface StaticServiceIpConnectivityArgs {
+        }
+
+        /**
+         * The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
+         */
+        export interface VpcPeeringConfigArgs {
+            /**
+             * A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+             */
+            subnet: pulumi.Input<string>;
+            /**
+             * fully qualified name of the VPC Datastream will peer to.
+             */
+            vpcName: pulumi.Input<string>;
+        }
+
+    }
+}
+
 export namespace deploymentmanager {
     export namespace alpha {
         /**
@@ -29546,19 +32782,19 @@ export namespace deploymentmanager {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.deploymentmanager.alpha.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -29878,19 +33114,19 @@ export namespace deploymentmanager {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.deploymentmanager.v2.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -30014,19 +33250,19 @@ export namespace deploymentmanager {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.deploymentmanager.v2beta.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -30294,7 +33530,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2AutomatedAgentConfigArgs {
             /**
-             * ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+             * ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
              */
             agent: pulumi.Input<string>;
         }
@@ -30484,7 +33720,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs {
             /**
-             * Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION.
+             * Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
              */
             confidenceThreshold?: pulumi.Input<number>;
             /**
@@ -33593,7 +36829,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs {
             /**
-             * Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+             * Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
              */
             enableContinuousRun?: pulumi.Input<boolean>;
             /**
@@ -35101,6 +38337,10 @@ export namespace dlp {
              * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
              */
             name?: pulumi.Input<string>;
+            /**
+             * Optional version name for this InfoType.
+             */
+            version?: pulumi.Input<string>;
         }
 
         /**
@@ -35482,7 +38722,7 @@ export namespace dlp {
         }
 
         /**
-         * Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+         * Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
          */
         export interface GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs {
         }
@@ -35990,6 +39230,17 @@ export namespace dns {
             kind?: pulumi.Input<string>;
         }
 
+        /**
+         * Cloud Logging configurations for publicly visible zones.
+         */
+        export interface ManagedZoneCloudLoggingConfigArgs {
+            /**
+             * If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+             */
+            enableLogging?: pulumi.Input<boolean>;
+            kind?: pulumi.Input<string>;
+        }
+
         export interface ManagedZoneDnsSecConfigArgs {
             /**
              * Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
@@ -36166,6 +39417,17 @@ export namespace dns {
             kind?: pulumi.Input<string>;
         }
 
+        /**
+         * Cloud Logging configurations for publicly visible zones.
+         */
+        export interface ManagedZoneCloudLoggingConfigArgs {
+            /**
+             * If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+             */
+            enableLogging?: pulumi.Input<boolean>;
+            kind?: pulumi.Input<string>;
+        }
+
         export interface ManagedZoneDnsSecConfigArgs {
             /**
              * Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
@@ -36326,10 +39588,6 @@ export namespace dns {
 
         export interface RRSetRoutingPolicyGeoPolicyArgs {
             /**
-             * If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
-             */
-            failovers?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs>[]>;
-            /**
              * The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
              */
             items?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs>[]>;
@@ -36425,6 +39683,281 @@ export namespace dns {
 }
 
 export namespace domains {
+    export namespace v1 {
+        /**
+         * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+         */
+        export interface AuditConfigArgs {
+            /**
+             * The configuration for logging of each type of permission.
+             */
+            auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.domains.v1.AuditLogConfigArgs>[]>;
+            /**
+             * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+             */
+            service?: pulumi.Input<string>;
+        }
+
+        /**
+         * Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+         */
+        export interface AuditLogConfigArgs {
+            /**
+             * Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+             */
+            exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The log type that this config enables.
+             */
+            logType?: pulumi.Input<enums.domains.v1.AuditLogConfigLogType>;
+        }
+
+        /**
+         * Associates `members`, or principals, with a `role`.
+         */
+        export interface BindingArgs {
+            /**
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             */
+            condition?: pulumi.Input<inputs.domains.v1.ExprArgs>;
+            /**
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             */
+            members?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             */
+            role?: pulumi.Input<string>;
+        }
+
+        /**
+         * Details required for a contact associated with a `Registration`.
+         */
+        export interface ContactArgs {
+            /**
+             * Email address of the contact.
+             */
+            email: pulumi.Input<string>;
+            /**
+             * Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+             */
+            faxNumber?: pulumi.Input<string>;
+            /**
+             * Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+             */
+            phoneNumber: pulumi.Input<string>;
+            /**
+             * Postal address of the contact.
+             */
+            postalAddress: pulumi.Input<inputs.domains.v1.PostalAddressArgs>;
+        }
+
+        /**
+         * Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
+         */
+        export interface ContactSettingsArgs {
+            /**
+             * The administrative contact for the `Registration`.
+             */
+            adminContact: pulumi.Input<inputs.domains.v1.ContactArgs>;
+            /**
+             * Privacy setting for the contacts associated with the `Registration`.
+             */
+            privacy: pulumi.Input<enums.domains.v1.ContactSettingsPrivacy>;
+            /**
+             * The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.*
+             */
+            registrantContact: pulumi.Input<inputs.domains.v1.ContactArgs>;
+            /**
+             * The technical contact for the `Registration`.
+             */
+            technicalContact: pulumi.Input<inputs.domains.v1.ContactArgs>;
+        }
+
+        /**
+         * Configuration for an arbitrary DNS provider.
+         */
+        export interface CustomDnsArgs {
+            /**
+             * The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
+             */
+            dsRecords?: pulumi.Input<pulumi.Input<inputs.domains.v1.DsRecordArgs>[]>;
+            /**
+             * A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+             */
+            nameServers: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
+         */
+        export interface DnsSettingsArgs {
+            /**
+             * An arbitrary DNS provider identified by its name servers.
+             */
+            customDns?: pulumi.Input<inputs.domains.v1.CustomDnsArgs>;
+            /**
+             * The list of glue records for this `Registration`. Commonly empty.
+             */
+            glueRecords?: pulumi.Input<pulumi.Input<inputs.domains.v1.GlueRecordArgs>[]>;
+            /**
+             * The free DNS zone provided by [Google Domains](https://domains.google/).
+             */
+            googleDomainsDns?: pulumi.Input<inputs.domains.v1.GoogleDomainsDnsArgs>;
+        }
+
+        /**
+         * Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
+         */
+        export interface DsRecordArgs {
+            /**
+             * The algorithm used to generate the referenced DNSKEY.
+             */
+            algorithm?: pulumi.Input<enums.domains.v1.DsRecordAlgorithm>;
+            /**
+             * The digest generated from the referenced DNSKEY.
+             */
+            digest?: pulumi.Input<string>;
+            /**
+             * The hash function used to generate the digest of the referenced DNSKEY.
+             */
+            digestType?: pulumi.Input<enums.domains.v1.DsRecordDigestType>;
+            /**
+             * The key tag of the record. Must be set in range 0 -- 65535.
+             */
+            keyTag?: pulumi.Input<number>;
+        }
+
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+         */
+        export interface ExprArgs {
+            /**
+             * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Textual representation of an expression in Common Expression Language syntax.
+             */
+            expression?: pulumi.Input<string>;
+            /**
+             * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+             */
+            title?: pulumi.Input<string>;
+        }
+
+        /**
+         * Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
+         */
+        export interface GlueRecordArgs {
+            /**
+             * Domain name of the host in Punycode format.
+             */
+            hostName: pulumi.Input<string>;
+            /**
+             * List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
+             */
+            ipv4Addresses?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
+             */
+            ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+         */
+        export interface GoogleDomainsDnsArgs {
+            /**
+             * The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+             */
+            dsState: pulumi.Input<enums.domains.v1.GoogleDomainsDnsDsState>;
+        }
+
+        /**
+         * Defines renewal, billing, and transfer settings for a `Registration`.
+         */
+        export interface ManagementSettingsArgs {
+            /**
+             * Controls whether the domain can be transferred to another registrar.
+             */
+            transferLockState?: pulumi.Input<enums.domains.v1.ManagementSettingsTransferLockState>;
+        }
+
+        /**
+         * Represents an amount of money with its currency type.
+         */
+        export interface MoneyArgs {
+            /**
+             * The three-letter currency code defined in ISO 4217.
+             */
+            currencyCode?: pulumi.Input<string>;
+            /**
+             * Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+             */
+            nanos?: pulumi.Input<number>;
+            /**
+             * The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+             */
+            units?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+         */
+        export interface PostalAddressArgs {
+            /**
+             * Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+             */
+            addressLines?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+             */
+            administrativeArea?: pulumi.Input<string>;
+            /**
+             * Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+             */
+            languageCode?: pulumi.Input<string>;
+            /**
+             * Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+             */
+            locality?: pulumi.Input<string>;
+            /**
+             * Optional. The name of the organization at the address.
+             */
+            organization?: pulumi.Input<string>;
+            /**
+             * Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+             */
+            postalCode?: pulumi.Input<string>;
+            /**
+             * Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+             */
+            recipients?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+             */
+            regionCode: pulumi.Input<string>;
+            /**
+             * The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+             */
+            revision?: pulumi.Input<number>;
+            /**
+             * Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+             */
+            sortingCode?: pulumi.Input<string>;
+            /**
+             * Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+             */
+            sublocality?: pulumi.Input<string>;
+        }
+
+    }
+
     export namespace v1alpha2 {
         /**
          * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
@@ -36455,19 +39988,19 @@ export namespace domains {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.domains.v1alpha2.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -36507,7 +40040,7 @@ export namespace domains {
              */
             privacy: pulumi.Input<enums.domains.v1alpha2.ContactSettingsPrivacy>;
             /**
-             * The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+             * The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.*
              */
             registrantContact: pulumi.Input<inputs.domains.v1alpha2.ContactArgs>;
             /**
@@ -36730,19 +40263,19 @@ export namespace domains {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.domains.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -36782,7 +40315,7 @@ export namespace domains {
              */
             privacy: pulumi.Input<enums.domains.v1beta1.ContactSettingsPrivacy>;
             /**
-             * The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+             * The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.*
              */
             registrantContact: pulumi.Input<inputs.domains.v1beta1.ContactArgs>;
             /**
@@ -37007,19 +40540,19 @@ export namespace eventarc {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.eventarc.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -37050,6 +40583,10 @@ export namespace eventarc {
              * Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
              */
             cloudRun?: pulumi.Input<inputs.eventarc.v1.CloudRunArgs>;
+            /**
+             * A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+             */
+            gke?: pulumi.Input<inputs.eventarc.v1.GKEArgs>;
         }
 
         /**
@@ -37086,6 +40623,32 @@ export namespace eventarc {
              * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
              */
             title?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents a GKE destination.
+         */
+        export interface GKEArgs {
+            /**
+             * The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
+             */
+            cluster: pulumi.Input<string>;
+            /**
+             * The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (e.g. us-central1-a) for the zonal clusters or region (e.g. us-central1) for regional clusters.
+             */
+            location: pulumi.Input<string>;
+            /**
+             * The namespace the GKE service is running in.
+             */
+            namespace: pulumi.Input<string>;
+            /**
+             * Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * Name of the GKE service.
+             */
+            service: pulumi.Input<string>;
         }
 
         /**
@@ -37140,19 +40703,19 @@ export namespace eventarc {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.eventarc.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -37253,6 +40816,10 @@ export namespace file {
          */
         export interface NetworkConfigArgs {
             /**
+             * The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+             */
+            connectMode?: pulumi.Input<enums.file.v1.NetworkConfigConnectMode>;
+            /**
              * Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
              */
             modes?: pulumi.Input<pulumi.Input<enums.file.v1.NetworkConfigModesItem>[]>;
@@ -37261,7 +40828,7 @@ export namespace file {
              */
             network?: pulumi.Input<string>;
             /**
-             * A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+             * Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
              */
             reservedIpRange?: pulumi.Input<string>;
         }
@@ -37553,20 +41120,20 @@ export namespace gameservices {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             bindingId?: pulumi.Input<string>;
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.gameservices.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -37795,7 +41362,7 @@ export namespace gameservices {
         }
 
         /**
-         * The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+         * The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ``` start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration ```
          */
         export interface ScheduleArgs {
             /**
@@ -37860,20 +41427,20 @@ export namespace gameservices {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             bindingId?: pulumi.Input<string>;
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.gameservices.v1beta.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -38116,7 +41683,7 @@ export namespace gameservices {
         }
 
         /**
-         * The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+         * The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ``` start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration ```
          */
         export interface ScheduleArgs {
             /**
@@ -38270,6 +41837,12 @@ export namespace genomics {
 export namespace gkehub {
     export namespace v1 {
         /**
+         * Spec for App Dev Experience Feature.
+         */
+        export interface AppDevExperienceFeatureSpecArgs {
+        }
+
+        /**
          * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
          */
         export interface AuditConfigArgs {
@@ -38312,19 +41885,19 @@ export namespace gkehub {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.gkehub.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -38333,6 +41906,10 @@ export namespace gkehub {
          * CommonFeatureSpec contains Hub-wide configuration information
          */
         export interface CommonFeatureSpecArgs {
+            /**
+             * Appdevexperience specific spec.
+             */
+            appdevexperience?: pulumi.Input<inputs.gkehub.v1.AppDevExperienceFeatureSpecArgs>;
             /**
              * Multicluster Ingress-specific spec.
              */
@@ -38372,6 +41949,20 @@ export namespace gkehub {
         }
 
         /**
+         * KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+         */
+        export interface KubernetesResourceArgs {
+            /**
+             * Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+             */
+            membershipCrManifest?: pulumi.Input<string>;
+            /**
+             * Optional. Options for Kubernetes resource generation.
+             */
+            resourceOptions?: pulumi.Input<inputs.gkehub.v1.ResourceOptionsArgs>;
+        }
+
+        /**
          * MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
          */
         export interface MembershipEndpointArgs {
@@ -38380,11 +41971,15 @@ export namespace gkehub {
              */
             gkeCluster?: pulumi.Input<inputs.gkehub.v1.GkeClusterArgs>;
             /**
+             * Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+             */
+            kubernetesResource?: pulumi.Input<inputs.gkehub.v1.KubernetesResourceArgs>;
+            /**
              * Optional. Specific information for a GKE Multi-Cloud cluster.
              */
             multiCloudCluster?: pulumi.Input<inputs.gkehub.v1.MultiCloudClusterArgs>;
             /**
-             * Optional. Specific information for a GKE On-Prem cluster.
+             * Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
              */
             onPremCluster?: pulumi.Input<inputs.gkehub.v1.OnPremClusterArgs>;
         }
@@ -38423,9 +42018,29 @@ export namespace gkehub {
             resourceLink?: pulumi.Input<string>;
         }
 
+        /**
+         * ResourceOptions represent options for Kubernetes resource generation.
+         */
+        export interface ResourceOptionsArgs {
+            /**
+             * Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+             */
+            connectVersion?: pulumi.Input<string>;
+            /**
+             * Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+             */
+            v1beta1Crd?: pulumi.Input<boolean>;
+        }
+
     }
 
     export namespace v1alpha {
+        /**
+         * Spec for App Dev Experience Feature.
+         */
+        export interface AppDevExperienceFeatureSpecArgs {
+        }
+
         /**
          * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
          */
@@ -38455,19 +42070,33 @@ export namespace gkehub {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+         */
+        export interface AuthorityArgs {
+            /**
+             * Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
+             */
+            issuer?: pulumi.Input<string>;
+            /**
+             * Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+             */
+            oidcJwks?: pulumi.Input<string>;
+        }
+
+        /**
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.gkehub.v1alpha.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -38486,6 +42115,10 @@ export namespace gkehub {
          * CommonFeatureSpec contains Hub-wide configuration information
          */
         export interface CommonFeatureSpecArgs {
+            /**
+             * Appdevexperience specific spec.
+             */
+            appdevexperience?: pulumi.Input<inputs.gkehub.v1alpha.AppDevExperienceFeatureSpecArgs>;
             /**
              * Cloud Audit Logging-specific spec.
              */
@@ -38519,6 +42152,62 @@ export namespace gkehub {
         }
 
         /**
+         * GkeCluster contains information specific to GKE clusters.
+         */
+        export interface GkeClusterArgs {
+            /**
+             * Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+             */
+            resourceLink?: pulumi.Input<string>;
+        }
+
+        /**
+         * KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+         */
+        export interface KubernetesResourceArgs {
+            /**
+             * Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+             */
+            membershipCrManifest?: pulumi.Input<string>;
+            /**
+             * Optional. Options for Kubernetes resource generation.
+             */
+            resourceOptions?: pulumi.Input<inputs.gkehub.v1alpha.ResourceOptionsArgs>;
+        }
+
+        /**
+         * MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
+         */
+        export interface MembershipEndpointArgs {
+            /**
+             * Optional. Specific information for a GKE-on-GCP cluster.
+             */
+            gkeCluster?: pulumi.Input<inputs.gkehub.v1alpha.GkeClusterArgs>;
+            /**
+             * Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+             */
+            kubernetesResource?: pulumi.Input<inputs.gkehub.v1alpha.KubernetesResourceArgs>;
+            /**
+             * Optional. Specific information for a GKE Multi-Cloud cluster.
+             */
+            multiCloudCluster?: pulumi.Input<inputs.gkehub.v1alpha.MultiCloudClusterArgs>;
+            /**
+             * Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
+             */
+            onPremCluster?: pulumi.Input<inputs.gkehub.v1alpha.OnPremClusterArgs>;
+        }
+
+        /**
+         * MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+         */
+        export interface MultiCloudClusterArgs {
+            /**
+             * Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+             */
+            resourceLink?: pulumi.Input<string>;
+        }
+
+        /**
          * **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
          */
         export interface MultiClusterIngressFeatureSpecArgs {
@@ -38526,6 +42215,34 @@ export namespace gkehub {
              * Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
              */
             configMembership?: pulumi.Input<string>;
+        }
+
+        /**
+         * OnPremCluster contains information specific to GKE On-Prem clusters.
+         */
+        export interface OnPremClusterArgs {
+            /**
+             * Immutable. Whether the cluster is an admin cluster.
+             */
+            adminCluster?: pulumi.Input<boolean>;
+            /**
+             * Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+             */
+            resourceLink?: pulumi.Input<string>;
+        }
+
+        /**
+         * ResourceOptions represent options for Kubernetes resource generation.
+         */
+        export interface ResourceOptionsArgs {
+            /**
+             * Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+             */
+            connectVersion?: pulumi.Input<string>;
+            /**
+             * Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+             */
+            v1beta1Crd?: pulumi.Input<boolean>;
         }
 
     }
@@ -38574,19 +42291,19 @@ export namespace gkehub {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.gkehub.v1alpha2.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -38654,7 +42371,7 @@ export namespace gkehub {
              */
             multiCloudCluster?: pulumi.Input<inputs.gkehub.v1alpha2.MultiCloudClusterArgs>;
             /**
-             * Optional. Specific information for a GKE On-Prem cluster.
+             * Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
              */
             onPremCluster?: pulumi.Input<inputs.gkehub.v1alpha2.OnPremClusterArgs>;
         }
@@ -38701,6 +42418,12 @@ export namespace gkehub {
 
     export namespace v1beta {
         /**
+         * Spec for App Dev Experience Feature.
+         */
+        export interface AppDevExperienceFeatureSpecArgs {
+        }
+
+        /**
          * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
          */
         export interface AuditConfigArgs {
@@ -38729,19 +42452,19 @@ export namespace gkehub {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.gkehub.v1beta.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -38750,6 +42473,10 @@ export namespace gkehub {
          * CommonFeatureSpec contains Hub-wide configuration information
          */
         export interface CommonFeatureSpecArgs {
+            /**
+             * Appdevexperience specific spec.
+             */
+            appdevexperience?: pulumi.Input<inputs.gkehub.v1beta.AppDevExperienceFeatureSpecArgs>;
             /**
              * Multicluster Ingress-specific spec.
              */
@@ -38834,19 +42561,19 @@ export namespace gkehub {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.gkehub.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -38914,7 +42641,7 @@ export namespace gkehub {
              */
             multiCloudCluster?: pulumi.Input<inputs.gkehub.v1beta1.MultiCloudClusterArgs>;
             /**
-             * Optional. Specific information for a GKE On-Prem cluster.
+             * Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
              */
             onPremCluster?: pulumi.Input<inputs.gkehub.v1beta1.OnPremClusterArgs>;
         }
@@ -39005,19 +42732,19 @@ export namespace healthcare {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.healthcare.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -39289,7 +43016,7 @@ export namespace healthcare {
          */
         export interface StreamConfigArgs {
             /**
-             * The destination BigQuery structure that contains both the dataset location and corresponding schema config. The output is organized in one table per resource type. The server reuses the existing tables (if any) that are named after the resource types. For example, "Patient", "Observation". When there is no existing table for a given resource type, the server attempts to create one. When a table schema doesn't align with the schema config, either because of existing incompatible schema or out of band incompatible modification, the server does not stream in new data. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates more than 1 MB of BigQuery data is not streamed. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. Results are appended to the corresponding BigQuery tables. Different versions of the same resource are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that results in the new version is recorded in the meta.tag. The tables contain all historical resource versions since streaming was enabled. For query convenience, the server also creates one view per table of the same name containing only the current resource version. The streamed data in the BigQuery dataset is not guaranteed to be completely unique. The combination of the id and meta.versionId columns should ideally identify a single unique row. But in rare cases, duplicates may exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out duplicates. If a resource mutation cannot be streamed to BigQuery, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+             * The destination BigQuery structure that contains both the dataset location and corresponding schema config. The output is organized in one table per resource type. The server reuses the existing tables (if any) that are named after the resource types. For example, "Patient", "Observation". When there is no existing table for a given resource type, the server attempts to create one. When a table schema doesn't align with the schema config, either because of existing incompatible schema or out of band incompatible modification, the server does not stream in new data. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates more than 1 MB of BigQuery data is not streamed. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. Results are written to BigQuery tables according to the parameters in BigQueryDestination.WriteDisposition. Different versions of the same resource are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that results in the new version is recorded in the meta.tag. The tables contain all historical resource versions since streaming was enabled. For query convenience, the server also creates one view per table of the same name containing only the current resource version. The streamed data in the BigQuery dataset is not guaranteed to be completely unique. The combination of the id and meta.versionId columns should ideally identify a single unique row. But in rare cases, duplicates may exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out duplicates. If a resource mutation cannot be streamed to BigQuery, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
              */
             bigqueryDestination?: pulumi.Input<inputs.healthcare.v1.GoogleCloudHealthcareV1FhirBigQueryDestinationArgs>;
             /**
@@ -39314,6 +43041,24 @@ export namespace healthcare {
              * If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
              */
             primitive?: pulumi.Input<enums.healthcare.v1.TypePrimitive>;
+        }
+
+        /**
+         * Contains the configuration for FHIR profiles and validation.
+         */
+        export interface ValidationConfigArgs {
+            /**
+             * Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+             */
+            disableFhirpathValidation?: pulumi.Input<boolean>;
+            /**
+             * Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+             */
+            disableReferenceTypeValidation?: pulumi.Input<boolean>;
+            /**
+             * Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+             */
+            disableRequiredFieldValidation?: pulumi.Input<boolean>;
         }
 
         /**
@@ -39386,19 +43131,19 @@ export namespace healthcare {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.healthcare.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -39784,7 +43529,7 @@ export namespace healthcare {
          */
         export interface StreamConfigArgs {
             /**
-             * The destination BigQuery structure that contains both the dataset location and corresponding schema config. The output is organized in one table per resource type. The server reuses the existing tables (if any) that are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given resource type, the server attempts to create one. When a table schema doesn't align with the schema config, either because of existing incompatible schema or out of band incompatible modification, the server does not stream in new data. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates more than 1 MB of BigQuery data will not be streamed. Results are appended to the corresponding BigQuery tables. Different versions of the same resource are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that results in the new version is recorded in the meta.tag. The tables contain all historical resource versions since streaming was enabled. For query convenience, the server also creates one view per table of the same name containing only the current resource version. The streamed data in the BigQuery dataset is not guaranteed to be completely unique. The combination of the id and meta.versionId columns should ideally identify a single unique row. But in rare cases, duplicates may exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out duplicates. If a resource mutation cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+             * The destination BigQuery structure that contains both the dataset location and corresponding schema config. The output is organized in one table per resource type. The server reuses the existing tables (if any) that are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given resource type, the server attempts to create one. When a table schema doesn't align with the schema config, either because of existing incompatible schema or out of band incompatible modification, the server does not stream in new data. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates more than 1 MB of BigQuery data will not be streamed. Results are written to BigQuery tables according to the parameters in BigQueryDestination.WriteDisposition. Different versions of the same resource are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that results in the new version is recorded in the meta.tag. The tables contain all historical resource versions since streaming was enabled. For query convenience, the server also creates one view per table of the same name containing only the current resource version. The streamed data in the BigQuery dataset is not guaranteed to be completely unique. The combination of the id and meta.versionId columns should ideally identify a single unique row. But in rare cases, duplicates may exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out duplicates. If a resource mutation cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
              */
             bigqueryDestination?: pulumi.Input<inputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs>;
             /**
@@ -39816,9 +43561,21 @@ export namespace healthcare {
          */
         export interface ValidationConfigArgs {
             /**
+             * Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+             */
+            disableFhirpathValidation?: pulumi.Input<boolean>;
+            /**
              * Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against StructureDefinitions in this FHIR store.
              */
             disableProfileValidation?: pulumi.Input<boolean>;
+            /**
+             * Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+             */
+            disableReferenceTypeValidation?: pulumi.Input<boolean>;
+            /**
+             * Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+             */
+            disableRequiredFieldValidation?: pulumi.Input<boolean>;
             /**
              * A list of ImplementationGuide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
              */
@@ -39897,19 +43654,19 @@ export namespace iam {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.iam.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -39956,19 +43713,19 @@ export namespace iam {
 export namespace iap {
     export namespace v1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.iap.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -39999,19 +43756,19 @@ export namespace iap {
 
     export namespace v1beta1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.iap.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -40270,7 +44027,7 @@ export namespace logging {
         }
 
         /**
-         * Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+         * Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.
          */
         export interface LogExclusionArgs {
             /**
@@ -40297,19 +44054,19 @@ export namespace logging {
 export namespace managedidentities {
     export namespace v1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.managedidentities.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -40340,19 +44097,19 @@ export namespace managedidentities {
 
     export namespace v1alpha1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.managedidentities.v1alpha1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -40383,19 +44140,19 @@ export namespace managedidentities {
 
     export namespace v1beta1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.managedidentities.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -40438,9 +44195,6 @@ export namespace memcache {
             message?: pulumi.Input<string>;
         }
 
-        /**
-         * The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
-         */
         export interface MemcacheParametersArgs {
             /**
              * User defined set of parameters to use in the memcached process.
@@ -40476,9 +44230,6 @@ export namespace memcache {
             message?: pulumi.Input<string>;
         }
 
-        /**
-         * The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
-         */
         export interface MemcacheParametersArgs {
             /**
              * User defined set of parameters to use in the memcached process.
@@ -40534,21 +44285,31 @@ export namespace metastore {
         }
 
         /**
-         * Associates members with a role.
+         * Associates members, or principals, with a role.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.metastore.v1alpha.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+             * Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+             * Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
              */
             role?: pulumi.Input<string>;
+        }
+
+        /**
+         * Contains information of the customer's network configurations.
+         */
+        export interface ConsumerArgs {
+            /**
+             * The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+             */
+            subnetwork?: pulumi.Input<string>;
         }
 
         /**
@@ -40694,6 +44455,16 @@ export namespace metastore {
         }
 
         /**
+         * Network configuration for the Dataproc Metastore service.
+         */
+        export interface NetworkConfigArgs {
+            /**
+             * Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+             */
+            consumers?: pulumi.Input<pulumi.Input<inputs.metastore.v1alpha.ConsumerArgs>[]>;
+        }
+
+        /**
          * A securely stored value.
          */
         export interface SecretArgs {
@@ -40735,21 +44506,31 @@ export namespace metastore {
         }
 
         /**
-         * Associates members with a role.
+         * Associates members, or principals, with a role.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.metastore.v1beta.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+             * Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+             * Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
              */
             role?: pulumi.Input<string>;
+        }
+
+        /**
+         * Contains information of the customer's network configurations.
+         */
+        export interface ConsumerArgs {
+            /**
+             * The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+             */
+            subnetwork?: pulumi.Input<string>;
         }
 
         /**
@@ -40892,6 +44673,16 @@ export namespace metastore {
              * The integration config for the Dataplex service.
              */
             dataplexConfig?: pulumi.Input<inputs.metastore.v1beta.DataplexConfigArgs>;
+        }
+
+        /**
+         * Network configuration for the Dataproc Metastore service.
+         */
+        export interface NetworkConfigArgs {
+            /**
+             * Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+             */
+            consumers?: pulumi.Input<pulumi.Input<inputs.metastore.v1beta.ConsumerArgs>[]>;
         }
 
         /**
@@ -41776,19 +45567,19 @@ export namespace ml {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface GoogleIamV1__BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.ml.v1.GoogleType__ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -41958,6 +45749,20 @@ export namespace monitoring {
              * The informational elements that are arranged into the columns row-first.
              */
             widgets?: pulumi.Input<pulumi.Input<inputs.monitoring.v1.WidgetArgs>[]>;
+        }
+
+        /**
+         * A widget that displays a stream of log.
+         */
+        export interface LogsPanelArgs {
+            /**
+             * A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+             */
+            filter?: pulumi.Input<string>;
+            /**
+             * The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+             */
+            resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -42252,6 +46057,10 @@ export namespace monitoring {
              * A blank space.
              */
             blank?: pulumi.Input<inputs.monitoring.v1.EmptyArgs>;
+            /**
+             * A widget that shows a stream of logs.
+             */
+            logsPanel?: pulumi.Input<inputs.monitoring.v1.LogsPanelArgs>;
             /**
              * A scorecard summarizing time series data.
              */
@@ -42686,7 +46495,7 @@ export namespace monitoring {
          */
         export interface MetricAbsenceArgs {
             /**
-             * Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
+             * Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
              */
             aggregations?: pulumi.Input<pulumi.Input<inputs.monitoring.v3.AggregationArgs>[]>;
             /**
@@ -42736,7 +46545,7 @@ export namespace monitoring {
          */
         export interface MetricThresholdArgs {
             /**
-             * Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
+             * Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
              */
             aggregations?: pulumi.Input<pulumi.Input<inputs.monitoring.v3.AggregationArgs>[]>;
             /**
@@ -43019,19 +46828,19 @@ export namespace networkconnectivity {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.networkconnectivity.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -43156,19 +46965,19 @@ export namespace networkconnectivity {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.networkconnectivity.v1alpha1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -43244,19 +47053,19 @@ export namespace networkmanagement {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.networkmanagement.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -43353,27 +47162,41 @@ export namespace networkmanagement {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.networkmanagement.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
+        }
+
+        /**
+         * Wrapper for cloud function attributes.
+         */
+        export interface CloudFunctionEndpointArgs {
+            /**
+             * A [Cloud function](https://cloud.google.com/functions) name.
+             */
+            uri?: pulumi.Input<string>;
         }
 
         /**
          * Source or destination of the Connectivity Test.
          */
         export interface EndpointArgs {
+            /**
+             * A [Cloud function](https://cloud.google.com/functions).
+             */
+            cloudFunction?: pulumi.Input<inputs.networkmanagement.v1beta1.CloudFunctionEndpointArgs>;
             /**
              * A [Cloud SQL](https://cloud.google.com/sql) instance URI.
              */
@@ -43852,19 +47675,19 @@ export namespace networkservices {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.networkservices.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -43971,19 +47794,19 @@ export namespace networkservices {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.networkservices.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -44078,19 +47901,19 @@ export namespace notebooks {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.notebooks.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -44114,7 +47937,7 @@ export namespace notebooks {
          */
         export interface DataprocParametersArgs {
             /**
-             * URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+             * URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
              */
             cluster?: pulumi.Input<string>;
         }
@@ -44146,13 +47969,17 @@ export namespace notebooks {
              */
             dataprocParameters?: pulumi.Input<inputs.notebooks.v1.DataprocParametersArgs>;
             /**
-             * Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+             * Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: `gs://{bucket_name}/{folder}/{notebook_file_name}` Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb`
              */
             inputNotebookFile?: pulumi.Input<string>;
             /**
              * The type of Job to be used on this execution.
              */
             jobType?: pulumi.Input<enums.notebooks.v1.ExecutionTemplateJobType>;
+            /**
+             * Name of the kernel spec to use. This must be specified if the kernel spec name on the execution target does not match the name in the input notebook file.
+             */
+            kernelSpec?: pulumi.Input<string>;
             /**
              * Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
              */
@@ -44162,7 +47989,7 @@ export namespace notebooks {
              */
             masterType?: pulumi.Input<string>;
             /**
-             * Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+             * Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: `gs://{bucket_name}/{folder}` Ex: `gs://notebook_user/scheduled_notebooks`
              */
             outputNotebookFolder?: pulumi.Input<string>;
             /**
@@ -44170,7 +47997,7 @@ export namespace notebooks {
              */
             parameters?: pulumi.Input<string>;
             /**
-             * Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+             * Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
              */
             paramsYamlFile?: pulumi.Input<string>;
             /**
@@ -44350,7 +48177,7 @@ export namespace notebooks {
              */
             notebookUpgradeSchedule?: pulumi.Input<string>;
             /**
-             * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+             * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
              */
             postStartupScript?: pulumi.Input<string>;
         }
@@ -44437,6 +48264,10 @@ export namespace notebooks {
          * Parameters used in Vertex AI JobType executions.
          */
         export interface VertexAIParametersArgs {
+            /**
+             * Environment variables. At most 100 environment variables can be specified and unique. Example: GCP_BUCKET=gs://my-bucket/samples/
+             */
+            env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
              * The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
              */
@@ -45391,6 +49222,10 @@ export namespace osconfig {
              * A day of the week.
              */
             dayOfWeek: pulumi.Input<enums.osconfig.v1.WeekDayOfMonthDayOfWeek>;
+            /**
+             * Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
+             */
+            dayOffset?: pulumi.Input<number>;
             /**
              * Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
              */
@@ -46636,6 +50471,10 @@ export namespace osconfig {
              */
             dayOfWeek: pulumi.Input<enums.osconfig.v1beta.WeekDayOfMonthDayOfWeek>;
             /**
+             * Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
+             */
+            dayOffset?: pulumi.Input<number>;
+            /**
              * Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
              */
             weekOrdinal: pulumi.Input<number>;
@@ -46849,19 +50688,19 @@ export namespace privateca {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.privateca.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -47331,7 +51170,7 @@ export namespace privateca {
              */
             allowGlobbingDnsWildcards?: pulumi.Input<boolean>;
             /**
-             * Optional. Contains valid, fully-qualified host names. Glob patterns are also supported. To allow an explicit wildcard certificate, escape with backlash (i.e. "\*"). E.g. for globbed entries: '*bar.com' will allow 'foo.bar.com', but not '*.bar.com', unless the allow_globbing_dns_wildcards field is set. E.g. for wildcard entries: '\*.bar.com' will allow '*.bar.com', but not 'foo.bar.com'.
+             * Optional. Contains valid, fully-qualified host names. Glob patterns are also supported. To allow an explicit wildcard certificate, escape with backlash (i.e. `\*`). E.g. for globbed entries: `*bar.com` will allow `foo.bar.com`, but not `*.bar.com`, unless the allow_globbing_dns_wildcards field is set. E.g. for wildcard entries: `\*.bar.com` will allow `*.bar.com`, but not `foo.bar.com`.
              */
             allowedDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -47377,19 +51216,19 @@ export namespace privateca {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.privateca.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -47804,19 +51643,19 @@ export namespace privateca {
 export namespace pubsub {
     export namespace v1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.pubsub.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -47954,19 +51793,19 @@ export namespace pubsub {
 
     export namespace v1beta2 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.pubsub.v1beta2.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -48102,7 +51941,7 @@ export namespace recaptchaenterprise {
          */
         export interface GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs {
             /**
-             * If set to true, it means allowed_package_names will not be enforced.
+             * If set to true, allowed_package_names are not enforced.
              */
             allowAllPackageNames?: pulumi.Input<boolean>;
             /**
@@ -48116,7 +51955,7 @@ export namespace recaptchaenterprise {
          */
         export interface GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs {
             /**
-             * If set to true, it means allowed_bundle_ids will not be enforced.
+             * If set to true, allowed_bundle_ids are not enforced.
              */
             allowAllBundleIds?: pulumi.Input<boolean>;
             /**
@@ -48148,9 +51987,9 @@ export namespace recaptchaenterprise {
              */
             allowAllDomains?: pulumi.Input<boolean>;
             /**
-             * Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
+             * If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
              */
-            allowAmpTraffic: pulumi.Input<boolean>;
+            allowAmpTraffic?: pulumi.Input<boolean>;
             /**
              * Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
              */
@@ -48298,6 +52137,24 @@ export namespace redis {
         }
 
         /**
+         * Configuration of the persistence functionality.
+         */
+        export interface PersistenceConfigArgs {
+            /**
+             * Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+             */
+            persistenceMode?: pulumi.Input<enums.redis.v1.PersistenceConfigPersistenceMode>;
+            /**
+             * Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+             */
+            rdbSnapshotPeriod?: pulumi.Input<enums.redis.v1.PersistenceConfigRdbSnapshotPeriod>;
+            /**
+             * Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+             */
+            rdbSnapshotStartTime?: pulumi.Input<string>;
+        }
+
+        /**
          * Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
          */
         export interface TimeOfDayArgs {
@@ -48348,6 +52205,24 @@ export namespace redis {
              * Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
              */
             weeklyMaintenanceWindow?: pulumi.Input<pulumi.Input<inputs.redis.v1beta1.WeeklyMaintenanceWindowArgs>[]>;
+        }
+
+        /**
+         * Configuration of the persistence functionality.
+         */
+        export interface PersistenceConfigArgs {
+            /**
+             * Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+             */
+            persistenceMode?: pulumi.Input<enums.redis.v1beta1.PersistenceConfigPersistenceMode>;
+            /**
+             * Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+             */
+            rdbSnapshotPeriod?: pulumi.Input<enums.redis.v1beta1.PersistenceConfigRdbSnapshotPeriod>;
+            /**
+             * Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+             */
+            rdbSnapshotStartTime?: pulumi.Input<string>;
         }
 
         /**
@@ -48563,7 +52438,7 @@ export namespace retail {
          */
         export interface GoogleCloudRetailV2FulfillmentInfoArgs {
             /**
-             * The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+             * The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
              */
             placeIds?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -48625,7 +52500,7 @@ export namespace retail {
          */
         export interface GoogleCloudRetailV2PromotionArgs {
             /**
-             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
              */
             promotionId?: pulumi.Input<string>;
         }
@@ -48684,7 +52559,7 @@ export namespace retail {
          */
         export interface GoogleCloudRetailV2alphaFulfillmentInfoArgs {
             /**
-             * The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+             * The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
              */
             placeIds?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -48746,7 +52621,7 @@ export namespace retail {
          */
         export interface GoogleCloudRetailV2alphaPromotionArgs {
             /**
-             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
              */
             promotionId?: pulumi.Input<string>;
         }
@@ -48805,7 +52680,7 @@ export namespace retail {
          */
         export interface GoogleCloudRetailV2betaFulfillmentInfoArgs {
             /**
-             * The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+             * The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
              */
             placeIds?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -48867,7 +52742,7 @@ export namespace retail {
          */
         export interface GoogleCloudRetailV2betaPromotionArgs {
             /**
-             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
              */
             promotionId?: pulumi.Input<string>;
         }
@@ -48931,19 +52806,19 @@ export namespace run {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.run.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -49764,7 +53639,7 @@ export namespace run {
          */
         export interface ConfigMapVolumeSourceArgs {
             /**
-             * (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+             * (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
              */
             defaultMode?: pulumi.Input<number>;
             /**
@@ -50187,7 +54062,7 @@ export namespace run {
              */
             key?: pulumi.Input<string>;
             /**
-             * (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+             * (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
              */
             mode?: pulumi.Input<number>;
             /**
@@ -50349,7 +54224,7 @@ export namespace run {
              */
             limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+             * (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
              */
             requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         }
@@ -50399,7 +54274,7 @@ export namespace run {
          */
         export interface SecretVolumeSourceArgs {
             /**
-             * (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+             * Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
              */
             defaultMode?: pulumi.Input<number>;
             /**
@@ -50480,19 +54355,19 @@ export namespace run {
 export namespace runtimeconfig {
     export namespace v1beta1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.runtimeconfig.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -50587,19 +54462,19 @@ export namespace secretmanager {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.secretmanager.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -50736,19 +54611,19 @@ export namespace secretmanager {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.secretmanager.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -50843,19 +54718,19 @@ export namespace securitycenter {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.securitycenter.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -50924,19 +54799,19 @@ export namespace securitycenter {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.securitycenter.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -50969,19 +54844,19 @@ export namespace securitycenter {
 export namespace servicedirectory {
     export namespace v1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.servicedirectory.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -51012,19 +54887,19 @@ export namespace servicedirectory {
 
     export namespace v1beta1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.servicedirectory.v1beta1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -51268,19 +55143,19 @@ export namespace servicemanagement {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.servicemanagement.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -52151,19 +56026,19 @@ export namespace sourcerepo {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.sourcerepo.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -52214,19 +56089,19 @@ export namespace sourcerepo {
 export namespace spanner {
     export namespace v1 {
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.spanner.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -52261,6 +56136,35 @@ export namespace spanner {
              * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
              */
             title?: pulumi.Input<string>;
+        }
+
+    }
+}
+
+export namespace speech {
+    export namespace v1 {
+        /**
+         * An item of the class.
+         */
+        export interface ClassItemArgs {
+            /**
+             * The class item's value.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * A phrases containing words and phrase "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include pre-built or custom classes containing groups of words that represent common concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the likelihood of correctly transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then use the class' id wrapped in $`{...}` e.g. "${my-months}". To refer to custom classes resources, use the class' id wrapped in `${}` (e.g. `${my-months}`).
+         */
+        export interface PhraseArgs {
+            /**
+             * Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
+             */
+            boost?: pulumi.Input<number>;
+            /**
+             * The phrase itself.
+             */
+            value?: pulumi.Input<string>;
         }
 
     }
@@ -52469,7 +56373,7 @@ export namespace sqladmin {
          */
         export interface IpConfigurationArgs {
             /**
-             * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+             * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
              */
             allocatedIpRange?: pulumi.Input<string>;
             /**
@@ -52663,6 +56567,32 @@ export namespace sqladmin {
         }
 
         /**
+         * Database instance local user password validation policy
+         */
+        export interface PasswordValidationPolicyArgs {
+            /**
+             * The complexity of the password.
+             */
+            complexity?: pulumi.Input<enums.sqladmin.v1.PasswordValidationPolicyComplexity>;
+            /**
+             * Disallow username as a part of the password.
+             */
+            disallowUsernameSubstring?: pulumi.Input<boolean>;
+            /**
+             * Minimum number of characters allowed.
+             */
+            minLength?: pulumi.Input<number>;
+            /**
+             * Minimum interval after which the password can be changed.
+             */
+            passwordChangeInterval?: pulumi.Input<string>;
+            /**
+             * Number of previous passwords that cannot be reused.
+             */
+            reuseInterval?: pulumi.Input<number>;
+        }
+
+        /**
          * Read-replica configuration for connecting to the primary instance.
          */
         export interface ReplicaConfigurationArgs {
@@ -52748,6 +56678,10 @@ export namespace sqladmin {
              * The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
              */
             maintenanceWindow?: pulumi.Input<inputs.sqladmin.v1.MaintenanceWindowArgs>;
+            /**
+             * The local user password validation policy of the instance.
+             */
+            passwordValidationPolicy?: pulumi.Input<inputs.sqladmin.v1.PasswordValidationPolicyArgs>;
             /**
              * The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
              */
@@ -53099,7 +57033,7 @@ export namespace sqladmin {
          */
         export interface IpConfigurationArgs {
             /**
-             * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+             * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
              */
             allocatedIpRange?: pulumi.Input<string>;
             /**
@@ -53293,6 +57227,32 @@ export namespace sqladmin {
         }
 
         /**
+         * Database instance local user password validation policy
+         */
+        export interface PasswordValidationPolicyArgs {
+            /**
+             * The complexity of the password.
+             */
+            complexity?: pulumi.Input<enums.sqladmin.v1beta4.PasswordValidationPolicyComplexity>;
+            /**
+             * Disallow username as a part of the password.
+             */
+            disallowUsernameSubstring?: pulumi.Input<boolean>;
+            /**
+             * Minimum number of characters allowed.
+             */
+            minLength?: pulumi.Input<number>;
+            /**
+             * Minimum interval after which the password can be changed.
+             */
+            passwordChangeInterval?: pulumi.Input<string>;
+            /**
+             * Number of previous passwords that cannot be reused.
+             */
+            reuseInterval?: pulumi.Input<number>;
+        }
+
+        /**
          * Read-replica configuration for connecting to the primary instance.
          */
         export interface ReplicaConfigurationArgs {
@@ -53378,6 +57338,10 @@ export namespace sqladmin {
              * The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
              */
             maintenanceWindow?: pulumi.Input<inputs.sqladmin.v1beta4.MaintenanceWindowArgs>;
+            /**
+             * The local user password validation policy of the instance.
+             */
+            passwordValidationPolicy?: pulumi.Input<inputs.sqladmin.v1beta4.PasswordValidationPolicyArgs>;
             /**
              * The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
              */
@@ -53603,6 +57567,20 @@ export namespace storage {
              * The team.
              */
             team?: pulumi.Input<string>;
+        }
+
+        /**
+         * The bucket's Autoclass configuration.
+         */
+        export interface BucketAutoclassArgs {
+            /**
+             * Whether or not Autoclass is enabled on this bucket
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+             */
+            toggleTime?: pulumi.Input<string>;
         }
 
         /**
@@ -54140,6 +58118,16 @@ export namespace storagetransfer {
         }
 
         /**
+         * Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+         */
+        export interface BandwidthLimitArgs {
+            /**
+             * Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+             */
+            limitMbps?: pulumi.Input<string>;
+        }
+
+        /**
          * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
          */
         export interface DateArgs {
@@ -54189,6 +58177,14 @@ export namespace storagetransfer {
              * Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
              */
             enableOnpremGcsTransferLogs?: pulumi.Input<boolean>;
+            /**
+             * States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+             */
+            logActionStates?: pulumi.Input<pulumi.Input<enums.storagetransfer.v1.LoggingConfigLogActionStatesItem>[]>;
+            /**
+             * Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+             */
+            logActions?: pulumi.Input<pulumi.Input<enums.storagetransfer.v1.LoggingConfigLogActionsItem>[]>;
         }
 
         /**
@@ -54210,7 +58206,7 @@ export namespace storagetransfer {
         }
 
         /**
-         * Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
+         * Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`.
          */
         export interface ObjectConditionsArgs {
             /**
@@ -54298,6 +58294,16 @@ export namespace storagetransfer {
         }
 
         /**
+         * Specifies where the manifest is located.
+         */
+        export interface TransferManifestArgs {
+            /**
+             * Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+             */
+            location?: pulumi.Input<string>;
+        }
+
+        /**
          * TransferOptions define the actions to be performed on objects in a transfer.
          */
         export interface TransferOptionsArgs {
@@ -54344,9 +58350,25 @@ export namespace storagetransfer {
              */
             objectConditions?: pulumi.Input<inputs.storagetransfer.v1.ObjectConditionsArgs>;
             /**
+             * A POSIX Filesystem data sink.
+             */
+            posixDataSink?: pulumi.Input<inputs.storagetransfer.v1.PosixFilesystemArgs>;
+            /**
              * A POSIX Filesystem data source.
              */
             posixDataSource?: pulumi.Input<inputs.storagetransfer.v1.PosixFilesystemArgs>;
+            /**
+             * Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+             */
+            sinkAgentPoolName?: pulumi.Input<string>;
+            /**
+             * Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+             */
+            sourceAgentPoolName?: pulumi.Input<string>;
+            /**
+             * A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+             */
+            transferManifest?: pulumi.Input<inputs.storagetransfer.v1.TransferManifestArgs>;
             /**
              * If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
              */
@@ -55637,6 +59659,73 @@ export namespace tpu {
         }
 
     }
+
+    export namespace v2alpha1 {
+        /**
+         * A node-attached disk resource. Next ID: 8;
+         */
+        export interface AttachedDiskArgs {
+            /**
+             * The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
+             */
+            mode?: pulumi.Input<enums.tpu.v2alpha1.AttachedDiskMode>;
+            /**
+             * Specifies the full path to an existing disk. For example: "projects/my-project/zones/us-central1-c/disks/my-disk".
+             */
+            sourceDisk?: pulumi.Input<string>;
+        }
+
+        /**
+         * Network related configurations.
+         */
+        export interface NetworkConfigArgs {
+            /**
+             * Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes.
+             */
+            canIpForward?: pulumi.Input<boolean>;
+            /**
+             * Indicates that external IP addresses would be associated with the TPU workers. If set to false, the specified subnetwork or network should have Private Google Access enabled.
+             */
+            enableExternalIps?: pulumi.Input<boolean>;
+            /**
+             * The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
+             */
+            network?: pulumi.Input<string>;
+            /**
+             * The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
+             */
+            subnetwork?: pulumi.Input<string>;
+        }
+
+        /**
+         * Sets the scheduling options for this node.
+         */
+        export interface SchedulingConfigArgs {
+            /**
+             * Defines whether the node is preemptible.
+             */
+            preemptible?: pulumi.Input<boolean>;
+            /**
+             * Whether the node is created under a reservation.
+             */
+            reserved?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * A service account.
+         */
+        export interface ServiceAccountArgs {
+            /**
+             * Email address of the service account. If empty, default Compute service account will be used.
+             */
+            email?: pulumi.Input<string>;
+            /**
+             * The list of scopes to be made available for this service account. If empty, access to all Cloud APIs will be allowed.
+             */
+            scope?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+    }
 }
 
 export namespace transcoder {
@@ -56566,6 +60655,583 @@ export namespace vision {
              * Y coordinate.
              */
             y?: pulumi.Input<number>;
+        }
+
+    }
+}
+
+export namespace vmmigration {
+    export namespace v1 {
+        /**
+         * ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
+         */
+        export interface ComputeEngineTargetDefaultsArgs {
+            /**
+             * Compute instance scheduling information (if empty default is used).
+             */
+            computeScheduling?: pulumi.Input<inputs.vmmigration.v1.ComputeSchedulingArgs>;
+            /**
+             * The disk type to use in the VM.
+             */
+            diskType?: pulumi.Input<enums.vmmigration.v1.ComputeEngineTargetDefaultsDiskType>;
+            /**
+             * A map of labels to associate with the VM.
+             */
+            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The license type to use in OS adaptation.
+             */
+            licenseType?: pulumi.Input<enums.vmmigration.v1.ComputeEngineTargetDefaultsLicenseType>;
+            /**
+             * The machine type to create the VM with.
+             */
+            machineType?: pulumi.Input<string>;
+            /**
+             * The machine type series to create the VM with.
+             */
+            machineTypeSeries?: pulumi.Input<string>;
+            /**
+             * The metadata key/value pairs to assign to the VM.
+             */
+            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * List of NICs connected to this VM.
+             */
+            networkInterfaces?: pulumi.Input<pulumi.Input<inputs.vmmigration.v1.NetworkInterfaceArgs>[]>;
+            /**
+             * A map of network tags to associate with the VM.
+             */
+            networkTags?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+             */
+            secureBoot?: pulumi.Input<boolean>;
+            /**
+             * The service account to associate the VM with.
+             */
+            serviceAccount?: pulumi.Input<string>;
+            /**
+             * The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+             */
+            targetProject?: pulumi.Input<string>;
+            /**
+             * The name of the VM to create.
+             */
+            vmName?: pulumi.Input<string>;
+            /**
+             * The zone in which to create the VM.
+             */
+            zone?: pulumi.Input<string>;
+        }
+
+        /**
+         * Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.
+         */
+        export interface ComputeSchedulingArgs {
+            /**
+             * The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. Ignored if no node_affinites are configured.
+             */
+            minNodeCpus?: pulumi.Input<number>;
+            /**
+             * A set of node affinity and anti-affinity configurations for sole tenant nodes.
+             */
+            nodeAffinities?: pulumi.Input<pulumi.Input<inputs.vmmigration.v1.SchedulingNodeAffinityArgs>[]>;
+            /**
+             * How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
+             */
+            onHostMaintenance?: pulumi.Input<enums.vmmigration.v1.ComputeSchedulingOnHostMaintenance>;
+            /**
+             * Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart.
+             */
+            restartType?: pulumi.Input<enums.vmmigration.v1.ComputeSchedulingRestartType>;
+        }
+
+        /**
+         * NetworkInterface represents a NIC of a VM.
+         */
+        export interface NetworkInterfaceArgs {
+            /**
+             * The external IP to define in the NIC.
+             */
+            externalIp?: pulumi.Input<string>;
+            /**
+             * The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+             */
+            internalIp?: pulumi.Input<string>;
+            /**
+             * The network to connect the NIC to.
+             */
+            network?: pulumi.Input<string>;
+            /**
+             * The subnetwork to connect the NIC to.
+             */
+            subnetwork?: pulumi.Input<string>;
+        }
+
+        /**
+         * A policy for scheduling replications.
+         */
+        export interface SchedulePolicyArgs {
+            /**
+             * The idle duration between replication stages.
+             */
+            idleDuration?: pulumi.Input<string>;
+            /**
+             * A flag to indicate whether to skip OS adaptation during the replication sync. OS adaptation is a process where the VM's operating system undergoes changes and adaptations to fully function on Compute Engine.
+             */
+            skipOsAdaptation?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling
+         */
+        export interface SchedulingNodeAffinityArgs {
+            /**
+             * The label key of Node resource to reference.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator to use for the node resources specified in the `values` parameter.
+             */
+            operator?: pulumi.Input<enums.vmmigration.v1.SchedulingNodeAffinityOperator>;
+            /**
+             * Corresponds to the label values of Node resource.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Utilization information of a single VM.
+         */
+        export interface VmUtilizationInfoArgs {
+            /**
+             * Utilization metrics for this VM.
+             */
+            utilization?: pulumi.Input<inputs.vmmigration.v1.VmUtilizationMetricsArgs>;
+            /**
+             * The VM's ID in the source.
+             */
+            vmId?: pulumi.Input<string>;
+            /**
+             * The description of the VM in a Source of type Vmware.
+             */
+            vmwareVmDetails?: pulumi.Input<inputs.vmmigration.v1.VmwareVmDetailsArgs>;
+        }
+
+        /**
+         * Utilization metrics values for a single VM.
+         */
+        export interface VmUtilizationMetricsArgs {
+            /**
+             * Average CPU usage, percent.
+             */
+            cpuAveragePercent?: pulumi.Input<number>;
+            /**
+             * Max CPU usage, percent.
+             */
+            cpuMaxPercent?: pulumi.Input<number>;
+            /**
+             * Average disk IO rate, in kilobytes per second.
+             */
+            diskIoRateAverageKbps?: pulumi.Input<string>;
+            /**
+             * Max disk IO rate, in kilobytes per second.
+             */
+            diskIoRateMaxKbps?: pulumi.Input<string>;
+            /**
+             * Average memory usage, percent.
+             */
+            memoryAveragePercent?: pulumi.Input<number>;
+            /**
+             * Max memory usage, percent.
+             */
+            memoryMaxPercent?: pulumi.Input<number>;
+            /**
+             * Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
+             */
+            networkThroughputAverageKbps?: pulumi.Input<string>;
+            /**
+             * Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
+             */
+            networkThroughputMaxKbps?: pulumi.Input<string>;
+        }
+
+        /**
+         * VmwareSourceDetails message describes a specific source details for the vmware source type.
+         */
+        export interface VmwareSourceDetailsArgs {
+            /**
+             * Input only. The credentials password. This is write only and can not be read in a GET operation.
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * The thumbprint representing the certificate for the vcenter.
+             */
+            thumbprint?: pulumi.Input<string>;
+            /**
+             * The credentials username.
+             */
+            username?: pulumi.Input<string>;
+            /**
+             * The ip address of the vcenter this Source represents.
+             */
+            vcenterIp?: pulumi.Input<string>;
+        }
+
+        /**
+         * VmwareVmDetails describes a VM in vCenter.
+         */
+        export interface VmwareVmDetailsArgs {
+            /**
+             * The total size of the storage allocated to the VM in MB.
+             */
+            committedStorageMb?: pulumi.Input<string>;
+            /**
+             * The number of cpus in the VM.
+             */
+            cpuCount?: pulumi.Input<number>;
+            /**
+             * The descriptive name of the vCenter's datacenter this VM is contained in.
+             */
+            datacenterDescription?: pulumi.Input<string>;
+            /**
+             * The id of the vCenter's datacenter this VM is contained in.
+             */
+            datacenterId?: pulumi.Input<string>;
+            /**
+             * The number of disks the VM has.
+             */
+            diskCount?: pulumi.Input<number>;
+            /**
+             * The display name of the VM. Note that this is not necessarily unique.
+             */
+            displayName?: pulumi.Input<string>;
+            /**
+             * The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+             */
+            guestDescription?: pulumi.Input<string>;
+            /**
+             * The size of the memory of the VM in MB.
+             */
+            memoryMb?: pulumi.Input<number>;
+            /**
+             * The power state of the VM at the moment list was taken.
+             */
+            powerState?: pulumi.Input<enums.vmmigration.v1.VmwareVmDetailsPowerState>;
+            /**
+             * The unique identifier of the VM in vCenter.
+             */
+            uuid?: pulumi.Input<string>;
+            /**
+             * The VM's id in the source (note that this is not the MigratingVm's id). This is the moref id of the VM.
+             */
+            vmId?: pulumi.Input<string>;
+        }
+
+    }
+
+    export namespace v1alpha1 {
+        /**
+         * ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
+         */
+        export interface ComputeEngineTargetDefaultsArgs {
+            /**
+             * Compute instance scheduling information (if empty default is used).
+             */
+            computeScheduling?: pulumi.Input<inputs.vmmigration.v1alpha1.ComputeSchedulingArgs>;
+            /**
+             * The disk type to use in the VM.
+             */
+            diskType?: pulumi.Input<enums.vmmigration.v1alpha1.ComputeEngineTargetDefaultsDiskType>;
+            /**
+             * A map of labels to associate with the VM.
+             */
+            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * The license type to use in OS adaptation.
+             */
+            licenseType?: pulumi.Input<enums.vmmigration.v1alpha1.ComputeEngineTargetDefaultsLicenseType>;
+            /**
+             * The machine type to create the VM with.
+             */
+            machineType?: pulumi.Input<string>;
+            /**
+             * The machine type series to create the VM with.
+             */
+            machineTypeSeries?: pulumi.Input<string>;
+            /**
+             * The metadata key/value pairs to assign to the VM.
+             */
+            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * List of NICs connected to this VM.
+             */
+            networkInterfaces?: pulumi.Input<pulumi.Input<inputs.vmmigration.v1alpha1.NetworkInterfaceArgs>[]>;
+            /**
+             * A map of network tags to associate with the VM.
+             */
+            networkTags?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+             */
+            secureBoot?: pulumi.Input<boolean>;
+            /**
+             * The service account to associate the VM with.
+             */
+            serviceAccount?: pulumi.Input<string>;
+            /**
+             * The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+             */
+            targetProject?: pulumi.Input<string>;
+            /**
+             * The name of the VM to create.
+             */
+            vmName?: pulumi.Input<string>;
+            /**
+             * The zone in which to create the VM.
+             */
+            zone?: pulumi.Input<string>;
+        }
+
+        /**
+         * Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.
+         */
+        export interface ComputeSchedulingArgs {
+            automaticRestart?: pulumi.Input<boolean>;
+            /**
+             * The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. Ignored if no node_affinites are configured.
+             */
+            minNodeCpus?: pulumi.Input<number>;
+            /**
+             * A set of node affinity and anti-affinity configurations for sole tenant nodes.
+             */
+            nodeAffinities?: pulumi.Input<pulumi.Input<inputs.vmmigration.v1alpha1.SchedulingNodeAffinityArgs>[]>;
+            /**
+             * How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
+             */
+            onHostMaintenance?: pulumi.Input<enums.vmmigration.v1alpha1.ComputeSchedulingOnHostMaintenance>;
+            /**
+             * Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart.
+             */
+            restartType?: pulumi.Input<enums.vmmigration.v1alpha1.ComputeSchedulingRestartType>;
+        }
+
+        /**
+         * NetworkInterface represents a NIC of a VM.
+         */
+        export interface NetworkInterfaceArgs {
+            /**
+             * The external IP to define in the NIC.
+             */
+            externalIp?: pulumi.Input<string>;
+            /**
+             * The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+             */
+            internalIp?: pulumi.Input<string>;
+            /**
+             * The network to connect the NIC to.
+             */
+            network?: pulumi.Input<string>;
+            /**
+             * The subnetwork to connect the NIC to.
+             */
+            subnetwork?: pulumi.Input<string>;
+        }
+
+        /**
+         * A policy for scheduling replications.
+         */
+        export interface SchedulePolicyArgs {
+            /**
+             * The idle duration between replication stages.
+             */
+            idleDuration?: pulumi.Input<string>;
+            /**
+             * A flag to indicate whether to skip OS adaptation during the replication sync. OS adaptation is a process where the VM's operating system undergoes changes and adaptations to fully function on Compute Engine.
+             */
+            skipOsAdaptation?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling
+         */
+        export interface SchedulingNodeAffinityArgs {
+            /**
+             * The label key of Node resource to reference.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * The operator to use for the node resources specified in the `values` parameter.
+             */
+            operator?: pulumi.Input<enums.vmmigration.v1alpha1.SchedulingNodeAffinityOperator>;
+            /**
+             * Corresponds to the label values of Node resource.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Utilization information of a single VM.
+         */
+        export interface VmUtilizationInfoArgs {
+            /**
+             * Utilization metrics for this VM.
+             */
+            utilization?: pulumi.Input<inputs.vmmigration.v1alpha1.VmUtilizationMetricsArgs>;
+            /**
+             * The VM's ID in the source.
+             */
+            vmId?: pulumi.Input<string>;
+            /**
+             * The description of the VM in a Source of type Vmware.
+             */
+            vmwareVmDetails?: pulumi.Input<inputs.vmmigration.v1alpha1.VmwareVmDetailsArgs>;
+        }
+
+        /**
+         * Utilization metrics values for a single VM.
+         */
+        export interface VmUtilizationMetricsArgs {
+            /**
+             * Average CPU usage, percent.
+             */
+            cpuAverage?: pulumi.Input<number>;
+            /**
+             * Average CPU usage, percent.
+             */
+            cpuAveragePercent?: pulumi.Input<number>;
+            /**
+             * Max CPU usage, percent.
+             */
+            cpuMax?: pulumi.Input<number>;
+            /**
+             * Max CPU usage, percent.
+             */
+            cpuMaxPercent?: pulumi.Input<number>;
+            /**
+             * Average disk IO rate, in kilobytes per second.
+             */
+            diskIoRateAverage?: pulumi.Input<string>;
+            /**
+             * Average disk IO rate, in kilobytes per second.
+             */
+            diskIoRateAverageKbps?: pulumi.Input<string>;
+            /**
+             * Max disk IO rate, in kilobytes per second.
+             */
+            diskIoRateMax?: pulumi.Input<string>;
+            /**
+             * Max disk IO rate, in kilobytes per second.
+             */
+            diskIoRateMaxKbps?: pulumi.Input<string>;
+            /**
+             * Average memory usage, percent.
+             */
+            memoryAverage?: pulumi.Input<number>;
+            /**
+             * Average memory usage, percent.
+             */
+            memoryAveragePercent?: pulumi.Input<number>;
+            /**
+             * Max memory usage, percent.
+             */
+            memoryMax?: pulumi.Input<number>;
+            /**
+             * Max memory usage, percent.
+             */
+            memoryMaxPercent?: pulumi.Input<number>;
+            /**
+             * Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
+             */
+            networkThroughputAverage?: pulumi.Input<string>;
+            /**
+             * Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
+             */
+            networkThroughputAverageKbps?: pulumi.Input<string>;
+            /**
+             * Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
+             */
+            networkThroughputMax?: pulumi.Input<string>;
+            /**
+             * Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
+             */
+            networkThroughputMaxKbps?: pulumi.Input<string>;
+        }
+
+        /**
+         * VmwareSourceDetails message describes a specific source details for the vmware source type.
+         */
+        export interface VmwareSourceDetailsArgs {
+            /**
+             * Input only. The credentials password. This is write only and can not be read in a GET operation.
+             */
+            password?: pulumi.Input<string>;
+            /**
+             * The thumbprint representing the certificate for the vcenter.
+             */
+            thumbprint?: pulumi.Input<string>;
+            /**
+             * The credentials username.
+             */
+            username?: pulumi.Input<string>;
+            /**
+             * The ip address of the vcenter this Source represents.
+             */
+            vcenterIp?: pulumi.Input<string>;
+        }
+
+        /**
+         * VmwareVmDetails describes a VM in vCenter.
+         */
+        export interface VmwareVmDetailsArgs {
+            /**
+             * The total size of the storage allocated to the VM in MB.
+             */
+            committedStorage?: pulumi.Input<string>;
+            /**
+             * The total size of the storage allocated to the VM in MB.
+             */
+            committedStorageMb?: pulumi.Input<string>;
+            /**
+             * The number of cpus in the VM.
+             */
+            cpuCount?: pulumi.Input<number>;
+            /**
+             * The descriptive name of the vCenter's datacenter this VM is contained in.
+             */
+            datacenterDescription?: pulumi.Input<string>;
+            /**
+             * The id of the vCenter's datacenter this VM is contained in.
+             */
+            datacenterId?: pulumi.Input<string>;
+            /**
+             * The number of disks the VM has.
+             */
+            diskCount?: pulumi.Input<number>;
+            /**
+             * The display name of the VM. Note that this is not necessarily unique.
+             */
+            displayName?: pulumi.Input<string>;
+            /**
+             * The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
+             */
+            guestDescription?: pulumi.Input<string>;
+            /**
+             * The size of the memory of the VM in MB.
+             */
+            memoryMb?: pulumi.Input<number>;
+            /**
+             * The power state of the VM at the moment list was taken.
+             */
+            powerState?: pulumi.Input<enums.vmmigration.v1alpha1.VmwareVmDetailsPowerState>;
+            /**
+             * The unique identifier of the VM in vCenter.
+             */
+            uuid?: pulumi.Input<string>;
+            /**
+             * The VM's id in the source (note that this is not the MigratingVm's id). This is the moref id of the VM.
+             */
+            vmId?: pulumi.Input<string>;
         }
 
     }

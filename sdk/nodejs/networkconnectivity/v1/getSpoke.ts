@@ -39,7 +39,7 @@ export interface GetSpokeResult {
      */
     readonly description: string;
     /**
-     * Immutable. The URI of the hub that this spoke is attached to.
+     * Immutable. The name of the hub that this spoke is attached to.
      */
     readonly hub: string;
     /**

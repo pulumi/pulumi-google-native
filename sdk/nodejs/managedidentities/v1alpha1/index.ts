@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./backup";
 export * from "./domain";
 export * from "./domainBackupIamPolicy";
 export * from "./domainIamPolicy";
+export * from "./getBackup";
 export * from "./getDomain";
 export * from "./getDomainBackupIamPolicy";
 export * from "./getDomainIamPolicy";
@@ -17,6 +19,7 @@ export * from "./peering";
 export * from "./peeringIamPolicy";
 
 // Import resources to register:
+import { Backup } from "./backup";
 import { Domain } from "./domain";
 import { DomainBackupIamPolicy } from "./domainBackupIamPolicy";
 import { DomainIamPolicy } from "./domainIamPolicy";
@@ -27,6 +30,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:managedidentities/v1alpha1:Backup":
+                return new Backup(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1alpha1:Domain":
                 return new Domain(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1alpha1:DomainBackupIamPolicy":

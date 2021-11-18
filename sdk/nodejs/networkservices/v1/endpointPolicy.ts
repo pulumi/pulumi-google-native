@@ -36,7 +36,7 @@ export class EndpointPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint. Applicable only when EndpointPolicyType is SIDECAR_PROXY.
+     * Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint.
      */
     public readonly authorizationPolicy!: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export class EndpointPolicy extends pulumi.CustomResource {
  */
 export interface EndpointPolicyArgs {
     /**
-     * Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint. Applicable only when EndpointPolicyType is SIDECAR_PROXY.
+     * Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint.
      */
     authorizationPolicy?: pulumi.Input<string>;
     /**

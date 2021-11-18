@@ -40,6 +40,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly acl!: pulumi.Output<outputs.storage.v1.BucketAccessControlResponse[]>;
     /**
+     * The bucket's Autoclass configuration.
+     */
+    public readonly autoclass!: pulumi.Output<outputs.storage.v1.BucketAutoclassResponse>;
+    /**
      * The bucket's billing configuration.
      */
     public readonly billing!: pulumi.Output<outputs.storage.v1.BucketBillingResponse>;
@@ -160,6 +164,7 @@ export class Bucket extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             inputs["acl"] = args ? args.acl : undefined;
+            inputs["autoclass"] = args ? args.autoclass : undefined;
             inputs["billing"] = args ? args.billing : undefined;
             inputs["cors"] = args ? args.cors : undefined;
             inputs["customPlacementConfig"] = args ? args.customPlacementConfig : undefined;
@@ -196,6 +201,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["website"] = args ? args.website : undefined;
         } else {
             inputs["acl"] = undefined /*out*/;
+            inputs["autoclass"] = undefined /*out*/;
             inputs["billing"] = undefined /*out*/;
             inputs["cors"] = undefined /*out*/;
             inputs["customPlacementConfig"] = undefined /*out*/;
@@ -239,6 +245,10 @@ export interface BucketArgs {
      * Access controls on the bucket.
      */
     acl?: pulumi.Input<pulumi.Input<inputs.storage.v1.BucketAccessControlArgs>[]>;
+    /**
+     * The bucket's Autoclass configuration.
+     */
+    autoclass?: pulumi.Input<inputs.storage.v1.BucketAutoclassArgs>;
     /**
      * The bucket's billing configuration.
      */

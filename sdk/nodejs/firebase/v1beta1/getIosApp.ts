@@ -51,6 +51,10 @@ export interface GetIosAppResult {
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
      */
     readonly project: string;
+    /**
+     * The Apple Developer Team ID associated with the App in the App Store.
+     */
+    readonly teamId: string;
 }
 
 export function getIosAppOutput(args: GetIosAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIosAppResult> {

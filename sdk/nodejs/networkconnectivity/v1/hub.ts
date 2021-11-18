@@ -76,10 +76,13 @@ export class Hub extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: HubArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: HubArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.hubId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'hubId'");
+            }
             inputs["description"] = args ? args.description : undefined;
             inputs["hubId"] = args ? args.hubId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -116,7 +119,7 @@ export interface HubArgs {
      * An optional description of the hub.
      */
     description?: pulumi.Input<string>;
-    hubId?: pulumi.Input<string>;
+    hubId: pulumi.Input<string>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      */

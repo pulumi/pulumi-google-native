@@ -52,7 +52,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly currentDiskSize!: pulumi.Output<string>;
     /**
-     * The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
+     * The databaseInstalledVersion stores the current fully resolved database version running on the instance including minor version such as MYSQL_5_6_50
+     */
+    public /*out*/ readonly databaseInstalledVersion!: pulumi.Output<string>;
+    /**
+     * The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
      */
     public readonly databaseVersion!: pulumi.Output<string>;
     /**
@@ -72,7 +76,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly gceZone!: pulumi.Output<string>;
     /**
-     * The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
+     * The instance type.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -152,7 +156,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly settings!: pulumi.Output<outputs.sqladmin.v1.SettingsResponse>;
     /**
-     * The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
+     * The current serving state of the Cloud SQL instance.
      */
     public readonly state!: pulumi.Output<string>;
     /**
@@ -202,11 +206,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["state"] = args ? args.state : undefined;
             inputs["suspensionReason"] = args ? args.suspensionReason : undefined;
             inputs["createTime"] = undefined /*out*/;
+            inputs["databaseInstalledVersion"] = undefined /*out*/;
         } else {
             inputs["backendType"] = undefined /*out*/;
             inputs["connectionName"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["currentDiskSize"] = undefined /*out*/;
+            inputs["databaseInstalledVersion"] = undefined /*out*/;
             inputs["databaseVersion"] = undefined /*out*/;
             inputs["diskEncryptionConfiguration"] = undefined /*out*/;
             inputs["diskEncryptionStatus"] = undefined /*out*/;
@@ -259,7 +265,7 @@ export interface InstanceArgs {
      */
     currentDiskSize?: pulumi.Input<string>;
     /**
-     * The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
+     * The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
      */
     databaseVersion?: pulumi.Input<enums.sqladmin.v1.InstanceDatabaseVersion>;
     /**
@@ -279,7 +285,7 @@ export interface InstanceArgs {
      */
     gceZone?: pulumi.Input<string>;
     /**
-     * The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
+     * The instance type.
      */
     instanceType?: pulumi.Input<enums.sqladmin.v1.InstanceInstanceType>;
     /**
@@ -359,7 +365,7 @@ export interface InstanceArgs {
      */
     settings?: pulumi.Input<inputs.sqladmin.v1.SettingsArgs>;
     /**
-     * The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
+     * The current serving state of the Cloud SQL instance.
      */
     state?: pulumi.Input<enums.sqladmin.v1.InstanceState>;
     /**

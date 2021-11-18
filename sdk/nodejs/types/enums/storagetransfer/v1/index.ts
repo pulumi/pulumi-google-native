@@ -2,6 +2,44 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const LoggingConfigLogActionStatesItem = {
+    /**
+     * Default value. This value is unused.
+     */
+    LoggableActionStateUnspecified: "LOGGABLE_ACTION_STATE_UNSPECIFIED",
+    /**
+     * `LoggableAction` is completed successfully. `SUCCEEDED` actions are logged as INFO.
+     */
+    Succeeded: "SUCCEEDED",
+    /**
+     * `LoggableAction` is terminated in an error state. `FAILED` actions are logged as ERROR.
+     */
+    Failed: "FAILED",
+} as const;
+
+export type LoggingConfigLogActionStatesItem = (typeof LoggingConfigLogActionStatesItem)[keyof typeof LoggingConfigLogActionStatesItem];
+
+export const LoggingConfigLogActionsItem = {
+    /**
+     * Default value. This value is unused.
+     */
+    LoggableActionUnspecified: "LOGGABLE_ACTION_UNSPECIFIED",
+    /**
+     * Finding objects to transfer e.g. listing objects of the source bucket.
+     */
+    Find: "FIND",
+    /**
+     * Deleting objects at source or destination.
+     */
+    Delete: "DELETE",
+    /**
+     * Copying objects from source to destination.
+     */
+    Copy: "COPY",
+} as const;
+
+export type LoggingConfigLogActionsItem = (typeof LoggingConfigLogActionsItem)[keyof typeof LoggingConfigLogActionsItem];
+
 export const NotificationConfigEventTypesItem = {
     /**
      * Illegal value, to avoid allowing a default.

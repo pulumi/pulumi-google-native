@@ -93,6 +93,10 @@ export class Organization extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Configuration for the Portals settings.
+     */
+    public readonly portalDisabled!: pulumi.Output<boolean>;
+    /**
      * Project ID associated with the Apigee organization.
      */
     public /*out*/ readonly project!: pulumi.Output<string>;
@@ -146,6 +150,7 @@ export class Organization extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["parent"] = args ? args.parent : undefined;
+            inputs["portalDisabled"] = args ? args.portalDisabled : undefined;
             inputs["properties"] = args ? args.properties : undefined;
             inputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
             inputs["runtimeType"] = args ? args.runtimeType : undefined;
@@ -173,6 +178,7 @@ export class Organization extends pulumi.CustomResource {
             inputs["expiresAt"] = undefined /*out*/;
             inputs["lastModifiedAt"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["portalDisabled"] = undefined /*out*/;
             inputs["project"] = undefined /*out*/;
             inputs["properties"] = undefined /*out*/;
             inputs["runtimeDatabaseEncryptionKeyName"] = undefined /*out*/;
@@ -224,6 +230,10 @@ export interface OrganizationArgs {
      */
     displayName?: pulumi.Input<string>;
     parent: pulumi.Input<string>;
+    /**
+     * Configuration for the Portals settings.
+     */
+    portalDisabled?: pulumi.Input<boolean>;
     /**
      * Properties defined in the Apigee organization profile.
      */

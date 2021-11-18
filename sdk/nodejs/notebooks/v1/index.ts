@@ -12,10 +12,12 @@ export * from "./getExecution";
 export * from "./getInstance";
 export * from "./getInstanceIamPolicy";
 export * from "./getRuntime";
+export * from "./getRuntimeIamPolicy";
 export * from "./getSchedule";
 export * from "./instance";
 export * from "./instanceIamPolicy";
 export * from "./runtime";
+export * from "./runtimeIamPolicy";
 export * from "./schedule";
 
 // Export enums:
@@ -27,6 +29,7 @@ import { Execution } from "./execution";
 import { Instance } from "./instance";
 import { InstanceIamPolicy } from "./instanceIamPolicy";
 import { Runtime } from "./runtime";
+import { RuntimeIamPolicy } from "./runtimeIamPolicy";
 import { Schedule } from "./schedule";
 
 const _module = {
@@ -43,6 +46,8 @@ const _module = {
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
             case "google-native:notebooks/v1:Runtime":
                 return new Runtime(name, <any>undefined, { urn })
+            case "google-native:notebooks/v1:RuntimeIamPolicy":
+                return new RuntimeIamPolicy(name, <any>undefined, { urn })
             case "google-native:notebooks/v1:Schedule":
                 return new Schedule(name, <any>undefined, { urn })
             default:

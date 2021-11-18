@@ -2,6 +2,30 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const EnvironmentConfigEnvironmentSize = {
+    /**
+     * The size of the environment is unspecified.
+     */
+    EnvironmentSizeUnspecified: "ENVIRONMENT_SIZE_UNSPECIFIED",
+    /**
+     * The environment size is small.
+     */
+    EnvironmentSizeSmall: "ENVIRONMENT_SIZE_SMALL",
+    /**
+     * The environment size is medium.
+     */
+    EnvironmentSizeMedium: "ENVIRONMENT_SIZE_MEDIUM",
+    /**
+     * The environment size is large.
+     */
+    EnvironmentSizeLarge: "ENVIRONMENT_SIZE_LARGE",
+} as const;
+
+/**
+ * Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+ */
+export type EnvironmentConfigEnvironmentSize = (typeof EnvironmentConfigEnvironmentSize)[keyof typeof EnvironmentConfigEnvironmentSize];
+
 export const EnvironmentState = {
     /**
      * The state of the environment is unknown.

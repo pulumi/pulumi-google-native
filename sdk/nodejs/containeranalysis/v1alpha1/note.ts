@@ -106,7 +106,7 @@ export class Note extends pulumi.CustomResource {
     /**
      * A note describing an SPDX Package.
      */
-    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1alpha1.PackageNoteResponse>;
+    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1alpha1.PackageInfoNoteResponse>;
     /**
      * A note describing a relationship between SPDX elements.
      */
@@ -259,7 +259,7 @@ export interface NoteArgs {
     /**
      * A note describing an SPDX Package.
      */
-    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1alpha1.PackageNoteArgs>;
+    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1alpha1.PackageInfoNoteArgs>;
     /**
      * A note describing a relationship between SPDX elements.
      */

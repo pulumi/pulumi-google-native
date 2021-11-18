@@ -83,6 +83,10 @@ export interface GetOrganizationResult {
      */
     readonly name: string;
     /**
+     * Configuration for the Portals settings.
+     */
+    readonly portalDisabled: boolean;
+    /**
      * Project ID associated with the Apigee organization.
      */
     readonly project: string;

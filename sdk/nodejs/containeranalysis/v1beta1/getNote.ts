@@ -85,7 +85,7 @@ export interface GetNoteResult {
      */
     readonly relatedUrl: outputs.containeranalysis.v1beta1.RelatedUrlResponse[];
     /**
-     * A note describing SPDX Document which represents SBOM.
+     * A note describing a software bill of materials.
      */
     readonly sbom: outputs.containeranalysis.v1beta1.DocumentNoteResponse;
     /**
@@ -93,15 +93,15 @@ export interface GetNoteResult {
      */
     readonly shortDescription: string;
     /**
-     * A note describing SPDX File.
+     * A note describing an SPDX File.
      */
     readonly spdxFile: outputs.containeranalysis.v1beta1.FileNoteResponse;
     /**
-     * A note describing SPDX Package.
+     * A note describing an SPDX Package.
      */
-    readonly spdxPackage: outputs.containeranalysis.v1beta1.PackageNoteResponse;
+    readonly spdxPackage: outputs.containeranalysis.v1beta1.PackageInfoNoteResponse;
     /**
-     * A note describing SPDX Relationship.
+     * A note describing an SPDX File.
      */
     readonly spdxRelationship: outputs.containeranalysis.v1beta1.RelationshipNoteResponse;
     /**

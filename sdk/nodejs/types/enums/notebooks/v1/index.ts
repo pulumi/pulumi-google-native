@@ -345,6 +345,10 @@ export const SchedulerAcceleratorConfigType = {
      */
     NvidiaTeslaT4: "NVIDIA_TESLA_T4",
     /**
+     * Nvidia Tesla A100 GPU.
+     */
+    NvidiaTeslaA100: "NVIDIA_TESLA_A100",
+    /**
      * TPU v2.
      */
     TpuV2: "TPU_V2",

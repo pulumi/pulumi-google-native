@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Gets the description of an exclusion.
+ * Gets the description of an exclusion in the _Default sink.
  */
 export function getBillingAccountExclusion(args: GetBillingAccountExclusionArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountExclusionResult> {
     if (!opts) {

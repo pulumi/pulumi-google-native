@@ -73,7 +73,7 @@ export class Registration extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not yet been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
+     * Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
      */
     public /*out*/ readonly pendingContactSettings!: pulumi.Output<outputs.domains.v1beta1.ContactSettingsResponse>;
     /**
@@ -179,7 +179,7 @@ export interface RegistrationArgs {
     managementSettings?: pulumi.Input<inputs.domains.v1beta1.ManagementSettingsArgs>;
     project?: pulumi.Input<string>;
     /**
-     * When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
+     * When true, only validation is performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
      */
     validateOnly?: pulumi.Input<boolean>;
     /**
