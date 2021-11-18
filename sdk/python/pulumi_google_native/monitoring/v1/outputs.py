@@ -21,6 +21,7 @@ __all__ = [
     'EmptyResponse',
     'GaugeViewResponse',
     'GridLayoutResponse',
+    'LogsPanelResponse',
     'MosaicLayoutResponse',
     'PickTimeSeriesFilterResponse',
     'RatioPartResponse',
@@ -437,6 +438,56 @@ class GridLayoutResponse(dict):
         The informational elements that are arranged into the columns row-first.
         """
         return pulumi.get(self, "widgets")
+
+
+@pulumi.output_type
+class LogsPanelResponse(dict):
+    """
+    A widget that displays a stream of log.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceNames":
+            suggest = "resource_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogsPanelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogsPanelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogsPanelResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter: str,
+                 resource_names: Sequence[str]):
+        """
+        A widget that displays a stream of log.
+        :param str filter: A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+        :param Sequence[str] resource_names: The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+        """
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "resource_names", resource_names)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> str:
+        """
+        A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Sequence[str]:
+        """
+        The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+        """
+        return pulumi.get(self, "resource_names")
 
 
 @pulumi.output_type
@@ -1344,6 +1395,8 @@ class WidgetResponse(dict):
         suggest = None
         if key == "alertChart":
             suggest = "alert_chart"
+        elif key == "logsPanel":
+            suggest = "logs_panel"
         elif key == "timeSeriesTable":
             suggest = "time_series_table"
         elif key == "xyChart":
@@ -1363,6 +1416,7 @@ class WidgetResponse(dict):
     def __init__(__self__, *,
                  alert_chart: 'outputs.AlertChartResponse',
                  blank: 'outputs.EmptyResponse',
+                 logs_panel: 'outputs.LogsPanelResponse',
                  scorecard: 'outputs.ScorecardResponse',
                  text: 'outputs.TextResponse',
                  time_series_table: 'outputs.TimeSeriesTableResponse',
@@ -1372,6 +1426,7 @@ class WidgetResponse(dict):
         Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
         :param 'AlertChartResponse' alert_chart: A chart of alert policy data.
         :param 'EmptyResponse' blank: A blank space.
+        :param 'LogsPanelResponse' logs_panel: A widget that shows a stream of logs.
         :param 'ScorecardResponse' scorecard: A scorecard summarizing time series data.
         :param 'TextResponse' text: A raw string or markdown displaying textual content.
         :param 'TimeSeriesTableResponse' time_series_table: A widget that displays time series data in a tabular format.
@@ -1380,6 +1435,7 @@ class WidgetResponse(dict):
         """
         pulumi.set(__self__, "alert_chart", alert_chart)
         pulumi.set(__self__, "blank", blank)
+        pulumi.set(__self__, "logs_panel", logs_panel)
         pulumi.set(__self__, "scorecard", scorecard)
         pulumi.set(__self__, "text", text)
         pulumi.set(__self__, "time_series_table", time_series_table)
@@ -1401,6 +1457,14 @@ class WidgetResponse(dict):
         A blank space.
         """
         return pulumi.get(self, "blank")
+
+    @property
+    @pulumi.getter(name="logsPanel")
+    def logs_panel(self) -> 'outputs.LogsPanelResponse':
+        """
+        A widget that shows a stream of logs.
+        """
+        return pulumi.get(self, "logs_panel")
 
     @property
     @pulumi.getter

@@ -42,6 +42,7 @@ __all__ = [
     'ExternalDataConfigurationResponse',
     'GoogleSheetsOptionsResponse',
     'HivePartitioningOptionsResponse',
+    'IterationResultResponse',
     'JobConfigurationExtractResponse',
     'JobConfigurationLoadResponse',
     'JobConfigurationQueryResponse',
@@ -56,6 +57,7 @@ __all__ = [
     'JobStatisticsResponse',
     'JobStatusResponse',
     'MaterializedViewDefinitionResponse',
+    'MlStatisticsResponse',
     'ModelDefinitionModelOptionsResponse',
     'ModelDefinitionResponse',
     'ModelReferenceResponse',
@@ -663,17 +665,17 @@ class BigtableOptionsResponse(dict):
 @pulumi.output_type
 class BindingResponse(dict):
     """
-    Associates `members` with a `role`.
+    Associates `members`, or principals, with a `role`.
     """
     def __init__(__self__, *,
                  condition: 'outputs.ExprResponse',
                  members: Sequence[str],
                  role: str):
         """
-        Associates `members` with a `role`.
-        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param str role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Associates `members`, or principals, with a `role`.
+        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -683,7 +685,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def condition(self) -> 'outputs.ExprResponse':
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -691,7 +693,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -699,7 +701,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
 
@@ -1381,8 +1383,8 @@ class DestinationTablePropertiesResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "expirationTimestampMillis":
-            suggest = "expiration_timestamp_millis"
+        if key == "expirationTime":
+            suggest = "expiration_time"
         elif key == "friendlyName":
             suggest = "friendly_name"
 
@@ -1399,17 +1401,17 @@ class DestinationTablePropertiesResponse(dict):
 
     def __init__(__self__, *,
                  description: str,
-                 expiration_timestamp_millis: str,
+                 expiration_time: str,
                  friendly_name: str,
                  labels: Mapping[str, str]):
         """
         :param str description: [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
-        :param str expiration_timestamp_millis: [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+        :param str expiration_time: [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
         :param str friendly_name: [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
         :param Mapping[str, str] labels: [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
         """
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expiration_timestamp_millis", expiration_timestamp_millis)
+        pulumi.set(__self__, "expiration_time", expiration_time)
         pulumi.set(__self__, "friendly_name", friendly_name)
         pulumi.set(__self__, "labels", labels)
 
@@ -1422,12 +1424,12 @@ class DestinationTablePropertiesResponse(dict):
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="expirationTimestampMillis")
-    def expiration_timestamp_millis(self) -> str:
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> str:
         """
-        [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+        [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
         """
-        return pulumi.get(self, "expiration_timestamp_millis")
+        return pulumi.get(self, "expiration_time")
 
     @property
     @pulumi.getter(name="friendlyName")
@@ -2401,6 +2403,91 @@ class HivePartitioningOptionsResponse(dict):
         [Optional] When hive partition detection is requested, a common prefix for all source uris should be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/ (trailing slash does not matter).
         """
         return pulumi.get(self, "source_uri_prefix")
+
+
+@pulumi.output_type
+class IterationResultResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "durationMs":
+            suggest = "duration_ms"
+        elif key == "evalLoss":
+            suggest = "eval_loss"
+        elif key == "learnRate":
+            suggest = "learn_rate"
+        elif key == "trainingLoss":
+            suggest = "training_loss"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IterationResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IterationResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IterationResultResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration_ms: str,
+                 eval_loss: float,
+                 index: int,
+                 learn_rate: float,
+                 training_loss: float):
+        """
+        :param str duration_ms: Time taken to run the iteration in milliseconds.
+        :param float eval_loss: Loss computed on the eval data at the end of iteration.
+        :param int index: Index of the iteration, 0 based.
+        :param float learn_rate: Learn rate used for this iteration.
+        :param float training_loss: Loss computed on the training data at the end of iteration.
+        """
+        pulumi.set(__self__, "duration_ms", duration_ms)
+        pulumi.set(__self__, "eval_loss", eval_loss)
+        pulumi.set(__self__, "index", index)
+        pulumi.set(__self__, "learn_rate", learn_rate)
+        pulumi.set(__self__, "training_loss", training_loss)
+
+    @property
+    @pulumi.getter(name="durationMs")
+    def duration_ms(self) -> str:
+        """
+        Time taken to run the iteration in milliseconds.
+        """
+        return pulumi.get(self, "duration_ms")
+
+    @property
+    @pulumi.getter(name="evalLoss")
+    def eval_loss(self) -> float:
+        """
+        Loss computed on the eval data at the end of iteration.
+        """
+        return pulumi.get(self, "eval_loss")
+
+    @property
+    @pulumi.getter
+    def index(self) -> int:
+        """
+        Index of the iteration, 0 based.
+        """
+        return pulumi.get(self, "index")
+
+    @property
+    @pulumi.getter(name="learnRate")
+    def learn_rate(self) -> float:
+        """
+        Learn rate used for this iteration.
+        """
+        return pulumi.get(self, "learn_rate")
+
+    @property
+    @pulumi.getter(name="trainingLoss")
+    def training_loss(self) -> float:
+        """
+        Loss computed on the training data at the end of iteration.
+        """
+        return pulumi.get(self, "training_loss")
 
 
 @pulumi.output_type
@@ -3605,6 +3692,8 @@ class JobStatistics2Response(dict):
             suggest = "dml_stats"
         elif key == "estimatedBytesProcessed":
             suggest = "estimated_bytes_processed"
+        elif key == "mlStatistics":
+            suggest = "ml_statistics"
         elif key == "modelTraining":
             suggest = "model_training"
         elif key == "numDmlAffectedRows":
@@ -3656,6 +3745,7 @@ class JobStatistics2Response(dict):
                  ddl_target_table: 'outputs.TableReferenceResponse',
                  dml_stats: 'outputs.DmlStatisticsResponse',
                  estimated_bytes_processed: str,
+                 ml_statistics: 'outputs.MlStatisticsResponse',
                  model_training: 'outputs.BigQueryModelTrainingResponse',
                  num_dml_affected_rows: str,
                  query_plan: Sequence['outputs.ExplainQueryStageResponse'],
@@ -3684,6 +3774,7 @@ class JobStatistics2Response(dict):
         :param 'TableReferenceResponse' ddl_target_table: The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
         :param 'DmlStatisticsResponse' dml_stats: Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
         :param str estimated_bytes_processed: The original estimate of bytes processed for the job.
+        :param 'MlStatisticsResponse' ml_statistics: Statistics of a BigQuery ML training job.
         :param 'BigQueryModelTrainingResponse' model_training: [Output-only, Beta] Information about create model query job progress.
         :param str num_dml_affected_rows: The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
         :param Sequence['ExplainQueryStageResponse'] query_plan: Describes execution plan for the query.
@@ -3712,6 +3803,7 @@ class JobStatistics2Response(dict):
         pulumi.set(__self__, "ddl_target_table", ddl_target_table)
         pulumi.set(__self__, "dml_stats", dml_stats)
         pulumi.set(__self__, "estimated_bytes_processed", estimated_bytes_processed)
+        pulumi.set(__self__, "ml_statistics", ml_statistics)
         pulumi.set(__self__, "model_training", model_training)
         pulumi.set(__self__, "num_dml_affected_rows", num_dml_affected_rows)
         pulumi.set(__self__, "query_plan", query_plan)
@@ -3823,6 +3915,14 @@ class JobStatistics2Response(dict):
         The original estimate of bytes processed for the job.
         """
         return pulumi.get(self, "estimated_bytes_processed")
+
+    @property
+    @pulumi.getter(name="mlStatistics")
+    def ml_statistics(self) -> 'outputs.MlStatisticsResponse':
+        """
+        Statistics of a BigQuery ML training job.
+        """
+        return pulumi.get(self, "ml_statistics")
 
     @property
     @pulumi.getter(name="modelTraining")
@@ -4490,6 +4590,54 @@ class MaterializedViewDefinitionResponse(dict):
         [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
         """
         return pulumi.get(self, "refresh_interval_ms")
+
+
+@pulumi.output_type
+class MlStatisticsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iterationResults":
+            suggest = "iteration_results"
+        elif key == "maxIterations":
+            suggest = "max_iterations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MlStatisticsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MlStatisticsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MlStatisticsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iteration_results: Sequence['outputs.IterationResultResponse'],
+                 max_iterations: str):
+        """
+        :param Sequence['IterationResultResponse'] iteration_results: Results for all completed iterations.
+        :param str max_iterations: Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
+        """
+        pulumi.set(__self__, "iteration_results", iteration_results)
+        pulumi.set(__self__, "max_iterations", max_iterations)
+
+    @property
+    @pulumi.getter(name="iterationResults")
+    def iteration_results(self) -> Sequence['outputs.IterationResultResponse']:
+        """
+        Results for all completed iterations.
+        """
+        return pulumi.get(self, "iteration_results")
+
+    @property
+    @pulumi.getter(name="maxIterations")
+    def max_iterations(self) -> str:
+        """
+        Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
+        """
+        return pulumi.get(self, "max_iterations")
 
 
 @pulumi.output_type

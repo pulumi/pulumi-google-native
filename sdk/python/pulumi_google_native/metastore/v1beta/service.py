@@ -25,6 +25,7 @@ class ServiceArgs:
                  metadata_integration: Optional[pulumi.Input['MetadataIntegrationArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
@@ -39,6 +40,7 @@ class ServiceArgs:
         :param pulumi.Input['MetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+        :param pulumi.Input['NetworkConfigArgs'] network_config: Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
@@ -60,6 +62,8 @@ class ServiceArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project is not None:
@@ -174,6 +178,18 @@ class ServiceArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['NetworkConfigArgs']]:
+        """
+        Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['NetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
@@ -241,6 +257,7 @@ class Service(pulumi.CustomResource):
                  metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
@@ -260,6 +277,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+        :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
@@ -296,6 +314,7 @@ class Service(pulumi.CustomResource):
                  metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
@@ -322,6 +341,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["metadata_integration"] = metadata_integration
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
+            __props__.__dict__["network_config"] = network_config
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             __props__.__dict__["release_channel"] = release_channel
@@ -371,6 +391,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["metadata_management_activity"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
+        __props__.__dict__["network_config"] = None
         __props__.__dict__["port"] = None
         __props__.__dict__["release_channel"] = None
         __props__.__dict__["state"] = None
@@ -467,6 +488,14 @@ class Service(pulumi.CustomResource):
         Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Output['outputs.NetworkConfigResponse']:
+        """
+        Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        """
+        return pulumi.get(self, "network_config")
 
     @property
     @pulumi.getter

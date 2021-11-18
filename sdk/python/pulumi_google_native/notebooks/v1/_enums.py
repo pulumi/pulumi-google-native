@@ -346,6 +346,10 @@ class SchedulerAcceleratorConfigType(str, Enum):
     """
     Nvidia Tesla T4 GPU.
     """
+    NVIDIA_TESLA_A100 = "NVIDIA_TESLA_A100"
+    """
+    Nvidia Tesla A100 GPU.
+    """
     TPU_V2 = "TPU_V2"
     """
     TPU v2.

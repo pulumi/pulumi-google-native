@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetAutoscalingPolicyResult:
-    def __init__(__self__, basic_algorithm=None, name=None, secondary_worker_config=None, worker_config=None):
+    def __init__(__self__, basic_algorithm=None, labels=None, name=None, secondary_worker_config=None, worker_config=None):
         if basic_algorithm and not isinstance(basic_algorithm, dict):
             raise TypeError("Expected argument 'basic_algorithm' to be a dict")
         pulumi.set(__self__, "basic_algorithm", basic_algorithm)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -36,6 +39,14 @@ class GetAutoscalingPolicyResult:
     @pulumi.getter(name="basicAlgorithm")
     def basic_algorithm(self) -> 'outputs.BasicAutoscalingAlgorithmResponse':
         return pulumi.get(self, "basic_algorithm")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -69,6 +80,7 @@ class AwaitableGetAutoscalingPolicyResult(GetAutoscalingPolicyResult):
             yield self
         return GetAutoscalingPolicyResult(
             basic_algorithm=self.basic_algorithm,
+            labels=self.labels,
             name=self.name,
             secondary_worker_config=self.secondary_worker_config,
             worker_config=self.worker_config)
@@ -93,6 +105,7 @@ def get_autoscaling_policy(autoscaling_policy_id: Optional[str] = None,
 
     return AwaitableGetAutoscalingPolicyResult(
         basic_algorithm=__ret__.basic_algorithm,
+        labels=__ret__.labels,
         name=__ret__.name,
         secondary_worker_config=__ret__.secondary_worker_config,
         worker_config=__ret__.worker_config)

@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, default_storage_type=None, encryption_config=None, location=None, name=None, serve_nodes=None, state=None):
+    def __init__(__self__, cluster_config=None, default_storage_type=None, encryption_config=None, location=None, name=None, serve_nodes=None, state=None):
+        if cluster_config and not isinstance(cluster_config, dict):
+            raise TypeError("Expected argument 'cluster_config' to be a dict")
+        pulumi.set(__self__, "cluster_config", cluster_config)
         if default_storage_type and not isinstance(default_storage_type, str):
             raise TypeError("Expected argument 'default_storage_type' to be a str")
         pulumi.set(__self__, "default_storage_type", default_storage_type)
@@ -37,6 +40,14 @@ class GetClusterResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="clusterConfig")
+    def cluster_config(self) -> 'outputs.ClusterConfigResponse':
+        """
+        Configuration for this cluster.
+        """
+        return pulumi.get(self, "cluster_config")
 
     @property
     @pulumi.getter(name="defaultStorageType")
@@ -93,6 +104,7 @@ class AwaitableGetClusterResult(GetClusterResult):
         if False:
             yield self
         return GetClusterResult(
+            cluster_config=self.cluster_config,
             default_storage_type=self.default_storage_type,
             encryption_config=self.encryption_config,
             location=self.location,
@@ -119,6 +131,7 @@ def get_cluster(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigtableadmin/v2:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
+        cluster_config=__ret__.cluster_config,
         default_storage_type=__ret__.default_storage_type,
         encryption_config=__ret__.encryption_config,
         location=__ret__.location,

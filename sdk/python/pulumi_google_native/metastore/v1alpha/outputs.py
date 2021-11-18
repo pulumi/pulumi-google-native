@@ -14,6 +14,7 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
+    'ConsumerResponse',
     'DataCatalogConfigResponse',
     'DatabaseDumpResponse',
     'DataplexConfigResponse',
@@ -25,6 +26,7 @@ __all__ = [
     'MetadataExportResponse',
     'MetadataIntegrationResponse',
     'MetadataManagementActivityResponse',
+    'NetworkConfigResponse',
     'RestoreResponse',
     'SecretResponse',
     'ServiceResponse',
@@ -135,17 +137,17 @@ class AuditLogConfigResponse(dict):
 @pulumi.output_type
 class BindingResponse(dict):
     """
-    Associates members with a role.
+    Associates members, or principals, with a role.
     """
     def __init__(__self__, *,
                  condition: 'outputs.ExprResponse',
                  members: Sequence[str],
                  role: str):
         """
-        Associates members with a role.
-        :param 'ExprResponse' condition: The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
-        :param str role: Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+        Associates members, or principals, with a role.
+        :param 'ExprResponse' condition: The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+        :param str role: Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -155,7 +157,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def condition(self) -> 'outputs.ExprResponse':
         """
-        The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -163,7 +165,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+        Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "members")
 
@@ -171,9 +173,59 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+        Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class ConsumerResponse(dict):
+    """
+    Contains information of the customer's network configurations.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointUri":
+            suggest = "endpoint_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConsumerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConsumerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConsumerResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint_uri: str,
+                 subnetwork: str):
+        """
+        Contains information of the customer's network configurations.
+        :param str endpoint_uri: The URI of the endpoint used to access the metastore service.
+        :param str subnetwork: The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+        """
+        pulumi.set(__self__, "endpoint_uri", endpoint_uri)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="endpointUri")
+    def endpoint_uri(self) -> str:
+        """
+        The URI of the endpoint used to access the metastore service.
+        """
+        return pulumi.get(self, "endpoint_uri")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+        """
+        return pulumi.get(self, "subnetwork")
 
 
 @pulumi.output_type
@@ -788,6 +840,28 @@ class MetadataManagementActivityResponse(dict):
 
 
 @pulumi.output_type
+class NetworkConfigResponse(dict):
+    """
+    Network configuration for the Dataproc Metastore service.
+    """
+    def __init__(__self__, *,
+                 consumers: Sequence['outputs.ConsumerResponse']):
+        """
+        Network configuration for the Dataproc Metastore service.
+        :param Sequence['ConsumerResponse'] consumers: Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+        """
+        pulumi.set(__self__, "consumers", consumers)
+
+    @property
+    @pulumi.getter
+    def consumers(self) -> Sequence['outputs.ConsumerResponse']:
+        """
+        Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+        """
+        return pulumi.get(self, "consumers")
+
+
+@pulumi.output_type
 class RestoreResponse(dict):
     """
     The details of a metadata restore operation.
@@ -946,6 +1020,8 @@ class ServiceResponse(dict):
             suggest = "metadata_integration"
         elif key == "metadataManagementActivity":
             suggest = "metadata_management_activity"
+        elif key == "networkConfig":
+            suggest = "network_config"
         elif key == "releaseChannel":
             suggest = "release_channel"
         elif key == "stateMessage":
@@ -976,6 +1052,7 @@ class ServiceResponse(dict):
                  metadata_management_activity: 'outputs.MetadataManagementActivityResponse',
                  name: str,
                  network: str,
+                 network_config: 'outputs.NetworkConfigResponse',
                  port: int,
                  release_channel: str,
                  state: str,
@@ -996,6 +1073,7 @@ class ServiceResponse(dict):
         :param 'MetadataManagementActivityResponse' metadata_management_activity: The metadata management activities of the metastore service.
         :param str name: Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param str network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+        :param 'NetworkConfigResponse' network_config: Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
         :param int port: The TCP port at which the metastore service is reached. Default: 9083.
         :param str release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param str state: The current state of the metastore service.
@@ -1015,6 +1093,7 @@ class ServiceResponse(dict):
         pulumi.set(__self__, "metadata_management_activity", metadata_management_activity)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "network_config", network_config)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "release_channel", release_channel)
         pulumi.set(__self__, "state", state)
@@ -1110,6 +1189,14 @@ class ServiceResponse(dict):
         Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> 'outputs.NetworkConfigResponse':
+        """
+        Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        """
+        return pulumi.get(self, "network_config")
 
     @property
     @pulumi.getter

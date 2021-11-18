@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetIosAppResult:
-    def __init__(__self__, app_id=None, app_store_id=None, bundle_id=None, display_name=None, name=None, project=None):
+    def __init__(__self__, app_id=None, app_store_id=None, bundle_id=None, display_name=None, name=None, project=None, team_id=None):
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
@@ -36,6 +36,9 @@ class GetIosAppResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if team_id and not isinstance(team_id, str):
+            raise TypeError("Expected argument 'team_id' to be a str")
+        pulumi.set(__self__, "team_id", team_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -85,6 +88,14 @@ class GetIosAppResult:
         """
         return pulumi.get(self, "project")
 
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> str:
+        """
+        The Apple Developer Team ID associated with the App in the App Store.
+        """
+        return pulumi.get(self, "team_id")
+
 
 class AwaitableGetIosAppResult(GetIosAppResult):
     # pylint: disable=using-constant-test
@@ -97,7 +108,8 @@ class AwaitableGetIosAppResult(GetIosAppResult):
             bundle_id=self.bundle_id,
             display_name=self.display_name,
             name=self.name,
-            project=self.project)
+            project=self.project,
+            team_id=self.team_id)
 
 
 def get_ios_app(ios_app_id: Optional[str] = None,
@@ -121,7 +133,8 @@ def get_ios_app(ios_app_id: Optional[str] = None,
         bundle_id=__ret__.bundle_id,
         display_name=__ret__.display_name,
         name=__ret__.name,
-        project=__ret__.project)
+        project=__ret__.project,
+        team_id=__ret__.team_id)
 
 
 @_utilities.lift_output_func(get_ios_app)

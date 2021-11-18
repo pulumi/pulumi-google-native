@@ -12,6 +12,7 @@ from ._enums import *
 __all__ = [
     'AcceleratorConfigArgs',
     'AddonsConfigArgs',
+    'AdvancedMachineFeaturesArgs',
     'AuthenticatorGroupsConfigArgs',
     'AutoUpgradeOptionsArgs',
     'AutopilotArgs',
@@ -25,11 +26,13 @@ __all__ = [
     'ConfidentialNodesArgs',
     'ConfigConnectorConfigArgs',
     'ConsumptionMeteringConfigArgs',
+    'DNSConfigArgs',
     'DailyMaintenanceWindowArgs',
     'DatabaseEncryptionArgs',
     'DefaultSnatStatusArgs',
     'DnsCacheConfigArgs',
     'GcePersistentDiskCsiDriverConfigArgs',
+    'GcfsConfigArgs',
     'GcpFilestoreCsiDriverConfigArgs',
     'HorizontalPodAutoscalingArgs',
     'HttpLoadBalancingArgs',
@@ -50,11 +53,13 @@ __all__ = [
     'NetworkConfigArgs',
     'NetworkPolicyConfigArgs',
     'NetworkPolicyArgs',
+    'NodeConfigDefaultsArgs',
     'NodeConfigArgs',
     'NodeKubeletConfigArgs',
     'NodeManagementArgs',
     'NodeNetworkConfigArgs',
     'NodePoolAutoscalingArgs',
+    'NodePoolDefaultsArgs',
     'NodePoolArgs',
     'NodeTaintArgs',
     'NotificationConfigArgs',
@@ -284,6 +289,30 @@ class AddonsConfigArgs:
     @network_policy_config.setter
     def network_policy_config(self, value: Optional[pulumi.Input['NetworkPolicyConfigArgs']]):
         pulumi.set(self, "network_policy_config", value)
+
+
+@pulumi.input_type
+class AdvancedMachineFeaturesArgs:
+    def __init__(__self__, *,
+                 threads_per_core: Optional[pulumi.Input[str]] = None):
+        """
+        Specifies options for controlling advanced machine features.
+        :param pulumi.Input[str] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        return pulumi.get(self, "threads_per_core")
+
+    @threads_per_core.setter
+    def threads_per_core(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "threads_per_core", value)
 
 
 @pulumi.input_type
@@ -840,6 +869,62 @@ class ConsumptionMeteringConfigArgs:
 
 
 @pulumi.input_type
+class DNSConfigArgs:
+    def __init__(__self__, *,
+                 cluster_dns: Optional[pulumi.Input['DNSConfigClusterDns']] = None,
+                 cluster_dns_domain: Optional[pulumi.Input[str]] = None,
+                 cluster_dns_scope: Optional[pulumi.Input['DNSConfigClusterDnsScope']] = None):
+        """
+        DNSConfig contains the desired set of options for configuring clusterDNS.
+        :param pulumi.Input['DNSConfigClusterDns'] cluster_dns: cluster_dns indicates which in-cluster DNS provider should be used.
+        :param pulumi.Input[str] cluster_dns_domain: cluster_dns_domain is the suffix used for all cluster service records.
+        :param pulumi.Input['DNSConfigClusterDnsScope'] cluster_dns_scope: cluster_dns_scope indicates the scope of access to cluster DNS records.
+        """
+        if cluster_dns is not None:
+            pulumi.set(__self__, "cluster_dns", cluster_dns)
+        if cluster_dns_domain is not None:
+            pulumi.set(__self__, "cluster_dns_domain", cluster_dns_domain)
+        if cluster_dns_scope is not None:
+            pulumi.set(__self__, "cluster_dns_scope", cluster_dns_scope)
+
+    @property
+    @pulumi.getter(name="clusterDns")
+    def cluster_dns(self) -> Optional[pulumi.Input['DNSConfigClusterDns']]:
+        """
+        cluster_dns indicates which in-cluster DNS provider should be used.
+        """
+        return pulumi.get(self, "cluster_dns")
+
+    @cluster_dns.setter
+    def cluster_dns(self, value: Optional[pulumi.Input['DNSConfigClusterDns']]):
+        pulumi.set(self, "cluster_dns", value)
+
+    @property
+    @pulumi.getter(name="clusterDnsDomain")
+    def cluster_dns_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        cluster_dns_domain is the suffix used for all cluster service records.
+        """
+        return pulumi.get(self, "cluster_dns_domain")
+
+    @cluster_dns_domain.setter
+    def cluster_dns_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_dns_domain", value)
+
+    @property
+    @pulumi.getter(name="clusterDnsScope")
+    def cluster_dns_scope(self) -> Optional[pulumi.Input['DNSConfigClusterDnsScope']]:
+        """
+        cluster_dns_scope indicates the scope of access to cluster DNS records.
+        """
+        return pulumi.get(self, "cluster_dns_scope")
+
+    @cluster_dns_scope.setter
+    def cluster_dns_scope(self, value: Optional[pulumi.Input['DNSConfigClusterDnsScope']]):
+        pulumi.set(self, "cluster_dns_scope", value)
+
+
+@pulumi.input_type
 class DailyMaintenanceWindowArgs:
     def __init__(__self__, *,
                  start_time: Optional[pulumi.Input[str]] = None):
@@ -967,6 +1052,30 @@ class GcePersistentDiskCsiDriverConfigArgs:
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether the Compute Engine PD CSI driver is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class GcfsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        GcfsConfig contains configurations of Google Container File System (image streaming).
+        :param pulumi.Input[bool] enabled: Whether to use GCFS.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use GCFS.
         """
         return pulumi.get(self, "enabled")
 
@@ -1553,11 +1662,26 @@ class MaxPodsConstraintArgs:
 
 @pulumi.input_type
 class MeshCertificatesArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 enable_certificates: Optional[pulumi.Input[bool]] = None):
         """
         Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        :param pulumi.Input[bool] enable_certificates: enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
         """
-        pass
+        if enable_certificates is not None:
+            pulumi.set(__self__, "enable_certificates", enable_certificates)
+
+    @property
+    @pulumi.getter(name="enableCertificates")
+    def enable_certificates(self) -> Optional[pulumi.Input[bool]]:
+        """
+        enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+        """
+        return pulumi.get(self, "enable_certificates")
+
+    @enable_certificates.setter
+    def enable_certificates(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_certificates", value)
 
 
 @pulumi.input_type
@@ -1613,6 +1737,7 @@ class NetworkConfigArgs:
     def __init__(__self__, *,
                  datapath_provider: Optional[pulumi.Input['NetworkConfigDatapathProvider']] = None,
                  default_snat_status: Optional[pulumi.Input['DefaultSnatStatusArgs']] = None,
+                 dns_config: Optional[pulumi.Input['DNSConfigArgs']] = None,
                  enable_intra_node_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_l4ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']] = None):
@@ -1620,6 +1745,7 @@ class NetworkConfigArgs:
         NetworkConfig reports the relative names of network & subnetwork.
         :param pulumi.Input['NetworkConfigDatapathProvider'] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input['DefaultSnatStatusArgs'] default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
+        :param pulumi.Input['DNSConfigArgs'] dns_config: DNSConfig contains clusterDNS config for this cluster.
         :param pulumi.Input[bool] enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
         :param pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess'] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -1628,6 +1754,8 @@ class NetworkConfigArgs:
             pulumi.set(__self__, "datapath_provider", datapath_provider)
         if default_snat_status is not None:
             pulumi.set(__self__, "default_snat_status", default_snat_status)
+        if dns_config is not None:
+            pulumi.set(__self__, "dns_config", dns_config)
         if enable_intra_node_visibility is not None:
             pulumi.set(__self__, "enable_intra_node_visibility", enable_intra_node_visibility)
         if enable_l4ilb_subsetting is not None:
@@ -1658,6 +1786,18 @@ class NetworkConfigArgs:
     @default_snat_status.setter
     def default_snat_status(self, value: Optional[pulumi.Input['DefaultSnatStatusArgs']]):
         pulumi.set(self, "default_snat_status", value)
+
+    @property
+    @pulumi.getter(name="dnsConfig")
+    def dns_config(self) -> Optional[pulumi.Input['DNSConfigArgs']]:
+        """
+        DNSConfig contains clusterDNS config for this cluster.
+        """
+        return pulumi.get(self, "dns_config")
+
+    @dns_config.setter
+    def dns_config(self, value: Optional[pulumi.Input['DNSConfigArgs']]):
+        pulumi.set(self, "dns_config", value)
 
     @property
     @pulumi.getter(name="enableIntraNodeVisibility")
@@ -1761,12 +1901,38 @@ class NetworkPolicyArgs:
 
 
 @pulumi.input_type
+class NodeConfigDefaultsArgs:
+    def __init__(__self__, *,
+                 gcfs_config: Optional[pulumi.Input['GcfsConfigArgs']] = None):
+        """
+        Subset of NodeConfig message that has defaults.
+        :param pulumi.Input['GcfsConfigArgs'] gcfs_config: GCFS (Google Container File System, a.k.a Riptide) options.
+        """
+        if gcfs_config is not None:
+            pulumi.set(__self__, "gcfs_config", gcfs_config)
+
+    @property
+    @pulumi.getter(name="gcfsConfig")
+    def gcfs_config(self) -> Optional[pulumi.Input['GcfsConfigArgs']]:
+        """
+        GCFS (Google Container File System, a.k.a Riptide) options.
+        """
+        return pulumi.get(self, "gcfs_config")
+
+    @gcfs_config.setter
+    def gcfs_config(self, value: Optional[pulumi.Input['GcfsConfigArgs']]):
+        pulumi.set(self, "gcfs_config", value)
+
+
+@pulumi.input_type
 class NodeConfigArgs:
     def __init__(__self__, *,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
+                 advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 gcfs_config: Optional[pulumi.Input['GcfsConfigArgs']] = None,
                  gvnic: Optional[pulumi.Input['VirtualNICArgs']] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  kubelet_config: Optional[pulumi.Input['NodeKubeletConfigArgs']] = None,
@@ -1789,9 +1955,11 @@ class NodeConfigArgs:
         """
         Parameters that describe the nodes in a cluster.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] accelerators: A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
+        :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Advanced features for the Compute Engine VM.
         :param pulumi.Input[str] boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
+        :param pulumi.Input['GcfsConfigArgs'] gcfs_config: Google Container File System (image streaming) configs.
         :param pulumi.Input['VirtualNICArgs'] gvnic: Enable or disable gvnic in the node pool.
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used.
         :param pulumi.Input['NodeKubeletConfigArgs'] kubelet_config: Node kubelet configs.
@@ -1814,12 +1982,16 @@ class NodeConfigArgs:
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if gcfs_config is not None:
+            pulumi.set(__self__, "gcfs_config", gcfs_config)
         if gvnic is not None:
             pulumi.set(__self__, "gvnic", gvnic)
         if image_type is not None:
@@ -1872,6 +2044,18 @@ class NodeConfigArgs:
         pulumi.set(self, "accelerators", value)
 
     @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['AdvancedMachineFeaturesArgs']]:
+        """
+        Advanced features for the Compute Engine VM.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
+
+    @property
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1906,6 +2090,18 @@ class NodeConfigArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="gcfsConfig")
+    def gcfs_config(self) -> Optional[pulumi.Input['GcfsConfigArgs']]:
+        """
+        Google Container File System (image streaming) configs.
+        """
+        return pulumi.get(self, "gcfs_config")
+
+    @gcfs_config.setter
+    def gcfs_config(self, value: Optional[pulumi.Input['GcfsConfigArgs']]):
+        pulumi.set(self, "gcfs_config", value)
 
     @property
     @pulumi.getter
@@ -2374,6 +2570,30 @@ class NodePoolAutoscalingArgs:
     @min_node_count.setter
     def min_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_node_count", value)
+
+
+@pulumi.input_type
+class NodePoolDefaultsArgs:
+    def __init__(__self__, *,
+                 node_config_defaults: Optional[pulumi.Input['NodeConfigDefaultsArgs']] = None):
+        """
+        Subset of Nodepool message that has defaults.
+        :param pulumi.Input['NodeConfigDefaultsArgs'] node_config_defaults: Subset of NodeConfig message that has defaults.
+        """
+        if node_config_defaults is not None:
+            pulumi.set(__self__, "node_config_defaults", node_config_defaults)
+
+    @property
+    @pulumi.getter(name="nodeConfigDefaults")
+    def node_config_defaults(self) -> Optional[pulumi.Input['NodeConfigDefaultsArgs']]:
+        """
+        Subset of NodeConfig message that has defaults.
+        """
+        return pulumi.get(self, "node_config_defaults")
+
+    @node_config_defaults.setter
+    def node_config_defaults(self, value: Optional[pulumi.Input['NodeConfigDefaultsArgs']]):
+        pulumi.set(self, "node_config_defaults", value)
 
 
 @pulumi.input_type

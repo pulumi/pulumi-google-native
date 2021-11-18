@@ -27,6 +27,7 @@ __all__ = [
     'MySqlReplicaConfigurationArgs',
     'OnPremisesConfigurationArgs',
     'OperationErrorArgs',
+    'PasswordValidationPolicyArgs',
     'ReplicaConfigurationArgs',
     'SettingsArgs',
     'SqlActiveDirectoryConfigArgs',
@@ -671,7 +672,7 @@ class IpConfigurationArgs:
                  require_ssl: Optional[pulumi.Input[bool]] = None):
         """
         IP Management configuration.
-        :param pulumi.Input[str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+        :param pulumi.Input[str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
         :param pulumi.Input[Sequence[pulumi.Input['AclEntryArgs']]] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
         :param pulumi.Input[bool] ipv4_enabled: Whether the instance is assigned a public IP address or not.
         :param pulumi.Input[str] private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
@@ -692,7 +693,7 @@ class IpConfigurationArgs:
     @pulumi.getter(name="allocatedIpRange")
     def allocated_ip_range(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
         """
         return pulumi.get(self, "allocated_ip_range")
 
@@ -1342,6 +1343,94 @@ class OperationErrorArgs:
 
 
 @pulumi.input_type
+class PasswordValidationPolicyArgs:
+    def __init__(__self__, *,
+                 complexity: Optional[pulumi.Input['PasswordValidationPolicyComplexity']] = None,
+                 disallow_username_substring: Optional[pulumi.Input[bool]] = None,
+                 min_length: Optional[pulumi.Input[int]] = None,
+                 password_change_interval: Optional[pulumi.Input[str]] = None,
+                 reuse_interval: Optional[pulumi.Input[int]] = None):
+        """
+        Database instance local user password validation policy
+        :param pulumi.Input['PasswordValidationPolicyComplexity'] complexity: The complexity of the password.
+        :param pulumi.Input[bool] disallow_username_substring: Disallow username as a part of the password.
+        :param pulumi.Input[int] min_length: Minimum number of characters allowed.
+        :param pulumi.Input[str] password_change_interval: Minimum interval after which the password can be changed.
+        :param pulumi.Input[int] reuse_interval: Number of previous passwords that cannot be reused.
+        """
+        if complexity is not None:
+            pulumi.set(__self__, "complexity", complexity)
+        if disallow_username_substring is not None:
+            pulumi.set(__self__, "disallow_username_substring", disallow_username_substring)
+        if min_length is not None:
+            pulumi.set(__self__, "min_length", min_length)
+        if password_change_interval is not None:
+            pulumi.set(__self__, "password_change_interval", password_change_interval)
+        if reuse_interval is not None:
+            pulumi.set(__self__, "reuse_interval", reuse_interval)
+
+    @property
+    @pulumi.getter
+    def complexity(self) -> Optional[pulumi.Input['PasswordValidationPolicyComplexity']]:
+        """
+        The complexity of the password.
+        """
+        return pulumi.get(self, "complexity")
+
+    @complexity.setter
+    def complexity(self, value: Optional[pulumi.Input['PasswordValidationPolicyComplexity']]):
+        pulumi.set(self, "complexity", value)
+
+    @property
+    @pulumi.getter(name="disallowUsernameSubstring")
+    def disallow_username_substring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disallow username as a part of the password.
+        """
+        return pulumi.get(self, "disallow_username_substring")
+
+    @disallow_username_substring.setter
+    def disallow_username_substring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disallow_username_substring", value)
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of characters allowed.
+        """
+        return pulumi.get(self, "min_length")
+
+    @min_length.setter
+    def min_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_length", value)
+
+    @property
+    @pulumi.getter(name="passwordChangeInterval")
+    def password_change_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Minimum interval after which the password can be changed.
+        """
+        return pulumi.get(self, "password_change_interval")
+
+    @password_change_interval.setter
+    def password_change_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password_change_interval", value)
+
+    @property
+    @pulumi.getter(name="reuseInterval")
+    def reuse_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of previous passwords that cannot be reused.
+        """
+        return pulumi.get(self, "reuse_interval")
+
+    @reuse_interval.setter
+    def reuse_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "reuse_interval", value)
+
+
+@pulumi.input_type
 class ReplicaConfigurationArgs:
     def __init__(__self__, *,
                  failover_target: Optional[pulumi.Input[bool]] = None,
@@ -1416,6 +1505,7 @@ class SettingsArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  location_preference: Optional[pulumi.Input['LocationPreferenceArgs']] = None,
                  maintenance_window: Optional[pulumi.Input['MaintenanceWindowArgs']] = None,
+                 password_validation_policy: Optional[pulumi.Input['PasswordValidationPolicyArgs']] = None,
                  pricing_plan: Optional[pulumi.Input['SettingsPricingPlan']] = None,
                  settings_version: Optional[pulumi.Input[str]] = None,
                  sql_server_audit_config: Optional[pulumi.Input['SqlServerAuditConfigArgs']] = None,
@@ -1441,6 +1531,7 @@ class SettingsArgs:
         :param pulumi.Input[str] kind: This is always **sql#settings**.
         :param pulumi.Input['LocationPreferenceArgs'] location_preference: The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
         :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
+        :param pulumi.Input['PasswordValidationPolicyArgs'] password_validation_policy: The local user password validation policy of the instance.
         :param pulumi.Input['SettingsPricingPlan'] pricing_plan: The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
         :param pulumi.Input[str] settings_version: The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
         :param pulumi.Input['SqlServerAuditConfigArgs'] sql_server_audit_config: SQL Server specific audit configuration.
@@ -1481,6 +1572,8 @@ class SettingsArgs:
             pulumi.set(__self__, "location_preference", location_preference)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if password_validation_policy is not None:
+            pulumi.set(__self__, "password_validation_policy", password_validation_policy)
         if pricing_plan is not None:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
         if settings_version is not None:
@@ -1687,6 +1780,18 @@ class SettingsArgs:
     @maintenance_window.setter
     def maintenance_window(self, value: Optional[pulumi.Input['MaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
+
+    @property
+    @pulumi.getter(name="passwordValidationPolicy")
+    def password_validation_policy(self) -> Optional[pulumi.Input['PasswordValidationPolicyArgs']]:
+        """
+        The local user password validation policy of the instance.
+        """
+        return pulumi.get(self, "password_validation_policy")
+
+    @password_validation_policy.setter
+    def password_validation_policy(self, value: Optional[pulumi.Input['PasswordValidationPolicyArgs']]):
+        pulumi.set(self, "password_validation_policy", value)
 
     @property
     @pulumi.getter(name="pricingPlan")

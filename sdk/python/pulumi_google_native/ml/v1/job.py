@@ -234,6 +234,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["error_message"] = None
+            __props__.__dict__["job_position"] = None
             __props__.__dict__["start_time"] = None
             __props__.__dict__["state"] = None
         super(Job, __self__).__init__(
@@ -263,6 +264,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["error_message"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["job_id"] = None
+        __props__.__dict__["job_position"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["prediction_input"] = None
         __props__.__dict__["prediction_output"] = None
@@ -311,6 +313,14 @@ class Job(pulumi.CustomResource):
         The user-specified id of the job.
         """
         return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="jobPosition")
+    def job_position(self) -> pulumi.Output[str]:
+        """
+        It's only effect when the job is in QUEUED state. If it's positive, it indicates the job's position in the job scheduler. It's 0 when the job is already scheduled.
+        """
+        return pulumi.get(self, "job_position")
 
     @property
     @pulumi.getter

@@ -20,6 +20,7 @@ __all__ = [
     'EmptyArgs',
     'GaugeViewArgs',
     'GridLayoutArgs',
+    'LogsPanelArgs',
     'MosaicLayoutArgs',
     'PickTimeSeriesFilterArgs',
     'RatioPartArgs',
@@ -437,6 +438,46 @@ class GridLayoutArgs:
     @widgets.setter
     def widgets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetArgs']]]]):
         pulumi.set(self, "widgets", value)
+
+
+@pulumi.input_type
+class LogsPanelArgs:
+    def __init__(__self__, *,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        A widget that displays a stream of log.
+        :param pulumi.Input[str] filter: A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_names: The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+        """
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if resource_names is not None:
+            pulumi.set(__self__, "resource_names", resource_names)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+        """
+        return pulumi.get(self, "resource_names")
+
+    @resource_names.setter
+    def resource_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_names", value)
 
 
 @pulumi.input_type
@@ -1302,6 +1343,7 @@ class WidgetArgs:
     def __init__(__self__, *,
                  alert_chart: Optional[pulumi.Input['AlertChartArgs']] = None,
                  blank: Optional[pulumi.Input['EmptyArgs']] = None,
+                 logs_panel: Optional[pulumi.Input['LogsPanelArgs']] = None,
                  scorecard: Optional[pulumi.Input['ScorecardArgs']] = None,
                  text: Optional[pulumi.Input['TextArgs']] = None,
                  time_series_table: Optional[pulumi.Input['TimeSeriesTableArgs']] = None,
@@ -1311,6 +1353,7 @@ class WidgetArgs:
         Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
         :param pulumi.Input['AlertChartArgs'] alert_chart: A chart of alert policy data.
         :param pulumi.Input['EmptyArgs'] blank: A blank space.
+        :param pulumi.Input['LogsPanelArgs'] logs_panel: A widget that shows a stream of logs.
         :param pulumi.Input['ScorecardArgs'] scorecard: A scorecard summarizing time series data.
         :param pulumi.Input['TextArgs'] text: A raw string or markdown displaying textual content.
         :param pulumi.Input['TimeSeriesTableArgs'] time_series_table: A widget that displays time series data in a tabular format.
@@ -1321,6 +1364,8 @@ class WidgetArgs:
             pulumi.set(__self__, "alert_chart", alert_chart)
         if blank is not None:
             pulumi.set(__self__, "blank", blank)
+        if logs_panel is not None:
+            pulumi.set(__self__, "logs_panel", logs_panel)
         if scorecard is not None:
             pulumi.set(__self__, "scorecard", scorecard)
         if text is not None:
@@ -1355,6 +1400,18 @@ class WidgetArgs:
     @blank.setter
     def blank(self, value: Optional[pulumi.Input['EmptyArgs']]):
         pulumi.set(self, "blank", value)
+
+    @property
+    @pulumi.getter(name="logsPanel")
+    def logs_panel(self) -> Optional[pulumi.Input['LogsPanelArgs']]:
+        """
+        A widget that shows a stream of logs.
+        """
+        return pulumi.get(self, "logs_panel")
+
+    @logs_panel.setter
+    def logs_panel(self, value: Optional[pulumi.Input['LogsPanelArgs']]):
+        pulumi.set(self, "logs_panel", value)
 
     @property
     @pulumi.getter

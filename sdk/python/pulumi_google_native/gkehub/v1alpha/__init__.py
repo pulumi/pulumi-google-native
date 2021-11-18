@@ -10,7 +10,9 @@ from .feature import *
 from .feature_iam_policy import *
 from .get_feature import *
 from .get_feature_iam_policy import *
+from .get_membership import *
 from .get_membership_iam_policy import *
+from .membership import *
 from .membership_iam_policy import *
 from ._inputs import *
 from . import outputs

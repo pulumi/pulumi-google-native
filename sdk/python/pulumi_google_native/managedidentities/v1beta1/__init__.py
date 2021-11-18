@@ -5,9 +5,11 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .backup import *
 from .domain import *
 from .domain_backup_iam_policy import *
 from .domain_iam_policy import *
+from .get_backup import *
 from .get_domain import *
 from .get_domain_backup_iam_policy import *
 from .get_domain_iam_policy import *

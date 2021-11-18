@@ -9,6 +9,7 @@ __all__ = [
     'AcceleratorState',
     'AuditLogConfigLogType',
     'InstanceType',
+    'VersionType',
 ]
 
 
@@ -97,4 +98,22 @@ class InstanceType(str, Enum):
     DEVELOPER = "DEVELOPER"
     """
     Developer Data Fusion instance. In Developer type, the user will have all features available but with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration pipelines at low cost.
+    """
+
+
+class VersionType(str, Enum):
+    """
+    Type represents the release availability of the version
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Version does not have availability yet
+    """
+    TYPE_PREVIEW = "TYPE_PREVIEW"
+    """
+    Version is under development and not considered stable
+    """
+    TYPE_GENERAL_AVAILABILITY = "TYPE_GENERAL_AVAILABILITY"
+    """
+    Version is available for public use
     """

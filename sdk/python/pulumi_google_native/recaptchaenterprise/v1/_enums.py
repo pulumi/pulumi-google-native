@@ -21,11 +21,11 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge(str, Enum):
     """
     NOCAPTCHA = "NOCAPTCHA"
     """
-    Challenge requests for this key will always return a nocaptcha, which does not require a solution.
+    Challenge requests for this key always return a nocaptcha, which does not require a solution.
     """
     UNSOLVABLE_CHALLENGE = "UNSOLVABLE_CHALLENGE"
     """
-    Challenge requests for this key will always return an unsolvable challenge.
+    Challenge requests for this key always return an unsolvable challenge.
     """
 
 

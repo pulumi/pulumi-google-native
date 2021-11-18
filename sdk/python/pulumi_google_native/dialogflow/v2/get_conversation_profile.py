@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConversationProfileResult:
-    def __init__(__self__, automated_agent_config=None, create_time=None, display_name=None, human_agent_assistant_config=None, human_agent_handoff_config=None, language_code=None, logging_config=None, name=None, new_message_event_notification_config=None, notification_config=None, stt_config=None, update_time=None):
+    def __init__(__self__, automated_agent_config=None, create_time=None, display_name=None, human_agent_assistant_config=None, human_agent_handoff_config=None, language_code=None, logging_config=None, name=None, new_message_event_notification_config=None, notification_config=None, security_settings=None, stt_config=None, time_zone=None, update_time=None):
         if automated_agent_config and not isinstance(automated_agent_config, dict):
             raise TypeError("Expected argument 'automated_agent_config' to be a dict")
         pulumi.set(__self__, "automated_agent_config", automated_agent_config)
@@ -49,9 +49,15 @@ class GetConversationProfileResult:
         if notification_config and not isinstance(notification_config, dict):
             raise TypeError("Expected argument 'notification_config' to be a dict")
         pulumi.set(__self__, "notification_config", notification_config)
+        if security_settings and not isinstance(security_settings, str):
+            raise TypeError("Expected argument 'security_settings' to be a str")
+        pulumi.set(__self__, "security_settings", security_settings)
         if stt_config and not isinstance(stt_config, dict):
             raise TypeError("Expected argument 'stt_config' to be a dict")
         pulumi.set(__self__, "stt_config", stt_config)
+        if time_zone and not isinstance(time_zone, str):
+            raise TypeError("Expected argument 'time_zone' to be a str")
+        pulumi.set(__self__, "time_zone", time_zone)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -100,7 +106,7 @@ class GetConversationProfileResult:
     @pulumi.getter(name="languageCode")
     def language_code(self) -> str:
         """
-        Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+        Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
         """
         return pulumi.get(self, "language_code")
 
@@ -137,12 +143,28 @@ class GetConversationProfileResult:
         return pulumi.get(self, "notification_config")
 
     @property
+    @pulumi.getter(name="securitySettings")
+    def security_settings(self) -> str:
+        """
+        Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+        """
+        return pulumi.get(self, "security_settings")
+
+    @property
     @pulumi.getter(name="sttConfig")
     def stt_config(self) -> 'outputs.GoogleCloudDialogflowV2SpeechToTextConfigResponse':
         """
         Settings for speech transcription.
         """
         return pulumi.get(self, "stt_config")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> str:
+        """
+        The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+        """
+        return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -169,7 +191,9 @@ class AwaitableGetConversationProfileResult(GetConversationProfileResult):
             name=self.name,
             new_message_event_notification_config=self.new_message_event_notification_config,
             notification_config=self.notification_config,
+            security_settings=self.security_settings,
             stt_config=self.stt_config,
+            time_zone=self.time_zone,
             update_time=self.update_time)
 
 
@@ -201,7 +225,9 @@ def get_conversation_profile(conversation_profile_id: Optional[str] = None,
         name=__ret__.name,
         new_message_event_notification_config=__ret__.new_message_event_notification_config,
         notification_config=__ret__.notification_config,
+        security_settings=__ret__.security_settings,
         stt_config=__ret__.stt_config,
+        time_zone=__ret__.time_zone,
         update_time=__ret__.update_time)
 
 

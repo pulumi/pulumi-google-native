@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'InstanceTier',
+    'NetworkConfigConnectMode',
     'NetworkConfigModesItem',
     'NfsExportOptionsAccessMode',
     'NfsExportOptionsSquashMode',
@@ -39,6 +40,28 @@ class InstanceTier(str, Enum):
     HIGH_SCALE_SSD = "HIGH_SCALE_SSD"
     """
     HIGH_SCALE instances offer expanded capacity and performance scaling capabilities.
+    """
+    ENTERPRISE = "ENTERPRISE"
+    """
+    ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
+    """
+
+
+class NetworkConfigConnectMode(str, Enum):
+    """
+    The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+    """
+    CONNECT_MODE_UNSPECIFIED = "CONNECT_MODE_UNSPECIFIED"
+    """
+    Not set.
+    """
+    DIRECT_PEERING = "DIRECT_PEERING"
+    """
+    Connect via direct peering to the Filestore service.
+    """
+    PRIVATE_SERVICE_ACCESS = "PRIVATE_SERVICE_ACCESS"
+    """
+    Connect to your Filestore instance using Private Service Access. Private services access provides an IP address range for multiple Google Cloud services, including Filestore.
     """
 
 

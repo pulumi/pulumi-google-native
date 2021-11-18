@@ -13,6 +13,7 @@ from ._enums import *
 __all__ = [
     'AcceleratorConfigResponse',
     'AddonsConfigResponse',
+    'AdvancedMachineFeaturesResponse',
     'AuthenticatorGroupsConfigResponse',
     'AutoUpgradeOptionsResponse',
     'AutopilotResponse',
@@ -34,6 +35,7 @@ __all__ = [
     'DnsCacheConfigResponse',
     'EphemeralStorageConfigResponse',
     'GcePersistentDiskCsiDriverConfigResponse',
+    'GcfsConfigResponse',
     'GcpFilestoreCsiDriverConfigResponse',
     'HorizontalPodAutoscalingResponse',
     'HttpLoadBalancingResponse',
@@ -48,6 +50,7 @@ __all__ = [
     'LoggingConfigResponse',
     'MaintenancePolicyResponse',
     'MaintenanceWindowResponse',
+    'ManagedPrometheusConfigResponse',
     'MasterAuthResponse',
     'MasterAuthorizedNetworksConfigResponse',
     'MasterResponse',
@@ -324,6 +327,45 @@ class AddonsConfigResponse(dict):
         Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
         """
         return pulumi.get(self, "network_policy_config")
+
+
+@pulumi.output_type
+class AdvancedMachineFeaturesResponse(dict):
+    """
+    Specifies options for controlling advanced machine features.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "threadsPerCore":
+            suggest = "threads_per_core"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdvancedMachineFeaturesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdvancedMachineFeaturesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdvancedMachineFeaturesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threads_per_core: str):
+        """
+        Specifies options for controlling advanced machine features.
+        :param str threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> str:
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -1254,6 +1296,28 @@ class GcePersistentDiskCsiDriverConfigResponse(dict):
 
 
 @pulumi.output_type
+class GcfsConfigResponse(dict):
+    """
+    GcfsConfig contains configurations of Google Container File System.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        GcfsConfig contains configurations of Google Container File System.
+        :param bool enabled: Whether to use GCFS.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether to use GCFS.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GcpFilestoreCsiDriverConfigResponse(dict):
     """
     Configuration for the GCP Filestore CSI driver.
@@ -1812,6 +1876,28 @@ class MaintenanceWindowResponse(dict):
 
 
 @pulumi.output_type
+class ManagedPrometheusConfigResponse(dict):
+    """
+    ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+        :param bool enabled: Enable Managed Collection.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable Managed Collection.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class MasterAuthResponse(dict):
     """
     The authentication information for accessing the master endpoint. Authentication can be done using HTTP basic auth or using client certificates.
@@ -2096,6 +2182,8 @@ class MonitoringConfigResponse(dict):
         suggest = None
         if key == "componentConfig":
             suggest = "component_config"
+        elif key == "managedPrometheusConfig":
+            suggest = "managed_prometheus_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MonitoringConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2109,12 +2197,15 @@ class MonitoringConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 component_config: 'outputs.MonitoringComponentConfigResponse'):
+                 component_config: 'outputs.MonitoringComponentConfigResponse',
+                 managed_prometheus_config: 'outputs.ManagedPrometheusConfigResponse'):
         """
         MonitoringConfig is cluster monitoring configuration.
         :param 'MonitoringComponentConfigResponse' component_config: Monitoring components configuration
+        :param 'ManagedPrometheusConfigResponse' managed_prometheus_config: Enable Google Cloud Managed Service for Prometheus in the cluster.
         """
         pulumi.set(__self__, "component_config", component_config)
+        pulumi.set(__self__, "managed_prometheus_config", managed_prometheus_config)
 
     @property
     @pulumi.getter(name="componentConfig")
@@ -2123,6 +2214,14 @@ class MonitoringConfigResponse(dict):
         Monitoring components configuration
         """
         return pulumi.get(self, "component_config")
+
+    @property
+    @pulumi.getter(name="managedPrometheusConfig")
+    def managed_prometheus_config(self) -> 'outputs.ManagedPrometheusConfigResponse':
+        """
+        Enable Google Cloud Managed Service for Prometheus in the cluster.
+        """
+        return pulumi.get(self, "managed_prometheus_config")
 
 
 @pulumi.output_type
@@ -2324,11 +2423,38 @@ class NodeConfigDefaultsResponse(dict):
     """
     Subset of NodeConfig message that has defaults.
     """
-    def __init__(__self__):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcfsConfig":
+            suggest = "gcfs_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeConfigDefaultsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeConfigDefaultsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeConfigDefaultsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcfs_config: 'outputs.GcfsConfigResponse'):
         """
         Subset of NodeConfig message that has defaults.
+        :param 'GcfsConfigResponse' gcfs_config: GCFS (Google Container File System, a.k.a Riptide) options.
         """
-        pass
+        pulumi.set(__self__, "gcfs_config", gcfs_config)
+
+    @property
+    @pulumi.getter(name="gcfsConfig")
+    def gcfs_config(self) -> 'outputs.GcfsConfigResponse':
+        """
+        GCFS (Google Container File System, a.k.a Riptide) options.
+        """
+        return pulumi.get(self, "gcfs_config")
 
 
 @pulumi.output_type
@@ -2339,7 +2465,9 @@ class NodeConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bootDiskKmsKey":
+        if key == "advancedMachineFeatures":
+            suggest = "advanced_machine_features"
+        elif key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
@@ -2347,6 +2475,8 @@ class NodeConfigResponse(dict):
             suggest = "disk_type"
         elif key == "ephemeralStorageConfig":
             suggest = "ephemeral_storage_config"
+        elif key == "gcfsConfig":
+            suggest = "gcfs_config"
         elif key == "imageType":
             suggest = "image_type"
         elif key == "kubeletConfig":
@@ -2387,10 +2517,12 @@ class NodeConfigResponse(dict):
 
     def __init__(__self__, *,
                  accelerators: Sequence['outputs.AcceleratorConfigResponse'],
+                 advanced_machine_features: 'outputs.AdvancedMachineFeaturesResponse',
                  boot_disk_kms_key: str,
                  disk_size_gb: int,
                  disk_type: str,
                  ephemeral_storage_config: 'outputs.EphemeralStorageConfigResponse',
+                 gcfs_config: 'outputs.GcfsConfigResponse',
                  gvnic: 'outputs.VirtualNICResponse',
                  image_type: str,
                  kubelet_config: 'outputs.NodeKubeletConfigResponse',
@@ -2414,10 +2546,12 @@ class NodeConfigResponse(dict):
         """
         Parameters that describe the nodes in a cluster.
         :param Sequence['AcceleratorConfigResponse'] accelerators: A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
+        :param 'AdvancedMachineFeaturesResponse' advanced_machine_features: Advanced features for the Compute Engine VM.
         :param str boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param 'EphemeralStorageConfigResponse' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+        :param 'GcfsConfigResponse' gcfs_config: GCFS (Google Container File System) configs.
         :param 'VirtualNICResponse' gvnic: Enable or disable gvnic on the node pool.
         :param str image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used.
         :param 'NodeKubeletConfigResponse' kubelet_config: Node kubelet configs.
@@ -2440,10 +2574,12 @@ class NodeConfigResponse(dict):
         :param 'WorkloadMetadataConfigResponse' workload_metadata_config: The workload metadata configuration for this node.
         """
         pulumi.set(__self__, "accelerators", accelerators)
+        pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
+        pulumi.set(__self__, "gcfs_config", gcfs_config)
         pulumi.set(__self__, "gvnic", gvnic)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "kubelet_config", kubelet_config)
@@ -2472,6 +2608,14 @@ class NodeConfigResponse(dict):
         A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
         """
         return pulumi.get(self, "accelerators")
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> 'outputs.AdvancedMachineFeaturesResponse':
+        """
+        Advanced features for the Compute Engine VM.
+        """
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="bootDiskKmsKey")
@@ -2504,6 +2648,14 @@ class NodeConfigResponse(dict):
         Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
         """
         return pulumi.get(self, "ephemeral_storage_config")
+
+    @property
+    @pulumi.getter(name="gcfsConfig")
+    def gcfs_config(self) -> 'outputs.GcfsConfigResponse':
+        """
+        GCFS (Google Container File System) configs.
+        """
+        return pulumi.get(self, "gcfs_config")
 
     @property
     @pulumi.getter

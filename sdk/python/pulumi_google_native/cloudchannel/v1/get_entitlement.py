@@ -100,7 +100,7 @@ class GetEntitlementResult:
     @pulumi.getter
     def parameters(self) -> Sequence['outputs.GoogleCloudChannelV1ParameterResponse']:
         """
-        Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+        Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. The response may include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. - max_units: The maximum assignable units for a flexible offer. - num_units: The total commitment for commitment-based offers.
         """
         return pulumi.get(self, "parameters")
 

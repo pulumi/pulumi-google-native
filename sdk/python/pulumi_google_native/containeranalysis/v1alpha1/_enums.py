@@ -18,7 +18,7 @@ __all__ = [
     'HashType',
     'LayerDirective',
     'PgpSignedAttestationContentType',
-    'RelationshipOccurrenceType',
+    'RelationshipNoteType',
     'VersionKind',
     'VulnerabilityDetailsEffectiveSeverity',
     'VulnerabilityTypeSeverity',
@@ -435,11 +435,11 @@ class PgpSignedAttestationContentType(str, Enum):
     """
 
 
-class RelationshipOccurrenceType(str, Enum):
+class RelationshipNoteType(str, Enum):
     """
     The type of relationship between the source and target SPDX elements
     """
-    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    RELATIONSHIP_TYPE_UNSPECIFIED = "RELATIONSHIP_TYPE_UNSPECIFIED"
     """
     Unspecified
     """

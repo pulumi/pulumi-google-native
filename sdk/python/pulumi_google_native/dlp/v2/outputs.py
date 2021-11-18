@@ -2956,12 +2956,15 @@ class GooglePrivacyDlpV2InfoTypeResponse(dict):
     Type of information detected by the API.
     """
     def __init__(__self__, *,
-                 name: str):
+                 name: str,
+                 version: str):
         """
         Type of information detected by the API.
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        :param str version: Optional version name for this InfoType.
         """
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -2970,6 +2973,14 @@ class GooglePrivacyDlpV2InfoTypeResponse(dict):
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Optional version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -5074,11 +5085,11 @@ class GooglePrivacyDlpV2ProximityResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse(dict):
     """
-    Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+    Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
     """
     def __init__(__self__):
         """
-        Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+        Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
         """
         pass
 

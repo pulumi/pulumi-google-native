@@ -199,7 +199,7 @@ class GetNoteResult:
     @pulumi.getter
     def sbom(self) -> 'outputs.DocumentNoteResponse':
         """
-        A note describing SPDX Document which represents SBOM.
+        A note describing a software bill of materials.
         """
         return pulumi.get(self, "sbom")
 
@@ -215,15 +215,15 @@ class GetNoteResult:
     @pulumi.getter(name="spdxFile")
     def spdx_file(self) -> 'outputs.FileNoteResponse':
         """
-        A note describing SPDX File.
+        A note describing an SPDX File.
         """
         return pulumi.get(self, "spdx_file")
 
     @property
     @pulumi.getter(name="spdxPackage")
-    def spdx_package(self) -> 'outputs.PackageNoteResponse':
+    def spdx_package(self) -> 'outputs.PackageInfoNoteResponse':
         """
-        A note describing SPDX Package.
+        A note describing an SPDX Package.
         """
         return pulumi.get(self, "spdx_package")
 
@@ -231,7 +231,7 @@ class GetNoteResult:
     @pulumi.getter(name="spdxRelationship")
     def spdx_relationship(self) -> 'outputs.RelationshipNoteResponse':
         """
-        A note describing SPDX Relationship.
+        A note describing an SPDX File.
         """
         return pulumi.get(self, "spdx_relationship")
 

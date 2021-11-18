@@ -19,9 +19,13 @@ __all__ = [
     'NodeConfigResponse',
     'PrivateClusterConfigResponse',
     'PrivateEnvironmentConfigResponse',
+    'SchedulerResourceResponse',
     'SoftwareConfigResponse',
     'WebServerConfigResponse',
     'WebServerNetworkAccessControlResponse',
+    'WebServerResourceResponse',
+    'WorkerResourceResponse',
+    'WorkloadsConfigResponse',
 ]
 
 @pulumi.output_type
@@ -151,6 +155,8 @@ class EnvironmentConfigResponse(dict):
             suggest = "database_config"
         elif key == "encryptionConfig":
             suggest = "encryption_config"
+        elif key == "environmentSize":
+            suggest = "environment_size"
         elif key == "gkeCluster":
             suggest = "gke_cluster"
         elif key == "nodeConfig":
@@ -165,6 +171,8 @@ class EnvironmentConfigResponse(dict):
             suggest = "web_server_config"
         elif key == "webServerNetworkAccessControl":
             suggest = "web_server_network_access_control"
+        elif key == "workloadsConfig":
+            suggest = "workloads_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -182,31 +190,36 @@ class EnvironmentConfigResponse(dict):
                  dag_gcs_prefix: str,
                  database_config: 'outputs.DatabaseConfigResponse',
                  encryption_config: 'outputs.EncryptionConfigResponse',
+                 environment_size: str,
                  gke_cluster: str,
                  node_config: 'outputs.NodeConfigResponse',
                  node_count: int,
                  private_environment_config: 'outputs.PrivateEnvironmentConfigResponse',
                  software_config: 'outputs.SoftwareConfigResponse',
                  web_server_config: 'outputs.WebServerConfigResponse',
-                 web_server_network_access_control: 'outputs.WebServerNetworkAccessControlResponse'):
+                 web_server_network_access_control: 'outputs.WebServerNetworkAccessControlResponse',
+                 workloads_config: 'outputs.WorkloadsConfigResponse'):
         """
         Configuration information for an environment.
         :param str airflow_uri: The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
         :param str dag_gcs_prefix: The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
         :param 'DatabaseConfigResponse' database_config: Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param 'EncryptionConfigResponse' encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param str environment_size: Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param str gke_cluster: The Kubernetes Engine cluster used to run this environment.
         :param 'NodeConfigResponse' node_config: The configuration used for the Kubernetes Engine cluster.
         :param int node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param 'PrivateEnvironmentConfigResponse' private_environment_config: The configuration used for the Private IP Cloud Composer environment.
         :param 'SoftwareConfigResponse' software_config: The configuration settings for software inside the environment.
         :param 'WebServerConfigResponse' web_server_config: Optional. The configuration settings for the Airflow web server App Engine instance.
-        :param 'WebServerNetworkAccessControlResponse' web_server_network_access_control: Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param 'WebServerNetworkAccessControlResponse' web_server_network_access_control: Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+        :param 'WorkloadsConfigResponse' workloads_config: Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         """
         pulumi.set(__self__, "airflow_uri", airflow_uri)
         pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
         pulumi.set(__self__, "database_config", database_config)
         pulumi.set(__self__, "encryption_config", encryption_config)
+        pulumi.set(__self__, "environment_size", environment_size)
         pulumi.set(__self__, "gke_cluster", gke_cluster)
         pulumi.set(__self__, "node_config", node_config)
         pulumi.set(__self__, "node_count", node_count)
@@ -214,6 +227,7 @@ class EnvironmentConfigResponse(dict):
         pulumi.set(__self__, "software_config", software_config)
         pulumi.set(__self__, "web_server_config", web_server_config)
         pulumi.set(__self__, "web_server_network_access_control", web_server_network_access_control)
+        pulumi.set(__self__, "workloads_config", workloads_config)
 
     @property
     @pulumi.getter(name="airflowUri")
@@ -246,6 +260,14 @@ class EnvironmentConfigResponse(dict):
         Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
         return pulumi.get(self, "encryption_config")
+
+    @property
+    @pulumi.getter(name="environmentSize")
+    def environment_size(self) -> str:
+        """
+        Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "environment_size")
 
     @property
     @pulumi.getter(name="gkeCluster")
@@ -299,9 +321,17 @@ class EnvironmentConfigResponse(dict):
     @pulumi.getter(name="webServerNetworkAccessControl")
     def web_server_network_access_control(self) -> 'outputs.WebServerNetworkAccessControlResponse':
         """
-        Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
         """
         return pulumi.get(self, "web_server_network_access_control")
+
+    @property
+    @pulumi.getter(name="workloadsConfig")
+    def workloads_config(self) -> 'outputs.WorkloadsConfigResponse':
+        """
+        Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "workloads_config")
 
 
 @pulumi.output_type
@@ -603,7 +633,11 @@ class PrivateEnvironmentConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cloudSqlIpv4CidrBlock":
+        if key == "cloudComposerNetworkIpv4CidrBlock":
+            suggest = "cloud_composer_network_ipv4_cidr_block"
+        elif key == "cloudComposerNetworkIpv4ReservedRange":
+            suggest = "cloud_composer_network_ipv4_reserved_range"
+        elif key == "cloudSqlIpv4CidrBlock":
             suggest = "cloud_sql_ipv4_cidr_block"
         elif key == "enablePrivateEnvironment":
             suggest = "enable_private_environment"
@@ -626,6 +660,8 @@ class PrivateEnvironmentConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cloud_composer_network_ipv4_cidr_block: str,
+                 cloud_composer_network_ipv4_reserved_range: str,
                  cloud_sql_ipv4_cidr_block: str,
                  enable_private_environment: bool,
                  private_cluster_config: 'outputs.PrivateClusterConfigResponse',
@@ -633,17 +669,37 @@ class PrivateEnvironmentConfigResponse(dict):
                  web_server_ipv4_reserved_range: str):
         """
         The configuration information for configuring a Private IP Cloud Composer environment.
+        :param str cloud_composer_network_ipv4_cidr_block: Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        :param str cloud_composer_network_ipv4_reserved_range: The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param str cloud_sql_ipv4_cidr_block: Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
         :param bool enable_private_environment: Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param 'PrivateClusterConfigResponse' private_cluster_config: Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         :param str web_server_ipv4_cidr_block: Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param str web_server_ipv4_reserved_range: The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
+        pulumi.set(__self__, "cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
+        pulumi.set(__self__, "cloud_composer_network_ipv4_reserved_range", cloud_composer_network_ipv4_reserved_range)
         pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
         pulumi.set(__self__, "enable_private_environment", enable_private_environment)
         pulumi.set(__self__, "private_cluster_config", private_cluster_config)
         pulumi.set(__self__, "web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
         pulumi.set(__self__, "web_server_ipv4_reserved_range", web_server_ipv4_reserved_range)
+
+    @property
+    @pulumi.getter(name="cloudComposerNetworkIpv4CidrBlock")
+    def cloud_composer_network_ipv4_cidr_block(self) -> str:
+        """
+        Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "cloud_composer_network_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="cloudComposerNetworkIpv4ReservedRange")
+    def cloud_composer_network_ipv4_reserved_range(self) -> str:
+        """
+        The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "cloud_composer_network_ipv4_reserved_range")
 
     @property
     @pulumi.getter(name="cloudSqlIpv4CidrBlock")
@@ -684,6 +740,80 @@ class PrivateEnvironmentConfigResponse(dict):
         The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
         return pulumi.get(self, "web_server_ipv4_reserved_range")
+
+
+@pulumi.output_type
+class SchedulerResourceResponse(dict):
+    """
+    Configuration for resources used by Airflow schedulers.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryGb":
+            suggest = "memory_gb"
+        elif key == "storageGb":
+            suggest = "storage_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchedulerResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchedulerResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchedulerResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 count: int,
+                 cpu: float,
+                 memory_gb: float,
+                 storage_gb: float):
+        """
+        Configuration for resources used by Airflow schedulers.
+        :param int count: Optional. The number of schedulers.
+        :param float cpu: Optional. CPU request and limit for a single Airflow scheduler replica.
+        :param float memory_gb: Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
+        :param float storage_gb: Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory_gb", memory_gb)
+        pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        Optional. The number of schedulers.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> float:
+        """
+        Optional. CPU request and limit for a single Airflow scheduler replica.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> float:
+        """
+        Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
+        """
+        return pulumi.get(self, "memory_gb")
+
+    @property
+    @pulumi.getter(name="storageGb")
+    def storage_gb(self) -> float:
+        """
+        Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
+        """
+        return pulumi.get(self, "storage_gb")
 
 
 @pulumi.output_type
@@ -832,7 +962,7 @@ class WebServerConfigResponse(dict):
 @pulumi.output_type
 class WebServerNetworkAccessControlResponse(dict):
     """
-    Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    Network-level access control policy for the Airflow web server.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -854,7 +984,7 @@ class WebServerNetworkAccessControlResponse(dict):
     def __init__(__self__, *,
                  allowed_ip_ranges: Sequence['outputs.AllowedIpRangeResponse']):
         """
-        Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        Network-level access control policy for the Airflow web server.
         :param Sequence['AllowedIpRangeResponse'] allowed_ip_ranges: A collection of allowed IP ranges with descriptions.
         """
         pulumi.set(__self__, "allowed_ip_ranges", allowed_ip_ranges)
@@ -866,5 +996,218 @@ class WebServerNetworkAccessControlResponse(dict):
         A collection of allowed IP ranges with descriptions.
         """
         return pulumi.get(self, "allowed_ip_ranges")
+
+
+@pulumi.output_type
+class WebServerResourceResponse(dict):
+    """
+    Configuration for resources used by Airflow web server.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryGb":
+            suggest = "memory_gb"
+        elif key == "storageGb":
+            suggest = "storage_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebServerResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebServerResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebServerResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu: float,
+                 memory_gb: float,
+                 storage_gb: float):
+        """
+        Configuration for resources used by Airflow web server.
+        :param float cpu: Optional. CPU request and limit for Airflow web server.
+        :param float memory_gb: Optional. Memory (GB) request and limit for Airflow web server.
+        :param float storage_gb: Optional. Storage (GB) request and limit for Airflow web server.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory_gb", memory_gb)
+        pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> float:
+        """
+        Optional. CPU request and limit for Airflow web server.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> float:
+        """
+        Optional. Memory (GB) request and limit for Airflow web server.
+        """
+        return pulumi.get(self, "memory_gb")
+
+    @property
+    @pulumi.getter(name="storageGb")
+    def storage_gb(self) -> float:
+        """
+        Optional. Storage (GB) request and limit for Airflow web server.
+        """
+        return pulumi.get(self, "storage_gb")
+
+
+@pulumi.output_type
+class WorkerResourceResponse(dict):
+    """
+    Configuration for resources used by Airflow workers.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxCount":
+            suggest = "max_count"
+        elif key == "memoryGb":
+            suggest = "memory_gb"
+        elif key == "minCount":
+            suggest = "min_count"
+        elif key == "storageGb":
+            suggest = "storage_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu: float,
+                 max_count: int,
+                 memory_gb: float,
+                 min_count: int,
+                 storage_gb: float):
+        """
+        Configuration for resources used by Airflow workers.
+        :param float cpu: Optional. CPU request and limit for a single Airflow worker replica.
+        :param int max_count: Optional. Maximum number of workers for autoscaling.
+        :param float memory_gb: Optional. Memory (GB) request and limit for a single Airflow worker replica.
+        :param int min_count: Optional. Minimum number of workers for autoscaling.
+        :param float storage_gb: Optional. Storage (GB) request and limit for a single Airflow worker replica.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "max_count", max_count)
+        pulumi.set(__self__, "memory_gb", memory_gb)
+        pulumi.set(__self__, "min_count", min_count)
+        pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> float:
+        """
+        Optional. CPU request and limit for a single Airflow worker replica.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="maxCount")
+    def max_count(self) -> int:
+        """
+        Optional. Maximum number of workers for autoscaling.
+        """
+        return pulumi.get(self, "max_count")
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> float:
+        """
+        Optional. Memory (GB) request and limit for a single Airflow worker replica.
+        """
+        return pulumi.get(self, "memory_gb")
+
+    @property
+    @pulumi.getter(name="minCount")
+    def min_count(self) -> int:
+        """
+        Optional. Minimum number of workers for autoscaling.
+        """
+        return pulumi.get(self, "min_count")
+
+    @property
+    @pulumi.getter(name="storageGb")
+    def storage_gb(self) -> float:
+        """
+        Optional. Storage (GB) request and limit for a single Airflow worker replica.
+        """
+        return pulumi.get(self, "storage_gb")
+
+
+@pulumi.output_type
+class WorkloadsConfigResponse(dict):
+    """
+    The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "webServer":
+            suggest = "web_server"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadsConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadsConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadsConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 scheduler: 'outputs.SchedulerResourceResponse',
+                 web_server: 'outputs.WebServerResourceResponse',
+                 worker: 'outputs.WorkerResourceResponse'):
+        """
+        The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        :param 'SchedulerResourceResponse' scheduler: Optional. Resources used by Airflow schedulers.
+        :param 'WebServerResourceResponse' web_server: Optional. Resources used by Airflow web server.
+        :param 'WorkerResourceResponse' worker: Optional. Resources used by Airflow workers.
+        """
+        pulumi.set(__self__, "scheduler", scheduler)
+        pulumi.set(__self__, "web_server", web_server)
+        pulumi.set(__self__, "worker", worker)
+
+    @property
+    @pulumi.getter
+    def scheduler(self) -> 'outputs.SchedulerResourceResponse':
+        """
+        Optional. Resources used by Airflow schedulers.
+        """
+        return pulumi.get(self, "scheduler")
+
+    @property
+    @pulumi.getter(name="webServer")
+    def web_server(self) -> 'outputs.WebServerResourceResponse':
+        """
+        Optional. Resources used by Airflow web server.
+        """
+        return pulumi.get(self, "web_server")
+
+    @property
+    @pulumi.getter
+    def worker(self) -> 'outputs.WorkerResourceResponse':
+        """
+        Optional. Resources used by Airflow workers.
+        """
+        return pulumi.get(self, "worker")
 
 

@@ -495,7 +495,7 @@ class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs:
                  test_cases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The configuration for continuous tests.
-        :param pulumi.Input[bool] enable_continuous_run: Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+        :param pulumi.Input[bool] enable_continuous_run: Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
         :param pulumi.Input[bool] enable_predeployment_run: Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] test_cases: A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
         """
@@ -510,7 +510,7 @@ class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs:
     @pulumi.getter(name="enableContinuousRun")
     def enable_continuous_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+        Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
         """
         return pulumi.get(self, "enable_continuous_run")
 

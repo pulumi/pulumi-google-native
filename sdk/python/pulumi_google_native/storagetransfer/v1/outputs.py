@@ -15,6 +15,7 @@ __all__ = [
     'AwsS3DataResponse',
     'AzureBlobStorageDataResponse',
     'AzureCredentialsResponse',
+    'BandwidthLimitResponse',
     'DateResponse',
     'GcsDataResponse',
     'HttpDataResponse',
@@ -24,6 +25,7 @@ __all__ = [
     'PosixFilesystemResponse',
     'ScheduleResponse',
     'TimeOfDayResponse',
+    'TransferManifestResponse',
     'TransferOptionsResponse',
     'TransferSpecResponse',
 ]
@@ -270,6 +272,45 @@ class AzureCredentialsResponse(dict):
 
 
 @pulumi.output_type
+class BandwidthLimitResponse(dict):
+    """
+    Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "limitMbps":
+            suggest = "limit_mbps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BandwidthLimitResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BandwidthLimitResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BandwidthLimitResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 limit_mbps: str):
+        """
+        Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+        :param str limit_mbps: Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+        """
+        pulumi.set(__self__, "limit_mbps", limit_mbps)
+
+    @property
+    @pulumi.getter(name="limitMbps")
+    def limit_mbps(self) -> str:
+        """
+        Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+        """
+        return pulumi.get(self, "limit_mbps")
+
+
+@pulumi.output_type
 class DateResponse(dict):
     """
     Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
@@ -412,6 +453,10 @@ class LoggingConfigResponse(dict):
         suggest = None
         if key == "enableOnpremGcsTransferLogs":
             suggest = "enable_onprem_gcs_transfer_logs"
+        elif key == "logActionStates":
+            suggest = "log_action_states"
+        elif key == "logActions":
+            suggest = "log_actions"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in LoggingConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -425,12 +470,18 @@ class LoggingConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 enable_onprem_gcs_transfer_logs: bool):
+                 enable_onprem_gcs_transfer_logs: bool,
+                 log_action_states: Sequence[str],
+                 log_actions: Sequence[str]):
         """
         Logging configuration.
         :param bool enable_onprem_gcs_transfer_logs: Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+        :param Sequence[str] log_action_states: States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        :param Sequence[str] log_actions: Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
         """
         pulumi.set(__self__, "enable_onprem_gcs_transfer_logs", enable_onprem_gcs_transfer_logs)
+        pulumi.set(__self__, "log_action_states", log_action_states)
+        pulumi.set(__self__, "log_actions", log_actions)
 
     @property
     @pulumi.getter(name="enableOnpremGcsTransferLogs")
@@ -439,6 +490,22 @@ class LoggingConfigResponse(dict):
         Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
         """
         return pulumi.get(self, "enable_onprem_gcs_transfer_logs")
+
+    @property
+    @pulumi.getter(name="logActionStates")
+    def log_action_states(self) -> Sequence[str]:
+        """
+        States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        """
+        return pulumi.get(self, "log_action_states")
+
+    @property
+    @pulumi.getter(name="logActions")
+    def log_actions(self) -> Sequence[str]:
+        """
+        Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        """
+        return pulumi.get(self, "log_actions")
 
 
 @pulumi.output_type
@@ -509,7 +576,7 @@ class NotificationConfigResponse(dict):
 @pulumi.output_type
 class ObjectConditionsResponse(dict):
     """
-    Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
+    Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -546,7 +613,7 @@ class ObjectConditionsResponse(dict):
                  max_time_elapsed_since_last_modification: str,
                  min_time_elapsed_since_last_modification: str):
         """
-        Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
+        Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`.
         :param Sequence[str] exclude_prefixes: If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
         :param Sequence[str] include_prefixes: If you specify `include_prefixes`, Storage Transfer Service uses the items in the `include_prefixes` array to determine which objects to include in a transfer. Objects must start with one of the matching `include_prefixes` for inclusion in the transfer. If exclude_prefixes is specified, objects must not start with any of the `exclude_prefixes` specified for inclusion in the transfer. The following are requirements of `include_prefixes`: * Each include-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each include-prefix must omit the leading slash. For example, to include the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix as `logs/y=2015/requests.gz`. * None of the include-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a prefix of another include-prefix. The max size of `include_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
         :param str last_modified_before: If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
@@ -796,6 +863,28 @@ class TimeOfDayResponse(dict):
 
 
 @pulumi.output_type
+class TransferManifestResponse(dict):
+    """
+    Specifies where the manifest is located.
+    """
+    def __init__(__self__, *,
+                 location: str):
+        """
+        Specifies where the manifest is located.
+        :param str location: Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+        """
+        pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+        """
+        return pulumi.get(self, "location")
+
+
+@pulumi.output_type
 class TransferOptionsResponse(dict):
     """
     TransferOptions define the actions to be performed on objects in a transfer.
@@ -880,8 +969,16 @@ class TransferSpecResponse(dict):
             suggest = "http_data_source"
         elif key == "objectConditions":
             suggest = "object_conditions"
+        elif key == "posixDataSink":
+            suggest = "posix_data_sink"
         elif key == "posixDataSource":
             suggest = "posix_data_source"
+        elif key == "sinkAgentPoolName":
+            suggest = "sink_agent_pool_name"
+        elif key == "sourceAgentPoolName":
+            suggest = "source_agent_pool_name"
+        elif key == "transferManifest":
+            suggest = "transfer_manifest"
         elif key == "transferOptions":
             suggest = "transfer_options"
 
@@ -903,7 +1000,11 @@ class TransferSpecResponse(dict):
                  gcs_data_source: 'outputs.GcsDataResponse',
                  http_data_source: 'outputs.HttpDataResponse',
                  object_conditions: 'outputs.ObjectConditionsResponse',
+                 posix_data_sink: 'outputs.PosixFilesystemResponse',
                  posix_data_source: 'outputs.PosixFilesystemResponse',
+                 sink_agent_pool_name: str,
+                 source_agent_pool_name: str,
+                 transfer_manifest: 'outputs.TransferManifestResponse',
                  transfer_options: 'outputs.TransferOptionsResponse'):
         """
         Configuration for running a transfer.
@@ -913,7 +1014,11 @@ class TransferSpecResponse(dict):
         :param 'GcsDataResponse' gcs_data_source: A Cloud Storage data source.
         :param 'HttpDataResponse' http_data_source: An HTTP URL data source.
         :param 'ObjectConditionsResponse' object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+        :param 'PosixFilesystemResponse' posix_data_sink: A POSIX Filesystem data sink.
         :param 'PosixFilesystemResponse' posix_data_source: A POSIX Filesystem data source.
+        :param str sink_agent_pool_name: Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+        :param str source_agent_pool_name: Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+        :param 'TransferManifestResponse' transfer_manifest: A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
         :param 'TransferOptionsResponse' transfer_options: If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
         """
         pulumi.set(__self__, "aws_s3_data_source", aws_s3_data_source)
@@ -922,7 +1027,11 @@ class TransferSpecResponse(dict):
         pulumi.set(__self__, "gcs_data_source", gcs_data_source)
         pulumi.set(__self__, "http_data_source", http_data_source)
         pulumi.set(__self__, "object_conditions", object_conditions)
+        pulumi.set(__self__, "posix_data_sink", posix_data_sink)
         pulumi.set(__self__, "posix_data_source", posix_data_source)
+        pulumi.set(__self__, "sink_agent_pool_name", sink_agent_pool_name)
+        pulumi.set(__self__, "source_agent_pool_name", source_agent_pool_name)
+        pulumi.set(__self__, "transfer_manifest", transfer_manifest)
         pulumi.set(__self__, "transfer_options", transfer_options)
 
     @property
@@ -974,12 +1083,44 @@ class TransferSpecResponse(dict):
         return pulumi.get(self, "object_conditions")
 
     @property
+    @pulumi.getter(name="posixDataSink")
+    def posix_data_sink(self) -> 'outputs.PosixFilesystemResponse':
+        """
+        A POSIX Filesystem data sink.
+        """
+        return pulumi.get(self, "posix_data_sink")
+
+    @property
     @pulumi.getter(name="posixDataSource")
     def posix_data_source(self) -> 'outputs.PosixFilesystemResponse':
         """
         A POSIX Filesystem data source.
         """
         return pulumi.get(self, "posix_data_source")
+
+    @property
+    @pulumi.getter(name="sinkAgentPoolName")
+    def sink_agent_pool_name(self) -> str:
+        """
+        Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+        """
+        return pulumi.get(self, "sink_agent_pool_name")
+
+    @property
+    @pulumi.getter(name="sourceAgentPoolName")
+    def source_agent_pool_name(self) -> str:
+        """
+        Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+        """
+        return pulumi.get(self, "source_agent_pool_name")
+
+    @property
+    @pulumi.getter(name="transferManifest")
+    def transfer_manifest(self) -> 'outputs.TransferManifestResponse':
+        """
+        A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+        """
+        return pulumi.get(self, "transfer_manifest")
 
     @property
     @pulumi.getter(name="transferOptions")

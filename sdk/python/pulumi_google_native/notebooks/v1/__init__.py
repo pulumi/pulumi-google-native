@@ -13,10 +13,12 @@ from .get_execution import *
 from .get_instance import *
 from .get_instance_iam_policy import *
 from .get_runtime import *
+from .get_runtime_iam_policy import *
 from .get_schedule import *
 from .instance import *
 from .instance_iam_policy import *
 from .runtime import *
+from .runtime_iam_policy import *
 from .schedule import *
 from ._inputs import *
 from . import outputs

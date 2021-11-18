@@ -264,15 +264,15 @@ class GoogleCloudDialogflowV2NotificationConfigMessageFormat(str, Enum):
     """
     MESSAGE_FORMAT_UNSPECIFIED = "MESSAGE_FORMAT_UNSPECIFIED"
     """
-    If it is unspeified, PROTO will be used.
+    If it is unspecified, PROTO will be used.
     """
     PROTO = "PROTO"
     """
-    Pubsub message will be serialized proto.
+    Pub/Sub message will be serialized proto.
     """
     JSON = "JSON"
     """
-    Pubsub message will be json.
+    Pub/Sub message will be json.
     """
 
 

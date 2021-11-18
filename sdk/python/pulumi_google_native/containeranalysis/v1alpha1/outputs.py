@@ -59,12 +59,14 @@ __all__ = [
     'InTotoStatementResponse',
     'InstallationResponse',
     'LayerResponse',
+    'LicenseResponse',
     'LocationResponse',
+    'MaterialResponse',
     'MetadataResponse',
     'NonCompliantFileResponse',
+    'PackageInfoNoteResponse',
+    'PackageInfoOccurrenceResponse',
     'PackageIssueResponse',
-    'PackageNoteResponse',
-    'PackageOccurrenceResponse',
     'PackageResponse',
     'PgpSignedAttestationResponse',
     'RecipeResponse',
@@ -73,6 +75,11 @@ __all__ = [
     'RelationshipOccurrenceResponse',
     'RepoSourceResponse',
     'ResourceResponse',
+    'SlsaBuilderResponse',
+    'SlsaCompletenessResponse',
+    'SlsaMetadataResponse',
+    'SlsaProvenanceResponse',
+    'SlsaRecipeResponse',
     'SourceResponse',
     'StatusResponse',
     'StorageSourceResponse',
@@ -264,17 +271,17 @@ class BasisResponse(dict):
 @pulumi.output_type
 class BindingResponse(dict):
     """
-    Associates `members` with a `role`.
+    Associates `members`, or principals, with a `role`.
     """
     def __init__(__self__, *,
                  condition: 'outputs.ExprResponse',
                  members: Sequence[str],
                  role: str):
         """
-        Associates `members` with a `role`.
-        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param str role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Associates `members`, or principals, with a `role`.
+        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -284,7 +291,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def condition(self) -> 'outputs.ExprResponse':
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -292,7 +299,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -300,7 +307,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
 
@@ -313,8 +320,8 @@ class BuildDetailsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "intotoProvenance":
-            suggest = "intoto_provenance"
+        if key == "intotoStatement":
+            suggest = "intoto_statement"
         elif key == "provenanceBytes":
             suggest = "provenance_bytes"
 
@@ -330,26 +337,26 @@ class BuildDetailsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 intoto_provenance: 'outputs.InTotoProvenanceResponse',
+                 intoto_statement: 'outputs.InTotoStatementResponse',
                  provenance: 'outputs.BuildProvenanceResponse',
                  provenance_bytes: str):
         """
         Message encapsulating build provenance details.
-        :param 'InTotoProvenanceResponse' intoto_provenance: In-toto Provenance representation as defined in spec.
+        :param 'InTotoStatementResponse' intoto_statement: In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
         :param 'BuildProvenanceResponse' provenance: The actual provenance
         :param str provenance_bytes: Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
         """
-        pulumi.set(__self__, "intoto_provenance", intoto_provenance)
+        pulumi.set(__self__, "intoto_statement", intoto_statement)
         pulumi.set(__self__, "provenance", provenance)
         pulumi.set(__self__, "provenance_bytes", provenance_bytes)
 
     @property
-    @pulumi.getter(name="intotoProvenance")
-    def intoto_provenance(self) -> 'outputs.InTotoProvenanceResponse':
+    @pulumi.getter(name="intotoStatement")
+    def intoto_statement(self) -> 'outputs.InTotoStatementResponse':
         """
-        In-toto Provenance representation as defined in spec.
+        In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
         """
-        return pulumi.get(self, "intoto_provenance")
+        return pulumi.get(self, "intoto_statement")
 
     @property
     @pulumi.getter
@@ -2199,8 +2206,6 @@ class FileOccurrenceResponse(dict):
         suggest = None
         if key == "filesLicenseInfo":
             suggest = "files_license_info"
-        elif key == "licenseComments":
-            suggest = "license_comments"
         elif key == "licenseConcluded":
             suggest = "license_concluded"
 
@@ -2221,8 +2226,7 @@ class FileOccurrenceResponse(dict):
                  contributors: Sequence[str],
                  copyright: str,
                  files_license_info: Sequence[str],
-                 license_comments: str,
-                 license_concluded: str,
+                 license_concluded: 'outputs.LicenseResponse',
                  notice: str):
         """
         FileOccurrence represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
@@ -2231,8 +2235,7 @@ class FileOccurrenceResponse(dict):
         :param Sequence[str] contributors: This field provides a place for the SPDX file creator to record file contributors
         :param str copyright: Identify the copyright holder of the file, as well as any dates present
         :param Sequence[str] files_license_info: This field contains the license information actually found in the file, if any
-        :param str license_comments: This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-        :param str license_concluded: This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
+        :param 'LicenseResponse' license_concluded: This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
         :param str notice: This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
         """
         pulumi.set(__self__, "attributions", attributions)
@@ -2240,7 +2243,6 @@ class FileOccurrenceResponse(dict):
         pulumi.set(__self__, "contributors", contributors)
         pulumi.set(__self__, "copyright", copyright)
         pulumi.set(__self__, "files_license_info", files_license_info)
-        pulumi.set(__self__, "license_comments", license_comments)
         pulumi.set(__self__, "license_concluded", license_concluded)
         pulumi.set(__self__, "notice", notice)
 
@@ -2285,16 +2287,8 @@ class FileOccurrenceResponse(dict):
         return pulumi.get(self, "files_license_info")
 
     @property
-    @pulumi.getter(name="licenseComments")
-    def license_comments(self) -> str:
-        """
-        This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-        """
-        return pulumi.get(self, "license_comments")
-
-    @property
     @pulumi.getter(name="licenseConcluded")
-    def license_concluded(self) -> str:
+    def license_concluded(self) -> 'outputs.LicenseResponse':
         """
         This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
         """
@@ -2879,6 +2873,8 @@ class InTotoStatementResponse(dict):
         suggest = None
         if key == "predicateType":
             suggest = "predicate_type"
+        elif key == "slsaProvenance":
+            suggest = "slsa_provenance"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InTotoStatementResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2894,15 +2890,20 @@ class InTotoStatementResponse(dict):
     def __init__(__self__, *,
                  predicate_type: str,
                  provenance: 'outputs.InTotoProvenanceResponse',
+                 slsa_provenance: 'outputs.SlsaProvenanceResponse',
                  subject: Sequence['outputs.SubjectResponse'],
                  type: str):
         """
         Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
-        :param str predicate_type: "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+        :param str predicate_type: "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+        :param 'InTotoProvenanceResponse' provenance: provenance is a predicate of type intotoprovenance
+        :param 'SlsaProvenanceResponse' slsa_provenance: slsa_provenance is a predicate of type slsaProvenance
+        :param Sequence['SubjectResponse'] subject: subject is the subjects of the intoto statement
         :param str type: Always "https://in-toto.io/Statement/v0.1".
         """
         pulumi.set(__self__, "predicate_type", predicate_type)
         pulumi.set(__self__, "provenance", provenance)
+        pulumi.set(__self__, "slsa_provenance", slsa_provenance)
         pulumi.set(__self__, "subject", subject)
         pulumi.set(__self__, "type", type)
 
@@ -2910,18 +2911,32 @@ class InTotoStatementResponse(dict):
     @pulumi.getter(name="predicateType")
     def predicate_type(self) -> str:
         """
-        "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+        "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
         """
         return pulumi.get(self, "predicate_type")
 
     @property
     @pulumi.getter
     def provenance(self) -> 'outputs.InTotoProvenanceResponse':
+        """
+        provenance is a predicate of type intotoprovenance
+        """
         return pulumi.get(self, "provenance")
+
+    @property
+    @pulumi.getter(name="slsaProvenance")
+    def slsa_provenance(self) -> 'outputs.SlsaProvenanceResponse':
+        """
+        slsa_provenance is a predicate of type slsaProvenance
+        """
+        return pulumi.get(self, "slsa_provenance")
 
     @property
     @pulumi.getter
     def subject(self) -> Sequence['outputs.SubjectResponse']:
+        """
+        subject is the subjects of the intoto statement
+        """
         return pulumi.get(self, "subject")
 
     @property
@@ -3000,6 +3015,39 @@ class LayerResponse(dict):
 
 
 @pulumi.output_type
+class LicenseResponse(dict):
+    """
+    License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+    """
+    def __init__(__self__, *,
+                 comments: str,
+                 expression: str):
+        """
+        License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+        :param str comments: Comments
+        :param str expression: Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+        """
+        pulumi.set(__self__, "comments", comments)
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter
+    def comments(self) -> str:
+        """
+        Comments
+        """
+        return pulumi.get(self, "comments")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+        """
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
 class LocationResponse(dict):
     """
     An occurrence of a particular package installation found within a system's filesystem. e.g. glibc was found in /var/lib/dpkg/status
@@ -3058,6 +3106,39 @@ class LocationResponse(dict):
         The version installed at this location.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class MaterialResponse(dict):
+    """
+    Material is a material used in the generation of the provenance
+    """
+    def __init__(__self__, *,
+                 digest: Mapping[str, str],
+                 uri: str):
+        """
+        Material is a material used in the generation of the provenance
+        :param Mapping[str, str] digest: digest is a map from a hash algorithm (e.g. sha256) to the value in the material
+        :param str uri: uri is the uri of the material
+        """
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Mapping[str, str]:
+        """
+        digest is a map from a hash algorithm (e.g. sha256) to the value in the material
+        """
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        uri is the uri of the material
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -3209,6 +3290,372 @@ class NonCompliantFileResponse(dict):
 
 
 @pulumi.output_type
+class PackageInfoNoteResponse(dict):
+    """
+    PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "detailedDescription":
+            suggest = "detailed_description"
+        elif key == "downloadLocation":
+            suggest = "download_location"
+        elif key == "externalRefs":
+            suggest = "external_refs"
+        elif key == "filesLicenseInfo":
+            suggest = "files_license_info"
+        elif key == "homePage":
+            suggest = "home_page"
+        elif key == "licenseDeclared":
+            suggest = "license_declared"
+        elif key == "packageType":
+            suggest = "package_type"
+        elif key == "summaryDescription":
+            suggest = "summary_description"
+        elif key == "verificationCode":
+            suggest = "verification_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PackageInfoNoteResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PackageInfoNoteResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PackageInfoNoteResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 analyzed: bool,
+                 attribution: str,
+                 checksum: str,
+                 copyright: str,
+                 detailed_description: str,
+                 download_location: str,
+                 external_refs: Sequence['outputs.ExternalRefResponse'],
+                 files_license_info: Sequence[str],
+                 home_page: str,
+                 license_declared: 'outputs.LicenseResponse',
+                 originator: str,
+                 package_type: str,
+                 summary_description: str,
+                 supplier: str,
+                 title: str,
+                 verification_code: str,
+                 version: str):
+        """
+        PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+        :param bool analyzed: Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+        :param str attribution: A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+        :param str checksum: Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+        :param str copyright: Identify the copyright holders of the package, as well as any dates present
+        :param str detailed_description: A more detailed description of the package
+        :param str download_location: This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+        :param Sequence['ExternalRefResponse'] external_refs: ExternalRef
+        :param Sequence[str] files_license_info: Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+        :param str home_page: Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+        :param 'LicenseResponse' license_declared: List the licenses that have been declared by the authors of the package
+        :param str originator: If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+        :param str package_type: The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+        :param str summary_description: A short description of the package
+        :param str supplier: Identify the actual distribution source for the package/directory identified in the SPDX file
+        :param str title: Identify the full name of the package as given by the Package Originator
+        :param str verification_code: This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+        :param str version: Identify the version of the package
+        """
+        pulumi.set(__self__, "analyzed", analyzed)
+        pulumi.set(__self__, "attribution", attribution)
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "copyright", copyright)
+        pulumi.set(__self__, "detailed_description", detailed_description)
+        pulumi.set(__self__, "download_location", download_location)
+        pulumi.set(__self__, "external_refs", external_refs)
+        pulumi.set(__self__, "files_license_info", files_license_info)
+        pulumi.set(__self__, "home_page", home_page)
+        pulumi.set(__self__, "license_declared", license_declared)
+        pulumi.set(__self__, "originator", originator)
+        pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "summary_description", summary_description)
+        pulumi.set(__self__, "supplier", supplier)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "verification_code", verification_code)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def analyzed(self) -> bool:
+        """
+        Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+        """
+        return pulumi.get(self, "analyzed")
+
+    @property
+    @pulumi.getter
+    def attribution(self) -> str:
+        """
+        A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+        """
+        return pulumi.get(self, "attribution")
+
+    @property
+    @pulumi.getter
+    def checksum(self) -> str:
+        """
+        Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+        """
+        return pulumi.get(self, "checksum")
+
+    @property
+    @pulumi.getter
+    def copyright(self) -> str:
+        """
+        Identify the copyright holders of the package, as well as any dates present
+        """
+        return pulumi.get(self, "copyright")
+
+    @property
+    @pulumi.getter(name="detailedDescription")
+    def detailed_description(self) -> str:
+        """
+        A more detailed description of the package
+        """
+        return pulumi.get(self, "detailed_description")
+
+    @property
+    @pulumi.getter(name="downloadLocation")
+    def download_location(self) -> str:
+        """
+        This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+        """
+        return pulumi.get(self, "download_location")
+
+    @property
+    @pulumi.getter(name="externalRefs")
+    def external_refs(self) -> Sequence['outputs.ExternalRefResponse']:
+        """
+        ExternalRef
+        """
+        return pulumi.get(self, "external_refs")
+
+    @property
+    @pulumi.getter(name="filesLicenseInfo")
+    def files_license_info(self) -> Sequence[str]:
+        """
+        Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+        """
+        return pulumi.get(self, "files_license_info")
+
+    @property
+    @pulumi.getter(name="homePage")
+    def home_page(self) -> str:
+        """
+        Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+        """
+        return pulumi.get(self, "home_page")
+
+    @property
+    @pulumi.getter(name="licenseDeclared")
+    def license_declared(self) -> 'outputs.LicenseResponse':
+        """
+        List the licenses that have been declared by the authors of the package
+        """
+        return pulumi.get(self, "license_declared")
+
+    @property
+    @pulumi.getter
+    def originator(self) -> str:
+        """
+        If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+        """
+        return pulumi.get(self, "originator")
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> str:
+        """
+        The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+        """
+        return pulumi.get(self, "package_type")
+
+    @property
+    @pulumi.getter(name="summaryDescription")
+    def summary_description(self) -> str:
+        """
+        A short description of the package
+        """
+        return pulumi.get(self, "summary_description")
+
+    @property
+    @pulumi.getter
+    def supplier(self) -> str:
+        """
+        Identify the actual distribution source for the package/directory identified in the SPDX file
+        """
+        return pulumi.get(self, "supplier")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        Identify the full name of the package as given by the Package Originator
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter(name="verificationCode")
+    def verification_code(self) -> str:
+        """
+        This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+        """
+        return pulumi.get(self, "verification_code")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Identify the version of the package
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class PackageInfoOccurrenceResponse(dict):
+    """
+    PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "homePage":
+            suggest = "home_page"
+        elif key == "licenseConcluded":
+            suggest = "license_concluded"
+        elif key == "packageType":
+            suggest = "package_type"
+        elif key == "sourceInfo":
+            suggest = "source_info"
+        elif key == "summaryDescription":
+            suggest = "summary_description"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PackageInfoOccurrenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PackageInfoOccurrenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PackageInfoOccurrenceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comment: str,
+                 filename: str,
+                 home_page: str,
+                 license_concluded: 'outputs.LicenseResponse',
+                 package_type: str,
+                 source_info: str,
+                 summary_description: str,
+                 title: str,
+                 version: str):
+        """
+        PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+        :param str comment: A place for the SPDX file creator to record any general comments about the package being described
+        :param str filename: Provide the actual file name of the package, or path of the directory being treated as a package
+        :param str home_page: Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+        :param 'LicenseResponse' license_concluded: package or alternative values, if the governing license cannot be determined
+        :param str package_type: The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+        :param str source_info: Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+        :param str summary_description: A short description of the package
+        :param str title: Identify the full name of the package as given by the Package Originator
+        :param str version: Identify the version of the package
+        """
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "filename", filename)
+        pulumi.set(__self__, "home_page", home_page)
+        pulumi.set(__self__, "license_concluded", license_concluded)
+        pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "source_info", source_info)
+        pulumi.set(__self__, "summary_description", summary_description)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> str:
+        """
+        A place for the SPDX file creator to record any general comments about the package being described
+        """
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter
+    def filename(self) -> str:
+        """
+        Provide the actual file name of the package, or path of the directory being treated as a package
+        """
+        return pulumi.get(self, "filename")
+
+    @property
+    @pulumi.getter(name="homePage")
+    def home_page(self) -> str:
+        """
+        Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+        """
+        return pulumi.get(self, "home_page")
+
+    @property
+    @pulumi.getter(name="licenseConcluded")
+    def license_concluded(self) -> 'outputs.LicenseResponse':
+        """
+        package or alternative values, if the governing license cannot be determined
+        """
+        return pulumi.get(self, "license_concluded")
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> str:
+        """
+        The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+        """
+        return pulumi.get(self, "package_type")
+
+    @property
+    @pulumi.getter(name="sourceInfo")
+    def source_info(self) -> str:
+        """
+        Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+        """
+        return pulumi.get(self, "source_info")
+
+    @property
+    @pulumi.getter(name="summaryDescription")
+    def summary_description(self) -> str:
+        """
+        A short description of the package
+        """
+        return pulumi.get(self, "summary_description")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        Identify the full name of the package as given by the Package Originator
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Identify the version of the package
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
 class PackageIssueResponse(dict):
     """
     This message wraps a location affected by a vulnerability and its associated fix (if one is available).
@@ -3293,311 +3740,6 @@ class PackageIssueResponse(dict):
     @pulumi.getter(name="severityName")
     def severity_name(self) -> str:
         return pulumi.get(self, "severity_name")
-
-
-@pulumi.output_type
-class PackageNoteResponse(dict):
-    """
-    PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "detailedDescription":
-            suggest = "detailed_description"
-        elif key == "downloadLocation":
-            suggest = "download_location"
-        elif key == "externalRefs":
-            suggest = "external_refs"
-        elif key == "filesLicenseInfo":
-            suggest = "files_license_info"
-        elif key == "homePage":
-            suggest = "home_page"
-        elif key == "licenseDeclared":
-            suggest = "license_declared"
-        elif key == "summaryDescription":
-            suggest = "summary_description"
-        elif key == "verificationCode":
-            suggest = "verification_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PackageNoteResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PackageNoteResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PackageNoteResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 analyzed: bool,
-                 attribution: str,
-                 checksum: str,
-                 copyright: str,
-                 detailed_description: str,
-                 download_location: str,
-                 external_refs: Sequence['outputs.ExternalRefResponse'],
-                 files_license_info: Sequence[str],
-                 home_page: str,
-                 license_declared: str,
-                 originator: str,
-                 summary_description: str,
-                 supplier: str,
-                 title: str,
-                 verification_code: str,
-                 version: str):
-        """
-        PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-        :param bool analyzed: Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-        :param str attribution: A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-        :param str checksum: Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-        :param str copyright: Identify the copyright holders of the package, as well as any dates present
-        :param str detailed_description: A more detailed description of the package
-        :param str download_location: This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-        :param Sequence['ExternalRefResponse'] external_refs: ExternalRef
-        :param Sequence[str] files_license_info: Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-        :param str home_page: Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-        :param str license_declared: List the licenses that have been declared by the authors of the package
-        :param str originator: If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-        :param str summary_description: A short description of the package
-        :param str supplier: Identify the actual distribution source for the package/directory identified in the SPDX file
-        :param str title: Identify the full name of the package as given by the Package Originator
-        :param str verification_code: This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-        :param str version: Identify the version of the package
-        """
-        pulumi.set(__self__, "analyzed", analyzed)
-        pulumi.set(__self__, "attribution", attribution)
-        pulumi.set(__self__, "checksum", checksum)
-        pulumi.set(__self__, "copyright", copyright)
-        pulumi.set(__self__, "detailed_description", detailed_description)
-        pulumi.set(__self__, "download_location", download_location)
-        pulumi.set(__self__, "external_refs", external_refs)
-        pulumi.set(__self__, "files_license_info", files_license_info)
-        pulumi.set(__self__, "home_page", home_page)
-        pulumi.set(__self__, "license_declared", license_declared)
-        pulumi.set(__self__, "originator", originator)
-        pulumi.set(__self__, "summary_description", summary_description)
-        pulumi.set(__self__, "supplier", supplier)
-        pulumi.set(__self__, "title", title)
-        pulumi.set(__self__, "verification_code", verification_code)
-        pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter
-    def analyzed(self) -> bool:
-        """
-        Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-        """
-        return pulumi.get(self, "analyzed")
-
-    @property
-    @pulumi.getter
-    def attribution(self) -> str:
-        """
-        A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-        """
-        return pulumi.get(self, "attribution")
-
-    @property
-    @pulumi.getter
-    def checksum(self) -> str:
-        """
-        Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-        """
-        return pulumi.get(self, "checksum")
-
-    @property
-    @pulumi.getter
-    def copyright(self) -> str:
-        """
-        Identify the copyright holders of the package, as well as any dates present
-        """
-        return pulumi.get(self, "copyright")
-
-    @property
-    @pulumi.getter(name="detailedDescription")
-    def detailed_description(self) -> str:
-        """
-        A more detailed description of the package
-        """
-        return pulumi.get(self, "detailed_description")
-
-    @property
-    @pulumi.getter(name="downloadLocation")
-    def download_location(self) -> str:
-        """
-        This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-        """
-        return pulumi.get(self, "download_location")
-
-    @property
-    @pulumi.getter(name="externalRefs")
-    def external_refs(self) -> Sequence['outputs.ExternalRefResponse']:
-        """
-        ExternalRef
-        """
-        return pulumi.get(self, "external_refs")
-
-    @property
-    @pulumi.getter(name="filesLicenseInfo")
-    def files_license_info(self) -> Sequence[str]:
-        """
-        Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-        """
-        return pulumi.get(self, "files_license_info")
-
-    @property
-    @pulumi.getter(name="homePage")
-    def home_page(self) -> str:
-        """
-        Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-        """
-        return pulumi.get(self, "home_page")
-
-    @property
-    @pulumi.getter(name="licenseDeclared")
-    def license_declared(self) -> str:
-        """
-        List the licenses that have been declared by the authors of the package
-        """
-        return pulumi.get(self, "license_declared")
-
-    @property
-    @pulumi.getter
-    def originator(self) -> str:
-        """
-        If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-        """
-        return pulumi.get(self, "originator")
-
-    @property
-    @pulumi.getter(name="summaryDescription")
-    def summary_description(self) -> str:
-        """
-        A short description of the package
-        """
-        return pulumi.get(self, "summary_description")
-
-    @property
-    @pulumi.getter
-    def supplier(self) -> str:
-        """
-        Identify the actual distribution source for the package/directory identified in the SPDX file
-        """
-        return pulumi.get(self, "supplier")
-
-    @property
-    @pulumi.getter
-    def title(self) -> str:
-        """
-        Identify the full name of the package as given by the Package Originator
-        """
-        return pulumi.get(self, "title")
-
-    @property
-    @pulumi.getter(name="verificationCode")
-    def verification_code(self) -> str:
-        """
-        This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-        """
-        return pulumi.get(self, "verification_code")
-
-    @property
-    @pulumi.getter
-    def version(self) -> str:
-        """
-        Identify the version of the package
-        """
-        return pulumi.get(self, "version")
-
-
-@pulumi.output_type
-class PackageOccurrenceResponse(dict):
-    """
-    PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "licenseComments":
-            suggest = "license_comments"
-        elif key == "licenseConcluded":
-            suggest = "license_concluded"
-        elif key == "sourceInfo":
-            suggest = "source_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PackageOccurrenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PackageOccurrenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PackageOccurrenceResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 comment: str,
-                 filename: str,
-                 license_comments: str,
-                 license_concluded: str,
-                 source_info: str):
-        """
-        PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-        :param str comment: A place for the SPDX file creator to record any general comments about the package being described
-        :param str filename: Provide the actual file name of the package, or path of the directory being treated as a package
-        :param str license_comments: This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-        :param str license_concluded: package or alternative values, if the governing license cannot be determined
-        :param str source_info: Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-        """
-        pulumi.set(__self__, "comment", comment)
-        pulumi.set(__self__, "filename", filename)
-        pulumi.set(__self__, "license_comments", license_comments)
-        pulumi.set(__self__, "license_concluded", license_concluded)
-        pulumi.set(__self__, "source_info", source_info)
-
-    @property
-    @pulumi.getter
-    def comment(self) -> str:
-        """
-        A place for the SPDX file creator to record any general comments about the package being described
-        """
-        return pulumi.get(self, "comment")
-
-    @property
-    @pulumi.getter
-    def filename(self) -> str:
-        """
-        Provide the actual file name of the package, or path of the directory being treated as a package
-        """
-        return pulumi.get(self, "filename")
-
-    @property
-    @pulumi.getter(name="licenseComments")
-    def license_comments(self) -> str:
-        """
-        This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-        """
-        return pulumi.get(self, "license_comments")
-
-    @property
-    @pulumi.getter(name="licenseConcluded")
-    def license_concluded(self) -> str:
-        """
-        package or alternative values, if the governing license cannot be determined
-        """
-        return pulumi.get(self, "license_concluded")
-
-    @property
-    @pulumi.getter(name="sourceInfo")
-    def source_info(self) -> str:
-        """
-        Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-        """
-        return pulumi.get(self, "source_info")
 
 
 @pulumi.output_type
@@ -3819,11 +3961,21 @@ class RelationshipNoteResponse(dict):
     """
     RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
     """
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 type: str):
         """
         RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+        :param str type: The type of relationship between the source and target SPDX elements
         """
-        pass
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of relationship between the source and target SPDX elements
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -4032,6 +4184,289 @@ class ResourceResponse(dict):
 
 
 @pulumi.output_type
+class SlsaBuilderResponse(dict):
+    """
+    SlsaBuilder encapsulates the identity of the builder of this provenance.
+    """
+    def __init__(__self__):
+        """
+        SlsaBuilder encapsulates the identity of the builder of this provenance.
+        """
+        pass
+
+
+@pulumi.output_type
+class SlsaCompletenessResponse(dict):
+    """
+    Indicates that the builder claims certain fields in this message to be complete.
+    """
+    def __init__(__self__, *,
+                 arguments: bool,
+                 environment: bool,
+                 materials: bool):
+        """
+        Indicates that the builder claims certain fields in this message to be complete.
+        :param bool arguments: If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+        :param bool environment: If true, the builder claims that recipe.environment is claimed to be complete.
+        :param bool materials: If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+        """
+        pulumi.set(__self__, "arguments", arguments)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "materials", materials)
+
+    @property
+    @pulumi.getter
+    def arguments(self) -> bool:
+        """
+        If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+        """
+        return pulumi.get(self, "arguments")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> bool:
+        """
+        If true, the builder claims that recipe.environment is claimed to be complete.
+        """
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def materials(self) -> bool:
+        """
+        If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+        """
+        return pulumi.get(self, "materials")
+
+
+@pulumi.output_type
+class SlsaMetadataResponse(dict):
+    """
+    Other properties of the build.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildFinishedOn":
+            suggest = "build_finished_on"
+        elif key == "buildInvocationId":
+            suggest = "build_invocation_id"
+        elif key == "buildStartedOn":
+            suggest = "build_started_on"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SlsaMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SlsaMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SlsaMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 build_finished_on: str,
+                 build_invocation_id: str,
+                 build_started_on: str,
+                 completeness: 'outputs.SlsaCompletenessResponse',
+                 reproducible: bool):
+        """
+        Other properties of the build.
+        :param str build_finished_on: The timestamp of when the build completed.
+        :param str build_invocation_id: Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+        :param str build_started_on: The timestamp of when the build started.
+        :param 'SlsaCompletenessResponse' completeness: Indicates that the builder claims certain fields in this message to be complete.
+        :param bool reproducible: If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+        """
+        pulumi.set(__self__, "build_finished_on", build_finished_on)
+        pulumi.set(__self__, "build_invocation_id", build_invocation_id)
+        pulumi.set(__self__, "build_started_on", build_started_on)
+        pulumi.set(__self__, "completeness", completeness)
+        pulumi.set(__self__, "reproducible", reproducible)
+
+    @property
+    @pulumi.getter(name="buildFinishedOn")
+    def build_finished_on(self) -> str:
+        """
+        The timestamp of when the build completed.
+        """
+        return pulumi.get(self, "build_finished_on")
+
+    @property
+    @pulumi.getter(name="buildInvocationId")
+    def build_invocation_id(self) -> str:
+        """
+        Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+        """
+        return pulumi.get(self, "build_invocation_id")
+
+    @property
+    @pulumi.getter(name="buildStartedOn")
+    def build_started_on(self) -> str:
+        """
+        The timestamp of when the build started.
+        """
+        return pulumi.get(self, "build_started_on")
+
+    @property
+    @pulumi.getter
+    def completeness(self) -> 'outputs.SlsaCompletenessResponse':
+        """
+        Indicates that the builder claims certain fields in this message to be complete.
+        """
+        return pulumi.get(self, "completeness")
+
+    @property
+    @pulumi.getter
+    def reproducible(self) -> bool:
+        """
+        If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+        """
+        return pulumi.get(self, "reproducible")
+
+
+@pulumi.output_type
+class SlsaProvenanceResponse(dict):
+    """
+    SlsaProvenance is the slsa provenance as defined by the slsa spec.
+    """
+    def __init__(__self__, *,
+                 builder: 'outputs.SlsaBuilderResponse',
+                 materials: Sequence['outputs.MaterialResponse'],
+                 metadata: 'outputs.SlsaMetadataResponse',
+                 recipe: 'outputs.SlsaRecipeResponse'):
+        """
+        SlsaProvenance is the slsa provenance as defined by the slsa spec.
+        :param 'SlsaBuilderResponse' builder: builder is the builder of this provenance
+        :param Sequence['MaterialResponse'] materials: The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+        :param 'SlsaMetadataResponse' metadata: metadata is the metadata of the provenance
+        :param 'SlsaRecipeResponse' recipe: Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
+        """
+        pulumi.set(__self__, "builder", builder)
+        pulumi.set(__self__, "materials", materials)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "recipe", recipe)
+
+    @property
+    @pulumi.getter
+    def builder(self) -> 'outputs.SlsaBuilderResponse':
+        """
+        builder is the builder of this provenance
+        """
+        return pulumi.get(self, "builder")
+
+    @property
+    @pulumi.getter
+    def materials(self) -> Sequence['outputs.MaterialResponse']:
+        """
+        The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+        """
+        return pulumi.get(self, "materials")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> 'outputs.SlsaMetadataResponse':
+        """
+        metadata is the metadata of the provenance
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def recipe(self) -> 'outputs.SlsaRecipeResponse':
+        """
+        Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
+        """
+        return pulumi.get(self, "recipe")
+
+
+@pulumi.output_type
+class SlsaRecipeResponse(dict):
+    """
+    Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "definedInMaterial":
+            suggest = "defined_in_material"
+        elif key == "entryPoint":
+            suggest = "entry_point"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SlsaRecipeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SlsaRecipeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SlsaRecipeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arguments: Mapping[str, str],
+                 defined_in_material: str,
+                 entry_point: str,
+                 environment: Mapping[str, str],
+                 type: str):
+        """
+        Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+        :param Mapping[str, str] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+        :param str defined_in_material: Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+        :param str entry_point: String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+        :param Mapping[str, str] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+        :param str type: URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+        """
+        pulumi.set(__self__, "arguments", arguments)
+        pulumi.set(__self__, "defined_in_material", defined_in_material)
+        pulumi.set(__self__, "entry_point", entry_point)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def arguments(self) -> Mapping[str, str]:
+        """
+        Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+        """
+        return pulumi.get(self, "arguments")
+
+    @property
+    @pulumi.getter(name="definedInMaterial")
+    def defined_in_material(self) -> str:
+        """
+        Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+        """
+        return pulumi.get(self, "defined_in_material")
+
+    @property
+    @pulumi.getter(name="entryPoint")
+    def entry_point(self) -> str:
+        """
+        String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+        """
+        return pulumi.get(self, "entry_point")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Mapping[str, str]:
+        """
+        Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+        """
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class SourceResponse(dict):
     """
     Source describes the location of the source used for the build.
@@ -4223,11 +4658,16 @@ class StorageSourceResponse(dict):
 
 @pulumi.output_type
 class SubjectResponse(dict):
+    """
+    Subject refers to the subject of the intoto statement
+    """
     def __init__(__self__, *,
                  digest: Mapping[str, str],
                  name: str):
         """
-        :param Mapping[str, str] digest: "": ""
+        Subject refers to the subject of the intoto statement
+        :param Mapping[str, str] digest: "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+        :param str name: name is the name of the Subject used here
         """
         pulumi.set(__self__, "digest", digest)
         pulumi.set(__self__, "name", name)
@@ -4236,13 +4676,16 @@ class SubjectResponse(dict):
     @pulumi.getter
     def digest(self) -> Mapping[str, str]:
         """
-        "": ""
+        "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
         """
         return pulumi.get(self, "digest")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        name is the name of the Subject used here
+        """
         return pulumi.get(self, "name")
 
 

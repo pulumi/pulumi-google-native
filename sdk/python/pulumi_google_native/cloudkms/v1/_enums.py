@@ -145,6 +145,18 @@ class CryptoKeyVersionTemplateAlgorithm(str, Enum):
     """
     RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA512 digest.
     """
+    RSA_SIGN_RAW_PKCS12048 = "RSA_SIGN_RAW_PKCS1_2048"
+    """
+    RSASSA-PKCS1-v1_5 signing without encoding, with a 2048 bit key.
+    """
+    RSA_SIGN_RAW_PKCS13072 = "RSA_SIGN_RAW_PKCS1_3072"
+    """
+    RSASSA-PKCS1-v1_5 signing without encoding, with a 3072 bit key.
+    """
+    RSA_SIGN_RAW_PKCS14096 = "RSA_SIGN_RAW_PKCS1_4096"
+    """
+    RSASSA-PKCS1-v1_5 signing without encoding, with a 4096 bit key.
+    """
     RSA_DECRYPT_OAEP2048_SHA256 = "RSA_DECRYPT_OAEP_2048_SHA256"
     """
     RSAES-OAEP 2048 bit key with a SHA256 digest.

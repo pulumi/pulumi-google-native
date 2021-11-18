@@ -80,10 +80,10 @@ class BindingArgs:
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        Associates `members` with a `role`.
-        :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param pulumi.Input[str] role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Associates `members`, or principals, with a `role`.
+        :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -96,7 +96,7 @@ class BindingArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['ExprArgs']]:
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -108,7 +108,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -120,7 +120,7 @@ class BindingArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
 
@@ -174,7 +174,7 @@ class DataprocParametersArgs:
                  cluster: Optional[pulumi.Input[str]] = None):
         """
         Parameters used in Dataproc JobType executions.
-        :param pulumi.Input[str] cluster: URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+        :param pulumi.Input[str] cluster: URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -183,7 +183,7 @@ class DataprocParametersArgs:
     @pulumi.getter
     def cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+        URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
         """
         return pulumi.get(self, "cluster")
 
@@ -224,6 +224,7 @@ class ExecutionTemplateArgs:
                  dataproc_parameters: Optional[pulumi.Input['DataprocParametersArgs']] = None,
                  input_notebook_file: Optional[pulumi.Input[str]] = None,
                  job_type: Optional[pulumi.Input['ExecutionTemplateJobType']] = None,
+                 kernel_spec: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_type: Optional[pulumi.Input[str]] = None,
                  output_notebook_folder: Optional[pulumi.Input[str]] = None,
@@ -236,13 +237,14 @@ class ExecutionTemplateArgs:
         :param pulumi.Input['SchedulerAcceleratorConfigArgs'] accelerator_config: Configuration (count and accelerator type) for hardware running notebook execution.
         :param pulumi.Input[str] container_image_uri: Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
         :param pulumi.Input['DataprocParametersArgs'] dataproc_parameters: Parameters used in Dataproc JobType executions.
-        :param pulumi.Input[str] input_notebook_file: Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        :param pulumi.Input[str] input_notebook_file: Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: `gs://{bucket_name}/{folder}/{notebook_file_name}` Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb`
         :param pulumi.Input['ExecutionTemplateJobType'] job_type: The type of Job to be used on this execution.
+        :param pulumi.Input[str] kernel_spec: Name of the kernel spec to use. This must be specified if the kernel spec name on the execution target does not match the name in the input notebook file.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
         :param pulumi.Input[str] master_type: Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU](https://cloud.google.com/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
-        :param pulumi.Input[str] output_notebook_folder: Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+        :param pulumi.Input[str] output_notebook_folder: Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: `gs://{bucket_name}/{folder}` Ex: `gs://notebook_user/scheduled_notebooks`
         :param pulumi.Input[str] parameters: Parameters used within the 'input_notebook_file' notebook.
-        :param pulumi.Input[str] params_yaml_file: Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+        :param pulumi.Input[str] params_yaml_file: Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
         :param pulumi.Input[str] service_account: The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
         :param pulumi.Input['VertexAIParametersArgs'] vertex_ai_parameters: Parameters used in Vertex AI JobType executions.
         """
@@ -256,6 +258,8 @@ class ExecutionTemplateArgs:
             pulumi.set(__self__, "input_notebook_file", input_notebook_file)
         if job_type is not None:
             pulumi.set(__self__, "job_type", job_type)
+        if kernel_spec is not None:
+            pulumi.set(__self__, "kernel_spec", kernel_spec)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if master_type is not None:
@@ -311,7 +315,7 @@ class ExecutionTemplateArgs:
     @pulumi.getter(name="inputNotebookFile")
     def input_notebook_file(self) -> Optional[pulumi.Input[str]]:
         """
-        Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: `gs://{bucket_name}/{folder}/{notebook_file_name}` Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb`
         """
         return pulumi.get(self, "input_notebook_file")
 
@@ -330,6 +334,18 @@ class ExecutionTemplateArgs:
     @job_type.setter
     def job_type(self, value: Optional[pulumi.Input['ExecutionTemplateJobType']]):
         pulumi.set(self, "job_type", value)
+
+    @property
+    @pulumi.getter(name="kernelSpec")
+    def kernel_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the kernel spec to use. This must be specified if the kernel spec name on the execution target does not match the name in the input notebook file.
+        """
+        return pulumi.get(self, "kernel_spec")
+
+    @kernel_spec.setter
+    def kernel_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kernel_spec", value)
 
     @property
     @pulumi.getter
@@ -359,7 +375,7 @@ class ExecutionTemplateArgs:
     @pulumi.getter(name="outputNotebookFolder")
     def output_notebook_folder(self) -> Optional[pulumi.Input[str]]:
         """
-        Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+        Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: `gs://{bucket_name}/{folder}` Ex: `gs://notebook_user/scheduled_notebooks`
         """
         return pulumi.get(self, "output_notebook_folder")
 
@@ -383,7 +399,7 @@ class ExecutionTemplateArgs:
     @pulumi.getter(name="paramsYamlFile")
     def params_yaml_file(self) -> Optional[pulumi.Input[str]]:
         """
-        Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+        Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
         """
         return pulumi.get(self, "params_yaml_file")
 
@@ -874,7 +890,7 @@ class RuntimeSoftwareConfigArgs:
         :param pulumi.Input[int] idle_shutdown_timeout: Time in minutes to wait before shutting down runtime. Default: 180 minutes
         :param pulumi.Input[bool] install_gpu_driver: Install Nvidia Driver automatically.
         :param pulumi.Input[str] notebook_upgrade_schedule: Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
-        :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         """
         if custom_gpu_driver_path is not None:
             pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
@@ -967,7 +983,7 @@ class RuntimeSoftwareConfigArgs:
     @pulumi.getter(name="postStartupScript")
     def post_startup_script(self) -> Optional[pulumi.Input[str]]:
         """
-        Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         """
         return pulumi.get(self, "post_startup_script")
 
@@ -1243,13 +1259,29 @@ class UpgradeHistoryEntryArgs:
 @pulumi.input_type
 class VertexAIParametersArgs:
     def __init__(__self__, *,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None):
         """
         Parameters used in Vertex AI JobType executions.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: Environment variables. At most 100 environment variables can be specified and unique. Example: GCP_BUCKET=gs://my-bucket/samples/
         :param pulumi.Input[str] network: The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
         """
+        if env is not None:
+            pulumi.set(__self__, "env", env)
         if network is not None:
             pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Environment variables. At most 100 environment variables can be specified and unique. Example: GCP_BUCKET=gs://my-bucket/samples/
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "env", value)
 
     @property
     @pulumi.getter

@@ -29,7 +29,7 @@ class OccurrenceArgs:
                  remediation: Optional[pulumi.Input[str]] = None,
                  sbom: Optional[pulumi.Input['DocumentOccurrenceArgs']] = None,
                  spdx_file: Optional[pulumi.Input['FileOccurrenceArgs']] = None,
-                 spdx_package: Optional[pulumi.Input['PackageOccurrenceArgs']] = None,
+                 spdx_package: Optional[pulumi.Input['PackageInfoOccurrenceArgs']] = None,
                  spdx_relationship: Optional[pulumi.Input['RelationshipOccurrenceArgs']] = None,
                  vulnerability: Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsArgs']] = None):
         """
@@ -44,9 +44,9 @@ class OccurrenceArgs:
         :param pulumi.Input['GrafeasV1beta1PackageDetailsArgs'] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input['GrafeasV1beta1IntotoDetailsArgs'] intoto: Describes a specific in-toto link.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
-        :param pulumi.Input['DocumentOccurrenceArgs'] sbom: Describes a specific SPDX Document.
+        :param pulumi.Input['DocumentOccurrenceArgs'] sbom: Describes a specific software bill of materials document.
         :param pulumi.Input['FileOccurrenceArgs'] spdx_file: Describes a specific SPDX File.
-        :param pulumi.Input['PackageOccurrenceArgs'] spdx_package: Describes a specific SPDX Package.
+        :param pulumi.Input['PackageInfoOccurrenceArgs'] spdx_package: Describes a specific SPDX Package.
         :param pulumi.Input['RelationshipOccurrenceArgs'] spdx_relationship: Describes a specific SPDX Relationship.
         :param pulumi.Input['GrafeasV1beta1VulnerabilityDetailsArgs'] vulnerability: Describes a security vulnerability.
         """
@@ -214,7 +214,7 @@ class OccurrenceArgs:
     @pulumi.getter
     def sbom(self) -> Optional[pulumi.Input['DocumentOccurrenceArgs']]:
         """
-        Describes a specific SPDX Document.
+        Describes a specific software bill of materials document.
         """
         return pulumi.get(self, "sbom")
 
@@ -236,14 +236,14 @@ class OccurrenceArgs:
 
     @property
     @pulumi.getter(name="spdxPackage")
-    def spdx_package(self) -> Optional[pulumi.Input['PackageOccurrenceArgs']]:
+    def spdx_package(self) -> Optional[pulumi.Input['PackageInfoOccurrenceArgs']]:
         """
         Describes a specific SPDX Package.
         """
         return pulumi.get(self, "spdx_package")
 
     @spdx_package.setter
-    def spdx_package(self, value: Optional[pulumi.Input['PackageOccurrenceArgs']]):
+    def spdx_package(self, value: Optional[pulumi.Input['PackageInfoOccurrenceArgs']]):
         pulumi.set(self, "spdx_package", value)
 
     @property
@@ -289,7 +289,7 @@ class Occurrence(pulumi.CustomResource):
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
                  spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']]] = None,
                  spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1VulnerabilityDetailsArgs']]] = None,
                  __props__=None):
@@ -309,9 +309,9 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[str] note_name: Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource: Immutable. The resource for which the occurrence applies.
-        :param pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']] sbom: Describes a specific SPDX Document.
+        :param pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']] sbom: Describes a specific software bill of materials document.
         :param pulumi.Input[pulumi.InputType['FileOccurrenceArgs']] spdx_file: Describes a specific SPDX File.
-        :param pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']] spdx_package: Describes a specific SPDX Package.
+        :param pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']] spdx_package: Describes a specific SPDX Package.
         :param pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']] spdx_relationship: Describes a specific SPDX Relationship.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1VulnerabilityDetailsArgs']] vulnerability: Describes a security vulnerability.
         """
@@ -353,7 +353,7 @@ class Occurrence(pulumi.CustomResource):
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
                  spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']]] = None,
                  spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1VulnerabilityDetailsArgs']]] = None,
                  __props__=None):
@@ -543,7 +543,7 @@ class Occurrence(pulumi.CustomResource):
     @pulumi.getter
     def sbom(self) -> pulumi.Output['outputs.DocumentOccurrenceResponse']:
         """
-        Describes a specific SPDX Document.
+        Describes a specific software bill of materials document.
         """
         return pulumi.get(self, "sbom")
 
@@ -557,7 +557,7 @@ class Occurrence(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spdxPackage")
-    def spdx_package(self) -> pulumi.Output['outputs.PackageOccurrenceResponse']:
+    def spdx_package(self) -> pulumi.Output['outputs.PackageInfoOccurrenceResponse']:
         """
         Describes a specific SPDX Package.
         """

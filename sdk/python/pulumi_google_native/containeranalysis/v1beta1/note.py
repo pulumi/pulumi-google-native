@@ -32,7 +32,7 @@ class NoteArgs:
                  sbom: Optional[pulumi.Input['DocumentNoteArgs']] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  spdx_file: Optional[pulumi.Input['FileNoteArgs']] = None,
-                 spdx_package: Optional[pulumi.Input['PackageNoteArgs']] = None,
+                 spdx_package: Optional[pulumi.Input['PackageInfoNoteArgs']] = None,
                  spdx_relationship: Optional[pulumi.Input['RelationshipNoteArgs']] = None,
                  vulnerability: Optional[pulumi.Input['VulnerabilityArgs']] = None):
         """
@@ -48,11 +48,11 @@ class NoteArgs:
         :param pulumi.Input['PackageArgs'] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Other notes related to this note.
         :param pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]] related_url: URLs associated with this note.
-        :param pulumi.Input['DocumentNoteArgs'] sbom: A note describing SPDX Document which represents SBOM.
+        :param pulumi.Input['DocumentNoteArgs'] sbom: A note describing a software bill of materials.
         :param pulumi.Input[str] short_description: A one sentence description of this note.
-        :param pulumi.Input['FileNoteArgs'] spdx_file: A note describing SPDX File.
-        :param pulumi.Input['PackageNoteArgs'] spdx_package: A note describing SPDX Package.
-        :param pulumi.Input['RelationshipNoteArgs'] spdx_relationship: A note describing SPDX Relationship.
+        :param pulumi.Input['FileNoteArgs'] spdx_file: A note describing an SPDX File.
+        :param pulumi.Input['PackageInfoNoteArgs'] spdx_package: A note describing an SPDX Package.
+        :param pulumi.Input['RelationshipNoteArgs'] spdx_relationship: A note describing an SPDX File.
         :param pulumi.Input['VulnerabilityArgs'] vulnerability: A note describing a package vulnerability.
         """
         pulumi.set(__self__, "note_id", note_id)
@@ -247,7 +247,7 @@ class NoteArgs:
     @pulumi.getter
     def sbom(self) -> Optional[pulumi.Input['DocumentNoteArgs']]:
         """
-        A note describing SPDX Document which represents SBOM.
+        A note describing a software bill of materials.
         """
         return pulumi.get(self, "sbom")
 
@@ -271,7 +271,7 @@ class NoteArgs:
     @pulumi.getter(name="spdxFile")
     def spdx_file(self) -> Optional[pulumi.Input['FileNoteArgs']]:
         """
-        A note describing SPDX File.
+        A note describing an SPDX File.
         """
         return pulumi.get(self, "spdx_file")
 
@@ -281,21 +281,21 @@ class NoteArgs:
 
     @property
     @pulumi.getter(name="spdxPackage")
-    def spdx_package(self) -> Optional[pulumi.Input['PackageNoteArgs']]:
+    def spdx_package(self) -> Optional[pulumi.Input['PackageInfoNoteArgs']]:
         """
-        A note describing SPDX Package.
+        A note describing an SPDX Package.
         """
         return pulumi.get(self, "spdx_package")
 
     @spdx_package.setter
-    def spdx_package(self, value: Optional[pulumi.Input['PackageNoteArgs']]):
+    def spdx_package(self, value: Optional[pulumi.Input['PackageInfoNoteArgs']]):
         pulumi.set(self, "spdx_package", value)
 
     @property
     @pulumi.getter(name="spdxRelationship")
     def spdx_relationship(self) -> Optional[pulumi.Input['RelationshipNoteArgs']]:
         """
-        A note describing SPDX Relationship.
+        A note describing an SPDX File.
         """
         return pulumi.get(self, "spdx_relationship")
 
@@ -337,7 +337,7 @@ class Note(pulumi.CustomResource):
                  sbom: Optional[pulumi.Input[pulumi.InputType['DocumentNoteArgs']]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  spdx_file: Optional[pulumi.Input[pulumi.InputType['FileNoteArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageNoteArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoNoteArgs']]] = None,
                  spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipNoteArgs']]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityArgs']]] = None,
                  __props__=None):
@@ -358,11 +358,11 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PackageArgs']] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Other notes related to this note.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]] related_url: URLs associated with this note.
-        :param pulumi.Input[pulumi.InputType['DocumentNoteArgs']] sbom: A note describing SPDX Document which represents SBOM.
+        :param pulumi.Input[pulumi.InputType['DocumentNoteArgs']] sbom: A note describing a software bill of materials.
         :param pulumi.Input[str] short_description: A one sentence description of this note.
-        :param pulumi.Input[pulumi.InputType['FileNoteArgs']] spdx_file: A note describing SPDX File.
-        :param pulumi.Input[pulumi.InputType['PackageNoteArgs']] spdx_package: A note describing SPDX Package.
-        :param pulumi.Input[pulumi.InputType['RelationshipNoteArgs']] spdx_relationship: A note describing SPDX Relationship.
+        :param pulumi.Input[pulumi.InputType['FileNoteArgs']] spdx_file: A note describing an SPDX File.
+        :param pulumi.Input[pulumi.InputType['PackageInfoNoteArgs']] spdx_package: A note describing an SPDX Package.
+        :param pulumi.Input[pulumi.InputType['RelationshipNoteArgs']] spdx_relationship: A note describing an SPDX File.
         :param pulumi.Input[pulumi.InputType['VulnerabilityArgs']] vulnerability: A note describing a package vulnerability.
         """
         ...
@@ -406,7 +406,7 @@ class Note(pulumi.CustomResource):
                  sbom: Optional[pulumi.Input[pulumi.InputType['DocumentNoteArgs']]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  spdx_file: Optional[pulumi.Input[pulumi.InputType['FileNoteArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageNoteArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoNoteArgs']]] = None,
                  spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipNoteArgs']]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityArgs']]] = None,
                  __props__=None):
@@ -607,7 +607,7 @@ class Note(pulumi.CustomResource):
     @pulumi.getter
     def sbom(self) -> pulumi.Output['outputs.DocumentNoteResponse']:
         """
-        A note describing SPDX Document which represents SBOM.
+        A note describing a software bill of materials.
         """
         return pulumi.get(self, "sbom")
 
@@ -623,15 +623,15 @@ class Note(pulumi.CustomResource):
     @pulumi.getter(name="spdxFile")
     def spdx_file(self) -> pulumi.Output['outputs.FileNoteResponse']:
         """
-        A note describing SPDX File.
+        A note describing an SPDX File.
         """
         return pulumi.get(self, "spdx_file")
 
     @property
     @pulumi.getter(name="spdxPackage")
-    def spdx_package(self) -> pulumi.Output['outputs.PackageNoteResponse']:
+    def spdx_package(self) -> pulumi.Output['outputs.PackageInfoNoteResponse']:
         """
-        A note describing SPDX Package.
+        A note describing an SPDX Package.
         """
         return pulumi.get(self, "spdx_package")
 
@@ -639,7 +639,7 @@ class Note(pulumi.CustomResource):
     @pulumi.getter(name="spdxRelationship")
     def spdx_relationship(self) -> pulumi.Output['outputs.RelationshipNoteResponse']:
         """
-        A note describing SPDX Relationship.
+        A note describing an SPDX File.
         """
         return pulumi.get(self, "spdx_relationship")
 

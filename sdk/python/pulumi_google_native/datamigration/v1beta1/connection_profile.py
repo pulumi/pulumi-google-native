@@ -33,7 +33,7 @@ class ConnectionProfileArgs:
         :param pulumi.Input[str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input['MySqlConnectionProfileArgs'] mysql: A MySQL database connection profile.
-        :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+        :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
         :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
@@ -129,7 +129,7 @@ class ConnectionProfileArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+        The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
         """
         return pulumi.get(self, "name")
 
@@ -206,7 +206,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']] mysql: A MySQL database connection profile.
-        :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+        :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
         :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
@@ -359,7 +359,7 @@ class ConnectionProfile(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+        The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
         """
         return pulumi.get(self, "name")
 

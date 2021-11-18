@@ -104,7 +104,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
+        Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -120,7 +120,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
                  args: BillingAccountExclusionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
+        Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
 
         :param str resource_name: The name of the resource.
         :param BillingAccountExclusionArgs args: The arguments to use to populate this resource's properties.

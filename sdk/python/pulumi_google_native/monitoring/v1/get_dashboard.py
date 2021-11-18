@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDashboardResult:
-    def __init__(__self__, column_layout=None, display_name=None, etag=None, grid_layout=None, mosaic_layout=None, name=None, row_layout=None):
+    def __init__(__self__, column_layout=None, display_name=None, etag=None, grid_layout=None, labels=None, mosaic_layout=None, name=None, row_layout=None):
         if column_layout and not isinstance(column_layout, dict):
             raise TypeError("Expected argument 'column_layout' to be a dict")
         pulumi.set(__self__, "column_layout", column_layout)
@@ -31,6 +31,9 @@ class GetDashboardResult:
         if grid_layout and not isinstance(grid_layout, dict):
             raise TypeError("Expected argument 'grid_layout' to be a dict")
         pulumi.set(__self__, "grid_layout", grid_layout)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if mosaic_layout and not isinstance(mosaic_layout, dict):
             raise TypeError("Expected argument 'mosaic_layout' to be a dict")
         pulumi.set(__self__, "mosaic_layout", mosaic_layout)
@@ -74,6 +77,14 @@ class GetDashboardResult:
         return pulumi.get(self, "grid_layout")
 
     @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels applied to the dashboard
+        """
+        return pulumi.get(self, "labels")
+
+    @property
     @pulumi.getter(name="mosaicLayout")
     def mosaic_layout(self) -> 'outputs.MosaicLayoutResponse':
         """
@@ -108,6 +119,7 @@ class AwaitableGetDashboardResult(GetDashboardResult):
             display_name=self.display_name,
             etag=self.etag,
             grid_layout=self.grid_layout,
+            labels=self.labels,
             mosaic_layout=self.mosaic_layout,
             name=self.name,
             row_layout=self.row_layout)
@@ -133,6 +145,7 @@ def get_dashboard(dashboard_id: Optional[str] = None,
         display_name=__ret__.display_name,
         etag=__ret__.etag,
         grid_layout=__ret__.grid_layout,
+        labels=__ret__.labels,
         mosaic_layout=__ret__.mosaic_layout,
         name=__ret__.name,
         row_layout=__ret__.row_layout)

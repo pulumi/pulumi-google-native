@@ -18,13 +18,22 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkerPoolResult:
-    def __init__(__self__, create_time=None, delete_time=None, name=None, network_config=None, state=None, update_time=None, worker_config=None):
+    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, etag=None, name=None, network_config=None, state=None, uid=None, update_time=None, worker_config=None):
+        if annotations and not isinstance(annotations, dict):
+            raise TypeError("Expected argument 'annotations' to be a dict")
+        pulumi.set(__self__, "annotations", annotations)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
+        if display_name and not isinstance(display_name, str):
+            raise TypeError("Expected argument 'display_name' to be a str")
+        pulumi.set(__self__, "display_name", display_name)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -34,12 +43,23 @@ class GetWorkerPoolResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if uid and not isinstance(uid, str):
+            raise TypeError("Expected argument 'uid' to be a str")
+        pulumi.set(__self__, "uid", uid)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
         if worker_config and not isinstance(worker_config, dict):
             raise TypeError("Expected argument 'worker_config' to be a dict")
         pulumi.set(__self__, "worker_config", worker_config)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        """
+        User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="createTime")
@@ -56,6 +76,22 @@ class GetWorkerPoolResult:
         Time at which the request to delete the `WorkerPool` was received.
         """
         return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
@@ -82,6 +118,14 @@ class GetWorkerPoolResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        A unique identifier for the `WorkerPool`.
+        """
+        return pulumi.get(self, "uid")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -104,11 +148,15 @@ class AwaitableGetWorkerPoolResult(GetWorkerPoolResult):
         if False:
             yield self
         return GetWorkerPoolResult(
+            annotations=self.annotations,
             create_time=self.create_time,
             delete_time=self.delete_time,
+            display_name=self.display_name,
+            etag=self.etag,
             name=self.name,
             network_config=self.network_config,
             state=self.state,
+            uid=self.uid,
             update_time=self.update_time,
             worker_config=self.worker_config)
 
@@ -131,11 +179,15 @@ def get_worker_pool(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudbuild/v1beta1:getWorkerPool', __args__, opts=opts, typ=GetWorkerPoolResult).value
 
     return AwaitableGetWorkerPoolResult(
+        annotations=__ret__.annotations,
         create_time=__ret__.create_time,
         delete_time=__ret__.delete_time,
+        display_name=__ret__.display_name,
+        etag=__ret__.etag,
         name=__ret__.name,
         network_config=__ret__.network_config,
         state=__ret__.state,
+        uid=__ret__.uid,
         update_time=__ret__.update_time,
         worker_config=__ret__.worker_config)
 

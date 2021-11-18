@@ -11,6 +11,7 @@ from ... import _utilities
 __all__ = [
     'BucketAccessControlProjectTeamArgs',
     'BucketAccessControlArgs',
+    'BucketAutoclassArgs',
     'BucketBillingArgs',
     'BucketCorsItemArgs',
     'BucketCustomPlacementConfigArgs',
@@ -281,6 +282,46 @@ class BucketAccessControlArgs:
     @self_link.setter
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
+
+
+@pulumi.input_type
+class BucketAutoclassArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 toggle_time: Optional[pulumi.Input[str]] = None):
+        """
+        The bucket's Autoclass configuration.
+        :param pulumi.Input[bool] enabled: Whether or not Autoclass is enabled on this bucket
+        :param pulumi.Input[str] toggle_time: A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if toggle_time is not None:
+            pulumi.set(__self__, "toggle_time", toggle_time)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not Autoclass is enabled on this bucket
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="toggleTime")
+    def toggle_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+        """
+        return pulumi.get(self, "toggle_time")
+
+    @toggle_time.setter
+    def toggle_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "toggle_time", value)
 
 
 @pulumi.input_type

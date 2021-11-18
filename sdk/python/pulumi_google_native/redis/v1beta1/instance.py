@@ -28,27 +28,33 @@ class InstanceArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['MaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 persistence_config: Optional[pulumi.Input['PersistenceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 read_replicas_mode: Optional[pulumi.Input['InstanceReadReplicasMode']] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  redis_version: Optional[pulumi.Input[str]] = None,
+                 replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input['InstanceTransitEncryptionMode']] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
-        :param pulumi.Input[str] alternative_location_id: Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in location_id.
+        :param pulumi.Input[str] alternative_location_id: Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
         :param pulumi.Input[bool] auth_enabled: Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
         :param pulumi.Input[str] authorized_network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input['InstanceConnectMode'] connect_mode: Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
-        :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, instances will be created across two zones for protection against zonal failures. If [alternative_location_id] is also provided, it must be different from [location_id].
+        :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         :param pulumi.Input['MaintenancePolicyArgs'] maintenance_policy: Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+        :param pulumi.Input['PersistenceConfigArgs'] persistence_config: Optional. Persistence configuration parameters
+        :param pulumi.Input['InstanceReadReplicasMode'] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
         :param pulumi.Input[str] redis_version: Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
-        :param pulumi.Input[str] reserved_ip_range: Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
+        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
+        :param pulumi.Input[str] reserved_ip_range: Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
         :param pulumi.Input['InstanceTransitEncryptionMode'] transit_encryption_mode: Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -72,12 +78,18 @@ class InstanceArgs:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if persistence_config is not None:
+            pulumi.set(__self__, "persistence_config", persistence_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if read_replicas_mode is not None:
+            pulumi.set(__self__, "read_replicas_mode", read_replicas_mode)
         if redis_configs is not None:
             pulumi.set(__self__, "redis_configs", redis_configs)
         if redis_version is not None:
             pulumi.set(__self__, "redis_version", redis_version)
+        if replica_count is not None:
+            pulumi.set(__self__, "replica_count", replica_count)
         if reserved_ip_range is not None:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if transit_encryption_mode is not None:
@@ -120,7 +132,7 @@ class InstanceArgs:
     @pulumi.getter(name="alternativeLocationId")
     def alternative_location_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in location_id.
+        Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
         """
         return pulumi.get(self, "alternative_location_id")
 
@@ -192,7 +204,7 @@ class InstanceArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, instances will be created across two zones for protection against zonal failures. If [alternative_location_id] is also provided, it must be different from [location_id].
+        Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         """
         return pulumi.get(self, "location")
 
@@ -225,6 +237,18 @@ class InstanceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> Optional[pulumi.Input['PersistenceConfigArgs']]:
+        """
+        Optional. Persistence configuration parameters
+        """
+        return pulumi.get(self, "persistence_config")
+
+    @persistence_config.setter
+    def persistence_config(self, value: Optional[pulumi.Input['PersistenceConfigArgs']]):
+        pulumi.set(self, "persistence_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -232,6 +256,18 @@ class InstanceArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="readReplicasMode")
+    def read_replicas_mode(self) -> Optional[pulumi.Input['InstanceReadReplicasMode']]:
+        """
+        Optional. Read replica mode. Can only be specified when trying to create the instance.
+        """
+        return pulumi.get(self, "read_replicas_mode")
+
+    @read_replicas_mode.setter
+    def read_replicas_mode(self, value: Optional[pulumi.Input['InstanceReadReplicasMode']]):
+        pulumi.set(self, "read_replicas_mode", value)
 
     @property
     @pulumi.getter(name="redisConfigs")
@@ -258,10 +294,22 @@ class InstanceArgs:
         pulumi.set(self, "redis_version", value)
 
     @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
+        """
+        return pulumi.get(self, "replica_count")
+
+    @replica_count.setter
+    def replica_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "replica_count", value)
+
+    @property
     @pulumi.getter(name="reservedIpRange")
     def reserved_ip_range(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
+        Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
         """
         return pulumi.get(self, "reserved_ip_range")
 
@@ -298,31 +346,37 @@ class Instance(pulumi.CustomResource):
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 persistence_config: Optional[pulumi.Input[pulumi.InputType['PersistenceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 read_replicas_mode: Optional[pulumi.Input['InstanceReadReplicasMode']] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  redis_version: Optional[pulumi.Input[str]] = None,
+                 replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,
                  transit_encryption_mode: Optional[pulumi.Input['InstanceTransitEncryptionMode']] = None,
                  __props__=None):
         """
-        Creates a Redis instance based on the specified tier and memory size. By default, the instance is accessible from the project's [default network](https://cloud.google.com/vpc/docs/vpc). The creation is executed asynchronously and callers may check the returned operation to track its progress. Once the operation is completed the Redis instance will be fully functional. Completed longrunning.Operation will contain the new instance object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
+        Creates a Redis instance based on the specified tier and memory size. By default, the instance is accessible from the project's [default network](https://cloud.google.com/vpc/docs/vpc). The creation is executed asynchronously and callers may check the returned operation to track its progress. Once the operation is completed the Redis instance will be fully functional. The completed longrunning.Operation will contain the new instance object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alternative_location_id: Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in location_id.
+        :param pulumi.Input[str] alternative_location_id: Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
         :param pulumi.Input[bool] auth_enabled: Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
         :param pulumi.Input[str] authorized_network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input['InstanceConnectMode'] connect_mode: Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
-        :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, instances will be created across two zones for protection against zonal failures. If [alternative_location_id] is also provided, it must be different from [location_id].
+        :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         :param pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']] maintenance_policy: Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+        :param pulumi.Input[pulumi.InputType['PersistenceConfigArgs']] persistence_config: Optional. Persistence configuration parameters
+        :param pulumi.Input['InstanceReadReplicasMode'] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
         :param pulumi.Input[str] redis_version: Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
-        :param pulumi.Input[str] reserved_ip_range: Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
+        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
+        :param pulumi.Input[str] reserved_ip_range: Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         :param pulumi.Input['InstanceTransitEncryptionMode'] transit_encryption_mode: Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
         """
@@ -333,7 +387,7 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a Redis instance based on the specified tier and memory size. By default, the instance is accessible from the project's [default network](https://cloud.google.com/vpc/docs/vpc). The creation is executed asynchronously and callers may check the returned operation to track its progress. Once the operation is completed the Redis instance will be fully functional. Completed longrunning.Operation will contain the new instance object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
+        Creates a Redis instance based on the specified tier and memory size. By default, the instance is accessible from the project's [default network](https://cloud.google.com/vpc/docs/vpc). The creation is executed asynchronously and callers may check the returned operation to track its progress. Once the operation is completed the Redis instance will be fully functional. The completed longrunning.Operation will contain the new instance object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
@@ -361,9 +415,12 @@ class Instance(pulumi.CustomResource):
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 persistence_config: Optional[pulumi.Input[pulumi.InputType['PersistenceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 read_replicas_mode: Optional[pulumi.Input['InstanceReadReplicasMode']] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  redis_version: Optional[pulumi.Input[str]] = None,
+                 replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,
                  transit_encryption_mode: Optional[pulumi.Input['InstanceTransitEncryptionMode']] = None,
@@ -394,9 +451,12 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'memory_size_gb'")
             __props__.__dict__["memory_size_gb"] = memory_size_gb
             __props__.__dict__["name"] = name
+            __props__.__dict__["persistence_config"] = persistence_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["read_replicas_mode"] = read_replicas_mode
             __props__.__dict__["redis_configs"] = redis_configs
             __props__.__dict__["redis_version"] = redis_version
+            __props__.__dict__["replica_count"] = replica_count
             __props__.__dict__["reserved_ip_range"] = reserved_ip_range
             if tier is None and not opts.urn:
                 raise TypeError("Missing required property 'tier'")
@@ -406,8 +466,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["current_location_id"] = None
             __props__.__dict__["host"] = None
             __props__.__dict__["maintenance_schedule"] = None
+            __props__.__dict__["nodes"] = None
             __props__.__dict__["persistence_iam_identity"] = None
             __props__.__dict__["port"] = None
+            __props__.__dict__["read_endpoint"] = None
+            __props__.__dict__["read_endpoint_port"] = None
             __props__.__dict__["server_ca_certs"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["status_message"] = None
@@ -447,10 +510,16 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["maintenance_schedule"] = None
         __props__.__dict__["memory_size_gb"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["nodes"] = None
+        __props__.__dict__["persistence_config"] = None
         __props__.__dict__["persistence_iam_identity"] = None
         __props__.__dict__["port"] = None
+        __props__.__dict__["read_endpoint"] = None
+        __props__.__dict__["read_endpoint_port"] = None
+        __props__.__dict__["read_replicas_mode"] = None
         __props__.__dict__["redis_configs"] = None
         __props__.__dict__["redis_version"] = None
+        __props__.__dict__["replica_count"] = None
         __props__.__dict__["reserved_ip_range"] = None
         __props__.__dict__["server_ca_certs"] = None
         __props__.__dict__["state"] = None
@@ -463,7 +532,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="alternativeLocationId")
     def alternative_location_id(self) -> pulumi.Output[str]:
         """
-        Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in location_id.
+        Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
         """
         return pulumi.get(self, "alternative_location_id")
 
@@ -503,7 +572,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="currentLocationId")
     def current_location_id(self) -> pulumi.Output[str]:
         """
-        The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the location_id provided by the user at creation time. For Standard Tier instances, this can be either location_id or alternative_location_id and can change after a failover event.
+        The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
         """
         return pulumi.get(self, "current_location_id")
 
@@ -535,7 +604,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, instances will be created across two zones for protection against zonal failures. If [alternative_location_id] is also provided, it must be different from [location_id].
+        Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         """
         return pulumi.get(self, "location")
 
@@ -572,6 +641,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def nodes(self) -> pulumi.Output[Sequence['outputs.NodeInfoResponse']]:
+        """
+        Info per node.
+        """
+        return pulumi.get(self, "nodes")
+
+    @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> pulumi.Output['outputs.PersistenceConfigResponse']:
+        """
+        Optional. Persistence configuration parameters
+        """
+        return pulumi.get(self, "persistence_config")
+
+    @property
     @pulumi.getter(name="persistenceIamIdentity")
     def persistence_iam_identity(self) -> pulumi.Output[str]:
         """
@@ -586,6 +671,30 @@ class Instance(pulumi.CustomResource):
         The port number of the exposed Redis endpoint.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="readEndpoint")
+    def read_endpoint(self) -> pulumi.Output[str]:
+        """
+        Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'.
+        """
+        return pulumi.get(self, "read_endpoint")
+
+    @property
+    @pulumi.getter(name="readEndpointPort")
+    def read_endpoint_port(self) -> pulumi.Output[int]:
+        """
+        The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target 'port'.
+        """
+        return pulumi.get(self, "read_endpoint_port")
+
+    @property
+    @pulumi.getter(name="readReplicasMode")
+    def read_replicas_mode(self) -> pulumi.Output[str]:
+        """
+        Optional. Read replica mode. Can only be specified when trying to create the instance.
+        """
+        return pulumi.get(self, "read_replicas_mode")
 
     @property
     @pulumi.getter(name="redisConfigs")
@@ -604,10 +713,18 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "redis_version")
 
     @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> pulumi.Output[int]:
+        """
+        Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
+        """
+        return pulumi.get(self, "replica_count")
+
+    @property
     @pulumi.getter(name="reservedIpRange")
     def reserved_ip_range(self) -> pulumi.Output[str]:
         """
-        Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
+        Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
         """
         return pulumi.get(self, "reserved_ip_range")
 

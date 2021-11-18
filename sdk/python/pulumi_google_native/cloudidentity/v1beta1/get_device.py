@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDeviceResult:
-    def __init__(__self__, android_specific_attributes=None, asset_tag=None, baseband_version=None, bootloader_version=None, brand=None, build_number=None, compromised_state=None, create_time=None, device_type=None, enabled_developer_options=None, enabled_usb_debugging=None, encryption_state=None, imei=None, kernel_version=None, last_sync_time=None, management_state=None, manufacturer=None, meid=None, model=None, name=None, network_operator=None, os_version=None, other_accounts=None, owner_type=None, release_version=None, security_patch_time=None, serial_number=None, wifi_mac_addresses=None):
+    def __init__(__self__, android_specific_attributes=None, asset_tag=None, baseband_version=None, bootloader_version=None, brand=None, build_number=None, compromised_state=None, create_time=None, device_type=None, enabled_developer_options=None, enabled_usb_debugging=None, encryption_state=None, endpoint_verification_specific_attributes=None, imei=None, kernel_version=None, last_sync_time=None, management_state=None, manufacturer=None, meid=None, model=None, name=None, network_operator=None, os_version=None, other_accounts=None, owner_type=None, release_version=None, security_patch_time=None, serial_number=None, wifi_mac_addresses=None):
         if android_specific_attributes and not isinstance(android_specific_attributes, dict):
             raise TypeError("Expected argument 'android_specific_attributes' to be a dict")
         pulumi.set(__self__, "android_specific_attributes", android_specific_attributes)
@@ -55,6 +55,9 @@ class GetDeviceResult:
         if encryption_state and not isinstance(encryption_state, str):
             raise TypeError("Expected argument 'encryption_state' to be a str")
         pulumi.set(__self__, "encryption_state", encryption_state)
+        if endpoint_verification_specific_attributes and not isinstance(endpoint_verification_specific_attributes, dict):
+            raise TypeError("Expected argument 'endpoint_verification_specific_attributes' to be a dict")
+        pulumi.set(__self__, "endpoint_verification_specific_attributes", endpoint_verification_specific_attributes)
         if imei and not isinstance(imei, str):
             raise TypeError("Expected argument 'imei' to be a str")
         pulumi.set(__self__, "imei", imei)
@@ -199,6 +202,14 @@ class GetDeviceResult:
         Device encryption state.
         """
         return pulumi.get(self, "encryption_state")
+
+    @property
+    @pulumi.getter(name="endpointVerificationSpecificAttributes")
+    def endpoint_verification_specific_attributes(self) -> 'outputs.EndpointVerificationSpecificAttributesResponse':
+        """
+        Attributes specific to Endpoint Verification devices.
+        """
+        return pulumi.get(self, "endpoint_verification_specific_attributes")
 
     @property
     @pulumi.getter
@@ -347,6 +358,7 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             enabled_developer_options=self.enabled_developer_options,
             enabled_usb_debugging=self.enabled_usb_debugging,
             encryption_state=self.encryption_state,
+            endpoint_verification_specific_attributes=self.endpoint_verification_specific_attributes,
             imei=self.imei,
             kernel_version=self.kernel_version,
             last_sync_time=self.last_sync_time,
@@ -391,6 +403,7 @@ def get_device(device_id: Optional[str] = None,
         enabled_developer_options=__ret__.enabled_developer_options,
         enabled_usb_debugging=__ret__.enabled_usb_debugging,
         encryption_state=__ret__.encryption_state,
+        endpoint_verification_specific_attributes=__ret__.endpoint_verification_specific_attributes,
         imei=__ret__.imei,
         kernel_version=__ret__.kernel_version,
         last_sync_time=__ret__.last_sync_time,

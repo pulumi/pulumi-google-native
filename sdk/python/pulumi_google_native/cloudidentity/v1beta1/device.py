@@ -160,6 +160,7 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["enabled_developer_options"] = None
             __props__.__dict__["enabled_usb_debugging"] = None
             __props__.__dict__["encryption_state"] = None
+            __props__.__dict__["endpoint_verification_specific_attributes"] = None
             __props__.__dict__["imei"] = None
             __props__.__dict__["kernel_version"] = None
             __props__.__dict__["management_state"] = None
@@ -207,6 +208,7 @@ class Device(pulumi.CustomResource):
         __props__.__dict__["enabled_developer_options"] = None
         __props__.__dict__["enabled_usb_debugging"] = None
         __props__.__dict__["encryption_state"] = None
+        __props__.__dict__["endpoint_verification_specific_attributes"] = None
         __props__.__dict__["imei"] = None
         __props__.__dict__["kernel_version"] = None
         __props__.__dict__["last_sync_time"] = None
@@ -320,6 +322,14 @@ class Device(pulumi.CustomResource):
         Device encryption state.
         """
         return pulumi.get(self, "encryption_state")
+
+    @property
+    @pulumi.getter(name="endpointVerificationSpecificAttributes")
+    def endpoint_verification_specific_attributes(self) -> pulumi.Output['outputs.EndpointVerificationSpecificAttributesResponse']:
+        """
+        Attributes specific to Endpoint Verification devices.
+        """
+        return pulumi.get(self, "endpoint_verification_specific_attributes")
 
     @property
     @pulumi.getter

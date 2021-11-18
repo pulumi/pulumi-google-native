@@ -8,5 +8,7 @@ import typing
 from ._enums import *
 from .feed import *
 from .get_feed import *
+from .get_saved_query import *
+from .saved_query import *
 from ._inputs import *
 from . import outputs

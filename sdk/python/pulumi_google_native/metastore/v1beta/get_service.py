@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, artifact_gcs_uri=None, create_time=None, encryption_config=None, endpoint_uri=None, hive_metastore_config=None, labels=None, maintenance_window=None, metadata_integration=None, metadata_management_activity=None, name=None, network=None, port=None, release_channel=None, state=None, state_message=None, tier=None, uid=None, update_time=None):
+    def __init__(__self__, artifact_gcs_uri=None, create_time=None, encryption_config=None, endpoint_uri=None, hive_metastore_config=None, labels=None, maintenance_window=None, metadata_integration=None, metadata_management_activity=None, name=None, network=None, network_config=None, port=None, release_channel=None, state=None, state_message=None, tier=None, uid=None, update_time=None):
         if artifact_gcs_uri and not isinstance(artifact_gcs_uri, str):
             raise TypeError("Expected argument 'artifact_gcs_uri' to be a str")
         pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
@@ -52,6 +52,9 @@ class GetServiceResult:
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         pulumi.set(__self__, "network", network)
+        if network_config and not isinstance(network_config, dict):
+            raise TypeError("Expected argument 'network_config' to be a dict")
+        pulumi.set(__self__, "network_config", network_config)
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
@@ -163,6 +166,14 @@ class GetServiceResult:
         return pulumi.get(self, "network")
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> 'outputs.NetworkConfigResponse':
+        """
+        Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
     @pulumi.getter
     def port(self) -> int:
         """
@@ -236,6 +247,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             metadata_management_activity=self.metadata_management_activity,
             name=self.name,
             network=self.network,
+            network_config=self.network_config,
             port=self.port,
             release_channel=self.release_channel,
             state=self.state,
@@ -274,6 +286,7 @@ def get_service(location: Optional[str] = None,
         metadata_management_activity=__ret__.metadata_management_activity,
         name=__ret__.name,
         network=__ret__.network,
+        network_config=__ret__.network_config,
         port=__ret__.port,
         release_channel=__ret__.release_channel,
         state=__ret__.state,

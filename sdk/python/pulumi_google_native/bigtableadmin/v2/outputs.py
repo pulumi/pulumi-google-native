@@ -13,8 +13,12 @@ from ._enums import *
 __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
+    'AutoscalingLimitsResponse',
+    'AutoscalingTargetsResponse',
     'BackupInfoResponse',
     'BindingResponse',
+    'ClusterAutoscalingConfigResponse',
+    'ClusterConfigResponse',
     'EncryptionConfigResponse',
     'EncryptionInfoResponse',
     'ExprResponse',
@@ -127,6 +131,97 @@ class AuditLogConfigResponse(dict):
 
 
 @pulumi.output_type
+class AutoscalingLimitsResponse(dict):
+    """
+    Limits for the number of nodes a Cluster can autoscale up/down to.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxServeNodes":
+            suggest = "max_serve_nodes"
+        elif key == "minServeNodes":
+            suggest = "min_serve_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingLimitsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingLimitsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingLimitsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_serve_nodes: int,
+                 min_serve_nodes: int):
+        """
+        Limits for the number of nodes a Cluster can autoscale up/down to.
+        :param int max_serve_nodes: Maximum number of nodes to scale up to.
+        :param int min_serve_nodes: Minimum number of nodes to scale down to.
+        """
+        pulumi.set(__self__, "max_serve_nodes", max_serve_nodes)
+        pulumi.set(__self__, "min_serve_nodes", min_serve_nodes)
+
+    @property
+    @pulumi.getter(name="maxServeNodes")
+    def max_serve_nodes(self) -> int:
+        """
+        Maximum number of nodes to scale up to.
+        """
+        return pulumi.get(self, "max_serve_nodes")
+
+    @property
+    @pulumi.getter(name="minServeNodes")
+    def min_serve_nodes(self) -> int:
+        """
+        Minimum number of nodes to scale down to.
+        """
+        return pulumi.get(self, "min_serve_nodes")
+
+
+@pulumi.output_type
+class AutoscalingTargetsResponse(dict):
+    """
+    The Autoscaling targets for a Cluster. These determine the recommended nodes.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuUtilizationPercent":
+            suggest = "cpu_utilization_percent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingTargetsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingTargetsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingTargetsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_utilization_percent: int):
+        """
+        The Autoscaling targets for a Cluster. These determine the recommended nodes.
+        :param int cpu_utilization_percent: The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+        """
+        pulumi.set(__self__, "cpu_utilization_percent", cpu_utilization_percent)
+
+    @property
+    @pulumi.getter(name="cpuUtilizationPercent")
+    def cpu_utilization_percent(self) -> int:
+        """
+        The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+        """
+        return pulumi.get(self, "cpu_utilization_percent")
+
+
+@pulumi.output_type
 class BackupInfoResponse(dict):
     """
     Information about a backup.
@@ -205,17 +300,17 @@ class BackupInfoResponse(dict):
 @pulumi.output_type
 class BindingResponse(dict):
     """
-    Associates `members` with a `role`.
+    Associates `members`, or principals, with a `role`.
     """
     def __init__(__self__, *,
                  condition: 'outputs.ExprResponse',
                  members: Sequence[str],
                  role: str):
         """
-        Associates `members` with a `role`.
-        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param str role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Associates `members`, or principals, with a `role`.
+        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -225,7 +320,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def condition(self) -> 'outputs.ExprResponse':
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -233,7 +328,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -241,9 +336,100 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class ClusterAutoscalingConfigResponse(dict):
+    """
+    Autoscaling config for a cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoscalingLimits":
+            suggest = "autoscaling_limits"
+        elif key == "autoscalingTargets":
+            suggest = "autoscaling_targets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAutoscalingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAutoscalingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAutoscalingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 autoscaling_limits: 'outputs.AutoscalingLimitsResponse',
+                 autoscaling_targets: 'outputs.AutoscalingTargetsResponse'):
+        """
+        Autoscaling config for a cluster.
+        :param 'AutoscalingLimitsResponse' autoscaling_limits: Autoscaling limits for this cluster.
+        :param 'AutoscalingTargetsResponse' autoscaling_targets: Autoscaling targets for this cluster.
+        """
+        pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
+        pulumi.set(__self__, "autoscaling_targets", autoscaling_targets)
+
+    @property
+    @pulumi.getter(name="autoscalingLimits")
+    def autoscaling_limits(self) -> 'outputs.AutoscalingLimitsResponse':
+        """
+        Autoscaling limits for this cluster.
+        """
+        return pulumi.get(self, "autoscaling_limits")
+
+    @property
+    @pulumi.getter(name="autoscalingTargets")
+    def autoscaling_targets(self) -> 'outputs.AutoscalingTargetsResponse':
+        """
+        Autoscaling targets for this cluster.
+        """
+        return pulumi.get(self, "autoscaling_targets")
+
+
+@pulumi.output_type
+class ClusterConfigResponse(dict):
+    """
+    Configuration for a cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterAutoscalingConfig":
+            suggest = "cluster_autoscaling_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_autoscaling_config: 'outputs.ClusterAutoscalingConfigResponse'):
+        """
+        Configuration for a cluster.
+        :param 'ClusterAutoscalingConfigResponse' cluster_autoscaling_config: Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+        """
+        pulumi.set(__self__, "cluster_autoscaling_config", cluster_autoscaling_config)
+
+    @property
+    @pulumi.getter(name="clusterAutoscalingConfig")
+    def cluster_autoscaling_config(self) -> 'outputs.ClusterAutoscalingConfigResponse':
+        """
+        Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+        """
+        return pulumi.get(self, "cluster_autoscaling_config")
 
 
 @pulumi.output_type

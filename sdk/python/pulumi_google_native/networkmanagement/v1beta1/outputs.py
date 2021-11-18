@@ -15,6 +15,7 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
+    'CloudFunctionEndpointResponse',
     'CloudSQLInstanceInfoResponse',
     'DeliverInfoResponse',
     'DropInfoResponse',
@@ -196,17 +197,17 @@ class AuditLogConfigResponse(dict):
 @pulumi.output_type
 class BindingResponse(dict):
     """
-    Associates `members` with a `role`.
+    Associates `members`, or principals, with a `role`.
     """
     def __init__(__self__, *,
                  condition: 'outputs.ExprResponse',
                  members: Sequence[str],
                  role: str):
         """
-        Associates `members` with a `role`.
-        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param str role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Associates `members`, or principals, with a `role`.
+        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -216,7 +217,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def condition(self) -> 'outputs.ExprResponse':
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -224,7 +225,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -232,9 +233,31 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class CloudFunctionEndpointResponse(dict):
+    """
+    Wrapper for cloud function attributes.
+    """
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        Wrapper for cloud function attributes.
+        :param str uri: A [Cloud function](https://cloud.google.com/functions) name.
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        A [Cloud function](https://cloud.google.com/functions) name.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -451,6 +474,8 @@ class EndpointInfoResponse(dict):
             suggest = "destination_network_uri"
         elif key == "destinationPort":
             suggest = "destination_port"
+        elif key == "sourceAgentUri":
+            suggest = "source_agent_uri"
         elif key == "sourceIp":
             suggest = "source_ip"
         elif key == "sourceNetworkUri":
@@ -474,6 +499,7 @@ class EndpointInfoResponse(dict):
                  destination_network_uri: str,
                  destination_port: int,
                  protocol: str,
+                 source_agent_uri: str,
                  source_ip: str,
                  source_network_uri: str,
                  source_port: int):
@@ -483,6 +509,7 @@ class EndpointInfoResponse(dict):
         :param str destination_network_uri: URI of the network where this packet is sent to.
         :param int destination_port: Destination port. Only valid when protocol is TCP or UDP.
         :param str protocol: IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+        :param str source_agent_uri: URI of the source telemetry agent this packet originates from.
         :param str source_ip: Source IP address.
         :param str source_network_uri: URI of the network where this packet originates from.
         :param int source_port: Source port. Only valid when protocol is TCP or UDP.
@@ -491,6 +518,7 @@ class EndpointInfoResponse(dict):
         pulumi.set(__self__, "destination_network_uri", destination_network_uri)
         pulumi.set(__self__, "destination_port", destination_port)
         pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "source_agent_uri", source_agent_uri)
         pulumi.set(__self__, "source_ip", source_ip)
         pulumi.set(__self__, "source_network_uri", source_network_uri)
         pulumi.set(__self__, "source_port", source_port)
@@ -528,6 +556,14 @@ class EndpointInfoResponse(dict):
         return pulumi.get(self, "protocol")
 
     @property
+    @pulumi.getter(name="sourceAgentUri")
+    def source_agent_uri(self) -> str:
+        """
+        URI of the source telemetry agent this packet originates from.
+        """
+        return pulumi.get(self, "source_agent_uri")
+
+    @property
     @pulumi.getter(name="sourceIp")
     def source_ip(self) -> str:
         """
@@ -560,7 +596,9 @@ class EndpointResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cloudSqlInstance":
+        if key == "cloudFunction":
+            suggest = "cloud_function"
+        elif key == "cloudSqlInstance":
             suggest = "cloud_sql_instance"
         elif key == "gkeMasterCluster":
             suggest = "gke_master_cluster"
@@ -581,6 +619,7 @@ class EndpointResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cloud_function: 'outputs.CloudFunctionEndpointResponse',
                  cloud_sql_instance: str,
                  gke_master_cluster: str,
                  instance: str,
@@ -591,6 +630,7 @@ class EndpointResponse(dict):
                  project: str):
         """
         Source or destination of the Connectivity Test.
+        :param 'CloudFunctionEndpointResponse' cloud_function: A [Cloud function](https://cloud.google.com/functions).
         :param str cloud_sql_instance: A [Cloud SQL](https://cloud.google.com/sql) instance URI.
         :param str gke_master_cluster: A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         :param str instance: A Compute Engine instance URI.
@@ -600,6 +640,7 @@ class EndpointResponse(dict):
         :param int port: The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
         :param str project: Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
         """
+        pulumi.set(__self__, "cloud_function", cloud_function)
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         pulumi.set(__self__, "gke_master_cluster", gke_master_cluster)
         pulumi.set(__self__, "instance", instance)
@@ -608,6 +649,14 @@ class EndpointResponse(dict):
         pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="cloudFunction")
+    def cloud_function(self) -> 'outputs.CloudFunctionEndpointResponse':
+        """
+        A [Cloud function](https://cloud.google.com/functions).
+        """
+        return pulumi.get(self, "cloud_function")
 
     @property
     @pulumi.getter(name="cloudSqlInstance")

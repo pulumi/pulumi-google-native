@@ -168,7 +168,7 @@ class GetInstanceResult:
     @pulumi.getter
     def parameters(self) -> 'outputs.MemcacheParametersResponse':
         """
-        Optional: User defined parameters to apply to the memcached process on each node.
+        User defined parameters to apply to the memcached process on each node.
         """
         return pulumi.get(self, "parameters")
 

@@ -20,6 +20,7 @@ class DashboardArgs:
                  column_layout: Optional[pulumi.Input['ColumnLayoutArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  grid_layout: Optional[pulumi.Input['GridLayoutArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mosaic_layout: Optional[pulumi.Input['MosaicLayoutArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -31,6 +32,7 @@ class DashboardArgs:
         :param pulumi.Input['ColumnLayoutArgs'] column_layout: The content is divided into equally spaced columns and the widgets are arranged vertically.
         :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
         :param pulumi.Input['GridLayoutArgs'] grid_layout: Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels applied to the dashboard
         :param pulumi.Input['MosaicLayoutArgs'] mosaic_layout: The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
         :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
         :param pulumi.Input['RowLayoutArgs'] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
@@ -42,6 +44,8 @@ class DashboardArgs:
             pulumi.set(__self__, "etag", etag)
         if grid_layout is not None:
             pulumi.set(__self__, "grid_layout", grid_layout)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if mosaic_layout is not None:
             pulumi.set(__self__, "mosaic_layout", mosaic_layout)
         if name is not None:
@@ -100,6 +104,18 @@ class DashboardArgs:
     @grid_layout.setter
     def grid_layout(self, value: Optional[pulumi.Input['GridLayoutArgs']]):
         pulumi.set(self, "grid_layout", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels applied to the dashboard
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter(name="mosaicLayout")
@@ -165,6 +181,7 @@ class Dashboard(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  grid_layout: Optional[pulumi.Input[pulumi.InputType['GridLayoutArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mosaic_layout: Optional[pulumi.Input[pulumi.InputType['MosaicLayoutArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -180,6 +197,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The mutable, human-readable name.
         :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
         :param pulumi.Input[pulumi.InputType['GridLayoutArgs']] grid_layout: Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels applied to the dashboard
         :param pulumi.Input[pulumi.InputType['MosaicLayoutArgs']] mosaic_layout: The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
         :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
         :param pulumi.Input[pulumi.InputType['RowLayoutArgs']] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
@@ -212,6 +230,7 @@ class Dashboard(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  grid_layout: Optional[pulumi.Input[pulumi.InputType['GridLayoutArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mosaic_layout: Optional[pulumi.Input[pulumi.InputType['MosaicLayoutArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -235,6 +254,7 @@ class Dashboard(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["etag"] = etag
             __props__.__dict__["grid_layout"] = grid_layout
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["mosaic_layout"] = mosaic_layout
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -266,6 +286,7 @@ class Dashboard(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["grid_layout"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["mosaic_layout"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["row_layout"] = None
@@ -302,6 +323,14 @@ class Dashboard(pulumi.CustomResource):
         Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
         """
         return pulumi.get(self, "grid_layout")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Labels applied to the dashboard
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="mosaicLayout")
