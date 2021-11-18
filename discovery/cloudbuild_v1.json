@@ -1299,7 +1299,7 @@
                       "type": "boolean"
                     },
                     "etag": {
-                      "description": "Optional. If this is provided, it must match the server's etag on the workerpool for the request to be processed.",
+                      "description": "Optional. If provided, it must match the server's etag on the workerpool for the request to be processed.",
                       "location": "query",
                       "type": "string"
                     },
@@ -1718,7 +1718,7 @@
       }
     }
   },
-  "revision": "20210923",
+  "revision": "20211115",
   "rootUrl": "https://cloudbuild.googleapis.com/",
   "schemas": {
     "ApprovalConfig": {
@@ -1838,6 +1838,27 @@
         "objects": {
           "$ref": "ArtifactObjects",
           "description": "A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE."
+        }
+      },
+      "type": "object"
+    },
+    "BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata": {
+      "description": "Metadata for `BatchCreateBitbucketServerConnectedRepositories` operation.",
+      "id": "BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata",
+      "properties": {
+        "completeTime": {
+          "description": "Time the operation was completed.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "config": {
+          "description": "The name of the `BitbucketServerConfig` that added connected repositories. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`",
+          "type": "string"
+        },
+        "createTime": {
+          "description": "Time the operation was created.",
+          "format": "google-datetime",
+          "type": "string"
         }
       },
       "type": "object"
@@ -2124,10 +2145,10 @@
           ],
           "enumDescriptions": [
             "The service determines the logging mode. The default is `LEGACY`. Do not rely on the default logging behavior as it may change in the future.",
-            "Cloud Logging and Cloud Storage logging are enabled.",
-            "Only Cloud Storage logging is enabled.",
+            "Build logs are stored in Cloud Logging and Cloud Storage.",
+            "Build logs are stored in Cloud Storage.",
             "This option is the same as CLOUD_LOGGING_ONLY.",
-            "Only Cloud Logging is enabled. Note that logs for both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs, so neither will provide logs if this option is chosen.",
+            "Build logs are stored in Cloud Logging. Selecting this option will not allow [logs streaming](https://cloud.google.com/sdk/gcloud/reference/builds/log).",
             "Turn off all logging. No build logs will be captured."
           ],
           "type": "string"
@@ -2351,6 +2372,24 @@
         "disabled": {
           "description": "If true, the trigger will never automatically execute a build.",
           "type": "boolean"
+        },
+        "eventType": {
+          "description": "Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.",
+          "enum": [
+            "EVENT_TYPE_UNSPECIFIED",
+            "REPO",
+            "WEBHOOK",
+            "PUBSUB",
+            "MANUAL"
+          ],
+          "enumDescriptions": [
+            "EVENT_TYPE_UNSPECIFIED event_types are ignored.",
+            "REPO corresponds to the supported VCS integrations.",
+            "WEBHOOK corresponds to webhook triggers.",
+            "PUBSUB corresponds to pubsub triggers.",
+            "MANUAL corresponds to manual-only invoked triggers."
+          ],
+          "type": "string"
         },
         "filename": {
           "description": "Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).",
