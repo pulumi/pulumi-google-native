@@ -39,6 +39,8 @@ type Device struct {
 	EnabledUsbDebugging pulumi.BoolOutput `pulumi:"enabledUsbDebugging"`
 	// Device encryption state.
 	EncryptionState pulumi.StringOutput `pulumi:"encryptionState"`
+	// Attributes specific to Endpoint Verification devices.
+	EndpointVerificationSpecificAttributes EndpointVerificationSpecificAttributesResponseOutput `pulumi:"endpointVerificationSpecificAttributes"`
 	// IMEI number of device if GSM device; empty otherwise.
 	Imei pulumi.StringOutput `pulumi:"imei"`
 	// Kernel version of the device.

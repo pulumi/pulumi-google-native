@@ -15,7 +15,7 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// A server-assigned timestamp representing when this Instance was created.
+	// A server-assigned timestamp representing when this Instance was created. For instances created before this field was added (August 2021), this value is `seconds: 0, nanos: 1`.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`

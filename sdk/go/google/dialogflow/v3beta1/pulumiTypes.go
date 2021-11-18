@@ -2379,7 +2379,7 @@ func (o GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponseArrayOutpu
 
 // The configuration for continuous tests.
 type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig struct {
-	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 	EnableContinuousRun *bool `pulumi:"enableContinuousRun"`
 	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
 	EnablePredeploymentRun *bool `pulumi:"enablePredeploymentRun"`
@@ -2400,7 +2400,7 @@ type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigInput interface {
 
 // The configuration for continuous tests.
 type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs struct {
-	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 	EnableContinuousRun pulumi.BoolPtrInput `pulumi:"enableContinuousRun"`
 	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
 	EnablePredeploymentRun pulumi.BoolPtrInput `pulumi:"enablePredeploymentRun"`
@@ -2486,7 +2486,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigOutput) ToGoogle
 	}).(GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigPtrOutput)
 }
 
-// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigOutput) EnableContinuousRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig) *bool { return v.EnableContinuousRun }).(pulumi.BoolPtrOutput)
 }
@@ -2527,7 +2527,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigPtrOutput) Elem(
 	}).(GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigOutput)
 }
 
-// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigPtrOutput) EnableContinuousRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig) *bool {
 		if v == nil {
@@ -2559,7 +2559,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigPtrOutput) TestC
 
 // The configuration for continuous tests.
 type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse struct {
-	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 	EnableContinuousRun bool `pulumi:"enableContinuousRun"`
 	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
 	EnablePredeploymentRun bool `pulumi:"enablePredeploymentRun"`
@@ -2580,7 +2580,7 @@ type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseInput inter
 
 // The configuration for continuous tests.
 type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseArgs struct {
-	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 	EnableContinuousRun pulumi.BoolInput `pulumi:"enableContinuousRun"`
 	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
 	EnablePredeploymentRun pulumi.BoolInput `pulumi:"enablePredeploymentRun"`
@@ -2666,7 +2666,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseOutput) 
 	}).(GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponsePtrOutput)
 }
 
-// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseOutput) EnableContinuousRun() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse) bool {
 		return v.EnableContinuousRun
@@ -2709,7 +2709,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponsePtrOutpu
 	}).(GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseOutput)
 }
 
-// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponsePtrOutput) EnableContinuousRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse) *bool {
 		if v == nil {

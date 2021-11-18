@@ -33,7 +33,7 @@ type MigrationJob struct {
 	Error StatusResponseOutput `pulumi:"error"`
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The current migration job phase.
 	Phase pulumi.StringOutput `pulumi:"phase"`
@@ -118,7 +118,7 @@ type migrationJobArgs struct {
 	Labels         map[string]string `pulumi:"labels"`
 	Location       *string           `pulumi:"location"`
 	MigrationJobId string            `pulumi:"migrationJobId"`
-	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name      *string `pulumi:"name"`
 	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
@@ -152,7 +152,7 @@ type MigrationJobArgs struct {
 	Labels         pulumi.StringMapInput
 	Location       pulumi.StringPtrInput
 	MigrationJobId pulumi.StringInput
-	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name      pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput

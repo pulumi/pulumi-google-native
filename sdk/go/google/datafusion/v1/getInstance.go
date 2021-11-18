@@ -41,6 +41,8 @@ type LookupInstanceResult struct {
 	DataprocServiceAccount string `pulumi:"dataprocServiceAccount"`
 	// A description of this instance.
 	Description string `pulumi:"description"`
+	// If the instance state is DISABLED, the reason for disabling the instance.
+	DisabledReason []string `pulumi:"disabledReason"`
 	// Display name for an instance.
 	DisplayName string `pulumi:"displayName"`
 	// Option to enable granular role-based access control.
@@ -147,6 +149,11 @@ func (o LookupInstanceResultOutput) DataprocServiceAccount() pulumi.StringOutput
 // A description of this instance.
 func (o LookupInstanceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// If the instance state is DISABLED, the reason for disabling the instance.
+func (o LookupInstanceResultOutput) DisabledReason() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.DisabledReason }).(pulumi.StringArrayOutput)
 }
 
 // Display name for an instance.

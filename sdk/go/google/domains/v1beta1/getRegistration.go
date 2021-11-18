@@ -45,7 +45,7 @@ type LookupRegistrationResult struct {
 	ManagementSettings ManagementSettingsResponse `pulumi:"managementSettings"`
 	// Name of the `Registration` resource, in the format `projects/*/locations/*/registrations/`.
 	Name string `pulumi:"name"`
-	// Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not yet been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
+	// Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
 	PendingContactSettings ContactSettingsResponse `pulumi:"pendingContactSettings"`
 	// The state of the `Registration`
 	State string `pulumi:"state"`
@@ -131,7 +131,7 @@ func (o LookupRegistrationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not yet been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
+// Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
 func (o LookupRegistrationResultOutput) PendingContactSettings() ContactSettingsResponseOutput {
 	return o.ApplyT(func(v LookupRegistrationResult) ContactSettingsResponse { return v.PendingContactSettings }).(ContactSettingsResponseOutput)
 }

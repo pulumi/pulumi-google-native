@@ -521,6 +521,175 @@ func (in *instanceTypePtr) ToInstanceTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTypePtrOutput)
 }
 
+// Type represents the release availability of the version
+type VersionType string
+
+const (
+	// Version does not have availability yet
+	VersionTypeTypeUnspecified = VersionType("TYPE_UNSPECIFIED")
+	// Version is under development and not considered stable
+	VersionTypeTypePreview = VersionType("TYPE_PREVIEW")
+	// Version is available for public use
+	VersionTypeTypeGeneralAvailability = VersionType("TYPE_GENERAL_AVAILABILITY")
+)
+
+func (VersionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*VersionType)(nil)).Elem()
+}
+
+func (e VersionType) ToVersionTypeOutput() VersionTypeOutput {
+	return pulumi.ToOutput(e).(VersionTypeOutput)
+}
+
+func (e VersionType) ToVersionTypeOutputWithContext(ctx context.Context) VersionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VersionTypeOutput)
+}
+
+func (e VersionType) ToVersionTypePtrOutput() VersionTypePtrOutput {
+	return e.ToVersionTypePtrOutputWithContext(context.Background())
+}
+
+func (e VersionType) ToVersionTypePtrOutputWithContext(ctx context.Context) VersionTypePtrOutput {
+	return VersionType(e).ToVersionTypeOutputWithContext(ctx).ToVersionTypePtrOutputWithContext(ctx)
+}
+
+func (e VersionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VersionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VersionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VersionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VersionTypeOutput struct{ *pulumi.OutputState }
+
+func (VersionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VersionType)(nil)).Elem()
+}
+
+func (o VersionTypeOutput) ToVersionTypeOutput() VersionTypeOutput {
+	return o
+}
+
+func (o VersionTypeOutput) ToVersionTypeOutputWithContext(ctx context.Context) VersionTypeOutput {
+	return o
+}
+
+func (o VersionTypeOutput) ToVersionTypePtrOutput() VersionTypePtrOutput {
+	return o.ToVersionTypePtrOutputWithContext(context.Background())
+}
+
+func (o VersionTypeOutput) ToVersionTypePtrOutputWithContext(ctx context.Context) VersionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VersionType) *VersionType {
+		return &v
+	}).(VersionTypePtrOutput)
+}
+
+func (o VersionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VersionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VersionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VersionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VersionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VersionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VersionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (VersionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VersionType)(nil)).Elem()
+}
+
+func (o VersionTypePtrOutput) ToVersionTypePtrOutput() VersionTypePtrOutput {
+	return o
+}
+
+func (o VersionTypePtrOutput) ToVersionTypePtrOutputWithContext(ctx context.Context) VersionTypePtrOutput {
+	return o
+}
+
+func (o VersionTypePtrOutput) Elem() VersionTypeOutput {
+	return o.ApplyT(func(v *VersionType) VersionType {
+		if v != nil {
+			return *v
+		}
+		var ret VersionType
+		return ret
+	}).(VersionTypeOutput)
+}
+
+func (o VersionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VersionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VersionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VersionTypeInput is an input type that accepts VersionTypeArgs and VersionTypeOutput values.
+// You can construct a concrete instance of `VersionTypeInput` via:
+//
+//          VersionTypeArgs{...}
+type VersionTypeInput interface {
+	pulumi.Input
+
+	ToVersionTypeOutput() VersionTypeOutput
+	ToVersionTypeOutputWithContext(context.Context) VersionTypeOutput
+}
+
+var versionTypePtrType = reflect.TypeOf((**VersionType)(nil)).Elem()
+
+type VersionTypePtrInput interface {
+	pulumi.Input
+
+	ToVersionTypePtrOutput() VersionTypePtrOutput
+	ToVersionTypePtrOutputWithContext(context.Context) VersionTypePtrOutput
+}
+
+type versionTypePtr string
+
+func VersionTypePtr(v string) VersionTypePtrInput {
+	return (*versionTypePtr)(&v)
+}
+
+func (*versionTypePtr) ElementType() reflect.Type {
+	return versionTypePtrType
+}
+
+func (in *versionTypePtr) ToVersionTypePtrOutput() VersionTypePtrOutput {
+	return pulumi.ToOutput(in).(VersionTypePtrOutput)
+}
+
+func (in *versionTypePtr) ToVersionTypePtrOutputWithContext(ctx context.Context) VersionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VersionTypePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorAcceleratorTypeInput)(nil)).Elem(), AcceleratorAcceleratorType("ACCELERATOR_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorAcceleratorTypePtrInput)(nil)).Elem(), AcceleratorAcceleratorType("ACCELERATOR_TYPE_UNSPECIFIED"))
@@ -528,10 +697,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypeInput)(nil)).Elem(), InstanceType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypePtrInput)(nil)).Elem(), InstanceType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VersionTypeInput)(nil)).Elem(), VersionType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VersionTypePtrInput)(nil)).Elem(), VersionType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AcceleratorAcceleratorTypeOutput{})
 	pulumi.RegisterOutputType(AcceleratorAcceleratorTypePtrOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceTypeOutput{})
 	pulumi.RegisterOutputType(InstanceTypePtrOutput{})
+	pulumi.RegisterOutputType(VersionTypeOutput{})
+	pulumi.RegisterOutputType(VersionTypePtrOutput{})
 }

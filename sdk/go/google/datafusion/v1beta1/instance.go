@@ -30,6 +30,8 @@ type Instance struct {
 	DataprocServiceAccount pulumi.StringOutput `pulumi:"dataprocServiceAccount"`
 	// A description of this instance.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// If the instance state is DISABLED, the reason for disabling the instance.
+	DisabledReason pulumi.StringArrayOutput `pulumi:"disabledReason"`
 	// Display name for an instance.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Option to enable granular role-based access control.
@@ -77,6 +79,9 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
@@ -129,8 +134,8 @@ type instanceArgs struct {
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
 	// Option to enable Stackdriver Monitoring.
-	EnableStackdriverMonitoring *bool   `pulumi:"enableStackdriverMonitoring"`
-	InstanceId                  *string `pulumi:"instanceId"`
+	EnableStackdriverMonitoring *bool  `pulumi:"enableStackdriverMonitoring"`
+	InstanceId                  string `pulumi:"instanceId"`
 	// The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -169,7 +174,7 @@ type InstanceArgs struct {
 	EnableStackdriverLogging pulumi.BoolPtrInput
 	// Option to enable Stackdriver Monitoring.
 	EnableStackdriverMonitoring pulumi.BoolPtrInput
-	InstanceId                  pulumi.StringPtrInput
+	InstanceId                  pulumi.StringInput
 	// The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput

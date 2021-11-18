@@ -38,6 +38,8 @@ type LookupIosAppResult struct {
 	Name string `pulumi:"name"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
 	Project string `pulumi:"project"`
+	// The Apple Developer Team ID associated with the App in the App Store.
+	TeamId string `pulumi:"teamId"`
 }
 
 func LookupIosAppOutput(ctx *pulumi.Context, args LookupIosAppOutputArgs, opts ...pulumi.InvokeOption) LookupIosAppResultOutput {
@@ -100,6 +102,11 @@ func (o LookupIosAppResultOutput) Name() pulumi.StringOutput {
 // Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
 func (o LookupIosAppResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIosAppResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The Apple Developer Team ID associated with the App in the App Store.
+func (o LookupIosAppResultOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIosAppResult) string { return v.TeamId }).(pulumi.StringOutput)
 }
 
 func init() {

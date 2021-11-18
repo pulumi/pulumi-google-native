@@ -37,7 +37,7 @@ type LookupEntitlementResult struct {
 	Name string `pulumi:"name"`
 	// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
 	Offer string `pulumi:"offer"`
-	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+	// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. The response may include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. - max_units: The maximum assignable units for a flexible offer. - num_units: The total commitment for commitment-based offers.
 	Parameters []GoogleCloudChannelV1ParameterResponse `pulumi:"parameters"`
 	// Service provisioning details for the entitlement.
 	ProvisionedService GoogleCloudChannelV1ProvisionedServiceResponse `pulumi:"provisionedService"`
@@ -113,7 +113,7 @@ func (o LookupEntitlementResultOutput) Offer() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntitlementResult) string { return v.Offer }).(pulumi.StringOutput)
 }
 
-// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. The response may include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. - max_units: The maximum assignable units for a flexible offer. - num_units: The total commitment for commitment-based offers.
 func (o LookupEntitlementResultOutput) Parameters() GoogleCloudChannelV1ParameterResponseArrayOutput {
 	return o.ApplyT(func(v LookupEntitlementResult) []GoogleCloudChannelV1ParameterResponse { return v.Parameters }).(GoogleCloudChannelV1ParameterResponseArrayOutput)
 }

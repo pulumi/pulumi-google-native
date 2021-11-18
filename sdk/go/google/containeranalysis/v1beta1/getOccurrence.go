@@ -52,12 +52,12 @@ type LookupOccurrenceResult struct {
 	Remediation string `pulumi:"remediation"`
 	// Immutable. The resource for which the occurrence applies.
 	Resource ResourceResponse `pulumi:"resource"`
-	// Describes a specific SPDX Document.
+	// Describes a specific software bill of materials document.
 	Sbom DocumentOccurrenceResponse `pulumi:"sbom"`
 	// Describes a specific SPDX File.
 	SpdxFile FileOccurrenceResponse `pulumi:"spdxFile"`
 	// Describes a specific SPDX Package.
-	SpdxPackage PackageOccurrenceResponse `pulumi:"spdxPackage"`
+	SpdxPackage PackageInfoOccurrenceResponse `pulumi:"spdxPackage"`
 	// Describes a specific SPDX Relationship.
 	SpdxRelationship RelationshipOccurrenceResponse `pulumi:"spdxRelationship"`
 	// The time this occurrence was last updated.
@@ -163,7 +163,7 @@ func (o LookupOccurrenceResultOutput) Resource() ResourceResponseOutput {
 	return o.ApplyT(func(v LookupOccurrenceResult) ResourceResponse { return v.Resource }).(ResourceResponseOutput)
 }
 
-// Describes a specific SPDX Document.
+// Describes a specific software bill of materials document.
 func (o LookupOccurrenceResultOutput) Sbom() DocumentOccurrenceResponseOutput {
 	return o.ApplyT(func(v LookupOccurrenceResult) DocumentOccurrenceResponse { return v.Sbom }).(DocumentOccurrenceResponseOutput)
 }
@@ -174,8 +174,8 @@ func (o LookupOccurrenceResultOutput) SpdxFile() FileOccurrenceResponseOutput {
 }
 
 // Describes a specific SPDX Package.
-func (o LookupOccurrenceResultOutput) SpdxPackage() PackageOccurrenceResponseOutput {
-	return o.ApplyT(func(v LookupOccurrenceResult) PackageOccurrenceResponse { return v.SpdxPackage }).(PackageOccurrenceResponseOutput)
+func (o LookupOccurrenceResultOutput) SpdxPackage() PackageInfoOccurrenceResponseOutput {
+	return o.ApplyT(func(v LookupOccurrenceResult) PackageInfoOccurrenceResponse { return v.SpdxPackage }).(PackageInfoOccurrenceResponseOutput)
 }
 
 // Describes a specific SPDX Relationship.

@@ -309,7 +309,7 @@ func (o BigQueryOptionsResponsePtrOutput) UsesTimestampColumnPartitioning() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+// Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.
 type LogExclusion struct {
 	// Optional. A description of this exclusion.
 	Description *string `pulumi:"description"`
@@ -332,7 +332,7 @@ type LogExclusionInput interface {
 	ToLogExclusionOutputWithContext(context.Context) LogExclusionOutput
 }
 
-// Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+// Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.
 type LogExclusionArgs struct {
 	// Optional. A description of this exclusion.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -381,7 +381,7 @@ func (i LogExclusionArray) ToLogExclusionArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionArrayOutput)
 }
 
-// Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+// Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.
 type LogExclusionOutput struct{ *pulumi.OutputState }
 
 func (LogExclusionOutput) ElementType() reflect.Type {
@@ -436,7 +436,7 @@ func (o LogExclusionArrayOutput) Index(i pulumi.IntInput) LogExclusionOutput {
 	}).(LogExclusionOutput)
 }
 
-// Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+// Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.
 type LogExclusionResponse struct {
 	// The creation timestamp of the exclusion.This field may not be present for older exclusions.
 	CreateTime string `pulumi:"createTime"`
@@ -463,7 +463,7 @@ type LogExclusionResponseInput interface {
 	ToLogExclusionResponseOutputWithContext(context.Context) LogExclusionResponseOutput
 }
 
-// Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+// Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.
 type LogExclusionResponseArgs struct {
 	// The creation timestamp of the exclusion.This field may not be present for older exclusions.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
@@ -516,7 +516,7 @@ func (i LogExclusionResponseArray) ToLogExclusionResponseArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionResponseArrayOutput)
 }
 
-// Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+// Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.
 type LogExclusionResponseOutput struct{ *pulumi.OutputState }
 
 func (LogExclusionResponseOutput) ElementType() reflect.Type {

@@ -61,7 +61,7 @@ type LookupNoteResult struct {
 	// A note describing an SPDX File.
 	SpdxFile FileNoteResponse `pulumi:"spdxFile"`
 	// A note describing an SPDX Package.
-	SpdxPackage PackageNoteResponse `pulumi:"spdxPackage"`
+	SpdxPackage PackageInfoNoteResponse `pulumi:"spdxPackage"`
 	// A note describing a relationship between SPDX elements.
 	SpdxRelationship RelationshipNoteResponse `pulumi:"spdxRelationship"`
 	// The time this note was last updated. This field can be used as a filter in list requests.
@@ -190,8 +190,8 @@ func (o LookupNoteResultOutput) SpdxFile() FileNoteResponseOutput {
 }
 
 // A note describing an SPDX Package.
-func (o LookupNoteResultOutput) SpdxPackage() PackageNoteResponseOutput {
-	return o.ApplyT(func(v LookupNoteResult) PackageNoteResponse { return v.SpdxPackage }).(PackageNoteResponseOutput)
+func (o LookupNoteResultOutput) SpdxPackage() PackageInfoNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) PackageInfoNoteResponse { return v.SpdxPackage }).(PackageInfoNoteResponseOutput)
 }
 
 // A note describing a relationship between SPDX elements.

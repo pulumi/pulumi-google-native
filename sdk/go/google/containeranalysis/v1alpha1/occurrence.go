@@ -52,7 +52,7 @@ type Occurrence struct {
 	// Describes a specific SPDX File.
 	SpdxFile FileOccurrenceResponseOutput `pulumi:"spdxFile"`
 	// Describes a specific SPDX Package.
-	SpdxPackage PackageOccurrenceResponseOutput `pulumi:"spdxPackage"`
+	SpdxPackage PackageInfoOccurrenceResponseOutput `pulumi:"spdxPackage"`
 	// Describes a specific relationship between SPDX elements.
 	SpdxRelationship RelationshipOccurrenceResponseOutput `pulumi:"spdxRelationship"`
 	// The time this `Occurrence` was last updated.
@@ -134,7 +134,7 @@ type occurrenceArgs struct {
 	// Describes a specific SPDX File.
 	SpdxFile *FileOccurrence `pulumi:"spdxFile"`
 	// Describes a specific SPDX Package.
-	SpdxPackage *PackageOccurrence `pulumi:"spdxPackage"`
+	SpdxPackage *PackageInfoOccurrence `pulumi:"spdxPackage"`
 	// Describes a specific relationship between SPDX elements.
 	SpdxRelationship *RelationshipOccurrence `pulumi:"spdxRelationship"`
 	// Describes an upgrade.
@@ -177,7 +177,7 @@ type OccurrenceArgs struct {
 	// Describes a specific SPDX File.
 	SpdxFile FileOccurrencePtrInput
 	// Describes a specific SPDX Package.
-	SpdxPackage PackageOccurrencePtrInput
+	SpdxPackage PackageInfoOccurrencePtrInput
 	// Describes a specific relationship between SPDX elements.
 	SpdxRelationship RelationshipOccurrencePtrInput
 	// Describes an upgrade.

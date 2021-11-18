@@ -15,6 +15,8 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// Configuration for this cluster.
+	ClusterConfig ClusterConfigResponseOutput `pulumi:"clusterConfig"`
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType pulumi.StringOutput `pulumi:"defaultStorageType"`
 	// Immutable. The encryption configuration for CMEK-protected clusters.
@@ -77,7 +79,9 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	ClusterId string `pulumi:"clusterId"`
+	// Configuration for this cluster.
+	ClusterConfig *ClusterConfig `pulumi:"clusterConfig"`
+	ClusterId     string         `pulumi:"clusterId"`
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType *ClusterDefaultStorageType `pulumi:"defaultStorageType"`
 	// Immutable. The encryption configuration for CMEK-protected clusters.
@@ -94,7 +98,9 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	ClusterId pulumi.StringInput
+	// Configuration for this cluster.
+	ClusterConfig ClusterConfigPtrInput
+	ClusterId     pulumi.StringInput
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType ClusterDefaultStorageTypePtrInput
 	// Immutable. The encryption configuration for CMEK-protected clusters.

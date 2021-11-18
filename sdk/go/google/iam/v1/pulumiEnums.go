@@ -531,7 +531,7 @@ const (
 	OrganizationRoleStageGa = OrganizationRoleStage("GA")
 	// The user has indicated this role is being deprecated.
 	OrganizationRoleStageDeprecated = OrganizationRoleStage("DEPRECATED")
-	// This role is disabled and will not contribute permissions to any members it is granted to in policies.
+	// This role is disabled and will not contribute permissions to any principals it is granted to in policies.
 	OrganizationRoleStageDisabled = OrganizationRoleStage("DISABLED")
 	// The user has indicated this role is currently in an EAP phase.
 	OrganizationRoleStageEap = OrganizationRoleStage("EAP")
@@ -706,7 +706,7 @@ const (
 	RoleStageGa = RoleStage("GA")
 	// The user has indicated this role is being deprecated.
 	RoleStageDeprecated = RoleStage("DEPRECATED")
-	// This role is disabled and will not contribute permissions to any members it is granted to in policies.
+	// This role is disabled and will not contribute permissions to any principals it is granted to in policies.
 	RoleStageDisabled = RoleStage("DISABLED")
 	// The user has indicated this role is currently in an EAP phase.
 	RoleStageEap = RoleStage("EAP")

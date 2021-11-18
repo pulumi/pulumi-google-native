@@ -446,13 +446,13 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 	}).(AuditLogConfigResponseOutput)
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type Binding struct {
-	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role *string `pulumi:"role"`
 }
 
@@ -467,13 +467,13 @@ type BindingInput interface {
 	ToBindingOutputWithContext(context.Context) BindingOutput
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type BindingArgs struct {
-	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -514,7 +514,7 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -529,17 +529,17 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 	return o
 }
 
-// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -564,13 +564,13 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type BindingResponse struct {
-	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role string `pulumi:"role"`
 }
 
@@ -585,13 +585,13 @@ type BindingResponseInput interface {
 	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type BindingResponseArgs struct {
-	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -632,7 +632,7 @@ func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
 func (BindingResponseOutput) ElementType() reflect.Type {
@@ -647,17 +647,17 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -680,6 +680,215 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
 		return vs[0].([]BindingResponse)[vs[1].(int)]
 	}).(BindingResponseOutput)
+}
+
+// Contains information of the customer's network configurations.
+type Consumer struct {
+	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// ConsumerInput is an input type that accepts ConsumerArgs and ConsumerOutput values.
+// You can construct a concrete instance of `ConsumerInput` via:
+//
+//          ConsumerArgs{...}
+type ConsumerInput interface {
+	pulumi.Input
+
+	ToConsumerOutput() ConsumerOutput
+	ToConsumerOutputWithContext(context.Context) ConsumerOutput
+}
+
+// Contains information of the customer's network configurations.
+type ConsumerArgs struct {
+	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (ConsumerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Consumer)(nil)).Elem()
+}
+
+func (i ConsumerArgs) ToConsumerOutput() ConsumerOutput {
+	return i.ToConsumerOutputWithContext(context.Background())
+}
+
+func (i ConsumerArgs) ToConsumerOutputWithContext(ctx context.Context) ConsumerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerOutput)
+}
+
+// ConsumerArrayInput is an input type that accepts ConsumerArray and ConsumerArrayOutput values.
+// You can construct a concrete instance of `ConsumerArrayInput` via:
+//
+//          ConsumerArray{ ConsumerArgs{...} }
+type ConsumerArrayInput interface {
+	pulumi.Input
+
+	ToConsumerArrayOutput() ConsumerArrayOutput
+	ToConsumerArrayOutputWithContext(context.Context) ConsumerArrayOutput
+}
+
+type ConsumerArray []ConsumerInput
+
+func (ConsumerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Consumer)(nil)).Elem()
+}
+
+func (i ConsumerArray) ToConsumerArrayOutput() ConsumerArrayOutput {
+	return i.ToConsumerArrayOutputWithContext(context.Background())
+}
+
+func (i ConsumerArray) ToConsumerArrayOutputWithContext(ctx context.Context) ConsumerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerArrayOutput)
+}
+
+// Contains information of the customer's network configurations.
+type ConsumerOutput struct{ *pulumi.OutputState }
+
+func (ConsumerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Consumer)(nil)).Elem()
+}
+
+func (o ConsumerOutput) ToConsumerOutput() ConsumerOutput {
+	return o
+}
+
+func (o ConsumerOutput) ToConsumerOutputWithContext(ctx context.Context) ConsumerOutput {
+	return o
+}
+
+// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+func (o ConsumerOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Consumer) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type ConsumerArrayOutput struct{ *pulumi.OutputState }
+
+func (ConsumerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Consumer)(nil)).Elem()
+}
+
+func (o ConsumerArrayOutput) ToConsumerArrayOutput() ConsumerArrayOutput {
+	return o
+}
+
+func (o ConsumerArrayOutput) ToConsumerArrayOutputWithContext(ctx context.Context) ConsumerArrayOutput {
+	return o
+}
+
+func (o ConsumerArrayOutput) Index(i pulumi.IntInput) ConsumerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Consumer {
+		return vs[0].([]Consumer)[vs[1].(int)]
+	}).(ConsumerOutput)
+}
+
+// Contains information of the customer's network configurations.
+type ConsumerResponse struct {
+	// The URI of the endpoint used to access the metastore service.
+	EndpointUri string `pulumi:"endpointUri"`
+	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// ConsumerResponseInput is an input type that accepts ConsumerResponseArgs and ConsumerResponseOutput values.
+// You can construct a concrete instance of `ConsumerResponseInput` via:
+//
+//          ConsumerResponseArgs{...}
+type ConsumerResponseInput interface {
+	pulumi.Input
+
+	ToConsumerResponseOutput() ConsumerResponseOutput
+	ToConsumerResponseOutputWithContext(context.Context) ConsumerResponseOutput
+}
+
+// Contains information of the customer's network configurations.
+type ConsumerResponseArgs struct {
+	// The URI of the endpoint used to access the metastore service.
+	EndpointUri pulumi.StringInput `pulumi:"endpointUri"`
+	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (ConsumerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerResponse)(nil)).Elem()
+}
+
+func (i ConsumerResponseArgs) ToConsumerResponseOutput() ConsumerResponseOutput {
+	return i.ToConsumerResponseOutputWithContext(context.Background())
+}
+
+func (i ConsumerResponseArgs) ToConsumerResponseOutputWithContext(ctx context.Context) ConsumerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerResponseOutput)
+}
+
+// ConsumerResponseArrayInput is an input type that accepts ConsumerResponseArray and ConsumerResponseArrayOutput values.
+// You can construct a concrete instance of `ConsumerResponseArrayInput` via:
+//
+//          ConsumerResponseArray{ ConsumerResponseArgs{...} }
+type ConsumerResponseArrayInput interface {
+	pulumi.Input
+
+	ToConsumerResponseArrayOutput() ConsumerResponseArrayOutput
+	ToConsumerResponseArrayOutputWithContext(context.Context) ConsumerResponseArrayOutput
+}
+
+type ConsumerResponseArray []ConsumerResponseInput
+
+func (ConsumerResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConsumerResponse)(nil)).Elem()
+}
+
+func (i ConsumerResponseArray) ToConsumerResponseArrayOutput() ConsumerResponseArrayOutput {
+	return i.ToConsumerResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ConsumerResponseArray) ToConsumerResponseArrayOutputWithContext(ctx context.Context) ConsumerResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerResponseArrayOutput)
+}
+
+// Contains information of the customer's network configurations.
+type ConsumerResponseOutput struct{ *pulumi.OutputState }
+
+func (ConsumerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerResponse)(nil)).Elem()
+}
+
+func (o ConsumerResponseOutput) ToConsumerResponseOutput() ConsumerResponseOutput {
+	return o
+}
+
+func (o ConsumerResponseOutput) ToConsumerResponseOutputWithContext(ctx context.Context) ConsumerResponseOutput {
+	return o
+}
+
+// The URI of the endpoint used to access the metastore service.
+func (o ConsumerResponseOutput) EndpointUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerResponse) string { return v.EndpointUri }).(pulumi.StringOutput)
+}
+
+// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+func (o ConsumerResponseOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type ConsumerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConsumerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConsumerResponse)(nil)).Elem()
+}
+
+func (o ConsumerResponseArrayOutput) ToConsumerResponseArrayOutput() ConsumerResponseArrayOutput {
+	return o
+}
+
+func (o ConsumerResponseArrayOutput) ToConsumerResponseArrayOutputWithContext(ctx context.Context) ConsumerResponseArrayOutput {
+	return o
+}
+
+func (o ConsumerResponseArrayOutput) Index(i pulumi.IntInput) ConsumerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsumerResponse {
+		return vs[0].([]ConsumerResponse)[vs[1].(int)]
+	}).(ConsumerResponseOutput)
 }
 
 // Specifies how metastore metadata should be integrated with the Data Catalog service.
@@ -3876,6 +4085,286 @@ func (o MetadataManagementActivityResponsePtrOutput) Restores() RestoreResponseA
 	}).(RestoreResponseArrayOutput)
 }
 
+// Network configuration for the Dataproc Metastore service.
+type NetworkConfig struct {
+	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+	Consumers []Consumer `pulumi:"consumers"`
+}
+
+// NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
+// You can construct a concrete instance of `NetworkConfigInput` via:
+//
+//          NetworkConfigArgs{...}
+type NetworkConfigInput interface {
+	pulumi.Input
+
+	ToNetworkConfigOutput() NetworkConfigOutput
+	ToNetworkConfigOutputWithContext(context.Context) NetworkConfigOutput
+}
+
+// Network configuration for the Dataproc Metastore service.
+type NetworkConfigArgs struct {
+	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+	Consumers ConsumerArrayInput `pulumi:"consumers"`
+}
+
+func (NetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfig)(nil)).Elem()
+}
+
+func (i NetworkConfigArgs) ToNetworkConfigOutput() NetworkConfigOutput {
+	return i.ToNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i NetworkConfigArgs) ToNetworkConfigOutputWithContext(ctx context.Context) NetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigOutput)
+}
+
+func (i NetworkConfigArgs) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
+	return i.ToNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkConfigArgs) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigOutput).ToNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// NetworkConfigPtrInput is an input type that accepts NetworkConfigArgs, NetworkConfigPtr and NetworkConfigPtrOutput values.
+// You can construct a concrete instance of `NetworkConfigPtrInput` via:
+//
+//          NetworkConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToNetworkConfigPtrOutput() NetworkConfigPtrOutput
+	ToNetworkConfigPtrOutputWithContext(context.Context) NetworkConfigPtrOutput
+}
+
+type networkConfigPtrType NetworkConfigArgs
+
+func NetworkConfigPtr(v *NetworkConfigArgs) NetworkConfigPtrInput {
+	return (*networkConfigPtrType)(v)
+}
+
+func (*networkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConfig)(nil)).Elem()
+}
+
+func (i *networkConfigPtrType) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
+	return i.ToNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *networkConfigPtrType) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigPtrOutput)
+}
+
+// Network configuration for the Dataproc Metastore service.
+type NetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfig)(nil)).Elem()
+}
+
+func (o NetworkConfigOutput) ToNetworkConfigOutput() NetworkConfigOutput {
+	return o
+}
+
+func (o NetworkConfigOutput) ToNetworkConfigOutputWithContext(ctx context.Context) NetworkConfigOutput {
+	return o
+}
+
+func (o NetworkConfigOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
+	return o.ToNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfig) *NetworkConfig {
+		return &v
+	}).(NetworkConfigPtrOutput)
+}
+
+// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+func (o NetworkConfigOutput) Consumers() ConsumerArrayOutput {
+	return o.ApplyT(func(v NetworkConfig) []Consumer { return v.Consumers }).(ConsumerArrayOutput)
+}
+
+type NetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConfig)(nil)).Elem()
+}
+
+func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
+	return o
+}
+
+func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
+	return o
+}
+
+func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
+	return o.ApplyT(func(v *NetworkConfig) NetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfig
+		return ret
+	}).(NetworkConfigOutput)
+}
+
+// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+func (o NetworkConfigPtrOutput) Consumers() ConsumerArrayOutput {
+	return o.ApplyT(func(v *NetworkConfig) []Consumer {
+		if v == nil {
+			return nil
+		}
+		return v.Consumers
+	}).(ConsumerArrayOutput)
+}
+
+// Network configuration for the Dataproc Metastore service.
+type NetworkConfigResponse struct {
+	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+	Consumers []ConsumerResponse `pulumi:"consumers"`
+}
+
+// NetworkConfigResponseInput is an input type that accepts NetworkConfigResponseArgs and NetworkConfigResponseOutput values.
+// You can construct a concrete instance of `NetworkConfigResponseInput` via:
+//
+//          NetworkConfigResponseArgs{...}
+type NetworkConfigResponseInput interface {
+	pulumi.Input
+
+	ToNetworkConfigResponseOutput() NetworkConfigResponseOutput
+	ToNetworkConfigResponseOutputWithContext(context.Context) NetworkConfigResponseOutput
+}
+
+// Network configuration for the Dataproc Metastore service.
+type NetworkConfigResponseArgs struct {
+	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+	Consumers ConsumerResponseArrayInput `pulumi:"consumers"`
+}
+
+func (NetworkConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfigResponse)(nil)).Elem()
+}
+
+func (i NetworkConfigResponseArgs) ToNetworkConfigResponseOutput() NetworkConfigResponseOutput {
+	return i.ToNetworkConfigResponseOutputWithContext(context.Background())
+}
+
+func (i NetworkConfigResponseArgs) ToNetworkConfigResponseOutputWithContext(ctx context.Context) NetworkConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponseOutput)
+}
+
+func (i NetworkConfigResponseArgs) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
+	return i.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NetworkConfigResponseArgs) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponseOutput).ToNetworkConfigResponsePtrOutputWithContext(ctx)
+}
+
+// NetworkConfigResponsePtrInput is an input type that accepts NetworkConfigResponseArgs, NetworkConfigResponsePtr and NetworkConfigResponsePtrOutput values.
+// You can construct a concrete instance of `NetworkConfigResponsePtrInput` via:
+//
+//          NetworkConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput
+	ToNetworkConfigResponsePtrOutputWithContext(context.Context) NetworkConfigResponsePtrOutput
+}
+
+type networkConfigResponsePtrType NetworkConfigResponseArgs
+
+func NetworkConfigResponsePtr(v *NetworkConfigResponseArgs) NetworkConfigResponsePtrInput {
+	return (*networkConfigResponsePtrType)(v)
+}
+
+func (*networkConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConfigResponse)(nil)).Elem()
+}
+
+func (i *networkConfigResponsePtrType) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
+	return i.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *networkConfigResponsePtrType) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponsePtrOutput)
+}
+
+// Network configuration for the Dataproc Metastore service.
+type NetworkConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfigResponse)(nil)).Elem()
+}
+
+func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutput() NetworkConfigResponseOutput {
+	return o
+}
+
+func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ctx context.Context) NetworkConfigResponseOutput {
+	return o
+}
+
+func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
+	return o.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigResponse) *NetworkConfigResponse {
+		return &v
+	}).(NetworkConfigResponsePtrOutput)
+}
+
+// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+func (o NetworkConfigResponseOutput) Consumers() ConsumerResponseArrayOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) []ConsumerResponse { return v.Consumers }).(ConsumerResponseArrayOutput)
+}
+
+type NetworkConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConfigResponse)(nil)).Elem()
+}
+
+func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
+	return o
+}
+
+func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
+	return o
+}
+
+func (o NetworkConfigResponsePtrOutput) Elem() NetworkConfigResponseOutput {
+	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfigResponse
+		return ret
+	}).(NetworkConfigResponseOutput)
+}
+
+// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+func (o NetworkConfigResponsePtrOutput) Consumers() ConsumerResponseArrayOutput {
+	return o.ApplyT(func(v *NetworkConfigResponse) []ConsumerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Consumers
+	}).(ConsumerResponseArrayOutput)
+}
+
 // The details of a metadata restore operation.
 type RestoreResponse struct {
 	// The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
@@ -4325,6 +4814,8 @@ type ServiceResponse struct {
 	Name string `pulumi:"name"`
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network string `pulumi:"network"`
+	// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+	NetworkConfig NetworkConfigResponse `pulumi:"networkConfig"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port int `pulumi:"port"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
@@ -4376,6 +4867,8 @@ type ServiceResponseArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network pulumi.StringInput `pulumi:"network"`
+	// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+	NetworkConfig NetworkConfigResponseInput `pulumi:"networkConfig"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port pulumi.IntInput `pulumi:"port"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
@@ -4523,6 +5016,11 @@ func (o ServiceResponseOutput) Name() pulumi.StringOutput {
 // Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 func (o ServiceResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+func (o ServiceResponseOutput) NetworkConfig() NetworkConfigResponseOutput {
+	return o.ApplyT(func(v ServiceResponse) NetworkConfigResponse { return v.NetworkConfig }).(NetworkConfigResponseOutput)
 }
 
 // The TCP port at which the metastore service is reached. Default: 9083.
@@ -4694,6 +5192,16 @@ func (o ServiceResponsePtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+func (o ServiceResponsePtrOutput) NetworkConfig() NetworkConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ServiceResponse) *NetworkConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkConfig
+	}).(NetworkConfigResponsePtrOutput)
+}
+
 // The TCP port at which the metastore service is reached. Default: 9083.
 func (o ServiceResponsePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceResponse) *int {
@@ -4777,6 +5285,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerInput)(nil)).Elem(), ConsumerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerArrayInput)(nil)).Elem(), ConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerResponseInput)(nil)).Elem(), ConsumerResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerResponseArrayInput)(nil)).Elem(), ConsumerResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigInput)(nil)).Elem(), DataCatalogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigPtrInput)(nil)).Elem(), DataCatalogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigResponseInput)(nil)).Elem(), DataCatalogConfigResponseArgs{})
@@ -4816,6 +5328,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationResponsePtrInput)(nil)).Elem(), MetadataIntegrationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataManagementActivityResponseInput)(nil)).Elem(), MetadataManagementActivityResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataManagementActivityResponsePtrInput)(nil)).Elem(), MetadataManagementActivityResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponseInput)(nil)).Elem(), NetworkConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponsePtrInput)(nil)).Elem(), NetworkConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreResponseInput)(nil)).Elem(), RestoreResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreResponseArrayInput)(nil)).Elem(), RestoreResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
@@ -4836,6 +5352,10 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConsumerOutput{})
+	pulumi.RegisterOutputType(ConsumerArrayOutput{})
+	pulumi.RegisterOutputType(ConsumerResponseOutput{})
+	pulumi.RegisterOutputType(ConsumerResponseArrayOutput{})
 	pulumi.RegisterOutputType(DataCatalogConfigOutput{})
 	pulumi.RegisterOutputType(DataCatalogConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataCatalogConfigResponseOutput{})
@@ -4875,6 +5395,10 @@ func init() {
 	pulumi.RegisterOutputType(MetadataIntegrationResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetadataManagementActivityResponseOutput{})
 	pulumi.RegisterOutputType(MetadataManagementActivityResponsePtrOutput{})
+	pulumi.RegisterOutputType(NetworkConfigOutput{})
+	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
+	pulumi.RegisterOutputType(NetworkConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(RestoreResponseOutput{})
 	pulumi.RegisterOutputType(RestoreResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})

@@ -12483,6 +12483,8 @@ func (o GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) TableOptions() GoogleP
 type GooglePrivacyDlpV2InfoType struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name *string `pulumi:"name"`
+	// Optional version name for this InfoType.
+	Version *string `pulumi:"version"`
 }
 
 // GooglePrivacyDlpV2InfoTypeInput is an input type that accepts GooglePrivacyDlpV2InfoTypeArgs and GooglePrivacyDlpV2InfoTypeOutput values.
@@ -12500,6 +12502,8 @@ type GooglePrivacyDlpV2InfoTypeInput interface {
 type GooglePrivacyDlpV2InfoTypeArgs struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional version name for this InfoType.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GooglePrivacyDlpV2InfoTypeArgs) ElementType() reflect.Type {
@@ -12610,6 +12614,11 @@ func (o GooglePrivacyDlpV2InfoTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Optional version name for this InfoType.
+func (o GooglePrivacyDlpV2InfoTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InfoType) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type GooglePrivacyDlpV2InfoTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2InfoTypePtrOutput) ElementType() reflect.Type {
@@ -12641,6 +12650,16 @@ func (o GooglePrivacyDlpV2InfoTypePtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional version name for this InfoType.
+func (o GooglePrivacyDlpV2InfoTypePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12886,6 +12905,8 @@ func (o GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput) Index(i pulumi.IntIn
 type GooglePrivacyDlpV2InfoTypeResponse struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name string `pulumi:"name"`
+	// Optional version name for this InfoType.
+	Version string `pulumi:"version"`
 }
 
 // GooglePrivacyDlpV2InfoTypeResponseInput is an input type that accepts GooglePrivacyDlpV2InfoTypeResponseArgs and GooglePrivacyDlpV2InfoTypeResponseOutput values.
@@ -12903,6 +12924,8 @@ type GooglePrivacyDlpV2InfoTypeResponseInput interface {
 type GooglePrivacyDlpV2InfoTypeResponseArgs struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Optional version name for this InfoType.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GooglePrivacyDlpV2InfoTypeResponseArgs) ElementType() reflect.Type {
@@ -12960,6 +12983,11 @@ func (o GooglePrivacyDlpV2InfoTypeResponseOutput) ToGooglePrivacyDlpV2InfoTypeRe
 // Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 func (o GooglePrivacyDlpV2InfoTypeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional version name for this InfoType.
+func (o GooglePrivacyDlpV2InfoTypeResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type GooglePrivacyDlpV2InfoTypeResponseArrayOutput struct{ *pulumi.OutputState }
@@ -21665,7 +21693,7 @@ func (o GooglePrivacyDlpV2ProximityResponseOutput) WindowBefore() pulumi.IntOutp
 	return o.ApplyT(func(v GooglePrivacyDlpV2ProximityResponse) int { return v.WindowBefore }).(pulumi.IntOutput)
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog struct {
 }
 
@@ -21680,7 +21708,7 @@ type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogInput interface {
 	ToGooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutputWithContext(context.Context) GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs struct {
 }
 
@@ -21737,7 +21765,7 @@ func (i *googlePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrType) ToGooglePri
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput)
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput) ElementType() reflect.Type {
@@ -21786,7 +21814,7 @@ func (o GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput) Elem() Goo
 	}).(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput)
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse struct {
 }
 
@@ -21801,7 +21829,7 @@ type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseInput interface 
 	ToGooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutputWithContext(context.Context) GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseArgs struct {
 }
 
@@ -21817,7 +21845,7 @@ func (i GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseArgs) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput)
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput) ElementType() reflect.Type {

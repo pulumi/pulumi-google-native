@@ -49,6 +49,8 @@ type LookupDeviceResult struct {
 	EnabledUsbDebugging bool `pulumi:"enabledUsbDebugging"`
 	// Device encryption state.
 	EncryptionState string `pulumi:"encryptionState"`
+	// Attributes specific to Endpoint Verification devices.
+	EndpointVerificationSpecificAttributes EndpointVerificationSpecificAttributesResponse `pulumi:"endpointVerificationSpecificAttributes"`
 	// IMEI number of device if GSM device; empty otherwise.
 	Imei string `pulumi:"imei"`
 	// Kernel version of the device.
@@ -172,6 +174,13 @@ func (o LookupDeviceResultOutput) EnabledUsbDebugging() pulumi.BoolOutput {
 // Device encryption state.
 func (o LookupDeviceResultOutput) EncryptionState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.EncryptionState }).(pulumi.StringOutput)
+}
+
+// Attributes specific to Endpoint Verification devices.
+func (o LookupDeviceResultOutput) EndpointVerificationSpecificAttributes() EndpointVerificationSpecificAttributesResponseOutput {
+	return o.ApplyT(func(v LookupDeviceResult) EndpointVerificationSpecificAttributesResponse {
+		return v.EndpointVerificationSpecificAttributes
+	}).(EndpointVerificationSpecificAttributesResponseOutput)
 }
 
 // IMEI number of device if GSM device; empty otherwise.

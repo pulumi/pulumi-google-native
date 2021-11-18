@@ -2286,13 +2286,13 @@ func (o BigtableOptionsResponsePtrOutput) ReadRowkeyAsString() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type Binding struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
 }
 
@@ -2307,13 +2307,13 @@ type BindingInput interface {
 	ToBindingOutputWithContext(context.Context) BindingOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -2354,7 +2354,7 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -2369,17 +2369,17 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -2404,13 +2404,13 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponse struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
 }
 
@@ -2425,13 +2425,13 @@ type BindingResponseInput interface {
 	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -2472,7 +2472,7 @@ func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
 func (BindingResponseOutput) ElementType() reflect.Type {
@@ -2487,17 +2487,17 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -5437,8 +5437,8 @@ func (o DatasetReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 type DestinationTableProperties struct {
 	// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
 	Description *string `pulumi:"description"`
-	// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
-	ExpirationTimestampMillis *string `pulumi:"expirationTimestampMillis"`
+	// [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+	ExpirationTime *string `pulumi:"expirationTime"`
 	// [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
 	FriendlyName *string `pulumi:"friendlyName"`
 	// [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
@@ -5459,8 +5459,8 @@ type DestinationTablePropertiesInput interface {
 type DestinationTablePropertiesArgs struct {
 	// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
-	ExpirationTimestampMillis pulumi.StringPtrInput `pulumi:"expirationTimestampMillis"`
+	// [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
 	// [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
 	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
 	// [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
@@ -5549,9 +5549,9 @@ func (o DestinationTablePropertiesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationTableProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
-func (o DestinationTablePropertiesOutput) ExpirationTimestampMillis() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DestinationTableProperties) *string { return v.ExpirationTimestampMillis }).(pulumi.StringPtrOutput)
+// [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+func (o DestinationTablePropertiesOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationTableProperties) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
 }
 
 // [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
@@ -5598,13 +5598,13 @@ func (o DestinationTablePropertiesPtrOutput) Description() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
-func (o DestinationTablePropertiesPtrOutput) ExpirationTimestampMillis() pulumi.StringPtrOutput {
+// [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+func (o DestinationTablePropertiesPtrOutput) ExpirationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationTableProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ExpirationTimestampMillis
+		return v.ExpirationTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5631,8 +5631,8 @@ func (o DestinationTablePropertiesPtrOutput) Labels() pulumi.StringMapOutput {
 type DestinationTablePropertiesResponse struct {
 	// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
 	Description string `pulumi:"description"`
-	// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
-	ExpirationTimestampMillis string `pulumi:"expirationTimestampMillis"`
+	// [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+	ExpirationTime string `pulumi:"expirationTime"`
 	// [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
 	FriendlyName string `pulumi:"friendlyName"`
 	// [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
@@ -5653,8 +5653,8 @@ type DestinationTablePropertiesResponseInput interface {
 type DestinationTablePropertiesResponseArgs struct {
 	// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
 	Description pulumi.StringInput `pulumi:"description"`
-	// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
-	ExpirationTimestampMillis pulumi.StringInput `pulumi:"expirationTimestampMillis"`
+	// [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
 	// [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
 	FriendlyName pulumi.StringInput `pulumi:"friendlyName"`
 	// [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
@@ -5743,9 +5743,9 @@ func (o DestinationTablePropertiesResponseOutput) Description() pulumi.StringOut
 	return o.ApplyT(func(v DestinationTablePropertiesResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
-func (o DestinationTablePropertiesResponseOutput) ExpirationTimestampMillis() pulumi.StringOutput {
-	return o.ApplyT(func(v DestinationTablePropertiesResponse) string { return v.ExpirationTimestampMillis }).(pulumi.StringOutput)
+// [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+func (o DestinationTablePropertiesResponseOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationTablePropertiesResponse) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
 // [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
@@ -5792,13 +5792,13 @@ func (o DestinationTablePropertiesResponsePtrOutput) Description() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Optional] The expiration timestamp for the destination table. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
-func (o DestinationTablePropertiesResponsePtrOutput) ExpirationTimestampMillis() pulumi.StringPtrOutput {
+// [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+func (o DestinationTablePropertiesResponsePtrOutput) ExpirationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationTablePropertiesResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ExpirationTimestampMillis
+		return &v.ExpirationTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8712,6 +8712,139 @@ func (o HivePartitioningOptionsResponsePtrOutput) SourceUriPrefix() pulumi.Strin
 		}
 		return &v.SourceUriPrefix
 	}).(pulumi.StringPtrOutput)
+}
+
+type IterationResultResponse struct {
+	// Time taken to run the iteration in milliseconds.
+	DurationMs string `pulumi:"durationMs"`
+	// Loss computed on the eval data at the end of iteration.
+	EvalLoss float64 `pulumi:"evalLoss"`
+	// Index of the iteration, 0 based.
+	Index int `pulumi:"index"`
+	// Learn rate used for this iteration.
+	LearnRate float64 `pulumi:"learnRate"`
+	// Loss computed on the training data at the end of iteration.
+	TrainingLoss float64 `pulumi:"trainingLoss"`
+}
+
+// IterationResultResponseInput is an input type that accepts IterationResultResponseArgs and IterationResultResponseOutput values.
+// You can construct a concrete instance of `IterationResultResponseInput` via:
+//
+//          IterationResultResponseArgs{...}
+type IterationResultResponseInput interface {
+	pulumi.Input
+
+	ToIterationResultResponseOutput() IterationResultResponseOutput
+	ToIterationResultResponseOutputWithContext(context.Context) IterationResultResponseOutput
+}
+
+type IterationResultResponseArgs struct {
+	// Time taken to run the iteration in milliseconds.
+	DurationMs pulumi.StringInput `pulumi:"durationMs"`
+	// Loss computed on the eval data at the end of iteration.
+	EvalLoss pulumi.Float64Input `pulumi:"evalLoss"`
+	// Index of the iteration, 0 based.
+	Index pulumi.IntInput `pulumi:"index"`
+	// Learn rate used for this iteration.
+	LearnRate pulumi.Float64Input `pulumi:"learnRate"`
+	// Loss computed on the training data at the end of iteration.
+	TrainingLoss pulumi.Float64Input `pulumi:"trainingLoss"`
+}
+
+func (IterationResultResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IterationResultResponse)(nil)).Elem()
+}
+
+func (i IterationResultResponseArgs) ToIterationResultResponseOutput() IterationResultResponseOutput {
+	return i.ToIterationResultResponseOutputWithContext(context.Background())
+}
+
+func (i IterationResultResponseArgs) ToIterationResultResponseOutputWithContext(ctx context.Context) IterationResultResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IterationResultResponseOutput)
+}
+
+// IterationResultResponseArrayInput is an input type that accepts IterationResultResponseArray and IterationResultResponseArrayOutput values.
+// You can construct a concrete instance of `IterationResultResponseArrayInput` via:
+//
+//          IterationResultResponseArray{ IterationResultResponseArgs{...} }
+type IterationResultResponseArrayInput interface {
+	pulumi.Input
+
+	ToIterationResultResponseArrayOutput() IterationResultResponseArrayOutput
+	ToIterationResultResponseArrayOutputWithContext(context.Context) IterationResultResponseArrayOutput
+}
+
+type IterationResultResponseArray []IterationResultResponseInput
+
+func (IterationResultResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IterationResultResponse)(nil)).Elem()
+}
+
+func (i IterationResultResponseArray) ToIterationResultResponseArrayOutput() IterationResultResponseArrayOutput {
+	return i.ToIterationResultResponseArrayOutputWithContext(context.Background())
+}
+
+func (i IterationResultResponseArray) ToIterationResultResponseArrayOutputWithContext(ctx context.Context) IterationResultResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IterationResultResponseArrayOutput)
+}
+
+type IterationResultResponseOutput struct{ *pulumi.OutputState }
+
+func (IterationResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IterationResultResponse)(nil)).Elem()
+}
+
+func (o IterationResultResponseOutput) ToIterationResultResponseOutput() IterationResultResponseOutput {
+	return o
+}
+
+func (o IterationResultResponseOutput) ToIterationResultResponseOutputWithContext(ctx context.Context) IterationResultResponseOutput {
+	return o
+}
+
+// Time taken to run the iteration in milliseconds.
+func (o IterationResultResponseOutput) DurationMs() pulumi.StringOutput {
+	return o.ApplyT(func(v IterationResultResponse) string { return v.DurationMs }).(pulumi.StringOutput)
+}
+
+// Loss computed on the eval data at the end of iteration.
+func (o IterationResultResponseOutput) EvalLoss() pulumi.Float64Output {
+	return o.ApplyT(func(v IterationResultResponse) float64 { return v.EvalLoss }).(pulumi.Float64Output)
+}
+
+// Index of the iteration, 0 based.
+func (o IterationResultResponseOutput) Index() pulumi.IntOutput {
+	return o.ApplyT(func(v IterationResultResponse) int { return v.Index }).(pulumi.IntOutput)
+}
+
+// Learn rate used for this iteration.
+func (o IterationResultResponseOutput) LearnRate() pulumi.Float64Output {
+	return o.ApplyT(func(v IterationResultResponse) float64 { return v.LearnRate }).(pulumi.Float64Output)
+}
+
+// Loss computed on the training data at the end of iteration.
+func (o IterationResultResponseOutput) TrainingLoss() pulumi.Float64Output {
+	return o.ApplyT(func(v IterationResultResponse) float64 { return v.TrainingLoss }).(pulumi.Float64Output)
+}
+
+type IterationResultResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IterationResultResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IterationResultResponse)(nil)).Elem()
+}
+
+func (o IterationResultResponseArrayOutput) ToIterationResultResponseArrayOutput() IterationResultResponseArrayOutput {
+	return o
+}
+
+func (o IterationResultResponseArrayOutput) ToIterationResultResponseArrayOutputWithContext(ctx context.Context) IterationResultResponseArrayOutput {
+	return o
+}
+
+func (o IterationResultResponseArrayOutput) Index(i pulumi.IntInput) IterationResultResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IterationResultResponse {
+		return vs[0].([]IterationResultResponse)[vs[1].(int)]
+	}).(IterationResultResponseOutput)
 }
 
 type JobConfiguration struct {
@@ -13256,6 +13389,8 @@ type JobStatistics2Response struct {
 	DmlStats DmlStatisticsResponse `pulumi:"dmlStats"`
 	// The original estimate of bytes processed for the job.
 	EstimatedBytesProcessed string `pulumi:"estimatedBytesProcessed"`
+	// Statistics of a BigQuery ML training job.
+	MlStatistics MlStatisticsResponse `pulumi:"mlStatistics"`
 	// [Output-only, Beta] Information about create model query job progress.
 	ModelTraining BigQueryModelTrainingResponse `pulumi:"modelTraining"`
 	// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
@@ -13324,6 +13459,8 @@ type JobStatistics2ResponseArgs struct {
 	DmlStats DmlStatisticsResponseInput `pulumi:"dmlStats"`
 	// The original estimate of bytes processed for the job.
 	EstimatedBytesProcessed pulumi.StringInput `pulumi:"estimatedBytesProcessed"`
+	// Statistics of a BigQuery ML training job.
+	MlStatistics MlStatisticsResponseInput `pulumi:"mlStatistics"`
 	// [Output-only, Beta] Information about create model query job progress.
 	ModelTraining BigQueryModelTrainingResponseInput `pulumi:"modelTraining"`
 	// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
@@ -13491,6 +13628,11 @@ func (o JobStatistics2ResponseOutput) DmlStats() DmlStatisticsResponseOutput {
 // The original estimate of bytes processed for the job.
 func (o JobStatistics2ResponseOutput) EstimatedBytesProcessed() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.EstimatedBytesProcessed }).(pulumi.StringOutput)
+}
+
+// Statistics of a BigQuery ML training job.
+func (o JobStatistics2ResponseOutput) MlStatistics() MlStatisticsResponseOutput {
+	return o.ApplyT(func(v JobStatistics2Response) MlStatisticsResponse { return v.MlStatistics }).(MlStatisticsResponseOutput)
 }
 
 // [Output-only, Beta] Information about create model query job progress.
@@ -13710,6 +13852,16 @@ func (o JobStatistics2ResponsePtrOutput) EstimatedBytesProcessed() pulumi.String
 		}
 		return &v.EstimatedBytesProcessed
 	}).(pulumi.StringPtrOutput)
+}
+
+// Statistics of a BigQuery ML training job.
+func (o JobStatistics2ResponsePtrOutput) MlStatistics() MlStatisticsResponsePtrOutput {
+	return o.ApplyT(func(v *JobStatistics2Response) *MlStatisticsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MlStatistics
+	}).(MlStatisticsResponsePtrOutput)
 }
 
 // [Output-only, Beta] Information about create model query job progress.
@@ -15319,6 +15471,162 @@ func (o MaterializedViewDefinitionResponsePtrOutput) RefreshIntervalMs() pulumi.
 			return nil
 		}
 		return &v.RefreshIntervalMs
+	}).(pulumi.StringPtrOutput)
+}
+
+type MlStatisticsResponse struct {
+	// Results for all completed iterations.
+	IterationResults []IterationResultResponse `pulumi:"iterationResults"`
+	// Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
+	MaxIterations string `pulumi:"maxIterations"`
+}
+
+// MlStatisticsResponseInput is an input type that accepts MlStatisticsResponseArgs and MlStatisticsResponseOutput values.
+// You can construct a concrete instance of `MlStatisticsResponseInput` via:
+//
+//          MlStatisticsResponseArgs{...}
+type MlStatisticsResponseInput interface {
+	pulumi.Input
+
+	ToMlStatisticsResponseOutput() MlStatisticsResponseOutput
+	ToMlStatisticsResponseOutputWithContext(context.Context) MlStatisticsResponseOutput
+}
+
+type MlStatisticsResponseArgs struct {
+	// Results for all completed iterations.
+	IterationResults IterationResultResponseArrayInput `pulumi:"iterationResults"`
+	// Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
+	MaxIterations pulumi.StringInput `pulumi:"maxIterations"`
+}
+
+func (MlStatisticsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MlStatisticsResponse)(nil)).Elem()
+}
+
+func (i MlStatisticsResponseArgs) ToMlStatisticsResponseOutput() MlStatisticsResponseOutput {
+	return i.ToMlStatisticsResponseOutputWithContext(context.Background())
+}
+
+func (i MlStatisticsResponseArgs) ToMlStatisticsResponseOutputWithContext(ctx context.Context) MlStatisticsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MlStatisticsResponseOutput)
+}
+
+func (i MlStatisticsResponseArgs) ToMlStatisticsResponsePtrOutput() MlStatisticsResponsePtrOutput {
+	return i.ToMlStatisticsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MlStatisticsResponseArgs) ToMlStatisticsResponsePtrOutputWithContext(ctx context.Context) MlStatisticsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MlStatisticsResponseOutput).ToMlStatisticsResponsePtrOutputWithContext(ctx)
+}
+
+// MlStatisticsResponsePtrInput is an input type that accepts MlStatisticsResponseArgs, MlStatisticsResponsePtr and MlStatisticsResponsePtrOutput values.
+// You can construct a concrete instance of `MlStatisticsResponsePtrInput` via:
+//
+//          MlStatisticsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MlStatisticsResponsePtrInput interface {
+	pulumi.Input
+
+	ToMlStatisticsResponsePtrOutput() MlStatisticsResponsePtrOutput
+	ToMlStatisticsResponsePtrOutputWithContext(context.Context) MlStatisticsResponsePtrOutput
+}
+
+type mlStatisticsResponsePtrType MlStatisticsResponseArgs
+
+func MlStatisticsResponsePtr(v *MlStatisticsResponseArgs) MlStatisticsResponsePtrInput {
+	return (*mlStatisticsResponsePtrType)(v)
+}
+
+func (*mlStatisticsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MlStatisticsResponse)(nil)).Elem()
+}
+
+func (i *mlStatisticsResponsePtrType) ToMlStatisticsResponsePtrOutput() MlStatisticsResponsePtrOutput {
+	return i.ToMlStatisticsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *mlStatisticsResponsePtrType) ToMlStatisticsResponsePtrOutputWithContext(ctx context.Context) MlStatisticsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MlStatisticsResponsePtrOutput)
+}
+
+type MlStatisticsResponseOutput struct{ *pulumi.OutputState }
+
+func (MlStatisticsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MlStatisticsResponse)(nil)).Elem()
+}
+
+func (o MlStatisticsResponseOutput) ToMlStatisticsResponseOutput() MlStatisticsResponseOutput {
+	return o
+}
+
+func (o MlStatisticsResponseOutput) ToMlStatisticsResponseOutputWithContext(ctx context.Context) MlStatisticsResponseOutput {
+	return o
+}
+
+func (o MlStatisticsResponseOutput) ToMlStatisticsResponsePtrOutput() MlStatisticsResponsePtrOutput {
+	return o.ToMlStatisticsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MlStatisticsResponseOutput) ToMlStatisticsResponsePtrOutputWithContext(ctx context.Context) MlStatisticsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MlStatisticsResponse) *MlStatisticsResponse {
+		return &v
+	}).(MlStatisticsResponsePtrOutput)
+}
+
+// Results for all completed iterations.
+func (o MlStatisticsResponseOutput) IterationResults() IterationResultResponseArrayOutput {
+	return o.ApplyT(func(v MlStatisticsResponse) []IterationResultResponse { return v.IterationResults }).(IterationResultResponseArrayOutput)
+}
+
+// Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
+func (o MlStatisticsResponseOutput) MaxIterations() pulumi.StringOutput {
+	return o.ApplyT(func(v MlStatisticsResponse) string { return v.MaxIterations }).(pulumi.StringOutput)
+}
+
+type MlStatisticsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MlStatisticsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MlStatisticsResponse)(nil)).Elem()
+}
+
+func (o MlStatisticsResponsePtrOutput) ToMlStatisticsResponsePtrOutput() MlStatisticsResponsePtrOutput {
+	return o
+}
+
+func (o MlStatisticsResponsePtrOutput) ToMlStatisticsResponsePtrOutputWithContext(ctx context.Context) MlStatisticsResponsePtrOutput {
+	return o
+}
+
+func (o MlStatisticsResponsePtrOutput) Elem() MlStatisticsResponseOutput {
+	return o.ApplyT(func(v *MlStatisticsResponse) MlStatisticsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MlStatisticsResponse
+		return ret
+	}).(MlStatisticsResponseOutput)
+}
+
+// Results for all completed iterations.
+func (o MlStatisticsResponsePtrOutput) IterationResults() IterationResultResponseArrayOutput {
+	return o.ApplyT(func(v *MlStatisticsResponse) []IterationResultResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IterationResults
+	}).(IterationResultResponseArrayOutput)
+}
+
+// Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
+func (o MlStatisticsResponsePtrOutput) MaxIterations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MlStatisticsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxIterations
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23886,6 +24194,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsPtrInput)(nil)).Elem(), HivePartitioningOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsResponseInput)(nil)).Elem(), HivePartitioningOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HivePartitioningOptionsResponsePtrInput)(nil)).Elem(), HivePartitioningOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IterationResultResponseInput)(nil)).Elem(), IterationResultResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IterationResultResponseArrayInput)(nil)).Elem(), IterationResultResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationInput)(nil)).Elem(), JobConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationPtrInput)(nil)).Elem(), JobConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationExtractInput)(nil)).Elem(), JobConfigurationExtractArgs{})
@@ -23928,6 +24238,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionPtrInput)(nil)).Elem(), MaterializedViewDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionResponseInput)(nil)).Elem(), MaterializedViewDefinitionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaterializedViewDefinitionResponsePtrInput)(nil)).Elem(), MaterializedViewDefinitionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MlStatisticsResponseInput)(nil)).Elem(), MlStatisticsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MlStatisticsResponsePtrInput)(nil)).Elem(), MlStatisticsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionInput)(nil)).Elem(), ModelDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionPtrInput)(nil)).Elem(), ModelDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelDefinitionModelOptionsInput)(nil)).Elem(), ModelDefinitionModelOptionsArgs{})
@@ -24148,6 +24460,8 @@ func init() {
 	pulumi.RegisterOutputType(HivePartitioningOptionsPtrOutput{})
 	pulumi.RegisterOutputType(HivePartitioningOptionsResponseOutput{})
 	pulumi.RegisterOutputType(HivePartitioningOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(IterationResultResponseOutput{})
+	pulumi.RegisterOutputType(IterationResultResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobConfigurationOutput{})
 	pulumi.RegisterOutputType(JobConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationExtractOutput{})
@@ -24190,6 +24504,8 @@ func init() {
 	pulumi.RegisterOutputType(MaterializedViewDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionResponsePtrOutput{})
+	pulumi.RegisterOutputType(MlStatisticsResponseOutput{})
+	pulumi.RegisterOutputType(MlStatisticsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionModelOptionsOutput{})

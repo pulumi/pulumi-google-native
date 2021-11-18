@@ -51,7 +51,7 @@ type LookupInstanceResult struct {
 	NodeConfig NodeConfigResponse `pulumi:"nodeConfig"`
 	// Number of nodes in the Memcached instance.
 	NodeCount int `pulumi:"nodeCount"`
-	// Optional: User defined parameters to apply to the memcached process on each node.
+	// User defined parameters to apply to the memcached process on each node.
 	Parameters MemcacheParametersResponse `pulumi:"parameters"`
 	// The state of this Memcached instance.
 	State string `pulumi:"state"`
@@ -156,7 +156,7 @@ func (o LookupInstanceResultOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInstanceResult) int { return v.NodeCount }).(pulumi.IntOutput)
 }
 
-// Optional: User defined parameters to apply to the memcached process on each node.
+// User defined parameters to apply to the memcached process on each node.
 func (o LookupInstanceResultOutput) Parameters() MemcacheParametersResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) MemcacheParametersResponse { return v.Parameters }).(MemcacheParametersResponseOutput)
 }

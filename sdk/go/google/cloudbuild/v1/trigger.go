@@ -27,6 +27,8 @@ type Trigger struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// If true, the trigger will never automatically execute a build.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
+	// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+	EventType pulumi.StringOutput `pulumi:"eventType"`
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename pulumi.StringOutput `pulumi:"filename"`
 	// A Common Expression Language string.
@@ -111,6 +113,8 @@ type triggerArgs struct {
 	Description *string `pulumi:"description"`
 	// If true, the trigger will never automatically execute a build.
 	Disabled *bool `pulumi:"disabled"`
+	// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+	EventType *TriggerEventType `pulumi:"eventType"`
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename *string `pulumi:"filename"`
 	// A Common Expression Language string.
@@ -158,6 +162,8 @@ type TriggerArgs struct {
 	Description pulumi.StringPtrInput
 	// If true, the trigger will never automatically execute a build.
 	Disabled pulumi.BoolPtrInput
+	// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+	EventType TriggerEventTypePtrInput
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename pulumi.StringPtrInput
 	// A Common Expression Language string.

@@ -54,15 +54,15 @@ type LookupNoteResult struct {
 	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
 	// URLs associated with this note.
 	RelatedUrl []RelatedUrlResponse `pulumi:"relatedUrl"`
-	// A note describing SPDX Document which represents SBOM.
+	// A note describing a software bill of materials.
 	Sbom DocumentNoteResponse `pulumi:"sbom"`
 	// A one sentence description of this note.
 	ShortDescription string `pulumi:"shortDescription"`
-	// A note describing SPDX File.
+	// A note describing an SPDX File.
 	SpdxFile FileNoteResponse `pulumi:"spdxFile"`
-	// A note describing SPDX Package.
-	SpdxPackage PackageNoteResponse `pulumi:"spdxPackage"`
-	// A note describing SPDX Relationship.
+	// A note describing an SPDX Package.
+	SpdxPackage PackageInfoNoteResponse `pulumi:"spdxPackage"`
+	// A note describing an SPDX File.
 	SpdxRelationship RelationshipNoteResponse `pulumi:"spdxRelationship"`
 	// The time this note was last updated. This field can be used as a filter in list requests.
 	UpdateTime string `pulumi:"updateTime"`
@@ -172,7 +172,7 @@ func (o LookupNoteResultOutput) RelatedUrl() RelatedUrlResponseArrayOutput {
 	return o.ApplyT(func(v LookupNoteResult) []RelatedUrlResponse { return v.RelatedUrl }).(RelatedUrlResponseArrayOutput)
 }
 
-// A note describing SPDX Document which represents SBOM.
+// A note describing a software bill of materials.
 func (o LookupNoteResultOutput) Sbom() DocumentNoteResponseOutput {
 	return o.ApplyT(func(v LookupNoteResult) DocumentNoteResponse { return v.Sbom }).(DocumentNoteResponseOutput)
 }
@@ -182,17 +182,17 @@ func (o LookupNoteResultOutput) ShortDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNoteResult) string { return v.ShortDescription }).(pulumi.StringOutput)
 }
 
-// A note describing SPDX File.
+// A note describing an SPDX File.
 func (o LookupNoteResultOutput) SpdxFile() FileNoteResponseOutput {
 	return o.ApplyT(func(v LookupNoteResult) FileNoteResponse { return v.SpdxFile }).(FileNoteResponseOutput)
 }
 
-// A note describing SPDX Package.
-func (o LookupNoteResultOutput) SpdxPackage() PackageNoteResponseOutput {
-	return o.ApplyT(func(v LookupNoteResult) PackageNoteResponse { return v.SpdxPackage }).(PackageNoteResponseOutput)
+// A note describing an SPDX Package.
+func (o LookupNoteResultOutput) SpdxPackage() PackageInfoNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) PackageInfoNoteResponse { return v.SpdxPackage }).(PackageInfoNoteResponseOutput)
 }
 
-// A note describing SPDX Relationship.
+// A note describing an SPDX File.
 func (o LookupNoteResultOutput) SpdxRelationship() RelationshipNoteResponseOutput {
 	return o.ApplyT(func(v LookupNoteResult) RelationshipNoteResponse { return v.SpdxRelationship }).(RelationshipNoteResponseOutput)
 }

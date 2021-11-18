@@ -228,6 +228,224 @@ func (o AllowedIpRangeResponseArrayOutput) Index(i pulumi.IntInput) AllowedIpRan
 	}).(AllowedIpRangeResponseOutput)
 }
 
+// CidrBlock contains an optional name and one CIDR block.
+type CidrBlock struct {
+	// cidr_block must be specified in CIDR notation.
+	CidrBlock *string `pulumi:"cidrBlock"`
+	// display_name is a field for users to identify CIDR blocks.
+	DisplayName *string `pulumi:"displayName"`
+}
+
+// CidrBlockInput is an input type that accepts CidrBlockArgs and CidrBlockOutput values.
+// You can construct a concrete instance of `CidrBlockInput` via:
+//
+//          CidrBlockArgs{...}
+type CidrBlockInput interface {
+	pulumi.Input
+
+	ToCidrBlockOutput() CidrBlockOutput
+	ToCidrBlockOutputWithContext(context.Context) CidrBlockOutput
+}
+
+// CidrBlock contains an optional name and one CIDR block.
+type CidrBlockArgs struct {
+	// cidr_block must be specified in CIDR notation.
+	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
+	// display_name is a field for users to identify CIDR blocks.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+}
+
+func (CidrBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CidrBlock)(nil)).Elem()
+}
+
+func (i CidrBlockArgs) ToCidrBlockOutput() CidrBlockOutput {
+	return i.ToCidrBlockOutputWithContext(context.Background())
+}
+
+func (i CidrBlockArgs) ToCidrBlockOutputWithContext(ctx context.Context) CidrBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CidrBlockOutput)
+}
+
+// CidrBlockArrayInput is an input type that accepts CidrBlockArray and CidrBlockArrayOutput values.
+// You can construct a concrete instance of `CidrBlockArrayInput` via:
+//
+//          CidrBlockArray{ CidrBlockArgs{...} }
+type CidrBlockArrayInput interface {
+	pulumi.Input
+
+	ToCidrBlockArrayOutput() CidrBlockArrayOutput
+	ToCidrBlockArrayOutputWithContext(context.Context) CidrBlockArrayOutput
+}
+
+type CidrBlockArray []CidrBlockInput
+
+func (CidrBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CidrBlock)(nil)).Elem()
+}
+
+func (i CidrBlockArray) ToCidrBlockArrayOutput() CidrBlockArrayOutput {
+	return i.ToCidrBlockArrayOutputWithContext(context.Background())
+}
+
+func (i CidrBlockArray) ToCidrBlockArrayOutputWithContext(ctx context.Context) CidrBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CidrBlockArrayOutput)
+}
+
+// CidrBlock contains an optional name and one CIDR block.
+type CidrBlockOutput struct{ *pulumi.OutputState }
+
+func (CidrBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CidrBlock)(nil)).Elem()
+}
+
+func (o CidrBlockOutput) ToCidrBlockOutput() CidrBlockOutput {
+	return o
+}
+
+func (o CidrBlockOutput) ToCidrBlockOutputWithContext(ctx context.Context) CidrBlockOutput {
+	return o
+}
+
+// cidr_block must be specified in CIDR notation.
+func (o CidrBlockOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CidrBlock) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// display_name is a field for users to identify CIDR blocks.
+func (o CidrBlockOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CidrBlock) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+type CidrBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (CidrBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CidrBlock)(nil)).Elem()
+}
+
+func (o CidrBlockArrayOutput) ToCidrBlockArrayOutput() CidrBlockArrayOutput {
+	return o
+}
+
+func (o CidrBlockArrayOutput) ToCidrBlockArrayOutputWithContext(ctx context.Context) CidrBlockArrayOutput {
+	return o
+}
+
+func (o CidrBlockArrayOutput) Index(i pulumi.IntInput) CidrBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CidrBlock {
+		return vs[0].([]CidrBlock)[vs[1].(int)]
+	}).(CidrBlockOutput)
+}
+
+// CidrBlock contains an optional name and one CIDR block.
+type CidrBlockResponse struct {
+	// cidr_block must be specified in CIDR notation.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// display_name is a field for users to identify CIDR blocks.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// CidrBlockResponseInput is an input type that accepts CidrBlockResponseArgs and CidrBlockResponseOutput values.
+// You can construct a concrete instance of `CidrBlockResponseInput` via:
+//
+//          CidrBlockResponseArgs{...}
+type CidrBlockResponseInput interface {
+	pulumi.Input
+
+	ToCidrBlockResponseOutput() CidrBlockResponseOutput
+	ToCidrBlockResponseOutputWithContext(context.Context) CidrBlockResponseOutput
+}
+
+// CidrBlock contains an optional name and one CIDR block.
+type CidrBlockResponseArgs struct {
+	// cidr_block must be specified in CIDR notation.
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// display_name is a field for users to identify CIDR blocks.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+}
+
+func (CidrBlockResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CidrBlockResponse)(nil)).Elem()
+}
+
+func (i CidrBlockResponseArgs) ToCidrBlockResponseOutput() CidrBlockResponseOutput {
+	return i.ToCidrBlockResponseOutputWithContext(context.Background())
+}
+
+func (i CidrBlockResponseArgs) ToCidrBlockResponseOutputWithContext(ctx context.Context) CidrBlockResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CidrBlockResponseOutput)
+}
+
+// CidrBlockResponseArrayInput is an input type that accepts CidrBlockResponseArray and CidrBlockResponseArrayOutput values.
+// You can construct a concrete instance of `CidrBlockResponseArrayInput` via:
+//
+//          CidrBlockResponseArray{ CidrBlockResponseArgs{...} }
+type CidrBlockResponseArrayInput interface {
+	pulumi.Input
+
+	ToCidrBlockResponseArrayOutput() CidrBlockResponseArrayOutput
+	ToCidrBlockResponseArrayOutputWithContext(context.Context) CidrBlockResponseArrayOutput
+}
+
+type CidrBlockResponseArray []CidrBlockResponseInput
+
+func (CidrBlockResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CidrBlockResponse)(nil)).Elem()
+}
+
+func (i CidrBlockResponseArray) ToCidrBlockResponseArrayOutput() CidrBlockResponseArrayOutput {
+	return i.ToCidrBlockResponseArrayOutputWithContext(context.Background())
+}
+
+func (i CidrBlockResponseArray) ToCidrBlockResponseArrayOutputWithContext(ctx context.Context) CidrBlockResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CidrBlockResponseArrayOutput)
+}
+
+// CidrBlock contains an optional name and one CIDR block.
+type CidrBlockResponseOutput struct{ *pulumi.OutputState }
+
+func (CidrBlockResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CidrBlockResponse)(nil)).Elem()
+}
+
+func (o CidrBlockResponseOutput) ToCidrBlockResponseOutput() CidrBlockResponseOutput {
+	return o
+}
+
+func (o CidrBlockResponseOutput) ToCidrBlockResponseOutputWithContext(ctx context.Context) CidrBlockResponseOutput {
+	return o
+}
+
+// cidr_block must be specified in CIDR notation.
+func (o CidrBlockResponseOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v CidrBlockResponse) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// display_name is a field for users to identify CIDR blocks.
+func (o CidrBlockResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v CidrBlockResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+type CidrBlockResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CidrBlockResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CidrBlockResponse)(nil)).Elem()
+}
+
+func (o CidrBlockResponseArrayOutput) ToCidrBlockResponseArrayOutput() CidrBlockResponseArrayOutput {
+	return o
+}
+
+func (o CidrBlockResponseArrayOutput) ToCidrBlockResponseArrayOutputWithContext(ctx context.Context) CidrBlockResponseArrayOutput {
+	return o
+}
+
+func (o CidrBlockResponseArrayOutput) Index(i pulumi.IntInput) CidrBlockResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CidrBlockResponse {
+		return vs[0].([]CidrBlockResponse)[vs[1].(int)]
+	}).(CidrBlockResponseOutput)
+}
+
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type DatabaseConfig struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
@@ -798,6 +1016,8 @@ type EnvironmentConfig struct {
 	EnvironmentSize *EnvironmentConfigEnvironmentSize `pulumi:"environmentSize"`
 	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
+	// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+	MasterAuthorizedNetworksConfig *MasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfig"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -808,7 +1028,7 @@ type EnvironmentConfig struct {
 	SoftwareConfig *SoftwareConfig `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerConfig *WebServerConfig `pulumi:"webServerConfig"`
-	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 	WebServerNetworkAccessControl *WebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControl"`
 	// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	WorkloadsConfig *WorkloadsConfig `pulumi:"workloadsConfig"`
@@ -835,6 +1055,8 @@ type EnvironmentConfigArgs struct {
 	EnvironmentSize EnvironmentConfigEnvironmentSizePtrInput `pulumi:"environmentSize"`
 	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
 	MaintenanceWindow MaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
+	// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigPtrInput `pulumi:"masterAuthorizedNetworksConfig"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigPtrInput `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -845,7 +1067,7 @@ type EnvironmentConfigArgs struct {
 	SoftwareConfig SoftwareConfigPtrInput `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerConfig WebServerConfigPtrInput `pulumi:"webServerConfig"`
-	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 	WebServerNetworkAccessControl WebServerNetworkAccessControlPtrInput `pulumi:"webServerNetworkAccessControl"`
 	// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	WorkloadsConfig WorkloadsConfigPtrInput `pulumi:"workloadsConfig"`
@@ -949,6 +1171,11 @@ func (o EnvironmentConfigOutput) MaintenanceWindow() MaintenanceWindowPtrOutput 
 	return o.ApplyT(func(v EnvironmentConfig) *MaintenanceWindow { return v.MaintenanceWindow }).(MaintenanceWindowPtrOutput)
 }
 
+// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+func (o EnvironmentConfigOutput) MasterAuthorizedNetworksConfig() MasterAuthorizedNetworksConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *MasterAuthorizedNetworksConfig { return v.MasterAuthorizedNetworksConfig }).(MasterAuthorizedNetworksConfigPtrOutput)
+}
+
 // The configuration used for the Kubernetes Engine cluster.
 func (o EnvironmentConfigOutput) NodeConfig() NodeConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *NodeConfig { return v.NodeConfig }).(NodeConfigPtrOutput)
@@ -974,7 +1201,7 @@ func (o EnvironmentConfigOutput) WebServerConfig() WebServerConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *WebServerConfig { return v.WebServerConfig }).(WebServerConfigPtrOutput)
 }
 
-// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 func (o EnvironmentConfigOutput) WebServerNetworkAccessControl() WebServerNetworkAccessControlPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *WebServerNetworkAccessControl { return v.WebServerNetworkAccessControl }).(WebServerNetworkAccessControlPtrOutput)
 }
@@ -1048,6 +1275,16 @@ func (o EnvironmentConfigPtrOutput) MaintenanceWindow() MaintenanceWindowPtrOutp
 	}).(MaintenanceWindowPtrOutput)
 }
 
+// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+func (o EnvironmentConfigPtrOutput) MasterAuthorizedNetworksConfig() MasterAuthorizedNetworksConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *MasterAuthorizedNetworksConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MasterAuthorizedNetworksConfig
+	}).(MasterAuthorizedNetworksConfigPtrOutput)
+}
+
 // The configuration used for the Kubernetes Engine cluster.
 func (o EnvironmentConfigPtrOutput) NodeConfig() NodeConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *NodeConfig {
@@ -1098,7 +1335,7 @@ func (o EnvironmentConfigPtrOutput) WebServerConfig() WebServerConfigPtrOutput {
 	}).(WebServerConfigPtrOutput)
 }
 
-// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 func (o EnvironmentConfigPtrOutput) WebServerNetworkAccessControl() WebServerNetworkAccessControlPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *WebServerNetworkAccessControl {
 		if v == nil {
@@ -1134,6 +1371,8 @@ type EnvironmentConfigResponse struct {
 	GkeCluster string `pulumi:"gkeCluster"`
 	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
 	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
+	// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigResponse `pulumi:"masterAuthorizedNetworksConfig"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigResponse `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1144,7 +1383,7 @@ type EnvironmentConfigResponse struct {
 	SoftwareConfig SoftwareConfigResponse `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerConfig WebServerConfigResponse `pulumi:"webServerConfig"`
-	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 	WebServerNetworkAccessControl WebServerNetworkAccessControlResponse `pulumi:"webServerNetworkAccessControl"`
 	// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	WorkloadsConfig WorkloadsConfigResponse `pulumi:"workloadsConfig"`
@@ -1177,6 +1416,8 @@ type EnvironmentConfigResponseArgs struct {
 	GkeCluster pulumi.StringInput `pulumi:"gkeCluster"`
 	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
 	MaintenanceWindow MaintenanceWindowResponseInput `pulumi:"maintenanceWindow"`
+	// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigResponseInput `pulumi:"masterAuthorizedNetworksConfig"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigResponseInput `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1187,7 +1428,7 @@ type EnvironmentConfigResponseArgs struct {
 	SoftwareConfig SoftwareConfigResponseInput `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	WebServerConfig WebServerConfigResponseInput `pulumi:"webServerConfig"`
-	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 	WebServerNetworkAccessControl WebServerNetworkAccessControlResponseInput `pulumi:"webServerNetworkAccessControl"`
 	// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	WorkloadsConfig WorkloadsConfigResponseInput `pulumi:"workloadsConfig"`
@@ -1306,6 +1547,13 @@ func (o EnvironmentConfigResponseOutput) MaintenanceWindow() MaintenanceWindowRe
 	return o.ApplyT(func(v EnvironmentConfigResponse) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
 }
 
+// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+func (o EnvironmentConfigResponseOutput) MasterAuthorizedNetworksConfig() MasterAuthorizedNetworksConfigResponseOutput {
+	return o.ApplyT(func(v EnvironmentConfigResponse) MasterAuthorizedNetworksConfigResponse {
+		return v.MasterAuthorizedNetworksConfig
+	}).(MasterAuthorizedNetworksConfigResponseOutput)
+}
+
 // The configuration used for the Kubernetes Engine cluster.
 func (o EnvironmentConfigResponseOutput) NodeConfig() NodeConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) NodeConfigResponse { return v.NodeConfig }).(NodeConfigResponseOutput)
@@ -1331,7 +1579,7 @@ func (o EnvironmentConfigResponseOutput) WebServerConfig() WebServerConfigRespon
 	return o.ApplyT(func(v EnvironmentConfigResponse) WebServerConfigResponse { return v.WebServerConfig }).(WebServerConfigResponseOutput)
 }
 
-// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 func (o EnvironmentConfigResponseOutput) WebServerNetworkAccessControl() WebServerNetworkAccessControlResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) WebServerNetworkAccessControlResponse {
 		return v.WebServerNetworkAccessControl
@@ -1437,6 +1685,16 @@ func (o EnvironmentConfigResponsePtrOutput) MaintenanceWindow() MaintenanceWindo
 	}).(MaintenanceWindowResponsePtrOutput)
 }
 
+// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+func (o EnvironmentConfigResponsePtrOutput) MasterAuthorizedNetworksConfig() MasterAuthorizedNetworksConfigResponsePtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigResponse) *MasterAuthorizedNetworksConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterAuthorizedNetworksConfig
+	}).(MasterAuthorizedNetworksConfigResponsePtrOutput)
+}
+
 // The configuration used for the Kubernetes Engine cluster.
 func (o EnvironmentConfigResponsePtrOutput) NodeConfig() NodeConfigResponsePtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigResponse) *NodeConfigResponse {
@@ -1487,7 +1745,7 @@ func (o EnvironmentConfigResponsePtrOutput) WebServerConfig() WebServerConfigRes
 	}).(WebServerConfigResponsePtrOutput)
 }
 
-// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 func (o EnvironmentConfigResponsePtrOutput) WebServerNetworkAccessControl() WebServerNetworkAccessControlResponsePtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigResponse) *WebServerNetworkAccessControlResponse {
 		if v == nil {
@@ -1939,7 +2197,7 @@ func (o IPAllocationPolicyResponsePtrOutput) UseIpAliases() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindow struct {
 	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
 	EndTime string `pulumi:"endTime"`
@@ -1960,7 +2218,7 @@ type MaintenanceWindowInput interface {
 	ToMaintenanceWindowOutputWithContext(context.Context) MaintenanceWindowOutput
 }
 
-// The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindowArgs struct {
 	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
@@ -2023,7 +2281,7 @@ func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
 }
 
-// The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (MaintenanceWindowOutput) ElementType() reflect.Type {
@@ -2117,7 +2375,7 @@ func (o MaintenanceWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindowResponse struct {
 	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
 	EndTime string `pulumi:"endTime"`
@@ -2138,7 +2396,7 @@ type MaintenanceWindowResponseInput interface {
 	ToMaintenanceWindowResponseOutputWithContext(context.Context) MaintenanceWindowResponseOutput
 }
 
-// The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindowResponseArgs struct {
 	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
@@ -2201,7 +2459,7 @@ func (i *maintenanceWindowResponsePtrType) ToMaintenanceWindowResponsePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponsePtrOutput)
 }
 
-// The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
 
 func (MaintenanceWindowResponseOutput) ElementType() reflect.Type {
@@ -2293,6 +2551,324 @@ func (o MaintenanceWindowResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 		}
 		return &v.StartTime
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+type MasterAuthorizedNetworksConfig struct {
+	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+	CidrBlocks []CidrBlock `pulumi:"cidrBlocks"`
+	// Whether or not master authorized networks is enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// MasterAuthorizedNetworksConfigInput is an input type that accepts MasterAuthorizedNetworksConfigArgs and MasterAuthorizedNetworksConfigOutput values.
+// You can construct a concrete instance of `MasterAuthorizedNetworksConfigInput` via:
+//
+//          MasterAuthorizedNetworksConfigArgs{...}
+type MasterAuthorizedNetworksConfigInput interface {
+	pulumi.Input
+
+	ToMasterAuthorizedNetworksConfigOutput() MasterAuthorizedNetworksConfigOutput
+	ToMasterAuthorizedNetworksConfigOutputWithContext(context.Context) MasterAuthorizedNetworksConfigOutput
+}
+
+// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+type MasterAuthorizedNetworksConfigArgs struct {
+	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+	CidrBlocks CidrBlockArrayInput `pulumi:"cidrBlocks"`
+	// Whether or not master authorized networks is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (MasterAuthorizedNetworksConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (i MasterAuthorizedNetworksConfigArgs) ToMasterAuthorizedNetworksConfigOutput() MasterAuthorizedNetworksConfigOutput {
+	return i.ToMasterAuthorizedNetworksConfigOutputWithContext(context.Background())
+}
+
+func (i MasterAuthorizedNetworksConfigArgs) ToMasterAuthorizedNetworksConfigOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MasterAuthorizedNetworksConfigOutput)
+}
+
+func (i MasterAuthorizedNetworksConfigArgs) ToMasterAuthorizedNetworksConfigPtrOutput() MasterAuthorizedNetworksConfigPtrOutput {
+	return i.ToMasterAuthorizedNetworksConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MasterAuthorizedNetworksConfigArgs) ToMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MasterAuthorizedNetworksConfigOutput).ToMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx)
+}
+
+// MasterAuthorizedNetworksConfigPtrInput is an input type that accepts MasterAuthorizedNetworksConfigArgs, MasterAuthorizedNetworksConfigPtr and MasterAuthorizedNetworksConfigPtrOutput values.
+// You can construct a concrete instance of `MasterAuthorizedNetworksConfigPtrInput` via:
+//
+//          MasterAuthorizedNetworksConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type MasterAuthorizedNetworksConfigPtrInput interface {
+	pulumi.Input
+
+	ToMasterAuthorizedNetworksConfigPtrOutput() MasterAuthorizedNetworksConfigPtrOutput
+	ToMasterAuthorizedNetworksConfigPtrOutputWithContext(context.Context) MasterAuthorizedNetworksConfigPtrOutput
+}
+
+type masterAuthorizedNetworksConfigPtrType MasterAuthorizedNetworksConfigArgs
+
+func MasterAuthorizedNetworksConfigPtr(v *MasterAuthorizedNetworksConfigArgs) MasterAuthorizedNetworksConfigPtrInput {
+	return (*masterAuthorizedNetworksConfigPtrType)(v)
+}
+
+func (*masterAuthorizedNetworksConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (i *masterAuthorizedNetworksConfigPtrType) ToMasterAuthorizedNetworksConfigPtrOutput() MasterAuthorizedNetworksConfigPtrOutput {
+	return i.ToMasterAuthorizedNetworksConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *masterAuthorizedNetworksConfigPtrType) ToMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MasterAuthorizedNetworksConfigPtrOutput)
+}
+
+// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+type MasterAuthorizedNetworksConfigOutput struct{ *pulumi.OutputState }
+
+func (MasterAuthorizedNetworksConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (o MasterAuthorizedNetworksConfigOutput) ToMasterAuthorizedNetworksConfigOutput() MasterAuthorizedNetworksConfigOutput {
+	return o
+}
+
+func (o MasterAuthorizedNetworksConfigOutput) ToMasterAuthorizedNetworksConfigOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigOutput {
+	return o
+}
+
+func (o MasterAuthorizedNetworksConfigOutput) ToMasterAuthorizedNetworksConfigPtrOutput() MasterAuthorizedNetworksConfigPtrOutput {
+	return o.ToMasterAuthorizedNetworksConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MasterAuthorizedNetworksConfigOutput) ToMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MasterAuthorizedNetworksConfig) *MasterAuthorizedNetworksConfig {
+		return &v
+	}).(MasterAuthorizedNetworksConfigPtrOutput)
+}
+
+// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+func (o MasterAuthorizedNetworksConfigOutput) CidrBlocks() CidrBlockArrayOutput {
+	return o.ApplyT(func(v MasterAuthorizedNetworksConfig) []CidrBlock { return v.CidrBlocks }).(CidrBlockArrayOutput)
+}
+
+// Whether or not master authorized networks is enabled.
+func (o MasterAuthorizedNetworksConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MasterAuthorizedNetworksConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MasterAuthorizedNetworksConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MasterAuthorizedNetworksConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (o MasterAuthorizedNetworksConfigPtrOutput) ToMasterAuthorizedNetworksConfigPtrOutput() MasterAuthorizedNetworksConfigPtrOutput {
+	return o
+}
+
+func (o MasterAuthorizedNetworksConfigPtrOutput) ToMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigPtrOutput {
+	return o
+}
+
+func (o MasterAuthorizedNetworksConfigPtrOutput) Elem() MasterAuthorizedNetworksConfigOutput {
+	return o.ApplyT(func(v *MasterAuthorizedNetworksConfig) MasterAuthorizedNetworksConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MasterAuthorizedNetworksConfig
+		return ret
+	}).(MasterAuthorizedNetworksConfigOutput)
+}
+
+// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+func (o MasterAuthorizedNetworksConfigPtrOutput) CidrBlocks() CidrBlockArrayOutput {
+	return o.ApplyT(func(v *MasterAuthorizedNetworksConfig) []CidrBlock {
+		if v == nil {
+			return nil
+		}
+		return v.CidrBlocks
+	}).(CidrBlockArrayOutput)
+}
+
+// Whether or not master authorized networks is enabled.
+func (o MasterAuthorizedNetworksConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MasterAuthorizedNetworksConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+type MasterAuthorizedNetworksConfigResponse struct {
+	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+	CidrBlocks []CidrBlockResponse `pulumi:"cidrBlocks"`
+	// Whether or not master authorized networks is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// MasterAuthorizedNetworksConfigResponseInput is an input type that accepts MasterAuthorizedNetworksConfigResponseArgs and MasterAuthorizedNetworksConfigResponseOutput values.
+// You can construct a concrete instance of `MasterAuthorizedNetworksConfigResponseInput` via:
+//
+//          MasterAuthorizedNetworksConfigResponseArgs{...}
+type MasterAuthorizedNetworksConfigResponseInput interface {
+	pulumi.Input
+
+	ToMasterAuthorizedNetworksConfigResponseOutput() MasterAuthorizedNetworksConfigResponseOutput
+	ToMasterAuthorizedNetworksConfigResponseOutputWithContext(context.Context) MasterAuthorizedNetworksConfigResponseOutput
+}
+
+// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+type MasterAuthorizedNetworksConfigResponseArgs struct {
+	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+	CidrBlocks CidrBlockResponseArrayInput `pulumi:"cidrBlocks"`
+	// Whether or not master authorized networks is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (MasterAuthorizedNetworksConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MasterAuthorizedNetworksConfigResponse)(nil)).Elem()
+}
+
+func (i MasterAuthorizedNetworksConfigResponseArgs) ToMasterAuthorizedNetworksConfigResponseOutput() MasterAuthorizedNetworksConfigResponseOutput {
+	return i.ToMasterAuthorizedNetworksConfigResponseOutputWithContext(context.Background())
+}
+
+func (i MasterAuthorizedNetworksConfigResponseArgs) ToMasterAuthorizedNetworksConfigResponseOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MasterAuthorizedNetworksConfigResponseOutput)
+}
+
+func (i MasterAuthorizedNetworksConfigResponseArgs) ToMasterAuthorizedNetworksConfigResponsePtrOutput() MasterAuthorizedNetworksConfigResponsePtrOutput {
+	return i.ToMasterAuthorizedNetworksConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MasterAuthorizedNetworksConfigResponseArgs) ToMasterAuthorizedNetworksConfigResponsePtrOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MasterAuthorizedNetworksConfigResponseOutput).ToMasterAuthorizedNetworksConfigResponsePtrOutputWithContext(ctx)
+}
+
+// MasterAuthorizedNetworksConfigResponsePtrInput is an input type that accepts MasterAuthorizedNetworksConfigResponseArgs, MasterAuthorizedNetworksConfigResponsePtr and MasterAuthorizedNetworksConfigResponsePtrOutput values.
+// You can construct a concrete instance of `MasterAuthorizedNetworksConfigResponsePtrInput` via:
+//
+//          MasterAuthorizedNetworksConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MasterAuthorizedNetworksConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToMasterAuthorizedNetworksConfigResponsePtrOutput() MasterAuthorizedNetworksConfigResponsePtrOutput
+	ToMasterAuthorizedNetworksConfigResponsePtrOutputWithContext(context.Context) MasterAuthorizedNetworksConfigResponsePtrOutput
+}
+
+type masterAuthorizedNetworksConfigResponsePtrType MasterAuthorizedNetworksConfigResponseArgs
+
+func MasterAuthorizedNetworksConfigResponsePtr(v *MasterAuthorizedNetworksConfigResponseArgs) MasterAuthorizedNetworksConfigResponsePtrInput {
+	return (*masterAuthorizedNetworksConfigResponsePtrType)(v)
+}
+
+func (*masterAuthorizedNetworksConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MasterAuthorizedNetworksConfigResponse)(nil)).Elem()
+}
+
+func (i *masterAuthorizedNetworksConfigResponsePtrType) ToMasterAuthorizedNetworksConfigResponsePtrOutput() MasterAuthorizedNetworksConfigResponsePtrOutput {
+	return i.ToMasterAuthorizedNetworksConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *masterAuthorizedNetworksConfigResponsePtrType) ToMasterAuthorizedNetworksConfigResponsePtrOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MasterAuthorizedNetworksConfigResponsePtrOutput)
+}
+
+// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+type MasterAuthorizedNetworksConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (MasterAuthorizedNetworksConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MasterAuthorizedNetworksConfigResponse)(nil)).Elem()
+}
+
+func (o MasterAuthorizedNetworksConfigResponseOutput) ToMasterAuthorizedNetworksConfigResponseOutput() MasterAuthorizedNetworksConfigResponseOutput {
+	return o
+}
+
+func (o MasterAuthorizedNetworksConfigResponseOutput) ToMasterAuthorizedNetworksConfigResponseOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigResponseOutput {
+	return o
+}
+
+func (o MasterAuthorizedNetworksConfigResponseOutput) ToMasterAuthorizedNetworksConfigResponsePtrOutput() MasterAuthorizedNetworksConfigResponsePtrOutput {
+	return o.ToMasterAuthorizedNetworksConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MasterAuthorizedNetworksConfigResponseOutput) ToMasterAuthorizedNetworksConfigResponsePtrOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MasterAuthorizedNetworksConfigResponse) *MasterAuthorizedNetworksConfigResponse {
+		return &v
+	}).(MasterAuthorizedNetworksConfigResponsePtrOutput)
+}
+
+// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+func (o MasterAuthorizedNetworksConfigResponseOutput) CidrBlocks() CidrBlockResponseArrayOutput {
+	return o.ApplyT(func(v MasterAuthorizedNetworksConfigResponse) []CidrBlockResponse { return v.CidrBlocks }).(CidrBlockResponseArrayOutput)
+}
+
+// Whether or not master authorized networks is enabled.
+func (o MasterAuthorizedNetworksConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v MasterAuthorizedNetworksConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type MasterAuthorizedNetworksConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MasterAuthorizedNetworksConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MasterAuthorizedNetworksConfigResponse)(nil)).Elem()
+}
+
+func (o MasterAuthorizedNetworksConfigResponsePtrOutput) ToMasterAuthorizedNetworksConfigResponsePtrOutput() MasterAuthorizedNetworksConfigResponsePtrOutput {
+	return o
+}
+
+func (o MasterAuthorizedNetworksConfigResponsePtrOutput) ToMasterAuthorizedNetworksConfigResponsePtrOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigResponsePtrOutput {
+	return o
+}
+
+func (o MasterAuthorizedNetworksConfigResponsePtrOutput) Elem() MasterAuthorizedNetworksConfigResponseOutput {
+	return o.ApplyT(func(v *MasterAuthorizedNetworksConfigResponse) MasterAuthorizedNetworksConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MasterAuthorizedNetworksConfigResponse
+		return ret
+	}).(MasterAuthorizedNetworksConfigResponseOutput)
+}
+
+// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+func (o MasterAuthorizedNetworksConfigResponsePtrOutput) CidrBlocks() CidrBlockResponseArrayOutput {
+	return o.ApplyT(func(v *MasterAuthorizedNetworksConfigResponse) []CidrBlockResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CidrBlocks
+	}).(CidrBlockResponseArrayOutput)
+}
+
+// Whether or not master authorized networks is enabled.
+func (o MasterAuthorizedNetworksConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MasterAuthorizedNetworksConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
@@ -3294,6 +3870,8 @@ func (o PrivateClusterConfigResponsePtrOutput) MasterIpv4ReservedRange() pulumi.
 
 // The configuration information for configuring a Private IP Cloud Composer environment.
 type PrivateEnvironmentConfig struct {
+	// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+	CloudComposerConnectionSubnetwork *string `pulumi:"cloudComposerConnectionSubnetwork"`
 	// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerNetworkIpv4CidrBlock *string `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
@@ -3321,6 +3899,8 @@ type PrivateEnvironmentConfigInput interface {
 
 // The configuration information for configuring a Private IP Cloud Composer environment.
 type PrivateEnvironmentConfigArgs struct {
+	// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+	CloudComposerConnectionSubnetwork pulumi.StringPtrInput `pulumi:"cloudComposerConnectionSubnetwork"`
 	// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerNetworkIpv4CidrBlock pulumi.StringPtrInput `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
@@ -3413,6 +3993,11 @@ func (o PrivateEnvironmentConfigOutput) ToPrivateEnvironmentConfigPtrOutputWithC
 	}).(PrivateEnvironmentConfigPtrOutput)
 }
 
+// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+func (o PrivateEnvironmentConfigOutput) CloudComposerConnectionSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEnvironmentConfig) *string { return v.CloudComposerConnectionSubnetwork }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o PrivateEnvironmentConfigOutput) CloudComposerNetworkIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *string { return v.CloudComposerNetworkIpv4CidrBlock }).(pulumi.StringPtrOutput)
@@ -3465,6 +4050,16 @@ func (o PrivateEnvironmentConfigPtrOutput) Elem() PrivateEnvironmentConfigOutput
 		var ret PrivateEnvironmentConfig
 		return ret
 	}).(PrivateEnvironmentConfigOutput)
+}
+
+// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+func (o PrivateEnvironmentConfigPtrOutput) CloudComposerConnectionSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudComposerConnectionSubnetwork
+	}).(pulumi.StringPtrOutput)
 }
 
 // Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -3529,6 +4124,8 @@ func (o PrivateEnvironmentConfigPtrOutput) WebServerIpv4CidrBlock() pulumi.Strin
 
 // The configuration information for configuring a Private IP Cloud Composer environment.
 type PrivateEnvironmentConfigResponse struct {
+	// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+	CloudComposerConnectionSubnetwork string `pulumi:"cloudComposerConnectionSubnetwork"`
 	// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerNetworkIpv4CidrBlock string `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	// The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -3560,6 +4157,8 @@ type PrivateEnvironmentConfigResponseInput interface {
 
 // The configuration information for configuring a Private IP Cloud Composer environment.
 type PrivateEnvironmentConfigResponseArgs struct {
+	// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+	CloudComposerConnectionSubnetwork pulumi.StringInput `pulumi:"cloudComposerConnectionSubnetwork"`
 	// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerNetworkIpv4CidrBlock pulumi.StringInput `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	// The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -3656,6 +4255,11 @@ func (o PrivateEnvironmentConfigResponseOutput) ToPrivateEnvironmentConfigRespon
 	}).(PrivateEnvironmentConfigResponsePtrOutput)
 }
 
+// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+func (o PrivateEnvironmentConfigResponseOutput) CloudComposerConnectionSubnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.CloudComposerConnectionSubnetwork }).(pulumi.StringOutput)
+}
+
 // Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o PrivateEnvironmentConfigResponseOutput) CloudComposerNetworkIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.CloudComposerNetworkIpv4CidrBlock }).(pulumi.StringOutput)
@@ -3718,6 +4322,16 @@ func (o PrivateEnvironmentConfigResponsePtrOutput) Elem() PrivateEnvironmentConf
 		var ret PrivateEnvironmentConfigResponse
 		return ret
 	}).(PrivateEnvironmentConfigResponseOutput)
+}
+
+// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+func (o PrivateEnvironmentConfigResponsePtrOutput) CloudComposerConnectionSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudComposerConnectionSubnetwork
+	}).(pulumi.StringPtrOutput)
 }
 
 // Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -4944,7 +5558,7 @@ func (o WebServerConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Network-level access control policy for the Airflow web server.
 type WebServerNetworkAccessControl struct {
 	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges []AllowedIpRange `pulumi:"allowedIpRanges"`
@@ -4961,7 +5575,7 @@ type WebServerNetworkAccessControlInput interface {
 	ToWebServerNetworkAccessControlOutputWithContext(context.Context) WebServerNetworkAccessControlOutput
 }
 
-// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Network-level access control policy for the Airflow web server.
 type WebServerNetworkAccessControlArgs struct {
 	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges AllowedIpRangeArrayInput `pulumi:"allowedIpRanges"`
@@ -5020,7 +5634,7 @@ func (i *webServerNetworkAccessControlPtrType) ToWebServerNetworkAccessControlPt
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerNetworkAccessControlPtrOutput)
 }
 
-// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Network-level access control policy for the Airflow web server.
 type WebServerNetworkAccessControlOutput struct{ *pulumi.OutputState }
 
 func (WebServerNetworkAccessControlOutput) ElementType() reflect.Type {
@@ -5084,7 +5698,7 @@ func (o WebServerNetworkAccessControlPtrOutput) AllowedIpRanges() AllowedIpRange
 	}).(AllowedIpRangeArrayOutput)
 }
 
-// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Network-level access control policy for the Airflow web server.
 type WebServerNetworkAccessControlResponse struct {
 	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges []AllowedIpRangeResponse `pulumi:"allowedIpRanges"`
@@ -5101,7 +5715,7 @@ type WebServerNetworkAccessControlResponseInput interface {
 	ToWebServerNetworkAccessControlResponseOutputWithContext(context.Context) WebServerNetworkAccessControlResponseOutput
 }
 
-// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Network-level access control policy for the Airflow web server.
 type WebServerNetworkAccessControlResponseArgs struct {
 	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges AllowedIpRangeResponseArrayInput `pulumi:"allowedIpRanges"`
@@ -5160,7 +5774,7 @@ func (i *webServerNetworkAccessControlResponsePtrType) ToWebServerNetworkAccessC
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerNetworkAccessControlResponsePtrOutput)
 }
 
-// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Network-level access control policy for the Airflow web server.
 type WebServerNetworkAccessControlResponseOutput struct{ *pulumi.OutputState }
 
 func (WebServerNetworkAccessControlResponseOutput) ElementType() reflect.Type {
@@ -6373,6 +6987,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeArrayInput)(nil)).Elem(), AllowedIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeResponseInput)(nil)).Elem(), AllowedIpRangeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeResponseArrayInput)(nil)).Elem(), AllowedIpRangeResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockInput)(nil)).Elem(), CidrBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockArrayInput)(nil)).Elem(), CidrBlockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockResponseInput)(nil)).Elem(), CidrBlockResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockResponseArrayInput)(nil)).Elem(), CidrBlockResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigInput)(nil)).Elem(), DatabaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigPtrInput)(nil)).Elem(), DatabaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigResponseInput)(nil)).Elem(), DatabaseConfigResponseArgs{})
@@ -6393,6 +7011,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponseInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponsePtrInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthorizedNetworksConfigInput)(nil)).Elem(), MasterAuthorizedNetworksConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthorizedNetworksConfigPtrInput)(nil)).Elem(), MasterAuthorizedNetworksConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthorizedNetworksConfigResponseInput)(nil)).Elem(), MasterAuthorizedNetworksConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthorizedNetworksConfigResponsePtrInput)(nil)).Elem(), MasterAuthorizedNetworksConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponseInput)(nil)).Elem(), NodeConfigResponseArgs{})
@@ -6437,6 +7059,10 @@ func init() {
 	pulumi.RegisterOutputType(AllowedIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeResponseOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(CidrBlockOutput{})
+	pulumi.RegisterOutputType(CidrBlockArrayOutput{})
+	pulumi.RegisterOutputType(CidrBlockResponseOutput{})
+	pulumi.RegisterOutputType(CidrBlockResponseArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseConfigResponseOutput{})
@@ -6457,6 +7083,10 @@ func init() {
 	pulumi.RegisterOutputType(MaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowResponsePtrOutput{})
+	pulumi.RegisterOutputType(MasterAuthorizedNetworksConfigOutput{})
+	pulumi.RegisterOutputType(MasterAuthorizedNetworksConfigPtrOutput{})
+	pulumi.RegisterOutputType(MasterAuthorizedNetworksConfigResponseOutput{})
+	pulumi.RegisterOutputType(MasterAuthorizedNetworksConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponseOutput{})

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:cloudasset/v1:Feed":
 		r = &Feed{}
+	case "google-native:cloudasset/v1:SavedQuery":
+		r = &SavedQuery{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

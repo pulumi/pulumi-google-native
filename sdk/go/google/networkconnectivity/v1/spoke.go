@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,7 +19,7 @@ type Spoke struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An optional description of the spoke.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Immutable. The URI of the hub that this spoke is attached to.
+	// Immutable. The name of the hub that this spoke is attached to.
 	Hub pulumi.StringOutput `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -42,9 +43,12 @@ type Spoke struct {
 func NewSpoke(ctx *pulumi.Context,
 	name string, args *SpokeArgs, opts ...pulumi.ResourceOption) (*Spoke, error) {
 	if args == nil {
-		args = &SpokeArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.SpokeId == nil {
+		return nil, errors.New("invalid value for required argument 'SpokeId'")
+	}
 	var resource Spoke
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1:Spoke", name, args, &resource, opts...)
 	if err != nil {
@@ -79,7 +83,7 @@ func (SpokeState) ElementType() reflect.Type {
 type spokeArgs struct {
 	// An optional description of the spoke.
 	Description *string `pulumi:"description"`
-	// Immutable. The URI of the hub that this spoke is attached to.
+	// Immutable. The name of the hub that this spoke is attached to.
 	Hub *string `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels map[string]string `pulumi:"labels"`
@@ -94,14 +98,14 @@ type spokeArgs struct {
 	Name      *string `pulumi:"name"`
 	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
-	SpokeId   *string `pulumi:"spokeId"`
+	SpokeId   string  `pulumi:"spokeId"`
 }
 
 // The set of arguments for constructing a Spoke resource.
 type SpokeArgs struct {
 	// An optional description of the spoke.
 	Description pulumi.StringPtrInput
-	// Immutable. The URI of the hub that this spoke is attached to.
+	// Immutable. The name of the hub that this spoke is attached to.
 	Hub pulumi.StringPtrInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels pulumi.StringMapInput
@@ -116,7 +120,7 @@ type SpokeArgs struct {
 	Name      pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
-	SpokeId   pulumi.StringPtrInput
+	SpokeId   pulumi.StringInput
 }
 
 func (SpokeArgs) ElementType() reflect.Type {

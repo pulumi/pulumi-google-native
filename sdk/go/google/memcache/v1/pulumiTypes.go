@@ -222,7 +222,6 @@ func (o InstanceMessageResponseArrayOutput) Index(i pulumi.IntInput) InstanceMes
 	}).(InstanceMessageResponseOutput)
 }
 
-// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
 type MemcacheParameters struct {
 	// User defined set of parameters to use in the memcached process.
 	Params map[string]string `pulumi:"params"`
@@ -239,7 +238,6 @@ type MemcacheParametersInput interface {
 	ToMemcacheParametersOutputWithContext(context.Context) MemcacheParametersOutput
 }
 
-// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
 type MemcacheParametersArgs struct {
 	// User defined set of parameters to use in the memcached process.
 	Params pulumi.StringMapInput `pulumi:"params"`
@@ -298,7 +296,6 @@ func (i *memcacheParametersPtrType) ToMemcacheParametersPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(MemcacheParametersPtrOutput)
 }
 
-// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
 type MemcacheParametersOutput struct{ *pulumi.OutputState }
 
 func (MemcacheParametersOutput) ElementType() reflect.Type {
@@ -362,7 +359,6 @@ func (o MemcacheParametersPtrOutput) Params() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
 type MemcacheParametersResponse struct {
 	// User defined set of parameters to use in the memcached process.
 	Params map[string]string `pulumi:"params"`
@@ -379,7 +375,6 @@ type MemcacheParametersResponseInput interface {
 	ToMemcacheParametersResponseOutputWithContext(context.Context) MemcacheParametersResponseOutput
 }
 
-// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
 type MemcacheParametersResponseArgs struct {
 	// User defined set of parameters to use in the memcached process.
 	Params pulumi.StringMapInput `pulumi:"params"`
@@ -438,7 +433,6 @@ func (i *memcacheParametersResponsePtrType) ToMemcacheParametersResponsePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(MemcacheParametersResponsePtrOutput)
 }
 
-// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
 type MemcacheParametersResponseOutput struct{ *pulumi.OutputState }
 
 func (MemcacheParametersResponseOutput) ElementType() reflect.Type {

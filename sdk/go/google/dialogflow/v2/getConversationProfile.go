@@ -37,7 +37,7 @@ type LookupConversationProfileResult struct {
 	HumanAgentAssistantConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse `pulumi:"humanAgentAssistantConfig"`
 	// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
 	HumanAgentHandoffConfig GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse `pulumi:"humanAgentHandoffConfig"`
-	// Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
 	LanguageCode string `pulumi:"languageCode"`
 	// Configuration for logging conversation lifecycle events.
 	LoggingConfig GoogleCloudDialogflowV2LoggingConfigResponse `pulumi:"loggingConfig"`
@@ -47,8 +47,12 @@ type LookupConversationProfileResult struct {
 	NewMessageEventNotificationConfig GoogleCloudDialogflowV2NotificationConfigResponse `pulumi:"newMessageEventNotificationConfig"`
 	// Configuration for publishing conversation lifecycle events.
 	NotificationConfig GoogleCloudDialogflowV2NotificationConfigResponse `pulumi:"notificationConfig"`
+	// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+	SecuritySettings string `pulumi:"securitySettings"`
 	// Settings for speech transcription.
 	SttConfig GoogleCloudDialogflowV2SpeechToTextConfigResponse `pulumi:"sttConfig"`
+	// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+	TimeZone string `pulumi:"timeZone"`
 	// Update time of the conversation profile.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -117,7 +121,7 @@ func (o LookupConversationProfileResultOutput) HumanAgentHandoffConfig() GoogleC
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput)
 }
 
-// Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
 func (o LookupConversationProfileResultOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConversationProfileResult) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
@@ -148,11 +152,21 @@ func (o LookupConversationProfileResultOutput) NotificationConfig() GoogleCloudD
 	}).(GoogleCloudDialogflowV2NotificationConfigResponseOutput)
 }
 
+// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+func (o LookupConversationProfileResultOutput) SecuritySettings() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) string { return v.SecuritySettings }).(pulumi.StringOutput)
+}
+
 // Settings for speech transcription.
 func (o LookupConversationProfileResultOutput) SttConfig() GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput {
 	return o.ApplyT(func(v LookupConversationProfileResult) GoogleCloudDialogflowV2SpeechToTextConfigResponse {
 		return v.SttConfig
 	}).(GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput)
+}
+
+// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+func (o LookupConversationProfileResultOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 // Update time of the conversation profile.

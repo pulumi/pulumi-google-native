@@ -2220,6 +2220,8 @@ const (
 	DiscoveryAnalysisKindSpdxPackage = DiscoveryAnalysisKind("SPDX_PACKAGE")
 	// This represents an SPDX File.
 	DiscoveryAnalysisKindSpdxFile = DiscoveryAnalysisKind("SPDX_FILE")
+	// This represents an SPDX Relationship.
+	DiscoveryAnalysisKindSpdxRelationship = DiscoveryAnalysisKind("SPDX_RELATIONSHIP")
 )
 
 func (DiscoveryAnalysisKind) ElementType() reflect.Type {
@@ -3617,210 +3619,210 @@ func (in *pgpSignedAttestationContentTypePtr) ToPgpSignedAttestationContentTypeP
 }
 
 // The type of relationship between the source and target SPDX elements
-type RelationshipOccurrenceType string
+type RelationshipNoteType string
 
 const (
 	// Unspecified
-	RelationshipOccurrenceTypeTypeUnspecified = RelationshipOccurrenceType("TYPE_UNSPECIFIED")
+	RelationshipNoteTypeRelationshipTypeUnspecified = RelationshipNoteType("RELATIONSHIP_TYPE_UNSPECIFIED")
 	// Is to be used when SPDXRef-DOCUMENT describes SPDXRef-A
-	RelationshipOccurrenceTypeDescribes = RelationshipOccurrenceType("DESCRIBES")
+	RelationshipNoteTypeDescribes = RelationshipNoteType("DESCRIBES")
 	// Is to be used when SPDXRef-A is described by SPDXREF-Document
-	RelationshipOccurrenceTypeDescribedBy = RelationshipOccurrenceType("DESCRIBED_BY")
+	RelationshipNoteTypeDescribedBy = RelationshipNoteType("DESCRIBED_BY")
 	// Is to be used when SPDXRef-A contains SPDXRef-B
-	RelationshipOccurrenceTypeContains = RelationshipOccurrenceType("CONTAINS")
+	RelationshipNoteTypeContains = RelationshipNoteType("CONTAINS")
 	// Is to be used when SPDXRef-A is contained by SPDXRef-B
-	RelationshipOccurrenceTypeContainedBy = RelationshipOccurrenceType("CONTAINED_BY")
+	RelationshipNoteTypeContainedBy = RelationshipNoteType("CONTAINED_BY")
 	// Is to be used when SPDXRef-A depends on SPDXRef-B
-	RelationshipOccurrenceTypeDependsOn = RelationshipOccurrenceType("DEPENDS_ON")
+	RelationshipNoteTypeDependsOn = RelationshipNoteType("DEPENDS_ON")
 	// Is to be used when SPDXRef-A is dependency of SPDXRef-B
-	RelationshipOccurrenceTypeDependencyOf = RelationshipOccurrenceType("DEPENDENCY_OF")
+	RelationshipNoteTypeDependencyOf = RelationshipNoteType("DEPENDENCY_OF")
 	// Is to be used when SPDXRef-A is a manifest file that lists a set of dependencies for SPDXRef-B
-	RelationshipOccurrenceTypeDependencyManifestOf = RelationshipOccurrenceType("DEPENDENCY_MANIFEST_OF")
+	RelationshipNoteTypeDependencyManifestOf = RelationshipNoteType("DEPENDENCY_MANIFEST_OF")
 	// Is to be used when SPDXRef-A is a build dependency of SPDXRef-B
-	RelationshipOccurrenceTypeBuildDependencyOf = RelationshipOccurrenceType("BUILD_DEPENDENCY_OF")
+	RelationshipNoteTypeBuildDependencyOf = RelationshipNoteType("BUILD_DEPENDENCY_OF")
 	// Is to be used when SPDXRef-A is a development dependency of SPDXRef-B
-	RelationshipOccurrenceTypeDevDependencyOf = RelationshipOccurrenceType("DEV_DEPENDENCY_OF")
+	RelationshipNoteTypeDevDependencyOf = RelationshipNoteType("DEV_DEPENDENCY_OF")
 	// Is to be used when SPDXRef-A is an optional dependency of SPDXRef-B
-	RelationshipOccurrenceTypeOptionalDependencyOf = RelationshipOccurrenceType("OPTIONAL_DEPENDENCY_OF")
+	RelationshipNoteTypeOptionalDependencyOf = RelationshipNoteType("OPTIONAL_DEPENDENCY_OF")
 	// Is to be used when SPDXRef-A is a to be provided dependency of SPDXRef-B
-	RelationshipOccurrenceTypeProvidedDependencyOf = RelationshipOccurrenceType("PROVIDED_DEPENDENCY_OF")
+	RelationshipNoteTypeProvidedDependencyOf = RelationshipNoteType("PROVIDED_DEPENDENCY_OF")
 	// Is to be used when SPDXRef-A is a test dependency of SPDXRef-B
-	RelationshipOccurrenceTypeTestDependencyOf = RelationshipOccurrenceType("TEST_DEPENDENCY_OF")
+	RelationshipNoteTypeTestDependencyOf = RelationshipNoteType("TEST_DEPENDENCY_OF")
 	// Is to be used when SPDXRef-A is a dependency required for the execution of SPDXRef-B
-	RelationshipOccurrenceTypeRuntimeDependencyOf = RelationshipOccurrenceType("RUNTIME_DEPENDENCY_OF")
+	RelationshipNoteTypeRuntimeDependencyOf = RelationshipNoteType("RUNTIME_DEPENDENCY_OF")
 	// Is to be used when SPDXRef-A is an example of SPDXRef-B
-	RelationshipOccurrenceTypeExampleOf = RelationshipOccurrenceType("EXAMPLE_OF")
+	RelationshipNoteTypeExampleOf = RelationshipNoteType("EXAMPLE_OF")
 	// Is to be used when SPDXRef-A generates SPDXRef-B
-	RelationshipOccurrenceTypeGenerates = RelationshipOccurrenceType("GENERATES")
+	RelationshipNoteTypeGenerates = RelationshipNoteType("GENERATES")
 	// Is to be used when SPDXRef-A was generated from SPDXRef-B
-	RelationshipOccurrenceTypeGeneratedFrom = RelationshipOccurrenceType("GENERATED_FROM")
+	RelationshipNoteTypeGeneratedFrom = RelationshipNoteType("GENERATED_FROM")
 	// Is to be used when SPDXRef-A is an ancestor (same lineage but pre-dates) SPDXRef-B
-	RelationshipOccurrenceTypeAncestorOf = RelationshipOccurrenceType("ANCESTOR_OF")
+	RelationshipNoteTypeAncestorOf = RelationshipNoteType("ANCESTOR_OF")
 	// Is to be used when SPDXRef-A is a descendant of (same lineage but postdates) SPDXRef-B
-	RelationshipOccurrenceTypeDescendantOf = RelationshipOccurrenceType("DESCENDANT_OF")
+	RelationshipNoteTypeDescendantOf = RelationshipNoteType("DESCENDANT_OF")
 	// Is to be used when SPDXRef-A is a variant of (same lineage but not clear which came first) SPDXRef-B
-	RelationshipOccurrenceTypeVariantOf = RelationshipOccurrenceType("VARIANT_OF")
+	RelationshipNoteTypeVariantOf = RelationshipNoteType("VARIANT_OF")
 	// Is to be used when distributing SPDXRef-A requires that SPDXRef-B also be distributed
-	RelationshipOccurrenceTypeDistributionArtifact = RelationshipOccurrenceType("DISTRIBUTION_ARTIFACT")
+	RelationshipNoteTypeDistributionArtifact = RelationshipNoteType("DISTRIBUTION_ARTIFACT")
 	// Is to be used when SPDXRef-A is a patch file for (to be applied to) SPDXRef-B
-	RelationshipOccurrenceTypePatchFor = RelationshipOccurrenceType("PATCH_FOR")
+	RelationshipNoteTypePatchFor = RelationshipNoteType("PATCH_FOR")
 	// Is to be used when SPDXRef-A is a patch file that has been applied to SPDXRef-B
-	RelationshipOccurrenceTypePatchApplied = RelationshipOccurrenceType("PATCH_APPLIED")
+	RelationshipNoteTypePatchApplied = RelationshipNoteType("PATCH_APPLIED")
 	// Is to be used when SPDXRef-A is an exact copy of SPDXRef-B
-	RelationshipOccurrenceTypeCopyOf = RelationshipOccurrenceType("COPY_OF")
+	RelationshipNoteTypeCopyOf = RelationshipNoteType("COPY_OF")
 	// Is to be used when SPDXRef-A is a file that was added to SPDXRef-B
-	RelationshipOccurrenceTypeFileAdded = RelationshipOccurrenceType("FILE_ADDED")
+	RelationshipNoteTypeFileAdded = RelationshipNoteType("FILE_ADDED")
 	// Is to be used when SPDXRef-A is a file that was deleted from SPDXRef-B
-	RelationshipOccurrenceTypeFileDeleted = RelationshipOccurrenceType("FILE_DELETED")
+	RelationshipNoteTypeFileDeleted = RelationshipNoteType("FILE_DELETED")
 	// Is to be used when SPDXRef-A is a file that was modified from SPDXRef-B
-	RelationshipOccurrenceTypeFileModified = RelationshipOccurrenceType("FILE_MODIFIED")
+	RelationshipNoteTypeFileModified = RelationshipNoteType("FILE_MODIFIED")
 	// Is to be used when SPDXRef-A is expanded from the archive SPDXRef-B
-	RelationshipOccurrenceTypeExpandedFromArchive = RelationshipOccurrenceType("EXPANDED_FROM_ARCHIVE")
+	RelationshipNoteTypeExpandedFromArchive = RelationshipNoteType("EXPANDED_FROM_ARCHIVE")
 	// Is to be used when SPDXRef-A dynamically links to SPDXRef-B
-	RelationshipOccurrenceTypeDynamicLink = RelationshipOccurrenceType("DYNAMIC_LINK")
+	RelationshipNoteTypeDynamicLink = RelationshipNoteType("DYNAMIC_LINK")
 	// Is to be used when SPDXRef-A statically links to SPDXRef-B
-	RelationshipOccurrenceTypeStaticLink = RelationshipOccurrenceType("STATIC_LINK")
+	RelationshipNoteTypeStaticLink = RelationshipNoteType("STATIC_LINK")
 	// Is to be used when SPDXRef-A is a data file used in SPDXRef-B
-	RelationshipOccurrenceTypeDataFileOf = RelationshipOccurrenceType("DATA_FILE_OF")
+	RelationshipNoteTypeDataFileOf = RelationshipNoteType("DATA_FILE_OF")
 	// Is to be used when SPDXRef-A is a test case used in testing SPDXRef-B
-	RelationshipOccurrenceTypeTestCaseOf = RelationshipOccurrenceType("TEST_CASE_OF")
+	RelationshipNoteTypeTestCaseOf = RelationshipNoteType("TEST_CASE_OF")
 	// Is to be used when SPDXRef-A is used to build SPDXRef-B
-	RelationshipOccurrenceTypeBuildToolOf = RelationshipOccurrenceType("BUILD_TOOL_OF")
+	RelationshipNoteTypeBuildToolOf = RelationshipNoteType("BUILD_TOOL_OF")
 	// Is to be used when SPDXRef-A is used as a development tool for SPDXRef-B
-	RelationshipOccurrenceTypeDevToolOf = RelationshipOccurrenceType("DEV_TOOL_OF")
+	RelationshipNoteTypeDevToolOf = RelationshipNoteType("DEV_TOOL_OF")
 	// Is to be used when SPDXRef-A is used for testing SPDXRef-B
-	RelationshipOccurrenceTypeTestOf = RelationshipOccurrenceType("TEST_OF")
+	RelationshipNoteTypeTestOf = RelationshipNoteType("TEST_OF")
 	// Is to be used when SPDXRef-A is used as a test tool for SPDXRef-B
-	RelationshipOccurrenceTypeTestToolOf = RelationshipOccurrenceType("TEST_TOOL_OF")
+	RelationshipNoteTypeTestToolOf = RelationshipNoteType("TEST_TOOL_OF")
 	// Is to be used when SPDXRef-A provides documentation of SPDXRef-B
-	RelationshipOccurrenceTypeDocumentationOf = RelationshipOccurrenceType("DOCUMENTATION_OF")
+	RelationshipNoteTypeDocumentationOf = RelationshipNoteType("DOCUMENTATION_OF")
 	// Is to be used when SPDXRef-A is an optional component of SPDXRef-B
-	RelationshipOccurrenceTypeOptionalComponentOf = RelationshipOccurrenceType("OPTIONAL_COMPONENT_OF")
+	RelationshipNoteTypeOptionalComponentOf = RelationshipNoteType("OPTIONAL_COMPONENT_OF")
 	// Is to be used when SPDXRef-A is a metafile of SPDXRef-B
-	RelationshipOccurrenceTypeMetafileOf = RelationshipOccurrenceType("METAFILE_OF")
+	RelationshipNoteTypeMetafileOf = RelationshipNoteType("METAFILE_OF")
 	// Is to be used when SPDXRef-A is used as a package as part of SPDXRef-B
-	RelationshipOccurrenceTypePackageOf = RelationshipOccurrenceType("PACKAGE_OF")
+	RelationshipNoteTypePackageOf = RelationshipNoteType("PACKAGE_OF")
 	// Is to be used when (current) SPDXRef-DOCUMENT amends the SPDX information in SPDXRef-B
-	RelationshipOccurrenceTypeAmends = RelationshipOccurrenceType("AMENDS")
+	RelationshipNoteTypeAmends = RelationshipNoteType("AMENDS")
 	// Is to be used when SPDXRef-A is a prerequisite for SPDXRef-B
-	RelationshipOccurrenceTypePrerequisiteFor = RelationshipOccurrenceType("PREREQUISITE_FOR")
+	RelationshipNoteTypePrerequisiteFor = RelationshipNoteType("PREREQUISITE_FOR")
 	// Is to be used when SPDXRef-A has as a prerequisite SPDXRef-B
-	RelationshipOccurrenceTypeHasPrerequisite = RelationshipOccurrenceType("HAS_PREREQUISITE")
+	RelationshipNoteTypeHasPrerequisite = RelationshipNoteType("HAS_PREREQUISITE")
 	// Is to be used for a relationship which has not been defined in the formal SPDX specification. A description of the relationship should be included in the Relationship comments field
-	RelationshipOccurrenceTypeOther = RelationshipOccurrenceType("OTHER")
+	RelationshipNoteTypeOther = RelationshipNoteType("OTHER")
 )
 
-func (RelationshipOccurrenceType) ElementType() reflect.Type {
-	return reflect.TypeOf((*RelationshipOccurrenceType)(nil)).Elem()
+func (RelationshipNoteType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelationshipNoteType)(nil)).Elem()
 }
 
-func (e RelationshipOccurrenceType) ToRelationshipOccurrenceTypeOutput() RelationshipOccurrenceTypeOutput {
-	return pulumi.ToOutput(e).(RelationshipOccurrenceTypeOutput)
+func (e RelationshipNoteType) ToRelationshipNoteTypeOutput() RelationshipNoteTypeOutput {
+	return pulumi.ToOutput(e).(RelationshipNoteTypeOutput)
 }
 
-func (e RelationshipOccurrenceType) ToRelationshipOccurrenceTypeOutputWithContext(ctx context.Context) RelationshipOccurrenceTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(RelationshipOccurrenceTypeOutput)
+func (e RelationshipNoteType) ToRelationshipNoteTypeOutputWithContext(ctx context.Context) RelationshipNoteTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RelationshipNoteTypeOutput)
 }
 
-func (e RelationshipOccurrenceType) ToRelationshipOccurrenceTypePtrOutput() RelationshipOccurrenceTypePtrOutput {
-	return e.ToRelationshipOccurrenceTypePtrOutputWithContext(context.Background())
+func (e RelationshipNoteType) ToRelationshipNoteTypePtrOutput() RelationshipNoteTypePtrOutput {
+	return e.ToRelationshipNoteTypePtrOutputWithContext(context.Background())
 }
 
-func (e RelationshipOccurrenceType) ToRelationshipOccurrenceTypePtrOutputWithContext(ctx context.Context) RelationshipOccurrenceTypePtrOutput {
-	return RelationshipOccurrenceType(e).ToRelationshipOccurrenceTypeOutputWithContext(ctx).ToRelationshipOccurrenceTypePtrOutputWithContext(ctx)
+func (e RelationshipNoteType) ToRelationshipNoteTypePtrOutputWithContext(ctx context.Context) RelationshipNoteTypePtrOutput {
+	return RelationshipNoteType(e).ToRelationshipNoteTypeOutputWithContext(ctx).ToRelationshipNoteTypePtrOutputWithContext(ctx)
 }
 
-func (e RelationshipOccurrenceType) ToStringOutput() pulumi.StringOutput {
+func (e RelationshipNoteType) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e RelationshipOccurrenceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e RelationshipNoteType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e RelationshipOccurrenceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e RelationshipNoteType) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e RelationshipOccurrenceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e RelationshipNoteType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type RelationshipOccurrenceTypeOutput struct{ *pulumi.OutputState }
+type RelationshipNoteTypeOutput struct{ *pulumi.OutputState }
 
-func (RelationshipOccurrenceTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RelationshipOccurrenceType)(nil)).Elem()
+func (RelationshipNoteTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelationshipNoteType)(nil)).Elem()
 }
 
-func (o RelationshipOccurrenceTypeOutput) ToRelationshipOccurrenceTypeOutput() RelationshipOccurrenceTypeOutput {
+func (o RelationshipNoteTypeOutput) ToRelationshipNoteTypeOutput() RelationshipNoteTypeOutput {
 	return o
 }
 
-func (o RelationshipOccurrenceTypeOutput) ToRelationshipOccurrenceTypeOutputWithContext(ctx context.Context) RelationshipOccurrenceTypeOutput {
+func (o RelationshipNoteTypeOutput) ToRelationshipNoteTypeOutputWithContext(ctx context.Context) RelationshipNoteTypeOutput {
 	return o
 }
 
-func (o RelationshipOccurrenceTypeOutput) ToRelationshipOccurrenceTypePtrOutput() RelationshipOccurrenceTypePtrOutput {
-	return o.ToRelationshipOccurrenceTypePtrOutputWithContext(context.Background())
+func (o RelationshipNoteTypeOutput) ToRelationshipNoteTypePtrOutput() RelationshipNoteTypePtrOutput {
+	return o.ToRelationshipNoteTypePtrOutputWithContext(context.Background())
 }
 
-func (o RelationshipOccurrenceTypeOutput) ToRelationshipOccurrenceTypePtrOutputWithContext(ctx context.Context) RelationshipOccurrenceTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipOccurrenceType) *RelationshipOccurrenceType {
+func (o RelationshipNoteTypeOutput) ToRelationshipNoteTypePtrOutputWithContext(ctx context.Context) RelationshipNoteTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipNoteType) *RelationshipNoteType {
 		return &v
-	}).(RelationshipOccurrenceTypePtrOutput)
+	}).(RelationshipNoteTypePtrOutput)
 }
 
-func (o RelationshipOccurrenceTypeOutput) ToStringOutput() pulumi.StringOutput {
+func (o RelationshipNoteTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o RelationshipOccurrenceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RelationshipOccurrenceType) string {
+func (o RelationshipNoteTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RelationshipNoteType) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o RelationshipOccurrenceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o RelationshipNoteTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o RelationshipOccurrenceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RelationshipOccurrenceType) *string {
+func (o RelationshipNoteTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RelationshipNoteType) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type RelationshipOccurrenceTypePtrOutput struct{ *pulumi.OutputState }
+type RelationshipNoteTypePtrOutput struct{ *pulumi.OutputState }
 
-func (RelationshipOccurrenceTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RelationshipOccurrenceType)(nil)).Elem()
+func (RelationshipNoteTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RelationshipNoteType)(nil)).Elem()
 }
 
-func (o RelationshipOccurrenceTypePtrOutput) ToRelationshipOccurrenceTypePtrOutput() RelationshipOccurrenceTypePtrOutput {
+func (o RelationshipNoteTypePtrOutput) ToRelationshipNoteTypePtrOutput() RelationshipNoteTypePtrOutput {
 	return o
 }
 
-func (o RelationshipOccurrenceTypePtrOutput) ToRelationshipOccurrenceTypePtrOutputWithContext(ctx context.Context) RelationshipOccurrenceTypePtrOutput {
+func (o RelationshipNoteTypePtrOutput) ToRelationshipNoteTypePtrOutputWithContext(ctx context.Context) RelationshipNoteTypePtrOutput {
 	return o
 }
 
-func (o RelationshipOccurrenceTypePtrOutput) Elem() RelationshipOccurrenceTypeOutput {
-	return o.ApplyT(func(v *RelationshipOccurrenceType) RelationshipOccurrenceType {
+func (o RelationshipNoteTypePtrOutput) Elem() RelationshipNoteTypeOutput {
+	return o.ApplyT(func(v *RelationshipNoteType) RelationshipNoteType {
 		if v != nil {
 			return *v
 		}
-		var ret RelationshipOccurrenceType
+		var ret RelationshipNoteType
 		return ret
-	}).(RelationshipOccurrenceTypeOutput)
+	}).(RelationshipNoteTypeOutput)
 }
 
-func (o RelationshipOccurrenceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o RelationshipNoteTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o RelationshipOccurrenceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RelationshipOccurrenceType) *string {
+func (o RelationshipNoteTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RelationshipNoteType) *string {
 		if e == nil {
 			return nil
 		}
@@ -3829,42 +3831,42 @@ func (o RelationshipOccurrenceTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// RelationshipOccurrenceTypeInput is an input type that accepts RelationshipOccurrenceTypeArgs and RelationshipOccurrenceTypeOutput values.
-// You can construct a concrete instance of `RelationshipOccurrenceTypeInput` via:
+// RelationshipNoteTypeInput is an input type that accepts RelationshipNoteTypeArgs and RelationshipNoteTypeOutput values.
+// You can construct a concrete instance of `RelationshipNoteTypeInput` via:
 //
-//          RelationshipOccurrenceTypeArgs{...}
-type RelationshipOccurrenceTypeInput interface {
+//          RelationshipNoteTypeArgs{...}
+type RelationshipNoteTypeInput interface {
 	pulumi.Input
 
-	ToRelationshipOccurrenceTypeOutput() RelationshipOccurrenceTypeOutput
-	ToRelationshipOccurrenceTypeOutputWithContext(context.Context) RelationshipOccurrenceTypeOutput
+	ToRelationshipNoteTypeOutput() RelationshipNoteTypeOutput
+	ToRelationshipNoteTypeOutputWithContext(context.Context) RelationshipNoteTypeOutput
 }
 
-var relationshipOccurrenceTypePtrType = reflect.TypeOf((**RelationshipOccurrenceType)(nil)).Elem()
+var relationshipNoteTypePtrType = reflect.TypeOf((**RelationshipNoteType)(nil)).Elem()
 
-type RelationshipOccurrenceTypePtrInput interface {
+type RelationshipNoteTypePtrInput interface {
 	pulumi.Input
 
-	ToRelationshipOccurrenceTypePtrOutput() RelationshipOccurrenceTypePtrOutput
-	ToRelationshipOccurrenceTypePtrOutputWithContext(context.Context) RelationshipOccurrenceTypePtrOutput
+	ToRelationshipNoteTypePtrOutput() RelationshipNoteTypePtrOutput
+	ToRelationshipNoteTypePtrOutputWithContext(context.Context) RelationshipNoteTypePtrOutput
 }
 
-type relationshipOccurrenceTypePtr string
+type relationshipNoteTypePtr string
 
-func RelationshipOccurrenceTypePtr(v string) RelationshipOccurrenceTypePtrInput {
-	return (*relationshipOccurrenceTypePtr)(&v)
+func RelationshipNoteTypePtr(v string) RelationshipNoteTypePtrInput {
+	return (*relationshipNoteTypePtr)(&v)
 }
 
-func (*relationshipOccurrenceTypePtr) ElementType() reflect.Type {
-	return relationshipOccurrenceTypePtrType
+func (*relationshipNoteTypePtr) ElementType() reflect.Type {
+	return relationshipNoteTypePtrType
 }
 
-func (in *relationshipOccurrenceTypePtr) ToRelationshipOccurrenceTypePtrOutput() RelationshipOccurrenceTypePtrOutput {
-	return pulumi.ToOutput(in).(RelationshipOccurrenceTypePtrOutput)
+func (in *relationshipNoteTypePtr) ToRelationshipNoteTypePtrOutput() RelationshipNoteTypePtrOutput {
+	return pulumi.ToOutput(in).(RelationshipNoteTypePtrOutput)
 }
 
-func (in *relationshipOccurrenceTypePtr) ToRelationshipOccurrenceTypePtrOutputWithContext(ctx context.Context) RelationshipOccurrenceTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(RelationshipOccurrenceTypePtrOutput)
+func (in *relationshipNoteTypePtr) ToRelationshipNoteTypePtrOutputWithContext(ctx context.Context) RelationshipNoteTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RelationshipNoteTypePtrOutput)
 }
 
 // Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
@@ -4256,8 +4258,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerDirectivePtrInput)(nil)).Elem(), LayerDirective("DIRECTIVE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationContentTypeInput)(nil)).Elem(), PgpSignedAttestationContentType("CONTENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationContentTypePtrInput)(nil)).Elem(), PgpSignedAttestationContentType("CONTENT_TYPE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipOccurrenceTypeInput)(nil)).Elem(), RelationshipOccurrenceType("TYPE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipOccurrenceTypePtrInput)(nil)).Elem(), RelationshipOccurrenceType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipNoteTypeInput)(nil)).Elem(), RelationshipNoteType("RELATIONSHIP_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipNoteTypePtrInput)(nil)).Elem(), RelationshipNoteType("RELATIONSHIP_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionKindInput)(nil)).Elem(), VersionKind("VERSION_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionKindPtrInput)(nil)).Elem(), VersionKind("VERSION_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilitySeverityInput)(nil)).Elem(), VulnerabilitySeverity("SEVERITY_UNSPECIFIED"))
@@ -4304,8 +4306,8 @@ func init() {
 	pulumi.RegisterOutputType(LayerDirectivePtrOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationContentTypeOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationContentTypePtrOutput{})
-	pulumi.RegisterOutputType(RelationshipOccurrenceTypeOutput{})
-	pulumi.RegisterOutputType(RelationshipOccurrenceTypePtrOutput{})
+	pulumi.RegisterOutputType(RelationshipNoteTypeOutput{})
+	pulumi.RegisterOutputType(RelationshipNoteTypePtrOutput{})
 	pulumi.RegisterOutputType(VersionKindOutput{})
 	pulumi.RegisterOutputType(VersionKindPtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilitySeverityOutput{})

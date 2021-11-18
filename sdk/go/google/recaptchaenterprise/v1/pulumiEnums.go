@@ -16,9 +16,9 @@ type GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge string
 const (
 	// Perform the normal risk analysis and return either nocaptcha or a challenge depending on risk and trust factors.
 	GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeTestingChallengeUnspecified = GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge("TESTING_CHALLENGE_UNSPECIFIED")
-	// Challenge requests for this key will always return a nocaptcha, which does not require a solution.
+	// Challenge requests for this key always return a nocaptcha, which does not require a solution.
 	GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeNocaptcha = GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge("NOCAPTCHA")
-	// Challenge requests for this key will always return an unsolvable challenge.
+	// Challenge requests for this key always return an unsolvable challenge.
 	GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeUnsolvableChallenge = GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge("UNSOLVABLE_CHALLENGE")
 )
 

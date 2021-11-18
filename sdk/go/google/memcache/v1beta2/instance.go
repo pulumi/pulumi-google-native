@@ -39,7 +39,7 @@ type Instance struct {
 	NodeConfig NodeConfigResponseOutput `pulumi:"nodeConfig"`
 	// Number of nodes in the Memcached instance.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
-	// Optional: User defined parameters to apply to the memcached process on each node.
+	// User defined parameters to apply to the memcached process on each node.
 	Parameters MemcacheParametersResponseOutput `pulumi:"parameters"`
 	// The state of this Memcached instance.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -117,7 +117,7 @@ type instanceArgs struct {
 	NodeConfig NodeConfig `pulumi:"nodeConfig"`
 	// Number of nodes in the Memcached instance.
 	NodeCount int `pulumi:"nodeCount"`
-	// Optional: User defined parameters to apply to the memcached process on each node.
+	// User defined parameters to apply to the memcached process on each node.
 	Parameters *MemcacheParameters `pulumi:"parameters"`
 	Project    *string             `pulumi:"project"`
 	// Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
@@ -144,7 +144,7 @@ type InstanceArgs struct {
 	NodeConfig NodeConfigInput
 	// Number of nodes in the Memcached instance.
 	NodeCount pulumi.IntInput
-	// Optional: User defined parameters to apply to the memcached process on each node.
+	// User defined parameters to apply to the memcached process on each node.
 	Parameters MemcacheParametersPtrInput
 	Project    pulumi.StringPtrInput
 	// Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
