@@ -70,16 +70,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-        /// </summary>
-        [Input("licenseComments")]
-        public Input<string>? LicenseComments { get; set; }
-
-        /// <summary>
         /// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
         /// </summary>
         [Input("licenseConcluded")]
-        public Input<string>? LicenseConcluded { get; set; }
+        public Input<Inputs.LicenseArgs>? LicenseConcluded { get; set; }
 
         /// <summary>
         /// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file

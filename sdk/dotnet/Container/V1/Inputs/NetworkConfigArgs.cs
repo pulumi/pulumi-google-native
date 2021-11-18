@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<Inputs.DefaultSnatStatusArgs>? DefaultSnatStatus { get; set; }
 
         /// <summary>
+        /// DNSConfig contains clusterDNS config for this cluster.
+        /// </summary>
+        [Input("dnsConfig")]
+        public Input<Inputs.DNSConfigArgs>? DnsConfig { get; set; }
+
+        /// <summary>
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         /// </summary>
         [Input("enableIntraNodeVisibility")]

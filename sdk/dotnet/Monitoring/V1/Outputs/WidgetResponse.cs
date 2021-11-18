@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly Outputs.EmptyResponse Blank;
         /// <summary>
+        /// A widget that shows a stream of logs.
+        /// </summary>
+        public readonly Outputs.LogsPanelResponse LogsPanel;
+        /// <summary>
         /// A scorecard summarizing time series data.
         /// </summary>
         public readonly Outputs.ScorecardResponse Scorecard;
@@ -51,6 +55,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             Outputs.EmptyResponse blank,
 
+            Outputs.LogsPanelResponse logsPanel,
+
             Outputs.ScorecardResponse scorecard,
 
             Outputs.TextResponse text,
@@ -63,6 +69,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         {
             AlertChart = alertChart;
             Blank = blank;
+            LogsPanel = logsPanel;
             Scorecard = scorecard;
             Text = text;
             TimeSeriesTable = timeSeriesTable;

@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// Optional: User defined parameters to apply to the memcached process on each node.
+        /// User defined parameters to apply to the memcached process on each node.
         /// </summary>
         [Output("parameters")]
         public Output<Outputs.MemcacheParametersResponse> Parameters { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         public Input<int> NodeCount { get; set; } = null!;
 
         /// <summary>
-        /// Optional: User defined parameters to apply to the memcached process on each node.
+        /// User defined parameters to apply to the memcached process on each node.
         /// </summary>
         [Input("parameters")]
         public Input<Inputs.MemcacheParametersArgs>? Parameters { get; set; }

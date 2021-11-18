@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1.Outputs
     public sealed class ErrorResponse
     {
         /// <summary>
-        /// Human readable stack trace string.
+        /// Human-readable stack trace string.
         /// </summary>
         public readonly string Context;
         /// <summary>

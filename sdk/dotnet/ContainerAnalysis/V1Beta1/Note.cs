@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Output<ImmutableArray<Outputs.RelatedUrlResponse>> RelatedUrl { get; private set; } = null!;
 
         /// <summary>
-        /// A note describing SPDX Document which represents SBOM.
+        /// A note describing a software bill of materials.
         /// </summary>
         [Output("sbom")]
         public Output<Outputs.DocumentNoteResponse> Sbom { get; private set; } = null!;
@@ -113,19 +113,19 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Output<string> ShortDescription { get; private set; } = null!;
 
         /// <summary>
-        /// A note describing SPDX File.
+        /// A note describing an SPDX File.
         /// </summary>
         [Output("spdxFile")]
         public Output<Outputs.FileNoteResponse> SpdxFile { get; private set; } = null!;
 
         /// <summary>
-        /// A note describing SPDX Package.
+        /// A note describing an SPDX Package.
         /// </summary>
         [Output("spdxPackage")]
-        public Output<Outputs.PackageNoteResponse> SpdxPackage { get; private set; } = null!;
+        public Output<Outputs.PackageInfoNoteResponse> SpdxPackage { get; private set; } = null!;
 
         /// <summary>
-        /// A note describing SPDX Relationship.
+        /// A note describing an SPDX File.
         /// </summary>
         [Output("spdxRelationship")]
         public Output<Outputs.RelationshipNoteResponse> SpdxRelationship { get; private set; } = null!;
@@ -272,7 +272,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         }
 
         /// <summary>
-        /// A note describing SPDX Document which represents SBOM.
+        /// A note describing a software bill of materials.
         /// </summary>
         [Input("sbom")]
         public Input<Inputs.DocumentNoteArgs>? Sbom { get; set; }
@@ -284,19 +284,19 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Input<string>? ShortDescription { get; set; }
 
         /// <summary>
-        /// A note describing SPDX File.
+        /// A note describing an SPDX File.
         /// </summary>
         [Input("spdxFile")]
         public Input<Inputs.FileNoteArgs>? SpdxFile { get; set; }
 
         /// <summary>
-        /// A note describing SPDX Package.
+        /// A note describing an SPDX Package.
         /// </summary>
         [Input("spdxPackage")]
-        public Input<Inputs.PackageNoteArgs>? SpdxPackage { get; set; }
+        public Input<Inputs.PackageInfoNoteArgs>? SpdxPackage { get; set; }
 
         /// <summary>
-        /// A note describing SPDX Relationship.
+        /// A note describing an SPDX File.
         /// </summary>
         [Input("spdxRelationship")]
         public Input<Inputs.RelationshipNoteArgs>? SpdxRelationship { get; set; }

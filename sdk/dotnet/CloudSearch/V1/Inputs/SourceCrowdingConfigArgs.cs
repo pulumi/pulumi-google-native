@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     public sealed class SourceCrowdingConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Maximum number of results allowed from a source. No limits will be set on results if this value is less than or equal to 0.
+        /// Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
         /// </summary>
         [Input("numResults")]
         public Input<int>? NumResults { get; set; }

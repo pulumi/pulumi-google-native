@@ -164,7 +164,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public static OrganizationRoleStage Deprecated { get; } = new OrganizationRoleStage("DEPRECATED");
         /// <summary>
-        /// This role is disabled and will not contribute permissions to any members it is granted to in policies.
+        /// This role is disabled and will not contribute permissions to any principals it is granted to in policies.
         /// </summary>
         public static OrganizationRoleStage Disabled { get; } = new OrganizationRoleStage("DISABLED");
         /// <summary>
@@ -217,7 +217,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public static RoleStage Deprecated { get; } = new RoleStage("DEPRECATED");
         /// <summary>
-        /// This role is disabled and will not contribute permissions to any members it is granted to in policies.
+        /// This role is disabled and will not contribute permissions to any principals it is granted to in policies.
         /// </summary>
         public static RoleStage Disabled { get; } = new RoleStage("DISABLED");
         /// <summary>

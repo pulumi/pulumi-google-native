@@ -29,13 +29,17 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly Outputs.DataprocParametersResponse DataprocParameters;
         /// <summary>
-        /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: `gs://{bucket_name}/{folder}/{notebook_file_name}` Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb`
         /// </summary>
         public readonly string InputNotebookFile;
         /// <summary>
         /// The type of Job to be used on this execution.
         /// </summary>
         public readonly string JobType;
+        /// <summary>
+        /// Name of the kernel spec to use. This must be specified if the kernel spec name on the execution target does not match the name in the input notebook file.
+        /// </summary>
+        public readonly string KernelSpec;
         /// <summary>
         /// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
         /// </summary>
@@ -45,7 +49,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string MasterType;
         /// <summary>
-        /// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+        /// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: `gs://{bucket_name}/{folder}` Ex: `gs://notebook_user/scheduled_notebooks`
         /// </summary>
         public readonly string OutputNotebookFolder;
         /// <summary>
@@ -53,7 +57,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string Parameters;
         /// <summary>
-        /// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+        /// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
         /// </summary>
         public readonly string ParamsYamlFile;
         /// <summary>
@@ -77,6 +81,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             string jobType,
 
+            string kernelSpec,
+
             ImmutableDictionary<string, string> labels,
 
             string masterType,
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             DataprocParameters = dataprocParameters;
             InputNotebookFile = inputNotebookFile;
             JobType = jobType;
+            KernelSpec = kernelSpec;
             Labels = labels;
             MasterType = masterType;
             OutputNotebookFolder = outputNotebookFolder;

@@ -85,6 +85,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketAccessControlResponse> Acl;
         /// <summary>
+        /// The bucket's Autoclass configuration.
+        /// </summary>
+        public readonly Outputs.BucketAutoclassResponse Autoclass;
+        /// <summary>
         /// The bucket's billing configuration.
         /// </summary>
         public readonly Outputs.BucketBillingResponse Billing;
@@ -197,6 +201,8 @@ namespace Pulumi.GoogleNative.Storage.V1
         private GetBucketResult(
             ImmutableArray<Outputs.BucketAccessControlResponse> acl,
 
+            Outputs.BucketAutoclassResponse autoclass,
+
             Outputs.BucketBillingResponse billing,
 
             ImmutableArray<Outputs.BucketCorsItemResponse> cors,
@@ -252,6 +258,7 @@ namespace Pulumi.GoogleNative.Storage.V1
             Outputs.BucketWebsiteResponse website)
         {
             Acl = acl;
+            Autoclass = autoclass;
             Billing = billing;
             Cors = cors;
             CustomPlacementConfig = customPlacementConfig;

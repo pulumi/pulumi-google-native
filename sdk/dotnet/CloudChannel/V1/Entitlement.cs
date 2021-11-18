@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<string> Offer { get; private set; } = null!;
 
         /// <summary>
-        /// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+        /// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. The response may include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. - max_units: The maximum assignable units for a flexible offer. - num_units: The total commitment for commitment-based offers.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.GoogleCloudChannelV1ParameterResponse>> Parameters { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         private InputList<Inputs.GoogleCloudChannelV1ParameterArgs>? _parameters;
 
         /// <summary>
-        /// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+        /// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. The response may include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. - max_units: The maximum assignable units for a flexible offer. - num_units: The total commitment for commitment-based offers.
         /// </summary>
         public InputList<Inputs.GoogleCloudChannelV1ParameterArgs> Parameters
         {

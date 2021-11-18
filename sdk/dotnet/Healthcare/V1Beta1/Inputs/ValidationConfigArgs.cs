@@ -16,10 +16,28 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     public sealed class ValidationConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+        /// </summary>
+        [Input("disableFhirpathValidation")]
+        public Input<bool>? DisableFhirpathValidation { get; set; }
+
+        /// <summary>
         /// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against StructureDefinitions in this FHIR store.
         /// </summary>
         [Input("disableProfileValidation")]
         public Input<bool>? DisableProfileValidation { get; set; }
+
+        /// <summary>
+        /// Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+        /// </summary>
+        [Input("disableReferenceTypeValidation")]
+        public Input<bool>? DisableReferenceTypeValidation { get; set; }
+
+        /// <summary>
+        /// Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+        /// </summary>
+        [Input("disableRequiredFieldValidation")]
+        public Input<bool>? DisableRequiredFieldValidation { get; set; }
 
         [Input("enabledImplementationGuides")]
         private InputList<string>? _enabledImplementationGuides;

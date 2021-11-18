@@ -53,6 +53,12 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The Apple Developer Team ID associated with the App in the App Store.
+        /// </summary>
+        [Output("teamId")]
+        public Output<string> TeamId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a IosApp resource with the given unique name, arguments, and options.
@@ -133,6 +139,12 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The Apple Developer Team ID associated with the App in the App Store.
+        /// </summary>
+        [Input("teamId")]
+        public Input<string>? TeamId { get; set; }
 
         public IosAppArgs()
         {

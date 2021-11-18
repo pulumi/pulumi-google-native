@@ -593,6 +593,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public static SchedulerAcceleratorConfigType NvidiaTeslaT4 { get; } = new SchedulerAcceleratorConfigType("NVIDIA_TESLA_T4");
         /// <summary>
+        /// Nvidia Tesla A100 GPU.
+        /// </summary>
+        public static SchedulerAcceleratorConfigType NvidiaTeslaA100 { get; } = new SchedulerAcceleratorConfigType("NVIDIA_TESLA_A100");
+        /// <summary>
         /// TPU v2.
         /// </summary>
         public static SchedulerAcceleratorConfigType TpuV2 { get; } = new SchedulerAcceleratorConfigType("TPU_V2");

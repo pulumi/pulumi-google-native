@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse HumanAgentHandoffConfig;
         /// <summary>
-        /// Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+        /// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
         /// </summary>
         public readonly string LanguageCode;
         /// <summary>
@@ -103,9 +103,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2NotificationConfigResponse NotificationConfig;
         /// <summary>
+        /// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+        /// </summary>
+        public readonly string SecuritySettings;
+        /// <summary>
         /// Settings for speech transcription.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2SpeechToTextConfigResponse SttConfig;
+        /// <summary>
+        /// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+        /// </summary>
+        public readonly string TimeZone;
         /// <summary>
         /// Update time of the conversation profile.
         /// </summary>
@@ -133,7 +141,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
 
             Outputs.GoogleCloudDialogflowV2NotificationConfigResponse notificationConfig,
 
+            string securitySettings,
+
             Outputs.GoogleCloudDialogflowV2SpeechToTextConfigResponse sttConfig,
+
+            string timeZone,
 
             string updateTime)
         {
@@ -147,7 +159,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
             Name = name;
             NewMessageEventNotificationConfig = newMessageEventNotificationConfig;
             NotificationConfig = notificationConfig;
+            SecuritySettings = securitySettings;
             SttConfig = sttConfig;
+            TimeZone = timeZone;
             UpdateTime = updateTime;
         }
     }

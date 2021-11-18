@@ -505,15 +505,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         }
 
         /// <summary>
-        /// If it is unspeified, PROTO will be used.
+        /// If it is unspecified, PROTO will be used.
         /// </summary>
         public static GoogleCloudDialogflowV2NotificationConfigMessageFormat MessageFormatUnspecified { get; } = new GoogleCloudDialogflowV2NotificationConfigMessageFormat("MESSAGE_FORMAT_UNSPECIFIED");
         /// <summary>
-        /// Pubsub message will be serialized proto.
+        /// Pub/Sub message will be serialized proto.
         /// </summary>
         public static GoogleCloudDialogflowV2NotificationConfigMessageFormat Proto { get; } = new GoogleCloudDialogflowV2NotificationConfigMessageFormat("PROTO");
         /// <summary>
-        /// Pubsub message will be json.
+        /// Pub/Sub message will be json.
         /// </summary>
         public static GoogleCloudDialogflowV2NotificationConfigMessageFormat Json { get; } = new GoogleCloudDialogflowV2NotificationConfigMessageFormat("JSON");
 

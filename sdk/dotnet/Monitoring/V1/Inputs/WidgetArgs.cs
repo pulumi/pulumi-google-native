@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Inputs.EmptyArgs>? Blank { get; set; }
 
         /// <summary>
+        /// A widget that shows a stream of logs.
+        /// </summary>
+        [Input("logsPanel")]
+        public Input<Inputs.LogsPanelArgs>? LogsPanel { get; set; }
+
+        /// <summary>
         /// A scorecard summarizing time series data.
         /// </summary>
         [Input("scorecard")]

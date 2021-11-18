@@ -25,11 +25,15 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
         /// </summary>
         public readonly Outputs.KubernetesMetadataResponse KubernetesMetadata;
         /// <summary>
+        /// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+        /// </summary>
+        public readonly Outputs.KubernetesResourceResponse KubernetesResource;
+        /// <summary>
         /// Optional. Specific information for a GKE Multi-Cloud cluster.
         /// </summary>
         public readonly Outputs.MultiCloudClusterResponse MultiCloudCluster;
         /// <summary>
-        /// Optional. Specific information for a GKE On-Prem cluster.
+        /// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
         /// </summary>
         public readonly Outputs.OnPremClusterResponse OnPremCluster;
 
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
 
             Outputs.KubernetesMetadataResponse kubernetesMetadata,
 
+            Outputs.KubernetesResourceResponse kubernetesResource,
+
             Outputs.MultiCloudClusterResponse multiCloudCluster,
 
             Outputs.OnPremClusterResponse onPremCluster)
         {
             GkeCluster = gkeCluster;
             KubernetesMetadata = kubernetesMetadata;
+            KubernetesResource = kubernetesResource;
             MultiCloudCluster = multiCloudCluster;
             OnPremCluster = onPremCluster;
         }

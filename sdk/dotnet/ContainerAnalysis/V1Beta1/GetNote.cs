@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         public readonly ImmutableArray<Outputs.RelatedUrlResponse> RelatedUrl;
         /// <summary>
-        /// A note describing SPDX Document which represents SBOM.
+        /// A note describing a software bill of materials.
         /// </summary>
         public readonly Outputs.DocumentNoteResponse Sbom;
         /// <summary>
@@ -121,15 +121,15 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         public readonly string ShortDescription;
         /// <summary>
-        /// A note describing SPDX File.
+        /// A note describing an SPDX File.
         /// </summary>
         public readonly Outputs.FileNoteResponse SpdxFile;
         /// <summary>
-        /// A note describing SPDX Package.
+        /// A note describing an SPDX Package.
         /// </summary>
-        public readonly Outputs.PackageNoteResponse SpdxPackage;
+        public readonly Outputs.PackageInfoNoteResponse SpdxPackage;
         /// <summary>
-        /// A note describing SPDX Relationship.
+        /// A note describing an SPDX File.
         /// </summary>
         public readonly Outputs.RelationshipNoteResponse SpdxRelationship;
         /// <summary>
@@ -177,7 +177,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
 
             Outputs.FileNoteResponse spdxFile,
 
-            Outputs.PackageNoteResponse spdxPackage,
+            Outputs.PackageInfoNoteResponse spdxPackage,
 
             Outputs.RelationshipNoteResponse spdxRelationship,
 

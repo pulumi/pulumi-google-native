@@ -99,6 +99,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         /// </summary>
         public readonly string EncryptionState;
         /// <summary>
+        /// Attributes specific to Endpoint Verification devices.
+        /// </summary>
+        public readonly Outputs.EndpointVerificationSpecificAttributesResponse EndpointVerificationSpecificAttributes;
+        /// <summary>
         /// IMEI number of device if GSM device; empty otherwise.
         /// </summary>
         public readonly string Imei;
@@ -189,6 +193,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 
             string encryptionState,
 
+            Outputs.EndpointVerificationSpecificAttributesResponse endpointVerificationSpecificAttributes,
+
             string imei,
 
             string kernelVersion,
@@ -233,6 +239,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
             EnabledDeveloperOptions = enabledDeveloperOptions;
             EnabledUsbDebugging = enabledUsbDebugging;
             EncryptionState = encryptionState;
+            EndpointVerificationSpecificAttributes = endpointVerificationSpecificAttributes;
             Imei = imei;
             KernelVersion = kernelVersion;
             LastSyncTime = lastSyncTime;

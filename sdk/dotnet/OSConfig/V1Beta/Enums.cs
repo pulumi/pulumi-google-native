@@ -332,13 +332,17 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         /// </summary>
         public static RecurringScheduleFrequency FrequencyUnspecified { get; } = new RecurringScheduleFrequency("FREQUENCY_UNSPECIFIED");
         /// <summary>
-        /// Indicates that the frequency should be expressed in terms of weeks.
+        /// Indicates that the frequency of recurrence should be expressed in terms of weeks.
         /// </summary>
         public static RecurringScheduleFrequency Weekly { get; } = new RecurringScheduleFrequency("WEEKLY");
         /// <summary>
-        /// Indicates that the frequency should be expressed in terms of months.
+        /// Indicates that the frequency of recurrence should be expressed in terms of months.
         /// </summary>
         public static RecurringScheduleFrequency Monthly { get; } = new RecurringScheduleFrequency("MONTHLY");
+        /// <summary>
+        /// Indicates that the frequency of recurrence should be expressed in terms of days.
+        /// </summary>
+        public static RecurringScheduleFrequency Daily { get; } = new RecurringScheduleFrequency("DAILY");
 
         public static bool operator ==(RecurringScheduleFrequency left, RecurringScheduleFrequency right) => left.Equals(right);
         public static bool operator !=(RecurringScheduleFrequency left, RecurringScheduleFrequency right) => !left.Equals(right);

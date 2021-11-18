@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
     public sealed class CommonFeatureSpecArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Appdevexperience specific spec.
+        /// </summary>
+        [Input("appdevexperience")]
+        public Input<Inputs.AppDevExperienceFeatureSpecArgs>? Appdevexperience { get; set; }
+
+        /// <summary>
         /// Multicluster Ingress-specific spec.
         /// </summary>
         [Input("multiclusteringress")]

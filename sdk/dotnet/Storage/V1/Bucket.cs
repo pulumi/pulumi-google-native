@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<ImmutableArray<Outputs.BucketAccessControlResponse>> Acl { get; private set; } = null!;
 
         /// <summary>
+        /// The bucket's Autoclass configuration.
+        /// </summary>
+        [Output("autoclass")]
+        public Output<Outputs.BucketAutoclassResponse> Autoclass { get; private set; } = null!;
+
+        /// <summary>
         /// The bucket's billing configuration.
         /// </summary>
         [Output("billing")]
@@ -239,6 +245,12 @@ namespace Pulumi.GoogleNative.Storage.V1
             get => _acl ?? (_acl = new InputList<Inputs.BucketAccessControlArgs>());
             set => _acl = value;
         }
+
+        /// <summary>
+        /// The bucket's Autoclass configuration.
+        /// </summary>
+        [Input("autoclass")]
+        public Input<Inputs.BucketAutoclassArgs>? Autoclass { get; set; }
 
         /// <summary>
         /// The bucket's billing configuration.

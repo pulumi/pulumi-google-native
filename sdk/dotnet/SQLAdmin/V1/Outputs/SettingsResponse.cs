@@ -81,6 +81,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly Outputs.MaintenanceWindowResponse MaintenanceWindow;
         /// <summary>
+        /// The local user password validation policy of the instance.
+        /// </summary>
+        public readonly Outputs.PasswordValidationPolicyResponse PasswordValidationPolicy;
+        /// <summary>
         /// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
         /// </summary>
         public readonly string PricingPlan;
@@ -143,6 +147,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 
             Outputs.MaintenanceWindowResponse maintenanceWindow,
 
+            Outputs.PasswordValidationPolicyResponse passwordValidationPolicy,
+
             string pricingPlan,
 
             string settingsVersion,
@@ -173,6 +179,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
             Kind = kind;
             LocationPreference = locationPreference;
             MaintenanceWindow = maintenanceWindow;
+            PasswordValidationPolicy = passwordValidationPolicy;
             PricingPlan = pricingPlan;
             SettingsVersion = settingsVersion;
             SqlServerAuditConfig = sqlServerAuditConfig;

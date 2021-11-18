@@ -17,9 +17,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
     public sealed class BuildDetailsResponse
     {
         /// <summary>
-        /// In-toto Provenance representation as defined in spec.
+        /// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
         /// </summary>
-        public readonly Outputs.InTotoProvenanceResponse IntotoProvenance;
+        public readonly Outputs.InTotoStatementResponse IntotoStatement;
         /// <summary>
         /// The actual provenance
         /// </summary>
@@ -31,13 +31,13 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
         [OutputConstructor]
         private BuildDetailsResponse(
-            Outputs.InTotoProvenanceResponse intotoProvenance,
+            Outputs.InTotoStatementResponse intotoStatement,
 
             Outputs.BuildProvenanceResponse provenance,
 
             string provenanceBytes)
         {
-            IntotoProvenance = intotoProvenance;
+            IntotoStatement = intotoStatement;
             Provenance = provenance;
             ProvenanceBytes = provenanceBytes;
         }

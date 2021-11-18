@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Outputs
         /// </summary>
         public readonly bool DefaultVersion;
         /// <summary>
+        /// Type represents the release availability of the version
+        /// </summary>
+        public readonly string Type;
+        /// <summary>
         /// The version number of the Data Fusion instance, such as '6.0.1.0'.
         /// </summary>
         public readonly string VersionNumber;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Outputs
 
             bool defaultVersion,
 
+            string type,
+
             string versionNumber)
         {
             AvailableFeatures = availableFeatures;
             DefaultVersion = defaultVersion;
+            Type = type;
             VersionNumber = versionNumber;
         }
     }

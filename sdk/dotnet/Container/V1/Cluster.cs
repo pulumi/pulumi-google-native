@@ -238,6 +238,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<int> NodeIpv4CidrSize { get; private set; } = null!;
 
         /// <summary>
+        /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+        /// </summary>
+        [Output("nodePoolDefaults")]
+        public Output<Outputs.NodePoolDefaultsResponse> NodePoolDefaults { get; private set; } = null!;
+
+        /// <summary>
         /// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
         /// </summary>
         [Output("nodePools")]
@@ -554,6 +560,12 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Input("networkPolicy")]
         public Input<Inputs.NetworkPolicyArgs>? NetworkPolicy { get; set; }
+
+        /// <summary>
+        /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+        /// </summary>
+        [Input("nodePoolDefaults")]
+        public Input<Inputs.NodePoolDefaultsArgs>? NodePoolDefaults { get; set; }
 
         [Input("nodePools")]
         private InputList<Inputs.NodePoolArgs>? _nodePools;

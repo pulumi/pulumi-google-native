@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Output<Outputs.ResourceResponse> Resource { get; private set; } = null!;
 
         /// <summary>
-        /// Describes a specific SPDX Document.
+        /// Describes a specific software bill of materials document.
         /// </summary>
         [Output("sbom")]
         public Output<Outputs.DocumentOccurrenceResponse> Sbom { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// Describes a specific SPDX Package.
         /// </summary>
         [Output("spdxPackage")]
-        public Output<Outputs.PackageOccurrenceResponse> SpdxPackage { get; private set; } = null!;
+        public Output<Outputs.PackageInfoOccurrenceResponse> SpdxPackage { get; private set; } = null!;
 
         /// <summary>
         /// Describes a specific SPDX Relationship.
@@ -239,7 +239,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Input<Inputs.ResourceArgs> Resource { get; set; } = null!;
 
         /// <summary>
-        /// Describes a specific SPDX Document.
+        /// Describes a specific software bill of materials document.
         /// </summary>
         [Input("sbom")]
         public Input<Inputs.DocumentOccurrenceArgs>? Sbom { get; set; }
@@ -254,7 +254,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// Describes a specific SPDX Package.
         /// </summary>
         [Input("spdxPackage")]
-        public Input<Inputs.PackageOccurrenceArgs>? SpdxPackage { get; set; }
+        public Input<Inputs.PackageInfoOccurrenceArgs>? SpdxPackage { get; set; }
 
         /// <summary>
         /// Describes a specific SPDX Relationship.

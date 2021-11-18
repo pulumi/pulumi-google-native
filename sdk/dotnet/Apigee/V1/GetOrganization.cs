@@ -107,6 +107,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Configuration for the Portals settings.
+        /// </summary>
+        public readonly bool PortalDisabled;
+        /// <summary>
         /// Project ID associated with the Apigee organization.
         /// </summary>
         public readonly string Project;
@@ -161,6 +165,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string name,
 
+            bool portalDisabled,
+
             string project,
 
             Outputs.GoogleCloudApigeeV1PropertiesResponse properties,
@@ -187,6 +193,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             ExpiresAt = expiresAt;
             LastModifiedAt = lastModifiedAt;
             Name = name;
+            PortalDisabled = portalDisabled;
             Project = project;
             Properties = properties;
             RuntimeDatabaseEncryptionKeyName = runtimeDatabaseEncryptionKeyName;

@@ -20,11 +20,26 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
         /// </summary>
         public readonly bool EnableOnpremGcsTransferLogs;
+        /// <summary>
+        /// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        /// </summary>
+        public readonly ImmutableArray<string> LogActionStates;
+        /// <summary>
+        /// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        /// </summary>
+        public readonly ImmutableArray<string> LogActions;
 
         [OutputConstructor]
-        private LoggingConfigResponse(bool enableOnpremGcsTransferLogs)
+        private LoggingConfigResponse(
+            bool enableOnpremGcsTransferLogs,
+
+            ImmutableArray<string> logActionStates,
+
+            ImmutableArray<string> logActions)
         {
             EnableOnpremGcsTransferLogs = enableOnpremGcsTransferLogs;
+            LogActionStates = logActionStates;
+            LogActions = logActions;
         }
     }
 }

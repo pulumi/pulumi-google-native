@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
     public sealed class CommonFeatureStateResponse
     {
         /// <summary>
+        /// Appdevexperience specific state.
+        /// </summary>
+        public readonly Outputs.AppDevExperienceFeatureStateResponse Appdevexperience;
+        /// <summary>
         /// The "running state" of the Feature in this Hub.
         /// </summary>
         public readonly Outputs.FeatureStateResponse State;
 
         [OutputConstructor]
-        private CommonFeatureStateResponse(Outputs.FeatureStateResponse state)
+        private CommonFeatureStateResponse(
+            Outputs.AppDevExperienceFeatureStateResponse appdevexperience,
+
+            Outputs.FeatureStateResponse state)
         {
+            Appdevexperience = appdevexperience;
             State = state;
         }
     }

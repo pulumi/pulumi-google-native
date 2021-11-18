@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The URI of the hub that this spoke is attached to.
+        /// Immutable. The name of the hub that this spoke is attached to.
         /// </summary>
         [Output("hub")]
         public Output<string> Hub { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Spoke(string name, SpokeArgs? args = null, CustomResourceOptions? options = null)
+        public Spoke(string name, SpokeArgs args, CustomResourceOptions? options = null)
             : base("google-native:networkconnectivity/v1:Spoke", name, args ?? new SpokeArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -133,7 +133,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Immutable. The URI of the hub that this spoke is attached to.
+        /// Immutable. The name of the hub that this spoke is attached to.
         /// </summary>
         [Input("hub")]
         public Input<string>? Hub { get; set; }
@@ -183,8 +183,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
-        [Input("spokeId")]
-        public Input<string>? SpokeId { get; set; }
+        [Input("spokeId", required: true)]
+        public Input<string> SpokeId { get; set; } = null!;
 
         public SpokeArgs()
         {

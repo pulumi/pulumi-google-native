@@ -52,10 +52,34 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<Inputs.ObjectConditionsArgs>? ObjectConditions { get; set; }
 
         /// <summary>
+        /// A POSIX Filesystem data sink.
+        /// </summary>
+        [Input("posixDataSink")]
+        public Input<Inputs.PosixFilesystemArgs>? PosixDataSink { get; set; }
+
+        /// <summary>
         /// A POSIX Filesystem data source.
         /// </summary>
         [Input("posixDataSource")]
         public Input<Inputs.PosixFilesystemArgs>? PosixDataSource { get; set; }
+
+        /// <summary>
+        /// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+        /// </summary>
+        [Input("sinkAgentPoolName")]
+        public Input<string>? SinkAgentPoolName { get; set; }
+
+        /// <summary>
+        /// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+        /// </summary>
+        [Input("sourceAgentPoolName")]
+        public Input<string>? SourceAgentPoolName { get; set; }
+
+        /// <summary>
+        /// A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+        /// </summary>
+        [Input("transferManifest")]
+        public Input<Inputs.TransferManifestArgs>? TransferManifest { get; set; }
 
         /// <summary>
         /// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.

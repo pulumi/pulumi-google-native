@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly Outputs.DefaultSnatStatusResponse DefaultSnatStatus;
         /// <summary>
+        /// DNSConfig contains clusterDNS config for this cluster.
+        /// </summary>
+        public readonly Outputs.DNSConfigResponse DnsConfig;
+        /// <summary>
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         /// </summary>
         public readonly bool EnableIntraNodeVisibility;
@@ -51,6 +55,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             Outputs.DefaultSnatStatusResponse defaultSnatStatus,
 
+            Outputs.DNSConfigResponse dnsConfig,
+
             bool enableIntraNodeVisibility,
 
             bool enableL4ilbSubsetting,
@@ -63,6 +69,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         {
             DatapathProvider = datapathProvider;
             DefaultSnatStatus = defaultSnatStatus;
+            DnsConfig = dnsConfig;
             EnableIntraNodeVisibility = enableIntraNodeVisibility;
             EnableL4ilbSubsetting = enableL4ilbSubsetting;
             Network = network;

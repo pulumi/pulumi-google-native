@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
 {
 
     /// <summary>
-    /// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    /// Network-level access control policy for the Airflow web server.
     /// </summary>
     [OutputType]
     public sealed class WebServerNetworkAccessControlResponse

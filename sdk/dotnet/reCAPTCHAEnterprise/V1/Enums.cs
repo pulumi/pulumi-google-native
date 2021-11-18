@@ -25,11 +25,11 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// </summary>
         public static GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge TestingChallengeUnspecified { get; } = new GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge("TESTING_CHALLENGE_UNSPECIFIED");
         /// <summary>
-        /// Challenge requests for this key will always return a nocaptcha, which does not require a solution.
+        /// Challenge requests for this key always return a nocaptcha, which does not require a solution.
         /// </summary>
         public static GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge Nocaptcha { get; } = new GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge("NOCAPTCHA");
         /// <summary>
-        /// Challenge requests for this key will always return an unsolvable challenge.
+        /// Challenge requests for this key always return an unsolvable challenge.
         /// </summary>
         public static GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge UnsolvableChallenge { get; } = new GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge("UNSOLVABLE_CHALLENGE");
 

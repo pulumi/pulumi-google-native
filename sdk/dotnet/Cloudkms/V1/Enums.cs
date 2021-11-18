@@ -216,6 +216,18 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm RsaSignPkcs14096Sha512 { get; } = new CryptoKeyVersionTemplateAlgorithm("RSA_SIGN_PKCS1_4096_SHA512");
         /// <summary>
+        /// RSASSA-PKCS1-v1_5 signing without encoding, with a 2048 bit key.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm RsaSignRawPkcs12048 { get; } = new CryptoKeyVersionTemplateAlgorithm("RSA_SIGN_RAW_PKCS1_2048");
+        /// <summary>
+        /// RSASSA-PKCS1-v1_5 signing without encoding, with a 3072 bit key.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm RsaSignRawPkcs13072 { get; } = new CryptoKeyVersionTemplateAlgorithm("RSA_SIGN_RAW_PKCS1_3072");
+        /// <summary>
+        /// RSASSA-PKCS1-v1_5 signing without encoding, with a 4096 bit key.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm RsaSignRawPkcs14096 { get; } = new CryptoKeyVersionTemplateAlgorithm("RSA_SIGN_RAW_PKCS1_4096");
+        /// <summary>
         /// RSAES-OAEP 2048 bit key with a SHA256 digest.
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm RsaDecryptOaep2048Sha256 { get; } = new CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_2048_SHA256");

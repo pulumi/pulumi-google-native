@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     public sealed class PrivateEnvironmentConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("cloudComposerNetworkIpv4CidrBlock")]
+        public Input<string>? CloudComposerNetworkIpv4CidrBlock { get; set; }
+
+        /// <summary>
         /// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
         /// </summary>
         [Input("cloudSqlIpv4CidrBlock")]

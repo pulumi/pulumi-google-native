@@ -121,7 +121,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// A note describing an SPDX Package.
         /// </summary>
         [Output("spdxPackage")]
-        public Output<Outputs.PackageNoteResponse> SpdxPackage { get; private set; } = null!;
+        public Output<Outputs.PackageInfoNoteResponse> SpdxPackage { get; private set; } = null!;
 
         /// <summary>
         /// A note describing a relationship between SPDX elements.
@@ -298,7 +298,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// A note describing an SPDX Package.
         /// </summary>
         [Input("spdxPackage")]
-        public Input<Inputs.PackageNoteArgs>? SpdxPackage { get; set; }
+        public Input<Inputs.PackageInfoNoteArgs>? SpdxPackage { get; set; }
 
         /// <summary>
         /// A note describing a relationship between SPDX elements.

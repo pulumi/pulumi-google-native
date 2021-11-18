@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Redis.V1
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in location_id.
+        /// Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
         /// </summary>
         [Output("alternativeLocationId")]
         public Output<string> AlternativeLocationId { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the location_id provided by the user at creation time. For Standard Tier instances, this can be either location_id or alternative_location_id and can change after a failover event.
+        /// The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
         /// </summary>
         [Output("currentLocationId")]
         public Output<string> CurrentLocationId { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, instances will be created across two zones for protection against zonal failures. If [alternative_location_id] is also provided, it must be different from [location_id].
+        /// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -100,6 +100,18 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Info per node.
+        /// </summary>
+        [Output("nodes")]
+        public Output<ImmutableArray<Outputs.NodeInfoResponse>> Nodes { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Persistence configuration parameters
+        /// </summary>
+        [Output("persistenceConfig")]
+        public Output<Outputs.PersistenceConfigResponse> PersistenceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
         /// </summary>
         [Output("persistenceIamIdentity")]
@@ -110,6 +122,24 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'.
+        /// </summary>
+        [Output("readEndpoint")]
+        public Output<string> ReadEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target 'port'.
+        /// </summary>
+        [Output("readEndpointPort")]
+        public Output<int> ReadEndpointPort { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Read replica mode. Can only be specified when trying to create the instance.
+        /// </summary>
+        [Output("readReplicasMode")]
+        public Output<string> ReadReplicasMode { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
@@ -124,7 +154,13 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<string> RedisVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
+        /// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
+        /// </summary>
+        [Output("replicaCount")]
+        public Output<int> ReplicaCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
         /// </summary>
         [Output("reservedIpRange")]
         public Output<string> ReservedIpRange { get; private set; } = null!;
@@ -205,7 +241,7 @@ namespace Pulumi.GoogleNative.Redis.V1
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in location_id.
+        /// Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
         /// </summary>
         [Input("alternativeLocationId")]
         public Input<string>? AlternativeLocationId { get; set; }
@@ -250,7 +286,7 @@ namespace Pulumi.GoogleNative.Redis.V1
         }
 
         /// <summary>
-        /// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, instances will be created across two zones for protection against zonal failures. If [alternative_location_id] is also provided, it must be different from [location_id].
+        /// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -273,8 +309,20 @@ namespace Pulumi.GoogleNative.Redis.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Optional. Persistence configuration parameters
+        /// </summary>
+        [Input("persistenceConfig")]
+        public Input<Inputs.PersistenceConfigArgs>? PersistenceConfig { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Optional. Read replica mode. Can only be specified when trying to create the instance.
+        /// </summary>
+        [Input("readReplicasMode")]
+        public Input<Pulumi.GoogleNative.Redis.V1.InstanceReadReplicasMode>? ReadReplicasMode { get; set; }
 
         [Input("redisConfigs")]
         private InputMap<string>? _redisConfigs;
@@ -295,7 +343,13 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Input<string>? RedisVersion { get; set; }
 
         /// <summary>
-        /// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
+        /// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
+        /// </summary>
+        [Input("replicaCount")]
+        public Input<int>? ReplicaCount { get; set; }
+
+        /// <summary>
+        /// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
         /// </summary>
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }

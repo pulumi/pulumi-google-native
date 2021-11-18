@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<string>? NotebookUpgradeSchedule { get; set; }
 
         /// <summary>
-        /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         /// </summary>
         [Input("postStartupScript")]
         public Input<string>? PostStartupScript { get; set; }
