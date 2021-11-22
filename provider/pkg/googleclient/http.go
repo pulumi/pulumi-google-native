@@ -133,7 +133,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	}
 	result := make(map[string]interface{})
 	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		return nil, errors.Wrapf(err, "Decode")
+		return nil, errors.Wrapf(err, "Decode, status code %v", res.StatusCode)
 	}
 
 	return result, nil
