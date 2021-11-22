@@ -69,7 +69,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v1.0.1
+        uses: pulumi/setup-pulumi@v2
       - name: Download provider + tfgen binaries
         uses: actions/download-artifact@v2
         with:
@@ -128,7 +128,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v1.0.1
+        uses: pulumi/setup-pulumi@v2
       - name: Initialize submodules
         run: make init_submodules
       - name: Build codegen binaries
@@ -190,7 +190,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v1.0.1
+        uses: pulumi/setup-pulumi@v2
       - name: Set PreRelease Version
         run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language
           generic)" >> $GITHUB_ENV
@@ -225,7 +225,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v1.0.1
+        uses: pulumi/setup-pulumi@v2
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
@@ -304,7 +304,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v1.0.1
+        uses: pulumi/setup-pulumi@v2
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
