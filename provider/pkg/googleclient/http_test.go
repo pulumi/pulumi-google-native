@@ -60,7 +60,7 @@ func TestRequestWithTimeout(t *testing.T) {
 				}, nil)
 				return mt
 			},
-			err: fmt.Errorf("Get %q: expired token provided", server.URL+"?alt=json"),
+			err: fmt.Errorf("Do: Get %q: expired token provided", server.URL+"?alt=json"),
 		},
 		{
 			name: "Renewed",

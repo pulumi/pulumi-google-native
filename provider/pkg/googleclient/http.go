@@ -85,21 +85,21 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	if body != nil {
 		err := json.NewEncoder(&buf).Encode(body)
 		if err != nil {
-			return nil, err
+			return nil, errors.Wrapf(err, "encoding")
 		}
 	}
 
 	if err := c.refreshClientCredentials(context.Background()); err != nil {
-		return nil, err
+		return nil, errors.Wrapf(err, "refreshClientCredentials")
 	}
 
 	u, err := addQueryParams(rawurl, map[string]string{"alt": "json"})
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrapf(err, "addQueryParams")
 	}
 	req, err := http.NewRequest(method, u, &buf)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrapf(err, "NewRequest")
 	}
 	req.Header = reqHeaders
 
@@ -108,7 +108,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 
 	res, err = c.http.Do(req)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrapf(err, "Do")
 	}
 
 	debugResp, _ := httputil.DumpResponse(res, true)
@@ -116,7 +116,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 
 	if err := googleapi.CheckResponse(res); err != nil {
 		googleapi.CloseBody(res)
-		return nil, err
+		return nil, errors.Wrapf(err, "CheckResponse")
 	}
 
 	if res == nil {
@@ -133,7 +133,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	}
 	result := make(map[string]interface{})
 	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		return nil, err
+		return nil, errors.Wrapf(err, "Decode")
 	}
 
 	return result, nil
