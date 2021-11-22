@@ -111,20 +111,19 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 		return nil, errors.Wrapf(err, "Do")
 	}
 
-	debugResp, _ := httputil.DumpResponse(res, true)
-	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJsonLines(debugResp))
-
-	if err := googleapi.CheckResponse(res); err != nil {
-		googleapi.CloseBody(res)
-		return nil, errors.Wrapf(err, "CheckResponse")
-	}
-
 	if res == nil {
 		return nil, fmt.Errorf("unable to parse server response")
 	}
 
 	// The defer call must be made outside of the retryFunc otherwise it's closed too soon.
 	defer googleapi.CloseBody(res)
+
+	debugResp, _ := httputil.DumpResponse(res, true)
+	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJsonLines(debugResp))
+
+	if err := googleapi.CheckResponse(res); err != nil {
+		return nil, errors.Wrapf(err, "CheckResponse")
+	}
 
 	// 204 responses will have no body, so we're going to error with "EOF" if we
 	// try to parse it. Instead, we can just return nil.
@@ -133,7 +132,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	}
 	result := make(map[string]interface{})
 	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		return nil, errors.Wrapf(err, "Decode, status code %v", res.StatusCode)
+		return nil, errors.Wrapf(err, "Decode, status code %v, body %v", res.StatusCode, prettyPrintJsonLines(debugResp))
 	}
 
 	return result, nil
