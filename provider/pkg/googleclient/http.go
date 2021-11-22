@@ -118,8 +118,8 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	// The defer call must be made outside of the retryFunc otherwise it's closed too soon.
 	defer googleapi.CloseBody(res)
 
-	debugResp, _ := httputil.DumpResponse(res, true)
-	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJsonLines(debugResp))
+	//debugResp, _ := httputil.DumpResponse(res, true)
+	//logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJsonLines(debugResp))
 
 	if err := googleapi.CheckResponse(res); err != nil {
 		return nil, errors.Wrapf(err, "CheckResponse")
@@ -132,7 +132,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	}
 	result := make(map[string]interface{})
 	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		return nil, errors.Wrapf(err, "Decode, status code %v, body %v", res.StatusCode, prettyPrintJsonLines(debugResp))
+		return nil, errors.Wrapf(err, "Decode, status code %v, req %v", res.StatusCode, prettyPrintJsonLines(debugBody))
 	}
 
 	return result, nil
