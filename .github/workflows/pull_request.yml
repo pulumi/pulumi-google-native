@@ -8,8 +8,8 @@ name: pull-request
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GOOGLE_PROJECT: pulumi-ci-gcp-provider
-  GOOGLE_REGION: us-central1
-  GOOGLE_ZONE: us-central1-a
+  GOOGLE_REGION: us-west1
+  GOOGLE_ZONE: us-west1-a
   PROVIDER: google-native
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
