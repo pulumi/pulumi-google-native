@@ -6,18 +6,18 @@ package examples
 
 import (
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
-	//"path/filepath"
+	"path/filepath"
 	"testing"
 )
 
 func TestStorageCs(t *testing.T) {
-	// test := getCsharpBaseOptions(t).
-	// 	With(integration.ProgramTestOptions{
-	// 		Dir:         filepath.Join(getCwd(t), "storage-cs"),
-	// 		SkipRefresh: true,
-	// 	})
+	test := getCsharpBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:         filepath.Join(getCwd(t), "storage-cs"),
+			SkipRefresh: true,
+		})
 
-	// integration.ProgramTest(t, &test)
+	integration.ProgramTest(t, &test)
 }
 
 func getCsharpBaseOptions(t *testing.T) integration.ProgramTestOptions {
