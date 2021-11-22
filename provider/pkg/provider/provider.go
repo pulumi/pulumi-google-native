@@ -122,7 +122,7 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 		AppendUserAgent:                    appendUserAgent,
 	}
 
-	client, err := googleclient.New(ctx, config)
+	client, err := googleclient.New(context.Background(), config)
 	if err != nil {
 		return nil, err
 	}
